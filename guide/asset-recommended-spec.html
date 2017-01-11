@@ -1,0 +1,26 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>素材の推奨仕様 - Akashic Engine</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"><link rel="stylesheet" href="../main.css"><link rel="shortcut icon" href="../favicon.ico" type="image/vnd.microsoft.icon"><link rel="icon" href="../favicon.ico" type="image/vnd.microsoft.icon"></head><body><div class="container"><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"></div></div><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href=".." class="navbar-brand"></a></nav><h1>素材の推奨仕様</h1><h2><a name="これは"></a> これは</h2><p>Akashicのゲーム中で、アセットとして用いる素材に関する推奨仕様をまとめます。</p>
+<h2><a name="推奨仕様"></a> 推奨仕様</h2><p>素材の <strong>推奨仕様</strong> とは、Akashic がゲーム開発者に推奨する素材の仕様です。</p>
+<p>要求仕様(ここでは触れません)と異なり、ゲーム開発者は必ずしも推奨仕様に従う必要はありません。
+推奨仕様は、多くのゲーム開発者にとってより意図に近い・望ましいであろう動作を実現するための一種のガイドラインであり、
+従わない場合でもゲームは動作します。</p>
+<h3><a name="一つの画像ファイル中の複数の画像は間隔を空ける"></a> 一つの画像ファイル中の複数の画像は間隔を空ける</h3><p>Akashic のゲームでは、複数の画像を一つの画像ファイルにまとめたもの(並べたもの)を扱うことがあります。</p>
+<p>典型的な例は、スプライト(<code>g.Sprite</code>)に用いる画像(<code>g.SpriteParameterObject#src</code>)です。
+スプライトは与えられた画像の一部だけを表示することができ、また表示内容を同じ画像の別の部分に容易に切り替えられます。
+この機能のため、スプライトに用いる画像ファイルは、以下のような複数の内容を一つにまとめたものになる場合があります。</p>
+<p><img src="images/aco.png" alt="複数の画像を並べた一つの画像ファイルの例"></p>
+<p>この時、ファイル中の各画像の境界部分には1ピクセル以上の間隔を設けることが推奨されます。
+すなわち画像同士の境界に接する各ピクセルは、透明色であるべきです。</p>
+<p>例えば次の画像は、上の画像の一部を拡大したものです。</p>
+<p><img src="images/aco-valid-border.png" alt="境界部分に1ピクセルの間隔がある画像"></p>
+<p>ここで赤の点線は境界を示すための仮想的なものです。
+この例では、各画像の境界部分(赤の点線)に接するピクセルはすべて透明色になっています。
+他方、この画像全体を左に1ピクセルずらしたものが次の画像です。
+境界として取り扱う範囲を変えない場合、境界に接している不透明色のピクセルが二つ存在することがわかります。</p>
+<p><img src="images/aco-invalid-border.png" alt="境界に1ピクセルの間隔がない画像"></p>
+<p>この画像は推奨仕様に従っていません。</p>
+<h4>推奨の理由</h4><p>この推奨に従わない場合、画像の拡大・縮小描画の際に隣接する不透明色が「滲む」ことがあります。
+以下はある環境において、前述の「推奨仕様に従ってない画像」に示した一部分を、5倍に拡大して描画する <code>g.Sprite</code> を表示したものです。</p>
+<p><img src="images/aco-drawn-with-noise.png" alt="境界に接するピクセルの不透明色が滲んでいる例"></p>
+<p>キャラクタの右側に滲んだ不透明色が確認できます。</p>
+<p>ビットマップフォント(<code>g.BitmapFont</code>)として使う画像や、タイル(<code>g.Tile</code>)に与えるマップチップ画像(<code>g.TileParameterObject#src</code>)などにも同様の注意が必要です。
+特にタイルは、その性質上間隔を空けずに使うことが多いと考えられます。従ってタイルの拡大縮小は推奨されません。</p><hr><div class="footer"><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png" class="license"></a>このサイトの画像は、<a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/">クリエイティブ・コモンズ 表示 2.1 日本 ライセンスの下に提供されています。</a></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script></body></html>

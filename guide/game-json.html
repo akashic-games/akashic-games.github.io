@@ -1,0 +1,225 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>game.jsonの仕様 - Akashic Engine</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"><link rel="stylesheet" href="../main.css"><link rel="shortcut icon" href="../favicon.ico" type="image/vnd.microsoft.icon"><link rel="icon" href="../favicon.ico" type="image/vnd.microsoft.icon"></head><body><div class="container"><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"></div></div><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href=".." class="navbar-brand"></a></nav><h1>game.jsonの仕様</h1><h2><a name="これは"></a> これは</h2><p>Akashic のゲームにおいてメタ情報などを取り扱う設定ファイル、game.json の仕様をまとめます。
+対象バージョンは akashic-engine@0.6.1 以降です。</p>
+<h2><a name="game.jsonとは"></a> game.jsonとは</h2><p>game.json は、Akashic のゲームのメタ情報などを取り扱う JSON 形式の設定ファイルです。
+主に以下のような情報を取り扱います。</p>
+<ul>
+<li>ゲーム画面のサイズ</li>
+<li>ゲームのFPS</li>
+<li>ゲーム内で利用する各種素材のファイルパスやID</li>
+</ul>
+<p>これらに加えて、画像素材のサイズのような補助的な情報も取り扱います。</p>
+<p>各種素材(アセット)のファイルパスや画像のサイズなどは、手動で記述・維持しにくいので、
+game.json を生成・管理するツールとして akashic-cli が提供されています。
+akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli利用ガイド</a> を参照してください。</p>
+<h2><a name="形式"></a> 形式</h2><p>妥当な game.json の内容は一つのオブジェクトです。
+それは以下の名前のプロパティと、対応する値を持ちます。</p>
+<ul>
+<li>width (必須)<ul>
+<li>数値</li>
+<li>画面の幅 (ピクセル)</li>
+</ul>
+</li>
+<li>heigth (必須)<ul>
+<li>数値</li>
+<li>画面の高さ (ピクセル)</li>
+</ul>
+</li>
+<li>fps (必須)<ul>
+<li>数値</li>
+<li>ゲームのFPS (秒間フレーム数)</li>
+</ul>
+</li>
+<li>assets (必須)<ul>
+<li>オブジェクト (詳細は後述)</li>
+<li>ゲーム内で利用するアセットの定義</li>
+</ul>
+</li>
+<li>main (指定推奨)<ul>
+<li>文字列</li>
+<li>エントリポイントのスクリプトへのパス</li>
+</ul>
+</li>
+<li>globalScripts<ul>
+<li>配列 (詳細は後述)</li>
+<li>ゲーム内で利用するスクリプトアセット定義の短縮表記</li>
+</ul>
+</li>
+<li>renderers<ul>
+<li>配列（詳細は後述）</li>
+<li>ゲームが利用するレンダラーを定義</li>
+</ul>
+</li>
+</ul>
+<p>次のJSONは、妥当なgame.jsonの一例です:</p>
+<pre><code>{
+  &quot;width&quot;: 320,
+  &quot;height&quot;: 240,
+  &quot;fps&quot;: 30,
+  &quot;assets&quot;: {
+    &quot;main&quot;: {
+      &quot;type&quot;: &quot;script&quot;,
+      &quot;path&quot;: &quot;script/main.js&quot;,
+      &quot;global&quot;: true
+    }
+  },
+  &quot;main&quot;: &quot;./script/main.js&quot;
+}
+</code></pre><p>このgame.jsonは、画面サイズが320x240でFPSが30の、
+&quot;script/main.js&quot; というゲームスクリプト一つだけを使うゲームであること、
+またエントリポイントはその &quot;./script/main.js&quot; であることを定義しています。</p>
+<h3>assets (アセット定義)</h3><p>game.json のオブジェクト中、 <strong>assets</strong> の値は、オブジェクトでなければなりません。
+そのオブジェクトの各キーはアセットID、値はそのIDのアセット定義です。</p>
+<p><strong>アセットID</strong> は、ゲーム開発者が任意に設定できる文字列です。
+アセットIDは「半角英数字、アンダースコア &quot;_&quot;、ドル記号 &quot;$&quot;」のみで構成され、
+かつ「英字で始まっている」必要があります。
+ゲームスクリプト内で、Akashic エンジンが読み込んだ各アセットは
+<code>g.Scene#assets</code> オブジェクトから参照できます (グローバルアセットを除く。後述)。
+アセットID はこのオブジェクトのキーとして利用されます。すなわち、
+アセットIDが &quot;foo&quot; のアセットは、<code>scene.assets.foo</code> のような形で参照することができます。</p>
+<p><strong>アセット定義</strong> は、オブジェクトであり、少なくとも以下の値を持つことができます:</p>
+<ul>
+<li>type (必須)<ul>
+<li>次の文字列のいずれか: &quot;image&quot;, &quot;audio&quot;, &quot;text&quot;, &quot;script&quot;</li>
+<li>アセットの種類</li>
+</ul>
+</li>
+<li>path (必須)<ul>
+<li>文字列</li>
+<li>game.json のあるディレクトリからの相対パス (スラッシュ区切り)</li>
+<li>アセットを表すファイル</li>
+</ul>
+</li>
+<li>global<ul>
+<li>真理値</li>
+<li>グローバルアセットであるか否か (省略された場合、偽)</li>
+</ul>
+</li>
+</ul>
+<p>global の値が真に設定されたアセットは、<strong>グローバルアセット</strong> になります。
+通常のアセットは、シーン単位で管理されます。
+アセットを利用する場合、<code>g.Scene</code> のコンストラクタでそのアセットIDを指定する必要があります。
+しかしグローバルアセットは、シーン単位ではなく、ゲーム内において常に利用可能なアセットになります。
+通常のアセットが <code>g.Scene#assets</code> から参照できるのに対して、グローバルアセットは <code>g.Game#assets</code> から参照できます。</p>
+<p>type の値によっては、アセット定義にさらに追加の制約や必須プロパティが存在します。</p>
+<ul>
+<li>&quot;image&quot;<ul>
+<li>プロパティ: width (必須)<ul>
+<li>数値</li>
+<li>画像の幅(ピクセル)</li>
+</ul>
+</li>
+<li>プロパティ: height (必須)<ul>
+<li>数値</li>
+<li>画像の高さ(ピクセル)</li>
+</ul>
+</li>
+<li>制約: path の拡張子は &quot;.png&quot;、&quot;.jpg&quot; または &quot;.jpeg&quot; でなければならない</li>
+</ul>
+</li>
+<li>&quot;audio&quot;<ul>
+<li>プロパティ: systemId<ul>
+<li>文字列</li>
+<li>このアセットの system (本文書では詳細割愛)</li>
+<li>省略された場合、 <code>g.Game#defaultAudioSystemId</code> の値 (<code>defaultAudioSystemId</code> の初期値は &quot;sound&quot;)</li>
+</ul>
+</li>
+<li>制約: path はファイルのパス文字列から拡張子を取り除いたものでなければならない</li>
+<li>制約: 対応するファイルの拡張子は &quot;.ogg&quot;、&quot;.aac&quot; または &quot;.wav&quot; でなければならない</li>
+</ul>
+</li>
+<li>&quot;script&quot;<ul>
+<li>制約: path の拡張子は &quot;.js&quot; でなければならない</li>
+</ul>
+</li>
+</ul>
+<p>オーディオアセット (type が &quot;audio&quot; であるアセット) は他と異なり、ファイルパスに拡張子を書かないことに気をつけて下さい。
+音素材に関して、拡張子以外の部分が同名のファイル (e.g. &quot;audio/foo.ogg&quot; と
+&quot;audio/foo.aac&quot; など) は、それぞれ同じ内容であることが期待されます。
+これらはエンジンが、ゲームの各実行環境で再生可能な形式のファイルを自動的に選択して再生するためです。</p>
+<h3>main</h3><p>akashic-engine@1.2.0 で導入。</p>
+<p><strong>main</strong> は、ゲームのエントリポイントとなるスクリプト( <strong>mainスクリプト</strong> )を指定する値です。</p>
+<p>指定されたスクリプトは、アセット定義 (assets) でグローバルなスクリプトアセットとして定義されていなければなりません。
+エンジンはグローバルアセットの読み込み後、この値で require() を呼び出し、その戻り値をエントリポイントとみなして実行します。
+(require() する関係上、アセット定義の path と異なり、相対パスは &quot;./&quot; で始める必要がある点に気をつけて下さい。)</p>
+<p>mainスクリプトは、次の仕様を満たす関数をエクスポートする必要があります。</p>
+<ul>
+<li>引数 <code>param: g.GameMainParameterObject</code> を受け取り、値を返さない (<code>(param: g.GameMainParameterObject) =&gt; void</code>)</li>
+<li>呼び出された時、 <code>g.Game#pushScene()</code> によるシーンの追加など、ゲームの初期化処理を行う</li>
+</ul>
+<p>akashic-engine@1.1.2 以前では、このフィールドは存在しませんでした。
+エンジンは後方互換性のため、 <code>main</code> が指定されていない場合には、以下のような内容のmainスクリプトが与えられたかのように振る舞います。</p>
+<pre><code class="language-js">module.exports = function (param) {
+  if (!param.snapshot) {
+    var mainSceneFun = require(&quot;mainScene&quot;);
+    g.game.pushScene(mainSceneFun());
+  } else {
+    var snapshotLoader = require(&quot;snapshotLoader&quot;);
+    snapshotLoader(param.snapshot);
+  }
+}
+</code></pre>
+<p>この場合、assets は少なくとも &quot;mainScene&quot; という名前のキーを持つ必要があります。
+アセットID &quot;mainScene&quot; を持つアセットは、type が &quot;script&quot;  で global は true、
+すなわちグローバルなスクリプトアセットでなければなりません。</p>
+<p>(上の例ではrequire()にアセットIDを渡していることに気をつけてください。
+akashic-engineの提供するrequire()は、Node.jsなどのそれと異なり、game.jsonに存在するアセットIDを(優先的に)解決します。
+これは歴史的経緯によるものです。上の例では説明のために使っていますが、この動作の利用は非推奨です。)</p>
+<h3>globalScripts</h3><p>akashic-engine@0.1.0 で導入。</p>
+<p><strong>globalScripts</strong> は、スクリプトアセットの短縮記法です。
+これは akashic install/uninstall のために用意された値です。
+通常ゲーム開発者が編集する必要はありません。</p>
+<p>存在する場合、globalScripts はファイルパスの配列でなければなりません。
+ファイルパスは game.json のあるディレクトリからの相対パスで、拡張子が &quot;.js&quot; または &quot;.json&quot; である必要があります。</p>
+<p>ここに書かれたファイルパスは、アセットIDを持たないグローバルなスクリプトアセット (&quot;.js&quot; の場合)
+またはテキストアセット (&quot;.json&quot; の場合) として読み込まれます。
+(アセットIDを持たないアセットは通常、定義も利用もできませんが、
+スクリプトアセットおよびJSONであるテキストアセットに限っては
+<code>require()</code> によってファイルパスで参照することができます)</p>
+<h3>renderers</h3><p>akashic-engine@1.0.3で導入。</p>
+<p><strong>renderers</strong> は、ゲームで利用するレンダラーを指定するためのリストであり、
+レンダラーを識別する文字列であるレンダラー識別子の配列である必要があります。</p>
+<p>レンダラー識別子はサービスや実行環境により異なります。</p>
+<p>Akashicエンジンは、レンダラー識別子に該当するレンダラーをリストの先頭から順に探索します。
+利用可能なレンダラーが見つかると、そのレンダラーを利用して描画を行います。</p>
+<p>例えば、 <code>canvas</code> と <code>webgl</code> という2つのレンダラー識別子が利用可能な環境において、
+<code>webgl</code> を優先して使いたい場合は、<code>&quot;renderers&quot;: [&quot;webgl&quot;, &quot;canvas&quot;]</code> と記述します。</p>
+<p>レンダラー識別子として<code>&quot;auto&quot;</code> を指定した場合は、Akashicエンジンが自動的にレンダラーを決定します。
+また、game.jsonに renderers を定義しなかった場合の挙動は <code>&quot;renderers&quot;: [&quot;auto&quot;]</code> を指定した場合と等価になります。</p>
+<h2><a name="game.jsonの例"></a> game.jsonの例</h2><p>妥当な game.json の一例を示します。</p>
+<pre><code>{
+  &quot;width&quot;: 320,
+  &quot;height&quot;: 320,
+  &quot;fps&quot;: 30,
+  &quot;main&quot;: &quot;./script/main.js&quot;,
+  &quot;assets&quot;: {
+    &quot;main&quot;: {
+      &quot;type&quot;: &quot;script&quot;,
+      &quot;path&quot;: &quot;script/main.js&quot;,
+      &quot;global&quot;: true
+    },
+    &quot;character&quot;: {
+      &quot;type&quot;: &quot;image&quot;,
+      &quot;path&quot;: &quot;image/character.png&quot;,
+      &quot;width&quot;: 32,
+      &quot;height&quot;: 32
+    },
+    &quot;background&quot;: {
+      &quot;type&quot;: &quot;image&quot;,
+      &quot;path&quot;: &quot;image/background.jpg&quot;,
+      &quot;width&quot;: 320,
+      &quot;height&quot;: 320
+    },
+    &quot;bgm&quot;: {
+      &quot;type&quot;: &quot;audio&quot;,
+      &quot;path&quot;: &quot;audio/bgm&quot;
+    }
+  },
+  &quot;globalScripts&quot;: [
+    &quot;node_modules/@akashic-extension/akashic-timeline/lib/Easing.js&quot;,
+    &quot;node_modules/@akashic-extension/akashic-timeline/lib/Timeline.js&quot;,
+    &quot;node_modules/@akashic-extension/akashic-timeline/lib/Tween.js&quot;,
+    &quot;node_modules/@akashic-extension/akashic-timeline/lib/index.js&quot;,
+    &quot;node_modules/@akashic-extension/akashic-timeline/package.json&quot;
+  ]
+}
+</code></pre><hr><div class="footer"><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png" class="license"></a>このサイトの画像は、<a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/">クリエイティブ・コモンズ 表示 2.1 日本 ライセンスの下に提供されています。</a></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script></body></html>
