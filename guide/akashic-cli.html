@@ -221,15 +221,19 @@ npm-shrinkwrap.jsonがディレクトリに存在しない場合、開発者の�
 ゲームの容量とはゲームを配信する際にネットワーク通信が必要なコンテンツのファイルサイズの合計のことです。</p>
 <p>何もオプションを付けずに実行した場合、以下のように表示されます。</p>
 <pre><code>$ akashic stat size
-INFO: image: 602KB (37%)
-INFO: text: 120KB (7%)
-INFO: aac audio: 393KB (24%) (ogg audio: 354KB)
-INFO: script: 134KB (8%)
-INFO: other: 369KB (23%)
-INFO: total size (audio = ogg): 1.54MB (1617355B)
-INFO: total size (audio = aac): 1.58MB (1657274B)
-</code></pre><p>オーディオはaacとoggのうち合計容量が大きいものを利用して計算します。
-結果表示の <code>(37%)</code> の部分は全体用量に占めるそのカテゴリのファイルの割合を示しています。
+image: 415.49KB (84%)
+text: 25.60KB (5%)
+ogg audio: 47.74KB
+mp4 audio: 53.02KB (11%)
+aac audio: 52.71KB
+script: 641B (0%)
+other: 1.44KB (0%)
+  game.json: 1.44KB
+[ ] TOTAL SIZE (using ogg): 490.90KB (502685B)
+[*] TOTAL SIZE (using mp4): 496.19KB (508096B)
+[ ] TOTAL SIZE (using aac): 495.87KB (507775B)
+</code></pre><p>オーディオはmp4とaacとoggのうち合計容量が大きいものを利用して計算します。
+結果表示の <code>(87%)</code> の部分は全体用量に占めるそのカテゴリのファイルの割合を示しています。
 <code>game.json</code>, <code>node_moduels/</code> 以下のスクリプトは <code>other</code> に分類されます。</p>
 <p><code>--limit</code> オプションが指定されると、ゲームの容量が指定された値を超えた場合にエラーと表示され、
 コマンド自体の戻り値が正常終了時の <code>0</code> ではなく <code>1</code> になります。</p>
@@ -245,10 +249,10 @@ INFO: total size (audio = aac): 1.58MB (1657274B)
 <p>サポートされる拡張子は特に指定がないため、 &quot;.&quot; から始まるファイル以外はすべて取り込まれます。
 <em>取り込まれないファイルを指定する方法は検討中。</em></p>
 <h3><a name="audioディレクトリ"></a> audioディレクトリ</h3><p>音楽、効果音など、音素材を配置するディレクトリ。</p>
-<p>サポートされる拡張子はogg/aac/wavであり、拡張子とファイルフォーマットは一致している必要があります。
+<p>サポートされる拡張子はogg/aac/mp4であり、拡張子とファイルフォーマットは一致している必要があります。
 それ以外の拡張子のファイル、または &quot;.&quot; から始まるファイルは無視されます。</p>
 <p>他の素材と異なり、音素材は、ファイル名の拡張子部分のみが異なる複数のファイルをまとめて取り扱います。
-それら (audio/foo.ogg と audio/foo.aac など) は同一の内容であることが期待されます。
+それら (audio/foo.ogg と audio/foo.mp4 など) は同一の内容であることが期待されます。
 これはゲームの実行環境に応じて適切な形式を選択し利用するためです。</p>
 <h3><a name="scriptディレクトリ"></a> scriptディレクトリ</h3><p>スクリプト素材を配置するディレクトリ。</p>
 <p>サポートされる拡張子は.jsと.jsonであり、拡張子とファイルフォーマットは一致している必要があります。
