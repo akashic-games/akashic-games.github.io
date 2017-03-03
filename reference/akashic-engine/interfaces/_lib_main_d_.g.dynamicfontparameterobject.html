@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CommonRect | @akashic/akashic-engine</title>
+	<title>DynamicFontParameterObject | @akashic/akashic-engine</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -62,10 +62,10 @@
 					<a href="../modules/_lib_main_d_.g.html">g</a>
 				</li>
 				<li>
-					<a href="_lib_main_d_.g.commonrect.html">CommonRect</a>
+					<a href="_lib_main_d_.g.dynamicfontparameterobject.html">DynamicFontParameterObject</a>
 				</li>
 			</ul>
-			<h1>Interface CommonRect</h1>
+			<h1>Interface DynamicFontParameterObject</h1>
 		</div>
 	</div>
 </header>
@@ -75,7 +75,8 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>汎用矩形インターフェース。</p>
+						<p><code>DynamicFont</code> のコンストラクタに渡すことができるパラメータ。
+						各メンバの詳細は <code>DynamicFont</code> の同名メンバの説明を参照すること。</p>
 					</div>
 				</div>
 			</section>
@@ -83,7 +84,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">CommonRect</span>
+						<span class="target">DynamicFontParameterObject</span>
 					</li>
 				</ul>
 			</section>
@@ -94,10 +95,15 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.commonrect.html#bottom" class="tsd-kind-icon">bottom</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.commonrect.html#left" class="tsd-kind-icon">left</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.commonrect.html#right" class="tsd-kind-icon">right</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.commonrect.html#top" class="tsd-kind-icon">top</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfontparameterobject.html#fontcolor" class="tsd-kind-icon">font<wbr>Color</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfontparameterobject.html#fontfamily" class="tsd-kind-icon">font<wbr>Family</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfontparameterobject.html#fontweight" class="tsd-kind-icon">font<wbr>Weight</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfontparameterobject.html#game" class="tsd-kind-icon">game</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfontparameterobject.html#hint" class="tsd-kind-icon">hint</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfontparameterobject.html#size" class="tsd-kind-icon">size</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfontparameterobject.html#strokecolor" class="tsd-kind-icon">stroke<wbr>Color</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfontparameterobject.html#strokeonly" class="tsd-kind-icon">stroke<wbr>Only</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfontparameterobject.html#strokewidth" class="tsd-kind-icon">stroke<wbr>Width</a></li>
 							</ul>
 						</section>
 					</div>
@@ -106,44 +112,165 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="bottom" class="tsd-anchor"></a>
-					<h3>bottom</h3>
-					<div class="tsd-signature tsd-kind-icon">bottom<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="fontcolor" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> font<wbr>Color</h3>
+					<div class="tsd-signature tsd-kind-icon">font<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:168</li>
+							<li>Defined in lib/main.d.ts:5125</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>フォント色。CSS Colorで指定する。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>&quot;black&quot;</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="left" class="tsd-anchor"></a>
-					<h3>left</h3>
-					<div class="tsd-signature tsd-kind-icon">left<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="fontfamily" class="tsd-anchor"></a>
+					<h3>font<wbr>Family</h3>
+					<div class="tsd-signature tsd-kind-icon">font<wbr>Family<span class="tsd-signature-symbol">:</span> <a href="../enums/_lib_main_d_.g.fontfamily.html" class="tsd-signature-type">FontFamily</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:165</li>
+							<li>Defined in lib/main.d.ts:5110</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>フォントファミリ。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="right" class="tsd-anchor"></a>
-					<h3>right</h3>
-					<div class="tsd-signature tsd-kind-icon">right<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="fontweight" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> font<wbr>Weight</h3>
+					<div class="tsd-signature tsd-kind-icon">font<wbr>Weight<span class="tsd-signature-symbol">:</span> <a href="../enums/_lib_main_d_.g.fontweight.html" class="tsd-signature-type">FontWeight</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:166</li>
+							<li>Defined in lib/main.d.ts:5130</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>フォントウェイト。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>FontWeight.Normal</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-					<a name="top" class="tsd-anchor"></a>
-					<h3>top</h3>
-					<div class="tsd-signature tsd-kind-icon">top<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="game" class="tsd-anchor"></a>
+					<h3>game</h3>
+					<div class="tsd-signature tsd-kind-icon">game<span class="tsd-signature-symbol">:</span> <a href="../classes/_lib_main_d_.g.game.html" class="tsd-signature-type">Game</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:167</li>
+							<li>Defined in lib/main.d.ts:5106</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>ゲームインスタンス。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="hint" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> hint</h3>
+					<div class="tsd-signature tsd-kind-icon">hint<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.dynamicfonthint.html" class="tsd-signature-type">DynamicFontHint</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:5120</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>ヒント。</p>
+						</div>
+						<p>詳細は <code>DynamicFontHint</code> を参照。</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="size" class="tsd-anchor"></a>
+					<h3>size</h3>
+					<div class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:5114</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>フォントサイズ。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="strokecolor" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stroke<wbr>Color</h3>
+					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:5140</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>輪郭色。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>0</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="strokeonly" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stroke<wbr>Only</h3>
+					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Only<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:5145</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>文字の輪郭のみを描画するか否か。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>false</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="strokewidth" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stroke<wbr>Width</h3>
+					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:5135</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>輪郭幅。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>0</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -160,19 +287,34 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_lib_main_d_.g.commonrect.html" class="tsd-kind-icon">Common<wbr>Rect</a>
+						<a href="_lib_main_d_.g.dynamicfontparameterobject.html" class="tsd-kind-icon">Dynamic<wbr>Font<wbr>Parameter<wbr>Object</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_lib_main_d_.g.commonrect.html#bottom" class="tsd-kind-icon">bottom</a>
+								<a href="_lib_main_d_.g.dynamicfontparameterobject.html#fontcolor" class="tsd-kind-icon">font<wbr>Color</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_lib_main_d_.g.commonrect.html#left" class="tsd-kind-icon">left</a>
+								<a href="_lib_main_d_.g.dynamicfontparameterobject.html#fontfamily" class="tsd-kind-icon">font<wbr>Family</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_lib_main_d_.g.commonrect.html#right" class="tsd-kind-icon">right</a>
+								<a href="_lib_main_d_.g.dynamicfontparameterobject.html#fontweight" class="tsd-kind-icon">font<wbr>Weight</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
-								<a href="_lib_main_d_.g.commonrect.html#top" class="tsd-kind-icon">top</a>
+								<a href="_lib_main_d_.g.dynamicfontparameterobject.html#game" class="tsd-kind-icon">game</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_lib_main_d_.g.dynamicfontparameterobject.html#hint" class="tsd-kind-icon">hint</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_lib_main_d_.g.dynamicfontparameterobject.html#size" class="tsd-kind-icon">size</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_lib_main_d_.g.dynamicfontparameterobject.html#strokecolor" class="tsd-kind-icon">stroke<wbr>Color</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_lib_main_d_.g.dynamicfontparameterobject.html#strokeonly" class="tsd-kind-icon">stroke<wbr>Only</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_lib_main_d_.g.dynamicfontparameterobject.html#strokewidth" class="tsd-kind-icon">stroke<wbr>Width</a>
 							</li>
 						</ul>
 					</li>

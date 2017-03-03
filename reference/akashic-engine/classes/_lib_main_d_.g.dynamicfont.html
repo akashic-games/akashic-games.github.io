@@ -116,6 +116,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfont.html#_resourcefactory" class="tsd-kind-icon">_resource<wbr>Factory</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfont.html#fontcolor" class="tsd-kind-icon">font<wbr>Color</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfont.html#fontfamily" class="tsd-kind-icon">font<wbr>Family</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfont.html#fontweight" class="tsd-kind-icon">font<wbr>Weight</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfont.html#hint" class="tsd-kind-icon">hint</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfont.html#size" class="tsd-kind-icon">size</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfont.html#strokecolor" class="tsd-kind-icon">stroke<wbr>Color</a></li>
@@ -145,18 +146,24 @@
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">new <wbr>Dynamic<wbr>Font<span class="tsd-signature-symbol">(</span>fontFamily<span class="tsd-signature-symbol">: </span><a href="../enums/_lib_main_d_.g.fontfamily.html" class="tsd-signature-type">FontFamily</a>, size<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, game<span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.game.html" class="tsd-signature-type">Game</a>, hint<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_lib_main_d_.g.dynamicfonthint.html" class="tsd-signature-type">DynamicFontHint</a>, fontColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeWidth<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, strokeColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeOnly<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.dynamicfont.html" class="tsd-signature-type">DynamicFont</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Dynamic<wbr>Font<span class="tsd-signature-symbol">(</span>param<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_main_d_.g.dynamicfontparameterobject.html" class="tsd-signature-type">DynamicFontParameterObject</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.dynamicfont.html" class="tsd-signature-type">DynamicFont</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:5123</li>
+									<li>Defined in lib/main.d.ts:5238</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>コンストラクタ。</p>
+									<p><code>DynamicFont</code> のインスタンスを生成する。</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd><p>このコンストラクタは非推奨機能である。代わりに <code>DynamicFontParameterObject</code> を使うコンストラクタを用いるべきである。</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -194,15 +201,59 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> fontColor: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>フォント色</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> strokeWidth: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>輪郭幅</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> strokeColor: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>輪郭色</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> strokeOnly: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>文字の輪郭のみを描画するか否か</p>
+										</div>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.dynamicfont.html" class="tsd-signature-type">DynamicFont</a></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in lib/main.d.ts:5251</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>各種パラメータを指定して <code>DynamicFont</code> のインスタンスを生成する。</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>param: <a href="../interfaces/_lib_main_d_.g.dynamicfontparameterobject.html" class="tsd-signature-type">DynamicFontParameterObject</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p><code>DynamicFont</code> に設定するパラメータ</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.dynamicfont.html" class="tsd-signature-type">DynamicFont</a></h4>
@@ -218,7 +269,7 @@
 					<div class="tsd-signature tsd-kind-icon">_atlas<wbr>Size<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_lib_main_d_.g.commonsize.html" class="tsd-signature-type">CommonSize</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5123</li>
+							<li>Defined in lib/main.d.ts:5238</li>
 						</ul>
 					</aside>
 				</section>
@@ -228,7 +279,7 @@
 					<div class="tsd-signature tsd-kind-icon">_atlases<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5119</li>
+							<li>Defined in lib/main.d.ts:5234</li>
 						</ul>
 					</aside>
 				</section>
@@ -238,7 +289,7 @@
 					<div class="tsd-signature tsd-kind-icon">_current<wbr>Atlas<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5120</li>
+							<li>Defined in lib/main.d.ts:5235</li>
 						</ul>
 					</aside>
 				</section>
@@ -248,7 +299,7 @@
 					<div class="tsd-signature tsd-kind-icon">_destroyed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5121</li>
+							<li>Defined in lib/main.d.ts:5236</li>
 						</ul>
 					</aside>
 				</section>
@@ -258,7 +309,7 @@
 					<div class="tsd-signature tsd-kind-icon">_glyph<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.glyphfactory.html" class="tsd-signature-type">GlyphFactory</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5118</li>
+							<li>Defined in lib/main.d.ts:5233</li>
 						</ul>
 					</aside>
 				</section>
@@ -268,7 +319,7 @@
 					<div class="tsd-signature tsd-kind-icon">_glyphs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5115</li>
+							<li>Defined in lib/main.d.ts:5230</li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -286,7 +337,7 @@
 					<div class="tsd-signature tsd-kind-icon">_hint<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_lib_main_d_.g.dynamicfonthint.html" class="tsd-signature-type">DynamicFontHint</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5122</li>
+							<li>Defined in lib/main.d.ts:5237</li>
 						</ul>
 					</aside>
 				</section>
@@ -296,7 +347,7 @@
 					<div class="tsd-signature tsd-kind-icon">_resource<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.resourcefactory.html" class="tsd-signature-type">ResourceFactory</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5114</li>
+							<li>Defined in lib/main.d.ts:5229</li>
 						</ul>
 					</aside>
 				</section>
@@ -306,7 +357,7 @@
 					<div class="tsd-signature tsd-kind-icon">font<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5095</li>
+							<li>Defined in lib/main.d.ts:5205</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -326,7 +377,7 @@
 					<div class="tsd-signature tsd-kind-icon">font<wbr>Family<span class="tsd-signature-symbol">:</span> <a href="../enums/_lib_main_d_.g.fontfamily.html" class="tsd-signature-type">FontFamily</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5082</li>
+							<li>Defined in lib/main.d.ts:5192</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -337,12 +388,32 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
+					<a name="fontweight" class="tsd-anchor"></a>
+					<h3>font<wbr>Weight</h3>
+					<div class="tsd-signature tsd-kind-icon">font<wbr>Weight<span class="tsd-signature-symbol">:</span> <a href="../enums/_lib_main_d_.g.fontweight.html" class="tsd-signature-type">FontWeight</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:5210</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>フォントウェイト。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>FontWeight.Normal</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="hint" class="tsd-anchor"></a>
 					<h3>hint</h3>
 					<div class="tsd-signature tsd-kind-icon">hint<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_lib_main_d_.g.dynamicfonthint.html" class="tsd-signature-type">DynamicFontHint</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5090</li>
+							<li>Defined in lib/main.d.ts:5200</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -358,7 +429,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_lib_main_d_.g.font.html">Font</a>.<a href="../interfaces/_lib_main_d_.g.font.html#size">size</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:5086</li>
+							<li>Defined in lib/main.d.ts:5196</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -373,7 +444,7 @@
 					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5106</li>
+							<li>Defined in lib/main.d.ts:5221</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -393,7 +464,7 @@
 					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Only<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5113</li>
+							<li>Defined in lib/main.d.ts:5228</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -415,7 +486,7 @@
 					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5101</li>
+							<li>Defined in lib/main.d.ts:5216</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -443,7 +514,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:5156</li>
+									<li>Defined in lib/main.d.ts:5280</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -466,7 +537,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:5155</li>
+									<li>Defined in lib/main.d.ts:5279</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -483,7 +554,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:5154</li>
+									<li>Defined in lib/main.d.ts:5278</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a></h4>
@@ -500,7 +571,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:5153</li>
+									<li>Defined in lib/main.d.ts:5277</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -531,7 +602,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_lib_main_d_.g.font.html">Font</a>.<a href="../interfaces/_lib_main_d_.g.font.html#destroy">destroy</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:5157</li>
+									<li>Defined in lib/main.d.ts:5281</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -549,7 +620,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_lib_main_d_.g.font.html">Font</a>.<a href="../interfaces/_lib_main_d_.g.font.html#destroyed">destroyed</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:5158</li>
+									<li>Defined in lib/main.d.ts:5282</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -567,7 +638,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_lib_main_d_.g.font.html">Font</a>.<a href="../interfaces/_lib_main_d_.g.font.html#glyphforcharacter">glyphForCharacter</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:5144</li>
+									<li>Defined in lib/main.d.ts:5268</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -643,6 +714,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_lib_main_d_.g.dynamicfont.html#fontfamily" class="tsd-kind-icon">font<wbr>Family</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
+								<a href="_lib_main_d_.g.dynamicfont.html#fontweight" class="tsd-kind-icon">font<wbr>Weight</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_lib_main_d_.g.dynamicfont.html#hint" class="tsd-kind-icon">hint</a>

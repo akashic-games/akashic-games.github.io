@@ -106,6 +106,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.glyphfactory.html#fontcolor" class="tsd-kind-icon">font<wbr>Color</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.glyphfactory.html#fontfamily" class="tsd-kind-icon">font<wbr>Family</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.glyphfactory.html#fontsize" class="tsd-kind-icon">font<wbr>Size</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.glyphfactory.html#fontweight" class="tsd-kind-icon">font<wbr>Weight</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.glyphfactory.html#strokecolor" class="tsd-kind-icon">stroke<wbr>Color</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.glyphfactory.html#strokeonly" class="tsd-kind-icon">stroke<wbr>Only</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.glyphfactory.html#strokewidth" class="tsd-kind-icon">stroke<wbr>Width</a></li>
@@ -126,13 +127,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Glyph<wbr>Factory<span class="tsd-signature-symbol">(</span>fontFamily<span class="tsd-signature-symbol">: </span><a href="../enums/_lib_main_d_.g.fontfamily.html" class="tsd-signature-type">FontFamily</a>, fontSize<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, baselineHeight<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, fontColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeWidth<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, strokeColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeOnly<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.glyphfactory.html" class="tsd-signature-type">GlyphFactory</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Glyph<wbr>Factory<span class="tsd-signature-symbol">(</span>fontFamily<span class="tsd-signature-symbol">: </span><a href="../enums/_lib_main_d_.g.fontfamily.html" class="tsd-signature-type">FontFamily</a>, fontSize<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, baselineHeight<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, fontColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeWidth<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, strokeColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeOnly<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, fontWeight<span class="tsd-signature-symbol">?: </span><a href="../enums/_lib_main_d_.g.fontweight.html" class="tsd-signature-type">FontWeight</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.glyphfactory.html" class="tsd-signature-type">GlyphFactory</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:5277</li>
+									<li>Defined in lib/main.d.ts:5407</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -189,7 +190,15 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> strokeOnly: <span class="tsd-signature-type">boolean</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>輪郭の描画スタイル</p>
+											<p>輪郭を描画するか否か</p>
+										</div>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> fontWeight: <a href="../enums/_lib_main_d_.g.fontweight.html" class="tsd-signature-type">FontWeight</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>フォントウェイト</p>
 										</div>
 									</div>
 								</li>
@@ -207,7 +216,7 @@
 					<div class="tsd-signature tsd-kind-icon">baseline<wbr>Height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5253</li>
+							<li>Defined in lib/main.d.ts:5377</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -223,7 +232,7 @@
 					<div class="tsd-signature tsd-kind-icon">font<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5259</li>
+							<li>Defined in lib/main.d.ts:5383</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -239,7 +248,7 @@
 					<div class="tsd-signature tsd-kind-icon">font<wbr>Family<span class="tsd-signature-symbol">:</span> <a href="../enums/_lib_main_d_.g.fontfamily.html" class="tsd-signature-type">FontFamily</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5241</li>
+							<li>Defined in lib/main.d.ts:5365</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -255,7 +264,7 @@
 					<div class="tsd-signature tsd-kind-icon">font<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5247</li>
+							<li>Defined in lib/main.d.ts:5371</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -266,12 +275,28 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
+					<a name="fontweight" class="tsd-anchor"></a>
+					<h3>font<wbr>Weight</h3>
+					<div class="tsd-signature tsd-kind-icon">font<wbr>Weight<span class="tsd-signature-symbol">:</span> <a href="../enums/_lib_main_d_.g.fontweight.html" class="tsd-signature-type">FontWeight</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:5389</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>フォントウェイト。</p>
+						</div>
+						<p>この値は参照のためにのみ公開されている。ゲーム開発者はこの値を変更すべきではない。</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="strokecolor" class="tsd-anchor"></a>
 					<h3>stroke<wbr>Color</h3>
 					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5271</li>
+							<li>Defined in lib/main.d.ts:5401</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -287,12 +312,12 @@
 					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Only<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5277</li>
+							<li>Defined in lib/main.d.ts:5407</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>文字の描画スタイル。</p>
+							<p>輪郭を描画しているか否か。</p>
 						</div>
 						<p>この値は参照のためにのみ公開されている。ゲーム開発者はこの値を変更すべきではない。</p>
 					</div>
@@ -303,7 +328,7 @@
 					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5265</li>
+							<li>Defined in lib/main.d.ts:5395</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -326,7 +351,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:5296</li>
+									<li>Defined in lib/main.d.ts:5427</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -379,6 +404,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_lib_main_d_.g.glyphfactory.html#fontsize" class="tsd-kind-icon">font<wbr>Size</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
+								<a href="_lib_main_d_.g.glyphfactory.html#fontweight" class="tsd-kind-icon">font<wbr>Weight</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_lib_main_d_.g.glyphfactory.html#strokecolor" class="tsd-kind-icon">stroke<wbr>Color</a>

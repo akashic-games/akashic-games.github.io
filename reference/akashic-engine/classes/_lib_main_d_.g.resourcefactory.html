@@ -175,13 +175,13 @@
 					<a name="createglyphfactory" class="tsd-anchor"></a>
 					<h3>create<wbr>Glyph<wbr>Factory</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">create<wbr>Glyph<wbr>Factory<span class="tsd-signature-symbol">(</span>fontFamily<span class="tsd-signature-symbol">: </span><a href="../enums/_lib_main_d_.g.fontfamily.html" class="tsd-signature-type">FontFamily</a>, fontSize<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, baselineHeight<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, fontColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeWidth<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, strokeColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeOnly<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.glyphfactory.html" class="tsd-signature-type">GlyphFactory</a></li>
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Glyph<wbr>Factory<span class="tsd-signature-symbol">(</span>fontFamily<span class="tsd-signature-symbol">: </span><a href="../enums/_lib_main_d_.g.fontfamily.html" class="tsd-signature-type">FontFamily</a>, fontSize<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, baselineHeight<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, fontColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeWidth<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, strokeColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeOnly<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, fontWeight<span class="tsd-signature-symbol">?: </span><a href="../enums/_lib_main_d_.g.fontweight.html" class="tsd-signature-type">FontWeight</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.glyphfactory.html" class="tsd-signature-type">GlyphFactory</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:136</li>
+									<li>Defined in lib/main.d.ts:137</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -232,6 +232,12 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> strokeOnly: <span class="tsd-signature-type">boolean</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>ストロークのみを描画するか否か。省略された場合、偽として扱われる</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> fontWeight: <a href="../enums/_lib_main_d_.g.fontweight.html" class="tsd-signature-type">FontWeight</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>フォントウェイト。省略された場合、 <code>FontWeight.Normal</code> として扱われる</p>
 									</div>
 								</li>
 							</ul>
@@ -346,7 +352,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:137</li>
+									<li>Defined in lib/main.d.ts:138</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
