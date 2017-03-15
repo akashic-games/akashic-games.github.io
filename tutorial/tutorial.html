@@ -37,35 +37,35 @@
 									<ul class="dropdown-menu">
 										
 											
-												<li role="presentation"><a href="guide\akashic-cli.html">akashic-cli利用ガイド</a></li>
+												<li role="presentation"><a href="guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
 											
 										
 											
-												<li role="presentation"><a href="guide\asset-load-error.html">アセットロードエラーについて</a></li>
+												<li role="presentation"><a href="guide/asset-load-error.html">アセットロードエラーについて</a></li>
 											
 										
 											
-												<li role="presentation"><a href="guide\asset-recommended-spec.html">素材の推奨仕様</a></li>
+												<li role="presentation"><a href="guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
 											
 										
 											
-												<li role="presentation"><a href="guide\composite-operation.html">CompositeOperationの利用</a></li>
+												<li role="presentation"><a href="guide/composite-operation.html">CompositeOperationの利用</a></li>
 											
 										
 											
-												<li role="presentation"><a href="guide\game-json.html">game.jsonの仕様</a></li>
+												<li role="presentation"><a href="guide/game-json.html">game.jsonの仕様</a></li>
 											
 										
 											
-												<li role="presentation"><a href="guide\index.html">開発者向けガイド</a></li>
+												<li role="presentation"><a href="guide/index.html">開発者向けガイド</a></li>
 											
 										
 											
-												<li role="presentation"><a href="guide\storage.html">ストレージについて</a></li>
+												<li role="presentation"><a href="guide/storage.html">ストレージについて</a></li>
 											
 										
 											
-												<li role="presentation"><a href="guide\template-guide.html">akashic init テンプレート利用ガイド</a></li>
+												<li role="presentation"><a href="guide/template-guide.html">akashic init テンプレート利用ガイド</a></li>
 											
 										
 									</ul>
@@ -254,7 +254,7 @@ module.exports = main;
 module.exports = main;
 </code></pre>
 <p><code>main.js</code> をこの内容に書き換えて <code>http://localhost:3000/game/</code> を再読み込みすると赤い矩形が表示されます。</p>
-<p><img src="tutorial\images\sample01.png" alt="sample01"></p>
+<p><img src="tutorial/images/sample01.png" alt="sample01"></p>
 <p><code>akashic-sandbox</code> を終了するにはCUIウインドウに <code>Ctrl-C</code> を入力します。</p>
 <blockquote>
 <p><code>Ctrl-C</code> はキーボードの <code>Ctrl</code> キーを押しながら <code>C</code> キーを押すという意味です。</p>
@@ -446,7 +446,7 @@ scene.append(rect);
 <code>FilledRect</code> 特有のプロパティは矩形の色を指定する <code>cssColor</code> のみです。
 また、他のエンティティと異なり <code>width</code> と <code>height</code> の指定が必須になっています。</p>
 <p>それぞれのエンティティで指定可能な値や初期値はAPIリファレンスに書かれています。
-例えば <code>FilledRect</code> であれば<a href="reference\akashic-engine\classes\_lib_main_d_.g.filledrect.html">こちら</a>のドキュメントに書かれています。</p>
+例えば <code>FilledRect</code> であれば<a href="reference/akashic-engine/classes/_lib_main_d_.g.filledrect.html">こちら</a>のドキュメントに書かれています。</p>
 <p>エンティティをシーンに追加する操作は、シーンの読み込み後に行う必要があります。
 シーンの読み込み完了のようなタイミングを通知するのに、
 Akashic Engine はトリガーとよばれる仕組みを利用します。
@@ -493,7 +493,7 @@ function createRect(scene) {
 module.exports = main;
 </code></pre>
 <p>プログラムを <code>akashic-sandbox</code> で実行すると以下のように表示されます。</p>
-<p><img src="tutorial\images\sample02.png" alt="sample02"></p>
+<p><img src="tutorial/images/sample02.png" alt="sample02"></p>
 <p>実行中にゲーム自身の情報を参照する際は <code>g.game</code> オブジェクトを利用します。
 <code>g.game</code> オブジェクトはこれまでもシーンを作成する際の引数に登場していました。
 Akashic Engine のいくつかのオブジェクトは明示的に <code>g.game</code> オブジェクトを渡す必要があります。</p>
@@ -540,10 +540,10 @@ function createRect(scene, x, y) {
 
 module.exports = main;
 </code></pre>
-<p><img src="tutorial\images\sample03.png" alt="sample03"></p>
+<p><img src="tutorial/images/sample03.png" alt="sample03"></p>
 <h2>画像を扱う</h2><p>Akashic Engine ではPNG形式とJPEG形式の画像を扱えます。
 ここでは以下のPNG画像 (<code>player.png</code>) をシーンに追加します。</p>
-<p><img src="tutorial\images\player.png" alt="player"></p>
+<p><img src="tutorial/images/player.png" alt="player"></p>
 <p>Akashic Engine のゲームには推奨されるディレクトリ構造があります。
 このディレクトリ構造に従うことで、面倒な作業を自動化できます。
 例えば画像は、アセットとして <code>game.json</code> に登録する必要があります。
@@ -609,7 +609,7 @@ INFO: Done!
 
 module.exports = main;
 </code></pre>
-<p><img src="tutorial\images\sample04.png" alt="sample04"></p>
+<p><img src="tutorial/images/sample04.png" alt="sample04"></p>
 <p>画像アセット・オーディオアセット・テキストアセットの3種類は、
 シーンオブジェクトを作るときに、<code>assetIds</code> プロパティで
 利用するアセットのIDを指定します。
@@ -667,7 +667,7 @@ function createRect(scene, x, y, color) {
 
 module.exports = main;
 </code></pre>
-<p><img src="tutorial\images\sample05.png" alt="sample05"></p>
+<p><img src="tutorial/images/sample05.png" alt="sample05"></p>
 <h2>アニメーション</h2><p>Akashic Engine のコンテンツは固定FPSで動作します。
 FPS の値は1秒間に画面を更新する回数です。
 エンティティの位置や大きさなどを画面更新の度に変化させると、
@@ -775,7 +775,7 @@ function createRect(scene) {
 
 module.exports = main;
 </code></pre>
-<p><img src="tutorial\images\sample07.gif" alt="sample07"></p>
+<p><img src="tutorial/images/sample07.gif" alt="sample07"></p>
 <p>エンティティ自体も <code>update</code> トリガーを備えています。
 以下はエンティティ <code>rect</code> のトリガーを利用したコードです。</p>
 <pre><code class="lang-javascript">rect.update.handle(function () {
@@ -816,7 +816,7 @@ function moveRect(rect) {
 
 module.exports = main;
 </code></pre>
-<p><img src="tutorial\images\sample08.gif" alt="sample08"></p>
+<p><img src="tutorial/images/sample08.gif" alt="sample08"></p>
 <h2>タイマー関数</h2><p>3秒後にエンティティを破棄したいなど、指定時間後に処理を行う場合は、
 シーンオブジェクトの <code>setTimeout()</code> メソッドを利用します。
 <code>setTimeout()</code> にはミリ秒単位の時間とコールバック関数を引数として渡します。
@@ -877,7 +877,7 @@ function createRect(scene) {
 
 module.exports = main;
 </code></pre>
-<p><img src="tutorial\images\sample09.gif" alt="sample09"></p>
+<p><img src="tutorial/images/sample09.gif" alt="sample09"></p>
 <h2>乱数</h2><p>Akashic Engine は独自の乱数生成器を備えています。
 Akashic Engine に用意された乱数生成器を利用すると、
 指定した範囲の整数をランダムに生成できます。
@@ -923,7 +923,7 @@ function createRect(scene, x, y) {
 
 module.exports = main;
 </code></pre>
-<p><img src="tutorial\images\sample10.png" alt="sample10"></p>
+<p><img src="tutorial/images/sample10.png" alt="sample10"></p>
 <h2>ポイントイベント</h2><p>エンティティの <code>touchable</code> プロパティを <code>true</code> にすると、
 ゲーム画面のタップやクリックなどのユーザ操作を検出できるようになります。
 Akashic Engine ではユーザがタップやクリックするとポイントイベントが発生します。
@@ -1025,7 +1025,7 @@ scene.loaded.handle(function () {
   });
 });
 </code></pre>
-<p><img src="tutorial\images\sample11.png" alt="sample11"></p>
+<p><img src="tutorial/images/sample11.png" alt="sample11"></p>
 <h2>効果音とBGM</h2><p>Akashic Engine のゲームで音を鳴らす場合は、一つの効果音や音楽につき
 Ogg Vorbis 形式 (.ogg) と MP4(AAC) 形式 (.mp4) の二種類のファイルを用意する必要があります。
 後者は、AAC 形式の音声データを MP4 コンテナに格納したものです。
@@ -1168,7 +1168,7 @@ module.exports = main;
 
 module.exports = main;
 </code></pre>
-<p><img src="tutorial\images\sample12.png" alt="sample12"></p>
+<p><img src="tutorial/images/sample12.png" alt="sample12"></p>
 <p>ダイナミックフォントはシステムにインストールされているフォントを利用するため、
 実行環境により描画が異なる場合があります。
 すべての環境で同じ出力にしたい場合や、パフォーマンスが要求される場合は、
@@ -1215,7 +1215,7 @@ label.invalidate();
 }
 
 module.exports = main;
-</code></pre><p><img src="tutorial\images\sample13.gif" alt="sample13"></p>
+</code></pre><p><img src="tutorial/images/sample13.gif" alt="sample13"></p>
 <h2>ペイン</h2><p>ペインは <code>E</code> と同じように子要素をまとめるためのエンティティです。
 <code>E</code> と異なり、<code>Pane</code> は子孫要素の描画領域を <code>Pane</code> の大きさに限定します。
 子要素が <code>Pane</code> の大きさをはみ出して描画しようとした場合、はみ出した部分は描画されません。</p>
@@ -1240,7 +1240,7 @@ module.exports = main;
 
 module.exports = main;
 </code></pre>
-<p><img src="tutorial\images\sample06.png" alt="sample06"></p>
+<p><img src="tutorial/images/sample06.png" alt="sample06"></p>
 <p>ラベル同様、ペインも描画内容をキャッシュしています。
 ペイン自体のプロパティ (例えば <code>width</code> や <code>height</code>) を書き換えた場合は、
 <code>invalidate()</code> を呼び出す必要があります。</p>
@@ -1275,7 +1275,7 @@ module.exports = main;
 }
 
 module.exports = main;
-</code></pre><p><img src="tutorial\images\sample14.gif" alt="sample14"></p>
+</code></pre><p><img src="tutorial/images/sample14.gif" alt="sample14"></p>
 <h2>シーンの切り替え</h2><p>Akashic Engine では、タイトル場面・プレイ場面・スコア場面のように、
 ゲームの場面ごとにそれぞれお対応するシーンを作成しそれらを切り替えて表示できます。
 シーンの切り替えには <code>Game</code> オブジェクトに用意されたメソッドを利用します。</p>
@@ -1360,12 +1360,12 @@ module.exports = main;
 一通り説明しました。
 実践的な使い方やより高度な機能を利用するには、開発者向けガイドの記事を参照してください。</p>
 <ul>
-<li><a href="guide\index.html">開発者向けガイド</a></li>
+<li><a href="guide/index.html">開発者向けガイド</a></li>
 </ul>
 <p>また Akashic Engine で利用可能なすべてのメソッドとプロパティを列挙した
 APIリファレンスも実際のプログラミングで役に立ちます。</p>
 <ul>
-<li><a href="reference\akashic-engine\modules\_lib_main_d_.g.html">APIリファレンス</a></li>
+<li><a href="reference/akashic-engine/modules/_lib_main_d_.g.html">APIリファレンス</a></li>
 </ul>
 
 			</div>

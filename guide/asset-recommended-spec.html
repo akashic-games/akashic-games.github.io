@@ -37,35 +37,35 @@
 									<ul class="dropdown-menu">
 										
 											
-												<li role="presentation"><a href="guide\akashic-cli.html">akashic-cli利用ガイド</a></li>
+												<li role="presentation"><a href="guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
 											
 										
 											
-												<li role="presentation"><a href="guide\asset-load-error.html">アセットロードエラーについて</a></li>
+												<li role="presentation"><a href="guide/asset-load-error.html">アセットロードエラーについて</a></li>
 											
 										
 											
-												<li role="presentation"><a href="guide\asset-recommended-spec.html">素材の推奨仕様</a></li>
+												<li role="presentation"><a href="guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
 											
 										
 											
-												<li role="presentation"><a href="guide\composite-operation.html">CompositeOperationの利用</a></li>
+												<li role="presentation"><a href="guide/composite-operation.html">CompositeOperationの利用</a></li>
 											
 										
 											
-												<li role="presentation"><a href="guide\game-json.html">game.jsonの仕様</a></li>
+												<li role="presentation"><a href="guide/game-json.html">game.jsonの仕様</a></li>
 											
 										
 											
-												<li role="presentation"><a href="guide\index.html">開発者向けガイド</a></li>
+												<li role="presentation"><a href="guide/index.html">開発者向けガイド</a></li>
 											
 										
 											
-												<li role="presentation"><a href="guide\storage.html">ストレージについて</a></li>
+												<li role="presentation"><a href="guide/storage.html">ストレージについて</a></li>
 											
 										
 											
-												<li role="presentation"><a href="guide\template-guide.html">akashic init テンプレート利用ガイド</a></li>
+												<li role="presentation"><a href="guide/template-guide.html">akashic init テンプレート利用ガイド</a></li>
 											
 										
 									</ul>
@@ -124,20 +124,20 @@
 <p>典型的な例は、スプライト(<code>g.Sprite</code>)に用いる画像(<code>g.SpriteParameterObject#src</code>)です。
 スプライトは与えられた画像の一部だけを表示することができ、また表示内容を同じ画像の別の部分に容易に切り替えられます。
 この機能のため、スプライトに用いる画像ファイルは、以下のような複数の内容を一つにまとめたものになる場合があります。</p>
-<p><img src="guide\images\aco.png" alt="複数の画像を並べた一つの画像ファイルの例"></p>
+<p><img src="guide/images/aco.png" alt="複数の画像を並べた一つの画像ファイルの例"></p>
 <p>この時、ファイル中の各画像の境界部分には1ピクセル以上の間隔を設けることが推奨されます。
 すなわち画像同士の境界に接する各ピクセルは、透明色であるべきです。</p>
 <p>例えば次の画像は、上の画像の一部を拡大したものです。</p>
-<p><img src="guide\images\aco-valid-border.png" alt="境界部分に1ピクセルの間隔がある画像"></p>
+<p><img src="guide/images/aco-valid-border.png" alt="境界部分に1ピクセルの間隔がある画像"></p>
 <p>ここで赤の点線は境界を示すための仮想的なものです。
 この例では、各画像の境界部分(赤の点線)に接するピクセルはすべて透明色になっています。
 他方、この画像全体を左に1ピクセルずらしたものが次の画像です。
 境界として取り扱う範囲を変えない場合、境界に接している不透明色のピクセルが二つ存在することがわかります。</p>
-<p><img src="guide\images\aco-invalid-border.png" alt="境界に1ピクセルの間隔がない画像"></p>
+<p><img src="guide/images/aco-invalid-border.png" alt="境界に1ピクセルの間隔がない画像"></p>
 <p>この画像は推奨仕様に従っていません。</p>
 <h4>推奨の理由</h4><p>この推奨に従わない場合、画像の拡大・縮小描画の際に隣接する不透明色が「滲む」ことがあります。
 以下はある環境において、前述の「推奨仕様に従ってない画像」に示した一部分を、5倍に拡大して描画する <code>g.Sprite</code> を表示したものです。</p>
-<p><img src="guide\images\aco-drawn-with-noise.png" alt="境界に接するピクセルの不透明色が滲んでいる例"></p>
+<p><img src="guide/images/aco-drawn-with-noise.png" alt="境界に接するピクセルの不透明色が滲んでいる例"></p>
 <p>キャラクタの右側に滲んだ不透明色が確認できます。</p>
 <p>ビットマップフォント(<code>g.BitmapFont</code>)として使う画像や、タイル(<code>g.Tile</code>)に与えるマップチップ画像(<code>g.TileParameterObject#src</code>)などにも同様の注意が必要です。
 特にタイルは、その性質上間隔を空けずに使うことが多いと考えられます。従ってタイルの拡大縮小は推奨されません。</p>
