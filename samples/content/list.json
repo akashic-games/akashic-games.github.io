@@ -1,0 +1,28 @@
+{
+	"contents": [
+		{
+			"category": "Basic",
+			"caption": "Hello World",
+			"description": "akashic init コマンドで出力されるテンプレート。赤い矩形が右に動いていくだけのコンテンツです。",
+			"dir": "helloworld"
+		},
+		{
+			"category": "Basic",
+			"caption": "拡縮・回転・透明度",
+			"description": "g.E の scale, rotate, opacity プロパティで拡縮・回転・透明度が制御できます。",
+			"dir": "scale-rotate-opacity"
+		},
+		{
+			"category": "Basic",
+			"caption": "フレームアニメーション",
+			"description": "g.FrameSprite でフレームアニメーションを作成できます。黒い画面内をクリックするとその位置でアニメーションが再生されます。",
+			"dir": "framesprite"
+		},
+		{
+			"category": "Advanced",
+			"caption": "アブストラクトシューティング",
+			"description": "画面クリックで弾が撃てます。",
+			"dir": "simpleShot"
+		}
+	]
+}

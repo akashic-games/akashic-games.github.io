@@ -1,8 +1,125 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>アセットロードエラーについて - Akashic Engine</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"><link rel="stylesheet" href="../main.css"><link rel="shortcut icon" href="../favicon.ico" type="image/vnd.microsoft.icon"><link rel="icon" href="../favicon.ico" type="image/vnd.microsoft.icon"></head><body><div class="container"><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"></div></div><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href=".." class="navbar-brand"></a></nav><h1>アセットロードエラーについて</h1><h2><a name="これは"></a> これは</h2><p>アセットロードエラーとそのハンドリング方法について述べます。</p>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<base href="..">
+		<title>akashic-engine</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./style.css">
+		<link rel="shortcut icon" href="./favicon.ico" type="image/vnd.microsoft.icon"/>
+		<link rel="icon" href="./favicon.ico" type="image/vnd.microsoft.icon"/>
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="./index.html"></a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						
+						
+							 
+								<li><a href="./tutorial/tutorial.html">入門</a></li>
+							 
+						
+							
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#">ガイド <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										
+											
+												<li role="presentation"><a href="guide\akashic-cli.html">akashic-cli利用ガイド</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\asset-load-error.html">アセットロードエラーについて</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\asset-recommended-spec.html">素材の推奨仕様</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\composite-operation.html">CompositeOperationの利用</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\game-json.html">game.jsonの仕様</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\index.html">開発者向けガイド</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\storage.html">ストレージについて</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\template-guide.html">akashic init テンプレート利用ガイド</a></li>
+											
+										
+									</ul>
+								</li>
+							 
+						
+							
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#">リファレンス <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										
+											
+												<li role="presentation"><a href="./reference/akashic-engine/modules/_lib_main_d_.g.html">akashic-engine</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-timeline/index.html">akashic-timeline</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-animation/index.html">akashic-animation</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-label/index.html">akashic-label</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-tile/index.html">akashic-tile</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-box2d/index.html">akashic-box2d</a></li>
+											
+										
+									</ul>
+								</li>
+							 
+						
+							 
+								<li><a href="./samples/index.html">サンプル</a></li>
+							 
+						
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container" style="padding: 80px 0 40px;">
+			<div class="markdown-body">
+				<h1>アセットロードエラーについて</h1><h2><a name="これは"></a> これは</h2><p>アセットロードエラーとそのハンドリング方法について述べます。</p>
 <h2><a name="アセットロードエラーとは"></a> アセットロードエラーとは</h2><p>アセットロードエラーとはアセットの読み込みに失敗したことを意味するエラーです。</p>
 <p><code>game.json</code> で指定したアセットがサーバ上に存在しない場合や、ネットワークやサーバ異常によりダウンロード出来ない場合に発生します。</p>
 <h2><a name="エラーのハンドリング"></a> エラーのハンドリング</h2><p>ゲームコンテンツからアセットロードエラーをハンドリングするコードの例を以下に示します。</p>
-<pre><code class="language-javascript">var scene = new g.Scene({game: game, assetIds: [&quot;apple&quot;], name: &quot;SampleScene&quot;});
+<pre><code class="lang-javascript">var scene = new g.Scene({game: game, assetIds: [&quot;apple&quot;], name: &quot;SampleScene&quot;});
 // ハンドラを登録
 scene.assetLoadFailed.handle(function (failure) {
     // Loggerでログ出力
@@ -24,11 +141,30 @@ scene.assetLoadFailed.handle(function (failure) {
 <p>この値が <code>false</code> の場合、Akashicはハンドラ呼出し後にゲームを終了します。</p>
 <h2><a name="再試行のキャンセル"></a> 再試行のキャンセル</h2><p>ゲームコンテンツは、 アセットロードエラーのハンドラ内で <code>failure.cancelRetry</code> に <code>true</code> にセットすることで、Akashicが行うアセット読み込みの再試行をキャンセルすることが可能です。</p>
 <p>以下に例を示します。</p>
-<pre><code class="language-javascript">scene.assetLoadFailed.handle(function (failure) {
+<pre><code class="lang-javascript">scene.assetLoadFailed.handle(function (failure) {
     // 再試行をキャンセルし、ゲーム続行を断念する
     failure.cancelRetry = true;
     game.logger.error(&quot;bye.&quot;, failure);
 });
 </code></pre>
 <p>ハンドラ内で <code>failure.cancelRetry</code> に <code>true</code> がセットされると、 Akashicはハンドラ呼出し後にゲームを終了します。</p>
-<h2><a name="その他"></a> その他</h2><p>アセットロードエラー発生時の処理は、実行環境によって異なるものになる可能性がありますのでご注意下さい。</p><hr><div class="footer"><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png" class="license"></a>このサイトの画像は、<a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/">クリエイティブ・コモンズ 表示 2.1 日本 ライセンスの下に提供されています。</a></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script></body></html>
+<h2><a name="その他"></a> その他</h2><p>アセットロードエラー発生時の処理は、実行環境によって異なるものになる可能性がありますのでご注意下さい。</p>
+
+			</div>
+			<hr>
+			<div class="footer">
+				<a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/">
+					<img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png" class="license">
+				</a>
+				このサイトの画像は、
+				<a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/">
+					クリエイティブ・コモンズ 表示 2.1 日本 ライセンスの下に提供されています。
+				</a>
+			</div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</body>
+</html>

@@ -1,5 +1,122 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>game.jsonの仕様 - Akashic Engine</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"><link rel="stylesheet" href="../main.css"><link rel="shortcut icon" href="../favicon.ico" type="image/vnd.microsoft.icon"><link rel="icon" href="../favicon.ico" type="image/vnd.microsoft.icon"></head><body><div class="container"><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"></div></div><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href=".." class="navbar-brand"></a></nav><h1>game.jsonの仕様</h1><h2><a name="これは"></a> これは</h2><p>Akashic のゲームにおいてメタ情報などを取り扱う設定ファイル、game.json の仕様をまとめます。
-対象バージョンは akashic-engine@0.6.1 以降です。</p>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<base href="..">
+		<title>akashic-engine</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./style.css">
+		<link rel="shortcut icon" href="./favicon.ico" type="image/vnd.microsoft.icon"/>
+		<link rel="icon" href="./favicon.ico" type="image/vnd.microsoft.icon"/>
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="./index.html"></a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						
+						
+							 
+								<li><a href="./tutorial/tutorial.html">入門</a></li>
+							 
+						
+							
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#">ガイド <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										
+											
+												<li role="presentation"><a href="guide\akashic-cli.html">akashic-cli利用ガイド</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\asset-load-error.html">アセットロードエラーについて</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\asset-recommended-spec.html">素材の推奨仕様</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\composite-operation.html">CompositeOperationの利用</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\game-json.html">game.jsonの仕様</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\index.html">開発者向けガイド</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\storage.html">ストレージについて</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\template-guide.html">akashic init テンプレート利用ガイド</a></li>
+											
+										
+									</ul>
+								</li>
+							 
+						
+							
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#">リファレンス <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										
+											
+												<li role="presentation"><a href="./reference/akashic-engine/modules/_lib_main_d_.g.html">akashic-engine</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-timeline/index.html">akashic-timeline</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-animation/index.html">akashic-animation</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-label/index.html">akashic-label</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-tile/index.html">akashic-tile</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-box2d/index.html">akashic-box2d</a></li>
+											
+										
+									</ul>
+								</li>
+							 
+						
+							 
+								<li><a href="./samples/index.html">サンプル</a></li>
+							 
+						
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container" style="padding: 80px 0 40px;">
+			<div class="markdown-body">
+				<h1>game.jsonの仕様</h1><h2><a name="これは"></a> これは</h2><p>Akashic のゲームにおいてメタ情報などを取り扱う設定ファイル、game.json の仕様をまとめます。
+対象バージョンは akashic-engine@1.11.2 以降です。</p>
 <h2><a name="game.jsonとは"></a> game.jsonとは</h2><p>game.json は、Akashic のゲームのメタ情報などを取り扱う JSON 形式の設定ファイルです。
 主に以下のような情報を取り扱います。</p>
 <ul>
@@ -10,7 +127,7 @@
 <p>これらに加えて、画像素材のサイズのような補助的な情報も取り扱います。</p>
 <p>各種素材(アセット)のファイルパスや画像のサイズなどは、手動で記述・維持しにくいので、
 game.json を生成・管理するツールとして akashic-cli が提供されています。
-akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli利用ガイド</a> を参照してください。</p>
+akashic-cli の詳細は <a href="guide\akashic-cli.html">akashic-cli利用ガイド</a> を参照してください。</p>
 <h2><a name="形式"></a> 形式</h2><p>妥当な game.json の内容は一つのオブジェクトです。
 それは以下の名前のプロパティと、対応する値を持ちます。</p>
 <ul>
@@ -46,7 +163,12 @@ akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli利用ガイド</
 </li>
 <li>renderers<ul>
 <li>配列（詳細は後述）</li>
-<li>ゲームが利用するレンダラーを定義</li>
+<li>ゲームが利用するレンダラーを定義<ul>
+<li>defaultLoadingScene</li>
+</ul>
+</li>
+<li>文字列 (詳細は後述)</li>
+<li>デフォルトのローディングシーンを定義</li>
 </ul>
 </li>
 </ul>
@@ -149,7 +271,7 @@ akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli利用ガイド</
 </ul>
 <p>akashic-engine@1.1.2 以前では、このフィールドは存在しませんでした。
 エンジンは後方互換性のため、 <code>main</code> が指定されていない場合には、以下のような内容のmainスクリプトが与えられたかのように振る舞います。</p>
-<pre><code class="language-js">module.exports = function (param) {
+<pre><code class="lang-js">module.exports = function (param) {
   if (!param.snapshot) {
     var mainSceneFun = require(&quot;mainScene&quot;);
     g.game.pushScene(mainSceneFun());
@@ -186,6 +308,10 @@ akashic-engineの提供するrequire()は、Node.jsなどのそれと異なり�
 <code>webgl</code> を優先して使いたい場合は、<code>&quot;renderers&quot;: [&quot;webgl&quot;, &quot;canvas&quot;]</code> と記述します。</p>
 <p>レンダラー識別子として<code>&quot;auto&quot;</code> を指定した場合は、Akashicエンジンが自動的にレンダラーを決定します。
 また、game.jsonに renderers を定義しなかった場合の挙動は <code>&quot;renderers&quot;: [&quot;auto&quot;]</code> を指定した場合と等価になります。</p>
+<h3>defaultLoadingScene</h3><p><strong>defaultLoadingScene</strong> は、グローバルアセット読み込み中のローディングシーンなど、デフォルトのローディングシーンについての設定です。
+akashic-engine@1.11.2では <code>&quot;default&quot;</code> または <code>&quot;none&quot;</code> を指定できます。
+<code>&quot;default&quot;</code> を指定または省略時はエンジンに用意されているデフォルトのローディングシーンを表示します。
+<code>&quot;none&quot;</code> を指定するとそれらのローディングシーンを非表示にできます。</p>
 <h2><a name="game.jsonの例"></a> game.jsonの例</h2><p>妥当な game.json の一例を示します。</p>
 <pre><code>{
   &quot;width&quot;: 320,
@@ -223,4 +349,22 @@ akashic-engineの提供するrequire()は、Node.jsなどのそれと異なり�
     &quot;node_modules/@akashic-extension/akashic-timeline/package.json&quot;
   ]
 }
-</code></pre><hr><div class="footer"><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png" class="license"></a>このサイトの画像は、<a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/">クリエイティブ・コモンズ 表示 2.1 日本 ライセンスの下に提供されています。</a></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script></body></html>
+</code></pre>
+			</div>
+			<hr>
+			<div class="footer">
+				<a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/">
+					<img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png" class="license">
+				</a>
+				このサイトの画像は、
+				<a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/">
+					クリエイティブ・コモンズ 表示 2.1 日本 ライセンスの下に提供されています。
+				</a>
+			</div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</body>
+</html>

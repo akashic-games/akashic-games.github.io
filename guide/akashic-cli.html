@@ -1,4 +1,121 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>akashic-cli利用ガイド - Akashic Engine</title><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"><link rel="stylesheet" href="../main.css"><link rel="shortcut icon" href="../favicon.ico" type="image/vnd.microsoft.icon"><link rel="icon" href="../favicon.ico" type="image/vnd.microsoft.icon"></head><body><div class="container"><nav class="navbar navbar-default navbar-fixed-top"><div class="container"><div class="navbar-header"></div></div><button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href=".." class="navbar-brand"></a></nav><h1>akashic-cli利用ガイド</h1><h2><a name="これは"></a> これは</h2><p>Akashicでのゲーム開発を補助するコマンドラインツール、akashicコマンドの仕様と利用法を解説します。
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<base href="..">
+		<title>akashic-engine</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./style.css">
+		<link rel="shortcut icon" href="./favicon.ico" type="image/vnd.microsoft.icon"/>
+		<link rel="icon" href="./favicon.ico" type="image/vnd.microsoft.icon"/>
+	</head>
+	<body>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="./index.html"></a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+					<ul class="nav navbar-nav">
+						
+						
+							 
+								<li><a href="./tutorial/tutorial.html">入門</a></li>
+							 
+						
+							
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#">ガイド <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										
+											
+												<li role="presentation"><a href="guide\akashic-cli.html">akashic-cli利用ガイド</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\asset-load-error.html">アセットロードエラーについて</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\asset-recommended-spec.html">素材の推奨仕様</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\composite-operation.html">CompositeOperationの利用</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\game-json.html">game.jsonの仕様</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\index.html">開発者向けガイド</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\storage.html">ストレージについて</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide\template-guide.html">akashic init テンプレート利用ガイド</a></li>
+											
+										
+									</ul>
+								</li>
+							 
+						
+							
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#">リファレンス <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										
+											
+												<li role="presentation"><a href="./reference/akashic-engine/modules/_lib_main_d_.g.html">akashic-engine</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-timeline/index.html">akashic-timeline</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-animation/index.html">akashic-animation</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-label/index.html">akashic-label</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-tile/index.html">akashic-tile</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-box2d/index.html">akashic-box2d</a></li>
+											
+										
+									</ul>
+								</li>
+							 
+						
+							 
+								<li><a href="./samples/index.html">サンプル</a></li>
+							 
+						
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container" style="padding: 80px 0 40px;">
+			<div class="markdown-body">
+				<h1>akashic-cli利用ガイド</h1><h2><a name="これは"></a> これは</h2><p>Akashicでのゲーム開発を補助するコマンドラインツール、akashicコマンドの仕様と利用法を解説します。
 akashicコマンドはakashic-cliをインストールして使用することができます。
 akashic の対象バージョンは 1.0.1 以降です。</p>
 <p>斜体は検討中の箇所です。</p>
@@ -6,7 +123,7 @@ akashic の対象バージョンは 1.0.1 以降です。</p>
 各プラットフォームで、適当な方法で Node.js をインストールしてください。</p>
 <p>WindowsやMacのユーザであれば、<a href="https://nodejs.org/download/">Node.jsの公式Webサイト</a> から
 適切なパッケージをダウンロードし、インストールすることができます。</p>
-<pre><code class="language-sh">npm install -g @akashic/akashic-cli
+<pre><code class="lang-sh">npm install -g @akashic/akashic-cli
 </code></pre>
 <h2><a name="使い方"></a> 使い方</h2><p>無事にインストールができていれば、以下のコマンドが実行できるようになっています。
 実行すると、akashicコマンドの簡単なヘルプが表示されます。</p>
@@ -49,12 +166,12 @@ akashic の対象バージョンは 1.0.1 以降です。</p>
 <p>init 以外のコマンドは、init によって生成される game.json を操作・出力します。
 したがって通常、ゲーム開発時にはまず akashic init を実行し、
 その後必要に応じて他コマンドを実行することになります。</p>
-<h2><a name="init"></a> init</h2><pre><code class="language-sh">akashic init [--type &lt;type&gt;]
+<h2><a name="init"></a> init</h2><pre><code class="lang-sh">akashic init [--type &lt;type&gt;]
 </code></pre>
 <p>新しくAkashicで動作するゲームをカレントディレクトリに生成します。</p>
 <p>このコマンドを実行すると、以下のような対話型のインターフェースが表示され、
 ゲーム画面の幅・高さおよびゲームのFPSを入力できます。</p>
-<pre><code class="language-sh">$ npm install -g @akashic/akashic-cli
+<pre><code class="lang-sh">$ npm install -g @akashic/akashic-cli
 $ cd GAME_HOME
 $ akashic init
 width: (320)
@@ -74,7 +191,7 @@ fps: (30)
   +- main.js
  +- game.json
  +- package.json
-</code></pre><p>これらのファイルの詳細は <a href="#initで作られるファイル">initで作られるファイル</a> の節を参照してください。</p>
+</code></pre><p>これらのファイルの詳細は <a href="akashic-cli.md#initで作られるファイル">initで作られるファイル</a> の節を参照してください。</p>
 <h4>TypeScript</h4><p>TypeScriptで書かれたゲームと、ビルドに必要なディレクトリ・ファイルが生成されます。
 これらをビルドすることで、gameディレクトリ以下に最低限Akashicで動作するゲームを生成します。
 ゲームの内容は、--typeオプションにJavaScriptを指定した場合に生成されるゲームと同一です。</p>
@@ -143,7 +260,7 @@ fps: (30)
 <li>(将来のバージョンにおいて) 音素材の再生時間</li>
 </ul>
 <p>また scan asset コマンドは新たに追加するアセット定義に対し、type に応じて以下の初期値を与えます。
-(値の詳細は<a href="game-json.html">game.jsonの仕様</a>を参照してください)</p>
+(値の詳細は<a href="guide\game-json.html">game.jsonの仕様</a>を参照してください)</p>
 <ul>
 <li>&quot;type&quot;: &quot;script&quot;<ul>
 <li>&quot;global&quot;: true</li>
@@ -294,7 +411,26 @@ module.exports = function() {
         }
     }
 }
-</code></pre><p>詳細な仕様は<a href="game-json.html">game.jsonの仕様</a>を参照してください。</p>
+</code></pre><p>詳細な仕様は<a href="guide\game-json.html">game.jsonの仕様</a>を参照してください。</p>
 <h2><a name="Node.js 開発者向けの追加情報"></a> Node.js 開発者向けの追加情報</h2><p>akashicは、install, uninstall コマンドを除き、package.json に関知しません。</p>
 <p>ゲーム開発者は、npm install --save-dev jasmine して spec ディレクトリにテストを配置するなど、
-任意の開発フローを(Akashic のディレクトリ構成と衝突するなどの問題がない限り)とることができます。</p><hr><div class="footer"><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/"><img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png" class="license"></a>このサイトの画像は、<a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/">クリエイティブ・コモンズ 表示 2.1 日本 ライセンスの下に提供されています。</a></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script></body></html>
+任意の開発フローを(Akashic のディレクトリ構成と衝突するなどの問題がない限り)とることができます。</p>
+
+			</div>
+			<hr>
+			<div class="footer">
+				<a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/">
+					<img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png" class="license">
+				</a>
+				このサイトの画像は、
+				<a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/">
+					クリエイティブ・コモンズ 表示 2.1 日本 ライセンスの下に提供されています。
+				</a>
+			</div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+</style>
+</head>
+<body>
+	<div id="container"></container>
+	<script src="../dist/runner/akashic-engine.js"></script>
+	<script src="../dist/runner/game-driver.strip.js"></script>
+	<script src="../dist/runner/pdi-browser.strip.js"></script>
+	<script src="../dist/runner/game-storage.strip.js"></script>
+	<script src="./akashic-loader.js"></script>
+	<script>
+	window.addEventListener("load", function () {
+		function getParameterByName(name) {
+			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+			    results = regex.exec(location.search);
+			return results === null ? undefined : decodeURIComponent(results[1].replace(/\+/g, " "));
+		}
+
+		var title = getParameterByName("title");
+		start(title + "/game.json", title + "/");
+	});
+	</script>
+</body>
+</html>
