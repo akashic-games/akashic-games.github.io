@@ -155,7 +155,7 @@ akashic の対象バージョンは 1.0.1 以降です。</p>
 </ul>
 </li>
 <li>akashic export<ul>
-<li>ゲームを任意のフォーマットに変換して出力します。</li>
+<li>ゲームを指定されたフォーマットに変換して出力します。</li>
 </ul>
 </li>
 <li>akashic stat<ul>
@@ -308,28 +308,38 @@ npm-shrinkwrap.jsonがディレクトリに存在しない場合、開発者の�
 ファイルの変更はgame.jsonに反映されます。</p>
 <p>(install コマンド同様、game.json と同じディレクトリに package.json という名前のファイルが存在する必要があります)</p>
 <p> &lt;module&gt; を指定しなかった場合、全てのnpmパッケージを更新します。npm update の詳細は <a href="https://docs.npmjs.com/cli/update">npmのドキュメント</a> を参照してください。</p>
-<h2><a name="export"></a> export</h2><pre><code>akashic export [--output &lt;fileName&gt;] [--exclude &lt;fileName&gt;] &lt;format&gt;
-</code></pre><p>ゲームを指定されたフォーマット &lt;format&gt; に変換して出力します。</p>
-<p>--outputオプションが指定された場合、変換した結果を &lt;fileName&gt; に保存します。
-省略された場合はフォーマットごとのデフォルトの名前で保存されます。</p>
-<p>--excludeオプションが指定された場合、ファイル &lt;fileName&gt; を出力から除外します。</p>
+<h2><a name="export"></a> export</h2><pre><code>akashic export --output &lt;fileName&gt; [--exclude &lt;fileName&gt;] &lt;format&gt;
+</code></pre><p>ゲームを指定されたフォーマット &lt;format&gt; に変換し、 <code>--output</code> で指定された名前で保存します。</p>
+<p>&lt;format&gt; には次の値が指定できます。</p>
+<ul>
+<li><code>zip</code></li>
+<li><code>html</code></li>
+</ul>
+<p>フォーマット <code>zip</code> が指定された場合、ディレクトリを zip 形式で圧縮したファイルを出力します。
+<code>--output</code> が指定されなかった場合、 <code>./game.zip</code> が指定されたかのように振る舞います。
+存在するファイル名・ディレクトリ名を指定した場合、エラーになります。</p>
+<p>フォーマット <code>html</code> が指定された場合、
+単独でゲームを実行可能な HTML ファイル (と関連ファイル) を含むディレクトリを出力します。
+出力されたディレクトリを Web ブラウザで開くことで、 akashic-sandbox などの動作確認ツールなしにゲームを実行できます。</p>
+<p>フォーマット <code>html</code> の場合、 <code>--output</code> はディレクトリ名として解釈されます。
+存在するファイル名・ディレクトリ名を指定した場合、エラーになります。
+またゲームのディレクトリ以下のパスを指定することはできません。
+たとえばgame.json のあるディレクトリで次のように指定するとエラーになります。</p>
+<pre><code>$ akashic export html --output ./mygame  # エラー
+</code></pre><p><code>./mygame</code> ではなく <code>../mygame</code> にするなど、ゲームのディレクトリの外を指定してください。</p>
+<pre><code>$ akashic export html --output ../mygame
+</code></pre><p>この場合、 <code>../mygame/index.html</code> を Web ブラウザで開くと、単独でゲームを実行できます。
+(ゲーム実行には <code>../mygame</code> 以下のファイルがすべて必要である点に注意してください)</p>
+<p>フォーマットに関わらず、 <code>--exclude</code> オプションが指定された場合、
+指定されたファイル &lt;fileName&gt; を出力から除外します。</p>
 <p>複数のファイルを除外したい場合は</p>
 <pre><code>akashic export &lt;format&gt; --exclude foo --exclude bar
-</code></pre><p>のように複数回--excludeを指定してください。</p>
-<h3>現在対応しているフォーマット</h3><p>フォーマット毎にデフォルトの出力ファイル名と、除外されるファイルを併記します。</p>
+</code></pre><p>のように複数回 <code>--exclude</code> を指定してください。</p>
+<p>フォーマット <code>zip</code> の場合、 <code>--exclude</code> オプションを指定しなかった場合、
+次のファイルが指定されたものとして振る舞います。</p>
 <ul>
-<li>zip<ul>
-<li>デフォルトの出力ファイル名<ul>
-<li>game.zip</li>
-</ul>
-</li>
-<li>デフォルトで除外されるファイル<ul>
 <li>./npm-shrinkwrap.json</li>
 <li>./package.json</li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 <h2><a name="stat"></a> stat</h2><pre><code>akashic stat &lt;target&gt; [options...]
 </code></pre><p><code>&lt;target&gt;</code> で指定された内容に関して情報を収集して出力します。 
