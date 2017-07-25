@@ -1040,6 +1040,10 @@ Ogg Vorbis 形式 (.ogg) と MP4(AAC) 形式 (.mp4) の二種類のファイル�
 例えば ID が <code>&quot;se1&quot;</code> の場合は、以下のコードで再生できます。</p>
 <pre><code class="lang-javascript">scene.assets[&quot;se1&quot;].play();
 </code></pre>
+<p>もし、TypeScriptテンプレートを利用して開発する場合、 <code>scene.assets</code> は <code>g.Asset</code> というアセット全体を示す型の配列になっています。よって、そのままでは <code>g.AudioAsset</code> だけが持つ <code>play()</code> メソッドを使えません。
+以下のように <code>as</code>  演算子を使って <code>g.AudioAsset</code> であることを示す必要があります。</p>
+<pre><code class="lang-typescript">(scene.assets[&quot;se1&quot;] as g.AudioAsset).play();
+</code></pre>
 <p>シーンで効果音を利用するには、他のアセットと同じようにシーンオブジェクトの
 パラメータオブジェクトにアセットの ID を列挙します。
 以下は画面のタップまたはクリックで効果音を再生する例です。</p>
