@@ -97,6 +97,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.gameconfiguration.html#assets" class="tsd-kind-icon">assets</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.gameconfiguration.html#audio" class="tsd-kind-icon">audio</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.gameconfiguration.html#defaultloadingscene" class="tsd-kind-icon">default<wbr>Loading<wbr>Scene</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.gameconfiguration.html#fps" class="tsd-kind-icon">fps</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.gameconfiguration.html#globalscripts" class="tsd-kind-icon">global<wbr>Scripts</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.gameconfiguration.html#height" class="tsd-kind-icon">height</a></li>
@@ -116,7 +117,7 @@
 					<div class="tsd-signature tsd-kind-icon">assets<span class="tsd-signature-symbol">:</span> <a href="../modules/_lib_main_d_.g.html#assetconfigurationmap" class="tsd-signature-type">AssetConfigurationMap</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:3544</li>
+							<li>Defined in lib/main.d.ts:4002</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -128,10 +129,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="audio" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> audio</h3>
-					<div class="tsd-signature tsd-kind-icon">audio<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<div class="tsd-signature tsd-kind-icon">audio<span class="tsd-signature-symbol">:</span> <a href="../modules/_lib_main_d_.g.html#audiosystemconfigurationmap" class="tsd-signature-type">AudioSystemConfigurationMap</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:3538</li>
+							<li>Defined in lib/main.d.ts:3998</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -139,13 +140,22 @@
 							<p>AudioSystemの追加定義。キーにsystem名を書く。不要(デフォルトの &quot;sound&quot; と &quot;music&quot; しか使わない)なら省略してよい。</p>
 						</div>
 					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-index-signature">
-								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="_lib_main_d_.g.audiosystemconfiguration.html" class="tsd-signature-type">AudioSystemConfiguration</a></h5>
-							</li>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="defaultloadingscene" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> default<wbr>Loading<wbr>Scene</h3>
+					<div class="tsd-signature tsd-kind-icon">default<wbr>Loading<wbr>Scene<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"default"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"none"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:4021</li>
 						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>デフォルトローディングシーンについての指定。
+								省略時または &quot;default&quot; を指定すると <code>DefaultLoadingScene</code> を表示する。
+							デフォルトローディングシーンを非表示にしたい場合は &quot;none&quot; を指定する。</p>
+						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
@@ -154,7 +164,7 @@
 					<div class="tsd-signature tsd-kind-icon">fps<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:3526</li>
+							<li>Defined in lib/main.d.ts:3986</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -169,7 +179,7 @@
 					<div class="tsd-signature tsd-kind-icon">global<wbr>Scripts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:3557</li>
+							<li>Defined in lib/main.d.ts:4015</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -188,7 +198,7 @@
 					<div class="tsd-signature tsd-kind-icon">height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:3522</li>
+							<li>Defined in lib/main.d.ts:3982</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -203,7 +213,7 @@
 					<div class="tsd-signature tsd-kind-icon">main<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:3534</li>
+							<li>Defined in lib/main.d.ts:3994</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -221,7 +231,7 @@
 					<div class="tsd-signature tsd-kind-icon">operation<wbr>Plugins<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.operationplugininfo.html" class="tsd-signature-type">OperationPluginInfo</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:3548</li>
+							<li>Defined in lib/main.d.ts:4006</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -236,7 +246,7 @@
 					<div class="tsd-signature tsd-kind-icon">width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:3518</li>
+							<li>Defined in lib/main.d.ts:3978</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -267,6 +277,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 								<a href="_lib_main_d_.g.gameconfiguration.html#audio" class="tsd-kind-icon">audio</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_lib_main_d_.g.gameconfiguration.html#defaultloadingscene" class="tsd-kind-icon">default<wbr>Loading<wbr>Scene</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 								<a href="_lib_main_d_.g.gameconfiguration.html#fps" class="tsd-kind-icon">fps</a>

@@ -82,6 +82,7 @@
 						<li>Standby: 初期化された状態のシーンで、シーンスタックへ追加されることを待っている状態を表す</li>
 						<li>Active: シーンスタックの一番上にいるシーンで、ゲームのカレントシーンとして活性化されている状態を表す</li>
 						<li>Deactive: シーンスタックにいるが一番上ではないシーンで、裏側で非活性状態になっていることを表す</li>
+						<li>BeforeDestroyed: これから破棄されるシーンで、再利用が不可能になっている状態を表す</li>
 					</ul>
 				</div>
 			</section>
@@ -93,6 +94,7 @@
 							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.scenestate.html#active" class="tsd-kind-icon">Active</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.scenestate.html#beforedestroyed" class="tsd-kind-icon">Before<wbr>Destroyed</a></li>
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.scenestate.html#deactive" class="tsd-kind-icon">Deactive</a></li>
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.scenestate.html#destroyed" class="tsd-kind-icon">Destroyed</a></li>
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.scenestate.html#standby" class="tsd-kind-icon">Standby</a></li>
@@ -109,7 +111,17 @@
 					<div class="tsd-signature tsd-kind-icon">Active<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;2</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:2345</li>
+							<li>Defined in lib/main.d.ts:2656</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+					<a name="beforedestroyed" class="tsd-anchor"></a>
+					<h3>Before<wbr>Destroyed</h3>
+					<div class="tsd-signature tsd-kind-icon">Before<wbr>Destroyed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;4</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:2658</li>
 						</ul>
 					</aside>
 				</section>
@@ -119,7 +131,7 @@
 					<div class="tsd-signature tsd-kind-icon">Deactive<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;3</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:2346</li>
+							<li>Defined in lib/main.d.ts:2657</li>
 						</ul>
 					</aside>
 				</section>
@@ -129,7 +141,7 @@
 					<div class="tsd-signature tsd-kind-icon">Destroyed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:2343</li>
+							<li>Defined in lib/main.d.ts:2654</li>
 						</ul>
 					</aside>
 				</section>
@@ -139,7 +151,7 @@
 					<div class="tsd-signature tsd-kind-icon">Standby<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;1</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:2344</li>
+							<li>Defined in lib/main.d.ts:2655</li>
 						</ul>
 					</aside>
 				</section>
@@ -162,6 +174,9 @@
 						<ul>
 							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
 								<a href="_lib_main_d_.g.scenestate.html#active" class="tsd-kind-icon">Active</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+								<a href="_lib_main_d_.g.scenestate.html#beforedestroyed" class="tsd-kind-icon">Before<wbr>Destroyed</a>
 							</li>
 							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
 								<a href="_lib_main_d_.g.scenestate.html#deactive" class="tsd-kind-icon">Deactive</a>
