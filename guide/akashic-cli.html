@@ -27,8 +27,21 @@
 					<ul class="nav navbar-nav">
 						
 						
-							 
-								<li><a href="./tutorial/tutorial.html">入門</a></li>
+							
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#">入門 <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										
+											
+												<li role="presentation"><a href="./tutorial/tutorial.html">Akashic Engine 入門 (v1)</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./tutorial/tutorial-v2.html">Akashic Engine 入門 (v2(beta))</a></li>
+											
+										
+									</ul>
+								</li>
 							 
 						
 							
@@ -46,6 +59,10 @@
 										
 											
 												<li role="presentation"><a href="guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
 											
 										
 											
@@ -78,7 +95,11 @@
 									<ul class="dropdown-menu">
 										
 											
-												<li role="presentation"><a href="./reference/akashic-engine/modules/_lib_main_d_.g.html">akashic-engine</a></li>
+												<li role="presentation"><a href="./reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x(beta)</a></li>
 											
 										
 											
@@ -107,6 +128,10 @@
 						
 							 
 								<li><a href="./samples/index.html">サンプル</a></li>
+							 
+						
+							 
+								<li><a href="./asset/asset.html">素材</a></li>
 							 
 						
 					</ul>
@@ -376,10 +401,10 @@ other: 1.44KB (0%)
 <p>サポートされる拡張子は特に指定がないため、 &quot;.&quot; から始まるファイル以外はすべて取り込まれます。
 <em>取り込まれないファイルを指定する方法は検討中。</em></p>
 <h3><a name="audioディレクトリ"></a> audioディレクトリ</h3><p>音楽、効果音など、音素材を配置するディレクトリ。</p>
-<p>サポートされる拡張子はogg/aac/mp4であり、拡張子とファイルフォーマットは一致している必要があります。
+<p>サポートされる拡張子はoggとaacであり、拡張子とファイルフォーマットは一致している必要があります。
 それ以外の拡張子のファイル、または &quot;.&quot; から始まるファイルは無視されます。</p>
 <p>他の素材と異なり、音素材は、ファイル名の拡張子部分のみが異なる複数のファイルをまとめて取り扱います。
-それら (audio/foo.ogg と audio/foo.mp4 など) は同一の内容であることが期待されます。
+それら (audio/foo.ogg と audio/foo.aac など) は同一の内容であることが期待されます。
 これはゲームの実行環境に応じて適切な形式を選択し利用するためです。</p>
 <h3><a name="scriptディレクトリ"></a> scriptディレクトリ</h3><p>スクリプト素材を配置するディレクトリ。</p>
 <p>サポートされる拡張子は.jsと.jsonであり、拡張子とファイルフォーマットは一致している必要があります。

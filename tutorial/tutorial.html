@@ -27,8 +27,21 @@
 					<ul class="nav navbar-nav">
 						
 						
-							 
-								<li><a href="./tutorial/tutorial.html">入門</a></li>
+							
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#">入門 <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										
+											
+												<li role="presentation"><a href="./tutorial/tutorial.html">Akashic Engine 入門 (v1)</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./tutorial/tutorial-v2.html">Akashic Engine 入門 (v2(beta))</a></li>
+											
+										
+									</ul>
+								</li>
 							 
 						
 							
@@ -46,6 +59,10 @@
 										
 											
 												<li role="presentation"><a href="guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
 											
 										
 											
@@ -78,7 +95,11 @@
 									<ul class="dropdown-menu">
 										
 											
-												<li role="presentation"><a href="./reference/akashic-engine/modules/_lib_main_d_.g.html">akashic-engine</a></li>
+												<li role="presentation"><a href="./reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x(beta)</a></li>
 											
 										
 											
@@ -107,6 +128,10 @@
 						
 							 
 								<li><a href="./samples/index.html">サンプル</a></li>
+							 
+						
+							 
+								<li><a href="./asset/asset.html">素材</a></li>
 							 
 						
 					</ul>
@@ -571,7 +596,7 @@ module.exports = main;
 </tr>
 <tr>
 <td><code>audio</code></td>
-<td>MP4形式とOGG形式のオーディオファイルを配置する。</td>
+<td>AAC形式とOGG形式のオーディオファイルを配置する。</td>
 </tr>
 <tr>
 <td><code>text</code></td>
@@ -1027,12 +1052,9 @@ scene.loaded.handle(function () {
 </code></pre>
 <p><img src="tutorial/images/sample11.png" alt="sample11"></p>
 <h2>効果音とBGM</h2><p>Akashic Engine のゲームで音を鳴らす場合は、一つの効果音や音楽につき
-Ogg Vorbis 形式 (.ogg) と MP4(AAC) 形式 (.mp4) の二種類のファイルを用意する必要があります。
-後者は、AAC 形式の音声データを MP4 コンテナに格納したものです。
+Ogg Vorbis 形式 (.ogg) と AAC 形式 (.aac) の二種類のファイルを用意する必要があります。
 これは、Webページで音を再生する際に、利用可能な形式がブラウザごとに異なっているためです。</p>
-<p>※ 従来は AAC 形式のファイルを用意する必要がありましたが、現在はその代わりに MP4 形式のファイルを利用することで、
-より幅広い動作環境をカバーすることができます。</p>
-<p>ファイルが用意できたら <code>se1.ogg</code> と <code>se1.mp4</code> を <code>sound</code> ディレクトリに配置して、
+<p>ファイルが用意できたら <code>se1.ogg</code> と <code>se1.aac</code> を <code>sound</code> ディレクトリに配置して、
 <code>akashic scan</code> コマンドでアセットとして追加します。</p>
 <pre><code class="lang-sh">akashic scan asset
 </code></pre>

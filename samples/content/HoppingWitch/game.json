@@ -1,0 +1,72 @@
+{
+	"width": 512,
+	"height": 384,
+	"fps": 30,
+	"assets": {
+		"mainScene": {
+			"type": "script",
+			"path": "script/mainScene.js",
+			"global": true
+		},
+		"button_back": {
+			"type": "image",
+			"width": 128,
+			"height": 48,
+			"path": "image/button_back.png"
+		},
+		"button_start": {
+			"type": "image",
+			"width": 128,
+			"height": 48,
+			"path": "image/button_start.png"
+		},
+		"font16": {
+			"type": "image",
+			"width": 256,
+			"height": 96,
+			"path": "image/font16.png"
+		},
+		"gameover": {
+			"type": "image",
+			"width": 352,
+			"height": 64,
+			"path": "image/gameover.png"
+		},
+		"map": {
+			"type": "image",
+			"width": 512,
+			"height": 512,
+			"path": "image/map.png"
+		},
+		"player": {
+			"type": "image",
+			"width": 32,
+			"height": 32,
+			"path": "image/player.png"
+		},
+		"title": {
+			"type": "image",
+			"width": 256,
+			"height": 112,
+			"path": "image/title.png"
+		},
+		"background": {
+			"type": "image",
+			"width": 512,
+			"height": 384,
+			"path": "image/background.png"
+		},
+		"glyph_area": {
+			"type": "text",
+			"path": "text/glyph_area.json"
+		},
+		"map_data": {
+			"type": "text",
+			"path": "text/map_data.json"
+		},
+		"version": {
+			"type": "text",
+			"path": "text/version.txt"
+		}
+	}
+}

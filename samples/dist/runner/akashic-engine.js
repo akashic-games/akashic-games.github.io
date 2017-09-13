@@ -119,13 +119,13 @@ var g;
         ResourceFactory.prototype.createVideoAsset = function (id, assetPath, width, height, system, loop, useRealSize) {
             throw g.ExceptionFactory.createPureVirtualError("ResourceFactory#createVideoAsset");
         };
-        ResourceFactory.prototype.createAudioAsset = function (id, assetPath, duration, system) {
+        ResourceFactory.prototype.createAudioAsset = function (id, assetPath, duration, system, loop, hint) {
             throw g.ExceptionFactory.createPureVirtualError("ResourceFactory#createAudioAsset");
         };
         ResourceFactory.prototype.createTextAsset = function (id, assetPath) {
             throw g.ExceptionFactory.createPureVirtualError("ResourceFactory#createTextAsset");
         };
-        ResourceFactory.prototype.createAudioPlayer = function (system, loop) {
+        ResourceFactory.prototype.createAudioPlayer = function (system) {
             throw g.ExceptionFactory.createPureVirtualError("ResourceFactory#createAudioPlayer");
         };
         ResourceFactory.prototype.createScriptAsset = function (id, assetPath) {
@@ -323,9 +323,11 @@ var g;
      */
     var AudioAsset = (function (_super) {
         __extends(AudioAsset, _super);
-        function AudioAsset(id, assetPath, duration, system) {
+        function AudioAsset(id, assetPath, duration, system, loop, hint) {
             var _this = _super.call(this, id, assetPath) || this;
             _this.duration = duration;
+            _this.loop = loop;
+            _this.hint = hint;
             _this._system = system;
             _this.data = undefined;
             return _this;
@@ -411,6 +413,25 @@ var g;
         }
         return AssetLoadingInfo;
     }());
+    function normalizeAudioSystemConfMap(confMap) {
+        confMap = confMap || {};
+        var systemDefaults = {
+            music: {
+                loop: true,
+                hint: { streaming: true }
+            },
+            sound: {
+                loop: false,
+                hint: { streaming: false }
+            }
+        };
+        for (var key in systemDefaults) {
+            if (!(key in confMap)) {
+                confMap[key] = systemDefaults[key];
+            }
+        }
+        return confMap;
+    }
     /**
      * `Asset` を管理するクラス。
      *
@@ -426,9 +447,9 @@ var g;
          * @param game このインスタンスが属するゲーム
          * @param conf このアセットマネージャに与えるアセット定義。game.json の `"assets"` に相当。
          */
-        function AssetManager(game, conf) {
+        function AssetManager(game, conf, audioSystemConfMap) {
             this.game = game;
-            this.configuration = this._normalize(conf || {});
+            this.configuration = this._normalize(conf || {}, normalizeAudioSystemConfMap(audioSystemConfMap));
             this._assets = {};
             this._liveAssetVirtualPathTable = {};
             this._liveAbsolutePathTable = {};
@@ -467,8 +488,12 @@ var g;
             if (!this._loadings.hasOwnProperty(asset.id))
                 throw g.ExceptionFactory.createAssertionError("AssetManager#retryLoad: invalid argument.");
             var loadingInfo = this._loadings[asset.id];
-            if (loadingInfo.errorCount > AssetManager.MAX_ERROR_COUNT)
+            if (loadingInfo.errorCount > AssetManager.MAX_ERROR_COUNT) {
+                // DynamicAsset はエラーが規定回数超えた場合は例外にせず諦める。
+                if (!this.configuration[asset.id])
+                    return;
                 throw g.ExceptionFactory.createAssertionError("AssetManager#retryLoad: too many retrying.");
+            }
             if (!loadingInfo.loading) {
                 loadingInfo.loading = true;
                 asset._load(this);
@@ -563,7 +588,7 @@ var g;
                 this.unrefAsset(assetOrIds[i]);
             }
         };
-        AssetManager.prototype._normalize = function (configuration) {
+        AssetManager.prototype._normalize = function (configuration, audioSystemConfMap) {
             var ret = {};
             if (!(configuration instanceof Object))
                 throw g.ExceptionFactory.createAssertionError("AssetManager#_normalize: invalid arguments.");
@@ -590,6 +615,13 @@ var g;
                     // durationというメンバは後から追加したため、古いgame.jsonではundefinedになる場合がある
                     if (conf.duration === undefined)
                         conf.duration = 0;
+                    var audioSystemConf = audioSystemConfMap[conf.systemId];
+                    if (conf.loop === undefined) {
+                        conf.loop = !!audioSystemConf && !!audioSystemConf.loop;
+                    }
+                    if (conf.hint === undefined) {
+                        conf.hint = audioSystemConf ? audioSystemConf.hint : {};
+                    }
                 }
                 if (conf.type === "video") {
                     if (!conf.useRealSize) {
@@ -629,7 +661,7 @@ var g;
                     return resourceFactory.createImageAsset(id, uri, conf.width, conf.height);
                 case "audio":
                     var system = conf.systemId ? this.game.audio[conf.systemId] : this.game.audio[this.game.defaultAudioSystemId];
-                    return resourceFactory.createAudioAsset(id, uri, conf.duration, system);
+                    return resourceFactory.createAudioAsset(id, uri, conf.duration, system, conf.loop, conf.hint);
                 case "text":
                     return resourceFactory.createTextAsset(id, uri);
                 case "script":
@@ -705,7 +737,7 @@ var g;
             loadingInfo.loading = false;
             delete this._loadings[asset.id];
             this._assets[asset.id] = asset;
-            // VirtualAsset の場合は configuration に書かれていないので以下の判定が偽になる
+            // DynamicAsset の場合は configuration に書かれていないので以下の判定が偽になる
             if (this.configuration[asset.id]) {
                 var virtualPath = this.configuration[asset.id].virtualPath;
                 if (!this._liveAssetVirtualPathTable.hasOwnProperty(virtualPath)) {
@@ -1844,8 +1876,7 @@ var g;
         /**
          * `AudioPlayer` のインスタンスを生成する。
          */
-        function AudioPlayer(system, loop) {
-            this._loop = !!loop;
+        function AudioPlayer(system) {
             this.played = new g.Trigger();
             this.stopped = new g.Trigger();
             this.currentAudio = undefined;
@@ -2023,7 +2054,7 @@ var g;
             // Note: 音楽のないゲームの場合に無駄なインスタンスを作るのを避けるため、アクセサを使う
             get: function () {
                 if (!this._player) {
-                    this._player = this.game.resourceFactory.createAudioPlayer(this, true);
+                    this._player = this.game.resourceFactory.createAudioPlayer(this);
                     this._player.played.handle(this, this._onPlayerPlayed);
                     this._player.stopped.handle(this, this._onPlayerStopped);
                 }
@@ -3271,7 +3302,9 @@ var g;
                 this._assetManager.retryLoad(asset);
             }
             else {
-                this._scene.game.terminateGame();
+                // game.json に定義されていればゲームを止める。それ以外 (DynamicAsset) では続行。
+                if (this._assetManager.configuration[asset.id])
+                    this._scene.game.terminateGame();
             }
             this._scene.assetLoadCompleted.fire(asset);
         };
@@ -4672,7 +4705,8 @@ var g;
             this.logger = new g.Logger(this);
             this._main = gameConfiguration.main;
             this._mainParameter = undefined;
-            this._assetManager = new g.AssetManager(this, gameConfiguration.assets);
+            this._configuration = gameConfiguration;
+            this._assetManager = new g.AssetManager(this, gameConfiguration.assets, gameConfiguration.audio);
             var operationPluginsField = (gameConfiguration.operationPlugins || []);
             this._operationPluginManager = new g.OperationPluginManager(this, operationPluginViewInfo, operationPluginsField);
             this._operationPluginOperated = new g.Trigger();
@@ -5074,7 +5108,15 @@ var g;
             this._sceneChangeRequests = [];
             this._isTerminated = false;
             this.vars = {};
-            this._defaultLoadingScene = new g.DefaultLoadingScene({ game: this });
+            switch (this._configuration.defaultLoadingScene) {
+                case "none":
+                    // Note: 何も描画しない実装として利用している
+                    this._defaultLoadingScene = new g.LoadingScene({ game: this });
+                    break;
+                default:
+                    this._defaultLoadingScene = new g.DefaultLoadingScene({ game: this });
+                    break;
+            }
         };
         /**
          * ゲームを開始する。

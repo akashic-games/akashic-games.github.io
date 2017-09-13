@@ -27,8 +27,21 @@
 					<ul class="nav navbar-nav">
 						
 						
-							 
-								<li><a href="./tutorial/tutorial.html">入門</a></li>
+							
+								<li class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#">入門 <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										
+											
+												<li role="presentation"><a href="./tutorial/tutorial.html">Akashic Engine 入門 (v1)</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./tutorial/tutorial-v2.html">Akashic Engine 入門 (v2(beta))</a></li>
+											
+										
+									</ul>
+								</li>
 							 
 						
 							
@@ -46,6 +59,10 @@
 										
 											
 												<li role="presentation"><a href="guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+											
+										
+											
+												<li role="presentation"><a href="guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
 											
 										
 											
@@ -78,7 +95,11 @@
 									<ul class="dropdown-menu">
 										
 											
-												<li role="presentation"><a href="./reference/akashic-engine/modules/_lib_main_d_.g.html">akashic-engine</a></li>
+												<li role="presentation"><a href="./reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x</a></li>
+											
+										
+											
+												<li role="presentation"><a href="./reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x(beta)</a></li>
 											
 										
 											
@@ -107,6 +128,10 @@
 						
 							 
 								<li><a href="./samples/index.html">サンプル</a></li>
+							 
+						
+							 
+								<li><a href="./asset/asset.html">素材</a></li>
 							 
 						
 					</ul>
@@ -246,7 +271,7 @@ akashic-cli の詳細は <a href="guide/akashic-cli.html">akashic-cli利用ガ�
 </ul>
 </li>
 <li>制約: path はファイルのパス文字列から拡張子を取り除いたものでなければならない</li>
-<li>制約: 対応するファイルの拡張子は &quot;.ogg&quot;、&quot;.mp4&quot; または &quot;.aac&quot; でなければならない</li>
+<li>制約: 対応するファイルの拡張子は &quot;.ogg&quot; または &quot;.aac&quot; でなければならない</li>
 </ul>
 </li>
 <li>&quot;script&quot;<ul>
@@ -256,8 +281,7 @@ akashic-cli の詳細は <a href="guide/akashic-cli.html">akashic-cli利用ガ�
 </ul>
 <p>オーディオアセット (type が &quot;audio&quot; であるアセット) は他と異なり、ファイルパスに拡張子を書かないことに気をつけて下さい。
 音素材に関して、拡張子以外の部分が同名のファイル (e.g. &quot;audio/foo.ogg&quot; と
-&quot;audio/foo.mp4&quot; など) は、それぞれ同じ内容であることが期待されます。
-特に、拡張子が mp4 のファイルは、AAC 形式の音声データを MP4 コンテナに格納したものです。
+&quot;audio/foo.aac&quot; など) は、それぞれ同じ内容であることが期待されます。
 これらはエンジンが、ゲームの各実行環境で再生可能な形式のファイルを自動的に選択して再生するためです。</p>
 <h3>main</h3><p>akashic-engine@1.2.0 で導入。</p>
 <p><strong>main</strong> は、ゲームのエントリポイントとなるスクリプト( <strong>mainスクリプト</strong> )を指定する値です。</p>
