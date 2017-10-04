@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<base href="..">
-		<title>Akashic Engine 入門 (v2(beta)版) - akashic-engine</title>
+		<title>Akashic Engine 入門 (v2版) - akashic-engine</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" href="./style.css">
@@ -33,11 +33,11 @@
 									<ul class="dropdown-menu">
 										
 											
-												<li role="presentation"><a href="./tutorial/tutorial.html">Akashic Engine 入門 (v1)</a></li>
+												<li role="presentation"><a href="./tutorial/tutorial.html">Akashic Engine 入門 (v1(deprecated))</a></li>
 											
 										
 											
-												<li role="presentation"><a href="./tutorial/tutorial-v2.html">Akashic Engine 入門 (v2(beta))</a></li>
+												<li role="presentation"><a href="./tutorial/tutorial-v2.html">Akashic Engine 入門 (v2)</a></li>
 											
 										
 									</ul>
@@ -95,11 +95,11 @@
 									<ul class="dropdown-menu">
 										
 											
-												<li role="presentation"><a href="./reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x</a></li>
+												<li role="presentation"><a href="./reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
 											
 										
 											
-												<li role="presentation"><a href="./reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x(beta)</a></li>
+												<li role="presentation"><a href="./reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
 											
 										
 											
@@ -140,7 +140,7 @@
 		</nav>
 		<div class="container" style="padding: 80px 0 40px;">
 			<div class="markdown-body">
-				<h1>Akashic Engine 入門 (v2(beta)版)</h1><h2>はじめに</h2><p>Akashic Engine は JavaScript で動作するゲームエンジンです。
+				<h1>Akashic Engine 入門 (v2版)</h1><h2>はじめに</h2><p>Akashic Engine は JavaScript で動作するゲームエンジンです。
 Akashic Engine を利用することでマルチプラットフォームで動作するゲームを開発できます。
 Akashic Engine はオープンソースで開発されているフリーソフトウェアです。
 作成したゲームの公開にロイヤリティは必要ありません。
@@ -208,18 +208,15 @@ Akashic Engine のゲーム開発には次の2つのパッケージが必要で�
 </ul>
 <p>登録ができたら次のコマンドで必要なツールをインストールします。</p>
 <pre><code>npm install -g @akashic/akashic-cli
-npm install -g @akashic/akashic-sandbox@1.0.0-beta.0
-</code></pre><p>(akashic-sandbox のバージョン(<code>@1.0.0-beta.0</code> の部分)を省略しないでください。
-Akashic Engine v2系のツールはまだβ版のため、バージョンを指定しないとv1系の最新版(v0.10.2など)がインストールされてしまいます。
-akashic-cliはv1系と共通なのでこの問題がありません。)</p>
-<p>インストールが完了すると、<code>akashic</code> コマンドと <code>akashic-sandbox</code> コマンドを利用できるようになります。
+npm install -g @akashic/akashic-sandbox
+</code></pre><p>インストールが完了すると、<code>akashic</code> コマンドと <code>akashic-sandbox</code> コマンドを利用できるようになります。
 以下のコマンドでそれぞれのコマンドのバージョンを表示することができます。
 エラーが表示されるバージョンが表示できれば、インストールが正常に行われています。</p>
 <pre><code class="lang-sh">akashic -V
 akashic-sandbox -V
 </code></pre>
 <p>執筆時点では <code>akashic</code> のバージョンとして <code>1.1.4</code>、
-<code>akashic-sandbox</code> のバージョンとして <code>1.0.0-beta.0</code> が表示されます。</p>
+<code>akashic-sandbox</code> のバージョンとして <code>1.0.0</code> が表示されます。</p>
 <h2>空のゲームの作成</h2><p>Akashic Engine のゲームには設定ファイル (<code>game.json</code>) と、
 ゲームを起動するプログラムが必要です。
 <code>game.json</code> はゲームの設定とゲームが利用するアセットを記述する JSON 形式のファイルです。

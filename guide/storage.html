@@ -33,11 +33,11 @@
 									<ul class="dropdown-menu">
 										
 											
-												<li role="presentation"><a href="./tutorial/tutorial.html">Akashic Engine 入門 (v1)</a></li>
+												<li role="presentation"><a href="./tutorial/tutorial.html">Akashic Engine 入門 (v1(deprecated))</a></li>
 											
 										
 											
-												<li role="presentation"><a href="./tutorial/tutorial-v2.html">Akashic Engine 入門 (v2(beta))</a></li>
+												<li role="presentation"><a href="./tutorial/tutorial-v2.html">Akashic Engine 入門 (v2)</a></li>
 											
 										
 									</ul>
@@ -95,11 +95,11 @@
 									<ul class="dropdown-menu">
 										
 											
-												<li role="presentation"><a href="./reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x</a></li>
+												<li role="presentation"><a href="./reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
 											
 										
 											
-												<li role="presentation"><a href="./reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x(beta)</a></li>
+												<li role="presentation"><a href="./reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
 											
 										
 											
@@ -141,7 +141,7 @@
 		<div class="container" style="padding: 80px 0 40px;">
 			<div class="markdown-body">
 				<h1>ストレージについて</h1><h2><a name="これは"></a> これは</h2><p>ストレージの仕様とゲームコンテンツからストレージを操作するストレージインターフェースの利用方法をまとめます。</p>
-<p>対象バージョンは akashic-engine@1.0.0 以降です。</p>
+<p>対象バージョンは akashic-engine@1.0.0 以降ですが、サンプルコードでは 2.0.0 以降特有のメソッドなどを利用している箇所があります。</p>
 <h2><a name="ストレージ"></a> ストレージ</h2><p><em>NOTE: この項目はストレージの仕様が現時点で未確定な部分があるため、仕様の概要のみを説明しています。</em></p>
 <p><strong>ストレージ</strong> は、ゲームコンテンツから利用できる、永続的なデータを保存するための機能です。</p>
 <p>ストレージを操作するには <strong>ストレージキー</strong> が必要です。</p>
@@ -228,7 +228,7 @@ game.storage.write(key, value);
 <p>ここで、ゲームコンテンツは書き込みの成功・失敗を検知することが出来ないことに注意して下さい。</p>
 <p>次に、Scoresリージョンに値を書き込む例を示します。</p>
 <pre><code class="lang-javascript">var clickCounts = {};
-scene.pointDownCapture.handle(function(o) {
+scene.pointDownCapture.add(function(o) {
     if (!o.player.id) {
         return;
     }
@@ -262,7 +262,7 @@ scene.pointDownCapture.handle(function(o) {
 <p>次に、Countsリージョンに値を書き込む例を示します。</p>
 <p>Countsリージョンでは、これまでValuesリージョンやScoresリージョンの説明で行ったような値を指定した書き込みに加え、値のインクリメント、デクリメント処理を行うことが出来ます。</p>
 <p>以下の例では、ゲームのプレイ回数をインクリメントして保存しています。</p>
-<pre><code class="lang-javascript">scene.loaded.handle(function() {
+<pre><code class="lang-javascript">scene.loaded.add(function() {
     var key = {
         region: g.StorageRegion.Counts,
         regionKey: &quot;play&quot;,
@@ -289,13 +289,13 @@ var keys = [
     {region: g.StorageRegion.Scores, regionKey: &quot;click&quot;, userId: game.vars.player.id, gameId: &quot;$gameId&quot;}
 ];
 var scene = new g.Scene({game: game, storageKeys: keys});
-scene.loaded.handle(function() {
+scene.loaded.add(function() {
 ...
 });
 </code></pre>
 <p>この例では、シーン開始前に、<code>g.Game#join</code> を通して参加者を表す <code>g.Player</code> が <code>game.vars.player</code> にセットされていることを想定しています。</p>
 <p>読み込んだ値は、シーン開始後に利用することができます。</p>
-<p>例えば、 <code>keys[0]</code> に対応する値を取得するには <code>scene.loaded.handle</code> に登録したハンドラ内で</p>
+<p>例えば、 <code>keys[0]</code> に対応する値を取得するには <code>scene.loaded.add</code> に登録したハンドラ内で</p>
 <pre><code class="lang-javascript">scene.storageValues.getOne(keys[0]);
 </code></pre>
 <p>とします。</p>
@@ -304,7 +304,7 @@ scene.loaded.handle(function() {
 <p>また、<code>g.StorageReadKey#userId</code> を アスタリスク <code>*</code> とすることができ、これは全ユーザにマッチすることになります。</p>
 <pre><code class="lang-javascript">var keys = [{region: g.StorageRegion.Counts, regionKey: &quot;play&quot;, userId: &quot;*&quot;, gameId: &quot;$gameId&quot;}];
 var scene = new g.Scene({game: game, storageKeys: keys});
-scene.loaded.handle(function() {
+scene.loaded.add(function() {
     // 一括取得の結果（g.StorageValueの配列）を取得
     var result = scene.storageValues.get(keys[0]);
     // =&gt; [{data: 2, storageKey: {region: g.StorageRegion.Counts, regionKey: &quot;play&quot;, userId: &quot;user1&quot;, gameId: &quot;2&quot;}},

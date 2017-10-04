@@ -33,11 +33,11 @@
 									<ul class="dropdown-menu">
 										
 											
-												<li role="presentation"><a href="./tutorial/tutorial.html">Akashic Engine 入門 (v1)</a></li>
+												<li role="presentation"><a href="./tutorial/tutorial.html">Akashic Engine 入門 (v1(deprecated))</a></li>
 											
 										
 											
-												<li role="presentation"><a href="./tutorial/tutorial-v2.html">Akashic Engine 入門 (v2(beta))</a></li>
+												<li role="presentation"><a href="./tutorial/tutorial-v2.html">Akashic Engine 入門 (v2)</a></li>
 											
 										
 									</ul>
@@ -95,11 +95,11 @@
 									<ul class="dropdown-menu">
 										
 											
-												<li role="presentation"><a href="./reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x</a></li>
+												<li role="presentation"><a href="./reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
 											
 										
 											
-												<li role="presentation"><a href="./reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x(beta)</a></li>
+												<li role="presentation"><a href="./reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
 											
 										
 											
@@ -146,7 +146,7 @@
 <h2><a name="エラーのハンドリング"></a> エラーのハンドリング</h2><p>ゲームコンテンツからアセットロードエラーをハンドリングするコードの例を以下に示します。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({game: game, assetIds: [&quot;apple&quot;], name: &quot;SampleScene&quot;});
 // ハンドラを登録
-scene.assetLoadFailed.handle(function (failure) {
+scene.assetLoadFailed.add(function (failure) {
     // Loggerでログ出力
     game.logger.warn(&quot;load error for &#39;&quot; + failure.asset.id + &quot;&#39; in &quot; + scene.name, failure);
     // リトライ不可能の場合、この後ゲームが終了される
@@ -166,7 +166,7 @@ scene.assetLoadFailed.handle(function (failure) {
 <p>この値が <code>false</code> の場合、Akashicはハンドラ呼出し後にゲームを終了します。</p>
 <h2><a name="再試行のキャンセル"></a> 再試行のキャンセル</h2><p>ゲームコンテンツは、 アセットロードエラーのハンドラ内で <code>failure.cancelRetry</code> に <code>true</code> にセットすることで、Akashicが行うアセット読み込みの再試行をキャンセルすることが可能です。</p>
 <p>以下に例を示します。</p>
-<pre><code class="lang-javascript">scene.assetLoadFailed.handle(function (failure) {
+<pre><code class="lang-javascript">scene.assetLoadFailed.add(function (failure) {
     // 再試行をキャンセルし、ゲーム続行を断念する
     failure.cancelRetry = true;
     game.logger.error(&quot;bye.&quot;, failure);
