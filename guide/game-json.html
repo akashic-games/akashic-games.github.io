@@ -188,12 +188,17 @@ akashic-cli の詳細は <a href="guide/akashic-cli.html">akashic-cli利用ガ�
 </li>
 <li>renderers<ul>
 <li>配列（詳細は後述）</li>
-<li>ゲームが利用するレンダラーを定義<ul>
-<li>defaultLoadingScene</li>
+<li>ゲームが利用するレンダラーを定義</li>
 </ul>
 </li>
+<li>defaultLoadingScene<ul>
 <li>文字列 (詳細は後述)</li>
 <li>デフォルトのローディングシーンを定義</li>
+</ul>
+</li>
+<li>environment<ul>
+<li>オブジェクト (詳細は後述)</li>
+<li>このゲームの実行環境に要求する条件</li>
 </ul>
 </li>
 </ul>
@@ -336,6 +341,17 @@ akashic-engineの提供するrequire()は、Node.jsなどのそれと異なり�
 akashic-engine@1.11.2では <code>&quot;default&quot;</code> または <code>&quot;none&quot;</code> を指定できます。
 <code>&quot;default&quot;</code> を指定または省略時はエンジンに用意されているデフォルトのローディングシーンを表示します。
 <code>&quot;none&quot;</code> を指定するとそれらのローディングシーンを非表示にできます。</p>
+<h3>environment</h3><p>akashic-engine@2.0.0 で導入。</p>
+<p><strong>environment</strong> は、ゲームを実行する環境やエンジンに対する要求を指定するためのオブジェクトです。
+オブジェクトのキーは要求の種類、値は要求内容です(必要なバージョンなど)。</p>
+<p>akashic-engine@2.0.0 現在、唯一の妥当なキーは <code>&quot;sandbox-runtime&quot;</code> で、その値は <code>&quot;1&quot;</code> または <code>&quot;2&quot;</code> (文字列) です。
+この値は akashic-sandbox でゲームを実行する際、実行するエンジンのバージョンを決定するために利用されます。
+akashic-engine@2.0.0 以降で作成しているゲームの場合、 <code>&quot;2&quot;</code> を指定してください。
+省略された場合、 <code>&quot;1&quot;</code> として解釈されます。</p>
+<pre><code>  &quot;environment&quot;: {
+    &quot;sandbox-runtime&quot;: &quot;2&quot;
+  }
+</code></pre><p><code>&quot;sandbox-runtime&quot;</code> の値は、 <code>akashic export html</code> でエンジンをバンドルしたHTMLを出力する際にも参照されます。</p>
 <h2><a name="game.jsonの例"></a> game.jsonの例</h2><p>妥当な game.json の一例を示します。</p>
 <pre><code>{
   &quot;width&quot;: 320,

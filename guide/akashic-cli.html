@@ -153,7 +153,7 @@ akashic の対象バージョンは 1.0.1 以降です。</p>
 <h2><a name="使い方"></a> 使い方</h2><p>無事にインストールができていれば、以下のコマンドが実行できるようになっています。
 実行すると、akashicコマンドの簡単なヘルプが表示されます。</p>
 <pre><code>$ akashic
-</code></pre><p>akashicコマンド は以下の 7 つのコマンドを持ちます。</p>
+</code></pre><p><code>akashic</code> は以下のコマンドを持ちます。</p>
 <ul>
 <li>akashic init<ul>
 <li>Akashic のゲームとして最低限動作するスクリプトやディレクトリを生成します。</li>
@@ -179,8 +179,12 @@ akashic の対象バージョンは 1.0.1 以降です。</p>
 <li>npm update を行い、 node_modules 以下のnpmパッケージを更新し、ファイルに変更があれば game.json に加えます。</li>
 </ul>
 </li>
-<li>akashic export<ul>
-<li>ゲームを指定されたフォーマットに変換して出力します。</li>
+<li>akashic export zip<ul>
+<li>ゲームをzip形式に変換して出力します。</li>
+</ul>
+</li>
+<li>akashic export html<ul>
+<li>ゲームを単独で実行可能なHTMLファイル(と画像など)を含むディレクトリを生成します。</li>
 </ul>
 </li>
 <li>akashic stat<ul>
@@ -309,66 +313,71 @@ scan asset コマンドは、アセットIDとして「ファイル名から拡�
 <p>ユーザは game.json を直接編集して、アセットIDを任意に変更することができます。
 akashic コマンドはファイルパスを基準に操作を行うため、たとえば画像素材のIDを変更した後に
 その画像のサイズを変更しても、適切にgame.jsonの幅・高さ情報を更新します。</p>
-<h2><a name="install"></a> install</h2><pre><code>akashic install &lt;module&gt;
-</code></pre><p>このコマンドは <code>npm install</code> を行うため、game.json と同じディレクトリに
-package.json という名前のファイルが存在する必要があります。
-事前に <code>npm init</code> を行うなどの方法で作成してください。</p>
-<p>@akashic-extension/ で提供されるAkashic向けの拡張機能の他、任意のnpmパッケージを導入することができます。</p>
-<p>ただし、AkashicはNode.jsのコアモジュールをサポートしていません。
-コアモジュールに依存しているパッケージを install した場合、エラーメッセージが表示されます。
+<h2><a name="install"></a> install</h2><pre><code>akashic install [&lt;module&gt;]
+</code></pre><p><code>npm install</code> のラッパーコマンドです。</p>
+<p><code>&lt;module&gt;</code> を与えた場合、 <code>npm install --save &lt;module&gt;</code> と <code>npm shrinkwrap</code> を行い、また導入されたファイルの一覧をgame.jsonに加えます。
+すなわち次のコマンドと概ね等価な振る舞いをします。</p>
+<pre><code>npm install --save &lt;module&gt;
+npm shrinkwrap
+akashic scan globalScripts
+</code></pre><p>@akashic-extension/ で提供されるAkashic向けの拡張機能の他、任意のnpmパッケージをゲームに導入することができます。</p>
+<blockquote>
+<p>注意: AkashicはNode.jsのコアモジュール(<code>http</code>, <code>path</code> など)をサポートしていません。
+コアモジュールに依存しているパッケージを導入した場合、エラーメッセージが表示されます。
 この場合、<code>npm install</code> は行われ、game.json も更新されますが、ゲームとして実行しようとするとエラーになります。</p>
 <p>またブラウザ固有の機能や、ECMAScriptの一部機能 (<code>Math.random()</code> のような内部状態を持つ機能など) は、
 Akashicのゲームとしてはサポートされていません。それらの機能を用いるnpmパッケージを導入しないでください。
-(akashicコマンド はこれにエラーを出すことはできません。</p>
-<h3>引数ありでの実行</h3><p><code>npm install --save &lt;module&gt;</code> を行い、追加されたファイルの一覧をgame.jsonに加えます。</p>
-<p>このコマンドはモジュールのバージョンを固定するため内部的に <code>npm shrinkwrap</code> を実行し、npm-shrinkwrap.jsonというファイルを出力します。</p>
-<h3>引数なしでの実行</h3><p>package.jsonのdependenciesに記述されているモジュールを全てインストールします。</p>
-<p>この機能は、ゲームの円滑な初期化を実現するために存在しています。
-npm-shrinkwrap.jsonがディレクトリに存在しない場合、開発者の想定していないバージョンのモジュールが適用される恐れがあります。</p>
+(akashicコマンド はこれにエラーを出すことはできません。)</p>
+</blockquote>
+<p>このコマンドは <code>npm install</code> を行うため、game.json と同じディレクトリに package.json という名前のファイルが存在する必要があります。
+事前に <code>npm init</code> を行うなどの方法で作成してください。
+(<code>akashic init</code> が提供するビルトインのテンプレートには含まれています。)</p>
+<p><code>&lt;module&gt;</code> を省略した場合、単に <code>npm install</code> を行います。
+(package.json に依存生が記録されたパッケージが導入されます。)
+game.jsonは更新されません。npm-shrinkwrap.json がない場合、利用しないでください。
+(意図しないバージョンのパッケージが導入される可能性があります。)</p>
 <h2><a name="uninstall"></a> uninstall</h2><pre><code>akashic uninstall &lt;module&gt;
-</code></pre><p>npm uninstall --save &lt;module&gt; を行い、削除されたファイルをgame.jsonから取り除きます。</p>
+</code></pre><p><code>npm uninstall --save &lt;module&gt;</code> を行い、 <code>npm shrinkwrap</code> して、削除されたファイルをgame.jsonから取り除きます。</p>
 <p>(install コマンド同様、game.json と同じディレクトリに package.json という名前のファイルが存在する必要があります)</p>
 <h2><a name="update"></a> update</h2><pre><code>akashic update &lt;module&gt;
-</code></pre><p>npm update &lt;module&gt; を行い、node_modules 以下のnpmパッケージを更新します。
+</code></pre><p><code>npm update &lt;module&gt;</code> を行い、./node_modules 以下のnpmパッケージを更新します。
 ファイルの変更はgame.jsonに反映されます。</p>
 <p>(install コマンド同様、game.json と同じディレクトリに package.json という名前のファイルが存在する必要があります)</p>
-<p> &lt;module&gt; を指定しなかった場合、全てのnpmパッケージを更新します。npm update の詳細は <a href="https://docs.npmjs.com/cli/update">npmのドキュメント</a> を参照してください。</p>
-<h2><a name="export"></a> export</h2><pre><code>akashic export --output &lt;fileName&gt; [--exclude &lt;fileName&gt;] &lt;format&gt;
-</code></pre><p>ゲームを指定されたフォーマット &lt;format&gt; に変換し、 <code>--output</code> で指定された名前で保存します。</p>
-<p>&lt;format&gt; には次の値が指定できます。</p>
-<ul>
-<li><code>zip</code></li>
-<li><code>html</code></li>
-</ul>
-<p>フォーマット <code>zip</code> が指定された場合、ディレクトリを zip 形式で圧縮したファイルを出力します。
-<code>--output</code> が指定されなかった場合、 <code>./game.zip</code> が指定されたかのように振る舞います。
+<p><code>&lt;module&gt;</code> を指定しなかった場合、全てのnpmパッケージを更新します。npm update の詳細は <a href="https://docs.npmjs.com/cli/update">npmのドキュメント</a> を参照してください。</p>
+<h2><a name="export-zip"></a> export zip</h2><pre><code>akashic export zip [--output &lt;fileName&gt;] [--exclude &lt;excludedFileName&gt;]
+</code></pre><p>ゲームディレクトリを zip 形式で圧縮したファイルを <code>&lt;fileName&gt;</code> に出力します。
+<code>--output</code> オプションが指定されなかった場合、 <code>./game.zip</code> が指定されたかのように振る舞います。
 存在するファイル名・ディレクトリ名を指定した場合、エラーになります。</p>
-<p>フォーマット <code>html</code> が指定された場合、
-単独でゲームを実行可能な HTML ファイル (と関連ファイル) を含むディレクトリを出力します。
-出力されたディレクトリを Web ブラウザで開くことで、 akashic-sandbox などの動作確認ツールなしにゲームを実行できます。</p>
-<p>フォーマット <code>html</code> の場合、 <code>--output</code> はディレクトリ名として解釈されます。
-存在するファイル名・ディレクトリ名を指定した場合、エラーになります。
-またゲームのディレクトリ以下のパスを指定することはできません。
-たとえばgame.json のあるディレクトリで次のように指定するとエラーになります。</p>
-<pre><code>$ akashic export html --output ./mygame  # エラー
-</code></pre><p><code>./mygame</code> ではなく <code>../mygame</code> にするなど、ゲームのディレクトリの外を指定してください。</p>
-<pre><code>$ akashic export html --output ../mygame
-</code></pre><p>この場合、 <code>../mygame/index.html</code> を Web ブラウザで開くと、単独でゲームを実行できます。
-(ゲーム実行には <code>../mygame</code> 以下のファイルがすべて必要である点に注意してください)</p>
-<p>フォーマットに関わらず、 <code>--exclude</code> オプションが指定された場合、
-指定されたファイル &lt;fileName&gt; を出力から除外します。</p>
-<p>複数のファイルを除外したい場合は</p>
-<pre><code>akashic export &lt;format&gt; --exclude foo --exclude bar
-</code></pre><p>のように複数回 <code>--exclude</code> を指定してください。</p>
-<p>フォーマット <code>zip</code> の場合、 <code>--exclude</code> オプションを指定しなかった場合、
-次のファイルが指定されたものとして振る舞います。</p>
+<p><code>--exclude</code> オプションが指定された場合、指定されたファイル <code>&lt;excludedFileName&gt;</code> は出力から除外されます。
+複数のファイルを除外したい場合は、次のように複数回 <code>--exclude</code> を指定してください。</p>
+<pre><code>akashic export zip --exclude foo --exclude bar
+</code></pre><p><code>--exclude</code> オプションが指定されなかった場合、次の名前が指定されたものとして振る舞います。</p>
 <ul>
 <li>./npm-shrinkwrap.json</li>
 <li>./package.json</li>
 </ul>
-<h2><a name="stat"></a> stat</h2><pre><code>akashic stat &lt;target&gt; [options...]
+<h2><a name="export-html"></a> export html</h2><pre><code>akashic export html --output &lt;dirName&gt; [--bundle] [--strip] [--minify] [--magnify]
+</code></pre><p>単独でゲームを実行可能な HTML ファイル (と関連ファイル) を含むディレクトリを出力します。
+出力されたディレクトリの index.html を Web ブラウザで開くことで、 akashic-sandbox などの動作確認ツールなしにゲームを実行できます。</p>
+<p>利用可能なオプションは次のとおりです:</p>
+<ul>
+<li><code>--output &lt;dirName&gt;</code>: 出力するフォルダを <code>&lt;dirName&gt;</code> にする (必須)</li>
+<li><code>--bundle</code>: スクリプトアセットやテキストアセットなど、可能なものを index.html にまとめる</li>
+<li><code>--strip</code>: ゲーム実行に不要なファイルを出力から除外する</li>
+<li><code>--minify</code>: スクリプトアセットをminifyする</li>
+<li><code>--magnify</code>: ゲーム画面をブラウザのウィンドウサイズに合わせて拡縮するようにする</li>
+</ul>
+<p><code>--output</code> オプションに存在するファイル名・ディレクトリ名を指定した場合、エラーになります。
+またゲームのディレクトリ以下のパスを指定することはできません。
+たとえばgame.json のあるディレクトリで次のように指定するとエラーになります。</p>
+<pre><code>$ akashic export html --output ./bundled  # エラー
+</code></pre><p><code>./bundled</code> ではなく <code>../bundled</code> にするなど、ゲームのディレクトリの外を指定してください。
+この場合、 <code>../bundled/index.html</code> を Web ブラウザで開くと、単独でゲームを実行できます。
+(ゲーム実行には <code>../bundled/</code> 以下のファイルがすべて必要である点に注意してください)</p>
+<pre><code>$ akashic export html --output ../bundled
+</code></pre><h2><a name="stat"></a> stat</h2><pre><code>akashic stat &lt;target&gt; [options...]
 </code></pre><p><code>&lt;target&gt;</code> で指定された内容に関して情報を収集して出力します。 
-<code>&lt;target&gt;</code> として現在以下を指定可能です。</p>
+現在 <code>&lt;target&gt;</code> に与えられるのは <code>size</code> のみです。</p>
 <h3>ゲームの容量計算 (size)</h3><p><code>&lt;target&gt;</code> に <code>size</code> を指定すると、ゲームの容量を計算します。
 ゲームの容量とはゲームを配信する際にネットワーク通信が必要なコンテンツのファイルサイズの合計のことです。</p>
 <p>何もオプションを付けずに実行した場合、以下のように表示されます。</p>

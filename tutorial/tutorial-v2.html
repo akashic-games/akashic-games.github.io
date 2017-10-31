@@ -216,12 +216,13 @@ npm install -g @akashic/akashic-sandbox
 akashic-sandbox -V
 </code></pre>
 <p>執筆時点では <code>akashic</code> のバージョンとして <code>1.1.4</code>、
-<code>akashic-sandbox</code> のバージョンとして <code>1.0.0</code> が表示されます。</p>
+<code>akashic-sandbox</code> のバージョンとして <code>0.13.4</code> が表示されます。</p>
 <h2>空のゲームの作成</h2><p>Akashic Engine のゲームには設定ファイル (<code>game.json</code>) と、
 ゲームを起動するプログラムが必要です。
 <code>game.json</code> はゲームの設定とゲームが利用するアセットを記述する JSON 形式のファイルです。
 アセットはプログラムのソースコードや画像、音声ファイルなどゲームの実行に必要なファイルのことです。</p>
-<p>以下は <code>game.json</code> の例です。</p>
+<p>以下は <code>game.json</code> の例です。
+(この内容の完全な詳細は <a href="https://akashic-games.github.io/guide/game-json.html">game.jsonの仕様</a> を参照してください。)</p>
 <pre><code class="lang-json">{
   &quot;width&quot;: 320,
   &quot;height&quot;: 320,
@@ -233,6 +234,9 @@ akashic-sandbox -V
       &quot;path&quot;: &quot;main.js&quot;,
       &quot;global&quot;: true
     }
+  },
+  &quot;environment&quot;: {
+    &quot;sandbox-runtime&quot;: &quot;2&quot;
   }
 }
 </code></pre>
