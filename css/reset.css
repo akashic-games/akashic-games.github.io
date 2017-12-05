@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+/*↓reset↓*/
+*, *:before, *:after {
+	font-family: 'メイリオ', Meiryo,'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', sans-serif;
+	background-position: center center;
+	background-repeat: no-repeat;
+	box-sizing: border-box;/* 値を全て含む */
+	text-overflow: ellipsis;/* 溢文字「…」 */
+	padding: 0;
+	margin: 0;
+	}
+h1, h2, h3, h4 { font-weight: normal;}
+a:link, a:visited { text-decoration: underline;}
+a:hover, a:active { text-decoration: none;}
+ul { list-style-type: none;}
+img, iframe { border: 0;}
+input, textarea, select {
+	display: block;
+	outline: none;
+	resize: none;
+	}
+button { outline: 0;}
+button::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner {/* お呪い */
+	padding: 0 !important;
+	border: 0 none !important;
+	}
+label, button:hover { cursor: pointer;}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	}
+/*↑reset↑*/
+/*↓class↓*/
+.cfix { zoom: 1;}/* 回り込み解除 */
+.cfix:after {
+	display: block;
+	clear: both;
+	content: "";
+	}
+/*↑class↑*/

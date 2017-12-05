@@ -1,0 +1,231 @@
+@charset "utf-8";
+
+/*↓header↓*/
+header {
+	z-index: 2;/* body:after = 1 */
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 40px;
+	width: 100%;
+	background: #0F1F26;
+	background: linear-gradient(to top, #0F1F26, #1F3F46);
+	padding-top: 8px;
+	}
+header:after {/* 赤線 */
+	position: absolute;
+	bottom: 2px;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 2px;
+	background: #C00;
+	content: "";
+	}
+/*↑header↑*/
+/*↓SP：ホーム↓*/
+.head--logo--SP {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	display: none;
+	width: 120px;
+	height: 24px;
+	background-image: url('/img/akashic-logo/3w.png');
+	background-size: contain;
+	}
+@media screen and (max-width: 959px){
+.head--logo--SP { display: block;}
+}
+/*↑SP：ホーム↑*/
+/*↓SP：コンテンツ展開↓*/
+.head--content--open {
+	z-index: 4;/* .head--contents = 3 */
+	display: none;
+	position: fixed;
+	top: -1px;
+	right: 7px;
+	width: 42px;
+	height: 42px;
+	background: #C00;
+	box-shadow: 0 1px 2px rgba(15,31,38,0.8);
+	border: solid 1px #FFF;
+	text-align: center;
+	padding: 13px 7px;
+	cursor: pointer;
+	}
+.head--content--open.done { background: #012;}
+.head--content--open:after {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	width: 24px;
+	height: 24px;
+	display: block;
+	background-image: url('/img/akashic-logo/2w.png');
+	background-size: contain;
+	content: "";
+	}
+.head--content--open.done:after {
+	background-image: url('/img/icons.png');
+	background-size: cover;
+	background-position: 0 0;
+	}
+@media screen and (max-width: 959px){
+.head--content--open { display: block;}
+}
+/*↑コンテンツ展開(SP)↑*/
+/*↓コンテンツ↓*/
+.head--content {
+	z-index: 3;/* header = 2 */
+	position: relative;
+	text-align: center;
+	margin: 0 auto;
+	}
+@media screen and (max-width: 959px){
+.head--content {
+	position: fixed;
+	top: 0;
+	right: -100vw;
+	width: 100vw;
+	max-height: 100vh;
+	overflow-y: scroll;
+	opacity: 0.0;
+	transition: all 0.5s;
+	}
+.head--content::-webkit-scrollbar { display: none;}
+.head--content.show {/* 展開 */
+	right: 0;
+	opacity: 1.0;
+	}
+}
+/*↑コンテンツ↑*/
+/*↓コンテンツ枠＋ロゴ↓*/
+.head--content--item,
+.head--content--logo {
+	position: relative;
+	display: inline-block;
+	}
+.head--content--item {
+	font-size:12px;
+	line-height:1.0;
+	width: 104px;
+	}
+.head--content--logo {/* ロゴ */
+	width: 120px;
+	margin: 0 8px 4px;
+	}
+.head--content--logo a {
+	display: block;
+	width: 120px;
+	height: 24px;
+	background-image: url('/img/akashic-logo/3w.png');
+	background-size: contain;
+	}
+.head--content--logo:hover a {
+	background-image: url('/img/akashic-logo/3r.png');
+	}
+@media screen and (max-width: 959px){
+.head--content--item { width: 100%;}
+.head--content--logo { display: none;}
+}
+/*↑コンテンツ枠＋ロゴ↑*/
+/*↓コンテンツ＞タブ↓*/
+.head--content--item--tab { height: 28px;}
+.head--content--item--tab:before,
+.head--content--item--tab:after {
+	display: block;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	}
+.head--content--item--tab:before {
+	width: 100%;
+	height: 0;
+	background: #C00;
+	background: linear-gradient(to top, #C00, #F00);
+	border-radius: 4px 4px 0 0;
+	opacity: 0.0;
+	transition: height 0.25s;
+	content: "";
+	}
+.head--content--item:hover .head--content--item--tab:before {
+	height: 100%;
+	opacity: 1.0;
+	}
+.head--content--item--tab:after {
+	width: 100%;
+	color: #FFF;
+	text-decoration: none !important;
+	padding: 8px;
+	}
+.head--content--item:nth-child(1) .head--content--item--tab:after { content: "入門";}
+.head--content--item:nth-child(2) .head--content--item--tab:after { content: "ガイド";}
+.head--content--item:nth-child(4) .head--content--item--tab:after { content: "リファレンス";}
+.head--content--item:nth-child(5) .head--content--item--tab:after { content: "サンプルデモ";}
+@media screen and (max-width: 959px){
+.head--content--item--tab {
+	height: auto;
+	background: #A00;
+	background: linear-gradient(to top, #A00, #800);
+	box-shadow: 0 1px 2px #800 inset;
+	border-bottom: solid 1px #F42;
+	}
+.head--content--item--tab:before { display: none;}
+.head--content--item--tab:after {
+	position: static;
+	text-shadow: 0 1px 1px #600;
+	}
+}
+/*↑コンテンツ＞タブ↑*/
+/*↓コンテンツ＞メニュー↓*/
+.head--content--item--list {
+	visibility: hidden;
+	position: absolute;
+	top: 28px;
+	left: 0;
+	background: #C00;
+	border-width: 0 1px 1px;
+	border-color: #1F2F36;
+	text-align: left;
+	padding: 4px 0;
+	opacity: 0.0;
+	transition: all 0.25s;
+	}
+.head--content--item:nth-child(n+4) .head--content--item--list {/* 4個目から右寄せ */
+	left: auto;
+    right: 0;
+	}
+.head--content--item:hover .head--content--item--list {
+	visibility: visible;
+	opacity: 1.0;
+	}
+.head--content--item--list li {
+	height: 0px;
+	transition: height 0.25s;
+	}
+.head--content--item:hover .head--content--item--list li { height: 28px;}
+.head--content--item--list a {
+	display: block;
+	background: #C00;
+	color: #FCC;
+	white-space: nowrap;
+	text-decoration: none;
+	padding: 8px 16px;
+	transition: all 0.25s;
+	}
+.head--content--item--list a:hover {
+	background: #900;
+	color: #FFF;
+	}
+@media screen and (max-width: 959px){
+.head--content--item--list {
+	visibility: visible;
+	position: static;
+	text-align: center;
+	padding: 8px 0;
+	opacity: 1.0;
+	}
+.head--content--item--list li { height: 28px;}
+}
+/*↑コンテンツ＞メニュー↑*/

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="description" content="AkashicEngineはJavaScriptで動作するマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>アセットロードエラーについて - Akashic</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/akashic-document.css">
+<link rel="stylesheet" href="/css/styles/railscasts.css">
+<link rel="stylesheet" href="/css/footer.css">
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/header.js"></script>
+<script src="/lib/common.js"></script>
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<!--↓外枠↓-->
+<div id="OuterBox">
+<p class="page--top"></p>
+<!--↓ヘッダ↓-->
+<header>
+<p class="head--content--open"></p>
+<a class="head--logo--SP" href="/index.html" title="ホーム"></a>
+<!--↓ヘッダ＞コンテンツ↓-->
+<ul class="head--content"><!--
+--><li class="head--content--item">
+	<p class="head--content--item--tab"></p>
+	<ul class="head--content--item--list">
+	<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
+	<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+	</ul>
+</li><!--
+--><li class="head--content--item">
+	<p class="head--content--item--tab"></p>
+	<ul class="head--content--item--list">
+	<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+	<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+	<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+	<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+	<li><a href="/guide/storage.html">ストレージについて</a></li>
+	<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+	<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+	<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+	</ul>
+</li><!--
+--><li class="head--content--logo"><a href="/index.html" title="ホーム"></a></li><!--
+--><li class="head--content--item">
+	<p class="head--content--item--tab"></p>
+	<ul class="head--content--item--list">
+	<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+	<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+	<li><a href="/reference/akashic-timeline/index.html">akashic-timeline</a></li>
+	<li><a href="/reference/akashic-animation/index.html">akashic-animation</a></li>
+	<li><a href="/reference/akashic-label/index.html">akashic-label</a></li>
+	<li><a href="/reference/akashic-tile/index.html">akashic-tile</a></li>
+	<li><a href="/reference/akashic-box2d/index.html">akashic-box2d</a></li>
+	</ul>
+</li><!--
+--><li class="head--content--item">
+	<p class="head--content--item--tab"></p>
+	<ul class="head--content--item--list">
+	<li><a href="/asset/helloworld.html">Hello World</a></li>
+	<li><a href="/asset/scale-rotate-opacity.html">拡縮・回転・透明度</a></li>
+	<li><a href="/asset/bitmap-font.html">ビットマップフォント</a></li>
+	<li><a href="/asset/framesprite.html">フレームアニメーション</a></li>
+	<li><a href="/asset/touchevent.html">タッチイベント</a></li>
+	<li><a href="/asset/tile.html">タイル</a></li>
+	<li><a href="/asset/simpleshot.html">アブストラクトシューティング</a></li>
+	<li><a href="/asset/hoppingwitch.html">HOPPING WITCH</a></li>
+	<li><a href="/asset/galaxywars.html">GALAXY WARS</a></li>
+	</ul>
+</li><!--
+--></ul>
+<!--↑ヘッダ＞コンテンツ↑-->
+</header>
+<!--↑ヘッダ↑-->
+<!--↓ボディ↓-->
+<section class="page--body">
+<div class="akashic--document responsive--width">
+<!--↓【！】ここから↓-->
+
+<h1>アセットロードエラーについて</h1>
+
+<h2 id="これは" name="これは">これは</h2>
+
+<p>アセットロードエラーとそのハンドリング方法について述べます。</p>
+
+<h2 id="アセットロードエラーとは" name="アセットロードエラーとは">アセットロードエラーとは</h2>
+
+<p>アセットロードエラーとはアセットの読み込みに失敗したことを意味するエラーです。</p>
+<p><code>game.json</code>で指定したアセットがサーバ上に存在しない場合や、ネットワークやサーバ異常によりダウンロード出来ない場合に発生します。</p>
+
+<h2 id="エラーのハンドリング" name="エラーのハンドリング">エラーのハンドリング</h2>
+
+<p>ゲームコンテンツからアセットロードエラーをハンドリングするコードの例を以下に示します。</p>
+
+<pre><code>var scene = new g.Scene({game: game, assetIds: [&quot;apple&quot;], name: &quot;SampleScene&quot;});
+// ハンドラを登録
+scene.assetLoadFailed.add(function (failure) {
+    // Loggerでログ出力
+    game.logger.warn(&quot;load error for &#39;&quot; + failure.asset.id + &quot;&#39; in &quot; + scene.name, failure);
+    // リトライ不可能の場合、この後ゲームが終了される
+    if (!failure.error.retriable)
+        game.logger.error(&quot;bye.&quot;, failure);
+});</code></pre>
+
+<p>アセットロードエラーが発生した場合、<code>Scene#assetLoadFailed</code>に登録したハンドラが呼び出されます。</p>
+<p>上記の例では、アセットID<code>&quot;apple&quot;</code>の読み込みに失敗した場合に、ハンドラが呼び出されます。</p>
+<p>ハンドラが呼び出された時、ハンドラの第一引数<code>failure</code>は<code>AssetLoadFailureInfo</code>となります。</p>
+<p><code>AssetLoadFailureInfo</code>にはアセットロードエラーに関する情報が含まれており、ゲームコンテンツは上記の例のようにログ出力等の処理を行うことが可能です。</p>
+<p><code>AssetLoadFailureInfo</code>の詳細はAPIリファレンスを参照してください。<!-- TODO:APIリファレンスへのハイパーリンク --></p>
+<p>アセットの読み込みに失敗した場合、Akashicは読み込みの再試行を行う機構を備えています。</p>
+<p>再試行できない要因(HTTP 404 Not Foundなど)で失敗、又は再試行回数の上限を超えた場合、Akashicは自動的にゲーム続行が不可能だと判断し、ハンドラの呼び出し後にゲームを終了します。</p>
+<p>Akashicがアセット読み込みの再試行を行うかどうかは<code>failure.error.retriable</code>を参照することで判断することが可能です。</p>
+<p>この値が<code>false</code>の場合、Akashicはハンドラ呼出し後にゲームを終了します。</p>
+
+<h2 id="再試行のキャンセル" name="再試行のキャンセル">再試行のキャンセル</h2>
+
+<p>ゲームコンテンツは、 アセットロードエラーのハンドラ内で<code>failure.cancelRetry</code>に<code>true</code>にセットすることで、Akashicが行うアセット読み込みの再試行をキャンセルすることが可能です。</p>
+<p>以下に例を示します。</p>
+
+<pre><code>scene.assetLoadFailed.add(function (failure) {
+    // 再試行をキャンセルし、ゲーム続行を断念する
+    failure.cancelRetry = true;
+    game.logger.error(&quot;bye.&quot;, failure);
+});</code></pre>
+
+<p>ハンドラ内で<code>failure.cancelRetry</code>に<code>true</code>がセットされると、 Akashicはハンドラ呼出し後にゲームを終了します。</p>
+
+<h2 id="その他" name="その他">その他</h2>
+
+<p>アセットロードエラー発生時の処理は、実行環境によって異なるものになる可能性がありますのでご注意下さい。</p>
+
+<!--↑【！】ここまで↑-->
+</div>
+</section>
+<!--↑ボディ↑-->
+<!--↓フッタ↓-->
+<footer>
+<!--↓フッタ＞コンテンツ↓-->
+<ul class="foot--content responsive--width cfix">
+<li class="foot--content--item">
+	<p class="foot--content--item--tab">入門</p>
+	<ul class="foot--content--item--list">
+	<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
+	<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+	</ul>
+</li>
+<li class="foot--content--item">
+	<p class="foot--content--item--tab">ガイド</p>
+	<ul class="foot--content--item--list">
+	<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+	<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+	<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+	<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+	<li><a href="/guide/storage.html">ストレージについて</a></li>
+	<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+	<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+	<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+	</ul>
+</li>
+<li class="foot--content--item">
+	<p class="foot--content--item--tab">リファレンス</p>
+	<ul class="foot--content--item--list">
+	<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+	<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+	<li><a href="/reference/akashic-timeline/index.html">akashic-timeline</a></li>
+	<li><a href="/reference/akashic-animation/index.html">akashic-animation</a></li>
+	<li><a href="/reference/akashic-label/index.html">akashic-label</a></li>
+	<li><a href="/reference/akashic-tile/index.html">akashic-tile</a></li>
+	<li><a href="/reference/akashic-box2d/index.html">akashic-box2d</a></li>
+	</ul>
+</li>
+<li class="foot--content--item">
+	<p class="foot--content--item--tab">サンプルデモ</p>
+	<ul class="foot--content--item--list">
+	<li><a href="/asset/helloworld.html">Hello World</a></li>
+	<li><a href="/asset/scale-rotate-opacity.html">拡縮・回転・透明度</a></li>
+	<li><a href="/asset/bitmap-font.html">ビットマップフォント</a></li>
+	<li><a href="/asset/framesprite.html">フレームアニメーション</a></li>
+	<li><a href="/asset/touchevent.html">タッチイベント</a></li>
+	<li><a href="/asset/tile.html">タイル</a></li>
+	<li><a href="/asset/simpleshot.html">アブストラクトシューティング</a></li>
+	<li><a href="/asset/hoppingwitch.html">HOPPING WITCH</a></li>
+	<li><a href="/asset/galaxywars.html">GALAXY WARS</a></li>
+	</ul>
+</li>
+</ul>
+<!--↑フッタ＞コンテンツ↑-->
+<!--↓フッタ＞コモンズ↓-->
+<div class="foot--creativecommons">
+	<ul>
+	<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+	<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
+	</ul>
+</div>
+<!--↑フッタ＞コモンズ↑-->
+<!--↓フッタ＞商標↓-->
+<div class="foot--license">
+<div class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></div>
+<p class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></p>
+</div>
+<!--↑フッタ＞商標↑-->
+</footer>
+<!--↑フッタ↑-->
+</div>
+<!--↑外枠↑-->
+</body>
+</html>

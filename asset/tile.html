@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="description" content="AkashicEngineはJavaScriptで動作するマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>タイル - Akashic</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/asset.css">
+<link rel="stylesheet" href="/css/styles/railscasts.css">
+<link rel="stylesheet" href="/css/footer.css">
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/header.js"></script>
+<script src="/lib/common.js"></script>
+<script src="/lib/asset.js"></script>
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<style>/*↓iframeサイズ↓*/
+.demo--head--main iframe { width: 512px; height: 384px;}
+@media screen and (max-width: 959px){
+.demo--head--main iframe { width: 320px; height: 240px;}
+}
+/*↑iframeサイズ↑*/</style>
+</head>
+<body>
+<!--↓外枠↓-->
+<div id="OuterBox">
+<p class="page--top"></p>
+<!--↓ヘッダ↓-->
+<header>
+<p class="head--content--open"></p>
+<a class="head--logo--SP" href="/index.html" title="ホーム"></a>
+<!--↓ヘッダ＞コンテンツ↓-->
+<ul class="head--content"><!--
+--><li class="head--content--item">
+	<p class="head--content--item--tab"></p>
+	<ul class="head--content--item--list">
+	<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
+	<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+	</ul>
+</li><!--
+--><li class="head--content--item">
+	<p class="head--content--item--tab"></p>
+	<ul class="head--content--item--list">
+	<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+	<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+	<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+	<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+	<li><a href="/guide/storage.html">ストレージについて</a></li>
+	<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+	<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+	<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+	</ul>
+</li><!--
+--><li class="head--content--logo"><a href="/index.html" title="ホーム"></a></li><!--
+--><li class="head--content--item">
+	<p class="head--content--item--tab"></p>
+	<ul class="head--content--item--list">
+	<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+	<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+	<li><a href="/reference/akashic-timeline/index.html">akashic-timeline</a></li>
+	<li><a href="/reference/akashic-animation/index.html">akashic-animation</a></li>
+	<li><a href="/reference/akashic-label/index.html">akashic-label</a></li>
+	<li><a href="/reference/akashic-tile/index.html">akashic-tile</a></li>
+	<li><a href="/reference/akashic-box2d/index.html">akashic-box2d</a></li>
+	</ul>
+</li><!--
+--><li class="head--content--item">
+	<p class="head--content--item--tab"></p>
+	<ul class="head--content--item--list">
+	<li><a href="/asset/helloworld.html">Hello World</a></li>
+	<li><a href="/asset/scale-rotate-opacity.html">拡縮・回転・透明度</a></li>
+	<li><a href="/asset/bitmap-font.html">ビットマップフォント</a></li>
+	<li><a href="/asset/framesprite.html">フレームアニメーション</a></li>
+	<li><a href="/asset/touchevent.html">タッチイベント</a></li>
+	<li><a href="/asset/tile.html">タイル</a></li>
+	<li><a href="/asset/simpleshot.html">アブストラクトシューティング</a></li>
+	<li><a href="/asset/hoppingwitch.html">HOPPING WITCH</a></li>
+	<li><a href="/asset/galaxywars.html">GALAXY WARS</a></li>
+	</ul>
+</li><!--
+--></ul>
+<!--↑ヘッダ＞コンテンツ↑-->
+</header>
+<!--↑ヘッダ↑-->
+<!--↓demoヘッダ↓-->
+<section class="demo--head">
+<div class="responsive--width cfix">
+	<div class="demo--head--main">
+	<iframe src="/demo/tile/index.html"></iframe>
+	</div>
+	<div class="demo--head--info">
+	<h1>タイル</h1>
+	<p><a href="/reference/akashic-engine-v2/classes/_lib_main_d_.g.tile.html">g.Tile</a>でタイルチップを並べて描画できます。<br>
+	画面をクリック(タップ)するとスクロールを開始／停止します。<br>
+	<br>
+	このサンプルで使用している素材は<a href="/asset/material.html#TILECHIP">素材ページ</a>で公開・配布しています。</p>
+	</div>
+</div>
+</section>
+<!--↑demoヘッダ↑-->
+<div id="FileAnchor"><!--スクロール到達地点調節用--></div>
+<!--↓demoボディ↓-->
+<section class="demo--body">
+<div class="responsive--width cfix">
+<!--↓FILE↓-->
+<div class="demo--body--list">
+	<ul><!--
+	--><li id="DEMO-LIST-1" class="selected">game.json</li><!--
+	--><li id="DEMO-LIST-2" class="">mainScene.js</li><!--
+	--></ul>
+</div>
+<!--↑FILE↑-->
+<!--↓CODE↓-->
+<div class="demo--body--item">
+<pre id="DEMO-ITEM-1"><code>{
+	"width": 512,
+	"height": 384,
+	"fps": 30,
+	"assets": {
+		"mainScene": {
+			"type": "script",
+			"path": "script/mainScene.js",
+			"global": true
+		},
+		"map": {
+			"type": "image",
+			"width": 512,
+			"height": 512,
+			"path": "image/map.png"
+		}
+	}
+}</code></pre>
+<pre id="DEMO-ITEM-2" style="display: none;"><code>var game = g.game;
+
+module.exports = function() {
+    var scene = new g.Scene({game: game, assetIds:["map"]});
+    scene.loaded.handle(function() {
+        var tile = new g.Tile({
+            scene: scene,
+            src: scene.assets["map"],
+            tileWidth: 32,
+            tileHeight: 32,
+            //
+            // マップデータ
+            //
+            tileData: [
+                [ -1, -1, 84, 85, -1, -1, -1, -1,122,123,164, -1, -1, -1, -1,125, 88, 89, -1, -1, -1, -1, -1, -1, -1, -1, -1,182,180, -1, -1, 76],
+                [151,189,100,101,170,190,191,168,138,139, 77, -1,157,158,159,141,104,105,169,204,172,205,112,113,114,206, 10, 11, 12, 60, -1,201],
+                [ 49, 49, 49, 49, 49, 49, 49, 49, 50, 83, 78,115, 55, 56, 56, 56, 56, 56, 56, 56, 56, 57,128,129,130, 58, 42, 43, 44,145, -1,202],
+                [ 33, 34,165, 32, 34, -1, -1, -1,173, 99, 78,131,121, 90, 91, -1, -1, -1, 72,192,126,166, 58, 59, 59, 60,167,  5,  6,161, -1,202],
+                [198, -1, 86, 87, -1,122,123, -1, 48, 50, 78,131,137,106,107,175,150, -1, 72,193,142, -1,201, 37, 38,201, -1, 21, 22, 74,184,202],
+                [199,149,102,103,152,154,155,153,156,179, 78, 61, 62, 62, 62, 62, 63,115, 72,194, 71,207,202, 53, 54,203, -1, 69, 70, 75, 74,202],
+                [199, 48, 49, 49, 49, 49, 49, 49, 49, 50, 79,195, -1, 45, 46, 47, -1,131, 72,  7,  8,  9,203, -1,183, -1, -1, -1, -1, 76, 75,202],
+                [199, -1, -1, 66, -1,124,146,119, -1, 94, 95,196,127, 92, 93,147,144,131, 72, 23, 24, 25, 19, 20, 58, 60,115, 58, 60, -1, 76,202],
+                [199,148, 80, 81, 82,140,162,135,171,110,111,197,143,108,109,163,160,131, 72, 39, 40, 41, 67, 68,120, -1,131, -1, -1, 58, 60,202],
+                [199, 64, 96, 97, 98,  0,  1,  2, 97, 13, 14, 15,115, 61, 62, 62, 62, 63, 73,176,177, -1, 58, 60,136,178,131,  3,  4,174, -1,203],
+                [200, 65,116,116,116, 16, 17, 18,116, 29, 30, 31,131,185,187,186,188,181, -1, 10, 12,118,118,118, 10, 11, 12, 35, 36, 77,117,117],
+                [116, 65,132,132,132, 16, 17, 18,132, 29, 30, 31, 14, 14, 14, 14, 14, 15,118, 26, 28,134,134,134, 26, 27, 28, 51, 52, 78,133,133],
+            ],
+            touchable: true
+        });
+
+        var dw = tile.width - game.width;
+        if (dw > 0) {
+            //
+            // スクロール速度
+            //
+            var vx = -1;
+
+            var scroll = false;
+            tile.pointDown.handle(function() {
+                scroll = !scroll;
+            });
+            tile.update.handle(function() {
+                if (!scroll) {
+                    return;
+                }
+                tile.x += vx;
+                if (tile.x < -dw) {
+                    tile.x = -dw;
+                    vx *= -1;
+                } else if (tile.x > 0) {
+                    tile.x = 0;
+                    vx *= -1;
+                }
+                tile.modified();
+            });
+        }
+        scene.append(tile);
+    });
+
+    return scene;
+}</code></pre>
+</div>
+<!--↑CODE↑-->
+</div>
+</section>
+<!--↑ボディ↑-->
+<!--↓フッタ↓-->
+<footer>
+<!--↓フッタ＞コンテンツ↓-->
+<ul class="foot--content responsive--width cfix">
+<li class="foot--content--item">
+	<p class="foot--content--item--tab">入門</p>
+	<ul class="foot--content--item--list">
+	<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
+	<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+	</ul>
+</li>
+<li class="foot--content--item">
+	<p class="foot--content--item--tab">ガイド</p>
+	<ul class="foot--content--item--list">
+	<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+	<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+	<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+	<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+	<li><a href="/guide/storage.html">ストレージについて</a></li>
+	<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+	<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+	<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+	</ul>
+</li>
+<li class="foot--content--item">
+	<p class="foot--content--item--tab">リファレンス</p>
+	<ul class="foot--content--item--list">
+	<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+	<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+	<li><a href="/reference/akashic-timeline/index.html">akashic-timeline</a></li>
+	<li><a href="/reference/akashic-animation/index.html">akashic-animation</a></li>
+	<li><a href="/reference/akashic-label/index.html">akashic-label</a></li>
+	<li><a href="/reference/akashic-tile/index.html">akashic-tile</a></li>
+	<li><a href="/reference/akashic-box2d/index.html">akashic-box2d</a></li>
+	</ul>
+</li>
+<li class="foot--content--item">
+	<p class="foot--content--item--tab">サンプルデモ</p>
+	<ul class="foot--content--item--list">
+	<li><a href="/asset/helloworld.html">Hello World</a></li>
+	<li><a href="/asset/scale-rotate-opacity.html">拡縮・回転・透明度</a></li>
+	<li><a href="/asset/bitmap-font.html">ビットマップフォント</a></li>
+	<li><a href="/asset/framesprite.html">フレームアニメーション</a></li>
+	<li><a href="/asset/touchevent.html">タッチイベント</a></li>
+	<li><a href="/asset/tile.html">タイル</a></li>
+	<li><a href="/asset/simpleshot.html">アブストラクトシューティング</a></li>
+	<li><a href="/asset/hoppingwitch.html">HOPPING WITCH</a></li>
+	<li><a href="/asset/galaxywars.html">GALAXY WARS</a></li>
+	</ul>
+</li>
+</ul>
+<!--↑フッタ＞コンテンツ↑-->
+<!--↓フッタ＞コモンズ↓-->
+<div class="foot--creativecommons">
+	<ul>
+	<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+	<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
+	</ul>
+</div>
+<!--↑フッタ＞コモンズ↑-->
+<!--↓フッタ＞商標↓-->
+<div class="foot--license">
+	<div class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></div>
+	<p class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></p>
+</div>
+<!--↑フッタ＞商標↑-->
+</footer>
+<!--↑フッタ↑-->
+</div>
+<!--↑外枠↑-->
+</body>
+</html>

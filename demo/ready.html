@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="robots"      content="noindex,nofollow">
+<meta name="theme-color" content="#0F1F26">
+<title>READY - Akashic</title>
+<link rel="stylesheet" type="text/css" href="/css/reset.css">
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script>
+$(window).on('load resize', function(){
+
+	// #READY を中央に //
+	var y = ( ($(window).height() - $("#READY").innerHeight() ) /2);
+	var x = ( ($(window).width() - $("#READY").innerWidth() ) /2);
+	$('#READY').css({'top': y + "px"});
+	$('#READY').css({'left': x + "px"});
+
+});
+</script>
+<style type="text/css">
+body {
+	background: #0F1F26;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	}
+body div {
+	width: 100%;
+	height: 100%;
+	background: #0F1F26;
+	background: radial-gradient(ellipse farthest-corner at center, #465F6F, #1F2F36);
+	}
+p#READY {/* top,leftはJQuery */
+	position: absolute;
+	display: block;
+	font-size: 14px;
+	line-height: 14px;
+	padding: 9px;
+	transition: all 1.0s;
+	animation: text-READY 1.0s alternate-reverse ease infinite;
+	}
+@keyframes text-READY {
+  0% {
+	color: #4F5F66;
+	text-shadow: 0 0 2px #1F2F36;
+	}
+100% {
+	color: #FFF;
+	text-shadow: 0 0 4px #AFBFC6, 0 0 8px #69C, 0 0 16px #CFF;
+	}
+}
+</style>
+</head>
+<body>
+<div>
+<p id="READY">メニューからデモを選択してください</p>
+</div>
+</body>
+</html>
