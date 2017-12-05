@@ -11,13 +11,13 @@
 <link rel="stylesheet" href="/css/common.css">
 <link rel="stylesheet" href="/css/header.css">
 <link rel="stylesheet" href="/css/asset.css">
-<link rel="stylesheet" href="/css/styles/railscasts.css"><!-- highlight.js -->
+<link rel="stylesheet" href="/css/styles/railscasts.css">
 <link rel="stylesheet" href="/css/footer.css">
 <script src="/lib/jquery-3.2.1.min.js"></script>
 <script src="/lib/header.js"></script>
 <script src="/lib/common.js"></script>
 <script src="/lib/asset.js"></script>
-<script src="/lib/highlight.pack.js"><!-- highlight.js --></script>
+<script src="/lib/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <style>/*↓iframeサイズ↓*/
 .demo--head--main iframe { width: 512px; height: 384px;}
@@ -95,7 +95,7 @@
 	</div>
 	<div class="demo--head--info">
 	<h1>GALAXY WARS</h1>
-	<p>画面をドラッグ（スワイプ）すると自機が移動します。自機の弾は自動で発射され、敵を倒すと様々なアイテムを落とします。左上のゲージがゼロになるとゲームオーバーです。<br>
+	<p>画面をドラッグ(スワイプ)すると自機が移動します。自機の弾は自動で発射され、敵を倒すと様々なアイテムを落とします。左上のゲージがゼロになるとゲームオーバーです。<br>
 	<br>
 	このサンプルで使用している素材は<a href="/asset/material.html#GALAXYWARS">素材ページ</a>で公開・配布しています。</p>
 	</div>
@@ -107,7 +107,7 @@
 <section class="demo--body">
 <div class="responsive--width cfix">
 <!--↓FILE↓-->
-<div class="demo--body--file">
+<div class="demo--body--list">
 	<ul><!--
 	--><li class="selected">game.json</li><!--
 	--><li>mainScene.js</li><!--
@@ -140,8 +140,8 @@
 </div>
 <!--↑FILE↑-->
 <!--↓CODE↓-->
-<div class="demo--body--code">
-<pre id="DEMO-CODE-1"><code>{
+<div class="demo--body--item">
+<pre id="DEMO-ITEM-1"><code>{
 	"width": 512,
 	"height": 384,
 	"fps": 30,
@@ -450,7 +450,7 @@
 		}
 	}
 }</code></pre>
-<pre id="DEMO-CODE-2"  style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-2"  style="display: none;"><code>var Global = require("Global");
 var createBootScene = require("bootScene");
 
 //
@@ -466,7 +466,7 @@ module.exports = function() {
 
     return createBootScene();
 }</code></pre>
-<pre id="DEMO-CODE-3"  style="display: none;"><code>{
+<pre id="DEMO-ITEM-3"  style="display: none;"><code>{
   "32": {
     "x": 0,
     "y": 0
@@ -849,7 +849,7 @@ module.exports = function() {
     "y": 80
   }
 }</code></pre>
-<pre id="DEMO-CODE-4"  style="display: none;"><code>var game = g.game;
+<pre id="DEMO-ITEM-4"  style="display: none;"><code>var game = g.game;
 
 //
 // ScreenEffectorコンストラクタ
@@ -961,7 +961,7 @@ ScreenEffector.prototype.renderSelf = function(renderer, camera) {
 }
 
 module.exports = ScreenEffector;</code></pre>
-<pre id="DEMO-CODE-5"  style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-5"  style="display: none;"><code>var Global = require("Global");
 var ScreenEffector = require("ScreenEffector");
 var createGameScene = require("gameScene");
 var math = require("Math");
@@ -1152,7 +1152,7 @@ function createTitleScene() {
 }
 
 module.exports = createTitleScene;</code></pre>
-<pre id="DEMO-CODE-6"  style="display: none;"><code>//
+<pre id="DEMO-ITEM-6"  style="display: none;"><code>//
 // 矩形の交差判定
 //
 function intersectArea(a, b) {
@@ -1168,7 +1168,7 @@ function random() {
 
 module.exports.intersectArea = intersectArea;
 module.exports.random = random;</code></pre>
-<pre id="DEMO-CODE-7"  style="display: none;"><code>//
+<pre id="DEMO-ITEM-7"  style="display: none;"><code>//
 // Entity識別子定義
 //
 module.exports = {
@@ -1180,7 +1180,7 @@ module.exports = {
     ITEM: 5,
     OBSTACLE: 6
 };</code></pre>
-<pre id="DEMO-CODE-8"  style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-8"  style="display: none;"><code>var Global = require("Global");
 var EntityType = require("EntityType");
 var ItemType = require("ItemType");
 var Shield = require("Shield");
@@ -1359,7 +1359,7 @@ Player.prototype.destroy = function() {
 }
 
 module.exports = Player;</code></pre>
-<pre id="DEMO-CODE-9"  style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-9"  style="display: none;"><code>var Global = require("Global");
 var math = require("Math");
 var EntityType = require("EntityType");
 var createTitleScene = require("titleScene");
@@ -1448,7 +1448,7 @@ function createGameScene() {
 }
 
 module.exports = createGameScene;</code></pre>
-<pre id="DEMO-CODE-10" style="display: none;"><code>//
+<pre id="DEMO-ITEM-10" style="display: none;"><code>//
 // グローバル変数
 //
 module.exports = {
@@ -1456,7 +1456,7 @@ module.exports = {
     bmpFont: null,
     hiScore: 0
 };</code></pre>
-<pre id="DEMO-CODE-11" style="display: none;"><code>//
+<pre id="DEMO-ITEM-11" style="display: none;"><code>//
 // アイテム識別子定義
 //
 module.exports = {
@@ -1467,7 +1467,7 @@ module.exports = {
     PIERCING: 4,
     RECOVER: 5
 };</code></pre>
-<pre id="DEMO-CODE-12" style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-12" style="display: none;"><code>var Global = require("Global");
 var EntityType = require("EntityType");
 
 var game = g.game;
@@ -1532,7 +1532,7 @@ Shield.prototype.destroy = function() {
 }
 
 module.exports = Shield;</code></pre>
-<pre id="DEMO-CODE-13" style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-13" style="display: none;"><code>var Global = require("Global");
 var math = require("Math");
 var EntityType = require("EntityType");
 var Particle = require("Particle");
@@ -1710,7 +1710,7 @@ HitEffectEmitter.prototype.destroy = function() {
 }
 
 module.exports = Bullet;</code></pre>
-<pre id="DEMO-CODE-14" style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-14" style="display: none;"><code>var Global = require("Global");
 var EntityType = require("EntityType");
 
 var game = g.game;
@@ -1793,7 +1793,7 @@ Particle.prototype.destroy = function() {
 }
 
 module.exports = Particle;</code></pre>
-<pre id="DEMO-CODE-15" style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-15" style="display: none;"><code>var Global = require("Global");
 var math = require("Math");
 var Particle = require("Particle");
 
@@ -1844,7 +1844,7 @@ function emmitDamageEffect(entity) {
 }
 
 module.exports = emmitDamageEffect;</code></pre>
-<pre id="DEMO-CODE-16" style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-16" style="display: none;"><code>var Global = require("Global");
 var math = require("Math");
 var EntityType = require("EntityType");
 var ItemType = require("ItemType");
@@ -1904,7 +1904,7 @@ Enemy.prototype.destroy = function() {
 }
 
 module.exports = Enemy;</code></pre>
-<pre id="DEMO-CODE-17" style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-17" style="display: none;"><code>var Global = require("Global");
 var EntityType = require("EntityType");
 
 var game = g.game;
@@ -1964,7 +1964,7 @@ Item.prototype.destroy = function() {
 }
 
 module.exports = Item;</code></pre>
-<pre id="DEMO-CODE-18" style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-18" style="display: none;"><code>var Global = require("Global");
 var EntityType = require("EntityType");
 var Item = require("Item");
 
@@ -2112,7 +2112,7 @@ ItemGaugeTray.prototype.destroy = function() {
 }
 
 module.exports = ItemGaugeTray;</code></pre>
-<pre id="DEMO-CODE-19" style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-19" style="display: none;"><code>var Global = require("Global");
 var math = require("Math");
 var EntityType = require("EntityType");
 var ItemType = require("ItemType");
@@ -2194,7 +2194,7 @@ AlphaEnemy.prototype.fire = function(targetPosition) {
 }
 
 module.exports = AlphaEnemy;</code></pre>
-<pre id="DEMO-CODE-20" style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-20" style="display: none;"><code>var Global = require("Global");
 var math = require("Math");
 var EntityType = require("EntityType");
 var ItemType = require("ItemType");
@@ -2269,7 +2269,7 @@ BetaEnemy.prototype.onUpdate = function() {
 }
 
 module.exports = BetaEnemy;</code></pre>
-<pre id="DEMO-CODE-21" style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-21" style="display: none;"><code>var Global = require("Global");
 var math = require("Math");
 var EntityType = require("EntityType");
 var ItemType = require("ItemType");
@@ -2445,7 +2445,7 @@ GammaEnemy.prototype.destroy = function() {
 }
 
 module.exports = GammaEnemy;</code></pre>
-<pre id="DEMO-CODE-22" style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-22" style="display: none;"><code>var Global = require("Global");
 var math = require("Math");
 var EntityType = require("EntityType");
 var AlphaEnemy = require("AlphaEnemy");
@@ -2525,7 +2525,7 @@ EnemyManager.prototype.destroy = function() {
 }
 
 module.exports = EnemyManager;</code></pre>
-<pre id="DEMO-CODE-23" style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-23" style="display: none;"><code>var Global = require("Global");
 var math = require("Math");
 var EntityType = require("EntityType");
 
@@ -2597,7 +2597,7 @@ Background.prototype.destroy = function() {
 }
 
 module.exports = Background;</code></pre>
-<pre id="DEMO-CODE-24" style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-24" style="display: none;"><code>var Global = require("Global");
 var math = require("Math");
 var EntityType = require("EntityType");
 var Player = require("Player");
@@ -2753,7 +2753,7 @@ GameCore.prototype.intersect = function(collider) {
 }
 
 module.exports = GameCore;</code></pre>
-<pre id="DEMO-CODE-25" style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-25" style="display: none;"><code>var Global = require("Global");
 var math = require("Math");
 
 var game = g.game;
@@ -2881,7 +2881,7 @@ GameOverLogo.prototype.destroy = function() {
 }
 
 module.exports = GameOverLogo;</code></pre>
-<pre id="DEMO-CODE-26" style="display: none;"><code>var Global = require("Global");
+<pre id="DEMO-ITEM-26" style="display: none;"><code>var Global = require("Global");
 var Player = require("Player");
 
 var game = g.game;
@@ -2965,7 +2965,7 @@ PlayerStatus.prototype.destroy = function() {
 }
 
 module.exports = PlayerStatus;</code></pre>
-<pre id="DEMO-CODE-27" style="display: none;"><code>var createTitleScene = require("titleScene");
+<pre id="DEMO-ITEM-27" style="display: none;"><code>var createTitleScene = require("titleScene");
 
 var game = g.game;
 
