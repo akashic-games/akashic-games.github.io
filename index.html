@@ -1,224 +1,328 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<base href=".">
-		<title>akashic-engine</title>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/default.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="./style.css">
-		<link rel="shortcut icon" href="./favicon.ico" type="image/vnd.microsoft.icon"/>
-		<link rel="icon" href="./favicon.ico" type="image/vnd.microsoft.icon"/>
-	</head>
-	<body>
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="./index.html"></a>
-				</div>
-				<div id="navbar" class="collapse navbar-collapse">
-					<ul class="nav navbar-nav">
-						
-						
-							
-								<li class="dropdown">
-									<a class="dropdown-toggle" data-toggle="dropdown" href="#">入門 <span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										
-											
-												<li role="presentation"><a href="./tutorial/tutorial.html">Akashic Engine 入門 (v1(deprecated))</a></li>
-											
-										
-											
-												<li role="presentation"><a href="./tutorial/tutorial-v2.html">Akashic Engine 入門 (v2)</a></li>
-											
-										
-									</ul>
-								</li>
-							 
-						
-							
-								<li class="dropdown">
-									<a class="dropdown-toggle" data-toggle="dropdown" href="#">ガイド <span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										
-											
-												<li role="presentation"><a href="guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
-											
-										
-											
-												<li role="presentation"><a href="guide/asset-load-error.html">アセットロードエラーについて</a></li>
-											
-										
-											
-												<li role="presentation"><a href="guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-											
-										
-											
-												<li role="presentation"><a href="guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
-											
-										
-											
-												<li role="presentation"><a href="guide/composite-operation.html">CompositeOperationの利用</a></li>
-											
-										
-											
-												<li role="presentation"><a href="guide/game-json.html">game.jsonの仕様</a></li>
-											
-										
-											
-												<li role="presentation"><a href="guide/index.html">開発者向けガイド</a></li>
-											
-										
-											
-												<li role="presentation"><a href="guide/storage.html">ストレージについて</a></li>
-											
-										
-											
-												<li role="presentation"><a href="guide/template-guide.html">akashic init テンプレート利用ガイド</a></li>
-											
-										
-									</ul>
-								</li>
-							 
-						
-							
-								<li class="dropdown">
-									<a class="dropdown-toggle" data-toggle="dropdown" href="#">リファレンス <span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										
-											
-												<li role="presentation"><a href="./reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-											
-										
-											
-												<li role="presentation"><a href="./reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
-											
-										
-											
-												<li role="presentation"><a href="./reference/akashic-timeline/index.html">akashic-timeline</a></li>
-											
-										
-											
-												<li role="presentation"><a href="./reference/akashic-animation/index.html">akashic-animation</a></li>
-											
-										
-											
-												<li role="presentation"><a href="./reference/akashic-label/index.html">akashic-label</a></li>
-											
-										
-											
-												<li role="presentation"><a href="./reference/akashic-tile/index.html">akashic-tile</a></li>
-											
-										
-											
-												<li role="presentation"><a href="./reference/akashic-box2d/index.html">akashic-box2d</a></li>
-											
-										
-									</ul>
-								</li>
-							 
-						
-							 
-								<li><a href="./samples/index.html">サンプル</a></li>
-							 
-						
-							 
-								<li><a href="./asset/asset.html">素材</a></li>
-							 
-						
-					</ul>
-				</div>
-			</div>
-		</nav>
-		<div class="container" style="padding: 80px 0 40px;">
-			<div class="markdown-body">
-				<p align="center">
-<img src="img/akashic.png" style="margin: 20px 0" />
-</p>
-
-<p><a href="https://github.com/akashic-games/akashic-engine">Akashic(アカシック)</a>はJavaScriptで動作するゲームエンジンです。
-Akashicを利用するとウェブブラウザ上で動くゲームなどの、インタラクティブコンテンツを作成できます。</p>
-<h2>特徴</h2><ul>
-<li>TypeScriptやJavaScriptで2D描画が主体のゲームを作成できます。</li>
-<li>作成したゲームはPCやスマートフォンのブラウザでプラグインなしで実行できます。</li>
-<li>オープンソースで開発されており、MITライセンスに基づいて、無償で利用できます。</li>
-</ul>
-<h2>チュートリアル</h2><ul>
-<li><a href="tutorial/tutorial-v2.html">Akashic Engine 入門</a></li>
-</ul>
-<h2>リファレンスマニュアル</h2><ul>
-<li><a href="reference/akashic-engine-v1/modules/_lib_main_d_.g.html">APIリファレンス (Akashic Engine v1.x(deprecated))</a></li>
-<li><a href="reference/akashic-engine-v2/modules/_lib_main_d_.g.html">APIリファレンス (Akashic Engine v2.x)</a></li>
-</ul>
-<h2>開発者向けガイド</h2><ul>
-<li><a href="guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
-<li><a href="guide/game-json.html">game.jsonの仕様</a></li>
-<li><a href="guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-<li><a href="guide/composite-operation.html">CompositeOperationの利用について</a></li>
-<li><a href="guide/storage.html">ストレージについて</a></li>
-<li><a href="guide/asset-load-error.html">アセットロードエラーについて</a></li>
-<li><a href="guide/template-guide.html">akashic init テンプレート利用ガイド</a></li>
-</ul>
-<h2>サンプルと素材</h2><p>Akashicで作られたサンプルプログラムやAkashicコンテンツで利用できる素材を公開しています。</p>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="description" content="AkashicEngineはJavaScriptで動作するマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>Akashic</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/common.css">
+<link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/footer.css">
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/header.js"></script>
+<script src="/lib/index.js"></script>
+<script src="/lib/common.js"></script>
+</head>
+<body>
+<!--↓外枠↓-->
+<div id="OuterBox">
+<p class="page--top"></p>
+<!--↓ヘッダ↓-->
+<header>
+<p class="head--content--open"></p>
+<a class="head--logo--SP" href="/index.html" title="ホーム"></a>
+<!--↓ヘッダ＞コンテンツ↓-->
+<ul class="head--content"><!--
+--><li class="head--content--item">
+	<p class="head--content--item--tab"></p>
+	<ul class="head--content--item--list">
+	<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
+	<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+	</ul>
+</li><!--
+--><li class="head--content--item">
+	<p class="head--content--item--tab"></p>
+	<ul class="head--content--item--list">
+	<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+	<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+	<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+	<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+	<li><a href="/guide/storage.html">ストレージについて</a></li>
+	<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+	<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+	<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+	</ul>
+</li><!--
+--><li class="head--content--logo"><a href="/index.html" title="ホーム"></a></li><!--
+--><li class="head--content--item">
+	<p class="head--content--item--tab"></p>
+	<ul class="head--content--item--list">
+	<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+	<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+	<li><a href="/reference/akashic-timeline/index.html">akashic-timeline</a></li>
+	<li><a href="/reference/akashic-animation/index.html">akashic-animation</a></li>
+	<li><a href="/reference/akashic-label/index.html">akashic-label</a></li>
+	<li><a href="/reference/akashic-tile/index.html">akashic-tile</a></li>
+	<li><a href="/reference/akashic-box2d/index.html">akashic-box2d</a></li>
+	</ul>
+</li><!--
+--><li class="head--content--item">
+	<p class="head--content--item--tab"></p>
+	<ul class="head--content--item--list">
+	<li><a href="/asset/helloworld.html">Hello World</a></li>
+	<li><a href="/asset/scale-rotate-opacity.html">拡縮・回転・透明度</a></li>
+	<li><a href="/asset/bitmap-font.html">ビットマップフォント</a></li>
+	<li><a href="/asset/framesprite.html">フレームアニメーション</a></li>
+	<li><a href="/asset/touchevent.html">タッチイベント</a></li>
+	<li><a href="/asset/tile.html">タイル</a></li>
+	<li><a href="/asset/simpleshot.html">アブストラクトシューティング</a></li>
+	<li><a href="/asset/hoppingwitch.html">HOPPING WITCH</a></li>
+	<li><a href="/asset/galaxywars.html">GALAXY WARS</a></li>
+	</ul>
+</li><!--
+--></ul>
+<!--↑ヘッダ＞コンテンツ↑-->
+</header>
+<!--↑ヘッダ↑-->
+<!--↓導入↓-->
+<section class="intro">
+	<div class="intro--video">
+	<video loop autoplay preload="none"><source src="/img/index/demo-v1.mp4"></video>
+	</div>
+<div class="intro--inner">
+<!--↓導入＞上側(ロゴ)↓-->
+<div class="intro--sec1">
+	<div class="intro--logo"></div>
+</div>
+<!--↑導入＞上側(ロゴ)↑-->
+<!--↓導入＞下側(コピー＋ボタン)↓-->
+<div class="intro--sec2">
+	<p class="intro--txt1">Akashic Engine</p>
+	<p class="intro--txt2">HTML5インタラクティブコンテンツフレームワーク</p>
+	<p class="intro--txt3">HTML5 Interactive content framework</p>
+	<p class="intro--demo--open">サンプルデモをみる</p>
+</div>
+<!--↑導入＞下側(ボタン)↑-->
+<!--↓デモ↓-->
+<div class="intro--demo">
+	<div class="intro--demo--iframe">
+		<iframe src="demo/ready.html" id="DEMO" name="DEMO"><!--デモ表示領域--></iframe>
+	</div>
+	<div class="intro--demo--menu">
+		<ul class="intro--demo--menu--set"><!--
+		--><li class="intro--demo--menu--item"><a href="/demo/galaxywars/index.html" target="DEMO"><img src="/img/index/demo-title-gw.png" alt="GALAXY WARS"></a></li><!--
+		--><li class="intro--demo--menu--item"><a href="/demo/hoppingwitch/index.html" target="DEMO"><img src="/img/index/demo-title-hw.png" alt="HOPPING WITCH"></a></li><!--
+		<li class="intro--demo--menu--item"><a href="/demo/????/index.html" target="DEMO"><p>文字リンクOK</p></a></li>
+		--></ul>
+	</div>
+	<p class="intro--demo--close">サンプルデモを終了</p>
+</div>
+<!--↑デモ↑-->
+</div>
+</section>
+<!--↑導入↑-->
+<!--↓赤線↓-->
+<div class="split--redline"></div>
+<!--↑赤線↑-->
+<!--↓特徴↓-->
+<section class="feature">
+<div class="responsive--width cfix">
 <ul>
-<li><a href="samples/index.html">サンプル</a></li>
-<li><a href="asset/asset.html">素材</a></li>
+<li class="feature--item">
+	<div class="feature--item--box">
+	<p class="feature--item--tit">100% TypeScript製</p>
+	<p class="feature--item--des">コンテンツもTypeScriptで開発可能</p>
+	<p class="feature--item--des">もちろんJavaScriptもサポート</p>
+	</div>
+</li>
+<li class="feature--item">
+	<div class="feature--item--box">
+	<p class="feature--item--tit">高い拡張性</p>
+	<p class="feature--item--des">アニメーションライブラリや物理エンジン等を標準提供</p>
+	<p class="feature--item--des">自作ライブラリをnpmで公開可能</p>
+	</div>
+</li>
+<li class="feature--item">
+	<div class="feature--item--box">
+	<p class="feature--item--tit">周辺ツールサポート</p>
+	<p class="feature--item--des">ビットマップフォントジェネレータ</p>
+	<p class="feature--item--des">音声ファイルコンバータ</p>
+	</div>
+</li>
+<li class="feature--item">
+	<div class="feature--item--box">
+	<p class="feature--item--tit">オープンソース</p>
+	<p class="feature--item--des">MITライセンスで無償利用可能</p>
+	</div>
+</li>
 </ul>
-<h2>拡張ライブラリ・周辺ツール</h2><p>Akashicコンテンツ開発に利用できる拡張ライブラリや周辺ツールを公開しています。</p>
-<p>アニメーション:</p>
-<ul>
-<li><a href="https://github.com/akashic-games/akashic-timeline">akashic-timeline</a>: Akashic用トゥイーンアニメーションライブラリ</li>
-<li><a href="https://github.com/akashic-games/akashic-animation">akashic-animation</a>: Akashic用ボーンアニメーションライブラリ</li>
-<li><a href="https://github.com/akashic-games/ss2asa">ss2asa</a>:
-<a href="http://www.webtech.co.jp/spritestudio/">OPTPiX SpriteStudio</a> で作成したアニメーションをakashic-animation形式に変換するツール</li>
-<li><a href="https://github.com/akashic-games/db2asa">db2asa</a>:
-<a href="http://dragonbones.com/en/index.html">DragonBones</a> で作成したアニメーションをakashic-animation形式に変換するツール</li>
-<li><a href="https://github.com/akashic-games/ot2asa">ot2asa</a>:
-<a href="https://opentoonz.github.io/">OpenToonz</a> で作成したアニメーションをakashic-animation形式に変換するツール</li>
+</div>
+</section>
+<!--↑特徴↑-->
+<!--↓入門↓-->
+<section class="getstart">
+<div class="responsive--width">
+	<ul class="cfix">
+	<li class="getstart--sec1">
+	<h2>Akashic Engine</h2>
+	<p class="txt1">に触れてみよう</p>
+	<p class="txt2">Getting Started</p>
+	</li>
+	<li class="getstart--sec2">
+	<p>Akashic EngineはJavaScriptで動作するゲームエンジンです。 <br>
+	オープンソースで公開されており、制作したゲームの公開にロイヤリティは必要ありません。<br>
+	ゲーム開発で利用できるライブラリとツールが用意されており、今すぐ開発を始めることができます。</p>
+	</li>
+	<li class="getstart--sec3">
+	<a href="/tutorial/tutorial-v2.html">
+	<div></div>
+	<p>Akashic Engine<br>入門 v2 へ進む</p>
+	</a>
+	</li>
+	</ul>
+</div>
+</section>
+<!--↑入門↑-->
+<!--↓配布↓-->
+<section class="distribution">
+<div class="distribution--inner responsive--width cfix">
+<!--↓配布＞ライブラリ↓-->
+<div class="distro--library">
+	<h2>拡張ライブラリ・周辺ツール</h2>
+	<div class="cfix">
+	<p>アニメーション：</p>
+	<ul>
+	<li><a href="https://github.com/akashic-games/akashic-timeline" target="_blank">akashic-timeline</a> - Akashic 用トゥイーンアニメーションライブラリ</li>
+	<li><a href="https://github.com/akashic-games/akashic-animation" target="_blank">akashic-animation</a> - Akashic 用ボーンアニメーションライブラリ</li>
+	<li><a href="https://github.com/akashic-games/ss2asa" target="_blank">ss2asa</a> - <a href="http://www.webtech.co.jp/spritestudio/" target="_blank">OPTPiX SpriteStudio</a> で作成したアニメーションを <a href="/reference/akashic-animation/index.html">akashic-animation</a> 形式に変換するツール</li>
+    <li><a href="https://github.com/akashic-games/db2asa" target="_blank">db2asa</a> - <a href="http://dragonbones.com/en/" target="_blank">DragonBones</a> で作成したアニメーションを <a href="/reference/akashic-animation/index.html">akashic-animation</a> 形式に変換するツール</li>
+	<li><a href="https://github.com/akashic-games/ot2asa" target="_blank">ot2asa</a> - <a href="https://opentoonz.github.io/" target="_blank">OpenToonz</a> で作成したアニメーションを <a href="/reference/akashic-animation/index.html">akashic-animation</a> 形式に変換するツール</li>
+	</ul>
+	</div>
+	<div class="cfix">
+	<p>テキスト：</p>
+	<ul>
+	<li><a href="https://github.com/akashic-games/akashic-label" target="_blank">akashic-label</a> - 自動折り返しやルビ付き文字をサポートするテキスト描画エンティティ</li>
+	</ul>
+	</div>
+	<div class="cfix">
+	<p>アセット生成：</p>
+	<ul>
+	<li><a href="https://github.com/akashic-games/bmpfont-generator" target="_blank">bmpfont-generator</a> - ビットマップフォント画像生成ツール</li>
+    <li><a href="https://github.com/akashic-games/complete-audio" target="_blank">complete-audio</a> - Akashic 用の音声ファイルを揃える変換ツール</li>
+	</ul>
+	</div>
+	<div class="cfix">
+	<p>その他：</p>
+	<ul>
+    <li><a href="https://github.com/akashic-games/akashic-tile" target="_blank">akashic-tile</a> - タイルマップ(マップチップ画像片を敷き詰めたもの)描画エンティティ</li>
+	<li><a href="https://github.com/akashic-games/akashic-box2d" target="_blank">akashic-box2d</a> - Akashic 用二次元物理エンジンライブラリ</li>
+	</ul>
+	</div>
+</div>
+<!--↑配布＞ライブラリ↑-->
+<!--↓配布＞リポリトジ↓-->
+<div class="distro--repository">
+	<h2>リポジトリ</h2>
+	<ul><!--
+	--><li><a href="https://github.com/akashic-games/akashic-engine" target="_blank">akashic-engine</a></li><!--
+	--><li><a href="https://github.com/akashic-games/akashic-cli" target="_blank">akashic-cli</a></li><!--
+	--><li><a href="https://github.com/akashic-games/akashic-sandbox" target="_blank">akashic-sandbox</a></li><!--
+	--></ul>
+</div>
+<!--↑配布＞リポリトジ↑-->
+<!--↓配布＞サンプル↓-->
+<div class="distro--sampledemo">
+	<h2>サンプルデモ</h2>
+	<ul><!--
+	--><li><a href="/asset/helloworld.html">Hello World</a></li><!--
+	--><li><a href="/asset/scale-rotate-opacity.html">拡縮・回転・透明度</a></li><!--
+	--><li><a href="/asset/bitmap-font.html">ビットマップフォント</a></li><!--
+	--><li><a href="/asset/framesprite.html">フレームアニメーション</a></li><!--
+	--><li><a href="/asset/touchevent.html">タッチイベント</a></li><!--
+	--><li><a href="/asset/tile.html">タイル</a></li><!--
+	--><li><a href="/asset/simpleshot.html">アブストラクトシューティング</a></li><!--
+	--><li><a href="/asset/hoppingwitch.html">HOPPING WITCH</a></li><!--
+	--><li><a href="/asset/galaxywars.html">GALAXY WARS</a></li><!--
+	--></ul>
+</div>
+<!--↑配布＞サンプル↑-->
+</div>
+</section>
+<!--↑配布↑-->
+<!--↓支援(未使用)↓-->
+<section class="supported" style="display: none;">
+<div class="supported--inner responsive--width">
+<p class="supported--title"><span>S</span>upported frameworks</p>
+	<div class="supported--box"><!--
+	--><a href="https://game.nicovideo.jp/atsumaru/" target="_blank"><img src="/img/index/supported/rpgatumaru.png" alt="RPGアツマール"></a><!--
+	--></div>
+</div>
+</section>
+<!--↑支援(未使用)↑-->
+<!--↓フッタ↓-->
+<footer>
+<!--↓フッタ＞コンテンツ↓-->
+<ul class="foot--content responsive--width cfix">
+<li class="foot--content--item">
+	<p class="foot--content--item--tab">入門</p>
+	<ul class="foot--content--item--list">
+	<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
+	<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+	</ul>
+</li>
+<li class="foot--content--item">
+	<p class="foot--content--item--tab">ガイド</p>
+	<ul class="foot--content--item--list">
+	<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+	<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+	<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+	<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+	<li><a href="/guide/storage.html">ストレージについて</a></li>
+	<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+	<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+	<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+	</ul>
+</li>
+<li class="foot--content--item">
+	<p class="foot--content--item--tab">リファレンス</p>
+	<ul class="foot--content--item--list">
+	<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+	<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+	<li><a href="/reference/akashic-timeline/index.html">akashic-timeline</a></li>
+	<li><a href="/reference/akashic-animation/index.html">akashic-animation</a></li>
+	<li><a href="/reference/akashic-label/index.html">akashic-label</a></li>
+	<li><a href="/reference/akashic-tile/index.html">akashic-tile</a></li>
+	<li><a href="/reference/akashic-box2d/index.html">akashic-box2d</a></li>
+	</ul>
+</li>
+<li class="foot--content--item">
+	<p class="foot--content--item--tab">サンプルデモ</p>
+	<ul class="foot--content--item--list">
+	<li><a href="/asset/helloworld.html">Hello World</a></li>
+	<li><a href="/asset/scale-rotate-opacity.html">拡縮・回転・透明度</a></li>
+	<li><a href="/asset/bitmap-font.html">ビットマップフォント</a></li>
+	<li><a href="/asset/framesprite.html">フレームアニメーション</a></li>
+	<li><a href="/asset/touchevent.html">タッチイベント</a></li>
+	<li><a href="/asset/tile.html">タイル</a></li>
+	<li><a href="/asset/simpleshot.html">アブストラクトシューティング</a></li>
+	<li><a href="/asset/hoppingwitch.html">HOPPING WITCH</a></li>
+	<li><a href="/asset/galaxywars.html">GALAXY WARS</a></li>
+	</ul>
+</li>
 </ul>
-<p>テキスト:</p>
-<ul>
-<li><a href="https://github.com/akashic-games/akashic-label">akashic-label</a>: 自動折り返しやルビ付き文字をサポートするテキスト描画エンティティ</li>
-</ul>
-<p>アセット生成:</p>
-<ul>
-<li><a href="https://github.com/akashic-games/bmpfont-generator">bmpfont-generator</a>: ビットマップフォント画像生成ツール</li>
-<li><a href="https://github.com/akashic-games/complete-audio">complete-audio</a>: Akashic用の音声ファイルを揃える変換ツール</li>
-</ul>
-<p>その他:</p>
-<ul>
-<li><a href="https://github.com/akashic-games/akashic-tile">akashic-tile</a>: タイルマップ(マップチップ画像片を敷き詰めたもの)描画エンティティ</li>
-<li><a href="https://github.com/akashic-games/akashic-box2d">akashic-box2d</a>: Akashic用2次元物理エンジンライブラリ</li>
-</ul>
-<h2>リポジトリ</h2><ul>
-<li><a href="https://github.com/akashic-games/akashic-engine">akashic-engine</a></li>
-<li><a href="https://github.com/akashic-games/akashic-cli">akashic-cli</a></li>
-<li><a href="https://github.com/akashic-games/akashic-sandbox">akashic-sandbox</a></li>
-</ul>
-
-			</div>
-			<hr>
-			<div class="footer">
-				<a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/">
-					<img alt="クリエイティブ・コモンズ・ライセンス" style="border-width:0" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png" class="license">
-				</a>
-				このサイトの画像は、
-				<a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/">
-					クリエイティブ・コモンズ 表示 2.1 日本 ライセンスの下に提供されています。
-				</a>
-			</div>
-		</div>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
-		<script>hljs.initHighlightingOnLoad();</script>
-		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	</body>
+<!--↑フッタ＞コンテンツ↑-->
+<!--↓フッタ＞コモンズ↓-->
+<div class="foot--creativecommons">
+	<ul>
+	<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+	<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
+	</ul>
+</div>
+<!--↑フッタ＞コモンズ↑-->
+<!--↓フッタ＞商標↓-->
+<div class="foot--license">
+<div class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></div>
+<p class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></p>
+</div>
+<!--↑フッタ＞商標↑-->
+</footer>
+<!--↑フッタ↑-->
+</div>
+<!--↑外枠↑-->
+</body>
 </html>
