@@ -16,7 +16,7 @@
 @media screen and (max-width: 959px){
 .akashic--document {
 	font-size: 12px;
-	padding: 32px 8px;
+	padding: 32px 16px;
 	}
 }
 /*↑Akasic文書基本↑*/
@@ -127,8 +127,8 @@
 	}
 @media screen and (max-width: 959px){
 .akashic--document p,
-.akashic--document ul,
 .akashic--document blockquote { margin-left: 0;}
+.akashic--document ul { margin-left: 16px;}
 }
 /*↑文章・リスト・引用・画像系↑*/
 /*↓テーブル系↓*/

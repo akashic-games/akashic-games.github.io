@@ -125,13 +125,14 @@
 	height: 0;
 	content: "";
 	}
-.demo--body--item div {/* 種：イメージ */}
+.demo--body--item div {/* 種：イメージ */
+	background: #7F8F96;
+	padding: 16px;
+	}
 .demo--body--item div img {
 	display: block;
 	max-width: 100%;
-	background: #FFF;
-	border:solid 1px #AFBFC6;
-	padding: 7px;
+	background: #7F8F96;
 	margin: 0 auto 16px;
 	}
 .demo--body--item div img:last-child { margin-bottom: 0;}
@@ -170,10 +171,7 @@
 	padding: 8px;
 	}
 .demo--body--item pre::-webkit-scrollbar { display: none;}
-.demo--body--item div { padding: 16px; }
-.demo--body--item div img {
-	border: none;
-	padding: 0;
-	}
+.demo--body--item div { padding: 8px; }
+.demo--body--item div img { margin: 0 auto 8px;}
 }
 /*↑BODY：ファイルとコード↑*/

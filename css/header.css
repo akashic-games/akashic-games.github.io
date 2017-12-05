@@ -90,6 +90,7 @@ header:after {/* 赤線 */
 	width: 100vw;
 	max-height: 100vh;
 	overflow-y: scroll;
+	padding-bottom: 48px;/* 暫定措置 */
 	opacity: 0.0;
 	transition: all 0.5s;
 	}
@@ -153,7 +154,7 @@ header:after {/* 赤線 */
 	height: 100%;
 	opacity: 1.0;
 	}
-.head--content--item--tab:after {
+.head--content--item--tab:after {/* 文字 */
 	width: 100%;
 	color: #FFF;
 	text-decoration: none !important;
@@ -168,8 +169,7 @@ header:after {/* 赤線 */
 	height: auto;
 	background: #A00;
 	background: linear-gradient(to top, #A00, #800);
-	box-shadow: 0 1px 2px #800 inset;
-	border-bottom: solid 1px #F42;
+	box-shadow: 0 0 2px #600 inset;
 	}
 .head--content--item--tab:before { display: none;}
 .head--content--item--tab:after {
@@ -185,8 +185,6 @@ header:after {/* 赤線 */
 	top: 28px;
 	left: 0;
 	background: #C00;
-	border-width: 0 1px 1px;
-	border-color: #1F2F36;
 	text-align: left;
 	padding: 4px 0;
 	opacity: 0.0;
@@ -204,28 +202,34 @@ header:after {/* 赤線 */
 	height: 0px;
 	transition: height 0.25s;
 	}
-.head--content--item:hover .head--content--item--list li { height: 28px;}
-.head--content--item--list a {
+.head--content--item:hover .head--content--item--list li { height: 32px;}
+.head--content--item--list li a {
 	display: block;
 	background: #C00;
 	color: #FCC;
 	white-space: nowrap;
 	text-decoration: none;
-	padding: 8px 16px;
+	padding: 10px 16px;
 	transition: all 0.25s;
 	}
-.head--content--item--list a:hover {
+.head--content--item--list li a:hover {
 	background: #900;
 	color: #FFF;
 	}
 @media screen and (max-width: 959px){
 .head--content--item--list {
-	visibility: visible;
+	visibility: visible;/* 強制 */
+	opacity: 1.0;/* 強制 */
 	position: static;
 	text-align: center;
-	padding: 8px 0;
-	opacity: 1.0;
+	border-top: solid 1px #F63;
+	border-bottom: solid 1px #600;
+	padding: 0;
 	}
-.head--content--item--list li { height: 28px;}
+.head--content--item--list li,
+.head--content--item:hover .head--content--item--list li { height: auto;}/* 強制 */
+.head--content--item--list li a {
+	padding: 14px 8px;
+	}
 }
 /*↑コンテンツ＞メニュー↑*/
