@@ -19,12 +19,6 @@
 <script src="/lib/asset.js"></script>
 <script src="/lib/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<style>/*↓iframeサイズ↓*/
-.demo--head--main iframe { width: 320px; height: 320px;}
-@media screen and (max-width: 959px){
-.demo--head--main iframe { width: 240px; height: 240px;}
-}
-/*↑iframeサイズ↑*/</style>
 </head>
 <body>
 <!--↓外枠↓-->
@@ -91,7 +85,7 @@
 <section class="demo--head">
 <div class="responsive--width cfix">
 	<div class="demo--head--main">
-	<iframe src="/demo/simpleshot/index.html"><!--PC/SPのサイズはheadに直書--></iframe>
+	<iframe id="DEMO" class="w320h320" src="/demo/simpleshot/index.html"><!--PC/SPのサイズはheadに直書--></iframe>
 	</div>
 	<div class="demo--head--info">
 	<h1>アブストラクトシューティング</h1>

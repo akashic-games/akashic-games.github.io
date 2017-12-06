@@ -7,17 +7,20 @@
 	}
 .demo--head--main {/* 実演 */
 	float: left;
-	position: relative;
 	width: 512px;
 	height: 384px;
 	overflow: hidden;
 	background: #1F2F36;
 	}
-.demo--head--main iframe {
-	position: absolute;
+iframe#DEMO {/* 実演 */
+	display: block;
 	overflow: hidden;
 	background: #FFF;
 	}
+iframe#DEMO.w512h384 { width: 512px; height: 384px; margin: 0 auto;}
+iframe#DEMO.w480h320 { width: 480px; height: 320px; margin: 32px auto;}
+iframe#DEMO.w320h320 { width: 320px; height: 320px; margin: 32px auto;}
+iframe#DEMO.w320h240 { width: 320px; height: 240px; margin: 72px auto;}
 .demo--head--info {/* タイトルと解説 */
 	float: right;
 	width: 432px;
@@ -47,6 +50,10 @@
 	width: 100vw;
 	height: 240px;
 	}
+iframe#DEMO.w512h384 { width: 320px; height: 240px; margin: 0 auto;}
+iframe#DEMO.w480h320 { width: 312px; height: 208px; margin: 16px auto;}
+iframe#DEMO.w320h320 { width: 240px; height: 240px; margin: 0 auto;}
+iframe#DEMO.w320h240 { /* 変更不要 */}
 .demo--head--info {
 	float: none;
 	width: auto;
@@ -168,10 +175,7 @@
 	overflow-x: scroll;
 	box-shadow: none;
 	border-width: 8px;
-	padding: 8px;
 	}
 .demo--body--item pre::-webkit-scrollbar { display: none;}
-.demo--body--item div { padding: 8px; }
-.demo--body--item div img { margin: 0 auto 8px;}
 }
 /*↑BODY：ファイルとコード↑*/

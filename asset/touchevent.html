@@ -19,12 +19,6 @@
 <script src="/lib/asset.js"></script>
 <script src="/lib/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<style>/*↓iframeサイズ↓*/
-.demo--head--main iframe { width: 480px; height: 320px;}
-@media screen and (max-width: 959px){
-.demo--head--main iframe { width: 300px; height: 200px;}
-}
-/*↑iframeサイズ↑*/</style>
 </head>
 <body>
 <!--↓外枠↓-->
@@ -91,7 +85,7 @@
 <section class="demo--head">
 <div class="responsive--width cfix">
 	<div class="demo--head--main">
-	<iframe src="/demo/touchevent/index.html"></iframe>
+	<iframe id="DEMO" class="w480h320" src="/demo/touchevent/index.html"></iframe>
 	</div>
 	<div class="demo--head--info">
 	<h1>タッチイベント</h1>

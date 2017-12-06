@@ -1,16 +1,17 @@
 @charset "utf-8";
 
 /*↓導入の大枠↓*/
-.intro {
+.intro,
+.intro--inner {
 	position: relative;
 	overflow: hidden;
+	}
+.intro {
 	width: 100%;
 	background: #C00;
 	background-image: radial-gradient(farthest-side circle at center 10%, #C00 10%, #400 100%, #600 120%);
-	margin: 0 auto;
 	}
 .intro--inner {
-	position: relative;
 	width: 944px;
 	height: 504px;
 	margin: 0 auto;
@@ -19,10 +20,9 @@
 .intro--inner.mode--demo { height: 400px;}
 @media screen and (max-width: 959px){
 .intro--inner,
-.intro--inner.mode--demo {
-	width: 100%;
-	height: 400px;
-	}
+.intro--inner.mode--demo { width: 100%;}
+.intro--inner { height: 400px;}
+.intro--inner.mode--demo { height: 352px;}
 }
 /*↑導入の大枠↑*/
 /*↓背景ビデオ↓*/
@@ -132,34 +132,30 @@ to   { opacity: 0.5;}
 	opacity: 1.0;
 	}
 .intro--demo--iframe {/* iframe表示領域 */
-	position: relative;
+	overflow: hidden;
 	width: 704px;
 	height: 400px;
 	background: #344;
-	overflow: hidden;
 	}
-iframe#DEMO {/* iframe(top,leftはJQuery) */
-	position: absolute;
+iframe#DEMO {/* 実演 */
+	display: block;
+	overflow: hidden;
 	width: 512px;
 	height: 384px;
+	margin: 8px auto;
 	}
-@media screen and (max-width: 959px){ iframe#DEMO { width: 384px; height: 288px;}}
-@media screen and (max-width: 383px){ iframe#DEMO { width: 320px; height: 240px;}}
 .intro--demo--menu {/* メニュー */
 	position: absolute;
-	top: 0;
-	right: 0;
 	overflow: auto;
+	bottom: 48px;
+	right: 0;
 	width: 240px;
 	height: 352px;
 	background: #233;
 	text-align: center;
 	-webkit-overflow-scrolling: touch;
 	}
-.intro--demo--menu::-webkit-scrollbar {
-	width: 12px;
-	height: 12px;
-	}
+.intro--demo--menu::-webkit-scrollbar { width: 12px; height: 12px;}
 .intro--demo--menu::-webkit-scrollbar-track  { background: #899;}
 .intro--demo--menu::-webkit-scrollbar-thumb  { background: #BCC;}
 .intro--demo--menu::-webkit-scrollbar-corner { background: #566;}
@@ -216,11 +212,15 @@ iframe#DEMO {/* iframe(top,leftはJQuery) */
 .intro--demo { width: 100%;}
 .intro--demo--iframe {
 	width: 100vw;
-	height: 288px;
+	height: 240px;
+	}
+iframe#DEMO {
+	width: 320px;
+	height: 240px;
+	margin: 0 auto;
 	}
 .intro--demo--menu {
-	top: auto;
-	bottom: 48px;
+	bottom: 96px;
 	width: 100%;
 	height: 64px;
 	}
@@ -230,8 +230,7 @@ iframe#DEMO {/* iframe(top,leftはJQuery) */
 	margin: 8px 8px 8px 0;
 	}
 .intro--demo--close {
-	bottom: 0;
-	left: 0;
+	bottom: 48px;
 	width: 100%;
 	}
 }

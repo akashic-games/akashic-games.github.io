@@ -19,12 +19,6 @@
 <script src="/lib/asset.js"></script>
 <script src="/lib/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<style>/*↓iframeサイズ↓*/
-.demo--head--main iframe { width: 512px; height: 384px;}
-@media screen and (max-width: 959px){
-.demo--head--main iframe { width: 320px; height: 240px;}
-}
-/*↑iframeサイズ↑*/</style>
 </head>
 <body>
 <!--↓外枠↓-->
@@ -91,7 +85,7 @@
 <section class="demo--head">
 <div class="responsive--width cfix">
 	<div class="demo--head--main">
-	<iframe src="/demo/galaxywars/index.html"></iframe>
+	<iframe id="DEMO" class="w512h384" src="/demo/galaxywars/index.html"></iframe>
 	</div>
 	<div class="demo--head--info">
 	<h1>GALAXY WARS</h1>
