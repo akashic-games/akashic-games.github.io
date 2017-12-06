@@ -15,7 +15,6 @@
 iframe#DEMO {/* 実演 */
 	display: block;
 	overflow: hidden;
-	background: #FFF;
 	}
 iframe#DEMO.w512h384 { width: 512px; height: 384px; margin: 0 auto;}
 iframe#DEMO.w480h320 { width: 480px; height: 320px; margin: 32px auto;}
