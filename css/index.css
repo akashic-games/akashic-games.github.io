@@ -137,12 +137,15 @@ to   { opacity: 0.5;}
 	height: 400px;
 	background: #344;
 	}
-iframe#DEMO {/* 実演 */
-	display: block;
+.intro--demo--iframe div.w512h384 {
 	overflow: hidden;
 	width: 512px;
 	height: 384px;
 	margin: 8px auto;
+	}
+iframe#DEMO {/* 実演 */
+	width: 100%;
+	height: 100%;
 	}
 .intro--demo--menu {/* メニュー */
 	position: absolute;
@@ -214,7 +217,7 @@ iframe#DEMO {/* 実演 */
 	width: 100vw;
 	height: 240px;
 	}
-iframe#DEMO {
+.intro--demo--iframe div.w512h384 {
 	width: 320px;
 	height: 240px;
 	margin: 0 auto;
