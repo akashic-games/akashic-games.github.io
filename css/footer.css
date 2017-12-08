@@ -46,7 +46,7 @@ footer:before {/* 赤線 */
 	color: #6C8F9C;
 	text-decoration: none;
 	padding: 4px;
-	transition: all 0.25s;
+	transition: color 0.25s, text-shadow 0.25s;
 	}
 .foot--content--item--list a:hover {
 	color: #FFF;

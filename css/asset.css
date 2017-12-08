@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-/*↓HEAD：デモと説明↓*/
+/*↓demo--head：デモと説明↓*/
 .demo--head {
 	background-color: #2F3F46;
 	background-color: #2F3F46;
@@ -69,12 +69,17 @@ iframe#DEMO {/* 実演 */
 	line-height: 20px;
 	}
 }
-/*↑HEAD：デモと説明↑*/
-/*↓BODY：ファイルとコード↓*/
+/*↑demo--head：デモと説明↑*/
+/*↓demo--body↓*/
 .demo--body {
 	background: #FFF;
 	padding: 24px 0;
 	}
+@media screen and (max-width: 959px){
+.demo--body { padding: 0;}
+}
+/*↑demo--body↑*/
+/*↓demo--body：ファイル↓*/
 .demo--body--list {
 	float: left;
 	width: 25%;
@@ -99,6 +104,33 @@ iframe#DEMO {/* 実演 */
 	color: #FFF;
 	text-shadow: 0 1px 1px rgba(0,0,0,0.6);
 	}
+@media screen and (max-width: 959px){
+.demo--body { padding: 0;}
+.demo--body--list {
+	z-index: 1;
+	width: 100vw;
+	overflow-x: scroll;
+	background: #4F5F66;
+	border-top: solid 2px #AFBFC6;
+	border-bottom: solid 2px #AFBFC6;
+	padding: 0;
+	}
+.demo--body--list.fixfliemenu--SP {/* SP */
+	position: fixed;
+	top: 40px;
+	left: 0;
+	}
+.demo--body--list::-webkit-scrollbar { display: none;}/* スクロールバー非表示 */
+.demo--body--list ul { white-space: nowrap;}
+.demo--body--list li {
+	width: auto;
+	border: none;
+	padding: 16px 12px;
+	}
+.demo--body--list li:last-child { border: none;}
+}
+/*↑demo--body：ファイル↑*/
+/*↓demo--body：コード↓*/
 .demo--body--item {
 	float: right;
 	width: 75%;
@@ -113,7 +145,6 @@ iframe#DEMO {/* 実演 */
 	font-size: 12px;
 	line-height: 20px;
 	padding: 16px;
-	-webkit-overflow-scrolling: touch;
 	}
 .demo--body--item pre::-webkit-scrollbar {
 	width: 12px;
@@ -144,29 +175,6 @@ iframe#DEMO {/* 実演 */
 	}
 .demo--body--item div img:last-child { margin-bottom: 0;}
 @media screen and (max-width: 959px){
-.demo--body { padding: 0;}
-.demo--body--list {
-	z-index: 1;
-	width: 100vw;
-	overflow-x: scroll;
-	background: #4F5F66;
-	border-top: solid 2px #AFBFC6;
-	border-bottom: solid 2px #AFBFC6;
-	padding: 0;
-	}
-.demo--body--list.fixfliemenu--SP {/* SP */
-	position: fixed;
-	top: 40px;
-	left: 0;
-	}
-.demo--body--list::-webkit-scrollbar { display: none;}/* スクロールバー非表示 */
-.demo--body--list ul { white-space: nowrap;}
-.demo--body--list li {
-	width: auto;
-	border: none;
-	padding: 16px 12px;
-	}
-.demo--body--list li:last-child { border: none;}
 .demo--body--item {
 	width: 100vw;
 	padding: 0;
@@ -176,7 +184,8 @@ iframe#DEMO {/* 実演 */
 	overflow-x: scroll;
 	box-shadow: none;
 	border-width: 8px;
+	-webkit-overflow-scrolling: touch;
 	}
 .demo--body--item pre::-webkit-scrollbar { display: none;}
 }
-/*↑BODY：ファイルとコード↑*/
+/*↑demo--body：コード↑*/

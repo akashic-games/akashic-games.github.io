@@ -169,7 +169,6 @@
 	line-height: 20px;
 	padding: 16px;
 	margin-top: 16px;
-	-webkit-overflow-scrolling: touch;
 	}
 .akashic--document pre code {
 	display: inline-block;
@@ -185,6 +184,7 @@
 .akashic--document pre {
 	overflow-x: scroll;
 	border-width: 8px;
+	-webkit-overflow-scrolling: touch;
 	}
 }
 /*↑コード系↑*/

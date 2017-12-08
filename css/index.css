@@ -49,8 +49,7 @@ from { opacity: 0.0;}
 to   { opacity: 0.5;}
 }
 @media screen and (max-width: 959px){
-.intro--video,
-.intro--video video { visibility: hidden;}
+.intro--video { display: none;}
 }
 /*↑背景ビデオ↑*/
 /*↓導入↓*/
@@ -58,12 +57,12 @@ to   { opacity: 0.5;}
 .intro--sec2 {/* 上下分割 */
 	position: absolute;
 	left: 0;
-	visibility: visible;
 	width: 100%;
 	text-align: center;
 	padding: 8px;
+	visibility: visible;
 	opacity: 1.0;
-	transition: all 0.5s;
+	transition: top 0.5s, bottom 0.5s, visibility 0.5s, opacity 0.5s;
 	}
 .intro--sec1 { top: 16px;}
 .intro--sec2 { bottom: 16px;}
@@ -125,7 +124,7 @@ to   { opacity: 0.5;}
 	overflow: hidden;
 	visibility: hidden;
 	opacity: 0.0;
-	transition: all 1.0s;
+	transition: visibility 1.0s, opacity 1.0s;
 	}
 .intro--demo.show {/* 表示 */
 	visibility: visible;
@@ -295,9 +294,9 @@ iframe#DEMO {/* 実演 */
 	border-bottom: solid 2px #060F16;
 	margin-top: 16px;
 	padding: 24px 0;
-	/*animation: getstart--bg 24.0s linear infinite alternate-reverse;*/
+	animation: getstart--bg 24.0s linear infinite alternate-reverse;
 	}
-/*@keyframes getstart--bg { from { background-position: 0 0;} to { background-position: 100% 0;}}*/
+@keyframes getstart--bg { from { background-position: 0 0;} to { background-position: 100% 0;}}
 .getstart ul {
 	position: relative;
 	text-shadow: 0 1px 1px rgba(15,31,38,0.8);
@@ -404,7 +403,6 @@ iframe#DEMO {/* 実演 */
 	font-size: 14px;
 	line-height: 1.0;
 	white-space: nowrap;
-	overflow: hidden;
 	margin: 0;
 	}
 .getstart--sec3 a p br { display: none;}
@@ -417,15 +415,15 @@ iframe#DEMO {/* 実演 */
 	background-size: cover;
 	border-bottom: solid 2px #060F16;
 	text-shadow: 0 1px 1px rgba(0,17,34,0.8);
+	padding: 24px 0;
 	}
-.distribution--inner { padding: 24px;}
-.distribution--inner h2 {
+.distribution h2 {
 	font-size: 20px;
 	line-height: 1.0;
 	text-align: center;
 	padding: 8px;
 	}
-.distribution--inner h2:after {/* 下線 */
+.distribution h2:after {/* 下線 */
 	display: block;
 	width: 100%;
 	height: 4px;
@@ -436,77 +434,62 @@ iframe#DEMO {/* 実演 */
 	opacity: 0.6;
 	content: "";
 	}
-.distribution--inner a:first-child { color: #F33;}
-.distribution--inner a { color: #9CC;}
 @media screen and (max-width: 959px){
 .distribution {
 	background-size: 1024px auto;
 	background-repeat: repeat-y;
 	}
-.distribution--inner { padding: 8px;}
-.distribution--inner h2 { font-size: 16px;}
+.distribution h2 { font-size: 16px;}
 }
 /*↑配布↑*/
-/*↓配布＞ライブラリ↓*/
-.distro--library div { padding: 8px;}
-.distro--library p,
-.distro--library ul {
+/*↓配布＞複雑↓*/
+.distro--complex div { padding: 8px;}
+.distro--complex p,
+.distro--complex ul {
 	float: left;
 	font-size: 12px;
 	line-height: 16px;
 	}
-.distro--library p {
+.distro--complex p {
 	width: 20%;
 	color: #699;
 	text-align: right;
 	}
-.distro--library ul {
+.distro--complex ul {
 	width: 80%;
 	padding-left: 16px;
 	}
-.distro--library li:first-child { padding-top: 0;}
-.distro--library li { padding-top: 8px;}
+.distro--complex li:first-child { padding-top: 0;}
+.distro--complex li { padding-top: 8px;}
+.distro--complex a:first-child { color: #F33;}
+.distro--complex a { color: #9CC;}
 @media screen and (max-width: 959px){
-.distro--library p,
-.distro--library ul {
+.distro--complex p,
+.distro--complex ul {
 	width: auto;
 	float: none;
 	}
-.distro--library p {
+.distro--complex p {
 	text-align: left;
 	padding-bottom: 8px;
 	}
 }
-/*↑配布＞ライブラリ↑*/
-/*↓配布＞リポリトジ＋サンプルデモ↓*/
-.distro--repository,
-.distro--sampledemo {
-	float: left;
+/*↑配布＞複雑↑*/
+/*↓配布＞単純↓*/
+.distro--simple {
+	width: 100%;
 	margin-top: 16px;
+	text-align: center;
 	}
-.distro--repository { width: 33.333%;}
-.distro--sampledemo { width: 66.666%;}
-.distro--repository li,
-.distro--sampledemo li {
+.distro--simple li {
 	display: inline-block;
 	font-size: 12px;
 	line-height: 12px;
-	text-align: center;
 	white-space: nowrap;
 	padding: 8px;
 	}
-.distro--repository li { width: 100%;}
-.distro--sampledemo li { width: 33.333%;}
-@media screen and (max-width: 959px){
-.distro--repository,
-.distro--sampledemo {
-	width: 100%;
-	text-align: center;
-	}
-.distro--repository li,
-.distro--sampledemo li { width: auto;}
-}
-/*↑配布＞リポリトジ＋素材↑*/
+.distro--simple a{ color: #F33;}
+/*↑配布＞単純↑*/
 /*↓支援(仮)↓*/
 .supported { margin: 16px auto 0;}
 .supported--inner {

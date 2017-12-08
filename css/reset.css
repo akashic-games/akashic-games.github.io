@@ -5,12 +5,17 @@
 	font-family: 'メイリオ', Meiryo,'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', sans-serif;
 	background-position: center center;
 	background-repeat: no-repeat;
-	box-sizing: border-box;/* 値を全て含む */
-	text-overflow: ellipsis;/* 溢文字「…」 */
+	box-sizing: border-box;
+	text-overflow: ellipsis;
 	padding: 0;
 	margin: 0;
 	}
-body { -webkit-text-size-adjust: 100%;}
+html {
+	overflow: hidden;
+	width: 100vw;
+	height: 100vh;
+	-webkit-text-size-adjust: 100%;
+	}
 h1, h2, h3, h4 { font-weight: normal;}
 a:link, a:visited { text-decoration: underline;}
 a:hover, a:active { text-decoration: none;}
