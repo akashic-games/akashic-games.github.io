@@ -8,7 +8,7 @@ header {
 	background: #0F1F26;
 	}
 header .head--inner {
-	z-index: 2;/* body:after = 1 */
+	z-index: 2;/* .window--dark = 1 */
 	position: fixed;
 	top: 0;
 	left: 0;
