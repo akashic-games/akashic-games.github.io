@@ -1,0 +1,48 @@
+---
+layout: default
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="description" content="AkashicEngineはJavaScriptで動作するマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>ガイド - Akashic</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/reset.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/common.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/header.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/akashic-document.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/footer.css?{% include file-update.html %}">
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/header.js?{% include file-update.html %}"></script>
+<script src="/lib/common.js?{% include file-update.html %}"></script>
+</head>
+<body>
+<div id="OuterBox">
+<!--↓ヘッダ↓-->
+{% include header.html %}
+<!--↑ヘッダ↑-->
+<!--↓ボディ↓-->
+<section class="page--body">
+<div class="akashic--document responsive--width">
+<h1>ガイド</h1>
+<ul>
+	<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+	<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+	<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+	<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+	<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+	<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+	<li><a href="/guide/storage.html">ストレージについて</a></li>
+	<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+</ul>
+</div>
+</section>
+<!--↑ボディ↑-->
+<!--↓フッタ↓-->
+{% include footer.html %}
+<!--↑フッタ↑-->
+</div></body>
+</html>

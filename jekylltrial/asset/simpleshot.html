@@ -1,0 +1,187 @@
+---
+layout: default
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="description" content="AkashicEngineはJavaScriptで動作するマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>アブストラクトシューティング - Akashic</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/reset.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/common.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/header.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/asset.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/styles/railscasts.css">
+<link rel="stylesheet" href="/css/footer.css?{% include file-update.html %}">
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?{% include file-update.html %}"></script>
+<script src="/lib/header.js?{% include file-update.html %}"></script>
+<script src="/lib/asset.js?{% include file-update.html %}"></script>
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div id="OuterBox">
+<!--↓ヘッダ↓-->
+{% include header.html %}
+<!--↑ヘッダ↑-->
+<!--↓demoヘッダ↓-->
+<section class="demo--head">
+<div class="responsive--width cfix">
+	<div class="demo--head--main">
+	<div class="w320h320"><iframe id="DEMO" src="/demo/simpleshot/"></iframe></div>
+	</div>
+	<div class="demo--head--info">
+	<h1>アブストラクトシューティング</h1>
+	<p>画面をクリック(タップ)すると、その位置から弾を発射します。画面のブロックを全て撃つとゲームオーバーです。</p>
+	</div>
+</div>
+</section>
+<!--↑demoヘッダ↑-->
+<div id="FileAnchor"><!--スクロール到達地点調節用--></div>
+<!--↓demoボディ↓-->
+<section class="demo--body">
+<div class="responsive--width cfix">
+<!--↓FILE↓-->
+<div class="demo--body--list">
+	<ul><!--
+	--><li id="DEMO-LIST-1" class="selected">game.json</li><!--
+	--><li id="DEMO-LIST-2" class="">mainScene.js</li><!--
+	--></ul>
+</div>
+<!--↑FILE↑-->
+<!--↓CODE↓-->
+<div class="demo--body--item">
+<pre id="DEMO-ITEM-1"><code>{
+	"width": 320,
+	"height": 320,
+	"fps": 30,
+	"main": "./script/main.js",
+	"assets": {
+		"main": {
+			"type": "script",
+			"path": "script/main.js",
+			"global": true
+		}
+	}
+}</code></pre>
+<pre id="DEMO-ITEM-2" style="display: none;"><code>var killedEnemy = 0;
+function main() {
+	let scene = new g.Scene({game: g.game});
+	scene.loaded.handle(function() {
+		makeEnemy(scene);
+	});
+	scene.pointDownCapture.handle(function(event) {
+		var point = event.point;
+		if (event.target) {
+			point.x += event.target.x;
+			point.y += event.target.y;
+		}
+		makeShot(scene, point);
+	});
+	scene.update.handle(function() {
+		if (killedEnemy === 36) {
+			gameOver(scene);
+			return true;  // trueを返すとhandleが解除されます。
+		}
+	});
+	g.game.pushScene(scene);
+}
+
+module.exports = main;
+
+function makeEnemy(scene) {
+	for (var i = 0; i < 8; i++) {
+		for (var j = 0; j < 4; j++) {
+			var movingEnemy = new g.FilledRect({
+				scene: scene,
+				cssColor: (j < 2 ? "#ff0000" : "#0fffff"),
+				width: 16,
+				height: 16,
+				x: i * (16 + 4) + 64,
+				y: j * (16 + 4) + 30
+			});
+			movingEnemy.update.handle(movingEnemy, function() { // handle(obj, func)の形式で呼び出すと、objがfunc呼び出しの際thisとして扱われます。
+				if (scene.game.age % scene.game.fps === 0) {
+					var tick = Math.round(scene.game.age / scene.game.fps) % 4;
+					if (tick === 0 || tick === 1) {
+						this.x += 8;
+					} else {
+						this.x -= 8;
+					}
+					this.modified();
+				}
+			});
+			scene.append(movingEnemy);
+		}
+	}
+	for (var i = 0; i < 4; i++) {
+		var stoppedEnemy = new g.FilledRect({
+			scene: scene,
+			cssColor: "#0000ff",
+			width: 16,
+			height: 16,
+			x: i * (16 + 4) + 112,
+			y: 2
+		});
+		scene.append(stoppedEnemy);
+	}
+}
+
+function makeShot(scene, point) {
+	var shot = new g.FilledRect({
+		scene: scene,
+		cssColor: "#000000",
+		width: 2,
+		height: 8,
+		x: point.x,
+		y: point.y
+	});
+
+	shot.update.handle(function() {
+		shot.y -= 10;
+		if (shot.y < 0) shot.destroy();
+		var collisionTarget;
+		scene.children.forEach(function(entity) {
+			if (shot === entity) return;
+			if (g.Collision.intersectAreas(shot, entity)) collisionTarget = entity;
+		});
+		if (!!collisionTarget) {
+			shot.destroy();
+			collisionTarget.destroy();
+			killedEnemy += 1;
+		}
+		shot.modified();
+	});
+	scene.append(shot);
+}
+
+function gameOver(scene) {
+	var dfont = new g.DynamicFont(g.FontFamily.Serif, 80, scene.game, {});
+	label = new g.Label({
+		scene: scene,
+		text: "GAME OVER",
+		font: dfont,
+		fontSize: 40
+	});
+	label.x = scene.game.width / 2 - label.width / 2;
+	label.y = 0;
+	label.update.handle(label, function() {
+		if (this.y < scene.game.height / 2 - this.height / 2) this.y += 2;
+		this.invalidate();
+	});
+	scene.append(label);
+}</code></pre>
+</div>
+<!--↑CODE↑-->
+</div>
+</section>
+<!--↑demoボディ↑-->
+<!--↓フッタ↓-->
+{% include footer.html %}
+<!--↑フッタ↑-->
+</div></body>
+</html>

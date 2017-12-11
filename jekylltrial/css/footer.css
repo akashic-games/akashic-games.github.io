@@ -1,0 +1,107 @@
+@charset "utf-8";
+
+/*↓footer↓*/
+footer {
+	position: relative;
+	padding: 16px 0;
+	}
+footer:before {/* 赤線 */
+	position: absolute;
+	top: 2px;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 2px;
+	background: #C00;
+	content: "";
+	}
+/*↑footer↑*/
+/*↓コンテンツ↓*/
+.foot--content {}
+.foot--content--item {
+	float: left;
+	width: 25%;
+	font-size: 12px;
+	line-height: 1.0;
+	text-align: left;
+	padding: 4px;
+	}
+@media screen and (max-width: 959px){
+.foot--content--item {
+	width: 100%;
+	text-align: center;
+	float: none;
+	}
+}
+.foot--content--item--tab {/* 行頭 */
+	color: #537683;
+	border-bottom: 1px solid #1F2F36;
+	padding: 4px;
+	}
+.foot--content--item--list {/* 各項 */
+	margin-top: 8px;
+	}
+.foot--content--item--list a {
+	display: block;
+	color: #6C8F9C;
+	text-decoration: none;
+	padding: 4px;
+	transition: color 0.25s, text-shadow 0.25s;
+	}
+.foot--content--item--list a:hover {
+	color: #FFF;
+	text-shadow: 0 0 1px #09B, 0 0 8px #9CF;
+	}
+/*↑コンテンツ↑*/
+/*↓コモンズ↓*/
+.foot--creativecommons {
+	text-align: center;
+	margin: 16px auto 0;
+	padding: 8px;
+	}
+.foot--creativecommons--ban {
+	width: 80px;
+	height: 15px;
+	line-height: 1.0;
+	margin: 0 auto 4px;
+	}
+.foot--creativecommons--txt {
+	color: #537683;
+	font-size: 10px;
+	line-height: 12px;
+	}
+.foot--creativecommons--txt br { display: none;}
+.foot--creativecommons--txt a {
+	color: #FFF;
+	margin: 0 4px;
+	}
+@media screen and (max-width: 959px){
+.foot--creativecommons--txt br {
+	display: inline;
+	}
+.foot--creativecommons--txt a {
+	display: inline-block;
+	margin: 4px 0;
+	}
+}
+/*↑コモンズ↑*/
+/*↓商標↓*/
+.foot--license {
+	text-align: center;
+	margin: 0 auto;
+	padding: 8px;
+	}
+.foot--license--akashic a {
+	display: inline-block;
+	width: 120px;
+	height: 24px;
+	background-image: url('/img/akashic-logo/3r.png');
+	background-size: contain;
+	}
+.foot--license--dwango a {
+	font-size:10px;
+	line-height:1.0;
+	color: #6C8F9C;
+	margin-top: 8px;
+	}
+/*↑商標↑*/

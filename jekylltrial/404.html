@@ -1,0 +1,72 @@
+---
+layout: default
+---
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="description" content="AkashicEngineはJavaScriptで動作するマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>お探しのページが見つかりませんでした - Akashic</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/reset.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/common.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/header.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/404.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/footer.css?{% include file-update.html %}">
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/header.js?{% include file-update.html %}"></script>
+<script src="/lib/common.js?{% include file-update.html %}"></script>
+<script src="/lib/404.js?{% include file-update.html %}"></script>
+</head>
+<body>
+<div id="OuterBox">
+<!--↓ヘッダ↓-->
+{% include header.html %}
+<!--↑ヘッダ↑-->
+<!--↓エラー↓-->
+<section class="error">
+<div class="error--inner">
+
+<div class="code404">
+	<ul>
+	<li class="big">Error <span>404</span></p>
+	<li class="sml">Sorry, Page Not Found</p>
+	</ul>
+</div>
+
+<div class="anime--area--outer">
+	<div class="anime--area--inner">
+	<!--↓爆発↓-->
+	<ul class="explosive">
+	<li style="display: none;"><!--サイズ確認--></li>
+	</ul>
+	<!--↑爆発↑-->
+	<!--↓ボス↓-->
+	<div class="enemy--boss">
+	<ul>
+	<li class="leg1"></li>
+	<li class="leg2"></li>
+	<li class="arm1"></li>
+	<li class="arm2"></li>
+	</ul>
+	</div>
+	<!--↑ボス↑-->
+	</div>
+</div>
+
+<div class="message">
+<p class="txt1">誠に申し訳ございません</p>
+<p class="txt2">お探しのページが見つかりませんでした</p>
+<p class="txt3">お手数をおかけしますが、ページ上部／下部のメニューまたは<a href="/index.html">トップページ</a>から、ご希望のコンテンツをお選びくださいますようお願い申し上げます。</p>
+</div>
+
+</div>
+</section>
+<!--↑エラー↑-->
+<!--↓フッタ↓-->
+{% include footer.html %}
+<!--↑フッタ↑-->
+</div></body>
+</html>

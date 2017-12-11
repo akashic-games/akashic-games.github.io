@@ -1,0 +1,123 @@
+---
+layout: default
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="description" content="AkashicEngineはJavaScriptで動作するマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>akashic initテンプレート利用ガイド - Akashic</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/reset.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/common.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/header.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/akashic-document.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/styles/railscasts.css">
+<link rel="stylesheet" href="/css/footer.css?{% include file-update.html %}">
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/header.js?{% include file-update.html %}"></script>
+<script src="/lib/common.js?{% include file-update.html %}"></script>
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div id="OuterBox">
+<!--↓ヘッダ↓-->
+{% include header.html %}
+<!--↑ヘッダ↑-->
+<!--↓ボディ↓-->
+<section class="page--body">
+<div class="akashic--document responsive--width">
+
+<h1>akashic initテンプレート利用ガイド</h1>
+
+<p><code>akashic init</code>コマンドで利用可能なカスタムテンプレートの作成方法と、テンプレートをチームで共有する方法を説明します。</p>
+
+<h2>自分だけが利用するテンプレートを作る</h2>
+
+<p>作成したAkashicゲームをテンプレートにするときは、作成したゲームをディレクトリごとテンプレートディレクトリにコピーします。</p>
+<p>テンプレートディレクトリの場所はWindowsの場合は<code>%USERPROFILE%\.akashic-templates</code>、Unix/Linuxの場合は<code>$HOME/.akashic-templates</code>です。</p>
+<p><code>akashic init</code>はテンプレートディレクトリから、テンプレート名と同じ名前のディレクトリを探し、見つかった場合はその中身をディレクトリ構造を保ったままカレントディレクトリにコピーします。</p>
+<p>コピー完了後<code>width</code>,<code>height</code>,<code>fps</code>の値をユーザに問い合わせ、カレントディレクトリにある<code>game.json</code>の該当する値を更新します。</p>
+<p>例えば、</p>
+
+<pre><code>akashic init -t mytemplate</code></pre>
+
+<p>と入力した場合、<code>akashic init</code>は<code>.akashic-templates/mytemplate</code>以下のファイルやディレクトリをコピーします。</p>
+
+<h3>ゲームのルートディレクトリ以外の場所に<code>game.json</code>を配置する場合</h3>
+
+<p>ゲームのルートディレクトリ以外の場所に<code>game.json</code>を配置する場合、テンプレートディレクトリ内にあるテンプレート名と同じ名前のディレクトリ直下に、<code>template.json</code>という名前のファイルを置いて、<code>game.json</code>のパスを明示します。</p>
+<p>例えば、以下の内容を<code>template.json</code>に書き込んだ場合、ゲームのルートディレクトリ以下の<code>game</code>ディレクトリ内に配置されている<code>game.json</code>を利用します。</p>
+
+<pre><code>{
+    &quot;gameJson&quot;: &quot;game/game.json&quot;
+}</code></pre>
+
+<h3>カスタムテンプレートをakashic initのデフォルトにする</h3>
+
+<p><code>$HOME/.akashicrc</code>に項目を追加すると<code>-t</code>オプションを使用しない場合のテンプレートを指定できます。例えばテンプレート名が<code>mytemplate</code>の場合は以下のようになります。</p>
+
+<pre><code>[init]
+defaultTemplateType=&quot;mytemplate&quot;</code></pre>
+
+<h2>チームでテンプレートを共有する</h2>
+
+<p>Webサーバを用意して、テンプレートをzipで固めたものを配置してテンプレート配信サーバを用意することで、チームでテンプレートを共有できます。テンプレート配信サーバが登録されていると、<code>akashic init</code>は指定した名前のテンプレートがテンプレートディレクトリに存在しない場合に、サーバからテンプレートをダウンロードします。</p>
+
+<h3>zipファイルの作り方</h3>
+
+<p>ゲームのコンテンツを<code>テンプレート名.zip</code>という名前でzip圧縮します。トップレベルディレクトリは含まないように圧縮してください。</p>
+<p>例えばzipコマンドを利用する場合、ゲームのディレクトリで以下のコマンドを利用して作成できます。</p>
+
+<pre><code>zip -R mytemplate.zip *</code></pre>
+
+<h3>テンプレートリストの作り方</h3>
+
+<p>Webサーバには<code>template-list.json</code>という名前のファイルが必要です。このファイルには以下のようにテンプレート名とzipファイルのパスの対応を記述します。</p>
+
+<pre><code>{
+  &quot;templates&quot;: {
+    &quot;javascript&quot;: &quot;javascript.zip&quot;,
+    &quot;typescript&quot;: &quot;typescript.zip&quot;,
+    &quot;mytemplate&quot;: &quot;mytemplate.zip&quot;
+  }
+}</code></pre>
+
+<h3>テンプレートサーバアドレスの設定</h3>
+
+<p>テンプレートサーバを利用するユーザの<code>$HOME/.akashicrc</code>に以下のような項目を追加してサーバアドレスを指定します。</p>
+
+<pre><code>[init]
+repository=&quot;http://example.com/templates/&quot;</code></pre>
+
+<p>このように設定した場合、以下のアドレスでファイルを取得できる必要があります。</p>
+
+<ul>
+<li><code>http://example.com/templates/template-list.json</code>でテンプレートリスト</li>
+<li><code>http://example.com/templates/mytemplate.zip</code>でテンプレートのzipファイル</li>
+</ul>
+
+<h3>動作確認</h3>
+
+<p>テンプレートディレクトリに<code>mytemplate</code>が存在するばあいはディレクトリを削除して、以下のコマンドを入力します。</p>
+
+<pre><code>akashic init -t mytemplate</code></pre>
+
+<p>サーバに接続された場合、コンソール画面に次のようなログが出力されます。</p>
+
+<pre><code>INFO: access to http://example.com/templates/template-list.json</code></pre>
+
+<p>ダウンロードされたテンプレートはローカルテンプレートディレクトリに保存され、次回以降はローカルのテンプレートを利用するようになります。</p>
+<p>テンプレートを再ダウンロードしたい場合(サーバのテンプレートが更新された場合など)は、テンプレートディレクトリ以下の該当するディレクトリを削除して、適当なディレクトリで<code>akashic init</code>を実行する必要があります。</p>
+
+</div>
+</section>
+<!--↑ボディ↑-->
+<!--↓フッタ↓-->
+{% include footer.html %}
+<!--↑フッタ↑-->
+</div></body>
+</html>

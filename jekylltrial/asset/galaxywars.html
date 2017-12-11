@@ -1,0 +1,3039 @@
+---
+layout: default
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="description" content="AkashicEngineはJavaScriptで動作するマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>GALAXY WARS - Akashic</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/reset.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/common.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/header.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/asset.css?{% include file-update.html %}">
+<link rel="stylesheet" href="/css/styles/railscasts.css">
+<link rel="stylesheet" href="/css/footer.css?{% include file-update.html %}">
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/header.js?{% include file-update.html %}"></script>
+<script src="/lib/common.js?{% include file-update.html %}"></script>
+<script src="/lib/asset.js?{% include file-update.html %}"></script>
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div id="OuterBox">
+<!--↓ヘッダ↓-->
+{% include header.html %}
+<!--↑ヘッダ↑-->
+<!--↓demoヘッダ↓-->
+<section class="demo--head">
+<div class="responsive--width cfix">
+	<div class="demo--head--main">
+	<div class="w512h384"><iframe id="DEMO" src="/demo/galaxywars/"></iframe></div>
+	</div>
+	<div class="demo--head--info">
+	<h1>GALAXY WARS</h1>
+	<p>画面をドラッグ(スワイプ)すると自機が移動します。自機の弾は自動で発射され、敵を倒すと様々なアイテムを落とします。左上のゲージがゼロになるとゲームオーバーです。<br>
+	<br>
+	このサンプルで使用している素材は<a href="/asset/material.html#GALAXYWARS">素材ページ</a>で公開・配布しています。</p>
+	</div>
+</div>
+</section>
+<!--↑demoヘッダ↑-->
+<div id="FileAnchor"><!--スクロール到達地点調節用--></div>
+<!--↓demoボディ↓-->
+<section class="demo--body">
+<div class="responsive--width cfix">
+<!--↓FILE↓-->
+<div class="demo--body--list">
+	<ul><!--
+	--><li class="selected">game.json</li><!--
+	--><li>mainScene.js</li><!--
+	--><li>gliph_area.js</li><!--
+	--><li>ScreenEffector.js</li><!--
+	--><li>titleScene.js</li><!--
+	--><li>Math.js</li><!--
+	--><li>EntytyType.js</li><!--
+	--><li>Player.js</li><!--
+	--><li>gameScene.js</li><!--
+	--><li>Grobal.js</li><!--
+	--><li>ItemType.js</li><!--
+	--><li>Shield.js</li><!--
+	--><li>Bullet.js</li><!--
+	--><li>Particle.js</li><!--
+	--><li>emmitDamageEffect.js</li><!--
+	--><li>Enemy.js</li><!--
+	--><li>Item.js</li><!--
+	--><li>ItemGauge.js</li><!--
+	--><li>AlphaEnemy.js</li><!--
+	--><li>BetaEnemy.js</li><!--
+	--><li>GammaEnemy.js</li><!--
+	--><li>EnemyManager.js</li><!--
+	--><li>Background.js</li><!--
+	--><li>GameCore.js</li><!--
+	--><li>GameOverLogo.js</li><!--
+	--><li>PlayerStatus.js</li><!--
+	--><li>bootScene.js</li><!--
+	--></ul>
+</div>
+<!--↑FILE↑-->
+<!--↓CODE↓-->
+<div class="demo--body--item">
+<pre id="DEMO-ITEM-1"><code>{
+	"width": 512,
+	"height": 384,
+	"fps": 30,
+	"assets": {
+		"mainScene": {
+			"type": "script",
+			"path": "script/mainScene.js",
+			"global": true
+		},
+		"font16": {
+			"type": "image",
+			"width": 256,
+			"height": 96,
+			"path": "image/font16.png",
+			"global": true
+		},
+		"glyph_area": {
+			"type": "text",
+			"path": "text/glyph_area.json",
+			"global": true
+		},
+		"alphaEnemy": {
+			"type": "image",
+			"width": 32,
+			"height": 32,
+			"path": "image/alphaEnemy.png",
+			"global": true
+		},
+		"ball": {
+			"type": "image",
+			"width": 16,
+			"height": 16,
+			"path": "image/ball.png",
+			"global": true
+		},
+		"betaEnemy": {
+			"type": "image",
+			"width": 32,
+			"height": 32,
+			"path": "image/betaEnemy.png",
+			"global": true
+		},
+		"item01": {
+			"type": "image",
+			"width": 24,
+			"height": 24,
+			"path": "image/item01.png",
+			"global": true
+		},
+		"item02": {
+			"type": "image",
+			"width": 24,
+			"height": 24,
+			"path": "image/item02.png",
+			"global": true
+		},
+		"item03": {
+			"type": "image",
+			"width": 24,
+			"height": 24,
+			"path": "image/item03.png",
+			"global": true
+		},
+		"item04": {
+			"type": "image",
+			"width": 24,
+			"height": 24,
+			"path": "image/item04.png",
+			"global": true
+		},
+		"item05": {
+			"type": "image",
+			"width": 24,
+			"height": 24,
+			"path": "image/item05.png",
+			"global": true
+		},
+		"item06": {
+			"type": "image",
+			"width": 24,
+			"height": 24,
+			"path": "image/item06.png",
+			"global": true
+		},
+		"missle": {
+			"type": "image",
+			"width": 8,
+			"height": 32,
+			"path": "image/missle.png",
+			"global": true
+		},
+		"particle": {
+			"type": "image",
+			"width": 16,
+			"height": 16,
+			"path": "image/particle.png",
+			"global": true
+		},
+		"player": {
+			"type": "image",
+			"width": 32,
+			"height": 32,
+			"path": "image/player.png",
+			"global": true
+		},
+		"returnButton": {
+			"type": "image",
+			"width": 128,
+			"height": 48,
+			"path": "image/returnButton.png",
+			"global": true
+		},
+		"shield": {
+			"type": "image",
+			"width": 16,
+			"height": 16,
+			"path": "image/shield.png",
+			"global": true
+		},
+		"star01": {
+			"type": "image",
+			"width": 2,
+			"height": 8,
+			"path": "image/star01.png",
+			"global": true
+		},
+		"star02": {
+			"type": "image",
+			"width": 2,
+			"height": 4,
+			"path": "image/star02.png",
+			"global": true
+		},
+		"startButton": {
+			"type": "image",
+			"width": 128,
+			"height": 48,
+			"path": "image/startButton.png",
+			"global": true
+		},
+		"title": {
+			"type": "image",
+			"width": 416,
+			"height": 80,
+			"path": "image/title.png",
+			"global": true
+		},
+		"gameover": {
+			"type": "image",
+			"width": 384,
+			"height": 80,
+			"path": "image/gameover.png",
+			"global": true
+		},
+		"gammaEnemy": {
+			"type": "image",
+			"width": 64,
+			"height": 64,
+			"path": "image/gammaEnemy.png",
+			"global": true
+		},
+		"enemyMissile": {
+			"type": "image",
+			"width": 12,
+			"height": 32,
+			"path": "image/enemyMissile.png",
+			"global": true
+		},
+		"sparkle": {
+			"type": "image",
+			"width": 26,
+			"height": 26,
+			"path": "image/sparkle.png",
+			"global": true
+		},
+		"ScreenEffector": {
+			"type": "script",
+			"path": "script/ScreenEffector.js",
+			"global": true
+		},
+		"titleScene": {
+			"type": "script",
+			"path": "script/titleScene.js",
+			"global": true
+		},
+		"Math": {
+			"type": "script",
+			"path": "script/Math.js",
+			"global": true
+		},
+		"EntityType": {
+			"type": "script",
+			"path": "script/EntityType.js",
+			"global": true
+		},
+		"Player": {
+			"type": "script",
+			"path": "script/Player.js",
+			"global": true
+		},
+		"gameScene": {
+			"type": "script",
+			"path": "script/gameScene.js",
+			"global": true
+		},
+		"Global": {
+			"type": "script",
+			"path": "script/Global.js",
+			"global": true
+		},
+		"ItemType": {
+			"type": "script",
+			"path": "script/ItemType.js",
+			"global": true
+		},
+		"Shield": {
+			"type": "script",
+			"path": "script/Shield.js",
+			"global": true
+		},
+		"Bullet": {
+			"type": "script",
+			"path": "script/Bullet.js",
+			"global": true
+		},
+		"Particle": {
+			"type": "script",
+			"path": "script/Particle.js",
+			"global": true
+		},
+		"emmitDamageEffect": {
+			"type": "script",
+			"path": "script/emmitDamageEffect.js",
+			"global": true
+		},
+		"Enemy": {
+			"type": "script",
+			"path": "script/Enemy.js",
+			"global": true
+		},
+		"Item": {
+			"type": "script",
+			"path": "script/Item.js",
+			"global": true
+		},
+		"ItemGaugeTray": {
+			"type": "script",
+			"path": "script/ItemGaugeTray.js",
+			"global": true
+		},
+		"AlphaEnemy": {
+			"type": "script",
+			"path": "script/AlphaEnemy.js",
+			"global": true
+		},
+		"BetaEnemy": {
+			"type": "script",
+			"path": "script/BetaEnemy.js",
+			"global": true
+		},
+		"GammaEnemy": {
+			"type": "script",
+			"path": "script/GammaEnemy.js",
+			"global": true
+		},
+		"EnemyManager": {
+			"type": "script",
+			"path": "script/EnemyManager.js",
+			"global": true
+		},
+		"Background": {
+			"type": "script",
+			"path": "script/Background.js",
+			"global": true
+		},
+		"GameCore": {
+			"type": "script",
+			"path": "script/GameCore.js",
+			"global": true
+		},
+		"GameOverLogo": {
+			"type": "script",
+			"path": "script/GameOverLogo.js",
+			"global": true
+		},
+		"PlayerStatus": {
+			"type": "script",
+			"path": "script/PlayerStatus.js",
+			"global": true
+		},
+		"akashic": {
+			"type": "image",
+			"width": 179,
+			"height": 128,
+			"path": "image/akashic.png",
+			"global": true
+		},
+		"bootScene": {
+			"type": "script",
+			"path": "script/bootScene.js",
+			"global": true
+		},
+		"version": {
+			"type": "text",
+			"path": "text/version.txt"
+		}
+	}
+}</code></pre>
+<pre id="DEMO-ITEM-2"  style="display: none;"><code>var Global = require("Global");
+var createBootScene = require("bootScene");
+
+//
+// エントリーポイント
+//
+module.exports = function() {
+    Global.bmpFont = new g.BitmapFont({
+        src: g.game.assets["font16"],
+        map: JSON.parse(g.game.assets["glyph_area"].data),
+        defaultGlyphWidth: 16,
+        defaultGlyphHeight: 16
+    });
+
+    return createBootScene();
+}</code></pre>
+<pre id="DEMO-ITEM-3"  style="display: none;"><code>{
+  "32": {
+    "x": 0,
+    "y": 0
+  },
+  "33": {
+    "x": 16,
+    "y": 0
+  },
+  "34": {
+    "x": 32,
+    "y": 0
+  },
+  "35": {
+    "x": 48,
+    "y": 0
+  },
+  "36": {
+    "x": 64,
+    "y": 0
+  },
+  "37": {
+    "x": 80,
+    "y": 0
+  },
+  "38": {
+    "x": 96,
+    "y": 0
+  },
+  "39": {
+    "x": 112,
+    "y": 0
+  },
+  "40": {
+    "x": 128,
+    "y": 0
+  },
+  "41": {
+    "x": 144,
+    "y": 0
+  },
+  "42": {
+    "x": 160,
+    "y": 0
+  },
+  "43": {
+    "x": 176,
+    "y": 0
+  },
+  "44": {
+    "x": 192,
+    "y": 0
+  },
+  "45": {
+    "x": 208,
+    "y": 0
+  },
+  "46": {
+    "x": 224,
+    "y": 0
+  },
+  "47": {
+    "x": 240,
+    "y": 0
+  },
+  "48": {
+    "x": 0,
+    "y": 16
+  },
+  "49": {
+    "x": 16,
+    "y": 16
+  },
+  "50": {
+    "x": 32,
+    "y": 16
+  },
+  "51": {
+    "x": 48,
+    "y": 16
+  },
+  "52": {
+    "x": 64,
+    "y": 16
+  },
+  "53": {
+    "x": 80,
+    "y": 16
+  },
+  "54": {
+    "x": 96,
+    "y": 16
+  },
+  "55": {
+    "x": 112,
+    "y": 16
+  },
+  "56": {
+    "x": 128,
+    "y": 16
+  },
+  "57": {
+    "x": 144,
+    "y": 16
+  },
+  "58": {
+    "x": 160,
+    "y": 16
+  },
+  "59": {
+    "x": 176,
+    "y": 16
+  },
+  "60": {
+    "x": 192,
+    "y": 16
+  },
+  "61": {
+    "x": 208,
+    "y": 16
+  },
+  "62": {
+    "x": 224,
+    "y": 16
+  },
+  "63": {
+    "x": 240,
+    "y": 16
+  },
+  "64": {
+    "x": 0,
+    "y": 32
+  },
+  "65": {
+    "x": 16,
+    "y": 32
+  },
+  "66": {
+    "x": 32,
+    "y": 32
+  },
+  "67": {
+    "x": 48,
+    "y": 32
+  },
+  "68": {
+    "x": 64,
+    "y": 32
+  },
+  "69": {
+    "x": 80,
+    "y": 32
+  },
+  "70": {
+    "x": 96,
+    "y": 32
+  },
+  "71": {
+    "x": 112,
+    "y": 32
+  },
+  "72": {
+    "x": 128,
+    "y": 32
+  },
+  "73": {
+    "x": 144,
+    "y": 32
+  },
+  "74": {
+    "x": 160,
+    "y": 32
+  },
+  "75": {
+    "x": 176,
+    "y": 32
+  },
+  "76": {
+    "x": 192,
+    "y": 32
+  },
+  "77": {
+    "x": 208,
+    "y": 32
+  },
+  "78": {
+    "x": 224,
+    "y": 32
+  },
+  "79": {
+    "x": 240,
+    "y": 32
+  },
+  "80": {
+    "x": 0,
+    "y": 48
+  },
+  "81": {
+    "x": 16,
+    "y": 48
+  },
+  "82": {
+    "x": 32,
+    "y": 48
+  },
+  "83": {
+    "x": 48,
+    "y": 48
+  },
+  "84": {
+    "x": 64,
+    "y": 48
+  },
+  "85": {
+    "x": 80,
+    "y": 48
+  },
+  "86": {
+    "x": 96,
+    "y": 48
+  },
+  "87": {
+    "x": 112,
+    "y": 48
+  },
+  "88": {
+    "x": 128,
+    "y": 48
+  },
+  "89": {
+    "x": 144,
+    "y": 48
+  },
+  "90": {
+    "x": 160,
+    "y": 48
+  },
+  "91": {
+    "x": 176,
+    "y": 48
+  },
+  "92": {
+    "x": 192,
+    "y": 48
+  },
+  "93": {
+    "x": 208,
+    "y": 48
+  },
+  "94": {
+    "x": 224,
+    "y": 48
+  },
+  "95": {
+    "x": 240,
+    "y": 48
+  },
+  "96": {
+    "x": 0,
+    "y": 64
+  },
+  "97": {
+    "x": 16,
+    "y": 64
+  },
+  "98": {
+    "x": 32,
+    "y": 64
+  },
+  "99": {
+    "x": 48,
+    "y": 64
+  },
+  "100": {
+    "x": 64,
+    "y": 64
+  },
+  "101": {
+    "x": 80,
+    "y": 64
+  },
+  "102": {
+    "x": 96,
+    "y": 64
+  },
+  "103": {
+    "x": 112,
+    "y": 64
+  },
+  "104": {
+    "x": 128,
+    "y": 64
+  },
+  "105": {
+    "x": 144,
+    "y": 64
+  },
+  "106": {
+    "x": 160,
+    "y": 64
+  },
+  "107": {
+    "x": 176,
+    "y": 64
+  },
+  "108": {
+    "x": 192,
+    "y": 64
+  },
+  "109": {
+    "x": 208,
+    "y": 64
+  },
+  "110": {
+    "x": 224,
+    "y": 64
+  },
+  "111": {
+    "x": 240,
+    "y": 64
+  },
+  "112": {
+    "x": 0,
+    "y": 80
+  },
+  "113": {
+    "x": 16,
+    "y": 80
+  },
+  "114": {
+    "x": 32,
+    "y": 80
+  },
+  "115": {
+    "x": 48,
+    "y": 80
+  },
+  "116": {
+    "x": 64,
+    "y": 80
+  },
+  "117": {
+    "x": 80,
+    "y": 80
+  },
+  "118": {
+    "x": 96,
+    "y": 80
+  },
+  "119": {
+    "x": 112,
+    "y": 80
+  },
+  "120": {
+    "x": 128,
+    "y": 80
+  },
+  "121": {
+    "x": 144,
+    "y": 80
+  },
+  "122": {
+    "x": 160,
+    "y": 80
+  },
+  "123": {
+    "x": 176,
+    "y": 80
+
+  },
+  "124": {
+    "x": 192,
+    "y": 80
+  },
+  "125": {
+    "x": 208,
+    "y": 80
+  },
+  "126": {
+    "x": 224,
+    "y": 80
+  }
+}</code></pre>
+<pre id="DEMO-ITEM-4"  style="display: none;"><code>var game = g.game;
+
+//
+// ScreenEffectorコンストラクタ
+//
+function ScreenEffector(params) {
+    g.E.prototype.constructor.call(this, params);
+    this.backSurface = game.resourceFactory.createSurface(Math.ceil(this.width), Math.ceil(this.height));
+    this.backRenderer = this.backSurface.renderer();
+    this.filterSurface = game.resourceFactory.createSurface(Math.ceil(this.width), Math.ceil(this.height));
+    this.filterRenderer = this.filterSurface.renderer();
+    this.mosaicLevel = params.mosaicLevel || 1;
+    this.blurEffect = false;
+    this.cntr = 0;
+}
+
+ScreenEffector.prototype = Object.create(g.E.prototype);
+
+//
+// モザイクエフェクト開始
+//
+ScreenEffector.prototype.startMosaic = function(lv) {
+    this.cntr = 0;
+    this.mosaicLevel = lv;
+}
+
+//
+// ブラーエフェクト開始
+//
+ScreenEffector.prototype.startBlur = function() {
+    this.cntr = 0;
+    this.blurEffect = true;
+}
+
+//
+// 描画
+//
+ScreenEffector.prototype.renderSelf = function(renderer, camera) {
+    var children = this.children;
+
+    if (this.mosaicLevel > 1) {
+        // render on backsurface
+        this.backRenderer.begin();
+        for (var i = 0; i < children.length; ++i) {
+            children[i].render(this.backRenderer, camera);
+        }
+        this.backRenderer.end();
+
+        // filter
+        var scale = 1 / this.mosaicLevel;
+        this.filterRenderer.begin();
+        this.filterRenderer.save();
+        this.filterRenderer.fillRect(0, 0, this.width, this.height, "#101080");
+        this.filterRenderer.transform([scale, 0, 0, scale, 0, 0]);
+        this.filterRenderer.drawImage(this.backSurface, 0, 0, this.width, this.height, 0, 0);
+        this.filterRenderer.restore();
+        this.filterRenderer.end();
+
+        // flip
+        scale = 1 / scale;
+        renderer.save();
+        renderer.transform([scale, 0, 0, scale, 0, 0]);
+        renderer.drawImage(this.filterSurface, 0, 0, this.width, this.height, 0, 0);
+        renderer.restore();
+    } else if (this.blurEffect) {
+        // render on backsurface
+        this.backRenderer.begin();
+        for (var i = 0; i < children.length; ++i) {
+            children[i].render(this.backRenderer, camera);
+        }
+
+        // apply prev frame
+        if (this.cntr > 0) {
+            this.backRenderer.save();
+            this.backRenderer.opacity(0.8);
+            this.backRenderer.setCompositeOperation(g.CompositeOperation.Lighter);
+
+            var s = 1.075;
+            var th = Math.PI * 2 / game.fps * this.cntr * 0.01;
+            this.backRenderer.transform([1, 0, 0, 1, this.width / 2, this.height / 2]);
+            this.backRenderer.transform([s * Math.cos(th), s * -Math.sin(th), s * Math.sin(th), s * Math.cos(th), 0, 0]);
+            this.backRenderer.transform([1, 0, 0, 1, -this.width / 2, -this.height / 2]);
+            this.backRenderer.drawImage(this.filterSurface, 0, 0, this.width, this.height, 0, 0);
+            this.backRenderer.restore();
+        }
+        this.backRenderer.end();
+
+        // backup current frame
+        this.filterRenderer.begin();
+        this.filterRenderer.save();
+        this.filterRenderer.drawImage(this.backSurface, 0, 0, this.width, this.height, 0, 0);
+        this.filterRenderer.restore();
+        this.filterRenderer.end();
+
+        // flip
+        renderer.save();
+        renderer.drawImage(this.backSurface, 0, 0, this.width, this.height, 0, 0);
+        renderer.restore();
+    } else { // pass through
+        renderer.begin();
+        for (var i = 0; i < children.length; ++i) {
+            children[i].render(renderer, camera);
+        }
+        renderer.end();
+    }
+
+    this.cntr++;
+
+    return false; // skip rendering children;
+}
+
+module.exports = ScreenEffector;</code></pre>
+<pre id="DEMO-ITEM-5"  style="display: none;"><code>var Global = require("Global");
+var ScreenEffector = require("ScreenEffector");
+var createGameScene = require("gameScene");
+var math = require("Math");
+
+var game = g.game;
+
+//
+// さざなみ発生
+//
+function ripple(heights, frame) {
+    var hn = heights[(frame + 2) % 3];
+    var hc = heights[(frame + 1) % 3];
+    var hp = heights[(frame + 0) % 3];
+
+    var c = 0.25;
+    for (var y = 0; y < hn.length; y++) {
+        for (var x = 0; x < hn[y].length; x++) {
+            var yp = Math.max(0, y - 1);
+            var yn = Math.min(hn.length - 1, y + 1);
+            var xp = Math.max(0, x - 1);
+            var xn = Math.min(hn[y].length - 1, x + 1);
+            hn[y][x] = 2 * hc[y][x] + c * (hc[y][xp] + hc[y][xn] + hc[yp][x] + hc[yn][x] - 4 * hc[y][x]) - hp[y][x];
+            hn[y][x] *= 0.95;
+        }
+    }
+
+    return hn;
+}
+
+//
+// さざなみの高さを矩形の色に反映
+//
+function updateCellColor(cells, hc) {
+    for (var i = 0; i < hc.length; i++) {
+        for (var j = 0; j < hc[i].length; j++) {
+            var intensity = Math.min(1.0, Math.max(0, (hc[i][j] + 1) / 2));
+            var cell = cells[i][j];
+            var R = (0x10 + 0x10 * intensity) | 0;
+            var G = (0x10 + 0x10 * intensity) | 0;
+            var B = 0xFF * intensity | 0;
+            cell.cssColor = "#" + ("000000" + ((R << 16) | (G << 8) | B).toString(16)).slice(-6);
+            cell.modified();
+        }
+    }
+}
+
+//
+// さざなみ描画のための矩形群生成
+//
+function createCells(scene, root, cellSize) {
+    var cells = [];
+
+    for (var i = 0; i < game.height / cellSize; i++) {
+        var row = [];
+        for (var j = 0; j < game.width / cellSize; j++) {
+            var cell = new g.FilledRect({
+                scene: scene,
+                cssColor: "#000020",
+                width: cellSize,
+                height: cellSize,
+                x: cellSize * j,
+                y: cellSize * i
+            });
+            row.push(cell);
+            root.append(cell);
+        }
+        cells.push(row);
+    }
+
+    return cells;
+}
+
+//
+// さざなみ計算用バッファ生成
+//
+function createHeightBuffer(cellSize) {
+    heights = [];
+    for (var i = 0; i < 3; i++) {
+        var col = [];
+        for (j = 0; j < game.height / cellSize; j++) {
+            col.push(Array(game.width / cellSize).fill(0));
+        }
+        heights.push(col);
+    }
+    return heights;
+}
+
+//
+// タイトルシーン生成
+//
+function createTitleScene() {
+    var scene = new g.Scene({ game: game, assetIds: ["version"] });
+
+    scene.loaded.handle(function() {
+
+        var root = new ScreenEffector({
+            scene: scene,
+            width: game.width,
+            height: game.height,
+            touchable: true,
+            mosaicLevel: 60
+        });
+        scene.append(root);
+
+        var cellSize = 16;
+        this.cells = createCells(scene, root, cellSize);
+        this.heights = createHeightBuffer(cellSize);
+
+        var titleImageAsset = game.assets["title"];
+        var title = new g.Sprite({
+            scene: scene,
+            src: titleImageAsset,
+            x: (game.width - titleImageAsset.width) / 2,
+            y: (game.height - titleImageAsset.height) / 3 * 1,
+            touchable: true
+        });
+        root.append(title);
+
+        var startBtnImageAsset = game.assets["startButton"];
+        var startBtn = new g.Sprite({
+            scene: scene,
+            src: startBtnImageAsset,
+            x: (game.width - startBtnImageAsset.width) / 2,
+            y: (game.height - startBtnImageAsset.height) / 4 * 3,
+            touchable: true
+        });
+        startBtn.pointDown.handle(function() {
+            if (root.mosaicLevel > 1) {
+                return;
+            }
+            startBtn.x += 4;
+            startBtn.y += 4;
+            startBtn.modified();
+        });
+        startBtn.pointUp.handle(function() {
+            if (root.mosaicLevel > 1) {
+                return;
+            }
+            startBtn.x -= 4;
+            startBtn.y -= 4;
+            startBtn.touchable = false;
+            startBtn.modified();
+            root.startBlur();
+            scene.setTimeout(1000, function() {
+                game.replaceScene(createGameScene());
+            });
+        });
+        root.append(startBtn);
+
+        var cntr = 0;
+        var showHiScore = false;
+        scene.update.handle(function() {
+            if (root.mosaicLevel > 1) {
+                root.mosaicLevel--;
+            } else {
+                if (! showHiScore) {
+                    root.append(new g.Label({
+                        scene: scene,
+                        text: "HI " + ("00000" + Global.hiScore).slice(-6),
+                        font: Global.bmpFont,
+                        fontSize: 16,
+                        x: game.width - (16 * 9 + 4), y: 4
+                    }));
+                    var versionText = "ver " + scene.assets["version"].data.replace(/[\r\n]/g,"");
+                    root.append(new g.Label({
+                        scene: scene,
+                        text: versionText,
+                        font: Global.bmpFont,
+                        fontSize: 16,
+                        x: game.width - (16 * versionText.length + 4), y: game.height - (16 + 4)
+                    }));
+                    showHiScore = true;
+                }
+                if (math.random() < 0.025) {
+                    var x = this.cells[0].length * math.random() | 0;
+                    var y = this.cells.length * math.random() | 0;
+                    this.heights[(cntr + 1) % 3][y][x] = 2.0;
+                }
+            }
+
+            updateCellColor(this.cells, ripple(this.heights, cntr));
+
+            cntr++;
+        });
+    });
+
+    return scene;
+}
+
+module.exports = createTitleScene;</code></pre>
+<pre id="DEMO-ITEM-6"  style="display: none;"><code>//
+// 矩形の交差判定
+//
+function intersectArea(a, b) {
+    return a.x <= b.x + b.width && a.x + a.width >= b.x && a.y <= b.y + b.height && a.y + a.height >= b.y;
+}
+
+//
+// 乱数
+//
+function random() {
+    return g.game.random[0].get(0, 65535) / 65535;
+}
+
+module.exports.intersectArea = intersectArea;
+module.exports.random = random;</code></pre>
+<pre id="DEMO-ITEM-7"  style="display: none;"><code>//
+// Entity識別子定義
+//
+module.exports = {
+    PLAYER: 0,
+    ENEMY: 1,
+    PLAYER_BULLET: 2,
+    ENEMY_BULLET: 3,
+    EFFECT: 4,
+    ITEM: 5,
+    OBSTACLE: 6
+};</code></pre>
+<pre id="DEMO-ITEM-8"  style="display: none;"><code>var Global = require("Global");
+var EntityType = require("EntityType");
+var ItemType = require("ItemType");
+var Shield = require("Shield");
+var Bullet = require("Bullet");
+var emmitDamageEffect = require("emmitDamageEffect");
+
+var game = g.game;
+
+//
+// Playerコンストラクタ
+//
+function Player() {
+    this.reset();
+
+    this.obstacles = [
+        EntityType.ENEMY,
+        EntityType.ENEMY_BULLET,
+        EntityType.ITEM
+    ];
+
+    this.spr = new g.Sprite({
+        scene: Global.gameCore.scene,
+        src: game.assets["player"],
+        x: this.pos.x,
+        y: this.pos.y
+    });
+
+    Global.gameCore.gameLayer.append(this.spr);
+}
+
+// プレイヤー最大HP
+Player.MAX_HP = 15;
+
+//
+// 衝突イベントハンドラ
+//
+Player.prototype.onCollision = function(e) {
+    if (e.type === EntityType.ITEM) {
+        e.hp = 0;
+        var effectTime = game.fps * 10;
+        var that = this;
+        var getter;
+        switch (e.itemType) {
+            case ItemType.SHIELD:
+            if (this.shieldCntr <= 0) {
+                for (var i = 0; i < 8; i++) {
+                    Global.gameCore.entities.push(s = new Shield(i, 8));
+                }
+                getter = function() { return that.shieldCntr; };
+            }
+            this.shieldCntr = effectTime;
+            break;
+
+            case ItemType.HOMING:
+            if (this.homingCntr <= 0) {
+                getter = function() { return that.homingCntr; };
+            }
+            this.homingCntr = effectTime;
+            break;
+
+            case ItemType.PIERCING:
+            if (this.piercingCntr <= 0) {
+                getter = function() { return that.piercingCntr; };
+            }
+            this.piercingCntr = effectTime;
+            break;
+
+            case ItemType.RAPIDFIRE:
+            if (this.rapidFireCntr <= 0) {
+                getter = function() { return that.rapidFireCntr; };
+            }
+            this.rapidFireCntr = effectTime;
+            break;
+
+            case ItemType.BULLETSPEED:
+            if (this.bulletSpeedCntr <= 0) {
+                getter = function() { return that.bulletSpeedCntr; };
+            }
+            this.bulletSpeedCntr = effectTime;
+            break;
+
+            case ItemType.RECOVER:
+            if (this.hp < Player.MAX_HP) this.hp++;
+            break;
+
+            default:;
+        }
+
+        if (getter) {
+            Global.gameCore.itemGaugeTray.addItem(e.itemType, effectTime, getter);
+        }
+        Global.gameCore.itemGaugeTray.showItemName(e.itemType);
+    } else {
+        Global.gameCore.vibrationCntr = 10;
+        for (var i = 0; i < 3; i++) {
+            emmitDamageEffect(this);
+        }
+    }
+}
+
+//
+// Player初期化
+//
+Player.prototype.reset = function() {
+    this.type = EntityType.PLAYER;
+    this.pos = {
+        x: (game.width - game.assets["player"].width) / 2,
+        y: game.height - game.assets["player"].height * 2
+    };
+    this.hp = Player.MAX_HP;
+    this.score = 0;
+    this.bulletCntr = 0;
+    this.bulletInterval = 10;
+    this.shieldCntr = 0;
+    this.homingCntr = 0;
+    this.rapidFireCntr = 0;
+    this.bulletSpeedCntr = 0;
+    this.piercingCntr = 0;
+}
+
+//
+// Player移動
+//
+Player.prototype.move = function(dx, dy) {
+    this.pos.x += dx;
+    this.pos.y += dy;
+    this.pos.x = Math.max(0, Math.min(game.width - this.spr.width, this.pos.x));
+    this.pos.y = Math.max(0, Math.min(game.height - this.spr.height, this.pos.y));
+}
+
+//
+// Player状態更新
+//
+Player.prototype.update = function() {
+    if (this.hp <= 0) {
+        return false;
+    }
+
+    var bulletInterval = this.rapidFireCntr > 0 ? this.bulletInterval / 2 : this.bulletInterval;
+    var bulletSpeed = this.bulletSpeedCntr > 0 ? 16 : 8;
+    var bulletHP = this.piercingCntr > 0 ? 3 : 1;
+    var bulletHoming = this.homingCntr > 0;
+    if (this.bulletCntr % bulletInterval === 0) {
+        var b = new Bullet(
+            EntityType.PLAYER_BULLET,
+            [ EntityType.ENEMY ],
+            { x: this.pos.x + this.spr.width / 2, y: this.pos.y },
+            { x: 0, y: -bulletSpeed },
+            bulletHP,
+            bulletHoming,
+            game.assets["missle"]
+        );
+        Global.gameCore.entities.push(b);
+    }
+
+    this.spr.x = this.pos.x;
+    this.spr.y = this.pos.y;
+    this.spr.modified();
+
+    this.bulletCntr++;
+
+    if (this.shieldCntr > 0) this.shieldCntr--;
+    if (this.homingCntr > 0) this.homingCntr--;
+    if (this.rapidFireCntr > 0) this.rapidFireCntr--;
+    if (this.bulletSpeedCntr > 0) this.bulletSpeedCntr--;
+    if (this.piercingCntr > 0) this.piercingCntr--;
+
+    return true;
+}
+
+//
+// Player破棄
+//
+Player.prototype.destroy = function() {
+    this.spr.destroy();
+}
+
+module.exports = Player;</code></pre>
+<pre id="DEMO-ITEM-9"  style="display: none;"><code>var Global = require("Global");
+var math = require("Math");
+var EntityType = require("EntityType");
+var createTitleScene = require("titleScene");
+var GameCore = require("GameCore");
+var GameOverLogo = require("GameOverLogo");
+
+var game = g.game;
+
+//
+// ゲームシーン生成
+//
+function createGameScene() {
+    var scene = new g.Scene({ game: game });
+
+    scene.loaded.handle(function() {
+
+        Global.gameCore = new GameCore(scene);
+
+        // player input
+        var clicked = false;
+        scene.pointDownCapture.handle(function() {
+            clicked = true;
+        });
+        scene.pointMoveCapture.handle(function(ev) {
+            if (! clicked) {
+                return
+            }
+            Global.gameCore.player.move(ev.prevDelta.x, ev.prevDelta.y);
+        });
+        scene.pointUpCapture.handle(function() {
+            clicked = false;
+        });
+
+        // game loop
+        var showResultUI = false;
+        scene.update.handle(function() {
+            Global.gameCore.update();
+
+            if (!showResultUI && Global.gameCore.player.hp <= 0) {
+                scene.pointDownCapture.removeAll();
+                scene.pointMoveCapture.removeAll();
+                scene.pointUpCapture.removeAll();
+
+                scene.setTimeout(1000, function() {
+                    var logoEntity = new GameOverLogo();
+                    Global.gameCore.entities.push(logoEntity);
+
+                    var returnBtnImageAsset = game.assets["returnButton"];
+
+                    var returnBtn = new g.Sprite({
+                        scene: scene,
+                        src: returnBtnImageAsset,
+                        x: (game.width - returnBtnImageAsset.width) / 2,
+                        y: (game.height - returnBtnImageAsset.height) / 4 * 3,
+                        touchable: true
+                    });
+
+                    returnBtn.pointDown.handle(function() {
+                        returnBtn.x += 4;
+                        returnBtn.y += 4;
+                        returnBtn.modified();
+                    });
+
+                    returnBtn.pointUp.handle(function() {
+                        returnBtn.x -= 4;
+                        returnBtn.y -= 4;
+                        returnBtn.touchable = false;
+                        returnBtn.modified();
+                        logoEntity.playBackwards()
+                        scene.setTimeout(logoEntity.cntr / game.fps * 1000 + 500, function() {
+                            var createTitleScene = require("titleScene"); // requireの循環参照回避
+                            game.replaceScene(createTitleScene());
+                        });
+                    });
+
+                    scene.append(returnBtn);
+                });
+                showResultUI = true;
+            }
+        });
+
+        Global.gameCore.start();
+    });
+
+    return scene;
+}
+
+module.exports = createGameScene;</code></pre>
+<pre id="DEMO-ITEM-10" style="display: none;"><code>//
+// グローバル変数
+//
+module.exports = {
+    gameCore: null,
+    bmpFont: null,
+    hiScore: 0
+};</code></pre>
+<pre id="DEMO-ITEM-11" style="display: none;"><code>//
+// アイテム識別子定義
+//
+module.exports = {
+    SHIELD: 0,
+    HOMING: 1,
+    RAPIDFIRE: 2,
+    BULLETSPEED: 3,
+    PIERCING: 4,
+    RECOVER: 5
+};</code></pre>
+<pre id="DEMO-ITEM-12" style="display: none;"><code>var Global = require("Global");
+var EntityType = require("EntityType");
+
+var game = g.game;
+
+//
+// シールドコンストラクタ
+//
+function Shield(idx, numFellow) {
+    this.type = EntityType.OBSTACLE;
+    this.obstacles = [ EntityType.ENEMY_BULLET ];
+    this.pos = { x: 0, y: 0 };
+    this.idx = idx;
+    this.numFellow = numFellow;
+    this.hp = 9999;
+    this.cntr = 0;
+
+    this.spr = new g.Sprite({
+        scene: Global.gameCore.scene,
+        src: game.assets["shield"]
+    });
+    Global.gameCore.gameLayer.append(this.spr);
+
+    this.update();
+}
+
+//
+// 状態更新
+//
+Shield.prototype.update = function() {
+    if (Global.gameCore.player.shieldCntr <= 0) {
+        return false;
+    }
+
+    var radius = 40;
+    var th = this.cntr * 4 + Math.PI * 2 * (this.idx / this.numFellow);
+    var cx = Global.gameCore.player.spr.x + Global.gameCore.player.spr.width / 2;
+    var cy = Global.gameCore.player.spr.y + Global.gameCore.player.spr.height / 2;
+    this.pos.x = cx + Math.cos(th) * radius - this.spr.width / 2;
+    this.pos.y = cy + Math.sin(th) * radius - this.spr.height / 2;
+
+    this.spr.x = this.pos.x;
+    this.spr.y = this.pos.y;
+    this.spr.modified();
+
+    this.cntr++;
+
+    return true;
+}
+
+//
+// 衝突イベントハンドラ
+//
+Shield.prototype.onCollision = function(e) {
+    e.hp--;
+}
+
+//
+// 破棄
+//
+Shield.prototype.destroy = function() {
+    this.spr.destroy();
+}
+
+module.exports = Shield;</code></pre>
+<pre id="DEMO-ITEM-13" style="display: none;"><code>var Global = require("Global");
+var math = require("Math");
+var EntityType = require("EntityType");
+var Particle = require("Particle");
+
+var game = g.game;
+
+var BULLET_WIDTH = 8;
+var BULLET_HEIGHT = 8;
+
+//
+// Bulletコンストラクタ
+//
+function Bullet(type, obstacles, pos, vel, hp, homing, imageAsset, life, th) {
+    this.type = type;
+    this.obstacles = obstacles;
+    this.pos = { x: pos.x, y: pos.y };
+    this.prevPos = { x: pos.x, y: pos.y };
+    this.vel = { x: vel.x, y: vel.y };
+    this.hp = hp;
+    this.homing = homing;
+    this.th = th ? th : 0;
+    this.life = life;
+    this.point = 0;
+
+    this.pos.x -= BULLET_WIDTH / 2;
+    this.spr = new g.E({
+        scene: Global.gameCore.scene,
+        width: BULLET_WIDTH,
+        height: BULLET_HEIGHT,
+        x: this.pos.x,
+        y: this.pos.y
+    });
+    this.spr.append(new g.Sprite({
+        scene: Global.gameCore.scene,
+        src: imageAsset,
+        x: (BULLET_WIDTH - imageAsset.width) / 2
+    }));
+
+    Global.gameCore.gameLayer.append(this.spr);
+}
+
+//
+// 状態更新
+//
+Bullet.prototype.update = function() {
+    if (this.hp <= 0) {
+        return false;
+    }
+
+    this.prevPos.x = this.pos.x;
+    this.prevPos.y = this.pos.y;
+    if (! this.homing) {
+        this.pos.x += this.vel.x;
+        this.pos.y += this.vel.y;
+    } else {
+        var e = this.type === EntityType.PLAYER_BULLET ? Global.gameCore.findEnemy() : Global.gameCore.player;
+        if (e && e.hp > 0) {
+            var dx = e.pos.x + e.spr.width / 2 - this.pos.x;
+            var dy = e.pos.y + e.spr.height / 2 - this.pos.y;
+            var th = Math.atan2(-dy, dx) - Math.PI / 2;
+            var dth = th - this.th;
+            while (dth > Math.PI) dth -= Math.PI * 2;
+            while (dth < -Math.PI) dth += Math.PI * 2;
+            var limit = Math.PI * (5 / 180);
+            dth = Math.max(-limit, Math.min(limit, dth));
+            this.th += dth;
+        }
+        var spd = Math.sqrt(this.vel.x * this.vel.x + this.vel.y * this.vel.y);
+        var c = Math.cos(this.th);
+        var s = Math.sin(this.th);
+        this.pos.x += -s * spd;
+        this.pos.y -=  c * spd;
+        if (this.life <= 0) {
+            this.homing = false;
+            this.vel.x = -s * spd * 2.5;
+            this.vel.y = -c * spd * 2.5;
+        }
+    }
+
+    this.spr.x = this.pos.x;
+    this.spr.y = this.pos.y;
+    this.spr.angle = -this.th / Math.PI * 180;
+    this.spr.modified();
+
+    this.life--;
+
+    return !(this.pos.x < -this.spr.width || this.pos.x > game.width || this.pos.y < -this.spr.height || this.pos.y > game.height);
+}
+
+//
+// 衝突イベントハンドラ
+//
+Bullet.prototype.onCollision = function(e) {
+    this.hp--;
+    e.hp--;
+    var dir = null;
+    if (e.hp > 0) {
+        dir = { x: this.pos.x - this.prevPos.x, y: this.pos.y - this.prevPos.y };
+    }
+    Global.gameCore.entities.push(new HitEffectEmitter(e, dir));
+
+    if (e.hp === 0 && e.point) {
+        Global.gameCore.player.score += e.point;
+        if (Global.hiScore < Global.gameCore.player.score) {
+            Global.hiScore = Global.gameCore.player.score;
+        }
+    }
+}
+
+Bullet.prototype.destroy = function() {
+    this.spr.destroy();
+}
+
+//
+// 被弾エフェクト（小）エミッタコンストラクタ
+//
+function HitEffectEmitter(entity, dir) {
+    this.entity = entity;
+    this.dir = dir;
+    this.cntr = 0;
+    this.life = 3;
+}
+
+//
+// 状態更新
+//
+HitEffectEmitter.prototype.update = function() {
+    for (var i = 0; i < 4; i++) {
+        var spd = 100 + 200 * math.random();;
+        var th = math.random() * Math.PI * 2;
+        var vel = null;
+        if (this.dir) {
+            var len = Math.sqrt(this.dir.x * this.dir.x + this.dir.y * this.dir.y);
+            if (len > 0) {
+                var dx = this.dir.x / len;
+                var dy = this.dir.y / len;
+                var r = (math.random() + math.random() + math.random()) / 3;
+                var th = -Math.PI / 4 + Math.PI / 2 * r;
+                vel = {
+                    x: (Math.cos(th) * dx - Math.sin(th) * dy) * spd,
+                    y: (Math.sin(th) * dx + Math.cos(th) * dy) * spd
+                };
+            }
+        }
+        vel = vel || { x: spd * Math.cos(th), y: spd * Math.sin(th) };
+        var p = new Particle({
+            pos: { x: this.entity.pos.x + this.entity.spr.width / 2, y: this.entity.pos.y + this.entity.spr.height / 2 },
+            vel: vel,
+            drag: 0,
+            grav: 0,
+            life: game.fps,
+            cssColor: math.random() < 0.33 ? "Yellow" : (math.random() < 0.5 ? "Red" : "White"),
+            width: 2,
+            height: 4,
+            onUpdate: function(p) {
+                var remain = p.life - p.cntr;
+                if (remain < 8) {
+                    p.spr.opacity = 0.7 * remain / 8;
+                }
+                p.spr.angle += 180 / game.fps;
+                p.spr.modified();
+            }
+        });
+        p.spr.angle = math.random() * 180;
+        p.spr.opacity = 0.7;
+        Global.gameCore.entities.push(p);
+    }
+
+    this.cntr++;
+    return this.cntr < this.life;
+}
+
+HitEffectEmitter.prototype.destroy = function() {
+    // nothing to do.
+}
+
+module.exports = Bullet;</code></pre>
+<pre id="DEMO-ITEM-14" style="display: none;"><code>var Global = require("Global");
+var EntityType = require("EntityType");
+
+var game = g.game;
+
+//
+// パーティクルコンストラクタ
+//
+function Particle(params) {
+    this.type = EntityType.EFFECT;
+    this.cntr = 0;
+    this.pos = { x: params.pos.x, y: params.pos.y };
+    this.vel = params.vel ? { x: params.vel.x, y: params.vel.y } : { x: 0, y: 0 };
+    this.drag = params.drag || 0;
+    this.grav = params.grav || 0;
+    this.life = params.life;
+    this.onUpdate = params.onUpdate;
+
+    if (params.asset) {
+        this.spr = new g.Sprite({
+            scene: Global.gameCore.scene,
+            src: params.asset,
+            x: this.pos.x,
+            y: this.pos.y,
+            width: params.width || params.asset.width,
+            height: params.height || params.asset.height,
+            srcX: params.srcX || 0,
+            srcY: params.srcY || 0
+        });
+    } else {
+        this.spr = new g.FilledRect({
+            scene: Global.gameCore.scene,
+            cssColor: params.cssColor,
+            width: params.width,
+            height: params.height,
+            x: this.pos.x,
+            y: this.pos.y
+        });
+    }
+    this.spr.compositeOperation = g.CompositeOperation.Lighter;
+    Global.gameCore.gameLayer.append(this.spr);
+}
+
+//
+// 状態更新
+//
+Particle.prototype.update = function() {
+    if (this.cntr === this.life) {
+        return false;
+    }
+
+    var dt = 1 / game.fps;
+    var a = {
+        x: -this.vel.x * this.drag,
+        y: -this.vel.y * this.drag + this.grav
+    };
+    this.vel.x += a.x * dt;
+    this.vel.y += a.y * dt;
+    this.pos.x += this.vel.x * dt;
+    this.pos.y += this.vel.y * dt;
+
+    if (this.onUpdate) {
+        this.onUpdate(this);
+    }
+
+    this.spr.x = this.pos.x;
+    this.spr.y = this.pos.y;
+
+    this.spr.modified();
+
+    this.cntr++;
+
+    return true;
+}
+
+//
+// 破棄
+//
+Particle.prototype.destroy = function() {
+    this.spr.destroy();
+}
+
+module.exports = Particle;</code></pre>
+<pre id="DEMO-ITEM-15" style="display: none;"><code>var Global = require("Global");
+var math = require("Math");
+var Particle = require("Particle");
+
+var game = g.game;
+
+//
+// 被弾エフェクト（大）
+//
+function emmitDamageEffect(entity) {
+    var th = math.random() * Math.PI * 2;
+    var spd = 750;
+    var imageAsset = game.assets["particle"];
+
+    var p = new Particle({
+        pos: { x: entity.pos.x + entity.spr.width / 2, y: entity.pos.y + entity.spr.height / 2 },
+        vel: { x: spd * Math.cos(th), y: spd * Math.sin(th) },
+        drag: 4,
+        grav: 500,
+        life: game.fps,
+        asset: imageAsset,
+        onUpdate: function(p) {
+            if (p.vel.y > 0) {
+                p.spr.opacity *= 0.9;
+            }
+            if (p.cntr % 3 === 0) {
+                var p2 = new Particle({
+                    pos: p.pos,
+                    vel: { x: 0, y: 0 },
+                    drag: 0,
+                    grav: 0,
+                    life: 8,
+                    asset: imageAsset,
+                    onUpdate: function(p) {
+                        p.spr.opacity *= 0.9;
+                        p.spr.modified();
+                    }
+                });
+                p2.spr.opacity = p.spr.opacity;
+                Global.gameCore.entities.push(p2);
+            }
+        }
+    });
+    p.spr.scaleX = 2.0;
+    p.spr.scaleY = 2.0;
+    p.spr.modified();
+
+    Global.gameCore.entities.push(p);
+}
+
+module.exports = emmitDamageEffect;</code></pre>
+<pre id="DEMO-ITEM-16" style="display: none;"><code>var Global = require("Global");
+var math = require("Math");
+var EntityType = require("EntityType");
+var ItemType = require("ItemType");
+var Item = require("Item");
+
+var game = g.game;
+
+//
+// Enemyコンストラクタ
+//
+function Enemy(pos, hp, point, itemTypes, spr) {
+    this.type = EntityType.ENEMY;
+    this.cntr = 0;
+    this.pos = {
+        x: pos.x,
+        y: pos.y
+    };
+    this.obstacles = [
+        EntityType.PLAYER
+    ];
+    this.hp = hp;
+    this.point = point;
+    this.itemTypes = itemTypes;
+    this.spr = spr;
+    Global.gameCore.gameLayer.append(this.spr);
+}
+
+Enemy.prototype.onUpdate = function() {
+    return true;
+}
+
+Enemy.prototype.onDied = function() {
+    if (! this.itemTypes || this.itemTypes.length === 0) {
+        return;
+    }
+    var itemType = this.itemTypes[Math.floor(math.random() * this.itemTypes.length)];
+    var item = new Item(this.pos, itemType);
+    Global.gameCore.entities.push(item);
+}
+
+Enemy.prototype.update = function() {
+    if (this.hp <= 0) {
+        this.onDied();
+        return false;
+    }
+    var result = this.onUpdate(this);
+    this.cntr++;
+    return result;
+}
+
+Enemy.prototype.onCollision = function(e) {
+    e.hp--;
+}
+
+Enemy.prototype.destroy = function() {
+    this.spr.destroy();
+}
+
+module.exports = Enemy;</code></pre>
+<pre id="DEMO-ITEM-17" style="display: none;"><code>var Global = require("Global");
+var EntityType = require("EntityType");
+
+var game = g.game;
+
+//
+// アイテムコンストラクタ
+//
+function Item(pos, itemType) {
+    this.type = EntityType.ITEM;
+    this.itemType = itemType;
+    this.originX = pos.x;
+    this.pos = { x: pos.x, y: pos.y };
+    this.cntr = 0;
+    this.hp = 1;
+    this.spr = new g.Sprite({
+        scene: Global.gameCore.scene,
+        src: game.assets[Item.itemImageNames[itemType]],
+        x: this.pos.x,
+        y: this.pos.y
+    });
+    Global.gameCore.gameLayer.append(this.spr);
+}
+
+Item.itemImageNames = [
+    "item01",
+    "item02",
+    "item03",
+    "item04",
+    "item05",
+    "item06"
+];
+
+//
+// アイテム状態更新
+//
+Item.prototype.update = function() {
+    if (this.hp <= 0) {
+        return false;
+    }
+
+    this.pos.x = this.originX + Math.sin(Math.PI * this.cntr / 18) * 48;
+    this.pos.y += 3;
+    this.spr.x = this.pos.x;
+    this.spr.y = this.pos.y;
+    this.spr.modified();
+
+    this.cntr++;
+
+    return true;
+}
+
+//
+// 破棄
+//
+Item.prototype.destroy = function() {
+    this.spr.destroy();
+}
+
+module.exports = Item;</code></pre>
+<pre id="DEMO-ITEM-18" style="display: none;"><code>var Global = require("Global");
+var EntityType = require("EntityType");
+var Item = require("Item");
+
+var game = g.game;
+
+var ITEMGAUGE_BAR_HEIGHT = 4;
+
+var itemNames = [
+    "SHIELD",
+    "HOMING",
+    "RAPIDFIRE",
+    "BULLETSPEED",
+    "PIERCING",
+    "RECOVER"
+];
+
+//
+// ItemGaugeコンストラクタ
+//
+function ItemGauge(pos, itemType, max, getter, tray) {
+    this.pos = { x: pos.x, y: pos.y };
+    this.type = EntityType.EFFECT;
+    this.itemType = itemType;
+    this.max = max;
+    this.getter = getter;
+    this.tray = tray;
+
+    var itemGaugeImageAsset = game.assets[Item.itemImageNames[itemType]];
+    this.spr = new g.Sprite({
+        scene: Global.gameCore.scene,
+        src: itemGaugeImageAsset,
+        x: pos.x,
+        y: pos.y
+    });
+    Global.gameCore.hudLayer.append(this.spr);
+    this.bar = new g.FilledRect({
+        scene: Global.gameCore.scene,
+        cssColor: "#FFB0B0",
+        width: itemGaugeImageAsset.width,
+        height: ITEMGAUGE_BAR_HEIGHT,
+        x: 0,
+        y: itemGaugeImageAsset.height + 2
+    });
+    this.spr.append(this.bar);
+}
+
+//
+// 状態更新
+//
+ItemGauge.prototype.update = function() {
+    var ratio = this.getter() / this.max;
+    if (ratio <= 0) {
+        return false;
+    }
+    this.bar.width = 16 * ratio;
+    this.bar.modified();
+    return true;
+}
+
+//
+// 破棄
+//
+ItemGauge.prototype.destroy = function() {
+    if (this.tray) {
+        this.tray.remove(this);
+    }
+    this.spr.destroy();
+}
+
+//
+// ItemGaugeTrayコンストラクタ
+//
+function ItemGaugeTray() {
+    this.cntr = 0;
+    this.gauges = [];
+    this.spr = new g.Label({
+        scene: Global.gameCore.scene,
+        text: "",
+        font: Global.bmpFont,
+        fontSize: 16,
+        x: 4, y: game.height - (game.assets["item01"].height + ITEMGAUGE_BAR_HEIGHT + 20)
+    });
+    Global.gameCore.hudLayer.append(this.spr);
+}
+
+//
+// アイテム追加
+//
+ItemGaugeTray.prototype.addItem = function(itemType, max, getter) {
+    var gauge = new ItemGauge({ x: game.width, y: game.height - (game.assets["item01"].height + ITEMGAUGE_BAR_HEIGHT + 4)}, itemType, max, getter, this);
+    Global.gameCore.entities.push(gauge);
+    this.gauges.push(gauge);
+}
+
+//
+// アイテム名表示
+//
+ItemGaugeTray.prototype.showItemName = function(itemType) {
+    this.spr.text = itemNames[itemType];
+    this.spr.invalidate();
+    this.cntr = 0;
+}
+
+//
+// 状態更新
+//
+ItemGaugeTray.prototype.update = function() {
+    var padding = 4;
+    var x = padding;
+    for (var i = 0; i < this.gauges.length; i++) {
+        var g = this.gauges[i];
+        if (g.spr.x > x) {
+            var diff = (g.spr.x - x) * 0.85;
+            g.spr.x = x + (diff > 1 ? diff : 0);
+            g.spr.modified();
+        }
+        x += g.spr.width + padding;
+    }
+
+    if (this.cntr >= 90) {
+        this.spr.text = "";
+        this.spr.invalidate();
+    };
+
+    this.cntr++;
+
+    return true;
+}
+
+//
+// アイテムゲージ削除
+//
+ItemGaugeTray.prototype.remove = function(gauge) {
+    var index = this.gauges.indexOf(gauge);
+    if (index !== -1) {
+        this.gauges.splice(index, 1);
+    }
+}
+
+//
+// 破棄
+//
+ItemGaugeTray.prototype.destroy = function() {
+    // nothing to do.
+}
+
+module.exports = ItemGaugeTray;</code></pre>
+<pre id="DEMO-ITEM-19" style="display: none;"><code>var Global = require("Global");
+var math = require("Math");
+var EntityType = require("EntityType");
+var ItemType = require("ItemType");
+var Bullet = require("Bullet");
+var Enemy = require("Enemy");
+
+var game = g.game;
+
+//
+// AlphaEnemyコンストラクタ
+//
+function AlphaEnemy() {
+    var imageAsset = game.assets["alphaEnemy"];
+    var pos = {
+        x: math.random() * (game.width - imageAsset.width),
+        y: math.random() * -32 - 32
+    };
+    var itemTypes = [
+        ItemType.RECOVER
+    ];
+    Enemy.call(this, pos, 4, 20, itemTypes, new g.Sprite({
+        scene: Global.gameCore.scene,
+        src: imageAsset,
+        x: pos.x,
+        y: pos.y
+    }));
+    this.targetPosition = null;
+}
+
+AlphaEnemy.prototype = Object.create(Enemy.prototype);
+
+//
+// 状態更新
+//
+AlphaEnemy.prototype.onUpdate = function() {
+    if (this.cntr < game.fps) {
+        this.pos.y += 4;
+    } else if (this.cntr < game.fps * 3) {
+        if (this.cntr === game.fps) {
+            this.targetPosition = { x: Global.gameCore.player.pos.x, y: Global.gameCore.player.pos.y };
+        }
+        if (this.cntr % 3 === 0) {
+            this.fire(this.targetPosition);
+        }
+    } else {
+        this.pos.y += 8;
+    }
+
+    this.spr.x = this.pos.x;
+    this.spr.y = this.pos.y;
+    this.spr.modified();
+
+    return this.pos.y < game.height;
+}
+
+//
+// 通常弾射出
+//
+AlphaEnemy.prototype.fire = function(targetPosition) {
+    var imageAsset = game.assets["alphaEnemy"];
+    var dx = targetPosition.x - this.pos.x;
+    var dy = targetPosition.y - this.pos.y;
+    var len = Math.sqrt(dx * dx + dy * dy);
+
+    if (len > 0) {
+        dx /= len;
+        dy /= len;
+        var b = new Bullet(
+            EntityType.ENEMY_BULLET,
+            [ EntityType.PLAYER ],
+            { x: this.pos.x + imageAsset.width / 2, y: this.pos.y + imageAsset.height },
+            { x: dx * 8, y: dy * 8 },
+            2,
+            false,
+            game.assets["ball"]
+        );
+        Global.gameCore.entities.push(b);
+    }
+}
+
+module.exports = AlphaEnemy;</code></pre>
+<pre id="DEMO-ITEM-20" style="display: none;"><code>var Global = require("Global");
+var math = require("Math");
+var EntityType = require("EntityType");
+var ItemType = require("ItemType");
+var Bullet = require("Bullet");
+var Enemy = require("Enemy");
+
+var game = g.game;
+
+//
+// BetaEnemyコンストラクタ
+//
+function BetaEnemy() {
+    var imageAsset = game.assets["betaEnemy"];
+    var x = math.random() * (game.width - imageAsset.width);
+    var y = -40;
+    var itemTypes = [
+        ItemType.SHIELD,
+        ItemType.HOMING,
+        ItemType.RAPIDFIRE,
+        ItemType.BULLETSPEED,
+        ItemType.PIERCING,
+    ];
+    Enemy.call(this, { x: x, y: y }, 1, 10, itemTypes, new g.Sprite({
+        scene: Global.gameCore.scene,
+        src: imageAsset,
+        x: x,
+        y: y
+    }));
+    this.dropPointY = math.random() * (game.height / 3) + 32;
+    this.origin = { x: this.pos.x, y: this.pos.y };
+    this.cntrOffset = math.random() * 30 | 0;
+    this.moveDown = true;
+}
+
+BetaEnemy.prototype = Object.create(Enemy.prototype);
+
+//
+// 状態更新
+//
+BetaEnemy.prototype.onUpdate = function() {
+    var imageAsset = game.assets["betaEnemy"];
+    if (this.moveDown) {
+        this.origin.y += 8;
+        if (this.pos.y >= this.dropPointY) {
+            this.moveDown = false;
+        }
+    }
+    var cntr = this.cntr + this.cntrOffset;
+    this.pos.x = this.origin.x + Math.sin(cntr / 45 * Math.PI) * 80;
+    this.pos.y = this.origin.y + Math.sin(cntr / 20 * Math.PI) * 24;
+
+    if (this.cntr % 3 === 0 && math.random() < 0.1) {
+        var b = new Bullet(
+            EntityType.ENEMY_BULLET,
+            [ EntityType.PLAYER ],
+            { x: this.pos.x + imageAsset.width / 2, y: this.pos.y + imageAsset.height },
+            { x: 0, y: +8 },
+            2,
+            false,
+            game.assets["ball"]
+        );
+        Global.gameCore.entities.push(b);
+    }
+
+    this.spr.x = this.pos.x;
+    this.spr.y = this.pos.y;
+    this.spr.modified();
+
+    this.cntr++;
+
+    return true;
+}
+
+module.exports = BetaEnemy;</code></pre>
+<pre id="DEMO-ITEM-21" style="display: none;"><code>var Global = require("Global");
+var math = require("Math");
+var EntityType = require("EntityType");
+var ItemType = require("ItemType");
+var Bullet = require("Bullet");
+var Enemy = require("Enemy");
+var Particle = require("Particle");
+var emmitDamageEffect = require("emmitDamageEffect");
+
+var game = g.game;
+
+//
+// GammaEnemyコンストラクタ
+//
+function GammaEnemy() {
+    var imageAsset = game.assets["gammaEnemy"];
+    var width = imageAsset.width;
+    var height = imageAsset.height;
+    var x = (game.width - width) / 2;
+    var y = -height;
+
+    Enemy.call(this, { x: x, y: y }, 9999, 100, [], new g.Sprite({
+        scene: Global.gameCore.scene,
+        src: imageAsset,
+        x: x,
+        y: y
+    }));
+
+    GammaEnemy.numInstance++;
+}
+
+//
+// GammaEnemy総数カウンタ
+//
+GammaEnemy.numInstance = 0;
+
+GammaEnemy.prototype = Object.create(Enemy.prototype);
+
+//
+// 死亡ハンドラ
+//
+GammaEnemy.prototype.onDied = function() {
+    Enemy.prototype.onDied.call(this);
+
+    var imageAsset = game.assets["gammaEnemy"];
+    var split = 8;
+    var fragmentWidth = imageAsset.width / split;
+    var fragmentHeight = imageAsset.height / split;
+    for (var i = 0; i < split; i++) {
+        var y = fragmentHeight * i;
+        for (var j = 0; j < split; j++) {
+            var spd = 150 + 250 * math.random();
+            var th = math.random() * Math.PI * 2;
+            var x = fragmentWidth * j;
+            var offset = Math.PI * 2 * math.random();
+            var scale = 1 + math.random();
+            var p = new Particle({
+                pos: { x: this.pos.x + x, y: this.pos.y + y},
+                vel: { x: spd * Math.cos(th), y: spd * Math.sin(th) },
+                life: (game.fps * 1.2) | 0,
+                asset: imageAsset,
+                width: fragmentWidth,
+                height: fragmentHeight,
+                srcX: x,
+                srcY: y,
+                onUpdate: function(p) {
+                    var th = Math.PI * 2 / game.fps * p.cntr + offset;
+                    p.spr.scaleX = scale * Math.cos(th);
+                    p.spr.scaleY = scale * Math.sin(th);
+                    var remain = p.life - p.cntr;
+                    if (remain < 8) {
+                        p.spr.opacity = remain / 8;
+                    }
+                    p.spr.modified();
+                }
+            });
+            p.spr.compositeOperation = g.CompositeOperation.SourceOver;
+            if (i % 2 === 0) {
+                p.spr.scaleX = 4;
+                p.spr.scaleY = 4;
+            }
+            Global.gameCore.entities.push(p);
+            emmitDamageEffect(p);
+        }
+    }
+}
+
+//
+// 状態更新
+//
+GammaEnemy.prototype.onUpdate = function() {
+    var progressTime = 50;
+    if (this.cntr < progressTime) {
+        this.pos.y += 4;
+    } else {
+        if (this.cntr === progressTime) {
+            this.hp = 16;
+        }
+
+        var cntr = (this.cntr - progressTime) % (180 * 3);
+        if (cntr < 180) {
+            if (cntr % 3 === 0) {
+                var th = Math.PI * 2 / 180 * cntr;
+                var b = new Bullet(
+                    EntityType.ENEMY_BULLET,
+                    [ EntityType.PLAYER ],
+                    { x: this.pos.x + this.spr.width / 2, y: this.pos.y + this.spr.height / 2 },
+                    { x: 8 * Math.sin(th), y: 8 * Math.cos(th) },
+                    2,
+                    false,
+                    game.assets["ball"]
+                );
+                Global.gameCore.entities.push(b);
+                th = -th;
+                var b = new Bullet(
+                    EntityType.ENEMY_BULLET,
+                    [ EntityType.PLAYER ],
+                    { x: this.pos.x + this.spr.width / 2, y: this.pos.y + this.spr.height / 2 },
+                    { x: 8 * Math.sin(th), y: 8 * Math.cos(th) },
+                    2,
+                    false,
+                    game.assets["ball"]
+                );
+                Global.gameCore.entities.push(b);
+            }
+        } else if (cntr < 180 * 2) {
+            if (cntr % 60 === 0) {
+                var b = new Bullet(
+                    EntityType.ENEMY,
+                    [ EntityType.PLAYER ],
+                    { x: this.pos.x + this.spr.width / 8, y: this.pos.y },
+                    { x: 0, y: 4 },
+                    1,
+                    true,
+                    game.assets["enemyMissile"],
+                    game.fps * 5, // life
+                    Math.PI / 4
+                );
+                Global.gameCore.entities.push(b);
+
+                var b = new Bullet(
+                    EntityType.ENEMY,
+                    [ EntityType.PLAYER ],
+                    { x: this.pos.x + this.spr.width / 8 * 7, y: this.pos.y },
+                    { x: 0, y: 4 },
+                    1,
+                    true,
+                    game.assets["enemyMissile"],
+                    game.fps * 5, // life
+                    -Math.PI / 4
+                );
+                Global.gameCore.entities.push(b);
+            }
+        } else {
+
+        }
+    }
+
+    this.spr.x = this.pos.x;
+    this.spr.y = this.pos.y;
+    this.spr.modified();
+
+    this.cntr++;
+
+    return true;
+}
+
+//
+// 破棄
+//
+GammaEnemy.prototype.destroy = function() {
+    GammaEnemy.numInstance--;
+    Enemy.prototype.destroy.call(this);
+}
+
+module.exports = GammaEnemy;</code></pre>
+<pre id="DEMO-ITEM-22" style="display: none;"><code>var Global = require("Global");
+var math = require("Math");
+var EntityType = require("EntityType");
+var AlphaEnemy = require("AlphaEnemy");
+var BetaEnemy = require("BetaEnemy");
+var GammaEnemy = require("GammaEnemy");
+
+var game = g.game;
+
+//
+// EnemyManagerコンストラクタ
+//
+function EnemyManager() {
+    this.cntr = 0;
+}
+
+//
+// 敵総数カウント
+//
+EnemyManager.prototype.countEnemy = function() {
+    var count = 0;
+    for (var i = 0; i < Global.gameCore.entities.length; i++) {
+        var e = Global.gameCore.entities[i];
+        if (e && e.type === EntityType.ENEMY) {
+            count++;
+        }
+    }
+    return count;
+}
+
+//
+// 状態更新
+//
+EnemyManager.prototype.update = function() {
+    if (this.cntr === game.fps * 3) { // tutorial 1
+        for (var i = 0; i < 4; i++) {
+            Global.gameCore.entities.push(new BetaEnemy());
+        }
+    } else if (this.cntr === game.fps * 18) { // tutorial 2
+        for (var i = 0; i < 4; i++) {
+            Global.gameCore.entities.push(new AlphaEnemy());
+        }
+    } else if (this.cntr === game.fps * 23) {
+        Global.gameCore.entities.push(new BetaEnemy());
+        Global.gameCore.entities.push(new AlphaEnemy());
+        Global.gameCore.entities.push(new BetaEnemy());
+        Global.gameCore.entities.push(new AlphaEnemy());
+    } else if (this.cntr >= game.fps * 30) {
+        var enemyCount = this.countEnemy();
+        if (enemyCount < 2 || (enemyCount < 5 && math.random() < 0.5)) {
+            var rnd = math.random();
+            var enemy = null;
+            if (rnd < 0.05) {
+                if (GammaEnemy.numInstance === 0 && rnd < 0.025) {
+                    enemy = new GammaEnemy();
+                } else {
+                    enemy = new BetaEnemy();
+                }
+            } else if (rnd < 0.1) {
+                enemy = new AlphaEnemy();
+            }
+            if (enemy) {
+                Global.gameCore.entities.push(enemy);
+            }
+        }
+    }
+
+    this.cntr++;
+
+    return true;
+}
+
+//
+// 破棄
+//
+EnemyManager.prototype.destroy = function() {
+    // nothing to do
+}
+
+module.exports = EnemyManager;</code></pre>
+<pre id="DEMO-ITEM-23" style="display: none;"><code>var Global = require("Global");
+var math = require("Math");
+var EntityType = require("EntityType");
+
+var game = g.game;
+
+//
+// Backgroundコンストラクタ
+//
+function Background() {
+    this.type = EntityType.EFFECT;
+    this.cntr = 0;
+    this.rgb = { r: 0, g: 191/255, b: 32/255 };
+    this.spr = new g.FilledRect({
+        scene: Global.gameCore.scene,
+        cssColor: "#1E90FF",
+        width: game.width,
+        height: game.height
+    });
+    Global.gameCore.backgroundLayer.append(this.spr);
+}
+
+//
+// 状態更新
+//
+Background.prototype.update = function() {
+    if (this.cntr <= 60) {
+        var t = Math.min(1, this.cntr / 60);
+        var R = Math.round(0x00 * t + 0x1E * (1 - t));
+        var G = Math.round(0x00 * t + 0x90 * (1 - t));
+        var B = Math.round(0x20 * t + 0xFF * (1 - t));
+        this.spr.cssColor = "#" + ("000000" + ((R << 16) | (G << 8) | B).toString(16)).slice(-6);
+        this.spr.modified();
+    }
+
+    if (this.cntr % 4 === 0 && math.random() < 0.5) {
+        var front = math.random() < 0.25;
+        var imageAsset = game.assets[front ? "star01" : "star02"];
+        var star = new g.Sprite({
+            scene: Global.gameCore.scene,
+            src: imageAsset,
+            x: math.random() * (game.width - imageAsset.width),
+            y: -imageAsset.height
+        });
+        star.modified();
+        var that = this;
+        star.update.handle(function() {
+            var t = Math.min(1, that.cntr / 60);
+            var dy = front ? 8 : 4;
+            dy += dy * 2.5 * (1 - t);
+            star.y += dy;
+            star.modified();
+            if (star.y >= game.height) {
+                star.destroy();
+            }
+        });
+        this.spr.append(star);
+    }
+
+    this.cntr++;
+
+    return true;
+}
+
+//
+// 破棄
+//
+Background.prototype.destroy = function() {
+    this.spr.destroy();
+}
+
+module.exports = Background;</code></pre>
+<pre id="DEMO-ITEM-24" style="display: none;"><code>var Global = require("Global");
+var math = require("Math");
+var EntityType = require("EntityType");
+var Player = require("Player");
+var ItemGaugeTray = require("ItemGaugeTray");
+var EnemyManager = require("EnemyManager");
+var GammaEnemy = require("GammaEnemy");
+var Background = require("Background");
+var PlayerStatus = require("PlayerStatus");
+
+//
+// GameCoreコンストラクタ
+//
+function GameCore(scene) {
+    this.scene = scene;
+    this.cntr = 0;
+    this.vibrationCntr = 0;
+    this.entities = [];
+
+    this.background = null;
+    this.player = null;
+    this.itemGaugeTray = null;
+    this.playerStatus = null;
+    this.enemyManager = null;
+
+    this.hudLayer = new g.E({scene: this.scene});
+    this.backgroundLayer = new g.E({scene: this.scene});
+    this.gameLayer = new g.E({scene: this.scene});
+    this.scene.append(this.backgroundLayer);
+    this.scene.append(this.gameLayer);
+    this.scene.append(this.hudLayer);
+
+    GammaEnemy.numInstance = 0;
+}
+
+//
+// ゲーム開始
+//
+GameCore.prototype.start = function() {
+    this.background = new Background();
+    this.entities.push(this.background);
+    this.itemGaugeTray = new ItemGaugeTray();
+    this.entities.push(this.itemGaugeTray);
+    this.player = new Player();
+    this.entities.push(this.player);
+    this.playerStatus = new PlayerStatus();
+    this.entities.push(this.playerStatus);
+    this.enemyManager = new EnemyManager();
+    this.entities.push(this.enemyManager);
+}
+
+//
+// 状態更新
+//
+GameCore.prototype.update = function() {
+    if (this.vibrationCntr >= 5) {
+        this.gameLayer.x = math.random() * 32 / 2 - 16;
+        this.gameLayer.y = math.random() * 32 / 2 - 16;
+    } else {
+        this.gameLayer.x = 0;
+        this.gameLayer.y = 0;
+    }
+    this.gameLayer.modified();
+
+    if (0 < this.vibrationCntr && this.vibrationCntr < 5) {
+        // stop the world.
+    } else {
+        this.collisionDetection();
+        this.updateEntities();
+    }
+
+    // shrink array
+    this.entities = this.entities.filter(function(e) {
+        return !!e;
+    });
+
+    if (this.vibrationCntr > 0) {
+        this.vibrationCntr--;
+    }
+
+    this.cntr++;
+}
+
+//
+// すべての敵の状態更新
+//
+GameCore.prototype.updateEntities = function() {
+    var len = this.entities.length;
+    for (var i = 0; i < len; i++) {
+        var e = this.entities[i]
+        if (! e) {
+            continue;
+        }
+        if (! e.update()) {
+            e.destroy();
+            this.entities[i] = null;
+        }
+    }
+};
+
+//
+// 自機から最も近い敵の探索
+//
+GameCore.prototype.findEnemy = function() {
+    var found = null;
+    var len = this.entities.length;
+    var nearest = Number.MAX_VALUE;
+    for (var i = 0; i < len; i++) {
+        var e = this.entities[i]
+        if (! e || e.type != EntityType.ENEMY) {
+            continue;
+        }
+        var dx = e.pos.x - this.player.pos.x;
+        var dy = e.pos.y - this.player.pos.y;
+        var d2 = dx * dx + dy * dy;
+        if (d2 < nearest) {
+            nearest = d2;
+            found = e;
+        }
+    }
+
+    return found;
+};
+
+//
+// 衝突判定
+//
+GameCore.prototype.collisionDetection = function() {
+    var len = this.entities.length;
+
+    for (var i = 0; i < len; i++) {
+        var entity = this.entities[i];
+        if (!entity || !entity.spr || !entity.obstacles || !entity.onCollision) {
+            continue;
+        }
+        this.intersect(entity);
+    }
+}
+
+//
+// 衝突判定（内部処理）
+//
+GameCore.prototype.intersect = function(collider) {
+    var len = this.entities.length;
+    for (var i = 0; i < len; i++) {
+        var e = this.entities[i];
+        if (!e || e === collider || !e.spr || collider.obstacles.indexOf(e.type) === -1) {
+            continue;
+        }
+        if (math.intersectArea(collider.spr, e.spr)) {
+            collider.onCollision(e);
+        }
+    }
+}
+
+module.exports = GameCore;</code></pre>
+<pre id="DEMO-ITEM-25" style="display: none;"><code>var Global = require("Global");
+var math = require("Math");
+
+var game = g.game;
+
+//
+// GameOverLogoコンストラクタ
+//
+function GameOverLogo() {
+    this.cntr = 0;
+    this.span = game.fps;
+    this.pulses = [];
+    this.countDown = false;
+
+    var gameOverImageAsset = game.assets["gameover"];
+
+    this.spr = new g.E({
+        scene: Global.gameCore.scene,
+        x: (game.width - gameOverImageAsset.width) / 2,
+        y: (game.height - gameOverImageAsset.height) / 3 * 1,
+    });
+
+    for (var i = 0; i < gameOverImageAsset.height; i++) {
+        var cell = new g.Sprite({
+            scene: Global.gameCore.scene,
+            src: gameOverImageAsset,
+            x: 0,
+            y: i,
+            width: gameOverImageAsset.width,
+            height: 1,
+            srcY: i
+        })
+        this.spr.append(cell);
+    }
+
+    this.update();
+
+    Global.gameCore.scene.append(this.spr);
+}
+
+//
+// アニメーション逆再生
+//
+GameOverLogo.prototype.playBackwards = function() {
+    this.countDown = true;
+    this.cntr = this.span;
+}
+
+//
+// グリッチ発生
+//
+GameOverLogo.prototype.glitch = function() {
+    var pulse = {
+        cntr: 0,
+        life: Math.floor(2 + math.random() * 4),
+        pos: Math.floor(game.assets["gameover"].height * math.random()),
+        len: Math.floor(4 + math.random() * 16),
+        amp: 10 + 70 * math.random(),
+        mov: math.random() < 0.5 ? (math.random() < 0.5 ? 2 : -2) : 0
+    };
+    this.pulses.push(pulse);
+}
+
+//
+// 状態更新
+//
+GameOverLogo.prototype.update = function() {
+    if (this.cntr > this.span + game.fps * 1.5 && math.random() < 0.1) {
+        this.glitch();
+    }
+
+    var children = this.spr.children;
+    var t = Math.max(0, (this.span - this.cntr) / this.span);
+    for (var i = 0; i < children.length; i++) {
+        var cell = children[i];
+        var th = Math.PI * 4 * i / children.length + Math.PI * t * 2;
+        var amp = 90 * t;
+        cell.x = amp * Math.sin(th);
+        cell.opacity = Math.min(1, (1 - t) * 3);
+        cell.modified();
+    }
+
+    for (var i = 0; i < this.pulses.length; i++) {
+        var p = this.pulses[i];
+
+        var t = p.cntr / p.life;
+        for (var j = p.pos; j < Math.min(p.pos + p.len, children.length); j++) {
+            if (j < 0) continue;
+            var s = (j - p.pos) / p.len;
+            var th = Math.PI * 2 * s;
+            var dx = Math.sin(th) * p.amp * Math.sin(Math.PI * t);
+            var cell = children[j];
+            cell.x += dx;
+            cell.modified();
+        }
+
+        p.cntr++;
+        p.pos += p.mov;
+        if (p.cntr >= p.life) {
+            this.pulses[i] = null;
+        }
+    }
+
+    // shrink
+    this.pulses = this.pulses.filter(function(p) {
+        return !!p;
+    });
+
+    if (this.countDown) {
+        this.cntr--;
+        if (this.cntr < 0) {
+            this.cntr = 0;
+        }
+    } else {
+        this.cntr++;
+    }
+
+    return true;
+}
+
+//
+// 破棄
+//
+GameOverLogo.prototype.destroy = function() {
+    this.spr.destroy();
+}
+
+module.exports = GameOverLogo;</code></pre>
+<pre id="DEMO-ITEM-26" style="display: none;"><code>var Global = require("Global");
+var Player = require("Player");
+
+var game = g.game;
+
+//
+// PlayerStatusコンストラクタ
+//
+function PlayerStatus() {
+    this.scoreLabel = new g.Label({
+        scene: Global.gameCore.scene,
+        text: "",
+        font: Global.bmpFont,
+        fontSize: 16,
+        x: 4, y: 4
+    });
+    Global.gameCore.hudLayer.append(this.scoreLabel);
+
+    this.hiScoreLabel = new g.Label({
+        scene: Global.gameCore.scene,
+        text: "",
+        font: Global.bmpFont,
+        fontSize: 16,
+        x: game.width - (16 * 9 + 4), y: 4
+    });
+    Global.gameCore.hudLayer.append(this.hiScoreLabel);
+
+    this.hpGauge = new g.E({ scene: Global.gameCore.scene });
+
+    // trick
+    var m = this.hpGauge.getMatrix()._matrix;
+    this.hpGauge.angle = 0.001; // dummy value to apply following matrix
+    var sk = -Math.PI/6;
+    m[0] = Math.cos(sk);
+    m[1] = 0;
+    m[2] = Math.sin(sk);
+    m[3] = 1;
+    this.hpGauge.getMatrix().update = function() {}; // to prevent hpGauge from overwriting matrix
+
+    var x = 28;
+    for (var i = 0; i < Player.MAX_HP; i++) {
+        var scale = new g.FilledRect({
+            scene: Global.gameCore.scene,
+            width: 8,
+            height: 16,
+            x: x,
+            y: 24,
+            cssColor: "Yellow"
+        });
+        x += scale.width + 4;
+        this.hpGauge.append(scale);
+    }
+    Global.gameCore.hudLayer.append(this.hpGauge);
+}
+
+//
+// 状態更新
+//
+PlayerStatus.prototype.update = function() {
+    this.scoreLabel.text = "SCORE " + ("00000" + Global.gameCore.player.score).slice(-6);
+    this.scoreLabel.invalidate();
+    this.hiScoreLabel.text = "HI " + ("00000" + Global.hiScore).slice(-6);
+    this.hiScoreLabel.invalidate();
+
+    var scales = this.hpGauge.children;
+    for (var i = 0; i < scales.length; i++) {
+        var scale = scales[i];
+        scale.cssColor = (i < Global.gameCore.player.hp) ? "Yellow" : "Red";
+        scale.modified();
+    }
+
+    return true;
+}
+
+//
+// 破棄
+//
+PlayerStatus.prototype.destroy = function() {
+    this.scoreLabel.destroy();
+    this.hpLabel.destroy();
+    this.hpGauge.destroy();
+}
+
+module.exports = PlayerStatus;</code></pre>
+<pre id="DEMO-ITEM-27" style="display: none;"><code>var createTitleScene = require("titleScene");
+
+var game = g.game;
+
+//
+// 揺らめくロゴコンストラクタ
+//
+function Logo(params) {
+    g.E.prototype.constructor.call(this, params);
+    this.surface = g.Util.asSurface(params.src);
+
+    this.backSurface = game.resourceFactory.createSurface(game.width, game.height);
+
+    this.cntr = 0;
+    this.seg = 0;
+    this.maxLineScale = 8;
+    this.lineScale = this.maxLineScale;
+    this.opacity = 0;
+}
+
+Logo.prototype = Object.create(g.E.prototype);
+
+Logo.prototype.__update = function() {
+    var vScale = this.maxLineScale / (game.fps * 2);
+
+    if (this.seg === 0) {
+        this.lineScale -= vScale;
+        if (this.lineScale < -3) {
+            this.seg++;
+        }
+    } else if (this.seg === 1) {
+        this.lineScale += vScale / 2;
+        if (this.lineScale > 0) {
+            this.lineScale = 0;
+            this.seg++;
+        }
+    } else if (this.seg === 2) {
+        this.scene.setTimeout(2000, function() {
+            game.replaceScene(createTitleScene());
+        });
+        this.seg++;
+    }
+
+    this.opacity = Math.min(1, this.opacity + 1 / (game.fps * 3));
+
+    this.cntr++;
+}
+
+Logo.prototype.lineLoop = function(callback) {
+    var dth = Math.PI * 1 / this.height;
+    var oth = Math.PI / game.fps * this.cntr;
+    var height = 0;
+    for (var i = 0; i < this.height; i++) {
+        var th = dth * i + oth;
+        var sy = 1 + ((Math.cos(th) + 1) / 2) *  this.lineScale;
+        if (callback) {
+            callback(sy, height, i);
+        }
+        height += sy;
+    }
+    return height;
+}
+
+Logo.prototype.renderSelf = function(renderer, camera) {
+    // draw on backsurface
+    var backRenderer = this.backSurface.renderer();
+    backRenderer.begin();
+    backRenderer.fillRect(0, 0, this.backSurface.width, this.backSurface.height, "White");
+    backRenderer.save();
+
+    var height = this.lineLoop();
+    var dx = (game.width - this.width) / 2;
+    var dy = (game.height - height) / 2;
+    this.lineLoop(function(sy, y, idx) {
+        backRenderer.save();
+        backRenderer.transform([1, 0, 0, sy * 2, dx, y + dy]);
+        backRenderer.drawImage(this.surface, 0, idx, this.width, 1, 0, 0);
+        backRenderer.restore();
+    }.bind(this));
+
+    backRenderer.restore();
+    backRenderer.end();
+
+    // flip
+    renderer.save();
+    renderer.drawImage(this.backSurface, 0, 0, this.backSurface.width, this.backSurface.height, 0, 0);
+    renderer.restore();
+
+    this.__update();
+
+    return true;
+}
+
+Logo.prototype.destroy = function() {
+    this.backSurface.destroy();
+    g.E.prototype.destroy.call(this);
+}
+
+//
+// ブートシーン生成
+//
+function createBootScene() {
+    var scene = new g.Scene({ game: game });
+
+    scene.loaded.handle(function() {
+        var asset = game.assets["akashic"]
+        var logo = new Logo({
+            scene: scene,
+            src: asset,
+            width: asset.width,
+            height: asset.height
+        });
+        logo.update.handle(function() {
+            logo.modified();
+        });
+        scene.append(logo);
+    });
+
+    return scene;
+}
+
+module.exports = createBootScene;</code></pre>
+<!--↑CODE↑-->
+</div>
+</section>
+<!--↑demoボディ↑-->
+<!--↓フッタ↓-->
+{% include footer.html %}
+<!--↑フッタ↑-->
+</div></body>
+</html>
