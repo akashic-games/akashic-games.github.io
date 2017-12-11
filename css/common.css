@@ -8,35 +8,38 @@ body {
 	background: #0F1F26;
 	color: #FFF;
 	}
-body.lock { position: fixed;}
-body:after {/* 画面シャドウ */
-	position: fixed;
+/*↑body↑*/
+/*↓画面を暗く↓*/
+.window--dark {
 	z-index: 1;
+	visibility: hidden;
+	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100%;
-	height: 100%;
-	background: rgba(0,0,0,0.8);
-	visibility: hidden;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0,0,0,0.6);
 	opacity: 0.0;
 	transition: visibility 0.5s, opacity 0.5s;
-	content: "";
 	}
-body.lock:after { visibility: visible; opacity: 1.0;}
-/*↑body↑*/
+.window--dark.show {
+	visibility: visible;
+	opacity: 1.0;
+	}
+/*↑画面を暗く↑*/
 /*↓ページ幅均一化↓*/
 #OuterBox {
 	position: relative;
 	overflow-x: hidden;
 	overflow-y: scroll;
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: 100vh;
+	-webkit-overflow-scrolling: touch;
 	}
-body.lock #OuterBox { overflow-y: hidden;}
-@media screen and (max-width: 959px){
-#OuterBox { -webkit-overflow-scrolling: touch;}
-#OuterBox.lock { -webkit-overflow-scrolling: auto;}
-}
+#OuterBox.lock {
+	overflow-y: hidden;
+	border-right: solid 4px #CCC;/* スクロールバー幅を埋める */
+	}
 /*↑ページ幅均一化↑*/
 /*↓ページコンテンツ格納↓*/
 section.page--body {
@@ -57,13 +60,13 @@ section.page--body {
 .page--top {
 	z-index: 1;
 	position: fixed;
-	bottom: 16px;
-	right: calc(50% - 488px);
+	bottom: 0;
+	right: calc(50% - 448px);
 	display: none;
 	width: 48px;
 	height: 48px;
 	background: #900;
-	border-radius: 4px;
+	border-radius: 4px 4px 0 0;
 	box-shadow: 0 2px 4px rgba(15,31,38,0.8);
 	padding: 8px;
 	cursor: pointer;
@@ -78,10 +81,6 @@ section.page--body {
 	content: "";
 	}
 @media screen and (max-width: 959px){
-.page--top {
-	bottom: 0;
-	right: 8px;
-	border-radius: 4px 4px 0 0;
-	}
+.page--top { right: 24px;}
 }
 /*↑ページの先頭へ↑*/

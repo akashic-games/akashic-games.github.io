@@ -30,7 +30,7 @@ header .head--inner:after {/* 赤線 */
 	}
 /*↑header↑*/
 /*↓SP：ホーム↓*/
-.head--logo--SP {
+.SP--head--logo {
 	position: absolute;
 	top: 8px;
 	right: 8px;
@@ -41,42 +41,44 @@ header .head--inner:after {/* 赤線 */
 	background-size: contain;
 	}
 @media screen and (max-width: 959px){
-.head--logo--SP { display: block;}
+.SP--head--logo { display: block;}
 }
 /*↑SP：ホーム↑*/
 /*↓SP：展開↓*/
-.head--content--open {
-	z-index: 4;/* .head--contents = 3 */
+.SP--head--content--show,
+.SP--head--content--hide {
+	z-index: 4;/* .head--content = 3 */
 	display: none;
 	position: fixed;
 	top: -1px;
 	left: 7px;
 	width: 46px;
 	height: 46px;
-	background: #C00;
 	box-shadow: 0 1px 2px rgba(15,31,38,0.8);
 	border: solid 1px #FFF;
+	padding: 10px;
 	cursor: pointer;
 	}
-.head--content--open.done { background: #012;}
-.head--content--open:after {
-	position: absolute;
-	top: 10px;
-	left: 10px;
+.SP--head--content--show { background: #C00;}
+.SP--head--content--hide { background: #012;}
+.SP--head--content--show:after,
+.SP--head--content--hide:after {
 	width: 24px;
 	height: 24px;
 	display: block;
-	background-image: url('/img/akashic-logo/2w.png');
-	background-size: contain;
 	content: "";
 	}
-.head--content--open.done:after {
+.SP--head--content--show:after {
+	background-image: url('/img/akashic-logo/2w.png');
+	background-size: contain;
+	}
+.SP--head--content--hide:after {
 	background-image: url('/img/icons.png');
 	background-size: cover;
 	background-position: 0 0;
 	}
 @media screen and (max-width: 959px){
-.head--content--open { display: block;}
+.SP--head--content--show { display: block;}
 }
 /*↑SP：展開↑*/
 /*↓コンテンツ↓*/
@@ -97,7 +99,7 @@ header .head--inner:after {/* 赤線 */
 	top: 0;
 	left: -100vw;
 	width: calc(100vw - 20%);
-	height: 100vh;
+	height: 100%;
 	overflow-y: scroll;
 	background: #030609;
 	box-shadow: 0 0 4px rgba(0,0,0,0.8);
@@ -121,12 +123,10 @@ header .head--inner:after {/* 赤線 */
 	}
 .head--content:before {
 	height: 32px;
-	background-position: bottom left;
 	background-image: url('/img/header/bg-1.png');
 	}
 .head--content:after {
 	height: 96px;
-	background-position: top left;
 	background-image: url('/img/header/bg-2.png');
 	}
 }

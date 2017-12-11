@@ -72,6 +72,7 @@ iframe#DEMO {/* 実演 */
 /*↑demo--head：デモと説明↑*/
 /*↓demo--body↓*/
 .demo--body {
+	width: 100%;
 	background: #FFF;
 	padding: 24px 0;
 	}
@@ -105,17 +106,18 @@ iframe#DEMO {/* 実演 */
 	text-shadow: 0 1px 1px rgba(0,0,0,0.6);
 	}
 @media screen and (max-width: 959px){
-.demo--body { padding: 0;}
 .demo--body--list {
 	z-index: 1;
-	width: 100vw;
 	overflow-x: scroll;
+	overflow-y: hidden;
+	width: 100%;
 	background: #4F5F66;
 	border-top: solid 2px #AFBFC6;
 	border-bottom: solid 2px #AFBFC6;
+	-webkit-overflow-scrolling: touch;
 	padding: 0;
 	}
-.demo--body--list.fixfliemenu--SP {/* SP */
+.demo--body--list.SP--fixed {/* SP */
 	position: fixed;
 	top: 40px;
 	left: 0;
@@ -176,10 +178,10 @@ iframe#DEMO {/* 実演 */
 .demo--body--item div img:last-child { margin-bottom: 0;}
 @media screen and (max-width: 959px){
 .demo--body--item {
-	width: 100vw;
+	width: 100%;
 	padding: 0;
 	}
-.demo--body--item.fixfliemenu--SP { margin-top: 40px;}/* SP */
+.demo--body--item.SP--fixed { margin-top: 48px;}/* SP */
 .demo--body--item pre {
 	overflow-x: scroll;
 	box-shadow: none;
