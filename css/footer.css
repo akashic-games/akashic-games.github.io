@@ -16,9 +16,8 @@ footer:before {/* 赤線 */
 	content: "";
 	}
 /*↑footer↑*/
-/*↓コンテンツ↓*/
-.foot--content {}
-.foot--content--item {
+/*↓メニュー↓*/
+.foot--menu--item {
 	float: left;
 	width: 25%;
 	font-size: 12px;
@@ -27,32 +26,32 @@ footer:before {/* 赤線 */
 	padding: 4px;
 	}
 @media screen and (max-width: 959px){
-.foot--content--item {
+.foot--menu--item {
 	width: 100%;
 	text-align: center;
 	float: none;
 	}
 }
-.foot--content--item--tab {/* 行頭 */
+.foot--menu--item--tab {/* 行頭 */
 	color: #537683;
 	border-bottom: 1px solid #1F2F36;
 	padding: 4px;
 	}
-.foot--content--item--list {/* 各項 */
+.foot--menu--item--list {/* 各項 */
 	margin-top: 8px;
 	}
-.foot--content--item--list a {
+.foot--menu--item--list a {
 	display: block;
 	color: #6C8F9C;
 	text-decoration: none;
 	padding: 4px;
 	transition: color 0.25s, text-shadow 0.25s;
 	}
-.foot--content--item--list a:hover {
+.foot--menu--item--list a:hover {
 	color: #FFF;
 	text-shadow: 0 0 1px #09B, 0 0 8px #9CF;
 	}
-/*↑コンテンツ↑*/
+/*↑メニュー↑*/
 /*↓コモンズ↓*/
 .foot--creativecommons {
 	text-align: center;

@@ -83,6 +83,7 @@ to   { opacity: 0.5;}
 .intro--txt1,
 .intro--txt2,
 .intro--txt3 {/* コピー1～3 */
+	color: #FFF;
 	line-height: 1.0;
 	text-shadow: 0 1px 2px rgba(0,0,0,0.6);
 	margin: 8px;
@@ -237,14 +238,20 @@ iframe#DEMO {/* 実演 */
 	}
 }
 /*↑デモ↑*/
-/*↓赤線↓*/
-.split--redline {
+/*↓特徴↓*/
+.feature {
+	position: relative;
+	padding-top: 20px;
+	}
+.feature:after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
 	border-top: solid 2px #0F1F26;
 	border-bottom: solid 2px #C00;
+	content: "";
 	}
-/*↑赤線↑*/
-/*↓特徴↓*/
-.feature { margin-top: 16px;}
 .feature--item {
 	float: left;
 	width: 50%;
@@ -255,11 +262,13 @@ iframe#DEMO {/* 実演 */
 	background: #1F2F36;
 	background: linear-gradient(to top, #2C3F49, #1F2F36);
 	border-radius: 8px;
+	color: #FFF;
 	line-height: 1.0;
 	text-shadow: 0 1px 1px rgba(0,17,34,0.8);
 	text-align: center;
 	padding: 24px 16px;
 	}
+.feature--item--box a { color: #F00;}
 .feature--item--tit { font-size: 24px;}/* タイトル */
 .feature--item--tit:after {/* 下線 */
 	display: block;

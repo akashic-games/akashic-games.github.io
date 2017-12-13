@@ -2,11 +2,16 @@
 
 /*↓body↓*/
 body {
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: hidden;
 	width: 100vw;
-	height: 100vh;
+	height: 100%;
 	background: #0F1F26;
 	color: #FFF;
+	}
+body.lock {
+	overflow-y: hidden;
+	height: 100vh;
 	}
 /*↑body↑*/
 /*↓画面を暗く↓*/
@@ -38,11 +43,12 @@ body {
 	}
 #OuterBox.lock {
 	overflow-y: hidden;
-	border-right: solid 4px #CCC;/* スクロールバー幅を埋める */
+	border: solid 0 #F1F1F1;
+	border-right-width: 16px;/* JQuery */
 	}
 /*↑ページ幅均一化↑*/
 /*↓ページコンテンツ格納↓*/
-section.page--body {
+.page--body {
 	background: #FFF;
 	color: #334353;
 	}
@@ -56,18 +62,42 @@ section.page--body {
 .responsive--width { width: 100%;}
 }
 /*↑幅944px⇔100%↑*/
+/*↓GithubRibbon↓*/
+.github--ribbon {
+	z-index: 3;
+	position: fixed;
+	top: 40px;
+	left: 0;
+	display: none;
+	}
+.github--ribbon a {
+	position: relative;
+	display: block;
+	width: 136px;
+	height: 136px;
+	overflow: hidden;
+	}
+.github--ribbon a img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	}
+@media screen and (max-width: 959px){
+.github--ribbon { display: none;}
+}
+/*↑GithubRibbon↑*/
 /*↓ページの先頭へ↓*/
 .page--top {
 	z-index: 1;
 	position: fixed;
-	bottom: 0;
+	bottom: 8px;
 	right: calc(50% - 448px);
 	display: none;
 	width: 48px;
 	height: 48px;
 	background: #900;
-	border-radius: 4px 4px 0 0;
-	box-shadow: 0 2px 4px rgba(15,31,38,0.8);
+	border-radius: 4px;
+	box-shadow: 0 2px 4px rgba(15,31,38,0.6);
 	padding: 8px;
 	cursor: pointer;
 	}
