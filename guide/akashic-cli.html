@@ -173,7 +173,7 @@
 <pre><code>$ npm install -g @akashic/akashic-cli
 $ cd GAME_HOME
 $ akashic init
-width:(320)
+width: (320)
 height: (320)
 fps: (30)</code></pre>
 
@@ -460,7 +460,7 @@ module.exports = function() {
     scene.loaded.add(function() {
         // ここにゲームのコードを記述します
         // sample
-        var hello = new g.FilledRect({scene: scene, cssColor: &quot;#ff0000&quot;, width:32, height: 32});
+        var hello = new g.FilledRect({scene: scene, cssColor: &quot;#ff0000&quot;, width: 32, height: 32});
         scene.append(hello);
         hello.update.add(function() {
             hello.x++;

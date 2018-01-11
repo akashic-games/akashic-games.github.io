@@ -200,7 +200,7 @@ module.exports = main;</code></pre>
     var rect = new g.FilledRect({
       scene: scene,
       cssColor: &quot;#ff0000&quot;,
-      width:32,
+      width: 32,
       height: 32
     });
     scene.append(rect);
@@ -301,7 +301,7 @@ module.exports = main;</code></pre>
 
 <p>例えば矩形を<code>scene</code>という名前のシーンに追加するには、次のようなコードを書きます。</p>
 
-<pre><code class="lang-javascript">var rect = new g.FilledRect({scene: scene, cssColor: &quot;red&quot;, width:50, height: 50});
+<pre><code class="lang-javascript">var rect = new g.FilledRect({scene: scene, cssColor: &quot;red&quot;, width: 50, height: 50});
 scene.append(rect);</code></pre>
 
 <p>Akashic Engineの機能はグローバル変数<code>g</code>を通して利用できます。<code>FilledRect</code>コンストラクタは、コード上では<code>g.FilledRect</code>となります。</p>
@@ -440,7 +440,7 @@ function createRect(scene) {
     scene: scene,
     x: 50,
     y: 50,
-    width:100,
+    width: 100,
     height: 100,
     cssColor: &quot;red&quot;
   });
@@ -460,7 +460,7 @@ module.exports = main;</code></pre>
 
 <pre><code class="lang-javascript">var backgroundRect = new g.FilledRect({
   scene: scene,
-  width:g.game.width,
+  width: g.game.width,
   height: g.game.height,
   cssColor: &quot;blue&quot;
 });</code></pre>
@@ -488,7 +488,7 @@ function createRect(scene, x, y) {
     scene: scene,
     x: x,
     y: y,
-    width:rectWidth,
+    width: rectWidth,
     height: rectHeight,
     cssColor: &quot;#7F3F3F&quot;
   });
@@ -583,7 +583,7 @@ module.exports = main;</code></pre>
 <p>例えばエンティティ<code>E</code>に子エンティティとして<code>FilledRect</code>を追加する場合は、次のようなコードになります。</p>
 
 <pre><code class="lang-javascript">var group = new g.E({scene: scene});
-var child = new g.FilledRect({scene: scene, width:30, height: 30, cssColor: &quot;red&quot;});
+var child = new g.FilledRect({scene: scene, width: 30, height: 30, cssColor: &quot;red&quot;});
 group.append(child);</code></pre>
 
 <p>以下のプログラムでは、<code>angle</code>を設定した<code>E</code>オブジェクトに3つの矩形を追加しています。矩形の座標系は<code>E</code>を基準にして変わるので、3つの矩形は斜めに配置されます。</p>
@@ -606,7 +606,7 @@ group.append(child);</code></pre>
 function createRect(scene, x, y, color) {
   return new g.FilledRect({
     scene: scene,
-    width:30,
+    width: 30,
     height: 30,
     x: x,
     y: y,
@@ -715,7 +715,7 @@ rect.modified();</code></pre>
 function createRect(scene) {
   return new g.FilledRect({
     scene: scene,
-    width:30,
+    width: 30,
     height: 30,
     cssColor: &quot;red&quot;
   });
@@ -808,7 +808,7 @@ scene.setInterval(function () {
 function createRect(scene) {
   return new g.FilledRect({
     scene: scene,
-    width:30,
+    width: 30,
     height: 30,
     cssColor: &quot;red&quot;
   });
@@ -850,7 +850,7 @@ function createRect(scene, x, y) {
     scene: scene,
     x: x,
     y: y,
-    width:size,
+    width: size,
     height: size,
     cssColor: colors[idx]
   });
@@ -955,7 +955,7 @@ scene.loaded.add(function () {
       scene: scene,
       x: ev.point.x - size / 2,
       y: ev.point.y - size / 2,
-      width:size,
+      width: size,
       height: size,
       cssColor: &quot;blue&quot;
     });
@@ -1181,10 +1181,10 @@ module.exports = main;</code></pre>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({game: g.game});
       scene.loaded.add(function () {
-      var pane = new g.Pane({scene: scene, width:50, height: 50});
+      var pane = new g.Pane({scene: scene, width: 50, height: 50});
       var rect = new g.FilledRect({
         scene: scene,
-        width:50,
+        width: 50,
         height: 50,
         x: 15,
         y: 15,
@@ -1208,10 +1208,10 @@ module.exports = main;</code></pre>
 <pre><code>function main() {
   var scene = new g.Scene({game: g.game});
   scene.loaded.add(function () {
-    var pane = new g.Pane({scene: scene, width:50, height: 50});
+    var pane = new g.Pane({scene: scene, width: 50, height: 50});
     var rect = new g.FilledRect({
       scene: scene,
-      width:50,
+      width: 50,
       height: 50,
       x: 15,
       y: 15,
@@ -1275,7 +1275,7 @@ function createRect(scene, color) {
   return new g.FilledRect({
     scene: scene,
     cssColor: color,
-    width:32,
+    width: 32,
     height: 32,
   });
 }
@@ -1293,7 +1293,7 @@ module.exports = main;</code></pre>
     var rect = new g.FilledRect({
       scene: scene,
       cssColor: &quot;red&quot;,
-      width:32,
+      width: 32,
       height: 32,
     });
     scene.append(rect);

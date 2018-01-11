@@ -117,11 +117,11 @@
 
 <p><img src="/img/guide/composite-operation/source-over.png" alt="source-over"></p>
 
-<pre><code class="lang-javascript">var green = new g.FilledRect({scene: scene, x: 50, width:100, height: 100, cssColor: &quot;green&quot;});
+<pre><code class="lang-javascript">var green = new g.FilledRect({scene: scene, x: 50, width: 100, height: 100, cssColor: &quot;green&quot;});
 green.compositeOperation = g.CompositeOperation.SourceOver;
-var red = new g.FilledRect({scene: scene, y: 20, width:100, height: 100, cssColor: &quot;red&quot;});
+var red = new g.FilledRect({scene: scene, y: 20, width: 100, height: 100, cssColor: &quot;red&quot;});
 red.compositeOperation = g.CompositeOperation.SourceOver;
-var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width:100, height: 100, cssColor: &quot;blue&quot;});
+var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width: 100, height: 100, cssColor: &quot;blue&quot;});
 blue.compositeOperation = g.CompositeOperation.SourceOver;
 scene.append(green);
 scene.append(red);
@@ -178,11 +178,11 @@ character.compositeOperation = g.CompositeOperation.Copy;</code></pre>
 
 <p><img src="/img/guide/composite-operation/source-atop-bg.png" alt="source-atop-bg"></p>
 
-<pre><code class="lang-javascript">var bg = new g.FilledRect({scene: scene, width:game.width, height: game.height, cssColor: &quot;lightgray&quot;});
+<pre><code class="lang-javascript">var bg = new g.FilledRect({scene: scene, width: game.width, height: game.height, cssColor: &quot;lightgray&quot;});
 scene.append(bg);
-var green = new g.FilledRect({scene: scene, x: 50, width:100, height: 100, cssColor: &quot;green&quot;});
-var red = new g.FilledRect({scene: scene, y: 20, width:100, height: 100, cssColor: &quot;red&quot;});
-var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width:100, height: 100, cssColor: &quot;blue&quot;});
+var green = new g.FilledRect({scene: scene, x: 50, width: 100, height: 100, cssColor: &quot;green&quot;});
+var red = new g.FilledRect({scene: scene, y: 20, width: 100, height: 100, cssColor: &quot;red&quot;});
+var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width: 100, height: 100, cssColor: &quot;blue&quot;});
 scene.append(green);
 scene.append(red);
 scene.append(blue);</code></pre>
@@ -200,13 +200,13 @@ blue.compositeOperation = g.CompositeOperation.SourceOver;</code></pre>
 
 <p><img src="/img/guide/composite-operation/source-atop-pane.png" alt="source-atop-pane"></p>
 
-<pre><code class="lang-javascript">var bg = new g.FilledRect({scene: scene, width:game.width, height: game.height, cssColor: &quot;lightgray&quot;});
-var green = new g.FilledRect({scene: scene, x: 50, width:100, height: 100, cssColor: &quot;green&quot;});
-var red = new g.FilledRect({scene: scene, y: 20, width:100, height: 100, cssColor: &quot;red&quot;});
+<pre><code class="lang-javascript">var bg = new g.FilledRect({scene: scene, width: game.width, height: game.height, cssColor: &quot;lightgray&quot;});
+var green = new g.FilledRect({scene: scene, x: 50, width: 100, height: 100, cssColor: &quot;green&quot;});
+var red = new g.FilledRect({scene: scene, y: 20, width: 100, height: 100, cssColor: &quot;red&quot;});
 red.compositeOperation = g.CompositeOperation.SourceAtop;
-var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width:100, height: 100, cssColor: &quot;blue&quot;});
+var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width: 100, height: 100, cssColor: &quot;blue&quot;});
 blue.compositeOperation = g.CompositeOperation.SourceAtop;
-var pane = new g.Pane({scene: scene, width:175, height: 150});
+var pane = new g.Pane({scene: scene, width: 175, height: 150});
 pane.append(green);
 pane.append(red);
 pane.append(blue);
