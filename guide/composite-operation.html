@@ -132,12 +132,15 @@ scene.append(blue);</code></pre>
 <h2 id="SourceAtop" name="SourceAtop">SourceAtop</h2>
 
 <p>先に描画された領域と重なった部分のみを描画します。</p>
-<p>以下の例では、赤色と青色の<code>FilledRect</code>に<code>SourceAtop</code>指定し、緑色の<code>FilledRect</code>と重なった部分だけ描画する例です。</p>
+<p>以下の例は、赤色と青色の<code>FilledRect</code>に<code>SourceAtop</code>指定し、緑色の<code>FilledRect</code>と重なった部分だけ描画する例です。</p>
 
 <p><img src="/img/guide/composite-operation/source-atop.png" alt="source-atop"></p>
 
 <pre><code class="lang-javascript">red.compositeOperation = g.CompositeOperation.SourceAtop;
 blue.compositeOperation = g.CompositeOperation.SourceAtop;</code></pre>
+
+<p>このオプションは、対象のサーフェスが大きい場合、実行環境によっては重い負荷になることがありえます。
+性能が重要なコンテンツでは多用しないことを推奨します。</p>
 
 <h2 id="Lighter" name="Lighter">Lighter</h2>
 
