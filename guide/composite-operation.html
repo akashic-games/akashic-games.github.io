@@ -137,6 +137,9 @@ scene.append(blue);</code></pre>
 <pre><code class="lang-javascript">red.compositeOperation = g.CompositeOperation.SourceAtop;
 blue.compositeOperation = g.CompositeOperation.SourceAtop;</code></pre>
 
+<p>このオプションは、対象のサーフェスが大きい場合、実行環境によっては重い負荷になることがありえます。
+性能が重要なコンテンツでは多用しないことを推奨します。</p>
+
 <h2 id="Lighter" name="Lighter">Lighter</h2>
 
 <p>先に描画された領域と重なった部分の色を加算して描画します。</p>
