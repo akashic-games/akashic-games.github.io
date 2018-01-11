@@ -1,37 +1,35 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<meta name="description" content="AkashicEngineはJavaScriptで動作するマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>ガイド - Akashic</title>
+<title>ガイド - Akashic Engine</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/reset.css?201712132021">
-<link rel="stylesheet" href="/css/common.css?201712132021">
-<link rel="stylesheet" href="/css/header.css?201712132021">
-<link rel="stylesheet" href="/css/akashic-document.css?201712132021">
-<link rel="stylesheet" href="/css/footer.css?201712132021">
+<link rel="stylesheet" href="/css/common.css?201712212000">
+<link rel="stylesheet" href="/css/header.css?201712212000">
+<link rel="stylesheet" href="/css/footer.css?201712212000">
+<link rel="stylesheet" href="/css/index.css?201712212000">
+
+<link rel="stylesheet" href="/css/asset.css?201712212000">
+<link rel="stylesheet" href="/css/akashic-document.css?201712212000">
+<link rel="stylesheet" href="/css/railscasts.css">
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/header.js?201712132021"></script>
-<script src="/lib/common.js?201712132021"></script>
+<script src="/lib/common.js?201712212000"></script>
+<script src="/lib/index.js?201712212000"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
-<div id="OuterBox">
-<!--↓ヘッダ↓-->
-<div class="page--top"></div>
-<div class="window--dark"></div>
+<!--↓header.html↓-->
+<div class="head--spacer"></div>
 <div class="SP--head--menu--show"></div>
 <div class="SP--head--menu--hide"></div>
-<header>
-<div class="head--inner">
-<!--↓SP：ホーム↓-->
-<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
-<!--↑SP：ホーム↑-->
-<!--↓GithubRibbon↓-->
-<div class="github--ribbon"><a href="https://github.com/akashic-games/akashic-engine" target="_blank"><img src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a></div>
-<!--↑GithubRibbon↑-->
-<!--↓メニュー↓-->
+
+<div class="head--menu--outer">
 <ul class="head--menu"><!--
 --><li class="head--menu--item">
 	<p class="head--menu--item--tab"></p>
@@ -82,13 +80,16 @@
 	</ul>
 </li><!--
 --></ul>
-<!--↑メニュー↑-->
 </div>
+
+<header>
+<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
 </header>
-<!--↑ヘッダ↑-->
-<!--↓ボディ↓-->
-<section class="page--body">
-<div class="akashic--document responsive--width">
+<!--↑header.html↑-->
+<div id="BodyInner">
+<!--↓index.html↓-->
+<section class="akashic--document safearea--LR">
+<div class="inner responsive--width">
 <h1>ガイド</h1>
 <ul>
 	<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
@@ -102,11 +103,12 @@
 </ul>
 </div>
 </section>
-<!--↑ボディ↑-->
-<!--↓フッタ↓-->
-<footer>
-<!--↓コンテンツ↓-->
-<ul class="foot--menu responsive--width cfix">
+<!--↑index.html↑-->
+<!--↓footer.html↓-->
+<footer class="safearea--LR">
+<div class="responsive--width">
+
+<ul class="foot--menu cfix">
 <li class="foot--menu--item">
 	<p class="foot--menu--item--tab">入門</p>
 	<ul class="foot--menu--item--list">
@@ -155,22 +157,22 @@
 	</ul>
 </li>
 </ul>
-<!--↑コンテンツ↑-->
-<!--↓コモンズ↓-->
-<div class="foot--creativecommons">
-	<ul>
+
+<ul class="foot--creativecommons">
 	<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
 	<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
-	</ul>
+</ul>
+
+<ul class="foot--license">
+	<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+	<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+</ul>
+
 </div>
-<!--↑コモンズ↑-->
-<!--↓商標↓-->
-<div class="foot--license">
-<div class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></div>
-<p class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></p>
-</div>
-<!--↑商標↑-->
 </footer>
-<!--↑フッタ↑-->
-</div></body>
+<!--↑footer.html↑-->
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+</body>
 </html>

@@ -1,116 +1,106 @@
 @charset "utf-8";
 
-/*↓body↓*/
+/*↓reset↓*/
+*, *:before, *:after {
+	box-sizing:border-box;
+	font-family:'メイリオ', Meiryo,'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', sans-serif;
+	text-overflow:ellipsis;
+	padding:0;
+	margin:0;
+	}
+html { -webkit-text-size-adjust:100%;}
+h1, h2, h3, h4 { font-weight:normal;}
+a:link, a:visited { text-decoration:underline;}
+a:hover, a:active { text-decoration:none;}
+ul { list-style-type:none;}
+img, iframe { border:0;}
+input, textarea, select {
+	display:block;
+	outline:none;
+	resize:none;
+	}
+button { outline:0;}
+button::-moz-focus-inner,
+input[type="button"]::-moz-focus-inner,
+input[type="submit"]::-moz-focus-inner,
+input[type="reset"]::-moz-focus-inner {/* お呪い */
+	padding:0 !important;
+	border:0 none !important;
+	}
+label, button:hover { cursor:pointer;}
+table { border-collapse:collapse; border-spacing:0;}
+section { display:block;}
+/*↑reset↑*/
+/*↓html,body,#BodyInner↓*/
+html,
+body,
+#BodyInner {
+	overflow-x:hidden;
+	width:100vw;
+	}
 body {
-	overflow-x: hidden;
-	overflow-y: hidden;
-	width: 100vw;
-	height: 100%;
-	background: #0F1F26;
-	color: #FFF;
+	position:relative;
+	overflow-y:scroll;
+	overflow-scrolling:touch; -webkit-overflow-scrolling:touch;
+	background:#0F1F26;
 	}
-body.lock {
-	overflow-y: hidden;
-	height: 100vh;
+html.lock,
+body.lock,
+#BodyInner.lock {
+	overflow-y:hidden;
+	overflow-scrolling:auto; -webkit-overflow-scrolling:auto;
 	}
-/*↑body↑*/
+@media screen and (max-width:959px){
+}
+/*↑html,body,#BodyInner↑*/
+/*↓回込解除↓*/
+.cfix { zoom:1;}
+.cfix:after { display:block; clear:both; content:'';}
+/*↑回込解除↑*/
 /*↓画面を暗く↓*/
 .window--dark {
-	z-index: 1;
-	visibility: hidden;
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-	background: rgba(0,0,0,0.6);
-	opacity: 0.0;
-	transition: visibility 0.5s, opacity 0.5s;
+	z-index:3;
+	visibility:hidden;
+	position:fixed; top:0; left:0;
+	width:100vw; height:100vh;
+	background:rgba(0,0,0,0.6);
+	opacity:0.0;
+	transition:visibility 0.5s, opacity 0.5s;
 	}
 .window--dark.show {
-	visibility: visible;
-	opacity: 1.0;
+	visibility:visible;
+	opacity:1.0;
 	}
 /*↑画面を暗く↑*/
-/*↓ページ幅均一化↓*/
-#OuterBox {
-	position: relative;
-	overflow-x: hidden;
-	overflow-y: scroll;
-	width: 100vw;
-	height: 100vh;
-	-webkit-overflow-scrolling: touch;
-	}
-#OuterBox.lock {
-	overflow-y: hidden;
-	border: solid 0 #F1F1F1;
-	border-right-width: 16px;/* JQuery */
-	}
-/*↑ページ幅均一化↑*/
-/*↓ページコンテンツ格納↓*/
-.page--body {
-	background: #FFF;
-	color: #334353;
-	}
-/*↑ページコンテンツ格納↑*/
 /*↓幅944px⇔100%↓*/
-.responsive--width {
-	width: 944px;
-	margin: 0 auto;
-	}
-@media screen and (max-width: 959px){
-.responsive--width { width: 100%;}
+.responsive--width { width:928px; margin:0 auto;}
+@media screen and (max-width:959px){
+.responsive--width { width:100%;}
 }
 /*↑幅944px⇔100%↑*/
-/*↓GithubRibbon↓*/
-.github--ribbon {
-	z-index: 3;
-	position: fixed;
-	top: 40px;
-	left: 0;
-	display: none;
-	}
-.github--ribbon a {
-	position: relative;
-	display: block;
-	width: 136px;
-	height: 136px;
-	overflow: hidden;
-	}
-.github--ribbon a img {
-	position: absolute;
-	top: 0;
-	left: 0;
-	}
-@media screen and (max-width: 959px){
-.github--ribbon { display: none;}
+/*↓safearea対策(左右 padding:0; 時のみ可)↓*/
+@media screen and (max-width:959px){
+.safearea--LR { padding-left:env(safe-area-inset-left); padding-right:env(safe-area-inset-right);}
 }
-/*↑GithubRibbon↑*/
-/*↓ページの先頭へ↓*/
+/*↑iPhoneX対策↑*/
+/*↓ページトップ↓*/
 .page--top {
-	z-index: 1;
-	position: fixed;
-	bottom: 8px;
-	right: calc(50% - 448px);
-	display: none;
-	width: 48px;
-	height: 48px;
-	background: #900;
-	border-radius: 4px;
-	box-shadow: 0 2px 4px rgba(15,31,38,0.6);
-	padding: 8px;
-	cursor: pointer;
+	z-index:1;
+	position:fixed;
+	bottom:8px; bottom:calc( env(safe-area-inset-bottom) + 8px );
+	right:8px; right:calc( env(safe-area-inset-right) + 8px );
+	display:none;
+	width:48px; height:48px;
+	background:#900;
+	border-radius:4px;
+	box-shadow:0 2px 4px rgba(15,31,38,0.6);
+	padding:8px;
+	cursor:pointer;
 	}
 .page--top:after {
-	display: block;
-	width: 32px;
-	height: 32px;
-	background-image: url('/img/icons.png');
-	background-size: cover;
-	background-position: -32px 0;
-	content: "";
+	display:block;
+	width:32px; height:32px;
+	background:url('/img/icons.png') -32px 0; background-size:cover;
+	content:'';
 	}
-@media screen and (max-width: 959px){
-.page--top { right: 24px;}
-}
-/*↑ページの先頭へ↑*/
+/*↑ページトップ↑*/

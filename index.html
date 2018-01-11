@@ -2,37 +2,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<meta name="description" content="AkashicEngineはJavaScriptで動作するマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>Akashic</title>
+<title>Akashic Engine</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/reset.css?201712132021">
-<link rel="stylesheet" href="/css/common.css?201712132021">
-<link rel="stylesheet" href="/css/index.css?201712132021">
-<link rel="stylesheet" href="/css/header.css?201712132021">
-<link rel="stylesheet" href="/css/footer.css?201712132021">
+<link rel="stylesheet" href="/css/common.css?201712212000">
+<link rel="stylesheet" href="/css/header.css?201712212000">
+<link rel="stylesheet" href="/css/footer.css?201712212000">
+<link rel="stylesheet" href="/css/index.css?201712212000">
+
+<link rel="stylesheet" href="/css/asset.css?201712212000">
+<link rel="stylesheet" href="/css/akashic-document.css?201712212000">
+<link rel="stylesheet" href="/css/railscasts.css">
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/header.js?201712132021"></script>
-<script src="/lib/index.js?201712132021"></script>
-<script src="/lib/common.js?201712132021"></script>
+<script src="/lib/common.js?201712212000"></script>
+<script src="/lib/index.js?201712212000"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
-<div id="OuterBox">
-<!--↓ヘッダ↓-->
-<div class="page--top"></div>
-<div class="window--dark"></div>
+<!--↓header.html↓-->
+<div class="head--spacer"></div>
 <div class="SP--head--menu--show"></div>
 <div class="SP--head--menu--hide"></div>
-<header>
-<div class="head--inner">
-<!--↓SP：ホーム↓-->
-<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
-<!--↑SP：ホーム↑-->
-<!--↓GithubRibbon↓-->
-<div class="github--ribbon"><a href="https://github.com/akashic-games/akashic-engine" target="_blank"><img src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a></div>
-<!--↑GithubRibbon↑-->
-<!--↓メニュー↓-->
+
+<div class="head--menu--outer">
 <ul class="head--menu"><!--
 --><li class="head--menu--item">
 	<p class="head--menu--item--tab"></p>
@@ -83,72 +80,77 @@
 	</ul>
 </li><!--
 --></ul>
-<!--↑メニュー↑-->
 </div>
+
+<header>
+<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
 </header>
-<!--↑ヘッダ↑-->
+<!--↑header.html↑-->
+<div id="BodyInner">
+<!--↓index.html↓-->
 <!--↓導入↓-->
 <section class="intro">
-	<div class="intro--video"></div>
-<div class="intro--inner">
-<!--↓導入＞上側(ロゴ)↓-->
-<div class="intro--sec1">
-	<div class="intro--logo"></div>
-</div>
-<!--↑導入＞上側(ロゴ)↑-->
-<!--↓導入＞下側(コピー＋ボタン)↓-->
-<div class="intro--sec2">
-	<p class="intro--txt1">Akashic Engine</p>
-	<p class="intro--txt2">HTML5インタラクティブコンテンツフレームワーク</p>
-	<p class="intro--txt3">HTML5 Interactive content framework</p>
-	<p class="intro--demo--open">サンプルデモをみる</p>
-</div>
-<!--↑導入＞下側(ボタン)↑-->
-<!--↓デモ↓-->
-<div class="intro--demo">
+<div class="intro--video"></div>
+<div class="intro--inner responsive--width">
+
+	<!--↓導入＞ロゴ＋キャッチ↓-->
+	<div class="intro--info--logo">
+		<span></span>
+	</div>
+	<div class="intro--info--text">
+		<p>Akashic Engine</p>
+		<p>HTML5インタラクティブコンテンツフレームワーク</p>
+		<p>HTML5 Interactive content framework</p>
+		<p class="intro--demo--open">サンプルデモをみる</p>
+	</div>
+	<!--↑導入＞ロゴ＋キャッチ↑-->
+
+	<!--↓導入＞デモ↓-->
 	<div class="intro--demo--iframe">
 		<div class="w512h384"><iframe src="demo/ready.html" id="DEMO" name="DEMO"><!--デモ表示領域--></iframe></div>
 	</div>
 	<div class="intro--demo--menu">
-		<ul class="intro--demo--menu--set"><!--
-		--><li class="intro--demo--menu--item"><a href="/demo/galaxywars/" target="DEMO"><img src="/img/index/demo-title-gw.png" alt="GALAXY WARS"></a></li><!--
-		--><li class="intro--demo--menu--item"><a href="/demo/hoppingwitch/" target="DEMO"><img src="/img/index/demo-title-hw.png" alt="HOPPING WITCH"></a></li><!--
-		<li class="intro--demo--menu--item"><a href="/demo/????/" target="DEMO"><p>文字リンクOK</p></a></li>
+		<ul><!--
+		--><li><a href="/demo/galaxywars/" target="DEMO"><img src="/img/index/demo-title-gw.png" alt="GALAXY WARS"></a></li><!--
+		--><li><a href="/demo/hoppingwitch/" target="DEMO"><img src="/img/index/demo-title-hw.png" alt="HOPPING WITCH"></a></li><!--
+		<li><a href="/demo/????/" target="DEMO"><p>文字リンクOK</p></a></li>
 		--></ul>
 	</div>
-	<p class="intro--demo--close">サンプルデモを終了</p>
-</div>
-<!--↑デモ↑-->
+	<div class="intro--demo--close">
+		<p>サンプルデモを終了</p>
+	</div>
+	<!--↑導入＞デモ↑-->
+
 </div>
 </section>
 <!--↑導入↑-->
 <!--↓特徴↓-->
-<section class="feature">
-<div class="responsive--width cfix">
-<ul>
-<li class="feature--item">
-	<div class="feature--item--box">
+<section class="feature safearea--LR">
+<div class="responsive--width">
+<ul class="feature--item cfix">
+<li>
+	<div>
 	<p class="feature--item--tit">100% TypeScript製</p>
 	<p class="feature--item--des">コンテンツも<a href="https://www.typescriptlang.org" target="_blank">TypeScript</a>で開発可能</p>
 	<p class="feature--item--des">もちろんJavaScriptもサポート</p>
 	</div>
 </li>
-<li class="feature--item">
-	<div class="feature--item--box">
+<li>
+	<div>
 	<p class="feature--item--tit">高い拡張性</p>
 	<p class="feature--item--des">アニメーションライブラリや物理エンジン等を標準提供</p>
 	<p class="feature--item--des">自作ライブラリを<a href="https://www.npmjs.com" target="_blank">npm</a>で公開可能</p>
 	</div>
 </li>
-<li class="feature--item">
-	<div class="feature--item--box">
+<li>
+	<div>
 	<p class="feature--item--tit">周辺ツールサポート</p>
 	<p class="feature--item--des">ビットマップフォントジェネレータ</p>
 	<p class="feature--item--des">音声ファイルコンバータ</p>
 	</div>
 </li>
-<li class="feature--item">
-	<div class="feature--item--box">
+<li>
+	<div>
 	<p class="feature--item--tit">オープンソース</p>
 	<p class="feature--item--des">MITライセンスで無償利用可能</p>
 	</div>
@@ -158,31 +160,29 @@
 </section>
 <!--↑特徴↑-->
 <!--↓入門↓-->
-<section class="getstart">
+<section class="getstart safearea--LR">
 <div class="responsive--width">
 	<ul class="cfix">
 	<li class="getstart--sec1">
-	<h2>Akashic Engine</h2>
-	<p class="txt1">に触れてみよう</p>
-	<p class="txt2">Getting Started</p>
+		<h2>Akashic Engine</h2>
+		<p class="txt1">に触れてみよう</p>
+		<p class="txt2">Getting Started</p>
 	</li>
 	<li class="getstart--sec2">
-	<p>Akashic EngineはJavaScriptで動作するゲームエンジンです。 <br>
-	オープンソースで公開されており、制作したゲームの公開にロイヤリティは必要ありません。<br>
-	ゲーム開発で利用できるライブラリとツールが用意されており、今すぐ開発を始めることができます。</p>
+		<p>Akashic EngineはJavaScriptで動作するゲームエンジンです。 <br>オープンソースで公開されており、制作したゲームの公開にロイヤリティは必要ありません。<br>ゲーム開発で利用できるライブラリとツールが用意されており、今すぐ開発を始めることができます。</p>
 	</li>
 	<li class="getstart--sec3">
-	<a href="/tutorial/tutorial-v2.html">
-	<div></div>
-	<p>Akashic Engine<br>入門 v2 へ進む</p>
-	</a>
+		<a href="/tutorial/tutorial-v2.html">
+		<div></div>
+		<p>Akashic Engine<br>入門 v2 へ進む</p>
+		</a>
 	</li>
 	</ul>
 </div>
 </section>
 <!--↑入門↑-->
 <!--↓配布↓-->
-<section class="distribution">
+<section class="distribution safearea--LR">
 <div class="responsive--width cfix">
 <!--↓配布＞ライブラリ↓-->
 <div class="distro--complex">
@@ -249,20 +249,22 @@
 </div>
 </section>
 <!--↑配布↑-->
-<!--↓支援(未使用)↓-->
-<section class="supported" style="display: none;">
-<div class="supported--inner responsive--width">
+<!--↓支援↓-->
+<section class="supported">
+<div class="inner responsive--width">
 <p class="supported--title"><span>S</span>upported frameworks</p>
 	<div class="supported--box"><!--
 	--><a href="https://game.nicovideo.jp/atsumaru/" target="_blank"><img src="/img/index/supported/rpgatumaru.png" alt="RPGアツマール"></a><!--
 	--></div>
 </div>
 </section>
-<!--↑支援(未使用)↑-->
-<!--↓フッタ↓-->
-<footer>
-<!--↓コンテンツ↓-->
-<ul class="foot--menu responsive--width cfix">
+<!--↑支援↑-->
+<!--↑index.html↑-->
+<!--↓footer.html↓-->
+<footer class="safearea--LR">
+<div class="responsive--width">
+
+<ul class="foot--menu cfix">
 <li class="foot--menu--item">
 	<p class="foot--menu--item--tab">入門</p>
 	<ul class="foot--menu--item--list">
@@ -311,22 +313,22 @@
 	</ul>
 </li>
 </ul>
-<!--↑コンテンツ↑-->
-<!--↓コモンズ↓-->
-<div class="foot--creativecommons">
-	<ul>
+
+<ul class="foot--creativecommons">
 	<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
 	<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
-	</ul>
+</ul>
+
+<ul class="foot--license">
+	<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+	<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+</ul>
+
 </div>
-<!--↑コモンズ↑-->
-<!--↓商標↓-->
-<div class="foot--license">
-<div class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></div>
-<p class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></p>
-</div>
-<!--↑商標↑-->
 </footer>
-<!--↑フッタ↑-->
-</div></body>
+<!--↑footer.html↑-->
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+</body>
 </html>

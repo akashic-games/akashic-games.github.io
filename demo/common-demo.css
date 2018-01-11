@@ -1,12 +1,5 @@
 @charset "utf-8";
 
-* {
-	border: 0;
-	padding: 0;
-	margin: 0;
-	}
-body {
-	overflow: hidden;
-	background-color: #FFF;
-	}
-#container canvas { background-size: contain;}
+* { border:0; padding:0; margin:0;}
+body { overflow:hidden; background-color:#FFF;}
+#container canvas { background-size:contain;}
