@@ -1,40 +1,35 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<meta name="description" content="AkashicEngineはJavaScriptで動作するマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>Akashic Engine入門 v2 - Akashic</title>
+<title>Akashic Engine入門 v2 - Akashic Engine</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/reset.css?201712132021">
-<link rel="stylesheet" href="/css/common.css?201712132021">
-<link rel="stylesheet" href="/css/header.css?201712132021">
-<link rel="stylesheet" href="/css/akashic-document.css?201712132021">
-<link rel="stylesheet" href="/css/styles/railscasts.css">
-<link rel="stylesheet" href="/css/footer.css?201712132021">
+<link rel="stylesheet" href="/css/common.css?201712212000">
+<link rel="stylesheet" href="/css/header.css?201712212000">
+<link rel="stylesheet" href="/css/footer.css?201712212000">
+
+
+<link rel="stylesheet" href="/css/asset.css?201712212000">
+<link rel="stylesheet" href="/css/akashic-document.css?201712212000">
+<link rel="stylesheet" href="/css/railscasts.css">
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/header.js?201712132021"></script>
-<script src="/lib/common.js?201712132021"></script>
+<script src="/lib/common.js?201712212000"></script>
+
+
+
 <script src="/lib/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
-<div id="OuterBox">
-<!--↓ヘッダ↓-->
-<div class="page--top"></div>
-<div class="window--dark"></div>
+<!--↓header.html↓-->
+<div class="head--spacer"></div>
 <div class="SP--head--menu--show"></div>
 <div class="SP--head--menu--hide"></div>
-<header>
-<div class="head--inner">
-<!--↓SP：ホーム↓-->
-<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
-<!--↑SP：ホーム↑-->
-<!--↓GithubRibbon↓-->
-<div class="github--ribbon"><a href="https://github.com/akashic-games/akashic-engine" target="_blank"><img src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a></div>
-<!--↑GithubRibbon↑-->
-<!--↓メニュー↓-->
+
+<div class="head--menu--outer">
 <ul class="head--menu"><!--
 --><li class="head--menu--item">
 	<p class="head--menu--item--tab"></p>
@@ -85,19 +80,24 @@
 	</ul>
 </li><!--
 --></ul>
-<!--↑メニュー↑-->
 </div>
+
+<header>
+<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
 </header>
-<!--↑ヘッダ↑-->
-<!--↓ボディ↓-->
-<section class="page--body">
-<div class="akashic--document responsive--width">
+<!--↑header.html↑-->
+<div id="BodyInner">
+<!--↓tutorial-v2.html↓-->
+<section class="akashic--document safearea--LR">
+<div class="inner responsive--width">
 
 <h1>Akashic Engine入門 v2</h1>
 
 <h2>はじめに</h2>
 
-<p>Akashic EngineはJavaScriptで動作するゲームエンジンであり、マルチプラットフォームで動作するゲームを開発することができます。<br>Akashic Engineはオープンソースで開発されているフリーソフトウェアであり、制作したゲームの公開にロイヤリティは必要ありません。<br>Akashic Engineにはゲーム開発で利用できるライブラリとツールが用意されており、今すぐゲーム開発を始めることができます。</p>
+<p>Akashic EngineはJavaScriptで動作するゲームエンジンであり、マルチプラットフォームで動作するゲームを開発することができます。<br>
+Akashic Engineはオープンソースで開発されているフリーソフトウェアであり、制作したゲームの公開にロイヤリティは必要ありません。<br>
+Akashic Engineにはゲーム開発で利用できるライブラリとツールが用意されており、今すぐゲーム開発を始めることができます。</p>
 
 <blockquote>
 <p>Akashic Engineの現在の実装は2D描画を主体とするゲームに特化しています。</p>
@@ -200,7 +200,7 @@ module.exports = main;</code></pre>
     var rect = new g.FilledRect({
       scene: scene,
       cssColor: &quot;#ff0000&quot;,
-      width: 32,
+      width:32,
       height: 32
     });
     scene.append(rect);
@@ -301,7 +301,7 @@ module.exports = main;</code></pre>
 
 <p>例えば矩形を<code>scene</code>という名前のシーンに追加するには、次のようなコードを書きます。</p>
 
-<pre><code class="lang-javascript">var rect = new g.FilledRect({scene: scene, cssColor: &quot;red&quot;, width: 50, height: 50});
+<pre><code class="lang-javascript">var rect = new g.FilledRect({scene: scene, cssColor: &quot;red&quot;, width:50, height: 50});
 scene.append(rect);</code></pre>
 
 <p>Akashic Engineの機能はグローバル変数<code>g</code>を通して利用できます。<code>FilledRect</code>コンストラクタは、コード上では<code>g.FilledRect</code>となります。</p>
@@ -440,7 +440,7 @@ function createRect(scene) {
     scene: scene,
     x: 50,
     y: 50,
-    width: 100,
+    width:100,
     height: 100,
     cssColor: &quot;red&quot;
   });
@@ -460,7 +460,7 @@ module.exports = main;</code></pre>
 
 <pre><code class="lang-javascript">var backgroundRect = new g.FilledRect({
   scene: scene,
-  width: g.game.width,
+  width:g.game.width,
   height: g.game.height,
   cssColor: &quot;blue&quot;
 });</code></pre>
@@ -488,7 +488,7 @@ function createRect(scene, x, y) {
     scene: scene,
     x: x,
     y: y,
-    width: rectWidth,
+    width:rectWidth,
     height: rectHeight,
     cssColor: &quot;#7F3F3F&quot;
   });
@@ -583,7 +583,7 @@ module.exports = main;</code></pre>
 <p>例えばエンティティ<code>E</code>に子エンティティとして<code>FilledRect</code>を追加する場合は、次のようなコードになります。</p>
 
 <pre><code class="lang-javascript">var group = new g.E({scene: scene});
-var child = new g.FilledRect({scene: scene, width: 30, height: 30, cssColor: &quot;red&quot;});
+var child = new g.FilledRect({scene: scene, width:30, height: 30, cssColor: &quot;red&quot;});
 group.append(child);</code></pre>
 
 <p>以下のプログラムでは、<code>angle</code>を設定した<code>E</code>オブジェクトに3つの矩形を追加しています。矩形の座標系は<code>E</code>を基準にして変わるので、3つの矩形は斜めに配置されます。</p>
@@ -606,7 +606,7 @@ group.append(child);</code></pre>
 function createRect(scene, x, y, color) {
   return new g.FilledRect({
     scene: scene,
-    width: 30,
+    width:30,
     height: 30,
     x: x,
     y: y,
@@ -715,7 +715,7 @@ rect.modified();</code></pre>
 function createRect(scene) {
   return new g.FilledRect({
     scene: scene,
-    width: 30,
+    width:30,
     height: 30,
     cssColor: &quot;red&quot;
   });
@@ -808,7 +808,7 @@ scene.setInterval(function () {
 function createRect(scene) {
   return new g.FilledRect({
     scene: scene,
-    width: 30,
+    width:30,
     height: 30,
     cssColor: &quot;red&quot;
   });
@@ -850,7 +850,7 @@ function createRect(scene, x, y) {
     scene: scene,
     x: x,
     y: y,
-    width: size,
+    width:size,
     height: size,
     cssColor: colors[idx]
   });
@@ -955,7 +955,7 @@ scene.loaded.add(function () {
       scene: scene,
       x: ev.point.x - size / 2,
       y: ev.point.y - size / 2,
-      width: size,
+      width:size,
       height: size,
       cssColor: &quot;blue&quot;
     });
@@ -1181,10 +1181,10 @@ module.exports = main;</code></pre>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({game: g.game});
       scene.loaded.add(function () {
-      var pane = new g.Pane({scene: scene, width: 50, height: 50});
+      var pane = new g.Pane({scene: scene, width:50, height: 50});
       var rect = new g.FilledRect({
         scene: scene,
-        width: 50,
+        width:50,
         height: 50,
         x: 15,
         y: 15,
@@ -1208,10 +1208,10 @@ module.exports = main;</code></pre>
 <pre><code>function main() {
   var scene = new g.Scene({game: g.game});
   scene.loaded.add(function () {
-    var pane = new g.Pane({scene: scene, width: 50, height: 50});
+    var pane = new g.Pane({scene: scene, width:50, height: 50});
     var rect = new g.FilledRect({
       scene: scene,
-      width: 50,
+      width:50,
       height: 50,
       x: 15,
       y: 15,
@@ -1275,7 +1275,7 @@ function createRect(scene, color) {
   return new g.FilledRect({
     scene: scene,
     cssColor: color,
-    width: 32,
+    width:32,
     height: 32,
   });
 }
@@ -1293,7 +1293,7 @@ module.exports = main;</code></pre>
     var rect = new g.FilledRect({
       scene: scene,
       cssColor: &quot;red&quot;,
-      width: 32,
+      width:32,
       height: 32,
     });
     scene.append(rect);
@@ -1328,11 +1328,12 @@ module.exports = main;</code></pre>
 
 </div>
 </section>
-<!--↑ボディ↑-->
-<!--↓ヘッダ↓-->
-<footer>
-<!--↓コンテンツ↓-->
-<ul class="foot--menu responsive--width cfix">
+<!--↑tutorial-v2.html↑-->
+<!--↓footer.html↓-->
+<footer class="safearea--LR">
+<div class="responsive--width">
+
+<ul class="foot--menu cfix">
 <li class="foot--menu--item">
 	<p class="foot--menu--item--tab">入門</p>
 	<ul class="foot--menu--item--list">
@@ -1381,22 +1382,22 @@ module.exports = main;</code></pre>
 	</ul>
 </li>
 </ul>
-<!--↑コンテンツ↑-->
-<!--↓コモンズ↓-->
-<div class="foot--creativecommons">
-	<ul>
+
+<ul class="foot--creativecommons">
 	<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
 	<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
-	</ul>
+</ul>
+
+<ul class="foot--license">
+	<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+	<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+</ul>
+
 </div>
-<!--↑コモンズ↑-->
-<!--↓商標↓-->
-<div class="foot--license">
-<div class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></div>
-<p class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></p>
-</div>
-<!--↑商標↑-->
 </footer>
-<!--↑ヘッダ↑-->
-</div></body>
+<!--↑footer.html↑-->
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+</body>
 </html>

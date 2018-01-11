@@ -1,34 +1,34 @@
 @charset "utf-8";
 
 /*↓SP：スクロールバー非表示↓*/
-@media screen and (max-width: 959px){
-.akashic--document *::-webkit-scrollbar,
-.akashic--document pre::-webkit-scrollbar { display: none;}
+@media screen and (max-width:959px){
+.akashic--document pre::-webkit-scrollbar,
+.akashic--document table::-webkit-scrollbar { display:none;}
 }
 /*↑SP：スクロールバー非表示↑*/
-/*↓Akasic文書基本↓*/
+/*↓大枠↓*/
 .akashic--document {
-	font-size: 14px;
-	line-height: 2.0;
-	padding: 48px 8px;
+	width:100vw;
+	background:#FFF;
 	}
-@media screen and (max-width: 959px){
-.akashic--document {
-	font-size: 12px;
-	padding: 32px 16px;
+.akashic--document .inner {
+	color:#334353; font-size:14px; line-height:2.0;
+	padding:48px 16px;
 	}
+@media screen and (max-width:959px){
+.akashic--document { font-size:12px;}
+.akashic--document .inner { padding:24px 16px;}
 }
-/*↑Akasic文書基本↑*/
+/*↑大枠↑*/
 /*↓文中で<code>を使用(適宜追加)↓*/
 .akashic--document h3 code,
 .akashic--document p code,
 .akashic--document li code,
 .akashic--document table code {
-	background: #FEE;
-    color: #C00;
-	font-size: 90%;
+	background:#FEE;
+    color:#C00; font-size:90%;
 	padding: 0 2px;
-	margin: 0 2px;
+	margin:0 2px;
 	}
 /*↑文中で<code>を使用(適宜追加)↑*/
 /*↓見出し系↓*/
@@ -36,26 +36,20 @@
 .akashic--document h2,
 .akashic--document h3,
 .akashic--document h4 { line-height: 1.2;}
-.akashic--document h1 {
-	color: #9CC;
-	font-size: 28px;
-	}
+.akashic--document h1 { color:#9CC; font-size:28px;}
 .akashic--document h2 {
-	color: #C00;
-	font-size: 24px;
-	margin-top: 32px;
+	color:#C00; font-size:24px;
+	margin-top:32px;
 	}
 .akashic--document h3 {
-	color: #69C;
-	font-size: 20px;
-	margin-top: 16px;
+	color:#69C; font-size:20px;
+	margin-top:16px;
 	}
 .akashic--document h4 {
-	color: #699;
-	font-size: 16px;
-	margin-top: 16px;
+	color:#699; font-size:16px;
+	margin-top:16px;
 	}
-@media screen and (max-width: 959px){
+@media screen and (max-width:959px){
 .akashic--document h1 { font-size:24px;}
 .akashic--document h2 { font-size:20px;}
 .akashic--document h3 { font-size:16px;}
@@ -65,123 +59,115 @@
 /*↓文章・リスト・引用・画像↓*/
 .akashic--document p a,
 .akashic--document li a {
-	color: #C00;
-	margin: 0 4px;
+	color:#C00;
+	margin:0 4px;
 	}
-.akashic--document li p { margin: 0;}
+.akashic--document li p { margin:0;}
 .akashic--document p {
-	color: #244;
-	margin: 16px 0 0 16px;
+	color:#244;
+	margin:16px 0 0 16px;
 	}
 .akashic--document li {
-	color: #466;
-	line-height: 1.5;
+	color:#466;
+	line-height:1.5;
 	}
-.akashic--document li li { color: #688;}
-.akashic--document li li li { color: #8AA;}
+.akashic--document li li { color:#688;}
+.akashic--document li li li { color:#8AA;}
 .akashic--document li li:last-child,
 .akashic--document li li li:last-child {/* 2層，3層の最後1個は下部に余白 */
-	margin-bottom: 8px;
+	margin-bottom:8px;
 	}
 .akashic--document ul {
-	list-style-type: disc;
-	margin: 16px 0 0 32px;
+	list-style-type:disc;
+	margin:16px 0 0 32px;
 	}
-.akashic--document ol { margin: 16px 0 0 32px;}
+.akashic--document ol { margin:16px 0 0 32px;}
 .akashic--document ul ul {
-	list-style-type: circle;
-	margin: 0 0 0 16px;
+	list-style-type:circle;
+	margin:0 0 0 16px;
 	}
 .akashic--document ul ul ul {
-	list-style-type: square;
-	margin: 0 0 0 16px;
+	list-style-type:square;
+	margin:0 0 0 16px;
 	}
 .akashic--document blockquote {/* 引用 */
-	position: relative;
-	display: block;
-	background: #E6EFEF;
-	border-left: solid 2px #C00;
-	font-style: italic;
-	padding: 16px 16px 16px 48px;
-	margin: 16px 0 0 16px;
+	position:relative;
+	display:block;
+	background:#E6EFEF;
+	border-left:solid 2px #C00;
+	font-style:italic;
+	padding:16px 16px 16px 48px;
+	margin:16px 0 0 16px;
 	}
 .akashic--document blockquote:before {
-	position: absolute;
-	top: 8px;
-	left: 8px;
-	font-size: 64px;
-	line-height: 64px;
-	font-family: arial, sans-serif;
-	color: #C6CFCF;
-	content: "“";
+	position:absolute; top:8px; left:8px;
+	color:#C6CFCF; font-size:64px; line-height:64px;
+	font-family:arial, sans-serif;
+	content:'“';
 	}
 .akashic--document blockquote p {
-	margin: 0;
-	color: #688;
+	margin:0;
+	color:#688;
 	}
 .akashic--document img {
-	display: block;
-	max-width: 100%;
+	display:block;
+	max-width:100%;
 	}
-@media screen and (max-width: 959px){
+@media screen and (max-width:959px){
 .akashic--document p,
-.akashic--document blockquote { margin-left: 0;}
-.akashic--document ul { margin-left: 16px;}
+.akashic--document blockquote { margin-left:0;}
+.akashic--document ul { margin-left:16px;}
 }
 /*↑文章・リスト・引用・画像系↑*/
 /*↓テーブル系↓*/
 .akashic--document table {
-	color: #366;
-	line-height: 1.2;
-	text-align: center;
-	margin-top: 16px;
+	color:#366; line-height:1.2; text-align:center;
+	margin-top:16px;
 	}
 .akashic--document table th {
-	background: #EED;
-	border-bottom: solid 2px #C00;
-	padding: 12px;
-	white-space: nowrap;
+	background:#EED;
+	border-bottom:solid 2px #C00;
+	padding:12px;
+	white-space:nowrap;
 	}
 .akashic--document table td {
-	border-bottom: solid 1px #CCB;
-	border-left: dotted 1px #DDC;
-	padding: 16px;
+	border-bottom:solid 1px #CCB;
+	border-left:dotted 1px #DDC;
+	padding:16px;
 	}
-.akashic--document table td:first-child { border-left: 0;}
+.akashic--document table td:first-child { border-left:0;}
 .akashic--document .table--scroll {/* 横スクロール用 */
-	display: block;
-	overflow-x: auto;
+	display:block;
+	overflow-x:auto;
 	}
-@media screen and (max-width: 959px){
+@media screen and (max-width:959px){
 .akashic--document table th,
-.akashic--document table td { padding: 8px;}
+.akashic--document table td { padding:8px;}
 }
 /*↑テーブル系↑*/
 /*↓コード系↓*/
 .akashic--document pre {
-	overflow-x: auto;
-	background: #232323;/* highlight.js と揃える */
-	box-shadow: 0 1px 2px rgba(0,0,0,0.6);
-	color: #FFF;
-	font-size: 12px;
-	padding: 16px;
-	margin-top: 16px;
+	overflow-x:auto;
+	background:#232323;/* highlight.js */
+	box-shadow:0 1px 2px rgba(0,0,0,0.6);
+	color:#FFF; font-size:12px;
+	padding:16px;
+	margin-top:16px;
 	}
 .akashic--document pre code {
-	display: inline-block;
-	white-space: pre;
+	display:inline-block;
+	white-space:pre;
 	}
 .akashic--document pre code:after {
-	display: block;
-	width: 100%;
-	height: 0;
-	content: "";
+	display:block;
+	width:100%; height:0;
+	content:'';
 	}
-@media screen and (max-width: 959px){
+@media screen and (max-width:959px){
 .akashic--document pre {
-	overflow-x: scroll;
-	border-width: 8px;
-	-webkit-overflow-scrolling: touch;
+	overflow-x:scroll;
+	border-width:8px;
+	overflow-scrolling:touch; -webkit-overflow-scrolling:touch;
 	}
 }
 /*↑コード系↑*/
