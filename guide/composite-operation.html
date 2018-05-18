@@ -1,122 +1,107 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
-<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
-<meta name="theme-color" content="#0F1F26">
-<title>CompositeOperationの利用 - Akashic Engine</title>
-<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?201712212000">
-<link rel="stylesheet" href="/css/header.css?201712212000">
-<link rel="stylesheet" href="/css/footer.css?201712212000">
+	<meta charset="UTF-8">
+	<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+	<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+	<meta name="theme-color" content="#0F1F26">
+	<title>CompositeOperationの利用</title>
+	<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+	<link rel="stylesheet" href="/css/common.css?1526643865144">
+	<link rel="stylesheet" href="/css/header.css?1526643865144">
+	<link rel="stylesheet" href="/css/footer.css?1526643865144">
 
+    
+	<link rel="stylesheet" href="/css/akashic-document.css?1526643865144">
+    
 
-<link rel="stylesheet" href="/css/asset.css?201712212000">
-<link rel="stylesheet" href="/css/akashic-document.css?201712212000">
-<link rel="stylesheet" href="/css/railscasts.css">
-<script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?201712212000"></script>
+	<script src="/lib/jquery-3.2.1.min.js"></script>
+	<script src="/lib/common.js?1526643865144"></script>
 
-
-
-<script src="/lib/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+    
 </head>
 <body>
-<!--↓header.html↓-->
 <div class="head--spacer"></div>
 <div class="SP--head--menu--show"></div>
 <div class="SP--head--menu--hide"></div>
 
 <div class="head--menu--outer">
-<ul class="head--menu"><!--
---><li class="head--menu--item">
-	<p class="head--menu--item--tab"></p>
-	<ul class="head--menu--item--list">
-	<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
-	<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
+				<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
 	</ul>
-</li><!--
---><li class="head--menu--item">
-	<p class="head--menu--item--tab"></p>
-	<ul class="head--menu--item--list">
-	<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
-	<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-	<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-	<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-	<li><a href="/guide/storage.html">ストレージについて</a></li>
-	<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-	<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
-	<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-	</ul>
-</li><!--
---><li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li><!--
---><li class="head--menu--item">
-	<p class="head--menu--item--tab"></p>
-	<ul class="head--menu--item--list">
-	<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-	<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
-	<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
-	<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
-	<li><a href="/reference/akashic-label/">akashic-label</a></li>
-	<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
-	<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
-	</ul>
-</li><!--
---><li class="head--menu--item">
-	<p class="head--menu--item--tab"></p>
-	<ul class="head--menu--item--list">
-	<li><a href="/asset/helloworld.html">Hello World</a></li>
-	<li><a href="/asset/scale-rotate-opacity.html">拡縮・回転・透明度</a></li>
-	<li><a href="/asset/bitmap-font.html">ビットマップフォント</a></li>
-	<li><a href="/asset/framesprite.html">フレームアニメーション</a></li>
-	<li><a href="/asset/touchevent.html">タッチイベント</a></li>
-	<li><a href="/asset/tile.html">タイル</a></li>
-	<li><a href="/asset/simpleshot.html">アブストラクトシューティング</a></li>
-	<li><a href="/asset/hoppingwitch.html">HOPPING WITCH</a></li>
-	<li><a href="/asset/galaxywars.html">GALAXY WARS</a></li>
-	<li><a href="/asset/material.html">サンプルデモの素材</a></li>
-	</ul>
-</li><!--
---></ul>
 </div>
 
-<header>
-<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
 </header>
-<!--↑header.html↑-->
 <div id="BodyInner">
-<!--↓composite-operation.html↓-->
-<section class="akashic--document safearea--LR">
-<div class="inner responsive--width">
-
-<h1>CompositeOperationの利用</h1>
-
-<h2 id="これは" name="これは">これは</h2>
-
-<p><code>E#compositeOpration</code>の利用方法を記述したドキュメントです。対象バージョンは akashic-engine@0.6.0 以降です。</p>
-
-<h2 id="compositeOperation とは" name="compositeOperation とは">compositeOperation とは</h2>
-
-<p><code>E#compositeOperation</code>とは、エンティティを描画する際の合成方法を指定するプロパティです。</p>
+	<section class="akashic--document safearea--LR">
+		<div class="inner responsive--width">
+			<h1>CompositeOperationの利用</h1>
+<h2><a name="これは"></a> これは</h2>
+<p><code>E#compositeOpration</code> の利用方法を記述したドキュメントです。
+対象バージョンは <a href="mailto:akashic-engine@0.6.0">akashic-engine@0.6.0</a> 以降です。</p>
+<h2><a name="compositeOperationとは"></a> compositeOperationとは</h2>
+<p><code>E#compositeOperation</code> とは、エンティティを描画する際の合成方法を指定するプロパティです。</p>
 <p>以下の値を指定可能です。</p>
-
 <ul>
 <li><code>CompositeOpration.SourceOver</code></li>
 <li><code>CompositeOpration.SourceAtop</code></li>
 <li><code>CompositeOpration.Lighter</code></li>
 <li><code>CompositeOpration.Copy</code></li>
-<li>未指定(<code>undefined</code>)</li>
+<li>未指定（<code>undefined</code>）</li>
 </ul>
-
-<h2 id="SourceOver" name="SourceOver">SouceOver</h2>
-
+<h2><a name="SourceOver"></a> SouceOver</h2>
 <p>先に描画された領域の上に重ねて描画します。これがデフォルトの合成方法となります。</p>
-<p>以下は、緑色、赤色、青色の<code>FilledRect</code>を重ねて描画する例です。</p>
-
+<p>以下は、緑色、赤色、青色の <code>FilledRect</code> を重ねて描画する例です。</p>
 <p><img src="/img/guide/composite-operation/source-over.png" alt="source-over"></p>
-
 <pre><code class="lang-javascript">var green = new g.FilledRect({scene: scene, x: 50, width: 100, height: 100, cssColor: &quot;green&quot;});
 green.compositeOperation = g.CompositeOperation.SourceOver;
 var red = new g.FilledRect({scene: scene, y: 20, width: 100, height: 100, cssColor: &quot;red&quot;});
@@ -125,62 +110,43 @@ var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width: 100, height: 100
 blue.compositeOperation = g.CompositeOperation.SourceOver;
 scene.append(green);
 scene.append(red);
-scene.append(blue);</code></pre>
-
-<h2 id="SourceAtop" name="SourceAtop">SourceAtop</h2>
-
+scene.append(blue);
+</code></pre>
+<h2><a name="SourceAtop"></a> SourceAtop</h2>
 <p>先に描画された領域と重なった部分のみを描画します。</p>
-<p>以下の例では、赤色と青色の<code>FilledRect</code>に<code>SourceAtop</code>指定し、緑色の<code>FilledRect</code>と重なった部分だけ描画する例です。</p>
-
+<p>以下の例では、赤色と青色の <code>FilledRect</code> に <code>SourceAtop</code> 指定し、緑色の <code>FilledRect</code> と重なった部分だけ描画する例です。</p>
 <p><img src="/img/guide/composite-operation/source-atop.png" alt="source-atop"></p>
-
 <pre><code class="lang-javascript">red.compositeOperation = g.CompositeOperation.SourceAtop;
-blue.compositeOperation = g.CompositeOperation.SourceAtop;</code></pre>
-
-<p>このオプションは、対象のサーフェスが大きい場合、実行環境によっては重い負荷になることがありえます。
-性能が重要なコンテンツでは多用しないことを推奨します。</p>
-
-<h2 id="Lighter" name="Lighter">Lighter</h2>
-
+blue.compositeOperation = g.CompositeOperation.SourceAtop;
+</code></pre>
+<h2><a name="Lighter"></a> Lighter</h2>
 <p>先に描画された領域と重なった部分の色を加算して描画します。</p>
-<p>以下の例では、赤色と青色の<code>FilledRect</code>に<code>Lighter</code>指定したものです。</p>
-
+<p>以下の例では、赤色と青色の <code>FilledRect</code> に <code>Lighter</code> 指定したものです。</p>
 <p><img src="/img/guide/composite-operation/lighter.png" alt="lighter"></p>
-
 <pre><code class="lang-javascript">red.compositeOperation = g.CompositeOperation.Lighter;
-blue.compositeOperation = g.CompositeOperation.Lighter;</code></pre>
-
-<h2 id="Copy" name="Copy">Copy</h2>
-
-<p>先に描画された領域の状態に関わらず、全て上書きして描画します。描画内容が透明な場合、描画先の内容にかかわらず透明な画像が上書き描画されます。</p>
-
+blue.compositeOperation = g.CompositeOperation.Lighter;
+</code></pre>
+<h2><a name="Copy"></a> Copy</h2>
+<p>先に描画された領域の状態に関わらず、全て上書きして描画します。
+描画内容が透明な場合、描画先の内容にかかわらず透明な画像が上書き描画されます。</p>
 <p><img src="/img/guide/composite-operation/copy.png" alt="copy"></p>
-
-<pre><code>blue.compositeOperation = g.CompositeOperation.SourceOver;
-character.compositeOperation = g.CompositeOperation.Copy;</code></pre>
-
-<h2 id="未指定(undefined)" name="未指定(undefined)">未指定(undefined)</h2>
-
-<p><code>E#compositeOperation</code>はデフォルトで未指定（<code>undefined</code>）ですが、この時の合成方法は親エンティティの<code>compositeOperation</code>によって変わってきます。</p>
-
+<pre><code class="lang-javascript">blue.compositeOperation = g.CompositeOperation.SourceOver;
+character.compositeOperation = g.CompositeOperation.Copy;
+</code></pre>
+<h2><a name="未指定（undefined）"></a> 未指定（undefined）</h2>
+<p><code>E#compositeOperation</code> はデフォルトで未指定（ <code>undefined</code> ）ですが、この時の合成方法は親エンティティの <code>compositeOperation</code> によって変わってきます。</p>
 <ul>
-<li>
-<p>親エンティティの<code>compositeOperation</code>が未指定(<code>undefined</code>)</p>
-<p>デフォルトの合成方法である<code>SourceOver</code>で合成されます</p>
+<li><p>親エンティティの <code>compositeOperation</code> が未指定（ <code>undefined</code> )</p>
+<p>デフォルトの合成方法である <code>SourceOver</code> で合成されます。</p>
 </li>
-<li>
-<p>親エンティティの<code>compositeOperation</code>が指定されている</p>
-<p>親エンティティの<code>compositeOperation</code>で合成されます</p>
+<li><p>親エンティティの <code>compositeOperation</code> が指定されている</p>
+<p>親エンティティの <code>compositeOperation</code> で合成されます。</p>
 </li>
 </ul>
-
-<h2 id="Paneの利用" name="Paneの利用">Paneの利用</h2>
-
-<p><code>SourceAtop</code>や<code>Lighter</code>を利用する際に、<code>Pane</code>を利用することで、先に描画された領域を合成対象に含めないようにすることができます。</p>
-<p>例えば、以下のように背景(灰色の<code>FilledRect</code>)が存在する場合に、<code>SourceAtop</code>を使って赤色と青色の<code>FilledRect</code>のうち、緑色の<code>FilledRect</code>と重なる部分のみを描画したいケースを考えます。</p>
-
+<h2><a name="Paneの利用"></a> Paneの利用</h2>
+<p><code>SourceAtop</code> や <code>Lighter</code> を利用する際に、<code>Pane</code> を利用することで、先に描画された領域を合成対象に含めないようにすることが出来ます。</p>
+<p>例えば、以下のように背景（灰色の <code>FilledRect</code>）が存在する場合に、<code>SourceAtop</code> を使って赤色と青色の <code>FilledRect</code> のうち、緑色の <code>FilledRect</code> と重なる部分のみを描画したいケースを考えます。</p>
 <p><img src="/img/guide/composite-operation/source-atop-bg.png" alt="source-atop-bg"></p>
-
 <pre><code class="lang-javascript">var bg = new g.FilledRect({scene: scene, width: game.width, height: game.height, cssColor: &quot;lightgray&quot;});
 scene.append(bg);
 var green = new g.FilledRect({scene: scene, x: 50, width: 100, height: 100, cssColor: &quot;green&quot;});
@@ -188,21 +154,17 @@ var red = new g.FilledRect({scene: scene, y: 20, width: 100, height: 100, cssCol
 var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width: 100, height: 100, cssColor: &quot;blue&quot;});
 scene.append(green);
 scene.append(red);
-scene.append(blue);</code></pre>
-
+scene.append(blue);
+</code></pre>
 <p>単純に、</p>
-
 <pre><code>red.compositeOperation = g.CompositeOperation.SourceOver;
-blue.compositeOperation = g.CompositeOperation.SourceOver;</code></pre>
-
-<p>としても、合成対象に背景が含まれてしまうので、赤色と青色の<code>FilledRect</code>はそのまま描画されます。</p>
-<p>このような場合に<code>Pane</code>を利用します。</p>
-<p><code>Pane</code>は内部に描画キャッシュを持ち、 子エンティティは描画キャッシュに描画されます。</p>
-<p>つまり、<code>Pane</code>の子エンティティの合成対象に<code>Pane</code>外のエンティティは含まれなくなります。</p>
-<p>以下の例では、緑色、赤色、青色の<code>FilledRect</code>を<code>Pane</code>に追加しています。</p>
-
+blue.compositeOperation = g.CompositeOperation.SourceOver;
+</code></pre><p>としても、合成対象に背景が含まれてしまうので、赤色と青色の <code>FilledRect</code> はそのまま描画されます。</p>
+<p>このような場合に <code>Pane</code> を利用します。</p>
+<p><code>Pane</code> は内部に描画キャッシュを持ち、 子エンティティは描画キャッシュに描画されます。</p>
+<p>つまり、 <code>Pane</code> の子エンティティの合成対象に <code>Pane</code> 外のエンティティは含まれなくなります。</p>
+<p>以下の例では、緑色、赤色、青色の <code>FilledRect</code> を <code>Pane</code> に追加しています。</p>
 <p><img src="/img/guide/composite-operation/source-atop-pane.png" alt="source-atop-pane"></p>
-
 <pre><code class="lang-javascript">var bg = new g.FilledRect({scene: scene, width: game.width, height: game.height, cssColor: &quot;lightgray&quot;});
 var green = new g.FilledRect({scene: scene, x: 50, width: 100, height: 100, cssColor: &quot;green&quot;});
 var red = new g.FilledRect({scene: scene, y: 20, width: 100, height: 100, cssColor: &quot;red&quot;});
@@ -214,78 +176,76 @@ pane.append(green);
 pane.append(red);
 pane.append(blue);
 scene.append(bg);
-scene.append(pane);</code></pre>
+scene.append(pane);
+</code></pre>
 
-</div>
-</section>
-<!--↑composite-operation.html↑-->
-<!--↓footer.html↓-->
-<footer class="safearea--LR">
-<div class="responsive--width">
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
 
-<ul class="foot--menu cfix">
-<li class="foot--menu--item">
-	<p class="foot--menu--item--tab">入門</p>
-	<ul class="foot--menu--item--list">
-	<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
-	<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
-	</ul>
-</li>
-<li class="foot--menu--item">
-	<p class="foot--menu--item--tab">ガイド</p>
-	<ul class="foot--menu--item--list">
-	<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
-	<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-	<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-	<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-	<li><a href="/guide/storage.html">ストレージについて</a></li>
-	<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-	<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
-	<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-	</ul>
-</li>
-<li class="foot--menu--item">
-	<p class="foot--menu--item--tab">リファレンス</p>
-	<ul class="foot--menu--item--list">
-	<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-	<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
-	<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
-	<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
-	<li><a href="/reference/akashic-label/">akashic-label</a></li>
-	<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
-	<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
-	</ul>
-</li>
-<li class="foot--menu--item">
-	<p class="foot--menu--item--tab">サンプルデモ</p>
-	<ul class="foot--menu--item--list">
-	<li><a href="/asset/helloworld.html">Hello World</a></li>
-	<li><a href="/asset/scale-rotate-opacity.html">拡縮・回転・透明度</a></li>
-	<li><a href="/asset/bitmap-font.html">ビットマップフォント</a></li>
-	<li><a href="/asset/framesprite.html">フレームアニメーション</a></li>
-	<li><a href="/asset/touchevent.html">タッチイベント</a></li>
-	<li><a href="/asset/tile.html">タイル</a></li>
-	<li><a href="/asset/simpleshot.html">アブストラクトシューティング</a></li>
-	<li><a href="/asset/hoppingwitch.html">HOPPING WITCH</a></li>
-	<li><a href="/asset/galaxywars.html">GALAXY WARS</a></li>
-	<li><a href="/asset/material.html">サンプルデモの素材</a></li>
-	</ul>
-</li>
-</ul>
+		<ul class="foot--menu cfix">
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">入門</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
+					<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">ガイド</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+					<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+					<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+					<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+					<li><a href="/guide/storage.html">ストレージについて</a></li>
+					<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">リファレンス</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+					<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+					<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+					<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+					<li><a href="/reference/akashic-label/">akashic-label</a></li>
+					<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+					<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">サンプルデモ</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/demo/?title=helloworld">Hello World</a></li>
+					<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+					<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+					<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+					<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+					<li><a href="/demo/?title=demo-tile">タイル</a></li>
+					<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+					<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+					<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+					<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+				</ul>
+			</li>
+		</ul>
 
-<ul class="foot--creativecommons">
-	<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
-	<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
-</ul>
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
+		</ul>
 
-<ul class="foot--license">
-	<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
-	<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
-</ul>
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
 
-</div>
+	</div>
 </footer>
-<!--↑footer.html↑-->
 </div>
 <div class="page--top"></div>
 <div class="window--dark"></div>

@@ -12,11 +12,7 @@
 	background:#1F2F36;
 	}
 .asset--head--demo div { overflow: hidden;}
-.asset--head--demo .w512h384 { width:512px; height: 384px; margin: 0 auto;}
-.asset--head--demo .w480h320 { width:480px; height: 320px; margin: 32px auto;}
-.asset--head--demo .w320h320 { width:320px; height: 320px; margin: 32px auto;}
-.asset--head--demo .w320h240 { width:320px; height: 240px; margin: 72px auto;}
-iframe#DEMO { width:100%; height:100%;}
+.asset-demo-frame { width:100%; height:100%;}
 .asset--head--info {/* 説明 */
 	float:right;
 	width:416px; height:384px;
@@ -42,10 +38,6 @@ iframe#DEMO { width:100%; height:100%;}
 	width:auto;
 	}
 .asset--head--demo { height:240px;}
-.asset--head--demo .w512h384 { width:320px; height:240px; margin:0 auto;}
-.asset--head--demo .w480h320 { width:312px; height:208px; margin:16px auto;}
-.asset--head--demo .w320h320 { width:240px; height:240px; margin:0 auto;}
-.asset--head--demo .w320h240 { width:320px; height:240px; margin:0 auto;}
 .asset--head--info { height:auto;}
 .asset--head--info h1 { font-size:20px; line-height:24px;}
 .asset--head--info p  { font-size:12px; line-height:20px;}
@@ -145,7 +137,6 @@ iframe#DEMO { width:100%; height:100%;}
 	}
 .asset--body--item pre,
 .asset--body--item div {
-	display:none;
 	background:#232323;/* highlight.js と揃える */
 	padding:16px;
 	}

@@ -1,0 +1,49 @@
+{
+	"contents": [
+		{
+			"caption": "Hello World",
+			"description": "akashic initコマンドで出力されるテンプレートです。  \n画面上部を赤い矩形が左から右に移動する動作を繰り返します。",
+			"dir": "helloworld"
+		},
+		{
+			"caption": "拡縮・回転・透明度",
+			"description": "g.Eのscale,rotate,opacityプロパティで拡縮・回転・透明度が制御できます。",
+			"dir": "scale-rotate-opacity"
+		},
+		{
+			"caption": "ビットマップフォント",
+			"description": "[g.BitmapFont](https://akashic-games.github.io/reference/akashic-engine/classes/_lib_main_d_.g.bitmapfont.html)と[g.Label](https://akashic-games.github.io/reference/akashic-engine/classes/_lib_main_d_.g.label.html)を使うと、ビットマップフォントでテキストを描画できます。テキストをクリック(タップ)すると色とサイズが変化します。\n\nビットマップフォント画像(mplus1c_regular_jis1.png)は[M+ FONTS](https://mplus-fonts.osdn.jp/index.html)のM+ Type-1 Regularから[bmpfont-generator](https://github.com/akashic-games/bmpfont-generator)で生成したものです。",
+			"dir": "bitmap-font"
+		},
+		{
+			"caption": "フレームアニメーション",
+			"description": "[g.FrameSprite](https://akashic-games.github.io/reference/akashic-engine/classes/_lib_main_d_.g.framesprite.html) でフレームアニメーションを作成できます。  \n画面をクリック(タップ)すると、その位置でアニメーションを再生します。",
+			"dir": "framesprite"
+		},
+		{
+			"caption": "タッチイベント",
+			"description": "タッチ操作のサンプルです。画面中央のスイッチをクリック(タップ)すると画像と明るさが変化します。\n\nこのサンプルで使用している素材は[素材ページ](https://akashic-games.github.io/asset/material.html#SWITCH)で公開・配布しています。",
+			"dir": "demo-touchevent"
+		},
+		{
+			"caption": "タイル",
+			"description": "[g.Tile](https://akashic-games.github.io/reference/akashic-engine/classes/_lib_main_d_.g.tile.html)でタイルチップを並べて描画することができます。画面をクリック(タップ)するとスクロールを開始／停止します。\n\nこのサンプルで使用している素材は[素材ページ](https://akashic-games.github.io/asset/material.html#TILE)で公開・配布しています。",
+			"dir": "demo-tile"
+		},
+		{
+			"caption": "アブストラクトシューティング",
+			"description": "画面をクリック(タップ)すると、その位置から弾を発射します。画面のブロックを全て撃つとゲームオーバーです。",
+			"dir": "simpleShot"
+		},
+		{
+			"caption": "Hopping Witch",
+			"description": "画面をクリック(タップ)すると自機が空中でジャンプします。スクロールする地形に自機が接触するとゲームオーバーです。\n\nこのサンプルで使用している素材は[素材ページ](https://akashic-games.github.io/asset/material.html#HOPPINGWITCH)で公開・配布しています。",
+			"dir": "HoppingWitch"
+		},
+		{
+			"caption": "Galaxy Wars",
+			"description": "画面をドラッグ(スワイプ)すると自機が移動します。自機の弾は自動で発射され、敵を倒すと様々なアイテムを落とします。左上のゲージがゼロになるとゲームオーバーです。\n\nこのサンプルで使用している素材は[素材ページ](https://akashic-games.github.io/asset/material.html#GALAXYWARS)で公開・配布しています。",
+			"dir": "GalaxyWars"
+		}
+	]
+}
