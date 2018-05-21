@@ -79,7 +79,11 @@ function createHeightBuffer(cellSize) {
     for (var i = 0; i < 3; i++) {
         var col = [];
         for (j = 0; j < game.height / cellSize; j++) {
-            col.push(Array(game.width / cellSize).fill(0));
+            var filledZero = [];
+            for (k = 0; k < game.width / cellSize; k++) {
+                filledZero.push(0);
+            }
+            col.push(filledZero);
         }
         heights.push(col);
     }

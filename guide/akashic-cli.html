@@ -7,16 +7,16 @@
 	<meta name="theme-color" content="#0F1F26">
 	<title>akashic-cli利用ガイド</title>
 	<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-	<link rel="stylesheet" href="/css/common.css?1526648623728">
-	<link rel="stylesheet" href="/css/header.css?1526648623728">
-	<link rel="stylesheet" href="/css/footer.css?1526648623728">
+	<link rel="stylesheet" href="/css/common.css?1526903998206">
+	<link rel="stylesheet" href="/css/header.css?1526903998206">
+	<link rel="stylesheet" href="/css/footer.css?1526903998206">
 
     
-	<link rel="stylesheet" href="/css/akashic-document.css?1526648623728">
+	<link rel="stylesheet" href="/css/akashic-document.css?1526903998206">
     
 
 	<script src="/lib/jquery-3.2.1.min.js"></script>
-	<script src="/lib/common.js?1526648623728"></script>
+	<script src="/lib/common.js?1526903998206"></script>
 
     
 </head>
@@ -327,6 +327,11 @@ game.jsonは更新されません。npm-shrinkwrap.json がない場合、利用
 <li><code>--strip</code>: ゲーム実行に不要なファイルを出力から除外する</li>
 <li><code>--minify</code>: スクリプトアセットをminifyする</li>
 <li><code>--magnify</code>: ゲーム画面をブラウザのウィンドウサイズに合わせて拡縮するようにする</li>
+<li><code>--inject &lt;fileName&gt;</code>: 出力HTMLのheader内に <code>&lt;fileName&gt;</code> の内容を含める (<a href="mailto:akashic-cli@1.3.1">akashic-cli@1.3.1</a>で導入)<ul>
+<li><code>&lt;fileName&gt;</code> にディレクトリも指定可能。その場合、ディレクトリ中の全ファイルの内容が出力される</li>
+<li>このオプションは複数指定可能。複数指定した場合、指定した順番にファイルの内容が出力される</li>
+</ul>
+</li>
 </ul>
 <p><code>--output</code> オプションに存在するファイル名・ディレクトリ名を指定した場合、エラーになります。
 またゲームのディレクトリ以下のパスを指定することはできません。
