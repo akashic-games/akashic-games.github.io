@@ -30,6 +30,10 @@ function start(gamePath, assetBase)  {
 		errorHandler: function (e) { console.log("ERRORHANDLER:", e); }
 	});
 
+	driver.gameCreatedTrigger.handle(function () {
+		pf.fitToWindow(true);
+	});
+
 	driver.initialize({
 		configurationUrl: gamePath,
 		assetBase: assetBase,
@@ -44,8 +48,6 @@ function start(gamePath, assetBase)  {
 			console.log(e);
 			throw e;
 		}
-		var canvas = (document.getElementsByTagName('canvas'))[0];
-		canvas.style = "transform-origin: 0px 0px 0px; transform: scale(" + window.innerWidth / canvas.width + ", " + window.innerHeight / canvas.height + ")";
 
 		driver.startGame();
 	});
