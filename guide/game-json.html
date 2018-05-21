@@ -1,178 +1,156 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
-<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
-<meta name="theme-color" content="#0F1F26">
-<title>game.jsonの仕様 - Akashic Engine</title>
-<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?201712212000">
-<link rel="stylesheet" href="/css/header.css?201712212000">
-<link rel="stylesheet" href="/css/footer.css?201712212000">
+	<meta charset="UTF-8">
+	<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+	<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+	<meta name="theme-color" content="#0F1F26">
+	<title>game.jsonの仕様</title>
+	<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+	<link rel="stylesheet" href="/css/common.css?1526648623728">
+	<link rel="stylesheet" href="/css/header.css?1526648623728">
+	<link rel="stylesheet" href="/css/footer.css?1526648623728">
 
+    
+	<link rel="stylesheet" href="/css/akashic-document.css?1526648623728">
+    
 
-<link rel="stylesheet" href="/css/asset.css?201712212000">
-<link rel="stylesheet" href="/css/akashic-document.css?201712212000">
-<link rel="stylesheet" href="/css/railscasts.css">
-<script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?201712212000"></script>
+	<script src="/lib/jquery-3.2.1.min.js"></script>
+	<script src="/lib/common.js?1526648623728"></script>
 
-
-
-<script src="/lib/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+    
 </head>
 <body>
-<!--↓header.html↓-->
 <div class="head--spacer"></div>
 <div class="SP--head--menu--show"></div>
 <div class="SP--head--menu--hide"></div>
 
 <div class="head--menu--outer">
-<ul class="head--menu"><!--
---><li class="head--menu--item">
-	<p class="head--menu--item--tab"></p>
-	<ul class="head--menu--item--list">
-	<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
-	<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
+				<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
 	</ul>
-</li><!--
---><li class="head--menu--item">
-	<p class="head--menu--item--tab"></p>
-	<ul class="head--menu--item--list">
-	<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
-	<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-	<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-	<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-	<li><a href="/guide/storage.html">ストレージについて</a></li>
-	<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-	<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
-	<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-	</ul>
-</li><!--
---><li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li><!--
---><li class="head--menu--item">
-	<p class="head--menu--item--tab"></p>
-	<ul class="head--menu--item--list">
-	<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-	<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
-	<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
-	<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
-	<li><a href="/reference/akashic-label/">akashic-label</a></li>
-	<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
-	<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
-	</ul>
-</li><!--
---><li class="head--menu--item">
-	<p class="head--menu--item--tab"></p>
-	<ul class="head--menu--item--list">
-	<li><a href="/asset/helloworld.html">Hello World</a></li>
-	<li><a href="/asset/scale-rotate-opacity.html">拡縮・回転・透明度</a></li>
-	<li><a href="/asset/bitmap-font.html">ビットマップフォント</a></li>
-	<li><a href="/asset/framesprite.html">フレームアニメーション</a></li>
-	<li><a href="/asset/touchevent.html">タッチイベント</a></li>
-	<li><a href="/asset/tile.html">タイル</a></li>
-	<li><a href="/asset/simpleshot.html">アブストラクトシューティング</a></li>
-	<li><a href="/asset/hoppingwitch.html">HOPPING WITCH</a></li>
-	<li><a href="/asset/galaxywars.html">GALAXY WARS</a></li>
-	<li><a href="/asset/material.html">サンプルデモの素材</a></li>
-	</ul>
-</li><!--
---></ul>
 </div>
 
-<header>
-<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
 </header>
-<!--↑header.html↑-->
 <div id="BodyInner">
-<!--↓game-json.html↓-->
-<section class="akashic--document safearea--LR">
-<div class="inner responsive--width">
-
-<h1>game.jsonの仕様</h1>
-
-<h2 id="これは" name="これは">これは</h2>
-
-<p>Akashicのゲームにおいてメタ情報などを取り扱う設定ファイル、game.jsonの仕様をまとめます。対象バージョンはakashic-engine@1.11.2 以降です。</p>
-
-<h2 id="game.jsonとは" name="game.jsonとは">game.jsonとは</h2>
-
-<p>game.jsonは、Akashicのゲームのメタ情報などを取り扱う JSON形式の設定ファイルです。主に以下のような情報を取り扱います。</p>
-
+	<section class="akashic--document safearea--LR">
+		<div class="inner responsive--width">
+			<h1>game.jsonの仕様</h1>
+<h2><a name="これは"></a> これは</h2>
+<p>Akashic のゲームにおいてメタ情報などを取り扱う設定ファイル、game.json の仕様をまとめます。
+対象バージョンは <a href="mailto:akashic-engine@1.11.2">akashic-engine@1.11.2</a> 以降です。</p>
+<h2><a name="game.jsonとは"></a> game.jsonとは</h2>
+<p>game.json は、Akashic のゲームのメタ情報などを取り扱う JSON 形式の設定ファイルです。
+主に以下のような情報を取り扱います。</p>
 <ul>
 <li>ゲーム画面のサイズ</li>
 <li>ゲームのFPS</li>
 <li>ゲーム内で利用する各種素材のファイルパスやID</li>
 </ul>
-
 <p>これらに加えて、画像素材のサイズのような補助的な情報も取り扱います。</p>
-<p>各種素材(アセット)のファイルパスや画像のサイズなどは、手動で記述・維持しにくいので、game.jsonを生成・管理するツールとしてakashic-cliが提供されています。akashic-cliの詳細は<a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a>を参照してください。</p>
-
-<h2 id="形式" name="形式">形式</h2>
-
-<p>妥当なgame.jsonの内容は一つのオブジェクトです。それは以下の名前のプロパティと、対応する値を持ちます。</p>
-
+<p>各種素材(アセット)のファイルパスや画像のサイズなどは、手動で記述・維持しにくいので、
+game.json を生成・管理するツールとして akashic-cli が提供されています。
+akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli利用ガイド</a> を参照してください。</p>
+<h2><a name="形式"></a> 形式</h2>
+<p>妥当な game.json の内容は一つのオブジェクトです。
+それは以下の名前のプロパティと、対応する値を持ちます。</p>
 <ul>
-<li>width(必須)
-	<ul>
-	<li>数値</li>
-	<li>画面の幅(ピクセル)</li>
-	</ul>
+<li>width (必須)<ul>
+<li>数値</li>
+<li>画面の幅 (ピクセル)</li>
+</ul>
 </li>
-<li>heigth(必須)
-	<ul>
-	<li>数値</li>
-	<li>画面の高さ(ピクセル)</li>
-	</ul>
+<li>heigth (必須)<ul>
+<li>数値</li>
+<li>画面の高さ (ピクセル)</li>
+</ul>
 </li>
-<li>fps(必須)
-	<ul>
-	<li>数値</li>
-	<li>ゲームのFPS(秒間フレーム数)</li>
-	</ul>
+<li>fps (必須)<ul>
+<li>数値</li>
+<li>ゲームのFPS (秒間フレーム数)</li>
+</ul>
 </li>
-<li>assets(必須)
-	<ul>
-	<li>オブジェクト(詳細は後述)</li>
-	<li>ゲーム内で利用するアセットの定義</li>
-	</ul>
+<li>assets (必須)<ul>
+<li>オブジェクト (詳細は後述)</li>
+<li>ゲーム内で利用するアセットの定義</li>
+</ul>
 </li>
-<li>main(指定推奨)
-	<ul>
-	<li>文字列</li>
-	<li>エントリポイントのスクリプトへのパス</li>
-	</ul>
+<li>main (指定推奨)<ul>
+<li>文字列</li>
+<li>エントリポイントのスクリプトへのパス</li>
+</ul>
 </li>
-<li>globalScripts
-	<ul>
-	<li>配列(詳細は後述)</li>
-	<li>ゲーム内で利用するスクリプトアセット定義の短縮表記</li>
-	</ul>
+<li>globalScripts<ul>
+<li>配列 (詳細は後述)</li>
+<li>ゲーム内で利用するスクリプトアセット定義の短縮表記</li>
+</ul>
 </li>
-<li>renderers
-	<ul>
-	<li>配列(詳細は後述)</li>
-	<li>ゲームが利用するレンダラーを定義</li>
-	</ul>
+<li>renderers<ul>
+<li>配列（詳細は後述）</li>
+<li>ゲームが利用するレンダラーを定義</li>
+</ul>
 </li>
-<li>defaultLoadingScene
-	<ul>
-	<li>文字列(詳細は後述)</li>
-	<li>デフォルトのローディングシーンを定義</li>
-	</ul>
+<li>defaultLoadingScene<ul>
+<li>文字列 (詳細は後述)</li>
+<li>デフォルトのローディングシーンを定義</li>
+</ul>
 </li>
-<li>environment
-	<ul>
-	<li>オブジェクト(詳細は後述)</li>
-	<li>このゲームの実行環境に要求する条件</li>
-	</ul>
+<li>environment<ul>
+<li>オブジェクト (詳細は後述)</li>
+<li>このゲームの実行環境に要求する条件</li>
+</ul>
 </li>
 </ul>
-
 <p>次のJSONは、妥当なgame.jsonの一例です:</p>
-
 <pre><code>{
   &quot;width&quot;: 320,
   &quot;height&quot;: 240,
@@ -185,144 +163,151 @@
     }
   },
   &quot;main&quot;: &quot;./script/main.js&quot;
-}</code></pre>
-
-<p>このgame.jsonは、画面サイズが320x240でFPSが30の &quot;script/main.js&quot; というゲームスクリプト一つだけを使うゲームであること、またエントリポイントはその &quot;./script/main.js&quot; であることを定義しています。</p>
-
-<h3>assets(アセット定義)</h3>
-
-<p>game.jsonのオブジェクト中、<strong>assets</strong>の値は、オブジェクトでなければなりません。そのオブジェクトの各キーはアセットID、値はそのIDのアセット定義です。</p>
-<strong>アセットID</strong>は、ゲーム開発者が任意に設定できる文字列です。アセットIDは「半角英数字、アンダースコア &quot;_&quot;、ドル記号 &quot;$&quot;」のみで構成され、かつ「英字で始まっている」必要があります。ゲームスクリプト内で、Akashicエンジンが読み込んだ各アセットは<code>g.Scene#assets</code>オブジェクトから参照できます(グローバルアセットを除く。後述)。アセットIDはこのオブジェクトのキーとして利用されます。すなわち、アセットIDが &quot;foo&quot; のアセットは、<code>scene.assets.foo</code>のような形で参照することができます。</p>
-<p><strong>アセット定義</strong>は、オブジェクトであり、少なくとも以下の値を持つことができます:</p>
-
+}
+</code></pre><p>このgame.jsonは、画面サイズが320x240でFPSが30の、
+&quot;script/main.js&quot; というゲームスクリプト一つだけを使うゲームであること、
+またエントリポイントはその &quot;./script/main.js&quot; であることを定義しています。</p>
+<h3>assets (アセット定義)</h3>
+<p>game.json のオブジェクト中、 <strong>assets</strong> の値は、オブジェクトでなければなりません。
+そのオブジェクトの各キーはアセットID、値はそのIDのアセット定義です。</p>
+<p><strong>アセットID</strong> は、ゲーム開発者が任意に設定できる文字列です。
+アセットIDは「半角英数字、アンダースコア &quot;_&quot;、ドル記号 &quot;$&quot;」のみで構成され、
+かつ「英字で始まっている」必要があります。
+ゲームスクリプト内で、Akashic エンジンが読み込んだ各アセットは
+<code>g.Scene#assets</code> オブジェクトから参照できます (グローバルアセットを除く。後述)。
+アセットID はこのオブジェクトのキーとして利用されます。すなわち、
+アセットIDが &quot;foo&quot; のアセットは、<code>scene.assets.foo</code> のような形で参照することができます。</p>
+<p><strong>アセット定義</strong> は、オブジェクトであり、少なくとも以下の値を持つことができます:</p>
 <ul>
-<li>type(必須)
-	<ul>
-	<li>次の文字列のいずれか: &quot;image&quot;, &quot;audio&quot;, &quot;text&quot;, &quot;script&quot;</li>
-	<li>アセットの種類</li>
-	</ul>
+<li>type (必須)<ul>
+<li>次の文字列のいずれか: &quot;image&quot;, &quot;audio&quot;, &quot;text&quot;, &quot;script&quot;</li>
+<li>アセットの種類</li>
+</ul>
 </li>
-<li>path(必須)
-	<ul>
-	<li>文字列</li>
-	<li>game.json のあるディレクトリからの相対パス(スラッシュ区切り)</li>
-	<li>アセットを表すファイル</li>
-	</ul>
+<li>path (必須)<ul>
+<li>文字列</li>
+<li>game.json のあるディレクトリからの相対パス (スラッシュ区切り)</li>
+<li>アセットを表すファイル</li>
+</ul>
 </li>
-<li>global
-	<ul>
-	<li>真理値</li>
-	<li>グローバルアセットであるか否か(省略された場合、偽)</li>
-	</ul>
+<li>global<ul>
+<li>真理値</li>
+<li>グローバルアセットであるか否か (省略された場合、偽)</li>
+</ul>
 </li>
 </ul>
-
-<p>globalの値が真に設定されたアセットは、<strong>グローバルアセット</strong>になります。通常のアセットは、シーン単位で管理されます。アセットを利用する場合、<code>g.Scene</code>のコンストラクタでそのアセットIDを指定する必要があります。しかしグローバルアセットは、シーン単位ではなく、ゲーム内において常に利用可能なアセットになります。通常のアセットが<code>g.Scene#assets</code>から参照できるのに対して、グローバルアセットは<code>g.Game#assets</code>から参照できます。</p>
-<p>typeの値によっては、アセット定義にさらに追加の制約や必須プロパティが存在します。</p>
-
+<p>global の値が真に設定されたアセットは、<strong>グローバルアセット</strong> になります。
+通常のアセットは、シーン単位で管理されます。
+アセットを利用する場合、<code>g.Scene</code> のコンストラクタでそのアセットIDを指定する必要があります。
+しかしグローバルアセットは、シーン単位ではなく、ゲーム内において常に利用可能なアセットになります。
+通常のアセットが <code>g.Scene#assets</code> から参照できるのに対して、グローバルアセットは <code>g.Game#assets</code> から参照できます。</p>
+<p>type の値によっては、アセット定義にさらに追加の制約や必須プロパティが存在します。</p>
 <ul>
-<li>&quot;image&quot;
-	<ul>
-	<li>プロパティ: width(必須)
-		<ul>
-		<li>数値</li>
-		<li>画像の幅(ピクセル)</li>
-		</ul>
-	</li>
-	<li>プロパティ: height(必須)
-		<ul>
-		<li>数値</li>
-		<li>画像の高さ(ピクセル)</li>
-		</ul>
-	</li>
-	<li>制約: pathの拡張子は &quot;.png&quot;、&quot;.jpg&quot; または &quot;.jpeg&quot; でなければならない</li>
-	</ul>
+<li>&quot;image&quot;<ul>
+<li>プロパティ: width (必須)<ul>
+<li>数値</li>
+<li>画像の幅(ピクセル)</li>
+</ul>
 </li>
-<li>&quot;audio&quot;
-	<ul>
-	<li>プロパティ: systemId
-		<ul>
-		<li>文字列</li>
-		<li>このアセットのsystem(本文書では詳細割愛)</li>
-		<li>省略された場合、<code>g.Game#defaultAudioSystemId</code>の値(<code>defaultAudioSystemId</code>の初期値は &quot;sound&quot;)</li>
-		</ul>
-	</li>
-	<li>制約: pathはファイルのパス文字列から拡張子を取り除いたものでなければならない</li>
-	<li>制約: 対応するファイルの拡張子は &quot;.ogg&quot; または &quot;.aac&quot; でなければならない</li>
-	</ul>
+<li>プロパティ: height (必須)<ul>
+<li>数値</li>
+<li>画像の高さ(ピクセル)</li>
+</ul>
 </li>
-<li>&quot;script&quot;
-	<ul>
-	<li>制約:pathの拡張子は &quot;.js&quot; でなければならない</li>
-	</ul>
+<li>制約: path の拡張子は &quot;.png&quot;、&quot;.jpg&quot; または &quot;.jpeg&quot; でなければならない</li>
+</ul>
+</li>
+<li>&quot;audio&quot;<ul>
+<li>プロパティ: systemId<ul>
+<li>文字列</li>
+<li>このアセットの system (本文書では詳細割愛)</li>
+<li>省略された場合、 <code>g.Game#defaultAudioSystemId</code> の値 (<code>defaultAudioSystemId</code> の初期値は &quot;sound&quot;)</li>
+</ul>
+</li>
+<li>制約: path はファイルのパス文字列から拡張子を取り除いたものでなければならない</li>
+<li>制約: 対応するファイルの拡張子は &quot;.ogg&quot; または &quot;.aac&quot; でなければならない</li>
+</ul>
+</li>
+<li>&quot;script&quot;<ul>
+<li>制約: path の拡張子は &quot;.js&quot; でなければならない</li>
+</ul>
 </li>
 </ul>
-
-<p>オーディオアセット(typeが &quot;audio&quot; であるアセット)は他と異なり、ファイルパスに拡張子を書かないことに気をつけて下さい。音素材に関して、拡張子以外の部分が同名のファイル(e.g. &quot;audio/foo.ogg&quot; と &quot;audio/foo.aac&quot; など)は、それぞれ同じ内容であることが期待されます。これらはエンジンが、ゲームの各実行環境で再生可能な形式のファイルを自動的に選択して再生するためです。</p>
-
+<p>オーディオアセット (type が &quot;audio&quot; であるアセット) は他と異なり、ファイルパスに拡張子を書かないことに気をつけて下さい。
+音素材に関して、拡張子以外の部分が同名のファイル (e.g. &quot;audio/foo.ogg&quot; と
+&quot;audio/foo.aac&quot; など) は、それぞれ同じ内容であることが期待されます。
+これらはエンジンが、ゲームの各実行環境で再生可能な形式のファイルを自動的に選択して再生するためです。</p>
 <h3>main</h3>
-
-<p>akashic-engine@1.2.0で導入。</p>
-<p><strong>main</strong>は、ゲームのエントリポイントとなるスクリプト(<strong>mainスクリプト</strong>)を指定する値です。</p>
-<p>指定されたスクリプトは、アセット定義(assets)でグローバルなスクリプトアセットとして定義されていなければなりません。エンジンはグローバルアセットの読み込み後、この値で require()を呼び出し、その戻り値をエントリポイントとみなして実行します(require()する関係上、アセット定義のpathと異なり、相対パスは &quot;./&quot; で始める必要がある点に気をつけて下さい)。</p>
+<p><a href="mailto:akashic-engine@1.2.0">akashic-engine@1.2.0</a> で導入。</p>
+<p><strong>main</strong> は、ゲームのエントリポイントとなるスクリプト( <strong>mainスクリプト</strong> )を指定する値です。</p>
+<p>指定されたスクリプトは、アセット定義 (assets) でグローバルなスクリプトアセットとして定義されていなければなりません。
+エンジンはグローバルアセットの読み込み後、この値で require() を呼び出し、その戻り値をエントリポイントとみなして実行します。
+(require() する関係上、アセット定義の path と異なり、相対パスは &quot;./&quot; で始める必要がある点に気をつけて下さい。)</p>
 <p>mainスクリプトは、次の仕様を満たす関数をエクスポートする必要があります。</p>
-
 <ul>
-<li>引数<code>param: g.GameMainParameterObject</code>を受け取り、値を返さない(<code>(param: g.GameMainParameterObject) =&gt; void</code>)</li>
-<li>呼び出された時、<code>g.Game#pushScene()</code>によるシーンの追加など、ゲームの初期化処理を行う</li>
+<li>引数 <code>param: g.GameMainParameterObject</code> を受け取り、値を返さない (<code>(param: g.GameMainParameterObject) =&gt; void</code>)</li>
+<li>呼び出された時、 <code>g.Game#pushScene()</code> によるシーンの追加など、ゲームの初期化処理を行う</li>
 </ul>
-
-<p>akashic-engine@1.1.2以前では、このフィールドは存在しませんでした。エンジンは後方互換性のため、<code>main</code>が指定されていない場合には、以下のような内容のmainスクリプトが与えられたかのように振る舞います。</p>
-
-<pre><code class="lang-js">module.exports = function(param) {
-  if(!param.snapshot) {
+<p><a href="mailto:akashic-engine@1.1.2">akashic-engine@1.1.2</a> 以前では、このフィールドは存在しませんでした。
+エンジンは後方互換性のため、 <code>main</code> が指定されていない場合には、以下のような内容のmainスクリプトが与えられたかのように振る舞います。</p>
+<pre><code class="lang-js">module.exports = function (param) {
+  if (!param.snapshot) {
     var mainSceneFun = require(&quot;mainScene&quot;);
     g.game.pushScene(mainSceneFun());
   } else {
     var snapshotLoader = require(&quot;snapshotLoader&quot;);
     snapshotLoader(param.snapshot);
   }
-}</code></pre>
-
-<p>この場合、assetsは少なくとも &quot;mainScene&quot; という名前のキーを持つ必要があります。アセットID &quot;mainScene&quot; を持つアセットは、typeが &quot;script&quot;  で globalはtrue、すなわちグローバルなスクリプトアセットでなければなりません。</p>
-<p>(上の例ではrequire()にアセットIDを渡していることに気をつけてください。akashic-engineの提供するrequire()は、Node.jsなどのそれと異なり、game.jsonに存在するアセットIDを(優先的に)解決します。これは歴史的経緯によるものです。上の例では説明のために使っていますが、この動作の利用は非推奨です)</p>
-
+}
+</code></pre>
+<p>この場合、assets は少なくとも &quot;mainScene&quot; という名前のキーを持つ必要があります。
+アセットID &quot;mainScene&quot; を持つアセットは、type が &quot;script&quot;  で global は true、
+すなわちグローバルなスクリプトアセットでなければなりません。</p>
+<p>(上の例ではrequire()にアセットIDを渡していることに気をつけてください。
+akashic-engineの提供するrequire()は、Node.jsなどのそれと異なり、game.jsonに存在するアセットIDを(優先的に)解決します。
+これは歴史的経緯によるものです。上の例では説明のために使っていますが、この動作の利用は非推奨です。)</p>
 <h3>globalScripts</h3>
-
-<p>akashic-engine@0.1.0で導入。</p>
-<p><strong>globalScripts</strong>は、スクリプトアセットの短縮記法です。これはakashic install/uninstallのために用意された値です。通常ゲーム開発者が編集する必要はありません。</p>
-<p>存在する場合、globalScripts はファイルパスの配列でなければなりません。ファイルパスはgame.jsonのあるディレクトリからの相対パスで、拡張子が &quot;.js&quot; または &quot;.json&quot; である必要があります。</p>
-<p>ここに書かれたファイルパスは、アセットIDを持たないグローバルなスクリプトアセット( &quot;.js&quot; の場合)またはテキストアセット( &quot;.json&quot; の場合)として読み込まれます(アセットIDを持たないアセットは通常、定義も利用もできませんが、スクリプトアセットおよびJSONであるテキストアセットに限っては<code>require()</code>によってファイルパスで参照することができます)。</p>
-
+<p><a href="mailto:akashic-engine@0.1.0">akashic-engine@0.1.0</a> で導入。</p>
+<p><strong>globalScripts</strong> は、スクリプトアセットの短縮記法です。
+これは akashic install/uninstall のために用意された値です。
+通常ゲーム開発者が編集する必要はありません。</p>
+<p>存在する場合、globalScripts はファイルパスの配列でなければなりません。
+ファイルパスは game.json のあるディレクトリからの相対パスで、拡張子が &quot;.js&quot; または &quot;.json&quot; である必要があります。</p>
+<p>ここに書かれたファイルパスは、アセットIDを持たないグローバルなスクリプトアセット (&quot;.js&quot; の場合)
+またはテキストアセット (&quot;.json&quot; の場合) として読み込まれます。
+(アセットIDを持たないアセットは通常、定義も利用もできませんが、
+スクリプトアセットおよびJSONであるテキストアセットに限っては
+<code>require()</code> によってファイルパスで参照することができます)</p>
 <h3>renderers</h3>
-
-<p>akashic-engine@1.0.3で導入。</p>
-<p><strong>renderers</strong>は、ゲームで利用するレンダラーを指定するためのリストであり、レンダラーを識別する文字列であるレンダラー識別子の配列である必要があります。</p>
+<p><a href="mailto:akashic-engine@1.0.3">akashic-engine@1.0.3</a>で導入。</p>
+<p><strong>renderers</strong> は、ゲームで利用するレンダラーを指定するためのリストであり、
+レンダラーを識別する文字列であるレンダラー識別子の配列である必要があります。</p>
 <p>レンダラー識別子はサービスや実行環境により異なります。</p>
-<p>Akashicエンジンは、レンダラー識別子に該当するレンダラーをリストの先頭から順に探索します。利用可能なレンダラーが見つかると、そのレンダラーを利用して描画を行います。</p>
-<p>例えば、<code>canvas</code>と<code>webgl</code>という2つのレンダラー識別子が利用可能な環境において、<code>webgl</code>を優先して使いたい場合は、<code>&quot;renderers&quot;: [&quot;webgl&quot;, &quot;canvas&quot;]</code>と記述します。</p>
-<p>レンダラー識別子として<code>&quot;auto&quot;</code>を指定した場合は、Akashicエンジンが自動的にレンダラーを決定します。また、game.jsonにrenderersを定義しなかった場合の挙動<code>&quot;renderers&quot;: [&quot;auto&quot;]</code>を指定した場合と等価になります。</p>
-
+<p>Akashicエンジンは、レンダラー識別子に該当するレンダラーをリストの先頭から順に探索します。
+利用可能なレンダラーが見つかると、そのレンダラーを利用して描画を行います。</p>
+<p>例えば、 <code>canvas</code> と <code>webgl</code> という2つのレンダラー識別子が利用可能な環境において、
+<code>webgl</code> を優先して使いたい場合は、<code>&quot;renderers&quot;: [&quot;webgl&quot;, &quot;canvas&quot;]</code> と記述します。</p>
+<p>レンダラー識別子として<code>&quot;auto&quot;</code> を指定した場合は、Akashicエンジンが自動的にレンダラーを決定します。
+また、game.jsonに renderers を定義しなかった場合の挙動は <code>&quot;renderers&quot;: [&quot;auto&quot;]</code> を指定した場合と等価になります。</p>
 <h3>defaultLoadingScene</h3>
-
-<p><strong>defaultLoadingScene</strong>は、グローバルアセット読み込み中のローディングシーンなど、デフォルトのローディングシーンについての設定です。akashic-engine@1.11.2では<code>&quot;default&quot;</code>または<code>&quot;none&quot;</code>を指定できます。<code>&quot;default&quot;</code>を指定または省略時はエンジンに用意されているデフォルトのローディングシーンを表示します。<code>&quot;none&quot;</code>を指定するとそれらのローディングシーンを非表示にできます。</p>
-
+<p><strong>defaultLoadingScene</strong> は、グローバルアセット読み込み中のローディングシーンなど、デフォルトのローディングシーンについての設定です。
+<a href="mailto:akashic-engine@1.11.2">akashic-engine@1.11.2</a>では <code>&quot;default&quot;</code> または <code>&quot;none&quot;</code> を指定できます。
+<code>&quot;default&quot;</code> を指定または省略時はエンジンに用意されているデフォルトのローディングシーンを表示します。
+<code>&quot;none&quot;</code> を指定するとそれらのローディングシーンを非表示にできます。</p>
 <h3>environment</h3>
-
-<p>akashic-engine@2.0.0で導入。</p>
-<p><strong>environment</strong>は、ゲームを実行する環境やエンジンに対する要求を指定するためのオブジェクトです。オブジェクトのキーは要求の種類、値は要求内容です(必要なバージョンなど)。</p>
-<p>akashic-engine@2.0.0現在、唯一の妥当なキーは<code>&quot;sandbox-runtime&quot;</code>で、その値は<code>&quot;1&quot;</code>または<code>&quot;2&quot;</code>(文字列)です。この値は akashic-sandbox でゲームを実行する際、実行するエンジンのバージョンを決定するために利用されます。akashic-engine@2.0.0以降で作成しているゲームの場合、<code>&quot;2&quot;</code>を指定してください。省略された場合、<code>&quot;1&quot;</code>として解釈されます。</p>
-
+<p><a href="mailto:akashic-engine@2.0.0">akashic-engine@2.0.0</a> で導入。</p>
+<p><strong>environment</strong> は、ゲームを実行する環境やエンジンに対する要求を指定するためのオブジェクトです。
+オブジェクトのキーは要求の種類、値は要求内容です(必要なバージョンなど)。</p>
+<p><a href="mailto:akashic-engine@2.0.0">akashic-engine@2.0.0</a> 現在、唯一の妥当なキーは <code>&quot;sandbox-runtime&quot;</code> で、その値は <code>&quot;1&quot;</code> または <code>&quot;2&quot;</code> (文字列) です。
+この値は akashic-sandbox でゲームを実行する際、実行するエンジンのバージョンを決定するために利用されます。
+<a href="mailto:akashic-engine@2.0.0">akashic-engine@2.0.0</a> 以降で作成しているゲームの場合、 <code>&quot;2&quot;</code> を指定してください。
+省略された場合、 <code>&quot;1&quot;</code> として解釈されます。</p>
 <pre><code>  &quot;environment&quot;: {
     &quot;sandbox-runtime&quot;: &quot;2&quot;
-  }</code></pre>
-
-<p><code>&quot;sandbox-runtime&quot;</code>の値は、<code>akashic export html</code>でエンジンをバンドルしたHTMLを出力する際にも参照されます。</p>
-
-<h2 id="game.jsonの例" name="game.jsonの例">game.jsonの例</h2>
-
-<p>妥当なgame.jsonの一例を示します。</p>
-
+  }
+</code></pre><p><code>&quot;sandbox-runtime&quot;</code> の値は、 <code>akashic export html</code> でエンジンをバンドルしたHTMLを出力する際にも参照されます。</p>
+<h2><a name="game.jsonの例"></a> game.jsonの例</h2>
+<p>妥当な game.json の一例を示します。</p>
 <pre><code>{
   &quot;width&quot;: 320,
   &quot;height&quot;: 320,
@@ -358,78 +343,75 @@
     &quot;node_modules/@akashic-extension/akashic-timeline/lib/index.js&quot;,
     &quot;node_modules/@akashic-extension/akashic-timeline/package.json&quot;
   ]
-}</code></pre>
+}
+</code></pre>
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
 
-</div>
-</section>
-<!--↑game-json.html↑-->
-<!--↓footer.html↓-->
-<footer class="safearea--LR">
-<div class="responsive--width">
+		<ul class="foot--menu cfix">
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">入門</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
+					<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">ガイド</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+					<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+					<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+					<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+					<li><a href="/guide/storage.html">ストレージについて</a></li>
+					<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">リファレンス</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+					<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+					<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+					<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+					<li><a href="/reference/akashic-label/">akashic-label</a></li>
+					<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+					<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">サンプルデモ</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/demo/?title=helloworld">Hello World</a></li>
+					<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+					<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+					<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+					<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+					<li><a href="/demo/?title=demo-tile">タイル</a></li>
+					<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+					<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+					<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+					<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+				</ul>
+			</li>
+		</ul>
 
-<ul class="foot--menu cfix">
-<li class="foot--menu--item">
-	<p class="foot--menu--item--tab">入門</p>
-	<ul class="foot--menu--item--list">
-	<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
-	<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
-	</ul>
-</li>
-<li class="foot--menu--item">
-	<p class="foot--menu--item--tab">ガイド</p>
-	<ul class="foot--menu--item--list">
-	<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
-	<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-	<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-	<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-	<li><a href="/guide/storage.html">ストレージについて</a></li>
-	<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-	<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
-	<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-	</ul>
-</li>
-<li class="foot--menu--item">
-	<p class="foot--menu--item--tab">リファレンス</p>
-	<ul class="foot--menu--item--list">
-	<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-	<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
-	<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
-	<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
-	<li><a href="/reference/akashic-label/">akashic-label</a></li>
-	<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
-	<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
-	</ul>
-</li>
-<li class="foot--menu--item">
-	<p class="foot--menu--item--tab">サンプルデモ</p>
-	<ul class="foot--menu--item--list">
-	<li><a href="/asset/helloworld.html">Hello World</a></li>
-	<li><a href="/asset/scale-rotate-opacity.html">拡縮・回転・透明度</a></li>
-	<li><a href="/asset/bitmap-font.html">ビットマップフォント</a></li>
-	<li><a href="/asset/framesprite.html">フレームアニメーション</a></li>
-	<li><a href="/asset/touchevent.html">タッチイベント</a></li>
-	<li><a href="/asset/tile.html">タイル</a></li>
-	<li><a href="/asset/simpleshot.html">アブストラクトシューティング</a></li>
-	<li><a href="/asset/hoppingwitch.html">HOPPING WITCH</a></li>
-	<li><a href="/asset/galaxywars.html">GALAXY WARS</a></li>
-	<li><a href="/asset/material.html">サンプルデモの素材</a></li>
-	</ul>
-</li>
-</ul>
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
+		</ul>
 
-<ul class="foot--creativecommons">
-	<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
-	<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
-</ul>
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
 
-<ul class="foot--license">
-	<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
-	<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
-</ul>
-
-</div>
+	</div>
 </footer>
-<!--↑footer.html↑-->
 </div>
 <div class="page--top"></div>
 <div class="window--dark"></div>

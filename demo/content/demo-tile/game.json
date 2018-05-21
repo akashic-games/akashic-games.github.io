@@ -1,0 +1,18 @@
+{
+	"width": 512,
+	"height": 384,
+	"fps": 30,
+	"assets": {
+		"mainScene": {
+			"type": "script",
+			"path": "script/mainScene.js",
+			"global": true
+		},
+		"map": {
+			"type": "image",
+			"width": 512,
+			"height": 512,
+			"path": "image/map.png"
+		}
+	}
+}

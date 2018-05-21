@@ -1,148 +1,124 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
-<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
-<meta name="theme-color" content="#0F1F26">
-<title>ストレージについて - Akashic Engine</title>
-<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?201712212000">
-<link rel="stylesheet" href="/css/header.css?201712212000">
-<link rel="stylesheet" href="/css/footer.css?201712212000">
+	<meta charset="UTF-8">
+	<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+	<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+	<meta name="theme-color" content="#0F1F26">
+	<title>ストレージについて</title>
+	<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+	<link rel="stylesheet" href="/css/common.css?1526648623728">
+	<link rel="stylesheet" href="/css/header.css?1526648623728">
+	<link rel="stylesheet" href="/css/footer.css?1526648623728">
 
+    
+	<link rel="stylesheet" href="/css/akashic-document.css?1526648623728">
+    
 
-<link rel="stylesheet" href="/css/asset.css?201712212000">
-<link rel="stylesheet" href="/css/akashic-document.css?201712212000">
-<link rel="stylesheet" href="/css/railscasts.css">
-<script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?201712212000"></script>
+	<script src="/lib/jquery-3.2.1.min.js"></script>
+	<script src="/lib/common.js?1526648623728"></script>
 
-
-
-<script src="/lib/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+    
 </head>
 <body>
-<!--↓header.html↓-->
 <div class="head--spacer"></div>
 <div class="SP--head--menu--show"></div>
 <div class="SP--head--menu--hide"></div>
 
 <div class="head--menu--outer">
-<ul class="head--menu"><!--
---><li class="head--menu--item">
-	<p class="head--menu--item--tab"></p>
-	<ul class="head--menu--item--list">
-	<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
-	<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
+				<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
 	</ul>
-</li><!--
---><li class="head--menu--item">
-	<p class="head--menu--item--tab"></p>
-	<ul class="head--menu--item--list">
-	<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
-	<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-	<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-	<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-	<li><a href="/guide/storage.html">ストレージについて</a></li>
-	<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-	<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
-	<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-	</ul>
-</li><!--
---><li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li><!--
---><li class="head--menu--item">
-	<p class="head--menu--item--tab"></p>
-	<ul class="head--menu--item--list">
-	<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-	<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
-	<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
-	<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
-	<li><a href="/reference/akashic-label/">akashic-label</a></li>
-	<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
-	<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
-	</ul>
-</li><!--
---><li class="head--menu--item">
-	<p class="head--menu--item--tab"></p>
-	<ul class="head--menu--item--list">
-	<li><a href="/asset/helloworld.html">Hello World</a></li>
-	<li><a href="/asset/scale-rotate-opacity.html">拡縮・回転・透明度</a></li>
-	<li><a href="/asset/bitmap-font.html">ビットマップフォント</a></li>
-	<li><a href="/asset/framesprite.html">フレームアニメーション</a></li>
-	<li><a href="/asset/touchevent.html">タッチイベント</a></li>
-	<li><a href="/asset/tile.html">タイル</a></li>
-	<li><a href="/asset/simpleshot.html">アブストラクトシューティング</a></li>
-	<li><a href="/asset/hoppingwitch.html">HOPPING WITCH</a></li>
-	<li><a href="/asset/galaxywars.html">GALAXY WARS</a></li>
-	<li><a href="/asset/material.html">サンプルデモの素材</a></li>
-	</ul>
-</li><!--
---></ul>
 </div>
 
-<header>
-<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
 </header>
-<!--↑header.html↑-->
 <div id="BodyInner">
-<!--↓storage.html↓-->
-<section class="akashic--document safearea--LR">
-<div class="inner responsive--width">
-
-<h1>ストレージについて</h1>
-
-<h2 id="これは" name="これは">これは</h2>
-
+	<section class="akashic--document safearea--LR">
+		<div class="inner responsive--width">
+			<h1>ストレージについて</h1>
+<h2><a name="これは"></a> これは</h2>
 <p>ストレージの仕様とゲームコンテンツからストレージを操作するストレージインターフェースの利用方法をまとめます。</p>
-<p>対象バージョンはakashic-engine@1.0.0以降ですが、サンプルコードでは2.0.0以降特有のメソッドなどを利用している箇所があります。</p>
-
-<h2 id="ストレージ" name="ストレージ">ストレージ</h2>
-
-<p><em>NOTE:この項目はストレージの仕様が現時点で未確定な部分があるため、仕様の概要のみを説明しています。</em></p>
-<p><strong>ストレージ</strong>は、ゲームコンテンツから利用できる、永続的なデータを保存するための機能です。</p>
-<p>ストレージを操作するには<strong>ストレージキー</strong>が必要です。</p>
-<p>ストレージ内の値は、ストレージキーにより一意に決定するできます。</p>
-<p>ストレージキーは<strong>リージョン</strong>、<strong>リージョンキー</strong>、<strong>ユーザID</strong>、<strong>ゲームID</strong>の組み合わせで構成されます。</p>
+<p>対象バージョンは <a href="mailto:akashic-engine@1.0.0">akashic-engine@1.0.0</a> 以降ですが、サンプルコードでは 2.0.0 以降特有のメソッドなどを利用している箇所があります。</p>
+<h2><a name="ストレージ"></a> ストレージ</h2>
+<p><em>NOTE: この項目はストレージの仕様が現時点で未確定な部分があるため、仕様の概要のみを説明しています。</em></p>
+<p><strong>ストレージ</strong> は、ゲームコンテンツから利用できる、永続的なデータを保存するための機能です。</p>
+<p>ストレージを操作するには <strong>ストレージキー</strong> が必要です。</p>
+<p>ストレージ内の値は、ストレージキーにより一意に決定する出来ます。</p>
+<p>ストレージキーは <strong>リージョン</strong>, <strong>リージョンキー</strong>, <strong>ユーザID</strong>, <strong>ゲームID</strong> の組み合わせで構成されます。</p>
 <p>以下、それぞれについて説明します。</p>
-
-<h3 id="リージョン" name="リージョン">リージョン</h3>
-
+<h3><a name="リージョン"></a> リージョン</h3>
 <p>ストレージには書き込む値の種類に応じて領域が用意されています。</p>
 <p>この領域を リージョンと呼称します。</p>
-<p>リージョンは<strong>Values</strong>、<strong>Counts</strong>、<strong>Scores</strong>の3種類となっており、それぞれ</p>
-
+<p>リージョンは <strong>Values</strong>、<strong>Counts</strong>、<strong>Scores</strong> の3種類となっており、それぞれ</p>
 <ul>
-<li>Scores - スコアの保存(数値)</li>
-<li>Counts - アイテム数(数値)</li>
-<li>Values - 自由な値(文字列)</li>
+<li>Scores - スコアの保存（数値）</li>
+<li>Counts - アイテム数（数値）</li>
+<li>Values - 自由な値（文字列）</li>
 </ul>
-
 <p>を保存することを想定しています。</p>
-
-<h3 id="リージョンキー" name="リージョンキー">リージョンキー</h3>
-
+<h3><a name="リージョンキー"></a> リージョンキー</h3>
 <p>リージョンキーは、リージョン内の値を決定するために用いられる文字列です。</p>
-<p>レイヤーキーのフォーマットは<code>[a-z][a-z0-9]{0, 31}</code>となります。</p>
+<p>レイヤーキーのフォーマットは <code>[a-z][a-z0-9]{0, 31}</code> となります。</p>
 <p>例: a001</p>
-<p>また、リージョンキーは<code>.</code>を区切り文字とした階層構造で表記することができ、最大階層は4階層となります。</p>
+<p>また、リージョンキーは <code>.</code> を区切り文字とした階層構造で表記することができ、最大階層は4階層となります。</p>
 <p>例: a001.b001.c001.d001</p>
-
-<h3 id="ゲームID" name="ゲームID">ゲームID</h3>
-
+<h3><a name="ゲームID"></a> ゲームID</h3>
 <p>ゲームIDは数値となっており、Akashicのゲームコンテンツを識別するIDを指定することになります。</p>
 <p>この値は未指定とすることが可能ですが、その場合、後述のユーザIDの指定が必須となります。</p>
-
-<h3 id="ユーザID" name="ユーザID">ユーザID</h3>
-
-<p>ユーザIDは数値となっており、Akashicの<code>g.Player#id</code>を指定することになります。</p>
+<h3><a name="ユーザID"></a> ユーザID</h3>
+<p>ユーザIDは数値となっており、Akashicの <code>g.Player#id</code> を指定することになります。</p>
 <p>この値は未指定とすることが可能ですが、その場合、ゲームIDの指定が必須となります。</p>
-
-<h4 id="ゲームIDとユーザIDの組み合わせ" name="ゲームIDとユーザIDの組み合わせ">ゲームIDとユーザIDの組み合わせ</h4>
-
+<h4><a name="ゲームIDとユーザIDの組み合わせ"></a> ゲームIDとユーザIDの組み合わせ</h4>
 <p>ゲームIDとユーザIDはそれぞれ指定・未指定が可能であり、ゲームコンテンツは値の用途に応じて適切な組み合わせを指定する必要があります。</p>
-
 <div class="table--scroll">
 <table>
 <thead>
@@ -172,18 +148,16 @@
 </table>
 </div>
 
-<h2 id="ストレージインターフェース" name="ストレージインターフェース">ストレージインターフェース</h2>
-
+<h2><a name="ストレージインターフェース"></a> ストレージインターフェース</h2>
 <p>ゲームコンテンツは、ストレージインターフェースを通してストレージを操作することができます。</p>
-<p>ストレージインターフェースは<code>g.Storage*</code>に当てはまるインターフェース、クラス、列挙型を指します。</p>
+<p>ストレージインターフェースは <code>g.Storage*</code> に当てはまるインターフェース、クラス、列挙型を指します。</p>
 <p>ここからは、コード例を示しながらストレージインターフェースの利用方法を説明します。</p>
-<p>ストレージインターフェースの詳細な仕様はAPIリファレンスを参照してください。<!-- TODO:APIリファレンスへのハイパーリンク --></p>
-
-<h3 id="の書き込み" name="の書き込み">値の書き込み</h3>
-
-<p>値の書き込みは<code>g.Storage#write()</code>を利用します。ゲームに紐づく<code>g.Storage</code>のインスタンスは<code>g.Game#storage</code>となります。</p>
+<p>ストレージインターフェースの詳細な仕様はAPIリファレンスを参照してください。
+<!-- TODO: APIリファレンスへのハイパーリンク --></p>
+<h3><a name="値の書き込み"></a> 値の書き込み</h3>
+<p>値の書き込みは <code>g.Storage#write()</code> を利用します。
+ゲームに紐づく <code>g.Storage</code> のインスタンスは <code>g.Game#storage</code> となります。</p>
 <p>例えば、Valuesリージョンに値を書き込むには以下のような記述を行います。</p>
-
 <pre><code class="lang-javascript">// g.StorageKeyを作成
 var key = {
     region: g.StorageRegion.Values,
@@ -197,20 +171,19 @@ var value = {
     tag: &quot;foo&quot;
 };
 // 書き込みを行う
-game.storage.write(key, value);</code></pre>
-
-<p>この例において、<code>player</code>はゲームに参加しているプレイヤーを指す<code>g.Player</code>のインスタンスとなります。</p>
-<p>値の書き込みにはストレージキーを表す<code>g.StorageKey</code>と値を表す<code>g.StorageValue</code>が必要です。</p>
-<p>この例では、<code>key</code>が<code>g.StorageKey</code>、<code>value</code>が<code>g.StorageValue</code>となります。</p>
-<p><code>key.gameId</code>に指定している<code>&quot;$gameId&quot;</code>はゲームIDを示す予約語を表しています。
-この予約語が<code>g.StorageKey#gameId</code>に指定されたとき、Akashic は自動的にゲームIDの解決を行います。</p>
-<p>書き込む値は<code>g.StorageValue#data</code>に指定します。
-この例では、<code>&quot;apple&quot;</code>を指定しています。</p>
-<p><code>g.StorageValue#tag</code>は値の付加情報となっており、値の検証を行う場合等に利用することが可能です。</p>
-<p><code>game.storage.write(key, value)</code>で実際に書き込みが行われます。</p>
+game.storage.write(key, value);
+</code></pre>
+<p>この例において、<code>player</code> はゲームに参加しているプレイヤーを指す <code>g.Player</code> のインスタンスとなります。</p>
+<p>値の書き込みにはストレージキーを表す <code>g.StorageKey</code> と値を表す <code>g.StorageValue</code> が必要です。</p>
+<p>この例では、 <code>key</code> が <code>g.StorageKey</code>、 <code>value</code> が <code>g.StorageValue</code> となります。</p>
+<p><code>key.gameId</code> に指定している <code>&quot;$gameId&quot;</code> はゲームIDを示す予約語を表しています。
+この予約語が <code>g.StorageKey#gameId</code> に指定されたとき、Akashic は自動的にゲームIDの解決を行います。</p>
+<p>書き込む値は <code>g.StorageValue#data</code> に指定します。
+この例では、<code>&quot;apple&quot;</code> を指定しています。</p>
+<p><code>g.StorageValue#tag</code> は値の付加情報となっており、値の検証を行う場合等に利用することが可能です。</p>
+<p><code>game.storage.write(key, value)</code> で実際に書き込みが行われます。</p>
 <p>ここで、ゲームコンテンツは書き込みの成功・失敗を検知することが出来ないことに注意して下さい。</p>
 <p>次に、Scoresリージョンに値を書き込む例を示します。</p>
-
 <pre><code class="lang-javascript">var clickCounts = {};
 scene.pointDownCapture.add(function(o) {
     if (!o.player.id) {
@@ -233,19 +206,19 @@ scene.pointDownCapture.add(function(o) {
     };
     game.storage.write(key, value, option);
     clickCounts[o.player.id] = clickCount;
-});</code></pre>
-
-<p>この例では、シーンのクリック数をゲームのスコアとしてストレージに保存しています。<code>o.player</code>により、クリックしたプレイヤーを取得しています。</p>
+});
+</code></pre>
+<p>この例では、シーンのクリック数をゲームのスコアとしてストレージに保存しています。
+<code>o.player</code> により、クリックしたプレイヤーを取得しています。</p>
 <p>値を書き込む場合、同じゲームが同時に実行されているケースを想定する必要があります。</p>
 <p>例えば、ゲームがA, Bの2つの実行単位で実行されており、A, Bに同じユーザが参加しているケースを考えます。</p>
 <p>Aでクリック数20をスコアとして書き込んだ後に、Bでクリック数10を書き込むと最終的なスコアは10となってしまいます。</p>
 <p>最新のクリック数をスコアとするゲームであれば問題ありませんが、多くの場合は最大クリック数をスコアとすることになると思います。</p>
-<p>このようなケースでは、<code>g.StorageWriteOption</code>で書き込み実行条件を指定することになります。</p>
-<p>上記の例では、<code>option</code>が<code>g.StorageWriteOption</code>となっており、「現在の値が<code>clickCount</code>未満の場合に<code>clickCount</code>を値として書き込む」という条件指定が行われています。</p>
+<p>このようなケースでは、<code>g.StorageWriteOption</code> で書き込み実行条件を指定することになります。</p>
+<p>上記の例では、<code>option</code> が <code>g.StorageWriteOption</code> となっており、「現在の値が <code>clickCount</code> 未満の場合に <code>clickCount</code> を値として書き込む」という条件指定が行われています。</p>
 <p>次に、Countsリージョンに値を書き込む例を示します。</p>
-<p>Countsリージョンでは、これまでValuesリージョンやScoresリージョンの説明で行ったような値を指定した書き込みに加え、値のインクリメント、デクリメント処理を行うことができます。</p>
+<p>Countsリージョンでは、これまでValuesリージョンやScoresリージョンの説明で行ったような値を指定した書き込みに加え、値のインクリメント、デクリメント処理を行うことが出来ます。</p>
 <p>以下の例では、ゲームのプレイ回数をインクリメントして保存しています。</p>
-
 <pre><code class="lang-javascript">scene.loaded.add(function() {
     var key = {
         region: g.StorageRegion.Counts,
@@ -260,17 +233,13 @@ scene.pointDownCapture.add(function(o) {
     game.storage.write(key, value, option);
 });
 </code></pre>
-
-<p><code>value.data</code>に数値を指定すると、指定した数値を現在の値に加算する処理となります。</p>
-
+<p><code>value.data</code> に数値を指定すると、指定した数値を現在の値に加算する処理となります。</p>
 <pre><code class="lang-javascript">// 現在の値に10加算する
-game.storage.write(key, {data: 10}, option);</code></pre>
-
-<h3 id="値の読み込み" name="値の読み込み">値の読み込み</h3>
-
+game.storage.write(key, {data: 10}, option);
+</code></pre>
+<h3><a name="値の読み込み"></a> 値の読み込み</h3>
 <p>値の読み込みはシーンの開始時に行われ、シーン開始後に読み込みを行うことはできません。</p>
-<p>以下のように読み込み行うストレージキーを<code>g.StorageReadKey</code>として生成し、その一覧を<code>g.Scene</code>のコンストラクタに指定します。</p>
-
+<p>以下のように読み込み行うストレージキーを <code>g.StorageReadKey</code> として生成し、その一覧を <code>g.Scene</code> のコンストラクタに指定します。</p>
 <pre><code class="lang-javascript">// ストレージから読み込むキーのリスト
 var keys = [
     {region: g.StorageRegion.Values, regionKey: &quot;fruit.like&quot;, userId: game.vars.player.id, gameId: &quot;$gameId&quot;},
@@ -280,19 +249,17 @@ var keys = [
 var scene = new g.Scene({game: game, storageKeys: keys});
 scene.loaded.add(function() {
 ...
-});</code></pre>
-
-<p>この例では、シーン開始前に、<code>g.Game#join</code>を通して参加者を表す<code>g.Player</code>が<code>game.vars.player</code>にセットされていることを想定しています。</p>
+});
+</code></pre>
+<p>この例では、シーン開始前に、<code>g.Game#join</code> を通して参加者を表す <code>g.Player</code> が <code>game.vars.player</code> にセットされていることを想定しています。</p>
 <p>読み込んだ値は、シーン開始後に利用することができます。</p>
-<p>例えば、<code>keys[0]</code>に対応する値を取得するには<code>scene.loaded.add</code>に登録したハンドラ内で</p>
-
-<pre><code class="lang-javascript">scene.storageValues.getOne(keys[0]);</code></pre>
-
+<p>例えば、 <code>keys[0]</code> に対応する値を取得するには <code>scene.loaded.add</code> に登録したハンドラ内で</p>
+<pre><code class="lang-javascript">scene.storageValues.getOne(keys[0]);
+</code></pre>
 <p>とします。</p>
-<p>値の一括取得を行う際は、<code>g.StorageReadKey#regionKey</code>にアスタリスク<code>*</code>を含んだ文字列を指定します。</p>
-<p>例えば、<code>a001.b00*</code>を指定すると<code>a001.b001</code>、<code>a001.b002</code>のリージョンキーにマッチする値を取得できます。</p>
-<p>また、<code>g.StorageReadKey#userId</code>を アスタリスク<code>*</code>とすることができ、これは全ユーザにマッチすることになります。</p>
-
+<p>値の一括取得を行う際は、 <code>g.StorageReadKey#regionKey</code> にアスタリスク <code>*</code> を含んだ文字列を指定します。</p>
+<p>例えば、 <code>a001.b00*</code> を指定すると <code>a001.b001</code> 、<code>a001.b002</code> のリージョンキーにマッチする値を取得できます。</p>
+<p>また、<code>g.StorageReadKey#userId</code> を アスタリスク <code>*</code> とすることができ、これは全ユーザにマッチすることになります。</p>
 <pre><code class="lang-javascript">var keys = [{region: g.StorageRegion.Counts, regionKey: &quot;play&quot;, userId: &quot;*&quot;, gameId: &quot;$gameId&quot;}];
 var scene = new g.Scene({game: game, storageKeys: keys});
 scene.loaded.add(function() {
@@ -301,82 +268,79 @@ scene.loaded.add(function() {
     // =&gt; [{data: 2, storageKey: {region: g.StorageRegion.Counts, regionKey: &quot;play&quot;, userId: &quot;user1&quot;, gameId: &quot;2&quot;}},
     //     {data: 5, storageKey: {region: g.StorageRegion.Counts, regionKey: &quot;play&quot;, userId: &quot;user1&quot;, gameId: &quot;2&quot;}},
     //     {data: 8, storageKey: {region: g.StorageRegion.Counts, regionKey: &quot;play&quot;, userId: &quot;user1&quot;, gameId: &quot;2&quot;}}]
-});</code></pre>
-
+});
+</code></pre>
 <p><strong>リージョンキーとユーザIDの一括取得を同時に指定することは出来ない</strong>ので注意が必要です。</p>
-<p>取得した値を表す<code>g.StorageValue</code>のメンバである<code>storageKey</code>は値に対応するストレージキーを表します。</p>
+<p>取得した値を表す <code>g.StorageValue</code> のメンバである <code>storageKey</code> は値に対応するストレージキーを表します。</p>
 <p>一括取得した値に対応するストレージキーを知りたい場合は、このメンバを利用します。</p>
 
-</div>
-</section>
-<!--↑storage.html↑-->
-<!--↓footer.html↓-->
-<footer class="safearea--LR">
-<div class="responsive--width">
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
 
-<ul class="foot--menu cfix">
-<li class="foot--menu--item">
-	<p class="foot--menu--item--tab">入門</p>
-	<ul class="foot--menu--item--list">
-	<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
-	<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
-	</ul>
-</li>
-<li class="foot--menu--item">
-	<p class="foot--menu--item--tab">ガイド</p>
-	<ul class="foot--menu--item--list">
-	<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
-	<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-	<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-	<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-	<li><a href="/guide/storage.html">ストレージについて</a></li>
-	<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-	<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
-	<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-	</ul>
-</li>
-<li class="foot--menu--item">
-	<p class="foot--menu--item--tab">リファレンス</p>
-	<ul class="foot--menu--item--list">
-	<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-	<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
-	<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
-	<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
-	<li><a href="/reference/akashic-label/">akashic-label</a></li>
-	<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
-	<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
-	</ul>
-</li>
-<li class="foot--menu--item">
-	<p class="foot--menu--item--tab">サンプルデモ</p>
-	<ul class="foot--menu--item--list">
-	<li><a href="/asset/helloworld.html">Hello World</a></li>
-	<li><a href="/asset/scale-rotate-opacity.html">拡縮・回転・透明度</a></li>
-	<li><a href="/asset/bitmap-font.html">ビットマップフォント</a></li>
-	<li><a href="/asset/framesprite.html">フレームアニメーション</a></li>
-	<li><a href="/asset/touchevent.html">タッチイベント</a></li>
-	<li><a href="/asset/tile.html">タイル</a></li>
-	<li><a href="/asset/simpleshot.html">アブストラクトシューティング</a></li>
-	<li><a href="/asset/hoppingwitch.html">HOPPING WITCH</a></li>
-	<li><a href="/asset/galaxywars.html">GALAXY WARS</a></li>
-	<li><a href="/asset/material.html">サンプルデモの素材</a></li>
-	</ul>
-</li>
-</ul>
+		<ul class="foot--menu cfix">
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">入門</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/tutorial/tutorial-v2.html">Akashic Engine入門 v2</a></li>
+					<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">ガイド</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+					<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+					<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+					<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+					<li><a href="/guide/storage.html">ストレージについて</a></li>
+					<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">リファレンス</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+					<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+					<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+					<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+					<li><a href="/reference/akashic-label/">akashic-label</a></li>
+					<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+					<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">サンプルデモ</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/demo/?title=helloworld">Hello World</a></li>
+					<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+					<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+					<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+					<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+					<li><a href="/demo/?title=demo-tile">タイル</a></li>
+					<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+					<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+					<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+					<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+				</ul>
+			</li>
+		</ul>
 
-<ul class="foot--creativecommons">
-	<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
-	<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
-</ul>
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
+		</ul>
 
-<ul class="foot--license">
-	<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
-	<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
-</ul>
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
 
-</div>
+	</div>
 </footer>
-<!--↑footer.html↑-->
 </div>
 <div class="page--top"></div>
 <div class="window--dark"></div>
