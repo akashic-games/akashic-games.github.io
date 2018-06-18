@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+	<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+	<meta name="theme-color" content="#0F1F26">
+	<title>色々な描画</title>
+	<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+	<link rel="stylesheet" href="/css/common.css?1529298195917">
+	<link rel="stylesheet" href="/css/header.css?1529298195917">
+	<link rel="stylesheet" href="/css/footer.css?1529298195917">
+
+    
+	<link rel="stylesheet" href="/css/akashic-document.css?1529298195917">
+    
+
+	<script src="/lib/jquery-3.2.1.min.js"></script>
+	<script src="/lib/common.js?1529298195917"></script>
+
+    
+</head>
+<body>
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v2/">Akashic Engine入門 v2</a></li>
+				<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR">
+		<div class="inner responsive--width">
+			<h1>色々な描画</h1>
+<h2><a name="文字列の表示"></a> 文字列の表示</h2>
+<p>Akashic Engine で文字列を表示するには、フォントとラベルが必要です。
+フォントは文字の形を表すオブジェクトです。
+ラベルはフォントを利用して文字列を描画するエンティティです。</p>
+<p>フォントには画像から生成するビットマップフォントと、
+システムにインストールされているフォントから生成するダイナミックフォントの二種類があります。
+このチュートリアルではダイナミックフォントを利用して文字列を表示する方法を説明します。</p>
+<p>ダイナミックフォントは以下のコードで生成できます。</p>
+<pre><code class="lang-javascript">var font = new g.DynamicFont({
+  game: g.game,
+  fontFamily: g.FontFamily.Serif,
+  size: 15
+});
+</code></pre>
+<p>第一引数はフォントの種類で以下のいずれかの値を指定します。</p>
+<ul>
+<li><code>g.FontFamily.SansSerif</code>: サンセリフ体・ゴシック体のフォント。</li>
+<li><code>g.FontFamily.Serif</code>: セリフ体・明朝体のフォント。</li>
+<li><code>g.FontFamily.Monospace</code>: 等幅フォント。</li>
+</ul>
+<p>第二引数は文字の大きさ、第三引数には <code>g.game</code> を渡します。</p>
+<p>文字列を描画するラベルは以下のコードで生成します。</p>
+<pre><code>var label = new g.Label({
+  scene: scene,
+  font: font,
+  text: &quot;Hello World!&quot;,
+  fontSize: 15,
+  textColor: &quot;blue&quot;
+});
+</code></pre><p>ラベル特有のプロパティとして次のものがあります。</p>
+<div class="table--scroll">
+<table>
+<thead>
+<tr>
+<th>プロパティ名</th>
+<th>値の種類</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>text</code></td>
+<td>文字列</td>
+<td>表示する文字列</td>
+</tr>
+<tr>
+<td><code>font</code></td>
+<td>フォントオブジェクト</td>
+<td>利用する字形</td>
+</tr>
+<tr>
+<td><code>fontSize</code></td>
+<td>数値</td>
+<td>文字の大きさ</td>
+</tr>
+<tr>
+<td><code>textColor</code></td>
+<td>CSS色を表す文字列</td>
+<td>文字の色</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>以下のプログラムでは、ダイナミックフォントとラベルを利用して文字列を描画しています。</p>
+<pre><code class="lang-javascript">function main() {
+  var scene = new g.Scene({game: g.game});
+  scene.loaded.add(function () {
+    var font = new g.DynamicFont({
+      game: g.game,
+      fontFamily: g.FontFamily.SansSerif,
+      size: 15
+    });
+    var label = new g.Label({
+      scene: scene,
+      font: font,
+      text: &quot;Hello World!&quot;,
+      fontSize: 15,
+      textColor: &quot;blue&quot;,
+      x: 10,
+      y: 20
+    });
+    scene.append(label);
+  });
+  g.game.pushScene(scene);
+}
+
+module.exports = main;
+</code></pre>
+<p><img src="/img/tutorial/sample12.png" alt="sample12"></p>
+<p>ダイナミックフォントはシステムにインストールされているフォントを利用するため、
+実行環境により描画が異なる場合があります。
+すべての環境で同じ出力にしたい場合や、パフォーマンスが要求される場合は、
+ダイナミックフォントの代わりにビットマップフォントを利用してください。</p>
+<p>ラベルは高速化のために描画内容をキャッシュしています。
+そのために文字列を変更した場合は、<code>invalidate()</code>
+メソッドで変更を通知する必要があります。
+以下はラベル <code>label</code> の文字列を書き換える例です。</p>
+<pre><code>label.text = label.text + &quot;*&quot;;
+label.invalidate();
+</code></pre><p>ラベルでは以下のプロパティを変更した場合に <code>invalidate()</code>
+メソッドを呼び出す必要があります。</p>
+<ul>
+<li><code>text</code></li>
+<li><code>font</code></li>
+<li><code>fontSize</code></li>
+</ul>
+<p><code>x</code> や <code>y</code> などのエンティティ共通のプロパティの変更時はこれまで通り
+<code>modified()</code> を呼び出してください。
+<code>invalidate()</code> は <code>modified()</code> の機能を含んでいるので、
+<code>invalidate()</code> を呼び出した場合は <code>modified()</code> の呼び出しは不要です。</p>
+<p>以下は、500ミリ秒ごとにカウンタの値を増やすプログラム例です。</p>
+<pre><code>function main() {
+  var scene = new g.Scene({game: g.game});
+  scene.loaded.add(function () {
+    var font = new g.DynamicFont({
+      fontFamily: g.FontFamily.SansSerif,
+      size: 15,
+      game: g.game
+    });
+    var count = 0;
+    var label = new g.Label({
+      scene: scene,
+      font: font,
+      text: count + &quot;&quot;,
+      fontSize: 30,
+      textColor: &quot;black&quot;,
+      x: 10,
+      y: 10
+    });
+    scene.append(label);
+    scene.setInterval(function () {
+      label.text = ++count + &quot;&quot;;
+      label.invalidate();
+    }, 500);
+  });
+  g.game.pushScene(scene);
+}
+
+module.exports = main;
+</code></pre><p><img src="/img/tutorial/sample13.gif" alt="sample13"></p>
+<h2><a name="クリッピング"></a> クリッピング</h2>
+<p>ペインは <code>E</code> と同じように子要素をまとめるためのエンティティです。ペインを使うことで描画内容のクリッピングを実現できます。
+<code>E</code> と異なり、<code>Pane</code> は子孫要素の描画領域を <code>Pane</code> の大きさに限定します。
+子要素が <code>Pane</code> の大きさをはみ出して描画しようとした場合、はみ出した部分は描画されません。</p>
+<pre><code class="lang-javascript">function main() {
+  var scene = new g.Scene({game: g.game});
+      scene.loaded.add(function () {
+      var pane = new g.Pane({scene: scene, width: 50, height: 50});
+      var rect = new g.FilledRect({
+        scene: scene,
+        width: 50,
+        height: 50,
+        x: 15,
+        y: 15,
+        angle: 30,
+        cssColor: &quot;red&quot;
+      });
+      pane.append(rect);
+    scene.append(pane);
+  });
+  g.game.pushScene(scene);
+}
+
+module.exports = main;
+</code></pre>
+<p><img src="/img/tutorial/sample06.png" alt="sample06"></p>
+<p>ラベル同様、ペインも描画内容をキャッシュしています。
+ペイン自体のプロパティ (例えば <code>width</code> や <code>height</code>) を書き換えた場合は、
+<code>invalidate()</code> を呼び出す必要があります。</p>
+<p>少し紛らわしい点として、ペインが保持している子エンティティの変更時には
+子エンティティの <code>modified()</code> や <code>invalidate()</code> のみを呼び出せばよいという点です。
+子エンティティの変更はペインに通知されて自動的にキャッシュの更新が行われます。</p>
+<p>以下のプログラムでは、ペイン内に配置した矩形を回転させています。
+ペインを利用していますが、ペイン自体のプロパティは変更していないので、
+矩形オブジェクトの <code>modified()</code> の呼び出しをしていますが、
+ペイン自体の <code>invalidate()</code> の呼び出しはしていません。</p>
+<pre><code>function main() {
+  var scene = new g.Scene({game: g.game});
+  scene.loaded.add(function () {
+    var pane = new g.Pane({scene: scene, width: 50, height: 50});
+    var rect = new g.FilledRect({
+      scene: scene,
+      width: 50,
+      height: 50,
+      x: 15,
+      y: 15,
+      angle: 30,
+      cssColor: &quot;red&quot;
+    });
+    pane.append(rect);
+    scene.append(pane);
+    rect.update.add(function () {
+      ++rect.angle;
+      rect.modified();
+    });
+  });
+  g.game.pushScene(scene);
+}
+
+module.exports = main;
+</code></pre><p><img src="/img/tutorial/sample14.gif" alt="sample14"></p>
+<div class="navi-center">
+<a href="./5-audio.html">前（音を鳴らす）</a>
+ | <a href="./">目次</a>
+ | <a href="./7-appendix.html">次（より大規模なゲームを作るために）</a>
+</div>
+
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--menu cfix">
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">入門</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/tutorial/v2/">Akashic Engine入門 v2</a></li>
+					<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">ガイド</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+					<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+					<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+					<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+					<li><a href="/guide/storage.html">ストレージについて</a></li>
+					<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">リファレンス</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+					<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+					<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+					<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+					<li><a href="/reference/akashic-label/">akashic-label</a></li>
+					<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+					<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">サンプルデモ</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/demo/?title=helloworld">Hello World</a></li>
+					<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+					<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+					<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+					<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+					<li><a href="/demo/?title=demo-tile">タイル</a></li>
+					<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+					<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+					<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+					<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+				</ul>
+			</li>
+		</ul>
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+</body>
+</html>

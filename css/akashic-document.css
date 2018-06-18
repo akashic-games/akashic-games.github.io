@@ -49,6 +49,11 @@
 	color:#699; font-size:16px;
 	margin-top:16px;
 	}
+.akashic--document .navi-center {
+	text-align: center;
+	margin-top: 32px;
+}
+
 @media screen and (max-width:959px){
 .akashic--document h1 { font-size:24px;}
 .akashic--document h2 { font-size:20px;}
@@ -58,7 +63,8 @@
 /*↑見出し系↑*/
 /*↓文章・リスト・引用・画像↓*/
 .akashic--document p a,
-.akashic--document li a {
+.akashic--document li a,
+.akashic--document .navi-center a {
 	color:#C00;
 	margin:0 4px;
 	}
