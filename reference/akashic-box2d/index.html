@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>akashic-box2d</title>
+	<title>@akashic-extension/akashic-box2d</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">akashic-box2d</a>
+					<a href="index.html" class="title">@akashic-extension/akashic-box2d</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> akashic-box2d</h1>
+			<h1> @akashic-extension/akashic-box2d</h1>
 		</div>
 	</div>
 </header>
@@ -68,29 +68,15 @@
 					<img src="img/akashic.png"/>
 				</p>
 				<h1 id="akashic-box2d">akashic-box2d</h1>
-				<p><strong>akashic-box2d</strong>は、2D物理演算ライブラリである<a href="https://github.com/hecht-software/box2dweb">Box2DWeb</a>をAkashicで利用するためのモジュールです。</p>
-				<p>本モジュールでは、AkashicでBox2DWebを使う際に便利となる機能を提供しています。</p>
+				<p><strong>akashic-box2d</strong> は、2D物理演算ライブラリである<a href="https://github.com/hecht-software/box2dweb">Box2DWeb</a>をAkashicで利用するためのモジュールです。</p>
+				<p>本モジュールでは、AkashicでBox2DWebを使う際に便利となるよう、次の機能を提供します。</p>
 				<ul>
 					<li>AkashicのエンティティとBox2Dとの紐づけ</li>
 					<li>スケールや角度などの単位変換メソッド</li>
 					<li>その他便利な機能の提供</li>
 				</ul>
-				<p>本モジュールは<strong>AkashicとBox2DWebとの紐づけ</strong>と<strong>一部の便利機能</strong>のみを提供しています。
+				<p>本モジュールは <strong>AkashicとBox2DWebとの紐づけ</strong> と <strong>一部の便利機能</strong> のみを提供しています。
 				そのため、その他多くの機能はBox2DWebを直接利用することになります。</p>
-				<h2 id="-">ビルド方法</h2>
-				<p><strong>akashic-box2d</strong>はTypeScriptで書かれたライブラリであるため、ビルドにはnode.jsが必要です。</p>
-				<p><code>npm run build</code> によりgulpを使ってビルドできます。</p>
-				<pre><code class="lang-sh">npm install
-npm run build
-</code></pre>
-				<h2 id="-">テスト方法</h2>
-				<ol>
-					<li><a href="https://github.com/palantir/tslint" title="TSLint">TSLint</a>を使ったLint</li>
-					<li><a href="http://jasmine.github.io" title="Jasmine">Jasmine</a>を使ったテスト</li>
-				</ol>
-				<p>がそれぞれ実行されます。</p>
-				<pre><code class="lang-sh">npm <span class="hljs-built_in">test</span>
-</code></pre>
 				<h2 id="-">利用方法</h2>
 				<p><a href="https://github.com/akashic-games/akashic-cli">akashic-cli</a>をインストールした後、</p>
 				<pre><code class="lang-sh">akashic install @akashic-extension/akashic-box2d
@@ -101,25 +87,43 @@ npm run build
 				<p>で利用してください。
 				詳細な利用方法については、以下を参照してください。</p>
 				<ul>
-					<li>APIリファレンス (<code>doc/index.html</code> にあります)</li>
-					<li>このリポジトリ同梱のサンプルコード<ul>
+					<li><a href="./getstarted.md">akashic-box2dの利用方法</a></li>
+					<li><a href="https://akashic-games.github.io/reference/akashic-box2d/index.html">APIリファレンス</a></li>
+					<li>このリポジトリ同梱のサンプルコンテンツ<ul>
 							<li><a href="./sample">JavaScript</a></li>
 							<li><a href="./sample-ts">TypeScript</a></li>
 						</ul>
 					</li>
 				</ul>
+				<p>Akashic Engineの詳細な利用方法については、 <a href="https://akashic-games.github.io/">公式ページ</a> を参照してください。</p>
+				<h2 id="-">ビルド方法</h2>
+				<p><strong>akashic-box2d</strong> はTypeScriptで書かれたライブラリであるため、ビルドにはNode.jsが必要です。</p>
+				<p><code>npm run build</code> によりgulpを使ってビルドできます。</p>
+				<pre><code class="lang-sh">npm install
+npm run build
+</code></pre>
+				<h2 id="-">テスト方法</h2>
+				<ol>
+					<li><a href="https://github.com/palantir/tslint" title="TSLint">TSLint</a> を使ったLint</li>
+					<li><a href="http://jasmine.github.io" title="Jasmine">Jasmine</a> を使ったテスト</li>
+				</ol>
+				<p>がそれぞれ実行されます。</p>
+				<pre><code class="lang-sh">npm <span class="hljs-built_in">test</span>
+</code></pre>
 				<h2 id="-">注意点</h2>
-				<p>Box2DWebでは <code>Math.random()</code> が使われている箇所があります。(該当メソッド: <code>Box2D.Common.Math.b2Math.Random()</code>, <code>Box2D.Common.Math.b2Math.RandomRange()</code>)</p>
+				<p>Box2DWebでは <code>Math.random()</code> が使われている箇所があります。(該当メソッド: <code>Box2D.Common.Math.b2Math.Random()</code> , <code>Box2D.Common.Math.b2Math.RandomRange()</code> )</p>
 				<p>該当メソッドは利用せず、かわりに <code>g.game.random</code> を利用してください。</p>
 				<h2 id="-">ライセンス</h2>
 				<p>本リポジトリは MIT License の元で公開されています。
 				詳しくは <a href="./LICENSE">LICENSE</a> をご覧ください。</p>
 				<p>ただし、画像ファイルおよび音声ファイルは
 				<a href="https://creativecommons.org/licenses/by/2.1/jp/">CC BY 2.1 JP</a> の元で公開されています。</p>
-				<p>サンプルプロジェクト (<code>sample</code>, <code>sample-ts</code>) では、以下のサイトで公開されている素材を利用しています。</p>
+				<p>ドキュメント及びサンプルコンテンツでは、以下のサイトで公開されている素材を利用しています。</p>
 				<ul>
-					<li>soccer.png<ul>
-							<li><a href="http://www37.atpages.jp/uurevzab/logo.php">ロゴ・素材 - 全然</a></li>
+					<li><a href="http://www37.atpages.jp/uurevzab/logo.php">ロゴ・素材 - 全然</a><ul>
+							<li>sample/image/soccer.png</li>
+							<li>sample-ts/game/image/soccer.png</li>
+							<li>img/ball.png</li>
 						</ul>
 					</li>
 				</ul>
@@ -131,25 +135,28 @@ npm run build
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
-					<li class="label tsd-is-external">
-						<span>Internals</span>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_box2d_.html">"<wbr>Box2<wbr>D"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_box2doptions_.html">"<wbr>Box2DOptions"</a>
-					</li>
-					<li class="label tsd-is-external">
-						<span>Externals</span>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_bodytype_.html">"<wbr>Body<wbr>Type"</a>
-					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/bodytype.html" class="tsd-kind-icon">Body<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/box2d.html" class="tsd-kind-icon">Box2D</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/bodyoption.html" class="tsd-kind-icon">Body<wbr>Option</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/box2doption.html" class="tsd-kind-icon">Box2DOption</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/ebody.html" class="tsd-kind-icon">EBody</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/fixtureoption.html" class="tsd-kind-icon">Fixture<wbr>Option</a>
+					</li>
 				</ul>
 			</nav>
 		</div>

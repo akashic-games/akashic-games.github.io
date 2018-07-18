@@ -38,8 +38,6 @@
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
 							<input type="checkbox" id="tsd-filter-only-exported" />
 							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
@@ -87,9 +85,16 @@
 							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.compositeoperation.html#copy" class="tsd-kind-icon">Copy</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.compositeoperation.html#destinationout" class="tsd-kind-icon">Destination<wbr>Out</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.compositeoperation.html#destinationover" class="tsd-kind-icon">Destination<wbr>Over</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.compositeoperation.html#experimentaldestinationatop" class="tsd-kind-icon">Experimental<wbr>Destination<wbr>Atop</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.compositeoperation.html#experimentaldestinationin" class="tsd-kind-icon">Experimental<wbr>Destination<wbr>In</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.compositeoperation.html#experimentalsourcein" class="tsd-kind-icon">Experimental<wbr>Source<wbr>In</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.compositeoperation.html#experimentalsourceout" class="tsd-kind-icon">Experimental<wbr>Source<wbr>Out</a></li>
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.compositeoperation.html#lighter" class="tsd-kind-icon">Lighter</a></li>
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.compositeoperation.html#sourceatop" class="tsd-kind-icon">Source<wbr>Atop</a></li>
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.compositeoperation.html#sourceover" class="tsd-kind-icon">Source<wbr>Over</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported"><a href="_lib_main_d_.g.compositeoperation.html#xor" class="tsd-kind-icon">Xor</a></li>
 							</ul>
 						</section>
 					</div>
@@ -103,7 +108,7 @@
 					<div class="tsd-signature tsd-kind-icon">Copy<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;3</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5806</li>
+							<li>Defined in lib/main.d.ts:5935</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -113,12 +118,106 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+					<a name="destinationout" class="tsd-anchor"></a>
+					<h3>Destination<wbr>Out</h3>
+					<div class="tsd-signature tsd-kind-icon">Destination<wbr>Out<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;8</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:5959</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>描画する領域を透明にする。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+					<a name="destinationover" class="tsd-anchor"></a>
+					<h3>Destination<wbr>Over</h3>
+					<div class="tsd-signature tsd-kind-icon">Destination<wbr>Over<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;9</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:5963</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>先に描画された領域の下に描画する。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+					<a name="experimentaldestinationatop" class="tsd-anchor"></a>
+					<h3>Experimental<wbr>Destination<wbr>Atop</h3>
+					<div class="tsd-signature tsd-kind-icon">Experimental<wbr>Destination<wbr>Atop<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;6</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:5950</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>描画する領域だけを表示し、先に描画された領域と重なった部分は描画先を表示する。
+							環境により、描画結果が大きく異なる可能性があるため、試験的導入である。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+					<a name="experimentaldestinationin" class="tsd-anchor"></a>
+					<h3>Experimental<wbr>Destination<wbr>In</h3>
+					<div class="tsd-signature tsd-kind-icon">Experimental<wbr>Destination<wbr>In<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;7</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:5955</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>先に描画された領域と重なっていない部分を透明にし、重なった部分は描画先を表示する。
+							環境により、描画結果が大きく異なる可能性があるため、試験的導入である。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+					<a name="experimentalsourcein" class="tsd-anchor"></a>
+					<h3>Experimental<wbr>Source<wbr>In</h3>
+					<div class="tsd-signature tsd-kind-icon">Experimental<wbr>Source<wbr>In<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;4</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:5940</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>先に描画された領域と重なった部分に描画を行い、それ以外の部分を透明にする。
+							環境により、描画結果が大きく異なる可能性があるため、試験的導入である。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+					<a name="experimentalsourceout" class="tsd-anchor"></a>
+					<h3>Experimental<wbr>Source<wbr>Out</h3>
+					<div class="tsd-signature tsd-kind-icon">Experimental<wbr>Source<wbr>Out<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;5</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:5945</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>先に描画された領域と重なっていない部分に描画を行い、それ以外の部分を透明にする。
+							環境により、描画結果が大きく異なる可能性があるため、試験的導入である。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
 					<a name="lighter" class="tsd-anchor"></a>
 					<h3>Lighter</h3>
 					<div class="tsd-signature tsd-kind-icon">Lighter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;2</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5802</li>
+							<li>Defined in lib/main.d.ts:5931</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -133,7 +232,7 @@
 					<div class="tsd-signature tsd-kind-icon">Source<wbr>Atop<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;1</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5798</li>
+							<li>Defined in lib/main.d.ts:5927</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -148,12 +247,27 @@
 					<div class="tsd-signature tsd-kind-icon">Source<wbr>Over<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5794</li>
+							<li>Defined in lib/main.d.ts:5923</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>先に描画された領域の上に描画する。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+					<a name="xor" class="tsd-anchor"></a>
+					<h3>Xor</h3>
+					<div class="tsd-signature tsd-kind-icon">Xor<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> =&nbsp;10</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:5967</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>先に描画された領域と重なった部分のみ透明にする。</p>
 						</div>
 					</div>
 				</section>
@@ -178,6 +292,24 @@
 								<a href="_lib_main_d_.g.compositeoperation.html#copy" class="tsd-kind-icon">Copy</a>
 							</li>
 							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+								<a href="_lib_main_d_.g.compositeoperation.html#destinationout" class="tsd-kind-icon">Destination<wbr>Out</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+								<a href="_lib_main_d_.g.compositeoperation.html#destinationover" class="tsd-kind-icon">Destination<wbr>Over</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+								<a href="_lib_main_d_.g.compositeoperation.html#experimentaldestinationatop" class="tsd-kind-icon">Experimental<wbr>Destination<wbr>Atop</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+								<a href="_lib_main_d_.g.compositeoperation.html#experimentaldestinationin" class="tsd-kind-icon">Experimental<wbr>Destination<wbr>In</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+								<a href="_lib_main_d_.g.compositeoperation.html#experimentalsourcein" class="tsd-kind-icon">Experimental<wbr>Source<wbr>In</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+								<a href="_lib_main_d_.g.compositeoperation.html#experimentalsourceout" class="tsd-kind-icon">Experimental<wbr>Source<wbr>Out</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
 								<a href="_lib_main_d_.g.compositeoperation.html#lighter" class="tsd-kind-icon">Lighter</a>
 							</li>
 							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
@@ -185,6 +317,9 @@
 							</li>
 							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
 								<a href="_lib_main_d_.g.compositeoperation.html#sourceover" class="tsd-kind-icon">Source<wbr>Over</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-not-exported">
+								<a href="_lib_main_d_.g.compositeoperation.html#xor" class="tsd-kind-icon">Xor</a>
 							</li>
 						</ul>
 					</li>
