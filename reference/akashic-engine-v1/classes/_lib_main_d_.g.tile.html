@@ -38,8 +38,6 @@
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
 							<input type="checkbox" id="tsd-filter-only-exported" />
 							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
@@ -116,6 +114,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.tile.html#_beforetilechips" class="tsd-kind-icon">_before<wbr>Tile<wbr>Chips</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.tile.html#_cache" class="tsd-kind-icon">_cache</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.tile.html#_cachesize" class="tsd-kind-icon">_cache<wbr>Size</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.tile.html#_hastouchablechildren" class="tsd-kind-icon">_has<wbr>Touchable<wbr>Children</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.tile.html#_matrix" class="tsd-kind-icon">_matrix</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.tile.html#_renderedcamera" class="tsd-kind-icon">_rendered<wbr>Camera</a></li>
@@ -165,6 +164,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.tile.html#_updatematrix" class="tsd-kind-icon">_update<wbr>Matrix</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.tile.html#append" class="tsd-kind-icon">append</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.tile.html#calculateboundingrect" class="tsd-kind-icon">calculate<wbr>Bounding<wbr>Rect</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.tile.html#calculatecachesize" class="tsd-kind-icon">calculate<wbr>Cache<wbr>Size</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-not-exported"><a href="_lib_main_d_.g.tile.html#destroy" class="tsd-kind-icon">destroy</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.tile.html#destroyed" class="tsd-kind-icon">destroyed</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.tile.html#findpointsourcebypoint" class="tsd-kind-icon">find<wbr>Point<wbr>Source<wbr>ByPoint</a></li>
@@ -205,7 +205,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_lib_main_d_.g.cacheablee.html">CacheableE</a>.<a href="_lib_main_d_.g.cacheablee.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:3544</li>
+									<li>Defined in lib/main.d.ts:3563</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -262,7 +262,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_lib_main_d_.g.cacheablee.html">CacheableE</a>.<a href="_lib_main_d_.g.cacheablee.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:3553</li>
+									<li>Defined in lib/main.d.ts:3572</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -294,7 +294,7 @@
 					<div class="tsd-signature tsd-kind-icon">_before<wbr>Tile<wbr>Chips<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:3544</li>
+							<li>Defined in lib/main.d.ts:3563</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -307,12 +307,29 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.cacheablee.html">CacheableE</a>.<a href="_lib_main_d_.g.cacheablee.html#_cache">_cache</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:2175</li>
+							<li>Defined in lib/main.d.ts:2180</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>このエンティティの内部キャッシュ。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported">
+					<a name="_cachesize" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _cache<wbr>Size</h3>
+					<div class="tsd-signature tsd-kind-icon">_cache<wbr>Size<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_lib_main_d_.g.commonsize.html" class="tsd-signature-type">CommonSize</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_lib_main_d_.g.cacheablee.html">CacheableE</a>.<a href="_lib_main_d_.g.cacheablee.html#_cachesize">_cacheSize</a></p>
+						<ul>
+							<li>Defined in lib/main.d.ts:2197</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>描画されるキャッシュサイズ。
+							このサイズは _cache のサイズよりも小さくなる場合がある。</p>
 						</div>
 					</div>
 				</section>
@@ -323,7 +340,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#_hastouchablechildren">_hasTouchableChildren</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1950</li>
+							<li>Defined in lib/main.d.ts:1955</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -339,7 +356,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#_matrix">_matrix</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1763</li>
+							<li>Defined in lib/main.d.ts:1768</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -360,7 +377,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.cacheablee.html">CacheableE</a>.<a href="_lib_main_d_.g.cacheablee.html#_renderedcamera">_renderedCamera</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:2185</li>
+							<li>Defined in lib/main.d.ts:2190</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -376,7 +393,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.cacheablee.html">CacheableE</a>.<a href="_lib_main_d_.g.cacheablee.html#_renderer">_renderer</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:2179</li>
+							<li>Defined in lib/main.d.ts:2184</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -389,7 +406,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.cacheablee.html">CacheableE</a>.<a href="_lib_main_d_.g.cacheablee.html#_shouldrenderchildren">_shouldRenderChildren</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:2170</li>
+							<li>Defined in lib/main.d.ts:2175</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -406,7 +423,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#_targetcameras">_targetCameras</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1945</li>
+							<li>Defined in lib/main.d.ts:1950</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -423,7 +440,7 @@
 					<div class="tsd-signature tsd-kind-icon">_tiles<wbr>InRow<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:3540</li>
+							<li>Defined in lib/main.d.ts:3559</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -436,7 +453,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#angle">angle</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1746</li>
+							<li>Defined in lib/main.d.ts:1751</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -454,7 +471,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#children">children</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1921</li>
+							<li>Defined in lib/main.d.ts:1926</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -467,11 +484,11 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="compositeoperation" class="tsd-anchor"></a>
 					<h3>composite<wbr>Operation</h3>
-					<div class="tsd-signature tsd-kind-icon">composite<wbr>Operation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CompositeOperation.SourceOver</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.SourceAtop</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.Lighter</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.Copy</span></div>
+					<div class="tsd-signature tsd-kind-icon">composite<wbr>Operation<span class="tsd-signature-symbol">:</span> <a href="../enums/_lib_main_d_.g.compositeoperation.html" class="tsd-signature-type">CompositeOperation</a></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#compositeoperation">compositeOperation</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1752</li>
+							<li>Defined in lib/main.d.ts:1757</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -490,7 +507,7 @@
 						<p>Implementation of <a href="../interfaces/_lib_main_d_.g.commonarea.html">CommonArea</a>.<a href="../interfaces/_lib_main_d_.g.commonarea.html#height">height</a></p>
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#height">height</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1722</li>
+							<li>Defined in lib/main.d.ts:1727</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -508,7 +525,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#id">id</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1906</li>
+							<li>Defined in lib/main.d.ts:1911</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -524,7 +541,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#local">local</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1916</li>
+							<li>Defined in lib/main.d.ts:1921</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -544,7 +561,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#message">message</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1964</li>
+							<li>Defined in lib/main.d.ts:1969</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -560,7 +577,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#opacity">opacity</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1728</li>
+							<li>Defined in lib/main.d.ts:1733</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -578,7 +595,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#parent">parent</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1925</li>
+							<li>Defined in lib/main.d.ts:1930</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -594,7 +611,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#pointdown">pointDown</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1968</li>
+							<li>Defined in lib/main.d.ts:1973</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -610,7 +627,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#pointmove">pointMove</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1976</li>
+							<li>Defined in lib/main.d.ts:1981</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -626,7 +643,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#pointup">pointUp</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1972</li>
+							<li>Defined in lib/main.d.ts:1977</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -642,7 +659,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#scalex">scaleX</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1734</li>
+							<li>Defined in lib/main.d.ts:1739</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -660,7 +677,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#scaley">scaleY</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1740</li>
+							<li>Defined in lib/main.d.ts:1745</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -678,7 +695,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#scene">scene</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1929</li>
+							<li>Defined in lib/main.d.ts:1934</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -690,11 +707,11 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="state" class="tsd-anchor"></a>
 					<h3>state</h3>
-					<div class="tsd-signature tsd-kind-icon">state<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EntityStateFlags.None</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">EntityStateFlags.Hidden</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">EntityStateFlags.Cached</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">EntityStateFlags.Modified</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">EntityStateFlags.ContextLess</span></div>
+					<div class="tsd-signature tsd-kind-icon">state<span class="tsd-signature-symbol">:</span> <a href="../enums/_lib_main_d_.g.entitystateflags.html" class="tsd-signature-type">EntityStateFlags</a></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#state">state</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1933</li>
+							<li>Defined in lib/main.d.ts:1938</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -710,7 +727,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#tag">tag</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1938</li>
+							<li>Defined in lib/main.d.ts:1943</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -727,7 +744,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#targetcameras">targetCameras</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1986</li>
+							<li>Defined in lib/main.d.ts:1991</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -746,7 +763,7 @@
 					<div class="tsd-signature tsd-kind-icon">tile<wbr>Chips<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:3521</li>
+							<li>Defined in lib/main.d.ts:3540</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -762,7 +779,7 @@
 					<div class="tsd-signature tsd-kind-icon">tile<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:3536</li>
+							<li>Defined in lib/main.d.ts:3555</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -778,7 +795,7 @@
 					<div class="tsd-signature tsd-kind-icon">tile<wbr>Height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:3531</li>
+							<li>Defined in lib/main.d.ts:3550</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -794,7 +811,7 @@
 					<div class="tsd-signature tsd-kind-icon">tile<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:3526</li>
+							<li>Defined in lib/main.d.ts:3545</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -811,7 +828,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#touchable">touchable</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1995</li>
+							<li>Defined in lib/main.d.ts:2000</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -830,7 +847,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#update">update</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1960</li>
+							<li>Defined in lib/main.d.ts:1965</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -847,7 +864,7 @@
 						<p>Implementation of <a href="../interfaces/_lib_main_d_.g.commonarea.html">CommonArea</a>.<a href="../interfaces/_lib_main_d_.g.commonarea.html#width">width</a></p>
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#width">width</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1716</li>
+							<li>Defined in lib/main.d.ts:1721</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -866,7 +883,7 @@
 						<p>Implementation of <a href="../interfaces/_lib_main_d_.g.commonarea.html">CommonArea</a>.<a href="../interfaces/_lib_main_d_.g.commonarea.html#x">x</a></p>
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#x">x</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1704</li>
+							<li>Defined in lib/main.d.ts:1709</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -885,7 +902,7 @@
 						<p>Implementation of <a href="../interfaces/_lib_main_d_.g.commonarea.html">CommonArea</a>.<a href="../interfaces/_lib_main_d_.g.commonarea.html#y">y</a></p>
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#y">y</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1710</li>
+							<li>Defined in lib/main.d.ts:1715</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -910,7 +927,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#_calculateboundingrect">_calculateBoundingRect</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2139</li>
+									<li>Defined in lib/main.d.ts:2144</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -939,7 +956,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#_disabletouchpropagation">_disableTouchPropagation</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2147</li>
+									<li>Defined in lib/main.d.ts:2152</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -959,7 +976,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#_enabletouchpropagation">_enableTouchPropagation</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2143</li>
+									<li>Defined in lib/main.d.ts:2148</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -979,7 +996,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#_istargetoperation">_isTargetOperation</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2151</li>
+									<li>Defined in lib/main.d.ts:2156</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1004,7 +1021,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:3567</li>
+									<li>Defined in lib/main.d.ts:3586</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1023,7 +1040,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:3571</li>
+									<li>Defined in lib/main.d.ts:3590</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1042,7 +1059,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:3563</li>
+									<li>Defined in lib/main.d.ts:3582</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1062,7 +1079,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#_updatematrix">_updateMatrix</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1834</li>
+									<li>Defined in lib/main.d.ts:1839</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1085,7 +1102,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#append">append</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2043</li>
+									<li>Defined in lib/main.d.ts:2048</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1117,7 +1134,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#calculateboundingrect">calculateBoundingRect</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2135</li>
+									<li>Defined in lib/main.d.ts:2140</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1138,6 +1155,32 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
+					<a name="calculatecachesize" class="tsd-anchor"></a>
+					<h3>calculate<wbr>Cache<wbr>Size</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">calculate<wbr>Cache<wbr>Size<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_main_d_.g.commonsize.html" class="tsd-signature-type">CommonSize</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_lib_main_d_.g.cacheablee.html">CacheableE</a>.<a href="_lib_main_d_.g.cacheablee.html#calculatecachesize">calculateCacheSize</a></p>
+								<ul>
+									<li>Defined in lib/main.d.ts:2235</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>キャッシュのサイズを取得する。
+										本クラスを継承したクラスでエンティティのサイズと異なるサイズを利用する場合、このメソッドをオーバーライドする。
+										このメソッドはエンジンから暗黙に呼び出され、ゲーム開発者が呼び出す必要はない。
+									このメソッドから得られる値を変更した場合、 <code>this.invalidate()</code> を呼び出す必要がある。</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_lib_main_d_.g.commonsize.html" class="tsd-signature-type">CommonSize</a></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-not-exported">
 					<a name="destroy" class="tsd-anchor"></a>
 					<h3>destroy</h3>
@@ -1149,7 +1192,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_lib_main_d_.g.cacheablee.html">CacheableE</a>.<a href="_lib_main_d_.g.cacheablee.html#destroy">destroy</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:3579</li>
+									<li>Defined in lib/main.d.ts:3598</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1183,7 +1226,7 @@
 								<p>Implementation of <a href="../interfaces/_lib_main_d_.g.destroyable.html">Destroyable</a>.<a href="../interfaces/_lib_main_d_.g.destroyable.html#destroyed">destroyed</a></p>
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#destroyed">destroyed</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2072</li>
+									<li>Defined in lib/main.d.ts:2077</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1206,7 +1249,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#findpointsourcebypoint">findPointSourceByPoint</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2110</li>
+									<li>Defined in lib/main.d.ts:2115</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1263,7 +1306,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#game">game</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2037</li>
+									<li>Defined in lib/main.d.ts:2042</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1286,7 +1329,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#getmatrix">getMatrix</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1829</li>
+									<li>Defined in lib/main.d.ts:1834</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1309,7 +1352,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#hide">hide</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2129</li>
+									<li>Defined in lib/main.d.ts:2134</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1335,7 +1378,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#insertbefore">insertBefore</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2052</li>
+									<li>Defined in lib/main.d.ts:2057</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1374,7 +1417,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_lib_main_d_.g.cacheablee.html">CacheableE</a>.<a href="_lib_main_d_.g.cacheablee.html#invalidate">invalidate</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:3573</li>
+									<li>Defined in lib/main.d.ts:3592</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1392,7 +1435,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#modified">modified</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2085</li>
+									<li>Defined in lib/main.d.ts:2090</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1430,7 +1473,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#moveby">moveBy</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1795</li>
+									<li>Defined in lib/main.d.ts:1800</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1471,7 +1514,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#moveto">moveTo</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1780</li>
+									<li>Defined in lib/main.d.ts:1785</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1502,7 +1545,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#moveto">moveTo</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1787</li>
+									<li>Defined in lib/main.d.ts:1792</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1536,7 +1579,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#remove">remove</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2061</li>
+									<li>Defined in lib/main.d.ts:2066</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1570,7 +1613,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#render">render</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2020</li>
+									<li>Defined in lib/main.d.ts:2025</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1610,7 +1653,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_lib_main_d_.g.cacheablee.html">CacheableE</a>.<a href="_lib_main_d_.g.cacheablee.html#rendercache">renderCache</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:3572</li>
+									<li>Defined in lib/main.d.ts:3591</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1635,7 +1678,7 @@
 								<p>Inherited from <a href="_lib_main_d_.g.cacheablee.html">CacheableE</a>.<a href="_lib_main_d_.g.cacheablee.html#renderself">renderSelf</a></p>
 								<p>Overrides <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#renderself">renderSelf</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2206</li>
+									<li>Defined in lib/main.d.ts:2218</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1668,7 +1711,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#resizeby">resizeBy</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1818</li>
+									<li>Defined in lib/main.d.ts:1823</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1709,7 +1752,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#resizeto">resizeTo</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1803</li>
+									<li>Defined in lib/main.d.ts:1808</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1740,7 +1783,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#resizeto">resizeTo</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1810</li>
+									<li>Defined in lib/main.d.ts:1815</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1774,7 +1817,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#scale">scale</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1825</li>
+									<li>Defined in lib/main.d.ts:1830</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1808,7 +1851,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#shouldfindchildrenbypoint">shouldFindChildrenByPoint</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2095</li>
+									<li>Defined in lib/main.d.ts:2100</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1843,7 +1886,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#show">show</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2121</li>
+									<li>Defined in lib/main.d.ts:2126</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1868,7 +1911,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.e.html">E</a>.<a href="_lib_main_d_.g.e.html#visible">visible</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:2114</li>
+									<li>Defined in lib/main.d.ts:2119</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1905,6 +1948,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported">
 								<a href="_lib_main_d_.g.tile.html#_cache" class="tsd-kind-icon">_cache</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported">
+								<a href="_lib_main_d_.g.tile.html#_cachesize" class="tsd-kind-icon">_cache<wbr>Size</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported">
 								<a href="_lib_main_d_.g.tile.html#_hastouchablechildren" class="tsd-kind-icon">_has<wbr>Touchable<wbr>Children</a>
@@ -2037,6 +2083,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 								<a href="_lib_main_d_.g.tile.html#calculateboundingrect" class="tsd-kind-icon">calculate<wbr>Bounding<wbr>Rect</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
+								<a href="_lib_main_d_.g.tile.html#calculatecachesize" class="tsd-kind-icon">calculate<wbr>Cache<wbr>Size</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-not-exported">
 								<a href="_lib_main_d_.g.tile.html#destroy" class="tsd-kind-icon">destroy</a>

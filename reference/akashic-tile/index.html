@@ -3,11 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>akashic-tile</title>
+	<title>@akashic-extension/akashic-tile</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
-	<script src="assets/js/modernizr.js"></script>
 </head>
 <body>
 <header>
@@ -23,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">akashic-tile</a>
+					<a href="index.html" class="title">@akashic-extension/akashic-tile</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -57,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> akashic-tile</h1>
+			<h1> @akashic-extension/akashic-tile</h1>
 		</div>
 	</div>
 </header>
@@ -69,21 +68,21 @@
 					<img src="img/akashic.png"/>
 				</p>
 				<h1 id="akashic-tile">akashic-tile</h1>
-				<p><strong>akashic-tile</strong> は、<a href="https://github.com/akashic-games/akashic-engine">Akashic Engine</a>用のタイルマップ描画ライブラリです。</p>
+				<p><strong>akashic-tile</strong> は、 <a href="https://akashic-games.github.io/">Akashic Engine</a> 用のタイルマップ描画ライブラリです。</p>
 				<p>例えば幅32、高さ32の画像を敷き詰めたマップチップ画像のアセット <code>mapchipImage</code> を持つシーン <code>scene</code> がある時、
 				マップチップを敷き詰めた画像(タイルマップ)を表示するエンティティを生成できます。</p>
-				<pre><code>var tile = <span class="hljs-keyword">new</span> at.Tile({
-    scene: scene,
-    src: scene.assets.mapchipImage,
-    tileWidth:  <span class="hljs-number">32</span>,
-    tileHeight: <span class="hljs-number">32</span>,
-    tileData: [
-        [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>],
-        [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>],
-        [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>]
-    ]
+				<pre><code><span class="hljs-built_in">var</span> tile = <span class="hljs-built_in">new</span> <span class="hljs-built_in">at</span>.Tile({
+  <span class="hljs-built_in">scene</span>: <span class="hljs-built_in">scene</span>,
+  src: <span class="hljs-built_in">scene</span>.assets.mapchipImage,
+  tileWidth:  <span class="hljs-number">32</span>,
+  tileHeight: <span class="hljs-number">32</span>,
+  tileData: [
+    [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>],
+    [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>],
+    [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>]
+  ]
 });
-scene.append(tile);
+<span class="hljs-built_in">scene</span>.<span class="hljs-built_in">append</span>(tile);
 </code></pre><p>ここで <code>tileData</code> の内容は、マップチップのインデックスです。
 					マップチップのインデックスとは、マップチップ画像の各マップチップに対して、左上を0として順に振られた番号です。
 					すなわちインデックス0はマップチップ画像の一番左上の幅32、高さ32の部分を表します。
@@ -99,11 +98,12 @@ scene.append(tile);
 				詳細な利用方法については、以下を参照してください。</p>
 				<ul>
 					<li><a href="https://akashic-games.github.io/reference/akashic-tile/index.html">APIリファレンス</a>。</li>
-					<li>このリポジトリ同梱の<a href="./sample">サンプルコード</a></li>
+					<li>このリポジトリ同梱の<a href="./sample">サンプルコード</a>
+					Akashic Engineの詳細な利用方法については、 <a href="https://akashic-games.github.io/">公式ページ</a> を参照してください。</li>
 				</ul>
 				<h2 id="-">ビルド方法</h2>
 				<p><strong>akashic-tile</strong>はTypeScriptで書かれたライブラリであるため、ビルドにはnode.jsが必要です。</p>
-				<p><code>npm run build</code> によりgulpを使ってビルドできます。</p>
+				<p><code>npm run build</code> によりビルドできます。</p>
 				<pre><code class="lang-sh">npm install
 npm run build
 </code></pre>
@@ -120,20 +120,14 @@ npm run build
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
-					<li class="label tsd-is-external">
-						<span>Internals</span>
-					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_tile_.html">"<wbr>Tile"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_index_.html">"index"</a>
-					</li>
-					<li class="label tsd-is-external">
-						<span>Externals</span>
-					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
 						<a href="modules/_tileparameterobject_.html">"<wbr>Tile<wbr>Parameter<wbr>Object"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_index_.html">"index"</a>
 					</li>
 				</ul>
 			</nav>
@@ -204,7 +198,7 @@ npm run build
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.io" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
