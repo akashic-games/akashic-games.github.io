@@ -3,11 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>akashic-animation</title>
+	<title>@akashic-extension/akashic-animation</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
-	<script src="assets/js/modernizr.js"></script>
 </head>
 <body>
 <header>
@@ -23,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">akashic-animation</a>
+					<a href="index.html" class="title">@akashic-extension/akashic-animation</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -57,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> akashic-animation</h1>
+			<h1> @akashic-extension/akashic-animation</h1>
 		</div>
 	</div>
 </header>
@@ -69,7 +68,7 @@
 					<img src="img/akashic-animation.png" />
 				</p>
 				<h1 id="akashic-animation">Akashic Animation</h1>
-				<p>Akashic AnimationはAkashic Engine向けのアニメーションライブラリです。</p>
+				<p>Akashic Animationは<a href="https://akashic-games.github.io/">Akashic Engine</a>向けのアニメーションライブラリです。</p>
 				<h2 id="-">利用方法</h2>
 				<p><a href="https://github.com/akashic-games/akashic-cli">akashic-cli</a>をインストールした後、</p>
 				<pre><code class="lang-sh">akashic install @akashic-extension/akashic-animation
@@ -78,8 +77,9 @@
 				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> aa = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@akashic-extension/akashic-animation"</span>);
 </code></pre>
 				<p>で利用してください。</p>
+				<p>Akashic Engineの詳細な利用方法については、 <a href="https://akashic-games.github.io/">公式ページ</a> を参照してください。</p>
 				<h2 id="api-">APIリファレンス</h2>
-				<p><a href="./doc/index.html">こちら</a>。</p>
+				<p><a href="https://akashic-games.github.io/reference/akashic-animation/index.html">こちら</a>。</p>
 				<h2 id="-">補足</h2>
 				<h3 id="-">ループアニメーションの補間</h3>
 				<p>アニメーションをループ再生するとき、最後のフレームと最初のフレームの間は常に線形補間になります。</p>
@@ -106,8 +106,16 @@
 							<td style="text-align:left">1, 1</td>
 						</tr>
 						<tr>
+							<td style="text-align:left">ローカルX,Yスケール</td>
+							<td style="text-align:left">1, 1</td>
+						</tr>
+						<tr>
 							<td style="text-align:left">アルファ</td>
 							<td style="text-align:left">1</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">ローカルアルファ</td>
+							<td style="text-align:left">無し</td>
 						</tr>
 						<tr>
 							<td style="text-align:left">セル</td>
@@ -185,10 +193,6 @@ actor.colliders.forEach(<span class="hljs-function"><span class="hljs-keyword">f
 				<p><code>Volume#aabbFirst</code>フラグはDCCツールまたはプログラム中で設定されます。これは当たり判定でAABBを優先する（ダウンキャスト後の詳細な情報でなく）ことを示します。</p>
 				<h3 id="-">アニメーションの座標系</h3>
 				<p>akashic-animationは <code>Actor#x,Actor#y</code> を原点とする座標系で描画されます。</p>
-				<h4 id="v2-x-">v2.x 以降の座標系</h4>
-				<p>v2.x 以降アニメーションデータの座標系が見直され、CANVAS(=Akashic)と統一されました。
-					v1.xに対し、Y座標とZ回転の符号が逆になります。これはセル中心位置の高さ(pvty)も同様です。
-				<code>akashic-animation v2.x</code> では <code>ss2asa v2.x</code> と組み合わせて利用してください。以前のデータと互換性がありません。</p>
 				<h3 id="-">アニメーション計算ハンドラ</h3>
 				<p><code>Actor#calculated()</code>を用いることでアニメーションの計算結果を変更したり、ユーザデータを受け取ることが出来ます。</p>
 				<h4 id="-javascript-">標準的なハンドラの書き方 (JavaScript)</h4>
@@ -209,7 +213,7 @@ actor.colliders.forEach(<span class="hljs-function"><span class="hljs-keyword">f
 </code></pre>
 				<h4 id="animationhandlerparam">AnimationHandlerParam</h4>
 				<p>登録されたハンドラには<code>AnimationHandlerParam</code>型のオブジェクトが渡されます。</p>
-				<pre><code class="lang-typescript"><span class="hljs-interface"><span class="hljs-keyword">interface</span> AnimationHandlerParam </span>{
+				<pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> AnimationHandlerParam {
     posture?: Posture;
     left?: AnimationHandlerKeyFrameInfo;
     right?: AnimationHandlerKeyFrameInfo;
@@ -217,7 +221,7 @@ actor.colliders.forEach(<span class="hljs-function"><span class="hljs-keyword">f
     frameCount: <span class="hljs-built_in">number</span>;
  };
 </code></pre>
-				<pre><code class="lang-typescript"><span class="hljs-interface"><span class="hljs-keyword">interface</span> AnimationHandlerKeyFrameInfo </span>{
+				<pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> AnimationHandlerKeyFrameInfo {
     time: <span class="hljs-built_in">number</span>;
     userData?: <span class="hljs-built_in">any</span>;
 }
@@ -306,6 +310,27 @@ actor.colliders.forEach(<span class="hljs-function"><span class="hljs-keyword">f
 						</tr>
 					</tbody>
 				</table>
+				<h3 id="-">アルファブレンドモード</h3>
+				<p>akashic-animationでは、セル毎にアルファブレンドを指定できるようになっています。
+				現在サポートしているアルファブレンドは以下の通りです。</p>
+				<table>
+					<thead>
+						<tr>
+							<th style="text-align:left">アルファブレンド</th>
+							<th style="text-align:left">説明</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="text-align:left">normal</td>
+							<td style="text-align:left">デフォルトの設定です。描画元のセルを描画先の内容の上に描きます</td>
+						</tr>
+						<tr>
+							<td style="text-align:left">add</td>
+							<td style="text-align:left">描画先の内容の色(背景色)と描画元のセルの重なる部分のカラー値が加算されます</td>
+						</tr>
+					</tbody>
+				</table>
 				<h2 id="-">ビルド方法</h2>
 				<p>akashic-animationはTypeScriptで書かれたライブラリであるため、ビルドにはnode.jsが必要です。</p>
 				<p><code>npm run build</code> によりgulpを使ってビルドできます。</p>
@@ -333,6 +358,9 @@ npm run build
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_actorparameterobject_.html">"<wbr>Actor<wbr>Parameter<wbr>Object"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_alphablendmode_.html">"<wbr>Alpha<wbr>Blend<wbr>Mode"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_animationhandlerparams_.html">"<wbr>Animation<wbr>Handler<wbr>Params"</a>
@@ -478,7 +506,7 @@ npm run build
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.io" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>

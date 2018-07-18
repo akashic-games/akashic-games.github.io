@@ -38,8 +38,6 @@
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
 							<input type="checkbox" id="tsd-filter-only-exported" />
 							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
@@ -87,7 +85,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_typings_lib_core_d_.error.html" class="tsd-signature-type">Error</a>
+						<span class="tsd-signature-type">Error</span>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">AssetLoadError</span>
@@ -108,6 +106,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.assetloaderror.html#message" class="tsd-kind-icon">message</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.assetloaderror.html#name" class="tsd-kind-icon">name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.assetloaderror.html#retriable" class="tsd-kind-icon">retriable</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.assetloaderror.html#stack" class="tsd-kind-icon">stack</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.assetloaderror.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
@@ -119,57 +118,12 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="error" class="tsd-anchor"></a>
 					<h3>Error</h3>
-					<div class="tsd-signature tsd-kind-icon">Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<div class="tsd-signature tsd-kind-icon">Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ErrorConstructor</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in typings/lib.core.d.ts:854</li>
+							<li>Defined in node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:896</li>
 						</ul>
 					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_typings_lib_core_d_.error.html" class="tsd-signature-type">Error</a></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5><span class="tsd-flag ts-flagOptional">Optional</span> message: <span class="tsd-signature-type">string</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <a href="_typings_lib_core_d_.error.html" class="tsd-signature-type">Error</a></h4>
-									</li>
-								</ul>
-							</li>
-							<li class="tsd-parameter">
-								<h5>constructor<span class="tsd-signature-symbol">: </span>function</h5>
-								<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-type-literal tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon">new __type<span class="tsd-signature-symbol">(</span>message<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_typings_lib_core_d_.error.html" class="tsd-signature-type">Error</a></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<aside class="tsd-sources">
-											<ul>
-												<li>Defined in typings/lib.core.d.ts:854</li>
-											</ul>
-										</aside>
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5><span class="tsd-flag ts-flagOptional">Optional</span> message: <span class="tsd-signature-type">string</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <a href="_typings_lib_core_d_.error.html" class="tsd-signature-type">Error</a></h4>
-									</li>
-							</ul>        </li>
-							<li class="tsd-parameter">
-								<h5>prototype<span class="tsd-signature-symbol">: </span><a href="_typings_lib_core_d_.error.html" class="tsd-signature-type">Error</a></h5>
-							</li>
-						</ul>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="cause" class="tsd-anchor"></a>
@@ -186,9 +140,9 @@
 					<h3>message</h3>
 					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_typings_lib_core_d_.error.html">Error</a>.<a href="_typings_lib_core_d_.error.html#message">message</a></p>
+						<p>Inherited from Error.message</p>
 						<ul>
-							<li>Defined in typings/lib.core.d.ts:852</li>
+							<li>Defined in node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:886</li>
 						</ul>
 					</aside>
 				</section>
@@ -197,9 +151,9 @@
 					<h3>name</h3>
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="_typings_lib_core_d_.error.html">Error</a>.<a href="_typings_lib_core_d_.error.html#name">name</a></p>
+						<p>Inherited from Error.name</p>
 						<ul>
-							<li>Defined in typings/lib.core.d.ts:851</li>
+							<li>Defined in node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:885</li>
 						</ul>
 					</aside>
 				</section>
@@ -220,10 +174,21 @@
 						通常の場合 (<code>Scene</code> 経由で読み込んだ場合)、読み込み失敗回数が再試行回数上限 <code>AssetManager.MAX_ERROR_COUNT</code> を超えた際にも偽になる。</p>
 					</div>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+					<a name="stack" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stack</h3>
+					<div class="tsd-signature tsd-kind-icon">stack<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from Error.stack</p>
+						<ul>
+							<li>Defined in node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:887</li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="type" class="tsd-anchor"></a>
 					<h3>type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">AssetLoadErrorType.Unspecified</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AssetLoadErrorType.RetryLimitExceeded</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AssetLoadErrorType.NetworkError</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AssetLoadErrorType.ClientError</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">AssetLoadErrorType.ServerError</span></div>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <a href="../enums/_lib_main_d_.g.assetloaderrortype.html" class="tsd-signature-type">AssetLoadErrorType</a></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in lib/main.d.ts:78</li>
@@ -269,6 +234,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 								<a href="_lib_main_d_.g.assetloaderror.html#retriable" class="tsd-kind-icon">retriable</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+								<a href="_lib_main_d_.g.assetloaderror.html#stack" class="tsd-kind-icon">stack</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 								<a href="_lib_main_d_.g.assetloaderror.html#type" class="tsd-kind-icon">type</a>

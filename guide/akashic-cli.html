@@ -7,16 +7,16 @@
 	<meta name="theme-color" content="#0F1F26">
 	<title>akashic-cli利用ガイド</title>
 	<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-	<link rel="stylesheet" href="/css/common.css?1529557286493">
-	<link rel="stylesheet" href="/css/header.css?1529557286493">
-	<link rel="stylesheet" href="/css/footer.css?1529557286493">
+	<link rel="stylesheet" href="/css/common.css?1531906872968">
+	<link rel="stylesheet" href="/css/header.css?1531906872968">
+	<link rel="stylesheet" href="/css/footer.css?1531906872968">
 
     
-	<link rel="stylesheet" href="/css/akashic-document.css?1529557286493">
+	<link rel="stylesheet" href="/css/akashic-document.css?1531906872968">
     
 
 	<script src="/lib/jquery-3.2.1.min.js"></script>
-	<script src="/lib/common.js?1529557286493"></script>
+	<script src="/lib/common.js?1531906872968"></script>
 
     
 </head>
@@ -45,6 +45,7 @@
 				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
 				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
 				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/akashic-install.html">akashic install利用ガイド</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
 			</ul>
 		</li>
@@ -89,11 +90,13 @@
 <h2><a name="これは"></a> これは</h2>
 <p>Akashicでのゲーム開発を補助するコマンドラインツール、akashicコマンドの仕様と利用法を解説します。
 akashicコマンドはakashic-cliをインストールして使用することができます。
-akashic の対象バージョンは 1.0.1 以降です。</p>
+この利用ガイドで解説する akashic-cli の対象バージョンは 1.0.8 以降です。</p>
 <p>斜体は検討中の箇所です。</p>
 <h2><a name="インストール方法"></a> インストール方法</h2>
-<p>akashicコマンド は、Node.js v0.12.0 以降で動作します。
-各プラットフォームで、適当な方法で Node.js をインストールしてください。</p>
+<p>akashicコマンド は、Node.js 環境で動作します。
+各プラットフォームで、適当な方法で Node.js をインストールしてください。
+この利用ガイドでは、 LTS 版の Node.js 環境を前提に説明を進めます。
+執筆時点での LTS 版のバージョンは8.11.3です。</p>
 <p>WindowsやMacのユーザであれば、<a href="https://nodejs.org/download/">Node.jsの公式Webサイト</a> から
 適切なパッケージをダウンロードし、インストールすることができます。</p>
 <pre><code class="lang-sh">npm install -g @akashic/akashic-cli
@@ -462,6 +465,7 @@ module.exports = function() {
 					<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
 					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
 					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+					<li><a href="/guide/akashic-install.html">akashic install利用ガイド</a></li>
 					<li><a href="/guide/shader.html">シェーダの利用</a></li>
 				</ul>
 			</li>
