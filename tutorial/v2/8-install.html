@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+	<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+	<meta name="theme-color" content="#0F1F26">
+	<title>拡張ライブラリを使う</title>
+	<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+	<link rel="stylesheet" href="/css/common.css?1531906872968">
+	<link rel="stylesheet" href="/css/header.css?1531906872968">
+	<link rel="stylesheet" href="/css/footer.css?1531906872968">
+
+    
+	<link rel="stylesheet" href="/css/akashic-document.css?1531906872968">
+    
+
+	<script src="/lib/jquery-3.2.1.min.js"></script>
+	<script src="/lib/common.js?1531906872968"></script>
+
+    
+</head>
+<body>
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v2/">Akashic Engine入門 v2</a></li>
+				<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/akashic-install.html">akashic install利用ガイド</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR">
+		<div class="inner responsive--width">
+			<h1>拡張ライブラリを使う</h1>
+<p>Akashic Engineに限らず、Node.jsでは、npmコマンドを利用して自作のパッケージを公開したり、既に公開されているパッケージをダウンロード・インストールすることができます。
+Akashic Engine の拡張ライブラリはnpmパッケージとして実装できます。ゲーム開発者はnpmの仕組みを使うことで拡張ライブラリをnpmパッケージとして自由に公開・利用することができます。</p>
+<p>既に公開されている拡張ライブラリとしては、トゥイーンアニメーションライブラリの <a href="https://github.com/akashic-games/akashic-timeline">akashic-timeline</a> や高機能版テキスト描画エンティティの <a href="https://github.com/akashic-games/akashic-label">akashic-label</a> などが挙げられます。</p>
+<h1>akashicコンテンツにnpmパッケージを追加する</h1>
+<p>拡張ライブラリは、akashicコマンドの <code>akashic install</code> を利用することでゲームに追加できます。</p>
+<p>例えば、ゲームからakashic-timelineを利用したい場合、game.jsonの置かれているディレクトリで以下のコマンドを実行します。</p>
+<pre><code>akashic install @akashic-extension/akashic-timeline
+</code></pre><p><code>akashic install</code> コマンドは、内部的に <code>npm install --save -save-exact</code> コマンドを実行し、拡張ライブラリをダウンロード・インストールします。
+さらに、インストールされた拡張ライブラリの情報を game.json に書き込みます。
+これは、akashicコンテンツでは、スクリプトや画像を含むすべてのリソースへのパスは、予めgame.jsonに書き込まれている必要があるためです。
+game.jsonに追加することで、akashicコンテンツ内から <code>require()</code> を使って拡張ライブラリを呼び出せるようになります。</p>
+<p>例として、 <code>akashic-timeline</code> の拡張ライブラリをコンテンツに追加すると、game.jsonには以下のような記述が追加されます。</p>
+<pre><code>&quot;globalScripts&quot;: [
+    &quot;node_modules/@akashic-extension/akashic-timeline/lib/ActionType.js&quot;,
+    &quot;node_modules/@akashic-extension/akashic-timeline/lib/Easing.js&quot;,
+    &quot;node_modules/@akashic-extension/akashic-timeline/lib/Timeline.js&quot;,
+    &quot;node_modules/@akashic-extension/akashic-timeline/lib/Tween.js&quot;,
+    &quot;node_modules/@akashic-extension/akashic-timeline/lib/index.js&quot;
+],
+&quot;moduleMainScripts&quot;: {
+    &quot;@akashic-extension/akashic-timeline&quot;: &quot;node_modules/@akashic-extension/akashic-timeline/lib/index.js&quot;
+}
+</code></pre><p>ゲームからは、以下のようにして拡張ライブラリを呼び出せます。</p>
+<pre><code>var tl = require(&quot;@akashic-extension/akashic-timeline&quot;);
+</code></pre><p>akashic-timelineの実際的な使い方は <a href="https://github.com/akashic-games/akashic-timeline/blob/master/getstarted.md">ドキュメント</a> を参照してください。</p>
+<p>拡張ライブラリが不要になった場合、 <code>akashic uninstall</code> コマンドを使うことで、拡張ライブラリをコンテンツから削除することができます。</p>
+<pre><code>akashic uninstall @akashic-extension/akashic-timeline
+</code></pre><p>誤って <code>npm install</code> コマンドで拡張ライブラリをインストールした場合は、 <code>npm uninstall</code> コマンドで拡張ライブラリを一度アンインストールし、その後 <code>akashic install</code> コマンドで再インストールしてください。</p>
+<p>（拡張ライブラリを再インストールしてもインストールしたライブラリを正常に利用できない場合、一度node_modulesディレクトリを削除して、インストール済みの拡張ライブラリ全体を再インストールしてください。）</p>
+<h2>akashic向けではない拡張ライブラリの利用</h2>
+<p><code>akashic install</code> コマンドは、Akashic Engine向けに作られた拡張ライブラリ以外もインストールできます。ただし、Akashic Engineはその動作を保証していません。
+Akashic Engineで利用できる拡張ライブラリの条件は、 <code>fs</code> や <code>http</code> などのNode.jsコアモジュールを利用していないこと、 <code>Math.random()</code> を利用していないことです。また、原則的にDOMを利用することもできません。
+これらはAkashic Engineの動作に意図しない影響を及ぼすため、利用することはできません。</p>
+<h2>注意</h2>
+<p>コンテンツの実行時に必要ないnpmパッケージに対して、 <code>akashic install</code> を実行しないでください。例えば、TypeScriptやBrowserifyなどのビルドツールは、コンテンツから <code>require()</code> されません。
+不要な拡張ライブラリを読み込むと、ロードに時間がかかる、コンテンツが実行エラーになるなどの問題が生じる場合があります。</p>
+<p>コンテンツ実行に必要なのか、ビルドに必要なのかは、package.jsonのdevDependenciesとdependenicesのどちらに記述するかの違いとして考えることができます。一般には、package.jsonのdependenciesに記述されるものは <code>akashic install</code> を、それ以外は <code>npm install</code> を実行してインストールしてください。
+package.jsonの仕様については、 <a href="https://docs.npmjs.com/files/package.json">こちら</a> に詳しい説明があります。</p>
+<h1>npm について</h1>
+<p>npmコマンドの詳細な使い方については、 <a href="https://docs.npmjs.com/">npm公式サイト</a> を参照してください。</p>
+<div class="navi-center">
+<a href="./7-export.html">前（ゲームを公開する）</a>
+ | <a href="./">目次</a>
+ | <a href="./9-appendix.html">次（より大規模なゲームを作るために）</a>
+</div>
+
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--menu cfix">
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">入門</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/tutorial/v2/">Akashic Engine入門 v2</a></li>
+					<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">ガイド</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+					<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+					<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+					<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+					<li><a href="/guide/storage.html">ストレージについて</a></li>
+					<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+					<li><a href="/guide/akashic-install.html">akashic install利用ガイド</a></li>
+					<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">リファレンス</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+					<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+					<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+					<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+					<li><a href="/reference/akashic-label/">akashic-label</a></li>
+					<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+					<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">サンプルデモ</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/demo/?title=helloworld">Hello World</a></li>
+					<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+					<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+					<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+					<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+					<li><a href="/demo/?title=demo-tile">タイル</a></li>
+					<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+					<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+					<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+					<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+				</ul>
+			</li>
+		</ul>
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+</body>
+</html>

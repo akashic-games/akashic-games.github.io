@@ -38,8 +38,6 @@
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
 							<input type="checkbox" id="tsd-filter-only-exported" />
 							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
@@ -105,6 +103,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.resourcefactory.html#createsurface" class="tsd-kind-icon">create<wbr>Surface</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.resourcefactory.html#createsurfaceatlas" class="tsd-kind-icon">create<wbr>Surface<wbr>Atlas</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.resourcefactory.html#createtextasset" class="tsd-kind-icon">create<wbr>Text<wbr>Asset</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.resourcefactory.html#createtrimmedsurface" class="tsd-kind-icon">create<wbr>Trimmed<wbr>Surface</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.resourcefactory.html#createvideoasset" class="tsd-kind-icon">create<wbr>Video<wbr>Asset</a></li>
 							</ul>
 						</section>
@@ -115,7 +114,7 @@
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 					<a name="createaudioasset" class="tsd-anchor"></a>
-					<h3>create<wbr>Audio<wbr>Asset</h3>
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> create<wbr>Audio<wbr>Asset</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">create<wbr>Audio<wbr>Asset<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, assetPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, system<span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.audiosystem.html" class="tsd-signature-type">AudioSystem</a>, loop<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, hint<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_main_d_.g.audioassethint.html" class="tsd-signature-type">AudioAssetHint</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.audioasset.html" class="tsd-signature-type">AudioAsset</a></li>
 					</ul>
@@ -153,7 +152,7 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 					<a name="createaudioplayer" class="tsd-anchor"></a>
-					<h3>create<wbr>Audio<wbr>Player</h3>
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> create<wbr>Audio<wbr>Player</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">create<wbr>Audio<wbr>Player<span class="tsd-signature-symbol">(</span>system<span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.audiosystem.html" class="tsd-signature-type">AudioSystem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.audioplayer.html" class="tsd-signature-type">AudioPlayer</a></li>
 					</ul>
@@ -176,9 +175,9 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 					<a name="createglyphfactory" class="tsd-anchor"></a>
-					<h3>create<wbr>Glyph<wbr>Factory</h3>
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> create<wbr>Glyph<wbr>Factory</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">create<wbr>Glyph<wbr>Factory<span class="tsd-signature-symbol">(</span>fontFamily<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">FontFamily.SansSerif</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">FontFamily.Serif</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">FontFamily.Monospace</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">FontFamily.SansSerif</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">FontFamily.Serif</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">FontFamily.Monospace</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span>, fontSize<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, baselineHeight<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, fontColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeWidth<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, strokeColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeOnly<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, fontWeight<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">FontWeight.Normal</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">FontWeight.Bold</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.glyphfactory.html" class="tsd-signature-type">GlyphFactory</a></li>
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Glyph<wbr>Factory<span class="tsd-signature-symbol">(</span>fontFamily<span class="tsd-signature-symbol">: </span><a href="../enums/_lib_main_d_.g.fontfamily.html" class="tsd-signature-type">FontFamily</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../enums/_lib_main_d_.g.fontfamily.html#sansserif" class="tsd-signature-type">SansSerif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/_lib_main_d_.g.fontfamily.html#serif" class="tsd-signature-type">Serif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/_lib_main_d_.g.fontfamily.html#monospace" class="tsd-signature-type">Monospace</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span>, fontSize<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, baselineHeight<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, fontColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeWidth<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, strokeColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeOnly<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, fontWeight<span class="tsd-signature-symbol">?: </span><a href="../enums/_lib_main_d_.g.fontweight.html" class="tsd-signature-type">FontWeight</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.glyphfactory.html" class="tsd-signature-type">GlyphFactory</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -195,7 +194,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>fontFamily: <span class="tsd-signature-type">FontFamily.SansSerif</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">FontFamily.Serif</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">FontFamily.Monospace</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">FontFamily.SansSerif</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">FontFamily.Serif</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">FontFamily.Monospace</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>fontFamily: <a href="../enums/_lib_main_d_.g.fontfamily.html" class="tsd-signature-type">FontFamily</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../enums/_lib_main_d_.g.fontfamily.html#sansserif" class="tsd-signature-type">SansSerif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/_lib_main_d_.g.fontfamily.html#serif" class="tsd-signature-type">Serif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/_lib_main_d_.g.fontfamily.html#monospace" class="tsd-signature-type">Monospace</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>フォントファミリ。g.FontFamilyの定義する定数、フォント名、またはそれらの配列で指定する。</p>
 									</div>
@@ -238,7 +237,7 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> fontWeight: <span class="tsd-signature-type">FontWeight.Normal</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">FontWeight.Bold</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> fontWeight: <a href="../enums/_lib_main_d_.g.fontweight.html" class="tsd-signature-type">FontWeight</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>フォントウェイト。省略された場合、 <code>FontWeight.Normal</code> として扱われる</p>
 									</div>
@@ -250,7 +249,7 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 					<a name="createimageasset" class="tsd-anchor"></a>
-					<h3>create<wbr>Image<wbr>Asset</h3>
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> create<wbr>Image<wbr>Asset</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">create<wbr>Image<wbr>Asset<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, assetPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.imageasset.html" class="tsd-signature-type">ImageAsset</a></li>
 					</ul>
@@ -282,7 +281,7 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 					<a name="createscriptasset" class="tsd-anchor"></a>
-					<h3>create<wbr>Script<wbr>Asset</h3>
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> create<wbr>Script<wbr>Asset</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">create<wbr>Script<wbr>Asset<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, assetPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.scriptasset.html" class="tsd-signature-type">ScriptAsset</a></li>
 					</ul>
@@ -308,7 +307,7 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 					<a name="createsurface" class="tsd-anchor"></a>
-					<h3>create<wbr>Surface</h3>
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> create<wbr>Surface</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">create<wbr>Surface<span class="tsd-signature-symbol">(</span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></li>
 					</ul>
@@ -373,7 +372,7 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 					<a name="createtextasset" class="tsd-anchor"></a>
-					<h3>create<wbr>Text<wbr>Asset</h3>
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> create<wbr>Text<wbr>Asset</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">create<wbr>Text<wbr>Asset<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, assetPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.textasset.html" class="tsd-signature-type">TextAsset</a></li>
 					</ul>
@@ -398,8 +397,40 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a name="createtrimmedsurface" class="tsd-anchor"></a>
+					<h3>create<wbr>Trimmed<wbr>Surface</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Trimmed<wbr>Surface<span class="tsd-signature-symbol">(</span>targetSurface<span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a>, targetArea<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_lib_main_d_.g.commonarea.html" class="tsd-signature-type">CommonArea</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in lib/main.d.ts:135</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>指定Surfaceから指定範囲を切り取ったSurfaceを返す。
+									範囲を指定しない場合は、指定SurfaceをコピーしたSurfaceを返す。</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>targetSurface: <a href="_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> targetArea: <a href="../interfaces/_lib_main_d_.g.commonarea.html" class="tsd-signature-type">CommonArea</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 					<a name="createvideoasset" class="tsd-anchor"></a>
-					<h3>create<wbr>Video<wbr>Asset</h3>
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> create<wbr>Video<wbr>Asset</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">create<wbr>Video<wbr>Asset<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, assetPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, system<span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.videosystem.html" class="tsd-signature-type">VideoSystem</a>, loop<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span>, useRealSize<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.videoasset.html" class="tsd-signature-type">VideoAsset</a></li>
 					</ul>
@@ -478,6 +509,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_lib_main_d_.g.resourcefactory.html#createtextasset" class="tsd-kind-icon">create<wbr>Text<wbr>Asset</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+								<a href="_lib_main_d_.g.resourcefactory.html#createtrimmedsurface" class="tsd-kind-icon">create<wbr>Trimmed<wbr>Surface</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_lib_main_d_.g.resourcefactory.html#createvideoasset" class="tsd-kind-icon">create<wbr>Video<wbr>Asset</a>

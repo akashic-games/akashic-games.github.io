@@ -38,8 +38,6 @@
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
 							<input type="checkbox" id="tsd-filter-only-exported" />
 							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
 						</div>
@@ -112,6 +110,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.assetmanager.html#_assets" class="tsd-kind-icon">_assets</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.assetmanager.html#_liveabsolutepathtable" class="tsd-kind-icon">_live<wbr>Absolute<wbr>Path<wbr>Table</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.assetmanager.html#_liveassetvirtualpathtable" class="tsd-kind-icon">_live<wbr>Asset<wbr>Virtual<wbr>Path<wbr>Table</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.assetmanager.html#_modulemainscripts" class="tsd-kind-icon">_module<wbr>Main<wbr>Scripts</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.assetmanager.html#_refcounts" class="tsd-kind-icon">_ref<wbr>Counts</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.assetmanager.html#configuration" class="tsd-kind-icon">configuration</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.assetmanager.html#game" class="tsd-kind-icon">game</a></li>
@@ -146,13 +145,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Asset<wbr>Manager<span class="tsd-signature-symbol">(</span>game<span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.game.html" class="tsd-signature-type">Game</a>, conf<span class="tsd-signature-symbol">?: </span><a href="../modules/_lib_main_d_.g.html#assetconfigurationmap" class="tsd-signature-type">AssetConfigurationMap</a>, audioSystemConfMap<span class="tsd-signature-symbol">?: </span><a href="../modules/_lib_main_d_.g.html#audiosystemconfigurationmap" class="tsd-signature-type">AudioSystemConfigurationMap</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.assetmanager.html" class="tsd-signature-type">AssetManager</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Asset<wbr>Manager<span class="tsd-signature-symbol">(</span>game<span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.game.html" class="tsd-signature-type">Game</a>, conf<span class="tsd-signature-symbol">?: </span><a href="../modules/_lib_main_d_.g.html#assetconfigurationmap" class="tsd-signature-type">AssetConfigurationMap</a>, audioSystemConfMap<span class="tsd-signature-symbol">?: </span><a href="../modules/_lib_main_d_.g.html#audiosystemconfigurationmap" class="tsd-signature-type">AudioSystemConfigurationMap</a>, moduleMainScripts<span class="tsd-signature-symbol">?: </span><a href="../modules/_lib_main_d_.g.html#modulemainscriptsmap" class="tsd-signature-type">ModuleMainScriptsMap</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.assetmanager.html" class="tsd-signature-type">AssetManager</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:530</li>
+									<li>Defined in lib/main.d.ts:535</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -180,6 +179,9 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> audioSystemConfMap: <a href="../modules/_lib_main_d_.g.html#audiosystemconfigurationmap" class="tsd-signature-type">AudioSystemConfigurationMap</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> moduleMainScripts: <a href="../modules/_lib_main_d_.g.html#modulemainscriptsmap" class="tsd-signature-type">ModuleMainScriptsMap</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.assetmanager.html" class="tsd-signature-type">AssetManager</a></h4>
@@ -262,12 +264,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+					<a name="_modulemainscripts" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _module<wbr>Main<wbr>Scripts</h3>
+					<div class="tsd-signature tsd-kind-icon">_module<wbr>Main<wbr>Scripts<span class="tsd-signature-symbol">:</span> <a href="../modules/_lib_main_d_.g.html#modulemainscriptsmap" class="tsd-signature-type">ModuleMainScriptsMap</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:522</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>requireの第一引数から対応する仮想パスを引くためのテーブル。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 					<a name="_refcounts" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _ref<wbr>Counts</h3>
 					<div class="tsd-signature tsd-kind-icon">_ref<wbr>Counts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:524</li>
+							<li>Defined in lib/main.d.ts:529</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -347,7 +364,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:602</li>
+									<li>Defined in lib/main.d.ts:607</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -369,7 +386,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:596</li>
+									<li>Defined in lib/main.d.ts:601</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -394,7 +411,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:592</li>
+									<li>Defined in lib/main.d.ts:597</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -421,7 +438,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_lib_main_d_.g.assetloadhandler.html">AssetLoadHandler</a>.<a href="../interfaces/_lib_main_d_.g.assetloadhandler.html#_onasseterror">_onAssetError</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:606</li>
+									<li>Defined in lib/main.d.ts:611</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -450,7 +467,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_lib_main_d_.g.assetloadhandler.html">AssetLoadHandler</a>.<a href="../interfaces/_lib_main_d_.g.assetloadhandler.html#_onassetload">_onAssetLoad</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:610</li>
+									<li>Defined in lib/main.d.ts:615</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -475,7 +492,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:597</li>
+									<li>Defined in lib/main.d.ts:602</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -498,7 +515,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:541</li>
+									<li>Defined in lib/main.d.ts:546</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -520,7 +537,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:545</li>
+									<li>Defined in lib/main.d.ts:550</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -542,7 +559,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:556</li>
+									<li>Defined in lib/main.d.ts:561</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -564,7 +581,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:568</li>
+									<li>Defined in lib/main.d.ts:573</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -605,7 +622,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:583</li>
+									<li>Defined in lib/main.d.ts:588</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -643,7 +660,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:552</li>
+									<li>Defined in lib/main.d.ts:557</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -675,7 +692,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:575</li>
+									<li>Defined in lib/main.d.ts:580</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -707,7 +724,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:591</li>
+									<li>Defined in lib/main.d.ts:596</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -757,6 +774,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 								<a href="_lib_main_d_.g.assetmanager.html#_liveassetvirtualpathtable" class="tsd-kind-icon">_live<wbr>Asset<wbr>Virtual<wbr>Path<wbr>Table</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+								<a href="_lib_main_d_.g.assetmanager.html#_modulemainscripts" class="tsd-kind-icon">_module<wbr>Main<wbr>Scripts</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 								<a href="_lib_main_d_.g.assetmanager.html#_refcounts" class="tsd-kind-icon">_ref<wbr>Counts</a>

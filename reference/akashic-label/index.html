@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>akashic-label</title>
+	<title>@akashic-extension/akashic-label</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">akashic-label</a>
+					<a href="index.html" class="title">@akashic-extension/akashic-label</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> akashic-label</h1>
+			<h1> @akashic-extension/akashic-label</h1>
 		</div>
 	</div>
 </header>
@@ -68,14 +68,15 @@
 					<img src="img/akashic.png"/>
 				</p>
 				<h1 id="akashic-label">akashic-label</h1>
-				<p><strong>akashic-label</strong> は、<a href="https://github.com/akashic-games/akashic-engine">Akashic Engine</a> 用のテキスト描画ライブラリです。
+				<p><strong>akashic-label</strong> は、<a href="https://akashic-games.github.io/">Akashic Engine</a> 用のテキスト描画ライブラリです。
 				Akashic Engine 標準の <code>g.Label</code> と同様の機能に加え、次の機能を提供します。</p>
 				<ul>
 					<li>ルビつき文字列の描画</li>
 					<li>複数行のテキスト配置</li>
 				</ul>
 				<h2 id="-">利用方法</h2>
-				<p><a href="https://github.com/akashic-games/akashic-cli">akashic-cli</a> でインストールして利用します。</p>
+				<p><a href="https://github.com/akashic-games/akashic-cli">akashic-cli</a> でインストールして利用します。
+				Akashic Engineの詳細な利用方法については、 <a href="https://akashic-games.github.io/">公式ページ</a> を参照してください。</p>
 				<pre><code><span class="hljs-selector-tag">akashic</span> <span class="hljs-selector-tag">install</span> @<span class="hljs-keyword">akashic</span>-<span class="hljs-keyword">extension</span>/<span class="hljs-keyword">akashic</span>-<span class="hljs-keyword">label</span>
 </code></pre><p>インストール後、ゲームスクリプトから <code>require()</code> して利用してください。</p>
 				<pre><code><span class="hljs-keyword">var</span> al = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@akashic-extension/akashic-label"</span>)
@@ -83,7 +84,7 @@
 				詳細なリファレンスは <a href="https://akashic-games.github.io/reference/akashic-label/index.html">APIリファレンス</a> を参照してください。</p>
 				<h2 id="-">ビルド方法</h2>
 				<p><strong>akashic-label</strong> はTypeScriptで書かれたライブラリであるため、ビルドにはNode.jsが必要です。</p>
-				<p><code>npm run build</code> によりgulpを使ってビルドできます。</p>
+				<p><code>npm run build</code> によりビルドできます。</p>
 				<pre><code class="lang-sh">npm install
 npm run build
 </code></pre>
