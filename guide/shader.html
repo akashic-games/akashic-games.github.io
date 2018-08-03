@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
-	<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
-	<meta name="theme-color" content="#0F1F26">
-	<title>シェーダの利用</title>
-	<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-	<link rel="stylesheet" href="/css/common.css?1531971111262">
-	<link rel="stylesheet" href="/css/header.css?1531971111262">
-	<link rel="stylesheet" href="/css/footer.css?1531971111262">
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>シェーダの利用</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?1533269171274">
+<link rel="stylesheet" href="/css/header.css?1533269171274">
+<link rel="stylesheet" href="/css/footer.css?1533269171274">
 
-    
-	<link rel="stylesheet" href="/css/akashic-document.css?1531971111262">
-    
 
-	<script src="/lib/jquery-3.2.1.min.js"></script>
-	<script src="/lib/common.js?1531971111262"></script>
+<link rel="stylesheet" href="/css/asset.css?1533269171274">
 
-    
+<link rel="stylesheet" href="/css/akashic-document.css?1533269171274">
+
+<link rel="stylesheet" href="/css/railscasts.css?1533269171274">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?1533269171274"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 <div class="head--spacer"></div>
@@ -89,20 +95,21 @@
 <h2><a name="これは"></a> これは</h2>
 <p>シェーダプログラムの利用方法を記述したドキュメントです。</p>
 <h2><a name="対象バージョン"></a> 対象バージョン</h2>
-<p>本ドキュメントの対象バージョンは <a href="mailto:akashic-engine@2.3.2">akashic-engine@2.3.2</a> 以降です。</p>
+<p>本ドキュメントの対象バージョンは <code>akashic-engine@2.3.2</code> 以降です。</p>
 <p>また、本機能を利用するには WebGL 1.0 が利用可能な環境が必要です。
 <a href="http://webglreport.com/">こちらのページ</a> で現在利用しているブラウザが WebGL をサポートしているか確認することができます。</p>
 <h2><a name="シェーダとは"></a> シェーダとは</h2>
 <p>WebGL, OpenGL などで、3次元空間に存在する情報を2次元空間に描画するために用いられているプログラムのことを指します。
 詳細については他のドキュメントを参照ください。</p>
 <p>本ドキュメントではAkashicでシェーダを利用する方法について記述します。
-<a href="mailto:akashic-engine@2.3.2">akashic-engine@2.3.2</a> ではフラグメントシェーダのみをサポートします。</p>
+<code>akashic-engine@2.3.2</code> ではフラグメントシェーダのみをサポートします。</p>
 <h2><a name="準備"></a> 準備</h2>
 <p>ゲーム開発の準備が終わっていない場合は <a href="https://akashic-games.github.io/tutorial/v2/">Akashicを利用したゲーム開発</a> を読んでゲーム開発の環境を整えて下さい。</p>
-<p>本ドキュメントの内容は <a href="mailto:akashic-sandbox@0.13.24">akashic-sandbox@0.13.24</a> 以降のバージョンでサポートされています。
+<p>本ドキュメントの内容は <code>akashic-sandbox@0.13.24</code> 以降のバージョンでサポートされています。
 手元の akashic-sandbox のバージョンがこれより古い場合は以下のコマンドで最新のものをインストールしてください。</p>
-<pre><code>npm i @akashic/akashic-sandbox -g
-</code></pre><p>コンテンツで WebGL を有効にするため、 <code>game.json</code> の <code>renderers</code> に <code>webgl</code> を追加します。
+<pre><code class="lang-sh">npm i @akashic/akashic-sandbox -g
+</code></pre>
+<p>コンテンツで WebGL を有効にするため、 <code>game.json</code> の <code>renderers</code> に <code>webgl</code> を追加します。
 詳細は <a href="game-json.html">game.jsonの仕様</a> を参照してください。</p>
 <h2><a name="利用"></a> 利用</h2>
 <p>まずはゲーム内でシェーダを利用するための準備をします。</p>
@@ -130,7 +137,7 @@ void main(void)
 }
 </code></pre>
 <p>このシェーダをコンテンツ内で利用するために、 <code>g.ShaderProgram</code> を生成します。
-(注意: この生成方法は <a href="mailto:akashic-engine@2.3.2">akashic-engine@2.3.2</a> 時点での記述になります。今後のバージョンでは変更される可能性があります。)</p>
+(注意: この生成方法は <code>akashic-engine@2.3.2</code> 時点での記述になります。今後のバージョンでは変更される可能性があります。)</p>
 <pre><code class="lang-javascript">
 // フラグメントシェーダのテキストデータ
 const fragmentShader =
@@ -182,7 +189,7 @@ sprite.modified();
 <p>注意点として、 <code>g.ShaderProgram</code> は一度生成したら以降プロパティを変更することはできません。
 (例外的に <code>g.ShaderProgram#uniforms#value</code> のみ変更が許可されています。詳細は後述します。)</p>
 <h2><a name="変数"></a> 変数</h2>
-<p><a href="mailto:akashic-engine@2.3.2">akashic-engine@2.3.2</a> 時点では、以下の変数がエンジン側から暗黙的に与えられます。</p>
+<p><code>akashic-engine@2.3.2</code> 時点では、以下の変数がエンジン側から暗黙的に与えられます。</p>
 <ul>
 <li><code>varying</code><ul>
 <li><code>vec2 vTexCoord</code><ul>
