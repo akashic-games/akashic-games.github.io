@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
-	<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
-	<meta name="theme-color" content="#0F1F26">
-	<title>拡張ライブラリを使う</title>
-	<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-	<link rel="stylesheet" href="/css/common.css?1531971111262">
-	<link rel="stylesheet" href="/css/header.css?1531971111262">
-	<link rel="stylesheet" href="/css/footer.css?1531971111262">
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>拡張ライブラリを使う</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?1533269171274">
+<link rel="stylesheet" href="/css/header.css?1533269171274">
+<link rel="stylesheet" href="/css/footer.css?1533269171274">
 
-    
-	<link rel="stylesheet" href="/css/akashic-document.css?1531971111262">
-    
 
-	<script src="/lib/jquery-3.2.1.min.js"></script>
-	<script src="/lib/common.js?1531971111262"></script>
+<link rel="stylesheet" href="/css/asset.css?1533269171274">
 
-    
+<link rel="stylesheet" href="/css/akashic-document.css?1533269171274">
+
+<link rel="stylesheet" href="/css/railscasts.css?1533269171274">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?1533269171274"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 <div class="head--spacer"></div>
@@ -87,18 +93,21 @@
 		<div class="inner responsive--width">
 			<h1>拡張ライブラリを使う</h1>
 <p>Akashic Engineに限らず、Node.jsでは、npmコマンドを利用して自作のパッケージを公開したり、既に公開されているパッケージをダウンロード・インストールすることができます。
-Akashic Engine の拡張ライブラリはnpmパッケージとして実装できます。ゲーム開発者はnpmの仕組みを使うことで拡張ライブラリをnpmパッケージとして自由に公開・利用することができます。</p>
-<p>既に公開されている拡張ライブラリとしては、トゥイーンアニメーションライブラリの <a href="https://github.com/akashic-games/akashic-timeline">akashic-timeline</a> や高機能版テキスト描画エンティティの <a href="https://github.com/akashic-games/akashic-label">akashic-label</a> などが挙げられます。</p>
-<h1>akashicコンテンツにnpmパッケージを追加する</h1>
+Akashic Engine の拡張ライブラリはnpmパッケージとして実装できます。
+ゲーム開発者はnpmの仕組みを使うことで、拡張ライブラリを自由に公開・利用することができます。</p>
+<p>既に公開されている拡張ライブラリとしては、トゥイーンアニメーションライブラリの <a href="https://github.com/akashic-games/akashic-timeline">akashic-timeline</a>
+や高機能版テキスト描画エンティティの <a href="https://github.com/akashic-games/akashic-label">akashic-label</a> などが挙げられます。</p>
+<h2>Akashicコンテンツに拡張ライブラリを追加する</h2>
 <p>拡張ライブラリは、akashicコマンドの <code>akashic install</code> を利用することでゲームに追加できます。</p>
-<p>例えば、ゲームからakashic-timelineを利用したい場合、game.jsonの置かれているディレクトリで以下のコマンドを実行します。</p>
-<pre><code>akashic install @akashic-extension/akashic-timeline
-</code></pre><p><code>akashic install</code> コマンドは、内部的に <code>npm install --save -save-exact</code> コマンドを実行し、拡張ライブラリをダウンロード・インストールします。
-さらに、インストールされた拡張ライブラリの情報を game.json に書き込みます。
-これは、akashicコンテンツでは、スクリプトや画像を含むすべてのリソースへのパスは、予めgame.jsonに書き込まれている必要があるためです。
-game.jsonに追加することで、akashicコンテンツ内から <code>require()</code> を使って拡張ライブラリを呼び出せるようになります。</p>
+<p>例えば、コンテンツからakashic-timeline (パッケージ名は <code>@akashic-extension/akashic-timeline</code>) を利用したい場合、game.jsonの置かれているディレクトリで以下のコマンドを実行します。</p>
+<pre><code class="lang-sh">akashic install @akashic-extension/akashic-timeline
+</code></pre>
+<p><code>akashic install</code> コマンドは、内部的に <code>npm install --save -save-exact</code> を実行することで、拡張ライブラリを <code>node_modules</code> ディレクトリにダウンロード・インストールします。
+さらに、インストールされた拡張ライブラリの情報(ファイルパスなど)をgame.jsonに書き込みます。
+これは、Akashicコンテンツでは、予めすべてのリソースへのパスがgame.jsonに書き込まれている必要があるためです。
+これによりコンテンツ内から <code>require()</code> を使って拡張ライブラリを読み込めるようになります。</p>
 <p>例として、 <code>akashic-timeline</code> の拡張ライブラリをコンテンツに追加すると、game.jsonには以下のような記述が追加されます。</p>
-<pre><code>&quot;globalScripts&quot;: [
+<pre><code class="lang-json">&quot;globalScripts&quot;: [
     &quot;node_modules/@akashic-extension/akashic-timeline/lib/ActionType.js&quot;,
     &quot;node_modules/@akashic-extension/akashic-timeline/lib/Easing.js&quot;,
     &quot;node_modules/@akashic-extension/akashic-timeline/lib/Timeline.js&quot;,
@@ -108,23 +117,33 @@ game.jsonに追加することで、akashicコンテンツ内から <code>requir
 &quot;moduleMainScripts&quot;: {
     &quot;@akashic-extension/akashic-timeline&quot;: &quot;node_modules/@akashic-extension/akashic-timeline/lib/index.js&quot;
 }
-</code></pre><p>ゲームからは、以下のようにして拡張ライブラリを呼び出せます。</p>
-<pre><code>var tl = require(&quot;@akashic-extension/akashic-timeline&quot;);
-</code></pre><p>akashic-timelineの実際的な使い方は <a href="https://github.com/akashic-games/akashic-timeline/blob/master/getstarted.md">ドキュメント</a> を参照してください。</p>
+</code></pre>
+<p>コンテンツからは、以下のようにして拡張ライブラリを読み込めます。</p>
+<pre><code class="lang-javascript">var tl = require(&quot;@akashic-extension/akashic-timeline&quot;);
+</code></pre>
+<p>akashic-timelineの実際的な使い方は <a href="https://github.com/akashic-games/akashic-timeline/blob/master/getstarted.md">ドキュメント</a> を参照してください。</p>
 <p>拡張ライブラリが不要になった場合、 <code>akashic uninstall</code> コマンドを使うことで、拡張ライブラリをコンテンツから削除することができます。</p>
-<pre><code>akashic uninstall @akashic-extension/akashic-timeline
-</code></pre><p>誤って <code>npm install</code> コマンドで拡張ライブラリをインストールした場合は、 <code>npm uninstall</code> コマンドで拡張ライブラリを一度アンインストールし、その後 <code>akashic install</code> コマンドで再インストールしてください。</p>
-<p>（拡張ライブラリを再インストールしてもインストールしたライブラリを正常に利用できない場合、一度node_modulesディレクトリを削除して、インストール済みの拡張ライブラリ全体を再インストールしてください。）</p>
-<h2>akashic向けではない拡張ライブラリの利用</h2>
-<p><code>akashic install</code> コマンドは、Akashic Engine向けに作られた拡張ライブラリ以外もインストールできます。ただし、Akashic Engineはその動作を保証していません。
-Akashic Engineで利用できる拡張ライブラリの条件は、 <code>fs</code> や <code>http</code> などのNode.jsコアモジュールを利用していないこと、 <code>Math.random()</code> を利用していないことです。また、原則的にDOMを利用することもできません。
-これらはAkashic Engineの動作に意図しない影響を及ぼすため、利用することはできません。</p>
+<pre><code class="lang-sh">akashic uninstall @akashic-extension/akashic-timeline
+</code></pre>
+<p>このコマンドは、 <code>npm uninstall</code> を実行して拡張ライブラリを削除したのち、game.jsonから関連する情報を削除します。</p>
+<p>誤って <code>npm install</code> コマンドで拡張ライブラリをインストールした場合は、 <code>npm uninstall</code> コマンドで拡張ライブラリを一度アンインストールし、その後 <code>akashic install</code> コマンドで再インストールしてください。</p>
+<p>（拡張ライブラリを再インストールしてもインストールしたライブラリを正常に利用できない場合、一度 <code>node_modules</code> ディレクトリを削除して、インストール済みの拡張ライブラリ全体を再インストールしてください。）</p>
+<h2>Akashic向け拡張ライブラリではないパッケージの利用</h2>
+<p><code>akashic install</code> コマンドは、Akashic向けの拡張ライブラリではないnpmパッケージもインストールできます。
+たとえば、シミュレーションゲームで敵キャラクタの移動ルートを決めるために「グラフ探索アルゴリズムを実装した汎用のライブラリパッケージ」を導入して使う、というようなことができます。</p>
+<p>ただし、Akashic Engineはそのようなパッケージの動作を保証してはいません。
+Akashic Engineで利用できるパッケージの条件は、 <code>fs</code> や <code>http</code> などのNode.jsコアモジュールを利用していないこと、 <code>Math.random()</code> を利用していないことです。
+また、原則的にDOMを利用することもできません。これらはAkashic Engineの動作に意図しない影響を及ぼすため、利用しないでください。</p>
 <h2>注意</h2>
-<p>コンテンツの実行時に必要ないnpmパッケージに対して、 <code>akashic install</code> を実行しないでください。例えば、TypeScriptやBrowserifyなどのビルドツールは、コンテンツから <code>require()</code> されません。
-不要な拡張ライブラリを読み込むと、ロードに時間がかかる、コンテンツが実行エラーになるなどの問題が生じる場合があります。</p>
-<p>コンテンツ実行に必要なのか、ビルドに必要なのかは、package.jsonのdevDependenciesとdependenicesのどちらに記述するかの違いとして考えることができます。一般には、package.jsonのdependenciesに記述されるものは <code>akashic install</code> を、それ以外は <code>npm install</code> を実行してインストールしてください。
+<p><code>akashic install</code> を用いる必要があるのは、「コンテンツの実行時に必要なnpmパッケージ」だけであることに注意してください。</p>
+<p>実行時に必要ないnpmパッケージは、 <code>akashic install</code> ではなく <code>npm install</code> を利用してください。
+例えば、TypeScriptやBrowserifyなどのビルドツールは、通常実行時には利用されません(コンテンツから <code>require()</code> されません)。
+これらを <code>akashic install</code> してしまうと、不要なファイルが game.json に書き込まれてしまい、
+ロードに時間がかかる、コンテンツが実行時エラーを起こすなどの問題が生じる場合があります。</p>
+<p>あるnpmパッケージがコンテンツ実行に必要なのか、ビルドに必要なのかは、package.jsonのdependenciesとdevDependenciesのどちらに記述するかの違いとして考えることができます。
+一般には、package.jsonのdependenciesに記述されるものは <code>akashic install</code> を、それ以外は <code>npm install</code> を実行してインストールしてください。
 package.jsonの仕様については、 <a href="https://docs.npmjs.com/files/package.json">こちら</a> に詳しい説明があります。</p>
-<h1>npm について</h1>
+<h2>npm について</h2>
 <p>npmコマンドの詳細な使い方については、 <a href="https://docs.npmjs.com/">npm公式サイト</a> を参照してください。</p>
 <div class="navi-center">
 <a href="./7-export.html">前（ゲームを公開する）</a>

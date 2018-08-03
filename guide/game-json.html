@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
-	<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
-	<meta name="theme-color" content="#0F1F26">
-	<title>game.jsonの仕様</title>
-	<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-	<link rel="stylesheet" href="/css/common.css?1531971111262">
-	<link rel="stylesheet" href="/css/header.css?1531971111262">
-	<link rel="stylesheet" href="/css/footer.css?1531971111262">
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>game.jsonの仕様</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?1533269171274">
+<link rel="stylesheet" href="/css/header.css?1533269171274">
+<link rel="stylesheet" href="/css/footer.css?1533269171274">
 
-    
-	<link rel="stylesheet" href="/css/akashic-document.css?1531971111262">
-    
 
-	<script src="/lib/jquery-3.2.1.min.js"></script>
-	<script src="/lib/common.js?1531971111262"></script>
+<link rel="stylesheet" href="/css/asset.css?1533269171274">
 
-    
+<link rel="stylesheet" href="/css/akashic-document.css?1533269171274">
+
+<link rel="stylesheet" href="/css/railscasts.css?1533269171274">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?1533269171274"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 <div class="head--spacer"></div>
@@ -88,7 +94,7 @@
 			<h1>game.jsonの仕様</h1>
 <h2><a name="これは"></a> これは</h2>
 <p>Akashic のゲームにおいてメタ情報などを取り扱う設定ファイル、game.json の仕様をまとめます。
-対象バージョンは <a href="mailto:akashic-engine@1.11.2">akashic-engine@1.11.2</a> 以降です。</p>
+対象バージョンは <code>akashic-engine@1.11.2</code> 以降です。</p>
 <h2><a name="game.jsonとは"></a> game.jsonとは</h2>
 <p>game.json は、Akashic のゲームのメタ情報などを取り扱う JSON 形式の設定ファイルです。
 主に以下のような情報を取り扱います。</p>
@@ -152,7 +158,7 @@ akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli利用ガイド</
 </li>
 </ul>
 <p>次のJSONは、妥当なgame.jsonの一例です:</p>
-<pre><code>{
+<pre><code class="lang-json">{
   &quot;width&quot;: 320,
   &quot;height&quot;: 240,
   &quot;fps&quot;: 30,
@@ -165,7 +171,8 @@ akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli利用ガイド</
   },
   &quot;main&quot;: &quot;./script/main.js&quot;
 }
-</code></pre><p>このgame.jsonは、画面サイズが320x240でFPSが30の、
+</code></pre>
+<p>このgame.jsonは、画面サイズが320x240でFPSが30の、
 &quot;script/main.js&quot; というゲームスクリプト一つだけを使うゲームであること、
 またエントリポイントはその &quot;./script/main.js&quot; であることを定義しています。</p>
 <h3>assets (アセット定義)</h3>
@@ -239,7 +246,7 @@ akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli利用ガイド</
 &quot;audio/foo.aac&quot; など) は、それぞれ同じ内容であることが期待されます。
 これらはエンジンが、ゲームの各実行環境で再生可能な形式のファイルを自動的に選択して再生するためです。</p>
 <h3>main</h3>
-<p><a href="mailto:akashic-engine@1.2.0">akashic-engine@1.2.0</a> で導入。</p>
+<p><code>akashic-engine@1.2.0</code> で導入。</p>
 <p><strong>main</strong> は、ゲームのエントリポイントとなるスクリプト( <strong>mainスクリプト</strong> )を指定する値です。</p>
 <p>指定されたスクリプトは、アセット定義 (assets) でグローバルなスクリプトアセットとして定義されていなければなりません。
 エンジンはグローバルアセットの読み込み後、この値で require() を呼び出し、その戻り値をエントリポイントとみなして実行します。
@@ -249,7 +256,7 @@ akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli利用ガイド</
 <li>引数 <code>param: g.GameMainParameterObject</code> を受け取り、値を返さない (<code>(param: g.GameMainParameterObject) =&gt; void</code>)</li>
 <li>呼び出された時、 <code>g.Game#pushScene()</code> によるシーンの追加など、ゲームの初期化処理を行う</li>
 </ul>
-<p><a href="mailto:akashic-engine@1.1.2">akashic-engine@1.1.2</a> 以前では、このフィールドは存在しませんでした。
+<p><code>akashic-engine@1.1.2</code> 以前では、このフィールドは存在しませんでした。
 エンジンは後方互換性のため、 <code>main</code> が指定されていない場合には、以下のような内容のmainスクリプトが与えられたかのように振る舞います。</p>
 <pre><code class="lang-js">module.exports = function (param) {
   if (!param.snapshot) {
@@ -268,7 +275,7 @@ akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli利用ガイド</
 akashic-engineの提供するrequire()は、Node.jsなどのそれと異なり、game.jsonに存在するアセットIDを(優先的に)解決します。
 これは歴史的経緯によるものです。上の例では説明のために使っていますが、この動作の利用は非推奨です。)</p>
 <h3>globalScripts</h3>
-<p><a href="mailto:akashic-engine@0.1.0">akashic-engine@0.1.0</a> で導入。</p>
+<p><code>akashic-engine@0.1.0</code> で導入。</p>
 <p><strong>globalScripts</strong> は、スクリプトアセットの短縮記法です。
 これは akashic install/uninstall のために用意された値です。
 通常ゲーム開発者が編集する必要はありません。</p>
@@ -280,7 +287,7 @@ akashic-engineの提供するrequire()は、Node.jsなどのそれと異なり�
 スクリプトアセットおよびJSONであるテキストアセットに限っては
 <code>require()</code> によってファイルパスで参照することができます)</p>
 <h3>renderers</h3>
-<p><a href="mailto:akashic-engine@1.0.3">akashic-engine@1.0.3</a>で導入。</p>
+<p><code>akashic-engine@1.0.3</code>で導入。</p>
 <p><strong>renderers</strong> は、ゲームで利用するレンダラーを指定するためのリストであり、
 レンダラーを識別する文字列であるレンダラー識別子の配列である必要があります。</p>
 <p>レンダラー識別子はサービスや実行環境により異なります。</p>
@@ -292,24 +299,25 @@ akashic-engineの提供するrequire()は、Node.jsなどのそれと異なり�
 また、game.jsonに renderers を定義しなかった場合の挙動は <code>&quot;renderers&quot;: [&quot;auto&quot;]</code> を指定した場合と等価になります。</p>
 <h3>defaultLoadingScene</h3>
 <p><strong>defaultLoadingScene</strong> は、グローバルアセット読み込み中のローディングシーンなど、デフォルトのローディングシーンについての設定です。
-<a href="mailto:akashic-engine@1.11.2">akashic-engine@1.11.2</a>では <code>&quot;default&quot;</code> または <code>&quot;none&quot;</code> を指定できます。
+<code>akashic-engine@1.11.2</code>では <code>&quot;default&quot;</code> または <code>&quot;none&quot;</code> を指定できます。
 <code>&quot;default&quot;</code> を指定または省略時はエンジンに用意されているデフォルトのローディングシーンを表示します。
 <code>&quot;none&quot;</code> を指定するとそれらのローディングシーンを非表示にできます。</p>
 <h3>environment</h3>
-<p><a href="mailto:akashic-engine@2.0.0">akashic-engine@2.0.0</a> で導入。</p>
+<p><code>akashic-engine@2.0.0</code> で導入。</p>
 <p><strong>environment</strong> は、ゲームを実行する環境やエンジンに対する要求を指定するためのオブジェクトです。
 オブジェクトのキーは要求の種類、値は要求内容です(必要なバージョンなど)。</p>
-<p><a href="mailto:akashic-engine@2.0.0">akashic-engine@2.0.0</a> 現在、唯一の妥当なキーは <code>&quot;sandbox-runtime&quot;</code> で、その値は <code>&quot;1&quot;</code> または <code>&quot;2&quot;</code> (文字列) です。
+<p><code>akashic-engine@2.0.0</code> 現在、唯一の妥当なキーは <code>&quot;sandbox-runtime&quot;</code> で、その値は <code>&quot;1&quot;</code> または <code>&quot;2&quot;</code> (文字列) です。
 この値は akashic-sandbox でゲームを実行する際、実行するエンジンのバージョンを決定するために利用されます。
-<a href="mailto:akashic-engine@2.0.0">akashic-engine@2.0.0</a> 以降で作成しているゲームの場合、 <code>&quot;2&quot;</code> を指定してください。
+<code>akashic-engine@2.0.0</code> 以降で作成しているゲームの場合、 <code>&quot;2&quot;</code> を指定してください。
 省略された場合、 <code>&quot;1&quot;</code> として解釈されます。</p>
-<pre><code>  &quot;environment&quot;: {
+<pre><code class="lang-json">  &quot;environment&quot;: {
     &quot;sandbox-runtime&quot;: &quot;2&quot;
   }
-</code></pre><p><code>&quot;sandbox-runtime&quot;</code> の値は、 <code>akashic export html</code> でエンジンをバンドルしたHTMLを出力する際にも参照されます。</p>
+</code></pre>
+<p><code>&quot;sandbox-runtime&quot;</code> の値は、 <code>akashic export html</code> でエンジンをバンドルしたHTMLを出力する際にも参照されます。</p>
 <h2><a name="game.jsonの例"></a> game.jsonの例</h2>
 <p>妥当な game.json の一例を示します。</p>
-<pre><code>{
+<pre><code class="lang-json">{
   &quot;width&quot;: 320,
   &quot;height&quot;: 320,
   &quot;fps&quot;: 30,
@@ -346,6 +354,7 @@ akashic-engineの提供するrequire()は、Node.jsなどのそれと異なり�
   ]
 }
 </code></pre>
+
 		</div>
 	</section>
 	<footer class="safearea--LR">

@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
-	<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
-	<meta name="theme-color" content="#0F1F26">
-	<title>色々な描画</title>
-	<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-	<link rel="stylesheet" href="/css/common.css?1531971111262">
-	<link rel="stylesheet" href="/css/header.css?1531971111262">
-	<link rel="stylesheet" href="/css/footer.css?1531971111262">
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>色々な描画</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?1533269171274">
+<link rel="stylesheet" href="/css/header.css?1533269171274">
+<link rel="stylesheet" href="/css/footer.css?1533269171274">
 
-    
-	<link rel="stylesheet" href="/css/akashic-document.css?1531971111262">
-    
 
-	<script src="/lib/jquery-3.2.1.min.js"></script>
-	<script src="/lib/common.js?1531971111262"></script>
+<link rel="stylesheet" href="/css/asset.css?1533269171274">
 
-    
+<link rel="stylesheet" href="/css/akashic-document.css?1533269171274">
+
+<link rel="stylesheet" href="/css/railscasts.css?1533269171274">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?1533269171274"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 <div class="head--spacer"></div>
@@ -108,14 +114,15 @@
 </ul>
 <p>第二引数は文字の大きさ、第三引数には <code>g.game</code> を渡します。</p>
 <p>文字列を描画するラベルは以下のコードで生成します。</p>
-<pre><code>var label = new g.Label({
+<pre><code class="lang-javascript">var label = new g.Label({
   scene: scene,
   font: font,
   text: &quot;Hello World!&quot;,
   fontSize: 15,
   textColor: &quot;blue&quot;
 });
-</code></pre><p>ラベル特有のプロパティとして次のものがあります。</p>
+</code></pre>
+<p>ラベル特有のプロパティとして次のものがあります。</p>
 <div class="table--scroll">
 <table>
 <thead>
@@ -184,9 +191,10 @@ module.exports = main;
 そのために文字列を変更した場合は、<code>invalidate()</code>
 メソッドで変更を通知する必要があります。
 以下はラベル <code>label</code> の文字列を書き換える例です。</p>
-<pre><code>label.text = label.text + &quot;*&quot;;
+<pre><code class="lang-javascript">label.text = label.text + &quot;*&quot;;
 label.invalidate();
-</code></pre><p>ラベルでは以下のプロパティを変更した場合に <code>invalidate()</code>
+</code></pre>
+<p>ラベルでは以下のプロパティを変更した場合に <code>invalidate()</code>
 メソッドを呼び出す必要があります。</p>
 <ul>
 <li><code>text</code></li>
@@ -198,7 +206,7 @@ label.invalidate();
 <code>invalidate()</code> は <code>modified()</code> の機能を含んでいるので、
 <code>invalidate()</code> を呼び出した場合は <code>modified()</code> の呼び出しは不要です。</p>
 <p>以下は、500ミリ秒ごとにカウンタの値を増やすプログラム例です。</p>
-<pre><code>function main() {
+<pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({game: g.game});
   scene.loaded.add(function () {
     var font = new g.DynamicFont({
@@ -226,7 +234,8 @@ label.invalidate();
 }
 
 module.exports = main;
-</code></pre><p><img src="/img/tutorial/sample13.gif" alt="sample13"></p>
+</code></pre>
+<p><img src="/img/tutorial/sample13.gif" alt="sample13"></p>
 <h2><a name="クリッピング"></a> クリッピング</h2>
 <p>ペインは <code>E</code> と同じように子要素をまとめるためのエンティティです。ペインを使うことで描画内容のクリッピングを実現できます。
 <code>E</code> と異なり、<code>Pane</code> は子孫要素の描画領域を <code>Pane</code> の大きさに限定します。
@@ -263,7 +272,7 @@ module.exports = main;
 ペインを利用していますが、ペイン自体のプロパティは変更していないので、
 矩形オブジェクトの <code>modified()</code> の呼び出しをしていますが、
 ペイン自体の <code>invalidate()</code> の呼び出しはしていません。</p>
-<pre><code>function main() {
+<pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({game: g.game});
   scene.loaded.add(function () {
     var pane = new g.Pane({scene: scene, width: 50, height: 50});
@@ -287,7 +296,8 @@ module.exports = main;
 }
 
 module.exports = main;
-</code></pre><p><img src="/img/tutorial/sample14.gif" alt="sample14"></p>
+</code></pre>
+<p><img src="/img/tutorial/sample14.gif" alt="sample14"></p>
 <div class="navi-center">
 <a href="./5-audio.html">前（音を鳴らす）</a>
  | <a href="./">目次</a>
