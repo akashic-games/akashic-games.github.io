@@ -1,7 +1,7 @@
-var Global = require("Global");
-var math = require("Math");
-var EntityType = require("EntityType");
-var Particle = require("Particle");
+var Global = require("./Global");
+var math = require("./Math");
+var EntityType = require("./EntityType");
+var Particle = require("./Particle");
 
 var game = g.game;
 

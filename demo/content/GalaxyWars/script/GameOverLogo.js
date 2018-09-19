@@ -1,5 +1,5 @@
-var Global = require("Global");
-var math = require("Math");
+var Global = require("./Global");
+var math = require("./Math");
 
 var game = g.game;
 

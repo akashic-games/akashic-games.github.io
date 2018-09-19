@@ -1,9 +1,9 @@
-var Global = require("Global");
-var math = require("Math");
-var EntityType = require("EntityType");
-var createTitleScene = require("titleScene");
-var GameCore = require("GameCore");
-var GameOverLogo = require("GameOverLogo");
+var Global = require("./Global");
+var math = require("./Math");
+var EntityType = require("./EntityType");
+var createTitleScene = require("./titleScene");
+var GameCore = require("./GameCore");
+var GameOverLogo = require("./GameOverLogo");
 
 var game = g.game;
 
@@ -13,28 +13,28 @@ var game = g.game;
 function createGameScene() {
     var scene = new g.Scene({ game: game });
 
-    scene.loaded.handle(function() {
+    scene.loaded.add(function() {
 
         Global.gameCore = new GameCore(scene);
 
         // player input
         var clicked = false;
-        scene.pointDownCapture.handle(function() {
+        scene.pointDownCapture.add(function() {
             clicked = true;
         });
-        scene.pointMoveCapture.handle(function(ev) {
+        scene.pointMoveCapture.add(function(ev) {
             if (! clicked) {
-                return
+                return;
             }
             Global.gameCore.player.move(ev.prevDelta.x, ev.prevDelta.y);
         });
-        scene.pointUpCapture.handle(function() {
+        scene.pointUpCapture.add(function() {
             clicked = false;
         });
 
         // game loop
         var showResultUI = false;
-        scene.update.handle(function() {
+        scene.update.add(function() {
             Global.gameCore.update();
 
             if (!showResultUI && Global.gameCore.player.hp <= 0) {
@@ -42,7 +42,7 @@ function createGameScene() {
                 scene.pointMoveCapture.removeAll();
                 scene.pointUpCapture.removeAll();
 
-                scene.setTimeout(1000, function() {
+                scene.setTimeout(function() {
                     var logoEntity = new GameOverLogo();
                     Global.gameCore.entities.push(logoEntity);
 
@@ -56,26 +56,26 @@ function createGameScene() {
                         touchable: true
                     });
 
-                    returnBtn.pointDown.handle(function() {
+                    returnBtn.pointDown.add(function() {
                         returnBtn.x += 4;
                         returnBtn.y += 4;
                         returnBtn.modified();
                     });
 
-                    returnBtn.pointUp.handle(function() {
+                    returnBtn.pointUp.add(function() {
                         returnBtn.x -= 4;
                         returnBtn.y -= 4;
                         returnBtn.touchable = false;
                         returnBtn.modified();
                         logoEntity.playBackwards()
-                        scene.setTimeout(logoEntity.cntr / game.fps * 1000 + 500, function() {
-                            var createTitleScene = require("titleScene"); // requireの循環参照回避
+                        scene.setTimeout(function() {
+                            var createTitleScene = require("./titleScene"); // requireの循環参照回避
                             game.replaceScene(createTitleScene());
-                        });
+                        }, logoEntity.cntr / game.fps * 1000 + 500);
                     });
 
                     scene.append(returnBtn);
-                });
+                }, 1000);
                 showResultUI = true;
             }
         });

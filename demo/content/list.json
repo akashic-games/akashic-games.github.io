@@ -27,7 +27,7 @@
 		},
 		{
 			"caption": "タイル",
-			"description": "[g.Tile](https://akashic-games.github.io/reference/akashic-engine-v1/classes/_lib_main_d_.g.tile.html)でタイルチップを並べて描画することができます。画面をクリック(タップ)するとスクロールを開始／停止します。\n\nこのサンプルで使用している素材は[素材ページ](https://akashic-games.github.io/asset/material.html#TILE)で公開・配布しています。",
+			"description": "拡張ライブラリ[akashic-tile](https://github.com/akashic-games/akashic-tile)でタイルチップを並べて描画することができます。画面をクリック(タップ)するとスクロールを開始／停止します。\n\nこのサンプルで使用している素材は[素材ページ](https://akashic-games.github.io/asset/material.html#TILE)で公開・配布しています。",
 			"dir": "demo-tile"
 		},
 		{

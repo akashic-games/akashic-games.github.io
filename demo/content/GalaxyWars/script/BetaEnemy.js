@@ -1,9 +1,9 @@
-var Global = require("Global");
-var math = require("Math");
-var EntityType = require("EntityType");
-var ItemType = require("ItemType");
-var Bullet = require("Bullet");
-var Enemy = require("Enemy");
+var Global = require("./Global");
+var math = require("./Math");
+var EntityType = require("./EntityType");
+var ItemType = require("./ItemType");
+var Bullet = require("./Bullet");
+var Enemy = require("./Enemy");
 
 var game = g.game;
 

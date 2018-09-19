@@ -15,5 +15,8 @@
 			"height": 200,
 			"path": "image/explosion.png"
 		}
+	},
+	"environment": {
+		"sandbox-runtime": "2"
 	}
 }

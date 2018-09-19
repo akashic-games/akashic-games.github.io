@@ -305,5 +305,8 @@
 			"type": "text",
 			"path": "text/version.txt"
 		}
+	},
+	"environment": {
+		"sandbox-runtime": "2"
 	}
 }
