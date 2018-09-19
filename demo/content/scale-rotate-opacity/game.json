@@ -15,5 +15,8 @@
 			"height": 53,
 			"path": "image/player.png"
 		}
+	},
+	"environment": {
+		"sandbox-runtime": "2"
 	}
 }

@@ -1,3 +1,5 @@
+var Tile = require("@akashic-extension/akashic-tile").Tile;
+
 var game = g.game;
 
 // タイルの幅
@@ -128,7 +130,7 @@ function createTitleUI(scene) {
         src: scene.assets["title"],
         x: 128, y: titlePosY
     });
-    scene.update.handle(function() {
+    scene.update.add(function() {
         title.y = titlePosY - 24 * Math.abs(Math.sin(10 * globalCntr / 180 * Math.PI));
         title.modified();
     });
@@ -140,20 +142,20 @@ function createTitleUI(scene) {
         x: 192, y: 272,
         touchable: true
     });
-    startBtn.pointDown.handle(function() {
+    startBtn.pointDown.add(function() {
         startBtn.x += 4;
         startBtn.y += 4;
         startBtn.modified();
     });
-    startBtn.pointUp.handle(function() {
+    startBtn.pointUp.add(function() {
         startBtn.x -= 4;
         startBtn.y -= 4;
         startBtn.touchable = false;
         startBtn.modified();
-        scene.setTimeout(100, function() {
+        scene.setTimeout(function() {
             gameCore.start();
             root.destroy();
-        });
+        }, 100);
     });
     root.append(startBtn);
 
@@ -173,22 +175,22 @@ function createResultUI(scene) {
         touchable: true
     });
 
-    backBtn.pointDown.handle(function() {
+    backBtn.pointDown.add(function() {
         backBtn.x += 4;
         backBtn.y += 4;
         backBtn.modified();
     });
 
-    backBtn.pointUp.handle(function() {
+    backBtn.pointUp.add(function() {
         backBtn.x -= 4;
         backBtn.y -= 4;
         backBtn.touchable = false;
         backBtn.modified();
-        scene.setTimeout(100, function() {
+        scene.setTimeout(function() {
             gameCore.reset();
             root.destroy();
             scene.append(createTitleUI(scene));
-        });
+        }, 100);
     });
 
     var amp = game.width / 2;
@@ -200,7 +202,7 @@ function createResultUI(scene) {
         scaleX: 1 + scaleAdd,
         scaleY: 1 + scaleAdd
     });
-    gameover.update.handle(function() {
+    gameover.update.add(function() {
         amp *= -0.85;
         scaleAdd *= 0.85;
         if (Math.abs(amp) < 1) {
@@ -244,7 +246,7 @@ module.exports = function() {
         "version"
     ]});
 
-    scene.loaded.handle(function() {
+    scene.loaded.add(function() {
         var hiScore = 0;
 
         gameCore = new GameCore(
@@ -262,7 +264,7 @@ module.exports = function() {
             src: scene.assets["background"]
         }));
 
-        var tile = new g.Tile({
+        var tile = new Tile({
             scene: scene,
             src: scene.assets["map"],
             tileWidth: TILE_WIDTH,
@@ -316,7 +318,7 @@ module.exports = function() {
 
         scene.append(createTitleUI(scene));
 
-        scene.update.handle(function() {
+        scene.update.add(function() {
             var prevState = gameCore.state;
             globalCntr++;
 
@@ -353,7 +355,7 @@ module.exports = function() {
             }
         });
 
-        scene.pointDownCapture.handle(function() {
+        scene.pointDownCapture.add(function() {
             if (gameCore.state === "playing") {
                 gameCore.touched = true;
             }

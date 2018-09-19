@@ -3,7 +3,7 @@ function main(param) {
 		game: g.game,
 		assetIds: ["explosion"]
 	});
-	scene.loaded.handle(function() {
+	scene.loaded.add(function() {
 		// 背景を黒で塗りつぶす矩形を生成
 		var background = new g.FilledRect({
 			scene: scene,
@@ -22,7 +22,7 @@ function main(param) {
 		});
 
 		// シーン内でポイント押下イベントが生じた時
-		scene.pointDownCapture.handle(function (ev) {
+		scene.pointDownCapture.add(function (ev) {
 			// 爆発アニメーションのスプライトを生成する
 			var sp = new g.FrameSprite({
 				scene: scene,
@@ -47,7 +47,7 @@ function main(param) {
 				compositeOperation: g.CompositeOperation.Lighter
 			});
 
-			sp.update.handle(function () {
+			sp.update.add(function () {
 				// アニメーションが終わった時点で破棄する
 				if (sp.frameNumber === sp.frames.length - 1)
 					sp.destroy();

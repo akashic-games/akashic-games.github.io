@@ -1,10 +1,11 @@
 var killedEnemy = 0;
+
 function main() {
 	let scene = new g.Scene({game: g.game});
-	scene.loaded.handle(function() {
+	scene.loaded.add(function() {
 		makeEnemy(scene);
 	});
-	scene.pointDownCapture.handle(function(event) {
+	scene.pointDownCapture.add(function(event) {
 		var point = event.point;
 		if (event.target) {
 			point.x += event.target.x;
@@ -12,10 +13,10 @@ function main() {
 		}
 		makeShot(scene, point);
 	});
-	scene.update.handle(function() {
+	scene.update.add(function () {
 		if (killedEnemy === 36) {
 			gameOver(scene);
-			return true;  // trueを返すとhandleが解除されます。
+			return true; // trueを返すと(`scene.update` から)この関数の登録が解除されます。
 		}
 	});
 	g.game.pushScene(scene);
@@ -34,7 +35,7 @@ function makeEnemy(scene) {
 				x: i * (16 + 4) + 64,
 				y: j * (16 + 4) + 30
 			});
-			movingEnemy.update.handle(movingEnemy, function() { // handle(obj, func)の形式で呼び出すと、objがfunc呼び出しの際thisとして扱われます。
+			movingEnemy.update.add(function() { // add(func, obj)の形式で呼び出すと、objがfunc呼び出しの際thisとして扱われます。
 				if (scene.game.age % scene.game.fps === 0) {
 					var tick = Math.round(scene.game.age / scene.game.fps) % 4;
 					if (tick === 0 || tick === 1) {
@@ -44,7 +45,7 @@ function makeEnemy(scene) {
 					}
 					this.modified();
 				}
-			});
+			}, movingEnemy);
 			scene.append(movingEnemy);
 		}
 	}
@@ -71,13 +72,19 @@ function makeShot(scene, point) {
 		y: point.y
 	});
 
-	shot.update.handle(function() {
+	shot.update.add(function () {
 		shot.y -= 10;
-		if (shot.y < 0) shot.destroy();
+		if (shot.y < 0 || killedEnemy === 36) {
+			shot.destroy();
+			shot.modified();
+			return;
+		}
 		var collisionTarget;
 		scene.children.forEach(function(entity) {
-			if (shot === entity) return;
-			if (g.Collision.intersectAreas(shot, entity)) collisionTarget = entity;
+			if (shot === entity)
+				return;
+			if (g.Collision.intersectAreas(shot, entity))
+				collisionTarget = entity;
 		});
 		if (!!collisionTarget) {
 			shot.destroy();
@@ -90,8 +97,12 @@ function makeShot(scene, point) {
 }
 
 function gameOver(scene) {
-	var dfont = new g.DynamicFont(g.FontFamily.Serif, 80, scene.game, {});
-	label = new g.Label({
+	var dfont = new g.DynamicFont({
+		fontFamily: g.FontFamily.Serif,
+		size: 80,
+		game: scene.game
+	});
+	var label = new g.Label({
 		scene: scene,
 		text: "GAME OVER",
 		font: dfont,
@@ -99,9 +110,10 @@ function gameOver(scene) {
 	});
 	label.x = scene.game.width / 2 - label.width / 2;
 	label.y = 0;
-	label.update.handle(label, function() {
-		if (this.y < scene.game.height / 2 - this.height / 2) this.y += 2;
+	label.update.add(function() {
+		if (this.y < scene.game.height / 2 - this.height / 2)
+			this.y += 2;
 		this.invalidate();
-	});
+	}, label);
 	scene.append(label);
 }

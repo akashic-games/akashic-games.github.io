@@ -1,5 +1,5 @@
-var Global = require("Global");
-var createBootScene = require("bootScene");
+var Global = require("./Global");
+var createBootScene = require("./bootScene");
 
 //
 // エントリーポイント
