@@ -1,4 +1,4 @@
-var createTitleScene = require("titleScene");
+var createTitleScene = require("./titleScene");
 
 var game = g.game;
 
@@ -35,9 +35,9 @@ Logo.prototype.__update = function() {
             this.seg++;
         }
     } else if (this.seg === 2) {
-        this.scene.setTimeout(2000, function() {
+        this.scene.setTimeout(function() {
             game.replaceScene(createTitleScene());
-        });
+        }, 2000);
         this.seg++;
     }
 
@@ -102,7 +102,7 @@ Logo.prototype.destroy = function() {
 function createBootScene() {
     var scene = new g.Scene({ game: game });
 
-    scene.loaded.handle(function() {
+    scene.loaded.add(function() {
         var asset = game.assets["akashic"]
         var logo = new Logo({
             scene: scene,
@@ -110,7 +110,7 @@ function createBootScene() {
             width: asset.width,
             height: asset.height
         });
-        logo.update.handle(function() {
+        logo.update.add(function() {
             logo.modified();
         });
         scene.append(logo);

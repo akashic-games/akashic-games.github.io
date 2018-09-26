@@ -11,12 +11,22 @@
 	width:512px; height:384px;
 	background:#1F2F36;
 	}
+.asset--head--demo.demo--full {
+	float:none;
+	width:auto; height:auto;
+	background:transparent;
+	}
 .asset--head--demo div { overflow: hidden;}
 .asset-demo-frame { width:100%; height:100%;}
 .asset--head--info {/* 説明 */
 	float:right;
 	width:416px; height:384px;
 	color:#FFF;
+	}
+.asset--head--info.demo--full {
+	float:none;
+	width:auto; height:auto;
+	padding:16px 0;
 	}
 .asset--head--info h1,
 .asset--head--info p { padding:16px;}

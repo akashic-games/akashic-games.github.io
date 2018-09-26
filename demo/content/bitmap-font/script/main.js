@@ -6,7 +6,7 @@ function main(param) {
 			"mplus1c_regular_jis1_glyph"
 		]
 	});
-	scene.loaded.handle(function() {
+	scene.loaded.add(function() {
 		// 背景の黒
 		var bg = new g.FilledRect({
 			scene: scene,
@@ -71,7 +71,7 @@ function main(param) {
 		[label1, label2, label3].forEach(function (l) {
 			var flag = false;
 			l.touchable = true; // ポイントイベントを受け取るよう指定
-			l.pointUp.handle(function () {
+			l.pointUp.add(function () {
 				flag = !flag;
 				if (flag) {
 					l.fontSize = 25;

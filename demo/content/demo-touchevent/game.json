@@ -14,5 +14,8 @@
 			"height": 48,
 			"path": "image/switch.png"
 		}
+	},
+	"environment": {
+		"sandbox-runtime": "2"
 	}
 }

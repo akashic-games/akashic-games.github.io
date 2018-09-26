@@ -9,5 +9,8 @@
 			"path": "script/main.js",
 			"global": true
 		}
+	},
+	"environment": {
+		"sandbox-runtime": "2"
 	}
 }

@@ -47,13 +47,6 @@ var g;
      */
     var ExceptionFactory;
     (function (ExceptionFactory) {
-        function createPureVirtualError(methodName, cause) {
-            var e = new Error(methodName + " has no implementation.");
-            e.name = "PureVirtualError";
-            e.cause = cause;
-            return e;
-        }
-        ExceptionFactory.createPureVirtualError = createPureVirtualError;
         function createAssertionError(message, cause) {
             var e = new Error(message);
             e.name = "AssertionError";
@@ -113,50 +106,6 @@ var g;
     var ResourceFactory = (function () {
         function ResourceFactory() {
         }
-        ResourceFactory.prototype.createImageAsset = function (id, assetPath, width, height) {
-            throw g.ExceptionFactory.createPureVirtualError("ResourceFactory#createImageAsset");
-        };
-        ResourceFactory.prototype.createVideoAsset = function (id, assetPath, width, height, system, loop, useRealSize) {
-            throw g.ExceptionFactory.createPureVirtualError("ResourceFactory#createVideoAsset");
-        };
-        ResourceFactory.prototype.createAudioAsset = function (id, assetPath, duration, system, loop, hint) {
-            throw g.ExceptionFactory.createPureVirtualError("ResourceFactory#createAudioAsset");
-        };
-        ResourceFactory.prototype.createTextAsset = function (id, assetPath) {
-            throw g.ExceptionFactory.createPureVirtualError("ResourceFactory#createTextAsset");
-        };
-        ResourceFactory.prototype.createAudioPlayer = function (system) {
-            throw g.ExceptionFactory.createPureVirtualError("ResourceFactory#createAudioPlayer");
-        };
-        ResourceFactory.prototype.createScriptAsset = function (id, assetPath) {
-            throw g.ExceptionFactory.createPureVirtualError("ResourceFactory#createScriptAsset");
-        };
-        /**
-         * Surface を作成する。
-         * 与えられたサイズで、ゲーム開発者が利用できる描画領域 (`Surface`) を作成して返す。
-         * 作成された直後のSurfaceは `Renderer#clear` 後の状態と同様であることが保証される。
-         * @param width 幅(ピクセル、整数値)
-         * @param height 高さ(ピクセル、整数値)
-         */
-        ResourceFactory.prototype.createSurface = function (width, height) {
-            throw g.ExceptionFactory.createPureVirtualError("ResourceFactory#createSurface");
-        };
-        /**
-         * GlyphFactory を作成する。
-         *
-         * @param fontFamily フォントファミリ。g.FontFamilyの定義する定数、フォント名、またはそれらの配列で指定する。
-         * @param fontSize フォントサイズ
-         * @param baselineHeight 描画原点からベースラインまでの距離。生成する `g.Glyph` は
-         *                       描画原点からこの値分下がったところにベースラインがあるかのように描かれる。省略された場合、 `fontSize` と同じ値として扱われる
-         * @param fontColor フォントの色。省略された場合、 `"black"` として扱われる
-         * @param strokeWidth ストローク(縁取り線)の幅。省略された場合、 `0` として扱われる
-         * @param strokeColor ストロークの色。省略された場合、 `"black"` として扱われる
-         * @param strokeOnly ストロークのみを描画するか否か。省略された場合、偽として扱われる
-         * @param fontWeight フォントウェイト。省略された場合、 `FontWeight.Normal` として扱われる
-         */
-        ResourceFactory.prototype.createGlyphFactory = function (fontFamily, fontSize, baselineHeight, fontColor, strokeWidth, strokeColor, strokeOnly, fontWeight) {
-            throw g.ExceptionFactory.createPureVirtualError("ResourceFactory#createGlphFactory");
-        };
         ResourceFactory.prototype.createSurfaceAtlas = function (width, height) {
             return new g.SurfaceAtlas(this.createSurface(width, height));
         };
@@ -189,13 +138,8 @@ var g;
     var RandomGenerator = (function () {
         function RandomGenerator(seed) {
             this.seed = seed;
+            this[0] = this;
         }
-        RandomGenerator.prototype.get = function (min, max) {
-            throw g.ExceptionFactory.createPureVirtualError("RandomGenerator#get");
-        };
-        RandomGenerator.prototype.serialize = function () {
-            throw g.ExceptionFactory.createPureVirtualError("RandomGenerator#serialize");
-        };
         return RandomGenerator;
     }());
     g.RandomGenerator = RandomGenerator;
@@ -243,18 +187,6 @@ var g;
             return false;
         };
         /**
-         * アセットの読み込みを行う。
-         *
-         * ゲーム開発者がアセット読み込み失敗時の挙動をカスタマイズする際、読み込みを再試行する場合は、
-         * (このメソッドではなく) `AssetLoadFailureInfo#cancelRetry` に真を代入する必要がある。
-         *
-         * @param loader 読み込み結果の通知を受け取るハンドラ
-         * @private
-         */
-        Asset.prototype._load = function (loader) {
-            throw g.ExceptionFactory.createPureVirtualError("Asset#_load");
-        };
-        /**
          * @private
          */
         Asset.prototype._assetPathFilter = function (path) {
@@ -281,9 +213,6 @@ var g;
             _this.height = height;
             return _this;
         }
-        ImageAsset.prototype.asSurface = function () {
-            throw g.ExceptionFactory.createPureVirtualError("ImageAsset#asSurface");
-        };
         return ImageAsset;
     }(Asset));
     g.ImageAsset = ImageAsset;
@@ -304,18 +233,12 @@ var g;
             _this._useRealSize = useRealSize;
             return _this;
         }
-        VideoAsset.prototype.asSurface = function () {
-            throw g.ExceptionFactory.createPureVirtualError("VideoAsset#asSurface");
-        };
         VideoAsset.prototype.play = function (loop) {
             this.getPlayer().play(this);
             return this.getPlayer();
         };
         VideoAsset.prototype.stop = function () {
             this.getPlayer().stop();
-        };
-        VideoAsset.prototype.getPlayer = function () {
-            throw g.ExceptionFactory.createPureVirtualError("VideoAsset#getPlayer");
         };
         VideoAsset.prototype.destroy = function () {
             this._system = undefined;
@@ -404,9 +327,6 @@ var g;
         function ScriptAsset() {
             return _super !== null && _super.apply(this, arguments) || this;
         }
-        ScriptAsset.prototype.execute = function (execEnv) {
-            throw g.ExceptionFactory.createPureVirtualError("ScriptAsset#execute");
-        };
         ScriptAsset.prototype.destroy = function () {
             this.script = undefined;
             _super.prototype.destroy.call(this);
@@ -707,7 +627,7 @@ var g;
                         asset.destroy();
                     }
                     else {
-                        throw g.ExceptionFactory.createAssertionError("AssetManager#unrefAssets: Unsupported in-use " + asset.constructor.name);
+                        throw g.ExceptionFactory.createAssertionError("AssetManager#unrefAssets: Unsupported in-use " + asset.id);
                     }
                 }
                 else {
@@ -971,7 +891,7 @@ var g;
             if (this._started)
                 return this._module.exports;
             if (currentModule) {
-                // Node.js 互換挙動: Module#parent は一番最初に require() した module になる 
+                // Node.js 互換挙動: Module#parent は一番最初に require() した module になる
                 this._module.parent = currentModule;
                 // Node.js 互換挙動: 親 module の children には自身が実行中の段階で既に追加されている
                 currentModule.children.push(this._module);
@@ -1128,9 +1048,6 @@ var g;
             var x = m[0] * point.x + m[2] * point.y + m[4];
             var y = m[1] * point.x + m[3] * point.y + m[5];
             return { x: x, y: y };
-        };
-        PlainMatrix.prototype.multplyPoint = function (point) {
-            return this.multiplyPoint(point);
         };
         return PlainMatrix;
     }());
@@ -1341,8 +1258,8 @@ var g;
          */
         function setupAnimatingHandler(animatingHandler, surface) {
             if (surface.isDynamic) {
-                surface.animatingStarted.handle(animatingHandler, animatingHandler._onAnimatingStarted);
-                surface.animatingStopped.handle(animatingHandler, animatingHandler._onAnimatingStopped);
+                surface.animatingStarted.add(animatingHandler._onAnimatingStarted, animatingHandler);
+                surface.animatingStopped.add(animatingHandler._onAnimatingStopped, animatingHandler);
                 if (surface.isPlaying()) {
                     animatingHandler._onAnimatingStarted();
                 }
@@ -1361,12 +1278,12 @@ var g;
         function migrateAnimatingHandler(animatingHandler, beforeSurface, afterSurface) {
             animatingHandler._onAnimatingStopped();
             if (!beforeSurface.destroyed() && beforeSurface.isDynamic) {
-                beforeSurface.animatingStarted.remove(animatingHandler, animatingHandler._onAnimatingStarted);
-                beforeSurface.animatingStopped.remove(animatingHandler, animatingHandler._onAnimatingStopped);
+                beforeSurface.animatingStarted.remove(animatingHandler._onAnimatingStarted, animatingHandler);
+                beforeSurface.animatingStopped.remove(animatingHandler._onAnimatingStopped, animatingHandler);
             }
             if (afterSurface.isDynamic) {
-                afterSurface.animatingStarted.handle(animatingHandler, animatingHandler._onAnimatingStarted);
-                afterSurface.animatingStopped.handle(animatingHandler, animatingHandler._onAnimatingStopped);
+                afterSurface.animatingStarted.add(animatingHandler._onAnimatingStarted, animatingHandler);
+                afterSurface.animatingStopped.add(animatingHandler._onAnimatingStopped, animatingHandler);
                 if (afterSurface.isPlaying()) {
                     animatingHandler._onAnimatingStarted();
                 }
@@ -1442,265 +1359,244 @@ var g;
 var g;
 (function (g) {
     /**
-     * 様々なイベントを表すクラス。
-     * Trigger#handleによってイベントをハンドリングする事が出来る。
+     * イベント通知機構クラス。
      */
     var Trigger = (function () {
-        /**
-         * Trigger のインスタンスを生成する。
-         * @param chain チェイン先の `Trigger` 。非 `undefined` であるとき、この `Trigger` は `chain` のfire時にfireされるようになる。省略された場合、 `undefined`
-         */
-        function Trigger(chain) {
-            this.chain = chain;
+        function Trigger() {
             this._handlers = [];
+            this.length = 0;
         }
-        /**
-         * このイベントに対するハンドラを登録する。
-         *
-         * `this.fire()` が呼び出されたとき、その引数を渡して `handler` が呼び出されるようにする。
-         * 引数 `owner` が省略されなかった場合、 `handler` の呼び出し時に `this` として利用される。
-         *
-         * `handler` は `this._handlers` の末尾に加えられる。
-         * 既に登録されたハンドラがある場合、 `handler` はそれらすべての後に呼び出される。
-         * 呼び出された `handler` が真を返した場合、 `handler` の登録は解除される。
-         *
-         * @param owner `handler` の所有者。省略された場合、 `undefined`
-         * @param handler ハンドラ
-         * @param name ハンドラの識別用の名前。省略された場合、 `undefined`
-         */
-        Trigger.prototype.handle = function (owner, handler, name) {
-            if (!this._handlers.length)
-                this._activateChain();
-            if (!handler) {
-                this._handlers.push({ owner: undefined, handler: owner, name: name });
+        Trigger.prototype.add = function (paramsOrFunc, owner) {
+            if (typeof paramsOrFunc === "function") {
+                this._handlers.push({
+                    func: paramsOrFunc,
+                    owner: owner,
+                    once: false,
+                    name: undefined
+                });
             }
             else {
-                this._handlers.push({ owner: owner, handler: handler, name: name });
+                var params = paramsOrFunc;
+                if (typeof params.index === "number") {
+                    this._handlers.splice(params.index, 0, {
+                        func: params.func,
+                        owner: params.owner,
+                        once: false,
+                        name: params.name
+                    });
+                }
+                else {
+                    this._handlers.push({
+                        func: params.func,
+                        owner: params.owner,
+                        once: false,
+                        name: params.name
+                    });
+                }
             }
+            this.length = this._handlers.length;
         };
-        /**
-         * この `Trigger` を破棄する。
-         * 登録されたハンドラは呼び出されなくなる。
-         */
-        Trigger.prototype.destroy = function () {
-            this._deactivateChain();
-            this.chain = undefined;
-            this._handlers = undefined;
-        };
-        /**
-         * この `Trigger` が破棄済みであるかどうかを返す。
-         */
-        Trigger.prototype.destroyed = function () {
-            return this._handlers === undefined;
-        };
-        /**
-         * この `Trigger` に対して登録されているハンドラがあるかどうかを返す。
-         */
-        Trigger.prototype.hasHandler = function () {
-            return this._handlers && this._handlers.length > 0;
-        };
-        /**
-         * このイベントに対するハンドラを、挿入位置を指定して登録する。
-         *
-         * 第一引数に `index` をとる点を除き、 `handle()` と同じ動作を行う。
-         * `handler` は登録済みのハンドラの配列 `this._handlers` の `index` 番目に挿入される。
-         * (ex. `index` に `0` を指定した場合、 `handler` は既に登録された他のどのハンドラより先に呼び出される)
-         *
-         * @param index ハンドラの挿入箇所
-         * @param owner `handler` の所有者。省略された場合、 `undefined`
-         * @param  name ハンドラの識別用の名前。省略された場合、 `undefined`
-         */
-        Trigger.prototype.handleInsert = function (index, owner, handler, name) {
-            if (!this._handlers.length)
-                this._activateChain();
-            if (!handler) {
-                this._handlers.splice(index, 0, { owner: undefined, handler: owner, name: name });
+        Trigger.prototype.addOnce = function (paramsOrFunc, owner) {
+            if (typeof paramsOrFunc === "function") {
+                this._handlers.push({
+                    func: paramsOrFunc,
+                    owner: owner,
+                    once: true,
+                    name: undefined
+                });
             }
             else {
-                this._handlers.splice(index, 0, { owner: owner, handler: handler, name: name });
+                var params = paramsOrFunc;
+                if (typeof params.index === "number") {
+                    this._handlers.splice(params.index, 0, {
+                        func: params.func,
+                        owner: params.owner,
+                        once: true,
+                        name: params.name
+                    });
+                }
+                else {
+                    this._handlers.push({
+                        func: params.func,
+                        owner: params.owner,
+                        once: true,
+                        name: params.name
+                    });
+                }
             }
+            this.length = this._handlers.length;
         };
         /**
-         * 対象の所有者で登録されたハンドラの登録をすべて解除する。
-         *
-         * 引数 `owner` と同じ所有者で登録されたすべてのハンドラの登録を解除する。
-         * @param owner ハンドラの所有者
+         * このTriggerにハンドラを追加する。
+         * @deprecated 互換性のために残されている。代わりに `add()` を利用すべきである。実装の変化のため、 `func` が `boolean` を返した時の動作はサポートされていない。
          */
-        Trigger.prototype.removeAll = function (owner) {
-            var handlers = [];
-            var tmp;
-            while (tmp = this._handlers.shift())
-                if (tmp.owner !== owner)
-                    handlers.push(tmp);
-            this._handlers = handlers;
+        Trigger.prototype.handle = function (owner, func, name) {
+            this.add(func ? { owner: owner, func: func, name: name } : { func: owner });
+        };
+        /**
+         * このTriggerを発火する。
+         *
+         * 登録された全ハンドラの関数を、引数 `arg` を与えて呼び出す。
+         * 呼び出し後、次のいずれかの条件を満たす全ハンドラの登録は解除される。
+         * * ハンドラが `addOnce()` で登録されていた場合
+         * * ハンドラが `add()` で登録される際に `once: true` オプションが与えられていた場合
+         * * 関数がtruthyな値を返した場合
+         *
+         * @param arg ハンドラに与えられる引数
+         */
+        Trigger.prototype.fire = function (arg) {
             if (!this._handlers.length)
-                this._deactivateChain();
-        };
-        /**
-         * 対象のハンドラの登録をすべて解除する。
-         *
-         * @param handler 解除するハンドラ
-         */
-        Trigger.prototype.removeAllByHandler = function (handler) {
-            var handlers = [];
-            var tmp;
-            while (tmp = this._handlers.shift())
-                if (tmp.handler !== handler)
-                    handlers.push(tmp);
-            this._handlers = handlers;
-            if (!this._handlers.length)
-                this._deactivateChain();
-        };
-        /**
-         * 対象の所有者のハンドラ登録を解除する。
-         *
-         * 引数 `owner` と同じ所有者、 `handler` と同じ関数で登録されたハンドラの登録を解除する。
-         * @param owner ハンドラの所有者。省略された場合、 `undefined`
-         * @param handler 解除するハンドラ
-         */
-        Trigger.prototype.remove = function (owner, handler) {
-            var handlers = [];
-            if (!handler) {
-                handler = owner;
-                owner = undefined;
+                return;
+            var handlers = this._handlers.concat();
+            for (var i = 0; i < handlers.length; i++) {
+                var handler = handlers[i];
+                if (handler.func.call(handler.owner, arg) || handler.once) {
+                    var index = this._handlers.indexOf(handler);
+                    if (index !== -1)
+                        this._handlers.splice(index, 1);
+                }
             }
-            for (var i = 0; i < this._handlers.length; ++i) {
-                var tmp = this._handlers[i];
-                if (tmp.handler !== handler || tmp.owner !== owner)
-                    handlers.push(tmp);
-            }
-            this._handlers = handlers;
-            if (!this._handlers.length)
-                this._deactivateChain();
+            if (this._handlers)
+                this.length = this._handlers.length;
         };
-        /**
-         * 対象の識別用の名前を持ったハンドラ登録を解除する。
-         *
-         * 引数 `name` と同じ識別で登録されたハンドラの登録を解除する。
-         * @param name 解除するハンドラの識別用の名前
-         */
-        Trigger.prototype.removeByName = function (name) {
-            var handlers = [];
-            for (var i = 0; i < this._handlers.length; ++i) {
-                var tmp = this._handlers[i];
-                if (tmp.name !== name)
-                    handlers.push(tmp);
-            }
-            this._handlers = handlers;
-            if (!this._handlers.length)
-                this._deactivateChain();
-        };
-        /**
-         * 対象のハンドラが登録されているかを返す。
-         *
-         * 引数 `owner` と同じ所有者、 `handler` と同じ関数で登録されたハンドラが存在すれば真、でなければ偽を返す。
-         * @param owner ハンドラの所有者。省略された場合、 `undefined`
-         * @param handler ハンドラ
-         */
-        Trigger.prototype.isHandled = function (owner, handler) {
-            if (!handler) {
-                handler = owner;
-                owner = undefined;
-            }
-            for (var i = 0; i < this._handlers.length; ++i) {
-                if (this._handlers[i].owner === owner && this._handlers[i].handler === handler)
+        Trigger.prototype.contains = function (paramsOrFunc, owner) {
+            var condition = typeof paramsOrFunc === "function" ? { func: paramsOrFunc, owner: owner } : paramsOrFunc;
+            for (var i = 0; i < this._handlers.length; i++) {
+                if (this._comparePartial(condition, this._handlers[i])) {
                     return true;
+                }
             }
             return false;
         };
-        /**
-         * このイベントを発火する。
-         *
-         * 登録された各ハンドラを呼び出す。各ハンドラが真を返した場合、そのハンドラの登録を解除する。
-         * @param param 登録された各ハンドラの呼び出し時に引数として渡される値。省略された場合、 `undefined`
-         */
-        Trigger.prototype.fire = function (param) {
-            if (!this._handlers || !this._handlers.length)
-                return;
-            var handlers = this._handlers.concat(); // clone
-            for (var i = 0; i < handlers.length; ++i) {
-                var handler = handlers[i];
-                if (handler.handler.call(handler.owner, param))
-                    this._remove(handler);
+        Trigger.prototype.remove = function (paramsOrFunc, owner) {
+            var condition = typeof paramsOrFunc === "function" ? { func: paramsOrFunc, owner: owner } : paramsOrFunc;
+            for (var i = 0; i < this._handlers.length; i++) {
+                var handler = this._handlers[i];
+                if (condition.func === handler.func && condition.owner === handler.owner && condition.name === handler.name) {
+                    this._handlers.splice(i, 1);
+                    --this.length;
+                    return;
+                }
             }
         };
         /**
-         * @private
+         * 指定した条件に部分一致するイベントハンドラを削除する。
+         *
+         * 本メソッドは引数に与えた条件に一致したイベントハンドラを全て削除する。
+         * 引数の条件を一部省略した場合、その値の内容が登録時と異なっていても対象のイベントハンドラは削除される。
+         * 引数に与えた条件と完全に一致したイベントハンドラのみを削除したい場合は `this.remove()` を用いる。
+         * 引数を省略した場合は全てのイベントハンドラを削除する。
+         *
+         * @param params 削除するイベントハンドラの条件
          */
-        Trigger.prototype._reset = function () {
-            this._handlers = [];
-            this._deactivateChain();
+        Trigger.prototype.removeAll = function (params) {
+            var handlers = [];
+            if (params) {
+                for (var i = 0; i < this._handlers.length; i++) {
+                    var handler = this._handlers[i];
+                    if (!this._comparePartial(params, handler)) {
+                        handlers.push(handler);
+                    }
+                }
+            }
+            this._handlers = handlers;
+            this.length = this._handlers.length;
+        };
+        /**
+         * このTriggerを破棄する。
+         */
+        Trigger.prototype.destroy = function () {
+            this._handlers = null;
+            this.length = null;
+        };
+        /**
+         * このTriggerが破棄されているかを返す。
+         */
+        Trigger.prototype.destroyed = function () {
+            return this._handlers === null;
         };
         /**
          * @private
          */
-        Trigger.prototype._activateChain = function () {
-            if (!this.chain)
-                return;
-            if (this.chain.isHandled(this, this._onChainFire))
-                return;
-            this.chain.handle(this, this._onChainFire);
-        };
-        /**
-         * @private
-         */
-        Trigger.prototype._deactivateChain = function () {
-            if (!this.chain)
-                return;
-            if (!this.chain.isHandled(this, this._onChainFire))
-                return;
-            this.chain.remove(this, this._onChainFire);
-        };
-        /**
-         * @private
-         */
-        Trigger.prototype._remove = function (handler) {
-            var index = this._handlers.indexOf(handler);
-            if (index === -1)
-                return;
-            this._handlers.splice(index, 1);
-            if (!this._handlers.length)
-                this._deactivateChain();
-        };
-        /**
-         * @private
-         */
-        Trigger.prototype._onChainFire = function (e) {
-            this.fire(e);
+        Trigger.prototype._comparePartial = function (target, compare) {
+            if (target.func !== undefined && target.func !== compare.func)
+                return false;
+            if (target.owner !== undefined && target.owner !== compare.owner)
+                return false;
+            if (target.name !== undefined && target.name !== compare.name)
+                return false;
+            return true;
         };
         return Trigger;
     }());
     g.Trigger = Trigger;
     /**
-     * チェイン条件を指定出来るTrigger。
+     * 他のTriggerに反応して発火するイベント通知機構。
      */
-    var ConditionalChainTrigger = (function (_super) {
-        __extends(ConditionalChainTrigger, _super);
+    var ChainTrigger = (function (_super) {
+        __extends(ChainTrigger, _super);
         /**
-         * `ConditionalChainTrigger` のインスタンスを生成する。
+         * `ChainTrigger` のインスタンスを生成する。
          *
-         * この Trigger は `chain` がfireされたとき、与えられた引数で `filterOwner` を `this` として `filter` を呼び出す。 `filter` が真を返したときのみ 自身をfireする。
-         * @param chain チェイン先のTrigger
-         * @param filterOwner `filter` 呼び出し時に `this` として使われる値。省略された場合、 `undefined`
-         * @param filter チェインの条件を表す関数
+         * このインスタンスは、 `chain` がfireされたときに `filter` を実行し、真を返した場合に自身をfireする。
+         * @param chain このインスタンスがfireするきっかけとなる Trigger
+         * @param filter `chain` がfireされたときに実行される関数。省略された場合、または本関数の戻り値が真の場合、このインスタンスをfireする。
+         * @param filterOwner `filter` 呼び出し時に使われる `this` の値。
          */
-        function ConditionalChainTrigger(chain, filterOwner, filter) {
-            var _this = _super.call(this, chain) || this;
-            _this.filterOwner = filterOwner;
+        function ChainTrigger(chain, filter, filterOwner) {
+            var _this = _super.call(this) || this;
+            _this.chain = chain;
             _this.filter = filter;
+            _this.filterOwner = filterOwner;
+            _this._isActivated = false;
             return _this;
         }
+        ChainTrigger.prototype.add = function (paramsOrHandler, owner) {
+            _super.prototype.add.call(this, paramsOrHandler, owner);
+            if (!this._isActivated) {
+                this.chain.add(this._onChainTriggerFired, this);
+                this._isActivated = true;
+            }
+        };
+        ChainTrigger.prototype.addOnce = function (paramsOrHandler, owner) {
+            _super.prototype.addOnce.call(this, paramsOrHandler, owner);
+            if (!this._isActivated) {
+                this.chain.add(this._onChainTriggerFired, this);
+                this._isActivated = true;
+            }
+        };
+        ChainTrigger.prototype.remove = function (paramsOrFunc, owner) {
+            _super.prototype.remove.call(this, paramsOrFunc, owner);
+            if (this.length === 0 && this._isActivated) {
+                this.chain.remove(this._onChainTriggerFired, this);
+                this._isActivated = false;
+            }
+        };
+        ChainTrigger.prototype.removeAll = function (params) {
+            _super.prototype.removeAll.call(this, params);
+            if (this.length === 0 && this._isActivated) {
+                this.chain.remove(this._onChainTriggerFired, this);
+                this._isActivated = false;
+            }
+        };
+        ChainTrigger.prototype.destroy = function () {
+            _super.prototype.destroy.call(this);
+            this.chain.remove(this._onChainTriggerFired, this);
+            this.filter = null;
+            this.filterOwner = null;
+            this._isActivated = false;
+        };
         /**
          * @private
          */
-        ConditionalChainTrigger.prototype._onChainFire = function (e) {
-            if (this.filter && !this.filter.call(this.filterOwner, e))
-                return;
-            this.fire(e);
+        ChainTrigger.prototype._onChainTriggerFired = function (args) {
+            if (!this.filter || this.filter.call(this.filterOwner, args)) {
+                this.fire(args);
+            }
         };
-        return ConditionalChainTrigger;
+        return ChainTrigger;
     }(Trigger));
-    g.ConditionalChainTrigger = ConditionalChainTrigger;
+    g.ChainTrigger = ChainTrigger;
 })(g || (g = {}));
 var g;
 (function (g) {
@@ -1731,7 +1627,7 @@ var g;
             }
         };
         Timer.prototype.canDelete = function () {
-            return !this.elapsed.hasHandler();
+            return !this.elapsed || this.elapsed.length === 0;
         };
         Timer.prototype.destroy = function () {
             this.interval = undefined;
@@ -1761,10 +1657,10 @@ var g;
             this._handlerOwner = handlerOwner;
             this._fired = fired;
             this._firedOwner = firedOwner;
-            this._timer.elapsed.handle(this, this._fire);
+            this._timer.elapsed.add(this._fire, this);
         }
         TimerIdentifier.prototype.destroy = function () {
-            this._timer.elapsed.remove(this, this._fire);
+            this._timer.elapsed.remove(this._fire, this);
             this._timer = undefined;
             this._handler = undefined;
             this._handlerOwner = undefined;
@@ -1821,7 +1717,7 @@ var g;
          */
         TimerManager.prototype.createTimer = function (interval) {
             if (!this._registered) {
-                this._trigger.handle(this, this._tick);
+                this._trigger.add(this._tick, this);
                 this._registered = true;
             }
             if (interval < 0)
@@ -1858,15 +1754,11 @@ var g;
             if (!this._timers.length) {
                 if (!this._registered)
                     throw g.ExceptionFactory.createAssertionError("TimerManager#deleteTimer: handler is not handled");
-                this._trigger.remove(this, this._tick);
+                this._trigger.remove(this._tick, this);
                 this._registered = false;
             }
         };
-        TimerManager.prototype.setTimeout = function (milliseconds, owner, handler) {
-            if (handler === undefined) {
-                handler = owner;
-                owner = null;
-            }
+        TimerManager.prototype.setTimeout = function (handler, milliseconds, owner) {
             var timer = this.createTimer(milliseconds);
             var identifier = new TimerIdentifier(timer, handler, owner, this._onTimeoutFired, this);
             this._identifiers.push(identifier);
@@ -1875,11 +1767,7 @@ var g;
         TimerManager.prototype.clearTimeout = function (identifier) {
             this._clear(identifier);
         };
-        TimerManager.prototype.setInterval = function (interval, owner, handler) {
-            if (handler === undefined) {
-                handler = owner;
-                owner = null;
-            }
+        TimerManager.prototype.setInterval = function (handler, interval, owner) {
             var timer = this.createTimer(interval);
             var identifier = new TimerIdentifier(timer, handler, owner);
             this._identifiers.push(identifier);
@@ -2076,15 +1964,6 @@ var g;
             enumerable: true,
             configurable: true
         });
-        AudioSystem.prototype.stopAll = function () {
-            throw g.ExceptionFactory.createPureVirtualError("AudioSystem#stopAll");
-        };
-        AudioSystem.prototype.findPlayers = function (asset) {
-            throw g.ExceptionFactory.createPureVirtualError("AudioSystem#findPlayers");
-        };
-        AudioSystem.prototype.createPlayer = function () {
-            throw g.ExceptionFactory.createPureVirtualError("AudioSystem#createPlayer");
-        };
         AudioSystem.prototype.requestDestroy = function (asset) {
             this._destroyRequestedAssets[asset.id] = asset;
         };
@@ -2109,24 +1988,6 @@ var g;
             if (this._playbackRate !== before) {
                 this._onPlaybackRateChanged();
             }
-        };
-        /**
-         * @private
-         */
-        AudioSystem.prototype._onVolumeChanged = function () {
-            throw g.ExceptionFactory.createPureVirtualError("AudioSystem#_onVolumeChanged");
-        };
-        /**
-         * @private
-         */
-        AudioSystem.prototype._onMutedChanged = function () {
-            throw g.ExceptionFactory.createPureVirtualError("AudioSystem#_onMutedChanged");
-        };
-        /**
-         * @private
-         */
-        AudioSystem.prototype._onPlaybackRateChanged = function () {
-            throw g.ExceptionFactory.createPureVirtualError("AudioSystem#_onPlaybackRateChanged");
         };
         return AudioSystem;
     }());
@@ -2296,7 +2157,7 @@ var g;
             var index = this.players.indexOf(e.player);
             if (index < 0)
                 return;
-            e.player.stopped.remove(this, this._onPlayerStopped);
+            e.player.stopped.remove({ owner: this, func: this._onPlayerStopped });
             this.players.splice(index, 1);
             if (this._destroyRequestedAssets[e.audio.id]) {
                 delete this._destroyRequestedAssets[e.audio.id];
@@ -2518,63 +2379,43 @@ var g;
      */
     var E = (function (_super) {
         __extends(E, _super);
-        function E(sceneOrParam) {
-            var _this = this;
-            if (sceneOrParam instanceof g.Scene) {
-                var scene = sceneOrParam;
-                _this = _super.call(this) || this;
-                _this.children = undefined;
-                _this.parent = undefined;
-                _this._touchable = false;
-                _this.state = 0 /* None */;
-                _this._hasTouchableChildren = false;
-                _this._update = undefined;
-                _this._message = undefined;
-                _this._pointDown = undefined;
-                _this._pointMove = undefined;
-                _this._pointUp = undefined;
-                _this._targetCameras = undefined;
-                _this.local = scene.local !== g.LocalTickMode.NonLocal;
-                // set id, scene
-                scene.register(_this);
-                scene.game.logger.debug("[deprecated] E or Subclass of E: This constructor is deprecated. "
-                    + "Refer to the API documentation and use each constructor(param: ParameterObject) instead.");
+        /**
+         * 各種パラメータを指定して `E` のインスタンスを生成する。
+         * @param param 初期化に用いるパラメータのオブジェクト
+         */
+        function E(param) {
+            var _this = _super.call(this, param) || this;
+            _this.children = undefined;
+            _this.parent = undefined;
+            _this._touchable = false;
+            _this.state = 0 /* None */;
+            _this._hasTouchableChildren = false;
+            _this._update = undefined;
+            _this._message = undefined;
+            _this._pointDown = undefined;
+            _this._pointMove = undefined;
+            _this._pointUp = undefined;
+            _this._targetCameras = undefined;
+            _this.tag = param.tag;
+            // local は Scene#register() や this.append() の呼び出しよりも先に立てなければならない
+            // ローカルシーン・ローカルティック補間シーンのエンティティは強制的に local (ローカルティックが来て他プレイヤーとずれる可能性がある)
+            _this.local = (param.scene.local !== g.LocalTickMode.NonLocal) || !!param.local;
+            if (param.children) {
+                for (var i = 0; i < param.children.length; ++i)
+                    _this.append(param.children[i]);
             }
-            else {
-                var param = sceneOrParam;
-                _this = _super.call(this, param) || this;
-                _this.children = undefined;
-                _this.parent = undefined;
-                _this._touchable = false;
-                _this.state = 0 /* None */;
-                _this._hasTouchableChildren = false;
-                _this._update = undefined;
-                _this._message = undefined;
-                _this._pointDown = undefined;
-                _this._pointMove = undefined;
-                _this._pointUp = undefined;
-                _this._targetCameras = undefined;
-                _this.tag = param.tag;
-                // local は Scene#register() や this.append() の呼び出しよりも先に立てなければならない
-                // ローカルシーン・ローカルティック補間シーンのエンティティは強制的に local (ローカルティックが来て他プレイヤーとずれる可能性がある)
-                _this.local = (param.scene.local !== g.LocalTickMode.NonLocal) || !!param.local;
-                if (param.children) {
-                    for (var i = 0; i < param.children.length; ++i)
-                        _this.append(param.children[i]);
-                }
-                if (param.parent) {
-                    param.parent.append(_this);
-                }
-                if (param.targetCameras)
-                    _this.targetCameras = param.targetCameras;
-                if ("touchable" in param)
-                    _this.touchable = param.touchable;
-                if (!!param.hidden)
-                    _this.hide();
-                // set id, scene
-                _this.id = param.id;
-                param.scene.register(_this);
+            if (param.parent) {
+                param.parent.append(_this);
             }
+            if (param.targetCameras)
+                _this.targetCameras = param.targetCameras;
+            if ("touchable" in param)
+                _this.touchable = param.touchable;
+            if (!!param.hidden)
+                _this.hide();
+            // set id, scene
+            _this.id = param.id;
+            param.scene.register(_this);
             return _this;
         }
         Object.defineProperty(E.prototype, "update", {
@@ -2584,7 +2425,7 @@ var g;
             // Eの生成コスト低減を考慮し、参照された時のみ生成出来るようアクセサを使う
             get: function () {
                 if (!this._update)
-                    this._update = new g.Trigger(this.scene.update);
+                    this._update = new g.ChainTrigger(this.scene.update);
                 return this._update;
             },
             enumerable: true,
@@ -2598,7 +2439,7 @@ var g;
             // Eの生成コスト低減を考慮し、参照された時のみ生成出来るようアクセサを使う
             get: function () {
                 if (!this._message)
-                    this._message = new g.Trigger(this.scene.message);
+                    this._message = new g.ChainTrigger(this.scene.message);
                 return this._message;
             },
             enumerable: true,
@@ -2612,7 +2453,7 @@ var g;
             // Eの生成コスト低減を考慮し、参照された時のみ生成出来るようアクセサを使う
             get: function () {
                 if (!this._pointDown)
-                    this._pointDown = new g.ConditionalChainTrigger(this.scene.pointDownCapture, this, this._isTargetOperation);
+                    this._pointDown = new g.ChainTrigger(this.scene.pointDownCapture, this._isTargetOperation, this);
                 return this._pointDown;
             },
             enumerable: true,
@@ -2626,7 +2467,7 @@ var g;
             // Eの生成コスト低減を考慮し、参照された時のみ生成出来るようアクセサを使う
             get: function () {
                 if (!this._pointUp)
-                    this._pointUp = new g.ConditionalChainTrigger(this.scene.pointUpCapture, this, this._isTargetOperation);
+                    this._pointUp = new g.ChainTrigger(this.scene.pointUpCapture, this._isTargetOperation, this);
                 return this._pointUp;
             },
             enumerable: true,
@@ -2640,7 +2481,7 @@ var g;
             // Eの生成コスト低減を考慮し、参照された時のみ生成出来るようアクセサを使う
             get: function () {
                 if (!this._pointMove)
-                    this._pointMove = new g.ConditionalChainTrigger(this.scene.pointMoveCapture, this, this._isTargetOperation);
+                    this._pointMove = new g.ChainTrigger(this.scene.pointMoveCapture, this._isTargetOperation, this);
                 return this._pointMove;
             },
             enumerable: true,
@@ -3102,8 +2943,12 @@ var g;
      */
     var CacheableE = (function (_super) {
         __extends(CacheableE, _super);
-        function CacheableE(sceneOrParam) {
-            var _this = _super.call(this, sceneOrParam) || this;
+        /**
+         * 各種パラメータを指定して `CacheableE` のインスタンスを生成する。
+         * @param param このエンティティに対するパラメータ
+         */
+        function CacheableE(param) {
+            var _this = _super.call(this, param) || this;
             _this._shouldRenderChildren = true;
             _this._cache = undefined;
             _this._renderer = undefined;
@@ -3148,14 +2993,6 @@ var g;
                 renderer.drawImage(this._cache, 0, 0, this.width, this.height, 0, 0);
             }
             return this._shouldRenderChildren;
-        };
-        /**
-         * キャッシュの描画が必要な場合にこのメソッドが呼ばれる。
-         * 本クラスを継承したエンティティはこのメソッド内で`renderer`に対してキャッシュの内容を描画しなければならない。
-         * このメソッドはエンジンから暗黙に呼び出され、ゲーム開発者が呼び出す必要はない。
-         */
-        CacheableE.prototype.renderCache = function (renderer, camera) {
-            throw g.ExceptionFactory.createPureVirtualError("CacheableE#renderCache");
         };
         /**
          * 利用している `Surface` を破棄した上で、このエンティティを破棄する。
@@ -3517,35 +3354,31 @@ var g;
      * シーンを表すクラス。
      */
     var Scene = (function () {
-        function Scene(gameOrParam, assetIds) {
+        /**
+         * 各種パラメータを指定して `Scene` のインスタンスを生成する。
+         * @param param 初期化に用いるパラメータのオブジェクト
+         */
+        function Scene(param) {
             var game;
             var local;
             var tickGenerationMode;
-            if (gameOrParam instanceof g.Game) {
-                game = gameOrParam;
-                local = g.LocalTickMode.NonLocal;
-                tickGenerationMode = g.TickGenerationMode.ByClock;
-                game.logger.debug("[deprecated] Scene:This constructor is deprecated. Refer to the API documentation and use Scene(param: SceneParameterObject) instead.");
+            var assetIds;
+            game = param.game;
+            assetIds = param.assetIds;
+            if (!param.storageKeys) {
+                this._storageLoader = undefined;
+                this.storageValues = undefined;
             }
             else {
-                var param = gameOrParam;
-                game = param.game;
-                assetIds = param.assetIds;
-                if (!param.storageKeys) {
-                    this._storageLoader = undefined;
-                    this.storageValues = undefined;
-                }
-                else {
-                    this._storageLoader = game.storage._createLoader(param.storageKeys, param.storageValuesSerialization);
-                    this.storageValues = this._storageLoader._valueStore;
-                }
-                local = (param.local === undefined) ? g.LocalTickMode.NonLocal
-                    : (param.local === false) ? g.LocalTickMode.NonLocal
-                        : (param.local === true) ? g.LocalTickMode.FullLocal
-                            : param.local;
-                tickGenerationMode = (param.tickGenerationMode !== undefined) ? param.tickGenerationMode : g.TickGenerationMode.ByClock;
-                this.name = param.name;
+                this._storageLoader = game.storage._createLoader(param.storageKeys, param.storageValuesSerialization);
+                this.storageValues = this._storageLoader._valueStore;
             }
+            local = (param.local === undefined) ? g.LocalTickMode.NonLocal
+                : (param.local === false) ? g.LocalTickMode.NonLocal
+                    : (param.local === true) ? g.LocalTickMode.FullLocal
+                        : param.local;
+            tickGenerationMode = (param.tickGenerationMode !== undefined) ? param.tickGenerationMode : g.TickGenerationMode.ByClock;
+            this.name = param.name;
             if (!assetIds)
                 assetIds = [];
             this.game = game;
@@ -3648,7 +3481,7 @@ var g;
          *
          * 戻り値は作成されたTimerである。
          * 通常は `Scene#setInterval` を利用すればよく、ゲーム開発者がこのメソッドを呼び出す必要はない。
-         * 本メソッドが作成するTimerはフレーム経過によって動作する疑似タイマーであるため、実時間の影響は受けない。
+         * `Timer` はフレーム経過処理(`Scene#update`)で実現される疑似的なタイマーである。実時間の影響は受けない。
          * @param interval Timerの実行間隔（ミリ秒）
          */
         Scene.prototype.createTimer = function (interval) {
@@ -3661,20 +3494,14 @@ var g;
         Scene.prototype.deleteTimer = function (timer) {
             this._timer.deleteTimer(timer);
         };
-        /**
-         * 一定間隔で定期的に実行される処理を作成する。
-         *
-         * `interval` ミリ秒おきに `owner` を `this` として `handler` を呼び出す。
-         * 引数 `owner` は省略できるが、 `handler` は省略できない。
-         * 戻り値は `Scene#clearInterval` の引数に指定して定期実行を解除するために使える値である。
-         *
-         * 本定期処理はフレーム経過によって動作する疑似タイマーであるため、実時間の影響は受けない。
-         * @param interval 実行間隔(ミリ秒)
-         * @param owner handlerの所有者。省略された場合、null
-         * @param handler 処理
-         */
-        Scene.prototype.setInterval = function (interval, owner, handler) {
-            return this._timer.setInterval(interval, owner, handler);
+        Scene.prototype.setInterval = function (handler, interval, owner) {
+            var t = this._timer;
+            if (typeof handler === "number") {
+                this.game.logger.warn("[deprecated] Scene#setInterval(): this arguments ordering is now deprecated. Specify the function first.");
+                return (owner != null) ? t.setInterval(owner /* 2 */, handler /* 0 */, interval /* 1 */)
+                    : t.setInterval(interval /* 1 */, handler /* 0 */, null);
+            }
+            return t.setInterval(handler, interval, owner);
         };
         /**
          * setIntervalで作成した定期処理を解除する。
@@ -3683,21 +3510,14 @@ var g;
         Scene.prototype.clearInterval = function (identifier) {
             this._timer.clearInterval(identifier);
         };
-        /**
-         * 一定時間後に一度だけ実行される処理を作成する。
-         *
-         * `milliseconds` ミリ秒後(以降)に、一度だけ `owner` を `this` として `handler` を呼び出す。
-         * 引数 `owner` は省略できるが、 `handler` は省略できない。
-         * 戻り値は `Scene#clearTimeout` の引数に指定して処理を削除するために使える値である。
-         *
-         * 本処理で計算される時間はフレーム経過によって動作する疑似タイマーであるため、実時間の影響は受けない。
-         * 時間の精度はそれほど高くないので、精度の高い処理であればupdateイベントで作成する必要がある。
-         * @param milliseconds 時間(ミリ秒)
-         * @param owner handlerの所有者。省略された場合、null
-         * @param handler 処理
-         */
-        Scene.prototype.setTimeout = function (milliseconds, owner, handler) {
-            return this._timer.setTimeout(milliseconds, owner, handler);
+        Scene.prototype.setTimeout = function (handler, milliseconds, owner) {
+            var t = this._timer;
+            if (typeof handler === "number") {
+                this.game.logger.warn("[deprecated] Scene#setTimeout(): this arguments ordering is now deprecated. Specify the function first.");
+                return (owner != null) ? t.setTimeout(owner /* 2 */, handler /* 0 */, milliseconds /* 1 */)
+                    : t.setTimeout(milliseconds /* 1 */, handler /* 0 */, null);
+            }
+            return t.setTimeout(handler, milliseconds, owner);
         };
         /**
          * setTimeoutで作成した処理を削除する。
@@ -4013,7 +3833,7 @@ var g;
             this._clearTargetScene();
             this._targetScene = targetScene;
             if (this._loadingState < g.SceneLoadState.LoadedFired) {
-                this.loaded.handle(this, this._doReset);
+                this.loaded.addOnce(this._doReset, this);
             }
             else {
                 this._doReset();
@@ -4047,8 +3867,8 @@ var g;
         LoadingScene.prototype._clearTargetScene = function () {
             if (!this._targetScene)
                 return;
-            this._targetScene._ready.removeAll(this);
-            this._targetScene.assetLoaded.removeAll(this);
+            this._targetScene._ready.removeAll({ owner: this });
+            this._targetScene.assetLoaded.removeAll({ owner: this });
             this._targetScene = undefined;
         };
         /**
@@ -4057,20 +3877,18 @@ var g;
         LoadingScene.prototype._doReset = function () {
             this.targetReset.fire(this._targetScene);
             if (this._targetScene._loadingState < g.SceneLoadState.ReadyFired) {
-                this._targetScene._ready.handle(this, this._fireTriggerOnTargetReady);
-                this._targetScene.assetLoaded.handle(this, this._fireTriggerOnTargetAssetLoad);
+                this._targetScene._ready.add(this._fireTriggerOnTargetReady, this);
+                this._targetScene.assetLoaded.add(this._fireTriggerOnTargetAssetLoad, this);
                 this._targetScene._load();
             }
             else {
                 this._fireTriggerOnTargetReady(this._targetScene);
             }
-            return true;
         };
         /**
          * @private
          */
         LoadingScene.prototype._fireTriggerOnTargetAssetLoad = function (asset) {
-            this._onTargetAssetLoad(asset);
             this.targetAssetLoaded.fire(asset);
         };
         /**
@@ -4081,19 +3899,6 @@ var g;
             if (!this._explicitEnd) {
                 this.end();
             }
-        };
-        /**
-         * 読み込み待ち対象シーンのアセットが一つ読み込まれる度に呼ばれるコールバック。
-         * 派生クラスが上書きすることができる。このメソッドは後方互換性のために存在する。
-         * (内部メソッド(_で始まる)ではあるが、ローディングシーンをカスタマイズする方法が
-         * なかった当時(akashic-engine@1.1.1以前)、文書上で存在に言及してしまっている)
-         *
-         * 現在はこれの代わりに `targetAssetLoaded` をhandleすること。
-         * @deprecated
-         * @private
-         */
-        LoadingScene.prototype._onTargetAssetLoad = function (asset) {
-            return true;
         };
         return LoadingScene;
     }(g.Scene));
@@ -4228,7 +4033,6 @@ var g;
             }
             this._totalWaitingAssetCount = targetScene._sceneAssetHolder.waitingAssetsCount;
         };
-        // 歴史的経緯により存在する `LoadingScene#_onTargetAssetLoad` をオーバーライドしては *いない* 点に注意。
         /**
          * @private
          */
@@ -4248,39 +4052,25 @@ var g;
      */
     var Sprite = (function (_super) {
         __extends(Sprite, _super);
-        function Sprite(sceneOrParam, src, width, height) {
-            var _this = this;
-            if (sceneOrParam instanceof g.Scene) {
-                var scene = sceneOrParam;
-                _this = _super.call(this, scene) || this;
-                _this.surface = g.Util.asSurface(src);
-                _this.width = (width !== undefined) ? width : _this.surface.width;
-                _this.height = (height !== undefined) ? height : _this.surface.height;
-                _this.srcWidth = _this.width;
-                _this.srcHeight = _this.height;
-                _this.srcX = 0;
-                _this.srcY = 0;
-                _this._stretchMatrix = undefined;
-                _this._beforeSurface = _this.surface;
-                g.Util.setupAnimatingHandler(_this, _this.surface);
-            }
-            else {
-                var param = sceneOrParam;
-                _this = _super.call(this, param) || this;
-                _this.surface = g.Util.asSurface(param.src);
-                if (!("width" in param))
-                    _this.width = _this.surface.width;
-                if (!("height" in param))
-                    _this.height = _this.surface.height;
-                _this.srcWidth = "srcWidth" in param ? param.srcWidth : _this.width;
-                _this.srcHeight = "srcHeight" in param ? param.srcHeight : _this.height;
-                _this.srcX = param.srcX || 0;
-                _this.srcY = param.srcY || 0;
-                _this._stretchMatrix = undefined;
-                _this._beforeSurface = _this.surface;
-                g.Util.setupAnimatingHandler(_this, _this.surface);
-                _this._invalidateSelf();
-            }
+        /**
+         * 各種パラメータを指定して `Sprite` のインスタンスを生成する。
+         * @param param `Sprite` に設定するパラメータ
+         */
+        function Sprite(param) {
+            var _this = _super.call(this, param) || this;
+            _this.surface = g.Util.asSurface(param.src);
+            if (!("width" in param))
+                _this.width = _this.surface.width;
+            if (!("height" in param))
+                _this.height = _this.surface.height;
+            _this.srcWidth = "srcWidth" in param ? param.srcWidth : _this.width;
+            _this.srcHeight = "srcHeight" in param ? param.srcHeight : _this.height;
+            _this.srcX = param.srcX || 0;
+            _this.srcY = param.srcY || 0;
+            _this._stretchMatrix = undefined;
+            _this._beforeSurface = _this.surface;
+            g.Util.setupAnimatingHandler(_this, _this.surface);
+            _this._invalidateSelf();
             return _this;
         }
         /**
@@ -4293,8 +4083,8 @@ var g;
          * @private
          */
         Sprite.prototype._onAnimatingStarted = function () {
-            if (!this.update.isHandled(this, this._onUpdate)) {
-                this.update.handle(this, this._onUpdate);
+            if (!this.update.contains(this._onUpdate, this)) {
+                this.update.add(this._onUpdate, this);
             }
         };
         /**
@@ -4302,7 +4092,7 @@ var g;
          */
         Sprite.prototype._onAnimatingStopped = function () {
             if (!this.destroyed()) {
-                this.update.remove(this, this._onUpdate);
+                this.update.remove(this._onUpdate, this);
             }
         };
         /**
@@ -4341,8 +4131,8 @@ var g;
                     this.surface.destroy();
                 }
                 else if (this.surface.isDynamic) {
-                    this.surface.animatingStarted.remove(this, this._onAnimatingStarted);
-                    this.surface.animatingStopped.remove(this, this._onAnimatingStopped);
+                    this.surface.animatingStarted.remove(this._onAnimatingStarted, this);
+                    this.surface.animatingStopped.remove(this._onAnimatingStopped, this);
                 }
             }
             this.surface = undefined;
@@ -4382,27 +4172,18 @@ var g;
      */
     var FrameSprite = (function (_super) {
         __extends(FrameSprite, _super);
-        function FrameSprite(sceneOrParam, src, width, height) {
-            var _this = this;
-            if (sceneOrParam instanceof g.Scene) {
-                var scene = sceneOrParam;
-                _this = _super.call(this, scene, src, width, height) || this;
-                _this._lastUsedIndex = 0;
-                _this.frameNumber = 0;
-                _this.frames = [0];
-                _this.interval = undefined;
-                _this._timer = undefined;
-            }
-            else {
-                var param = sceneOrParam;
-                _this = _super.call(this, param) || this;
-                _this._lastUsedIndex = 0;
-                _this.frameNumber = param.frameNumber || 0;
-                _this.frames = "frames" in param ? param.frames : [0];
-                _this.interval = param.interval;
-                _this._timer = undefined;
-                _this._modifiedSelf();
-            }
+        /**
+         * 各種パラメータを指定して `FrameSprite` のインスタンスを生成する。
+         * @param param `FrameSprite` に設定するパラメータ
+         */
+        function FrameSprite(param) {
+            var _this = _super.call(this, param) || this;
+            _this._lastUsedIndex = 0;
+            _this.frameNumber = param.frameNumber || 0;
+            _this.frames = "frames" in param ? param.frames : [0];
+            _this.interval = param.interval;
+            _this._timer = undefined;
+            _this._modifiedSelf();
             return _this;
         }
         /**
@@ -4431,7 +4212,7 @@ var g;
             if (this._timer)
                 this._free();
             this._timer = this.scene.createTimer(this.interval);
-            this._timer.elapsed.handle(this, this._onElapsed);
+            this._timer.elapsed.add(this._onElapsed, this);
         };
         /**
          * このエンティティを破棄する。
@@ -4470,7 +4251,7 @@ var g;
         FrameSprite.prototype._free = function () {
             if (!this._timer)
                 return;
-            this._timer.elapsed.remove(this, this._onElapsed);
+            this._timer.elapsed.remove(this._onElapsed, this);
             if (this._timer.canDelete())
                 this.scene.deleteTimer(this._timer);
             this._timer = undefined;
@@ -4492,112 +4273,6 @@ var g;
         return FrameSprite;
     }(g.Sprite));
     g.FrameSprite = FrameSprite;
-})(g || (g = {}));
-var g;
-(function (g) {
-    /**
-     * RPGのマップ等で利用される、チップとデータによるパターン描画を提供するE。
-     * キャッシュと部分転送機能を持っているため、高速に描画することが出来る。
-     */
-    var Tile = (function (_super) {
-        __extends(Tile, _super);
-        function Tile(sceneOrParam, src, tileWidth, tileHeight, tileData) {
-            var _this = this;
-            if (sceneOrParam instanceof g.Scene) {
-                var scene = sceneOrParam;
-                _this = _super.call(this, scene) || this;
-                _this.tileWidth = tileWidth;
-                _this.tileHeight = tileHeight;
-                _this.tileData = tileData;
-                _this.tileChips = g.Util.asSurface(src);
-                _this.height = _this.tileHeight * _this.tileData.length;
-                _this.width = _this.tileWidth * _this.tileData[0].length;
-                _this._tilesInRow = Math.floor(_this.tileChips.width / _this.tileWidth);
-            }
-            else {
-                var param = sceneOrParam;
-                _this = _super.call(this, param) || this;
-                _this.tileWidth = param.tileWidth;
-                _this.tileHeight = param.tileHeight;
-                _this.tileData = param.tileData;
-                _this.tileChips = g.Util.asSurface(param.src);
-                _this.height = _this.tileHeight * _this.tileData.length;
-                _this.width = _this.tileWidth * _this.tileData[0].length;
-            }
-            _this._beforeTileChips = _this.tileChips;
-            g.Util.setupAnimatingHandler(_this, _this.tileChips);
-            _this._invalidateSelf();
-            return _this;
-        }
-        /**
-         * @private
-         */
-        Tile.prototype._onUpdate = function () {
-            this.invalidate();
-        };
-        /**
-         * @private
-         */
-        Tile.prototype._onAnimatingStarted = function () {
-            if (!this.update.isHandled(this, this._onUpdate)) {
-                this.update.handle(this, this._onUpdate);
-            }
-        };
-        /**
-         * @private
-         */
-        Tile.prototype._onAnimatingStopped = function () {
-            if (!this.destroyed()) {
-                this.update.remove(this, this._onUpdate);
-            }
-        };
-        Tile.prototype.renderCache = function (renderer) {
-            if (!this.tileData)
-                throw g.ExceptionFactory.createAssertionError("Tile#_renderCache: don't have a tile data");
-            if (this.tileWidth <= 0 || this.tileHeight <= 0) {
-                return;
-            }
-            for (var y = 0; y < this.tileData.length; ++y) {
-                var row = this.tileData[y];
-                for (var x = 0; x < row.length; ++x) {
-                    var tile = row[x];
-                    if (tile < 0) {
-                        continue;
-                    }
-                    var tileX = this.tileWidth * (tile % this._tilesInRow);
-                    var tileY = this.tileHeight * Math.floor(tile / this._tilesInRow);
-                    var dx = this.tileWidth * x;
-                    var dy = this.tileHeight * y;
-                    renderer.drawImage(this.tileChips, tileX, tileY, this.tileWidth, this.tileHeight, dx, dy);
-                }
-            }
-        };
-        Tile.prototype.invalidate = function () {
-            this._invalidateSelf();
-            _super.prototype.invalidate.call(this);
-        };
-        /**
-         * このエンティティを破棄する。
-         * デフォルトでは利用しているマップチップの `Surface` `Surface` の破棄は行わない点に注意。
-         * @param destroySurface trueを指定した場合、このエンティティが抱えるマップチップの `Surface` も合わせて破棄する
-         */
-        Tile.prototype.destroy = function (destroySurface) {
-            if (destroySurface && this.tileChips && !this.tileChips.destroyed()) {
-                this.tileChips.destroy();
-            }
-            this.tileChips = undefined;
-            _super.prototype.destroy.call(this);
-        };
-        Tile.prototype._invalidateSelf = function () {
-            this._tilesInRow = Math.floor(this.tileChips.width / this.tileWidth);
-            if (this.tileChips !== this._beforeTileChips) {
-                g.Util.migrateAnimatingHandler(this, this._beforeTileChips, this.tileChips);
-                this._beforeTileChips = this.tileChips;
-            }
-        };
-        return Tile;
-    }(g.CacheableE));
-    g.Tile = Tile;
 })(g || (g = {}));
 var g;
 (function (g) {
@@ -4933,7 +4608,7 @@ var g;
             this.height = gameConfiguration.height;
             this.renderers = [];
             this.scenes = [];
-            this.random = [];
+            this.random = null;
             this.age = 0;
             this.assetBase = assetBase || "";
             this.resourceFactory = resourceFactory;
@@ -4974,16 +4649,16 @@ var g;
             var operationPluginsField = (gameConfiguration.operationPlugins || []);
             this._operationPluginManager = new g.OperationPluginManager(this, operationPluginViewInfo, operationPluginsField);
             this._operationPluginOperated = new g.Trigger();
-            this._operationPluginManager.operated.handle(this._operationPluginOperated, this._operationPluginOperated.fire);
+            this._operationPluginManager.operated.add(this._operationPluginOperated.fire, this._operationPluginOperated);
             this._sceneChanged = new g.Trigger();
-            this._sceneChanged.handle(this, this._updateEventTriggers);
+            this._sceneChanged.add(this._updateEventTriggers, this);
             this._initialScene = new g.Scene({
                 game: this,
                 assetIds: this._assetManager.globalAssetIds(),
                 local: true,
                 name: "akashic:initial-scene"
             });
-            this._initialScene.loaded.handle(this, this._onInitialSceneLoaded);
+            this._initialScene.loaded.add(this._onInitialSceneLoaded, this);
             this._reset({ age: 0 });
         }
         Object.defineProperty(Game.prototype, "focusingCamera", {
@@ -5211,88 +4886,6 @@ var g;
             this._terminateGame();
         };
         /**
-         * イベントを発生させる。
-         *
-         * ゲーム開発者は、このメソッドを呼び出すことで、エンジンに指定のイベントを発生させることができる。
-         *
-         * @param e 発生させるイベント
-         */
-        Game.prototype.raiseEvent = function (e) {
-            throw g.ExceptionFactory.createPureVirtualError("Game#raiseEvent");
-        };
-        /**
-         * ティックを発生させる。
-         *
-         * ゲーム開発者は、このメソッドを呼び出すことで、エンジンに時間経過を要求することができる。
-         * 現在のシーンのティック生成モード `Scene#tickGenerationMode` が `TickGenerationMode.Manual` でない場合、エラー。
-         *
-         * @param events そのティックで追加で発生させるイベント
-         */
-        Game.prototype.raiseTick = function (events) {
-            throw g.ExceptionFactory.createPureVirtualError("Game#raiseTick");
-        };
-        /**
-         * イベントフィルタを追加する。
-         *
-         * 一つ以上のイベントフィルタが存在する場合、このゲームで発生したイベントは、通常の処理の代わりにイベントフィルタに渡される。
-         * エンジンは、イベントフィルタが戻り値として返したイベントを、まるでそのイベントが発生したかのように処理する。
-         *
-         * イベントフィルタはローカルイベントに対しても適用される。
-         * イベントフィルタはローカルティック補完シーンやローカルシーンの間であっても適用される。
-         * 複数のイベントフィルタが存在する場合、そのすべてが適用される。適用順は登録の順である。
-         *
-         * @param filter 追加するイベントフィルタ
-         * @param handleEmpty イベントが存在しない場合でも定期的にフィルタを呼び出すか否か。省略された場合、偽。
-         */
-        Game.prototype.addEventFilter = function (filter, handleEmpty) {
-            throw g.ExceptionFactory.createPureVirtualError("Game#addEventFilter");
-        };
-        /**
-         * イベントフィルタを削除する。
-         *
-         * @param filter 削除するイベントフィルタ
-         */
-        Game.prototype.removeEventFilter = function (filter) {
-            throw g.ExceptionFactory.createPureVirtualError("Game#removeEventFilter");
-        };
-        /**
-         * このインスタンスにおいてスナップショットの保存を行うべきかを返す。
-         *
-         * スナップショット保存に対応するゲームであっても、
-         * 必ずしもすべてのインスタンスにおいてスナップショット保存を行うべきとは限らない。
-         * たとえば多人数プレイ時には、複数のクライアントで同一のゲームが実行される。
-         * スナップショットを保存するのはそのうちの一つのインスタンスのみでよい。
-         * 本メソッドはそのような場合に、自身がスナップショットを保存すべきかどうかを判定するために用いることができる。
-         *
-         * スナップショット保存に対応するゲームは、このメソッドが真を返す時にのみ `Game#saveSnapshot()` を呼び出すべきである。
-         * 戻り値は、スナップショットの保存を行うべきであれば真、でなければ偽である。
-         */
-        Game.prototype.shouldSaveSnapshot = function () {
-            throw g.ExceptionFactory.createPureVirtualError("Game#shouldSaveSnapshot");
-        };
-        /**
-         * スナップショットを保存する。
-         *
-         * 引数 `snapshot` の値は、スナップショット読み込み関数 (snapshot loader) に引数として渡されるものになる。
-         * このメソッドを呼び出すゲームは必ずsnapshot loaderを実装しなければならない。
-         * (snapshot loaderとは、idが "snapshotLoader" であるglobalなScriptAssetに定義された関数である。
-         * 詳細はスナップショットについてのドキュメントを参照)
-         *
-         * このメソッドは `Game#shouldSaveSnapshot()` が真を返す `Game` に対してのみ呼び出されるべきである。
-         * そうでない場合、このメソッドの動作は不定である。
-         *
-         * このメソッドを呼び出す推奨タイミングは、Trigger `Game#snapshotRequest` をhandleすることで得られる。
-         * ゲームは、 `snapshotRequest` がfireされたとき (それが可能なタイミングであれば) スナップショットを
-         * 生成してこのメソッドに渡すべきである。ゲーム開発者は推奨タイミング以外でもこのメソッドを呼び出すことができる。
-         * ただしその頻度は推奨タイミングの発火頻度と同程度に抑えられるべきである。
-         *
-         * @param snapshot 保存するスナップショット。JSONとして妥当な値でなければならない。
-         * @param timestamp 保存時の時刻。 `g.TimestampEvent` を利用するゲームの場合、それらと同じ基準の時間情報を与えなければならない。
-         */
-        Game.prototype.saveSnapshot = function (snapshot, timestamp) {
-            throw g.ExceptionFactory.createPureVirtualError("Game#saveSnapshot");
-        };
-        /**
          * @private
          */
         Game.prototype._fireSceneReady = function (scene) {
@@ -5374,13 +4967,13 @@ var g;
                 if (param.age !== undefined)
                     this.age = param.age;
                 if (param.randGen !== undefined)
-                    this.random[0] = param.randGen;
+                    this.random = param.randGen;
             }
-            this._loaded.removeAllByHandler(this._start);
-            this.join._reset();
-            this.leave._reset();
-            this.seed._reset();
-            this.resized._reset();
+            this._loaded.removeAll({ func: this._start, owner: this });
+            this.join.removeAll();
+            this.leave.removeAll();
+            this.seed.removeAll();
+            this.resized.removeAll();
             this._idx = 0;
             this._localIdx = 0;
             this._cameraIdx = 0;
@@ -5391,7 +4984,7 @@ var g;
             this.loadingScene = undefined;
             this._focusingCamera = undefined;
             this._scriptCaches = {};
-            this.snapshotRequest._reset();
+            this.snapshotRequest.removeAll();
             this._sceneChangeRequests = [];
             this._isTerminated = false;
             this.vars = {};
@@ -5416,7 +5009,7 @@ var g;
         Game.prototype._loadAndStart = function (param) {
             this._mainParameter = param || {};
             if (!this.isLoaded) {
-                this._loaded.handle(this, this._start);
+                this._loaded.add(this._start, this);
                 this.pushScene(this._initialScene);
                 this._flushSceneChangeRequests();
             }
@@ -5459,16 +5052,10 @@ var g;
          * @private
          */
         Game.prototype._onInitialSceneLoaded = function () {
-            this._initialScene.loaded.remove(this, this._onInitialSceneLoaded);
+            this._initialScene.loaded.remove(this._onInitialSceneLoaded, this);
             this.assets = this._initialScene.assets;
             this.isLoaded = true;
             this._loaded.fire();
-        };
-        /**
-         * @private
-         */
-        Game.prototype._leaveGame = function () {
-            throw g.ExceptionFactory.createPureVirtualError("Game#_leaveGame");
         };
         /**
          * @private
@@ -5508,10 +5095,12 @@ var g;
                             this._doPopScene(req.preserveCurrent, true);
                             break;
                         case 3 /* FireReady */:
-                            req.scene._fireReady();
+                            if (!req.scene.destroyed())
+                                req.scene._fireReady();
                             break;
                         case 4 /* FireLoaded */:
-                            req.scene._fireLoaded();
+                            if (!req.scene.destroyed())
+                                req.scene._fireLoaded();
                             break;
                         case 5 /* CallAssetHolderHandler */:
                             req.assetHolder.callHandler();
@@ -5591,31 +5180,19 @@ var g;
      */
     var Camera2D = (function (_super) {
         __extends(Camera2D, _super);
-        function Camera2D(gameOrParam) {
-            var _this = this;
-            if (gameOrParam instanceof g.Game) {
-                var game = gameOrParam;
-                _this = _super.call(this) || this;
-                _this.game = game;
-                _this.local = false;
-                _this.name = undefined;
-                _this._modifiedCount = 0;
-                _this.width = game.width;
-                _this.height = game.height;
-                game.logger.debug("[deprecated] Camera2D:This constructor is deprecated. "
-                    + "Refer to the API documentation and use Camera2D(param: Camera2DParameterObject) instead.");
-            }
-            else {
-                var param = gameOrParam;
-                _this = _super.call(this, param) || this;
-                _this.game = param.game;
-                _this.local = !!param.local;
-                _this.name = param.name;
-                _this._modifiedCount = 0;
-                // param の width と height は無視する
-                _this.width = param.game.width;
-                _this.height = param.game.height;
-            }
+        /**
+         * 指定されたパラメータで `Camera2D` のインスタンスを生成する。
+         * @param param 初期化に用いるパラメータのオブジェクト
+         */
+        function Camera2D(param) {
+            var _this = _super.call(this, param) || this;
+            _this.game = param.game;
+            _this.local = !!param.local;
+            _this.name = param.name;
+            _this._modifiedCount = 0;
+            // param の width と height は無視する
+            _this.width = param.game.width;
+            _this.height = param.game.height;
             _this.id = _this.local ? undefined : _this.game._cameraIdx++;
             return _this;
         }
@@ -5733,74 +5310,6 @@ var g;
         Renderer.prototype.begin = function () {
             // nothing to do
         };
-        Renderer.prototype.clear = function () {
-            throw g.ExceptionFactory.createPureVirtualError("Renderer#clear");
-        };
-        /**
-         * 指定されたSurfaceの描画を行う。
-         *
-         * @param surface 描画するSurface
-         * @param offsetX 描画元のX座標。0以上の数値でなければならない
-         * @param offsetY 描画元のY座標。0以上の数値でなければならない
-         * @param width 描画する矩形の幅。0より大きい数値でなければならない
-         * @param height 描画する矩形の高さ。0より大きい数値でなければならない
-         * @param destOffsetX 描画先のX座標。0以上の数値でなければならない
-         * @param destOffsetY 描画先のY座標。0以上の数値でなければならない
-         */
-        Renderer.prototype.drawImage = function (surface, offsetX, offsetY, width, height, destOffsetX, destOffsetY) {
-            throw g.ExceptionFactory.createPureVirtualError("Renderer#drawImage");
-        };
-        Renderer.prototype.drawSprites = function (surface, offsetX, offsetY, width, height, canvasOffsetX, canvasOffsetY, count) {
-            throw g.ExceptionFactory.createPureVirtualError("Renderer#drawSprites");
-        };
-        /**
-         * 指定されたSystemLabelの描画を行う。
-         *
-         * @param text 描画するText内容
-         * @param x 描画元のX座標。0以上の数値でなければならない
-         * @param y 描画元のY座標。0以上の数値でなければならない
-         * @param maxWidth 描画する矩形の幅。0より大きい数値でなければならない
-         * @param fontSize 描画する矩形の高さ。0より大きい数値でなければならない
-         * @param textAlign 描画するテキストのアラインメント
-         * @param textBaseline 描画するテキストのベースライン
-         * @param textColor 描画する文字色。CSS Colorでなければならない
-         * @param fontFamily 描画するフォントファミリ
-         * @param strokeWidth 描画する輪郭幅。0以上の数値でなければならない
-         * @param strokeColor 描画する輪郭色。CSS Colorでなければならない
-         * @param strokeOnly 文字色の描画フラグ
-         */
-        Renderer.prototype.drawSystemText = function (text, x, y, maxWidth, fontSize, textAlign, textBaseline, textColor, fontFamily, strokeWidth, strokeColor, strokeOnly) {
-            throw g.ExceptionFactory.createPureVirtualError("Renderer#drawSystemText");
-        };
-        Renderer.prototype.translate = function (x, y) {
-            throw g.ExceptionFactory.createPureVirtualError("Renderer#translate");
-        };
-        // TODO: (GAMEDEV-844) tupleに変更
-        // transform(matrix: [number, number, number, number, number, number]): void {
-        Renderer.prototype.transform = function (matrix) {
-            throw g.ExceptionFactory.createPureVirtualError("Renderer#transform");
-        };
-        Renderer.prototype.opacity = function (opacity) {
-            throw g.ExceptionFactory.createPureVirtualError("Renderer#opacity");
-        };
-        Renderer.prototype.save = function () {
-            throw g.ExceptionFactory.createPureVirtualError("Renderer#save");
-        };
-        Renderer.prototype.restore = function () {
-            throw g.ExceptionFactory.createPureVirtualError("Renderer#restore");
-        };
-        Renderer.prototype.fillRect = function (x, y, width, height, cssColor) {
-            throw g.ExceptionFactory.createPureVirtualError("Renderer#fillRect");
-        };
-        Renderer.prototype.setCompositeOperation = function (operation) {
-            throw g.ExceptionFactory.createPureVirtualError("Renderer#setCompositeOperation");
-        };
-        Renderer.prototype.setTransform = function (matrix) {
-            throw g.ExceptionFactory.createPureVirtualError("Renderer#setTransform");
-        };
-        Renderer.prototype.setOpacity = function (opacity) {
-            throw g.ExceptionFactory.createPureVirtualError("Renderer#setOpacity");
-        };
         Renderer.prototype.end = function () {
             // nothing to do
         };
@@ -5845,18 +5354,6 @@ var g;
             }
         }
         /**
-         * このSurfaceへの描画手段を提供するRendererを生成して返す。
-         */
-        Surface.prototype.renderer = function () {
-            throw g.ExceptionFactory.createPureVirtualError("Surface#renderer");
-        };
-        /**
-         * このSurfaceが動画を再生中であるかどうかを判定する。
-         */
-        Surface.prototype.isPlaying = function () {
-            throw g.ExceptionFactory.createPureVirtualError("Surface#isPlaying()");
-        };
-        /**
          * このSurfaceの破棄を行う。
          * 以後、このSurfaceを利用することは出来なくなる。
          */
@@ -5888,43 +5385,23 @@ var g;
      */
     var Label = (function (_super) {
         __extends(Label, _super);
-        function Label(sceneOrParam, text, font, fontSize) {
-            var _this = this;
-            if (sceneOrParam instanceof g.Scene) {
-                var scene = sceneOrParam;
-                _this = _super.call(this, scene) || this;
-                _this.text = text;
-                _this.bitmapFont = font;
-                _this.font = font;
-                _this.textAlign = g.TextAlign.Left;
-                _this.glyphs = new Array(text.length);
-                _this.fontSize = fontSize;
-                _this.maxWidth = undefined;
-                _this.widthAutoAdjust = true;
-                _this.textColor = undefined;
-                _this._textWidth = 0;
-                _this._game = undefined;
-                _this._invalidateSelf();
-            }
-            else {
-                var param = sceneOrParam;
-                if (!param.font && !param.bitmapFont) {
-                    throw g.ExceptionFactory.createAssertionError("Label#constructor: 'font' or 'bitmapFont' must be given to LabelParameterObject");
-                }
-                _this = _super.call(this, param) || this;
-                _this.text = param.text;
-                _this.bitmapFont = param.bitmapFont;
-                _this.font = param.font ? param.font : param.bitmapFont;
-                _this.textAlign = ("textAlign" in param) ? param.textAlign : g.TextAlign.Left;
-                _this.glyphs = new Array(param.text.length);
-                _this.fontSize = param.fontSize;
-                _this.maxWidth = param.maxWidth;
-                _this.widthAutoAdjust = ("widthAutoAdjust" in param) ? param.widthAutoAdjust : true;
-                _this.textColor = param.textColor;
-                _this._textWidth = 0;
-                _this._game = undefined;
-                _this._invalidateSelf();
-            }
+        /**
+         * 各種パラメータを指定して `Label` のインスタンスを生成する。
+         * @param param このエンティティに指定するパラメータ
+         */
+        function Label(param) {
+            var _this = _super.call(this, param) || this;
+            _this.text = param.text;
+            _this.font = param.font;
+            _this.textAlign = ("textAlign" in param) ? param.textAlign : g.TextAlign.Left;
+            _this.glyphs = new Array(param.text.length);
+            _this.fontSize = param.fontSize;
+            _this.maxWidth = param.maxWidth;
+            _this.widthAutoAdjust = ("widthAutoAdjust" in param) ? param.widthAutoAdjust : true;
+            _this.textColor = param.textColor;
+            _this._textWidth = 0;
+            _this._game = undefined;
+            _this._invalidateSelf();
             return _this;
         }
         /**
@@ -6005,9 +5482,6 @@ var g;
             _super.prototype.destroy.call(this);
         };
         Label.prototype._invalidateSelf = function () {
-            if (this.bitmapFont !== undefined) {
-                this.font = this.bitmapFont;
-            }
             this.glyphs.length = 0;
             this._textWidth = 0;
             if (!this.fontSize) {
@@ -6051,7 +5525,7 @@ var g;
     g.Label = Label;
 })(g || (g = {}));
 var g;
-(function (g_1) {
+(function (g) {
     /**
      * グリフ。
      */
@@ -6089,66 +5563,7 @@ var g;
         };
         return Glyph;
     }());
-    g_1.Glyph = Glyph;
-    /**
-     * ラスタ画像によるフォント。
-     */
-    var BitmapFont = (function () {
-        function BitmapFont(srcOrParam, map, defaultGlyphWidth, defaultGlyphHeight, missingGlyph) {
-            if (srcOrParam instanceof g_1.Surface || srcOrParam instanceof g_1.Asset) {
-                this.surface = g_1.Util.asSurface(srcOrParam);
-                this.map = map;
-                this.defaultGlyphWidth = defaultGlyphWidth;
-                this.defaultGlyphHeight = defaultGlyphHeight;
-                this.missingGlyph = missingGlyph;
-                this.size = defaultGlyphHeight;
-            }
-            else {
-                var param = srcOrParam;
-                this.surface = g_1.Util.asSurface(param.src);
-                this.map = param.map;
-                this.defaultGlyphWidth = param.defaultGlyphWidth;
-                this.defaultGlyphHeight = param.defaultGlyphHeight;
-                this.missingGlyph = param.missingGlyph;
-                this.size = param.defaultGlyphHeight;
-            }
-        }
-        /**
-         * コードポイントに対応するグリフを返す。
-         * @param code コードポイント
-         */
-        BitmapFont.prototype.glyphForCharacter = function (code) {
-            var g = this.map[code] || this.missingGlyph;
-            if (!g) {
-                return null;
-            }
-            var w = g.width === undefined ? this.defaultGlyphWidth : g.width;
-            var h = g.height === undefined ? this.defaultGlyphHeight : g.height;
-            var offsetX = g.offsetX || 0;
-            var offsetY = g.offsetY || 0;
-            var advanceWidth = g.advanceWidth === undefined ? w : g.advanceWidth;
-            var surface = (w === 0 || h === 0) ? undefined : this.surface;
-            return new Glyph(code, g.x, g.y, w, h, offsetX, offsetY, advanceWidth, surface, true);
-        };
-        /**
-         * 利用している `Surface` を破棄した上で、このフォントを破棄する。
-         */
-        BitmapFont.prototype.destroy = function () {
-            if (this.surface && !this.surface.destroyed()) {
-                this.surface.destroy();
-            }
-            this.map = undefined;
-        };
-        /**
-         * 破棄されたオブジェクトかどうかを判定する。
-         */
-        BitmapFont.prototype.destroyed = function () {
-            // mapをfalsy値で作成された場合最初から破棄扱いになるが、仕様とする
-            return !this.map;
-        };
-        return BitmapFont;
-    }());
-    g_1.BitmapFont = BitmapFont;
+    g.Glyph = Glyph;
 })(g || (g = {}));
 var g;
 (function (g) {
@@ -6157,24 +5572,15 @@ var g;
      */
     var FilledRect = (function (_super) {
         __extends(FilledRect, _super);
-        function FilledRect(sceneOrParam, cssColor, width, height) {
-            var _this = this;
-            if (sceneOrParam instanceof g.Scene) {
-                var scene = sceneOrParam;
-                _this = _super.call(this, scene) || this;
-                if (typeof cssColor !== "string")
-                    throw g.ExceptionFactory.createTypeMismatchError("ColorBox#constructor(cssColor)", "string", cssColor);
-                _this.cssColor = cssColor;
-                _this.width = width;
-                _this.height = height;
-            }
-            else {
-                var param = sceneOrParam;
-                _this = _super.call(this, param) || this;
-                if (typeof param.cssColor !== "string")
-                    throw g.ExceptionFactory.createTypeMismatchError("ColorBox#constructor(cssColor)", "string", cssColor);
-                _this.cssColor = param.cssColor;
-            }
+        /**
+         * 各種パラメータを指定して `FilledRect` のインスタンスを生成する。
+         * @param param このエンティティに対するパラメータ
+         */
+        function FilledRect(param) {
+            var _this = _super.call(this, param) || this;
+            if (typeof param.cssColor !== "string")
+                throw g.ExceptionFactory.createTypeMismatchError("ColorBox#constructor(cssColor)", "string", param.cssColor);
+            _this.cssColor = param.cssColor;
             return _this;
         }
         /**
@@ -6199,36 +5605,22 @@ var g;
      */
     var Pane = (function (_super) {
         __extends(Pane, _super);
-        function Pane(sceneOrParam, width, height, backgroundImage, padding, backgroundEffector) {
-            var _this = this;
-            if (sceneOrParam instanceof g.Scene) {
-                var scene = sceneOrParam;
-                _this = _super.call(this, scene) || this;
-                _this.width = _this._oldWidth = width;
-                _this.height = _this._oldHeight = height;
-                _this.backgroundImage = g.Util.asSurface(backgroundImage);
-                _this.backgroundEffector = backgroundEffector;
-                _this._shouldRenderChildren = false;
-                _this._padding = padding;
-                _this._initialize();
-                _this._paddingChanged = false;
-                _this._bgSurface = undefined;
-                _this._bgRenderer = undefined;
-            }
-            else {
-                var param = sceneOrParam;
-                _this = _super.call(this, param) || this;
-                _this._oldWidth = param.width;
-                _this._oldHeight = param.height;
-                _this.backgroundImage = g.Util.asSurface(param.backgroundImage);
-                _this.backgroundEffector = param.backgroundEffector;
-                _this._shouldRenderChildren = false;
-                _this._padding = param.padding;
-                _this._initialize();
-                _this._paddingChanged = false;
-                _this._bgSurface = undefined;
-                _this._bgRenderer = undefined;
-            }
+        /**
+         * 各種パラメータを指定して `Pane` のインスタンスを生成する。
+         * @param param このエンティティに指定するパラメータ
+         */
+        function Pane(param) {
+            var _this = _super.call(this, param) || this;
+            _this._oldWidth = param.width;
+            _this._oldHeight = param.height;
+            _this.backgroundImage = g.Util.asSurface(param.backgroundImage);
+            _this.backgroundEffector = param.backgroundEffector;
+            _this._shouldRenderChildren = false;
+            _this._padding = param.padding;
+            _this._initialize();
+            _this._paddingChanged = false;
+            _this._bgSurface = undefined;
+            _this._bgRenderer = undefined;
             return _this;
         }
         Object.defineProperty(Pane.prototype, "padding", {
@@ -6409,26 +5801,6 @@ var g;
         return Pane;
     }(g.CacheableE));
     g.Pane = Pane;
-})(g || (g = {}));
-var g;
-(function (g) {
-    /**
-     * 文字列の入力方法を表すクラス。
-     * TextInputMethod#openによって、ユーザからの文字列入力をゲームで受け取ることが出来る。
-     *
-     * このクラスはobsoleteである。現バージョンのakashic-engineにおいて、このクラスを利用する方法はない。
-     * 将来のバージョンにおいて同等の機能が再実装される場合、これとは異なるインターフェースになる可能性がある。
-     */
-    var TextInputMethod = (function () {
-        function TextInputMethod(game) {
-            this.game = game;
-        }
-        TextInputMethod.prototype.open = function (defaultText, callback) {
-            throw g.ExceptionFactory.createPureVirtualError("TextInputMethod#open");
-        };
-        return TextInputMethod;
-    }());
-    g.TextInputMethod = TextInputMethod;
 })(g || (g = {}));
 var g;
 (function (g) {
@@ -6697,40 +6069,22 @@ var g;
      * ビットマップフォントを逐次生成するフォント。
      */
     var DynamicFont = (function () {
-        function DynamicFont(fontFamilyOrParam, size, game, hint, fontColor, strokeWidth, strokeColor, strokeOnly) {
-            if (hint === void 0) { hint = {}; }
-            if (fontColor === void 0) { fontColor = "black"; }
-            if (strokeWidth === void 0) { strokeWidth = 0; }
-            if (strokeColor === void 0) { strokeColor = "black"; }
-            if (strokeOnly === void 0) { strokeOnly = false; }
-            if (typeof fontFamilyOrParam === "number") {
-                this.fontFamily = fontFamilyOrParam;
-                this.size = size;
-                this.hint = hint;
-                this.fontColor = fontColor;
-                this.strokeWidth = strokeWidth;
-                this.strokeColor = strokeColor;
-                this.strokeOnly = strokeOnly;
-                this._resourceFactory = game.resourceFactory;
-                this._glyphFactory =
-                    this._resourceFactory.createGlyphFactory(fontFamilyOrParam, size, hint.baselineHeight, fontColor, strokeWidth, strokeColor, strokeOnly);
-                game.logger.debug("[deprecated] DynamicFont: This constructor is deprecated. "
-                    + "Refer to the API documentation and use constructor(param: DynamicFontParameterObject) instead.");
-            }
-            else {
-                var param = fontFamilyOrParam;
-                this.fontFamily = param.fontFamily;
-                this.size = param.size;
-                this.hint = ("hint" in param) ? param.hint : {};
-                this.fontColor = ("fontColor" in param) ? param.fontColor : "black";
-                this.fontWeight = ("fontWeight" in param) ? param.fontWeight : FontWeight.Normal;
-                this.strokeWidth = ("strokeWidth" in param) ? param.strokeWidth : 0;
-                this.strokeColor = ("strokeColor" in param) ? param.strokeColor : "black";
-                this.strokeOnly = ("strokeOnly" in param) ? param.strokeOnly : false;
-                this._resourceFactory = param.game.resourceFactory;
-                this._glyphFactory =
-                    this._resourceFactory.createGlyphFactory(this.fontFamily, this.size, this.hint.baselineHeight, this.fontColor, this.strokeWidth, this.strokeColor, this.strokeOnly, this.fontWeight);
-            }
+        /**
+         * 各種パラメータを指定して `DynamicFont` のインスタンスを生成する。
+         * @param param `DynamicFont` に設定するパラメータ
+         */
+        function DynamicFont(param) {
+            this.fontFamily = param.fontFamily;
+            this.size = param.size;
+            this.hint = ("hint" in param) ? param.hint : {};
+            this.fontColor = ("fontColor" in param) ? param.fontColor : "black";
+            this.fontWeight = ("fontWeight" in param) ? param.fontWeight : FontWeight.Normal;
+            this.strokeWidth = ("strokeWidth" in param) ? param.strokeWidth : 0;
+            this.strokeColor = ("strokeColor" in param) ? param.strokeColor : "black";
+            this.strokeOnly = ("strokeOnly" in param) ? param.strokeOnly : false;
+            this._resourceFactory = param.game.resourceFactory;
+            this._glyphFactory =
+                this._resourceFactory.createGlyphFactory(this.fontFamily, this.size, this.hint.baselineHeight, this.fontColor, this.strokeWidth, this.strokeColor, this.strokeOnly, this.fontWeight);
             this._glyphs = {};
             this._atlases = [];
             this._currentAtlasIndex = 0;
@@ -6744,9 +6098,9 @@ var g;
             this.hint.maxAtlasNum = this.hint.maxAtlasNum ? this.hint.maxAtlasNum : 1;
             this._atlasSize = calcAtlasSize(this.hint);
             this._atlases.push(this._resourceFactory.createSurfaceAtlas(this._atlasSize.width, this._atlasSize.height));
-            if (hint.presetChars) {
-                for (var i = 0, len = hint.presetChars.length; i < len; i++) {
-                    var code = g.Util.charCodeAt(hint.presetChars, i);
+            if (this.hint.presetChars) {
+                for (var i = 0, len = this.hint.presetChars.length; i < len; i++) {
+                    var code = g.Util.charCodeAt(this.hint.presetChars, i);
                     if (!code) {
                         continue;
                     }
@@ -6842,7 +6196,13 @@ var g;
             // そのために this.size をコンストラクタの第４引数に与えることにする。
             var missingGlyph = glyphAreaMap[missingGlyphCharCodePoint];
             var surface = this._atlases[0].duplicateSurface(this._resourceFactory);
-            var bitmapFont = new g.BitmapFont(surface, glyphAreaMap, 0, this.size, missingGlyph);
+            var bitmapFont = new g.BitmapFont({
+                src: surface,
+                map: glyphAreaMap,
+                defaultGlyphWidth: 0,
+                defaultGlyphHeight: this.size,
+                missingGlyph: missingGlyph
+            });
             return bitmapFont;
         };
         /**
@@ -6996,6 +6356,38 @@ var g;
          * 先に描画された領域を全て無視して描画する。
          */
         CompositeOperation[CompositeOperation["Copy"] = 3] = "Copy";
+        /**
+         * 先に描画された領域と重なった部分に描画を行い、それ以外の部分を透明にする。
+         * 環境により、描画結果が大きく異なる可能性があるため、試験的導入である。
+         */
+        CompositeOperation[CompositeOperation["ExperimentalSourceIn"] = 4] = "ExperimentalSourceIn";
+        /**
+         * 先に描画された領域と重なっていない部分に描画を行い、それ以外の部分を透明にする。
+         * 環境により、描画結果が大きく異なる可能性があるため、試験的導入である。
+         */
+        CompositeOperation[CompositeOperation["ExperimentalSourceOut"] = 5] = "ExperimentalSourceOut";
+        /**
+         * 描画する領域だけを表示し、先に描画された領域と重なった部分は描画先を表示する。
+         * 環境により、描画結果が大きく異なる可能性があるため、試験的導入である。
+         */
+        CompositeOperation[CompositeOperation["ExperimentalDestinationAtop"] = 6] = "ExperimentalDestinationAtop";
+        /**
+         * 先に描画された領域と重なっていない部分を透明にし、重なった部分は描画先を表示する。
+         * 環境により、描画結果が大きく異なる可能性があるため、試験的導入である。
+         */
+        CompositeOperation[CompositeOperation["ExperimentalDestinationIn"] = 7] = "ExperimentalDestinationIn";
+        /**
+         * 描画する領域を透明にする。
+         */
+        CompositeOperation[CompositeOperation["DestinationOut"] = 8] = "DestinationOut";
+        /**
+         * 先に描画された領域の下に描画する。
+         */
+        CompositeOperation[CompositeOperation["DestinationOver"] = 9] = "DestinationOver";
+        /**
+         * 先に描画された領域と重なった部分のみ透明にする。
+         */
+        CompositeOperation[CompositeOperation["Xor"] = 10] = "Xor";
     })(CompositeOperation = g.CompositeOperation || (g.CompositeOperation = {}));
 })(g || (g = {}));
 var g;
@@ -7035,16 +6427,6 @@ var g;
             this.strokeColor = strokeColor;
             this.strokeOnly = strokeOnly;
         }
-        /**
-         * グリフの生成。
-         *
-         * `DynamicFont` はこれを用いてグリフを生成する。
-         *
-         * @param code 文字コード
-         */
-        GlyphFactory.prototype.create = function (code) {
-            throw g.ExceptionFactory.createPureVirtualError("GlyphFactory#create");
-        };
         return GlyphFactory;
     }());
     g.GlyphFactory = GlyphFactory;
@@ -7072,230 +6454,6 @@ var g;
          */
         LocalTickMode[LocalTickMode["InterpolateLocal"] = 2] = "InterpolateLocal";
     })(LocalTickMode = g.LocalTickMode || (g.LocalTickMode = {}));
-})(g || (g = {}));
-var g;
-(function (g) {
-    /**
-     * 複数行のテキストを描画するエンティティ。
-     * 文字列内の"\r\n"、"\n"、"\r"を区切りとして改行を行う。
-     * また、自動改行が有効な場合はエンティティの幅に合わせて改行を行う。
-     * 本クラスの利用にはBitmapFontが必要となる。
-     */
-    var MultiLineLabel = (function (_super) {
-        __extends(MultiLineLabel, _super);
-        function MultiLineLabel(sceneOrParam, text, font, fontSize, width, lineBreak) {
-            if (lineBreak === void 0) { lineBreak = true; }
-            var _this = this;
-            if (sceneOrParam instanceof g.Scene) {
-                var scene = sceneOrParam;
-                _this = _super.call(this, scene) || this;
-                _this.text = text;
-                _this.bitmapFont = font;
-                _this.fontSize = fontSize;
-                _this.width = width;
-                _this.lineBreak = lineBreak;
-                _this.lineGap = 0;
-                _this.textAlign = g.TextAlign.Left;
-                _this.textColor = undefined;
-            }
-            else {
-                var param = sceneOrParam;
-                _this = _super.call(this, param) || this;
-                _this.text = param.text;
-                _this.bitmapFont = param.bitmapFont;
-                _this.fontSize = param.fontSize;
-                _this.width = param.width;
-                _this.lineBreak = "lineBreak" in param ? param.lineBreak : true;
-                _this.lineGap = param.lineGap || 0;
-                _this.textAlign = "textAlign" in param ? param.textAlign : g.TextAlign.Left;
-                _this.textColor = param.textColor;
-            }
-            _this._lines = [];
-            _this._beforeText = undefined;
-            _this._beforeLineBreak = undefined;
-            _this._beforeBitmapFont = undefined;
-            _this._beforeFontSize = undefined;
-            _this._beforeTextAlign = undefined;
-            _this._beforeWidth = undefined;
-            _this._invalidateSelf();
-            return _this;
-        }
-        /**
-         * このエンティティの描画キャッシュ無効化をエンジンに通知する。
-         * このメソッドを呼び出し後、描画キャッシュの再構築が行われ、各 `Renderer` に描画内容の変更が反映される。
-         */
-        MultiLineLabel.prototype.invalidate = function () {
-            this._invalidateSelf();
-            _super.prototype.invalidate.call(this);
-        };
-        MultiLineLabel.prototype.renderCache = function (renderer) {
-            if (this.fontSize === 0)
-                return;
-            renderer.save();
-            for (var i = 0; i < this._lines.length; ++i) {
-                if (this._lines[i].width <= 0)
-                    continue;
-                renderer.drawImage(this._lines[i].surface, 0, 0, this._lines[i].width, this.fontSize, this._offsetX(this._lines[i].width), i * (this.fontSize + this.lineGap));
-            }
-            if (this.textColor) {
-                renderer.setCompositeOperation(g.CompositeOperation.SourceAtop);
-                renderer.fillRect(0, 0, this.width, this.height, this.textColor);
-            }
-            renderer.restore();
-        };
-        /**
-         * 利用している `Surface` を破棄した上で、このエンティティを破棄する。
-         * 利用している `BitmapFont` の破棄は行わないため、 `BitmapFont` の破棄はコンテンツ製作者が明示的に行う必要がある。
-         */
-        MultiLineLabel.prototype.destroy = function () {
-            this._destroyLines();
-            _super.prototype.destroy.call(this);
-        };
-        /**
-         * @private
-         */
-        MultiLineLabel.prototype._offsetX = function (width) {
-            switch (this.textAlign) {
-                case g.TextAlign.Left:
-                    return 0;
-                case g.TextAlign.Right:
-                    return (this.width - width);
-                case g.TextAlign.Center:
-                    return ((this.width - width) / 2);
-                default:
-                    return 0;
-            }
-        };
-        /**
-         * @private
-         */
-        MultiLineLabel.prototype._lineBrokenText = function () {
-            var splited = this.text.split(/\r\n|\r|\n/);
-            if (this.lineBreak) {
-                var lines = [];
-                for (var i = 0; i < splited.length; ++i) {
-                    var t = splited[i];
-                    var lineWidth = 0;
-                    var start = 0;
-                    for (var j = 0; j < t.length; ++j) {
-                        var glyph = this.bitmapFont.glyphForCharacter(t.charCodeAt(j));
-                        var w = glyph.renderingWidth(this.fontSize);
-                        if (lineWidth + w > this.width) {
-                            lines.push(t.substring(start, j));
-                            start = j;
-                            lineWidth = 0;
-                        }
-                        lineWidth += w;
-                    }
-                    lines.push(t.substring(start, t.length));
-                }
-                return lines;
-            }
-            else {
-                return splited;
-            }
-        };
-        MultiLineLabel.prototype._invalidateSelf = function () {
-            if (this.fontSize < 0)
-                throw g.ExceptionFactory.createAssertionError("MultiLineLabel#_invalidateSelf: fontSize must not be negative.");
-            if (this.lineGap < -1 * this.fontSize)
-                throw g.ExceptionFactory.createAssertionError("MultiLineLabel#_invalidateSelf: lineGap must be greater than -1 * fontSize.");
-            if (this._beforeText !== this.text
-                || this._beforeFontSize !== this.fontSize
-                || this._beforeBitmapFont !== this.bitmapFont
-                || this._beforeLineBreak !== this.lineBreak
-                || (this._beforeWidth !== this.width && this._beforeLineBreak === true)) {
-                this._createLines();
-            }
-            this.height = this.fontSize + (this.fontSize + this.lineGap) * (this._lines.length - 1);
-            this._beforeText = this.text;
-            this._beforeTextAlign = this.textAlign;
-            this._beforeFontSize = this.fontSize;
-            this._beforeLineBreak = this.lineBreak;
-            this._beforeBitmapFont = this.bitmapFont;
-            this._beforeWidth = this.width;
-        };
-        MultiLineLabel.prototype._createLineInfo = function (str) {
-            if (this.fontSize === 0) {
-                return {
-                    text: str,
-                    width: 0
-                };
-            }
-            var lineWidth = 0;
-            var glyphs = [];
-            for (var i = 0; i < str.length; ++i) {
-                var glyph = this.bitmapFont.glyphForCharacter(str.charCodeAt(i));
-                if (!glyph.width || !glyph.height) {
-                    continue;
-                }
-                glyphs.push(glyph);
-                lineWidth += glyph.renderingWidth(this.fontSize);
-            }
-            if (lineWidth === 0) {
-                return {
-                    text: str,
-                    width: 0
-                };
-            }
-            var textSurface = this.scene.game.resourceFactory.createSurface(Math.ceil(lineWidth), Math.ceil(this.fontSize));
-            var textRenderer = textSurface.renderer();
-            textRenderer.begin();
-            textRenderer.save();
-            for (var i = 0; i < glyphs.length; ++i) {
-                var glyph = glyphs[i];
-                textRenderer.save();
-                var glyphScale = this.fontSize / glyph.height;
-                textRenderer.transform([glyphScale, 0, 0, glyphScale, 0, 0]);
-                textRenderer.drawImage(this.bitmapFont.surface, glyph.x, glyph.y, glyph.width, glyph.height, 0, 0);
-                textRenderer.restore();
-                textRenderer.translate(glyph.renderingWidth(this.fontSize), 0);
-            }
-            textRenderer.restore();
-            textRenderer.end();
-            return {
-                text: str,
-                width: lineWidth,
-                surface: textSurface
-            };
-        };
-        MultiLineLabel.prototype._createLines = function () {
-            var lineText = this._lineBrokenText();
-            var lines = [];
-            for (var i = 0; i < lineText.length; ++i) {
-                if (this._lines[i] !== undefined
-                    && lineText[i] === this._lines[i].text
-                    && this._beforeBitmapFont === this.bitmapFont
-                    && this._beforeFontSize === this.fontSize) {
-                    lines.push(this._lines[i]);
-                }
-                else {
-                    if (this._lines[i] && this._lines[i].surface && !this._lines[i].surface.destroyed()) {
-                        // 入れ替える行のサーフェース解放
-                        this._lines[i].surface.destroy();
-                    }
-                    lines.push(this._createLineInfo(lineText[i]));
-                }
-            }
-            for (var i = lines.length; i < this._lines.length; i++) {
-                // 削除される行のサーフェース解放
-                if (this._lines[i].surface && !this._lines[i].surface.destroyed()) {
-                    this._lines[i].surface.destroy();
-                }
-            }
-            this._lines = lines;
-        };
-        MultiLineLabel.prototype._destroyLines = function () {
-            for (var i = 0; i < this._lines.length; i++) {
-                if (this._lines[i].surface && !this._lines[i].surface.destroyed()) {
-                    this._lines[i].surface.destroy();
-                }
-            }
-            this._lines = undefined;
-        };
-        return MultiLineLabel;
-    }(g.CacheableE));
-    g.MultiLineLabel = MultiLineLabel;
 })(g || (g = {}));
 var g;
 (function (g) {
@@ -7559,6 +6717,84 @@ var g;
 var g;
 (function (g) {
     /**
+     * 文字列描画のフォントファミリ。
+     * 現バージョンのakashic-engineの `SystemLabel` 及び `DynamicFont` において、この値の指定は参考値に過ぎない。
+     * そのため、 それらにおいて 'fontFamily` プロパティを指定した際、実行環境によっては無視される事がありえる。
+     */
+    var FontFamily;
+    (function (FontFamily) {
+        /**
+         * サンセリフ体。ＭＳ Ｐゴシック等
+         */
+        FontFamily[FontFamily["SansSerif"] = 0] = "SansSerif";
+        /**
+         * セリフ体。ＭＳ 明朝等
+         */
+        FontFamily[FontFamily["Serif"] = 1] = "Serif";
+        /**
+         * 等幅。ＭＳ ゴシック等
+         */
+        FontFamily[FontFamily["Monospace"] = 2] = "Monospace";
+    })(FontFamily = g.FontFamily || (g.FontFamily = {}));
+})(g || (g = {}));
+var g;
+(function (g_1) {
+    /**
+     * ラスタ画像によるフォント。
+     */
+    var BitmapFont = (function () {
+        /**
+         * 各種パラメータを指定して `BitmapFont` のインスタンスを生成する。
+         * @param param `BitmapFont` に設定するパラメータ
+         */
+        function BitmapFont(param) {
+            this.surface = g_1.Util.asSurface(param.src);
+            this.map = param.map;
+            this.defaultGlyphWidth = param.defaultGlyphWidth;
+            this.defaultGlyphHeight = param.defaultGlyphHeight;
+            this.missingGlyph = param.missingGlyph;
+            this.size = param.defaultGlyphHeight;
+        }
+        /**
+         * コードポイントに対応するグリフを返す。
+         * @param code コードポイント
+         */
+        BitmapFont.prototype.glyphForCharacter = function (code) {
+            var g = this.map[code] || this.missingGlyph;
+            if (!g) {
+                return null;
+            }
+            var w = g.width === undefined ? this.defaultGlyphWidth : g.width;
+            var h = g.height === undefined ? this.defaultGlyphHeight : g.height;
+            var offsetX = g.offsetX || 0;
+            var offsetY = g.offsetY || 0;
+            var advanceWidth = g.advanceWidth === undefined ? w : g.advanceWidth;
+            var surface = (w === 0 || h === 0) ? undefined : this.surface;
+            return new g_1.Glyph(code, g.x, g.y, w, h, offsetX, offsetY, advanceWidth, surface, true);
+        };
+        /**
+         * 利用している `Surface` を破棄した上で、このフォントを破棄する。
+         */
+        BitmapFont.prototype.destroy = function () {
+            if (this.surface && !this.surface.destroyed()) {
+                this.surface.destroy();
+            }
+            this.map = undefined;
+        };
+        /**
+         * 破棄されたオブジェクトかどうかを判定する。
+         */
+        BitmapFont.prototype.destroyed = function () {
+            // mapをfalsy値で作成された場合最初から破棄扱いになるが、仕様とする
+            return !this.map;
+        };
+        return BitmapFont;
+    }());
+    g_1.BitmapFont = BitmapFont;
+})(g || (g = {}));
+var g;
+(function (g) {
+    /**
      * 文字列描画のベースライン。
      */
     var TextBaseline;
@@ -7580,26 +6816,6 @@ var g;
          */
         TextBaseline[TextBaseline["Bottom"] = 3] = "Bottom";
     })(TextBaseline = g.TextBaseline || (g.TextBaseline = {}));
-    /**
-     * 文字列描画のフォントファミリ。
-     * 現バージョンのakashic-engineの `SystemLabel` 及び `DynamicFont` において、この値の指定は参考値に過ぎない。
-     * そのため、 それらにおいて 'fontFamily` プロパティを指定した際、実行環境によっては無視される事がありえる。
-     */
-    var FontFamily;
-    (function (FontFamily) {
-        /**
-         * サンセリフ体。ＭＳ Ｐゴシック等
-         */
-        FontFamily[FontFamily["SansSerif"] = 0] = "SansSerif";
-        /**
-         * セリフ体。ＭＳ 明朝等
-         */
-        FontFamily[FontFamily["Serif"] = 1] = "Serif";
-        /**
-         * 等幅。ＭＳ ゴシック等
-         */
-        FontFamily[FontFamily["Monospace"] = 2] = "Monospace";
-    })(FontFamily = g.FontFamily || (g.FontFamily = {}));
     /**
      * システムフォントで文字列を描画するエンティティ。
      *
@@ -7637,7 +6853,7 @@ var g;
             _this.textBaseline = ("textBaseline" in param) ? param.textBaseline : TextBaseline.Alphabetic;
             _this.maxWidth = param.maxWidth;
             _this.textColor = ("textColor" in param) ? param.textColor : "black";
-            _this.fontFamily = ("fontFamily" in param) ? param.fontFamily : FontFamily.SansSerif;
+            _this.fontFamily = ("fontFamily" in param) ? param.fontFamily : g.FontFamily.SansSerif;
             _this.strokeWidth = ("strokeWidth" in param) ? param.strokeWidth : 0;
             _this.strokeColor = ("strokeColor" in param) ? param.strokeColor : "black";
             _this.strokeOnly = ("strokeOnly" in param) ? param.strokeOnly : false;
@@ -7857,7 +7073,6 @@ var g;
 /// <reference path="Matrix.ts" />
 /// <reference path="Util.ts" />
 /// <reference path="Collision.ts" />
-/// <reference path="TriggerHandler.ts" />
 /// <reference path="Trigger.ts" />
 /// <reference path="Timer.ts" />
 /// <reference path="TimerManager.ts" />
@@ -7874,20 +7089,19 @@ var g;
 /// <reference path="DefaultLoadingScene.ts" />
 /// <reference path="Sprite.ts" />
 /// <reference path="FrameSprite.ts" />
-/// <reference path="Tile.ts" />
 /// <reference path="Player.ts" />
 /// <reference path="Event.ts" />
 /// <reference path="Logger.ts" />
 /// <reference path="GameConfiguration.ts" />
 /// <reference path="Game.ts" />
 /// <reference path="Camera.ts" />
+/// <reference path="ImageData.ts" />
 /// <reference path="Renderer.ts" />
 /// <reference path="Surface.ts" />
 /// <reference path="Label.ts" />
-/// <reference path="BitmapFont.ts" />
+/// <reference path="Glyph.ts" />
 /// <reference path="FilledRect.ts" />
 /// <reference path="Pane.ts" />
-/// <reference path="TextInputMethod.ts" />
 /// <reference path="SurfaceEffector.ts" />
 /// <reference path="OperationPluginOperation.ts" />
 /// <reference path="OperationPlugin.ts" />
@@ -7902,12 +7116,14 @@ var g;
 /// <reference path="AudioSystemManager.ts" />
 /// <reference path="CompositeOperation.ts" />
 /// <reference path="EventFilter.ts" />
+/// <reference path="GlyphFactory.ts" />
 /// <reference path="Font.ts" />
 /// <reference path="GameMainParameterObject.ts" />
 /// <reference path="LocalTickMode.ts" />
-/// <reference path="MultiLineLabel.ts" />
 /// <reference path="NinePatchSurfaceEffector.ts" />
 /// <reference path="PathUtil.ts" />
+/// <reference path="FontFamily.ts" />
+/// <reference path="BitmapFont.ts" />
 /// <reference path="SystemLabel.ts" />
 /// <reference path="TextAlign.ts" />
 /// <reference path="TickGenerationMode.ts" />

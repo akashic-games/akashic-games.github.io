@@ -1,5 +1,5 @@
-var Global = require("Global");
-var EntityType = require("EntityType");
+var Global = require("./Global");
+var EntityType = require("./EntityType");
 
 var game = g.game;
 

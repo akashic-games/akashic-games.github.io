@@ -1,8 +1,8 @@
-var Global = require("Global");
-var math = require("Math");
-var EntityType = require("EntityType");
-var ItemType = require("ItemType");
-var Item = require("Item");
+var Global = require("./Global");
+var math = require("./Math");
+var EntityType = require("./EntityType");
+var ItemType = require("./ItemType");
+var Item = require("./Item");
 
 var game = g.game;
 

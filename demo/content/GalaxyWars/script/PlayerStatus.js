@@ -1,5 +1,5 @@
-var Global = require("Global");
-var Player = require("Player");
+var Global = require("./Global");
+var Player = require("./Player");
 
 var game = g.game;
 

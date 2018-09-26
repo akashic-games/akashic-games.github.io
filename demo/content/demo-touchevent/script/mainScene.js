@@ -1,8 +1,11 @@
 var game = g.game;
 module.exports = function() {
-    var scene = new g.Scene({game: game, assetIds: ["switch"]});
-    scene.loaded.handle(function() {
+    var scene = new g.Scene({
+        game: game,
+        assetIds: ["switch"]
+    });
 
+    scene.loaded.add(function() {
         var back = new g.FilledRect({
             scene: scene,
             cssColor: "#282840",
@@ -38,7 +41,7 @@ module.exports = function() {
         });
 
         // スイッチがタッチされた時の処理を登録
-        sw.pointDown.handle(function() {
+        sw.pointDown.add(function() {
             // フレーム番号を 0, 1 で切り替え
             sw.frameNumber++;
             sw.frameNumber %= 2;
@@ -58,5 +61,6 @@ module.exports = function() {
         // 検出することが出来ます。
         scene.append(back);
     });
+
     return scene;
 }
