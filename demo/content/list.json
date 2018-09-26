@@ -27,7 +27,7 @@
 		},
 		{
 			"caption": "タイル",
-			"description": "[g.Tile](https://akashic-games.github.io/reference/akashic-engine-v1/classes/_lib_main_d_.g.tile.html)でタイルチップを並べて描画することができます。画面をクリック(タップ)するとスクロールを開始／停止します。\n\nこのサンプルで使用している素材は[素材ページ](https://akashic-games.github.io/asset/material.html#TILE)で公開・配布しています。",
+			"description": "拡張ライブラリ[akashic-tile](https://github.com/akashic-games/akashic-tile)でタイルチップを並べて描画することができます。画面をクリック(タップ)するとスクロールを開始／停止します。\n\nこのサンプルで使用している素材は[素材ページ](https://akashic-games.github.io/asset/material.html#TILE)で公開・配布しています。",
 			"dir": "demo-tile"
 		},
 		{
@@ -44,6 +44,12 @@
 			"caption": "Galaxy Wars",
 			"description": "画面をドラッグ(スワイプ)すると自機が移動します。自機の弾は自動で発射され、敵を倒すと様々なアイテムを落とします。左上のゲージがゼロになるとゲームオーバーです。\n\nこのサンプルで使用している素材は[素材ページ](https://akashic-games.github.io/asset/material.html#GALAXYWARS)で公開・配布しています。",
 			"dir": "GalaxyWars"
+		},
+		{
+			"caption": "いくぜ！ 超会議",
+			"description": "ニコニコ超会議2018に合わせてniconicoトップページに掲載されていたミニゲームです。[合同会社イクシール](http://www.ixill.net/)様制作。",
+			"dir": "cannontv",
+			"asFullWidth": true
 		}
 	]
 }

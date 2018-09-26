@@ -1,9 +1,9 @@
-var Global = require("Global");
-var math = require("Math");
-var EntityType = require("EntityType");
-var AlphaEnemy = require("AlphaEnemy");
-var BetaEnemy = require("BetaEnemy");
-var GammaEnemy = require("GammaEnemy");
+var Global = require("./Global");
+var math = require("./Math");
+var EntityType = require("./EntityType");
+var AlphaEnemy = require("./AlphaEnemy");
+var BetaEnemy = require("./BetaEnemy");
+var GammaEnemy = require("./GammaEnemy");
 
 var game = g.game;
 

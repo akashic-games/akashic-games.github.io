@@ -1,6 +1,6 @@
-var Global = require("Global");
-var math = require("Math");
-var EntityType = require("EntityType");
+var Global = require("./Global");
+var math = require("./Math");
+var EntityType = require("./EntityType");
 
 var game = g.game;
 
@@ -44,7 +44,7 @@ Background.prototype.update = function() {
         });
         star.modified();
         var that = this;
-        star.update.handle(function() {
+        star.update.add(function() {
             var t = Math.min(1, that.cntr / 60);
             var dy = front ? 8 : 4;
             dy += dy * 2.5 * (1 - t);

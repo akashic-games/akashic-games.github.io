@@ -1,7 +1,7 @@
-var Global = require("Global");
-var ScreenEffector = require("ScreenEffector");
-var createGameScene = require("gameScene");
-var math = require("Math");
+var Global = require("./Global");
+var ScreenEffector = require("./ScreenEffector");
+var createGameScene = require("./gameScene");
+var math = require("./Math");
 
 var game = g.game;
 
@@ -96,7 +96,7 @@ function createHeightBuffer(cellSize) {
 function createTitleScene() {
     var scene = new g.Scene({ game: game, assetIds: ["version"] });
 
-    scene.loaded.handle(function() {
+    scene.loaded.add(function() {
 
         var root = new ScreenEffector({
             scene: scene,
@@ -129,7 +129,7 @@ function createTitleScene() {
             y: (game.height - startBtnImageAsset.height) / 4 * 3,
             touchable: true
         });
-        startBtn.pointDown.handle(function() {
+        startBtn.pointDown.add(function() {
             if (root.mosaicLevel > 1) {
                 return;
             }
@@ -137,7 +137,7 @@ function createTitleScene() {
             startBtn.y += 4;
             startBtn.modified();
         });
-        startBtn.pointUp.handle(function() {
+        startBtn.pointUp.add(function() {
             if (root.mosaicLevel > 1) {
                 return;
             }
@@ -146,15 +146,15 @@ function createTitleScene() {
             startBtn.touchable = false;
             startBtn.modified();
             root.startBlur();
-            scene.setTimeout(1000, function() {
+            scene.setTimeout(function() {
                 game.replaceScene(createGameScene());
-            });
+            }, 1000);
         });
         root.append(startBtn);
 
         var cntr = 0;
         var showHiScore = false;
-        scene.update.handle(function() {
+        scene.update.add(function() {
             if (root.mosaicLevel > 1) {
                 root.mosaicLevel--;
             } else {

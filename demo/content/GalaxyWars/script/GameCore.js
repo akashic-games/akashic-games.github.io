@@ -1,12 +1,12 @@
-var Global = require("Global");
-var math = require("Math");
-var EntityType = require("EntityType");
-var Player = require("Player");
-var ItemGaugeTray = require("ItemGaugeTray");
-var EnemyManager = require("EnemyManager");
-var GammaEnemy = require("GammaEnemy");
-var Background = require("Background");
-var PlayerStatus = require("PlayerStatus");
+var Global = require("./Global");
+var math = require("./Math");
+var EntityType = require("./EntityType");
+var Player = require("./Player");
+var ItemGaugeTray = require("./ItemGaugeTray");
+var EnemyManager = require("./EnemyManager");
+var GammaEnemy = require("./GammaEnemy");
+var Background = require("./Background");
+var PlayerStatus = require("./PlayerStatus");
 
 //
 // GameCoreコンストラクタ

@@ -19,5 +19,8 @@
 			"type": "text",
 			"path": "text/mplus1c_regular_jis1_glyph.json"
 		}
+	},
+	"environment": {
+		"sandbox-runtime": "2"
 	}
 }

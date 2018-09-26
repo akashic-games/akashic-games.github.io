@@ -1,9 +1,9 @@
-var Global = require("Global");
-var EntityType = require("EntityType");
-var ItemType = require("ItemType");
-var Shield = require("Shield");
-var Bullet = require("Bullet");
-var emmitDamageEffect = require("emmitDamageEffect");
+var Global = require("./Global");
+var EntityType = require("./EntityType");
+var ItemType = require("./ItemType");
+var Shield = require("./Shield");
+var Bullet = require("./Bullet");
+var emmitDamageEffect = require("./emmitDamageEffect");
 
 var game = g.game;
 

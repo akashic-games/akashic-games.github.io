@@ -31,7 +31,7 @@ require = function e(t, n, r) {
                 this.fps = param.fps, this.scaleFactor = param.scaleFactor || 1, this.frameTrigger = new g.Trigger(), 
                 this.rawFrameTrigger = new g.Trigger(), this._platform = param.platform, this._maxFramePerOnce = param.maxFramePerOnce, 
                 this._deltaTimeBrokenThreshold = param.deltaTimeBrokenThreshold || Clock.DEFAULT_DELTA_TIME_BROKEN_THRESHOLD, 
-                param.frameHandler && this.frameTrigger.handle(param.frameHandlerOwner, param.frameHandler), 
+                param.frameHandler && this.frameTrigger.add(param.frameHandler, param.frameHandlerOwner), 
                 this.running = !1, this._totalDeltaTime = 0, this._onLooperCall_bound = this._onLooperCall.bind(this), 
                 this._looper = this._platform.createLooper(this._onLooperCall_bound), this._waitTime = 0, 
                 this._waitTimeDoubled = 0, this._waitTimeMax = 0, this._skipFrameWaitTime = 0, this._realMaxFramePerOnce = 0;
@@ -71,12 +71,13 @@ require = function e(t, n, r) {
         Object.defineProperty(exports, "__esModule", {
             value: !0
         });
-        var g = (require("@akashic/akashic-pdi"), require("@akashic/akashic-engine")), PointEventResolver_1 = require("./PointEventResolver"), EventBuffer = function() {
+        var g = (require("@akashic/playlog"), require("@akashic/akashic-pdi"), require("@akashic/akashic-engine")), PointEventResolver_1 = (require("./EventIndex"), 
+        require("./PointEventResolver")), EventBuffer = function() {
             function EventBuffer(param) {
-                this._amflow = param.amflow, this._isLocalReceiver = !0, this._isReceiver = !1, 
-                this._isSender = !1, this._defaultEventPriority = 0, this._buffer = null, this._joinLeaveBuffer = null, 
-                this._localBuffer = null, this._filters = null, this._unfilteredLocalEvents = [], 
-                this._unfilteredEvents = [], this._unfilteredJoinLeaves = [], this._pointEventResolver = new PointEventResolver_1.PointEventResolver({
+                this._amflow = param.amflow, this._isReceiver = !1, this._isSender = !1, this._defaultEventPriority = 0, 
+                this._buffer = null, this._joinLeaveBuffer = null, this._localBuffer = null, this._filters = null, 
+                this._unfilteredLocalEvents = [], this._unfilteredEvents = [], this._unfilteredJoinLeaves = [], 
+                this._pointEventResolver = new PointEventResolver_1.PointEventResolver({
                     game: param.game
                 }), this._onEvent_bound = this.onEvent.bind(this);
             }
@@ -110,19 +111,17 @@ require = function e(t, n, r) {
                     throw g.ExceptionFactory.createAssertionError("EventBuffer.isEventLocal");
                 }
             }, EventBuffer.prototype.setMode = function(param) {
-                null != param.isLocalReceiver && (this._isLocalReceiver = param.isLocalReceiver), 
                 null != param.isReceiver && this._isReceiver !== param.isReceiver && (this._isReceiver = param.isReceiver, 
                 param.isReceiver ? this._amflow.onEvent(this._onEvent_bound) : this._amflow.offEvent(this._onEvent_bound)), 
                 null != param.isSender && (this._isSender = param.isSender), null != param.defaultEventPriority && (this._defaultEventPriority = param.defaultEventPriority);
             }, EventBuffer.prototype.getMode = function() {
                 return {
-                    isLocalReceiver: this._isLocalReceiver,
                     isReceiver: this._isReceiver,
                     isSender: this._isSender,
                     defaultEventPriority: this._defaultEventPriority
                 };
             }, EventBuffer.prototype.onEvent = function(pev) {
-                return EventBuffer.isEventLocal(pev) ? void (this._isLocalReceiver && this._unfilteredLocalEvents.push(pev)) : (this._isReceiver && (0 === pev[0] || 1 === pev[0] ? this._unfilteredJoinLeaves.push(pev) : this._unfilteredEvents.push(pev)), 
+                return EventBuffer.isEventLocal(pev) ? void this._unfilteredLocalEvents.push(pev) : (this._isReceiver && (0 === pev[0] || 1 === pev[0] ? this._unfilteredJoinLeaves.push(pev) : this._unfilteredEvents.push(pev)), 
                 void (this._isSender && (null == pev[1] && (pev[1] = this._defaultEventPriority), 
                 this._amflow.sendEvent(pev))));
             }, EventBuffer.prototype.onPointEvent = function(e) {
@@ -141,12 +140,9 @@ require = function e(t, n, r) {
                 }
                 pev && this.onEvent(pev);
             }, EventBuffer.prototype.addEventDirect = function(pev) {
-                if (EventBuffer.isEventLocal(pev)) {
-                    if (!this._isLocalReceiver) return;
-                    return void (this._localBuffer ? this._localBuffer.push(pev) : this._localBuffer = [ pev ]);
-                }
-                this._isReceiver && (0 === pev[0] || 1 === pev[0] ? this._joinLeaveBuffer ? this._joinLeaveBuffer.push(pev) : this._joinLeaveBuffer = [ pev ] : this._buffer ? this._buffer.push(pev) : this._buffer = [ pev ]), 
-                this._isSender && (null == pev[1] && (pev[1] = this._defaultEventPriority), this._amflow.sendEvent(pev));
+                return EventBuffer.isEventLocal(pev) ? void (this._localBuffer ? this._localBuffer.push(pev) : this._localBuffer = [ pev ]) : (this._isReceiver && (0 === pev[0] || 1 === pev[0] ? this._joinLeaveBuffer ? this._joinLeaveBuffer.push(pev) : this._joinLeaveBuffer = [ pev ] : this._buffer ? this._buffer.push(pev) : this._buffer = [ pev ]), 
+                void (this._isSender && (null == pev[1] && (pev[1] = this._defaultEventPriority), 
+                this._amflow.sendEvent(pev))));
             }, EventBuffer.prototype.readEvents = function() {
                 var ret = this._buffer;
                 return this._buffer = null, ret;
@@ -201,16 +197,19 @@ require = function e(t, n, r) {
         }();
         exports.EventBuffer = EventBuffer;
     }, {
+        "./EventIndex": 4,
         "./PointEventResolver": 13,
         "@akashic/akashic-engine": "@akashic/akashic-engine",
-        "@akashic/akashic-pdi": 22
+        "@akashic/akashic-pdi": 22,
+        "@akashic/playlog": 26
     } ],
     3: [ function(require, module, exports) {
         "use strict";
         Object.defineProperty(exports, "__esModule", {
             value: !0
         });
-        var g = require("@akashic/akashic-engine"), EventConverter = function() {
+        var g = require("@akashic/akashic-engine"), EventConverter = (require("@akashic/playlog"), 
+        require("./EventIndex"), function() {
             function EventConverter(param) {
                 this._game = param.game, this._playerTable = {};
             }
@@ -324,10 +323,12 @@ require = function e(t, n, r) {
                 var playerId = this._game.player.id, priority = null != op.priority ? op.priority : 0;
                 return [ 64, priority, playerId, op._code, op.data, !!op.local ];
             }, EventConverter;
-        }();
+        }());
         exports.EventConverter = EventConverter;
     }, {
-        "@akashic/akashic-engine": "@akashic/akashic-engine"
+        "./EventIndex": 4,
+        "@akashic/akashic-engine": "@akashic/akashic-engine",
+        "@akashic/playlog": 26
     } ],
     4: [ function(require, module, exports) {
         "use strict";
@@ -446,7 +447,7 @@ require = function e(t, n, r) {
         });
         var es6_promise_1 = require("es6-promise"), g = require("@akashic/akashic-engine"), ExecutionMode_1 = require("./ExecutionMode"), Game_1 = require("./Game"), EventBuffer_1 = require("./EventBuffer"), GameLoop_1 = require("./GameLoop"), PdiUtil_1 = require("./PdiUtil"), GameDriver = function() {
             function GameDriver(param) {
-                this.errorTrigger = new g.Trigger(), param.errorHandler && this.errorTrigger.handle(param.errorHandlerOwner, param.errorHandler), 
+                this.errorTrigger = new g.Trigger(), param.errorHandler && this.errorTrigger.add(param.errorHandler, param.errorHandlerOwner), 
                 this.configurationLoadedTrigger = new g.Trigger(), this.gameCreatedTrigger = new g.Trigger(), 
                 this._platform = param.platform, this._loadConfigurationFunc = PdiUtil_1.PdiUtil.makeLoadConfigurationFunc(param.platform), 
                 this._player = param.player, this._rendererRequirement = null, this._playId = null, 
@@ -645,7 +646,7 @@ require = function e(t, n, r) {
                     game.setCurrentTimeFunc(gameLoop.getCurrentTime.bind(gameLoop)), game._reset({
                         age: 0,
                         randGen: new g.XorshiftRandomGenerator(seed)
-                    }), _this._updateGamePlayId(game), _this._hidden && game._setMuted(!0), game.snapshotTrigger.handle(function(startPoint) {
+                    }), _this._updateGamePlayId(game), _this._hidden && game._setMuted(!0), game.snapshotTrigger.add(function(startPoint) {
                         _this._platform.amflow.putStartPoint(startPoint, function(err) {
                             err && _this.errorTrigger.fire(err);
                         });
@@ -670,17 +671,18 @@ require = function e(t, n, r) {
         "./GameLoop": 8,
         "./PdiUtil": 12,
         "@akashic/akashic-engine": "@akashic/akashic-engine",
-        "es6-promise": 23
+        "es6-promise": 27
     } ],
     8: [ function(require, module, exports) {
         "use strict";
         Object.defineProperty(exports, "__esModule", {
             value: !0
         });
-        var g = require("@akashic/akashic-engine"), LoopMode_1 = require("./LoopMode"), LoopRenderMode_1 = require("./LoopRenderMode"), ExecutionMode_1 = require("./ExecutionMode"), Clock_1 = require("./Clock"), ProfilerClock_1 = require("./ProfilerClock"), EventConverter_1 = require("./EventConverter"), TickController_1 = require("./TickController"), GameLoop = function() {
+        var g = require("@akashic/akashic-engine"), LoopMode_1 = require("./LoopMode"), LoopRenderMode_1 = require("./LoopRenderMode"), ExecutionMode_1 = require("./ExecutionMode"), Clock_1 = (require("./EventIndex"), 
+        require("./Clock")), ProfilerClock_1 = require("./ProfilerClock"), EventConverter_1 = require("./EventConverter"), TickController_1 = require("./TickController"), GameLoop = function() {
             function GameLoop(param) {
                 this.errorTrigger = new g.Trigger(), this.running = !1, this._currentTime = 0, this._frameTime = 1e3 / param.game.fps, 
-                param.errorHandler && this.errorTrigger.handle(param.errorHandlerOwner, param.errorHandler);
+                param.errorHandler && this.errorTrigger.add(param.errorHandler, param.errorHandlerOwner);
                 var conf = param.configuration;
                 this._startedAt = param.startedAt, this._targetTimeFunc = conf.targetTimeFunc || null, 
                 this._targetTimeOffset = conf.targetTimeOffset || null, this._originDate = conf.originDate || null, 
@@ -720,9 +722,9 @@ require = function e(t, n, r) {
                     game: param.game
                 }), this._tickBuffer = this._tickController.getBuffer(), this._onGotStartPoint_bound = this._onGotStartPoint.bind(this), 
                 this._setLoopRenderMode(loopRenderMode), this._game.setStorageFunc(this._tickController.storageFunc()), 
-                this._game.raiseEventTrigger.handle(this, this._onGameRaiseEvent), this._game.raiseTickTrigger.handle(this, this._onGameRaiseTick), 
-                this._game._started.handle(this, this._onGameStarted), this._game._operationPluginOperated.handle(this, this._onGameOperationPluginOperated), 
-                this._tickBuffer.gotNextTickTrigger.handle(this, this._onGotNextFrameTick), this._tickBuffer.start(), 
+                this._game.raiseEventTrigger.add(this._onGameRaiseEvent, this), this._game.raiseTickTrigger.add(this._onGameRaiseTick, this), 
+                this._game._started.add(this._onGameStarted, this), this._game._operationPluginOperated.add(this._onGameOperationPluginOperated, this), 
+                this._tickBuffer.gotNextTickTrigger.add(this._onGotNextFrameTick, this), this._tickBuffer.start(), 
                 this._updateGamePlaybackRate(), this._handleSceneChange();
             }
             return GameLoop.prototype.start = function() {
@@ -777,14 +779,14 @@ require = function e(t, n, r) {
                 if (this._sceneLocalMode !== localMode || this._sceneTickMode !== tickMode) switch (this._sceneLocalMode = localMode, 
                 this._sceneTickMode = tickMode, localMode) {
                   case g.LocalTickMode.FullLocal:
-                    this._tickController.stopTick(), this._clock.frameTrigger.remove(this, this._onFrame), 
-                    this._clock.frameTrigger.handle(this, this._onLocalFrame);
+                    this._tickController.stopTick(), this._clock.frameTrigger.remove(this._onFrame, this), 
+                    this._clock.frameTrigger.add(this._onLocalFrame, this);
                     break;
 
                   case g.LocalTickMode.NonLocal:
                   case g.LocalTickMode.InterpolateLocal:
                     tickMode === g.TickGenerationMode.ByClock ? this._tickController.startTick() : this._tickController.startTickOnce(), 
-                    this._clock.frameTrigger.remove(this, this._onLocalFrame), this._clock.frameTrigger.handle(this, this._onFrame);
+                    this._clock.frameTrigger.remove(this._onLocalFrame, this), this._clock.frameTrigger.add(this._onFrame, this);
                     break;
 
                   default:
@@ -854,16 +856,16 @@ require = function e(t, n, r) {
                 if (ageGap <= 0) return 0 === ageGap && (this._sceneTickMode !== g.TickGenerationMode.Manual && this._loopMode !== LoopMode_1.default.Replay || 0 !== this._tickBuffer.currentAge || this._tickBuffer.requestTicks(), 
                 this._startWaitingNextTick()), void (this._sceneLocalMode === g.LocalTickMode.InterpolateLocal && this._doLocalTick());
                 for (var loopCount = !this._skipping && ageGap <= this._delayIgnoreThreshold ? 1 : Math.min(ageGap, this._skipTicksAtOnce), i = 0; i < loopCount; ++i) {
-                    var nextFrameTime = this._currentTime + this._frameTime, nextTickTime = this._tickBuffer.readNextTickTime();
-                    if (null != nextTickTime && nextFrameTime < nextTickTime) {
-                        if (this._loopMode !== LoopMode_1.default.Realtime) {
+                    var nextFrameTime = this._currentTime + this._frameTime;
+                    if (this._loopMode === LoopMode_1.default.Realtime) ; else {
+                        var nextTickTime = this._tickBuffer.readNextTickTime();
+                        if (null != nextTickTime && nextFrameTime < nextTickTime) {
                             if (this._sceneLocalMode === g.LocalTickMode.InterpolateLocal) {
                                 this._doLocalTick();
                                 continue;
                             }
                             break;
                         }
-                        nextFrameTime = Math.ceil(nextTickTime / this._frameTime) * this._frameTime;
                     }
                     this._currentTime = nextFrameTime;
                     var tick = this._tickBuffer.consume(), consumedAge = -1;
@@ -903,20 +905,24 @@ require = function e(t, n, r) {
                     var currentAge = this._tickBuffer.currentAge;
                     if (currentAge <= targetAge && startPoint.frame < currentAge + this._jumpIgnoreThreshold) return;
                 }
-                this._clock.frameTrigger.remove(this._eventBuffer, this._eventBuffer.processEvents), 
+                this._clock.frameTrigger.remove(this._eventBuffer.processEvents, this._eventBuffer), 
                 this._tickBuffer.setCurrentAge(startPoint.frame), this._currentTime = startPoint.timestamp || startPoint.data.timestamp || 0, 
                 this._waitingNextTick = !1, this._lastRequestedStartPointAge = -1, this._lastRequestedStartPointTime = -1, 
                 this._game._restartWithSnapshot(startPoint), this._handleSceneChange(), this.start();
             }, GameLoop.prototype._onGameStarted = function() {
-                this._clock.frameTrigger.handleInsert(0, this._eventBuffer, this._eventBuffer.processEvents);
+                this._clock.frameTrigger.add({
+                    index: 0,
+                    owner: this._eventBuffer,
+                    func: this._eventBuffer.processEvents
+                });
             }, GameLoop.prototype._setLoopRenderMode = function(mode) {
                 if (mode !== this._loopRenderMode) switch (this._loopRenderMode = mode, mode) {
                   case LoopRenderMode_1.default.AfterRawFrame:
-                    this._clock.rawFrameTrigger.handle(this, this._renderOnRawFrame);
+                    this._clock.rawFrameTrigger.add(this._renderOnRawFrame, this);
                     break;
 
                   case LoopRenderMode_1.default.None:
-                    this._clock.rawFrameTrigger.remove(this, this._renderOnRawFrame);
+                    this._clock.rawFrameTrigger.remove(this._renderOnRawFrame, this);
                     break;
 
                   default:
@@ -941,10 +947,10 @@ require = function e(t, n, r) {
                 time - this._lastPollingTickTime > this._pollingTickThreshold && (this._lastPollingTickTime = time, 
                 this._tickBuffer.requestTicks());
             }, GameLoop.prototype._startWaitingNextTick = function() {
-                this._waitingNextTick = !0, this._clock.rawFrameTrigger.handle(this, this._onPollingTick), 
+                this._waitingNextTick = !0, this._clock.rawFrameTrigger.add(this._onPollingTick, this), 
                 this._lastPollingTickTime = +new Date();
             }, GameLoop.prototype._stopWaitingNextTick = function() {
-                this._waitingNextTick = !1, this._clock.rawFrameTrigger.remove(this, this._onPollingTick);
+                this._waitingNextTick = !1, this._clock.rawFrameTrigger.remove(this._onPollingTick, this);
             }, GameLoop.DEFAULT_DELAY_IGNORE_THRESHOLD = 6, GameLoop.DEFAULT_SKIP_TICKS_AT_ONCE = 100, 
             GameLoop.DEFAULT_SKIP_THRESHOLD = 3e4, GameLoop.DEFAULT_JUMP_TRY_THRESHOLD = 9e4, 
             GameLoop.DEFAULT_JUMP_IGNORE_THRESHOLD = 15e3, GameLoop.DEFAULT_POLLING_TICK_THRESHOLD = 1e4, 
@@ -955,6 +961,7 @@ require = function e(t, n, r) {
     }, {
         "./Clock": 1,
         "./EventConverter": 3,
+        "./EventIndex": 4,
         "./ExecutionMode": 5,
         "./LoopMode": 10,
         "./LoopRenderMode": 11,
@@ -967,7 +974,8 @@ require = function e(t, n, r) {
         Object.defineProperty(exports, "__esModule", {
             value: !0
         });
-        var g = require("@akashic/akashic-engine"), JoinLeaveRequest = function() {
+        var g = (require("@akashic/playlog"), require("@akashic/akashic-engine")), JoinLeaveRequest = (require("./EventIndex"), 
+        function() {
             function JoinLeaveRequest(pev, joinResolver, amflow, keys) {
                 this.joinResolver = joinResolver, this.pev = pev, 0 === pev[0] && keys ? (this.resolved = !1, 
                 amflow.getStorageData(keys, this._onGotStorageData.bind(this))) : this.resolved = !0;
@@ -975,11 +983,11 @@ require = function e(t, n, r) {
             return JoinLeaveRequest.prototype._onGotStorageData = function(err, sds) {
                 return this.resolved = !0, err ? void this.joinResolver.errorTrigger.fire(err) : void (this.pev[4] = sds);
             }, JoinLeaveRequest;
-        }();
+        }());
         exports.JoinLeaveRequest = JoinLeaveRequest;
         var JoinResolver = function() {
             function JoinResolver(param) {
-                this.errorTrigger = new g.Trigger(), param.errorHandler && this.errorTrigger.handle(param.errorHandlerOwner, param.errorHandler), 
+                this.errorTrigger = new g.Trigger(), param.errorHandler && this.errorTrigger.add(param.errorHandler, param.errorHandlerOwner), 
                 this._amflow = param.amflow, this._keysForJoin = null, this._requested = [];
             }
             return JoinResolver.prototype.request = function(pev) {
@@ -999,7 +1007,9 @@ require = function e(t, n, r) {
         }();
         exports.JoinResolver = JoinResolver;
     }, {
-        "@akashic/akashic-engine": "@akashic/akashic-engine"
+        "./EventIndex": 4,
+        "@akashic/akashic-engine": "@akashic/akashic-engine",
+        "@akashic/playlog": 26
     } ],
     10: [ function(require, module, exports) {
         "use strict";
@@ -1105,14 +1115,14 @@ require = function e(t, n, r) {
         }(PdiUtil = exports.PdiUtil || (exports.PdiUtil = {}));
     }, {
         "@akashic/akashic-engine": "@akashic/akashic-engine",
-        "es6-promise": 23
+        "es6-promise": 27
     } ],
     13: [ function(require, module, exports) {
         "use strict";
         Object.defineProperty(exports, "__esModule", {
             value: !0
         });
-        var PointEventResolver = function() {
+        var PointEventResolver = (require("@akashic/playlog"), function() {
             function PointEventResolver(param) {
                 this._game = param.game, this._pointEventMap = {};
             }
@@ -1164,9 +1174,11 @@ require = function e(t, n, r) {
                 prevDelta.x = offset.x - holder.prev.x, prevDelta.y = offset.y - holder.prev.y, 
                 holder.prev.x = offset.x, holder.prev.y = offset.y;
             }, PointEventResolver;
-        }();
+        }());
         exports.PointEventResolver = PointEventResolver;
-    }, {} ],
+    }, {
+        "@akashic/playlog": 26
+    } ],
     14: [ function(require, module, exports) {
         "use strict";
         var __extends = this && this.__extends || function() {
@@ -1221,7 +1233,7 @@ require = function e(t, n, r) {
         });
         var g = require("@akashic/akashic-engine"), ExecutionMode_1 = require("./ExecutionMode"), StorageResolver = function() {
             function StorageResolver(param) {
-                this.errorTrigger = new g.Trigger(), param.errorHandler && this.errorTrigger.handle(param.errorHandlerOwner, param.errorHandler), 
+                this.errorTrigger = new g.Trigger(), param.errorHandler && this.errorTrigger.add(param.errorHandler, param.errorHandlerOwner), 
                 this.getStorageFunc = this._getStorage.bind(this), this.putStorageFunc = this._putStorage.bind(this), 
                 this.requestValuesForJoinFunc = this._requestValuesForJoin.bind(this), this._game = param.game, 
                 this._amflow = param.amflow, this._tickGenerator = param.tickGenerator, this._tickBuffer = param.tickBuffer, 
@@ -1232,9 +1244,9 @@ require = function e(t, n, r) {
                 if (this._executionMode !== executionMode) {
                     this._executionMode = executionMode;
                     var tickBuf = this._tickBuffer, tickGen = this._tickGenerator;
-                    executionMode === ExecutionMode_1.default.Active ? (tickBuf.gotStorageTrigger.remove(this, this._onGotStorageOnTick), 
-                    tickGen.gotStorageTrigger.handle(this, this._onGotStorageOnTick)) : (tickGen.gotStorageTrigger.remove(this, this._onGotStorageOnTick), 
-                    tickBuf.gotStorageTrigger.handle(this, this._onGotStorageOnTick));
+                    executionMode === ExecutionMode_1.default.Active ? (tickBuf.gotStorageTrigger.remove(this._onGotStorageOnTick, this), 
+                    tickGen.gotStorageTrigger.add(this._onGotStorageOnTick, this)) : (tickGen.gotStorageTrigger.remove(this._onGotStorageOnTick, this), 
+                    tickBuf.gotStorageTrigger.add(this._onGotStorageOnTick, this));
                 }
             }, StorageResolver.prototype._onGotStorageOnTick = function(storageOnTick) {
                 var resolvingAge = storageOnTick.age, storageData = storageOnTick.storageData, loader = this._unresolvedLoaders[resolvingAge];
@@ -1273,7 +1285,8 @@ require = function e(t, n, r) {
         Object.defineProperty(exports, "__esModule", {
             value: !0
         });
-        var g = require("@akashic/akashic-engine"), ExecutionMode_1 = require("./ExecutionMode"), TickBuffer = function() {
+        var g = (require("@akashic/playlog"), require("@akashic/akashic-engine")), ExecutionMode_1 = (require("./EventIndex"), 
+        require("./ExecutionMode")), TickBuffer = function() {
             function TickBuffer(param) {
                 this.currentAge = 0, this.knownLatestAge = -1, this.gotNextTickTrigger = new g.Trigger(), 
                 this.gotStorageTrigger = new g.Trigger(), this._amflow = param.amflow, this._prefetchThreshold = param.prefetchThreshold || TickBuffer.DEFAULT_PREFETCH_THRESHOLD, 
@@ -1418,8 +1431,10 @@ require = function e(t, n, r) {
         }();
         exports.TickBuffer = TickBuffer;
     }, {
+        "./EventIndex": 4,
         "./ExecutionMode": 5,
-        "@akashic/akashic-engine": "@akashic/akashic-engine"
+        "@akashic/akashic-engine": "@akashic/akashic-engine",
+        "@akashic/playlog": 26
     } ],
     17: [ function(require, module, exports) {
         "use strict";
@@ -1428,7 +1443,7 @@ require = function e(t, n, r) {
         });
         var g = require("@akashic/akashic-engine"), ExecutionMode_1 = require("./ExecutionMode"), TickBuffer_1 = require("./TickBuffer"), TickGenerator_1 = require("./TickGenerator"), sr = require("./StorageResolver"), TickController = function() {
             function TickController(param) {
-                this.errorTrigger = new g.Trigger(), param.errorHandler && this.errorTrigger.handle(param.errorHandlerOwner, param.errorHandler), 
+                this.errorTrigger = new g.Trigger(), param.errorHandler && this.errorTrigger.add(param.errorHandler, param.errorHandlerOwner), 
                 this._amflow = param.amflow, this._clock = param.clock, this._started = !1, this._executionMode = param.executionMode, 
                 this._generator = new TickGenerator_1.TickGenerator({
                     amflow: param.amflow,
@@ -1446,14 +1461,14 @@ require = function e(t, n, r) {
                     executionMode: param.executionMode,
                     errorHandler: this.errorTrigger.fire,
                     errorHandlerOwner: this.errorTrigger
-                }), this._generator.tickTrigger.handle(this, this._onTickGenerated), this._clock.frameTrigger.handle(this._generator, this._generator.next);
+                }), this._generator.tickTrigger.add(this._onTickGenerated, this), this._clock.frameTrigger.add(this._generator.next, this._generator);
             }
             return TickController.prototype.startTick = function() {
                 this._started = !0, this._updateGeneratorState();
             }, TickController.prototype.stopTick = function() {
                 this._started = !1, this._updateGeneratorState();
             }, TickController.prototype.startTickOnce = function() {
-                this._started = !0, this._generator.tickTrigger.handle(this, this._stopTriggerOnTick), 
+                this._started = !0, this._generator.tickTrigger.addOnce(this._stopTriggerOnTick, this), 
                 this._updateGeneratorState();
             }, TickController.prototype.setNextAge = function(age) {
                 this._generator.setNextAge(age);
@@ -1471,7 +1486,7 @@ require = function e(t, n, r) {
                 this._executionMode !== execMode && (this._executionMode = execMode, this._updateGeneratorState(), 
                 this._buffer.setExecutionMode(execMode), this._storageResolver.setExecutionMode(execMode));
             }, TickController.prototype._stopTriggerOnTick = function() {
-                return this.stopTick(), !0;
+                this.stopTick();
             }, TickController.prototype._updateGeneratorState = function() {
                 var toGenerate = this._started && this._executionMode === ExecutionMode_1.default.Active;
                 this._generator.startStopGenerate(toGenerate);
@@ -1495,7 +1510,7 @@ require = function e(t, n, r) {
         var g = require("@akashic/akashic-engine"), JoinResolver_1 = require("./JoinResolver"), TickGenerator = function() {
             function TickGenerator(param) {
                 this.tickTrigger = new g.Trigger(), this.gotStorageTrigger = new g.Trigger(), this.errorTrigger = new g.Trigger(), 
-                param.errorHandler && this.errorTrigger.handle(param.errorHandlerOwner, param.errorHandler), 
+                param.errorHandler && this.errorTrigger.add(param.errorHandler, param.errorHandlerOwner), 
                 this._amflow = param.amflow, this._eventBuffer = param.eventBuffer, this._joinResolver = new JoinResolver_1.JoinResolver({
                     amflow: param.amflow,
                     errorHandler: this.errorTrigger.fire,
@@ -1551,7 +1566,7 @@ require = function e(t, n, r) {
         Object.defineProperty(exports, "__esModule", {
             value: !0
         });
-        var MemoryAmflowClient = function() {
+        var MemoryAmflowClient = (require("../EventIndex"), function() {
             function MemoryAmflowClient(param) {
                 this._playId = param.playId, this._putStorageDataSyncFunc = param.putStorageDataSyncFunc || function() {
                     throw new Error("Implementation not given");
@@ -1703,15 +1718,17 @@ require = function e(t, n, r) {
                 }
             }, MemoryAmflowClient.TOKEN_ACTIVE = "mamfc-token:active", MemoryAmflowClient.TOKEN_PASSIVE = "mamfc-token:passive", 
             MemoryAmflowClient;
-        }();
+        }());
         exports.MemoryAmflowClient = MemoryAmflowClient;
-    }, {} ],
+    }, {
+        "../EventIndex": 4
+    } ],
     20: [ function(require, module, exports) {
         "use strict";
         Object.defineProperty(exports, "__esModule", {
             value: !0
         });
-        var ReplayAmflowProxy = function() {
+        var ReplayAmflowProxy = (require("../EventIndex"), function() {
             function ReplayAmflowProxy(param) {
                 this._amflow = param.amflow, this._tickList = param.tickList, this._startPoints = param.startPoints;
             }
@@ -1792,9 +1809,11 @@ require = function e(t, n, r) {
                     return from <= age && age <= to;
                 });
             }, ReplayAmflowProxy;
-        }();
+        }());
         exports.ReplayAmflowProxy = ReplayAmflowProxy;
-    }, {} ],
+    }, {
+        "../EventIndex": 4
+    } ],
     21: [ function(require, module, exports) {
         "use strict";
         Object.defineProperty(exports, "__esModule", {
@@ -1804,7 +1823,7 @@ require = function e(t, n, r) {
             function SimpleProfiler(param) {
                 this._interval = null != param.interval ? param.interval : SimpleProfiler.DEFAULT_INTERVAL, 
                 null != param.limit ? this._limit = param.limit >= SimpleProfiler.DEFAULT_LIMIT ? param.limit : SimpleProfiler.DEFAULT_LIMIT : this._limit = SimpleProfiler.DEFAULT_LIMIT, 
-                this._calculateProfilerValueTrigger = new g.Trigger(), param.getValueHandler && this._calculateProfilerValueTrigger.handle(param.getValueHandlerOwner, param.getValueHandler), 
+                this._calculateProfilerValueTrigger = new g.Trigger(), param.getValueHandler && this._calculateProfilerValueTrigger.add(param.getValueHandler, param.getValueHandlerOwner), 
                 this._reset();
             }
             return SimpleProfiler.prototype.time = function(type) {
@@ -1867,7 +1886,28 @@ require = function e(t, n, r) {
             value: !0
         });
     }, {} ],
-    23: [ function(require, module, exports) {
+    23: [ function(require, module, exports) {}, {} ],
+    24: [ function(require, module, exports) {
+        arguments[4][23][0].apply(exports, arguments);
+    }, {
+        dup: 23
+    } ],
+    25: [ function(require, module, exports) {
+        arguments[4][23][0].apply(exports, arguments);
+    }, {
+        dup: 23
+    } ],
+    26: [ function(require, module, exports) {
+        function __export(m) {
+            for (var p in m) exports.hasOwnProperty(p) || (exports[p] = m[p]);
+        }
+        __export(require("./Tick")), __export(require("./Event")), __export(require("./StorageData"));
+    }, {
+        "./Event": 23,
+        "./StorageData": 24,
+        "./Tick": 25
+    } ],
+    27: [ function(require, module, exports) {
         (function(process, global) {
             /*!
  * @overview es6-promise - a tiny implementation of Promises/A+.
@@ -2154,9 +2194,9 @@ require = function e(t, n, r) {
             });
         }).call(this, require("_process"), "undefined" != typeof global ? global : "undefined" != typeof self ? self : "undefined" != typeof window ? window : {});
     }, {
-        _process: 24
+        _process: 28
     } ],
-    24: [ function(require, module, exports) {
+    28: [ function(require, module, exports) {
         function defaultSetTimout() {
             throw new Error("setTimeout has not been defined");
         }

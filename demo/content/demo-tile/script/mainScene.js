@@ -1,9 +1,10 @@
+var Tile = require("@akashic-extension/akashic-tile").Tile;
 var game = g.game;
 
 module.exports = function() {
     var scene = new g.Scene({game: game, assetIds:["map"]});
-    scene.loaded.handle(function() {
-        var tile = new g.Tile({
+    scene.loaded.add(function() {
+        var tile = new Tile({
             scene: scene,
             src: scene.assets["map"],
             tileWidth: 32,
@@ -36,10 +37,10 @@ module.exports = function() {
             var vx = -1;
 
             var scroll = false;
-            tile.pointDown.handle(function() {
+            tile.pointDown.add(function() {
                 scroll = !scroll;
             });
-            tile.update.handle(function() {
+            tile.update.add(function() {
                 if (!scroll) {
                     return;
                 }
