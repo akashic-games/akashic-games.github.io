@@ -19,6 +19,10 @@
 			return results === null ? undefined : decodeURIComponent(results[1].replace(/\+/g, " "));
 		}
 
+		var bg = getParameterByName("bg");
+		if (/^#?[a-zA-Z0-9]+$/.test(bg))  // 簡易検証: 色名か#rrggbb系のみ許容。
+			document.body.setAttribute("style", "background:" + bg);
+
 		var title = getParameterByName("title");
 		start(title + "/game.json", title + "/");
 	});
