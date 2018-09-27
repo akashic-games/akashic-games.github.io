@@ -49,6 +49,7 @@
 			"caption": "いくぜ！ 超会議",
 			"description": "ニコニコ超会議2018に合わせてniconicoトップページに掲載されていたミニゲームです。[合同会社イクシール](http://www.ixill.net/)様制作。",
 			"dir": "cannontv",
+			"backgroundColor": "transparent",
 			"asFullWidth": true
 		}
 	]
