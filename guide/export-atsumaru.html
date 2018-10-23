@@ -5,7 +5,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>より大規模なゲームを作るために</title>
+<title>ニコニコ新市場対応コンテンツの投稿方法</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?1540290080638">
 <link rel="stylesheet" href="/css/header.css?1540290080638">
@@ -95,105 +95,80 @@
 <div id="BodyInner">
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
-			<h1>より大規模なゲームを作るために</h1>
-<h2><a name="シーンの切り替え"></a> シーンの切り替え</h2>
-<p>Akashic Engine では、タイトル場面・プレイ場面・スコア場面のように、
-ゲームの場面ごとにそれぞれお対応するシーンを作成しそれらを切り替えて表示できます。
-シーンの切り替えには <code>Game</code> オブジェクトに用意されたメソッドを利用します。</p>
-<ul>
-<li><code>g.game.replaceScene()</code></li>
-<li><code>g.game.pushScene()</code></li>
-<li><code>g.game.popScene()</code></li>
-</ul>
-<p><code>replaceScene()</code> は現在のシーンを破棄して次のシーンに遷移します。
-<code>pushScene()</code> を利用すると現在のシーンを保存して次のシーンに遷移します。
-<code>pushScene()</code> でシーン遷移した場合、<code>popScene()</code> で元のシーンに戻ることができます。</p>
-<p>以下のプログラムでは <code>replaceScene()</code> を利用して、
-画面のタップまたはクリックで2つのシーンを切り替えています。</p>
-<pre><code class="lang-javascript">function main() {
-  g.game.pushScene(createSceneA());
-}
-
-function createSceneA() {
-  var scene = new g.Scene({game: g.game});
-  scene.loaded.add(function () {
-    scene.append(createRect(scene, &quot;red&quot;));
-    scene.pointDownCapture.add(function () {
-      g.game.replaceScene(createSceneB());
-    });
-  });
-  return scene;
-}
-
-function createSceneB() {
-  var scene = new g.Scene({game: g.game});
-  scene.loaded.add(function () {
-    scene.append(createRect(scene, &quot;blue&quot;));
-    scene.pointDownCapture.add(function () {
-      g.game.replaceScene(createSceneA());
-    });
-  });
-  return scene;
-}
-
-function createRect(scene, color) {
-  return new g.FilledRect({
-    scene: scene,
-    cssColor: color,
-    width: 32,
-    height: 32,
-  });
-}
-
-module.exports = main;
+			<h1>ニコニコ新市場対応コンテンツの投稿方法</h1>
+<h2><a name="これは"></a> これは</h2>
+<p>Akashic Engine で作られた <strong>ニコニコ新市場対応コンテンツ</strong> を <a href="http://blog.nicovideo.jp/niconews/81617.html">実験放送</a> に投稿するための手順を解説します。
+ニコニコ新市場対応コンテンツの作り方については <a href="/guide/ranking">こちら</a> を参照してください。</p>
+<h2><a name="投稿方法"></a> 投稿方法</h2>
+<p>ニコニコ新市場対応コンテンツの投稿は、<a href="https://game.nicovideo.jp/atsumaru/">RPGアツマール</a> を通して行います。</p>
+<p>RPGアツマールは、&quot;作って遊んでコメントできる ゲーム投稿コミュニティサービス&quot; です(<a href="http://site.nicovideo.jp/atsumaru/about/">紹介</a>)。
+AkashicゲームをこのRPGアツマールに投稿・公開した後、申請を行うことで、実験放送でも使えるようになります。</p>
+<p>次の手順で行います。</p>
+<ol>
+<li>投稿用zipファイルを生成</li>
+<li>RPGアツマールに投稿し、ニコニコ新市場対応コンテンツとして登録申請</li>
+</ol>
+<h3><a name="投稿用zipファイルを生成"></a> 投稿用zipファイルを生成</h3>
+<p>game.json のあるディレクトリで、次のコマンドを実行してzipファイルを生成します。</p>
+<pre><code class="lang-sh">akashic export html --output &lt;zipFileName&gt; --atsumaru
 </code></pre>
-<h2><a name="ファイル分割"></a> ファイル分割</h2>
-<p>Akashic Engine のスクリプトを複数のファイルに分けて記述した場合、
-<code>require()</code> を使って他のファイルの関数を読み込んで利用します。</p>
-<p><code>MainScene.js</code> に以下のコードが記述されているとします。</p>
-<pre><code class="lang-javascript">module.exports.create = function() {
-  var scene = new g.Scene({game: g.game});
-  scene.loaded.add(function () {
-    var rect = new g.FilledRect({
-      scene: scene,
-      cssColor: &quot;red&quot;,
-      width: 32,
-      height: 32,
-    });
-    scene.append(rect);
-  });
-  return scene;
-}
-</code></pre>
-<p><code>mainScene.js</code> はシーンの作成処理を独立させたファイルです。
-コード中で <code>module.exports</code> に <code>create</code> 関数を代入しています。
-このコードを <code>akashic scan</code> でアセットとして追加すると
-関数を他のファイルから利用できます。</p>
-<p>例えば <code>main.js</code> から利用する場合は、次のようなコードになります。</p>
-<pre><code class="lang-javascript">var MainScene = require(&quot;./MainScene&quot;);
-
-function main() {
-  g.game.pushScene(MainScene.create());
-}
-
-module.exports = main;
-</code></pre>
-<h2><a name="より高度な情報"></a> より高度な情報</h2>
-<p>ここまでの説明で Akashic Engine を利用してゲームを作るのに必要な情報を
-一通り説明しました。
-実践的な使い方やより高度な機能を利用するには、開発者向けガイドの記事を参照してください。</p>
+<p>似た名前のコマンドに <code>akashic export zip</code> があるので注意してください。
+(<code>html</code> がHTMLファイルを生成する(拡張子がzipなら圧縮もする)一方、 <code>zip</code> は形式を変えずに加工(不要なファイル除去など)するコマンドです)</p>
+<p><code>&lt;zipFileName&gt;</code> には、 <code>.zip</code> で終わるパスを指定してください (<code>./game.zip</code> など)。
+<code>--atsumaru</code> オプションをつけることで、RPGアツマールとニコニコ新市場に対応した形式のファイルを生成します。</p>
+<p><code>export html</code> コマンドによって、以下のファイル・ディレクトリを圧縮したzipファイル <code>&lt;zipFileName&gt;</code> が生成されます。</p>
 <ul>
-<li><a href="/guide/index.html">開発者向けガイド</a></li>
+<li><code>files</code> ディレクトリ<ul>
+<li>ゲーム内で使用されるアセットファイルを格納しているディレクトリ</li>
 </ul>
-<p>また Akashic Engine で利用可能なすべてのメソッドとプロパティを列挙した
-APIリファレンスも実際のプログラミングで役に立ちます。</p>
-<ul>
-<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">APIリファレンス</a></li>
+</li>
+<li><code>index.html</code><ul>
+<li>起動するとゲームが実行されるHTMLファイル<ul>
+<li>ただし、<code>akashic export html</code>で出力されるindex.htmlとは異なり、このファイルの起動にはHTTPサーバーが必要になります</li>
 </ul>
-<div class="navi-center">
-<a href="./8-install.html">前（拡張ライブラリを使う）</a>
- | <a href="./">目次</a>
-</div>
+</li>
+</ul>
+</li>
+<li><code>game.json</code><ul>
+<li>ゲームのメタ情報などを取り扱う設定ファイル</li>
+</ul>
+</li>
+</ul>
+<p>2018年10月現在、ニコニコ新市場対応コンテンツは、 <strong>このzipファイルの展開後のサイズが10MB以下である必要があります</strong> 。
+これを超える場合、アツマールには投稿できますが、ニコニコ新市場対応コンテンツとして登録申請する際に失敗するので注意してください。</p>
+<h3><a name="RPGアツマールに投稿し、ニコニコ新市場対応コンテンツとして登録申請"></a> RPGアツマールに投稿し、ニコニコ新市場対応コンテンツとして登録申請</h3>
+<p><a href="https://game.nicovideo.jp/atsumaru/">RPGアツマール</a> への投稿は、Webサイト上で行います。大まかな手順は以下の通りです。</p>
+<ol>
+<li>RPGアツマールの <a href="https://game.nicovideo.jp/atsumaru/game/edit/new">投稿ページ</a> を開きます。(ニコニコアカウントでのログインが求められます。)</li>
+<li>zipファイルを「ゲームファイル」の欄で選択もしくはドラッグ＆ドロップします。 <img src="/img/guide/export-atsumaru/upload_game.png" alt="ゲームアップロード"></li>
+<li>残りの入力項目に入力して、その内容を保存します。<ul>
+<li>詳細な入力・操作方法については、ゲーム投稿ページの案内に従ってください。</li>
+<li>ここで指定した「ゲーム名」「アイコン画像」「紹介文」はニコニコ新市場にも反映されます。</li>
+<li>ニコニコ新市場での表示の都合上、「アイコン」は160x160以上のサイズで与えてください。</li>
+<li>「ゲーム表示サイズ」はRPGアツマール上での表示にのみ影響します。ゲームの解像度 (<code>game.json</code> の <code>&quot;width&quot;</code>, <code>&quot;height&quot;</code>) と同じ値を指定することを推奨します。</li>
+<li>「非公開」「限定公開」状態ではニコニコ新市場に登録申請できないので、「公開」を選択してください。</li>
+</ul>
+</li>
+<li>内容保存後、マイページにリダイレクトされます。マイページで投稿対象のゲーム中の 「その他 ＞ ニコニコ新市場に登録申請」を選択します。<img src="/img/guide/export-atsumaru/export_ui.png" alt="ゲーム登録申請UI"></li>
+<li>「ニコニコ新市場へ投稿申請」というダイアログが表示されるので、注意を確認の上「申請」ボタンを押します。<img src="/img/guide/export-atsumaru/export_dialog.png" alt="登録申請ダイアログ"></li>
+<li>投稿対象のゲームに「ニコニコ新市場に登録申請済み」と表示されたら完了です。<img src="/img/guide/export-atsumaru/export_complete.png" alt="登録申請完了"></li>
+</ol>
+<h2><a name="トラブルシューティング"></a> トラブルシューティング</h2>
+<p>ニコニコ新市場への投稿中によくあるエラーをまとめます。Akashic Engine全般の <a href="./common-pitfalls.html">よくある落とし穴</a> も参照してください。</p>
+<h3><a name="unknown option --atsumaru と表示される"></a> <code>unknown option `--atsumaru&#39;</code> と表示される</h3>
+<p><code>akashic export html</code> 実行時、次のようなエラーメッセージが表示される場合、 <code>akashic-cli</code> のバージョンが古い可能性があります。</p>
+<pre><code>  error: unknown option `--atsumaru&#39;
+</code></pre><p>次のコマンドで <code>akashic-cli</code> を再インストールしてください。</p>
+<pre><code>npm install -g @akashic/akashic-cli
+</code></pre><h3><a name="Error: Cannot find module ... from ... と表示される"></a> <code>Error: Cannot find module ... from ...</code> と表示される</h3>
+<p><code>akashic export html</code> 実行時、次のようなエラーメッセージが表示される場合、ソースコードを変更する必要があります。</p>
+<pre><code>ERROR: Error: Cannot find module &#39;foo&#39; from ...
+</code></pre><p>この現象は、ゲームスクリプト内で <code>require()</code> を利用し、その引数にアセットIDを与えている場合に発生します。
+(<code>require(&quot;foo&quot;)</code> でアセットID <code>&quot;foo&quot;</code> のスクリプトアセットを読み込むなど)</p>
+<p>アセットIDではなく、相対パスで <code>require()</code> するように変更してください。(<code>require(&quot;./foo&quot;)</code> など)</p>
+<p><code>require()</code> がアセットIDを受け付けているのは、Akashic Engineの古い仕様によるものです。
+アセットIDと同名のnpmモジュールがあると衝突してしまうという問題があるため、この挙動は将来的に廃止される可能性があります。
+ニコニコ新市場対応コンテンツであるか否かに関わらず、 <code>require()</code> にアセットIDを与えることは避けてください。</p>
 
 		</div>
 	</section>
