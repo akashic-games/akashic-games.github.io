@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ニコニコ新市場対応コンテンツの投稿方法</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1540369236245">
-<link rel="stylesheet" href="/css/header.css?1540369236245">
-<link rel="stylesheet" href="/css/footer.css?1540369236245">
+<link rel="stylesheet" href="/css/common.css?1541064691711">
+<link rel="stylesheet" href="/css/header.css?1541064691711">
+<link rel="stylesheet" href="/css/footer.css?1541064691711">
 
 
-<link rel="stylesheet" href="/css/asset.css?1540369236245">
+<link rel="stylesheet" href="/css/asset.css?1541064691711">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1540369236245">
+<link rel="stylesheet" href="/css/akashic-document.css?1541064691711">
 
-<link rel="stylesheet" href="/css/railscasts.css?1540369236245">
+<link rel="stylesheet" href="/css/railscasts.css?1541064691711">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1540369236245"></script>
+<script src="/lib/common.js?1541064691711"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -138,21 +138,28 @@ AkashicゲームをこのRPGアツマールに投稿・公開した後、申請�
 これを超える場合、アツマールには投稿できますが、ニコニコ新市場対応コンテンツとして登録申請する際に失敗するので注意してください。</p>
 <h3><a name="RPGアツマールに投稿し、ニコニコ新市場対応コンテンツとして登録申請"></a> RPGアツマールに投稿し、ニコニコ新市場対応コンテンツとして登録申請</h3>
 <p><a href="https://game.nicovideo.jp/atsumaru/">RPGアツマール</a> への投稿は、Webサイト上で行います。大まかな手順は以下の通りです。</p>
-<ol>
-<li>RPGアツマールの <a href="https://game.nicovideo.jp/atsumaru/game/edit/new">投稿ページ</a> を開きます。(ニコニコアカウントでのログインが求められます。)</li>
-<li>zipファイルを「ゲームファイル」の欄で選択もしくはドラッグ＆ドロップします。 <img src="/img/guide/export-atsumaru/upload_game.png" alt="ゲームアップロード"></li>
-<li>残りの入力項目に入力して、その内容を保存します。<ul>
+<p>RPGアツマールの <a href="https://game.nicovideo.jp/atsumaru/game/edit/new">投稿ページ</a> を開きます。(ニコニコアカウントでのログインが求められます。)
+zipファイルを「ゲームファイル」の欄で選択もしくはドラッグ＆ドロップします。</p>
+<p><img src="/img/guide/export-atsumaru/upload_game.png" alt="ゲームアップロード"></p>
+<p>残りの入力項目に入力して、その内容を保存します。</p>
+<ul>
 <li>詳細な入力・操作方法については、ゲーム投稿ページの案内に従ってください。</li>
 <li>ここで指定した「ゲーム名」「アイコン画像」「紹介文」はニコニコ新市場にも反映されます。</li>
 <li>ニコニコ新市場での表示の都合上、「アイコン」は160x160以上320x320以下の画像である必要があります。(幅と高さが同じ(正方形の)画像を推奨します)</li>
 <li>「ゲーム表示サイズ」はRPGアツマール上での表示にのみ影響します。ゲームの解像度 (<code>game.json</code> の <code>&quot;width&quot;</code>, <code>&quot;height&quot;</code>) と同じ値を指定することを推奨します。</li>
 <li>「非公開」「限定公開」状態ではニコニコ新市場に登録申請できないので、「公開」を選択してください。</li>
 </ul>
-</li>
-<li>内容保存後、マイページにリダイレクトされます。マイページで投稿対象のゲーム中の 「その他 ＞ ニコニコ新市場に登録申請」を選択します。<img src="/img/guide/export-atsumaru/export_ui.png" alt="ゲーム登録申請UI"></li>
-<li>「ニコニコ新市場へ投稿申請」というダイアログが表示されるので、注意を確認の上「申請」ボタンを押します。<img src="/img/guide/export-atsumaru/export_dialog.png" alt="登録申請ダイアログ"></li>
-<li>投稿対象のゲームに「ニコニコ新市場に登録申請済み」と表示されたら完了です。<img src="/img/guide/export-atsumaru/export_complete.png" alt="登録申請完了"></li>
-</ol>
+<p>内容保存後、マイページにリダイレクトされます。マイページで投稿対象のゲーム中の 「その他 ＞ ニコニコ新市場に登録申請」を選択します。</p>
+<p><img src="/img/guide/export-atsumaru/export_ui.png" alt="ゲーム登録申請UI"></p>
+<p>「ニコニコ新市場へ投稿申請」というダイアログが表示されるので、注意を確認の上「申請」ボタンを押します。</p>
+<p><img src="/img/guide/export-atsumaru/export_dialog.png" alt="登録申請ダイアログ"></p>
+<p>投稿対象のゲームに「ニコニコ新市場に登録申請済み」と表示されたら完了です。</p>
+<p><img src="/img/guide/export-atsumaru/export_complete.png" alt="登録申請完了"></p>
+<h2><a name="コンテンツの更新"></a> コンテンツの更新</h2>
+<p>RPGアツマールでは、一度アップロードしたゲームの内容を更新することができます。
+ニコニコ新市場対応コンテンツとしては、更新後に改めて登録申請が必要になることに注意してください。</p>
+<p><img src="/img/guide/export-atsumaru/update_ui.png" alt="更新UI"></p>
+<p>更新は、登録申請と同じ画面で「アップデート」ボタンを押してzipファイルをアップロードして更新した後、改めて「ニコニコ新市場に登録申請」してください。</p>
 <h2><a name="トラブルシューティング"></a> トラブルシューティング</h2>
 <p>ニコニコ新市場への投稿中によくあるエラーをまとめます。Akashic Engine全般の <a href="./common-pitfalls.html">よくある落とし穴</a> も参照してください。</p>
 <h3><a name="unknown option --atsumaru と表示される"></a> <code>unknown option `--atsumaru&#39;</code> と表示される</h3>
