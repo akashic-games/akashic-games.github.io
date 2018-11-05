@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ニコニコ新市場対応コンテンツ作成ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1541064691711">
-<link rel="stylesheet" href="/css/header.css?1541064691711">
-<link rel="stylesheet" href="/css/footer.css?1541064691711">
+<link rel="stylesheet" href="/css/common.css?1541418485293">
+<link rel="stylesheet" href="/css/header.css?1541418485293">
+<link rel="stylesheet" href="/css/footer.css?1541418485293">
 
 
-<link rel="stylesheet" href="/css/asset.css?1541064691711">
+<link rel="stylesheet" href="/css/asset.css?1541418485293">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1541064691711">
+<link rel="stylesheet" href="/css/akashic-document.css?1541418485293">
 
-<link rel="stylesheet" href="/css/railscasts.css?1541064691711">
+<link rel="stylesheet" href="/css/railscasts.css?1541418485293">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1541064691711"></script>
+<script src="/lib/common.js?1541418485293"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -205,7 +205,7 @@ scene.loaded.add(function () {
 <h3><a name="制限時間と難易度設定"></a> 制限時間と難易度設定</h3>
 <p>ランキング対応ゲームは、起動からある時間が経過すると自動的に終了されます。
 ゲーム開発者は終了のタイミングを制御することはできませんし、終了のための処理を記述する必要もありません。</p>
-<p>ただしゲームには、補助的な情報として「何秒間遊ぶ設定で起動されたか」という値(<strong>制限時間</strong>)が与えられます。
+<p>ただしゲームには、補助的な情報として「何秒間遊ぶ設定で起動されたか」という値(<strong>制限時間</strong>)が与えられることがあります。
 ゲーム開発者は、この値を参照してゲームの内容を調整することができます。
 たとえば「終了時間が近づいたらクリア画面かゲームオーバー画面を表示する」といった演出が考えられます。
 (もちろんそのような演出をしなくても問題はありません)</p>
@@ -214,8 +214,9 @@ scene.loaded.add(function () {
 これはゲームリソースのダウンロード時間のばらつきや、
 スコア送信時の通信遅れを救済するためのサーバ側の多少のマージンなど、
 いくつかの要因で微妙な調整を行なう必要があるためです。</p>
-<p>制限時間の値は、ゲーム開始直後に <code>g.MessageEvent</code> で与えられます。
+<p>制限時間が与えられる場合、その値は、ゲーム開始直後に <code>g.MessageEvent</code> で通知されます。
 通知された <code>MessageEvent</code> を <code>e</code> とすると、 <code>(e.data.type === &quot;start&quot;)</code> である時、 <code>e.data.parameters.gameTimeLimit</code> の値が制限時間(秒)です。</p>
+<p>制限時間が与えられない場合には、そもそも <code>type</code> が <code>&quot;start&quot;</code> のイベントが来ないか、あるいは来たイベントに <code>parameters</code> や <code>gameTimeLimit</code> がありません。</p>
 <p>次のコードは、制限時間情報を取得する例です。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
 
@@ -224,8 +225,11 @@ var gameTimeLimit = 60;
 
 scene.message.add(function (msg) {
     if (msg.data &amp;&amp; msg.data.type === &quot;start&quot;) {
-        // 制限時間は `gameTimeLimit` 秒
-        gameTimeLimit = msg.data.parameters.gameTimeLimit;
+        // type: &quot;start&quot; でも parameters などが与えられないこともあるので存在を確認
+        if (msg.data.parameters &amp;&amp; msg.data.parameters.gameTimeLimit) {
+            // 制限時間は `gameTimeLimit` 秒
+            gameTimeLimit = msg.data.parameters.gameTimeLimit;
+        }
     }
 });
 
@@ -239,10 +243,10 @@ scene.loaded.add(function () {
 <p>厳密に制限時間の受信を待って <code>loaded</code> の初期化処理を行いたい場合は、 <code>loaded</code> ではなく <code>message</code> トリガーのfireを待って処理を行う必要があります。
 (ただしそうするとニコニコ新市場以外(RPGアツマールなど)では動作しないコンテンツになってしまうので、
 「 <code>g.Scene#update</code> のfireを数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
-<p>この <code>MessageEvent</code> で与えられる情報には、他に <strong>難易度設定</strong> の値があります。</p>
+<p>この <code>MessageEvent</code> で与えられる(ことがある)情報には、他に <strong>難易度設定</strong> の値があります。</p>
 <p>難易度設定は1以上10以下の整数で、ゲームに対して「この難易度でゲームを行なって欲しい」という要望を通知するものです。
 ゲーム開発者はこの値を見てゲームの難易度を調整することができます。これは必須ではありません。</p>
-<p>難易度設定の値は、上の例では <code>parameters.difficulty</code> を参照することで取得できます。</p>
+<p>難易度設定の値は、上の例では <code>parameters.difficulty</code> を参照することで取得できます(存在する場合)。</p>
 <p>(ただし、現時点ではゲーム起動時に難易度を選択する方法がありません。
 したがってこれは現在のところ「将来的な対応に備えて利用することができる値」ということになります。)</p>
 <h2><a name="投稿する"></a> 投稿する</h2>
