@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>アニメーションさせる</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1541418485293">
-<link rel="stylesheet" href="/css/header.css?1541418485293">
-<link rel="stylesheet" href="/css/footer.css?1541418485293">
+<link rel="stylesheet" href="/css/common.css?1541646679156">
+<link rel="stylesheet" href="/css/header.css?1541646679156">
+<link rel="stylesheet" href="/css/footer.css?1541646679156">
 
 
-<link rel="stylesheet" href="/css/asset.css?1541418485293">
+<link rel="stylesheet" href="/css/asset.css?1541646679156">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1541418485293">
+<link rel="stylesheet" href="/css/akashic-document.css?1541646679156">
 
-<link rel="stylesheet" href="/css/railscasts.css?1541418485293">
+<link rel="stylesheet" href="/css/railscasts.css?1541646679156">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1541418485293"></script>
+<script src="/lib/common.js?1541646679156"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -249,6 +249,43 @@ function moveRect(rect) {
 module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample08.gif" alt="sample08"></p>
+<h2><a name="フレームアニメーション">フレームアニメーション</h2>
+<p>Akashic Engine ではエンティティ自体の描画内容をフレームアニメーションさせることができます。
+フレームアニメーションとは画像を次々と表示させることでアニメーションを実現する方法です。</p>
+<p>フレームアニメーションさせるには、以下のような画像をシーンに追加します。</p>
+<p><img src="/img/tutorial/sample-explosion.png" alt="元画像"></p>
+<p>この画像はアニメーションの様子が100x100サイズのフレームとして順番に並んでいます。</p>
+<p>以下はこの画像を使ってアニメーションするプログラムです。</p>
+<pre><code>function main() {
+  var scene = new g.Scene({game: g.game, assetIds: [&quot;explosion&quot;]});
+  scene.loaded.add(function () {
+    var frameSprite = new g.FrameSprite({
+      scene: scene,
+      src: scene.assets[&quot;explosion&quot;],
+      // エンティティのサイズ
+      width: 100,
+      height: 100,
+
+      // 元画像のフレーム1つのサイズ
+      srcWidth: 100,
+      srcHeight: 100,
+
+      // アニメーションに利用するフレームのインデックス配列
+      // インデックスは元画像の左上から右にsrcWidthとsrcHeightの矩形を並べて数え上げ、右端に達したら一段下の左端から右下に達するまで繰り返す
+      frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+
+      // アニメーションをループしない（省略した場合ループする）
+      loop: false
+      });
+    scene.append(frameSprite);
+  });
+  g.game.pushScene(scene);
+}
+
+module.exports = main;
+</code></pre><p><img src="/img/tutorial/sample-frameSprite.gif" alt="FrameSprite"></p>
+<p>フレームアニメーションを表示するには <code>FrameSprite</code> エンティティを使います。 <code>FrameSprite</code> エンティティのパラメータオブジェクトのプロパティには、
+最初に表示するフレームを指定する <code>frameNumber</code> やフレーム遷移の速度を指定する <code>interval</code> を指定することができます。</p>
 <h2><a name="タイマー関数"></a> タイマー関数</h2>
 <p>3秒後にエンティティを破棄したいなど、指定時間後に処理を行う場合は、
 シーンオブジェクトの <code>setTimeout()</code> メソッドを利用します。
