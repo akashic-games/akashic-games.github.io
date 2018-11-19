@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ニコニコ新市場対応コンテンツの投稿方法</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1541647272023">
-<link rel="stylesheet" href="/css/header.css?1541647272023">
-<link rel="stylesheet" href="/css/footer.css?1541647272023">
+<link rel="stylesheet" href="/css/common.css?1542614193235">
+<link rel="stylesheet" href="/css/header.css?1542614193235">
+<link rel="stylesheet" href="/css/footer.css?1542614193235">
 
 
-<link rel="stylesheet" href="/css/asset.css?1541647272023">
+<link rel="stylesheet" href="/css/asset.css?1542614193235">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1541647272023">
+<link rel="stylesheet" href="/css/akashic-document.css?1542614193235">
 
-<link rel="stylesheet" href="/css/railscasts.css?1541647272023">
+<link rel="stylesheet" href="/css/railscasts.css?1542614193235">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1541647272023"></script>
+<script src="/lib/common.js?1542614193235"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -112,8 +112,6 @@ AkashicゲームをこのRPGアツマールに投稿・公開した後、申請�
 <p>game.json のあるディレクトリで、次のコマンドを実行してzipファイルを生成します。</p>
 <pre><code class="lang-sh">akashic export html --output &lt;zipFileName&gt; --atsumaru
 </code></pre>
-<p>似た名前のコマンドに <code>akashic export zip</code> があるので注意してください。
-(<code>html</code> がHTMLファイルを生成する(拡張子がzipなら圧縮もする)一方、 <code>zip</code> は形式を変えずに加工(不要なファイル除去など)するコマンドです)</p>
 <p><code>&lt;zipFileName&gt;</code> には、 <code>.zip</code> で終わるパスを指定してください (<code>./game.zip</code> など)。
 <code>--atsumaru</code> オプションをつけることで、RPGアツマールとニコニコ新市場に対応した形式のファイルを生成します。</p>
 <p><code>export html</code> コマンドによって、以下のファイル・ディレクトリを圧縮したzipファイル <code>&lt;zipFileName&gt;</code> が生成されます。</p>
@@ -136,6 +134,8 @@ AkashicゲームをこのRPGアツマールに投稿・公開した後、申請�
 </ul>
 <p>2018年10月現在、ニコニコ新市場対応コンテンツは、 <strong>このzipファイルの展開後のサイズが10MB以下である必要があります</strong> 。
 これを超える場合、アツマールには投稿できますが、ニコニコ新市場対応コンテンツとして登録申請する際に失敗するので注意してください。</p>
+<p>また事前に <strong>テキストファイル(スクリプトアセットとテキストアセット)の文字コードがUTF-8であることを確認してください</strong> 。
+Shift JISなど、UTF-8でない文字コードが使われている場合、<code>akashic</code> コマンドが複数ファイルを一つにまとめる際に文字化けしてしまう恐れがあります。</p>
 <h3><a name="RPGアツマールに投稿し、ニコニコ新市場対応コンテンツとして登録申請"></a> RPGアツマールに投稿し、ニコニコ新市場対応コンテンツとして登録申請</h3>
 <p><a href="https://game.nicovideo.jp/atsumaru/">RPGアツマール</a> への投稿は、Webサイト上で行います。大まかな手順は以下の通りです。</p>
 <p>RPGアツマールの <a href="https://game.nicovideo.jp/atsumaru/game/edit/new">投稿ページ</a> を開きます。(ニコニコアカウントでのログインが求められます。)
