@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ニコニコ新市場対応コンテンツ作成ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1542706877755">
-<link rel="stylesheet" href="/css/header.css?1542706877755">
-<link rel="stylesheet" href="/css/footer.css?1542706877755">
+<link rel="stylesheet" href="/css/common.css?1542890473956">
+<link rel="stylesheet" href="/css/header.css?1542890473956">
+<link rel="stylesheet" href="/css/footer.css?1542890473956">
 
 
-<link rel="stylesheet" href="/css/asset.css?1542706877755">
+<link rel="stylesheet" href="/css/asset.css?1542890473956">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1542706877755">
+<link rel="stylesheet" href="/css/akashic-document.css?1542890473956">
 
-<link rel="stylesheet" href="/css/railscasts.css?1542706877755">
+<link rel="stylesheet" href="/css/railscasts.css?1542890473956">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1542706877755"></script>
+<script src="/lib/common.js?1542890473956"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -188,8 +188,8 @@ scene.loaded.add(function () {
 <h3><a name="プレイ閾値"></a> プレイ閾値</h3>
 <p>ランキングでは、放送者・各視聴者でのゲームプレイ終了後にスコアが集計され、上位者の名前や得点が表示されます。</p>
 <p>ゲームに参加した人数が少ない場合、スコアが0点でもこの上位者に入ってしまうことがあります。
-そうすると「全くプレイしていないのにランキングに名前が出ることがある」という違和感のある挙動になってしまいます。</p>
-<p>このような状況を避けるため、ランキング対応ゲームでは <strong>プレイ閾値</strong> を定めることができます。
+そうすると「全くプレイしていないのにランキングに名前が出ることがある」という違和感のある挙動になってしまいます。
+このような状況を避けるため、ランキング対応ゲームでは <strong>プレイ閾値</strong> を定めることができます。
 プレイ閾値以下のスコアは「プレイしなかったもの」として扱われ、ランキング上位者として表示されなくなります。</p>
 <p>プレイ閾値は、次の変数に代入された値です。</p>
 <pre><code class="lang-javascript">g.game.vars.gameState.playThreshold
@@ -198,37 +198,32 @@ scene.loaded.add(function () {
 この変数に値が代入されていない場合、プレイ閾値は0として取り扱われます。</p>
 <p>生存期間に応じてスコアが入るなど、プレイヤーが何も操作しなくてもスコアが0より大きくなってしまうゲームでは、この値を適切に設定してください。</p>
 <h3><a name="クリア閾値"></a> クリア閾値</h3>
-<p>同様に「ゲームをクリアしたとみなすか」にも閾値(クリア閾値)を定めることができます。</p>
+<p>同様に「ゲームをクリアしたとみなすか」にも閾値(クリア閾値)を定めることができます。クリア閾値は次の変数に代入された値です。
+(ただしこの値は将来の拡張のために予約されているものです。現在のところ参照されません。)</p>
 <pre><code class="lang-javascript">g.game.vars.gameState.clearThreshold
 </code></pre>
-<p>この値は将来の拡張のために予約される値です。現在のところ参照されません。</p>
-<h3><a name="制限時間と難易度設定"></a> 制限時間と難易度設定</h3>
+<h3><a name="制限時間"></a> 制限時間</h3>
 <p>ランキング対応ゲームは、起動からある時間が経過すると自動的に終了されます。
-ゲーム開発者は終了のタイミングを制御することはできませんし、終了のための処理を記述する必要もありません。</p>
+<strong>ゲーム開発者は終了のタイミングを制御することはできませんし、終了のための処理を記述する必要もありません</strong>。</p>
 <p>ただしゲームには、補助的な情報として「何秒間遊ぶ設定で起動されたか」という値(<strong>制限時間</strong>)が与えられることがあります。
 ゲーム開発者は、この値を参照してゲームの内容を調整することができます。
 たとえば「終了時間が近づいたらクリア画面かゲームオーバー画面を表示する」といった演出が考えられます。
 (もちろんそのような演出をしなくても問題はありません)</p>
-<p>この制限時間の値は、あくまでも目安であることに注意してください。
-ゲーム起動後、厳密にこの時間で終了されることを保証するものではありません。
-これはゲームリソースのダウンロード時間のばらつきや、
-スコア送信時の通信遅れを救済するためのサーバ側の多少のマージンなど、
-いくつかの要因で微妙な調整を行なう必要があるためです。</p>
 <p>制限時間が与えられる場合、その値は、ゲーム開始直後に <code>g.MessageEvent</code> で通知されます。
-通知された <code>MessageEvent</code> を <code>e</code> とすると、 <code>(e.data.type === &quot;start&quot;)</code> である時、 <code>e.data.parameters.gameTimeLimit</code> の値が制限時間(秒)です。</p>
-<p>制限時間が与えられない場合には、そもそも <code>type</code> が <code>&quot;start&quot;</code> のイベントが来ないか、あるいは来たイベントに <code>parameters</code> や <code>gameTimeLimit</code> がありません。</p>
+通知された <code>MessageEvent</code> を <code>e</code> とすると、 <code>(e.data.type === &quot;start&quot;)</code> である時、 <code>e.data.parameters.totalTimeLimit</code> の値が制限時間(秒)です。</p>
+<p>制限時間が与えられない場合には、そもそもこのイベントが来ないか、あるいは来たイベントに <code>parameters</code> や <code>totalTimeLimit</code> がありません。</p>
 <p>次のコードは、制限時間情報を取得する例です。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
 
 // 何も送られてこない時(ニコニコ新市場以外で起動された場合)は、この値がタイムリミットになる
-var gameTimeLimit = 60;
+var totalTimeLimit = 60;
 
 scene.message.add(function (msg) {
     if (msg.data &amp;&amp; msg.data.type === &quot;start&quot;) {
         // type: &quot;start&quot; でも parameters などが与えられないこともあるので存在を確認
-        if (msg.data.parameters &amp;&amp; msg.data.parameters.gameTimeLimit) {
-            // 制限時間は `gameTimeLimit` 秒
-            gameTimeLimit = msg.data.parameters.gameTimeLimit;
+        if (msg.data.parameters &amp;&amp; msg.data.parameters.totalTimeLimit) {
+            // 制限時間は `totalTimeLimit` 秒
+            totalTimeLimit = msg.data.parameters.totalTimeLimit;
         }
     }
 });
@@ -243,12 +238,47 @@ scene.loaded.add(function () {
 <p>厳密に制限時間の受信を待って <code>loaded</code> の初期化処理を行いたい場合は、 <code>loaded</code> ではなく <code>message</code> トリガーのfireを待って処理を行う必要があります。
 (ただしそうするとニコニコ新市場以外(RPGアツマールなど)では動作しないコンテンツになってしまうので、
 「 <code>g.Scene#update</code> のfireを数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
+<p><strong>制限時間の値は、あくまでも目安であることに注意してください</strong> 。
+ゲーム起動後、厳密にこの時間で終了されることを保証するものではありません。
+これはゲームリソースのダウンロード時間のばらつきや、スコア送信時の通信遅れを救済するためのサーバ側の多少のマージンなど、いくつかの要因でずれが生じるためです。</p>
+<p>たとえば制限時間から逆算して「クリア画面」を作るような場合、念のため、<strong>制限時間の数秒前にはゲーム上の演出が完了するように作る</strong> ことを推奨します。</p>
+<h3><a name="difficulty"></a> 難易度設定</h3>
 <p>この <code>MessageEvent</code> で与えられる(ことがある)情報には、他に <strong>難易度設定</strong> の値があります。</p>
 <p>難易度設定は1以上10以下の整数で、ゲームに対して「この難易度でゲームを行なって欲しい」という要望を通知するものです。
 ゲーム開発者はこの値を見てゲームの難易度を調整することができます。これは必須ではありません。</p>
 <p>難易度設定の値は、上の例では <code>parameters.difficulty</code> を参照することで取得できます(存在する場合)。</p>
-<p>(ただし、現時点ではゲーム起動時に難易度を選択する方法がありません。
-したがってこれは現在のところ「将来的な対応に備えて利用することができる値」ということになります。)</p>
+<p>(ただし、現時点ではゲーム起動時に難易度を選択する方法がありません。したがってこれは現在のところ「将来的な対応に備えて利用することができる値」に過ぎません。)</p>
+<h3><a name="gameTimeLimit"></a> 旧仕様: gameTimeLimit</h3>
+<p>以前は <code>totalTimeLimit</code> はなく、この文書では <code>gameTimeLimit</code> という別の値を参照していました。</p>
+<p><code>gameTimeLimit</code> には、歴史的経緯から(<code>totalTimeLimit</code> が与える)本来の制限時間よりも若干小さい値が与えられます。
+そのためこの値に厳密にしたがってゲームの演出を行うと、演出完了から実際のコンテンツ終了まで10秒以上ギャップがある状況になっていました。</p>
+<p><code>gameTimeLimit</code> は後方互換性のため引き続き利用可能ですが、通常は <code>totalTimeLimit</code> を利用してください。</p>
+<h2><a name="動作確認方法"></a> 動作確認方法</h2>
+<p>akashic-sandbox (<code>v0.13.40</code> 以降)では、上記のスコアが正しく設定されているかなどを確認することできます。
+akashic-sandboxのインストール方法については<a href="/tutorial/v2/1-introduction.html#Akashic%20Engine%20のインストール">Akashic Engine のインストール</a>を参照してください。</p>
+<p>インストールされているakashic-sandboxのバージョンは次のコマンドで確認できます。</p>
+<pre><code>akashic-sandbox -V
+</code></pre><p>v0.13.40 以降であることを確認したら、対象のゲームのディレクトリ中でakashic-sandboxを起動します。</p>
+<pre><code>akashic-sandbox .
+</code></pre><p>任意のWebブラウザから <code>http://localhost:3000/game</code> にアクセスすると、画面左にゲーム画面が表示されると同時に、画面右上に歯車アイコンが表示されています。(ここでは<a href="https://github.com/akashic-contents/thiefBuster">泥棒バスター</a>を起動しています。)</p>
+<p><img src="/img/guide/ranking/sandbox_screenshot.png" alt="akashic-sandbox起動時"></p>
+<p>歯車アイコンをクリックして Niconico タブをクリックすると、下記のような画面が表示されます。
+(ランキング対応ゲーム(<code>game.json</code> の <code>environment.niconico.supportedModes</code> に <code>&quot;ranking&quot;</code> が記述されている)である必要があります。)</p>
+<p><img src="/img/guide/ranking/sandbox_ranking_mode.png" alt="実験放送テスト"></p>
+<p>「ランキングモードで参照される値」でゲーム中の <code>g.game.vars.gameState</code> の次のプロパティを確認できます。</p>
+<ul>
+<li>スコア (<code>score</code>)</li>
+<li>プレイ閾値 (<code>playThreshold</code>)</li>
+<li>クリア閾値 (<code>clearThreshold</code>)</li>
+</ul>
+<p>また「ランキングモードの開始イベントを送る(要リロード)」にチェックを入れてページをリロードすることによって、ランキングモードの動作を簡易的に確認することができます。</p>
+<ul>
+<li>上記 <code>totalTimeLimit</code> などを含む <code>g.MessageEvent</code> が、ゲーム開始時に送信されます。</li>
+<li>制限時間までの残り時間がカウントされます。</li>
+<li>「制限時間経過後にゲームを停止」にチェックを入れていれば、残り時間が0になった時にゲームの実行が停止されます。</li>
+</ul>
+<p>送られる <code>totalTimeLimit</code> の値を指定することもできます。
+ただしこの <code>totalTimeLimit</code> の値は、あくまで akashic-sandbox 上でのデバッグのためのもので、ニコニコ新市場で実際に起動された時の値は保証されません。</p>
 <h2><a name="投稿する"></a> 投稿する</h2>
 <p>以上の手順で実際に作成したゲームを、実験放送に投稿する方法については <a href="/guide/export-atsumaru">こちら</a> を参照してください。</p>
 
