@@ -74,7 +74,10 @@
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
 						<p><code>DynamicFont</code> のコンストラクタに渡すことができるパラメータ。
-						各メンバの詳細は <code>DynamicFont</code> の同名メンバの説明を参照すること。</p>
+							各メンバの詳細は <code>DynamicFont</code> の同名メンバの説明を参照すること。
+							パラメータのsurfaceAtlasSetが存在する場合は、パラメータのsurfaceAtlasSetを使用する。
+							surfaceAtlasSetが存在せず、DynamicFontHintが存在する場合、DynamicFontが管理するSurfaceAtlasSetを使用する。
+						surfaceAtlasSetが存在せず、DynamicFontHintが存在しない場合、gameが持つ共通のSurfaceAtlasSetを使用する。</p>
 					</div>
 				</div>
 			</section>
@@ -102,6 +105,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfontparameterobject.html#strokecolor" class="tsd-kind-icon">stroke<wbr>Color</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfontparameterobject.html#strokeonly" class="tsd-kind-icon">stroke<wbr>Only</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfontparameterobject.html#strokewidth" class="tsd-kind-icon">stroke<wbr>Width</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.dynamicfontparameterobject.html#surfaceatlasset" class="tsd-kind-icon">surface<wbr>Atlas<wbr>Set</a></li>
 							</ul>
 						</section>
 					</div>
@@ -115,7 +119,7 @@
 					<div class="tsd-signature tsd-kind-icon">font<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5708</li>
+							<li>Defined in lib/main.d.ts:5702</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -135,7 +139,7 @@
 					<div class="tsd-signature tsd-kind-icon">font<wbr>Family<span class="tsd-signature-symbol">:</span> <a href="../enums/_lib_main_d_.g.fontfamily.html" class="tsd-signature-type">FontFamily</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../enums/_lib_main_d_.g.fontfamily.html#sansserif" class="tsd-signature-type">SansSerif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/_lib_main_d_.g.fontfamily.html#serif" class="tsd-signature-type">Serif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/_lib_main_d_.g.fontfamily.html#monospace" class="tsd-signature-type">Monospace</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5693</li>
+							<li>Defined in lib/main.d.ts:5687</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -151,7 +155,7 @@
 					<div class="tsd-signature tsd-kind-icon">font<wbr>Weight<span class="tsd-signature-symbol">:</span> <a href="../enums/_lib_main_d_.g.fontweight.html" class="tsd-signature-type">FontWeight</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5713</li>
+							<li>Defined in lib/main.d.ts:5707</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -171,7 +175,7 @@
 					<div class="tsd-signature tsd-kind-icon">game<span class="tsd-signature-symbol">:</span> <a href="../classes/_lib_main_d_.g.game.html" class="tsd-signature-type">Game</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5687</li>
+							<li>Defined in lib/main.d.ts:5681</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -186,7 +190,7 @@
 					<div class="tsd-signature tsd-kind-icon">hint<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.dynamicfonthint.html" class="tsd-signature-type">DynamicFontHint</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5703</li>
+							<li>Defined in lib/main.d.ts:5697</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -202,7 +206,7 @@
 					<div class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5697</li>
+							<li>Defined in lib/main.d.ts:5691</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -217,7 +221,7 @@
 					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5723</li>
+							<li>Defined in lib/main.d.ts:5717</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -237,7 +241,7 @@
 					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Only<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5728</li>
+							<li>Defined in lib/main.d.ts:5722</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -257,7 +261,7 @@
 					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5718</li>
+							<li>Defined in lib/main.d.ts:5712</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -267,6 +271,26 @@
 						<dl class="tsd-comment-tags">
 							<dt>default</dt>
 							<dd><p>0</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="surfaceatlasset" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> surface<wbr>Atlas<wbr>Set</h3>
+					<div class="tsd-signature tsd-kind-icon">surface<wbr>Atlas<wbr>Set<span class="tsd-signature-symbol">:</span> <a href="../classes/_lib_main_d_.g.surfaceatlasset.html" class="tsd-signature-type">SurfaceAtlasSet</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:5727</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>サーフェスアトラスセット</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
 							</dd>
 						</dl>
 					</div>
@@ -314,6 +338,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 								<a href="_lib_main_d_.g.dynamicfontparameterobject.html#strokewidth" class="tsd-kind-icon">stroke<wbr>Width</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_lib_main_d_.g.dynamicfontparameterobject.html#surfaceatlasset" class="tsd-kind-icon">surface<wbr>Atlas<wbr>Set</a>
 							</li>
 						</ul>
 					</li>
