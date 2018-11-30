@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ニコニコ新市場対応コンテンツ作成ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1542890473956">
-<link rel="stylesheet" href="/css/header.css?1542890473956">
-<link rel="stylesheet" href="/css/footer.css?1542890473956">
+<link rel="stylesheet" href="/css/common.css?1543546890664">
+<link rel="stylesheet" href="/css/header.css?1543546890664">
+<link rel="stylesheet" href="/css/footer.css?1543546890664">
 
 
-<link rel="stylesheet" href="/css/asset.css?1542890473956">
+<link rel="stylesheet" href="/css/asset.css?1543546890664">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1542890473956">
+<link rel="stylesheet" href="/css/akashic-document.css?1543546890664">
 
-<link rel="stylesheet" href="/css/railscasts.css?1542890473956">
+<link rel="stylesheet" href="/css/railscasts.css?1543546890664">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1542890473956"></script>
+<script src="/lib/common.js?1543546890664"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -202,16 +202,47 @@ scene.loaded.add(function () {
 (ただしこの値は将来の拡張のために予約されているものです。現在のところ参照されません。)</p>
 <pre><code class="lang-javascript">g.game.vars.gameState.clearThreshold
 </code></pre>
-<h3><a name="制限時間"></a> 制限時間</h3>
+<h2><a name="session-parameters"></a> セッションパラメータ</h2>
+<p>ニコニコ新市場で実行されている時、ゲームにはいくつかの追加情報が与えられます:</p>
+<ul>
+<li>ランキングモード時の制限時間</li>
+<li>ランキングモード時の共通乱数シード など</li>
+</ul>
+<p>これらの追加情報(またはそれをまとめたオブジェクト)を <strong>セッションパラメータ</strong> と呼びます。</p>
+<p>セッションパラメータは、与えられる場合、ゲーム開始直後に <code>g.MessageEvent</code> で通知されます。
+通知された <code>MessageEvent</code> を <code>e</code> とすると、 <code>(e.data.type === &quot;start&quot;)</code> である時、 <code>e.data.parameters</code> の値がセッションパラメータです。</p>
+<p>次のコードは、セッションパラメータを取得する例です。</p>
+<pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
+
+// 何も送られて来なかった時は、空のオブジェクトで動作する
+var sessionParameters = {};
+
+scene.message.add(function (msg) {
+    if (msg.data &amp;&amp; msg.data.type === &quot;start&quot; &amp;&amp; msg.data.parameters) { // セッションパラメータのイベント
+        sessionParameters = msg.data.parameters;
+    }
+});
+
+scene.loaded.add(function () {
+    // 通常のゲームとしての初期化処理
+    // ...
+}
+</code></pre>
+<p>セッションパラメータが与えられない場合には、そもそもこのイベントが来ないか、あるいは来たイベントに <code>parameters</code> がありません。</p>
+<p>Akashic Engineでは通常、イベントはシーンのロードタイミング(<code>g.Scene#loaded</code>)より後に受信されるため、 <code>loaded</code> の処理中にはこの値を参照できないことに注意してください。
+これは仕様による制限です。</p>
+<p>厳密にセッションパラメータの受信を待って <code>loaded</code> の初期化処理を行いたい場合は、 <code>loaded</code> ではなく <code>message</code> トリガーのfireを待って処理を行う必要があります。
+(ただしそうするとニコニコ新市場以外(RPGアツマールなど)では動作しないコンテンツになってしまうので、
+「 <code>g.Scene#update</code> のfireを数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
+<h3><a name="制限時間"></a> 制限時間 (totalTimeLimit)</h3>
+<p>セッションパラメータで与えられる情報の一つは <strong>制限時間</strong> です。</p>
+<p>セッションパラメータ <code>sessionParameters</code> がある時、制限時間は <code>sessionParameters.totalTimeLimit</code> で参照できます。</p>
 <p>ランキング対応ゲームは、起動からある時間が経過すると自動的に終了されます。
 <strong>ゲーム開発者は終了のタイミングを制御することはできませんし、終了のための処理を記述する必要もありません</strong>。</p>
-<p>ただしゲームには、補助的な情報として「何秒間遊ぶ設定で起動されたか」という値(<strong>制限時間</strong>)が与えられることがあります。
+<p>ただし補助的な情報として、ランキングモードでは「何秒間遊ぶ設定で起動されたか」という値(制限時間)が与えられます。
 ゲーム開発者は、この値を参照してゲームの内容を調整することができます。
 たとえば「終了時間が近づいたらクリア画面かゲームオーバー画面を表示する」といった演出が考えられます。
 (もちろんそのような演出をしなくても問題はありません)</p>
-<p>制限時間が与えられる場合、その値は、ゲーム開始直後に <code>g.MessageEvent</code> で通知されます。
-通知された <code>MessageEvent</code> を <code>e</code> とすると、 <code>(e.data.type === &quot;start&quot;)</code> である時、 <code>e.data.parameters.totalTimeLimit</code> の値が制限時間(秒)です。</p>
-<p>制限時間が与えられない場合には、そもそもこのイベントが来ないか、あるいは来たイベントに <code>parameters</code> や <code>totalTimeLimit</code> がありません。</p>
 <p>次のコードは、制限時間情報を取得する例です。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
 
@@ -219,9 +250,8 @@ scene.loaded.add(function () {
 var totalTimeLimit = 60;
 
 scene.message.add(function (msg) {
-    if (msg.data &amp;&amp; msg.data.type === &quot;start&quot;) {
-        // type: &quot;start&quot; でも parameters などが与えられないこともあるので存在を確認
-        if (msg.data.parameters &amp;&amp; msg.data.parameters.totalTimeLimit) {
+    if (msg.data &amp;&amp; msg.data.type === &quot;start&quot; &amp;&amp; msg.data.parameters) { // セッションパラメータのイベント
+        if (msg.data.parameters.totalTimeLimit != null) { // 与えられないこともあるので存在を確認
             // 制限時間は `totalTimeLimit` 秒
             totalTimeLimit = msg.data.parameters.totalTimeLimit;
         }
@@ -233,26 +263,63 @@ scene.loaded.add(function () {
     // ...
 }
 </code></pre>
-<p>Akashic Engineでは通常、イベントはシーンのロードタイミング(<code>g.Scene#loaded</code>)より後に受信されるため、 <code>loaded</code> の処理中にはこの値を参照できないことに注意してください。
-これは仕様による制限です。</p>
-<p>厳密に制限時間の受信を待って <code>loaded</code> の初期化処理を行いたい場合は、 <code>loaded</code> ではなく <code>message</code> トリガーのfireを待って処理を行う必要があります。
-(ただしそうするとニコニコ新市場以外(RPGアツマールなど)では動作しないコンテンツになってしまうので、
-「 <code>g.Scene#update</code> のfireを数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
 <p><strong>制限時間の値は、あくまでも目安であることに注意してください</strong> 。
 ゲーム起動後、厳密にこの時間で終了されることを保証するものではありません。
 これはゲームリソースのダウンロード時間のばらつきや、スコア送信時の通信遅れを救済するためのサーバ側の多少のマージンなど、いくつかの要因でずれが生じるためです。</p>
 <p>たとえば制限時間から逆算して「クリア画面」を作るような場合、念のため、<strong>制限時間の数秒前にはゲーム上の演出が完了するように作る</strong> ことを推奨します。</p>
-<h3><a name="difficulty"></a> 難易度設定</h3>
-<p>この <code>MessageEvent</code> で与えられる(ことがある)情報には、他に <strong>難易度設定</strong> の値があります。</p>
-<p>難易度設定は1以上10以下の整数で、ゲームに対して「この難易度でゲームを行なって欲しい」という要望を通知するものです。
+<h3><a name="randomSeed"></a> 共通乱数シード (randomSeed)</h3>
+<p>ランキングモードでは、各プレイヤーの手元で個別にゲームが実行されます。
+そのため、プレイヤー間で標準の乱数生成器 (<code>g.game.random</code>) の状態は一致しません。
+例えば「ランダムに○×クイズを出題し、正答数をスコアとするゲーム」を作ると、同じセッションでもプレイヤーごとに出される問題が異なります。
+もちろんそれでも問題はありません(特に運要素を持たせたい場合)が、「全員に同じ問題を出したい、かつ起動されるごとに出題内容を変えたい」という状況も考えられます。</p>
+<p>そのような場合のために、ランキングモード時のセッションパラメータには <strong>共通乱数シード</strong> の値(数値)が含まれます。
+セッションパラメータ <code>sessionParameters</code> がある時、共通乱数シードは <code>sessionParameters.randomSeed</code> で参照できます。</p>
+<p>ゲーム開発者はこの値を使って、プレイヤー間で共通のシードを持つ乱数生成器(共通乱数生成器)を作ることができます。</p>
+<p>次のコードは、共通乱数生成器を生成する例です。</p>
+<pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
+
+// 何も送られてこない時は、この値がタイムリミットになる
+var totalTimeLimit = 60;
+// 何も送られてこない時は、標準の乱数生成器を使う
+var random = g.game.random;
+
+scene.message.add(function (msg) {
+    if (msg.data &amp;&amp; msg.data.type === &quot;start&quot; &amp;&amp; msg.data.parameters) { // セッションパラメータのイベント
+        var sessionParameters = msg.data.parameters;
+        if (sessionParameters.totalTimeLimit != null) {
+            // 制限時間は `totalTimeLimit` 秒
+            totalTimeLimit = msg.data.parameters.totalTimeLimit;
+        }
+        if (sessionParameters.randomSeed != null) {
+            // プレイヤー間で共通の乱数生成器を生成
+            // `g.XorshiftRandomGenerator` は Akashic Engine の提供する乱数生成器実装で、 `g.game.random` と同じ型。
+            random = new g.XorshiftRandomGenerator(sessionParameters.randomSeed);
+        }
+    }
+});
+
+scene.loaded.add(function () {
+    // 通常のゲームとしての初期化処理
+    // ...
+
+    scene.pointUpCapture.add(function () {
+        var nextQuizId = random.get(0, 100);  // セッションパラメータがある環境(ランキングモード)では、全員同じ乱数系列を得る
+    });
+}
+</code></pre>
+<p>共通乱数生成器を作る場合、共通にしたい乱数(クイズの出題順など)以外に使わないように注意してください。
+例えばユーザ操作などに応じて共通乱数生成機を使うと、乱数の系列が他のプレイヤーとずれてしまって元も子もありません。</p>
+<h3><a name="difficulty"></a> 難易度設定 (difficulty)</h3>
+<p>他にセッションパラメータに含まれる値として、 <strong>難易度設定</strong> の値があります。</p>
+<p>セッションパラメータ <code>sessionParameters</code> がある時、難易度設定は <code>sessionParameters.difficulty</code> で参照できます。
+この値は1以上10以下の整数で、ゲームに対して「この難易度でゲームを行なって欲しい」という要望を通知するものです。
 ゲーム開発者はこの値を見てゲームの難易度を調整することができます。これは必須ではありません。</p>
-<p>難易度設定の値は、上の例では <code>parameters.difficulty</code> を参照することで取得できます(存在する場合)。</p>
 <p>(ただし、現時点ではゲーム起動時に難易度を選択する方法がありません。したがってこれは現在のところ「将来的な対応に備えて利用することができる値」に過ぎません。)</p>
 <h3><a name="gameTimeLimit"></a> 旧仕様: gameTimeLimit</h3>
 <p>以前は <code>totalTimeLimit</code> はなく、この文書では <code>gameTimeLimit</code> という別の値を参照していました。</p>
 <p><code>gameTimeLimit</code> には、歴史的経緯から(<code>totalTimeLimit</code> が与える)本来の制限時間よりも若干小さい値が与えられます。
-そのためこの値に厳密にしたがってゲームの演出を行うと、演出完了から実際のコンテンツ終了まで10秒以上ギャップがある状況になっていました。</p>
-<p><code>gameTimeLimit</code> は後方互換性のため引き続き利用可能ですが、通常は <code>totalTimeLimit</code> を利用してください。</p>
+そのためこの値に厳密にしたがってゲームの演出を行うと、演出完了から実際のコンテンツ終了まで10秒以上ギャップがある状況になっていました。
+<code>gameTimeLimit</code> は後方互換性のため引き続き利用可能ですが、通常は <code>totalTimeLimit</code> を利用してください。</p>
 <h2><a name="動作確認方法"></a> 動作確認方法</h2>
 <p>akashic-sandbox (<code>v0.13.40</code> 以降)では、上記のスコアが正しく設定されているかなどを確認することできます。
 akashic-sandboxのインストール方法については<a href="/tutorial/v2/1-introduction.html#Akashic%20Engine%20のインストール">Akashic Engine のインストール</a>を参照してください。</p>
