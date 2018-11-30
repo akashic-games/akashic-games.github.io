@@ -71,9 +71,9 @@
 				<p><strong>akashic-tile</strong> は、 <a href="https://akashic-games.github.io/">Akashic Engine</a> 用のタイルマップ描画ライブラリです。</p>
 				<p>例えば幅32、高さ32の画像を敷き詰めたマップチップ画像のアセット <code>mapchipImage</code> を持つシーン <code>scene</code> がある時、
 				マップチップを敷き詰めた画像(タイルマップ)を表示するエンティティを生成できます。</p>
-				<pre><code><span class="hljs-built_in">var</span> tile = <span class="hljs-built_in">new</span> <span class="hljs-built_in">at</span>.Tile({
-  <span class="hljs-built_in">scene</span>: <span class="hljs-built_in">scene</span>,
-  src: <span class="hljs-built_in">scene</span>.assets.mapchipImage,
+				<pre><code>var tile = new at.Tile({
+  scene: scene,
+  src: scene.assets.mapchipImage,
   tileWidth:  <span class="hljs-number">32</span>,
   tileHeight: <span class="hljs-number">32</span>,
   tileData: [
@@ -82,7 +82,7 @@
     [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>]
   ]
 });
-<span class="hljs-built_in">scene</span>.<span class="hljs-built_in">append</span>(tile);
+scene.append(tile);
 </code></pre><p>ここで <code>tileData</code> の内容は、マップチップのインデックスです。
 					マップチップのインデックスとは、マップチップ画像の各マップチップに対して、左上を0として順に振られた番号です。
 					すなわちインデックス0はマップチップ画像の一番左上の幅32、高さ32の部分を表します。
