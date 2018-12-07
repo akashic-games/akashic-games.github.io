@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>よくある落とし穴</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1543546890664">
-<link rel="stylesheet" href="/css/header.css?1543546890664">
-<link rel="stylesheet" href="/css/footer.css?1543546890664">
+<link rel="stylesheet" href="/css/common.css?1544149283311">
+<link rel="stylesheet" href="/css/header.css?1544149283311">
+<link rel="stylesheet" href="/css/footer.css?1544149283311">
 
 
-<link rel="stylesheet" href="/css/asset.css?1543546890664">
+<link rel="stylesheet" href="/css/asset.css?1544149283311">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1543546890664">
+<link rel="stylesheet" href="/css/akashic-document.css?1544149283311">
 
-<link rel="stylesheet" href="/css/railscasts.css?1543546890664">
+<link rel="stylesheet" href="/css/railscasts.css?1544149283311">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1543546890664"></script>
+<script src="/lib/common.js?1544149283311"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -214,6 +214,14 @@ console.log(array[1].value);  // ==&gt; &quot;foo&quot;, &quot;bar&quot; or &quo
 <code>sort()</code> の実行後、 <code>array</code> の第0要素は <code>e</code> と、第4要素は <code>d</code> と必ず同値ですが、第1要素が何になるかは実装依存です。</p>
 <p>ゲーム開発者は、<strong><code>sort()</code> の比較関数が <code>0</code> を返す(等価な)要素の順序に依存しないように注意してください</strong> 。
 可能ならば、 <code>0</code> を返さないような比較関数を使うことを推奨します。</p>
+<h2><a name="edge-decode-error" /> Microsoft Edgeでデコードエラーが出てしまう場合</h2>
+<p>Microsoft Edgeで、オーディオファイル(.aac)の読み込み時に下記のエラーが出力されてゲームの進行が止まることがあります。</p>
+<pre><code>WEBAUDIO17014：デコードエラー：指定されたストリームが破損しているか、サポートされていません
+</code></pre><p>詳細な発生条件はわかっていませんが、他の環境では再生できるファイルでも再生できないことがあるようです。
+このエラーが出た場合、元ファイルのサンプルレートの変更や、出力するオーディオファイルのビットレートを変更を行うとエラーが解消される可能性があります。</p>
+<p><a href="https://github.com/akashic-games/complete-audio">complete-audio</a> で変換している場合は、</p>
+<pre><code>complete-audio -b 32k sound.wav
+</code></pre><p>のように <code>-b</code> オプションで出力するオーディオファイルのビットレートを指定することができます。</p>
 
 		</div>
 	</section>
