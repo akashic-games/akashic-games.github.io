@@ -5,7 +5,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>Akashic Engine - Samples</title>
+<title>Akashic Engine関連情報一覧</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?1547618487222">
 <link rel="stylesheet" href="/css/header.css?1547618487222">
@@ -14,6 +14,8 @@
 
 <link rel="stylesheet" href="/css/asset.css?1547618487222">
 
+<link rel="stylesheet" href="/css/akashic-document.css?1547618487222">
+
 <link rel="stylesheet" href="/css/railscasts.css?1547618487222">
 
 
@@ -21,6 +23,8 @@
 <script src="/lib/common.js?1547618487222"></script>
 
 
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 <div class="head--spacer"></div>
@@ -90,9 +94,62 @@
 </header>
 
 <div id="BodyInner">
-	<div id="app"></div>
-	<script src="/lib/highlight.pack.js"></script>
-	<script src="/demo/dist/bundle.js?1547618487222"></script>
+	<section class="akashic--document safearea--LR">
+		<div class="inner responsive--width">
+			<h1>Akashic Engine関連情報一覧</h1>
+<p>ここでは、チュートリアルに記載しきれなかった Akashic Engine のより詳細な情報が記載されているWebページを紹介します。</p>
+<h2><a name="creation-procedure"></a> コンテンツ作成手順</h2>
+<p>以下の記事では、 Akashic Engine の環境構築～コンテンツを作成してRPGアツマールや、ニコニコ新市場に投稿する方法を実際にコンテンツを作成することを通して解説しています。</p>
+<ul>
+<li><a href="https://dwango.github.io/niconico/jikken-housou/akashic-content1">泥棒バスターを改造してみよう</a></li>
+<li><a href="https://dwango.github.io/niconico/jikken-housou/akashic-content2">ツールを作ってみよう</a></li>
+<li><a href="https://dwango.github.io/niconico/jikken-housou/akashic-content3">ゲームを作ってみよう</a></li>
+</ul>
+<h2><a name="practical-usage"></a> 実践的な使い方</h2>
+<p>実践的な使い方やより高度な機能を利用するには、開発者向けガイドの記事を参照してください。</p>
+<ul>
+<li><a href="/guide/index.html">開発者向けガイド</a></li>
+</ul>
+<p>Akashic Engine で利用可能なすべてのメソッドとプロパティを列挙したAPIリファレンスも実際のプログラミングで役に立ちます。</p>
+<ul>
+<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">APIリファレンス(v2)</a></li>
+<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">APIリファレンス(v1)</a></li>
+</ul>
+<p>以下の記事は、ニコニコ新市場対応コンテンツにフォーカスした解説になっていますが、これらは Akashic Engine 製のコンテンツに共通で適用できる知識でもあります。</p>
+<ul>
+<li><a href="https://ch.nicovideo.jp/shin-ichiba/blomaga/ar1697055">ニコニコ新市場対応コンテンツをマルチプレーで動かす方法</a></li>
+<li><a href="https://ch.nicovideo.jp/shin-ichiba/blomaga/ar1703995">ニコニコ新市場対応コンテンツでの躓きポイントと対策集</a></li>
+<li><a href="https://ch.nicovideo.jp/shin-ichiba/blomaga/ar1706019">ニコニコ新市場対応コンテンツの衝突判定</a></li>
+</ul>
+<h2><a name="example"></a> コンテンツ例</h2>
+<p>以下は、Akashic Engine で作成したサンプルコード一覧です。</p>
+<ul>
+<li><a href="/demo/?title=helloworld">Hello World</a></li>
+<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+<li><a href="/demo/?title=demo-tile">タイル</a></li>
+<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+</ul>
+<p>以下は、 Akashic Engine 製の公式コンテンツとそのコード一覧です。</p>
+<ul>
+<li><a href="https://game.nicovideo.jp/atsumaru/users/69422851">RPGアツマールに投稿された公式コンテンツ一覧</a></li>
+<li><a href="https://github.com/akashic-contents">公式コンテンツのソースコード一覧</a></li>
+</ul>
+<h2><a name="other"></a> その他</h2>
+<ul>
+<li><a href="https://twitter.com/akashic_talk">公式twitterアカウント</a><ul>
+<li>Akashic Engine やニコニコ新市場対応コンテンツに関する最新情報をお届けしています。</li>
+</ul>
+</li>
+</ul>
+
+		</div>
+	</section>
 	<footer class="safearea--LR">
 	<div class="responsive--width">
 
