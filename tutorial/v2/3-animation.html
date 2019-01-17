@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>アニメーションさせる</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1547618487222">
-<link rel="stylesheet" href="/css/header.css?1547618487222">
-<link rel="stylesheet" href="/css/footer.css?1547618487222">
+<link rel="stylesheet" href="/css/common.css?1547700982529">
+<link rel="stylesheet" href="/css/header.css?1547700982529">
+<link rel="stylesheet" href="/css/footer.css?1547700982529">
 
 
-<link rel="stylesheet" href="/css/asset.css?1547618487222">
+<link rel="stylesheet" href="/css/asset.css?1547700982529">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1547618487222">
+<link rel="stylesheet" href="/css/akashic-document.css?1547700982529">
 
-<link rel="stylesheet" href="/css/railscasts.css?1547618487222">
+<link rel="stylesheet" href="/css/railscasts.css?1547700982529">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1547618487222"></script>
+<script src="/lib/common.js?1547700982529"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -275,10 +275,11 @@ module.exports = main;
       // インデックスは元画像の左上から右にsrcWidthとsrcHeightの矩形を並べて数え上げ、右端に達したら一段下の左端から右下に達するまで繰り返す
       frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
 
-      // アニメーションをループしない（省略した場合ループする）
-      loop: false
-      });
+      // アニメーションをループする（省略した場合ループする）
+      loop: true
+    });
     scene.append(frameSprite);
+    frameSprite.start();
   });
   g.game.pushScene(scene);
 }
@@ -286,7 +287,8 @@ module.exports = main;
 module.exports = main;
 </code></pre><p><img src="/img/tutorial/sample-framesprite.gif" alt="FrameSprite"></p>
 <p>フレームアニメーションを表示するには <code>FrameSprite</code> エンティティを使います。 <code>FrameSprite</code> エンティティのパラメータオブジェクトのプロパティには、
-最初に表示するフレームを指定する <code>frameNumber</code> やフレーム遷移の速度を指定する <code>interval</code> を指定することができます。</p>
+最初に表示するフレームを指定する <code>frameNumber</code> やフレーム遷移の速度を指定する <code>interval</code> を指定することができます。
+<code>start()</code> メソッドを呼び出すまでアニメーションは開始されません。アニメーションを終了したい場合は、 <code>end()</code> メソッドを呼び出します。</p>
 <h2><a name="タイマー関数"></a> タイマー関数</h2>
 <p>3秒後にエンティティを破棄したいなど、指定時間後に処理を行う場合は、
 シーンオブジェクトの <code>setTimeout()</code> メソッドを利用します。
