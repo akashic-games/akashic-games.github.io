@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ニコニコ新市場対応コンテンツ作成ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1547700982529">
-<link rel="stylesheet" href="/css/header.css?1547700982529">
-<link rel="stylesheet" href="/css/footer.css?1547700982529">
+<link rel="stylesheet" href="/css/common.css?1548671487400">
+<link rel="stylesheet" href="/css/header.css?1548671487400">
+<link rel="stylesheet" href="/css/footer.css?1548671487400">
 
 
-<link rel="stylesheet" href="/css/asset.css?1547700982529">
+<link rel="stylesheet" href="/css/asset.css?1548671487400">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1547700982529">
+<link rel="stylesheet" href="/css/akashic-document.css?1548671487400">
 
-<link rel="stylesheet" href="/css/railscasts.css?1547700982529">
+<link rel="stylesheet" href="/css/railscasts.css?1548671487400">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1547700982529"></script>
+<script src="/lib/common.js?1548671487400"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -140,10 +140,9 @@ INFO: Done!
 <ul>
 <li><strong>ランキングモード</strong> (<code>&quot;ranking&quot;</code>): 一人プレイのゲームを、放送者と各視聴者がそれぞれ遊び、スコアを競う</li>
 <li><strong>ひとりで遊ぶモード</strong> (<code>&quot;single&quot;</code>): 一人プレイのゲームを放送者が遊び、視聴者はその様子を見る</li>
-<li><strong>みんなで遊ぶモード</strong> (N/A): 放送者と選ばれた視聴者など、複数人で遊ぶ</li>
+<li><strong>みんなで遊ぶモード</strong> (<code>&quot;multi&quot;</code>): 放送者と視聴者複数人で一つのゲームプレイで遊ぶ</li>
 </ul>
-<p>Akashic Engineでは2018年10月現在、ランキングモードとひとりで遊ぶモードのゲームを作成することができます。
-ニコニコ新市場対応コンテンツは、この中から対応するモードを指定する必要があります。</p>
+<p>ニコニコ新市場対応コンテンツは、この中から対応するモードを指定する必要があります。</p>
 <p><code>game.json</code> に <code>environment.niconico.supportedModes</code> プロパティを加え、ゲームが対応するモードを(配列で)全て列挙してください。
 実験放送には、ここで列挙されたそれぞれのモードで起動できるように登録されます。</p>
 <p>次の例は、ランキングモードとひとりで遊ぶモードの両方に対応する game.json の記述例です。</p>
@@ -155,8 +154,9 @@ INFO: Done!
   }
 }
 </code></pre>
-<p>ひとりで遊ぶモード(<code>&quot;single&quot;</code>)は常に指定することができます。
-一方でランキングモード(<code>&quot;ranking&quot;</code>)は、後述の条件を満たすゲームでのみ指定してください。</p>
+<p>ひとりで遊ぶモード(<code>&quot;single&quot;</code>)とみんなで遊ぶモード(<code>&quot;multi&quot;</code>)は、特に制限なく指定することができます。
+(single 用のゲームを multi で登録してしまうと、一人プレイなのに全員に操作されてしまうといった問題は起きますが)</p>
+<p>一方ランキングモード(<code>&quot;ranking&quot;</code>)を指定する場合には、後述の条件があります。</p>
 <h2><a name="ランキング対応ゲーム"></a> ランキング対応ゲーム</h2>
 <p><code>supportedModes</code> に <code>&quot;ranking&quot;</code> を指定するゲーム(ランキング対応ゲーム)は、次の条件を満たすものでなければなりません。</p>
 <ul>
@@ -321,7 +321,8 @@ scene.loaded.add(function () {
 <p><code>gameTimeLimit</code> には、歴史的経緯から(<code>totalTimeLimit</code> が与える)本来の制限時間よりも若干小さい値が与えられます。
 そのためこの値に厳密にしたがってゲームの演出を行うと、演出完了から実際のコンテンツ終了まで10秒以上ギャップがある状況になっていました。
 <code>gameTimeLimit</code> は後方互換性のため引き続き利用可能ですが、通常は <code>totalTimeLimit</code> を利用してください。</p>
-<h2><a name="動作確認方法"></a> 動作確認方法</h2>
+<p><a name="動作確認方法"></a></p>
+<h2><a name="ranking-debug"></a> ランキングモードの動作確認方法</h2>
 <p>akashic-sandbox (<code>v0.13.40</code> 以降)では、上記のスコアが正しく設定されているかなどを確認することできます。
 akashic-sandboxのインストール方法については<a href="/tutorial/v2/1-introduction.html#Akashic%20Engine%20のインストール">Akashic Engine のインストール</a>を参照してください。</p>
 <p>インストールされているakashic-sandboxのバージョンは次のコマンドで確認できます。</p>

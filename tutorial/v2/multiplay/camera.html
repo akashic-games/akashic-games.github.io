@@ -5,7 +5,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>Akashic Engine - Samples</title>
+<title>プレイヤーごとに異なる位置を表示する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?1548671487400">
 <link rel="stylesheet" href="/css/header.css?1548671487400">
@@ -14,6 +14,8 @@
 
 <link rel="stylesheet" href="/css/asset.css?1548671487400">
 
+<link rel="stylesheet" href="/css/akashic-document.css?1548671487400">
+
 <link rel="stylesheet" href="/css/railscasts.css?1548671487400">
 
 
@@ -21,6 +23,8 @@
 <script src="/lib/common.js?1548671487400"></script>
 
 
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 <div class="head--spacer"></div>
@@ -90,9 +94,51 @@
 </header>
 
 <div id="BodyInner">
-	<div id="app"></div>
-	<script src="/lib/highlight.pack.js"></script>
-	<script src="/demo/dist/bundle.js?1548671487400"></script>
+	<section class="akashic--document safearea--LR">
+		<div class="inner responsive--width">
+			<h1>プレイヤーごとに異なる位置を表示する</h1>
+<p>広いフィールドの一部を画面に表示するようなゲームの場合、マルチプレイではプレイヤーごとに異なる場所を表示したくなることが考えられます。
+そのような場合のために、Akashic Engine は <code>g.Camera</code> を提供しています。</p>
+<p><a name="camera"></a></p>
+<h2>カメラ</h2>
+<p>カメラは、インターフェース <code>g.Camera</code> で表現されます。
+現在のAkashic Engineが実装を提供する唯一のカメラは <code>g.Camera2D</code> です。
+これは2Dゲーム用途のカメラであり、次のように生成することができます。</p>
+<pre><code>var camera = new g.Camera2D({ game: g.game });
+</code></pre><p>生成されたカメラは、そのままでは描画に影響を与えません。
+カメラを <code>g.Game#focusingCamera</code> に設定することで、ゲーム画面の描画に対してカメラの設定を適用することができます。</p>
+<pre><code>g.game.focusingCamera = camera;
+g.game.modified = true;
+</code></pre><p><code>Game#focusingCamera</code> の値を変更した場合、 <code>Game#modified</code> に真を設定する必要があります。
+(他クラスの同名の値と異なり、 <code>Game#modified</code> は関数ではなく <code>boolean</code> であることに気をつけてください。これは歴史的経緯によるものです。)</p>
+<p>この状態で <code>camera</code> のプロパティを変更することで、ゲーム画面全体の描画内容を制御することができます。</p>
+<p><code>Camera2D</code> は <code>Object2D</code> を実装しており、<code>x</code>, <code>y</code> によって描画位置のオフセットや、<code>scaleX</code>, <code>scaleY</code> によって描画結果の拡大率を設定できます。
+たとえば以下のような記述により、画面全体を30度傾けることができます。</p>
+<pre><code>camera.angle = 30;
+camera.modified();
+</code></pre><p><code>Camera2D</code> のオフセットや回転角度は、エンティティとは逆方向に作用することに注意してください。
+すなわち、たとえばX座標のオフセット <code>Camera2D#x</code> を10に設定した場合、移動するのは描画される範囲です。
+その中で描画されるエンティティの描画位置は元の位置から (右ではなく) 左に10ピクセルずれます。</p>
+<p>エンティティなどと同様、カメラの値の変更後には <code>modified()</code> を呼び出す必要があります。
+なお <code>Game#focusingCamera</code> に対して <code>modified()</code> を呼び出した場合は、上述の <code>game.modified</code> への真の代入は省略できます。
+<code>Game#focusingCamera</code> の既定値は <code>undefined</code> です。</p>
+<p><a name="ignore-camera"></a></p>
+<h2>カメラのtransformの無視</h2>
+<p>現在のAkashic Engineは、カメラのtransform(<code>x</code>, <code>y</code> による描画位置オフセットなど)を無視する方法を直接には提供していません。
+すべてのエンティティは <code>Game#focusingCamera</code> のオフセットや拡大の影響を受けます。</p>
+<p>画面中央に自機を固定したい場合や、「現在のスコア」のようなカメラの影響を受けないエンティティを作成したい場合は、
+ゲーム開発者が自力でカメラのオフセットなどを引いた(逆変換した)位置に置く必要があります。</p>
+<p>別の方法としては、描画処理 <code>E#renderSelf()</code> をオーバーライドしてこの逆変換するエンティティ (<code>E</code>) の派生クラスを作り、それを使うこともできます。
+この方法の実装例としては akashic-engine の <code>DefaultLoadingScene</code> のソースコードを参照してください。
+ただし将来的には、この仕様は変更される可能性があります。</p>
+<div class="navi-center">
+<a href="./each-player.html">前（プレイヤーごとに異なる描画を行う）</a>
+ | <a href="../">目次</a>
+ | <a href="./join.html">次（JoinとLeave）</a>
+</div>
+
+		</div>
+	</section>
 	<footer class="safearea--LR">
 	<div class="responsive--width">
 

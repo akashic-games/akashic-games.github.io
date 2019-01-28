@@ -5,7 +5,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>Akashic Engine - Samples</title>
+<title>JoinとLeave</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?1548671487400">
 <link rel="stylesheet" href="/css/header.css?1548671487400">
@@ -14,6 +14,8 @@
 
 <link rel="stylesheet" href="/css/asset.css?1548671487400">
 
+<link rel="stylesheet" href="/css/akashic-document.css?1548671487400">
+
 <link rel="stylesheet" href="/css/railscasts.css?1548671487400">
 
 
@@ -21,6 +23,8 @@
 <script src="/lib/common.js?1548671487400"></script>
 
 
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
 <div class="head--spacer"></div>
@@ -90,9 +94,45 @@
 </header>
 
 <div id="BodyInner">
-	<div id="app"></div>
-	<script src="/lib/highlight.pack.js"></script>
-	<script src="/demo/dist/bundle.js?1548671487400"></script>
+	<section class="akashic--document safearea--LR">
+		<div class="inner responsive--width">
+			<h1>JoinとLeave</h1>
+<p><a name="join"></a></p>
+<h1>Join</h1>
+<p>各プレイヤーには「join しているか否か」という二値の状態が存在します。
+これは実行環境が規定する値です。
+「join しているプレイヤー」が何を意味するかは、実行環境によって定まります。</p>
+<p>あるプレイヤーが join 状態になる時、 <code>g.game.join</code> がfireされ <code>g.JoinEvent</code> が与えられます。
+同様に join 状態でなくなる時、 <code>g.game.leave</code> がfireされ <code>g.LeaveEvent</code> が与えられます。</p>
+<p>これ自体は環境依存が強くあまり使い出のない機能ですが、
+<strong>ニコニコ生放送上で実行する場合、配信者のプレイヤーだけがjoinします</strong> (leave はしません)。
+そのため、配信者と視聴者を区別するための情報として利用することができます。</p>
+<p>次のコードは、最後にjoinしたプレイヤーを記憶して参照する例です。</p>
+<pre><code class="lang-javascript">var lastJoinedPlayerId = null;
+
+g.game.join.add(function (ev) {
+    lastJoinedPlayerId = ev.player.id;
+});
+
+scene.pointDownCapture.add(function (ev) {
+    if (ev.player.id === lastJoinedPlayerId) {
+        // イベントを生成した(＝画面を押下した)のが配信者である時のみ実行される
+        // ...
+    }
+
+    if (g.game.selfId === lastJoinedPlayerId) {
+        // この環境が「配信者」である時のみ実行される
+        // ...
+    }
+});
+</code></pre>
+<div class="navi-center">
+<a href="./camera.html">前（プレイヤーごとに異なる位置を表示する）</a>
+ | <a href="../">目次</a>
+</div>
+
+		</div>
+	</section>
 	<footer class="safearea--LR">
 	<div class="responsive--width">
 
