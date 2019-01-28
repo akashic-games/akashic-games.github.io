@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>Akashic Engine 入門 (v2版)</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1547700982529">
-<link rel="stylesheet" href="/css/header.css?1547700982529">
-<link rel="stylesheet" href="/css/footer.css?1547700982529">
+<link rel="stylesheet" href="/css/common.css?1548671487400">
+<link rel="stylesheet" href="/css/header.css?1548671487400">
+<link rel="stylesheet" href="/css/footer.css?1548671487400">
 
 
-<link rel="stylesheet" href="/css/asset.css?1547700982529">
+<link rel="stylesheet" href="/css/asset.css?1548671487400">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1547700982529">
+<link rel="stylesheet" href="/css/akashic-document.css?1548671487400">
 
-<link rel="stylesheet" href="/css/railscasts.css?1547700982529">
+<link rel="stylesheet" href="/css/railscasts.css?1548671487400">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1547700982529"></script>
+<script src="/lib/common.js?1548671487400"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -99,10 +99,10 @@
 			<h1>Akashic Engine 入門 (v2版)</h1>
 <h2><a name="はじめに"></a> はじめに</h2>
 <p>Akashic Engine は JavaScript で動作するゲームエンジンです。
-Akashic Engine を利用することでマルチプラットフォームで動作するゲームを開発できます。
+マルチプラットフォームで動作するゲームを開発できます。
 Akashic Engine はオープンソースで開発されているフリーソフトウェアです。
-作成したゲームの公開にロイヤリティは必要ありません。
-Akashic Engine にはゲーム開発で利用できるツールとライブラリが用意されており、
+作成したゲームの公開にロイヤリティは必要ありません。</p>
+<p>Akashic Engine にはゲーム開発で利用できるツールとライブラリが用意されており、
 今すぐゲーム開発を始めることができます。</p>
 <blockquote>
 <ul>
@@ -110,6 +110,7 @@ Akashic Engine にはゲーム開発で利用できるツールとライブラ�
 </ul>
 </blockquote>
 <h2>目次</h2>
+<h3>導入〜シングルプレイのゲーム作成</h3>
 <ul>
 <li><a href="./1-introduction.html">akashic の導入</a><ul>
 <li><a href="./1-introduction.html#開発に必要なもの">開発に必要なもの</a></li>
@@ -163,6 +164,36 @@ Akashic Engine にはゲーム開発で利用できるツールとライブラ�
 </ul>
 </li>
 </ul>
+<h3>マルチプレイのゲーム作成</h3>
+<ul>
+<li><a href="./multiplay/introduction.html">マルチプレイの基礎</a><ul>
+<li><a href="./multiplay/introduction.html#helloworld">マルチプレイのHello World</a></li>
+<li><a href="./multiplay/introduction.html#debug">動作確認</a></li>
+<li><a href="./multiplay/introduction.html#architecture-intro">Akashicにおけるマルチプレイ</a></li>
+</ul>
+</li>
+<li><a href="./multiplay/each-player.html">プレイヤーごとに異なる描画を行う</a><ul>
+<li><a href="./multiplay/each-player.html#local-event">ローカルイベント</a></li>
+<li><a href="./multiplay/each-player.html#local-entity">ローカルエンティティ</a></li>
+<li><a href="./multiplay/each-player.html#raise-event">raiseEvent()</a></li>
+<li><a href="./multiplay/each-player.html#raise-operation">ローカル処理とその制限</a></li>
+</ul>
+</li>
+<li><a href="./multiplay/camera.html">プレイヤーごとに異なる位置を表示する</a><ul>
+<li><a href="./multiplay/camera.html#camera">カメラ</a></li>
+<li><a href="./multiplay/camera.html#ignore-camera">カメラのtransformの無視</a></li>
+</ul>
+</li>
+<li><a href="./multiplay/join.html">JoinとLeave</a></li>
+</ul>
+<!--
+- [Akashic におけるマルチプレイ](./multiplay/architecture.html) - この節では、Akashicのマルチプレイの基本的なデザインについて述べます。
+  - [ActiveとPassive](./multiplay/architecture.html)
+  - [Playlog](./multiplay/architecture.html)
+  - [リプレイ](./multiplay/architecture.html)
+- [マルチプレイTips](./multiplay/tips.html)
+  - [プレイヤーマッチング](./multiplay/tips.html#matching)
+-->
 
 		</div>
 	</section>
