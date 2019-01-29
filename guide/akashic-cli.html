@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic-cli利用ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1548742269541">
-<link rel="stylesheet" href="/css/header.css?1548742269541">
-<link rel="stylesheet" href="/css/footer.css?1548742269541">
+<link rel="stylesheet" href="/css/common.css?1548744669576">
+<link rel="stylesheet" href="/css/header.css?1548744669576">
+<link rel="stylesheet" href="/css/footer.css?1548744669576">
 
 
-<link rel="stylesheet" href="/css/asset.css?1548742269541">
+<link rel="stylesheet" href="/css/asset.css?1548744669576">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1548742269541">
+<link rel="stylesheet" href="/css/akashic-document.css?1548744669576">
 
-<link rel="stylesheet" href="/css/railscasts.css?1548742269541">
+<link rel="stylesheet" href="/css/railscasts.css?1548744669576">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1548742269541"></script>
+<script src="/lib/common.js?1548744669576"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -130,6 +130,10 @@ akashicコマンドはakashic-cliをインストールして使用すること�
 <li>game.json に記述されている、ゲームのアセットや各種ライブラリ情報を更新します。</li>
 </ul>
 </li>
+<li>akashic serve<ul>
+<li>Akashicのゲームをホストするマルチプレイ動作確認用サーバを起動します。</li>
+</ul>
+</li>
 <li>akashic install<ul>
 <li>npm install を行い、追加されたファイルのリストを game.json に加えます。</li>
 </ul>
@@ -139,7 +143,7 @@ akashicコマンドはakashic-cliをインストールして使用すること�
 </ul>
 </li>
 <li>akashic update<ul>
-<li>npm update を行い、 node_modules 以下のnpmパッケージを更新し、ファイルに変更があれば game.json に加えます。</li>
+<li>npm update を行い、 <code>node_modules/</code> 以下のnpmパッケージを更新し、ファイルに変更があれば game.json に加えます。</li>
 </ul>
 </li>
 <li>akashic export zip<ul>
@@ -155,7 +159,7 @@ akashicコマンドはakashic-cliをインストールして使用すること�
 </ul>
 </li>
 </ul>
-<p>init 以外のコマンドは、init によって生成される game.json を操作・出力します。
+<p>init 以外のコマンドは、init によって生成される game.json を操作・出力・実行します。
 したがって通常、ゲーム開発時にはまず akashic init を実行し、
 その後必要に応じて他コマンドを実行することになります。</p>
 <h2><a name="init"></a> init</h2>
@@ -285,6 +289,40 @@ scan asset コマンドは、アセットIDとして「ファイル名から拡�
 <p>ユーザは game.json を直接編集して、アセットIDを任意に変更することができます。
 akashic コマンドはファイルパスを基準に操作を行うため、たとえば画像素材のIDを変更した後に
 その画像のサイズを変更しても、適切にgame.jsonの幅・高さ情報を更新します。</p>
+<h2><a name="serve"></a> serve</h2>
+<pre><code class="lang-sh">akashic serve [&lt;options&gt;] [&lt;path&gt;]
+</code></pre>
+<p><code>&lt;path&gt;</code> ディレクトリ(省略時はカレントディレクトリ)にあるゲームをホストする、マルチプレイ動作確認用サーバを起動します。</p>
+<p>起動後に表示されるURL(デフォルトでは <code>http://localhost:3300/</code>)をWebブラウザで開いてください。</p>
+<p><code>&lt;options&gt;</code> に指定可能なオプションは次のとおりです。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">オプション</th>
+<th style="text-align:center">短縮名</th>
+<th style="text-align:center">効果</th>
+<th style="text-align:center">デフォルト値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>--hostname &lt;hostname&gt;</code></td>
+<td style="text-align:center"><code>-H</code></td>
+<td style="text-align:center">起動するサーバのホスト名を指定します。</td>
+<td style="text-align:center"><code>localhost</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--port &lt;port&gt;</code></td>
+<td style="text-align:center"><code>-p</code></td>
+<td style="text-align:center">起動するサーバのポート番号を指定します。</td>
+<td style="text-align:center"><code>3300</code></td>
+</tr>
+</tbody>
+</table>
+<p>ネットワークごしに(他のPCなどから)マルチプレイを行いたい場合は、 <code>--hostname</code> に外部からアクセス可能なホスト名(IPアドレスなど)を指定してください。</p>
+<p>Webブラウザで開くURLは <code>--hostname</code> で指定したホスト名 (省略時は <code>localhost</code>) を使う必要がある点に注意してください。
+たとえばIPアドレスを指定した時に <code>localhost</code> でページを開いてもゲームが実行できません。
+これは現バージョンの実装上の制限です。</p>
 <h2><a name="install"></a> install</h2>
 <pre><code class="lang-sh">akashic install [&lt;module&gt;]
 </code></pre>
@@ -341,23 +379,54 @@ game.jsonは更新されません。npm-shrinkwrap.json がない場合、利用
 <li>./package.json</li>
 </ul>
 <h2><a name="export-html"></a> export html</h2>
-<pre><code class="lang-sh">akashic export html --output &lt;dirName&gt; [--bundle] [--strip] [--minify] [--magnify]
+<pre><code class="lang-sh">akashic export html --output &lt;dirName&gt; [--bundle] [--minify] [--magnify] [--no-strip]
 </code></pre>
 <p>単独でゲームを実行可能な HTML ファイル (と関連ファイル) を含むディレクトリを出力します。
 出力されたディレクトリの index.html を Web ブラウザで開くことで、 akashic-sandbox などの動作確認ツールなしにゲームを実行できます。</p>
 <p>利用可能なオプションは次のとおりです:</p>
-<ul>
-<li><code>--output &lt;dirName&gt;</code>: 出力するフォルダを <code>&lt;dirName&gt;</code> にする (必須)</li>
-<li><code>--bundle</code>: スクリプトアセットやテキストアセットなど、可能なものを index.html にまとめる</li>
-<li><code>--strip</code>: ゲーム実行に不要なファイルを出力から除外する</li>
-<li><code>--minify</code>: スクリプトアセットをminifyする</li>
-<li><code>--magnify</code>: ゲーム画面をブラウザのウィンドウサイズに合わせて拡縮するようにする</li>
-<li><code>--inject &lt;fileName&gt;</code>: 出力HTMLのheader内に <code>&lt;fileName&gt;</code> の内容を含める (<code>akashic-cli@1.3.1</code>で導入)<ul>
-<li><code>&lt;fileName&gt;</code> にディレクトリも指定可能。その場合、ディレクトリ中の全ファイルの内容が出力される</li>
-<li>このオプションは複数指定可能。複数指定した場合、指定した順番にファイルの内容が出力される</li>
-</ul>
-</li>
-</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">オプション</th>
+<th style="text-align:center">効果</th>
+<th style="text-align:center">デフォルト値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>--output &lt;dirName&gt;</code></td>
+<td style="text-align:center">出力するフォルダを <code>&lt;dirName&gt;</code> にする</td>
+<td style="text-align:center">N/A</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--bundle</code></td>
+<td style="text-align:center">スクリプトアセットやテキストアセットなど、可能なものを index.html にまとめる</td>
+<td style="text-align:center">指定なし</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--minify</code></td>
+<td style="text-align:center">スクリプトアセットをminifyする</td>
+<td style="text-align:center">指定なし</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--magnify</code></td>
+<td style="text-align:center">ゲーム画面をブラウザのウィンドウサイズに合わせて拡縮するようにする</td>
+<td style="text-align:center">指定なし</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--inject &lt;fileName&gt;</code></td>
+<td style="text-align:center">出力HTMLのhead要素に <code>&lt;fileName&gt;</code> の内容を含める</td>
+<td style="text-align:center">指定なし</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--no-strip</code></td>
+<td style="text-align:center">ゲーム実行に不要なファイルを出力から除外しない</td>
+<td style="text-align:center">指定なし</td>
+</tr>
+</tbody>
+</table>
+<p><code>--inject</code> オプション(<a href="mailto:`akashic-cli@1.3.1">`akashic-cli@1.3.1</a>` で導入)は複数指定可能です。指定した順でファイルの内容が出力されます。
+ディレクトリ名も指定でき、その場合はディレクトリ内の全ファイルが出力されます(順不同)。</p>
 <p><code>--output</code> オプションに存在するファイル名・ディレクトリ名を指定した場合、エラーになります。
 またゲームのディレクトリ以下のパスを指定することはできません。
 たとえばgame.json のあるディレクトリで次のように指定するとエラーになります。</p>
