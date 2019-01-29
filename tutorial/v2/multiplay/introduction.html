@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>マルチプレイの基礎</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1548744669576">
-<link rel="stylesheet" href="/css/header.css?1548744669576">
-<link rel="stylesheet" href="/css/footer.css?1548744669576">
+<link rel="stylesheet" href="/css/common.css?1548746469666">
+<link rel="stylesheet" href="/css/header.css?1548746469666">
+<link rel="stylesheet" href="/css/footer.css?1548746469666">
 
 
-<link rel="stylesheet" href="/css/asset.css?1548744669576">
+<link rel="stylesheet" href="/css/asset.css?1548746469666">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1548744669576">
+<link rel="stylesheet" href="/css/akashic-document.css?1548746469666">
 
-<link rel="stylesheet" href="/css/railscasts.css?1548744669576">
+<link rel="stylesheet" href="/css/railscasts.css?1548746469666">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1548744669576"></script>
+<script src="/lib/common.js?1548746469666"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -185,8 +185,8 @@ scene.loaded.add(function () {
 
             // キャラクタのフレームごとの処理(目標座標 (targetX, targetY) に近づくように位置を更新)を登録
             chara.entity.update.add(function () {
-                const diffX = chara.targetX - chara.entity.x;
-                const diffY = chara.targetY - chara.entity.y;
+                var diffX = chara.targetX - chara.entity.x;
+                var diffY = chara.targetY - chara.entity.y;
 
                 // 既に目標座標にいるなら何もせず抜ける
                 if (diffX === 0 &amp;&amp; diffY === 0)

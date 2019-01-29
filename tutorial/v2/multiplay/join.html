@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>JoinとLeave</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1548744669576">
-<link rel="stylesheet" href="/css/header.css?1548744669576">
-<link rel="stylesheet" href="/css/footer.css?1548744669576">
+<link rel="stylesheet" href="/css/common.css?1548746469666">
+<link rel="stylesheet" href="/css/header.css?1548746469666">
+<link rel="stylesheet" href="/css/footer.css?1548746469666">
 
 
-<link rel="stylesheet" href="/css/asset.css?1548744669576">
+<link rel="stylesheet" href="/css/asset.css?1548746469666">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1548744669576">
+<link rel="stylesheet" href="/css/akashic-document.css?1548746469666">
 
-<link rel="stylesheet" href="/css/railscasts.css?1548744669576">
+<link rel="stylesheet" href="/css/railscasts.css?1548746469666">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1548744669576"></script>
+<script src="/lib/common.js?1548746469666"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -130,6 +130,10 @@ scene.pointDownCapture.add(function (ev) {
 </code></pre>
 <p>なお <code>g.game.selfId</code> は、今そのゲームを実行している環境(インスタンス)のプレイヤーIDです。
 このコード例のように、あるイベントの生成元が自分(このインスタンス自身)かどうかを判断したい時に利用できます。</p>
+<p><code>g.game.join</code> や <code>g.game.leave</code> の動作確認は <code>akashic serve</code> コマンドでも行うことができます。</p>
+<p><img src="/img/tutorial/cli-serve.png" alt="serve"></p>
+<p>画面上側、ツールバー上の「Join Me」ボタンを押すと、そのウィンドウ(インスタンス)のプレイヤーが join します (<code>g.game.join</code> がfireされます)。
+join 済みの場合は「Leave Me」ボタンに切り替わり、 <code>g.game.leave</code> をfireさせることができます。</p>
 <div class="navi-center">
 <a href="./camera.html">前（プレイヤーごとに異なる位置を表示する）</a>
  | <a href="../">目次</a>
