@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic-cli利用ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1549364201212">
-<link rel="stylesheet" href="/css/header.css?1549364201212">
-<link rel="stylesheet" href="/css/footer.css?1549364201212">
+<link rel="stylesheet" href="/css/common.css?1549432880934">
+<link rel="stylesheet" href="/css/header.css?1549432880934">
+<link rel="stylesheet" href="/css/footer.css?1549432880934">
 
 
-<link rel="stylesheet" href="/css/asset.css?1549364201212">
+<link rel="stylesheet" href="/css/asset.css?1549432880934">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1549364201212">
+<link rel="stylesheet" href="/css/akashic-document.css?1549432880934">
 
-<link rel="stylesheet" href="/css/railscasts.css?1549364201212">
+<link rel="stylesheet" href="/css/railscasts.css?1549432880934">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1549364201212"></script>
+<script src="/lib/common.js?1549432880934"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -317,12 +317,15 @@ akashic コマンドはファイルパスを基準に操作を行うため、た
 <td style="text-align:center">起動するサーバのポート番号を指定します。</td>
 <td style="text-align:center"><code>3300</code></td>
 </tr>
+<tr>
+<td style="text-align:center"><code>--verbose</code></td>
+<td style="text-align:center"><code>-v</code></td>
+<td style="text-align:center">詳細情報をログ出力します。</td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
 </tbody>
 </table>
 <p>ネットワークごしに(他のPCなどから)マルチプレイを行いたい場合は、 <code>--hostname</code> に外部からアクセス可能なホスト名(IPアドレスなど)を指定してください。</p>
-<p>Webブラウザで開くURLは <code>--hostname</code> で指定したホスト名 (省略時は <code>localhost</code>) を使う必要がある点に注意してください。
-たとえばIPアドレスを指定した時に <code>localhost</code> でページを開いてもゲームが実行できません。
-これは現バージョンの実装上の制限です。</p>
 <h2><a name="install"></a> install</h2>
 <pre><code class="lang-sh">akashic install [&lt;module&gt;]
 </code></pre>
