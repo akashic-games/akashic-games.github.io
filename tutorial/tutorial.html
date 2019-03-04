@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>Akashic Engine 入門 (v1(deprecated)版)</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1549432880934">
-<link rel="stylesheet" href="/css/header.css?1549432880934">
-<link rel="stylesheet" href="/css/footer.css?1549432880934">
+<link rel="stylesheet" href="/css/common.css?1551672085287">
+<link rel="stylesheet" href="/css/header.css?1551672085287">
+<link rel="stylesheet" href="/css/footer.css?1551672085287">
 
 
-<link rel="stylesheet" href="/css/asset.css?1549432880934">
+<link rel="stylesheet" href="/css/asset.css?1551672085287">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1549432880934">
+<link rel="stylesheet" href="/css/akashic-document.css?1551672085287">
 
-<link rel="stylesheet" href="/css/railscasts.css?1549432880934">
+<link rel="stylesheet" href="/css/railscasts.css?1551672085287">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1549432880934"></script>
+<script src="/lib/common.js?1551672085287"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -826,25 +826,25 @@ module.exports = main;
 <p><img src="/img/tutorial/sample08.gif" alt="sample08"></p>
 <h2><a name="タイマー関数"></a> タイマー関数</h2>
 <p>3秒後にエンティティを破棄したいなど、指定時間後に処理を行う場合は、
-シーンオブジェクトの <code>setTimeout()</code> メソッドを利用します。
-<code>setTimeout()</code> にはミリ秒単位の時間とコールバック関数を引数として渡します。
+シーンオブジェクトの <code>scene.setTimeout()</code> メソッドを利用します。
+<code>scene.setTimeout()</code> にはミリ秒単位の時間とコールバック関数を引数として渡します。
 例えば、シーン <code>scene</code> があり、3秒後すなわち3000ミリ秒後に処理を行う場合、
 以下のように記述します。</p>
 <pre><code class="lang-javascript">scene.setTimeout(3000, function () {
   // 3秒後に行う処理
 });
 </code></pre>
-<p><code>setTimeout()</code> ではミリ秒単位で時間を指定できますが、実際にはフレーム単位で処理が行われます。
+<p><code>scene.setTimeout()</code> ではミリ秒単位で時間を指定できますが、実際にはフレーム単位で処理が行われます。
 例えばゲームが30FPS、つまり1秒間に30フレーム描画している場合、1フレームの長さは約33ミリ秒なので、
 実際の処理時間は33ミリ秒単位に切り上げられます。</p>
-<p>以下は <code>setTimeout()</code> を使って3秒後に矩形 <code>rect</code> を破棄するコードです。</p>
+<p>以下は <code>scene.setTimeout()</code> を使って3秒後に矩形 <code>rect</code> を破棄するコードです。</p>
 <pre><code class="lang-javascript">scene.setTimeout(3000, function () {
   rect.destroy();
 });
 </code></pre>
 <p>一定時間ごとに繰り返し処理をする場合は、
-シーンオブジェクトの <code>setInterval()</code> メソッドを利用します。
-<code>setInterval()</code> メソッドの利用方法は <code>setTimeout()</code> メソッドと同じです。
+シーンオブジェクトの <code>scene.setInterval()</code> メソッドを利用します。
+<code>scene.setInterval()</code> メソッドの利用方法は <code>scene.setTimeout()</code> メソッドと同じです。
 以下は0.5秒おきに矩形の色を切り替えるコードです。</p>
 <pre><code class="lang-javascript">var flg = false;
 scene.setInterval(500, function () {
@@ -853,10 +853,10 @@ scene.setInterval(500, function () {
   flg = !flg;
 });
 </code></pre>
-<p><code>setTimeout()</code> と <code>setInterval()</code> に登録した関数は、
-それぞれ <code>clearTimeout()</code> と <code>clearInterval()</code> 関数で登録を解除できます。
-引数には <code>setTimeout()</code> と <code>setInterval()</code> が返すIDを指定します。
-以下のプログラムでは <code>setInterval()</code> で登録した関数を3秒後に <code>clearInterval()</code> で
+<p><code>scene.setTimeout()</code> と <code>scene.setInterval()</code> に登録した関数は、
+それぞれ <code>scene.clearTimeout()</code> と <code>scene.clearInterval()</code> 関数で登録を解除できます。
+引数には <code>scene.setTimeout()</code> と <code>scene.setInterval()</code> が返すIDを指定します。
+以下のプログラムでは <code>scene.setInterval()</code> で登録した関数を3秒後に <code>scene.clearInterval()</code> で
 解除しています。</p>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({game: g.game});
@@ -866,7 +866,7 @@ scene.setInterval(500, function () {
     var intervalId = scene.setInterval(200, function () {
       rect.x += 10;
       rect.modified();
-    }); 
+    });
     scene.setTimeout(3000, function () {
       scene.clearInterval(intervalId);
     });
@@ -886,6 +886,10 @@ function createRect(scene) {
 module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample09.gif" alt="sample09"></p>
+<p><strong><code>scene.setTimeout()</code> ではない、グローバルの <code>setTimeout()</code> や、同じくグローバルの <code>setInterval()</code> は使用しないよう注意してください。</strong>
+これは、Aksahic Engine のコンテンツは、現実の時間とは違う速度で実行されることがあるためです
+(例えば、Akashic Engine のゲームは、ニコニコ生放送 (<a href="https://live.nicovideo.jp/recent?tab=nicocas">実験放送</a>) 上で実行されることがあります。その場合、タイムシフトではシークバーに連動する形で動作します)。
+この時、 <code>scene.setTimeout()</code> は実行速度を踏まえて経過時間を処理するのですが、 グローバルの <code>setTimeout()</code> は指定した時間そのままの時間経過を待ってしまうため、処理の実行タイミングがずれてしまうことがあり得ます。</p>
 <h2><a name="乱数"></a> 乱数</h2>
 <p>Akashic Engine は独自の乱数生成器を備えています。
 Akashic Engine に用意された乱数生成器を利用すると、
