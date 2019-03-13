@@ -79,19 +79,17 @@
 				そのため、その他多くの機能はBox2DWebを直接利用することになります。</p>
 				<h2 id="-">利用方法</h2>
 				<p><a href="https://github.com/akashic-games/akashic-cli">akashic-cli</a>をインストールした後、</p>
-				<pre><code class="lang-sh">akashic install @akashic-extension/akashic-box2d
-</code></pre>
+				<pre><code class="language-sh">akashic install @akashic-extension/akashic-box2d</code></pre>
 				<p>でインストールできます。コンテンツからは、</p>
-				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> b2 = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@akashic-extension/akashic-box2d"</span>);
-</code></pre>
+				<pre><code class="language-javascript"><span class="hljs-keyword">var</span> b2 = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@akashic-extension/akashic-box2d"</span>);</code></pre>
 				<p>で利用してください。
 				詳細な利用方法については、以下を参照してください。</p>
 				<ul>
-					<li><a href="./getstarted.md">akashic-box2dの利用方法</a></li>
+					<li><a href="https://github.com/akashic-games/akashic-box2d/blob/master/getstarted.md">akashic-box2dの利用方法</a></li>
 					<li><a href="https://akashic-games.github.io/reference/akashic-box2d/index.html">APIリファレンス</a></li>
 					<li>このリポジトリ同梱のサンプルコンテンツ<ul>
-							<li><a href="./sample">JavaScript</a></li>
-							<li><a href="./sample-ts">TypeScript</a></li>
+							<li><a href="https://github.com/akashic-games/akashic-box2d/blob/master/sample">JavaScript</a></li>
+							<li><a href="https://github.com/akashic-games/akashic-box2d/blob/master/sample-ts">TypeScript</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -99,25 +97,24 @@
 				<h2 id="-">ビルド方法</h2>
 				<p><strong>akashic-box2d</strong> はTypeScriptで書かれたライブラリであるため、ビルドにはNode.jsが必要です。</p>
 				<p><code>npm run build</code> によりgulpを使ってビルドできます。</p>
-				<pre><code class="lang-sh">npm install
-npm run build
-</code></pre>
+				<pre><code class="language-sh">npm install
+npm run build</code></pre>
 				<h2 id="-">テスト方法</h2>
 				<ol>
 					<li><a href="https://github.com/palantir/tslint" title="TSLint">TSLint</a> を使ったLint</li>
 					<li><a href="http://jasmine.github.io" title="Jasmine">Jasmine</a> を使ったテスト</li>
 				</ol>
 				<p>がそれぞれ実行されます。</p>
-				<pre><code class="lang-sh">npm <span class="hljs-built_in">test</span>
-</code></pre>
+				<pre><code class="language-sh">npm <span class="hljs-built_in">test</span></code></pre>
 				<h2 id="-">注意点</h2>
 				<p>Box2DWebでは <code>Math.random()</code> が使われている箇所があります。(該当メソッド: <code>Box2D.Common.Math.b2Math.Random()</code> , <code>Box2D.Common.Math.b2Math.RandomRange()</code> )</p>
 				<p>該当メソッドは利用せず、かわりに <code>g.game.random</code> を利用してください。</p>
 				<h2 id="-">ライセンス</h2>
 				<p>本リポジトリは MIT License の元で公開されています。
-				詳しくは <a href="./LICENSE">LICENSE</a> をご覧ください。</p>
+				詳しくは <a href="https://github.com/akashic-games/akashic-box2d/blob/master/LICENSE">LICENSE</a> をご覧ください。</p>
 				<p>ただし、画像ファイルおよび音声ファイルは
 				<a href="https://creativecommons.org/licenses/by/2.1/jp/">CC BY 2.1 JP</a> の元で公開されています。</p>
+				<p>また、本リポジトリの <a href="https://github.com/akashic-games/akashic-box2d/blob/master/patch/index.js">patch/index.js</a> のライセンスはファイル中記述されています。そちらをご覧ください。</p>
 				<p>ドキュメント及びサンプルコンテンツでは、以下のサイトで公開されている素材を利用しています。</p>
 				<ul>
 					<li><a href="http://www37.atpages.jp/uurevzab/logo.php">ロゴ・素材 - 全然</a><ul>
