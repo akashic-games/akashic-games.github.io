@@ -2,7 +2,7 @@
 	"contents": [
 		{
 			"caption": "Hello World",
-			"description": "akashic initコマンドで出力されるテンプレートです。  \n画面上部を赤い矩形が左から右に移動する動作を繰り返します。",
+			"description": "akashic initコマンドで出力されるテンプレートです。  \n画面をクリック(タップ)するとキャラクターが弾を撃ちます。",
 			"dir": "helloworld"
 		},
 		{

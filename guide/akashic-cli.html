@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic-cli利用ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1552459886599">
-<link rel="stylesheet" href="/css/header.css?1552459886599">
-<link rel="stylesheet" href="/css/footer.css?1552459886599">
+<link rel="stylesheet" href="/css/common.css?1554274347249">
+<link rel="stylesheet" href="/css/header.css?1554274347249">
+<link rel="stylesheet" href="/css/footer.css?1554274347249">
 
 
-<link rel="stylesheet" href="/css/asset.css?1552459886599">
+<link rel="stylesheet" href="/css/asset.css?1554274347249">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1552459886599">
+<link rel="stylesheet" href="/css/akashic-document.css?1554274347249">
 
-<link rel="stylesheet" href="/css/railscasts.css?1552459886599">
+<link rel="stylesheet" href="/css/railscasts.css?1554274347249">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1552459886599"></script>
+<script src="/lib/common.js?1554274347249"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -497,7 +497,7 @@ other: 1.44KB (0%)
 &quot;Scene.js&quot; という接尾辞をつけて配置される事が推奨されます（例: titleScene.js, battleScene.js）。</p>
 <h3><a name="mainScene.jsファイル"></a> mainScene.jsファイル</h3>
 <p>メインシーン。Akashicのゲームのエントリポイントであり、ゲームは必ず本シーンから実行されます。</p>
-<p>akashic initを実行した直後は以下の内容になっています。</p>
+<p>akashic init --type javascript-minimal を実行した直後は以下の内容になっています。</p>
 <pre><code class="lang-javascript">var game = g.game;
 module.exports = function() {
     var scene = new g.Scene({game: game});
@@ -520,7 +520,7 @@ module.exports = function() {
 パッケージファイルはinstall や uninstall コマンドによって管理され、通常はゲーム開発者が操作する必要はありません。</p>
 <h3><a name="game.jsonファイル"></a> game.jsonファイル</h3>
 <p>ゲームの各種情報を記述するファイル。</p>
-<p>akashic initを実行した直後は以下のような内容になっています。
+<p>akashic init --type javascript-minimal を実行した直後は以下のような内容になっています。
 (ただし width, height, fps は init で指定した値)</p>
 <pre><code class="lang-json">{
     &quot;width&quot;: 480,

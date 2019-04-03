@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>よくある落とし穴</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1552459886599">
-<link rel="stylesheet" href="/css/header.css?1552459886599">
-<link rel="stylesheet" href="/css/footer.css?1552459886599">
+<link rel="stylesheet" href="/css/common.css?1554274347249">
+<link rel="stylesheet" href="/css/header.css?1554274347249">
+<link rel="stylesheet" href="/css/footer.css?1554274347249">
 
 
-<link rel="stylesheet" href="/css/asset.css?1552459886599">
+<link rel="stylesheet" href="/css/asset.css?1554274347249">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1552459886599">
+<link rel="stylesheet" href="/css/akashic-document.css?1554274347249">
 
-<link rel="stylesheet" href="/css/railscasts.css?1552459886599">
+<link rel="stylesheet" href="/css/railscasts.css?1554274347249">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1552459886599"></script>
+<script src="/lib/common.js?1554274347249"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -191,7 +191,7 @@ Akashic Engineのプレイはこの乱数生成器のシードを記録に含め
 <p>なお <code>akashic init --type typescript</code> で生成されるTypeScript用テンプレートは、最初からコンパイル結果がES5互換になるように設定されています。
 そのため <code>const</code> や <code>=&gt;</code> など、TypeScriptがサポートする各種構文を利用することができます。
 (あくまでも構文のみです。 <code>Map</code> など根本的に実装がないと動かない機能には対応できません。)</p>
-<p>また <code>akashic init --type javascript</code> で生成されるJavaScript用テンプレート(デフォルトテンプレート)では、 <code>npm run lint</code> を実行するとコードをlintできます。
+<p>また <code>akashic init --type javascript-minimal</code> で生成されるJavaScript用テンプレート(デフォルトテンプレート)では、 <code>npm run lint</code> を実行するとコードをlintできます。
 ES2015以降の構文を検出するとエラーを表示するように設定されているので、チェックに使うことができます。(2018-08-31現在、予定)</p>
 <p><code>akashic export</code> も、ES2015以降の構文を検出すると警告を表示します。(2018-08-31現在、予定)</p>
 <h2><a name="Array.prototype.sortの安定性を仮定してしまう" /> Array.prototype.sortの安定性を仮定してしまう</h2>
