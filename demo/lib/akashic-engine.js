@@ -1,4 +1,4 @@
-require=(function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({"@akashic/akashic-engine":[function(require,module,exports){
+require=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({"@akashic/akashic-engine":[function(require,module,exports){
 (function() {
 "use strict";
 
@@ -108,6 +108,19 @@ var g;
         }
         ResourceFactory.prototype.createSurfaceAtlas = function (width, height) {
             return new g.SurfaceAtlas(this.createSurface(width, height));
+        };
+        /**
+         * 指定Surfaceから指定範囲を切り取ったSurfaceを返す。
+         * 範囲を指定しない場合は、指定SurfaceをコピーしたSurfaceを返す。
+         */
+        ResourceFactory.prototype.createTrimmedSurface = function (targetSurface, targetArea) {
+            var area = targetArea || { x: 0, y: 0, width: targetSurface.width, height: targetSurface.height };
+            var surface = this.createSurface(area.width, area.height);
+            var renderer = surface.renderer();
+            renderer.begin();
+            renderer.drawImage(targetSurface, area.x, area.y, area.width, area.height, 0, 0);
+            renderer.end();
+            return surface;
         };
         return ResourceFactory;
     }());
@@ -722,87 +735,80 @@ var g;
      */
     function _require(game, path, currentModule) {
         // Node.js の require の挙動については http://nodejs.jp/nodejs.org_ja/api/modules.html も参照。
-        var basedir = currentModule ? currentModule._dirname : game.assetBase;
         var targetScriptAsset;
         var resolvedPath;
-        var resolvedVirtualPath;
         var liveAssetVirtualPathTable = game._assetManager._liveAssetVirtualPathTable;
         var moduleMainScripts = game._assetManager._moduleMainScripts;
         // 0. アセットIDらしい場合はまず当該アセットを探す
         if (path.indexOf("/") === -1) {
-            if (game._assetManager._assets.hasOwnProperty(path))
+            if (game._assetManager._assets.hasOwnProperty(path)) {
                 targetScriptAsset = game._assetManager._assets[path];
+                resolvedPath = game._assetManager._liveAbsolutePathTable[targetScriptAsset.path];
+            }
         }
         // 1. If X is a core module,
         // (何もしない。コアモジュールには対応していない。ゲーム開発者は自分でコアモジュールへの依存を解決する必要がある)
         if (/^\.\/|^\.\.\/|^\//.test(path)) {
             // 2. If X begins with './' or '/' or '../'
-            resolvedPath = g.PathUtil.resolvePath(basedir, path);
+            if (currentModule) {
+                if (!currentModule._virtualDirname)
+                    throw g.ExceptionFactory.createAssertionError("g._require: require from DynamicAsset is not supported");
+                resolvedPath = g.PathUtil.resolvePath(currentModule._virtualDirname, path);
+            }
+            else {
+                if (!(/^\.\//.test(path)))
+                    throw g.ExceptionFactory.createAssertionError("g._require: entry point path must start with './'");
+                resolvedPath = path.substring(2);
+            }
             if (game._scriptCaches.hasOwnProperty(resolvedPath)) {
                 return game._scriptCaches[resolvedPath]._cachedValue();
             }
             else if (game._scriptCaches.hasOwnProperty(resolvedPath + ".js")) {
                 return game._scriptCaches[resolvedPath + ".js"]._cachedValue();
             }
-            if (currentModule) {
-                if (currentModule._virtualDirname) {
-                    resolvedVirtualPath = g.PathUtil.resolvePath(currentModule._virtualDirname, path);
-                }
-                else {
-                    throw g.ExceptionFactory.createAssertionError("g._require: require from DynamicAsset is not supported");
-                }
-            }
-            else {
-                if (path.substring(0, 2) === "./") {
-                    // モジュールが空の場合、相対パスの先頭の `"./"` を取り除くと仮想パスになる。
-                    resolvedVirtualPath = path.substring(2);
-                }
-                else {
-                    throw g.ExceptionFactory.createAssertionError("g._require: entry point must start with './'");
-                }
-            }
             // 2.a. LOAD_AS_FILE(Y + X)
             if (!targetScriptAsset)
-                targetScriptAsset = g.Util.findAssetByPathAsFile(resolvedVirtualPath, liveAssetVirtualPathTable);
+                targetScriptAsset = g.Util.findAssetByPathAsFile(resolvedPath, liveAssetVirtualPathTable);
             // 2.b. LOAD_AS_DIRECTORY(Y + X)
             if (!targetScriptAsset)
-                targetScriptAsset = g.Util.findAssetByPathAsDirectory(resolvedVirtualPath, liveAssetVirtualPathTable);
+                targetScriptAsset = g.Util.findAssetByPathAsDirectory(resolvedPath, liveAssetVirtualPathTable);
         }
         else {
             // 3. LOAD_NODE_MODULES(X, dirname(Y))
             // `path` は node module の名前であると仮定して探す
-            // akashic-engine独自拡張: 対象の `path` が `moduleMainScripts` に指定されていたらそちらを参照する
+            // akashic-engine独自仕様: 対象の `path` が `moduleMainScripts` に指定されていたらそちらを参照する
             if (moduleMainScripts[path]) {
-                targetScriptAsset = game._assetManager._liveAssetVirtualPathTable[moduleMainScripts[path]];
+                resolvedPath = moduleMainScripts[path];
+                targetScriptAsset = game._assetManager._liveAssetVirtualPathTable[resolvedPath];
             }
             if (!targetScriptAsset) {
                 var dirs = currentModule ? currentModule.paths : [];
                 dirs.push("node_modules");
                 for (var i = 0; i < dirs.length; ++i) {
                     var dir = dirs[i];
-                    resolvedVirtualPath = g.PathUtil.resolvePath(dir, path);
-                    targetScriptAsset = g.Util.findAssetByPathAsFile(resolvedVirtualPath, liveAssetVirtualPathTable);
+                    resolvedPath = g.PathUtil.resolvePath(dir, path);
+                    targetScriptAsset = g.Util.findAssetByPathAsFile(resolvedPath, liveAssetVirtualPathTable);
                     if (targetScriptAsset)
                         break;
-                    targetScriptAsset = g.Util.findAssetByPathAsDirectory(resolvedVirtualPath, liveAssetVirtualPathTable);
+                    targetScriptAsset = g.Util.findAssetByPathAsDirectory(resolvedPath, liveAssetVirtualPathTable);
                     if (targetScriptAsset)
                         break;
                 }
             }
         }
         if (targetScriptAsset) {
-            if (game._scriptCaches.hasOwnProperty(targetScriptAsset.path))
-                return game._scriptCaches[targetScriptAsset.path]._cachedValue();
+            if (game._scriptCaches.hasOwnProperty(resolvedPath))
+                return game._scriptCaches[resolvedPath]._cachedValue();
             if (targetScriptAsset instanceof g.ScriptAsset) {
                 var context = new g.ScriptAssetContext(game, targetScriptAsset);
-                game._scriptCaches[targetScriptAsset.path] = context;
+                game._scriptCaches[resolvedPath] = context;
                 return context._executeScript(currentModule);
             }
             else if (targetScriptAsset instanceof g.TextAsset) {
                 // JSONの場合の特殊挙動をトレースするためのコード。node.jsの仕様に準ずる
                 if (targetScriptAsset && g.PathUtil.resolveExtname(path) === ".json") {
                     // Note: node.jsではここでBOMの排除をしているが、いったんakashicでは排除しないで実装
-                    var cache = game._scriptCaches[targetScriptAsset.path] = new g.RequireCachedValue(JSON.parse(targetScriptAsset.data));
+                    var cache = game._scriptCaches[resolvedPath] = new g.RequireCachedValue(JSON.parse(targetScriptAsset.data));
                     return cache._cachedValue();
                 }
             }
@@ -1086,7 +1092,7 @@ var g;
          * @param {CommonArea} p2 矩形2
          */
         function distanceBetweenAreas(p1, p2) {
-            return Util.distance(p1.x - p1.width / 2, p1.y - p1.height / 2, p2.x - p2.width / 2, p2.y - p2.height / 2);
+            return Util.distance(p1.x + p1.width / 2, p1.y + p1.height / 2, p2.x + p2.width / 2, p2.y + p2.height / 2);
         }
         Util.distanceBetweenAreas = distanceBetweenAreas;
         // Note: オーバーロードされているのでjsdoc省略
@@ -1445,7 +1451,7 @@ var g;
          * @param arg ハンドラに与えられる引数
          */
         Trigger.prototype.fire = function (arg) {
-            if (!this._handlers.length)
+            if (!this._handlers || !this._handlers.length)
                 return;
             var handlers = this._handlers.concat();
             for (var i = 0; i < handlers.length; i++) {
@@ -1853,11 +1859,13 @@ var g;
         /**
          * 再生を停止する。
          *
-         * 再生中でない場合、何もしない。
          * 停止後、 `this.stopped` がfireされる。
+         * 再生中でない場合、何もしない(`stopped` もfireされない)。
          */
         AudioPlayer.prototype.stop = function () {
             var audio = this.currentAudio;
+            if (!audio)
+                return;
             this.currentAudio = undefined;
             this.stopped.fire({
                 player: this,
@@ -1970,6 +1978,16 @@ var g;
         /**
          * @private
          */
+        AudioSystem.prototype._reset = function () {
+            this.stopAll();
+            this._volume = 1;
+            this._destroyRequestedAssets = {};
+            this._muted = this.game._audioSystemManager._muted;
+            this._playbackRate = this.game._audioSystemManager._playbackRate;
+        };
+        /**
+         * @private
+         */
         AudioSystem.prototype._setMuted = function (value) {
             var before = this._muted;
             this._muted = !!value;
@@ -2032,6 +2050,18 @@ var g;
         /**
          * @private
          */
+        MusicAudioSystem.prototype._reset = function () {
+            _super.prototype._reset.call(this);
+            if (this._player) {
+                this._player.played.remove({ owner: this, func: this._onPlayerPlayed });
+                this._player.stopped.remove({ owner: this, func: this._onPlayerStopped });
+            }
+            this._player = undefined;
+            this._suppressingAudio = undefined;
+        };
+        /**
+         * @private
+         */
         MusicAudioSystem.prototype._onVolumeChanged = function () {
             this.player.changeVolume(this._volume);
         };
@@ -2055,13 +2085,13 @@ var g;
          * @private
          */
         MusicAudioSystem.prototype._onUnsupportedPlaybackRateChanged = function () {
-            // 再生速度非対応の場合のフォールバック: 鳴らそうとして止めていた音があれば鳴らし直す
+            // 再生速度非対応の場合のフォールバック: 鳴らそうとしてミュートしていた音があれば鳴らし直す
             if (this._playbackRate === 1.0) {
                 if (this._suppressingAudio) {
                     var audio = this._suppressingAudio;
                     this._suppressingAudio = undefined;
                     if (!audio.destroyed()) {
-                        this.player.play(audio);
+                        this.player._changeMuted(false);
                     }
                 }
             }
@@ -2074,9 +2104,9 @@ var g;
                 throw g.ExceptionFactory.createAssertionError("MusicAudioSystem#_onPlayerPlayed: unexpected audio player");
             if (e.player._supportsPlaybackRate())
                 return;
-            // 再生速度非対応の場合のフォールバック: 鳴らさず即止める
+            // 再生速度非対応の場合のフォールバック: 鳴らさず即ミュートにする
             if (this._playbackRate !== 1.0) {
-                e.player.stop();
+                e.player._changeMuted(true);
                 this._suppressingAudio = e.audio;
             }
         };
@@ -2084,6 +2114,10 @@ var g;
          * @private
          */
         MusicAudioSystem.prototype._onPlayerStopped = function (e) {
+            if (this._suppressingAudio) {
+                this._suppressingAudio = undefined;
+                this.player._changeMuted(false);
+            }
             if (this._destroyRequestedAssets[e.audio.id]) {
                 delete this._destroyRequestedAssets[e.audio.id];
                 e.audio.destroy();
@@ -2120,6 +2154,18 @@ var g;
             for (var i = 0; i < players.length; ++i) {
                 players[i].stop(); // auto remove
             }
+        };
+        /**
+         * @private
+         */
+        SoundAudioSystem.prototype._reset = function () {
+            _super.prototype._reset.call(this);
+            for (var i = 0; i < this.players.length; ++i) {
+                var player = this.players[i];
+                player.played.remove({ owner: this, func: this._onPlayerPlayed });
+                player.stopped.remove({ owner: this, func: this._onPlayerStopped });
+            }
+            this.players = [];
         };
         /**
          * @private
@@ -2397,6 +2443,7 @@ var g;
             _this._pointUp = undefined;
             _this._targetCameras = undefined;
             _this.tag = param.tag;
+            _this.shaderProgram = param.shaderProgram;
             // local は Scene#register() や this.append() の呼び出しよりも先に立てなければならない
             // ローカルシーン・ローカルティック補間シーンのエンティティは強制的に local (ローカルティックが来て他プレイヤーとずれる可能性がある)
             _this.local = (param.scene.local !== g.LocalTickMode.NonLocal) || !!param.local;
@@ -2574,6 +2621,8 @@ var g;
                 renderer.opacity(this.opacity);
             if (this.compositeOperation !== undefined)
                 renderer.setCompositeOperation(this.compositeOperation);
+            if (this.shaderProgram !== undefined && renderer.isSupportedShaderProgram())
+                renderer.setShaderProgram(this.shaderProgram);
             var goDown = this.renderSelf(renderer, camera);
             if (goDown && this.children) {
                 // Note: concatしていないのでunsafeだが、render中に配列の中身が変わる事はない前提とする
@@ -2727,7 +2776,8 @@ var g;
             // _matrixの用途は描画に限らない(e.g. E#findPointSourceByPoint)ので、Modifiedフラグと無関係にクリアする必要がある
             if (this._matrix)
                 this._matrix._modified = true;
-            if (this.angle || this.scaleX !== 1 || this.scaleY !== 1 || this.opacity !== 1 || this.compositeOperation !== undefined) {
+            if (this.angle || this.scaleX !== 1 || this.scaleY !== 1 || this.opacity !== 1 || this.compositeOperation !== undefined ||
+                this.shaderProgram !== undefined) {
                 this.state &= ~8 /* ContextLess */;
             }
             else {
@@ -2968,31 +3018,48 @@ var g;
          * このメソッドはエンジンから暗黙に呼び出され、ゲーム開発者が呼び出す必要はない。
          */
         CacheableE.prototype.renderSelf = function (renderer, camera) {
+            var padding = CacheableE.PADDING;
             if (this._renderedCamera !== camera) {
                 this.state &= ~2 /* Cached */;
                 this._renderedCamera = camera;
             }
             if (!(this.state & 2 /* Cached */)) {
-                var isNew = !this._cache || this._cache.width < Math.ceil(this.width) || this._cache.height < Math.ceil(this.height);
+                this._cacheSize = this.calculateCacheSize();
+                var w = Math.ceil(this._cacheSize.width) + padding * 2;
+                var h = Math.ceil(this._cacheSize.height) + padding * 2;
+                var isNew = !this._cache || (this._cache.width < w) || (this._cache.height < h);
                 if (isNew) {
                     if (this._cache && !this._cache.destroyed()) {
                         this._cache.destroy();
                     }
-                    this._cache = this.scene.game.resourceFactory.createSurface(Math.ceil(this.width), Math.ceil(this.height));
+                    this._cache = this.scene.game.resourceFactory.createSurface(w, h);
                     this._renderer = this._cache.renderer();
                 }
-                this._renderer.begin();
+                var cacheRenderer = this._renderer;
+                cacheRenderer.begin();
                 if (!isNew) {
-                    this._renderer.clear();
+                    cacheRenderer.clear();
                 }
-                this.renderCache(this._renderer, camera);
+                cacheRenderer.save();
+                cacheRenderer.translate(padding, padding);
+                this.renderCache(cacheRenderer, camera);
+                cacheRenderer.restore();
                 this.state |= 2 /* Cached */;
-                this._renderer.end();
+                cacheRenderer.end();
             }
-            if (this._cache && this.width > 0 && this.height > 0) {
-                renderer.drawImage(this._cache, 0, 0, this.width, this.height, 0, 0);
+            if (this._cache && this._cacheSize.width > 0 && this._cacheSize.height > 0) {
+                renderer.translate(-padding, -padding);
+                this.renderSelfFromCache(renderer);
+                renderer.translate(padding, padding);
             }
             return this._shouldRenderChildren;
+        };
+        /**
+         * 内部キャッシュから自身の描画を行う。
+         * このメソッドはエンジンから暗黙に呼び出され、ゲーム開発者が呼び出す必要はない。
+         */
+        CacheableE.prototype.renderSelfFromCache = function (renderer) {
+            renderer.drawImage(this._cache, 0, 0, this._cacheSize.width + CacheableE.PADDING, this._cacheSize.height + CacheableE.PADDING, 0, 0);
         };
         /**
          * 利用している `Surface` を破棄した上で、このエンティティを破棄する。
@@ -3004,8 +3071,26 @@ var g;
             this._cache = undefined;
             _super.prototype.destroy.call(this);
         };
+        /**
+         * キャッシュのサイズを取得する。
+         * 本クラスを継承したクラスでエンティティのサイズと異なるサイズを利用する場合、このメソッドをオーバーライドする。
+         * このメソッドはエンジンから暗黙に呼び出され、ゲーム開発者が呼び出す必要はない。
+         * このメソッドから得られる値を変更した場合、 `this.invalidate()` を呼び出す必要がある。
+         */
+        CacheableE.prototype.calculateCacheSize = function () {
+            return {
+                width: this.width,
+                height: this.height
+            };
+        };
         return CacheableE;
     }(g.E));
+    /**
+     * _cache のパディングサイズ。
+     *
+     * @private
+     */
+    CacheableE.PADDING = 1;
     g.CacheableE = CacheableE;
 })(g || (g = {}));
 var g;
@@ -4183,6 +4268,8 @@ var g;
             _this.frames = "frames" in param ? param.frames : [0];
             _this.interval = param.interval;
             _this._timer = undefined;
+            _this.loop = param.loop != null ? param.loop : true;
+            _this.finished = new g.Trigger();
             _this._modifiedSelf();
             return _this;
         }
@@ -4241,8 +4328,18 @@ var g;
          * @private
          */
         FrameSprite.prototype._onElapsed = function () {
-            if (++this.frameNumber >= this.frames.length)
-                this.frameNumber = 0;
+            if (this.frameNumber === this.frames.length - 1) {
+                if (this.loop) {
+                    this.frameNumber = 0;
+                }
+                else {
+                    this.stop();
+                    this.finished.fire();
+                }
+            }
+            else {
+                this.frameNumber++;
+            }
             this.modified();
         };
         /**
@@ -4515,10 +4612,19 @@ var g;
             this.game = game;
             this.logging = new g.Trigger();
         }
+        Logger.prototype.destroy = function () {
+            this.game = undefined;
+            this.logging.destroy();
+            this.logging = undefined;
+        };
+        Logger.prototype.destroyed = function () {
+            return !this.game;
+        };
         /**
          * `LogLevel.Error` のログを出力する。
          * @param message ログメッセージ
          * @param cause 追加の補助情報。省略された場合、 `undefined`
+         * @deprecated このメソッドは非推奨である。ゲーム開発者はこのメソッドではなく単に `console.error()` や `console.log()` を利用すべきである。
          */
         Logger.prototype.error = function (message, cause) {
             this.logging.fire({
@@ -4532,6 +4638,7 @@ var g;
          * `LogLevel.Warn` のログを出力する。
          * @param message ログメッセージ
          * @param cause 追加の補助情報。省略された場合、 `undefined`
+         * @deprecated このメソッドは非推奨である。ゲーム開発者はこのメソッドではなく単に `console.warn()` や `console.log()` を利用すべきである。
          */
         Logger.prototype.warn = function (message, cause) {
             this.logging.fire({
@@ -4545,6 +4652,7 @@ var g;
          * `LogLevel.Info` のログを出力する。
          * @param message ログメッセージ
          * @param cause 追加の補助情報。省略された場合、 `undefined`
+         * @deprecated このメソッドは非推奨である。ゲーム開発者はこのメソッドではなく単に `console.info()` や `console.log()` を利用すべきである。
          */
         Logger.prototype.info = function (message, cause) {
             this.logging.fire({
@@ -4558,6 +4666,7 @@ var g;
          * `LogLevel.Debug` のログを出力する。
          * @param message ログメッセージ
          * @param cause 追加の補助情報。省略された場合、 `undefined`
+         * @deprecated このメソッドは非推奨である。ゲーム開発者はこのメソッドではなく単に `console.debug()` や `console.log()` を利用すべきである。
          */
         Logger.prototype.debug = function (message, cause) {
             this.logging.fire({
@@ -4622,6 +4731,7 @@ var g;
             this.defaultAudioSystemId = "sound";
             this.storage = new g.Storage(this);
             this.assets = {};
+            this.surfaceAtlasSet = undefined;
             // TODO: (GAMEDEV-666) この三つのイベントはGame自身がデフォルトのイベントハンドラを持って処理する必要があるかも
             this.join = new g.Trigger();
             this.leave = new g.Trigger();
@@ -4636,6 +4746,9 @@ var g;
             this._eventTriggerMap[g.EventType.PointUp] = undefined;
             this._eventTriggerMap[g.EventType.Operation] = undefined;
             this.resized = new g.Trigger();
+            this.skippingChanged = new g.Trigger();
+            this.isLastTickLocal = true;
+            this.lastOmittedLocalTickCount = 0;
             this._loaded = new g.Trigger();
             this._started = new g.Trigger();
             this.isLoaded = false;
@@ -4743,12 +4856,15 @@ var g;
          * このメソッドは暗黙に呼び出される。ゲーム開発者がこのメソッドを利用する必要はない。
          *
          * 戻り値は呼び出し前後でシーンが変わった(別のシーンに遷移した)場合、真。でなければ偽。
-         * @param advanceAge 偽を与えた場合、`this.age` を進めない。省略された場合、ローカルシーン以外ならageを進める。
+         * @param advanceAge 偽を与えた場合、`this.age` を進めない。
+         * @param omittedTickCount タイムスタンプ待ちを省略する動作などにより、(前回の呼び出し以降に)省かれたローカルティックの数。省略された場合、 `0` 。
          */
-        Game.prototype.tick = function (advanceAge) {
+        Game.prototype.tick = function (advanceAge, omittedTickCount) {
             var scene = undefined;
             if (this._isTerminated)
                 return false;
+            this.isLastTickLocal = !advanceAge;
+            this.lastOmittedLocalTickCount = omittedTickCount || 0;
             if (this.scenes.length) {
                 scene = this.scenes[this.scenes.length - 1];
                 if (this.events.length) {
@@ -4761,9 +4877,8 @@ var g;
                     }
                 }
                 scene.update.fire();
-                if (advanceAge === true || (advanceAge === undefined && scene.local !== g.LocalTickMode.FullLocal)) {
+                if (advanceAge)
                     ++this.age;
-                }
             }
             if (this._sceneChangeRequests.length) {
                 this._flushSceneChangeRequests();
@@ -4969,11 +5084,13 @@ var g;
                 if (param.randGen !== undefined)
                     this.random = param.randGen;
             }
+            this._audioSystemManager._reset();
             this._loaded.removeAll({ func: this._start, owner: this });
             this.join.removeAll();
             this.leave.removeAll();
             this.seed.removeAll();
             this.resized.removeAll();
+            this.skippingChanged.removeAll();
             this._idx = 0;
             this._localIdx = 0;
             this._cameraIdx = 0;
@@ -4988,6 +5105,9 @@ var g;
             this._sceneChangeRequests = [];
             this._isTerminated = false;
             this.vars = {};
+            if (this.surfaceAtlasSet)
+                this.surfaceAtlasSet.destroy();
+            this.surfaceAtlasSet = new g.SurfaceAtlasSet({ game: this });
             switch (this._configuration.defaultLoadingScene) {
                 case "none":
                     // Note: 何も描画しない実装として利用している
@@ -4997,6 +5117,95 @@ var g;
                     this._defaultLoadingScene = new g.DefaultLoadingScene({ game: this });
                     break;
             }
+        };
+        /**
+         * ゲームを破棄する。
+         * エンジンユーザとコンテンツに開放された一部プロパティ(external, vars)は維持する点に注意。
+         * @private
+         */
+        Game.prototype._destroy = function () {
+            // ユーザコードを扱う操作プラグインを真っ先に破棄
+            this._operationPluginManager.destroy();
+            // 到達できるシーンを全て破棄
+            if (this.scene()) {
+                while (this.scene() !== this._initialScene) {
+                    this.popScene();
+                    this._flushSceneChangeRequests();
+                }
+            }
+            this._initialScene.destroy();
+            if (this.loadingScene && !this.loadingScene.destroyed()) {
+                this.loadingScene.destroy();
+            }
+            if (!this._defaultLoadingScene.destroyed()) {
+                this._defaultLoadingScene.destroy();
+            }
+            // NOTE: fps, width, height, external, vars はそのまま保持しておく
+            this.db = undefined;
+            this.renderers = undefined;
+            this.scenes = undefined;
+            this.random = undefined;
+            this.events = undefined;
+            this.join.destroy();
+            this.join = undefined;
+            this.leave.destroy();
+            this.leave = undefined;
+            this.seed.destroy();
+            this.seed = undefined;
+            this.modified = false;
+            this.age = 0;
+            this.assets = undefined; // this._initialScene.assets のエイリアスなので、特に破棄処理はしない。
+            this.isLoaded = false;
+            this.loadingScene = undefined;
+            this.assetBase = "";
+            this.selfId = undefined;
+            var audioSystemIds = Object.keys(this.audio);
+            for (var i = 0; i < audioSystemIds.length; ++i)
+                this.audio[audioSystemIds[i]].stopAll();
+            this.audio = undefined;
+            this.defaultAudioSystemId = undefined;
+            this.logger.destroy();
+            this.logger = undefined;
+            this.snapshotRequest.destroy();
+            this.snapshotRequest = undefined;
+            // TODO より能動的にdestroy処理を入れるべきかもしれない
+            this.resourceFactory = undefined;
+            this.storage = undefined;
+            this.playId = undefined;
+            this.operationPlugins = undefined; // this._operationPluginManager.pluginsのエイリアスなので、特に破棄処理はしない。
+            this.resized.destroy();
+            this.resized = undefined;
+            this.skippingChanged.destroy();
+            this.skippingChanged = undefined;
+            this._eventTriggerMap = undefined;
+            this._initialScene = undefined;
+            this._defaultLoadingScene = undefined;
+            this._sceneChanged.destroy();
+            this._sceneChanged = undefined;
+            this._scriptCaches = undefined;
+            this._loaded.destroy();
+            this._loaded = undefined;
+            this._started.destroy();
+            this._started = undefined;
+            this._main = undefined;
+            this._mainParameter = undefined;
+            this._assetManager.destroy();
+            this._assetManager = undefined;
+            this._audioSystemManager._game = undefined;
+            this._audioSystemManager = undefined;
+            this._operationPluginManager = undefined;
+            this._operationPluginOperated.destroy();
+            this._operationPluginOperated = undefined;
+            this._idx = 0;
+            this._localDb = {};
+            this._localIdx = 0;
+            this._cameraIdx = 0;
+            this._isTerminated = true;
+            this._focusingCamera = undefined;
+            this._configuration = undefined;
+            this._sceneChangeRequests = [];
+            this.surfaceAtlasSet.destroy();
+            this.surfaceAtlasSet = undefined;
         };
         /**
          * ゲームを開始する。
@@ -5294,6 +5503,7 @@ var g;
             if (!scene)
                 return;
             this.begin();
+            this.save();
             this.clear();
             if (camera) {
                 this.save();
@@ -5305,6 +5515,7 @@ var g;
             if (camera) {
                 this.restore();
             }
+            this.restore();
             this.end();
         };
         Renderer.prototype.begin = function () {
@@ -5401,6 +5612,8 @@ var g;
             _this.textColor = param.textColor;
             _this._textWidth = 0;
             _this._game = undefined;
+            _this._overhangLeft = 0;
+            _this._overhangRight = 0;
             _this._invalidateSelf();
             return _this;
         }
@@ -5426,48 +5639,69 @@ var g;
             this._invalidateSelf();
             _super.prototype.invalidate.call(this);
         };
+        /**
+         * Label自身の描画を行う。
+         */
+        Label.prototype.renderSelfFromCache = function (renderer) {
+            // glyphのはみ出し量に応じて、描画先のX座標を調整する。
+            var destOffsetX;
+            switch (this.textAlign) {
+                case g.TextAlign.Center:
+                    destOffsetX = this.widthAutoAdjust ? this._overhangLeft : 0;
+                    break;
+                case g.TextAlign.Right:
+                    destOffsetX = this.widthAutoAdjust ? this._overhangLeft : this._overhangRight;
+                    break;
+                default:
+                    destOffsetX = this._overhangLeft;
+                    break;
+            }
+            renderer.drawImage(this._cache, 0, 0, this._cacheSize.width + g.CacheableE.PADDING, this._cacheSize.height + g.CacheableE.PADDING, destOffsetX, 0);
+        };
         Label.prototype.renderCache = function (renderer) {
             if (!this.fontSize || this.height <= 0 || this._textWidth <= 0) {
                 return;
             }
-            var textSurface = this.scene.game.resourceFactory.createSurface(Math.ceil(this._textWidth), Math.ceil(this.height));
-            var textRenderer = textSurface.renderer();
-            textRenderer.begin();
-            textRenderer.save();
-            for (var i = 0; i < this.glyphs.length; ++i) {
-                var glyph = this.glyphs[i];
-                var glyphScale = this.fontSize / this.font.size;
-                var glyphWidth = glyph.advanceWidth * glyphScale;
-                if (glyph.surface) {
-                    textRenderer.save();
-                    textRenderer.transform([glyphScale, 0, 0, glyphScale, 0, 0]);
-                    textRenderer.drawImage(glyph.surface, glyph.x, glyph.y, glyph.width, glyph.height, glyph.offsetX, glyph.offsetY);
-                    textRenderer.restore();
-                }
-                textRenderer.translate(glyphWidth, 0);
-            }
-            textRenderer.restore();
-            textRenderer.end();
             var scale = (this.maxWidth > 0 && this.maxWidth < this._textWidth) ? this.maxWidth / this._textWidth : 1;
-            var offsetX;
+            var offsetX = 0;
             switch (this.textAlign) {
                 case g.TextAlign.Center:
-                    offsetX = this.width / 2 - this._textWidth / 2 * scale;
+                    offsetX = this.width / 2 - (this._textWidth + this._overhangLeft) / 2 * scale;
                     break;
                 case g.TextAlign.Right:
-                    offsetX = this.width - this._textWidth * scale;
+                    offsetX = this.width - (this._textWidth + this._overhangLeft) * scale;
                     break;
                 default:
-                    offsetX = 0;
+                    offsetX -= this._overhangLeft * scale;
                     break;
             }
-            renderer.save();
             renderer.translate(offsetX, 0);
             if (scale !== 1) {
                 renderer.transform([scale, 0, 0, 1, 0, 0]);
             }
-            renderer.drawImage(textSurface, 0, 0, this._textWidth, this.height, 0, 0);
-            textSurface.destroy();
+            renderer.save();
+            var glyphScale = this.fontSize / this.font.size;
+            for (var i = 0; i < this.glyphs.length; ++i) {
+                var glyph = this.glyphs[i];
+                var glyphWidth = glyph.advanceWidth * glyphScale;
+                var code = glyph.code;
+                if (!glyph.isSurfaceValid) {
+                    glyph = this.font.glyphForCharacter(code);
+                    if (!glyph) {
+                        this._outputOfWarnLogWithNoGlyph(code, "renderCache()");
+                        continue;
+                    }
+                }
+                if (glyph.surface) {
+                    renderer.save();
+                    renderer.transform([glyphScale, 0, 0, glyphScale, 0, 0]);
+                    renderer.drawImage(glyph.surface, glyph.x, glyph.y, glyph.width, glyph.height, glyph.offsetX, glyph.offsetY);
+                    renderer.restore();
+                }
+                renderer.translate(glyphWidth, 0);
+            }
+            renderer.restore();
+            renderer.save();
             if (this.textColor) {
                 renderer.setCompositeOperation(g.CompositeOperation.SourceAtop);
                 renderer.fillRect(0, 0, this._textWidth, this.height, this.textColor);
@@ -5488,18 +5722,29 @@ var g;
                 this.height = 0;
                 return;
             }
-            var maxHeight = 0;
-            var glyphScale = this.font.size > 0 ? this.fontSize / this.font.size : 0;
-            for (var i = 0; i < this.text.length; ++i) {
+            var effectiveTextLastIndex = this.text.length - 1;
+            // 右のはみだし量を求めるため、text内での有効な最後の glyph のindexを解決する。
+            for (var i = this.text.length - 1; i >= 0; --i) {
                 var code = g.Util.charCodeAt(this.text, i);
                 if (!code) {
                     continue;
                 }
                 var glyph = this.font.glyphForCharacter(code);
+                if (glyph && glyph.width !== 0 && glyph.advanceWidth !== 0) {
+                    effectiveTextLastIndex = i;
+                    break;
+                }
+            }
+            var maxHeight = 0;
+            var glyphScale = this.font.size > 0 ? this.fontSize / this.font.size : 0;
+            for (var i = 0; i <= effectiveTextLastIndex; ++i) {
+                var code_1 = g.Util.charCodeAt(this.text, i);
+                if (!code_1) {
+                    continue;
+                }
+                var glyph = this.font.glyphForCharacter(code_1);
                 if (!glyph) {
-                    var str = (code & 0xFFFF0000) ? String.fromCharCode((code & 0xFFFF0000) >>> 16, code & 0xFFFF) : String.fromCharCode(code);
-                    this.game().logger.warn("Label#_invalidateSelf(): failed to get a glyph for '" + str + "' " +
-                        "(BitmapFont might not have the glyph or DynamicFont might create a glyph larger than its atlas).");
+                    this._outputOfWarnLogWithNoGlyph(code_1, "_invalidateSelf()");
                     continue;
                 }
                 if (glyph.width < 0 || glyph.height < 0) {
@@ -5509,7 +5754,18 @@ var g;
                     continue;
                 }
                 this.glyphs.push(glyph);
-                this._textWidth += glyph.advanceWidth * glyphScale;
+                // Font に StrokeWidth が設定されている場合、文字の描画内容は、描画の基準点よりも左にはみ出る場合や、glyph.advanceWidth より右にはみ出る場合がある。
+                // キャッシュサーフェスの幅は、最初の文字と最後の文字のはみ出し部分を考慮して求める必要がある。
+                var overhang = 0;
+                if (i === 0) {
+                    this._overhangLeft = Math.min(glyph.offsetX, 0);
+                    overhang = -this._overhangLeft;
+                }
+                if (i === effectiveTextLastIndex) {
+                    this._overhangRight = Math.max((glyph.width + glyph.offsetX) - glyph.advanceWidth, 0);
+                    overhang += this._overhangRight;
+                }
+                this._textWidth += (glyph.advanceWidth + overhang) * glyphScale;
                 var height = glyph.offsetY + glyph.height;
                 if (maxHeight < height) {
                     maxHeight = height;
@@ -5519,6 +5775,11 @@ var g;
                 this.width = this._textWidth;
             }
             this.height = maxHeight * glyphScale;
+        };
+        Label.prototype._outputOfWarnLogWithNoGlyph = function (code, functionName) {
+            var str = (code & 0xFFFF0000) ? String.fromCharCode((code & 0xFFFF0000) >>> 16, code & 0xFFFF) : String.fromCharCode(code);
+            this.game().logger.warn("Label#" + functionName + ": failed to get a glyph for '" + str + "' " +
+                "(BitmapFont might not have the glyph or DynamicFont might create a glyph larger than its atlas).");
         };
         return Label;
     }(g.CacheableE));
@@ -5703,11 +5964,14 @@ var g;
          * @private
          */
         Pane.prototype._renderBackground = function () {
-            if (this._bgSurface && !this._bgSurface.destroyed()) {
-                this._bgSurface.destroy();
-            }
             if (this.backgroundImage && this.backgroundEffector) {
-                this._bgSurface = this.backgroundEffector.render(this.backgroundImage, this.width, this.height);
+                var bgSurface = this.backgroundEffector.render(this.backgroundImage, this.width, this.height);
+                if (this._bgSurface !== bgSurface) {
+                    if (this._bgSurface && !this._bgSurface.destroyed()) {
+                        this._bgSurface.destroy();
+                    }
+                    this._bgSurface = bgSurface;
+                }
             }
             else {
                 this._bgSurface = undefined;
@@ -5919,6 +6183,156 @@ var g;
         FontWeight[FontWeight["Bold"] = 1] = "Bold";
     })(FontWeight = g.FontWeight || (g.FontWeight = {}));
     /**
+     * ビットマップフォントを逐次生成するフォント。
+     */
+    var DynamicFont = (function () {
+        /**
+         * 各種パラメータを指定して `DynamicFont` のインスタンスを生成する。
+         * @param param `DynamicFont` に設定するパラメータ
+         */
+        function DynamicFont(param) {
+            this.fontFamily = param.fontFamily;
+            this.size = param.size;
+            this.hint = ("hint" in param) ? param.hint : {};
+            this.fontColor = ("fontColor" in param) ? param.fontColor : "black";
+            this.fontWeight = ("fontWeight" in param) ? param.fontWeight : FontWeight.Normal;
+            this.strokeWidth = ("strokeWidth" in param) ? param.strokeWidth : 0;
+            this.strokeColor = ("strokeColor" in param) ? param.strokeColor : "black";
+            this.strokeOnly = ("strokeOnly" in param) ? param.strokeOnly : false;
+            this._resourceFactory = param.game.resourceFactory;
+            this._glyphFactory =
+                this._resourceFactory.createGlyphFactory(this.fontFamily, this.size, this.hint.baselineHeight, this.fontColor, this.strokeWidth, this.strokeColor, this.strokeOnly, this.fontWeight);
+            this._glyphs = {};
+            this._destroyed = false;
+            this._isSurfaceAtlasSetOwner = false;
+            // NOTE: hint の特定プロパティ(baselineHeight)を分岐の条件にした場合、後でプロパティを追加した時に
+            // ここで追従漏れの懸念があるため、引数の hint が省略されているかで分岐させている。
+            if (param.surfaceAtlasSet) {
+                this._atlasSet = param.surfaceAtlasSet;
+            }
+            else if (!!param.hint) {
+                this._isSurfaceAtlasSetOwner = true;
+                this._atlasSet = new g.SurfaceAtlasSet({
+                    game: param.game,
+                    hint: this.hint
+                });
+            }
+            else {
+                this._atlasSet = param.game.surfaceAtlasSet;
+            }
+            this._atlasSet.addAtlas();
+            if (this.hint.presetChars) {
+                for (var i = 0, len = this.hint.presetChars.length; i < len; i++) {
+                    var code = g.Util.charCodeAt(this.hint.presetChars, i);
+                    if (!code) {
+                        continue;
+                    }
+                    this.glyphForCharacter(code);
+                }
+            }
+        }
+        /**
+         * グリフの取得。
+         *
+         * 取得に失敗するとnullが返る。
+         *
+         * 取得に失敗した時、次のようにすることで成功するかもしれない。
+         * - DynamicFont生成時に指定する文字サイズを小さくする
+         * - アトラスの初期サイズ・最大サイズを大きくする
+         *
+         * @param code 文字コード
+         */
+        DynamicFont.prototype.glyphForCharacter = function (code) {
+            var glyph = this._glyphs[code];
+            if (!(glyph && glyph.isSurfaceValid)) {
+                glyph = this._glyphFactory.create(code);
+                if (glyph.surface) {
+                    var atlas_1 = this._atlasSet.addGlyph(glyph);
+                    if (!atlas_1) {
+                        return null;
+                    }
+                    glyph._atlas = atlas_1;
+                    glyph._atlas._accessScore += 1;
+                }
+                this._glyphs[code] = glyph;
+            }
+            // スコア更新
+            // NOTE: LRUを捨てる方式なら単純なタイムスタンプのほうがわかりやすいかもしれない
+            // NOTE: 正確な時刻は必要ないはずで、インクリメンタルなカウンタで代用すればDate()生成コストは省略できる
+            for (var i = 0; i < this._atlasSet.getAtlasNum(); i++) {
+                var atlas = this._atlasSet.getAtlas(i);
+                atlas._accessScore /= 2;
+            }
+            return glyph;
+        };
+        /**
+         * BtimapFontの生成。
+         *
+         * 実装上の制限から、このメソッドを呼び出す場合、maxAtlasNum が 1 または undefined/null(1として扱われる) である必要がある。
+         * そうでない場合、失敗する可能性がある。
+         *
+         * @param missingGlyph `BitmapFont#map` に存在しないコードポイントの代わりに表示するべき文字。最初の一文字が用いられる。
+         */
+        DynamicFont.prototype.asBitmapFont = function (missingGlyphChar) {
+            var _this = this;
+            if (this._atlasSet.getAtlasNum() !== 1) {
+                return null;
+            }
+            var missingGlyphCharCodePoint;
+            if (missingGlyphChar) {
+                missingGlyphCharCodePoint = g.Util.charCodeAt(missingGlyphChar, 0);
+                this.glyphForCharacter(missingGlyphCharCodePoint);
+            }
+            var glyphAreaMap = {};
+            Object.keys(this._glyphs).forEach(function (_key) {
+                var key = Number(_key);
+                var glyph = _this._glyphs[key];
+                var glyphArea = {
+                    x: glyph.x,
+                    y: glyph.y,
+                    width: glyph.width,
+                    height: glyph.height,
+                    offsetX: glyph.offsetX,
+                    offsetY: glyph.offsetY,
+                    advanceWidth: glyph.advanceWidth
+                };
+                glyphAreaMap[key] = glyphArea;
+            });
+            // NOTE: (defaultGlyphWidth, defaultGlyphHeight)= (0, this.size) とする
+            //
+            // それぞれの役割は第一に `GlyphArea#width`, `GlyphArea#height` が与えられないときの
+            // デフォルト値である。ここでは必ず与えているのでデフォルト値としては利用されない。
+            // しかし defaultGlyphHeight は BitmapFont#size にも用いられる。
+            // そのために this.size をコンストラクタの第４引数に与えることにする。
+            var missingGlyph = glyphAreaMap[missingGlyphCharCodePoint];
+            var surface = this._atlasSet.getAtlas(0).duplicateSurface(this._resourceFactory);
+            var bitmapFont = new g.BitmapFont({
+                src: surface,
+                map: glyphAreaMap,
+                defaultGlyphWidth: 0,
+                defaultGlyphHeight: this.size,
+                missingGlyph: missingGlyph
+            });
+            return bitmapFont;
+        };
+        DynamicFont.prototype.destroy = function () {
+            if (this._isSurfaceAtlasSetOwner) {
+                this._atlasSet.destroy();
+            }
+            this._glyphs = null;
+            this._glyphFactory = null;
+            this._destroyed = true;
+        };
+        DynamicFont.prototype.destroyed = function () {
+            return this._destroyed;
+        };
+        return DynamicFont;
+    }());
+    g.DynamicFont = DynamicFont;
+})(g || (g = {}));
+var g;
+(function (g) {
+    /**
      * SurfaceAtlasの空き領域管理クラス。
      *
      * 本クラスのインスタンスをゲーム開発者が直接生成することはなく、ゲーム開発者が利用する必要もない。
@@ -6021,24 +6435,23 @@ var g;
         /**
          * サーフェスの追加。
          *
-         * @param surface サーフェスアトラス上に配置される画像のサーフェス。
-         * @param rect サーフェス上の領域を表す矩形。この領域内の画像がサーフェスアトラス上に複製・配置される。
+         * @param glyph グリフのサーフェスが持つ情報をSurfaceAtlasへ配置
          */
-        SurfaceAtlas.prototype.addSurface = function (surface, rect) {
-            var slot = this._acquireSurfaceAtlasSlot(rect.width, rect.height);
+        SurfaceAtlas.prototype.addSurface = function (glyph) {
+            var slot = this._acquireSurfaceAtlasSlot(glyph.width, glyph.height);
             if (!slot) {
                 return null;
             }
             var renderer = this._surface.renderer();
             renderer.begin();
-            renderer.drawImage(surface, rect.x, rect.y, rect.width, rect.height, slot.x, slot.y);
+            renderer.drawImage(glyph.surface, glyph.x, glyph.y, glyph.width, glyph.height, slot.x, slot.y);
             renderer.end();
             return slot;
         };
         /**
-        * このSurfaceAtlasの破棄を行う。
-        * 以後、このSurfaceを利用することは出来なくなる。
-        */
+         * このSurfaceAtlasの破棄を行う。
+         * 以後、このSurfaceを利用することは出来なくなる。
+         */
         SurfaceAtlas.prototype.destroy = function () {
             this._surface.destroy();
         };
@@ -6066,226 +6479,211 @@ var g;
     }());
     g.SurfaceAtlas = SurfaceAtlas;
     /**
-     * ビットマップフォントを逐次生成するフォント。
+     * DynamicFontで使用される、SurfaceAtlasを管理する。
      */
-    var DynamicFont = (function () {
-        /**
-         * 各種パラメータを指定して `DynamicFont` のインスタンスを生成する。
-         * @param param `DynamicFont` に設定するパラメータ
-         */
-        function DynamicFont(param) {
-            this.fontFamily = param.fontFamily;
-            this.size = param.size;
-            this.hint = ("hint" in param) ? param.hint : {};
-            this.fontColor = ("fontColor" in param) ? param.fontColor : "black";
-            this.fontWeight = ("fontWeight" in param) ? param.fontWeight : FontWeight.Normal;
-            this.strokeWidth = ("strokeWidth" in param) ? param.strokeWidth : 0;
-            this.strokeColor = ("strokeColor" in param) ? param.strokeColor : "black";
-            this.strokeOnly = ("strokeOnly" in param) ? param.strokeOnly : false;
-            this._resourceFactory = param.game.resourceFactory;
-            this._glyphFactory =
-                this._resourceFactory.createGlyphFactory(this.fontFamily, this.size, this.hint.baselineHeight, this.fontColor, this.strokeWidth, this.strokeColor, this.strokeOnly, this.fontWeight);
-            this._glyphs = {};
-            this._atlases = [];
+    var SurfaceAtlasSet = (function () {
+        function SurfaceAtlasSet(params) {
+            this._surfaceAtlases = [];
+            this._atlasGlyphsTable = [];
+            this._resourceFactory = params.game.resourceFactory;
             this._currentAtlasIndex = 0;
-            this._destroyed = false;
+            var hint = params.hint ? params.hint : {};
+            this._maxAtlasNum = hint.maxAtlasNum ? hint.maxAtlasNum : SurfaceAtlasSet.INITIAL_MAX_SURFACEATLAS_NUM;
             // 指定がないとき、やや古いモバイルデバイスでも確保できると言われる
-            // 縦横2048pxのテクスチャ一枚のアトラスにまとめる形にする
-            this.hint.initialAtlasWidth = this.hint.initialAtlasWidth ? this.hint.initialAtlasWidth : 2048;
-            this.hint.initialAtlasHeight = this.hint.initialAtlasHeight ? this.hint.initialAtlasHeight : 2048;
-            this.hint.maxAtlasWidth = this.hint.maxAtlasWidth ? this.hint.maxAtlasWidth : 2048;
-            this.hint.maxAtlasHeight = this.hint.maxAtlasHeight ? this.hint.maxAtlasHeight : 2048;
-            this.hint.maxAtlasNum = this.hint.maxAtlasNum ? this.hint.maxAtlasNum : 1;
-            this._atlasSize = calcAtlasSize(this.hint);
-            this._atlases.push(this._resourceFactory.createSurfaceAtlas(this._atlasSize.width, this._atlasSize.height));
-            if (this.hint.presetChars) {
-                for (var i = 0, len = this.hint.presetChars.length; i < len; i++) {
-                    var code = g.Util.charCodeAt(this.hint.presetChars, i);
-                    if (!code) {
-                        continue;
-                    }
-                    this.glyphForCharacter(code);
-                }
-            }
+            // 縦横512pxのテクスチャ一枚のアトラスにまとめる形にする
+            // 2048x2048で確保してしまうと、Edge, Chrome にて処理が非常に遅くなることがある
+            hint.initialAtlasWidth = hint.initialAtlasWidth ? hint.initialAtlasWidth : 512;
+            hint.initialAtlasHeight = hint.initialAtlasHeight ? hint.initialAtlasHeight : 512;
+            hint.maxAtlasWidth = hint.maxAtlasWidth ? hint.maxAtlasWidth : 512;
+            hint.maxAtlasHeight = hint.maxAtlasHeight ? hint.maxAtlasHeight : 512;
+            this._atlasSize = calcAtlasSize(hint);
         }
         /**
-         * グリフの取得。
-         *
-         * 取得に失敗するとnullが返る。
-         *
-         * 取得に失敗した時、次のようにすることで成功するかもしれない。
-         * - DynamicFont生成時に指定する文字サイズを小さくする
-         * - アトラスの初期サイズ・最大サイズを大きくする
-         *
-         * @param code 文字コード
-         */
-        DynamicFont.prototype.glyphForCharacter = function (code) {
-            var glyph = this._glyphs[code];
-            if (!(glyph && glyph.isSurfaceValid)) {
-                glyph = this._glyphFactory.create(code);
-                if (glyph.surface) {
-                    // グリフがアトラスより大きいとき、`_addToAtlas()`は失敗する。
-                    // `_reallocateAtlas()`でアトラス増やしてもこれは解決できない。
-                    // 無駄な空き領域探索とアトラスの再確保を避けるためにここでリターンする。
-                    if (glyph.width > this._atlasSize.width || glyph.height > this._atlasSize.height) {
-                        return null;
-                    }
-                    var atlas_1 = this._addToAtlas(glyph);
-                    if (!atlas_1) {
-                        this._reallocateAtlas();
-                        // retry
-                        atlas_1 = this._addToAtlas(glyph);
-                        if (!atlas_1) {
-                            return null;
-                        }
-                    }
-                    glyph._atlas = atlas_1;
-                }
-                this._glyphs[code] = glyph;
-            }
-            // スコア更新
-            // NOTE: LRUを捨てる方式なら単純なタイムスタンプのほうがわかりやすいかもしれない
-            // NOTE: 正確な時刻は必要ないはずで、インクリメンタルなカウンタで代用すればDate()生成コストは省略できる
-            for (var i = 0; i < this._atlases.length; i++) {
-                var atlas = this._atlases[i];
-                if (atlas === glyph._atlas) {
-                    atlas._accessScore += 1;
-                }
-                atlas._accessScore /= 2;
-            }
-            return glyph;
-        };
-        /**
-         * BtimapFontの生成。
-         *
-         * 実装上の制限から、このメソッドを呼び出す場合、maxAtlasNum が 1 または undefined/null(1として扱われる) である必要がある。
-         * そうでない場合、失敗する可能性がある。
-         *
-         * @param missingGlyph `BitmapFont#map` に存在しないコードポイントの代わりに表示するべき文字。最初の一文字が用いられる。
-         */
-        DynamicFont.prototype.asBitmapFont = function (missingGlyphChar) {
-            var _this = this;
-            if (this._atlases.length !== 1) {
-                return null;
-            }
-            var missingGlyphCharCodePoint;
-            if (missingGlyphChar) {
-                missingGlyphCharCodePoint = g.Util.charCodeAt(missingGlyphChar, 0);
-                this.glyphForCharacter(missingGlyphCharCodePoint);
-            }
-            var glyphAreaMap = {};
-            Object.keys(this._glyphs).forEach(function (_key) {
-                var key = Number(_key);
-                var glyph = _this._glyphs[key];
-                var glyphArea = {
-                    x: glyph.x,
-                    y: glyph.y,
-                    width: glyph.width,
-                    height: glyph.height,
-                    offsetX: glyph.offsetX,
-                    offsetY: glyph.offsetY,
-                    advanceWidth: glyph.advanceWidth
-                };
-                glyphAreaMap[key] = glyphArea;
-            });
-            // NOTE: (defaultGlyphWidth, defaultGlyphHeight)= (0, this.size) とする
-            //
-            // それぞれの役割は第一に `GlyphArea#width`, `GlyphArea#height` が与えられないときの
-            // デフォルト値である。ここでは必ず与えているのでデフォルト値としては利用されない。
-            // しかし defaultGlyphHeight は BitmapFont#size にも用いられる。
-            // そのために this.size をコンストラクタの第４引数に与えることにする。
-            var missingGlyph = glyphAreaMap[missingGlyphCharCodePoint];
-            var surface = this._atlases[0].duplicateSurface(this._resourceFactory);
-            var bitmapFont = new g.BitmapFont({
-                src: surface,
-                map: glyphAreaMap,
-                defaultGlyphWidth: 0,
-                defaultGlyphHeight: this.size,
-                missingGlyph: missingGlyph
-            });
-            return bitmapFont;
-        };
-        /**
          * @private
          */
-        DynamicFont.prototype._removeLowUseAtlas = function () {
-            var minScore = Number.MAX_VALUE;
-            var lowScoreAtlasIndex = -1;
-            for (var i = 0; i < this._atlases.length; i++) {
-                if (this._atlases[i]._accessScore <= minScore) {
-                    minScore = this._atlases[i]._accessScore;
-                    lowScoreAtlasIndex = i;
-                }
+        SurfaceAtlasSet.prototype._deleteAtlas = function (delteNum) {
+            var removedObject = this._removeLeastFrequentlyUsedAtlas(delteNum);
+            var removedAtlases = removedObject.surfaceAtlases;
+            for (var i = 0; i < removedAtlases.length; ++i) {
+                removedAtlases[i].destroy();
             }
-            var removedAtlas = this._atlases.splice(lowScoreAtlasIndex, 1)[0];
-            return removedAtlas;
         };
         /**
+         * 使用度の低いサーフェスアトラスを配列から削除する。
          * @private
          */
-        DynamicFont.prototype._reallocateAtlas = function () {
-            if (this._atlases.length >= this.hint.maxAtlasNum) {
-                var atlas = this._removeLowUseAtlas();
-                var glyphs = this._glyphs;
-                for (var key in glyphs) {
-                    if (glyphs.hasOwnProperty(key)) {
-                        var glyph = glyphs[key];
-                        if (glyph.surface === atlas._surface) {
-                            glyph.surface = null;
-                            glyph.isSurfaceValid = false;
-                            glyph._atlas = null;
-                        }
+        SurfaceAtlasSet.prototype._removeLeastFrequentlyUsedAtlas = function (removedNum) {
+            var removedAtlases = [];
+            var removedGlyphs = [];
+            for (var n = 0; n < removedNum; ++n) {
+                var minScore = Number.MAX_VALUE;
+                var lowScoreAtlasIndex = -1;
+                for (var i = 0; i < this._surfaceAtlases.length; ++i) {
+                    if (this._surfaceAtlases[i]._accessScore <= minScore) {
+                        minScore = this._surfaceAtlases[i]._accessScore;
+                        lowScoreAtlasIndex = i;
                     }
+                }
+                var removedAtlas = this._surfaceAtlases.splice(lowScoreAtlasIndex, 1)[0];
+                removedAtlases.push(removedAtlas);
+                removedGlyphs.push(this._atlasGlyphsTable.splice(lowScoreAtlasIndex, 1)[0]);
+            }
+            return { surfaceAtlases: removedAtlases, glyphs: removedGlyphs };
+        };
+        /**
+         * 空き領域のあるSurfaceAtlasを探索する。
+         * glyphが持つ情報をSurfaceAtlasへ移動し、移動したSurfaceAtlasの情報でglyphを置き換える。
+         * @private
+         */
+        SurfaceAtlasSet.prototype._moveGlyphSurface = function (glyph) {
+            for (var i = 0; i < this._surfaceAtlases.length; ++i) {
+                var index = (this._currentAtlasIndex + i) % this._surfaceAtlases.length;
+                var atlas = this._surfaceAtlases[index];
+                var slot = atlas.addSurface(glyph);
+                if (slot) {
+                    this._currentAtlasIndex = index;
+                    glyph.surface.destroy();
+                    glyph.surface = atlas._surface;
+                    glyph.x = slot.x;
+                    glyph.y = slot.y;
+                    if (!this._atlasGlyphsTable[index])
+                        this._atlasGlyphsTable[index] = [];
+                    this._atlasGlyphsTable[index].push(glyph);
+                    return atlas;
+                }
+            }
+            return null;
+        };
+        /**
+         * サーフェスアトラスの再割り当てを行う。
+         * @private
+         */
+        SurfaceAtlasSet.prototype._reallocateAtlas = function () {
+            if (this._surfaceAtlases.length >= this._maxAtlasNum) {
+                var removedObject = this._removeLeastFrequentlyUsedAtlas(1);
+                var atlas = removedObject.surfaceAtlases[0];
+                var glyphs = removedObject.glyphs[0];
+                for (var i = 0; i < glyphs.length; i++) {
+                    var glyph = glyphs[i];
+                    glyph.surface = null;
+                    glyph.isSurfaceValid = false;
+                    glyph._atlas = null;
                 }
                 atlas.destroy();
             }
-            this._atlases.push(this._resourceFactory.createSurfaceAtlas(this._atlasSize.width, this._atlasSize.height));
-            this._currentAtlasIndex = this._atlases.length - 1;
+            this._surfaceAtlases.push(this._resourceFactory.createSurfaceAtlas(this._atlasSize.width, this._atlasSize.height));
+            this._currentAtlasIndex = this._surfaceAtlases.length - 1;
         };
         /**
-         * @private
+         * サーフェスアトラスを追加する。
+         *
+         * 保持している_surfaceAtlasesの数が最大値以上の場合、削除してから追加する。
+         *
+         * このメソッドは、このSurfaceAtlasSetに紐づいている `DynamnicFont` の `constructor` から暗黙に呼び出される。
+         * 通常、ゲーム開発者がこのメソッドを呼び出す必要はない。
          */
-        DynamicFont.prototype._addToAtlas = function (glyph) {
-            var atlas = null;
-            var slot = null;
-            var area = {
-                x: glyph.x,
-                y: glyph.y,
-                width: glyph.width,
-                height: glyph.height
-            };
-            for (var i = 0; i < this._atlases.length; i++) {
-                var index = (this._currentAtlasIndex + i) % this._atlases.length;
-                atlas = this._atlases[index];
-                slot = atlas.addSurface(glyph.surface, area);
-                if (slot) {
-                    this._currentAtlasIndex = index;
-                    break;
-                }
+        SurfaceAtlasSet.prototype.addAtlas = function () {
+            // removeLeastFrequentlyUsedAtlas()では、SurfaceAtlas#_accessScoreの一番小さい値を持つSurfaceAtlasを削除するため、
+            // SurfaceAtlas作成時は_accessScoreは0となっているため、削除判定後に作成,追加処理を行う。
+            if (this._surfaceAtlases.length >= this._maxAtlasNum) {
+                this._deleteAtlas(1);
             }
-            if (!slot) {
+            this._surfaceAtlases.push(this._resourceFactory.createSurfaceAtlas(this._atlasSize.width, this._atlasSize.height));
+        };
+        /**
+         * 引数で指定されたindexのサーフェスアトラスを取得する。
+         *
+         * このメソッドは、このSurfaceAtlasSetに紐づいている `DynamnicFont` の `glyphForCharacter()` から暗黙に呼び出される。
+         * 通常、ゲーム開発者がこのメソッドを呼び出す必要はない。
+         * @param index 取得対象のインデックス
+         */
+        SurfaceAtlasSet.prototype.getAtlas = function (index) {
+            return this._surfaceAtlases[index];
+        };
+        /**
+         * サーフェスアトラスの保持数を取得する。
+         *
+         * このメソッドは、このSurfaceAtlasSetに紐づいている `DynamnicFont` の `glyphForCharacter()` から暗黙に呼び出される。
+         * 通常、ゲーム開発者がこのメソッドを呼び出す必要はない。
+         */
+        SurfaceAtlasSet.prototype.getAtlasNum = function () {
+            return this._surfaceAtlases.length;
+        };
+        /**
+         * 最大サーフェスアトラス保持数取得する。
+         */
+        SurfaceAtlasSet.prototype.getMaxAtlasNum = function () {
+            return this._maxAtlasNum;
+        };
+        /**
+         * 最大アトラス保持数設定する。
+         *
+         * 設定された値が、現在保持している_surfaceAtlasesの数より大きい場合、
+         * removeLeastFrequentlyUsedAtlas()で設定値まで削除する。
+         * @param value 設定値
+         */
+        SurfaceAtlasSet.prototype.changeMaxAtlasNum = function (value) {
+            this._maxAtlasNum = value;
+            if (this._surfaceAtlases.length > this._maxAtlasNum) {
+                var diff = this._surfaceAtlases.length - this._maxAtlasNum;
+                this._deleteAtlas(diff);
+            }
+        };
+        /**
+         * サーフェスアトラスのサイズを取得する。
+         *
+         * このメソッドは、このSurfaceAtlasSetに紐づいている `DynamnicFont` の `glyphForCharacter()` から暗黙に呼び出される。
+         * 通常、ゲーム開発者がこのメソッドを呼び出す必要はない。
+         */
+        SurfaceAtlasSet.prototype.getAtlasSize = function () {
+            return this._atlasSize;
+        };
+        /**
+         * サーフェスアトラスにグリフを追加する。
+         *
+         * このメソッドは、このSurfaceAtlasSetに紐づいている `DynamnicFont` の `glyphForCharacter()` から暗黙に呼び出される。
+         * 通常、ゲーム開発者がこのメソッドを呼び出す必要はない。
+         * @param glyph グリフ
+         */
+        SurfaceAtlasSet.prototype.addGlyph = function (glyph) {
+            // グリフがアトラスより大きいとき、`_atlasSet.addGlyph()`は失敗する。
+            // `_reallocateAtlas()`でアトラス増やしてもこれは解決できない。
+            // 無駄な空き領域探索とアトラスの再確保を避けるためにここでリターンする。
+            if (glyph.width > this._atlasSize.width || glyph.height > this._atlasSize.height) {
                 return null;
             }
-            glyph.surface.destroy();
-            glyph.surface = atlas._surface;
-            glyph.x = slot.x;
-            glyph.y = slot.y;
+            var atlas = this._moveGlyphSurface(glyph);
+            if (!atlas) {
+                // retry
+                this._reallocateAtlas();
+                atlas = this._moveGlyphSurface(glyph);
+            }
             return atlas;
         };
-        DynamicFont.prototype.destroy = function () {
-            for (var i = 0; i < this._atlases.length; i++) {
-                this._atlases[i].destroy();
+        /**
+         * このインスタンスを破棄する。
+         */
+        SurfaceAtlasSet.prototype.destroy = function () {
+            for (var i = 0; i < this._surfaceAtlases.length; ++i) {
+                this._surfaceAtlases[i].destroy();
             }
-            this._glyphs = null;
-            this._glyphFactory = null;
-            this._destroyed = true;
+            this._surfaceAtlases = undefined;
+            this._resourceFactory = undefined;
+            this._atlasGlyphsTable = undefined;
         };
-        DynamicFont.prototype.destroyed = function () {
-            return this._destroyed;
+        /**
+         * このインスタンスが破棄済みであるかどうかを返す。
+         */
+        SurfaceAtlasSet.prototype.destroyed = function () {
+            return this._surfaceAtlases === undefined;
         };
-        return DynamicFont;
+        return SurfaceAtlasSet;
     }());
-    g.DynamicFont = DynamicFont;
+    /**
+     * SurfaceAtlas最大保持数初期値
+     */
+    SurfaceAtlasSet.INITIAL_MAX_SURFACEATLAS_NUM = 10;
+    g.SurfaceAtlasSet = SurfaceAtlasSet;
 })(g || (g = {}));
 var g;
 (function (g) {
@@ -6301,6 +6699,19 @@ var g;
             this._muted = false;
             this._playbackRate = 1.0;
         }
+        /**
+         * @private
+         */
+        AudioSystemManager.prototype._reset = function () {
+            this._muted = false;
+            this._playbackRate = 1.0;
+            var systems = this._game.audio;
+            for (var id in systems) {
+                if (!systems.hasOwnProperty(id))
+                    continue;
+                systems[id]._reset();
+            }
+        };
         /**
          * @private
          */
@@ -6484,11 +6895,19 @@ var g;
         /**
          * 指定の大きさに拡大・縮小した描画結果の `Surface` を生成して返す。詳細は `SurfaceEffector#render` の項を参照。
          */
-        // TODO: (GAMEDEV-1654) GAMEDEV-1404が満たしていない改修を行う
         NinePatchSurfaceEffector.prototype.render = function (srcSurface, width, height) {
-            var surface = this.game.resourceFactory.createSurface(Math.ceil(width), Math.ceil(height));
-            var renderer = surface.renderer();
+            var isCreateSurface = true;
+            if (!this._surface || this._surface.width !== width || this._surface.height !== height || this._beforeSrcSurface !== srcSurface) {
+                this._surface = this.game.resourceFactory.createSurface(Math.ceil(width), Math.ceil(height));
+                this._beforeSrcSurface = srcSurface;
+            }
+            else {
+                isCreateSurface = false;
+            }
+            var renderer = this._surface.renderer();
             renderer.begin();
+            if (!isCreateSurface)
+                renderer.clear();
             //    x0  x1                          x2
             // y0 +-----------------------------------+
             //    | 1 |             5             | 2 |
@@ -6566,7 +6985,7 @@ var g;
             renderer.drawImage(srcSurface, sx1, sy1, sw, sh, 0, 0);
             renderer.restore();
             renderer.end();
-            return surface;
+            return this._surface;
         };
         return NinePatchSurfaceEffector;
     }());
@@ -7051,6 +7470,25 @@ var g;
     }(g.RandomGenerator));
     g.XorshiftRandomGenerator = XorshiftRandomGenerator;
 })(g || (g = {}));
+var g;
+(function (g) {
+    /**
+     * akashic-engineにおけるシェーダ機能を提供するクラス。
+     * 現バージョンのakashic-engineではフラグメントシェーダのみをサポートする。
+     */
+    var ShaderProgram = (function () {
+        /**
+         * 各種パラメータを指定して `ShaderProgram` のインスタンスを生成する。
+         * @param param `ShaderProgram` に設定するパラメータ
+         */
+        function ShaderProgram(param) {
+            this.fragmentShader = param.fragmentShader;
+            this.uniforms = param.uniforms;
+        }
+        return ShaderProgram;
+    }());
+    g.ShaderProgram = ShaderProgram;
+})(g || (g = {}));
 // ordered files
 /// <reference path="AssetLoadErrorType.ts" />
 /// <reference path="errors.ts" />
@@ -7112,6 +7550,7 @@ var g;
 /// <reference path="OperationPluginManager.ts" />
 /// <reference path="executeEnvironmentVariables.ts" />
 /// <reference path="DynamicFont.ts" />
+/// <reference path="SurfaceAtlasSet.ts" />
 // non-ordered files
 /// <reference path="AudioSystemManager.ts" />
 /// <reference path="CompositeOperation.ts" />
@@ -7129,6 +7568,7 @@ var g;
 /// <reference path="TickGenerationMode.ts" />
 /// <reference path="Xorshift.ts" />
 /// <reference path="XorshiftRandomGenerator.ts" />
+/// <reference path="Shader.ts" />
 
 module.exports = g;
 }).call(this);
