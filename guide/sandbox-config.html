@@ -5,7 +5,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>アセットロードエラーについて</title>
+<title>sandbox.config.jsの仕様</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?1555653993225">
 <link rel="stylesheet" href="/css/header.css?1555653993225">
@@ -97,46 +97,118 @@
 <div id="BodyInner">
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
-			<h1>アセットロードエラーについて</h1>
+			<h1>sandbox.config.jsの仕様</h1>
 <h2><a name="これは"></a> これは</h2>
-<p>アセットロードエラーとそのハンドリング方法について述べます。</p>
-<h2><a name="アセットロードエラーとは"></a> アセットロードエラーとは</h2>
-<p>アセットロードエラーとはアセットの読み込みに失敗したことを意味するエラーです。</p>
-<p><code>game.json</code> で指定したアセットがサーバ上に存在しない場合や、ネットワークやサーバ異常によりダウンロード出来ない場合に発生します。</p>
-<h2><a name="エラーのハンドリング"></a> エラーのハンドリング</h2>
-<p>ゲームコンテンツからアセットロードエラーをハンドリングするコードの例を以下に示します。</p>
-<pre><code class="lang-javascript">var scene = new g.Scene({game: game, assetIds: [&quot;apple&quot;], name: &quot;SampleScene&quot;});
-// ハンドラを登録
-scene.assetLoadFailed.add(function (failure) {
-    // Loggerでログ出力
-    game.logger.warn(&quot;load error for &#39;&quot; + failure.asset.id + &quot;&#39; in &quot; + scene.name, failure);
-    // リトライ不可能の場合、この後ゲームが終了される
-    if (!failure.error.retriable)
-        game.logger.error(&quot;bye.&quot;, failure);
-});
-</code></pre>
-<p>アセットロードエラーが発生した場合、 <code>Scene#assetLoadFailed</code> に登録したハンドラが呼び出されます。</p>
-<p>上記の例では、アセットID <code>&quot;apple&quot;</code> の読み込みに失敗した場合に、ハンドラが呼び出されます。</p>
-<p>ハンドラが呼び出された時、ハンドラの第一引数 <code>failure</code> は  <code>AssetLoadFailureInfo</code> となります。</p>
-<p><code>AssetLoadFailureInfo</code> にはアセットロードエラーに関する情報が含まれており、ゲームコンテンツは上記の例のようにログ出力等の処理を行うことが可能です。</p>
-<p><code>AssetLoadFailureInfo</code> の詳細はAPIリファレンスを参照してください。
-<!-- TODO: APIリファレンスへのハイパーリンク --></p>
-<p>アセットの読み込みに失敗した場合、Akashicは読み込みの再試行を行う機構を備えています。</p>
-<p>再試行できない要因（HTTP 404 Not Foundなど）で失敗、又は再試行回数の上限を超えた場合、Akashicは自動的にゲーム続行が不可能だと判断し、ハンドラの呼び出し後にゲームを終了します。</p>
-<p>Akashicがアセット読み込みの再試行を行うかどうかは <code>failure.error.retriable</code> を参照することで判断することが可能です。</p>
-<p>この値が <code>false</code> の場合、Akashicはハンドラ呼出し後にゲームを終了します。</p>
-<h2><a name="再試行のキャンセル"></a> 再試行のキャンセル</h2>
-<p>ゲームコンテンツは、 アセットロードエラーのハンドラ内で <code>failure.cancelRetry</code> に <code>true</code> にセットすることで、Akashicが行うアセット読み込みの再試行をキャンセルすることが可能です。</p>
-<p>以下に例を示します。</p>
-<pre><code class="lang-javascript">scene.assetLoadFailed.add(function (failure) {
-    // 再試行をキャンセルし、ゲーム続行を断念する
-    failure.cancelRetry = true;
-    game.logger.error(&quot;bye.&quot;, failure);
-});
-</code></pre>
-<p>ハンドラ内で <code>failure.cancelRetry</code> に <code>true</code> がセットされると、 Akashicはハンドラ呼出し後にゲームを終了します。</p>
-<h2><a name="その他"></a> その他</h2>
-<p>アセットロードエラー発生時の処理は、実行環境によって異なるものになる可能性がありますのでご注意下さい。</p>
+<p>Akashicの開発環境における設定ファイル、sandbox.config.jsの仕様をまとめます。 </p>
+<p>Akashicで開発されたゲームの動作確認ツールとして、 Akashic Sandbox (<code>akashic-sandbox</code>) とAkashic-cliのserveコマンドがあります。
+sandbox.config.jsは、これらのツールの機能を取り扱う設定ファイルです。
+sandbox.config.jsを利用することで、セッションパラメータや起動引数に関わる動作確認を効率化・自動化することができます。</p>
+<p>（セッションパラメータの詳細は<a href="./ranking.html">ニコニコ新市場対応コンテンツ作成ガイド</a>を参照してください）</p>
+<h2><a name="形式"></a> 形式</h2>
+<p>sandbox.config.jsはJavaScriptとして実行可能なコードと、exportされるモジュールとして記述されます。
+モジュールは以下の名前のプロパティと、対応する値を持ちます。</p>
+<ul>
+<li>events<ul>
+<li>オブジェクト (詳細は後述)</li>
+<li>Akashicゲームで扱うplaylogイベントの配列</li>
+<li>Akashic Sandbox、serveコマンドで有効</li>
+</ul>
+</li>
+<li>autoSendEvents<ul>
+<li>文字列</li>
+<li>eventsのメンバー名のいずれか</li>
+<li>Akashic Sandboxで有効</li>
+</ul>
+</li>
+<li>showMenu<ul>
+<li>真偽値</li>
+<li>開始時にデベロッパーメニューを開くかどうか</li>
+<li>Akashic Sandboxで有効<ul>
+<li>arguments</li>
+</ul>
+</li>
+<li>オブジェクト (詳細は後述)</li>
+<li>ゲームに渡す起動引数</li>
+<li>serveコマンドで有効</li>
+</ul>
+</li>
+</ul>
+<h2><a name="使い方"></a> 使い方</h2>
+<p>game.jsonと同じディレクトリに、以下のようなJavaScriptファイルを置きます。ファイル名は sandbox.config.js とします。</p>
+<pre><code>var config = {
+}
+
+module.exports = config;
+</code></pre><p>このファイルに以下の名前のプロパティを記述することで、各種設定を利用できます。</p>
+<h2><a name="events"></a> events</h2>
+<p>eventsには、Akashicゲームで扱うplaylogイベントを事前に記述することができます。
+特に、ニコニコ新市場対応コンテンツを作成する場合に、セッションパラメータの動作確認を行うために利用することができます。</p>
+<p>eventsは、任意のプロパティ名を持ったオブジェクトです。プロパティ名はイベント名として、開発ツールの一覧に表示されます。
+各プロパティは、送りたいplaylogイベントの配列です。</p>
+<p>（playlogの詳細な仕様は<a href="https://github.com/akashic-games/playlog">playlog</a>を参照してください）</p>
+<p>例として、ニコニコ新市場で実行されるゲームにセッションパラメータを送りたい場合、sandbox.config.jsには以下のように記述します。</p>
+<pre><code>var config = {
+    &quot;events&quot;: {
+        &quot;mySessionParameter&quot;: [
+            [
+                32, // g.MessageEventを示す0x20
+                0,
+                &quot;:akashic&quot;, // プレイヤーID
+                {
+                    &quot;type&quot;:&quot;start&quot;, // セッションパラメータであることを示すstart
+                    &quot;parameters&quot;:{
+                        &quot;mode&quot;: &quot;single&quot;,
+                        &quot;totalTimeLimit&quot;: 75 // タイムリミット
+                    }
+                }
+            ]
+        ]
+        &quot;myPointDownEvent&quot;: [
+            [
+                33, // g.PointDownEventを示す0x21
+                2,
+                &quot;:akashic&quot;, // プレイヤーID
+                0, // ポインターID
+                100, // X座標
+                100, // Y座標,
+                null // エンティティID
+            ]
+        ]
+    }
+}
+
+module.exports = config;
+</code></pre><p>Akashic Sandboxでは、デベロッパーメニューのEventsタブからゲームにイベントを送信することができます。</p>
+<p><img src="/img/guide/sandbox-config/sandbox-devmenu.png" alt="Akashic Sandboxのデベロッパーメニュー"></p>
+<p>akashic serveコマンドも同じように、デベロッパーメニューのEventsタブからゲームにイベントを送信することができます。</p>
+<p><img src="/img/guide/sandbox-config/serve-devmenu.png" alt="akashic serveコマンドのデベロッパーメニュー"></p>
+<h2><a name="autoSendEvents"></a> autoSendEvents</h2>
+<p>ゲーム起動時にイベントを自動送信することができます。イベントはあらかじめeventsに記述しておく必要があります。
+autoSendEventsにイベント名（例えばstartMyGameEvent）を記述し、Akashic Sandboxでゲームを起動すれば、イベントが自動送信されます。</p>
+<pre><code>var config = {
+    &quot;autoSendEvents&quot;: &quot;mySessionParameter&quot;
+    &quot;events&quot;: {
+        &quot;mySessionParameter&quot;: {} // 同上のため省略
+    }
+}
+
+module.exports = config;
+</code></pre><h2><a name="showMenu"></a> showMenu</h2>
+<p>この項目にtrueを指定されている場合、常にデベロッパーメニューが開いた状態でAkashicゲームが実行されます。</p>
+<pre><code>var config = {
+   &quot;showMenu&quot;: true
+}
+
+module.exports = config;
+</code></pre><h2><a name="arguments"></a> arguments</h2>
+<p>argumentsには、起動引数のテンプレートを記述することができます。</p>
+<p>serveコマンドに --no-auto-start オプションを指定した場合、Akashicゲームの実行時に渡したい起動引数を選ぶことができます。</p>
+<p>起動引数はAkashicゲームの起動時に渡される値です。
+起動引数はAkashicゲームのエントリポイントの関数（akashic initで生成した場合、main.jsからexportされた関数）のパラメータの第一引数のargsプロパティとして渡されます。</p>
+<p>起動引数の内容はゲームが実行される環境によって決定されます。
+argumentsに起動引数を記述することで、serveコマンドで各サービスの動作を確認することができます。</p>
+<p>具体的な内容はゲームが実行されるサービスによって決まります。
+各サービスの動作を確認するためにserveでも起動引数を指定して実行することができます。</p>
 
 		</div>
 	</section>
