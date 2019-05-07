@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>CompositeOperationの利用</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1555653993225">
-<link rel="stylesheet" href="/css/header.css?1555653993225">
-<link rel="stylesheet" href="/css/footer.css?1555653993225">
+<link rel="stylesheet" href="/css/common.css?1557204393058">
+<link rel="stylesheet" href="/css/header.css?1557204393058">
+<link rel="stylesheet" href="/css/footer.css?1557204393058">
 
 
-<link rel="stylesheet" href="/css/asset.css?1555653993225">
+<link rel="stylesheet" href="/css/asset.css?1557204393058">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1555653993225">
+<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
 
-<link rel="stylesheet" href="/css/railscasts.css?1555653993225">
+<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1555653993225"></script>
+<script src="/lib/common.js?1557204393058"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -108,9 +108,16 @@
 <li><code>CompositeOpration.SourceOver</code></li>
 <li><code>CompositeOpration.SourceAtop</code></li>
 <li><code>CompositeOpration.Lighter</code></li>
-<li><code>CompositeOpration.Copy</code></li>
+<li><code>CompositeOpration.ExperimentalSourceIn</code></li>
+<li><code>CompositeOpration.ExperimentalSourceOut</code></li>
+<li><code>CompositeOpration.ExperimentalDestinationAtop</code></li>
+<li><code>CompositeOpration.ExperimentalDestinationIn</code></li>
+<li><code>CompositeOpration.DestinationOut</code></li>
+<li><code>CompositeOpration.DestinationOver</code></li>
+<li><code>CompositeOpration.Xor</code></li>
 <li>未指定（<code>undefined</code>）</li>
 </ul>
+<p>Experimentalのprefixが付いた値は、ゲームを実行する環境(Webブラウザ)によって挙動にばらつくことがあるため、試験的導入としています。</p>
 <h2><a name="SourceOver"></a> SouceOver</h2>
 <p>先に描画された領域の上に重ねて描画します。これがデフォルトの合成方法となります。</p>
 <p>以下は、緑色、赤色、青色の <code>FilledRect</code> を重ねて描画する例です。</p>
@@ -127,24 +134,142 @@ scene.append(blue);
 </code></pre>
 <h2><a name="SourceAtop"></a> SourceAtop</h2>
 <p>先に描画された領域と重なった部分のみを描画します。</p>
-<p>以下の例では、赤色と青色の <code>FilledRect</code> に <code>SourceAtop</code> 指定し、緑色の <code>FilledRect</code> と重なった部分だけ描画する例です。</p>
+<p>以下の例は、赤色と青色の <code>FilledRect</code> に <code>SourceAtop</code> 指定し、緑色の <code>FilledRect</code> と重なった部分だけ描画する例です。</p>
 <p><img src="/img/guide/composite-operation/source-atop.png" alt="source-atop"></p>
-<pre><code class="lang-javascript">red.compositeOperation = g.CompositeOperation.SourceAtop;
+<pre><code class="lang-javascript">var green = new g.FilledRect({scene: scene, x: 50, width: 100, height: 100, cssColor: &quot;green&quot;});
+var red = new g.FilledRect({scene: scene, y: 20, width: 100, height: 100, cssColor: &quot;red&quot;});
+red.compositeOperation = g.CompositeOperation.SourceAtop;
+var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width: 100, height: 100, cssColor: &quot;blue&quot;});
 blue.compositeOperation = g.CompositeOperation.SourceAtop;
+scene.append(green);
+scene.append(red);
+scene.append(blue);
 </code></pre>
 <h2><a name="Lighter"></a> Lighter</h2>
 <p>先に描画された領域と重なった部分の色を加算して描画します。</p>
-<p>以下の例では、赤色と青色の <code>FilledRect</code> に <code>Lighter</code> 指定したものです。</p>
+<p>以下の例は、赤色と青色の <code>FilledRect</code> に <code>Lighter</code> 指定したものです。</p>
 <p><img src="/img/guide/composite-operation/lighter.png" alt="lighter"></p>
-<pre><code class="lang-javascript">red.compositeOperation = g.CompositeOperation.Lighter;
+<pre><code class="lang-javascript">var green = new g.FilledRect({scene: scene, x: 50, width: 100, height: 100, cssColor: &quot;green&quot;});
+var red = new g.FilledRect({scene: scene, y: 20, width: 100, height: 100, cssColor: &quot;red&quot;});
+red.compositeOperation = g.CompositeOperation.Lighter;
+var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width: 100, height: 100, cssColor: &quot;blue&quot;});
 blue.compositeOperation = g.CompositeOperation.Lighter;
+scene.append(green);
+scene.append(red);
+scene.append(blue);
+</code></pre>
+<h2><a name="ExperimentalSourceIn"></a> ExperimentalSourceIn</h2>
+<p>先に描画された領域と重なった部分に描画を行い、それ以外の部分を透明にします。</p>
+<p>以下の例は、三色の <code>FilledRect</code> に <code>ExperimentalSourceIn</code> 指定し、白色の <code>FilledRect</code> と重なった部分だけ描画する例です。</p>
+<p><img src="/img/guide/composite-operation/experimental-source-in.png" alt="ExperimentalSourceIn"></p>
+<pre><code class="lang-javascript">var bg = new g.FilledRect({scene: scene, x: 0, width: g.game.width, height: g.game.height, cssColor: &quot;white&quot;});
+var green = new g.FilledRect({scene: scene, x: 50, width: 100, height: 100, cssColor: &quot;green&quot;});
+green.compositeOperation = g.CompositeOperation.ExperimentalSourceIn;
+var red = new g.FilledRect({scene: scene, y: 20, width: 100, height: 100, cssColor: &quot;red&quot;});
+red.compositeOperation = g.CompositeOperation.ExperimentalSourceIn;
+var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width: 100, height: 100, cssColor: &quot;blue&quot;});
+blue.compositeOperation = g.CompositeOperation.ExperimentalSourceIn;
+scene.append(bg);
+scene.append(green);
+scene.append(red);
+sscene.append(blue);
+</code></pre>
+<h2><a name="ExperimentalSourceOut"></a> ExperimentalSourceOut</h2>
+<p>先に描画された領域と重なっていない部分に描画を行い、それ以外の部分を透明にします。</p>
+<p>以下の例は、三色の <code>FilledRect</code> に <code>ExperimentalSourceOut</code> 指定したものです。</p>
+<p><img src="/img/guide/composite-operation/experimental-source-out.png" alt="ExperimentalSourceOut"></p>
+<pre><code class="lang-javascript">var green = new g.FilledRect({scene: scene, x: 50, width: 100, height: 100, cssColor: &quot;green&quot;});
+green.compositeOperation = g.CompositeOperation.ExperimentalSourceOut;
+var red = new g.FilledRect({scene: scene, y: 20, width: 100, height: 100, cssColor: &quot;red&quot;});
+red.compositeOperation = g.CompositeOperation.ExperimentalSourceOut;
+var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width: 100, height: 100, cssColor: &quot;blue&quot;});
+blue.compositeOperation = g.CompositeOperation.ExperimentalSourceOut;
+scene.append(green);
+scene.append(red);
+sscene.append(blue);
+</code></pre>
+<h2><a name="ExperimentalDestinationAtop"></a> ExperimentalDestinationAtop</h2>
+<p>描画する領域だけを表示し、先に描画された領域と重なった部分は描画先を表示します。</p>
+<p>以下の例は、三色の <code>FilledRect</code> に <code>ExperimentalDestinationAtop</code> 指定したものです。</p>
+<p><img src="/img/guide/composite-operation/experimental-destination-atop.png" alt="ExperimentalDestinationAtop"></p>
+<pre><code class="lang-javascript">var green = new g.FilledRect({scene: scene, x: 50, width: 100, height: 100, cssColor: &quot;green&quot;});
+green.compositeOperation = g.CompositeOperation.ExperimentalDestinationAtop;
+var red = new g.FilledRect({scene: scene, y: 20, width: 100, height: 100, cssColor: &quot;red&quot;});
+red.compositeOperation = g.CompositeOperation.ExperimentalDestinationAtop;
+var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width: 100, height: 100, cssColor: &quot;blue&quot;});
+blue.compositeOperation = g.CompositeOperation.ExperimentalDestinationAtop;
+scene.append(green);
+scene.append(red);
+sscene.append(blue);
+</code></pre>
+<h2><a name="ExperimentalDestinationIn"></a> ExperimentalDestinationIn</h2>
+<p>描画する領域だけを表示し、先に描画された領域と重なった部分は描画先を表示します。</p>
+<p>以下の例は、三色の <code>FilledRect</code> に <code>ExperimentalDestinationIn</code> 指定したものです。</p>
+<p><img src="/img/guide/composite-operation/experimental-destination-in.png" alt="ExperimentalDestinationIn"></p>
+<pre><code class="lang-javascript">var green = new g.FilledRect({scene: scene, x: 50, width: 100, height: 100, cssColor: &quot;green&quot;});
+green.compositeOperation = g.CompositeOperation.ExperimentalDestinationIn;
+var red = new g.FilledRect({scene: scene, y: 20, width: 100, height: 100, cssColor: &quot;red&quot;});
+red.compositeOperation = g.CompositeOperation.ExperimentalDestinationIn;
+var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width: 100, height: 100, cssColor: &quot;blue&quot;});
+blue.compositeOperation = g.CompositeOperation.ExperimentalDestinationIn;
+scene.append(green);
+scene.append(red);
+sscene.append(blue);
 </code></pre>
 <h2><a name="Copy"></a> Copy</h2>
 <p>先に描画された領域の状態に関わらず、全て上書きして描画します。
 描画内容が透明な場合、描画先の内容にかかわらず透明な画像が上書き描画されます。</p>
 <p><img src="/img/guide/composite-operation/copy.png" alt="copy"></p>
-<pre><code class="lang-javascript">blue.compositeOperation = g.CompositeOperation.SourceOver;
+<pre><code class="lang-javascript">var blue = new g.FilledRect({scene: scene, width: 100, height: 100, cssColor: &quot;blue&quot;});
+blue.compositeOperation = g.CompositeOperation.SourceOver;
+var character = new g.Sprite({scene: scene, src: scene.assets[&quot;character&quot;]});
 character.compositeOperation = g.CompositeOperation.Copy;
+scene.append(blue);
+scene.append(character);
+</code></pre>
+<h2><a name="DestinationOut"></a> DestinationOut</h2>
+<p>描画する領域を透明にします。</p>
+<p>以下の例は、白い背景の上で、三色の <code>FilledRect</code> に <code>DestinationOut</code> 指定したものです。
+（この例では、コンテンツの背景に灰色の要素を置くことで、透明になった部分が分かりやすくなるようにしています）</p>
+<p><img src="/img/guide/composite-operation/destination-out.png" alt="copy"></p>
+<pre><code class="lang-javascript">var bg = new g.FilledRect({scene: scene, x: 0, width: g.game.width, height: g.game.height, cssColor: &quot;white&quot;});
+var green = new g.FilledRect({scene: scene, x: 50, width: 100, height: 100, cssColor: &quot;green&quot;});
+green.compositeOperation = g.CompositeOperation.DestinationOut;
+var red = new g.FilledRect({scene: scene, y: 20, width: 100, height: 100, cssColor: &quot;red&quot;});
+red.compositeOperation = g.CompositeOperation.DestinationOut;
+var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width: 100, height: 100, cssColor: &quot;blue&quot;});
+blue.compositeOperation = g.CompositeOperation.DestinationOut;
+scene.append(bg);
+scene.append(green);
+scene.append(red);
+sscene.append(blue);
+</code></pre>
+<h2><a name="DestinationOver"></a> DestinationOver</h2>
+<p>先に描画された領域の下に描画します。</p>
+<p>以下の例は、赤色と青色の <code>FilledRect</code> に <code>DestinationOver</code> 指定し、緑色の <code>FilledRect</code> と重なった部分だけ描画する例です。</p>
+<p><img src="/img/guide/composite-operation/destination-over.png" alt="copy"></p>
+<pre><code class="lang-javascript">var green = new g.FilledRect({scene: scene, x: 50, width: 100, height: 100, cssColor: &quot;green&quot;});
+var red = new g.FilledRect({scene: scene, y: 20, width: 100, height: 100, cssColor: &quot;red&quot;});
+red.compositeOperation = g.CompositeOperation.DestinationOver;
+var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width: 100, height: 100, cssColor: &quot;blue&quot;});
+blue.compositeOperation = g.CompositeOperation.DestinationOver;
+scene.append(green);
+scene.append(red);
+scene.append(blue);
+</code></pre>
+<h2><a name="Xor"></a> Xor</h2>
+<p>先に描画された領域と重なった部分のみ透明にします。</p>
+<p>以下の例は、三色の <code>FilledRect</code> に <code>Xor</code> 指定したものです。</p>
+<p><img src="/img/guide/composite-operation/xor.png" alt="copy"></p>
+<pre><code class="lang-javascript">var green = new g.FilledRect({scene: scene, x: 50, width: 100, height: 100, cssColor: &quot;green&quot;});
+green.compositeOperation = g.CompositeOperation.Xor;
+var red = new g.FilledRect({scene: scene, y: 20, width: 100, height: 100, cssColor: &quot;red&quot;});
+red.compositeOperation = g.CompositeOperation.Xor;
+var blue = new g.FilledRect({scene: scene, x: 75, y: 50, width: 100, height: 100, cssColor: &quot;blue&quot;});
+blue.compositeOperation = g.CompositeOperation.Xor;
+scene.append(green);
+scene.append(red);
+sscene.append(blue);
 </code></pre>
 <h2><a name="未指定（undefined）"></a> 未指定（undefined）</h2>
 <p><code>E#compositeOperation</code> はデフォルトで未指定（ <code>undefined</code> ）ですが、この時の合成方法は親エンティティの <code>compositeOperation</code> によって変わってきます。</p>
