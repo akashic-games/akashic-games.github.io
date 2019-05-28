@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>音を鳴らす</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1557204393058">
-<link rel="stylesheet" href="/css/header.css?1557204393058">
-<link rel="stylesheet" href="/css/footer.css?1557204393058">
+<link rel="stylesheet" href="/css/common.css?1559034089532">
+<link rel="stylesheet" href="/css/header.css?1559034089532">
+<link rel="stylesheet" href="/css/footer.css?1559034089532">
 
 
-<link rel="stylesheet" href="/css/asset.css?1557204393058">
+<link rel="stylesheet" href="/css/asset.css?1559034089532">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
+<link rel="stylesheet" href="/css/akashic-document.css?1559034089532">
 
-<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
+<link rel="stylesheet" href="/css/railscasts.css?1559034089532">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1557204393058"></script>
+<script src="/lib/common.js?1559034089532"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -98,10 +98,10 @@
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
 			<h1>音を鳴らす</h1>
-<h2><a name="効果音とBGM"></a> 効果音とBGM</h2>
+<h2><a name="効果音とBGM"></a> 効果音と BGM</h2>
 <p>Akashic Engine のゲームで音を鳴らす場合は、一つの効果音や音楽につき
 Ogg Vorbis 形式 (.ogg) と AAC 形式 (.aac) の二種類のファイルを用意する必要があります。
-これは、Webページで音を再生する際に、利用可能な形式がブラウザごとに異なっているためです。</p>
+これは、Web ページで音を再生する際に、利用可能な形式がブラウザごとに異なっているためです。</p>
 <p>ファイルが用意できたら <code>se1.ogg</code> と <code>se1.aac</code> を <code>sound</code> ディレクトリに配置して、
 <code>akashic scan</code> コマンドでアセットとして追加します。</p>
 <pre><code class="lang-sh">akashic scan asset
@@ -110,17 +110,17 @@ Ogg Vorbis 形式 (.ogg) と AAC 形式 (.aac) の二種類のファイルを用
 例えば ID が <code>&quot;se1&quot;</code> の場合は、以下のコードで再生できます。</p>
 <pre><code class="lang-javascript">scene.assets[&quot;se1&quot;].play();
 </code></pre>
-<p>もし、TypeScriptテンプレートを利用して開発する場合、 <code>scene.assets</code> は <code>g.Asset</code> というアセット全体を示す型の配列になっています。よって、そのままでは <code>g.AudioAsset</code> だけが持つ <code>play()</code> メソッドを使えません。
-以下のように <code>as</code>  演算子を使って <code>g.AudioAsset</code> であることを示す必要があります。</p>
+<p>もし、TypeScript テンプレートを利用して開発する場合、 <code>scene.assets</code> は <code>g.Asset</code> というアセット全体を示す型の配列になっています。よって、そのままでは <code>g.AudioAsset</code> だけが持つ <code>play()</code> メソッドを使えません。
+以下のように <code>as</code> 演算子を使って <code>g.AudioAsset</code> であることを示す必要があります。</p>
 <pre><code class="lang-typescript">(scene.assets[&quot;se1&quot;] as g.AudioAsset).play();
 </code></pre>
 <p>シーンで効果音を利用するには、他のアセットと同じようにシーンオブジェクトの
 パラメータオブジェクトにアセットの ID を列挙します。
 以下は画面のタップまたはクリックで効果音を再生する例です。</p>
 <pre><code class="lang-javascript">function main() {
-  var scene = new g.Scene({game: g.game, assetIds: [&quot;se1&quot;]});
-  scene.loaded.add(function () {
-    scene.pointDownCapture.add(function () {
+  var scene = new g.Scene({ game: g.game, assetIds: [&quot;se1&quot;] });
+  scene.loaded.add(function() {
+    scene.pointDownCapture.add(function() {
       scene.assets[&quot;se1&quot;].play();
     });
   });
@@ -153,10 +153,10 @@ BGM をループ再生させるには、<code>game.json</code> を編集して�
 BGM は自動的にループ再生されるので、<code>play()</code> メソッドはシーンロード時に一度だけ呼び出します。</p>
 <p>以下のプログラムは上で出てきた効果音再生プログラムに BGM を追加したものです。</p>
 <pre><code class="lang-javascript">function main() {
-  var scene = new g.Scene({game: g.game, assetIds: [&quot;bgm&quot;, &quot;se1&quot;]});
-  scene.loaded.add(function () {
+  var scene = new g.Scene({ game: g.game, assetIds: [&quot;bgm&quot;, &quot;se1&quot;] });
+  scene.loaded.add(function() {
     scene.assets[&quot;bgm&quot;].play();
-    scene.pointDownCapture.add(function () {
+    scene.pointDownCapture.add(function() {
       scene.assets[&quot;se1&quot;].play();
     });
   });

@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>マルチプレイの基礎</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1557204393058">
-<link rel="stylesheet" href="/css/header.css?1557204393058">
-<link rel="stylesheet" href="/css/footer.css?1557204393058">
+<link rel="stylesheet" href="/css/common.css?1559034089532">
+<link rel="stylesheet" href="/css/header.css?1559034089532">
+<link rel="stylesheet" href="/css/footer.css?1559034089532">
 
 
-<link rel="stylesheet" href="/css/asset.css?1557204393058">
+<link rel="stylesheet" href="/css/asset.css?1559034089532">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
+<link rel="stylesheet" href="/css/akashic-document.css?1559034089532">
 
-<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
+<link rel="stylesheet" href="/css/railscasts.css?1559034089532">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1557204393058"></script>
+<script src="/lib/common.js?1559034089532"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -102,9 +102,9 @@
 <p>Akashic Engine では、マルチプレイのゲームを作成することができます。</p>
 <blockquote>
 <p>ただしマルチプレイゲームの実行には、独自のサーバソフトウェアが必要になります。
-そのためシングルプレイのゲームと比べ、Web上で公開するハードルは高くなります。
-(シングルプレイであれば、出力したHTMLファイルをレンタルサーバなどにアップロードするだけでよく、独自のサーバソフトウェアの実行は必要ありません。
-また<a href="https://game.nicovideo.jp/atsumaru/">RPGアツマール</a>のようなHTML5ゲーム投稿サイトで公開することもでき、この場合はサーバを用意する必要さえありません)</p>
+そのためシングルプレイのゲームと比べ、Web 上で公開するハードルは高くなります。
+(シングルプレイであれば、出力した HTML ファイルをレンタルサーバなどにアップロードするだけでよく、独自のサーバソフトウェアの実行は必要ありません。
+また<a href="https://game.nicovideo.jp/atsumaru/">RPG アツマール</a>のような HTML5 ゲーム投稿サイトで公開することもでき、この場合はサーバを用意する必要さえありません)</p>
 <p>Akashic Engine で作成されたゲームは、ニコニコ生放送の放送内で遊ぶことができます。
 この場合、ゲーム開発者がサーバを用意する必要はありません。
 放送内では放送者と視聴者複数でマルチプレイすることもでき、現時点では、事実上これが Akashic Engine のマルチプレイゲームを一般に公開する方法です。
@@ -112,7 +112,7 @@
 <p>詳細はリンク先に譲りますが、ゲーム作成上は特別な対応は必要なく、 game.json の <code>environment.niconico.supportedModes</code> に <code>&quot;multi&quot;</code> を指定する必要がある程度です。</p>
 </blockquote>
 <p><a name="helloworld"></a></p>
-<h2>マルチプレイのHello World</h2>
+<h2>マルチプレイの Hello World</h2>
 <p>マルチプレイゲームのコーディングに特別な準備は必要ありません。</p>
 <p>Akashic Engine の提供する各種イベントには、全て「誰がそのイベントを生成したか」の情報が付与されています。
 たとえば <code>g.E#pointDown</code> のハンドラに与えられる <code>g.PointDownEvent</code> には <code>player</code> プロパティがあり、
@@ -157,57 +157,55 @@ scene.loaded.add(function () {
 <p><img src="/img/tutorial/chara.png" alt="chara.png"></p>
 <p>コードは次のようなものになります。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({
-    game: g.game,
-    assetIds: [&quot;chara&quot;]
+  game: g.game,
+  assetIds: [&quot;chara&quot;]
 });
 
-scene.loaded.add(function () {
-    var characters = {}; // キャラクタ管理テーブル
+scene.loaded.add(function() {
+  var characters = {}; // キャラクタ管理テーブル
 
-    // 画面内のどこかが押されたとき
-    scene.pointDownCapture.add(function (ev) {
-        var x = ev.point.x;  // 押された位置のX座標
-        var y = ev.point.y;  // 押された位置のY座標
-        var playerId = ev.player.id;   // 押したプレイヤーのID
+  // 画面内のどこかが押されたとき
+  scene.pointDownCapture.add(function(ev) {
+    var x = ev.point.x; // 押された位置のX座標
+    var y = ev.point.y; // 押された位置のY座標
+    var playerId = ev.player.id; // 押したプレイヤーのID
 
-        if (characters[playerId] == null) {
-            // プレイヤー playerId にとって初めての操作の場合: キャラクタデータを生成
-            var chara = {
-                targetX: x,
-                targetY: y,
-                entity: new g.Sprite({
-                    scene: scene,
-                    src: scene.assets[&quot;chara&quot;],
-                    x: x,
-                    y: y,
-                })
-            };
-            characters[playerId] = chara;
+    if (characters[playerId] == null) {
+      // プレイヤー playerId にとって初めての操作の場合: キャラクタデータを生成
+      var chara = {
+        targetX: x,
+        targetY: y,
+        entity: new g.Sprite({
+          scene: scene,
+          src: scene.assets[&quot;chara&quot;],
+          x: x,
+          y: y
+        })
+      };
+      characters[playerId] = chara;
 
-            // キャラクタのフレームごとの処理(目標座標 (targetX, targetY) に近づくように位置を更新)を登録
-            chara.entity.update.add(function () {
-                var diffX = chara.targetX - chara.entity.x;
-                var diffY = chara.targetY - chara.entity.y;
+      // キャラクタのフレームごとの処理(目標座標 (targetX, targetY) に近づくように位置を更新)を登録
+      chara.entity.update.add(function() {
+        var diffX = chara.targetX - chara.entity.x;
+        var diffY = chara.targetY - chara.entity.y;
 
-                // 既に目標座標にいるなら何もせず抜ける
-                if (diffX === 0 &amp;&amp; diffY === 0)
-                    return;
+        // 既に目標座標にいるなら何もせず抜ける
+        if (diffX === 0 &amp;&amp; diffY === 0) return;
 
-                // 目標座標から各軸10px以上離れていたら、1割ずつ接近。10px以下なら目標座標に移動
-                chara.entity.x += (Math.abs(diffX) &gt; 10) ? Math.floor(diffX / 10) : diffX;
-                chara.entity.y += (Math.abs(diffY) &gt; 10) ? Math.floor(diffY / 10) : diffY;
+        // 目標座標から各軸10px以上離れていたら、1割ずつ接近。10px以下なら目標座標に移動
+        chara.entity.x += Math.abs(diffX) &gt; 10 ? Math.floor(diffX / 10) : diffX;
+        chara.entity.y += Math.abs(diffY) &gt; 10 ? Math.floor(diffY / 10) : diffY;
 
-                chara.entity.modified(); // 変更を反映
-            });
+        chara.entity.modified(); // 変更を反映
+      });
 
-            scene.append(chara.entity); // シーンに生成したキャラクタ画像を追加
-
-        } else {
-            // プレイヤー playerId のキャラが既にいる場合: キャラの目標座標を、クリックされた位置に更新
-            characters[playerId].targetX = x;
-            characters[playerId].targetY = y;
-        }
-    });
+      scene.append(chara.entity); // シーンに生成したキャラクタ画像を追加
+    } else {
+      // プレイヤー playerId のキャラが既にいる場合: キャラの目標座標を、クリックされた位置に更新
+      characters[playerId].targetX = x;
+      characters[playerId].targetY = y;
+    }
+  });
 });
 </code></pre>
 <p>コードは増えていますが、</p>
@@ -236,7 +234,7 @@ scene.loaded.add(function () {
 <p><img src="/img/tutorial/cli-serve.png" alt="serve"></p>
 <p>先の例の「各プレイヤーに対応するキャラクタ画像がクリックした位置に移動するコンテンツ」の場合、画面をクリックするとキャラクタ画像が表示されます。
 もう一度クリックするとキャラクタ画像が移動します。</p>
-<p>この状態でもう一つブラウザウィンドウを開き、同じURLを読み込むと、同じゲームプレイに接続することができます。
+<p>この状態でもう一つブラウザウィンドウを開き、同じ URL を読み込むと、同じゲームプレイに接続することができます。
 それぞれの画面をクリックすると、それぞれのキャラクタ画像が操作されます。
 これでマルチプレイの動作を確認することができます。</p>
 <p><img src="/img/tutorial/cli-serve-multi-window.png" alt="複数ウィンドウ"></p>
@@ -247,15 +245,15 @@ scene.loaded.add(function () {
 <ul>
 <li>一番左の電源ボタン: ゲームプレイをリセットします。</li>
 <li>二番目のポーズボタン: ゲームプレイをポーズします。</li>
-<li>三番目のインスタンス追加ボタン: 同じURLでブラウザウィンドウを開きます(マルチプレイのプレイヤーを増やします)。</li>
+<li>三番目のインスタンス追加ボタン: 同じ URL でブラウザウィンドウを開きます(マルチプレイのプレイヤーを増やします)。</li>
 </ul>
 <p><code>akashic serve</code> コマンドは、 <code>akashic-sandbox</code> と同様に Ctrl-C で終了することができます。</p>
 <p><a name="architecture-intro"></a></p>
-<h2>Akashicにおけるマルチプレイ</h2>
+<h2>Akashic におけるマルチプレイ</h2>
 <p><code>akashic serve</code> でしばらくプレイした後に、ブラウザウィンドウを追加すると、最初にビデオ映像を早送りするような画面が表示されることに気がつきます。
 これは Akashic Engine のマルチプレイの実現方法に起因する動作です。</p>
-<p>Akashicにおけるマルチプレイは、プレイヤー間でゲームの実行状態を「間接的に」共有することで実現されています。
-Akashicはプレイヤー間で実行状態を直接的に共有することはしませんが、その代わりに <strong>全てのプレイヤーが行う全ての操作を共有します</strong> 。
+<p>Akashic におけるマルチプレイは、プレイヤー間でゲームの実行状態を「間接的に」共有することで実現されています。
+Akashic はプレイヤー間で実行状態を直接的に共有することはしませんが、その代わりに <strong>全てのプレイヤーが行う全ての操作を共有します</strong> 。
 ゲーム内で行われた全操作を全プレイヤーに通知することで、全プレイヤーの手元でまったく同じ処理を行い、結果として同じ実行状態を再現します。
 <strong>同じゲームスクリプトに、同じ経過フレーム数で同じイベントを与えれば、同じ実行状態に至るはずだ</strong> 、というのが、Akashic Engine のマルチプレイの基本的なデザインです。
 後から参加したプレイヤーに、早送りで最新状態に追いつく動作が発生するのはこのためです。</p>

@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>色々な描画</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1557204393058">
-<link rel="stylesheet" href="/css/header.css?1557204393058">
-<link rel="stylesheet" href="/css/footer.css?1557204393058">
+<link rel="stylesheet" href="/css/common.css?1559034089532">
+<link rel="stylesheet" href="/css/header.css?1559034089532">
+<link rel="stylesheet" href="/css/footer.css?1559034089532">
 
 
-<link rel="stylesheet" href="/css/asset.css?1557204393058">
+<link rel="stylesheet" href="/css/asset.css?1559034089532">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
+<link rel="stylesheet" href="/css/akashic-document.css?1559034089532">
 
-<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
+<link rel="stylesheet" href="/css/railscasts.css?1559034089532">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1557204393058"></script>
+<script src="/lib/common.js?1559034089532"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -165,8 +165,8 @@
 
 <p>以下のプログラムでは、ダイナミックフォントとラベルを利用して文字列を描画しています。</p>
 <pre><code class="lang-javascript">function main() {
-  var scene = new g.Scene({game: g.game});
-  scene.loaded.add(function () {
+  var scene = new g.Scene({ game: g.game });
+  scene.loaded.add(function() {
     var font = new g.DynamicFont({
       game: g.game,
       fontFamily: g.FontFamily.SansSerif,
@@ -211,10 +211,10 @@ label.invalidate();
 <code>modified()</code> を呼び出してください。
 <code>invalidate()</code> は <code>modified()</code> の機能を含んでいるので、
 <code>invalidate()</code> を呼び出した場合は <code>modified()</code> の呼び出しは不要です。</p>
-<p>以下は、500ミリ秒ごとにカウンタの値を増やすプログラム例です。</p>
+<p>以下は、500 ミリ秒ごとにカウンタの値を増やすプログラム例です。</p>
 <pre><code class="lang-javascript">function main() {
-  var scene = new g.Scene({game: g.game});
-  scene.loaded.add(function () {
+  var scene = new g.Scene({ game: g.game });
+  scene.loaded.add(function() {
     var font = new g.DynamicFont({
       fontFamily: g.FontFamily.SansSerif,
       size: 15,
@@ -231,7 +231,7 @@ label.invalidate();
       y: 10
     });
     scene.append(label);
-    scene.setInterval(function () {
+    scene.setInterval(function() {
       label.text = ++count + &quot;&quot;;
       label.invalidate();
     }, 500);
@@ -247,19 +247,19 @@ module.exports = main;
 <code>E</code> と異なり、<code>Pane</code> は子孫要素の描画領域を <code>Pane</code> の大きさに限定します。
 子要素が <code>Pane</code> の大きさをはみ出して描画しようとした場合、はみ出した部分は描画されません。</p>
 <pre><code class="lang-javascript">function main() {
-  var scene = new g.Scene({game: g.game});
-      scene.loaded.add(function () {
-      var pane = new g.Pane({scene: scene, width: 50, height: 50});
-      var rect = new g.FilledRect({
-        scene: scene,
-        width: 50,
-        height: 50,
-        x: 15,
-        y: 15,
-        angle: 30,
-        cssColor: &quot;red&quot;
-      });
-      pane.append(rect);
+  var scene = new g.Scene({ game: g.game });
+  scene.loaded.add(function() {
+    var pane = new g.Pane({ scene: scene, width: 50, height: 50 });
+    var rect = new g.FilledRect({
+      scene: scene,
+      width: 50,
+      height: 50,
+      x: 15,
+      y: 15,
+      angle: 30,
+      cssColor: &quot;red&quot;
+    });
+    pane.append(rect);
     scene.append(pane);
   });
   g.game.pushScene(scene);
@@ -279,9 +279,9 @@ module.exports = main;
 矩形オブジェクトの <code>modified()</code> の呼び出しをしていますが、
 ペイン自体の <code>invalidate()</code> の呼び出しはしていません。</p>
 <pre><code class="lang-javascript">function main() {
-  var scene = new g.Scene({game: g.game});
-  scene.loaded.add(function () {
-    var pane = new g.Pane({scene: scene, width: 50, height: 50});
+  var scene = new g.Scene({ game: g.game });
+  scene.loaded.add(function() {
+    var pane = new g.Pane({ scene: scene, width: 50, height: 50 });
     var rect = new g.FilledRect({
       scene: scene,
       width: 50,
@@ -293,7 +293,7 @@ module.exports = main;
     });
     pane.append(rect);
     scene.append(pane);
-    rect.update.add(function () {
+    rect.update.add(function() {
       ++rect.angle;
       rect.modified();
     });

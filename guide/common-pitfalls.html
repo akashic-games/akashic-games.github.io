@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>よくある落とし穴</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1557204393058">
-<link rel="stylesheet" href="/css/header.css?1557204393058">
-<link rel="stylesheet" href="/css/footer.css?1557204393058">
+<link rel="stylesheet" href="/css/common.css?1559034089532">
+<link rel="stylesheet" href="/css/header.css?1559034089532">
+<link rel="stylesheet" href="/css/footer.css?1559034089532">
 
 
-<link rel="stylesheet" href="/css/asset.css?1557204393058">
+<link rel="stylesheet" href="/css/asset.css?1559034089532">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
+<link rel="stylesheet" href="/css/akashic-document.css?1559034089532">
 
-<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
+<link rel="stylesheet" href="/css/railscasts.css?1559034089532">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1557204393058"></script>
+<script src="/lib/common.js?1559034089532"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -99,36 +99,36 @@
 		<div class="inner responsive--width">
 			<h1>よくある落とし穴</h1>
 <h2><a name="これは" /> これは</h2>
-<p>Akashic Engineでゲームを開発する際の、よくある落とし穴をまとめます。</p>
-<p>Akashicゲームでマルチプレイやリプレイを実現するには、「同じコードが同じ入力に対して同じ動作をする」必要があります。
+<p>Akashic Engine でゲームを開発する際の、よくある落とし穴をまとめます。</p>
+<p>Akashic ゲームでマルチプレイやリプレイを実現するには、「同じコードが同じ入力に対して同じ動作をする」必要があります。
 環境が異なっても、実行日時が違っても、同じ動作でなければなりません。</p>
-<p>なぜなら、Akashic Engineは「ユーザの操作」を共有することで間接的にゲームの実行状態を同期・共有するためです。
+<p>なぜなら、Akashic Engine は「ユーザの操作」を共有することで間接的にゲームの実行状態を同期・共有するためです。
 同じ操作に対する動作にばらつきがあると、リプレイを見るたびにゲームのスコアが変わってしまったり、
 マルチプレイのプレイヤー間でゲームの状態が食い違ってしまうといった問題が生じます。</p>
-<p>JavaScriptの機能には、同じ呼び出しでも結果が異なりうるものが存在します。
-Akashic Engine自体は、それらの機能を意図的に使えなくするなどの制限は行なっていません。
+<p>JavaScript の機能には、同じ呼び出しでも結果が異なりうるものが存在します。
+Akashic Engine 自体は、それらの機能を意図的に使えなくするなどの制限は行なっていません。
 その種の機能を使う場合、注意深く利用する必要があります。</p>
 <h2><a name="現在時刻を使ってしまう" /> 現在時刻を使ってしまう</h2>
 <p><code>Date.now()</code> や <code>new Date()</code> など、 <code>Date</code> 関連のいくつかの機能は「現在時刻」の情報を扱います。
 これらの実行結果は、当然ながら実行環境の時刻設定と呼び出されたタイミングに依存します。</p>
-<p>Akashicゲームでは、 <strong>現在時刻に依存してゲームの実行状態が変わらないようにしてください</strong> 。</p>
+<p>Akashic ゲームでは、 <strong>現在時刻に依存してゲームの実行状態が変わらないようにしてください</strong> 。</p>
 <p>例えば、自動生成のダンジョンを生成する時のシード情報として「現在時刻」を使ってしまうと、
 リプレイを後から見た時(違う時刻で実行した時)に異なるダンジョンが生成されてしまいます。
 ダンジョンが変わっても操作自体は最初のプレイのままなので、でたらめな操作が行われたようなリプレイになります。
 (ランダムな値が必要な場合は、後述のとおり <code>g.Game#random</code> を利用してください。)</p>
 <p>現在時刻を利用する場合は、あくまでも画面演出のためだけに使うなど、実行状態に影響しないよう注意してください。</p>
-<p>なおAkashic Engine v2.3.6以降では、試験的に <code>g.Game#getCurrentTime()</code> を導入しています。
-これは <code>Date.now()</code> と同じく1970年1月1日0時0分0秒(UTC)からの経過時刻(ミリ秒)を返す関数(ただし小数点以下を含む)です。
+<p>なお Akashic Engine v2.3.6 以降では、試験的に <code>g.Game#getCurrentTime()</code> を導入しています。
+これは <code>Date.now()</code> と同じく 1970 年 1 月 1 日 0 時 0 分 0 秒(UTC)からの経過時刻(ミリ秒)を返す関数(ただし小数点以下を含む)です。
 <code>Date.now()</code> と異なり、リプレイ時にも元のプレイ当時の時刻が再現されます。
 しかし、この関数もローディングシーンの時間に影響は受けるため、マルチプレイのプレイヤー間で一致する時刻情報としては利用できません。
 あくまで演出上のものとして扱う必要があります。</p>
 <h2><a name="Math.random()を使ってしまう" /> Math.random()を使ってしまう</h2>
 <p>明らかに、 <code>Math.random()</code> の戻り値(擬似乱数)は一定ではありません。
 Akashic ゲームでは基本的に <code>Math.random()</code> を利用しないでください(次節の例外を除き)。</p>
-<p>代わりに、Akashic Engineが提供する乱数生成器 <code>g.Game#random</code> を利用してください。
+<p>代わりに、Akashic Engine が提供する乱数生成器 <code>g.Game#random</code> を利用してください。
 これは乱数シードとアルゴリズムが一つのプレイの中で統一された乱数生成器です。
-Akashic Engineのプレイはこの乱数生成器のシードを記録に含めるため、 <code>g.Game#random</code> の生成結果はリプレイ時にも保たれます。</p>
-<h2><a name="g.Game#randomをローカル処理に使ってしまう" /> g.Game#randomをローカル処理に使ってしまう</h2>
+Akashic Engine のプレイはこの乱数生成器のシードを記録に含めるため、 <code>g.Game#random</code> の生成結果はリプレイ時にも保たれます。</p>
+<h2><a name="g.Game#randomをローカル処理に使ってしまう" /> g.Game#random をローカル処理に使ってしまう</h2>
 <p>ただし、例外的に <code>g.Game#random</code> を利用すべきでない箇所も存在します。</p>
 <p>ローカルエンティティがもたらすローカルイベントの処理中 (ローカル処理中) がそれです。
 ローカルイベントは「プレイヤー間で共有されない」「プレイとして記録に残らない」例外的なイベントであるため、
@@ -138,25 +138,25 @@ Akashic Engineのプレイはこの乱数生成器のシードを記録に含め
 それらの中でも <code>g.Game#random</code> を利用しないでください。</p>
 <p><code>Math.random()</code> と <code>g.Game#random</code> の使い分けは非常に紛らわしいのですが、
 少なくとも <strong>ローカルエンティティやイベントフィルタを利用しない一般的なコンテンツでは、 <code>Math.random()</code> を使うべき局面はない</strong> ということは言えます。</p>
-<h2><a name="@akashic/akashic-engineをrequire()/importしてしまう" /> @akashic/akashic-engineをrequire()/importしてしまう</h2>
-<p>Akashic Engineのパッケージ <strong><code>&quot;@akashic/akashic-engine&quot;</code> を、スクリプトアセット内で <code>require()</code> しないでください</strong> 。</p>
-<p>つまり、次のコードは(Akashicゲームとしては)誤りです。</p>
+<h2><a name="@akashic/akashic-engineをrequire()/importしてしまう" /> @akashic/akashic-engine を require()/import してしまう</h2>
+<p>Akashic Engine のパッケージ <strong><code>&quot;@akashic/akashic-engine&quot;</code> を、スクリプトアセット内で <code>require()</code> しないでください</strong> 。</p>
+<p>つまり、次のコードは(Akashic ゲームとしては)誤りです。</p>
 <pre><code>var g = require(&quot;@akashic/akashic-engine&quot;);
 </code></pre><p>TypeScript の場合の、次の記述も同様に誤りです。</p>
 <pre><code>import * as g from &quot;@akashic/akashic-engine&quot;;
-</code></pre><p>なぜなら、Akashic Engineの機能を提供する変数 <code>g</code> は、スクリプトアセット内では暗黙に存在するグローバル変数であるためです。
-変数 <code>g</code> は実行環境(akashic-sandboxなど)によって初期化され、スクリプトアセットに与えられます。
+</code></pre><p>なぜなら、Akashic Engine の機能を提供する変数 <code>g</code> は、スクリプトアセット内では暗黙に存在するグローバル変数であるためです。
+変数 <code>g</code> は実行環境(akashic-sandbox など)によって初期化され、スクリプトアセットに与えられます。
 ゲーム開発者が自力で <code>require()</code> してしまった場合、実行環境が与えるものとコンフリクトして正しく動作しない可能性があります。</p>
 <p>基本的に、ゲーム開発者が明示的に <code>@akashic/akashic-engine</code> をインストールする必要はありません。</p>
-<p>ただしゼロからTypeScriptで開発する場合は、 <code>g</code> の型定義(d.ts ファイル)が必要になります。
-その場合は <code>npm install -DE @akashic/akashic-engine</code> を実行して(<code>devDependencies</code> として)Akashic Engineをインストールし、
+<p>ただしゼロから TypeScript で開発する場合は、 <code>g</code> の型定義(d.ts ファイル)が必要になります。
+その場合は <code>npm install -DE @akashic/akashic-engine</code> を実行して(<code>devDependencies</code> として)Akashic Engine をインストールし、
 <code>node_modules/@akashic/akashic-engine/lib/main.d.ts</code> をコンパイル対象に含めてください。</p>
-<p><code>akashic init --type typescript</code> で生成されるTypeScript用テンプレートでは、
-最初からAkashic Engineの型定義ファイルがコンパイル対象に含まれているので、特別な対応は必要ありません。</p>
-<h2><a name="ES2015以降の機能・構文を使ってしまう" /> ES2015以降の機能・構文を使ってしまう</h2>
-<p>JavaScriptの言語仕様であるECMAScript (ECMA-262)にはいくつかのバージョンがあり、俗にES5, ES2015(ES6), ES2016, ES2017などと呼称されます。
-2015年策定のES2015以降については、2018年現在でも、特に古めのスマートフォンでのサポート状況にばらつきがあります。</p>
-<p>動作の互換性のため、 <strong>現在のところ、ES2015以降の構文や機能は利用しないことを強く推奨します</strong> 。
+<p><code>akashic init --type typescript</code> で生成される TypeScript 用テンプレートでは、
+最初から Akashic Engine の型定義ファイルがコンパイル対象に含まれているので、特別な対応は必要ありません。</p>
+<h2><a name="ES2015以降の機能・構文を使ってしまう" /> ES2015 以降の機能・構文を使ってしまう</h2>
+<p>JavaScript の言語仕様である ECMAScript (ECMA-262)にはいくつかのバージョンがあり、俗に ES5, ES2015(ES6), ES2016, ES2017 などと呼称されます。
+2015 年策定の ES2015 以降については、2018 年現在でも、特に古めのスマートフォンでのサポート状況にばらつきがあります。</p>
+<p>動作の互換性のため、 <strong>現在のところ、ES2015 以降の構文や機能は利用しないことを強く推奨します</strong> 。
 これには少なくとも次の構文と機能が含まれます。</p>
 <ul>
 <li>構文<ul>
@@ -187,16 +187,16 @@ Akashic Engineのプレイはこの乱数生成器のシードを記録に含め
 </li>
 </ul>
 <p>現実的に、古めのスマートフォン環境固有の問題が報告されても、ゲーム開発者にとっては現象確認さえ容易でないことが多いと考えられるためです。</p>
-<p>もちろん、できるだけ広範な環境をサポートするために新しめの機能を避けるかどうかは、Akashic Engine固有の議論ではありません。
-しかし「元のプレイと異なる環境でリプレイを閲覧する」などのユースケースが生じやすいAkashicゲームでは、特に問題になりやすいので注意してください。</p>
-<p>なお <code>akashic init --type typescript</code> で生成されるTypeScript用テンプレートは、最初からコンパイル結果がES5互換になるように設定されています。
-そのため <code>const</code> や <code>=&gt;</code> など、TypeScriptがサポートする各種構文を利用することができます。
+<p>もちろん、できるだけ広範な環境をサポートするために新しめの機能を避けるかどうかは、Akashic Engine 固有の議論ではありません。
+しかし「元のプレイと異なる環境でリプレイを閲覧する」などのユースケースが生じやすい Akashic ゲームでは、特に問題になりやすいので注意してください。</p>
+<p>なお <code>akashic init --type typescript</code> で生成される TypeScript 用テンプレートは、最初からコンパイル結果が ES5 互換になるように設定されています。
+そのため <code>const</code> や <code>=&gt;</code> など、TypeScript がサポートする各種構文を利用することができます。
 (あくまでも構文のみです。 <code>Map</code> など根本的に実装がないと動かない機能には対応できません。)</p>
-<p>また <code>akashic init --type javascript-minimal</code> で生成されるJavaScript用テンプレート(デフォルトテンプレート)では、 <code>npm run lint</code> を実行するとコードをlintできます。
-ES2015以降の構文を検出するとエラーを表示するように設定されているので、チェックに使うことができます。(2018-08-31現在、予定)</p>
-<p><code>akashic export</code> も、ES2015以降の構文を検出すると警告を表示します。(2018-08-31現在、予定)</p>
-<h2><a name="Array.prototype.sortの安定性を仮定してしまう" /> Array.prototype.sortの安定性を仮定してしまう</h2>
-<p>ECMAScriptの言語仕様上、 <code>Array.prototype.sort</code> が安定なソートであることは保証されていません。
+<p>また <code>akashic init --type javascript-minimal</code> で生成される JavaScript 用テンプレート(デフォルトテンプレート)では、 <code>npm run lint</code> を実行するとコードを lint できます。
+ES2015 以降の構文を検出するとエラーを表示するように設定されているので、チェックに使うことができます。(2018-08-31 現在、予定)</p>
+<p><code>akashic export</code> も、ES2015 以降の構文を検出すると警告を表示します。(2018-08-31 現在、予定)</p>
+<h2><a name="Array.prototype.sortの安定性を仮定してしまう" /> Array.prototype.sort の安定性を仮定してしまう</h2>
+<p>ECMAScript の言語仕様上、 <code>Array.prototype.sort</code> が安定なソートであることは保証されていません。
 つまり、 <code>sort()</code> に与えられた比較関数が、ある二つの要素について <code>0</code> を返した時(等価であるとした時)、ソート後のそれらの順序は実装依存です。
 (実際、あるバージョンの Safari と Chrome では <code>sort()</code> の結果が異なる場合があることが分かっています。)</p>
 <p>例えば次のコードの実行結果は環境によって異なる可能性があります。</p>
@@ -213,11 +213,11 @@ console.log(array[0].value);  // ==&gt; &quot;the first&quot;
 console.log(array[4].value);  // ==&gt; &quot;the last&quot;
 console.log(array[1].value);  // ==&gt; &quot;foo&quot;, &quot;bar&quot; or &quot;zoo&quot; ???
 </code></pre><p>このコードは <code>array</code> の各要素を <code>key</code> プロパティの値の大小でソートするものです。
-<code>sort()</code> の実行後、 <code>array</code> の第0要素は <code>e</code> と、第4要素は <code>d</code> と必ず同値ですが、第1要素が何になるかは実装依存です。</p>
+<code>sort()</code> の実行後、 <code>array</code> の第 0 要素は <code>e</code> と、第 4 要素は <code>d</code> と必ず同値ですが、第 1 要素が何になるかは実装依存です。</p>
 <p>ゲーム開発者は、<strong><code>sort()</code> の比較関数が <code>0</code> を返す(等価な)要素の順序に依存しないように注意してください</strong> 。
 可能ならば、 <code>0</code> を返さないような比較関数を使うことを推奨します。</p>
-<h2><a name="edge-decode-error" /> Microsoft Edgeでデコードエラーが出てしまう場合</h2>
-<p>Microsoft Edgeで、オーディオファイル(.aac)の読み込み時に下記のエラーが出力されてゲームの進行が止まることがあります。</p>
+<h2><a name="edge-decode-error" /> Microsoft Edge でデコードエラーが出てしまう場合</h2>
+<p>Microsoft Edge で、オーディオファイル(.aac)の読み込み時に下記のエラーが出力されてゲームの進行が止まることがあります。</p>
 <pre><code>WEBAUDIO17014：デコードエラー：指定されたストリームが破損しているか、サポートされていません
 </code></pre><p>詳細な発生条件はわかっていませんが、他の環境では再生できるファイルでも再生できないことがあるようです。
 このエラーが出た場合、元ファイルのサンプルレートの変更や、出力するオーディオファイルのビットレートを変更を行うとエラーが解消される可能性があります。</p>

@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>プレイヤーごとに異なる描画を行う</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1557204393058">
-<link rel="stylesheet" href="/css/header.css?1557204393058">
-<link rel="stylesheet" href="/css/footer.css?1557204393058">
+<link rel="stylesheet" href="/css/common.css?1559034089532">
+<link rel="stylesheet" href="/css/header.css?1559034089532">
+<link rel="stylesheet" href="/css/footer.css?1559034089532">
 
 
-<link rel="stylesheet" href="/css/asset.css?1557204393058">
+<link rel="stylesheet" href="/css/asset.css?1559034089532">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
+<link rel="stylesheet" href="/css/akashic-document.css?1559034089532">
 
-<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
+<link rel="stylesheet" href="/css/railscasts.css?1559034089532">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1557204393058"></script>
+<script src="/lib/common.js?1559034089532"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -99,18 +99,18 @@
 		<div class="inner responsive--width">
 			<h1>プレイヤーごとに異なる描画を行う</h1>
 <p>前節ではマルチプレイに対応する方法として、「イベントを生成したプレイヤーごとに処理を行えばよい」ということを述べました。
-また「全プレイヤーの手元で、同じタイミングで同じイベントを消化することで同じ状態を再現する」という、Akashicのマルチプレイのデザインに触れました。</p>
+また「全プレイヤーの手元で、同じタイミングで同じイベントを消化することで同じ状態を再現する」という、Akashic のマルチプレイのデザインに触れました。</p>
 <p>しかしこれだけでは、作成できるゲームは、全プレイヤーがまったく同じ画面を見るものに限られます。たとえば将棋は作成できるでしょう。
 将棋盤や持ち駒の情報は全プレイヤー共通で、一画面にすべて表示してしまうことが可能だからです(後手が盤面上側になってしまうという問題はありますが)。
-しかし別のゲームでは、たとえば各プレイヤーで違うアイテムを使うために、プレイヤーごとのアイテム切り替えUIを作りたいかもしれません。
-この場合プレイヤーごとにアイテム切り替えUIの状態は異なる必要があります。</p>
+しかし別のゲームでは、たとえば各プレイヤーで違うアイテムを使うために、プレイヤーごとのアイテム切り替え UI を作りたいかもしれません。
+この場合プレイヤーごとにアイテム切り替え UI の状態は異なる必要があります。</p>
 <p>そのような状況に対応するため、Akashic Engine はローカルエンティティ・ローカルイベントという概念を持っています。</p>
 <p><strong>ローカルエンティティ</strong> とは、「そのエンティティを参照するイベントがすべてローカルになる」エンティティ (<code>g.E</code>) です。
 <strong>ローカルイベント</strong> は、通常のイベントと同様ですが「それを生成したプレイヤーにだけ通知される」という特徴を持つイベントです。</p>
 <p><a name="local-event"></a></p>
 <h2>ローカルイベント</h2>
-<p>Akashicのイベント <code>g.Event</code> は、原則的に全てプレイヤー間で共有されます。
-前述のとおりAkashicのマルチプレイは、各プレイヤーが発生させたイベントを全プレイヤー間で共有することで実現されているためです。</p>
+<p>Akashic のイベント <code>g.Event</code> は、原則的に全てプレイヤー間で共有されます。
+前述のとおり Akashic のマルチプレイは、各プレイヤーが発生させたイベントを全プレイヤー間で共有することで実現されているためです。</p>
 <p>この原則の例外がローカルイベントです。
 あるイベントがローカルであるとき、そのイベントは、それを生成したプレイヤー以外には共有されません。
 ローカルイベントは「生成したプレイヤー自身にしか通知されない」ため、プレイヤーごとに異なる処理を実現するのに利用することができます。</p>
@@ -129,95 +129,94 @@
 <p>ローカルエンティティは、エンティティのコンストラクタ引数の <code>local</code> プロパティに <code>true</code> を与えることで生成できます。
 以下は、シーン <code>scene</code> に属するローカルな <code>g.Sprite</code> を生成するコードの例です。</p>
 <pre><code class="lang-js">var sprite = new g.Sprite({
-    scene: scene,
-    src: scene.assets[&quot;chara1&quot;], // (アセットID &quot;chara1&quot; のイメージアセットがある想定)
-    local: true  // ローカルであることを指定
+  scene: scene,
+  src: scene.assets[&quot;chara1&quot;], // (アセットID &quot;chara1&quot; のイメージアセットがある想定)
+  local: true // ローカルであることを指定
 });
 </code></pre>
 <p>その性質から、ローカルエンティティは、必ずしも全てのエンジンインスタンス上に同じように存在し表示されている必要がありません。
-すなわちプレイヤー別のUIを実現することができます。</p>
-<p>クリックした位置に四角形を表示するだけのコンテンツに、プレイヤー別の色選択UIを表示するコードは次のようなものになります。</p>
+すなわちプレイヤー別の UI を実現することができます。</p>
+<p>クリックした位置に四角形を表示するだけのコンテンツに、プレイヤー別の色選択 UI を表示するコードは次のようなものになります。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
 
-scene.loaded.add(function () {
-    var userColors = {};  // ユーザ別の色テーブル
+scene.loaded.add(function() {
+  var userColors = {}; // ユーザ別の色テーブル
 
-    // 画面がタッチされた時、矩形を置く
-    scene.pointDownCapture.add(function (ev) {
-        // 対象がある(他のtouchableに対するpointDown)なら無視
-        if (ev.target != null) {
-            return;
-        }
+  // 画面がタッチされた時、矩形を置く
+  scene.pointDownCapture.add(function(ev) {
+    // 対象がある(他のtouchableに対するpointDown)なら無視
+    if (ev.target != null) {
+      return;
+    }
 
-        // クリックしたプレイヤーの色で矩形を生成
-        var rect = new g.FilledRect({
-            scene: scene,
-            x: ev.point.x,
-            y: ev.point.y,
-            width: 15,
-            height: 15,
-            cssColor: userColors[ev.player.id] || &quot;red&quot;  // そのプレイヤーの選択している色(なければ赤)
-        });
-        scene.append(rect);
+    // クリックしたプレイヤーの色で矩形を生成
+    var rect = new g.FilledRect({
+      scene: scene,
+      x: ev.point.x,
+      y: ev.point.y,
+      width: 15,
+      height: 15,
+      cssColor: userColors[ev.player.id] || &quot;red&quot; // そのプレイヤーの選択している色(なければ赤)
     });
+    scene.append(rect);
+  });
 
-    // ローカルエンティティで色切り替えボタン (緑)
-    var greenButton = new g.FilledRect({
-        scene: scene,
-        local: true,  // ローカルにする
-        x: 5,
-        y: 5,
-        width: 10,
-        height: 10,
-        cssColor: &quot;green&quot;,
-        touchable: true,
-        opacity: 0.3
-    });
-    greenButton.pointUp.add(function (ev) {
-        // ローカルエンティティのUIの表示を変更
-        greenButton.opacity = 1;
-        greenButton.modified();
-        blueButton.opacity = 0.3;  // 非選択状態のものは半透明に
-        blueButton.modified();
+  // ローカルエンティティで色切り替えボタン (緑)
+  var greenButton = new g.FilledRect({
+    scene: scene,
+    local: true, // ローカルにする
+    x: 5,
+    y: 5,
+    width: 10,
+    height: 10,
+    cssColor: &quot;green&quot;,
+    touchable: true,
+    opacity: 0.3
+  });
+  greenButton.pointUp.add(function(ev) {
+    // ローカルエンティティのUIの表示を変更
+    greenButton.opacity = 1;
+    greenButton.modified();
+    blueButton.opacity = 0.3; // 非選択状態のものは半透明に
+    blueButton.modified();
 
-        // 全員に自分の色変更イベントを送信 (後述)
-        g.game.raiseEvent(new g.MessageEvent({ color: &quot;green&quot; }));
-    });
-    scene.append(greenButton);
+    // 全員に自分の色変更イベントを送信 (後述)
+    g.game.raiseEvent(new g.MessageEvent({ color: &quot;green&quot; }));
+  });
+  scene.append(greenButton);
 
-    // ローカルエンティティ色切り替えボタン (青)
-    var blueButton = new g.FilledRect({
-        scene: scene,
-        local: true,  // ローカルエンティティ
-        x: 20,
-        y: 5,
-        width: 10,
-        height: 10,
-        cssColor: &quot;blue&quot;,
-        touchable: true,
-        opacity: 0.3
-    });
-    blueButton.pointUp.add(function () {
-        // ローカルエンティティのUIの表示を変更
-        greenButton.opacity = 0.3;  // 非選択状態のものは半透明に
-        greenButton.modified();
-        blueButton.opacity = 1;
-        blueButton.modified();
+  // ローカルエンティティ色切り替えボタン (青)
+  var blueButton = new g.FilledRect({
+    scene: scene,
+    local: true, // ローカルエンティティ
+    x: 20,
+    y: 5,
+    width: 10,
+    height: 10,
+    cssColor: &quot;blue&quot;,
+    touchable: true,
+    opacity: 0.3
+  });
+  blueButton.pointUp.add(function() {
+    // ローカルエンティティのUIの表示を変更
+    greenButton.opacity = 0.3; // 非選択状態のものは半透明に
+    greenButton.modified();
+    blueButton.opacity = 1;
+    blueButton.modified();
 
-        // 全員に自分の色変更イベントを送信 (後述)
-        g.game.raiseEvent(new g.MessageEvent({ color: &quot;blue&quot; }));
-    });
-    scene.append(blueButton);
+    // 全員に自分の色変更イベントを送信 (後述)
+    g.game.raiseEvent(new g.MessageEvent({ color: &quot;blue&quot; }));
+  });
+  scene.append(blueButton);
 
-    // (raiseEvent()で全プレイヤーに送信された)MessageEventを受け取る処理: 送信プレイヤーの色情報を更新する
-    scene.message.add(function (msg) {
-        // 関係ないイベントは無視して抜ける
-        if (!msg.data || !msg.data.color)
-            return;
+  // (raiseEvent()で全プレイヤーに送信された)MessageEventを受け取る処理: 送信プレイヤーの色情報を更新する
+  scene.message.add(function(msg) {
+    // 関係ないイベントは無視して抜ける
+    if (!msg.data || !msg.data.color) return;
 
-        // イベントを送信したプレイヤーの色情報を更新する
-        userColors[msg.player.id] = msg.data.color;
-    });
+    // イベントを送信したプレイヤーの色情報を更新する
+    userColors[msg.player.id] = msg.data.color;
+  });
 });
 </code></pre>
 <p>このコードでは、画面左上に緑と青のボタン(ただの矩形ですが)が表示され、画面のその他の位置をタッチすると矩形が表示されるものです。</p>
@@ -240,11 +239,11 @@ scene.loaded.add(function () {
 イベントにはそれを生成したプレイヤー情報がついているので、 上のコード例では <code>scene.message</code> 内で <code>msg.player.id</code> で送信したプレイヤーを特定して、色情報を更新しています。</p>
 <p>流れを整理すると次のようになります。</p>
 <ol>
-<li>ローカルエンティティで表示したUIをプレイヤーAが操作する</li>
-<li>プレイヤーAにローカルイベントが通知される</li>
-<li>プレイヤーAの手元で起きたローカルイベントの処理が <code>raiseEvent()</code> を呼び出す (プレイヤーAの色情報を送信する)</li>
+<li>ローカルエンティティで表示した UI をプレイヤー A が操作する</li>
+<li>プレイヤー A にローカルイベントが通知される</li>
+<li>プレイヤー A の手元で起きたローカルイベントの処理が <code>raiseEvent()</code> を呼び出す (プレイヤー A の色情報を送信する)</li>
 <li><code>raiseEvent()</code> されたイベントが全プレイヤーに通知される</li>
-<li><code>raiseEvent()</code> されたイベントを処理してゲームのグローバルな実行状態を変更する (全員がプレイヤーAの矩形の色情報を更新する)</li>
+<li><code>raiseEvent()</code> されたイベントを処理してゲームのグローバルな実行状態を変更する (全員がプレイヤー A の矩形の色情報を更新する)</li>
 </ol>
 <p><code>raiseEvent()</code> はローカルイベントの処理中にしか呼び出すべきではないことに注意してください。
 非ローカルイベントで行う処理は全プレイヤーが実行するため、そこで <code>raiseEvent()</code> を呼び出すと、プレイヤーの人数分のイベントが輻輳して送信されることになってしまいます。</p>

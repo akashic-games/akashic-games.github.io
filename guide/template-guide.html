@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic init テンプレート利用ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1557204393058">
-<link rel="stylesheet" href="/css/header.css?1557204393058">
-<link rel="stylesheet" href="/css/footer.css?1557204393058">
+<link rel="stylesheet" href="/css/common.css?1559034089532">
+<link rel="stylesheet" href="/css/header.css?1559034089532">
+<link rel="stylesheet" href="/css/footer.css?1559034089532">
 
 
-<link rel="stylesheet" href="/css/asset.css?1557204393058">
+<link rel="stylesheet" href="/css/asset.css?1559034089532">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
+<link rel="stylesheet" href="/css/akashic-document.css?1559034089532">
 
-<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
+<link rel="stylesheet" href="/css/railscasts.css?1559034089532">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1557204393058"></script>
+<script src="/lib/common.js?1559034089532"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -101,10 +101,10 @@
 <p><code>akashic init</code> コマンドで利用可能なカスタムテンプレートの
 作成方法と、テンプレートをチームで共有する方法を説明します。</p>
 <h2>自分だけが利用するテンプレートを作る</h2>
-<p>作成したAkashicゲームをテンプレートにするときは、作成したゲームを
+<p>作成した Akashic ゲームをテンプレートにするときは、作成したゲームを
 ディレクトリごとテンプレートディレクトリにコピーします。</p>
-<p>テンプレートディレクトリの場所はWindowsの場合は <code>%USERPROFILE%\.akashic-templates</code>
-Unix/Linuxの場合は <code>$HOME/.akashic-templates</code> です。</p>
+<p>テンプレートディレクトリの場所は Windows の場合は <code>%USERPROFILE%\.akashic-templates</code>
+Unix/Linux の場合は <code>$HOME/.akashic-templates</code> です。</p>
 <p><code>akashic init</code> はテンプレートディレクトリから、テンプレート名と同じ名前のディレクトリを探し、
 見つかった場合はその中身をディレクトリ構造を保ったままカレントディレクトリにコピーします。</p>
 <p>コピー完了後 <code>width</code>, <code>height</code>, <code>fps</code> の値をユーザに問い合わせ、
@@ -122,7 +122,7 @@ Unix/Linuxの場合は <code>$HOME/.akashic-templates</code> です。</p>
 ゲームのルートディレクトリ以下の <code>game</code> ディレクトリ内に
 配置されている <code>game.json</code> を利用します。</p>
 <pre><code class="lang-json">{
-    &quot;gameJson&quot;: &quot;game/game.json&quot;
+  &quot;gameJson&quot;: &quot;game/game.json&quot;
 }
 </code></pre>
 <h3>カスタムテンプレートを akashic init のデフォルトにする</h3>
@@ -132,20 +132,20 @@ Unix/Linuxの場合は <code>$HOME/.akashic-templates</code> です。</p>
 <pre><code>[init]
 defaultTemplateType=&quot;mytemplate&quot;
 </code></pre><h2>チームでテンプレートを共有する</h2>
-<p>Webサーバを用意して、テンプレートをzipで固めたものを配置して
+<p>Web サーバを用意して、テンプレートを zip で固めたものを配置して
 テンプレート配信サーバを用意することで、チームでテンプレートを共有できます。
 テンプレート配信サーバが登録されていると、<code>akashic init</code> は指定した名前のテンプレートが
 テンプレートディレクトリに存在しない場合に、サーバからテンプレートをダウンロードします。</p>
-<h3>zipファイルの作り方</h3>
-<p>ゲームのコンテンツを <code>テンプレート名.zip</code> という名前でzip圧縮します。
+<h3>zip ファイルの作り方</h3>
+<p>ゲームのコンテンツを <code>テンプレート名.zip</code> という名前で zip 圧縮します。
 トップレベルディレクトリは含まないように圧縮してください。</p>
-<p>例えばzipコマンドを利用する場合、ゲームのディレクトリで以下の
+<p>例えば zip コマンドを利用する場合、ゲームのディレクトリで以下の
 コマンドを利用して作成できます。</p>
 <pre><code class="lang-sh">zip -R mytemplate.zip *
 </code></pre>
 <h3>テンプレートリストの作り方</h3>
-<p>Webサーバには <code>template-list.json</code> という名前のファイルが必要です。
-このファイルには以下のようにテンプレート名とzipファイルのパスの対応を記述します。</p>
+<p>Web サーバには <code>template-list.json</code> という名前のファイルが必要です。
+このファイルには以下のようにテンプレート名と zip ファイルのパスの対応を記述します。</p>
 <pre><code class="lang-json">{
   &quot;templates&quot;: {
     &quot;javascript&quot;: &quot;javascript.zip&quot;,
@@ -162,7 +162,7 @@ repository=&quot;http://example.com/templates/&quot;
 </code></pre><p>このように設定した場合、以下のアドレスでファイルを取得できる必要があります。</p>
 <ul>
 <li><code>http://example.com/templates/template-list.json</code> でテンプレートリスト。</li>
-<li><code>http://example.com/templates/mytemplate.zip</code> でテンプレートのzipファイル。</li>
+<li><code>http://example.com/templates/mytemplate.zip</code> でテンプレートの zip ファイル。</li>
 </ul>
 <h3>動作確認</h3>
 <p>テンプレートディレクトリに <code>mytemplate</code> が存在するばあいはディレクトリを削除して、

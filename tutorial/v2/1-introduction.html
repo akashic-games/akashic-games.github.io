@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic 導入</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1557204393058">
-<link rel="stylesheet" href="/css/header.css?1557204393058">
-<link rel="stylesheet" href="/css/footer.css?1557204393058">
+<link rel="stylesheet" href="/css/common.css?1559034089532">
+<link rel="stylesheet" href="/css/header.css?1559034089532">
+<link rel="stylesheet" href="/css/footer.css?1559034089532">
 
 
-<link rel="stylesheet" href="/css/asset.css?1557204393058">
+<link rel="stylesheet" href="/css/asset.css?1559034089532">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
+<link rel="stylesheet" href="/css/akashic-document.css?1559034089532">
 
-<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
+<link rel="stylesheet" href="/css/railscasts.css?1559034089532">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1557204393058"></script>
+<script src="/lib/common.js?1559034089532"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -106,12 +106,12 @@ Akashic Engine は JavaScript や TypeScript を利用してゲームのコー�
 JavaScript に初めて触れる方や、知識に不安のある方は、
 適宜インターネット上の解説記事や入門書を参照してください。</p>
 <p>チュートリアルで説明している内容を試すには、
-コンピュータ (Windows, Mac, Linuxなど) とインターネット接続環境が必要です。
+コンピュータ (Windows, Mac, Linux など) とインターネット接続環境が必要です。
 Akashic Engine を利用したゲーム開発にはプログラミング作業が必要になり、
 その過程で次のような操作を行う必要があります。</p>
 <ul>
 <li>テキストエディタを利用してソースファイルを作成する。</li>
-<li>CUIウインドウを利用してコマンドを実行する。</li>
+<li>CUI ウインドウを利用してコマンドを実行する。</li>
 <li>開発に必要なプログラムをインターネットからダウンロードしてインストールする。</li>
 </ul>
 <p>これらの操作は利用しているコンピュータの種類や
@@ -152,7 +152,7 @@ CUI ウインドウに次のコマンドを入力してください。</p>
 <h3><a name="Akashic Engine のインストール"></a> Akashic Engine のインストール</h3>
 <p>Akashic Engine のインストールには <code>npm</code> コマンドを利用します。
 <code>npm</code> コマンドを利用すると <code>npm install -g &lt;パッケージ名&gt;</code> でツールやライブラリをインストールできます。
-Akashic Engine のゲーム開発には次の2つのパッケージが必要です。</p>
+Akashic Engine のゲーム開発には次の 2 つのパッケージが必要です。</p>
 <ul>
 <li><code>@akashic/akashic-cli</code></li>
 <li><code>@akashic/akashic-sandbox</code></li>
@@ -175,7 +175,7 @@ akashic-sandbox -V
 <code>game.json</code> はゲームの設定とゲームが利用するアセットを記述する JSON 形式のファイルです。
 アセットはプログラムのソースコードや画像、音声ファイルなどゲームの実行に必要なファイルのことです。</p>
 <p>以下は <code>game.json</code> の例です。
-(この内容の完全な詳細は <a href="https://akashic-games.github.io/guide/game-json.html">game.jsonの仕様</a> を参照してください。)</p>
+(この内容の完全な詳細は <a href="https://akashic-games.github.io/guide/game-json.html">game.json の仕様</a> を参照してください。)</p>
 <pre><code class="lang-json">{
   &quot;width&quot;: 320,
   &quot;height&quot;: 320,
@@ -199,10 +199,10 @@ akashic-sandbox -V
 <p><code>main.js</code> は最初のシーンを作成します。
 シーンはゲームの場面を表すオブジェクトです。
 例えば、タイトル場面、プレイ場面、スコア場面など必要に応じて作成できます。
-Akashic Engine のゲームには最低1つのシーンが必要です。
+Akashic Engine のゲームには最低 1 つのシーンが必要です。
 次のプログラムは空のシーンを作成して、そのシーンを表示します。</p>
 <pre><code class="lang-javascript">function main() {
-  var scene = new g.Scene({game: g.game});
+  var scene = new g.Scene({ game: g.game });
   g.game.pushScene(scene);
 }
 
@@ -220,8 +220,8 @@ module.exports = main;
 今のところシーンに何も配置していないので何も表示されません。</p>
 <p>以下は、<code>main.js</code> に赤い矩形を表示するコードを追加したものです。</p>
 <pre><code class="lang-javascript">function main() {
-  var scene = new g.Scene({game: g.game});
-  scene.loaded.add(function () {
+  var scene = new g.Scene({ game: g.game });
+  scene.loaded.add(function() {
     var rect = new g.FilledRect({
       scene: scene,
       cssColor: &quot;#ff0000&quot;,
@@ -237,7 +237,7 @@ module.exports = main;
 </code></pre>
 <p><code>main.js</code> をこの内容に書き換えて <code>http://localhost:3000/game/</code> を再読み込みすると赤い矩形が表示されます。</p>
 <p><img src="/img/tutorial/sample01.png" alt="sample01"></p>
-<p><code>akashic-sandbox</code> を終了するにはCUIウインドウに <code>Ctrl-C</code> を入力します。</p>
+<p><code>akashic-sandbox</code> を終了するには CUI ウインドウに <code>Ctrl-C</code> を入力します。</p>
 <blockquote>
 <p><code>Ctrl-C</code> はキーボードの <code>Ctrl</code> キーを押しながら <code>C</code> キーを押すという意味です。</p>
 </blockquote>
