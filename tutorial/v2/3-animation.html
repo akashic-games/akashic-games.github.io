@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>アニメーションさせる</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1557204393058">
-<link rel="stylesheet" href="/css/header.css?1557204393058">
-<link rel="stylesheet" href="/css/footer.css?1557204393058">
+<link rel="stylesheet" href="/css/common.css?1559122180251">
+<link rel="stylesheet" href="/css/header.css?1559122180251">
+<link rel="stylesheet" href="/css/footer.css?1559122180251">
 
 
-<link rel="stylesheet" href="/css/asset.css?1557204393058">
+<link rel="stylesheet" href="/css/asset.css?1559122180251">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
+<link rel="stylesheet" href="/css/akashic-document.css?1559122180251">
 
-<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
+<link rel="stylesheet" href="/css/railscasts.css?1559122180251">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1557204393058"></script>
+<script src="/lib/common.js?1559122180251"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -99,8 +99,8 @@
 		<div class="inner responsive--width">
 			<h1>アニメーションさせる</h1>
 <h2><a name="アニメーション"></a> アニメーション</h2>
-<p>Akashic Engine のコンテンツは固定FPSで動作します。
-FPS の値は1秒間に画面を更新する回数です。
+<p>Akashic Engine のコンテンツは固定 FPS で動作します。
+FPS の値は 1 秒間に画面を更新する回数です。
 エンティティの位置や大きさなどを画面更新の度に変化させると、
 エンティティをアニメーションさせることができます。</p>
 <p>エンティティには位置や大きさを表すプロパティが用意されており、
@@ -168,15 +168,15 @@ FPS の値は1秒間に画面を更新する回数です。
 
 <p>これらのプロパティの値を変更したら、ゲーム開発者は <code>modified()</code> メソッドを明示的に呼び出して、
 Akashic Engine にプロパティの変更を通知する必要があります。</p>
-<p>例えば、<code>FilledRect</code> オブジェクトの <code>rect</code> を右方向に20、
-下方向に10移動するコードは次のようになります。</p>
+<p>例えば、<code>FilledRect</code> オブジェクトの <code>rect</code> を右方向に 20、
+下方向に 10 移動するコードは次のようになります。</p>
 <pre><code class="lang-javascript">rect.x += 20;
 rect.y += 10;
 rect.modified();
 </code></pre>
 <p>シーンオブジェクトの <code>update</code> トリガーはシーンのフレームを描画するたびに呼び出されます。
 以下はシーンの <code>update</code> トリガーを利用して矩形 <code>rect</code> を右に移動させるコードです。</p>
-<pre><code class="lang-javascript">scene.update.add(function () {
+<pre><code class="lang-javascript">scene.update.add(function() {
   ++rect.x;
   rect.modified();
 });
@@ -185,12 +185,12 @@ rect.modified();
 シーンの読み込み後に行う必要があります。
 プログラム全体は以下のようになります。</p>
 <pre><code class="lang-javascript">function main() {
-  var scene = new g.Scene({game: g.game});
-  scene.loaded.add(function () {
+  var scene = new g.Scene({ game: g.game });
+  scene.loaded.add(function() {
     var rect = createRect(scene);
     scene.append(rect);
     // scene の update を設定
-    scene.update.add(function () {
+    scene.update.add(function() {
       ++rect.x;
       rect.modified();
     });
@@ -212,7 +212,7 @@ module.exports = main;
 <p><img src="/img/tutorial/sample07.gif" alt="sample07"></p>
 <p>エンティティ自体も <code>update</code> トリガーを備えています。
 以下はエンティティ <code>rect</code> のトリガーを利用したコードです。</p>
-<pre><code class="lang-javascript">rect.update.add(function () {
+<pre><code class="lang-javascript">rect.update.add(function() {
   ++rect.x;
   rect.modified();
 });
@@ -225,12 +225,12 @@ module.exports = main;
 以下の例では矩形が画面の中央に到達したら <code>destroy()</code> メソッドで
 エンティティを破棄しています。</p>
 <pre><code class="lang-javascript">function main() {
-  var scene = new g.Scene({game: g.game});
-  scene.loaded.add(function () {
+  var scene = new g.Scene({ game: g.game });
+  scene.loaded.add(function() {
     var rect = createRect(scene);
     scene.append(rect);
     // rect の update を利用
-    rect.update.add(function () {
+    rect.update.add(function() {
       moveRect(rect);
     });
   });
@@ -238,14 +238,13 @@ module.exports = main;
 }
 
 function createRect(scene) {
-    // 前の例と同じ
+  // 前の例と同じ
 }
 
 function moveRect(rect) {
   ++rect.x;
   rect.modified();
-  if (rect.x &gt; g.game.width / 2)
-    rect.destroy();
+  if (rect.x &gt; g.game.width / 2) rect.destroy();
 }
 
 module.exports = main;
@@ -256,7 +255,7 @@ module.exports = main;
 フレームアニメーションとは画像を次々と表示させることでアニメーションを実現する方法です。</p>
 <p>フレームアニメーションさせるには、以下のような画像をシーンに追加します。</p>
 <p><img src="/img/tutorial/sample-explosion.png" alt="元画像"></p>
-<p>この画像はアニメーションの様子が100x100サイズのフレームとして順番に並んでいます。</p>
+<p>この画像はアニメーションの様子が 100x100 サイズのフレームとして順番に並んでいます。</p>
 <p>以下はこの画像を使ってアニメーションするプログラムです。</p>
 <pre><code>function main() {
   var scene = new g.Scene({game: g.game, assetIds: [&quot;explosion&quot;]});
@@ -291,29 +290,29 @@ module.exports = main;
 最初に表示するフレームを指定する <code>frameNumber</code> やフレーム遷移の速度を指定する <code>interval</code> を指定することができます。
 <code>start()</code> メソッドを呼び出すまでアニメーションは開始されません。アニメーションを終了したい場合は、 <code>end()</code> メソッドを呼び出します。</p>
 <h2><a name="タイマー関数"></a> タイマー関数</h2>
-<p>3秒後にエンティティを破棄したいなど、指定時間後に処理を行う場合は、
+<p>3 秒後にエンティティを破棄したいなど、指定時間後に処理を行う場合は、
 シーンオブジェクトの <code>scene.setTimeout()</code> メソッドを利用します。
 <code>scene.setTimeout()</code> にはコールバック関数とミリ秒単位の時間を引数として渡します。
-例えば、シーン <code>scene</code> があり、3秒後すなわち3000ミリ秒後に処理を行う場合、
+例えば、シーン <code>scene</code> があり、3 秒後すなわち 3000 ミリ秒後に処理を行う場合、
 以下のように記述します。</p>
-<pre><code class="lang-javascript">scene.setTimeout(function () {
+<pre><code class="lang-javascript">scene.setTimeout(function() {
   // 3秒後に行う処理
 }, 3000);
 </code></pre>
 <p><code>scene.setTimeout()</code> ではミリ秒単位で時間を指定できますが、実際にはフレーム単位で処理が行われます。
-例えばゲームが30FPS、つまり1秒間に30フレーム描画している場合、1フレームの長さは約33ミリ秒なので、
-実際の処理時間は33ミリ秒単位に切り上げられます。</p>
-<p>以下は <code>scene.setTimeout()</code> を使って3秒後に矩形 <code>rect</code> を破棄するコードです。</p>
-<pre><code class="lang-javascript">scene.setTimeout(function () {
+例えばゲームが 30FPS、つまり 1 秒間に 30 フレーム描画している場合、1 フレームの長さは約 33 ミリ秒なので、
+実際の処理時間は 33 ミリ秒単位に切り上げられます。</p>
+<p>以下は <code>scene.setTimeout()</code> を使って 3 秒後に矩形 <code>rect</code> を破棄するコードです。</p>
+<pre><code class="lang-javascript">scene.setTimeout(function() {
   rect.destroy();
 }, 3000);
 </code></pre>
 <p>一定時間ごとに繰り返し処理をする場合は、
 シーンオブジェクトの <code>scene.setInterval()</code> メソッドを利用します。
 <code>scene.setInterval()</code> メソッドの利用方法は <code>scene.setTimeout()</code> メソッドと同じです。
-以下は0.5秒おきに矩形の色を切り替えるコードです。</p>
+以下は 0.5 秒おきに矩形の色を切り替えるコードです。</p>
 <pre><code class="lang-javascript">var flg = false;
-scene.setInterval(function () {
+scene.setInterval(function() {
   rect.cssColor = flg ? &quot;red&quot; : &quot;black&quot;;
   rect.modified();
   flg = !flg;
@@ -321,19 +320,19 @@ scene.setInterval(function () {
 </code></pre>
 <p><code>scene.setTimeout()</code> と <code>scene.setInterval()</code> に登録した関数は、
 それぞれ <code>scene.clearTimeout()</code> と <code>scene.clearInterval()</code> 関数で登録を解除できます。
-引数には <code>scene.setTimeout()</code> と <code>scene.setInterval()</code> が返すIDを指定します。
-以下のプログラムでは <code>scene.setInterval()</code> で登録した関数を3秒後に <code>scene.clearInterval()</code> で
+引数には <code>scene.setTimeout()</code> と <code>scene.setInterval()</code> が返す ID を指定します。
+以下のプログラムでは <code>scene.setInterval()</code> で登録した関数を 3 秒後に <code>scene.clearInterval()</code> で
 解除しています。</p>
 <pre><code class="lang-javascript">function main() {
-  var scene = new g.Scene({game: g.game});
-  scene.loaded.add(function () {
+  var scene = new g.Scene({ game: g.game });
+  scene.loaded.add(function() {
     var rect = createRect(scene);
     scene.append(rect);
-    var intervalId = scene.setInterval(function () {
+    var intervalId = scene.setInterval(function() {
       rect.x += 10;
       rect.modified();
     }, 200);
-    scene.setTimeout(function () {
+    scene.setTimeout(function() {
       scene.clearInterval(intervalId);
     }, 3000);
   });
@@ -360,19 +359,20 @@ module.exports = main;
 <p>Akashic Engine は独自の乱数生成器を備えています。
 Akashic Engine に用意された乱数生成器を利用すると、
 指定した範囲の整数をランダムに生成できます。
-以下の式は0以上9以下の整数をランダムに一つ選んで返します。</p>
+以下の式は 0 以上 9 以下の整数をランダムに一つ選んで返します。</p>
 <pre><code class="lang-javascript">g.game.random.get(0, 9);
 </code></pre>
 <p>JavaScript 標準関数の <code>Math.random()</code> を利用しても乱数を生成できますが、
 将来的な拡張で利用するために、Akashic Engine のゲームでは
 <code>game</code> オブジェクトの乱数生成器を利用してください。</p>
 <p>以下のプログラムは矩形を格子状に並べるプログラムです。
-ただし矩形の色は4種類の色の中からランダムに選んで決めています。</p>
-<pre><code class="lang-javascript">var size = 25, margin = 15;
+ただし矩形の色は 4 種類の色の中からランダムに選んで決めています。</p>
+<pre><code class="lang-javascript">var size = 25,
+  margin = 15;
 
 function main() {
-  var scene = new g.Scene({game: g.game});
-  scene.loaded.add(function () {
+  var scene = new g.Scene({ game: g.game });
+  scene.loaded.add(function() {
     var x, y, rect;
     for (y = 0; y &lt; g.game.height; y += size + margin) {
       for (x = 0; x &lt; g.game.width; x += size + margin) {
@@ -387,14 +387,14 @@ function main() {
 function createRect(scene, x, y) {
   var colors = [&quot;blue&quot;, &quot;navy&quot;, &quot;royalblue&quot;, &quot;skyblue&quot;];
   var idx = g.game.random.get(0, colors.length - 1);
-  return rect = new g.FilledRect({
+  return (rect = new g.FilledRect({
     scene: scene,
     x: x,
     y: y,
     width: size,
     height: size,
     cssColor: colors[idx]
-  });
+  }));
 }
 
 module.exports = main;

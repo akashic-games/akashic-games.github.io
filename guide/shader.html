@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>シェーダの利用</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1557204393058">
-<link rel="stylesheet" href="/css/header.css?1557204393058">
-<link rel="stylesheet" href="/css/footer.css?1557204393058">
+<link rel="stylesheet" href="/css/common.css?1559122180251">
+<link rel="stylesheet" href="/css/header.css?1559122180251">
+<link rel="stylesheet" href="/css/footer.css?1559122180251">
 
 
-<link rel="stylesheet" href="/css/asset.css?1557204393058">
+<link rel="stylesheet" href="/css/asset.css?1559122180251">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
+<link rel="stylesheet" href="/css/akashic-document.css?1559122180251">
 
-<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
+<link rel="stylesheet" href="/css/railscasts.css?1559122180251">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1557204393058"></script>
+<script src="/lib/common.js?1559122180251"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -101,22 +101,22 @@
 <h2><a name="これは"></a> これは</h2>
 <p>シェーダプログラムの利用方法を記述したドキュメントです。</p>
 <h2><a name="対象バージョン"></a> 対象バージョン</h2>
-<p>本ドキュメントの対象バージョンは <code>akashic-engine@2.3.2</code> 以降です。</p>
+<p>本ドキュメントの対象バージョンは <a href="mailto:`akashic-engine@2.3.2">`akashic-engine@2.3.2</a>` 以降です。</p>
 <p>また、本機能を利用するには WebGL 1.0 が利用可能な環境が必要です。
 <a href="http://webglreport.com/">こちらのページ</a> で現在利用しているブラウザが WebGL をサポートしているか確認することができます。</p>
 <h2><a name="シェーダとは"></a> シェーダとは</h2>
-<p>WebGL, OpenGL などで、3次元空間に存在する情報を2次元空間に描画するために用いられているプログラムのことを指します。
+<p>WebGL, OpenGL などで、3 次元空間に存在する情報を 2 次元空間に描画するために用いられているプログラムのことを指します。
 詳細については他のドキュメントを参照ください。</p>
-<p>本ドキュメントではAkashicでシェーダを利用する方法について記述します。
-<code>akashic-engine@2.3.2</code> ではフラグメントシェーダのみをサポートします。</p>
+<p>本ドキュメントでは Akashic でシェーダを利用する方法について記述します。
+<a href="mailto:`akashic-engine@2.3.2">`akashic-engine@2.3.2</a>` ではフラグメントシェーダのみをサポートします。</p>
 <h2><a name="準備"></a> 準備</h2>
-<p>ゲーム開発の準備が終わっていない場合は <a href="https://akashic-games.github.io/tutorial/v2/">Akashicを利用したゲーム開発</a> を読んでゲーム開発の環境を整えて下さい。</p>
-<p>本ドキュメントの内容は <code>akashic-sandbox@0.13.24</code> 以降のバージョンでサポートされています。
+<p>ゲーム開発の準備が終わっていない場合は <a href="https://akashic-games.github.io/tutorial/v2/">Akashic を利用したゲーム開発</a> を読んでゲーム開発の環境を整えて下さい。</p>
+<p>本ドキュメントの内容は <a href="mailto:`akashic-sandbox@0.13.24">`akashic-sandbox@0.13.24</a>` 以降のバージョンでサポートされています。
 手元の akashic-sandbox のバージョンがこれより古い場合は以下のコマンドで最新のものをインストールしてください。</p>
 <pre><code class="lang-sh">npm i @akashic/akashic-sandbox -g
 </code></pre>
 <p>コンテンツで WebGL を有効にするため、 <code>game.json</code> の <code>renderers</code> に <code>webgl</code> を追加します。
-詳細は <a href="game-json.html">game.jsonの仕様</a> を参照してください。</p>
+詳細は <a href="game-json.html">game.json の仕様</a> を参照してください。</p>
 <h2><a name="利用"></a> 利用</h2>
 <p>まずはゲーム内でシェーダを利用するための準備をします。</p>
 <p>以下は出力色をモノクロ化するフラグメントシェーダの記述になります。</p>
@@ -143,22 +143,21 @@ void main(void)
 }
 </code></pre>
 <p>このシェーダをコンテンツ内で利用するために、 <code>g.ShaderProgram</code> を生成します。
-(注意: この生成方法は <code>akashic-engine@2.3.2</code> 時点での記述になります。今後のバージョンでは変更される可能性があります。)</p>
-<pre><code class="lang-javascript">
-// フラグメントシェーダのテキストデータ
+(注意: この生成方法は <a href="mailto:`akashic-engine@2.3.2">`akashic-engine@2.3.2</a>` 時点での記述になります。今後のバージョンでは変更される可能性があります。)</p>
+<pre><code class="lang-javascript">// フラグメントシェーダのテキストデータ
 const fragmentShader =
-&quot;#version 100\n&quot; +
-&quot;precision mediump float;\n&quot; +
-&quot;varying vec2 vTexCoord;\n&quot; +
-&quot;uniform sampler2D uSampler;\n&quot; +
-&quot;uniform float uAlpha;\n&quot; +
-&quot;void main(void)\n&quot; +
-&quot;{\n&quot; +
-&quot;  vec4 color = texture2D(uSampler, vTexCoord);\n&quot; +
-&quot;  float sum = dot(color.rgb, vec3(1.0));\n&quot; +
-&quot;  vec3 outColor = vec3(sum / 3.0);\n&quot; +
-&quot;  gl_FragColor = vec4(outColor, color.a * uAlpha);\n&quot; +
-&quot;}&quot;;
+  &quot;#version 100\n&quot; +
+  &quot;precision mediump float;\n&quot; +
+  &quot;varying vec2 vTexCoord;\n&quot; +
+  &quot;uniform sampler2D uSampler;\n&quot; +
+  &quot;uniform float uAlpha;\n&quot; +
+  &quot;void main(void)\n&quot; +
+  &quot;{\n&quot; +
+  &quot;  vec4 color = texture2D(uSampler, vTexCoord);\n&quot; +
+  &quot;  float sum = dot(color.rgb, vec3(1.0));\n&quot; +
+  &quot;  vec3 outColor = vec3(sum / 3.0);\n&quot; +
+  &quot;  gl_FragColor = vec4(outColor, color.a * uAlpha);\n&quot; +
+  &quot;}&quot;;
 
 const shader = new g.ShaderProgram({
   fragmentShader: fragmentShader
@@ -195,12 +194,12 @@ sprite.modified();
 <p>注意点として、 <code>g.ShaderProgram</code> は一度生成したら以降プロパティを変更することはできません。
 (例外的に <code>g.ShaderProgram#uniforms#value</code> のみ変更が許可されています。詳細は後述します。)</p>
 <h2><a name="変数"></a> 変数</h2>
-<p><code>akashic-engine@2.3.2</code> 時点では、以下の変数がエンジン側から暗黙的に与えられます。</p>
+<p><a href="mailto:`akashic-engine@2.3.2">`akashic-engine@2.3.2</a>` 時点では、以下の変数がエンジン側から暗黙的に与えられます。</p>
 <ul>
 <li><code>varying</code><ul>
 <li><code>vec2 vTexCoord</code><ul>
 <li>対象の描画元のテクスチャ座標</li>
-<li>本値は 0～1.0 の範囲内で任意の矩形領域となり得ることに注意。</li>
+<li>本値は 0 ～ 1.0 の範囲内で任意の矩形領域となり得ることに注意。</li>
 </ul>
 </li>
 </ul>
@@ -211,7 +210,7 @@ sprite.modified();
 </ul>
 </li>
 <li><code>float uAlpha</code><ul>
-<li>透過度 (0～1.0 の範囲内)</li>
+<li>透過度 (0 ～ 1.0 の範囲内)</li>
 </ul>
 </li>
 </ul>
@@ -249,29 +248,29 @@ void main(void)
   gl_FragColor = vec4(outColor, color.a * uAlpha);
 }
 </code></pre>
-<p><code>redScale</code> , <code>greenScale</code> , <code>blueScale</code> がuniform値として渡されるようにフラグメントシェーダを修正しています。</p>
-<p><code>g.ShaderProgram</code> の生成時に利用するuniformを定義します。</p>
+<p><code>redScale</code> , <code>greenScale</code> , <code>blueScale</code> が uniform 値として渡されるようにフラグメントシェーダを修正しています。</p>
+<p><code>g.ShaderProgram</code> の生成時に利用する uniform を定義します。</p>
 <pre><code class="lang-javascript">const shader = new g.ShaderProgram({
   fragmentShader: fragmentShader,
   uniforms: {
     redScale: {
       type: &quot;float&quot;,
-      value: .299
+      value: 0.299
     },
     greenScale: {
       type: &quot;float&quot;,
-      value: .587
+      value: 0.587
     },
     blueScale: {
       type: &quot;float&quot;,
-      value: .114
+      value: 0.114
     }
   }
 });
 </code></pre>
 <p><code>uniform</code> は、フラグメントシェーダで利用する際の変数名をキーとしたオブジェクトによって定義されます。
 各キーは <code>g.ShaderUniform</code> によって定義された形式で記述する必要があります。
-<code>type</code> は対象のuniformの型、<code>value</code>はその値を示します。</p>
+<code>type</code> は対象の uniform の型、<code>value</code>はその値を示します。</p>
 <p><code>type</code> には以下が指定できます。</p>
 <ul>
 <li><code>float</code></li>
@@ -286,7 +285,7 @@ void main(void)
 <li><code>mat3</code></li>
 <li><code>mat4</code></li>
 </ul>
-<p>また、以下のようにArrayを利用することもできます。</p>
+<p>また、以下のように Array を利用することもできます。</p>
 <p><strong>フラグメントシェーダ</strong></p>
 <pre><code class="lang-glsl">uniform param[3];
 </code></pre>
@@ -296,7 +295,7 @@ void main(void)
   uniforms: {
     param: {
       type: &quot;float&quot;,
-      value: [.0, 1.0, .4]
+      value: [0.0, 1.0, 0.4]
     }
   }
 });

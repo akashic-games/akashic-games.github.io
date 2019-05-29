@@ -1,10 +1,10 @@
 # javascript-game-sample-minimum
 
-**javascript-game-sample-minimum**はJavascriptでAkashicのゲームを作る際のサンプルプロジェクトです。
+**javascript-game-sample-minimum**は Javascript で Akashic のゲームを作る際のサンプルプロジェクトです。
 
 ## 利用方法
 
- `javascript-game-sample-minimum` を利用するにはNode.jsが必要です。
+`javascript-game-sample-minimum` を利用するには Node.js が必要です。
 
 初回のみ、以下のコマンドを実行して、ビルドに必要なパッケージをインストールしてください。
 この作業は `javascript-game-sampleminimum` を新しく生成するごとに必要です。
@@ -17,24 +17,24 @@ npm install
 
 以下のどちらかを実行後、ブラウザで `http://localhost:3000/game/` にアクセスすることでゲームを実行できます。
 
-* `npm start`
+- `npm start`
 
-* `npm install -g @akashic/akashic-sandbox` 後、 `akashic-sandbox .`
+- `npm install -g @akashic/akashic-sandbox` 後、 `akashic-sandbox .`
 
 ### アセットの更新方法
 
 各種アセットを追加したい場合は、それぞれのアセットファイルを以下のディレクトリに格納します。
 
-* 画像アセット: `image`
-* スクリプトアセット: `script`
-* テキストアセット: `text`
-* オーディオアセット: `audio`
+- 画像アセット: `image`
+- スクリプトアセット: `script`
+- テキストアセット: `text`
+- オーディオアセット: `audio`
 
 これらのアセットを追加・変更したあとに `akashic scan asset` をすると、アセットの変更内容をもとに `game.json` を書き換えることができます。
 
 ### npm モジュールの追加・削除
 
-`javascript-game-sample-minimum` でnpmモジュールを利用する場合、このディレクトリで `akashic install <package_name>` することで npm モジュールを追加することができます。
+`javascript-game-sample-minimum` で npm モジュールを利用する場合、このディレクトリで `akashic install <package_name>` することで npm モジュールを追加することができます。
 
 また `akashic uninstall <package_name>` すると npm モジュールを削除することができます。
 
@@ -42,20 +42,20 @@ npm install
 
 `javascript-game-sample-minimum` をエクスポートするときは以下のコマンドを利用します。
 
-### htmlファイルのエクスポート
+### html ファイルのエクスポート
 
 `akashic export html -o game` のコマンドを利用することで `game` ディレクトリにエクスポートすることができます。
 
 `game/index.html` をブラウザで開くと単体動作させることができます。
 
-### zipファイルのエクスポート
+### zip ファイルのエクスポート
 
-`akashic export zip -o game.zip -s` のコマンドを利用することで `game.zip` という名前のzipファイルを出力できます。
+`akashic export zip -o game.zip -s` のコマンドを利用することで `game.zip` という名前の zip ファイルを出力できます。
 
 ## テスト方法
 
-以下のコマンドで [ESLint](https://github.com/eslint/eslint "ESLint")を使ったLintが実行されます。
-スクリプトアセット内にES5構文に反する記述がある場合エラーを返します。
+以下のコマンドで [ESLint](https://github.com/eslint/eslint "ESLint")を使った Lint が実行されます。
+スクリプトアセット内に ES5 構文に反する記述がある場合エラーを返します。
 
 ```sh
 npm run lint

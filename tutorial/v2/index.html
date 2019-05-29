@@ -5,22 +5,22 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>Akashic Engine 入門 (v2版)</title>
+<title>Akashic Engine 入門 (v2 版)</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1557204393058">
-<link rel="stylesheet" href="/css/header.css?1557204393058">
-<link rel="stylesheet" href="/css/footer.css?1557204393058">
+<link rel="stylesheet" href="/css/common.css?1559122180251">
+<link rel="stylesheet" href="/css/header.css?1559122180251">
+<link rel="stylesheet" href="/css/footer.css?1559122180251">
 
 
-<link rel="stylesheet" href="/css/asset.css?1557204393058">
+<link rel="stylesheet" href="/css/asset.css?1559122180251">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
+<link rel="stylesheet" href="/css/akashic-document.css?1559122180251">
 
-<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
+<link rel="stylesheet" href="/css/railscasts.css?1559122180251">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1557204393058"></script>
+<script src="/lib/common.js?1559122180251"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -97,7 +97,7 @@
 <div id="BodyInner">
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
-			<h1>Akashic Engine 入門 (v2版)</h1>
+			<h1>Akashic Engine 入門 (v2 版)</h1>
 <h2><a name="はじめに"></a> はじめに</h2>
 <p>Akashic Engine は JavaScript で動作するゲームエンジンです。
 マルチプラットフォームで動作するゲームを開発できます。
@@ -107,7 +107,7 @@ Akashic Engine はオープンソースで開発されているフリーソフ�
 今すぐゲーム開発を始めることができます。</p>
 <blockquote>
 <ul>
-<li>Akashic Engine の現在の実装は2D描画を主体とするゲームに特化しています。</li>
+<li>Akashic Engine の現在の実装は 2D 描画を主体とするゲームに特化しています。</li>
 </ul>
 </blockquote>
 <h2>目次</h2>
@@ -138,7 +138,7 @@ Akashic Engine はオープンソースで開発されているフリーソフ�
 </ul>
 </li>
 <li><a href="./5-audio.html">音を鳴らす</a><ul>
-<li><a href="./5-audio.html#効果音とBGM">効果音とBGM</a></li>
+<li><a href="./5-audio.html#効果音とBGM">効果音と BGM</a></li>
 </ul>
 </li>
 <li><a href="./6-otherdraw.html">色々な描画</a><ul>
@@ -152,8 +152,8 @@ Akashic Engine はオープンソースで開発されているフリーソフ�
 </ul>
 </li>
 <li><a href="./8-install.html">拡張ライブラリを使う</a><ul>
-<li><a href="./8-install.html#akashicコンテンツにnpmパッケージを追加する">akashicコンテンツにnpmパッケージを追加する</a></li>
-<li><a href="./8-install.html#akashic向けではない拡張ライブラリの利用">akashic向けではない拡張ライブラリの利用</a></li>
+<li><a href="./8-install.html#akashicコンテンツにnpmパッケージを追加する">akashic コンテンツに npm パッケージを追加する</a></li>
+<li><a href="./8-install.html#akashic向けではない拡張ライブラリの利用">akashic 向けではない拡張ライブラリの利用</a></li>
 <li><a href="./8-install.html#注意">注意</a></li>
 <li><a href="./8-install.html#npm について">npm について</a></li>
 </ul>
@@ -168,9 +168,9 @@ Akashic Engine はオープンソースで開発されているフリーソフ�
 <h3><a name="multiplay"></a> マルチプレイのゲーム作成</h3>
 <ul>
 <li><a href="./multiplay/introduction.html">マルチプレイの基礎</a><ul>
-<li><a href="./multiplay/introduction.html#helloworld">マルチプレイのHello World</a></li>
+<li><a href="./multiplay/introduction.html#helloworld">マルチプレイの Hello World</a></li>
 <li><a href="./multiplay/introduction.html#debug">動作確認</a></li>
-<li><a href="./multiplay/introduction.html#architecture-intro">Akashicにおけるマルチプレイ</a></li>
+<li><a href="./multiplay/introduction.html#architecture-intro">Akashic におけるマルチプレイ</a></li>
 </ul>
 </li>
 <li><a href="./multiplay/each-player.html">プレイヤーごとに異なる描画を行う</a><ul>
@@ -182,10 +182,10 @@ Akashic Engine はオープンソースで開発されているフリーソフ�
 </li>
 <li><a href="./multiplay/camera.html">プレイヤーごとに異なる位置を表示する</a><ul>
 <li><a href="./multiplay/camera.html#camera">カメラ</a></li>
-<li><a href="./multiplay/camera.html#ignore-camera">カメラのtransformの無視</a></li>
+<li><a href="./multiplay/camera.html#ignore-camera">カメラの transform の無視</a></li>
 </ul>
 </li>
-<li><a href="./multiplay/join.html">JoinとLeave</a></li>
+<li><a href="./multiplay/join.html">Join と Leave</a></li>
 </ul>
 <!--
 - [Akashic におけるマルチプレイ](./multiplay/architecture.html) - この節では、Akashicのマルチプレイの基本的なデザインについて述べます。

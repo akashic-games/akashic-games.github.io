@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>クリックできるようにする</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1557204393058">
-<link rel="stylesheet" href="/css/header.css?1557204393058">
-<link rel="stylesheet" href="/css/footer.css?1557204393058">
+<link rel="stylesheet" href="/css/common.css?1559122180251">
+<link rel="stylesheet" href="/css/header.css?1559122180251">
+<link rel="stylesheet" href="/css/footer.css?1559122180251">
 
 
-<link rel="stylesheet" href="/css/asset.css?1557204393058">
+<link rel="stylesheet" href="/css/asset.css?1559122180251">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
+<link rel="stylesheet" href="/css/akashic-document.css?1559122180251">
 
-<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
+<link rel="stylesheet" href="/css/railscasts.css?1559122180251">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1557204393058"></script>
+<script src="/lib/common.js?1559122180251"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -102,7 +102,7 @@
 <p>エンティティの <code>touchable</code> プロパティを <code>true</code> にすると、
 ゲーム画面のタップやクリックなどのユーザ操作を検出できるようになります。
 Akashic Engine ではユーザがタップやクリックするとポイントイベントが発生します。
-ポイントイベントには以下の3種類があります。</p>
+ポイントイベントには以下の 3 種類があります。</p>
 <div class="table--scroll">
 <table>
 <thead>
@@ -131,11 +131,11 @@ Akashic Engine ではユーザがタップやクリックするとポイント�
 <p>それぞれのイベントに対応するトリガーを利用することで、イベント発生時に処理を実行できます。</p>
 <p>以下は矩形エンティティ <code>rect</code> にポイントイベントを設定して自身の色を変える例です。</p>
 <pre><code class="lang-javascript">rect.touchable = true;
-rect.pointDown.add(function () {
+rect.pointDown.add(function() {
   rect.cssColor = &quot;red&quot;;
   rect.modified();
 });
-rect.pointUp.add(function () {
+rect.pointUp.add(function() {
   rect.cssColor = &quot;gray&quot;;
   rect.modified();
 });
@@ -177,7 +177,7 @@ rect.pointUp.add(function () {
 </div>
 
 <p>以下は矩形エンティティ <code>rect</code> を指やマウス操作で移動するコード例です。</p>
-<pre><code class="lang-javascript">rect.pointMove.add(function (ev) {
+<pre><code class="lang-javascript">rect.pointMove.add(function(ev) {
   rect.x += ev.prevDelta.x;
   rect.y += ev.prevDelta.y;
   rect.modified();
@@ -190,9 +190,9 @@ rect.pointUp.add(function () {
 これらのトリガーはシーン上にイベントを受け取るエンティティが存在していたとしても常に呼び出されます。</p>
 <p>以下は、画面に指が触れた時、もしくはマウスのボタンが押されたときに、
 その座標に矩形エンティティを配置するコードです。</p>
-<pre><code class="lang-javascript">var scene = new g.Scene({game: g.game});
-scene.loaded.add(function () {
-  scene.pointDownCapture.add(function (ev) {
+<pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
+scene.loaded.add(function() {
+  scene.pointDownCapture.add(function(ev) {
     var size = 20;
     var rect = new g.FilledRect({
       scene: scene,
