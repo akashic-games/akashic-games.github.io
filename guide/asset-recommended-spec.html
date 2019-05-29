@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>素材の推奨仕様</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1557204393058">
-<link rel="stylesheet" href="/css/header.css?1557204393058">
-<link rel="stylesheet" href="/css/footer.css?1557204393058">
+<link rel="stylesheet" href="/css/common.css?1559122180251">
+<link rel="stylesheet" href="/css/header.css?1559122180251">
+<link rel="stylesheet" href="/css/footer.css?1559122180251">
 
 
-<link rel="stylesheet" href="/css/asset.css?1557204393058">
+<link rel="stylesheet" href="/css/asset.css?1559122180251">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
+<link rel="stylesheet" href="/css/akashic-document.css?1559122180251">
 
-<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
+<link rel="stylesheet" href="/css/railscasts.css?1559122180251">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1557204393058"></script>
+<script src="/lib/common.js?1559122180251"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -99,7 +99,7 @@
 		<div class="inner responsive--width">
 			<h1>素材の推奨仕様</h1>
 <h2><a name="これは"></a> これは</h2>
-<p>Akashicのゲーム中で、アセットとして用いる素材に関する推奨仕様をまとめます。</p>
+<p>Akashic のゲーム中で、アセットとして用いる素材に関する推奨仕様をまとめます。</p>
 <h2><a name="推奨仕様"></a> 推奨仕様</h2>
 <p>素材の <strong>推奨仕様</strong> とは、Akashic がゲーム開発者に推奨する素材の仕様です。</p>
 <p>要求仕様(ここでは触れません)と異なり、ゲーム開発者は必ずしも推奨仕様に従う必要はありません。
@@ -111,19 +111,19 @@
 スプライトは与えられた画像の一部だけを表示することができ、また表示内容を同じ画像の別の部分に容易に切り替えられます。
 この機能のため、スプライトに用いる画像ファイルは、以下のような複数の内容を一つにまとめたものになる場合があります。</p>
 <p><img src="/img/guide/asset-recommended-spec/aco.png" alt="複数の画像を並べた一つの画像ファイルの例"></p>
-<p>この時、ファイル中の各画像の境界部分には1ピクセル以上の間隔を設けることが推奨されます。
+<p>この時、ファイル中の各画像の境界部分には 1 ピクセル以上の間隔を設けることが推奨されます。
 すなわち画像同士の境界に接する各ピクセルは、透明色であるべきです。</p>
 <p>例えば次の画像は、上の画像の一部を拡大したものです。</p>
 <p><img src="/img/guide/asset-recommended-spec/aco-valid-border.png" alt="境界部分に1ピクセルの間隔がある画像"></p>
 <p>ここで赤の点線は境界を示すための仮想的なものです。
 この例では、各画像の境界部分(赤の点線)に接するピクセルはすべて透明色になっています。
-他方、この画像全体を左に1ピクセルずらしたものが次の画像です。
+他方、この画像全体を左に 1 ピクセルずらしたものが次の画像です。
 境界として取り扱う範囲を変えない場合、境界に接している不透明色のピクセルが二つ存在することがわかります。</p>
 <p><img src="/img/guide/asset-recommended-spec/aco-invalid-border.png" alt="境界に1ピクセルの間隔がない画像"></p>
 <p>この画像は推奨仕様に従っていません。</p>
 <h4><a name="推奨の理由"></a> 推奨の理由</h4>
 <p>この推奨に従わない場合、画像の拡大・縮小描画の際に隣接する不透明色が「滲む」ことがあります。
-以下はある環境において、前述の「推奨仕様に従ってない画像」に示した一部分を、5倍に拡大して描画する <code>g.Sprite</code> を表示したものです。</p>
+以下はある環境において、前述の「推奨仕様に従ってない画像」に示した一部分を、5 倍に拡大して描画する <code>g.Sprite</code> を表示したものです。</p>
 <p><img src="/img/guide/asset-recommended-spec/aco-drawn-with-noise.png" alt="境界に接するピクセルの不透明色が滲んでいる例"></p>
 <p>キャラクタの右側に滲んだ不透明色が確認できます。</p>
 <p>ビットマップフォント(<code>g.BitmapFont</code>)として使う画像や、タイル(<code>g.Tile</code>)に与えるマップチップ画像(<code>g.TileParameterObject#src</code>)などにも同様の注意が必要です。

@@ -5,22 +5,22 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>sandbox.config.jsの仕様</title>
+<title>sandbox.config.js の仕様</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1557204393058">
-<link rel="stylesheet" href="/css/header.css?1557204393058">
-<link rel="stylesheet" href="/css/footer.css?1557204393058">
+<link rel="stylesheet" href="/css/common.css?1559122180251">
+<link rel="stylesheet" href="/css/header.css?1559122180251">
+<link rel="stylesheet" href="/css/footer.css?1559122180251">
 
 
-<link rel="stylesheet" href="/css/asset.css?1557204393058">
+<link rel="stylesheet" href="/css/asset.css?1559122180251">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
+<link rel="stylesheet" href="/css/akashic-document.css?1559122180251">
 
-<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
+<link rel="stylesheet" href="/css/railscasts.css?1559122180251">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1557204393058"></script>
+<script src="/lib/common.js?1559122180251"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -97,56 +97,56 @@
 <div id="BodyInner">
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
-			<h1>sandbox.config.jsの仕様</h1>
+			<h1>sandbox.config.js の仕様</h1>
 <h2><a name="これは"></a> これは</h2>
-<p>Akashicの開発環境における設定ファイル、sandbox.config.jsの仕様をまとめます。 </p>
-<p>Akashicで開発されたゲームの動作確認ツールとして、 Akashic Sandbox (<code>akashic-sandbox</code>) とAkashic-cliのserveコマンドがあります。
-sandbox.config.jsは、これらのツールの機能を取り扱う設定ファイルです。
-sandbox.config.jsを利用することで、セッションパラメータや起動引数に関わる動作確認を効率化・自動化することができます。</p>
+<p>Akashic の開発環境における設定ファイル、sandbox.config.js の仕様をまとめます。</p>
+<p>Akashic で開発されたゲームの動作確認ツールとして、 Akashic Sandbox (<code>akashic-sandbox</code>) と Akashic-cli の serve コマンドがあります。
+sandbox.config.js は、これらのツールの機能を取り扱う設定ファイルです。
+sandbox.config.js を利用することで、セッションパラメータや起動引数に関わる動作確認を効率化・自動化することができます。</p>
 <p>（セッションパラメータの詳細は<a href="./ranking.html">ニコニコ新市場対応コンテンツ作成ガイド</a>を参照してください）</p>
 <h2><a name="形式"></a> 形式</h2>
-<p>sandbox.config.jsはJavaScriptとして実行可能なコードと、exportされるモジュールとして記述されます。
+<p>sandbox.config.js は JavaScript として実行可能なコードと、export されるモジュールとして記述されます。
 モジュールは以下の名前のプロパティと、対応する値を持ちます。</p>
 <ul>
 <li>events<ul>
 <li>オブジェクト (詳細は後述)</li>
-<li>Akashicゲームで扱うplaylogイベントの配列</li>
-<li>Akashic Sandbox、serveコマンドで有効</li>
+<li>Akashic ゲームで扱う playlog イベントの配列</li>
+<li>Akashic Sandbox、serve コマンドで有効</li>
 </ul>
 </li>
 <li>autoSendEvents<ul>
 <li>文字列</li>
-<li>eventsのメンバー名のいずれか</li>
-<li>Akashic Sandboxで有効</li>
+<li>events のメンバー名のいずれか</li>
+<li>Akashic Sandbox で有効</li>
 </ul>
 </li>
 <li>showMenu<ul>
 <li>真偽値</li>
 <li>開始時にデベロッパーメニューを開くかどうか</li>
-<li>Akashic Sandboxで有効<ul>
-<li>arguments</li>
+<li>Akashic Sandbox で有効</li>
 </ul>
 </li>
+<li>arguments<ul>
 <li>オブジェクト (詳細は後述)</li>
 <li>ゲームに渡す起動引数</li>
-<li>serveコマンドで有効</li>
+<li>serve コマンドで有効</li>
 </ul>
 </li>
 </ul>
 <h2><a name="使い方"></a> 使い方</h2>
-<p>game.jsonと同じディレクトリに、以下のようなJavaScriptファイルを置きます。ファイル名は sandbox.config.js とします。</p>
+<p>game.json と同じディレクトリに、以下のような JavaScript ファイルを置きます。ファイル名は sandbox.config.js とします。</p>
 <pre><code>var config = {
 }
 
 module.exports = config;
 </code></pre><p>このファイルに以下の名前のプロパティを記述することで、各種設定を利用できます。</p>
 <h2><a name="events"></a> events</h2>
-<p>eventsには、Akashicゲームで扱うplaylogイベントを事前に記述することができます。
+<p>events には、Akashic ゲームで扱う playlog イベントを事前に記述することができます。
 特に、ニコニコ新市場対応コンテンツを作成する場合に、セッションパラメータの動作確認を行うために利用することができます。</p>
-<p>eventsは、任意のプロパティ名を持ったオブジェクトです。プロパティ名はイベント名として、開発ツールの一覧に表示されます。
-各プロパティは、送りたいplaylogイベントの配列です。</p>
-<p>（playlogの詳細な仕様は<a href="https://github.com/akashic-games/playlog">playlog</a>を参照してください）</p>
-<p>例として、ニコニコ新市場で実行されるゲームにセッションパラメータを送りたい場合、sandbox.config.jsには以下のように記述します。</p>
+<p>events は、任意のプロパティ名を持ったオブジェクトです。プロパティ名はイベント名として、開発ツールの一覧に表示されます。
+各プロパティは、送りたい playlog イベントの配列です。</p>
+<p>（playlog の詳細な仕様は<a href="https://github.com/akashic-games/playlog">playlog</a>を参照してください）</p>
+<p>例として、ニコニコ新市場で実行されるゲームにセッションパラメータを送りたい場合、sandbox.config.js には以下のように記述します。</p>
 <pre><code>var config = {
     &quot;events&quot;: {
         &quot;mySessionParameter&quot;: [
@@ -178,13 +178,13 @@ module.exports = config;
 }
 
 module.exports = config;
-</code></pre><p>Akashic Sandboxでは、デベロッパーメニューのEventsタブからゲームにイベントを送信することができます。</p>
+</code></pre><p>Akashic Sandbox では、デベロッパーメニューの Events タブからゲームにイベントを送信することができます。</p>
 <p><img src="/img/guide/sandbox-config/sandbox-devmenu.png" alt="Akashic Sandboxのデベロッパーメニュー"></p>
-<p>akashic serveコマンドも同じように、デベロッパーメニューのEventsタブからゲームにイベントを送信することができます。</p>
+<p>akashic serve コマンドも同じように、デベロッパーメニューの Events タブからゲームにイベントを送信することができます。</p>
 <p><img src="/img/guide/sandbox-config/serve-devmenu.png" alt="akashic serveコマンドのデベロッパーメニュー"></p>
 <h2><a name="autoSendEvents"></a> autoSendEvents</h2>
-<p>ゲーム起動時にイベントを自動送信することができます。イベントはあらかじめeventsに記述しておく必要があります。
-autoSendEventsにイベント名（例えばstartMyGameEvent）を記述し、Akashic Sandboxでゲームを起動すれば、イベントが自動送信されます。</p>
+<p>ゲーム起動時にイベントを自動送信することができます。イベントはあらかじめ events に記述しておく必要があります。
+autoSendEvents にイベント名（例えば startMyGameEvent）を記述し、Akashic Sandbox でゲームを起動すれば、イベントが自動送信されます。</p>
 <pre><code>var config = {
     &quot;autoSendEvents&quot;: &quot;mySessionParameter&quot;
     &quot;events&quot;: {
@@ -194,21 +194,21 @@ autoSendEventsにイベント名（例えばstartMyGameEvent）を記述し、Ak
 
 module.exports = config;
 </code></pre><h2><a name="showMenu"></a> showMenu</h2>
-<p>この項目にtrueを指定されている場合、常にデベロッパーメニューが開いた状態でAkashicゲームが実行されます。</p>
+<p>この項目に true を指定されている場合、常にデベロッパーメニューが開いた状態で Akashic ゲームが実行されます。</p>
 <pre><code>var config = {
    &quot;showMenu&quot;: true
 }
 
 module.exports = config;
 </code></pre><h2><a name="arguments"></a> arguments</h2>
-<p>argumentsには、起動引数のテンプレートを記述することができます。</p>
-<p>serveコマンドに --no-auto-start オプションを指定した場合、Akashicゲームの実行時に渡したい起動引数を選ぶことができます。</p>
-<p>起動引数はAkashicゲームの起動時に渡される値です。
-起動引数はAkashicゲームのエントリポイントの関数（akashic initで生成した場合、main.jsからexportされた関数）のパラメータの第一引数のargsプロパティとして渡されます。</p>
+<p>arguments には、起動引数のテンプレートを記述することができます。</p>
+<p>serve コマンドに --no-auto-start オプションを指定した場合、Akashic ゲームの実行時に渡したい起動引数を選ぶことができます。</p>
+<p>起動引数は Akashic ゲームの起動時に渡される値です。
+起動引数は Akashic ゲームのエントリポイントの関数（akashic init で生成した場合、main.js から export された関数）のパラメータの第一引数の args プロパティとして渡されます。</p>
 <p>起動引数の内容はゲームが実行される環境によって決定されます。
-argumentsに起動引数を記述することで、serveコマンドで各サービスの動作を確認することができます。</p>
+arguments に起動引数を記述することで、serve コマンドで各サービスの動作を確認することができます。</p>
 <p>具体的な内容はゲームが実行されるサービスによって決まります。
-各サービスの動作を確認するためにserveでも起動引数を指定して実行することができます。</p>
+各サービスの動作を確認するために serve でも起動引数を指定して実行することができます。</p>
 
 		</div>
 	</section>

@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ゲームを公開する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1557204393058">
-<link rel="stylesheet" href="/css/header.css?1557204393058">
-<link rel="stylesheet" href="/css/footer.css?1557204393058">
+<link rel="stylesheet" href="/css/common.css?1559122180251">
+<link rel="stylesheet" href="/css/header.css?1559122180251">
+<link rel="stylesheet" href="/css/footer.css?1559122180251">
 
 
-<link rel="stylesheet" href="/css/asset.css?1557204393058">
+<link rel="stylesheet" href="/css/asset.css?1559122180251">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
+<link rel="stylesheet" href="/css/akashic-document.css?1559122180251">
 
-<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
+<link rel="stylesheet" href="/css/railscasts.css?1559122180251">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1557204393058"></script>
+<script src="/lib/common.js?1559122180251"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -98,21 +98,21 @@
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
 			<h1>ゲームを公開する</h1>
-<p>作成したゲームを動かす方法としてはakashic-sandboxがありますが、 akashic-sandboxはデバッグ用にローカルな環境で動作させるためのツールです。
+<p>作成したゲームを動かす方法としては akashic-sandbox がありますが、 akashic-sandbox はデバッグ用にローカルな環境で動作させるためのツールです。
 ゲームを公開するには、ゲームがスタンドアロンで動作するように変換・出力する必要があります。</p>
 <h3><a name="スタンドアロン形式にエクスポート"></a> スタンドアロン形式にエクスポート</h3>
-<p><code>akashic</code>コマンドの<code>export</code>コマンドを利用します。コマンドはgame.jsonファイルのあるディレクトリで実行してください。</p>
+<p><code>akashic</code>コマンドの<code>export</code>コマンドを利用します。コマンドは game.json ファイルのあるディレクトリで実行してください。</p>
 <pre><code class="lang-sh">akashic export html --magnify --output ../mygame
 </code></pre>
 <p>保存するディレクトリを<code>--output</code>オプションで指定します。ゲームのディレクトリ内部に保存するディレクトリを指定することはできません。この例のようにゲームのディレクトリの外を指定してください。</p>
-<p><code>--magnify</code> を指定すると、Akashicのゲーム画面がブラウザのゲーム表示領域に合わせて拡大されます。指定しない場合、描画サイズはgame.jsonに記述されたゲームサイズに固定されます。</p>
-<p><code>--minify</code> を指定すると、JavaScriptのコードをミニファイします。圧縮してファイルサイズを削減したいときに利用できます。</p>
-<p><code>--bundle</code> を指定すると、JavaScriptのコードを1ファイルにまとめてファイル数を削減します。ゲームに含まれるファイル数が多いときにファイルアクセス数を減らすことができます。</p>
+<p><code>--magnify</code> を指定すると、Akashic のゲーム画面がブラウザのゲーム表示領域に合わせて拡大されます。指定しない場合、描画サイズは game.json に記述されたゲームサイズに固定されます。</p>
+<p><code>--minify</code> を指定すると、JavaScript のコードをミニファイします。圧縮してファイルサイズを削減したいときに利用できます。</p>
+<p><code>--bundle</code> を指定すると、JavaScript のコードを 1 ファイルにまとめてファイル数を削減します。ゲームに含まれるファイル数が多いときにファイルアクセス数を減らすことができます。</p>
 <p>上の例では使っていませんが、 <code>--hash-filename</code> を指定すると、エクスポート内容のファイル名を難読化します。</p>
 <h3>出力されるファイル</h3>
-<p>エクスポートされるのはindex.htmlと必要なアセットを含むディレクトリです。
-このディレクトリを適当なwebサーバにアップロードし、ブラウザでindex.htmlを閲覧するとゲームが動作します。index.htmlはiframe要素で読み込むこともできます。</p>
-<p>このディレクトリをzip圧縮すれば、RPGアツマールに投稿することもできます。投稿の手順は <a href="../../guide/atsumaru.html">RPGアツマール投稿ガイド</a> を参考にしてください。</p>
+<p>エクスポートされるのは index.html と必要なアセットを含むディレクトリです。
+このディレクトリを適当な web サーバにアップロードし、ブラウザで index.html を閲覧するとゲームが動作します。index.html は iframe 要素で読み込むこともできます。</p>
+<p>このディレクトリを zip 圧縮すれば、RPG アツマールに投稿することもできます。投稿の手順は <a href="../../guide/atsumaru.html">RPG アツマール投稿ガイド</a> を参考にしてください。</p>
 <div class="navi-center">
 <a href="./6-otherdraw.html">前（色々な描画）</a>
  | <a href="./">目次</a>

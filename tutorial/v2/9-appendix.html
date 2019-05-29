@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>より大規模なゲームを作るために</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1557204393058">
-<link rel="stylesheet" href="/css/header.css?1557204393058">
-<link rel="stylesheet" href="/css/footer.css?1557204393058">
+<link rel="stylesheet" href="/css/common.css?1559122180251">
+<link rel="stylesheet" href="/css/header.css?1559122180251">
+<link rel="stylesheet" href="/css/footer.css?1559122180251">
 
 
-<link rel="stylesheet" href="/css/asset.css?1557204393058">
+<link rel="stylesheet" href="/css/asset.css?1559122180251">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1557204393058">
+<link rel="stylesheet" href="/css/akashic-document.css?1559122180251">
 
-<link rel="stylesheet" href="/css/railscasts.css?1557204393058">
+<link rel="stylesheet" href="/css/railscasts.css?1559122180251">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1557204393058"></script>
+<script src="/lib/common.js?1559122180251"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -111,16 +111,16 @@
 <code>pushScene()</code> を利用すると現在のシーンを保存して次のシーンに遷移します。
 <code>pushScene()</code> でシーン遷移した場合、<code>popScene()</code> で元のシーンに戻ることができます。</p>
 <p>以下のプログラムでは <code>replaceScene()</code> を利用して、
-画面のタップまたはクリックで2つのシーンを切り替えています。</p>
+画面のタップまたはクリックで 2 つのシーンを切り替えています。</p>
 <pre><code class="lang-javascript">function main() {
   g.game.pushScene(createSceneA());
 }
 
 function createSceneA() {
-  var scene = new g.Scene({game: g.game});
-  scene.loaded.add(function () {
+  var scene = new g.Scene({ game: g.game });
+  scene.loaded.add(function() {
     scene.append(createRect(scene, &quot;red&quot;));
-    scene.pointDownCapture.add(function () {
+    scene.pointDownCapture.add(function() {
       g.game.replaceScene(createSceneB());
     });
   });
@@ -128,10 +128,10 @@ function createSceneA() {
 }
 
 function createSceneB() {
-  var scene = new g.Scene({game: g.game});
-  scene.loaded.add(function () {
+  var scene = new g.Scene({ game: g.game });
+  scene.loaded.add(function() {
     scene.append(createRect(scene, &quot;blue&quot;));
-    scene.pointDownCapture.add(function () {
+    scene.pointDownCapture.add(function() {
       g.game.replaceScene(createSceneA());
     });
   });
@@ -143,7 +143,7 @@ function createRect(scene, color) {
     scene: scene,
     cssColor: color,
     width: 32,
-    height: 32,
+    height: 32
   });
 }
 
@@ -154,18 +154,18 @@ module.exports = main;
 <code>require()</code> を使って他のファイルの関数を読み込んで利用します。</p>
 <p><code>MainScene.js</code> に以下のコードが記述されているとします。</p>
 <pre><code class="lang-javascript">module.exports.create = function() {
-  var scene = new g.Scene({game: g.game});
-  scene.loaded.add(function () {
+  var scene = new g.Scene({ game: g.game });
+  scene.loaded.add(function() {
     var rect = new g.FilledRect({
       scene: scene,
       cssColor: &quot;red&quot;,
       width: 32,
-      height: 32,
+      height: 32
     });
     scene.append(rect);
   });
   return scene;
-}
+};
 </code></pre>
 <p><code>mainScene.js</code> はシーンの作成処理を独立させたファイルです。
 コード中で <code>module.exports</code> に <code>create</code> 関数を代入しています。
