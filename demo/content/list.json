@@ -31,6 +31,21 @@
 			"dir": "demo-tile"
 		},
 		{
+			"caption": "akashic-label",
+			"description": "拡張ライブラリ[akashic-label](https://github.com/akashic-games/akashic-label)でルビや改行を含むテキストを描画することが出来ます。",
+			"dir": "label-sample"
+		},
+		{
+			"caption": "akashic-animation",
+			"description": "拡張ライブラリ[akashic-animation](https://github.com/akashic-games/akashic-animation)でアニメーションを制御することができます。",
+			"dir": "animation-showcase"
+		},
+		{
+			"caption": "akashic-timeline",
+			"description": "拡張ライブラリ[akashic-timeline](https://github.com/akashic-games/akashic-timeline)でトゥイーンアニメーションアニメーションを制御することができます。",
+			"dir": "timeline-sample"
+		},
+		{
 			"caption": "アブストラクトシューティング",
 			"description": "画面をクリック(タップ)すると、その位置から弾を発射します。画面のブロックを全て撃つとゲームオーバーです。",
 			"dir": "simpleShot"
