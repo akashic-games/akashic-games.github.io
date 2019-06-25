@@ -1,0 +1,68 @@
+{
+	"width": 320,
+	"height": 320,
+	"fps": 30,
+	"assets": {
+		"mainScene": {
+			"type": "script",
+			"path": "script/mainScene.js",
+			"global": true
+		},
+		"mainScene2": {
+			"type": "script",
+			"path": "script/mainScene2.js",
+			"global": true
+		},
+		"mainScene3": {
+			"type": "script",
+			"path": "script/mainScene3.js",
+			"global": true
+		},
+		"mainScene4": {
+			"type": "script",
+			"path": "script/mainScene4.js",
+			"global": true
+		},
+		"mainScene5": {
+			"type": "script",
+			"path": "script/mainScene5.js",
+			"global": true
+		},
+		"mainScene6": {
+			"type": "script",
+			"path": "script/mainScene6.js",
+			"global": true
+		},
+		"bmpfont": {
+			"type": "image",
+			"width": 512,
+			"height": 459,
+			"path": "image/bmpfont.png"
+		},
+		"bmpfont-glyph": {
+			"type": "text",
+			"path": "text/bmpfont-glyph.json"
+		},
+		"mplus": {
+			"type": "image",
+			"width": 2048,
+			"height": 702,
+			"path": "image/mplus.png"
+		},
+		"mplus-glyph": {
+			"type": "text",
+			"path": "text/mplus-glyph.json"
+		}
+	},
+	"globalScripts": [
+		"node_modules/@akashic-extension/akashic-label/lib/Label.js",
+		"node_modules/@akashic-extension/akashic-label/lib/DefaultRubyParser.js",
+		"node_modules/@akashic-extension/akashic-label/lib/RubyParser.js",
+		"node_modules/@akashic-extension/akashic-label/lib/FragmentDrawInfo.js",
+		"node_modules/@akashic-extension/akashic-label/lib/index.js",
+		"node_modules/@akashic-extension/akashic-label/package.json"
+	],
+	"environment": {
+		"sandbox-runtime": "2"
+	}
+}
