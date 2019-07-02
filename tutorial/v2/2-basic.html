@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>コンテンツ作成の基本</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1561956166189">
-<link rel="stylesheet" href="/css/header.css?1561956166189">
-<link rel="stylesheet" href="/css/footer.css?1561956166189">
+<link rel="stylesheet" href="/css/common.css?1562037770318">
+<link rel="stylesheet" href="/css/header.css?1562037770318">
+<link rel="stylesheet" href="/css/footer.css?1562037770318">
 
 
-<link rel="stylesheet" href="/css/asset.css?1561956166189">
+<link rel="stylesheet" href="/css/asset.css?1562037770318">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1561956166189">
+<link rel="stylesheet" href="/css/akashic-document.css?1562037770318">
 
-<link rel="stylesheet" href="/css/railscasts.css?1561956166189">
+<link rel="stylesheet" href="/css/railscasts.css?1562037770318">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1561956166189"></script>
+<script src="/lib/common.js?1562037770318"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -163,10 +163,7 @@ scene.append(rect);
 </code></pre>
 <p>Akashic Engine の機能はグローバル変数 <code>g</code> を通して利用できます。
 <code>FilledRect</code> コンストラクタは、コード上では <code>g.FilledRect</code> となります。</p>
-<p>エンティティのコンストラクタはオブジェクトを引数にとります。
-このように引数として渡すオブジェクトを Akashic Engine ではパラメータオブジェクトとよびます。
-パラメータオブジェクトのプロパティや指定できる値は関数ごとに異なっています。
-例えば <code>new g.FilledRect()</code> に渡すパラメータオブジェクトには次のプロパティを指定できます。</p>
+<p>エンティティのコンストラクタはオブジェクトを引数にとります。このように引数として渡すオブジェクトを Akashic Engine ではパラメータオブジェクトとよびます。パラメータオブジェクトのプロパティや指定できる値は関数ごとに異なっています。例えば <code>new g.FilledRect()</code> に渡すパラメータオブジェクトには次のプロパティを指定できます。</p>
 <div class="table--scroll">
 <table>
 <thead>
@@ -267,17 +264,11 @@ scene.append(rect);
 </div>
 
 <p>表中のほとんどのプロパティは <code>FilledRect</code> 以外のオブジェクトでも共通です。
-<code>FilledRect</code> 特有のプロパティは矩形の色を指定する <code>cssColor</code> のみです。
-また、他のエンティティと異なり <code>width</code> と <code>height</code> の指定が必須になっています。</p>
-<p>それぞれのエンティティで指定可能な値や初期値は API リファレンスに書かれています。
-例えば <code>FilledRect</code> であれば<a href="/reference/akashic-engine-v2/classes/_lib_main_d_.g.filledrect.html">こちら</a>のドキュメントに書かれています。</p>
-<p>エンティティをシーンに追加する操作は、シーンの読み込み後に行う必要があります。
-シーンの読み込み完了のようなタイミングを通知するのに、
-Akashic Engine はトリガー(<code>g.Trigger</code>)とよばれる仕組みを利用します。
-トリガーには <code>add()</code> メソッドで関数を登録することができます。
-トリガーに対応するイベントが発生すると、登録されたメソッドが呼び出されます。</p>
-<p>シーンの読み込み完了のタイミングを知るには <code>scene.loaded</code> トリガーを利用します。
-次の例では <code>onSceneLoaded()</code> 関数を <code>scene.loaded</code> トリガーに登録しています。</p>
+<code>FilledRect</code> 特有のプロパティは矩形の色を指定する <code>cssColor</code> のみです。また、他のエンティティと異なり <code>width</code> と <code>height</code> の指定が必須になっています。</p>
+<p>それぞれのエンティティで指定可能な値や初期値は API リファレンスに書かれています。例えば <code>FilledRect</code> であれば<a href="/reference/akashic-engine-v2/classes/_lib_main_d_.g.filledrect.html">こちら</a>のドキュメントに書かれています。</p>
+<p>エンティティをシーンに追加する操作は、シーンの読み込み後に行う必要があります。シーンの読み込み完了のようなタイミングを通知するのに、
+Akashic Engine はトリガー(<code>g.Trigger</code>)とよばれる仕組みを利用します。トリガーには <code>add()</code> メソッドで関数を登録することができます。トリガーに対応するイベントが発生すると、登録されたメソッドが呼び出されます。</p>
+<p>シーンの読み込み完了のタイミングを知るには <code>scene.loaded</code> トリガーを利用します。次の例では <code>onSceneLoaded()</code> 関数を <code>scene.loaded</code> トリガーに登録しています。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
 scene.loaded.add(onSceneLoaded);
 
@@ -292,8 +283,7 @@ scene.loaded.add(function() {
   // シーンが読み込まれたときに行う処理
 });
 </code></pre>
-<p>以下は、これまで説明した内容を利用して、座標 (50, 50) に幅 100、高さ 100 の赤色の矩形を表示するプログラムです。
-座標は初期状態ではシーンの左上が原点で、右に行くほど X の値が大きくなり、下に行くほど Y の値が大きくなります。</p>
+<p>以下は、これまで説明した内容を利用して、座標 (50, 50) に幅 100、高さ 100 の赤色の矩形を表示するプログラムです。座標は初期状態ではシーンの左上が原点で、右に行くほど X の値が大きくなり、下に行くほど Y の値が大きくなります。</p>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({ game: g.game });
   scene.loaded.add(function() {
@@ -324,8 +314,7 @@ Akashic Engine のいくつかのオブジェクトは明示的に <code>g.game<
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
 </code></pre>
 <p><code>g.game</code> オブジェクトの <code>width</code> プロパティと <code>height</code> プロパティには、
-<code>game.json</code> に指定したゲームの幅と高さが格納されています。
-この値を利用すると、例えば以下のようにゲーム全体を青色で塗りつぶすように矩形を配置できます。</p>
+<code>game.json</code> に指定したゲームの幅と高さが格納されています。この値を利用すると、例えば以下のようにゲーム全体を青色で塗りつぶすように矩形を配置できます。</p>
 <pre><code class="lang-javascript">var backgroundRect = new g.FilledRect({
   scene: scene,
   width: g.game.width,
@@ -333,8 +322,7 @@ Akashic Engine のいくつかのオブジェクトは明示的に <code>g.game<
   cssColor: &quot;blue&quot;
 });
 </code></pre>
-<p>複数の矩形を配置するには、<code>new g.FilledRect()</code> と <code>scene.append()</code> をそれぞれ複数回呼び出します。
-以下はループを使って矩形を格子状に並べるプログラムです。</p>
+<p>複数の矩形を配置するには、<code>new g.FilledRect()</code> と <code>scene.append()</code> をそれぞれ複数回呼び出します。以下はループを使って矩形を格子状に並べるプログラムです。</p>
 <pre><code class="lang-javascript">var rectHeight = 40,
   rectWidth = 60,
   rectMargin = 10;
@@ -368,18 +356,12 @@ module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample03.png" alt="sample03"></p>
 <h2><a name="画像を扱う"></a> 画像を扱う</h2>
-<p>Akashic Engine では PNG 形式と JPEG 形式の画像を扱えます。
-ここでは以下の PNG 画像 (<code>player.png</code>) をシーンに追加します。</p>
+<p>Akashic Engine では PNG 形式と JPEG 形式の画像を扱えます。ここでは以下の PNG 画像 (<code>player.png</code>) をシーンに追加します。</p>
 <p><img src="/img/tutorial/player.png" alt="player"></p>
-<p>Akashic Engine のゲームには推奨されるディレクトリ構造があります。
-このディレクトリ構造に従うことで、面倒な作業を自動化できます。
-例えば画像は、アセットとして <code>game.json</code> に登録する必要があります。
-追加したい画像が <code>image</code> ディレクトリに置かれている場合、
-次のコマンドで <code>game.json</code> にアセットの情報が追加されます。</p>
+<p>Akashic Engine のゲームには推奨されるディレクトリ構造があります。このディレクトリ構造に従うことで、面倒な作業を自動化できます。例えば画像は、アセットとして <code>game.json</code> に登録する必要があります。追加したい画像が <code>image</code> ディレクトリに置かれている場合、次のコマンドで <code>game.json</code> にアセットの情報が追加されます。</p>
 <pre><code class="lang-sh">akashic scan asset
 </code></pre>
-<p><code>akashic scan asset</code> がアセットを探すディレクトリは以下の 4 つで、
-それぞれ配置するアセットの種類が決まっています。</p>
+<p><code>akashic scan asset</code> がアセットを探すディレクトリは以下の 4 つで、それぞれ配置するアセットの種類が決まっています。</p>
 <div class="table--scroll">
 <table>
 <thead>
@@ -409,11 +391,8 @@ module.exports = main;
 </table>
 </div>
 
-<p><code>akashic init</code> の JavaScript テンプレートを利用している場合、
-これらのディレクトリはすでに用意されています。
-<code>akashic scan asset</code> を実行すると、
-これらのディレクトリ内に新しいファイルが見つかった場合は <code>game.json</code> に登録し、
-ディレクトリからファイルが削除されたら <code>game.json</code> から登録を解除します。</p>
+<p><code>akashic init</code> の JavaScript テンプレートを利用している場合、これらのディレクトリはすでに用意されています。
+<code>akashic scan asset</code> を実行すると、これらのディレクトリ内に新しいファイルが見つかった場合は <code>game.json</code> に登録し、ディレクトリからファイルが削除されたら <code>game.json</code> から登録を解除します。</p>
 <p><code>player.png</code> を <code>image</code> ディレクトリに置いて
 <code>akashic scan asset</code> を実行すると、画面に以下のように表示されます。</p>
 <pre><code class="lang-sh">INFO: Added (or updated) the declaration for player (image/player.png)
@@ -440,31 +419,20 @@ INFO: Done!
 module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample04.png" alt="sample04"></p>
-<p>画像アセット・オーディオアセット・テキストアセットの 3 種類は、
-シーンオブジェクトを作るときに、<code>assetIds</code> プロパティで
-利用するアセットの ID を指定します。
-スクリプトアセットは例外で、指定しなくても自動的に読み込まれます。
-アセットの ID は <code>game.json</code> に登録されている名前です。
-<code>akashic scan</code> で登録した場合は、ファイル名から拡張子をのぞいた文字列です。
-例えば <code>player.png</code> の場合、アセット ID は <code>player</code> になります。</p>
+<p>画像アセット・オーディオアセット・テキストアセットの 3 種類は、シーンオブジェクトを作るときに、<code>assetIds</code> プロパティで利用するアセットの ID を指定します。スクリプトアセットは例外で、指定しなくても自動的に読み込まれます。アセットの ID は <code>game.json</code> に登録されている名前です。
+<code>akashic scan</code> で登録した場合は、ファイル名から拡張子をのぞいた文字列です。例えば <code>player.png</code> の場合、アセット ID は <code>player</code> になります。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game, assetIds: [&quot;player&quot;] });
 </code></pre>
 <p>画像を表示するには <code>Sprite</code> エンティティを使います。
-<code>Sprite</code> エンティティのパラメータオブジェクトには <code>src</code> プロパティがあります。
-ここに画像アセットオブジェクトを指定すると、対応する画像を表示する
-エンティティが作成されます。</p>
+<code>Sprite</code> エンティティのパラメータオブジェクトには <code>src</code> プロパティがあります。ここに画像アセットオブジェクトを指定すると、対応する画像を表示するエンティティが作成されます。</p>
 <p>シーンに読み込んだアセットオブジェクトは、たとえばアセットの ID が <code>player</code>
 だとすると次のコードで参照できます。</p>
 <pre><code class="lang-javascript">scene.assets[&quot;player&quot;];
 </code></pre>
 <h2><a name="エンティティの入れ子"></a> エンティティの入れ子</h2>
-<p>エンティティには子エンティティを追加できます。
-子エンティティは親エンティティに追従して動くので、
-複数のエンティティを一度に操作する場合に利用できます。</p>
-<p><code>E</code> エンティティはそれ自体は何も描画しないエンティティで、
-複数のエンティティをグループ化する場合に便利です。</p>
-<p>例えばエンティティ <code>E</code> に子エンティティとして <code>FilledRect</code> を追加する場合は、
-次のようなコードになります。</p>
+<p>エンティティには子エンティティを追加できます。子エンティティは親エンティティに追従して動くので、複数のエンティティを一度に操作する場合に利用できます。</p>
+<p><code>E</code> エンティティはそれ自体は何も描画しないエンティティで、複数のエンティティをグループ化する場合に便利です。</p>
+<p>例えばエンティティ <code>E</code> に子エンティティとして <code>FilledRect</code> を追加する場合は、次のようなコードになります。</p>
 <pre><code class="lang-javascript">var group = new g.E({ scene: scene });
 var child = new g.FilledRect({
   scene: scene,
@@ -474,8 +442,7 @@ var child = new g.FilledRect({
 });
 group.append(child);
 </code></pre>
-<p>以下のプログラムでは、<code>angle</code> を設定した <code>E</code> オブジェクトに 3 つの矩形を追加しています。
-矩形の座標系は <code>E</code> を基準にして変わるので、3 つの矩形は斜めに配置されます。</p>
+<p>以下のプログラムでは、<code>angle</code> を設定した <code>E</code> オブジェクトに 3 つの矩形を追加しています。矩形の座標系は <code>E</code> を基準にして変わるので、3 つの矩形は斜めに配置されます。</p>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({ game: g.game });
   scene.loaded.add(function() {

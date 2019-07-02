@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ストレージについて</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1561956166189">
-<link rel="stylesheet" href="/css/header.css?1561956166189">
-<link rel="stylesheet" href="/css/footer.css?1561956166189">
+<link rel="stylesheet" href="/css/common.css?1562037770318">
+<link rel="stylesheet" href="/css/header.css?1562037770318">
+<link rel="stylesheet" href="/css/footer.css?1562037770318">
 
 
-<link rel="stylesheet" href="/css/asset.css?1561956166189">
+<link rel="stylesheet" href="/css/asset.css?1562037770318">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1561956166189">
+<link rel="stylesheet" href="/css/akashic-document.css?1562037770318">
 
-<link rel="stylesheet" href="/css/railscasts.css?1561956166189">
+<link rel="stylesheet" href="/css/railscasts.css?1562037770318">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1561956166189"></script>
+<script src="/lib/common.js?1562037770318"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -174,8 +174,7 @@
 <p>ストレージインターフェースの詳細な仕様は API リファレンスを参照してください。</p>
 <!-- TODO: APIリファレンスへのハイパーリンク -->
 <h3><a name="値の書き込み"></a> 値の書き込み</h3>
-<p>値の書き込みは <code>g.Storage#write()</code> を利用します。
-ゲームに紐づく <code>g.Storage</code> のインスタンスは <code>g.Game#storage</code> となります。</p>
+<p>値の書き込みは <code>g.Storage#write()</code> を利用します。ゲームに紐づく <code>g.Storage</code> のインスタンスは <code>g.Game#storage</code> となります。</p>
 <p>例えば、Values リージョンに値を書き込むには以下のような記述を行います。</p>
 <pre><code class="lang-javascript">// g.StorageKeyを作成
 var key = {
@@ -195,10 +194,8 @@ game.storage.write(key, value);
 <p>この例において、<code>player</code> はゲームに参加しているプレイヤーを指す <code>g.Player</code> のインスタンスとなります。</p>
 <p>値の書き込みにはストレージキーを表す <code>g.StorageKey</code> と値を表す <code>g.StorageValue</code> が必要です。</p>
 <p>この例では、 <code>key</code> が <code>g.StorageKey</code>、 <code>value</code> が <code>g.StorageValue</code> となります。</p>
-<p><code>key.gameId</code> に指定している <code>&quot;$gameId&quot;</code> はゲーム ID を示す予約語を表しています。
-この予約語が <code>g.StorageKey#gameId</code> に指定されたとき、Akashic は自動的にゲーム ID の解決を行います。</p>
-<p>書き込む値は <code>g.StorageValue#data</code> に指定します。
-この例では、<code>&quot;apple&quot;</code> を指定しています。</p>
+<p><code>key.gameId</code> に指定している <code>&quot;$gameId&quot;</code> はゲーム ID を示す予約語を表しています。この予約語が <code>g.StorageKey#gameId</code> に指定されたとき、Akashic は自動的にゲーム ID の解決を行います。</p>
+<p>書き込む値は <code>g.StorageValue#data</code> に指定します。この例では、<code>&quot;apple&quot;</code> を指定しています。</p>
 <p><code>g.StorageValue#tag</code> は値の付加情報となっており、値の検証を行う場合等に利用することが可能です。</p>
 <p><code>game.storage.write(key, value)</code> で実際に書き込みが行われます。</p>
 <p>ここで、ゲームコンテンツは書き込みの成功・失敗を検知することが出来ないことに注意して下さい。</p>

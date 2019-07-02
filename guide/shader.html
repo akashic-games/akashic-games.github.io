@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>シェーダの利用</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1561956166189">
-<link rel="stylesheet" href="/css/header.css?1561956166189">
-<link rel="stylesheet" href="/css/footer.css?1561956166189">
+<link rel="stylesheet" href="/css/common.css?1562037770318">
+<link rel="stylesheet" href="/css/header.css?1562037770318">
+<link rel="stylesheet" href="/css/footer.css?1562037770318">
 
 
-<link rel="stylesheet" href="/css/asset.css?1561956166189">
+<link rel="stylesheet" href="/css/asset.css?1562037770318">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1561956166189">
+<link rel="stylesheet" href="/css/akashic-document.css?1562037770318">
 
-<link rel="stylesheet" href="/css/railscasts.css?1561956166189">
+<link rel="stylesheet" href="/css/railscasts.css?1562037770318">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1561956166189"></script>
+<script src="/lib/common.js?1562037770318"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -110,18 +110,15 @@
 <p>また、本機能を利用するには WebGL 1.0 が利用可能な環境が必要です。
 <a href="http://webglreport.com/">こちらのページ</a> で現在利用しているブラウザが WebGL をサポートしているか確認することができます。</p>
 <h2><a name="シェーダとは"></a> シェーダとは</h2>
-<p>WebGL, OpenGL などで、3 次元空間に存在する情報を 2 次元空間に描画するために用いられているプログラムのことを指します。
-詳細については他のドキュメントを参照ください。</p>
+<p>WebGL, OpenGL などで、3 次元空間に存在する情報を 2 次元空間に描画するために用いられているプログラムのことを指します。詳細については他のドキュメントを参照ください。</p>
 <p>本ドキュメントでは Akashic でシェーダを利用する方法について記述します。
 <a href="mailto:`akashic-engine@2.3.2">`akashic-engine@2.3.2</a>` ではフラグメントシェーダのみをサポートします。</p>
 <h2><a name="準備"></a> 準備</h2>
 <p>ゲーム開発の準備が終わっていない場合は <a href="https://akashic-games.github.io/tutorial/v2/">Akashic を利用したゲーム開発</a> を読んでゲーム開発の環境を整えて下さい。</p>
-<p>本ドキュメントの内容は <a href="mailto:`akashic-sandbox@0.13.24">`akashic-sandbox@0.13.24</a>` 以降のバージョンでサポートされています。
-手元の akashic-sandbox のバージョンがこれより古い場合は以下のコマンドで最新のものをインストールしてください。</p>
+<p>本ドキュメントの内容は <a href="mailto:`akashic-sandbox@0.13.24">`akashic-sandbox@0.13.24</a>` 以降のバージョンでサポートされています。手元の akashic-sandbox のバージョンがこれより古い場合は以下のコマンドで最新のものをインストールしてください。</p>
 <pre><code class="lang-sh">npm i @akashic/akashic-sandbox -g
 </code></pre>
-<p>コンテンツで WebGL を有効にするため、 <code>game.json</code> の <code>renderers</code> に <code>webgl</code> を追加します。
-詳細は <a href="game-json.html">game.json の仕様</a> を参照してください。</p>
+<p>コンテンツで WebGL を有効にするため、 <code>game.json</code> の <code>renderers</code> に <code>webgl</code> を追加します。詳細は <a href="game-json.html">game.json の仕様</a> を参照してください。</p>
 <h2><a name="利用"></a> 利用</h2>
 <p>まずはゲーム内でシェーダを利用するための準備をします。</p>
 <p>以下は出力色をモノクロ化するフラグメントシェーダの記述になります。</p>
@@ -168,8 +165,7 @@ const shader = new g.ShaderProgram({
   fragmentShader: fragmentShader
 });
 </code></pre>
-<p><code>g.ShaderProgram</code> は <code>g.E</code> やそれを継承したクラス (<code>g.Sprite</code> , <code>g.Pane</code> など) に適用できます。
-以下のようにコンストラクタのパラメータに指定することができます。</p>
+<p><code>g.ShaderProgram</code> は <code>g.E</code> やそれを継承したクラス (<code>g.Sprite</code> , <code>g.Pane</code> など) に適用できます。以下のようにコンストラクタのパラメータに指定することができます。</p>
 <pre><code class="lang-javascript">var sprite = new g.Sprite({
   scene: scene,
   src: scene.assets[&quot;sample&quot;],
@@ -182,8 +178,7 @@ const shader = new g.ShaderProgram({
 <pre><code class="lang-javascript">sprite.shaderProgram = shader;
 sprite.modified();
 </code></pre>
-<p>シェーダプログラムは親エンティティの値を継承します。
-そのため、シェーダプログラムを適用したエンティティに複数の子エンティティに追加することで、複数のエンティティに同一のシェーダプログラムを適用することができます。</p>
+<p>シェーダプログラムは親エンティティの値を継承します。そのため、シェーダプログラムを適用したエンティティに複数の子エンティティに追加することで、複数のエンティティに同一のシェーダプログラムを適用することができます。</p>
 <p>設定したシェーダを戻したい場合、 <code>undefined</code> または <code>null</code> を指定します。
 <code>undefined</code> と <code>null</code> は以下のように挙動が異なることにご留意ください。</p>
 <ul>
@@ -273,8 +268,7 @@ void main(void)
   }
 });
 </code></pre>
-<p><code>uniform</code> は、フラグメントシェーダで利用する際の変数名をキーとしたオブジェクトによって定義されます。
-各キーは <code>g.ShaderUniform</code> によって定義された形式で記述する必要があります。
+<p><code>uniform</code> は、フラグメントシェーダで利用する際の変数名をキーとしたオブジェクトによって定義されます。各キーは <code>g.ShaderUniform</code> によって定義された形式で記述する必要があります。
 <code>type</code> は対象の uniform の型、<code>value</code>はその値を示します。</p>
 <p><code>type</code> には以下が指定できます。</p>
 <ul>

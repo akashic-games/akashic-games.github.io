@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>bmpfont-generator 利用ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1561956166189">
-<link rel="stylesheet" href="/css/header.css?1561956166189">
-<link rel="stylesheet" href="/css/footer.css?1561956166189">
+<link rel="stylesheet" href="/css/common.css?1562037770318">
+<link rel="stylesheet" href="/css/header.css?1562037770318">
+<link rel="stylesheet" href="/css/footer.css?1562037770318">
 
 
-<link rel="stylesheet" href="/css/asset.css?1561956166189">
+<link rel="stylesheet" href="/css/asset.css?1562037770318">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1561956166189">
+<link rel="stylesheet" href="/css/akashic-document.css?1562037770318">
 
-<link rel="stylesheet" href="/css/railscasts.css?1561956166189">
+<link rel="stylesheet" href="/css/railscasts.css?1562037770318">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1561956166189"></script>
+<script src="/lib/common.js?1562037770318"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -108,7 +108,7 @@
 この利用ガイドでは、ビットマップ画像を生成する方法と、生成に利用するツール bmpfont-generator について紹介します。</p>
 <p>また、この利用ガイドで解説する bmpfont-generator の対象バージョンは 4.0.0 以降です。</p>
 <h2><a name="bitmap-image"></a> ビットマップ画像</h2>
-<p>bmpfont-generator を利用することで、以下のようなビットマップ画像とjsonファイルを出力することができます。</p>
+<p>bmpfont-generator を利用することで、以下のようなビットマップ画像と json ファイルを出力することができます。</p>
 <p><img src="/img/guide/bmpfont-generator/bmpfont.png" alt="ビットマップ画像"></p>
 <pre><code class="lang-glyph.json">{&quot;map&quot;:{&quot;63&quot;:{&quot;x&quot;:980,&quot;y&quot;:598},&quot;167&quot;:{&quot;x&quot;:1700,&quot;y&quot;:0},&quot;168&quot;:{&quot;x&quot;:280,&quot;y&quot;:0}...},&quot;missingGlyph&quot;:{&quot;x&quot;:120,&quot;y&quot;:676},&quot;width&quot;:20,&quot;height&quot;:26}
 
@@ -118,8 +118,8 @@
 この利用ガイドでは、 LTS 版の Node.js 環境を前提に説明を進めます。 執筆時点での LTS 版のバージョンは 10.16.0 です。</p>
 <h3>環境構築</h3>
 <p>bmpfont-generator を利用するには Cairo、node-canvas が必要です。
-Cairoは <a href="https://github.com/Automattic/node-canvas/tree/v1.x#installation">CairoのREADME</a>を参考にしてインストールしてください。
-Windows環境の場合、以下の手順を参考にして node-canvas の実行環境を用意してください。
+Cairo は <a href="https://github.com/Automattic/node-canvas/tree/v1.x#installation">Cairo の README</a>を参考にしてインストールしてください。
+Windows 環境の場合、以下の手順を参考にして node-canvas の実行環境を用意してください。
 <a href="http://www.delarre.net/posts/installing-node-canvas-for-windows/">Installing node-canvas for Windows</a></p>
 <h3>インストール</h3>
 <p>bmpfont-generator は以下のコマンドでインストールすることができます。</p>
@@ -129,8 +129,8 @@ Windows環境の場合、以下の手順を参考にして node-canvas の実行
 <p>bmpfont-generator は以下のコマンドで実行できます。</p>
 <pre><code class="lang-sh">bmpfont-generator --chars &#39;0123456789&#39; --height 14 --fill &#39;#ff0000&#39; sourceFont.ttf bitmap.png
 </code></pre>
-<p>このコマンドを実行すると、sourceFont.ttf の数字のグリフを高さ14pxの赤色で描いて並べたビットマップ画像が bitmap.png として出力されます。
-また、bitmap_glyph.jsonファイルも同時に出力されます。</p>
+<p>このコマンドを実行すると、sourceFont.ttf の数字のグリフを高さ 14px の赤色で描いて並べたビットマップ画像が bitmap.png として出力されます。
+また、bitmap_glyph.json ファイルも同時に出力されます。</p>
 <p>bmpfont-generator は以下のオプションを持ちます。</p>
 <pre><code class="lang-sh">bmpfont-generator [&lt;options&gt;]
 </code></pre>
@@ -156,7 +156,7 @@ Windows環境の場合、以下の手順を参考にして node-canvas の実行
 <tr>
 <td style="text-align:center"><code>--fixed-width &lt;size&gt;</code></td>
 <td style="text-align:center"><code>-w</code></td>
-<td style="text-align:center">文字の横サイズ(px) 。指定した場合、文字の幅に関わらずsizeを幅の値とする</td>
+<td style="text-align:center">文字の横サイズ(px) 。指定した場合、文字の幅に関わらず size を幅の値とする</td>
 <td style="text-align:center"></td>
 <td style="text-align:center"></td>
 </tr>
@@ -177,7 +177,7 @@ Windows環境の場合、以下の手順を参考にして node-canvas の実行
 <tr>
 <td style="text-align:center"><code>--missing-glyph &lt;char&gt;</code></td>
 <td style="text-align:center"><code>-m</code></td>
-<td style="text-align:center">-cの指定に含まれない文字の代わりに用いる代替文字</td>
+<td style="text-align:center">-c の指定に含まれない文字の代わりに用いる代替文字</td>
 <td style="text-align:center"></td>
 <td style="text-align:center">フォントが持つ代替文字</td>
 </tr>
@@ -205,7 +205,7 @@ Windows環境の場合、以下の手順を参考にして node-canvas の実行
 <tr>
 <td style="text-align:center"><code>--quality &lt;quality&gt;</code></td>
 <td style="text-align:center"><code>-Q</code></td>
-<td style="text-align:center">1-100の画質。指定する場合、 <code>pngquant</code> が必要</td>
+<td style="text-align:center">1-100 の画質。指定する場合、 <code>pngquant</code> が必要</td>
 <td style="text-align:center"></td>
 <td style="text-align:center">圧縮しない</td>
 </tr>
@@ -226,28 +226,28 @@ Windows環境の場合、以下の手順を参考にして node-canvas の実行
 <tr>
 <td style="text-align:center"><code>--json &lt;filepath&gt;</code></td>
 <td style="text-align:center"></td>
-<td style="text-align:center">jsonファイルを書き出すパス</td>
+<td style="text-align:center">json ファイルを書き出すパス</td>
 <td style="text-align:center"></td>
 <td style="text-align:center"><code>&lt;outfileName&gt;_glyphs.json</code></td>
 </tr>
 <tr>
 <td style="text-align:center"><code>--no-json</code></td>
 <td style="text-align:center"></td>
-<td style="text-align:center">jsonファイルを出力しない</td>
+<td style="text-align:center">json ファイルを出力しない</td>
 <td style="text-align:center"></td>
 </tr>
 </tbody>
 </table>
-<p><code>fillstyle</code> はCSSの色 (color プロパティに指定できる値)を指定することができます。
-<code>strokestyle</code> は <code>fillstyle</code> と同様にCSSの色を指定することが出来ます。</p>
+<p><code>fillstyle</code> は CSS の色 (color プロパティに指定できる値)を指定することができます。
+<code>strokestyle</code> は <code>fillstyle</code> と同様に CSS の色を指定することが出来ます。</p>
 <p><code>baseline</code> は省略時は自動で計算されるので、基本的には利用する必要はありません。</p>
 <p><code>quality</code> オプションを指定する場合、 <code>pngquant</code> がインストールされている必要があります。</p>
 <p>例として、 <code>fillstyle</code> に <code>red</code> を指定した場合、以下のようなビットマップ画像が得られます。
 <img src="/img/guide/bmpfont-generator/red.png" alt="赤いビットマップ画像"></p>
 <h2><a name="build-in"></a> コンテンツへの組み込み</h2>
-<p>出力されたビットマップ画像を Akashic のゲームで利用するには、ファイルをgame.jsonにアセットとして登録し、ゲームから読み込めるようにする必要があります。</p>
+<p>出力されたビットマップ画像を Akashic のゲームで利用するには、ファイルを game.json にアセットとして登録し、ゲームから読み込めるようにする必要があります。</p>
 <p><code>akashic init</code> コマンドで生成した Akashic ゲームであれば、
-ビットマップ画像とjsonファイルをそれぞれ image/, text/ ディレクトリに置いて <code>akashic scan asset</code> を実行すると登録されます。</p>
+ビットマップ画像と json ファイルをそれぞれ image/, text/ ディレクトリに置いて <code>akashic scan asset</code> を実行すると登録されます。</p>
 <p>登録後、Akashic ゲームで以下のようなコードを書くことで、フォントとして利用できます。</p>
 <pre><code>var font = new g.BitmapFont({
   src: g.game.scene().assets[&quot;bitmap&quot;],
@@ -255,7 +255,7 @@ Windows環境の場合、以下の手順を参考にして node-canvas の実行
   defaultGlyphWidth: 14
   defaultGlyphHeight: 14
 });
-</code></pre><p>TypeScriptコードでは、 <code>g.game.scene().assets[&quot;bitmap&quot;] as g.ImageAsset</code> のように型を明示的にキャストする必要があります。</p>
+</code></pre><p>TypeScript コードでは、 <code>g.game.scene().assets[&quot;bitmap&quot;] as g.ImageAsset</code> のように型を明示的にキャストする必要があります。</p>
 <p>ビットマップフォントはダイナミックフォントと同じく、以下のようなコードを書くことで利用できます。</p>
 <pre><code>var label = new g.Label({
     scene: g.game.scene(),

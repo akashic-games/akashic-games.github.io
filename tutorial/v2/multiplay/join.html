@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>Join と Leave</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1561956166189">
-<link rel="stylesheet" href="/css/header.css?1561956166189">
-<link rel="stylesheet" href="/css/footer.css?1561956166189">
+<link rel="stylesheet" href="/css/common.css?1562037770318">
+<link rel="stylesheet" href="/css/header.css?1562037770318">
+<link rel="stylesheet" href="/css/footer.css?1562037770318">
 
 
-<link rel="stylesheet" href="/css/asset.css?1561956166189">
+<link rel="stylesheet" href="/css/asset.css?1562037770318">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1561956166189">
+<link rel="stylesheet" href="/css/akashic-document.css?1562037770318">
 
-<link rel="stylesheet" href="/css/railscasts.css?1561956166189">
+<link rel="stylesheet" href="/css/railscasts.css?1562037770318">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1561956166189"></script>
+<script src="/lib/common.js?1562037770318"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -105,15 +105,11 @@
 			<h1>Join と Leave</h1>
 <p><a name="join"></a></p>
 <h1>Join</h1>
-<p>各プレイヤーには「join しているか否か」という二値の状態が存在します。
-これは実行環境が規定する値です。
-「join しているプレイヤー」が何を意味するかは、実行環境によって定まります。</p>
-<p>あるプレイヤーが join 状態になる時、 <code>g.game.join</code> が fire され <code>g.JoinEvent</code> が与えられます。
-同様に join 状態でなくなる時、 <code>g.game.leave</code> が fire され <code>g.LeaveEvent</code> が与えられます。</p>
+<p>各プレイヤーには「join しているか否か」という二値の状態が存在します。これは実行環境が規定する値です。「join しているプレイヤー」が何を意味するかは、実行環境によって定まります。</p>
+<p>あるプレイヤーが join 状態になる時、 <code>g.game.join</code> が fire され <code>g.JoinEvent</code> が与えられます。同様に join 状態でなくなる時、 <code>g.game.leave</code> が fire され <code>g.LeaveEvent</code> が与えられます。</p>
 <blockquote>
 <p>これ自体は環境依存が強くあまり使い出のない機能ですが、
-<strong>ニコニコ生放送上で実行する場合、配信者のプレイヤーだけが join します</strong> (leave はしません)。
-そのため、配信者と視聴者を区別するための情報として利用することができます。</p>
+<strong>ニコニコ生放送上で実行する場合、配信者のプレイヤーだけが join します</strong> (leave はしません)。そのため、配信者と視聴者を区別するための情報として利用することができます。</p>
 </blockquote>
 <p>次のコードは、最後に join したプレイヤーを記憶して参照する例です。</p>
 <pre><code class="lang-javascript">var lastJoinedPlayerId = null;
@@ -134,8 +130,7 @@ scene.pointDownCapture.add(function(ev) {
   }
 });
 </code></pre>
-<p>なお <code>g.game.selfId</code> は、今そのゲームを実行している環境(インスタンス)のプレイヤー ID です。
-このコード例のように、あるイベントの生成元が自分(このインスタンス自身)かどうかを判断したい時に利用できます。</p>
+<p>なお <code>g.game.selfId</code> は、今そのゲームを実行している環境(インスタンス)のプレイヤー ID です。このコード例のように、あるイベントの生成元が自分(このインスタンス自身)かどうかを判断したい時に利用できます。</p>
 <p><code>g.game.join</code> や <code>g.game.leave</code> の動作確認は <code>akashic serve</code> コマンドでも行うことができます。</p>
 <p><img src="/img/tutorial/cli-serve.png" alt="serve"></p>
 <p>画面上側、ツールバー上の「Join Me」ボタンを押すと、そのウィンドウ(インスタンス)のプレイヤーが join します (<code>g.game.join</code> が fire されます)。

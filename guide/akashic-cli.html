@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic-cli 利用ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1561956166189">
-<link rel="stylesheet" href="/css/header.css?1561956166189">
-<link rel="stylesheet" href="/css/footer.css?1561956166189">
+<link rel="stylesheet" href="/css/common.css?1562037770318">
+<link rel="stylesheet" href="/css/header.css?1562037770318">
+<link rel="stylesheet" href="/css/footer.css?1562037770318">
 
 
-<link rel="stylesheet" href="/css/asset.css?1561956166189">
+<link rel="stylesheet" href="/css/asset.css?1562037770318">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1561956166189">
+<link rel="stylesheet" href="/css/akashic-document.css?1562037770318">
 
-<link rel="stylesheet" href="/css/railscasts.css?1561956166189">
+<link rel="stylesheet" href="/css/railscasts.css?1562037770318">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1561956166189"></script>
+<script src="/lib/common.js?1562037770318"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -105,21 +105,15 @@
 			<h1>akashic-cli 利用ガイド</h1>
 <h2><a name="これは"></a> これは</h2>
 <p>Akashic でのゲーム開発を補助するコマンドラインツール、akashic コマンドの仕様と利用法を解説します。
-akashic コマンドは akashic-cli をインストールして使用することができます。
-この利用ガイドで解説する akashic-cli の対象バージョンは 1.0.8 以降です。</p>
+akashic コマンドは akashic-cli をインストールして使用することができます。この利用ガイドで解説する akashic-cli の対象バージョンは 1.0.8 以降です。</p>
 <p>斜体は検討中の箇所です。</p>
 <h2><a name="インストール方法"></a> インストール方法</h2>
-<p>akashic コマンド は、Node.js 環境で動作します。
-各プラットフォームで、適当な方法で Node.js をインストールしてください。
-この利用ガイドでは、 LTS 版の Node.js 環境を前提に説明を進めます。
-執筆時点での LTS 版のバージョンは 8.11.3 です。</p>
-<p>Windows や Mac のユーザであれば、<a href="https://nodejs.org/download/">Node.js の公式 Web サイト</a> から
-適切なパッケージをダウンロードし、インストールすることができます。</p>
+<p>akashic コマンド は、Node.js 環境で動作します。各プラットフォームで、適当な方法で Node.js をインストールしてください。この利用ガイドでは、 LTS 版の Node.js 環境を前提に説明を進めます。執筆時点での LTS 版のバージョンは 8.11.3 です。</p>
+<p>Windows や Mac のユーザであれば、<a href="https://nodejs.org/download/">Node.js の公式 Web サイト</a> から適切なパッケージをダウンロードし、インストールすることができます。</p>
 <pre><code class="lang-sh">npm install -g @akashic/akashic-cli
 </code></pre>
 <h2><a name="使い方"></a> 使い方</h2>
-<p>無事にインストールができていれば、以下のコマンドが実行できるようになっています。
-実行すると、akashic コマンドの簡単なヘルプが表示されます。</p>
+<p>無事にインストールができていれば、以下のコマンドが実行できるようになっています。実行すると、akashic コマンドの簡単なヘルプが表示されます。</p>
 <pre><code class="lang-sh">$ akashic
 </code></pre>
 <p><code>akashic</code> は以下のコマンドを持ちます。</p>
@@ -165,15 +159,12 @@ akashic コマンドは akashic-cli をインストールして使用するこ�
 </ul>
 </li>
 </ul>
-<p>init 以外のコマンドは、init によって生成される game.json を操作・出力・実行します。
-したがって通常、ゲーム開発時にはまず akashic init を実行し、
-その後必要に応じて他コマンドを実行することになります。</p>
+<p>init 以外のコマンドは、init によって生成される game.json を操作・出力・実行します。したがって通常、ゲーム開発時にはまず akashic init を実行し、その後必要に応じて他コマンドを実行することになります。</p>
 <h2><a name="init"></a> init</h2>
 <pre><code class="lang-sh">akashic init [--type &lt;type&gt;]
 </code></pre>
 <p>新しく Akashic で動作するゲームをカレントディレクトリに生成します。</p>
-<p>このコマンドを実行すると、以下のような対話型のインターフェースが表示され、
-ゲーム画面の幅・高さおよびゲームの FPS を入力できます。</p>
+<p>このコマンドを実行すると、以下のような対話型のインターフェースが表示され、ゲーム画面の幅・高さおよびゲームの FPS を入力できます。</p>
 <pre><code class="lang-sh">$ npm install -g @akashic/akashic-cli
 $ cd GAME_HOME
 $ akashic init
@@ -186,8 +177,7 @@ fps: (30)
 <h3><a name="--typeオプション"></a> --type オプション</h3>
 <p>&lt;type&gt; に指定できる値は、 <code>JavaScript</code> または <code>TypeScript</code> です。指定しない場合、 <code>JavaScript</code> が指定されたものとして扱われます。</p>
 <h4><a name="JavaScript"></a> JavaScript</h4>
-<p>下記のディレクトリ、ファイルが生成されます。
-これらはこの時点で最低限 Akashic で動作するゲームになっています。</p>
+<p>下記のディレクトリ、ファイルが生成されます。これらはこの時点で最低限 Akashic で動作するゲームになっています。</p>
 <pre><code>GAME_HOME
  +- image/
  +- text/
@@ -198,9 +188,7 @@ fps: (30)
  +- package.json
 </code></pre><p>これらのファイルの詳細は  <a href="#initで作られるファイル">init で作られるファイル</a>  の節を参照してください。</p>
 <h4><a name="TypeScript"></a> TypeScript</h4>
-<p>TypeScript で書かれたゲームと、ビルドに必要なディレクトリ・ファイルが生成されます。
-これらをビルドすることで、game ディレクトリ以下に最低限 Akashic で動作するゲームを生成します。
-ゲームの内容は、--type オプションに JavaScript を指定した場合に生成されるゲームと同一です。</p>
+<p>TypeScript で書かれたゲームと、ビルドに必要なディレクトリ・ファイルが生成されます。これらをビルドすることで、game ディレクトリ以下に最低限 Akashic で動作するゲームを生成します。ゲームの内容は、--type オプションに JavaScript を指定した場合に生成されるゲームと同一です。</p>
 <p>ビルドの方法は、生成される README.md を参照してください。</p>
 <h2><a name="modify"></a> modify</h2>
 <pre><code class="lang-sh">akashic modify &lt;target&gt;
@@ -237,8 +225,7 @@ fps: (30)
 </ul>
 </li>
 </ul>
-<p>game.json のアセット情報を更新する scan asset コマンドは、
-もう一つの引数 &lt;subtarget&gt; によって更新する情報を制御することができます。</p>
+<p>game.json のアセット情報を更新する scan asset コマンドは、もう一つの引数 &lt;subtarget&gt; によって更新する情報を制御することができます。</p>
 <pre><code class="lang-sh">akashic scan asset &lt;subtarget&gt;
 </code></pre>
 <p>&lt;subtarget&gt; に指定できる文字列とそれぞれの動作は次のとおりです:</p>
@@ -264,8 +251,7 @@ fps: (30)
 </ul>
 </li>
 </ul>
-<p>game.json の管理しているアセット情報には、ファイルパスだけでなく以下のような情報も含まれます。
-素材の増減時だけでなく、これらの変更時にも scan asset コマンドを実行してください。</p>
+<p>game.json の管理しているアセット情報には、ファイルパスだけでなく以下のような情報も含まれます。素材の増減時だけでなく、これらの変更時にも scan asset コマンドを実行してください。</p>
 <ul>
 <li>画像素材の幅・高さ</li>
 <li>(将来のバージョンにおいて) 音素材の再生時間</li>
@@ -282,8 +268,7 @@ fps: (30)
 </ul>
 </li>
 </ul>
-<p>scan asset コマンドによる素材の列挙は、ディレクトリを再帰的に検索します。
-つまり、image/ のサブディレクトリに置かれた画像素材なども、列挙されアセット情報に登録されます。</p>
+<p>scan asset コマンドによる素材の列挙は、ディレクトリを再帰的に検索します。つまり、image/ のサブディレクトリに置かれた画像素材なども、列挙されアセット情報に登録されます。</p>
 <p>各素材をアセットとして使用するには、アセットを識別する ID (アセット ID) が必要になります。
 scan asset コマンドは、アセット ID として「ファイル名から拡張子を取り除いたもの」を設定します。
 (このため、audio/title.ogg と script/title.js は、同じ &quot;title&quot; という ID となって衝突し、エラーになります。)
@@ -293,8 +278,7 @@ scan asset コマンドは、アセット ID として「ファイル名から�
 <li>英字で始まっている</li>
 </ul>
 <p>ユーザは game.json を直接編集して、アセット ID を任意に変更することができます。
-akashic コマンドはファイルパスを基準に操作を行うため、たとえば画像素材の ID を変更した後に
-その画像のサイズを変更しても、適切に game.json の幅・高さ情報を更新します。</p>
+akashic コマンドはファイルパスを基準に操作を行うため、たとえば画像素材の ID を変更した後にその画像のサイズを変更しても、適切に game.json の幅・高さ情報を更新します。</p>
 <h2><a name="serve"></a> serve</h2>
 <pre><code class="lang-sh">akashic serve [&lt;options&gt;] [&lt;path&gt;]
 </code></pre>
@@ -336,25 +320,21 @@ akashic コマンドはファイルパスを基準に操作を行うため、た
 <pre><code class="lang-sh">akashic install [&lt;module&gt;]
 </code></pre>
 <p><code>npm install</code> のラッパーコマンドです。</p>
-<p><code>&lt;module&gt;</code> を与えた場合、 <code>npm install --save &lt;module&gt;</code> と <code>npm shrinkwrap</code> を行い、また導入されたファイルの一覧を game.json に加えます。
-すなわち次のコマンドと概ね等価な振る舞いをします。</p>
+<p><code>&lt;module&gt;</code> を与えた場合、 <code>npm install --save &lt;module&gt;</code> と <code>npm shrinkwrap</code> を行い、また導入されたファイルの一覧を game.json に加えます。すなわち次のコマンドと概ね等価な振る舞いをします。</p>
 <pre><code class="lang-sh">npm install --save &lt;module&gt;
 npm shrinkwrap
 akashic scan globalScripts
 </code></pre>
 <p>@akashic-extension/ で提供される Akashic 向けの拡張機能の他、任意の npm パッケージをゲームに導入することができます。</p>
 <blockquote>
-<p>注意: Akashic は Node.js のコアモジュール(<code>http</code>, <code>path</code> など)をサポートしていません。
-コアモジュールに依存しているパッケージを導入した場合、エラーメッセージが表示されます。
-この場合、<code>npm install</code> は行われ、game.json も更新されますが、ゲームとして実行しようとするとエラーになります。</p>
+<p>注意: Akashic は Node.js のコアモジュール(<code>http</code>, <code>path</code> など)をサポートしていません。コアモジュールに依存しているパッケージを導入した場合、エラーメッセージが表示されます。この場合、<code>npm install</code> は行われ、game.json も更新されますが、ゲームとして実行しようとするとエラーになります。</p>
 </blockquote>
 <blockquote>
 <p>またブラウザ固有の機能や、ECMAScript の一部機能 (<code>Math.random()</code> のような内部状態を持つ機能など) は、
 Akashic のゲームとしてはサポートされていません。それらの機能を用いる npm パッケージを導入しないでください。
 (akashic コマンド はこれにエラーを出すことはできません。)</p>
 </blockquote>
-<p>このコマンドは <code>npm install</code> を行うため、game.json と同じディレクトリに package.json という名前のファイルが存在する必要があります。
-事前に <code>npm init</code> を行うなどの方法で作成してください。
+<p>このコマンドは <code>npm install</code> を行うため、game.json と同じディレクトリに package.json という名前のファイルが存在する必要があります。事前に <code>npm init</code> を行うなどの方法で作成してください。
 (<code>akashic init</code> が提供するビルトインのテンプレートには含まれています。)</p>
 <p><code>&lt;module&gt;</code> を省略した場合、単に <code>npm install</code> を行います。
 (package.json に依存生が記録されたパッケージが導入されます。)
@@ -368,18 +348,15 @@ game.json は更新されません。npm-shrinkwrap.json がない場合、利�
 <h2><a name="update"></a> update</h2>
 <pre><code class="lang-sh">akashic update &lt;module&gt;
 </code></pre>
-<p><code>npm update &lt;module&gt;</code> を行い、./node_modules 以下の npm パッケージを更新します。
-ファイルの変更は game.json に反映されます。</p>
+<p><code>npm update &lt;module&gt;</code> を行い、./node_modules 以下の npm パッケージを更新します。ファイルの変更は game.json に反映されます。</p>
 <p>(install コマンド同様、game.json と同じディレクトリに package.json という名前のファイルが存在する必要があります)</p>
 <p><code>&lt;module&gt;</code> を指定しなかった場合、全ての npm パッケージを更新します。npm update の詳細は <a href="https://docs.npmjs.com/cli/update">npm のドキュメント</a> を参照してください。</p>
 <h2><a name="export-zip"></a> export zip</h2>
 <pre><code class="lang-sh">akashic export zip [--output &lt;fileName&gt;] [--exclude &lt;excludedFileName&gt;]
 </code></pre>
 <p>ゲームディレクトリを zip 形式で圧縮したファイルを <code>&lt;fileName&gt;</code> に出力します。
-<code>--output</code> オプションが指定されなかった場合、 <code>./game.zip</code> が指定されたかのように振る舞います。
-存在するファイル名・ディレクトリ名を指定した場合、エラーになります。</p>
-<p><code>--exclude</code> オプションが指定された場合、指定されたファイル <code>&lt;excludedFileName&gt;</code> は出力から除外されます。
-複数のファイルを除外したい場合は、次のように複数回 <code>--exclude</code> を指定してください。</p>
+<code>--output</code> オプションが指定されなかった場合、 <code>./game.zip</code> が指定されたかのように振る舞います。存在するファイル名・ディレクトリ名を指定した場合、エラーになります。</p>
+<p><code>--exclude</code> オプションが指定された場合、指定されたファイル <code>&lt;excludedFileName&gt;</code> は出力から除外されます。複数のファイルを除外したい場合は、次のように複数回 <code>--exclude</code> を指定してください。</p>
 <pre><code class="lang-sh">akashic export zip --exclude foo --exclude bar
 </code></pre>
 <p><code>--exclude</code> オプションが指定されなかった場合、次の名前が指定されたものとして振る舞います。</p>
@@ -390,8 +367,7 @@ game.json は更新されません。npm-shrinkwrap.json がない場合、利�
 <h2><a name="export-html"></a> export html</h2>
 <pre><code class="lang-sh">akashic export html --output &lt;dirName&gt; [--bundle] [--minify] [--magnify] [--no-strip]
 </code></pre>
-<p>単独でゲームを実行可能な HTML ファイル (と関連ファイル) を含むディレクトリを出力します。
-出力されたディレクトリの index.html を Web ブラウザで開くことで、 akashic-sandbox などの動作確認ツールなしにゲームを実行できます。</p>
+<p>単独でゲームを実行可能な HTML ファイル (と関連ファイル) を含むディレクトリを出力します。出力されたディレクトリの index.html を Web ブラウザで開くことで、 akashic-sandbox などの動作確認ツールなしにゲームを実行できます。</p>
 <p>利用可能なオプションは次のとおりです:</p>
 <table>
 <thead>
@@ -434,26 +410,20 @@ game.json は更新されません。npm-shrinkwrap.json がない場合、利�
 </tr>
 </tbody>
 </table>
-<p><code>--inject</code> オプション(<a href="mailto:`akashic-cli@1.3.1">`akashic-cli@1.3.1</a>` で導入)は複数指定可能です。指定した順でファイルの内容が出力されます。
-ディレクトリ名も指定でき、その場合はディレクトリ内の全ファイルが出力されます(順不同)。</p>
-<p><code>--output</code> オプションに存在するファイル名・ディレクトリ名を指定した場合、エラーになります。
-またゲームのディレクトリ以下のパスを指定することはできません。
-たとえば game.json のあるディレクトリで次のように指定するとエラーになります。</p>
+<p><code>--inject</code> オプション(<a href="mailto:`akashic-cli@1.3.1">`akashic-cli@1.3.1</a>` で導入)は複数指定可能です。指定した順でファイルの内容が出力されます。ディレクトリ名も指定でき、その場合はディレクトリ内の全ファイルが出力されます(順不同)。</p>
+<p><code>--output</code> オプションに存在するファイル名・ディレクトリ名を指定した場合、エラーになります。またゲームのディレクトリ以下のパスを指定することはできません。たとえば game.json のあるディレクトリで次のように指定するとエラーになります。</p>
 <pre><code class="lang-sh">$ akashic export html --output ./bundled  # エラー
 </code></pre>
-<p><code>./bundled</code> ではなく <code>../bundled</code> にするなど、ゲームのディレクトリの外を指定してください。
-この場合、 <code>../bundled/index.html</code> を Web ブラウザで開くと、単独でゲームを実行できます。
+<p><code>./bundled</code> ではなく <code>../bundled</code> にするなど、ゲームのディレクトリの外を指定してください。この場合、 <code>../bundled/index.html</code> を Web ブラウザで開くと、単独でゲームを実行できます。
 (ゲーム実行には <code>../bundled/</code> 以下のファイルがすべて必要である点に注意してください)</p>
 <pre><code class="lang-sh">$ akashic export html --output ../bundled
 </code></pre>
 <h2><a name="stat"></a> stat</h2>
 <pre><code class="lang-sh">akashic stat &lt;target&gt; [options...]
 </code></pre>
-<p><code>&lt;target&gt;</code> で指定された内容に関して情報を収集して出力します。
-現在 <code>&lt;target&gt;</code> に与えられるのは <code>size</code> のみです。</p>
+<p><code>&lt;target&gt;</code> で指定された内容に関して情報を収集して出力します。現在 <code>&lt;target&gt;</code> に与えられるのは <code>size</code> のみです。</p>
 <h3><a name="ゲームの容量計算 (size)"></a> ゲームの容量計算 (size)</h3>
-<p><code>&lt;target&gt;</code> に <code>size</code> を指定すると、ゲームの容量を計算します。
-ゲームの容量とはゲームを配信する際にネットワーク通信が必要なコンテンツのファイルサイズの合計のことです。</p>
+<p><code>&lt;target&gt;</code> に <code>size</code> を指定すると、ゲームの容量を計算します。ゲームの容量とはゲームを配信する際にネットワーク通信が必要なコンテンツのファイルサイズの合計のことです。</p>
 <p>何もオプションを付けずに実行した場合、以下のように表示されます。</p>
 <pre><code class="lang-sh">$ akashic stat size
 image: 415.49KB (84%)
@@ -468,13 +438,10 @@ other: 1.44KB (0%)
 [*] TOTAL SIZE (using mp4): 496.19KB (508096B)
 [ ] TOTAL SIZE (using aac): 495.87KB (507775B)
 </code></pre>
-<p>オーディオは mp4 と aac と ogg のうち合計容量が大きいものを利用して計算します。
-結果表示の <code>(87%)</code> の部分は全体用量に占めるそのカテゴリのファイルの割合を示しています。
+<p>オーディオは mp4 と aac と ogg のうち合計容量が大きいものを利用して計算します。結果表示の <code>(87%)</code> の部分は全体用量に占めるそのカテゴリのファイルの割合を示しています。
 <code>game.json</code>, <code>node_moduels/</code> 以下のスクリプトは <code>other</code> に分類されます。</p>
-<p><code>--limit</code> オプションが指定されると、ゲームの容量が指定された値を超えた場合にエラーと表示され、
-コマンド自体の戻り値が正常終了時の <code>0</code> ではなく <code>1</code> になります。</p>
-<p>容量は <code>--limit 100KB</code> のように指定します。<code>1KB</code> は <code>1024B</code> として計算されます。
-単位として、<code>B</code>, <code>KB</code>, <code>MB</code>, <code>GB</code> が利用でき、末尾の <code>B</code> は省略できます。</p>
+<p><code>--limit</code> オプションが指定されると、ゲームの容量が指定された値を超えた場合にエラーと表示され、コマンド自体の戻り値が正常終了時の <code>0</code> ではなく <code>1</code> になります。</p>
+<p>容量は <code>--limit 100KB</code> のように指定します。<code>1KB</code> は <code>1024B</code> として計算されます。単位として、<code>B</code>, <code>KB</code>, <code>MB</code>, <code>GB</code> が利用でき、末尾の <code>B</code> は省略できます。</p>
 <p><code>--raw</code> オプションが指定されると、以下のように合計容量のバイト数のみを表示して終了します。</p>
 <pre><code class="lang-sh">$ akashic stat size --raw
 1657274
@@ -482,23 +449,18 @@ other: 1.44KB (0%)
 <h2><a name="initで作られるファイル"></a> init で作られるファイル</h2>
 <h3><a name="imageディレクトリ"></a> image ディレクトリ</h3>
 <p>画像素材を配置するディレクトリ。</p>
-<p>サポートされる拡張子は png/jpg であり、拡張子と画像フォーマットは一致している必要があります。
-それ以外の拡張子のファイル、または &quot;.&quot; から始まるファイルは無視されます。</p>
+<p>サポートされる拡張子は png/jpg であり、拡張子と画像フォーマットは一致している必要があります。それ以外の拡張子のファイル、または &quot;.&quot; から始まるファイルは無視されます。</p>
 <h3><a name="textディレクトリ"></a> text ディレクトリ</h3>
 <p>テキスト素材を配置するディレクトリ。</p>
 <p>サポートされる拡張子は特に指定がないため、 &quot;.&quot; から始まるファイル以外はすべて取り込まれます。
 <em>取り込まれないファイルを指定する方法は検討中。</em></p>
 <h3><a name="audioディレクトリ"></a> audio ディレクトリ</h3>
 <p>音楽、効果音など、音素材を配置するディレクトリ。</p>
-<p>サポートされる拡張子は ogg と aac であり、拡張子とファイルフォーマットは一致している必要があります。
-それ以外の拡張子のファイル、または &quot;.&quot; から始まるファイルは無視されます。</p>
-<p>他の素材と異なり、音素材は、ファイル名の拡張子部分のみが異なる複数のファイルをまとめて取り扱います。
-それら (audio/foo.ogg と audio/foo.aac など) は同一の内容であることが期待されます。
-これはゲームの実行環境に応じて適切な形式を選択し利用するためです。</p>
+<p>サポートされる拡張子は ogg と aac であり、拡張子とファイルフォーマットは一致している必要があります。それ以外の拡張子のファイル、または &quot;.&quot; から始まるファイルは無視されます。</p>
+<p>他の素材と異なり、音素材は、ファイル名の拡張子部分のみが異なる複数のファイルをまとめて取り扱います。それら (audio/foo.ogg と audio/foo.aac など) は同一の内容であることが期待されます。これはゲームの実行環境に応じて適切な形式を選択し利用するためです。</p>
 <h3><a name="scriptディレクトリ"></a> script ディレクトリ</h3>
 <p>スクリプト素材を配置するディレクトリ。</p>
-<p>サポートされる拡張子は.js と.json であり、拡張子とファイルフォーマットは一致している必要があります。
-それ以外の拡張子のファイル、または &quot;.&quot; から始まるファイルは無視されます。</p>
+<p>サポートされる拡張子は.js と.json であり、拡張子とファイルフォーマットは一致している必要があります。それ以外の拡張子のファイル、または &quot;.&quot; から始まるファイルは無視されます。</p>
 <p>慣習として、各 Scene を実装するファイルは、このディレクトリ内に
 &quot;Scene.js&quot; という接尾辞をつけて配置される事が推奨されます（例: titleScene.js, battleScene.js）。</p>
 <h3><a name="mainScene.jsファイル"></a> mainScene.js ファイル</h3>
@@ -527,8 +489,7 @@ module.exports = function() {
 </code></pre>
 <h3><a name="node_modulesディレクトリ"></a> node_modules ディレクトリ</h3>
 <p>各種ライブラリを配置するディレクトリ。</p>
-<p>このディレクトリには akashic install で追加された npm パッケージが配置されます。
-パッケージファイルは install や uninstall コマンドによって管理され、通常はゲーム開発者が操作する必要はありません。</p>
+<p>このディレクトリには akashic install で追加された npm パッケージが配置されます。パッケージファイルは install や uninstall コマンドによって管理され、通常はゲーム開発者が操作する必要はありません。</p>
 <h3><a name="game.jsonファイル"></a> game.json ファイル</h3>
 <p>ゲームの各種情報を記述するファイル。</p>
 <p>akashic init --type javascript-minimal を実行した直後は以下のような内容になっています。
@@ -549,8 +510,7 @@ module.exports = function() {
 <p>詳細な仕様は<a href="game-json.html">game.json の仕様</a>を参照してください。</p>
 <h2><a name="Node.js 開発者向けの追加情報"></a> Node.js 開発者向けの追加情報</h2>
 <p>akashic は、install, uninstall コマンドを除き、package.json に関知しません。</p>
-<p>ゲーム開発者は、npm install --save-dev jasmine して spec ディレクトリにテストを配置するなど、
-任意の開発フローを(Akashic のディレクトリ構成と衝突するなどの問題がない限り)とることができます。</p>
+<p>ゲーム開発者は、npm install --save-dev jasmine して spec ディレクトリにテストを配置するなど、任意の開発フローを(Akashic のディレクトリ構成と衝突するなどの問題がない限り)とることができます。</p>
 
 		</div>
 	</section>
