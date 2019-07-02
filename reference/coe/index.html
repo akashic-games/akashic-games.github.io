@@ -1,0 +1,267 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@akashic-extension/coe</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@akashic-extension/coe</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> @akashic-extension/coe</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<p align="center">
+					<img src="https://github.com/akashic-games/coe/blob/master/img/akashic.png"/>
+				</p>
+				<h1 id="coe">coe</h1>
+				<p><strong>coe</strong> は共体験アプリケーションフレームワークです。</p>
+				<p>本フレームワークについては以下の文書を参照してください。</p>
+				<ul>
+					<li><a href="https://github.com/akashic-games/coe/blob/master/getstarted.md">共体験アプリケーションの開発手引き</a></li>
+					<li><a href="https://github.com/akashic-games/coe/blob/master/developers.md">共体験アプリケーションの開発者向け文書</a></li>
+				</ul>
+				<h3 id="-">インストール</h3>
+				<p>以下からモジュールをインストールします。</p>
+				<pre><code class="language-sh">npm i @akashic-extension/coe --save</code></pre>
+				<h2 id="-">利用</h2>
+				<ol>
+					<li>任意の script 内でインポートします。</li>
+					<li>Akashic のエントリポイントから <code>initialize()</code> 関数を呼び出します。</li>
+					<li>任意の <code>Controller</code> のインスタンスを生成します。</li>
+					<li><code>coe.Scene</code> のインスタンスを生成し、 <code>Controller</code> を渡します。</li>
+				</ol>
+				<h3 id="-typescript-">サンプルコード (TypeScript)</h3>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> coe <span class="hljs-keyword">from</span> <span class="hljs-string">"@akashic-extension/coe"</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params">args</span>) </span>{
+    coe.initialize({ game: g.game, args });
+
+    <span class="hljs-keyword">const</span> scene = <span class="hljs-keyword">new</span> coe.Scene({
+        <span class="hljs-comment">// ...</span>
+        controller: <span class="hljs-keyword">new</span> coe.COEController({
+            <span class="hljs-comment">// ...</span>
+        });
+    });
+
+    scene.loaded.add(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-comment">// ...</span>
+    });
+}
+
+<span class="hljs-keyword">export</span> = main;</code></pre>
+				<h2 id="-">設計</h2>
+				<p>本フレームワークは以下のモデルによって作られています。</p>
+				<ol>
+					<li>Controller<ul>
+							<li>View からの Action を受け取る。</li>
+							<li>View へ Command をブロードキャストする。</li>
+							<li>一つのプレイに対し、必ず一つのみ存在する。</li>
+						</ul>
+					</li>
+					<li>View<ul>
+							<li>Controller に対して Action を送信する。</li>
+							<li>Controller からブロードキャストされた Command を受信した際の処理を持つ。</li>
+							<li>一つのプレイに対し、複数存在しうる。</li>
+							<li>一つの View は Akashic Engine の各インスタンスに相当する。</li>
+						</ul>
+					</li>
+				</ol>
+				<p>また、 Controller/View 間でのデータモデルは以下の2つがあります。</p>
+				<ul>
+					<li>Action<ul>
+							<li>View から Controller に対して送信されるデータ。</li>
+						</ul>
+					</li>
+					<li>Command<ul>
+							<li>Controller からブロードキャストされるデータ。</li>
+						</ul>
+					</li>
+				</ul>
+				<pre><code>                                   Action
+        Action    +------------+  (trusted)  +--------+
+     +----------&gt; |<span class="hljs-string"> Controller </span>|<span class="hljs-string"> &lt;---------- </span>|<span class="hljs-string"> system </span>|
+     |<span class="hljs-string">            +------------+             +--------+
+     </span>|<span class="hljs-string">                 </span>|
+     |<span class="hljs-string">   +-------------+   Command
+     </span>|<span class="hljs-string">   </span>|<span class="hljs-string">             </span>|<span class="hljs-string"> (broadcast)
+     </span>|<span class="hljs-string">   v             v
+  +--------+       +--------+
+  </span>|<span class="hljs-string">  View  </span>|<span class="hljs-string">       </span>|<span class="hljs-string">  View  </span>|
+  +--------+       +--------+</code></pre><h2 id="-">ビルド</h2>
+				<pre><code class="language-sh">npm run build</code></pre>
+				<h2 id="-">テスト</h2>
+				<pre><code class="language-sh">npm <span class="hljs-built_in">test</span></code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_controller_.html">"<wbr>Controller"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_scenewatcher_.html">"<wbr>Scene<wbr>Watcher"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_view_.html">"<wbr>View"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_global_.html">"global"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_impl_basecontroller_.html">"impl/<wbr>Base<wbr>Controller"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_impl_coecontroller_.html">"impl/COEController"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_impl_coemessageeventhandler_.html">"impl/COEMessage<wbr>Event<wbr>Handler"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_impl_scene_.html">"impl/<wbr>Scene"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_impl_index_.html">"impl/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_index_.html">"index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_parameters_.html">"parameters"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_session_.html">"session"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
