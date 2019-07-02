@@ -6,8 +6,7 @@
 
 `javascript-game-sample-minimum` を利用するには Node.js が必要です。
 
-初回のみ、以下のコマンドを実行して、ビルドに必要なパッケージをインストールしてください。
-この作業は `javascript-game-sampleminimum` を新しく生成するごとに必要です。
+初回のみ、以下のコマンドを実行して、ビルドに必要なパッケージをインストールしてください。この作業は `javascript-game-sampleminimum` を新しく生成するごとに必要です。
 
 ```sh
 npm install
@@ -54,8 +53,7 @@ npm install
 
 ## テスト方法
 
-以下のコマンドで [ESLint](https://github.com/eslint/eslint "ESLint")を使った Lint が実行されます。
-スクリプトアセット内に ES5 構文に反する記述がある場合エラーを返します。
+以下のコマンドで [ESLint](https://github.com/eslint/eslint "ESLint")を使った Lint が実行されます。スクリプトアセット内に ES5 構文に反する記述がある場合エラーを返します。
 
 ```sh
 npm run lint

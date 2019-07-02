@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>色々な描画</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1561956166189">
-<link rel="stylesheet" href="/css/header.css?1561956166189">
-<link rel="stylesheet" href="/css/footer.css?1561956166189">
+<link rel="stylesheet" href="/css/common.css?1562037770318">
+<link rel="stylesheet" href="/css/header.css?1562037770318">
+<link rel="stylesheet" href="/css/footer.css?1562037770318">
 
 
-<link rel="stylesheet" href="/css/asset.css?1561956166189">
+<link rel="stylesheet" href="/css/asset.css?1562037770318">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1561956166189">
+<link rel="stylesheet" href="/css/akashic-document.css?1562037770318">
 
-<link rel="stylesheet" href="/css/railscasts.css?1561956166189">
+<link rel="stylesheet" href="/css/railscasts.css?1562037770318">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1561956166189"></script>
+<script src="/lib/common.js?1562037770318"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -104,12 +104,8 @@
 		<div class="inner responsive--width">
 			<h1>色々な描画</h1>
 <h2><a name="文字列の表示"></a> 文字列の表示</h2>
-<p>Akashic Engine で文字列を表示するには、フォントとラベルが必要です。
-フォントは文字の形を表すオブジェクトです。
-ラベルはフォントを利用して文字列を描画するエンティティです。</p>
-<p>フォントには画像から生成するビットマップフォントと、
-システムにインストールされているフォントから生成するダイナミックフォントの二種類があります。
-このチュートリアルではダイナミックフォントを利用して文字列を表示する方法を説明します。</p>
+<p>Akashic Engine で文字列を表示するには、フォントとラベルが必要です。フォントは文字の形を表すオブジェクトです。ラベルはフォントを利用して文字列を描画するエンティティです。</p>
+<p>フォントには画像から生成するビットマップフォントと、システムにインストールされているフォントから生成するダイナミックフォントの二種類があります。このチュートリアルではダイナミックフォントを利用して文字列を表示する方法を説明します。</p>
 <p>ダイナミックフォントは以下のコードで生成できます。</p>
 <pre><code class="lang-javascript">var font = new g.DynamicFont({
   game: g.game,
@@ -194,14 +190,9 @@
 module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample12.png" alt="sample12"></p>
-<p>ダイナミックフォントはシステムにインストールされているフォントを利用するため、
-実行環境により描画が異なる場合があります。
-すべての環境で同じ出力にしたい場合や、パフォーマンスが要求される場合は、
-ダイナミックフォントの代わりにビットマップフォントを利用してください。</p>
-<p>ラベルは高速化のために描画内容をキャッシュしています。
-そのために文字列を変更した場合は、<code>invalidate()</code>
-メソッドで変更を通知する必要があります。
-以下はラベル <code>label</code> の文字列を書き換える例です。</p>
+<p>ダイナミックフォントはシステムにインストールされているフォントを利用するため、実行環境により描画が異なる場合があります。すべての環境で同じ出力にしたい場合や、パフォーマンスが要求される場合は、ダイナミックフォントの代わりにビットマップフォントを利用してください。</p>
+<p>ラベルは高速化のために描画内容をキャッシュしています。そのために文字列を変更した場合は、<code>invalidate()</code>
+メソッドで変更を通知する必要があります。以下はラベル <code>label</code> の文字列を書き換える例です。</p>
 <pre><code class="lang-javascript">label.text = label.text + &quot;*&quot;;
 label.invalidate();
 </code></pre>
@@ -249,8 +240,7 @@ module.exports = main;
 <p><img src="/img/tutorial/sample13.gif" alt="sample13"></p>
 <h2><a name="クリッピング"></a> クリッピング</h2>
 <p>ペインは <code>E</code> と同じように子要素をまとめるためのエンティティです。ペインを使うことで描画内容のクリッピングを実現できます。
-<code>E</code> と異なり、<code>Pane</code> は子孫要素の描画領域を <code>Pane</code> の大きさに限定します。
-子要素が <code>Pane</code> の大きさをはみ出して描画しようとした場合、はみ出した部分は描画されません。</p>
+<code>E</code> と異なり、<code>Pane</code> は子孫要素の描画領域を <code>Pane</code> の大きさに限定します。子要素が <code>Pane</code> の大きさをはみ出して描画しようとした場合、はみ出した部分は描画されません。</p>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({ game: g.game });
   scene.loaded.add(function() {
@@ -273,16 +263,10 @@ module.exports = main;
 module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample06.png" alt="sample06"></p>
-<p>ラベル同様、ペインも描画内容をキャッシュしています。
-ペイン自体のプロパティ (例えば <code>width</code> や <code>height</code>) を書き換えた場合は、
+<p>ラベル同様、ペインも描画内容をキャッシュしています。ペイン自体のプロパティ (例えば <code>width</code> や <code>height</code>) を書き換えた場合は、
 <code>invalidate()</code> を呼び出す必要があります。</p>
-<p>少し紛らわしい点として、ペインが保持している子エンティティの変更時には
-子エンティティの <code>modified()</code> や <code>invalidate()</code> のみを呼び出せばよいという点です。
-子エンティティの変更はペインに通知されて自動的にキャッシュの更新が行われます。</p>
-<p>以下のプログラムでは、ペイン内に配置した矩形を回転させています。
-ペインを利用していますが、ペイン自体のプロパティは変更していないので、
-矩形オブジェクトの <code>modified()</code> の呼び出しをしていますが、
-ペイン自体の <code>invalidate()</code> の呼び出しはしていません。</p>
+<p>少し紛らわしい点として、ペインが保持している子エンティティの変更時には子エンティティの <code>modified()</code> や <code>invalidate()</code> のみを呼び出せばよいという点です。子エンティティの変更はペインに通知されて自動的にキャッシュの更新が行われます。</p>
+<p>以下のプログラムでは、ペイン内に配置した矩形を回転させています。ペインを利用していますが、ペイン自体のプロパティは変更していないので、矩形オブジェクトの <code>modified()</code> の呼び出しをしていますが、ペイン自体の <code>invalidate()</code> の呼び出しはしていません。</p>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({ game: g.game });
   scene.loaded.add(function() {

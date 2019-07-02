@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ニコニコ新市場対応コンテンツ作成ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1561956166189">
-<link rel="stylesheet" href="/css/header.css?1561956166189">
-<link rel="stylesheet" href="/css/footer.css?1561956166189">
+<link rel="stylesheet" href="/css/common.css?1562037770318">
+<link rel="stylesheet" href="/css/header.css?1562037770318">
+<link rel="stylesheet" href="/css/footer.css?1562037770318">
 
 
-<link rel="stylesheet" href="/css/asset.css?1561956166189">
+<link rel="stylesheet" href="/css/asset.css?1562037770318">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1561956166189">
+<link rel="stylesheet" href="/css/akashic-document.css?1562037770318">
 
-<link rel="stylesheet" href="/css/railscasts.css?1561956166189">
+<link rel="stylesheet" href="/css/railscasts.css?1562037770318">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1561956166189"></script>
+<script src="/lib/common.js?1562037770318"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -104,11 +104,9 @@
 		<div class="inner responsive--width">
 			<h1>ニコニコ新市場対応コンテンツ作成ガイド</h1>
 <h2><a name="これは"></a> これは</h2>
-<p>Akashic Engine で <a href="http://blog.nicovideo.jp/niconews/81617.html">実験放送</a> に対応するゲーム(ニコニコ新市場対応コンテンツ)の作り方を解説します。
-実際に作成したゲームを実験放送に投稿する方法については、 <a href="/guide/export-atsumaru">こちら</a> を参照してください。</p>
+<p>Akashic Engine で <a href="http://blog.nicovideo.jp/niconews/81617.html">実験放送</a> に対応するゲーム(ニコニコ新市場対応コンテンツ)の作り方を解説します。実際に作成したゲームを実験放送に投稿する方法については、 <a href="/guide/export-atsumaru">こちら</a> を参照してください。</p>
 <h2><a name="ニコニコ新市場対応コンテンツ"></a> ニコニコ新市場対応コンテンツ</h2>
-<p>Akashic Engine では、実験放送内で遊べるゲーム(<strong>ニコニコ新市場対応コンテンツ</strong>)を作成することができます。
-これには次の手順が必要です。</p>
+<p>Akashic Engine では、実験放送内で遊べるゲーム(<strong>ニコニコ新市場対応コンテンツ</strong>)を作成することができます。これには次の手順が必要です。</p>
 <ol>
 <li>適切な解像度と FPS でゲームを作成</li>
 <li>対応するモードを <code>game.json</code> に記述</li>
@@ -120,11 +118,8 @@
 <li><strong>画面解像度</strong>: 1280x720 以下 (16:9 を推奨)</li>
 <li><strong>FPS</strong>: 1 以上 60 以下 (30 または 60 を推奨)</li>
 </ul>
-<p>実験放送内のゲームは放送画面に合うよう自動的に拡縮されます。
-放送画面上で縦横に余白なく表示できるよう、アスペクト比 16:9 を推奨します。
-公開されているいくつかのサンプルコンテンツ(<a href="https://github.com/akashic-contents/thiefBuster">泥棒バスター</a>など))は、640x360 で作成されています。</p>
-<p>FPS は 30 または 60 を推奨します。
-低い方が負荷は低いので、演出上必要がなければ 30 にしておくと、より広い環境でストレスなく遊べる可能性があります。</p>
+<p>実験放送内のゲームは放送画面に合うよう自動的に拡縮されます。放送画面上で縦横に余白なく表示できるよう、アスペクト比 16:9 を推奨します。公開されているいくつかのサンプルコンテンツ(<a href="https://github.com/akashic-contents/thiefBuster">泥棒バスター</a>など))は、640x360 で作成されています。</p>
+<p>FPS は 30 または 60 を推奨します。低い方が負荷は低いので、演出上必要がなければ 30 にしておくと、より広い環境でストレスなく遊べる可能性があります。</p>
 <p>解像度や FPS は、 <code>akashic</code> コマンドでゲームを生成する時点で入力を求められるので、そこで指定することができます。</p>
 <pre><code class="lang-shell">$ akashic init
 (中略)
@@ -149,8 +144,7 @@ INFO: Done!
 <li><strong>みんなで遊ぶモード</strong> (<code>&quot;multi&quot;</code>): 放送者と視聴者複数人で一つのゲームプレイで遊ぶ</li>
 </ul>
 <p>ニコニコ新市場対応コンテンツは、この中から対応するモードを指定する必要があります。</p>
-<p><code>game.json</code> に <code>environment.niconico.supportedModes</code> プロパティを加え、ゲームが対応するモードを(配列で)全て列挙してください。
-実験放送には、ここで列挙されたそれぞれのモードで起動できるように登録されます。</p>
+<p><code>game.json</code> に <code>environment.niconico.supportedModes</code> プロパティを加え、ゲームが対応するモードを(配列で)全て列挙してください。実験放送には、ここで列挙されたそれぞれのモードで起動できるように登録されます。</p>
 <p>次の例は、ランキングモードとひとりで遊ぶモードの両方に対応する game.json の記述例です。</p>
 <pre><code class="lang-json">{
   &quot;environment&quot;: {
@@ -170,17 +164,13 @@ INFO: Done!
 <li>タイムアタック(一定時間内のスコアを競うゲーム)である</li>
 <li>0〜99999 点のスコアを特定の変数に代入するようになっている</li>
 </ul>
-<p>死ぬまでずっと遊べるタイプのゲームは扱えません(「時間内に死んでしまったら継続不能」というものは扱えます)。
-マイナスや 10 万点以上のスコアはカウンターストップ扱いになります。</p>
+<p>死ぬまでずっと遊べるタイプのゲームは扱えません(「時間内に死んでしまったら継続不能」というものは扱えます)。マイナスや 10 万点以上のスコアはカウンターストップ扱いになります。</p>
 <h3><a name="スコア"></a> スコア</h3>
 <p>ランキング対応ゲームは、ゲームの進行中、次の変数に <strong>スコア</strong> を代入しなければなりません。</p>
 <pre><code class="lang-javascript">g.game.vars.gameState.score;
 </code></pre>
 <p>スコアは 0 以上 99999 以下の整数である必要があります。</p>
-<p><code>g.game.vars</code> は、ゲーム開発者が自由に使える領域として、(ランキングとは関係なく)Akashic Engine が提供している変数です。
-初期値として <code>{}</code> が代入されています。
-ランキングでは <code>g.game.vars.gameState.score</code> の値をスコアとして扱い、
-ゲームの終了後、このスコアに基づいてランキングの順位が決定されます。</p>
+<p><code>g.game.vars</code> は、ゲーム開発者が自由に使える領域として、(ランキングとは関係なく)Akashic Engine が提供している変数です。初期値として <code>{}</code> が代入されています。ランキングでは <code>g.game.vars.gameState.score</code> の値をスコアとして扱い、ゲームの終了後、このスコアに基づいてランキングの順位が決定されます。</p>
 <p>以下は、クリックした回数がスコアになるゲームのコードです。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
 scene.loaded.add(function() {
@@ -190,19 +180,14 @@ scene.loaded.add(function() {
   });
 });
 </code></pre>
-<p>ゲーム中画面には何も表示されませんが、画面内の任意の場所でクリックした回数がスコアに代入されます。
-つまり(画面に適切な演出を加えれば)クリック数を競うゲームになります。</p>
+<p>ゲーム中画面には何も表示されませんが、画面内の任意の場所でクリックした回数がスコアに代入されます。つまり(画面に適切な演出を加えれば)クリック数を競うゲームになります。</p>
 <h3><a name="プレイ閾値"></a> プレイ閾値</h3>
 <p>ランキングでは、放送者・各視聴者でのゲームプレイ終了後にスコアが集計され、上位者の名前や得点が表示されます。</p>
-<p>ゲームに参加した人数が少ない場合、スコアが 0 点でもこの上位者に入ってしまうことがあります。
-そうすると「全くプレイしていないのにランキングに名前が出ることがある」という違和感のある挙動になってしまいます。
-このような状況を避けるため、ランキング対応ゲームでは <strong>プレイ閾値</strong> を定めることができます。
-プレイ閾値以下のスコアは「プレイしなかったもの」として扱われ、ランキング上位者として表示されなくなります。</p>
+<p>ゲームに参加した人数が少ない場合、スコアが 0 点でもこの上位者に入ってしまうことがあります。そうすると「全くプレイしていないのにランキングに名前が出ることがある」という違和感のある挙動になってしまいます。このような状況を避けるため、ランキング対応ゲームでは <strong>プレイ閾値</strong> を定めることができます。プレイ閾値以下のスコアは「プレイしなかったもの」として扱われ、ランキング上位者として表示されなくなります。</p>
 <p>プレイ閾値は、次の変数に代入された値です。</p>
 <pre><code class="lang-javascript">g.game.vars.gameState.playThreshold;
 </code></pre>
-<p>値は整数でなければなりません。
-この変数に値が代入されていない場合、プレイ閾値は 0 として取り扱われます。</p>
+<p>値は整数でなければなりません。この変数に値が代入されていない場合、プレイ閾値は 0 として取り扱われます。</p>
 <p>生存期間に応じてスコアが入るなど、プレイヤーが何も操作しなくてもスコアが 0 より大きくなってしまうゲームでは、この値を適切に設定してください。</p>
 <h3><a name="クリア閾値"></a> クリア閾値</h3>
 <p>同様に「ゲームをクリアしたとみなすか」にも閾値(クリア閾値)を定めることができます。クリア閾値は次の変数に代入された値です。
@@ -217,8 +202,7 @@ scene.loaded.add(function() {
 <li>ランキングモード時の共通乱数シード など</li>
 </ul>
 <p>これらの追加情報(またはそれをまとめたオブジェクト)を <strong>セッションパラメータ</strong> と呼びます。</p>
-<p>セッションパラメータは、与えられる場合、ゲーム開始直後に <code>g.MessageEvent</code> で通知されます。
-通知された <code>MessageEvent</code> を <code>e</code> とすると、 <code>(e.data.type === &quot;start&quot;)</code> である時、 <code>e.data.parameters</code> の値がセッションパラメータです。</p>
+<p>セッションパラメータは、与えられる場合、ゲーム開始直後に <code>g.MessageEvent</code> で通知されます。通知された <code>MessageEvent</code> を <code>e</code> とすると、 <code>(e.data.type === &quot;start&quot;)</code> である時、 <code>e.data.parameters</code> の値がセッションパラメータです。</p>
 <p>次のコードは、セッションパラメータを取得する例です。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
 
@@ -237,25 +221,19 @@ scene.loaded.add(function () {
 }
 </code></pre>
 <p>セッションパラメータが与えられない場合には、そもそもこのイベントが来ないか、あるいは来たイベントに <code>parameters</code> がありません。</p>
-<p>Akashic Engine では通常、イベントはシーンのロードタイミング(<code>g.Scene#loaded</code>)より後に受信されるため、 <code>loaded</code> の処理中にはこの値を参照できないことに注意してください。
-これは仕様による制限です。</p>
+<p>Akashic Engine では通常、イベントはシーンのロードタイミング(<code>g.Scene#loaded</code>)より後に受信されるため、 <code>loaded</code> の処理中にはこの値を参照できないことに注意してください。これは仕様による制限です。</p>
 <p>厳密にセッションパラメータの受信を待って <code>loaded</code> の初期化処理を行いたい場合は、 <code>loaded</code> ではなく <code>message</code> トリガーの fire を待って処理を行う必要があります。
-(ただしそうするとニコニコ新市場以外(RPG アツマールなど)では動作しないコンテンツになってしまうので、
-「 <code>g.Scene#update</code> の fire を数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
+(ただしそうするとニコニコ新市場以外(RPG アツマールなど)では動作しないコンテンツになってしまうので、「 <code>g.Scene#update</code> の fire を数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
 <h3><a name="mode"></a> モード (mode)</h3>
 <p>ニコニコ新市場では、<strong>モード</strong> がパラメータで与えられます。</p>
-<p>これは、どのモードでゲームが起動されたかを表しています。
-ゲームの <code>game.json</code> の <code>environment.niconico.supportedModes</code> に記載されているもののいずれかが、モードの値として送られてきます。
-例えば、 <code>&quot;single&quot;</code> が送られてきたら「ひとりで遊ぶ」モードで、 <code>&quot;ranking&quot;</code> が送られてきたら「ランキング」モードで、ゲームが起動されています。</p>
+<p>これは、どのモードでゲームが起動されたかを表しています。ゲームの <code>game.json</code> の <code>environment.niconico.supportedModes</code> に記載されているもののいずれかが、モードの値として送られてきます。例えば、 <code>&quot;single&quot;</code> が送られてきたら「ひとりで遊ぶ」モードで、 <code>&quot;ranking&quot;</code> が送られてきたら「ランキング」モードで、ゲームが起動されています。</p>
 <p>セッションパラメータ <code>sessionParameters</code> がある時、モードは <code>sessionParameters.mode</code> で参照できます。</p>
 <h3><a name="制限時間"></a> 制限時間 (totalTimeLimit)</h3>
 <p>ランキングモード時にセッションパラメータで与えられる情報の一つは <strong>制限時間</strong> です。</p>
 <p>セッションパラメータ <code>sessionParameters</code> がある時、制限時間は <code>sessionParameters.totalTimeLimit</code> で参照できます。</p>
 <p>ランキング対応ゲームは、起動からある時間が経過すると自動的に終了されます。
 <strong>ゲーム開発者は終了のタイミングを制御することはできませんし、終了のための処理を記述する必要もありません</strong>。</p>
-<p>ただし補助的な情報として、ランキングモードでは「何秒間遊ぶ設定で起動されたか」という値(制限時間)が与えられます。
-ゲーム開発者は、この値を参照してゲームの内容を調整することができます。
-たとえば「終了時間が近づいたらクリア画面かゲームオーバー画面を表示する」といった演出が考えられます。
+<p>ただし補助的な情報として、ランキングモードでは「何秒間遊ぶ設定で起動されたか」という値(制限時間)が与えられます。ゲーム開発者は、この値を参照してゲームの内容を調整することができます。たとえば「終了時間が近づいたらクリア画面かゲームオーバー画面を表示する」といった演出が考えられます。
 (もちろんそのような演出をしなくても問題はありません)</p>
 <p>次のコードは、制限時間情報を取得する例です。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
@@ -278,17 +256,11 @@ scene.loaded.add(function () {
     // ...
 }
 </code></pre>
-<p><strong>制限時間の値は、あくまでも目安であることに注意してください</strong> 。
-ゲーム起動後、厳密にこの時間で終了されることを保証するものではありません。
-これはゲームリソースのダウンロード時間のばらつきや、スコア送信時の通信遅れを救済するためのサーバ側の多少のマージンなど、いくつかの要因でずれが生じるためです。</p>
+<p><strong>制限時間の値は、あくまでも目安であることに注意してください</strong> 。ゲーム起動後、厳密にこの時間で終了されることを保証するものではありません。これはゲームリソースのダウンロード時間のばらつきや、スコア送信時の通信遅れを救済するためのサーバ側の多少のマージンなど、いくつかの要因でずれが生じるためです。</p>
 <p>たとえば制限時間から逆算して「クリア画面」を作るような場合、念のため、<strong>制限時間の数秒前にはゲーム上の演出が完了するように作る</strong> ことを推奨します。</p>
 <h3><a name="randomSeed"></a> 共通乱数シード (randomSeed)</h3>
-<p>ランキングモードでは、各プレイヤーの手元で個別にゲームが実行されます。
-そのため、プレイヤー間で標準の乱数生成器 (<code>g.game.random</code>) の状態は一致しません。
-例えば「ランダムに ○× クイズを出題し、正答数をスコアとするゲーム」を作ると、同じセッションでもプレイヤーごとに出される問題が異なります。
-もちろんそれでも問題はありません(特に運要素を持たせたい場合)が、「全員に同じ問題を出したい、かつ起動されるごとに出題内容を変えたい」という状況も考えられます。</p>
-<p>そのような場合のために、ランキングモード時のセッションパラメータには <strong>共通乱数シード</strong> の値(数値)が含まれます。
-セッションパラメータ <code>sessionParameters</code> がある時、共通乱数シードは <code>sessionParameters.randomSeed</code> で参照できます。</p>
+<p>ランキングモードでは、各プレイヤーの手元で個別にゲームが実行されます。そのため、プレイヤー間で標準の乱数生成器 (<code>g.game.random</code>) の状態は一致しません。例えば「ランダムに ○× クイズを出題し、正答数をスコアとするゲーム」を作ると、同じセッションでもプレイヤーごとに出される問題が異なります。もちろんそれでも問題はありません(特に運要素を持たせたい場合)が、「全員に同じ問題を出したい、かつ起動されるごとに出題内容を変えたい」という状況も考えられます。</p>
+<p>そのような場合のために、ランキングモード時のセッションパラメータには <strong>共通乱数シード</strong> の値(数値)が含まれます。セッションパラメータ <code>sessionParameters</code> がある時、共通乱数シードは <code>sessionParameters.randomSeed</code> で参照できます。</p>
 <p>ゲーム開発者はこの値を使って、プレイヤー間で共通のシードを持つ乱数生成器(共通乱数生成器)を作ることができます。</p>
 <p>次のコードは、共通乱数生成器を生成する例です。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
@@ -322,18 +294,14 @@ scene.loaded.add(function () {
     });
 }
 </code></pre>
-<p>共通乱数生成器を作る場合、共通にしたい乱数(クイズの出題順など)以外に使わないように注意してください。
-例えばユーザ操作などに応じて共通乱数生成機を使うと、乱数の系列が他のプレイヤーとずれてしまって元も子もありません。</p>
+<p>共通乱数生成器を作る場合、共通にしたい乱数(クイズの出題順など)以外に使わないように注意してください。例えばユーザ操作などに応じて共通乱数生成機を使うと、乱数の系列が他のプレイヤーとずれてしまって元も子もありません。</p>
 <h3><a name="difficulty"></a> 難易度設定 (difficulty)</h3>
 <p>他にセッションパラメータに含まれる値として、 <strong>難易度設定</strong> の値があります。</p>
-<p>セッションパラメータ <code>sessionParameters</code> がある時、難易度設定は <code>sessionParameters.difficulty</code> で参照できます。
-この値は 1 以上 10 以下の整数で、ゲームに対して「この難易度でゲームを行なって欲しい」という要望を通知するものです。
-ゲーム開発者はこの値を見てゲームの難易度を調整することができます。これは必須ではありません。</p>
+<p>セッションパラメータ <code>sessionParameters</code> がある時、難易度設定は <code>sessionParameters.difficulty</code> で参照できます。この値は 1 以上 10 以下の整数で、ゲームに対して「この難易度でゲームを行なって欲しい」という要望を通知するものです。ゲーム開発者はこの値を見てゲームの難易度を調整することができます。これは必須ではありません。</p>
 <p>(ただし、現時点ではゲーム起動時に難易度を選択する方法がありません。したがってこれは現在のところ「将来的な対応に備えて利用することができる値」に過ぎません。)</p>
 <h3><a name="gameTimeLimit"></a> 旧仕様: gameTimeLimit</h3>
 <p>以前は <code>totalTimeLimit</code> はなく、この文書では <code>gameTimeLimit</code> という別の値を参照していました。</p>
-<p><code>gameTimeLimit</code> には、歴史的経緯から(<code>totalTimeLimit</code> が与える)本来の制限時間よりも若干小さい値が与えられます。
-そのためこの値に厳密にしたがってゲームの演出を行うと、演出完了から実際のコンテンツ終了まで 10 秒以上ギャップがある状況になっていました。
+<p><code>gameTimeLimit</code> には、歴史的経緯から(<code>totalTimeLimit</code> が与える)本来の制限時間よりも若干小さい値が与えられます。そのためこの値に厳密にしたがってゲームの演出を行うと、演出完了から実際のコンテンツ終了まで 10 秒以上ギャップがある状況になっていました。
 <code>gameTimeLimit</code> は後方互換性のため引き続き利用可能ですが、通常は <code>totalTimeLimit</code> を利用してください。</p>
 <p><a name="動作確認方法"></a></p>
 <h2><a name="ranking-debug"></a> ランキングモードの動作確認方法</h2>
@@ -356,8 +324,7 @@ akashic-sandbox のインストール方法については<a href="/tutorial/v2/
 </ul>
 <p>「セッションパラメータを送る」にチェックを入れることによって、下記の画面から mode や totalTime 等のコンテンツに送られるセッションパラメータの値を設定することができます。(実際にそれらの値を送るには、ページをリロードする必要があります。)</p>
 <p><img src="/img/guide/ranking/sandbox_session_parameter.png" alt="セッションパラメータ"></p>
-<p>mode で選択したモードでゲームを起動させることができます。
-「ランキング(ranking)」を選択した場合は、ランキングモードの動作を次のように簡易的に確認することができます。</p>
+<p>mode で選択したモードでゲームを起動させることができます。「ランキング(ranking)」を選択した場合は、ランキングモードの動作を次のように簡易的に確認することができます。</p>
 <ul>
 <li><code>totalTimeLimit</code> (制限時間) がゲーム開始時に送られます。また、 この値を指定することができます。<ul>
 <li>ただしこの値は、あくまで akashic-sandbox 上でのデバッグのためのもので、ニコニコ新市場で実際に起動された時の値は保証されません。</li>

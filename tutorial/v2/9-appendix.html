@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>より大規模なゲームを作るために</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1561956166189">
-<link rel="stylesheet" href="/css/header.css?1561956166189">
-<link rel="stylesheet" href="/css/footer.css?1561956166189">
+<link rel="stylesheet" href="/css/common.css?1562037770318">
+<link rel="stylesheet" href="/css/header.css?1562037770318">
+<link rel="stylesheet" href="/css/footer.css?1562037770318">
 
 
-<link rel="stylesheet" href="/css/asset.css?1561956166189">
+<link rel="stylesheet" href="/css/asset.css?1562037770318">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1561956166189">
+<link rel="stylesheet" href="/css/akashic-document.css?1562037770318">
 
-<link rel="stylesheet" href="/css/railscasts.css?1561956166189">
+<link rel="stylesheet" href="/css/railscasts.css?1562037770318">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1561956166189"></script>
+<script src="/lib/common.js?1562037770318"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -104,9 +104,7 @@
 		<div class="inner responsive--width">
 			<h1>より大規模なゲームを作るために</h1>
 <h2><a name="シーンの切り替え"></a> シーンの切り替え</h2>
-<p>Akashic Engine では、タイトル場面・プレイ場面・スコア場面のように、
-ゲームの場面ごとにそれぞれお対応するシーンを作成しそれらを切り替えて表示できます。
-シーンの切り替えには <code>Game</code> オブジェクトに用意されたメソッドを利用します。</p>
+<p>Akashic Engine では、タイトル場面・プレイ場面・スコア場面のように、ゲームの場面ごとにそれぞれお対応するシーンを作成しそれらを切り替えて表示できます。シーンの切り替えには <code>Game</code> オブジェクトに用意されたメソッドを利用します。</p>
 <ul>
 <li><code>g.game.replaceScene()</code></li>
 <li><code>g.game.pushScene()</code></li>
@@ -115,8 +113,7 @@
 <p><code>replaceScene()</code> は現在のシーンを破棄して次のシーンに遷移します。
 <code>pushScene()</code> を利用すると現在のシーンを保存して次のシーンに遷移します。
 <code>pushScene()</code> でシーン遷移した場合、<code>popScene()</code> で元のシーンに戻ることができます。</p>
-<p>以下のプログラムでは <code>replaceScene()</code> を利用して、
-画面のタップまたはクリックで 2 つのシーンを切り替えています。</p>
+<p>以下のプログラムでは <code>replaceScene()</code> を利用して、画面のタップまたはクリックで 2 つのシーンを切り替えています。</p>
 <pre><code class="lang-javascript">function main() {
   g.game.pushScene(createSceneA());
 }
@@ -172,10 +169,7 @@ module.exports = main;
   return scene;
 };
 </code></pre>
-<p><code>mainScene.js</code> はシーンの作成処理を独立させたファイルです。
-コード中で <code>module.exports</code> に <code>create</code> 関数を代入しています。
-このコードを <code>akashic scan</code> でアセットとして追加すると
-関数を他のファイルから利用できます。</p>
+<p><code>mainScene.js</code> はシーンの作成処理を独立させたファイルです。コード中で <code>module.exports</code> に <code>create</code> 関数を代入しています。このコードを <code>akashic scan</code> でアセットとして追加すると関数を他のファイルから利用できます。</p>
 <p>例えば <code>main.js</code> から利用する場合は、次のようなコードになります。</p>
 <pre><code class="lang-javascript">var MainScene = require(&quot;./MainScene&quot;);
 
@@ -186,8 +180,7 @@ function main() {
 module.exports = main;
 </code></pre>
 <h2><a name="より高度な情報"></a> より高度な情報</h2>
-<p>ここまでの説明で Akashic Engine を利用してゲームを作るのに必要な情報を一通り説明しました。
-より詳細な情報については<a href="/tutorial/akashic-info">こちらのページ</a>を参照してください。</p>
+<p>ここまでの説明で Akashic Engine を利用してゲームを作るのに必要な情報を一通り説明しました。より詳細な情報については<a href="/tutorial/akashic-info">こちらのページ</a>を参照してください。</p>
 <div class="navi-center">
 <a href="./8-install.html">前（拡張ライブラリを使う）</a>
  | <a href="./">目次</a>

@@ -10,4 +10,3 @@ cd game
 npm install
 akashic-sandbox .
 ```
-

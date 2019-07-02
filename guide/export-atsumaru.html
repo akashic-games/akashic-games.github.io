@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ニコニコ新市場対応コンテンツの投稿方法</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1561956166189">
-<link rel="stylesheet" href="/css/header.css?1561956166189">
-<link rel="stylesheet" href="/css/footer.css?1561956166189">
+<link rel="stylesheet" href="/css/common.css?1562037770318">
+<link rel="stylesheet" href="/css/header.css?1562037770318">
+<link rel="stylesheet" href="/css/footer.css?1562037770318">
 
 
-<link rel="stylesheet" href="/css/asset.css?1561956166189">
+<link rel="stylesheet" href="/css/asset.css?1562037770318">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1561956166189">
+<link rel="stylesheet" href="/css/akashic-document.css?1562037770318">
 
-<link rel="stylesheet" href="/css/railscasts.css?1561956166189">
+<link rel="stylesheet" href="/css/railscasts.css?1562037770318">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1561956166189"></script>
+<script src="/lib/common.js?1562037770318"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -104,8 +104,7 @@
 		<div class="inner responsive--width">
 			<h1>ニコニコ新市場対応コンテンツの投稿方法</h1>
 <h2><a name="これは"></a> これは</h2>
-<p>Akashic Engine で作られた <strong>ニコニコ新市場対応コンテンツ</strong> を <a href="http://blog.nicovideo.jp/niconews/81617.html">実験放送</a> に投稿するための手順を解説します。
-ニコニコ新市場対応コンテンツの作り方については <a href="/guide/ranking">こちら</a> を参照してください。</p>
+<p>Akashic Engine で作られた <strong>ニコニコ新市場対応コンテンツ</strong> を <a href="http://blog.nicovideo.jp/niconews/81617.html">実験放送</a> に投稿するための手順を解説します。ニコニコ新市場対応コンテンツの作り方については <a href="/guide/ranking">こちら</a> を参照してください。</p>
 <h2><a name="投稿方法"></a> 投稿方法</h2>
 <p>ニコニコ新市場対応コンテンツの投稿は、<a href="https://game.nicovideo.jp/atsumaru/">RPG アツマール</a> を通して行います。</p>
 <p>RPG アツマールは、&quot;作って遊んでコメントできる ゲーム投稿コミュニティサービス&quot; です(<a href="http://site.nicovideo.jp/atsumaru/about/">紹介</a>)。
@@ -139,8 +138,7 @@ Akashic ゲームをこの RPG アツマールに投稿・公開した後、申�
 </ul>
 </li>
 </ul>
-<p>2018 年 10 月現在、ニコニコ新市場対応コンテンツは、 <strong>この zip ファイルの展開後のサイズが 10MB 以下である必要があります</strong> 。
-これを超える場合、アツマールには投稿できますが、ニコニコ新市場対応コンテンツとして登録申請する際に失敗するので注意してください。</p>
+<p>2018 年 10 月現在、ニコニコ新市場対応コンテンツは、 <strong>この zip ファイルの展開後のサイズが 10MB 以下である必要があります</strong> 。これを超える場合、アツマールには投稿できますが、ニコニコ新市場対応コンテンツとして登録申請する際に失敗するので注意してください。</p>
 <p>また事前に <strong>テキストファイル(スクリプトアセットとテキストアセット)の文字コードが UTF-8 であることを確認してください</strong> 。
 Shift JIS など、UTF-8 でない文字コードが使われている場合、<code>akashic</code> コマンドが複数ファイルを一つにまとめる際に文字化けしてしまう恐れがあります。</p>
 <h3><a name="RPGアツマールに投稿し、ニコニコ新市場対応コンテンツとして登録申請"></a> RPG アツマールに投稿し、ニコニコ新市場対応コンテンツとして登録申請</h3>
@@ -163,8 +161,7 @@ zip ファイルを「ゲームファイル」の欄で選択もしくはドラ�
 <p>投稿対象のゲームに「ニコニコ新市場に登録申請済み」と表示されたら完了です。</p>
 <p><img src="/img/guide/export-atsumaru/export_complete.png" alt="登録申請完了"></p>
 <h2><a name="コンテンツの更新"></a> コンテンツの更新</h2>
-<p>RPG アツマールでは、一度アップロードしたゲームの内容を更新することができます。
-ニコニコ新市場対応コンテンツとしては、更新後に改めて登録申請が必要になることに注意してください。</p>
+<p>RPG アツマールでは、一度アップロードしたゲームの内容を更新することができます。ニコニコ新市場対応コンテンツとしては、更新後に改めて登録申請が必要になることに注意してください。</p>
 <p><img src="/img/guide/export-atsumaru/update_ui.png" alt="更新UI"></p>
 <p>更新は、登録申請と同じ画面で「アップデート」ボタンを押して zip ファイルをアップロードして更新した後、改めて「ニコニコ新市場に登録申請」してください。</p>
 <h2><a name="トラブルシューティング"></a> トラブルシューティング</h2>
@@ -180,9 +177,7 @@ zip ファイルを「ゲームファイル」の欄で選択もしくはドラ�
 </code></pre><p>この現象は、ゲームスクリプト内で <code>require()</code> を利用し、その引数にアセット ID を与えている場合に発生します。
 (<code>require(&quot;foo&quot;)</code> でアセット ID <code>&quot;foo&quot;</code> のスクリプトアセットを読み込むなど)</p>
 <p>アセット ID ではなく、相対パスで <code>require()</code> するように変更してください。(<code>require(&quot;./foo&quot;)</code> など)</p>
-<p><code>require()</code> がアセット ID を受け付けているのは、Akashic Engine の古い仕様によるものです。
-アセット ID と同名の npm モジュールがあると衝突してしまうという問題があるため、この挙動は将来的に廃止される可能性があります。
-ニコニコ新市場対応コンテンツであるか否かに関わらず、 <code>require()</code> にアセット ID を与えることは避けてください。</p>
+<p><code>require()</code> がアセット ID を受け付けているのは、Akashic Engine の古い仕様によるものです。アセット ID と同名の npm モジュールがあると衝突してしまうという問題があるため、この挙動は将来的に廃止される可能性があります。ニコニコ新市場対応コンテンツであるか否かに関わらず、 <code>require()</code> にアセット ID を与えることは避けてください。</p>
 
 		</div>
 	</section>

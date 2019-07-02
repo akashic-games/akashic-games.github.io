@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>Akashic Engine 入門 (v1(deprecated)版)</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1561956166189">
-<link rel="stylesheet" href="/css/header.css?1561956166189">
-<link rel="stylesheet" href="/css/footer.css?1561956166189">
+<link rel="stylesheet" href="/css/common.css?1562037770318">
+<link rel="stylesheet" href="/css/header.css?1562037770318">
+<link rel="stylesheet" href="/css/footer.css?1562037770318">
 
 
-<link rel="stylesheet" href="/css/asset.css?1561956166189">
+<link rel="stylesheet" href="/css/asset.css?1562037770318">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1561956166189">
+<link rel="stylesheet" href="/css/akashic-document.css?1562037770318">
 
-<link rel="stylesheet" href="/css/railscasts.css?1561956166189">
+<link rel="stylesheet" href="/css/railscasts.css?1562037770318">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1561956166189"></script>
+<script src="/lib/common.js?1562037770318"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -106,10 +106,8 @@
 <h2><a name="はじめに"></a> はじめに</h2>
 <p>Akashic Engine は JavaScript で動作するゲームエンジンです。
 Akashic Engine を利用することでマルチプラットフォームで動作するゲームを開発できます。
-Akashic Engine はオープンソースで開発されているフリーソフトウェアです。
-作成したゲームの公開にロイヤリティは必要ありません。
-Akashic Engine にはゲーム開発で利用できるツールとライブラリが用意されており、
-今すぐゲーム開発を始めることができます。</p>
+Akashic Engine はオープンソースで開発されているフリーソフトウェアです。作成したゲームの公開にロイヤリティは必要ありません。
+Akashic Engine にはゲーム開発で利用できるツールとライブラリが用意されており、今すぐゲーム開発を始めることができます。</p>
 <blockquote>
 <ul>
 <li>Akashic Engine の現在の実装は 2D 描画を主体とするゲームに特化しています。</li>
@@ -117,55 +115,37 @@ Akashic Engine にはゲーム開発で利用できるツールとライブラ�
 </blockquote>
 <h2><a name="開発に必要なもの"></a> 開発に必要なもの</h2>
 <p>Akashic Engine のゲーム開発には基本的なプログラミングの知識が必要です。
-Akashic Engine は JavaScript や TypeScript を利用してゲームのコードを書きます。
-このチュートリアルでは JavaScript を利用します。
-チュートリアルでは JavaScript の細かな機能や文法については解説していません。
-JavaScript に初めて触れる方や、知識に不安のある方は、
-適宜インターネット上の解説記事や入門書を参照してください。</p>
-<p>チュートリアルで説明している内容を試すには、
-コンピュータ (Windows, Mac, Linux など) とインターネット接続環境が必要です。
-Akashic Engine を利用したゲーム開発にはプログラミング作業が必要になり、
-その過程で次のような操作を行う必要があります。</p>
+Akashic Engine は JavaScript や TypeScript を利用してゲームのコードを書きます。このチュートリアルでは JavaScript を利用します。チュートリアルでは JavaScript の細かな機能や文法については解説していません。
+JavaScript に初めて触れる方や、知識に不安のある方は、適宜インターネット上の解説記事や入門書を参照してください。</p>
+<p>チュートリアルで説明している内容を試すには、コンピュータ (Windows, Mac, Linux など) とインターネット接続環境が必要です。
+Akashic Engine を利用したゲーム開発にはプログラミング作業が必要になり、その過程で次のような操作を行う必要があります。</p>
 <ul>
 <li>テキストエディタを利用してソースファイルを作成する。</li>
 <li>CUI ウインドウを利用してコマンドを実行する。</li>
 <li>開発に必要なプログラムをインターネットからダウンロードしてインストールする。</li>
 </ul>
-<p>これらの操作は利用しているコンピュータの種類や
-バージョンによって異なる場合があります。
-インターネットで検索してもやり方が分からない場合は、
-詳しい人に相談してください。</p>
+<p>これらの操作は利用しているコンピュータの種類やバージョンによって異なる場合があります。インターネットで検索してもやり方が分からない場合は、詳しい人に相談してください。</p>
 <h2><a name="開発環境の構築"></a> 開発環境の構築</h2>
 <h3><a name="Node.js のインストール"></a> Node.js のインストール</h3>
 <p>Akashic Engine のゲーム開発には Node.js が必要です。
-Node.js は JavaScript のプログラムの実行と開発に必要なツールを
-まとめたソフトウェアです。
+Node.js は JavaScript のプログラムの実行と開発に必要なツールをまとめたソフトウェアです。
 Node.js には <code>node</code> コマンドと <code>npm</code> コマンドが付属します。
 <code>node</code> コマンドは JavaScript のプログラムを動かすコマンドです。
-Akashic Engine のツールは JavaScript で開発されており、
-実行に <code>node</code> コマンドを利用します。
+Akashic Engine のツールは JavaScript で開発されており、実行に <code>node</code> コマンドを利用します。
 <code>npm</code> コマンドは JavaScript に関連するツールやライブラリを簡単に導入するコマンドです。
 Akashic Engine 本体も <code>npm</code> コマンドでダウンロードとインストールを行います。</p>
 <p>Node.js をインストールする方法はいくつかありますが、
-<a href="https://nodejs.org/ja/">公式サイト</a>に用意されている
-インストーラを利用するのが簡単です。
-Node.js には最新の機能を利用できる最新版と、
-長期間利用可能な LTS 版(推奨版)があります。
-Akashic Engine はどちらのバージョンでも動作しますが、
-このチュートリアルは LTS 版を前提に説明を進めます。</p>
-<p>Node.js はコマンドプロンプト (Windows) やターミナル (Mac) などの
-端末エミュレータにコマンドを入力して操作します。
-コマンドを入力するウインドウのことを、このチュートリアルでは CUI ウインドウとよびます。
-インストールが正常に行われたかどうかを確認するために、
+<a href="https://nodejs.org/ja/">公式サイト</a>に用意されているインストーラを利用するのが簡単です。
+Node.js には最新の機能を利用できる最新版と、長期間利用可能な LTS 版(推奨版)があります。
+Akashic Engine はどちらのバージョンでも動作しますが、このチュートリアルは LTS 版を前提に説明を進めます。</p>
+<p>Node.js はコマンドプロンプト (Windows) やターミナル (Mac) などの端末エミュレータにコマンドを入力して操作します。コマンドを入力するウインドウのことを、このチュートリアルでは CUI ウインドウとよびます。インストールが正常に行われたかどうかを確認するために、
 CUI ウインドウに次のコマンドを入力してください。</p>
 <pre><code class="lang-sh">node -v
 </code></pre>
-<p>このコマンドは Node.js のバージョンを画面に出力します。
-正常にインストールされていれば次のようにバージョン番号が表示されます。</p>
+<p>このコマンドは Node.js のバージョンを画面に出力します。正常にインストールされていれば次のようにバージョン番号が表示されます。</p>
 <pre><code class="lang-sh">v4.5.0
 </code></pre>
-<p><code>v4.5.0</code> は執筆時点での LTS 版のバージョンです。
-新しいバージョンがリリースされるとこの数字は大きくなります。</p>
+<p><code>v4.5.0</code> は執筆時点での LTS 版のバージョンです。新しいバージョンがリリースされるとこの数字は大きくなります。</p>
 <h3><a name="Akashic Engine のインストール"></a> Akashic Engine のインストール</h3>
 <p>Akashic Engine のインストールには <code>npm</code> コマンドを利用します。
 <code>npm</code> コマンドを利用すると <code>npm install -g &lt;パッケージ名&gt;</code> でツールやライブラリをインストールできます。
@@ -178,19 +158,15 @@ Akashic Engine のゲーム開発には次の 2 つのパッケージが必要�
 <pre><code class="lang-sh">npm install -g @akashic/akashic-cli
 npm install -g @akashic/akashic-sandbox
 </code></pre>
-<p>インストールが完了すると、<code>akashic</code> コマンドと <code>akashic-sandbox</code> コマンドを利用できるようになります。
-以下のコマンドでそれぞれのコマンドのバージョンを表示することができます。
-エラーが表示されるバージョンが表示できれば、インストールが正常に行われています。</p>
+<p>インストールが完了すると、<code>akashic</code> コマンドと <code>akashic-sandbox</code> コマンドを利用できるようになります。以下のコマンドでそれぞれのコマンドのバージョンを表示することができます。エラーが表示されるバージョンが表示できれば、インストールが正常に行われています。</p>
 <pre><code class="lang-sh">akashic -V
 akashic-sandbox -V
 </code></pre>
 <p>執筆時点では <code>akashic</code> のバージョンとして <code>1.0.0</code>、
 <code>akashic-sandbox</code> のバージョンとして <code>0.8.0</code> が表示されます。</p>
 <h2><a name="空のゲームの作成"></a> 空のゲームの作成</h2>
-<p>Akashic Engine のゲームには設定ファイル (<code>game.json</code>) と、
-ゲームを起動するプログラムが必要です。
-<code>game.json</code> はゲームの設定とゲームが利用するアセットを記述する JSON 形式のファイルです。
-アセットはプログラムのソースコードや画像、音声ファイルなどゲームの実行に必要なファイルのことです。</p>
+<p>Akashic Engine のゲームには設定ファイル (<code>game.json</code>) と、ゲームを起動するプログラムが必要です。
+<code>game.json</code> はゲームの設定とゲームが利用するアセットを記述する JSON 形式のファイルです。アセットはプログラムのソースコードや画像、音声ファイルなどゲームの実行に必要なファイルのことです。</p>
 <p>以下は <code>game.json</code> の例です。</p>
 <pre><code class="lang-json">{
   &quot;width&quot;: 320,
@@ -209,11 +185,8 @@ akashic-sandbox -V
 <p>ここで指定している <code>main.js</code> がゲームが最初に読み込むプログラムです。
 <code>assets.main</code> プロパティで、<code>main.js</code> がスクリプトアセットであること、
 <code>main</code> プロパティで最初に読み込むスクリプトであることを表しています。</p>
-<p><code>main.js</code> は最初のシーンを作成します。
-シーンはゲームの場面を表すオブジェクトです。
-例えば、タイトル場面、プレイ場面、スコア場面など必要に応じて作成できます。
-Akashic Engine のゲームには最低 1 つのシーンが必要です。
-次のプログラムは空のシーンを作成して、そのシーンを表示します。</p>
+<p><code>main.js</code> は最初のシーンを作成します。シーンはゲームの場面を表すオブジェクトです。例えば、タイトル場面、プレイ場面、スコア場面など必要に応じて作成できます。
+Akashic Engine のゲームには最低 1 つのシーンが必要です。次のプログラムは空のシーンを作成して、そのシーンを表示します。</p>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({ game: g.game });
   g.game.pushScene(scene);
@@ -221,16 +194,13 @@ Akashic Engine のゲームには最低 1 つのシーンが必要です。
 
 module.exports = main;
 </code></pre>
-<p>上のコードを <code>main.js</code> という名前で保存します。
-作成したゲームを動かすには、<code>game.json</code> と <code>main.js</code> を同じディレクトリに配置し、
-そのディレクトリで次のコマンドを実行します。</p>
+<p>上のコードを <code>main.js</code> という名前で保存します。作成したゲームを動かすには、<code>game.json</code> と <code>main.js</code> を同じディレクトリに配置し、そのディレクトリで次のコマンドを実行します。</p>
 <pre><code class="lang-sh">akashic-sandbox
 </code></pre>
 <p>実行すると画面に次のように表示されます。</p>
 <pre><code class="lang-sh">please access to http://localhost:3000/game/ by web-browser
 </code></pre>
-<p>ウェブブラウザを起動して <code>http://localhost:3000/game/</code> を開くとゲームが実行されます。
-今のところシーンに何も配置していないので何も表示されません。</p>
+<p>ウェブブラウザを起動して <code>http://localhost:3000/game/</code> を開くとゲームが実行されます。今のところシーンに何も配置していないので何も表示されません。</p>
 <p>以下は、<code>main.js</code> に赤い矩形を表示するコードを追加したものです。</p>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({ game: g.game });
@@ -255,27 +225,18 @@ module.exports = main;
 <p><code>Ctrl-C</code> はキーボードの <code>Ctrl</code> キーを押しながら <code>C</code> キーを押すという意味です。</p>
 </blockquote>
 <h2><a name="akashic init の利用"></a> akashic init の利用</h2>
-<p><code>akashic init</code> を利用すると、ゲームに必要なファイルを作ることができます。
-空のディレクトリを作成してその中で次のコマンドを実行します。</p>
+<p><code>akashic init</code> を利用すると、ゲームに必要なファイルを作ることができます。空のディレクトリを作成してその中で次のコマンドを実行します。</p>
 <pre><code class="lang-sh">akashic init
 </code></pre>
-<p>コマンドを入力すると、ゲームの仕様をいくつか質問されます。
-最初は、</p>
+<p>コマンドを入力すると、ゲームの仕様をいくつか質問されます。最初は、</p>
 <pre><code class="lang-sh">width (320)
 </code></pre>
-<p>と表示されます。
-ここで数字を入力して Enter キーを押すとゲームの幅 (width) を指定できます。
-何も入力せずに Enter を押すと幅はカッコ内に表示された大きさになります。
-ここではそのまま Enter を押します。</p>
-<p>続けてゲームの高さ (height) と FPS を指定できます。
-ここではどちらも初期値を使います。
-値の指定が終わると、</p>
+<p>と表示されます。ここで数字を入力して Enter キーを押すとゲームの幅 (width) を指定できます。何も入力せずに Enter を押すと幅はカッコ内に表示された大きさになります。ここではそのまま Enter を押します。</p>
+<p>続けてゲームの高さ (height) と FPS を指定できます。ここではどちらも初期値を使います。値の指定が終わると、</p>
 <pre><code class="lang-sh">INFO: Done!
 </code></pre>
 <p>と表示され、いくつかのファイルやフォルダが作られます。</p>
-<p><code>akashic init</code> は予め用意されたテンプレートをもとにファイルを作成します。
-利用するテンプレートの種類は <code>-t</code> オプションで切り替えることができます。
-標準で対応しているテンプレートは以下の通りです。</p>
+<p><code>akashic init</code> は予め用意されたテンプレートをもとにファイルを作成します。利用するテンプレートの種類は <code>-t</code> オプションで切り替えることができます。標準で対応しているテンプレートは以下の通りです。</p>
 <ul>
 <li><code>javascript</code> (省略時)</li>
 <li><code>javascript-minimal</code></li>
@@ -348,10 +309,7 @@ scene.append(rect);
 </code></pre>
 <p>Akashic Engine の機能はグローバル変数 <code>g</code> を通して利用できます。
 <code>FilledRect</code> コンストラクタは、コード上では <code>g.FilledRect</code> となります。</p>
-<p>エンティティのコンストラクタはオブジェクトを引数にとります。
-このように引数として渡すオブジェクトを Akashic Engine ではパラメータオブジェクトとよびます。
-パラメータオブジェクトのプロパティや指定できる値は関数ごとに異なっています。
-例えば <code>new g.FilledRect()</code> に渡すパラメータオブジェクトには次のプロパティを指定できます。</p>
+<p>エンティティのコンストラクタはオブジェクトを引数にとります。このように引数として渡すオブジェクトを Akashic Engine ではパラメータオブジェクトとよびます。パラメータオブジェクトのプロパティや指定できる値は関数ごとに異なっています。例えば <code>new g.FilledRect()</code> に渡すパラメータオブジェクトには次のプロパティを指定できます。</p>
 <div class="table--scroll">
 <table>
 <thead>
@@ -452,17 +410,11 @@ scene.append(rect);
 </div>
 
 <p>表中のほとんどのプロパティは <code>FilledRect</code> 以外のオブジェクトでも共通です。
-<code>FilledRect</code> 特有のプロパティは矩形の色を指定する <code>cssColor</code> のみです。
-また、他のエンティティと異なり <code>width</code> と <code>height</code> の指定が必須になっています。</p>
-<p>それぞれのエンティティで指定可能な値や初期値は API リファレンスに書かれています。
-例えば <code>FilledRect</code> であれば<a href="/reference/akashic-engine-v1/classes/_lib_main_d_.g.filledrect.html">こちら</a>のドキュメントに書かれています。</p>
-<p>エンティティをシーンに追加する操作は、シーンの読み込み後に行う必要があります。
-シーンの読み込み完了のようなタイミングを通知するのに、
-Akashic Engine はトリガーとよばれる仕組みを利用します。
-トリガーには <code>handle()</code> メソッドで関数を登録することができます。
-トリガーに対応するイベントが発生すると、登録されたメソッドが呼び出されます。</p>
-<p>シーンの読み込み完了のタイミングを知るには <code>scene.loaded</code> トリガーを利用します。
-次の例では <code>onSceneLoaded()</code> 関数を <code>scene.loaded</code> トリガーに登録しています。</p>
+<code>FilledRect</code> 特有のプロパティは矩形の色を指定する <code>cssColor</code> のみです。また、他のエンティティと異なり <code>width</code> と <code>height</code> の指定が必須になっています。</p>
+<p>それぞれのエンティティで指定可能な値や初期値は API リファレンスに書かれています。例えば <code>FilledRect</code> であれば<a href="/reference/akashic-engine-v1/classes/_lib_main_d_.g.filledrect.html">こちら</a>のドキュメントに書かれています。</p>
+<p>エンティティをシーンに追加する操作は、シーンの読み込み後に行う必要があります。シーンの読み込み完了のようなタイミングを通知するのに、
+Akashic Engine はトリガーとよばれる仕組みを利用します。トリガーには <code>handle()</code> メソッドで関数を登録することができます。トリガーに対応するイベントが発生すると、登録されたメソッドが呼び出されます。</p>
+<p>シーンの読み込み完了のタイミングを知るには <code>scene.loaded</code> トリガーを利用します。次の例では <code>onSceneLoaded()</code> 関数を <code>scene.loaded</code> トリガーに登録しています。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
 scene.loaded.handle(onSceneLoaded);
 
@@ -477,8 +429,7 @@ scene.loaded.handle(function() {
   // シーンが読み込まれたときに行う処理
 });
 </code></pre>
-<p>以下は、これまで説明した内容を利用して、座標 (50, 50) に幅 100、高さ 100 の赤色の矩形を表示するプログラムです。
-座標は初期状態ではシーンの左上が原点で、右に行くほど X の値が大きくなり、下に行くほど Y の値が大きくなります。</p>
+<p>以下は、これまで説明した内容を利用して、座標 (50, 50) に幅 100、高さ 100 の赤色の矩形を表示するプログラムです。座標は初期状態ではシーンの左上が原点で、右に行くほど X の値が大きくなり、下に行くほど Y の値が大きくなります。</p>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({ game: g.game });
   scene.loaded.handle(function() {
@@ -509,8 +460,7 @@ Akashic Engine のいくつかのオブジェクトは明示的に <code>g.game<
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
 </code></pre>
 <p><code>g.game</code> オブジェクトの <code>width</code> プロパティと <code>height</code> プロパティには、
-<code>game.json</code> に指定したゲームの幅と高さが格納されています。
-この値を利用すると、例えば以下のようにゲーム全体を青色で塗りつぶすように矩形を配置できます。</p>
+<code>game.json</code> に指定したゲームの幅と高さが格納されています。この値を利用すると、例えば以下のようにゲーム全体を青色で塗りつぶすように矩形を配置できます。</p>
 <pre><code class="lang-javascript">var backgroundRect = new g.FilledRect({
   scene: scene,
   width: g.game.width,
@@ -518,8 +468,7 @@ Akashic Engine のいくつかのオブジェクトは明示的に <code>g.game<
   cssColor: &quot;blue&quot;
 });
 </code></pre>
-<p>複数の矩形を配置するには、<code>new g.FilledRect()</code> と <code>scene.append()</code> をそれぞれ複数回呼び出します。
-以下はループを使って矩形を格子状に並べるプログラムです。</p>
+<p>複数の矩形を配置するには、<code>new g.FilledRect()</code> と <code>scene.append()</code> をそれぞれ複数回呼び出します。以下はループを使って矩形を格子状に並べるプログラムです。</p>
 <pre><code class="lang-javascript">var rectHeight = 40,
   rectWidth = 60,
   rectMargin = 10;
@@ -553,18 +502,12 @@ module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample03.png" alt="sample03"></p>
 <h2><a name="画像を扱う"></a> 画像を扱う</h2>
-<p>Akashic Engine では PNG 形式と JPEG 形式の画像を扱えます。
-ここでは以下の PNG 画像 (<code>player.png</code>) をシーンに追加します。</p>
+<p>Akashic Engine では PNG 形式と JPEG 形式の画像を扱えます。ここでは以下の PNG 画像 (<code>player.png</code>) をシーンに追加します。</p>
 <p><img src="/img/tutorial/player.png" alt="player"></p>
-<p>Akashic Engine のゲームには推奨されるディレクトリ構造があります。
-このディレクトリ構造に従うことで、面倒な作業を自動化できます。
-例えば画像は、アセットとして <code>game.json</code> に登録する必要があります。
-追加したい画像が <code>image</code> ディレクトリに置かれている場合、
-次のコマンドで <code>game.json</code> にアセットの情報が追加されます。</p>
+<p>Akashic Engine のゲームには推奨されるディレクトリ構造があります。このディレクトリ構造に従うことで、面倒な作業を自動化できます。例えば画像は、アセットとして <code>game.json</code> に登録する必要があります。追加したい画像が <code>image</code> ディレクトリに置かれている場合、次のコマンドで <code>game.json</code> にアセットの情報が追加されます。</p>
 <pre><code class="lang-sh">akashic scan asset
 </code></pre>
-<p><code>akashic scan asset</code> がアセットを探すディレクトリは以下の 4 つで、
-それぞれ配置するアセットの種類が決まっています。</p>
+<p><code>akashic scan asset</code> がアセットを探すディレクトリは以下の 4 つで、それぞれ配置するアセットの種類が決まっています。</p>
 <div class="table--scroll">
 <table>
 <thead>
@@ -594,11 +537,8 @@ module.exports = main;
 </table>
 </div>
 
-<p><code>akashic init</code> の JavaScript テンプレートを利用している場合、
-これらのディレクトリはすでに用意されています。
-<code>akashic scan asset</code> を実行すると、
-これらのディレクトリ内に新しいファイルが見つかった場合は <code>game.json</code> に登録し、
-ディレクトリからファイルが削除されたら <code>game.json</code> から登録を解除します。</p>
+<p><code>akashic init</code> の JavaScript テンプレートを利用している場合、これらのディレクトリはすでに用意されています。
+<code>akashic scan asset</code> を実行すると、これらのディレクトリ内に新しいファイルが見つかった場合は <code>game.json</code> に登録し、ディレクトリからファイルが削除されたら <code>game.json</code> から登録を解除します。</p>
 <p><code>player.png</code> を <code>image</code> ディレクトリに置いて
 <code>akashic scan asset</code> を実行すると、画面に以下のように表示されます。</p>
 <pre><code class="lang-sh">INFO: added (or updated) the declaration for player (image/player.png)
@@ -625,31 +565,20 @@ INFO: Done!
 module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample04.png" alt="sample04"></p>
-<p>画像アセット・オーディオアセット・テキストアセットの 3 種類は、
-シーンオブジェクトを作るときに、<code>assetIds</code> プロパティで
-利用するアセットの ID を指定します。
-スクリプトアセットは例外で、指定しなくても自動的に読み込まれます。
-アセットの ID は <code>game.json</code> に登録されている名前です。
-<code>akashic scan</code> で登録した場合は、ファイル名から拡張子をのぞいた文字列です。
-例えば <code>player.png</code> の場合、アセット ID は <code>player</code> になります。</p>
+<p>画像アセット・オーディオアセット・テキストアセットの 3 種類は、シーンオブジェクトを作るときに、<code>assetIds</code> プロパティで利用するアセットの ID を指定します。スクリプトアセットは例外で、指定しなくても自動的に読み込まれます。アセットの ID は <code>game.json</code> に登録されている名前です。
+<code>akashic scan</code> で登録した場合は、ファイル名から拡張子をのぞいた文字列です。例えば <code>player.png</code> の場合、アセット ID は <code>player</code> になります。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game, assetIds: [&quot;player&quot;] });
 </code></pre>
 <p>画像を表示するには <code>Sprite</code> エンティティを使います。
-<code>Sprite</code> エンティティのパラメータオブジェクトには <code>src</code> プロパティがあります。
-ここに画像アセットオブジェクトを指定すると、対応する画像を表示する
-エンティティが作成されます。</p>
+<code>Sprite</code> エンティティのパラメータオブジェクトには <code>src</code> プロパティがあります。ここに画像アセットオブジェクトを指定すると、対応する画像を表示するエンティティが作成されます。</p>
 <p>シーンに読み込んだアセットオブジェクトは、たとえばアセットの ID が <code>player</code>
 だとすると次のコードで参照できます。</p>
 <pre><code class="lang-javascript">scene.assets[&quot;player&quot;];
 </code></pre>
 <h2><a name="エンティティの入れ子"></a> エンティティの入れ子</h2>
-<p>エンティティには子エンティティを追加できます。
-子エンティティは親エンティティに追従して動くので、
-複数のエンティティを一度に操作する場合に利用できます。</p>
-<p><code>E</code> エンティティはそれ自体は何も描画しないエンティティで、
-複数のエンティティをグループ化する場合に便利です。</p>
-<p>例えばエンティティ <code>E</code> に子エンティティとして <code>FilledRect</code> を追加する場合は、
-次のようなコードになります。</p>
+<p>エンティティには子エンティティを追加できます。子エンティティは親エンティティに追従して動くので、複数のエンティティを一度に操作する場合に利用できます。</p>
+<p><code>E</code> エンティティはそれ自体は何も描画しないエンティティで、複数のエンティティをグループ化する場合に便利です。</p>
+<p>例えばエンティティ <code>E</code> に子エンティティとして <code>FilledRect</code> を追加する場合は、次のようなコードになります。</p>
 <pre><code class="lang-javascript">var group = new g.E({ scene: scene });
 var child = new g.FilledRect({
   scene: scene,
@@ -659,8 +588,7 @@ var child = new g.FilledRect({
 });
 group.append(child);
 </code></pre>
-<p>以下のプログラムでは、<code>angle</code> を設定した <code>E</code> オブジェクトに 3 つの矩形を追加しています。
-矩形の座標系は <code>E</code> を基準にして変わるので、3 つの矩形は斜めに配置されます。</p>
+<p>以下のプログラムでは、<code>angle</code> を設定した <code>E</code> オブジェクトに 3 つの矩形を追加しています。矩形の座標系は <code>E</code> を基準にして変わるので、3 つの矩形は斜めに配置されます。</p>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({ game: g.game });
   scene.loaded.handle(function() {
@@ -692,12 +620,8 @@ module.exports = main;
 <p><img src="/img/tutorial/sample05.png" alt="sample05"></p>
 <h2><a name="アニメーション"></a> アニメーション</h2>
 <p>Akashic Engine のコンテンツは固定 FPS で動作します。
-FPS の値は 1 秒間に画面を更新する回数です。
-エンティティの位置や大きさなどを画面更新の度に変化させると、
-エンティティをアニメーションさせることができます。</p>
-<p>エンティティには位置や大きさを表すプロパティが用意されており、
-プログラムで読み書きできます。
-例えば <code>FilledRect</code> の場合、以下のプロパティが存在します。
+FPS の値は 1 秒間に画面を更新する回数です。エンティティの位置や大きさなどを画面更新の度に変化させると、エンティティをアニメーションさせることができます。</p>
+<p>エンティティには位置や大きさを表すプロパティが用意されており、プログラムで読み書きできます。例えば <code>FilledRect</code> の場合、以下のプロパティが存在します。
 <code>cssColor</code> 以外のプロパティは <code>Sprite</code> など他のエンティティにも存在します。</p>
 <div class="table--scroll">
 <table>
@@ -760,22 +684,18 @@ FPS の値は 1 秒間に画面を更新する回数です。
 
 <p>これらのプロパティの値を変更したら、ゲーム開発者は <code>modified()</code> メソッドを明示的に呼び出して、
 Akashic Engine にプロパティの変更を通知する必要があります。</p>
-<p>例えば、<code>FilledRect</code> オブジェクトの <code>rect</code> を右方向に 20、
-下方向に 10 移動するコードは次のようになります。</p>
+<p>例えば、<code>FilledRect</code> オブジェクトの <code>rect</code> を右方向に 20、下方向に 10 移動するコードは次のようになります。</p>
 <pre><code class="lang-javascript">rect.x += 20;
 rect.y += 10;
 rect.modified();
 </code></pre>
-<p>シーンオブジェクトの <code>update</code> トリガーはシーンのフレームを描画するたびに呼び出されます。
-以下はシーンの <code>update</code> トリガーを利用して矩形 <code>rect</code> を右に移動させるコードです。</p>
+<p>シーンオブジェクトの <code>update</code> トリガーはシーンのフレームを描画するたびに呼び出されます。以下はシーンの <code>update</code> トリガーを利用して矩形 <code>rect</code> を右に移動させるコードです。</p>
 <pre><code class="lang-javascript">scene.update.handle(function() {
   ++rect.x;
   rect.modified();
 });
 </code></pre>
-<p>シーンオブジェクトの <code>update</code> トリガーにハンドラを登録する処理は、
-シーンの読み込み後に行う必要があります。
-プログラム全体は以下のようになります。</p>
+<p>シーンオブジェクトの <code>update</code> トリガーにハンドラを登録する処理は、シーンの読み込み後に行う必要があります。プログラム全体は以下のようになります。</p>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({ game: g.game });
   scene.loaded.handle(function() {
@@ -802,20 +722,13 @@ function createRect(scene) {
 module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample07.gif" alt="sample07"></p>
-<p>エンティティ自体も <code>update</code> トリガーを備えています。
-以下はエンティティ <code>rect</code> のトリガーを利用したコードです。</p>
+<p>エンティティ自体も <code>update</code> トリガーを備えています。以下はエンティティ <code>rect</code> のトリガーを利用したコードです。</p>
 <pre><code class="lang-javascript">rect.update.handle(function() {
   ++rect.x;
   rect.modified();
 });
 </code></pre>
-<p>シーンのトリガーでできることはエンティティのトリガーでも実現できますが、
-トリガーの寿命に違いがあります。
-シーンのトリガーがシーンが切り替わるまで有効なのに対して、
-エンティティのトリガーはエンティティが破棄されるまで有効になります。
-例えばシーンの途中でエンティティが破棄された場合はトリガーが無効になります。
-以下の例では矩形が画面の中央に到達したら <code>destroy()</code> メソッドで
-エンティティを破棄しています。</p>
+<p>シーンのトリガーでできることはエンティティのトリガーでも実現できますが、トリガーの寿命に違いがあります。シーンのトリガーがシーンが切り替わるまで有効なのに対して、エンティティのトリガーはエンティティが破棄されるまで有効になります。例えばシーンの途中でエンティティが破棄された場合はトリガーが無効になります。以下の例では矩形が画面の中央に到達したら <code>destroy()</code> メソッドでエンティティを破棄しています。</p>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({ game: g.game });
   scene.loaded.handle(function() {
@@ -843,27 +756,20 @@ module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample08.gif" alt="sample08"></p>
 <h2><a name="タイマー関数"></a> タイマー関数</h2>
-<p>3 秒後にエンティティを破棄したいなど、指定時間後に処理を行う場合は、
-シーンオブジェクトの <code>scene.setTimeout()</code> メソッドを利用します。
-<code>scene.setTimeout()</code> にはミリ秒単位の時間とコールバック関数を引数として渡します。
-例えば、シーン <code>scene</code> があり、3 秒後すなわち 3000 ミリ秒後に処理を行う場合、
-以下のように記述します。</p>
+<p>3 秒後にエンティティを破棄したいなど、指定時間後に処理を行う場合は、シーンオブジェクトの <code>scene.setTimeout()</code> メソッドを利用します。
+<code>scene.setTimeout()</code> にはミリ秒単位の時間とコールバック関数を引数として渡します。例えば、シーン <code>scene</code> があり、3 秒後すなわち 3000 ミリ秒後に処理を行う場合、以下のように記述します。</p>
 <pre><code class="lang-javascript">scene.setTimeout(3000, function() {
   // 3秒後に行う処理
 });
 </code></pre>
-<p><code>scene.setTimeout()</code> ではミリ秒単位で時間を指定できますが、実際にはフレーム単位で処理が行われます。
-例えばゲームが 30FPS、つまり 1 秒間に 30 フレーム描画している場合、1 フレームの長さは約 33 ミリ秒なので、
-実際の処理時間は 33 ミリ秒単位に切り上げられます。</p>
+<p><code>scene.setTimeout()</code> ではミリ秒単位で時間を指定できますが、実際にはフレーム単位で処理が行われます。例えばゲームが 30FPS、つまり 1 秒間に 30 フレーム描画している場合、1 フレームの長さは約 33 ミリ秒なので、実際の処理時間は 33 ミリ秒単位に切り上げられます。</p>
 <p>以下は <code>scene.setTimeout()</code> を使って 3 秒後に矩形 <code>rect</code> を破棄するコードです。</p>
 <pre><code class="lang-javascript">scene.setTimeout(3000, function() {
   rect.destroy();
 });
 </code></pre>
-<p>一定時間ごとに繰り返し処理をする場合は、
-シーンオブジェクトの <code>scene.setInterval()</code> メソッドを利用します。
-<code>scene.setInterval()</code> メソッドの利用方法は <code>scene.setTimeout()</code> メソッドと同じです。
-以下は 0.5 秒おきに矩形の色を切り替えるコードです。</p>
+<p>一定時間ごとに繰り返し処理をする場合は、シーンオブジェクトの <code>scene.setInterval()</code> メソッドを利用します。
+<code>scene.setInterval()</code> メソッドの利用方法は <code>scene.setTimeout()</code> メソッドと同じです。以下は 0.5 秒おきに矩形の色を切り替えるコードです。</p>
 <pre><code class="lang-javascript">var flg = false;
 scene.setInterval(500, function() {
   rect.cssColor = flg ? &quot;red&quot; : &quot;black&quot;;
@@ -871,11 +777,7 @@ scene.setInterval(500, function() {
   flg = !flg;
 });
 </code></pre>
-<p><code>scene.setTimeout()</code> と <code>scene.setInterval()</code> に登録した関数は、
-それぞれ <code>scene.clearTimeout()</code> と <code>scene.clearInterval()</code> 関数で登録を解除できます。
-引数には <code>scene.setTimeout()</code> と <code>scene.setInterval()</code> が返す ID を指定します。
-以下のプログラムでは <code>scene.setInterval()</code> で登録した関数を 3 秒後に <code>scene.clearInterval()</code> で
-解除しています。</p>
+<p><code>scene.setTimeout()</code> と <code>scene.setInterval()</code> に登録した関数は、それぞれ <code>scene.clearTimeout()</code> と <code>scene.clearInterval()</code> 関数で登録を解除できます。引数には <code>scene.setTimeout()</code> と <code>scene.setInterval()</code> が返す ID を指定します。以下のプログラムでは <code>scene.setInterval()</code> で登録した関数を 3 秒後に <code>scene.clearInterval()</code> で解除しています。</p>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({ game: g.game });
   scene.loaded.handle(function() {
@@ -906,23 +808,18 @@ module.exports = main;
 <p><img src="/img/tutorial/sample09.gif" alt="sample09"></p>
 <p><strong><code>scene.setTimeout()</code> ではない、グローバルの <code>setTimeout()</code> や、同じくグローバルの <code>setInterval()</code> は使用しないよう注意してください。</strong>
 これは、Aksahic Engine のコンテンツは、現実の時間とは違う速度で実行されることがあるためです
-(例えば、Akashic Engine のゲームは、ニコニコ生放送 (<a href="https://live.nicovideo.jp/recent?tab=nicocas">実験放送</a>) 上で実行されることがあります。その場合、タイムシフトではシークバーに連動する形で動作します)。
-この時、 <code>scene.setTimeout()</code> は実行速度を踏まえて経過時間を処理するのですが、 グローバルの <code>setTimeout()</code> は指定した時間そのままの時間経過を待ってしまうため、処理の実行タイミングがずれてしまうことがあり得ます。</p>
+(例えば、Akashic Engine のゲームは、ニコニコ生放送 (<a href="https://live.nicovideo.jp/recent?tab=nicocas">実験放送</a>) 上で実行されることがあります。その場合、タイムシフトではシークバーに連動する形で動作します)。この時、 <code>scene.setTimeout()</code> は実行速度を踏まえて経過時間を処理するのですが、 グローバルの <code>setTimeout()</code> は指定した時間そのままの時間経過を待ってしまうため、処理の実行タイミングがずれてしまうことがあり得ます。</p>
 <h2><a name="乱数"></a> 乱数</h2>
 <p>Akashic Engine は独自の乱数生成器を備えています。
-Akashic Engine に用意された乱数生成器を利用すると、
-指定した範囲の整数をランダムに生成できます。
-以下の式は 0 以上 9 以下の整数をランダムに一つ選んで返します。</p>
+Akashic Engine に用意された乱数生成器を利用すると、指定した範囲の整数をランダムに生成できます。以下の式は 0 以上 9 以下の整数をランダムに一つ選んで返します。</p>
 <pre><code class="lang-javascript">g.game.random[0].get(0, 9);
 </code></pre>
 <blockquote>
 <p><code>random</code> が配列になっているのは歴史的経緯によるもので、<code>[0]</code> 以外は利用できません。</p>
 </blockquote>
-<p>JavaScript 標準関数の <code>Math.random()</code> を利用しても乱数を生成できますが、
-将来的な拡張で利用するために、Akashic Engine のゲームでは
+<p>JavaScript 標準関数の <code>Math.random()</code> を利用しても乱数を生成できますが、将来的な拡張で利用するために、Akashic Engine のゲームでは
 <code>game</code> オブジェクトの乱数生成器を利用してください。</p>
-<p>以下のプログラムは矩形を格子状に並べるプログラムです。
-ただし矩形の色は 4 種類の色の中からランダムに選んで決めています。</p>
+<p>以下のプログラムは矩形を格子状に並べるプログラムです。ただし矩形の色は 4 種類の色の中からランダムに選んで決めています。</p>
 <pre><code class="lang-javascript">var size = 25,
   margin = 15;
 
@@ -957,10 +854,8 @@ module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample10.png" alt="sample10"></p>
 <h2><a name="ポイントイベント"></a> ポイントイベント</h2>
-<p>エンティティの <code>touchable</code> プロパティを <code>true</code> にすると、
-ゲーム画面のタップやクリックなどのユーザ操作を検出できるようになります。
-Akashic Engine ではユーザがタップやクリックするとポイントイベントが発生します。
-ポイントイベントには以下の 3 種類があります。</p>
+<p>エンティティの <code>touchable</code> プロパティを <code>true</code> にすると、ゲーム画面のタップやクリックなどのユーザ操作を検出できるようになります。
+Akashic Engine ではユーザがタップやクリックするとポイントイベントが発生します。ポイントイベントには以下の 3 種類があります。</p>
 <div class="table--scroll">
 <table>
 <thead>
@@ -998,8 +893,7 @@ rect.pointUp.handle(function() {
   rect.modified();
 });
 </code></pre>
-<p>ポイントイベントが発生した座標を取得するには、トリガーに渡す関数に引数を追加します。
-例えば、矩形エンティティ <code>rect</code> の <code>pointDown</code>
+<p>ポイントイベントが発生した座標を取得するには、トリガーに渡す関数に引数を追加します。例えば、矩形エンティティ <code>rect</code> の <code>pointDown</code>
 トリガーの座標を取得するには、以下のようなコードになります。</p>
 <pre><code class="lang-javascript">rect.pointDown.handle(function (ev) {
   var x = ev.point.x;
@@ -1007,8 +901,7 @@ rect.pointUp.handle(function() {
   ...
 });
 </code></pre>
-<p>追加した引数 <code>ev</code> にイベントの情報が格納されています。
-この変数には以下のプロパティがあります。</p>
+<p>追加した引数 <code>ev</code> にイベントの情報が格納されています。この変数には以下のプロパティがあります。</p>
 <div class="table--scroll">
 <table>
 <thead>
@@ -1041,13 +934,9 @@ rect.pointUp.handle(function() {
   rect.modified();
 });
 </code></pre>
-<p>エンティティに重なりがあり、その両方がポイントイベントを受け取れる状態にある場合は、
-最前面に表示されているエンティティがポイントイベントを受け取ります。</p>
-<p>シーンオブジェクトの <code>pointDownCapture</code>, <code>pointMoveCapture</code>, <code>pointUpCapture</code> トリガーを利用すると、
-配置されているエンティティとは無関係に、シーン全体でポイントイベントを取得できます。
-これらのトリガーはシーン上にイベントを受け取るエンティティが存在していたとしても常に呼び出されます。</p>
-<p>以下は、画面に指が触れた時、もしくはマウスのボタンが押されたときに、
-その座標に矩形エンティティを配置するコードです。</p>
+<p>エンティティに重なりがあり、その両方がポイントイベントを受け取れる状態にある場合は、最前面に表示されているエンティティがポイントイベントを受け取ります。</p>
+<p>シーンオブジェクトの <code>pointDownCapture</code>, <code>pointMoveCapture</code>, <code>pointUpCapture</code> トリガーを利用すると、配置されているエンティティとは無関係に、シーン全体でポイントイベントを取得できます。これらのトリガーはシーン上にイベントを受け取るエンティティが存在していたとしても常に呼び出されます。</p>
+<p>以下は、画面に指が触れた時、もしくはマウスのボタンが押されたときに、その座標に矩形エンティティを配置するコードです。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
 scene.loaded.handle(function() {
   scene.pointDownCapture.handle(function(ev) {
@@ -1067,23 +956,18 @@ scene.loaded.handle(function() {
 <p><img src="/img/tutorial/sample11.png" alt="sample11"></p>
 <h2><a name="効果音とBGM"></a> 効果音と BGM</h2>
 <p>Akashic Engine のゲームで音を鳴らす場合は、一つの効果音や音楽につき
-Ogg Vorbis 形式 (.ogg) と AAC 形式 (.aac) の二種類のファイルを用意する必要があります。
-これは、Web ページで音を再生する際に、利用可能な形式がブラウザごとに異なっているためです。</p>
+Ogg Vorbis 形式 (.ogg) と AAC 形式 (.aac) の二種類のファイルを用意する必要があります。これは、Web ページで音を再生する際に、利用可能な形式がブラウザごとに異なっているためです。</p>
 <p>ファイルが用意できたら <code>se1.ogg</code> と <code>se1.aac</code> を <code>sound</code> ディレクトリに配置して、
 <code>akashic scan</code> コマンドでアセットとして追加します。</p>
 <pre><code class="lang-sh">akashic scan asset
 </code></pre>
-<p>音声アセットはアセットの <code>play()</code> メソッドを呼び出して再生します。
-例えば ID が <code>&quot;se1&quot;</code> の場合は、以下のコードで再生できます。</p>
+<p>音声アセットはアセットの <code>play()</code> メソッドを呼び出して再生します。例えば ID が <code>&quot;se1&quot;</code> の場合は、以下のコードで再生できます。</p>
 <pre><code class="lang-javascript">scene.assets[&quot;se1&quot;].play();
 </code></pre>
-<p>もし、TypeScript テンプレートを利用して開発する場合、 <code>scene.assets</code> は <code>g.Asset</code> というアセット全体を示す型の配列になっています。よって、そのままでは <code>g.AudioAsset</code> だけが持つ <code>play()</code> メソッドを使えません。
-以下のように <code>as</code> 演算子を使って <code>g.AudioAsset</code> であることを示す必要があります。</p>
+<p>もし、TypeScript テンプレートを利用して開発する場合、 <code>scene.assets</code> は <code>g.Asset</code> というアセット全体を示す型の配列になっています。よって、そのままでは <code>g.AudioAsset</code> だけが持つ <code>play()</code> メソッドを使えません。以下のように <code>as</code> 演算子を使って <code>g.AudioAsset</code> であることを示す必要があります。</p>
 <pre><code class="lang-typescript">(scene.assets[&quot;se1&quot;] as g.AudioAsset).play();
 </code></pre>
-<p>シーンで効果音を利用するには、他のアセットと同じようにシーンオブジェクトの
-パラメータオブジェクトにアセットの ID を列挙します。
-以下は画面のタップまたはクリックで効果音を再生する例です。</p>
+<p>シーンで効果音を利用するには、他のアセットと同じようにシーンオブジェクトのパラメータオブジェクトにアセットの ID を列挙します。以下は画面のタップまたはクリックで効果音を再生する例です。</p>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({ game: g.game, assetIds: [&quot;se1&quot;] });
   scene.loaded.handle(function() {
@@ -1133,12 +1017,8 @@ BGM は自動的にループ再生されるので、<code>play()</code> メソ�
 module.exports = main;
 </code></pre>
 <h2><a name="文字列の表示"></a> 文字列の表示</h2>
-<p>Akashic Engine で文字列を表示するには、フォントとラベルが必要です。
-フォントは文字の形を表すオブジェクトです。
-ラベルはフォントを利用して文字列を描画するエンティティです。</p>
-<p>フォントには画像から生成するビットマップフォントと、
-システムにインストールされているフォントから生成するダイナミックフォントの二種類があります。
-このチュートリアルではダイナミックフォントを利用して文字列を表示する方法を説明します。</p>
+<p>Akashic Engine で文字列を表示するには、フォントとラベルが必要です。フォントは文字の形を表すオブジェクトです。ラベルはフォントを利用して文字列を描画するエンティティです。</p>
+<p>フォントには画像から生成するビットマップフォントと、システムにインストールされているフォントから生成するダイナミックフォントの二種類があります。このチュートリアルではダイナミックフォントを利用して文字列を表示する方法を説明します。</p>
 <p>ダイナミックフォントは以下のコードで生成できます。</p>
 <pre><code class="lang-javascript">var font = new g.DynamicFont(g.FontFamily.Serif, 15, g.game);
 </code></pre>
@@ -1215,14 +1095,9 @@ module.exports = main;
 module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample12.png" alt="sample12"></p>
-<p>ダイナミックフォントはシステムにインストールされているフォントを利用するため、
-実行環境により描画が異なる場合があります。
-すべての環境で同じ出力にしたい場合や、パフォーマンスが要求される場合は、
-ダイナミックフォントの代わりにビットマップフォントを利用してください。</p>
-<p>ラベルは高速化のために描画内容をキャッシュしています。
-そのために文字列を変更した場合は、<code>invalidate()</code>
-メソッドで変更を通知する必要があります。
-以下はラベル <code>label</code> の文字列を書き換える例です。</p>
+<p>ダイナミックフォントはシステムにインストールされているフォントを利用するため、実行環境により描画が異なる場合があります。すべての環境で同じ出力にしたい場合や、パフォーマンスが要求される場合は、ダイナミックフォントの代わりにビットマップフォントを利用してください。</p>
+<p>ラベルは高速化のために描画内容をキャッシュしています。そのために文字列を変更した場合は、<code>invalidate()</code>
+メソッドで変更を通知する必要があります。以下はラベル <code>label</code> の文字列を書き換える例です。</p>
 <pre><code class="lang-javascript">label.text = label.text + &quot;*&quot;;
 label.invalidate();
 </code></pre>
@@ -1266,8 +1141,7 @@ module.exports = main;
 <p><img src="/img/tutorial/sample13.gif" alt="sample13"></p>
 <h2><a name="ペイン"></a> ペイン</h2>
 <p>ペインは <code>E</code> と同じように子要素をまとめるためのエンティティです。
-<code>E</code> と異なり、<code>Pane</code> は子孫要素の描画領域を <code>Pane</code> の大きさに限定します。
-子要素が <code>Pane</code> の大きさをはみ出して描画しようとした場合、はみ出した部分は描画されません。</p>
+<code>E</code> と異なり、<code>Pane</code> は子孫要素の描画領域を <code>Pane</code> の大きさに限定します。子要素が <code>Pane</code> の大きさをはみ出して描画しようとした場合、はみ出した部分は描画されません。</p>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({ game: g.game });
   scene.loaded.handle(function() {
@@ -1290,16 +1164,10 @@ module.exports = main;
 module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample06.png" alt="sample06"></p>
-<p>ラベル同様、ペインも描画内容をキャッシュしています。
-ペイン自体のプロパティ (例えば <code>width</code> や <code>height</code>) を書き換えた場合は、
+<p>ラベル同様、ペインも描画内容をキャッシュしています。ペイン自体のプロパティ (例えば <code>width</code> や <code>height</code>) を書き換えた場合は、
 <code>invalidate()</code> を呼び出す必要があります。</p>
-<p>少し紛らわしい点として、ペインが保持している子エンティティの変更時には
-子エンティティの <code>modified()</code> や <code>invalidate()</code> のみを呼び出せばよいという点です。
-子エンティティの変更はペインに通知されて自動的にキャッシュの更新が行われます。</p>
-<p>以下のプログラムでは、ペイン内に配置した矩形を回転させています。
-ペインを利用していますが、ペイン自体のプロパティは変更していないので、
-矩形オブジェクトの <code>modified()</code> の呼び出しをしていますが、
-ペイン自体の <code>invalidate()</code> の呼び出しはしていません。</p>
+<p>少し紛らわしい点として、ペインが保持している子エンティティの変更時には子エンティティの <code>modified()</code> や <code>invalidate()</code> のみを呼び出せばよいという点です。子エンティティの変更はペインに通知されて自動的にキャッシュの更新が行われます。</p>
+<p>以下のプログラムでは、ペイン内に配置した矩形を回転させています。ペインを利用していますが、ペイン自体のプロパティは変更していないので、矩形オブジェクトの <code>modified()</code> の呼び出しをしていますが、ペイン自体の <code>invalidate()</code> の呼び出しはしていません。</p>
 <pre><code class="lang-javascript">function main() {
   var scene = new g.Scene({ game: g.game });
   scene.loaded.handle(function() {
@@ -1327,9 +1195,7 @@ module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample14.gif" alt="sample14"></p>
 <h2><a name="シーンの切り替え"></a> シーンの切り替え</h2>
-<p>Akashic Engine では、タイトル場面・プレイ場面・スコア場面のように、
-ゲームの場面ごとにそれぞれお対応するシーンを作成しそれらを切り替えて表示できます。
-シーンの切り替えには <code>Game</code> オブジェクトに用意されたメソッドを利用します。</p>
+<p>Akashic Engine では、タイトル場面・プレイ場面・スコア場面のように、ゲームの場面ごとにそれぞれお対応するシーンを作成しそれらを切り替えて表示できます。シーンの切り替えには <code>Game</code> オブジェクトに用意されたメソッドを利用します。</p>
 <ul>
 <li><code>g.game.replaceScene()</code></li>
 <li><code>g.game.pushScene()</code></li>
@@ -1338,8 +1204,7 @@ module.exports = main;
 <p><code>replaceScene()</code> は現在のシーンを破棄して次のシーンに遷移します。
 <code>pushScene()</code> を利用すると現在のシーンを保存して次のシーンに遷移します。
 <code>pushScene()</code> でシーン遷移した場合、<code>popScene()</code> で元のシーンに戻ることができます。</p>
-<p>以下のプログラムでは <code>replaceScene()</code> を利用して、
-画面のタップまたはクリックで 2 つのシーンを切り替えています。</p>
+<p>以下のプログラムでは <code>replaceScene()</code> を利用して、画面のタップまたはクリックで 2 つのシーンを切り替えています。</p>
 <pre><code class="lang-javascript">function main() {
   g.game.pushScene(createSceneA());
 }
@@ -1395,10 +1260,7 @@ module.exports = main;
   return scene;
 };
 </code></pre>
-<p><code>mainScene.js</code> はシーンの作成処理を独立させたファイルです。
-コード中で <code>module.exports</code> に <code>create</code> 関数を代入しています。
-このコードを <code>akashic scan</code> でアセットとして追加すると
-関数を他のファイルから利用できます。</p>
+<p><code>mainScene.js</code> はシーンの作成処理を独立させたファイルです。コード中で <code>module.exports</code> に <code>create</code> 関数を代入しています。このコードを <code>akashic scan</code> でアセットとして追加すると関数を他のファイルから利用できます。</p>
 <p>例えば <code>main.js</code> から利用する場合は、次のようなコードになります。</p>
 <pre><code class="lang-javascript">var MainScene = require(&quot;MainScene&quot;);
 
@@ -1409,8 +1271,7 @@ function main() {
 module.exports = main;
 </code></pre>
 <h2><a name="より高度な情報"></a> より高度な情報</h2>
-<p>ここまでの説明で Akashic Engine を利用してゲームを作るのに必要な情報を一通り説明しました。
-より詳細な情報については<a href="/tutorial/akashic-info">こちらのページ</a>を参照してください。</p>
+<p>ここまでの説明で Akashic Engine を利用してゲームを作るのに必要な情報を一通り説明しました。より詳細な情報については<a href="/tutorial/akashic-info">こちらのページ</a>を参照してください。</p>
 
 		</div>
 	</section>
