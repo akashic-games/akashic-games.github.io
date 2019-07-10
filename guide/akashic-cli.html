@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic-cli 利用ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1562052761716">
-<link rel="stylesheet" href="/css/header.css?1562052761716">
-<link rel="stylesheet" href="/css/footer.css?1562052761716">
+<link rel="stylesheet" href="/css/common.css?1562746995481">
+<link rel="stylesheet" href="/css/header.css?1562746995481">
+<link rel="stylesheet" href="/css/footer.css?1562746995481">
 
 
-<link rel="stylesheet" href="/css/asset.css?1562052761716">
+<link rel="stylesheet" href="/css/asset.css?1562746995481">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1562052761716">
+<link rel="stylesheet" href="/css/akashic-document.css?1562746995481">
 
-<link rel="stylesheet" href="/css/railscasts.css?1562052761716">
+<link rel="stylesheet" href="/css/railscasts.css?1562746995481">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1562052761716"></script>
+<script src="/lib/common.js?1562746995481"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -162,7 +162,7 @@ akashic コマンドは akashic-cli をインストールして使用するこ�
 </ul>
 <p>init 以外のコマンドは、init によって生成される game.json を操作・出力・実行します。したがって通常、ゲーム開発時にはまず akashic init を実行し、その後必要に応じて他コマンドを実行することになります。</p>
 <h2><a name="init"></a> init</h2>
-<pre><code class="lang-sh">akashic init [--type &lt;type&gt;]
+<pre><code class="lang-sh">akashic init [&lt;options&gt;]
 </code></pre>
 <p>新しく Akashic で動作するゲームをカレントディレクトリに生成します。</p>
 <p>このコマンドを実行すると、以下のような対話型のインターフェースが表示され、ゲーム画面の幅・高さおよびゲームの FPS を入力できます。</p>
@@ -173,12 +173,51 @@ width: (320)
 height: (320)
 fps: (30)
 </code></pre>
-<p>入力後、カレントディレクトリには--type オプションに指定した値に応じてディレクトリ・ファイルが生成されます。</p>
-<p>また、本コマンドは、カレントディレクトリの内容が空の状態で実行することを推奨します。</p>
+<p>また、本コマンドは、カレントディレクトリが空でない場合、エラーで失敗することがあります。
+(生成されるファイル・ディレクトリが既に存在する場合、エラーでコマンドが失敗します)。</p>
+<p><code>&lt;options&gt;</code>に指定可能なオプションは次のとおりです。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">オプション</th>
+<th style="text-align:center">短縮名</th>
+<th style="text-align:center">効果</th>
+<th style="text-align:center">デフォルト値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>--type &lt;type&gt;</code></td>
+<td style="text-align:center"><code>-t</code></td>
+<td style="text-align:center"><code>&lt;type&gt;</code> の値に応じたゲームが作成されます。詳細については後述します。</td>
+<td style="text-align:center"><code>javascript</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--force</code></td>
+<td style="text-align:center"><code>-f</code></td>
+<td style="text-align:center">生成されるファイル・ディレクトリが既に存在する場合でも、エラーにせず上書きします。</td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>--yes</code></td>
+<td style="text-align:center"><code>-y</code></td>
+<td style="text-align:center">対話型インターフェースを表示せずに、デフォルトの設定でゲームを生成します。</td>
+<td style="text-align:center"><code>false</code></td>
+</tr>
+</tbody>
+</table>
 <h3><a name="--typeオプション"></a> --type オプション</h3>
-<p>&lt;type&gt; に指定できる値は、 <code>JavaScript</code> または <code>TypeScript</code> です。指定しない場合、 <code>JavaScript</code> が指定されたものとして扱われます。</p>
-<h4><a name="JavaScript"></a> JavaScript</h4>
-<p>下記のディレクトリ、ファイルが生成されます。これらはこの時点で最低限 Akashic で動作するゲームになっています。</p>
+<p>&lt;type&gt; に指定できる値は、 以下の通りです。指定しない場合、 <code>javascript</code> が指定されたものとして扱われます。</p>
+<ul>
+<li><code>javascript</code></li>
+<li><code>javascript-minimal</code></li>
+<li><code>javascript-ichiba</code></li>
+<li><code>typescript</code></li>
+<li><code>typescript-minimal</code></li>
+<li><code>typescript-ichiba</code></li>
+</ul>
+<h4><a name="javascript"></a> javascript</h4>
+<p>下記のディレクトリ・ファイルを含む JavaScript で書かれたゲームが生成されます。</p>
 <pre><code>GAME_HOME
  +- image/
  +- text/
@@ -187,10 +226,37 @@ fps: (30)
   +- main.js
  +- game.json
  +- package.json
-</code></pre><p>これらのファイルの詳細は  <a href="#initで作られるファイル">init で作られるファイル</a>  の節を参照してください。</p>
-<h4><a name="TypeScript"></a> TypeScript</h4>
-<p>TypeScript で書かれたゲームと、ビルドに必要なディレクトリ・ファイルが生成されます。これらをビルドすることで、game ディレクトリ以下に最低限 Akashic で動作するゲームを生成します。ゲームの内容は、--type オプションに JavaScript を指定した場合に生成されるゲームと同一です。</p>
-<p>ビルドの方法は、生成される README.md を参照してください。</p>
+</code></pre><p><code>script/main.js</code> を編集することでゲームの作成が可能です。
+これらのディレクトリ・ファイルの詳細は  <a href="#initで作られるファイル">init で作られるファイル</a>  の節を参照してください。
+このゲームではサンプルとして以下のような処理が行われています。</p>
+<ul>
+<li>スプライトの表示</li>
+<li>音を鳴らす</li>
+<li>タッチイベント定義</li>
+</ul>
+<h4><a name="javascript-minimal"></a> javascript-minimal</h4>
+<p>最低限の処理しか記述されていない空のゲームが生成されます。
+<code>script/main.js</code> を編集することでゲームの作成が可能です。</p>
+<h4><a name="javascript-shin-ichiba-ranking"></a> javascript-shin-ichiba-ranking</h4>
+<p>ニコニコ新市場のランキングに対応したゲームの雛形が生成されます。
+<code>script/main.js</code> を編集することでゲームの作成が可能です。基本的に <code>script/_bootstrap.js</code> を編集する必要はありません。
+このゲームでは、<code>script/main.js</code> の <code>main</code> 関数の引数 <code>param</code> に以下の値が新たに付与されています。</p>
+<ul>
+<li><code>param.sessionParameter</code>: セッションパラメータ</li>
+<li><code>param.isAtsumaru</code>:ゲームが動作している環境が RPG アツマール上かどうかを表す boolean 値</li>
+</ul>
+<p>ランキングモードに対応したニコニコ新市場コンテンツの作り方の詳細については、<a href="/guide/ranking.html">こちら</a>を参照してください。</p>
+<h4><a name="typescript"></a> typescript</h4>
+<p>TypeScript で書かれたゲームと、ビルドに必要なディレクトリ・ファイルが生成されます。
+これらをビルドすることで、game ディレクトリ以下に Akashic で動作するゲームを生成します。
+ビルドの方法は、生成される README.md を参照してください。</p>
+<p>ゲームの内容は、<code>--type javascript</code> を指定した場合に生成されるゲームと同一です。</p>
+<h4><a name="typescript-minimal"></a> typescript-minimal</h4>
+<p><code>--type tyepescript</code> と同様に、TypeScript で書かれたゲームと、ビルドに必要なディレクトリ・ファイルが生成されます。</p>
+<p>ゲームの内容は、<code>--type javascript-minimal</code> を指定した場合に生成されるゲームと同一です。</p>
+<h4><a name="typescript-shin-ichiba-ranking"></a> typescript-shin-ichiba-ranking</h4>
+<p><code>--type tyepescript</code> と同様に、TypeScript で書かれたゲームと、ビルドに必要なディレクトリ・ファイルが生成されます。</p>
+<p>ゲームの内容は、<code>--type javascript-shin-ichiba-ranking</code> を指定した場合に生成されるゲームと同一です。</p>
 <h2><a name="modify"></a> modify</h2>
 <pre><code class="lang-sh">akashic modify &lt;target&gt;
 </code></pre>
@@ -464,36 +530,21 @@ other: 1.44KB (0%)
 <p>サポートされる拡張子は.js と.json であり、拡張子とファイルフォーマットは一致している必要があります。それ以外の拡張子のファイル、または &quot;.&quot; から始まるファイルは無視されます。</p>
 <p>慣習として、各 Scene を実装するファイルは、このディレクトリ内に
 &quot;Scene.js&quot; という接尾辞をつけて配置される事が推奨されます（例: titleScene.js, battleScene.js）。</p>
-<h3><a name="mainScene.jsファイル"></a> mainScene.js ファイル</h3>
-<p>メインシーン。Akashic のゲームのエントリポイントであり、ゲームは必ず本シーンから実行されます。</p>
-<p>akashic init --type javascript-minimal を実行した直後は以下の内容になっています。</p>
-<pre><code class="lang-javascript">var game = g.game;
-module.exports = function() {
-  var scene = new g.Scene({ game: game });
-  scene.loaded.add(function() {
-    // ここにゲームのコードを記述します
-    // sample
-    var hello = new g.FilledRect({
-      scene: scene,
-      cssColor: &quot;#ff0000&quot;,
-      width: 32,
-      height: 32
-    });
-    scene.append(hello);
-    hello.update.add(function() {
-      hello.x++;
-      hello.modified();
-    });
-  });
-  return scene;
-};
-</code></pre>
-<h3><a name="node_modulesディレクトリ"></a> node_modules ディレクトリ</h3>
-<p>各種ライブラリを配置するディレクトリ。</p>
-<p>このディレクトリには akashic install で追加された npm パッケージが配置されます。パッケージファイルは install や uninstall コマンドによって管理され、通常はゲーム開発者が操作する必要はありません。</p>
+<h3><a name="main.js"></a> main.js ファイル</h3>
+<p>ゲームの処理が記述されているファイル。</p>
+<p>このファイルを編集することによってゲームを作成することが可能です。</p>
+<h3><a name="_bootstrap.js"></a> _bootstrap.js ファイル</h3>
+<p><code>--type javascript-shin-ichiba-ranking</code> を指定した時(もしくは <code>--type typescript-shin-ichiba-ranking</code> を指定後ビルドした時)のみ作られるファイルです。
+このファイルがエントリーポイントとなりますが、ゲーム開発者がこのファイルを編集することは基本的にありません。
+ここで行っていることは、以下の通りです。</p>
+<ul>
+<li>セッションパラメータの取得</li>
+<li>ゲームが動作している環境が RPG アツマール上かどうかの判定</li>
+<li>main.js に自動的に遷移</li>
+</ul>
 <h3><a name="game.jsonファイル"></a> game.json ファイル</h3>
 <p>ゲームの各種情報を記述するファイル。</p>
-<p>akashic init --type javascript-minimal を実行した直後は以下のような内容になっています。
+<p><code>akashic init --type javascript-minimal</code> を実行した直後は以下のような内容になっています。
 (ただし width, height, fps は init で指定した値)</p>
 <pre><code class="lang-json">{
   &quot;width&quot;: 480,
@@ -502,7 +553,7 @@ module.exports = function() {
   &quot;assets&quot;: {
     &quot;mainScene&quot;: {
       &quot;type&quot;: &quot;script&quot;,
-      &quot;path&quot;: &quot;script/mainScene.js&quot;,
+      &quot;path&quot;: &quot;script/main.js&quot;,
       &quot;global&quot;: true
     }
   }
