@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>ニコニコ新市場コンテンツの仕様</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?1568095389793">
+<link rel="stylesheet" href="/css/header.css?1568095389793">
+<link rel="stylesheet" href="/css/footer.css?1568095389793">
+
+
+<link rel="stylesheet" href="/css/asset.css?1568095389793">
+
+<link rel="stylesheet" href="/css/akashic-document.css?1568095389793">
+
+<link rel="stylesheet" href="/css/railscasts.css?1568095389793">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?1568095389793"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v2/">Akashic Engine入門 v2</a></li>
+				<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+				<li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/shin-ichiba-ranking-tutorial.html">ランキング対応ゲームのチュートリアル</a></li>
+				<li><a href="/guide/shin-ichiba-content.html">ニコニコ新市場対応コンテンツの仕様</a></li>
+				<li><a href="/guide/export-atsumaru.html">ニコニコ新市場対応コンテンツの投稿方法</a></li>
+				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
+				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				<li><a href="/reference/coe/">coe framework</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR">
+		<div class="inner responsive--width">
+			<h1>ニコニコ新市場コンテンツの仕様</h1>
+<h2><a name="shin-ichiba-content"></a> ニコニコ新市場対応コンテンツ</h2>
+<p>Akashic Engine では、ニコニコ生放送内で遊べるゲーム(<strong>ニコニコ新市場対応コンテンツ</strong>)を作成することができます。
+これには次の手順が必要です。</p>
+<ol>
+<li>適切な解像度と FPS でゲームを作成</li>
+<li>対応するモードを <code>game.json</code> に記述</li>
+<li>コンテンツ側から新市場にパラメータを送る処理の記述(ランキング対応ゲームの場合のみ必要)</li>
+</ol>
+<p>また、ニコニコ生放送上でニコニコ新市場からパラメーター(セッションパラメータ)がゲームに対して送られてくるので、
+ゲーム側でそれを受け取る処理を記述することが可能です。</p>
+<h2><a name="resolution-and-fps"></a> 解像度と FPS</h2>
+<p>次の値である必要があります。</p>
+<ul>
+<li><strong>画面解像度</strong>: 1280x720 以下 (16:9 を推奨)</li>
+<li><strong>FPS</strong>: 1 以上 60 以下 (30 または 60 を推奨)</li>
+</ul>
+<p>ニコニコ生放送内のゲームは放送画面に合うよう自動的に拡縮されます。放送画面上で縦横に余白なく表示できるよう、アスペクト比 16:9 を推奨します。公開されているいくつかのサンプルコンテンツ(<a href="https://github.com/akashic-contents/thiefBuster">泥棒バスター</a>など))は、640x360 で作成されています。</p>
+<p>FPS は 30 または 60 を推奨します。低い方が負荷は低いので、演出上必要がなければ 30 にしておくと、より広い環境でストレスなく遊べる可能性があります。</p>
+<p>解像度や FPS は、 <code>akashic</code> コマンドでゲームを生成する時点で入力を求められるので、そこで指定することができます。</p>
+<pre><code class="lang-shell">$ akashic init
+(中略)
+prompt: width:  (320) 640
+prompt: height:  (320) 360
+prom pt: fps:  (30) 30
+INFO: Done!
+</code></pre>
+<p>生成済みのゲームの場合は、 <code>game.json</code> の <code>width</code>, <code>height</code>, <code>fps</code> プロパティをそれぞれ編集してください。</p>
+<pre><code class="lang-json">{
+  &quot;width&quot;: 640,
+  &quot;height&quot;: 360,
+  &quot;fps&quot;: 30,
+  &quot;...&quot;: &quot;(その他の値)&quot;
+}
+</code></pre>
+<h2><a name="shin-ichiba-mode"></a> 対応するモードの指定</h2>
+<p>放送内での遊び方には、いくつかの種類があります。</p>
+<ul>
+<li><strong>ランキングモード</strong> (<code>&quot;ranking&quot;</code>): 一人プレイのゲームを、放送者と各視聴者がそれぞれ遊び、スコアを競う</li>
+<li><strong>ひとりで遊ぶモード</strong> (<code>&quot;single&quot;</code>): 一人プレイのゲームを放送者が遊び、視聴者はその様子を見る</li>
+<li><strong>みんなで遊ぶモード</strong> (<code>&quot;multi&quot;</code>): 放送者と視聴者複数人で一つのゲームプレイで遊ぶ</li>
+</ul>
+<p>ニコニコ新市場対応コンテンツは、この中から対応するモードを指定する必要があります。</p>
+<p><code>game.json</code> に <code>environment.niconico.supportedModes</code> プロパティを加え、ゲームが対応するモードを(配列で)全て列挙してください。ニコニコ生放送には、ここで列挙されたそれぞれのモードで起動できるように登録されます。</p>
+<p>次の例は、ランキングモードとひとりで遊ぶモードの両方に対応する game.json の記述例です。</p>
+<pre><code class="lang-json">{
+  &quot;environment&quot;: {
+    &quot;niconico&quot;: {
+      &quot;supportedModes&quot;: [&quot;single&quot;, &quot;ranking&quot;]
+    }
+  }
+}
+</code></pre>
+<p>ひとりで遊ぶモード(<code>&quot;single&quot;</code>)とみんなで遊ぶモード(<code>&quot;multi&quot;</code>)は、特に制限なく指定することができます。
+(single 用のゲームを multi で登録してしまうと、一人プレイなのに全員に操作されてしまうといった問題は起きますが)</p>
+<p>一方ランキングモード(<code>&quot;ranking&quot;</code>)を指定する場合には、後述の条件があります。</p>
+<h3><a name="ranking"></a> ランキング対応ゲーム</h3>
+<p><code>supportedModes</code> に <code>&quot;ranking&quot;</code> を指定するゲーム(ランキング対応ゲーム)は、次の条件を満たすものでなければなりません。</p>
+<ul>
+<li>一人プレイである</li>
+<li>タイムアタック(一定時間内のスコアを競うゲーム)である</li>
+<li>0〜99999 点のスコアを特定の変数に代入するようになっている</li>
+</ul>
+<h2><a name="send-parameter"></a> パラメータを送る</h2>
+<p>新市場コンテンツには、コンテンツ側で新市場に対して与えるパラメータ(<code>g.game.vars.gameState</code>)が存在します。
+<code>g.game.vars</code> は、ゲーム開発者が自由に使える領域として、(新市場コンテンツとは関係なく)Akashic Engine が提供している変数です。初期値として <code>{}</code> が代入されています。
+新市場コンテンツでは <code>g.game.vars.gameState</code> を介して以下の値を与えることができます。</p>
+<ul>
+<li>スコア</li>
+<li>プレイ閾値</li>
+<li>クリア閾値</li>
+</ul>
+<p><strong>ランキング対応ゲームの場合、上記の内スコアの設定が必須となります</strong></p>
+<h3><a name="score"></a> スコア</h3>
+<p>ランキング対応ゲームは、ゲームの進行中、次の変数に <strong>スコア</strong> を代入しなければなりません。</p>
+<pre><code class="lang-javascript">g.game.vars.gameState.score;
+</code></pre>
+<p>スコアは 0 以上 99999 以下の整数である必要があります。
+ランキングでは <code>g.game.vars.gameState.score</code> の値をスコアとして扱い、ゲームの終了後、このスコアに基づいてランキングの順位が決定されます。</p>
+<p>テンプレートでは以下のようにスコアを付与する処理が記述されています。</p>
+<pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
+g.game.vars.gameState = { score: 0 };
+scene.loaded.add(() =&gt; {
+  var time = 60; // 制限時間
+  // フォントの生成
+  var font = new g.DynamicFont({
+    game: g.game,
+    fontFamily: g.FontFamily.Serif,
+    size: 48
+  });
+  // スコア表示用のラベル
+  var scoreLabel = new g.Label({
+    scene: scene,
+    text: &quot;SCORE: 0&quot;,
+    font: font,
+    fontSize: font.size / 2,
+    textColor: &quot;black&quot;
+  });
+  scene.append(scoreLabel);
+
+  scene.pointDownCapture.add(() =&gt; {
+    // 制限時間以内であればゲーム画面のタッチ1回ごとにSCOREに+1します
+    if (time &gt; 0) {
+      g.game.vars.gameState.score++;
+      scoreLabel.text = &quot;SCORE: &quot; + g.game.vars.gameState.score;
+      scoreLabel.invalidate();
+    }
+  });
+});
+</code></pre>
+<h3><a name="play-threshold"></a> プレイ閾値</h3>
+<p>ランキングでは、放送者・各視聴者でのゲームプレイ終了後にスコアが集計され、上位者の名前や得点が表示されます。
+ゲームに参加した人数が少ない場合、スコアが 0 点でもこの上位者に入ってしまうことがあります。そうすると「全くプレイしていないのにランキングに名前が出ることがある」という違和感のある挙動になってしまいます。このような状況を避けるため、ランキング対応ゲームでは <strong>プレイ閾値</strong> を定めることができます。プレイ閾値以下のスコアは「プレイしなかったもの」として扱われ、ランキング上位者として表示されなくなります。
+プレイ閾値は、次の変数に代入された値です。</p>
+<pre><code class="lang-javascript">g.game.vars.gameState.playThreshold;
+</code></pre>
+<p>値は整数でなければなりません。この変数に値が代入されていない場合、プレイ閾値は 0 として取り扱われます。
+生存期間に応じてスコアが入るなど、プレイヤーが何も操作しなくてもスコアが 0 より大きくなってしまうゲームでは、この値を適切に設定してください。</p>
+<h3><a name="clear-threshold"></a> クリア閾値</h3>
+<p>同様に「ゲームをクリアしたとみなすか」にも閾値(クリア閾値)を定めることができます。クリア閾値は次の変数に代入された値です。
+(ただしこの値は将来の拡張のために予約されているものです。現在のところ参照されません。)</p>
+<pre><code class="lang-javascript">g.game.vars.gameState.clearThreshold;
+</code></pre>
+<h2><a name="session-parameter"></a> セッションパラメータ</h2>
+<p>ニコニコ生放送で実行されている時、新市場コンテンツにはいくつかの追加情報が与えられます:</p>
+<ul>
+<li>どのモードでゲームが起動されたか</li>
+<li>ランキングモード時の制限時間</li>
+<li>ランキングモード時の共通乱数シード など</li>
+</ul>
+<p>これらの追加情報(またはそれをまとめたオブジェクト)を <strong>セッションパラメータ</strong> と呼びます。</p>
+<p>セッションパラメータは、与えられる場合、ゲーム開始直後に <code>g.MessageEvent</code> で通知されます。通知された <code>MessageEvent</code> を <code>e</code> とすると、 <code>(e.data.type === &quot;start&quot;)</code> である時、 <code>e.data.parameters</code> の値がセッションパラメータです。</p>
+<p>次のコードは、セッションパラメータを取得する例です。</p>
+<pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
+
+// 何も送られて来なかった時は、空のオブジェクトで動作する
+var sessionParameters = {};
+
+scene.message.add(function (msg) {
+    if (msg.data &amp;&amp; msg.data.type === &quot;start&quot; &amp;&amp; msg.data.parameters) { // セッションパラメータのイベント
+        sessionParameters = msg.data.parameters;
+    }
+});
+
+scene.loaded.add(function () {
+    // 通常のゲームとしての初期化処理
+    // ...
+}
+</code></pre>
+<p>セッションパラメータが与えられない場合には、そもそもこのイベントが来ないか、あるいは来たイベントに <code>parameters</code> がありません。</p>
+<p>Akashic Engine では通常、イベントはシーンのロードタイミング(<code>g.Scene#loaded</code>)より後に受信されるため、 <code>loaded</code> の処理中にはこの値を参照できないことに注意してください。これは仕様による制限です。</p>
+<p>厳密にセッションパラメータの受信を待って <code>loaded</code> の初期化処理を行いたい場合は、 <code>loaded</code> ではなく <code>message</code> トリガーの fire を待って処理を行う必要があります。
+(ただしそうするとニコニコ新市場以外(RPG アツマールなど)では動作しないコンテンツになってしまうので、「 <code>g.Scene#update</code> の fire を数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
+<h3><a name="mode"></a> モード (mode)</h3>
+<p>ニコニコ新市場では、<strong>モード</strong> がパラメータで与えられます。</p>
+<p>これは、どのモードでゲームが起動されたかを表しています。ゲームの <code>game.json</code> の <code>environment.niconico.supportedModes</code> に記載されているもののいずれかが、モードの値として送られてきます。例えば、 <code>&quot;single&quot;</code> が送られてきたら「ひとりで遊ぶ」モードで、 <code>&quot;ranking&quot;</code> が送られてきたら「ランキング」モードで、ゲームが起動されています。</p>
+<p>セッションパラメータ <code>sessionParameters</code> がある時、モードは <code>sessionParameters.mode</code> で参照できます。</p>
+<h3><a name="total-time-limit"></a> 制限時間 (totalTimeLimit)</h3>
+<p>ランキングモード時にセッションパラメータで与えられる情報の一つは <strong>制限時間</strong> です。</p>
+<p>セッションパラメータ <code>sessionParameters</code> がある時、制限時間は <code>sessionParameters.totalTimeLimit</code> で参照できます。</p>
+<p>ランキング対応ゲームは、起動からある時間が経過すると自動的に終了されます。
+<strong>ゲーム開発者は終了のタイミングを制御することはできませんし、終了のための処理を記述する必要もありません</strong>。</p>
+<p>ただし補助的な情報として、ランキングモードでは「何秒間遊ぶ設定で起動されたか」という値(制限時間)が与えられます。ゲーム開発者は、この値を参照してゲームの内容を調整することができます。たとえば「終了時間が近づいたらクリア画面かゲームオーバー画面を表示する」といった演出が考えられます。
+(もちろんそのような演出をしなくても問題はありません)</p>
+<p>次のコードは、制限時間情報を取得する例です。</p>
+<pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
+
+// 何も送られてこない時(ニコニコ新市場以外で起動された場合)は、この値がタイムリミットになる
+var totalTimeLimit = 60;
+
+scene.message.add(function (msg) {
+    if (msg.data &amp;&amp; msg.data.type === &quot;start&quot; &amp;&amp; msg.data.parameters) { // セッションパラメータのイベント
+        var sessionParameters = msg.data.parameters;
+        if (sessionParameters.totalTimeLimit != null) { // 与えられないこともあるので存在を確認
+            // 制限時間は `totalTimeLimit` 秒
+            totalTimeLimit = sessionParameters.totalTimeLimit;
+        }
+    }
+});
+
+scene.loaded.add(function () {
+    // 通常のゲームとしての初期化処理
+    // ...
+}
+</code></pre>
+<p><strong>制限時間の値は、あくまでも目安であることに注意してください</strong> 。ゲーム起動後、厳密にこの時間で終了されることを保証するものではありません。これはゲームリソースのダウンロード時間のばらつきや、スコア送信時の通信遅れを救済するためのサーバ側の多少のマージンなど、いくつかの要因でずれが生じるためです。</p>
+<p>たとえば制限時間から逆算して「クリア画面」を作るような場合、念のため、<strong>制限時間の数秒前にはゲーム上の演出が完了するように作る</strong> ことを推奨します。</p>
+<h3><a name="random-seed"></a> 共通乱数シード (randomSeed)</h3>
+<p>ランキングモードでは、各プレイヤーの手元で個別にゲームが実行されます。そのため、プレイヤー間で標準の乱数生成器 (<code>g.game.random</code>) の結果は一致しません。</p>
+<p>その結果を一致させるために、ランキングモード時のセッションパラメータには <strong>共通乱数シード</strong> の値(数値)が含まれます。セッションパラメータ <code>sessionParameters</code> がある時、共通乱数シードは <code>sessionParameters.randomSeed</code> で参照できます。</p>
+<p>ゲーム開発者はこの値を使って、プレイヤー間で共通のシードを持つ乱数生成器(共通乱数生成器)を作ることができます。</p>
+<p>ただし、「ランダムに ○× クイズを出題し、正答数をスコアとするゲーム」のように視聴者毎に乱数を変えたい場合は共通乱数シードを利用する必要はありません。</p>
+<p>次のコードは、共通乱数生成器を生成する例です。</p>
+<pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game });
+
+// 何も送られてこない時は、この値がタイムリミットになる
+var totalTimeLimit = 60;
+// 何も送られてこない時は、標準の乱数生成器を使う
+var random = g.game.random;
+
+scene.message.add(function (msg) {
+    if (msg.data &amp;&amp; msg.data.type === &quot;start&quot; &amp;&amp; msg.data.parameters) { // セッションパラメータのイベント
+        var sessionParameters = msg.data.parameters;
+        if (sessionParameters.totalTimeLimit != null) {
+            // 制限時間は `totalTimeLimit` 秒
+            totalTimeLimit = sessionParameters.totalTimeLimit;
+        }
+        if (sessionParameters.randomSeed != null) {
+            // プレイヤー間で共通の乱数生成器を生成
+            // `g.XorshiftRandomGenerator` は Akashic Engine の提供する乱数生成器実装で、 `g.game.random` と同じ型。
+            random = new g.XorshiftRandomGenerator(sessionParameters.randomSeed);
+        }
+    }
+});
+
+scene.loaded.add(function () {
+    // 通常のゲームとしての初期化処理
+    // ...
+
+    scene.pointUpCapture.add(function () {
+        var nextQuizId = random.get(0, 100);  // セッションパラメータがある環境(ランキングモード)では、全員同じ乱数系列を得る
+    });
+}
+</code></pre>
+<p>共通乱数生成器を作る場合、共通にしたい乱数(クイズの出題順など)以外に使わないように注意してください。例えばユーザ操作などに応じて共通乱数生成機を使うと、乱数の系列が他のプレイヤーとずれてしまって元も子もありません。</p>
+<h3><a name="difficulty"></a> 難易度設定 (difficulty)</h3>
+<p>他にセッションパラメータに含まれる値として、 <strong>難易度設定</strong> の値があります。</p>
+<p>セッションパラメータ <code>sessionParameters</code> がある時、難易度設定は <code>sessionParameters.difficulty</code> で参照できます。この値は 1 以上 10 以下の整数で、ゲームに対して「この難易度でゲームを行なって欲しい」という要望を通知するものです。ゲーム開発者はこの値を見てゲームの難易度を調整することができます。これは必須ではありません。</p>
+<p>(ただし、現時点ではゲーム起動時に難易度を選択する方法がありません。したがってこれは現在のところ「将来的な対応に備えて利用することができる値」に過ぎません。)</p>
+<h3><a name="game-time-limit"></a> 旧仕様: gameTimeLimit</h3>
+<p>以前は <code>totalTimeLimit</code> はなく、この文書では <code>gameTimeLimit</code> という別の値を参照していました。</p>
+<p><code>gameTimeLimit</code> には、歴史的経緯から(<code>totalTimeLimit</code> が与える)本来の制限時間よりも若干小さい値が与えられます。そのためこの値に厳密にしたがってゲームの演出を行うと、演出完了から実際のコンテンツ終了まで 10 秒以上ギャップがある状況になっていました。
+<code>gameTimeLimit</code> は後方互換性のため引き続き利用可能ですが、通常は <code>totalTimeLimit</code> を利用してください。</p>
+
+		</div>
+		<script>
+			// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+			// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+			window.addEventListener('resize', function() {
+				var iframes = document.getElementsByClassName('akashic-content');
+				var contents = Array.prototype.slice.call(iframes);
+				contents.forEach(function(content) {
+					content.contentWindow.location.reload(true);
+				});
+			});
+		</script>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--menu cfix">
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">入門</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/tutorial/v2/">Akashic Engine入門 v2</a></li>
+					<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+					<li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">ガイド</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+					<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+					<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+					<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+					<li><a href="/guide/storage.html">ストレージについて</a></li>
+					<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+					<li><a href="/guide/shader.html">シェーダの利用</a></li>
+					<li><a href="/guide/shin-ichiba-ranking-tutorial.html">ランキング対応ゲームのチュートリアル</a></li>
+					<li><a href="/guide/shin-ichiba-content.html">ニコニコ新市場対応コンテンツの仕様</a></li>
+					<li><a href="/guide/export-atsumaru.html">ニコニコ新市場対応コンテンツの投稿方法</a></li>
+					<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
+					<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
+					<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">リファレンス</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+					<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+					<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+					<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+					<li><a href="/reference/akashic-label/">akashic-label</a></li>
+					<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+					<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+					<li><a href="/reference/coe/">coe framework</a></li>
+				</ul>
+			</li>
+			<li class="foot--menu--item">
+				<p class="foot--menu--item--tab">サンプルデモ</p>
+				<ul class="foot--menu--item--list">
+					<li><a href="/demo/?title=helloworld">Hello World</a></li>
+					<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+					<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+					<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+					<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+					<li><a href="/demo/?title=demo-tile">タイル</a></li>
+					<li><a href="/demo/?title=label-sample">ラベル</a></li>
+					<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+					<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+					<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+					<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+					<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+					<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+					<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+				</ul>
+			</li>
+		</ul>
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+</body>
+</html>
