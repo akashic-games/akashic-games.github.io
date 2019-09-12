@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ニコニコ新市場対応コンテンツの投稿方法</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1568016481155">
-<link rel="stylesheet" href="/css/header.css?1568016481155">
-<link rel="stylesheet" href="/css/footer.css?1568016481155">
+<link rel="stylesheet" href="/css/common.css?1568292158395">
+<link rel="stylesheet" href="/css/header.css?1568292158395">
+<link rel="stylesheet" href="/css/footer.css?1568292158395">
 
 
-<link rel="stylesheet" href="/css/asset.css?1568016481155">
+<link rel="stylesheet" href="/css/asset.css?1568292158395">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1568016481155">
+<link rel="stylesheet" href="/css/akashic-document.css?1568292158395">
 
-<link rel="stylesheet" href="/css/railscasts.css?1568016481155">
+<link rel="stylesheet" href="/css/railscasts.css?1568292158395">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1568016481155"></script>
+<script src="/lib/common.js?1568292158395"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -53,7 +53,8 @@
 				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
 				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
-				<li><a href="/guide/ranking.html">ニコニコ新市場対応コンテンツ作成ガイド</a></li>
+				<li><a href="/guide/shin-ichiba-ranking-tutorial.html">ランキング対応ゲームのチュートリアル</a></li>
+				<li><a href="/guide/shin-ichiba-content.html">ニコニコ新市場対応コンテンツの仕様</a></li>
 				<li><a href="/guide/export-atsumaru.html">ニコニコ新市場対応コンテンツの投稿方法</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
@@ -105,11 +106,11 @@
 		<div class="inner responsive--width">
 			<h1>ニコニコ新市場対応コンテンツの投稿方法</h1>
 <h2><a name="これは"></a> これは</h2>
-<p>Akashic Engine で作られた <strong>ニコニコ新市場対応コンテンツ</strong> を <a href="http://blog.nicovideo.jp/niconews/81617.html">実験放送</a> に投稿するための手順を解説します。ニコニコ新市場対応コンテンツの作り方については <a href="/guide/ranking">こちら</a> を参照してください。</p>
+<p>Akashic Engine で作られた <strong>ニコニコ新市場対応コンテンツ</strong> を ニコニコ生放送 に投稿するための手順を解説します。ニコニコ新市場対応コンテンツ(ランキング対応)の作り方については <a href="/guide/shin-ichiba-ranking-tutorial">こちら</a> を参照してください。</p>
 <h2><a name="投稿方法"></a> 投稿方法</h2>
 <p>ニコニコ新市場対応コンテンツの投稿は、<a href="https://game.nicovideo.jp/atsumaru/">RPG アツマール</a> を通して行います。</p>
 <p>RPG アツマールは、&quot;作って遊んでコメントできる ゲーム投稿コミュニティサービス&quot; です(<a href="http://site.nicovideo.jp/atsumaru/about/">紹介</a>)。
-Akashic ゲームをこの RPG アツマールに投稿・公開した後、申請を行うことで、実験放送でも使えるようになります。</p>
+Akashic ゲームをこの RPG アツマールに投稿・公開した後、申請を行うことで、ニコニコ生放送でも遊べるようになります。</p>
 <p>次の手順で行います。</p>
 <ol>
 <li>投稿用 zip ファイルを生成</li>
@@ -181,6 +182,17 @@ zip ファイルを「ゲームファイル」の欄で選択もしくはドラ�
 <p><code>require()</code> がアセット ID を受け付けているのは、Akashic Engine の古い仕様によるものです。アセット ID と同名の npm モジュールがあると衝突してしまうという問題があるため、この挙動は将来的に廃止される可能性があります。ニコニコ新市場対応コンテンツであるか否かに関わらず、 <code>require()</code> にアセット ID を与えることは避けてください。</p>
 
 		</div>
+		<script>
+			// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+			// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+			window.addEventListener('resize', function() {
+				var iframes = document.getElementsByClassName('akashic-content');
+				var contents = Array.prototype.slice.call(iframes);
+				contents.forEach(function(content) {
+					content.contentWindow.location.reload(true);
+				});
+			});
+		</script>
 	</section>
 	<footer class="safearea--LR">
 	<div class="responsive--width">
@@ -206,7 +218,8 @@ zip ファイルを「ゲームファイル」の欄で選択もしくはドラ�
 					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
 					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 					<li><a href="/guide/shader.html">シェーダの利用</a></li>
-					<li><a href="/guide/ranking.html">ニコニコ新市場対応コンテンツ作成ガイド</a></li>
+					<li><a href="/guide/shin-ichiba-ranking-tutorial.html">ランキング対応ゲームのチュートリアル</a></li>
+					<li><a href="/guide/shin-ichiba-content.html">ニコニコ新市場対応コンテンツの仕様</a></li>
 					<li><a href="/guide/export-atsumaru.html">ニコニコ新市場対応コンテンツの投稿方法</a></li>
 					<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 					<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>

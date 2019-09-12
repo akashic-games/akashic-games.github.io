@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>サンプルデモ</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1568016481155">
-<link rel="stylesheet" href="/css/header.css?1568016481155">
-<link rel="stylesheet" href="/css/footer.css?1568016481155">
+<link rel="stylesheet" href="/css/common.css?1568292158395">
+<link rel="stylesheet" href="/css/header.css?1568292158395">
+<link rel="stylesheet" href="/css/footer.css?1568292158395">
 
 
-<link rel="stylesheet" href="/css/asset.css?1568016481155">
+<link rel="stylesheet" href="/css/asset.css?1568292158395">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1568016481155">
+<link rel="stylesheet" href="/css/akashic-document.css?1568292158395">
 
-<link rel="stylesheet" href="/css/railscasts.css?1568016481155">
+<link rel="stylesheet" href="/css/railscasts.css?1568292158395">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1568016481155"></script>
+<script src="/lib/common.js?1568292158395"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -53,7 +53,8 @@
 				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
 				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
-				<li><a href="/guide/ranking.html">ニコニコ新市場対応コンテンツ作成ガイド</a></li>
+				<li><a href="/guide/shin-ichiba-ranking-tutorial.html">ランキング対応ゲームのチュートリアル</a></li>
+				<li><a href="/guide/shin-ichiba-content.html">ニコニコ新市場対応コンテンツの仕様</a></li>
 				<li><a href="/guide/export-atsumaru.html">ニコニコ新市場対応コンテンツの投稿方法</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
@@ -121,6 +122,17 @@
 </ul>
 
 		</div>
+		<script>
+			// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+			// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+			window.addEventListener('resize', function() {
+				var iframes = document.getElementsByClassName('akashic-content');
+				var contents = Array.prototype.slice.call(iframes);
+				contents.forEach(function(content) {
+					content.contentWindow.location.reload(true);
+				});
+			});
+		</script>
 	</section>
 	<footer class="safearea--LR">
 	<div class="responsive--width">
@@ -146,7 +158,8 @@
 					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
 					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 					<li><a href="/guide/shader.html">シェーダの利用</a></li>
-					<li><a href="/guide/ranking.html">ニコニコ新市場対応コンテンツ作成ガイド</a></li>
+					<li><a href="/guide/shin-ichiba-ranking-tutorial.html">ランキング対応ゲームのチュートリアル</a></li>
+					<li><a href="/guide/shin-ichiba-content.html">ニコニコ新市場対応コンテンツの仕様</a></li>
 					<li><a href="/guide/export-atsumaru.html">ニコニコ新市場対応コンテンツの投稿方法</a></li>
 					<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 					<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>

@@ -177,3 +177,16 @@
 	}
 }
 /*↑コード系↑*/
+/*↓コンテンツ用↓*/
+.akashic--document div.w640h360 {
+	overflow:hidden;
+	width:640px; height:360px;
+	margin:0 auto;
+}
+@media screen and (max-width:959px){
+	.akashic--document div.w640h360 {
+		width:320px; height:180px;
+		margin:0 auto;
+	}
+}
+/*↑コンテンツ用↑*/

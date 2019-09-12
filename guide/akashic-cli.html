@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic-cli 利用ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1568016481155">
-<link rel="stylesheet" href="/css/header.css?1568016481155">
-<link rel="stylesheet" href="/css/footer.css?1568016481155">
+<link rel="stylesheet" href="/css/common.css?1568292158395">
+<link rel="stylesheet" href="/css/header.css?1568292158395">
+<link rel="stylesheet" href="/css/footer.css?1568292158395">
 
 
-<link rel="stylesheet" href="/css/asset.css?1568016481155">
+<link rel="stylesheet" href="/css/asset.css?1568292158395">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1568016481155">
+<link rel="stylesheet" href="/css/akashic-document.css?1568292158395">
 
-<link rel="stylesheet" href="/css/railscasts.css?1568016481155">
+<link rel="stylesheet" href="/css/railscasts.css?1568292158395">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1568016481155"></script>
+<script src="/lib/common.js?1568292158395"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -53,7 +53,8 @@
 				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
 				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
-				<li><a href="/guide/ranking.html">ニコニコ新市場対応コンテンツ作成ガイド</a></li>
+				<li><a href="/guide/shin-ichiba-ranking-tutorial.html">ランキング対応ゲームのチュートリアル</a></li>
+				<li><a href="/guide/shin-ichiba-content.html">ニコニコ新市場対応コンテンツの仕様</a></li>
 				<li><a href="/guide/export-atsumaru.html">ニコニコ新市場対応コンテンツの投稿方法</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
@@ -242,10 +243,10 @@ fps: (30)
 <code>script/main.js</code> を編集することでゲームの作成が可能です。基本的に <code>script/_bootstrap.js</code> を編集する必要はありません。
 このゲームでは、<code>script/main.js</code> の <code>main</code> 関数の引数 <code>param</code> に以下の値が新たに付与されています。</p>
 <ul>
-<li><code>param.sessionParameter</code>: セッションパラメータ</li>
+<li><code>param.sessionParameter</code>: <a href="/guide/shin-ichiba-content#session-parameter">セッションパラメータ</a></li>
 <li><code>param.isAtsumaru</code>:ゲームが動作している環境が RPG アツマール上かどうかを表す boolean 値</li>
 </ul>
-<p>ランキングモードに対応したニコニコ新市場コンテンツの作り方の詳細については、<a href="/guide/ranking.html">こちら</a>を参照してください。</p>
+<p>ランキングモードに対応したニコニコ新市場コンテンツの作り方については、<a href="/guide/shin-ichiba-ranking-tutorial">こちら</a>を参照してください。</p>
 <h4><a name="typescript"></a> typescript</h4>
 <p>TypeScript で書かれたゲームと、ビルドに必要なディレクトリ・ファイルが生成されます。
 これらをビルドすることで、game ディレクトリ以下に Akashic で動作するゲームを生成します。
@@ -565,6 +566,17 @@ other: 1.44KB (0%)
 <p>ゲーム開発者は、npm install --save-dev jasmine して spec ディレクトリにテストを配置するなど、任意の開発フローを(Akashic のディレクトリ構成と衝突するなどの問題がない限り)とることができます。</p>
 
 		</div>
+		<script>
+			// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+			// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+			window.addEventListener('resize', function() {
+				var iframes = document.getElementsByClassName('akashic-content');
+				var contents = Array.prototype.slice.call(iframes);
+				contents.forEach(function(content) {
+					content.contentWindow.location.reload(true);
+				});
+			});
+		</script>
 	</section>
 	<footer class="safearea--LR">
 	<div class="responsive--width">
@@ -590,7 +602,8 @@ other: 1.44KB (0%)
 					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
 					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 					<li><a href="/guide/shader.html">シェーダの利用</a></li>
-					<li><a href="/guide/ranking.html">ニコニコ新市場対応コンテンツ作成ガイド</a></li>
+					<li><a href="/guide/shin-ichiba-ranking-tutorial.html">ランキング対応ゲームのチュートリアル</a></li>
+					<li><a href="/guide/shin-ichiba-content.html">ニコニコ新市場対応コンテンツの仕様</a></li>
 					<li><a href="/guide/export-atsumaru.html">ニコニコ新市場対応コンテンツの投稿方法</a></li>
 					<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 					<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
