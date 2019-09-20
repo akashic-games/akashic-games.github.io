@@ -3,12 +3,14 @@
 /*↓reset↓*/
 *, *:before, *:after {
 	box-sizing:border-box;
-	font-family:'メイリオ', Meiryo,'ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', sans-serif;
 	text-overflow:ellipsis;
 	padding:0;
 	margin:0;
 	}
-html { -webkit-text-size-adjust:100%;}
+html {
+	font-family:'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo,'ＭＳ Ｐゴシック', sans-serif;
+	-webkit-text-size-adjust:100%;
+	}
 h1, h2, h3, h4 { font-weight:normal;}
 a:link, a:visited { text-decoration:underline;}
 a:hover, a:active { text-decoration:none;}
