@@ -39,9 +39,6 @@
 			div.style.backgroundRepeat = "no-repeat";
 			div.style.cursor = "pointer";
 			document.body.appendChild(div);
-			// append後でないとdivのサイズが分からないため、ここで背景画像のサイズ設定を行う
-			var imageSize = 0.8 * Math.min(div.clientWidth, div.clientHeight);
-			div.style.backgroundSize = imageSize + "px " + imageSize + "px";
 			div.addEventListener("click", function() {
 				document.body.removeChild(div);
 				start(title + "/game.json", title + "/");
