@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="/demo/content/common-demo.css">
+</head>
+<body>
+	<div id="container"></div>
+	<script src="/demo/lib/v1/akashic-engine.js"></script>
+	<script src="/demo/lib/v1/game-driver.strip.js"></script>
+	<script src="/demo/lib/v1/pdi-browser.strip.js"></script>
+	<script src="/demo/lib/game-storage.strip.js"></script>
+	<script src="/demo/content/akashic-loader.js"></script>
+	<script>
+	window.addEventListener("load", function () {
+		function getParameterByName(name) {
+			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+			    results = regex.exec(location.search);
+			return results === null ? undefined : decodeURIComponent(results[1].replace(/\+/g, " "));
+		}
+
+		var bg = getParameterByName("bg");
+		if (/^#?[a-zA-Z0-9]+$/.test(bg))  // 簡易検証: 色名か#rrggbb系のみ許容。
+			document.body.setAttribute("style", "background:" + bg);
+		var title = getParameterByName("title");
+
+		// TODO v2系にも必要になったらこの処理を移植
+		if (getParameterByName("manualStart") === "1") {
+			var div = document.createElement("div");
+			div.title = "クリックでコンテンツをスタート";
+			div.style.position = "absolute";
+			div.style.width = "100%";
+			div.style.height = "100%";
+			div.style.top = "0";
+			div.style.left = "0";
+			div.style.backgroundColor = "black";
+			div.style.backgroundImage = "url('/img/demo/start_icon.png')";
+			div.style.backgroundPosition = "center center";
+			div.style.backgroundRepeat = "no-repeat";
+			div.style.cursor = "pointer";
+			document.body.appendChild(div);
+			// append後でないとdivのサイズが分からないため、ここで背景画像のサイズ設定を行う
+			var imageSize = 0.8 * Math.min(div.clientWidth, div.clientHeight);
+			div.style.backgroundSize = imageSize + "px " + imageSize + "px";
+			div.addEventListener("click", function() {
+				document.body.removeChild(div);
+				start(title + "/game.json", title + "/");
+			});
+		} else {
+			start(title + "/game.json", title + "/");
+		}
+	});
+	</script>
+</body>
+</html>

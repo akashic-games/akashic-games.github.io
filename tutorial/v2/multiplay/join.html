@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>Join と Leave</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1568016481155">
-<link rel="stylesheet" href="/css/header.css?1568016481155">
-<link rel="stylesheet" href="/css/footer.css?1568016481155">
+<link rel="stylesheet" href="/css/common.css?1568961822443">
+<link rel="stylesheet" href="/css/header.css?1568961822443">
+<link rel="stylesheet" href="/css/footer.css?1568961822443">
 
 
-<link rel="stylesheet" href="/css/asset.css?1568016481155">
+<link rel="stylesheet" href="/css/asset.css?1568961822443">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1568016481155">
+<link rel="stylesheet" href="/css/akashic-document.css?1568961822443">
 
-<link rel="stylesheet" href="/css/railscasts.css?1568016481155">
+<link rel="stylesheet" href="/css/railscasts.css?1568961822443">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1568016481155"></script>
+<script src="/lib/common.js?1568961822443"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -53,8 +53,7 @@
 				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
 				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
-				<li><a href="/guide/ranking.html">ニコニコ新市場対応コンテンツ作成ガイド</a></li>
-				<li><a href="/guide/export-atsumaru.html">ニコニコ新市場対応コンテンツの投稿方法</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
 				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
@@ -104,8 +103,7 @@
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
 			<h1>Join と Leave</h1>
-<p><a name="join"></a></p>
-<h1>Join</h1>
+<h2><a name="join"></a> Join</h2>
 <p>各プレイヤーには「join しているか否か」という二値の状態が存在します。これは実行環境が規定する値です。「join しているプレイヤー」が何を意味するかは、実行環境によって定まります。</p>
 <p>あるプレイヤーが join 状態になる時、 <code>g.game.join</code> が fire され <code>g.JoinEvent</code> が与えられます。同様に join 状態でなくなる時、 <code>g.game.leave</code> が fire され <code>g.LeaveEvent</code> が与えられます。</p>
 <blockquote>
@@ -136,12 +134,25 @@ scene.pointDownCapture.add(function(ev) {
 <p><img src="/img/tutorial/cli-serve.png" alt="serve"></p>
 <p>画面上側、ツールバー上の「Join Me」ボタンを押すと、そのウィンドウ(インスタンス)のプレイヤーが join します (<code>g.game.join</code> が fire されます)。
 join 済みの場合は「Leave Me」ボタンに切り替わり、 <code>g.game.leave</code> を fire させることができます。</p>
+<h2><a name="niconico"></a> ニコニコ新市場対応</h2>
+<p>その他、ニコニコ生放送に関する内容は、 <a href="/guide/">開発者向けガイド</a> の <a href="/guide/shin-ichiba/">ニコニコ生放送で遊べるゲームの作成</a> を参照してください。</p>
 <div class="navi-center">
 <a href="./camera.html">前（プレイヤーごとに異なる位置を表示する）</a>
  | <a href="../">目次</a>
 </div>
 
 		</div>
+		<script>
+			// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+			// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+			window.addEventListener('resize', function() {
+				var iframes = document.getElementsByClassName('akashic-content');
+				var contents = Array.prototype.slice.call(iframes);
+				contents.forEach(function(content) {
+					content.contentWindow.location.reload(true);
+				});
+			});
+		</script>
 	</section>
 	<footer class="safearea--LR">
 	<div class="responsive--width">
@@ -167,8 +178,7 @@ join 済みの場合は「Leave Me」ボタンに切り替わり、 <code>g.game
 					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
 					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 					<li><a href="/guide/shader.html">シェーダの利用</a></li>
-					<li><a href="/guide/ranking.html">ニコニコ新市場対応コンテンツ作成ガイド</a></li>
-					<li><a href="/guide/export-atsumaru.html">ニコニコ新市場対応コンテンツの投稿方法</a></li>
+					<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 					<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 					<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
 					<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
