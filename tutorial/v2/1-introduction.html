@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic 導入</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1569323429698">
-<link rel="stylesheet" href="/css/header.css?1569323429698">
-<link rel="stylesheet" href="/css/footer.css?1569323429698">
+<link rel="stylesheet" href="/css/common.css?1572340787095">
+<link rel="stylesheet" href="/css/header.css?1572340787095">
+<link rel="stylesheet" href="/css/footer.css?1572340787095">
 
 
-<link rel="stylesheet" href="/css/asset.css?1569323429698">
+<link rel="stylesheet" href="/css/asset.css?1572340787095">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1569323429698">
+<link rel="stylesheet" href="/css/akashic-document.css?1572340787095">
 
-<link rel="stylesheet" href="/css/railscasts.css?1569323429698">
+<link rel="stylesheet" href="/css/railscasts.css?1572340787095">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1569323429698"></script>
+<script src="/lib/common.js?1572340787095"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -245,6 +245,19 @@ module.exports = main;
 <p>例えば、TypeScript でゲームを作る場合は、以下のコマンドを入力します。</p>
 <pre><code class="lang-sh">akashic init -t typescript
 </code></pre>
+<blockquote>
+<p>Windows 10 の PowerShell 上で <code>akashic init</code> などを実行すると、権限エラーが発生して実行に失敗することがあります。
+これは、PowerShell の実行ポリシーがデフォルトで Restricted(スクリプトの実行が許可されていない状態)になっているためです。
+PowerShell 上で <code>akashic init</code> などを実行可能にするために以下の手順を実行してください。</p>
+<ol>
+<li>Powershell のアイコンを右クリックして「管理者として実行する」を選択することで、Powershell を管理者権限で起動します。</li>
+<li>Powershell 上で <code>Set-ExecutionPolicy RemoteSigned</code> を実行して、実行ポリシーを RemoteSigned(手元の PC でスクリプトを実行できる状態)に変更します。実行後選択肢が出力されるので、ここで <code>Y</code> と Enter キーを入力します。</li>
+<li>Powershell 上で <code>Get-ExecutionPolicy</code> を実行して、実行ポリシーが RemoteSigned に変わっていることを確認します。
+これで、実行ポリシーの変更を明示的に行わない限りは永続的に PowerShell で akashic-cli 等のスクリプトの実行が可能になります。</li>
+</ol>
+<p>また、永続的ではなくその時起動した PowerShell 上限定で実行ポリシーを変更したい場合は、その PowerShell 上で <code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine</code> を実行します。
+実行ポリシーについての詳細は<a href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6">Microsoft の公式ページ</a>を参照してください。</p>
+</blockquote>
 <div class="navi-center">
 <a href="./">目次</a>
  | <a href="./2-basic.html">次（コンテンツ作成の基本）</a>
