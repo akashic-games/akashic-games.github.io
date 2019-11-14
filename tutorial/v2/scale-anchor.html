@@ -5,7 +5,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>ニコニコ生放送で遊べるゲームの作成</title>
+<title>拡縮とアンカーポイント</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?1573707447387">
 <link rel="stylesheet" href="/css/header.css?1573707447387">
@@ -102,43 +102,98 @@
 <div id="BodyInner">
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
-			<h1>ニコニコ生放送で遊べるゲームの作成</h1>
-<p>ニコニコ生放送では、配信内でゲームを起動して、配信者と視聴者で一緒に遊ぶことができます。
-単にゲーム画面を配信するのではなく、配信内で起動することを活かして様々な形態のゲームが作られています。</p>
-<ul>
-<li>シングルプレイのゲームの得点を視聴者全員と競う</li>
-<li>配信者が操作するキャラクタを視聴者が助ける</li>
-<li>配信者がボス役となって視聴者たちと戦う</li>
-</ul>
-<p>ニコニコ生放送 (のニコニコ新市場) に登録され、配信内で起動できるコンテンツを <strong>ニコニコ新市場対応コンテンツ</strong> と呼びます。
-Akashic Engine では、このニコニコ新市場対応コンテンツ (以下、新市場対応コンテンツ) を作成することができます。</p>
-<p>以下の文書は <a href="/tutorial/v2/">Akashic Engine 入門</a> の知識を前提にしています。未読の方はそちらを先にご覧下さい。</p>
-<h2>目次</h2>
-<ul>
-<li><a href="./shin-ichiba-intro.html">ニコニコ新市場対応コンテンツ</a><ul>
-<li><a href="./shin-ichiba-intro.html#mode">モード</a></li>
-<li><a href="./shin-ichiba-intro.html#resolution-and-fps">解像度と FPS</a></li>
-</ul>
-</li>
-<li><a href="./ranking.html">ranking モードのゲーム作成</a><ul>
-<li><a href="./ranking.html#score">スコア</a></li>
-<li><a href="./ranking.html#session-parameter">セッションパラメータとランキング対応ゲームテンプレート</a></li>
-<li><a href="./ranking.html#time-limit">制限時間の参照</a></li>
-<li><a href="./ranking.html#debug">動作確認</a></li>
-</ul>
-</li>
-<li><a href="./multi.html">multi モードのゲーム作成</a><ul>
-<li><a href="./multi.html#debug">動作確認</a></li>
-<li><a href="./multi.html#player-name">プレイヤー名問題</a></li>
-</ul>
-</li>
-<li><a href="./export-atsumaru">投稿と申請</a><ul>
-<li><a href="./export-atsumaru#updating-content">コンテンツの更新</a></li>
-<li><a href="./export-atsumaru#trouble-shooting">トラブルシューティング</a></li>
-</ul>
-</li>
-<li><a href="./shin-ichiba-spec">新市場対応コンテンツ関連の仕様</a></li>
-</ul>
+			<h1>拡縮とアンカーポイント</h1>
+<h2><a name="scale-and-rot"></a> 拡縮と回転</h2>
+<p>エンティティを拡大・縮小して描画するには、<code>scaleX</code> と <code>scaleY</code> プロパティを利用します。
+また回転させるには <code>angle</code> プロパティを利用します。
+(参考: <a href="./2-basic.html#entity">エンティティの節</a> の表)</p>
+<p>たとえば以下のように生成した <code>Sprite</code> は、
+元のサイズよりも横方向に 2 倍、縦方向に 1.5 倍拡大してさらに 45 度回転した状態で描画されます。</p>
+<pre><code class="lang-javascript">var sprite = new g.Sprite({
+  scene: scene, // シーン scene があるものとします
+  src: scene.assets[&quot;player&quot;], // アセットID &quot;player&quot; が画像アセットだとします
+  x: 0,
+  y: 0,
+  scaleX: 2,
+  scaleY: 1.5,
+  angle: 45
+});
+
+scene.append(sprite);
+</code></pre>
+<p>画像アセット &quot;player&quot; が次のような画像の場合、</p>
+<p><img src="/img/tutorial/player.png" alt="player.png"></p>
+<p>これは次のような表示になります。
+画面左上端で拡大したので見切れています。</p>
+<p><img src="/img/tutorial/sample_scale-anchor_01.png" alt="拡大・回転のゲーム画面"></p>
+<p>拡縮や回転角度は、生成後に同名のプロパティを通して変更することもできます。
+(参考: <a href="./3-animation.html#animation">アニメーションの節</a> の表)</p>
+<pre><code class="lang-javascript">// 縦横ともに等倍にする
+sprite.scaleX = 1;
+sprite.scaleY = 1;
+
+// 回転角度を 0 度にする
+sprite.angle = 0;
+
+// 変更を反映
+sprite.modified();
+</code></pre>
+<p>次のような表示になります。</p>
+<p><img src="/img/tutorial/sample_scale-anchor_02.png" alt="拡大・回転を戻したゲーム画面"></p>
+<h2><a name="anchor"></a> アンカーポイント</h2>
+<p>上の例でわかるように、エンティティの拡大・縮小・回転は、デフォルトではエンティティの中心を基準に行われます。
+一方で、移動 (<code>x</code>, <code>y</code>) はエンティティの左上端を基準に行われます。</p>
+<p>エンティティにアンカーポイントを指定することで、この両方を統一して設定できます。
+アンカーポイントは <code>anchorX</code>, <code>anchorY</code> プロパティで与えることができます。
+(akashic-engine&#0064;2.5.4 以降 (akashic-sandbox&#0064;0.15.11, akashic-cli&#0064;1.7.28 以降))</p>
+<pre><code class="lang-javascript">var sprite = new g.Sprite({
+  scene: scene,
+  src: scene.assets[&quot;player&quot;], // アセットID &quot;player&quot; が画像アセットだとします
+  x: g.game.width, // g.game.width と height はゲーム画面の幅と高さです
+  y: g.game.height,
+  angle: 25,
+  scaleX: 2.5,
+  scaleY: 2.5,
+  anchorX: 1.0, // 1.0 でエンティティの右端
+  anchorY: 1.0 // 1.0 でエンティティの下端
+});
+
+scene.append(sprite); // シーン scene があるものとします
+</code></pre>
+<p><code>anchorX</code>, <code>anchorY</code> は <code>0.0</code> がエンティティの左端・上端を、 <code>1.0</code> がエンティティの右端・下端を表します。
+この例ではどちらも <code>1.0</code> を与えているので、この <code>Sprite</code> は右下端を基準に配置され、次のような表示になります。</p>
+<p><img src="/img/tutorial/sample_scale-anchor_03.png" alt="アンカーポイントを指定したゲーム画面"></p>
+<p>エンティティの X, Y 座標を画面右下端 (<code>g.game.width</code>, <code>g.game.height</code>) にしていますが、
+基準がエンティティの右下端なので、ちょうど画面右下端に沿う位置に配置されます。
+またエンティティ右下端を基準に拡大・回転されて、ゲーム画面から一部見切れています。</p>
+<p>アンカーポイントもやはり生成後に変更することができます。</p>
+<pre><code class="lang-javascript">// アンカーポイントをエンティティ下端の中央にする
+sprite.anchorX = 0.5;
+sprite.anchorY = 1.0;
+
+// わかりやすさのため回転をリセット
+sprite.angle = 0;
+
+// 変更を反映
+sprite.modified();
+</code></pre>
+<p>これを実行すると次のような表示になります。</p>
+<p><img src="/img/tutorial/sample_scale-anchor_04.png" alt="アンカーポイントを動かしたゲーム画面"></p>
+<p><code>anchorX</code>, <code>anchorY</code> の初期値は <code>undefined</code> です。
+初期値の場合、拡大・回転はエンティティ中心を、移動はエンティティの左上端を基準に行われます。
+<code>anchorX</code>, <code>anchorY</code> は、どちらも数値であるか、どちらも <code>undefined</code> でなければなりません。</p>
+<blockquote>
+<p>移動 (<code>x</code>, <code>y</code>) の原点と回転・拡縮 (<code>scaleX</code>, <code>scaleY</code>, <code>angle</code>) の原点がデフォルトで異なっているのは、
+歴史的経緯によるものです。
+検討中の Akashic Engine の次期メジャーバージョン (v3) ではこの挙動を廃し、
+<code>anchorX</code>, <code>anchorY</code> いずれも初期値を <code>0.0</code> にすることを検討しています。
+そのため回転や拡縮を行うエンティティは、アンカーポイントを明示的に指定しておくことを推奨します。</p>
+</blockquote>
+<div class="navi-center">
+<a href="./5-audio.html">前（音を鳴らす）</a>
+ | <a href="./">目次</a>
+ | <a href="./6-otherdraw.html">次（色々な描画）</a>
+</div>
 
 		</div>
 		<script>

@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>アニメーションさせる</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1572340787095">
-<link rel="stylesheet" href="/css/header.css?1572340787095">
-<link rel="stylesheet" href="/css/footer.css?1572340787095">
+<link rel="stylesheet" href="/css/common.css?1573707447387">
+<link rel="stylesheet" href="/css/header.css?1573707447387">
+<link rel="stylesheet" href="/css/footer.css?1573707447387">
 
 
-<link rel="stylesheet" href="/css/asset.css?1572340787095">
+<link rel="stylesheet" href="/css/asset.css?1573707447387">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1572340787095">
+<link rel="stylesheet" href="/css/akashic-document.css?1573707447387">
 
-<link rel="stylesheet" href="/css/railscasts.css?1572340787095">
+<link rel="stylesheet" href="/css/railscasts.css?1573707447387">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1572340787095"></script>
+<script src="/lib/common.js?1573707447387"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -103,7 +103,8 @@
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
 			<h1>アニメーションさせる</h1>
-<h2><a name="アニメーション"></a> アニメーション</h2>
+<p><a name="アニメーション"></a></p>
+<h2><a name="animation"></a> アニメーション</h2>
 <p>Akashic Engine のコンテンツは固定 FPS で動作します。
 FPS の値は 1 秒間に画面を更新する回数です。エンティティの位置や大きさなどを画面更新の度に変化させると、エンティティをアニメーションさせることができます。</p>
 <p>エンティティには位置や大きさを表すプロパティが用意されており、プログラムで読み書きできます。例えば <code>FilledRect</code> の場合、以下のプロパティが存在します。
@@ -161,7 +162,17 @@ FPS の値は 1 秒間に画面を更新する回数です。エンティティ�
 <tr>
 <td><code>angle</code></td>
 <td>数値</td>
-<td>回転角度(度数法)。回転の軸は矩形の中央</td>
+<td>回転角度(度)。回転の軸は矩形の中央、またはアンカーポイント位置(指定されている場合)</td>
+</tr>
+<tr>
+<td><code>anchorX</code></td>
+<td>数値または <code>undefined</code></td>
+<td>アンカーポイントの水平成分。 <code>0.0</code>でエンティティの左端、<code>1.0</code>で右端</td>
+</tr>
+<tr>
+<td><code>anchorY</code></td>
+<td>数値または <code>undefined</code></td>
+<td>アンカーポイントの垂直成分。 <code>0.0</code>でエンティティの上端、<code>1.0</code>で下端</td>
 </tr>
 </tbody>
 </table>
@@ -241,13 +252,16 @@ module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample08.gif" alt="sample08"></p>
 <h2><a name="フレームアニメーション">フレームアニメーション</h2>
-<p>Akashic Engine ではエンティティ自体の描画内容をフレームアニメーションさせることができます。フレームアニメーションとは画像を次々と表示させることでアニメーションを実現する方法です。</p>
-<p>フレームアニメーションさせるには、以下のような画像をシーンに追加します。</p>
+<p><code>g.FrameSprite</code> を利用すると、パラパラ漫画のように画像を切り替えていくアニメーション(フレームアニメーション)を手軽に行うことができます。</p>
+<p>例えば次のような画像を考えます。</p>
 <p><img src="/img/tutorial/sample-explosion.png" alt="元画像"></p>
 <p>この画像はアニメーションの様子が 100x100 サイズのフレームとして順番に並んでいます。</p>
-<p>以下はこの画像を使ってアニメーションするプログラムです。</p>
+<p>以下は、<code>g.FrameSprite</code> を使ってこの画像をアニメーションするプログラムです。</p>
 <pre><code>function main() {
-  var scene = new g.Scene({game: g.game, assetIds: [&quot;explosion&quot;]});
+  var scene = new g.Scene({
+    game: g.game,
+    assetIds: [&quot;explosion&quot;]  // 上の画像は &quot;explosion&quot; というアセットIDであるとします
+  });
   scene.loaded.add(function () {
     var frameSprite = new g.FrameSprite({
       scene: scene,
