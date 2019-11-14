@@ -120,6 +120,8 @@
 .akashic--document img {
 	display:block;
 	max-width:100%;
+	margin:30px auto;
+	box-shadow:0 0 6px gray;
 	}
 @media screen and (max-width:959px){
 .akashic--document p,
@@ -130,7 +132,8 @@
 /*↓テーブル系↓*/
 .akashic--document table {
 	color:#366; line-height:1.2; text-align:center;
-	margin-top:16px;
+	margin-top:24px;
+	margin-bottom:24px;
 	}
 .akashic--document table th {
 	background:#EED;

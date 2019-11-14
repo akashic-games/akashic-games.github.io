@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>コンテンツ作成の基本</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1572340787095">
-<link rel="stylesheet" href="/css/header.css?1572340787095">
-<link rel="stylesheet" href="/css/footer.css?1572340787095">
+<link rel="stylesheet" href="/css/common.css?1573707447387">
+<link rel="stylesheet" href="/css/header.css?1573707447387">
+<link rel="stylesheet" href="/css/footer.css?1573707447387">
 
 
-<link rel="stylesheet" href="/css/asset.css?1572340787095">
+<link rel="stylesheet" href="/css/asset.css?1573707447387">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1572340787095">
+<link rel="stylesheet" href="/css/akashic-document.css?1573707447387">
 
-<link rel="stylesheet" href="/css/railscasts.css?1572340787095">
+<link rel="stylesheet" href="/css/railscasts.css?1573707447387">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1572340787095"></script>
+<script src="/lib/common.js?1573707447387"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -103,7 +103,8 @@
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
 			<h1>コンテンツ作成の基本</h1>
-<h2><a name="エンティティ"></a> エンティティ</h2>
+<p><a name="エンティティ"></a></p>
+<h2><a name="entity"></a> エンティティ</h2>
 <p>画像や文字列などシーン上で描画されるオブジェクトを Akashic Engine ではエンティティと呼びます。
 Akashic Engine には次のエンティティが標準で用意されています。</p>
 <div class="table--scroll">
@@ -232,8 +233,20 @@ scene.append(rect);
 <tr>
 <td><code>angle</code></td>
 <td>数値</td>
-<td>回転角度(度)。回転軸は矩形の中央</td>
+<td>回転角度(度)。回転の軸は矩形の中央、またはアンカーポイント位置(指定されている場合)</td>
 <td>任意(初期値:<code>0</code>)</td>
+</tr>
+<tr>
+<td><code>anchorX</code></td>
+<td>数値または<code>undefined</code></td>
+<td>アンカーポイントの水平成分。<code>0.0</code>でエンティティの左端、<code>1.0</code>で右端</td>
+<td>任意(初期値:<code>undefined</code>)</td>
+</tr>
+<tr>
+<td><code>anchorY</code></td>
+<td>数値または<code>undefined</code></td>
+<td>アンカーポイントの垂直成分。<code>0.0</code>でエンティティの上端、<code>1.0</code>で下端</td>
+<td>任意(初期値:<code>undefined</code>)</td>
 </tr>
 <tr>
 <td><code>compositeOperation</code></td>
@@ -408,9 +421,16 @@ INFO: Done!
 </code></pre>
 <p>以下はシーンに画像を表示するプログラムです。</p>
 <pre><code class="lang-javascript">function main() {
-  var scene = new g.Scene({ game: g.game, assetIds: [&quot;player&quot;] });
+  var scene = new g.Scene({
+    game: g.game,
+    assetIds: [&quot;player&quot;] // シーン内で利用するアセットID
+  });
+
   scene.loaded.add(function() {
-    var sprite = new g.Sprite({ scene: scene, src: scene.assets[&quot;player&quot;] });
+    var sprite = new g.Sprite({
+      scene: scene,
+      src: scene.assets[&quot;player&quot;]
+    });
     scene.append(sprite);
   });
   g.game.pushScene(scene);
@@ -419,14 +439,16 @@ INFO: Done!
 module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample04.png" alt="sample04"></p>
-<p>画像アセット・オーディオアセット・テキストアセットの 3 種類は、シーンオブジェクトを作るときに、<code>assetIds</code> プロパティで利用するアセットの ID を指定します。スクリプトアセットは例外で、指定しなくても自動的に読み込まれます。アセットの ID は <code>game.json</code> に登録されている名前です。
-<code>akashic scan</code> で登録した場合は、ファイル名から拡張子をのぞいた文字列です。例えば <code>player.png</code> の場合、アセット ID は <code>player</code> になります。</p>
+<p>画像やオーディオなどのアセットは、シーンの生成時に、<code>assetIds</code> プロパティで利用するアセットの ID を指定します。
+スクリプトアセットは例外で、指定しなくても自動的に読み込まれます (<code>akashic scan</code> コマンドで登録した場合)。</p>
+<p>アセットの ID は <code>game.json</code> に登録されている名前です。
+これはアセットを <code>akashic scan</code> で登録した場合は、ファイル名から拡張子をのぞいた文字列になっています。
+例えば <code>player.png</code> の場合、アセット ID は <code>player</code> になります。</p>
 <pre><code class="lang-javascript">var scene = new g.Scene({ game: g.game, assetIds: [&quot;player&quot;] });
 </code></pre>
 <p>画像を表示するには <code>Sprite</code> エンティティを使います。
 <code>Sprite</code> エンティティのパラメータオブジェクトには <code>src</code> プロパティがあります。ここに画像アセットオブジェクトを指定すると、対応する画像を表示するエンティティが作成されます。</p>
-<p>シーンに読み込んだアセットオブジェクトは、たとえばアセットの ID が <code>player</code>
-だとすると次のコードで参照できます。</p>
+<p>シーンに読み込んだアセットオブジェクトは、 <code>scene.assets</code> に格納されています。アセット ID が <code>player</code> であれば次のコードで参照できます。</p>
 <pre><code class="lang-javascript">scene.assets[&quot;player&quot;];
 </code></pre>
 <h2><a name="エンティティの入れ子"></a> エンティティの入れ子</h2>
