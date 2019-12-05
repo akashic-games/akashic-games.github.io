@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic-cli 利用ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1574334223221">
-<link rel="stylesheet" href="/css/header.css?1574334223221">
-<link rel="stylesheet" href="/css/footer.css?1574334223221">
+<link rel="stylesheet" href="/css/common.css?1575523145130">
+<link rel="stylesheet" href="/css/header.css?1575523145130">
+<link rel="stylesheet" href="/css/footer.css?1575523145130">
 
 
-<link rel="stylesheet" href="/css/asset.css?1574334223221">
+<link rel="stylesheet" href="/css/asset.css?1575523145130">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1574334223221">
+<link rel="stylesheet" href="/css/akashic-document.css?1575523145130">
 
-<link rel="stylesheet" href="/css/railscasts.css?1574334223221">
+<link rel="stylesheet" href="/css/railscasts.css?1575523145130">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1574334223221"></script>
+<script src="/lib/common.js?1575523145130"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -336,15 +336,23 @@ fps: (30)
 </ul>
 <p>scan asset コマンドによる素材の列挙は、ディレクトリを再帰的に検索します。つまり、image/ のサブディレクトリに置かれた画像素材なども、列挙されアセット情報に登録されます。</p>
 <p>各素材をアセットとして使用するには、アセットを識別する ID (アセット ID) が必要になります。
-scan asset コマンドは、アセット ID として「ファイル名から拡張子を取り除いたもの」を設定します。
-(このため、audio/title.ogg と script/title.js は、同じ &quot;title&quot; という ID となって衝突し、エラーになります。)
-また、ファイル名は以下の条件を全て満たす必要があります。</p>
+scan asset コマンドは、デフォルトでアセット ID として「ファイル名から拡張子を取り除いたもの」を設定します。
+(audio/title.ogg と script/title.js は、同じ &quot;title&quot; という ID となって衝突し、エラーになります。これを回避するには後述する <code>--use-path-asset-id</code> オプションを利用してください。)
+このとき、ファイル名は以下の条件を全て満たす必要があります。</p>
 <ul>
 <li>半角英数字、アンダースコア &quot;_&quot;、ドル記号 &quot;\$&quot; のみで構成されている</li>
 <li>英字で始まっている</li>
 </ul>
 <p>ユーザは game.json を直接編集して、アセット ID を任意に変更することができます。
 akashic コマンドはファイルパスを基準に操作を行うため、たとえば画像素材の ID を変更した後にその画像のサイズを変更しても、適切に game.json の幅・高さ情報を更新します。</p>
+<p><code>--use-path-asset-id</code> オプションを指定することで、 game.json があるディレクトリからの (拡張子を含めた) アセットの相対パスを ID にすることができます。
+同名ファイルのアセットが複数存在するケースで利用することができます。
+(このオプション利用時は上記のファイル名制限が無視されます。)</p>
+<pre><code class="lang-sh">akashic scan asset &lt;subtarget&gt; --use-path-asset-id
+</code></pre>
+<p>また <code>--update-asset-id</code> オプションを併用することで、すでに登録されているアセット ID を相対パスに変更することができます。</p>
+<pre><code class="lang-sh">akashic scan asset &lt;subtarget&gt; --use-path-asset-id --update-asset-id
+</code></pre>
 <h2><a name="serve"></a> serve</h2>
 <pre><code class="lang-sh">akashic serve [&lt;options&gt;] [&lt;path&gt;]
 </code></pre>
