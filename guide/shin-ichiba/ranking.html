@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ranking モードのゲーム作成</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1575523145130">
-<link rel="stylesheet" href="/css/header.css?1575523145130">
-<link rel="stylesheet" href="/css/footer.css?1575523145130">
+<link rel="stylesheet" href="/css/common.css?1576055074632">
+<link rel="stylesheet" href="/css/header.css?1576055074632">
+<link rel="stylesheet" href="/css/footer.css?1576055074632">
 
 
-<link rel="stylesheet" href="/css/asset.css?1575523145130">
+<link rel="stylesheet" href="/css/asset.css?1576055074632">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1575523145130">
+<link rel="stylesheet" href="/css/akashic-document.css?1576055074632">
 
-<link rel="stylesheet" href="/css/railscasts.css?1575523145130">
+<link rel="stylesheet" href="/css/railscasts.css?1576055074632">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1575523145130"></script>
+<script src="/lib/common.js?1576055074632"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -180,9 +180,8 @@ $ akashic init -t typescript-shin-ichiba-ranking    # TypeScript版のサンプ�
 例えば終了の 10 秒前にゲームを切り上げ、「結果発表」として自分のスコアを画面に出す、といった演出がそれにあたります。
 (これは必須の処理ではありません。単に時間いっぱいゲームプレイを行い、終了時点でのスコアを競うことももちろんできます。)</p>
 <blockquote>
-<p>2019 年 9 月現在、ゲーム開発者がこの時間を指定することはできません。
-現在のニコニコ生放送では、常に 80 秒前後の値が与えられています。
-(ただし将来的には指定できるようになる見込みです)</p>
+<p>現在のニコニコ生放送では、制限時間はデフォルトで 80 秒前後の値が与えられます。
+この値をゲームコンテンツから指定する方法は、 <a href="#declare-time-limit">制限時間の表明</a> を参照してください。</p>
 </blockquote>
 <p><strong>制限時間</strong> は、セッションパラメータのプロパティ <code>totalTimeLimit</code> で与えられます。
 与えられる場合、この値は整数で、制限時間の秒数を表します。</p>
@@ -222,6 +221,26 @@ $ akashic init -t typescript-shin-ichiba-ranking    # TypeScript版のサンプ�
 ゲーム起動後、厳密にこの時間で終了されることを保証するものではありません。
 これはゲームリソースのダウンロード時間のばらつきや、スコア送信時の通信遅れを救済するためのサーバ側の多少のマージンなど、いくつかの要因でずれが生じるためです。</p>
 <p>たとえば制限時間から逆算して「クリア画面」を作るような場合、念のため、<strong>制限時間の 10 秒ほど前にはゲーム上の演出が完了するように作る</strong> ことを推奨します。</p>
+<h2><a name="declare-time-limit"> 制限時間の表明</h2>
+<p>制限時間 <code>totalTimeLimit</code> の値は、ゲーム開発者の希望する値を game.json で表明することができます。
+game.json で <code>environment.niconico.preferredSessionParameters.totalTimeLimit</code> を指定することで、
+ニコニコ新市場はその値を参照して制限時間を決定します。</p>
+<p>たとえば、デフォルトの 80 秒前後ではなく 30 秒で終わるゲームが作成したい場合は、 game.json に次のように記述します。</p>
+<pre><code class="lang-json">{
+  &quot;environment&quot;: {
+    &quot;niconico&quot;: {
+      &quot;supportedModes&quot;: [&quot;ranking&quot;],
+      &quot;preferredSessionParameters&quot;: {
+        &quot;totalTimeLimit&quot;: 30
+      }
+    }
+  }
+}
+</code></pre>
+<p>この <code>totalTimeLimit</code> の値は 20 以上 200 以下でなければなりません。</p>
+<p>この申告によって、ゲーム実行時に渡される実際の <code>totalTimeLimit</code> の値が保証されるわけではないことに注意してください。
+スクリプト上ではあくまでも、送られてきたセッションパラメータの値に従ってゲームを進行すべきです。</p>
+<p><code>preferredSessionParameters</code> でサポートされているフィールドは、2019 年 12 月現在 <code>totalTimeLimit</code> のみです。</p>
 <h2><a name="shared-random"></a> 共通乱数生成器</h2>
 <p>前述のとおりランキング対応ゲームは、配信者・各視聴者の手元で個別に(シングルプレイの)ゲームが実行されます。</p>
 <p>マルチプレイと異なり、乱数生成器 (<code>g.game.random</code>) の生成結果は各プレイヤーで異なります。

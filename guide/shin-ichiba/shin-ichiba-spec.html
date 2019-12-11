@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ニコニコ新市場対応コンテンツ関連の仕様</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1575523145130">
-<link rel="stylesheet" href="/css/header.css?1575523145130">
-<link rel="stylesheet" href="/css/footer.css?1575523145130">
+<link rel="stylesheet" href="/css/common.css?1576055074632">
+<link rel="stylesheet" href="/css/header.css?1576055074632">
+<link rel="stylesheet" href="/css/footer.css?1576055074632">
 
 
-<link rel="stylesheet" href="/css/asset.css?1575523145130">
+<link rel="stylesheet" href="/css/asset.css?1576055074632">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1575523145130">
+<link rel="stylesheet" href="/css/akashic-document.css?1576055074632">
 
-<link rel="stylesheet" href="/css/railscasts.css?1575523145130">
+<link rel="stylesheet" href="/css/railscasts.css?1576055074632">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1575523145130"></script>
+<script src="/lib/common.js?1576055074632"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -232,6 +232,29 @@ scene.loaded.add(function () {
 <h3><a name="game-time-limit"></a> 旧仕様: gameTimeLimit</h3>
 <p>セッションパラメータ <code>sessionParameters</code> がある時、 <code>sessionParameters.gameTimeLimit</code> の値が与えられることがあります。</p>
 <p>この値は後方互換性のために残されているものです。 <code>totalTimeLimit</code> を利用してください。</p>
+<h2><a name="preferred-session-parameters"></a> prefereredSessionParameters</h2>
+<p>ニコニコ新市場対応コンテンツの game.json に <code>environment.niconico.prefereredSessionParameters</code> フィールドがある場合、
+その内容はコンテンツにとって望ましいセッションパラメータの値として解釈されます。</p>
+<p><code>prefereredSessionParameters</code> は、与えられる場合、オブジェクトでなければなりません。
+そのプロパティとして指定できるものは次の通りです (2019 年 12 月現在):</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">プロパティ</th>
+<th style="text-align:center">値</th>
+<th style="text-align:left">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>totalTimeLimit</code></td>
+<td style="text-align:center">20 以上 200 以下の整数</td>
+<td style="text-align:left"><code>&quot;ranking&quot;</code> モードで与えられる <code>totalTimeLimit</code> の値</td>
+</tr>
+</tbody>
+</table>
+<p>この値はあくまでも参考値として扱われます。
+実際に渡されるセッションパラメータが、ここで指定した値と同じである保証はありません。</p>
 <div class="navi-center">
 <a href="./export-atsumaru.html">前 (投稿と申請)</a>
  | <a href="./">目次</a>
