@@ -112,6 +112,8 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.camera2d.html#_matrix" class="tsd-kind-icon">_matrix</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.camera2d.html#_modifiedcount" class="tsd-kind-icon">_modified<wbr>Count</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.camera2d.html#anchorx" class="tsd-kind-icon">anchorX</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.camera2d.html#anchory" class="tsd-kind-icon">anchorY</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.camera2d.html#angle" class="tsd-kind-icon">angle</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.camera2d.html#compositeoperation" class="tsd-kind-icon">composite<wbr>Operation</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.camera2d.html#game" class="tsd-kind-icon">game</a></li>
@@ -132,6 +134,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.camera2d.html#_applytransformtorenderer" class="tsd-kind-icon">_apply<wbr>Transform<wbr>ToRenderer</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.camera2d.html#_updatematrix" class="tsd-kind-icon">_update<wbr>Matrix</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.camera2d.html#anchor" class="tsd-kind-icon">anchor</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.camera2d.html#getmatrix" class="tsd-kind-icon">get<wbr>Matrix</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.camera2d.html#modified" class="tsd-kind-icon">modified</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.camera2d.html#moveby" class="tsd-kind-icon">move<wbr>By</a></li>
@@ -159,7 +162,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:4840</li>
+									<li>Defined in lib/main.d.ts:4938</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -192,7 +195,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#_matrix">_matrix</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1868</li>
+							<li>Defined in lib/main.d.ts:1953</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -213,10 +216,60 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_lib_main_d_.g.camera.html">Camera</a>.<a href="../interfaces/_lib_main_d_.g.camera.html#_modifiedcount">_modifiedCount</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:4833</li>
+							<li>Defined in lib/main.d.ts:4931</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
+					<a name="anchorx" class="tsd-anchor"></a>
+					<h3>anchorX</h3>
+					<div class="tsd-signature tsd-kind-icon">anchorX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#anchorx">anchorX</a></p>
+						<ul>
+							<li>Defined in lib/main.d.ts:1931</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>オブジェクトのアンカーの横位置。アンカーについては以下の通り。</p>
+							<ul>
+								<li>アンカーとして設定した箇所がこのオブジェクトの基点 (位置、拡縮・回転の基点) となる。</li>
+								<li>単位は相対値 (左上端が (0, 0) 中央が (0.5, 0,5) 右下端が (1,1) ) である。
+									anchorXとanchorYの両方が省略された場合、このオブジェクトの位置 (x, y) は左上端を基準に決定され、拡縮・回転の基点は中央座標となる。
+									これは前バージョンとの互換性のための挙動である。
+									anchorX, anchorYのどちらかのみを指定した場合の動作は不定である。
+									初期値は <code>undefined</code> である。
+								<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
+					<a name="anchory" class="tsd-anchor"></a>
+					<h3>anchorY</h3>
+					<div class="tsd-signature tsd-kind-icon">anchorY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#anchory">anchorY</a></p>
+						<ul>
+							<li>Defined in lib/main.d.ts:1942</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>オブジェクトのアンカーの縦位置。アンカーについては以下の通り。</p>
+							<ul>
+								<li>アンカーとして設定した箇所がこのオブジェクトの基点 (位置、拡縮・回転の基点) となる。</li>
+								<li>単位は相対値 (左上端が (0, 0) 中央が (0.5, 0,5) 右下端が (1,1) ) である。
+									anchorXとanchorYの両方が省略された場合、このオブジェクトの位置 (x, y) は左上端を基準に決定され、拡縮・回転の基点は中央座標となる。
+									これは前バージョンとの互換性のための挙動である。
+									anchorX, anchorYのどちらかのみを指定した場合の動作は不定である。
+									初期値は <code>undefined</code> である。
+								<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</li>
+							</ul>
+						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
@@ -226,7 +279,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#angle">angle</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1851</li>
+							<li>Defined in lib/main.d.ts:1914</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -244,7 +297,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#compositeoperation">compositeOperation</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1857</li>
+							<li>Defined in lib/main.d.ts:1920</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -262,7 +315,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_lib_main_d_.g.camera.html">Camera</a>.<a href="../interfaces/_lib_main_d_.g.camera.html#game">game</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:4807</li>
+							<li>Defined in lib/main.d.ts:4905</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -279,7 +332,7 @@
 						<p>Implementation of <a href="../interfaces/_lib_main_d_.g.commonarea.html">CommonArea</a>.<a href="../interfaces/_lib_main_d_.g.commonarea.html#height">height</a></p>
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#height">height</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1827</li>
+							<li>Defined in lib/main.d.ts:1890</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -297,7 +350,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_lib_main_d_.g.camera.html">Camera</a>.<a href="../interfaces/_lib_main_d_.g.camera.html#id">id</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:4817</li>
+							<li>Defined in lib/main.d.ts:4915</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -317,7 +370,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_lib_main_d_.g.camera.html">Camera</a>.<a href="../interfaces/_lib_main_d_.g.camera.html#local">local</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:4824</li>
+							<li>Defined in lib/main.d.ts:4922</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -334,7 +387,7 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4829</li>
+							<li>Defined in lib/main.d.ts:4927</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -351,7 +404,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#opacity">opacity</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1833</li>
+							<li>Defined in lib/main.d.ts:1896</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -369,7 +422,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#scalex">scaleX</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1839</li>
+							<li>Defined in lib/main.d.ts:1902</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -387,7 +440,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#scaley">scaleY</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1845</li>
+							<li>Defined in lib/main.d.ts:1908</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -406,7 +459,7 @@
 						<p>Implementation of <a href="../interfaces/_lib_main_d_.g.commonarea.html">CommonArea</a>.<a href="../interfaces/_lib_main_d_.g.commonarea.html#width">width</a></p>
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#width">width</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1821</li>
+							<li>Defined in lib/main.d.ts:1884</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -425,13 +478,13 @@
 						<p>Implementation of <a href="../interfaces/_lib_main_d_.g.commonarea.html">CommonArea</a>.<a href="../interfaces/_lib_main_d_.g.commonarea.html#x">x</a></p>
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#x">x</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1809</li>
+							<li>Defined in lib/main.d.ts:1872</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>このオブジェクトの横位置。
-								初期値は <code>0</code> である。実際の座標位置はscaleX, scaleY, angleの値も考慮する必要がある。
+								初期値は <code>0</code> である。実際の座標位置はscaleX, scaleY, angle, anchorX, anchorYの値も考慮する必要がある。
 							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
 						</div>
 					</div>
@@ -444,13 +497,13 @@
 						<p>Implementation of <a href="../interfaces/_lib_main_d_.g.commonarea.html">CommonArea</a>.<a href="../interfaces/_lib_main_d_.g.commonarea.html#y">y</a></p>
 						<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#y">y</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1815</li>
+							<li>Defined in lib/main.d.ts:1878</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>このオブジェクトの縦位置。
-								初期値は <code>0</code> である。実際の座標位置はscaleX, scaleY, angleの値も考慮する必要がある。
+								初期値は <code>0</code> である。実際の座標位置はscaleX, scaleY, angle, anchorX, anchorYの値も考慮する必要がある。
 							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
 						</div>
 					</div>
@@ -468,7 +521,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4865</li>
+									<li>Defined in lib/main.d.ts:4963</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -494,11 +547,45 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#_updatematrix">_updateMatrix</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:4869</li>
+									<li>Defined in lib/main.d.ts:4967</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
+					<a name="anchor" class="tsd-anchor"></a>
+					<h3>anchor</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">anchor<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#anchor">anchor</a></p>
+								<ul>
+									<li>Defined in lib/main.d.ts:2021</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>オブジェクトのアンカーの位置を設定する。
+										このメソッドは <code>anchorX</code> と <code>anchorY</code> を同時に設定するためのユーティリティメソッドである。
+									<code>E</code> や <code>Camera2D</code> においてこのメソッドを呼び出した場合、 <code>modified()</code> を呼び出す必要がある。</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>y: <span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -514,7 +601,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#getmatrix">getMatrix</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1934</li>
+									<li>Defined in lib/main.d.ts:2025</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -536,7 +623,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4855</li>
+									<li>Defined in lib/main.d.ts:4953</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -563,7 +650,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#moveby">moveBy</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1900</li>
+									<li>Defined in lib/main.d.ts:1985</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -604,7 +691,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#moveto">moveTo</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1885</li>
+									<li>Defined in lib/main.d.ts:1970</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -635,7 +722,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#moveto">moveTo</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1892</li>
+									<li>Defined in lib/main.d.ts:1977</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -669,7 +756,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#resizeby">resizeBy</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1923</li>
+									<li>Defined in lib/main.d.ts:2008</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -710,7 +797,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#resizeto">resizeTo</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1908</li>
+									<li>Defined in lib/main.d.ts:1993</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -741,7 +828,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#resizeto">resizeTo</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1915</li>
+									<li>Defined in lib/main.d.ts:2000</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -775,7 +862,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_lib_main_d_.g.object2d.html">Object2D</a>.<a href="_lib_main_d_.g.object2d.html#scale">scale</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:1930</li>
+									<li>Defined in lib/main.d.ts:2015</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -808,7 +895,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4861</li>
+									<li>Defined in lib/main.d.ts:4959</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -831,7 +918,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4840</li>
+									<li>Defined in lib/main.d.ts:4938</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -885,6 +972,12 @@
 								<a href="_lib_main_d_.g.camera2d.html#_modifiedcount" class="tsd-kind-icon">_modified<wbr>Count</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
+								<a href="_lib_main_d_.g.camera2d.html#anchorx" class="tsd-kind-icon">anchorX</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
+								<a href="_lib_main_d_.g.camera2d.html#anchory" class="tsd-kind-icon">anchorY</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 								<a href="_lib_main_d_.g.camera2d.html#angle" class="tsd-kind-icon">angle</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
@@ -928,6 +1021,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-private tsd-is-not-exported">
 								<a href="_lib_main_d_.g.camera2d.html#_updatematrix" class="tsd-kind-icon">_update<wbr>Matrix</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
+								<a href="_lib_main_d_.g.camera2d.html#anchor" class="tsd-kind-icon">anchor</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 								<a href="_lib_main_d_.g.camera2d.html#getmatrix" class="tsd-kind-icon">get<wbr>Matrix</a>
@@ -977,6 +1073,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -1025,7 +1122,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>

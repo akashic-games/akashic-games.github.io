@@ -199,7 +199,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides CacheableE.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/Tile.ts#L47">Tile.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/Tile.ts#L48">Tile.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -247,7 +247,7 @@
 					<div class="tsd-signature tsd-kind-icon">_drawn<wbr>Tile<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/Tile.ts#L47">Tile.ts:47</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/Tile.ts#L48">Tile.ts:48</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -358,7 +358,7 @@
 					<div class="tsd-signature tsd-kind-icon">_tiles<wbr>InRow<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/Tile.ts#L45">Tile.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/Tile.ts#L46">Tile.ts:46</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -570,20 +570,20 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="redrawarea" class="tsd-anchor"></a>
 					<h3>redraw<wbr>Area</h3>
-					<div class="tsd-signature tsd-kind-icon">redraw<wbr>Area<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CommonArea</span></div>
+					<div class="tsd-signature tsd-kind-icon">redraw<wbr>Area<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CommonArea</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/Tile.ts#L43">Tile.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/Tile.ts#L44">Tile.ts:44</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>マップチップが描画される領域。
-								領域が設定された場合、それ以降は領域内のマップチップのみ再描画され、領域外にあるマップチップは再描画されない。
-								領域が設定されていない場合、全てのマップチップを描画する。
-								画面外にあるなど描画の不要なマップチップの再描画をしないことにより、エンティティの描画を最適化する。
-							この値を変更した場合、 <code>this.invalidate()</code> が呼び出される必要がある。</p>
+							<p>マップチップが描画される領域。</p>
 						</div>
+						<p>設定された場合、指定された領域外にあるマップチップは再描画されない。
+							画面外にあたるなどの、不要なマップチップの再描画をしないことで、描画を最適化するために利用できる。
+							この値を変更した場合、 <code>this.invalidate()</code> が呼び出される必要がある。
+						初期値は <code>undefined</code> 。</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
@@ -697,7 +697,7 @@
 					<div class="tsd-signature tsd-kind-icon">tile<wbr>Chips<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Surface</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/Tile.ts#L11">Tile.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/Tile.ts#L11">Tile.ts:11</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -713,7 +713,7 @@
 					<div class="tsd-signature tsd-kind-icon">tile<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/Tile.ts#L34">Tile.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/Tile.ts#L34">Tile.ts:34</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -733,7 +733,7 @@
 					<div class="tsd-signature tsd-kind-icon">tile<wbr>Height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/Tile.ts#L23">Tile.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/Tile.ts#L23">Tile.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -749,7 +749,7 @@
 					<div class="tsd-signature tsd-kind-icon">tile<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/Tile.ts#L17">Tile.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/Tile.ts#L17">Tile.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -930,7 +930,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/Tile.ts#L180">Tile.ts:180</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/Tile.ts#L183">Tile.ts:183</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1061,7 +1061,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides CacheableE.destroy</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/Tile.ts#L172">Tile.ts:172</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/Tile.ts#L175">Tile.ts:175</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1285,7 +1285,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides CacheableE.invalidate</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/Tile.ts#L162">Tile.ts:162</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/Tile.ts#L165">Tile.ts:165</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1521,7 +1521,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides CacheableE.renderCache</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/Tile.ts#L111">Tile.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/Tile.ts#L112">Tile.ts:112</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1545,7 +1545,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides CacheableE.renderSelf</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/Tile.ts#L73">Tile.ts:73</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/Tile.ts#L74">Tile.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

@@ -70,7 +70,7 @@
 				<h1 id="akashic-timeline">akashic-timeline</h1>
 				<p><strong>akashic-timeline</strong>はAkashic Engine向けのトゥイーンアニメーションライブラリです。</p>
 				<p>次のようなコードで、エンティティ <code>e</code> を現在位置から座標(300, 400)へ2000ミリ秒かけて動かすアニメーションを記述することができます。</p>
-				<pre><code class="lang-javascript">timeline.create(e, {<span class="hljs-attr">modified</span>: e.modified, <span class="hljs-attr">destroyed</span>: e.destroyed })
+				<pre><code class="lang-javascript">timeline.create(e)
         .moveTo(<span class="hljs-number">300</span>, <span class="hljs-number">400</span>, <span class="hljs-number">2000</span>);
 </code></pre>
 				<p>位置だけでなく回転や透明度などもアニメーション可能で、またイージングを指定することもできます。</p>

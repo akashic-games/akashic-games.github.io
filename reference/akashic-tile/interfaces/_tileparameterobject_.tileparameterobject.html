@@ -98,6 +98,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#local" class="tsd-kind-icon">local</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#opacity" class="tsd-kind-icon">opacity</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#parent" class="tsd-kind-icon">parent</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_tileparameterobject_.tileparameterobject.html#redrawarea" class="tsd-kind-icon">redraw<wbr>Area</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#scalex" class="tsd-kind-icon">scaleX</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#scaley" class="tsd-kind-icon">scaleY</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#scene" class="tsd-kind-icon">scene</a></li>
@@ -314,6 +315,23 @@
 						</dl>
 					</div>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="redrawarea" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> redraw<wbr>Area</h3>
+					<div class="tsd-signature tsd-kind-icon">redraw<wbr>Area<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CommonArea</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/TileParameterObject.ts#L33">TileParameterObject.ts:33</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>マップチップが描画される領域。
+							与えられた場合、それ以降は指定された領域の外のマップチップは再描画されない。</p>
+						</div>
+						<p>画面外にあたるなどの、不要なマップチップの再描画をしないことで、描画を最適化するために利用できる。</p>
+					</div>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="scalex" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> scaleX</h3>
@@ -378,7 +396,7 @@
 					<div class="tsd-signature tsd-kind-icon">src<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Surface</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Asset</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/TileParameterObject.ts#L5">TileParameterObject.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/TileParameterObject.ts#L5">TileParameterObject.ts:5</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -438,7 +456,7 @@
 					<div class="tsd-signature tsd-kind-icon">tile<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/TileParameterObject.ts#L25">TileParameterObject.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/TileParameterObject.ts#L25">TileParameterObject.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -457,7 +475,7 @@
 					<div class="tsd-signature tsd-kind-icon">tile<wbr>Height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/TileParameterObject.ts#L15">TileParameterObject.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/TileParameterObject.ts#L15">TileParameterObject.ts:15</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -472,7 +490,7 @@
 					<div class="tsd-signature tsd-kind-icon">tile<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/b56e07b/src/TileParameterObject.ts#L10">TileParameterObject.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/e46bb59/src/TileParameterObject.ts#L10">TileParameterObject.ts:10</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -618,6 +636,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="_tileparameterobject_.tileparameterobject.html#parent" class="tsd-kind-icon">parent</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_tileparameterobject_.tileparameterobject.html#redrawarea" class="tsd-kind-icon">redraw<wbr>Area</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="_tileparameterobject_.tileparameterobject.html#scalex" class="tsd-kind-icon">scaleX</a>

@@ -63,7 +63,7 @@
 					<a href="_lib_main_d_.g.font.html">Font</a>
 				</li>
 			</ul>
-			<h1>Interface Font</h1>
+			<h1>Class Font</h1>
 		</div>
 	</div>
 </header>
@@ -81,20 +81,22 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_lib_main_d_.g.destroyable.html" class="tsd-signature-type">Destroyable</a>
+						<span class="target">Font</span>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">Font</span>
+								<a href="_lib_main_d_.g.dynamicfont.html" class="tsd-signature-type">DynamicFont</a>
+							</li>
+							<li>
+								<a href="_lib_main_d_.g.bitmapfont.html" class="tsd-signature-type">BitmapFont</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 			</section>
 			<section class="tsd-panel">
-				<h3>Implemented by</h3>
+				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../classes/_lib_main_d_.g.bitmapfont.html" class="tsd-signature-type">BitmapFont</a></li>
-					<li><a href="../classes/_lib_main_d_.g.dynamicfont.html" class="tsd-signature-type">DynamicFont</a></li>
+					<li><a href="../interfaces/_lib_main_d_.g.destroyable.html" class="tsd-signature-type">Destroyable</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -104,15 +106,16 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.font.html#size" class="tsd-kind-icon">size</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.font.html#size" class="tsd-kind-icon">size</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.font.html#destroy" class="tsd-kind-icon">destroy</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.font.html#destroyed" class="tsd-kind-icon">destroyed</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.font.html#glyphforcharacter" class="tsd-kind-icon">glyph<wbr>For<wbr>Character</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.font.html#destroy" class="tsd-kind-icon">destroy</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.font.html#destroyed" class="tsd-kind-icon">destroyed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.font.html#glyphforcharacter" class="tsd-kind-icon">glyph<wbr>For<wbr>Character</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.font.html#measuretext" class="tsd-kind-icon">measure<wbr>Text</a></li>
 							</ul>
 						</section>
 					</div>
@@ -120,13 +123,13 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="size" class="tsd-anchor"></a>
 					<h3>size</h3>
 					<div class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:6306</li>
+							<li>Defined in lib/main.d.ts:5806</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -139,63 +142,53 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 					<a name="destroy" class="tsd-anchor"></a>
-					<h3>destroy</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> destroy</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">destroy<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="_lib_main_d_.g.destroyable.html">Destroyable</a>.<a href="_lib_main_d_.g.destroyable.html#destroy">destroy</a></p>
+								<p>Implementation of <a href="../interfaces/_lib_main_d_.g.destroyable.html">Destroyable</a>.<a href="../interfaces/_lib_main_d_.g.destroyable.html#destroy">destroy</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:194</li>
+									<li>Defined in lib/main.d.ts:5815</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>オブジェクトを破棄する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 					<a name="destroyed" class="tsd-anchor"></a>
-					<h3>destroyed</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> destroyed</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">destroyed<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="_lib_main_d_.g.destroyable.html">Destroyable</a>.<a href="_lib_main_d_.g.destroyable.html#destroyed">destroyed</a></p>
+								<p>Implementation of <a href="../interfaces/_lib_main_d_.g.destroyable.html">Destroyable</a>.<a href="../interfaces/_lib_main_d_.g.destroyable.html#destroyed">destroyed</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:198</li>
+									<li>Defined in lib/main.d.ts:5816</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>破棄されたオブジェクトかどうかを判定する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 					<a name="glyphforcharacter" class="tsd-anchor"></a>
-					<h3>glyph<wbr>For<wbr>Character</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">glyph<wbr>For<wbr>Character<span class="tsd-signature-symbol">(</span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../classes/_lib_main_d_.g.glyph.html" class="tsd-signature-type">Glyph</a></li>
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> glyph<wbr>For<wbr>Character</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">glyph<wbr>For<wbr>Character<span class="tsd-signature-symbol">(</span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.glyph.html" class="tsd-signature-type">Glyph</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:6314</li>
+									<li>Defined in lib/main.d.ts:5814</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -213,7 +206,38 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../classes/_lib_main_d_.g.glyph.html" class="tsd-signature-type">Glyph</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.glyph.html" class="tsd-signature-type">Glyph</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a name="measuretext" class="tsd-anchor"></a>
+					<h3>measure<wbr>Text</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">measure<wbr>Text<span class="tsd-signature-symbol">(</span>text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_main_d_.g.textmetrix.html" class="tsd-signature-type">TextMetrix</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in lib/main.d.ts:5822</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>対象の文字列を一行で描画した際の計測情報を返す。</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>text: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>文字列</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_lib_main_d_.g.textmetrix.html" class="tsd-signature-type">TextMetrix</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -231,20 +255,23 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
+					<li class="current tsd-kind-class tsd-parent-kind-module tsd-is-not-exported">
 						<a href="_lib_main_d_.g.font.html" class="tsd-kind-icon">Font</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_lib_main_d_.g.font.html#size" class="tsd-kind-icon">size</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_lib_main_d_.g.font.html#destroy" class="tsd-kind-icon">destroy</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_lib_main_d_.g.font.html#destroyed" class="tsd-kind-icon">destroyed</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_lib_main_d_.g.font.html#glyphforcharacter" class="tsd-kind-icon">glyph<wbr>For<wbr>Character</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+								<a href="_lib_main_d_.g.font.html#measuretext" class="tsd-kind-icon">measure<wbr>Text</a>
 							</li>
 						</ul>
 					</li>
@@ -267,6 +294,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -315,7 +343,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>

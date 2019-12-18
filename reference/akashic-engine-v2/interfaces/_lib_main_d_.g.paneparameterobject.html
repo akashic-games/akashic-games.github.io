@@ -98,6 +98,8 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.paneparameterobject.html#anchorx" class="tsd-kind-icon">anchorX</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.paneparameterobject.html#anchory" class="tsd-kind-icon">anchorY</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported"><a href="_lib_main_d_.g.paneparameterobject.html#angle" class="tsd-kind-icon">angle</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.paneparameterobject.html#backgroundeffector" class="tsd-kind-icon">background<wbr>Effector</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.paneparameterobject.html#backgroundimage" class="tsd-kind-icon">background<wbr>Image</a></li>
@@ -128,13 +130,69 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+					<a name="anchorx" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> anchorX</h3>
+					<div class="tsd-signature tsd-kind-icon">anchorX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_lib_main_d_.g.object2dparameterobject.html">Object2DParameterObject</a>.<a href="_lib_main_d_.g.object2dparameterobject.html#anchorx">anchorX</a></p>
+						<ul>
+							<li>Defined in lib/main.d.ts:1850</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>オブジェクトのアンカーの横位置。アンカーについては以下の通り。</p>
+							<ul>
+								<li>アンカーとして設定した箇所がこのオブジェクトの基点 (位置、拡縮・回転の基点) となる。</li>
+								<li>単位は相対値 (左上端が (0, 0) 中央が (0.5, 0,5) 右下端が (1,1) ) である。
+									anchorXとanchorYの両方が省略された場合、このオブジェクトの位置 (x, y) は左上端を基準に決定され、拡縮・回転の基点は中央座標となる。
+									これは前バージョンとの互換性のための挙動である。
+								anchorX, anchorYのどちらかのみを指定した場合の動作は不定である。</li>
+							</ul>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+					<a name="anchory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> anchorY</h3>
+					<div class="tsd-signature tsd-kind-icon">anchorY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_lib_main_d_.g.object2dparameterobject.html">Object2DParameterObject</a>.<a href="_lib_main_d_.g.object2dparameterobject.html#anchory">anchorY</a></p>
+						<ul>
+							<li>Defined in lib/main.d.ts:1860</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>オブジェクトのアンカーの縦位置。アンカーについては以下の通り。</p>
+							<ul>
+								<li>アンカーとして設定した箇所がこのオブジェクトの基点 (位置、拡縮・回転の基点) となる。</li>
+								<li>単位は相対値 (左上端が (0, 0) 中央が (0.5, 0,5) 右下端が (1,1) ) である。
+									anchorXとanchorYの両方が省略された場合、このオブジェクトの位置 (x, y) は左上端を基準に決定され、拡縮・回転の基点は中央座標となる。
+									これは前バージョンとの互換性のための挙動である。
+								anchorX, anchorYのどちらかのみを指定した場合の動作は不定である。</li>
+							</ul>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
 					<a name="angle" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> angle</h3>
 					<div class="tsd-signature tsd-kind-icon">angle<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2dparameterobject.html">Object2DParameterObject</a>.<a href="_lib_main_d_.g.object2dparameterobject.html#angle">angle</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1791</li>
+							<li>Defined in lib/main.d.ts:1834</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -154,7 +212,7 @@
 					<div class="tsd-signature tsd-kind-icon">background<wbr>Effector<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.surfaceeffector.html" class="tsd-signature-type">SurfaceEffector</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5352</li>
+							<li>Defined in lib/main.d.ts:5450</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -175,7 +233,7 @@
 					<div class="tsd-signature tsd-kind-icon">background<wbr>Image<span class="tsd-signature-symbol">:</span> <a href="../classes/_lib_main_d_.g.imageasset.html" class="tsd-signature-type">ImageAsset</a><span class="tsd-signature-symbol"> | </span><a href="../classes/_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5341</li>
+							<li>Defined in lib/main.d.ts:5439</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -197,7 +255,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.eparameterobject.html">EParameterObject</a>.<a href="_lib_main_d_.g.eparameterobject.html#children">children</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1970</li>
+							<li>Defined in lib/main.d.ts:2061</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -218,7 +276,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2dparameterobject.html">Object2DParameterObject</a>.<a href="_lib_main_d_.g.object2dparameterobject.html#compositeoperation">compositeOperation</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1797</li>
+							<li>Defined in lib/main.d.ts:1840</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -240,7 +298,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_lib_main_d_.g.object2dparameterobject.html">Object2DParameterObject</a>.<a href="_lib_main_d_.g.object2dparameterobject.html#height">height</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:5335</li>
+							<li>Defined in lib/main.d.ts:5433</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -256,7 +314,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.eparameterobject.html">EParameterObject</a>.<a href="_lib_main_d_.g.eparameterobject.html#hidden">hidden</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1988</li>
+							<li>Defined in lib/main.d.ts:2079</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -277,7 +335,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.eparameterobject.html">EParameterObject</a>.<a href="_lib_main_d_.g.eparameterobject.html#id">id</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1995</li>
+							<li>Defined in lib/main.d.ts:2086</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -300,7 +358,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.eparameterobject.html">EParameterObject</a>.<a href="_lib_main_d_.g.eparameterobject.html#local">local</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1960</li>
+							<li>Defined in lib/main.d.ts:2051</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -324,7 +382,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2dparameterobject.html">Object2DParameterObject</a>.<a href="_lib_main_d_.g.object2dparameterobject.html#opacity">opacity</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1776</li>
+							<li>Defined in lib/main.d.ts:1819</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -345,7 +403,7 @@
 					<div class="tsd-signature tsd-kind-icon">padding<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.commonrect.html" class="tsd-signature-type">CommonRect</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:5346</li>
+							<li>Defined in lib/main.d.ts:5444</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -366,7 +424,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.eparameterobject.html">EParameterObject</a>.<a href="_lib_main_d_.g.eparameterobject.html#parent">parent</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1965</li>
+							<li>Defined in lib/main.d.ts:2056</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -387,7 +445,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2dparameterobject.html">Object2DParameterObject</a>.<a href="_lib_main_d_.g.object2dparameterobject.html#scalex">scaleX</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1781</li>
+							<li>Defined in lib/main.d.ts:1824</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -408,7 +466,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2dparameterobject.html">Object2DParameterObject</a>.<a href="_lib_main_d_.g.object2dparameterobject.html#scaley">scaleY</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1786</li>
+							<li>Defined in lib/main.d.ts:1829</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -429,7 +487,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.eparameterobject.html">EParameterObject</a>.<a href="_lib_main_d_.g.eparameterobject.html#scene">scene</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1951</li>
+							<li>Defined in lib/main.d.ts:2042</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -445,7 +503,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.eparameterobject.html">EParameterObject</a>.<a href="_lib_main_d_.g.eparameterobject.html#shaderprogram">shaderProgram</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:2015</li>
+							<li>Defined in lib/main.d.ts:2106</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -472,7 +530,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.eparameterobject.html">EParameterObject</a>.<a href="_lib_main_d_.g.eparameterobject.html#tag">tag</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:2001</li>
+							<li>Defined in lib/main.d.ts:2092</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -494,7 +552,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.eparameterobject.html">EParameterObject</a>.<a href="_lib_main_d_.g.eparameterobject.html#targetcameras">targetCameras</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1977</li>
+							<li>Defined in lib/main.d.ts:2068</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -517,7 +575,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.eparameterobject.html">EParameterObject</a>.<a href="_lib_main_d_.g.eparameterobject.html#touchable">touchable</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1983</li>
+							<li>Defined in lib/main.d.ts:2074</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -539,7 +597,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="_lib_main_d_.g.object2dparameterobject.html">Object2DParameterObject</a>.<a href="_lib_main_d_.g.object2dparameterobject.html#width">width</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:5331</li>
+							<li>Defined in lib/main.d.ts:5429</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -555,12 +613,12 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2dparameterobject.html">Object2DParameterObject</a>.<a href="_lib_main_d_.g.object2dparameterobject.html#x">x</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1755</li>
+							<li>Defined in lib/main.d.ts:1798</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>このオブジェクトの横位置。実際の座標位置はscaleX, scaleY, angleの値も考慮する必要がある。</p>
+							<p>このオブジェクトの横位置。実際の座標位置はscaleX, scaleY, angle, anchorX, anchorYの値も考慮する必要がある。</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>default</dt>
@@ -576,12 +634,12 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_lib_main_d_.g.object2dparameterobject.html">Object2DParameterObject</a>.<a href="_lib_main_d_.g.object2dparameterobject.html#y">y</a></p>
 						<ul>
-							<li>Defined in lib/main.d.ts:1760</li>
+							<li>Defined in lib/main.d.ts:1803</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>このオブジェクトの縦位置。実際の座標位置はscaleX, scaleY, angleの値も考慮する必要がある。</p>
+							<p>このオブジェクトの縦位置。実際の座標位置はscaleX, scaleY, angle, anchorX, anchorYの値も考慮する必要がある。</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>default</dt>
@@ -607,6 +665,12 @@
 					<li class="current tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
 						<a href="_lib_main_d_.g.paneparameterobject.html" class="tsd-kind-icon">Pane<wbr>Parameter<wbr>Object</a>
 						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+								<a href="_lib_main_d_.g.paneparameterobject.html#anchorx" class="tsd-kind-icon">anchorX</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
+								<a href="_lib_main_d_.g.paneparameterobject.html#anchory" class="tsd-kind-icon">anchorY</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
 								<a href="_lib_main_d_.g.paneparameterobject.html#angle" class="tsd-kind-icon">angle</a>
 							</li>
@@ -694,6 +758,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -742,7 +807,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>

@@ -107,13 +107,13 @@
 					<div class="tsd-signature tsd-kind-icon">destroyed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/0b19f0a/src/TweenOption.ts#L24">TweenOption.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/68e3e57/src/TweenOption.ts#L24">TweenOption.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>対象が削除されたかどうかを調べる関数を指定する。
-								例としてTweenの対象オブジェクトが<code>E</code>の場合は<code>E#destroyed()</code>を指定することになる。
+								省略された場合、Tweenの対象オブジェクトの<code>destroyed()</code>が与えられる(対象オブジェクトが<code>destroyed()</code>を持たない場合は<code>undefined</code>となる)。
 								この関数が<code>true</code>を返す場合、Tweenは自動的に処理を中止し、当該Tweenを抱えるTimelineもTweenも削除する。
 							呼び出された関数内での<code>this</code>はTweenの対象オブジェクトとなる。</p>
 						</div>
@@ -140,7 +140,7 @@
 					<div class="tsd-signature tsd-kind-icon">loop<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/0b19f0a/src/TweenOption.ts#L9">TweenOption.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/68e3e57/src/TweenOption.ts#L9">TweenOption.ts:9</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -156,13 +156,13 @@
 					<div class="tsd-signature tsd-kind-icon">modified<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/0b19f0a/src/TweenOption.ts#L16">TweenOption.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/68e3e57/src/TweenOption.ts#L16">TweenOption.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>1フレーム処理が完了するごとに呼び出す関数を指定する。
-								例としてTweenの対象オブジェクトが<code>E</code>の場合は<code>E#modified()</code>を指定することになる。
+								省略された場合、Tweenの対象オブジェクトの<code>modified()</code>が与えられる(対象オブジェクトが<code>modified()</code>を持たない場合は<code>undefined</code>となる)。
 							呼び出された関数内での<code>this</code>はTweenの対象オブジェクトとなる。</p>
 						</div>
 					</div>

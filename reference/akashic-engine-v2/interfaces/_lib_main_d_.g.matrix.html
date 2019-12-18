@@ -109,6 +109,8 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.matrix.html#scale" class="tsd-kind-icon">scale</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.matrix.html#update" class="tsd-kind-icon">update</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.matrix.html#updatebyinverse" class="tsd-kind-icon">update<wbr>ByInverse</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.matrix.html#updatebyinversewithanchor" class="tsd-kind-icon">update<wbr>ByInverse<wbr>With<wbr>Anchor</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported"><a href="_lib_main_d_.g.matrix.html#updatewithanchor" class="tsd-kind-icon">update<wbr>With<wbr>Anchor</a></li>
 							</ul>
 						</section>
 					</div>
@@ -122,17 +124,16 @@
 					<div class="tsd-signature tsd-kind-icon">_matrix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:790</li>
+							<li>Defined in lib/main.d.ts:801</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>変換本体。
 							CanvasRenderingContext2D#transformの値と等しい。</p>
-							<pre><code>  <span class="hljs-selector-tag">a</span> c e
-[ <span class="hljs-selector-tag">b</span> d f ]
-  <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span>
-</code></pre><p>配列の添え字では、 a(m11): 0, b(m12): 1, c(m21): 2, d(m22): 3, e(dx): 4, f(dy): 5 となる。
+							<pre><code>  a c e
+[ b d f ]
+  <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span></code></pre><p>配列の添え字では、 a(m11): 0, b(m12): 1, c(m21): 2, d(m22): 3, e(dx): 4, f(dy): 5 となる。
 							参考: <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/transform">https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/transform</a></p>
 						</div>
 					</div>
@@ -143,7 +144,7 @@
 					<div class="tsd-signature tsd-kind-icon">_modified<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:777</li>
+							<li>Defined in lib/main.d.ts:788</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -167,7 +168,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:832</li>
+									<li>Defined in lib/main.d.ts:869</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -189,7 +190,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:795</li>
+									<li>Defined in lib/main.d.ts:806</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -220,7 +221,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:844</li>
+									<li>Defined in lib/main.d.ts:881</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -252,7 +253,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:800</li>
+									<li>Defined in lib/main.d.ts:811</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -283,7 +284,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:849</li>
+									<li>Defined in lib/main.d.ts:886</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -314,7 +315,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:828</li>
+									<li>Defined in lib/main.d.ts:865</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -351,7 +352,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:838</li>
+									<li>Defined in lib/main.d.ts:875</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -388,7 +389,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:811</li>
+									<li>Defined in lib/main.d.ts:822</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -452,7 +453,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:822</li>
+									<li>Defined in lib/main.d.ts:846</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -499,6 +500,158 @@
 									<h5>y: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>y座標</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="updatebyinversewithanchor" class="tsd-anchor"></a>
+					<h3>update<wbr>ByInverse<wbr>With<wbr>Anchor</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>ByInverse<wbr>With<wbr>Anchor<span class="tsd-signature-symbol">(</span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, scaleX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, scaleY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, angle<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, anchorX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, anchorY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in lib/main.d.ts:859</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p><code>updateWithAnchor()</code> によって得られる行列の逆変換になるよう変換行列の値を再計算する。</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>width: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>対象の横幅</p>
+									</div>
+								</li>
+								<li>
+									<h5>height: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>scaleX: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>対象の横方向への拡大率</p>
+									</div>
+								</li>
+								<li>
+									<h5>scaleY: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>対象の縦方向への拡大率</p>
+									</div>
+								</li>
+								<li>
+									<h5>angle: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>角度。単位は <code>degree</code> であり <code>radian</code> ではない</p>
+									</div>
+								</li>
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>x座標</p>
+									</div>
+								</li>
+								<li>
+									<h5>y: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>y座標</p>
+									</div>
+								</li>
+								<li>
+									<h5>anchorX: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>アンカーの横位置。単位は相対値(左端が 0、中央が 0.5、右端が 1.0)である。</p>
+									</div>
+								</li>
+								<li>
+									<h5>anchorY: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>アンカーの縦位置。単位は相対値(上端が 0、中央が 0.5、下端が 1.0)である。</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="updatewithanchor" class="tsd-anchor"></a>
+					<h3>update<wbr>With<wbr>Anchor</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>With<wbr>Anchor<span class="tsd-signature-symbol">(</span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, scaleX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, scaleY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, angle<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, anchorX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, anchorY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in lib/main.d.ts:835</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>2D object利用の一般的な値を基に変換行列の値をアンカーを用いて再計算する。</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>width: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>対象の横幅</p>
+									</div>
+								</li>
+								<li>
+									<h5>height: <span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5>scaleX: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>対象の横方向への拡大率</p>
+									</div>
+								</li>
+								<li>
+									<h5>scaleY: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>対象の縦方向への拡大率</p>
+									</div>
+								</li>
+								<li>
+									<h5>angle: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>角度。単位は <code>degree</code> であり <code>radian</code> ではない</p>
+									</div>
+								</li>
+								<li>
+									<h5>x: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>x座標</p>
+									</div>
+								</li>
+								<li>
+									<h5>y: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>y座標</p>
+									</div>
+								</li>
+								<li>
+									<h5>anchorX: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>アンカーの横位置。単位は相対値(左端が 0、中央が 0.5、右端が 1.0)である。</p>
+									</div>
+								</li>
+								<li>
+									<h5>anchorY: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>アンカーの縦位置。単位は相対値(上端が 0、中央が 0.5、下端が 1.0)である。</p>
 									</div>
 								</li>
 							</ul>
@@ -556,6 +709,12 @@
 							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
 								<a href="_lib_main_d_.g.matrix.html#updatebyinverse" class="tsd-kind-icon">update<wbr>ByInverse</a>
 							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_lib_main_d_.g.matrix.html#updatebyinversewithanchor" class="tsd-kind-icon">update<wbr>ByInverse<wbr>With<wbr>Anchor</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_lib_main_d_.g.matrix.html#updatewithanchor" class="tsd-kind-icon">update<wbr>With<wbr>Anchor</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
@@ -577,6 +736,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -625,7 +785,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>

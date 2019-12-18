@@ -87,9 +87,9 @@
 						<li>グローバルアセットを取得するため、Game#assetsにアクセスする</li>
 						<li>LoadingSceneを変更するため、Game#loadingSceneにゲーム開発者の定義したLoadingSceneを指定する</li>
 						<li>スナップショット機能を作るため、Game#snapshotRequestにアクセスする</li>
-						<li>現在フォーカスされているCamera情報を得るため、Game#focusingCameraにアクセスする
-							10.AudioSystemを直接制御するため、Game#audioにアクセスする
-						11.Sceneのスタック情報を調べるため、Game#scenesにアクセスする</li>
+						<li>現在フォーカスされているCamera情報を得るため、Game#focusingCameraにアクセスする</li>
+						<li>AudioSystemを直接制御するため、Game#audioにアクセスする</li>
+						<li>Sceneのスタック情報を調べるため、Game#scenesにアクセスする</li>
 					</ol>
 				</div>
 			</section>
@@ -125,6 +125,8 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_cameraidx" class="tsd-kind-icon">_camera<wbr>Idx</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_configuration" class="tsd-kind-icon">_configuration</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_defaultloadingscene" class="tsd-kind-icon">_default<wbr>Loading<wbr>Scene</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_dopopscene" class="tsd-kind-icon">_do<wbr>Pop<wbr>Scene</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_dopushscene" class="tsd-kind-icon">_do<wbr>Push<wbr>Scene</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_eventtriggermap" class="tsd-kind-icon">_event<wbr>Trigger<wbr>Map</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_focusingcamera" class="tsd-kind-icon">_focusing<wbr>Camera</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_idx" class="tsd-kind-icon">_idx</a></li>
@@ -140,6 +142,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_scenechangerequests" class="tsd-kind-icon">_scene<wbr>Change<wbr>Requests</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_scenechanged" class="tsd-kind-icon">_scene<wbr>Changed</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_scriptcaches" class="tsd-kind-icon">_script<wbr>Caches</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_start" class="tsd-kind-icon">_start</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_started" class="tsd-kind-icon">_started</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#age" class="tsd-kind-icon">age</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#assetbase" class="tsd-kind-icon">asset<wbr>Base</a></li>
@@ -180,11 +183,10 @@
 						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_abortgame" class="tsd-kind-icon">_abort<wbr>Game</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_callsceneassetholderhandler" class="tsd-kind-icon">_call<wbr>Scene<wbr>Asset<wbr>Holder<wbr>Handler</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_decodeoperationpluginoperation" class="tsd-kind-icon">_decode<wbr>Operation<wbr>Plugin<wbr>Operation</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_destroy" class="tsd-kind-icon">_destroy</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_dopopscene" class="tsd-kind-icon">_do<wbr>Pop<wbr>Scene</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_dopushscene" class="tsd-kind-icon">_do<wbr>Push<wbr>Scene</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_firesceneloaded" class="tsd-kind-icon">_fire<wbr>Scene<wbr>Loaded</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_firesceneready" class="tsd-kind-icon">_fire<wbr>Scene<wbr>Ready</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_flushscenechangerequests" class="tsd-kind-icon">_flush<wbr>Scene<wbr>Change<wbr>Requests</a></li>
@@ -195,13 +197,12 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_reset" class="tsd-kind-icon">_reset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_setaudioplaybackrate" class="tsd-kind-icon">_set<wbr>Audio<wbr>Playback<wbr>Rate</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_setmuted" class="tsd-kind-icon">_set<wbr>Muted</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_start" class="tsd-kind-icon">_start</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_startloadingglobalassets" class="tsd-kind-icon">_start<wbr>Loading<wbr>Global<wbr>Assets</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_terminategame" class="tsd-kind-icon">_terminate<wbr>Game</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#_updateeventtriggers" class="tsd-kind-icon">_update<wbr>Event<wbr>Triggers</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#addeventfilter" class="tsd-kind-icon">add<wbr>Event<wbr>Filter</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#findpointsource" class="tsd-kind-icon">find<wbr>Point<wbr>Source</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#getcurrenttime" class="tsd-kind-icon">get<wbr>Current<wbr>Time</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#isactiveinstance" class="tsd-kind-icon">is<wbr>Active<wbr>Instance</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#leavegame" class="tsd-kind-icon">leave<wbr>Game</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#popscene" class="tsd-kind-icon">pop<wbr>Scene</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.game.html#pushscene" class="tsd-kind-icon">push<wbr>Scene</a></li>
@@ -234,7 +235,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4459</li>
+									<li>Defined in lib/main.d.ts:4550</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -298,7 +299,7 @@
 					<div class="tsd-signature tsd-kind-icon">_asset<wbr>Manager<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.assetmanager.html" class="tsd-signature-type">AssetManager</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4389</li>
+							<li>Defined in lib/main.d.ts:4480</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -313,7 +314,7 @@
 					<div class="tsd-signature tsd-kind-icon">_audio<wbr>System<wbr>Manager<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.audiosystemmanager.html" class="tsd-signature-type">AudioSystemManager</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4394</li>
+							<li>Defined in lib/main.d.ts:4485</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -328,7 +329,7 @@
 					<div class="tsd-signature tsd-kind-icon">_camera<wbr>Idx<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4428</li>
+							<li>Defined in lib/main.d.ts:4519</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -344,7 +345,7 @@
 					<div class="tsd-signature tsd-kind-icon">_configuration<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_lib_main_d_.g.gameconfiguration.html" class="tsd-signature-type">GameConfiguration</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4446</li>
+							<li>Defined in lib/main.d.ts:4537</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -359,7 +360,7 @@
 					<div class="tsd-signature tsd-kind-icon">_default<wbr>Loading<wbr>Scene<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.loadingscene.html" class="tsd-signature-type">LoadingScene</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4348</li>
+							<li>Defined in lib/main.d.ts:4439</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -373,12 +374,32 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+					<a name="_dopopscene" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _do<wbr>Pop<wbr>Scene</h3>
+					<div class="tsd-signature tsd-kind-icon">_do<wbr>Pop<wbr>Scene<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:4838</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+					<a name="_dopushscene" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _do<wbr>Push<wbr>Scene</h3>
+					<div class="tsd-signature tsd-kind-icon">_do<wbr>Push<wbr>Scene<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:4840</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 					<a name="_eventtriggermap" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _event<wbr>Trigger<wbr>Map</h3>
 					<div class="tsd-signature tsd-kind-icon">_event<wbr>Trigger<wbr>Map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4330</li>
+							<li>Defined in lib/main.d.ts:4421</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -401,7 +422,7 @@
 					<div class="tsd-signature tsd-kind-icon">_focusing<wbr>Camera<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_lib_main_d_.g.camera.html" class="tsd-signature-type">Camera</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4441</li>
+							<li>Defined in lib/main.d.ts:4532</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -417,7 +438,7 @@
 					<div class="tsd-signature tsd-kind-icon">_idx<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4410</li>
+							<li>Defined in lib/main.d.ts:4501</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -433,7 +454,7 @@
 					<div class="tsd-signature tsd-kind-icon">_initial<wbr>Scene<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.scene.html" class="tsd-signature-type">Scene</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4337</li>
+							<li>Defined in lib/main.d.ts:4428</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -448,7 +469,7 @@
 					<div class="tsd-signature tsd-kind-icon">_is<wbr>Terminated<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4434</li>
+							<li>Defined in lib/main.d.ts:4525</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -464,7 +485,7 @@
 					<div class="tsd-signature tsd-kind-icon">_loaded<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.trigger.html" class="tsd-signature-type">Trigger</a><span class="tsd-signature-symbol">&lt;</span><a href="_lib_main_d_.g.game.html" class="tsd-signature-type">Game</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4367</li>
+							<li>Defined in lib/main.d.ts:4458</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -479,7 +500,7 @@
 					<div class="tsd-signature tsd-kind-icon">_local<wbr>Db<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4415</li>
+							<li>Defined in lib/main.d.ts:4506</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -502,7 +523,7 @@
 					<div class="tsd-signature tsd-kind-icon">_local<wbr>Idx<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4422</li>
+							<li>Defined in lib/main.d.ts:4513</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -517,7 +538,7 @@
 					<div class="tsd-signature tsd-kind-icon">_main<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4379</li>
+							<li>Defined in lib/main.d.ts:4470</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -532,7 +553,7 @@
 					<div class="tsd-signature tsd-kind-icon">_main<wbr>Parameter<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_lib_main_d_.g.gamemainparameterobject.html" class="tsd-signature-type">GameMainParameterObject</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4384</li>
+							<li>Defined in lib/main.d.ts:4475</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -547,7 +568,7 @@
 					<div class="tsd-signature tsd-kind-icon">_operation<wbr>Plugin<wbr>Manager<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.operationpluginmanager.html" class="tsd-signature-type">OperationPluginManager</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4399</li>
+							<li>Defined in lib/main.d.ts:4490</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -562,7 +583,7 @@
 					<div class="tsd-signature tsd-kind-icon">_operation<wbr>Plugin<wbr>Operated<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.trigger.html" class="tsd-signature-type">Trigger</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_lib_main_d_.g.internaloperationpluginoperation.html" class="tsd-signature-type">InternalOperationPluginOperation</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4404</li>
+							<li>Defined in lib/main.d.ts:4495</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -577,7 +598,7 @@
 					<div class="tsd-signature tsd-kind-icon">_scene<wbr>Change<wbr>Requests<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4450</li>
+							<li>Defined in lib/main.d.ts:4541</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -592,7 +613,7 @@
 					<div class="tsd-signature tsd-kind-icon">_scene<wbr>Changed<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.trigger.html" class="tsd-signature-type">Trigger</a><span class="tsd-signature-symbol">&lt;</span><a href="_lib_main_d_.g.scene.html" class="tsd-signature-type">Scene</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4354</li>
+							<li>Defined in lib/main.d.ts:4445</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -608,7 +629,7 @@
 					<div class="tsd-signature tsd-kind-icon">_script<wbr>Caches<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4360</li>
+							<li>Defined in lib/main.d.ts:4451</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -627,12 +648,22 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+					<a name="_start" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _start</h3>
+					<div class="tsd-signature tsd-kind-icon">_start<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in lib/main.d.ts:4839</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 					<a name="_started" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _started</h3>
 					<div class="tsd-signature tsd-kind-icon">_started<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.trigger.html" class="tsd-signature-type">Trigger</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4374</li>
+							<li>Defined in lib/main.d.ts:4465</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -649,7 +680,7 @@
 					<div class="tsd-signature tsd-kind-icon">age<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4187</li>
+							<li>Defined in lib/main.d.ts:4278</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -665,7 +696,7 @@
 					<div class="tsd-signature tsd-kind-icon">asset<wbr>Base<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4220</li>
+							<li>Defined in lib/main.d.ts:4311</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -682,7 +713,7 @@
 					<div class="tsd-signature tsd-kind-icon">assets<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4203</li>
+							<li>Defined in lib/main.d.ts:4294</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -705,7 +736,7 @@
 					<div class="tsd-signature tsd-kind-icon">audio<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4236</li>
+							<li>Defined in lib/main.d.ts:4327</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -729,7 +760,7 @@
 					<div class="tsd-signature tsd-kind-icon">db<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4148</li>
+							<li>Defined in lib/main.d.ts:4239</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -752,7 +783,7 @@
 					<div class="tsd-signature tsd-kind-icon">default<wbr>Audio<wbr>System<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4242</li>
+							<li>Defined in lib/main.d.ts:4333</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -767,7 +798,7 @@
 					<div class="tsd-signature tsd-kind-icon">events<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_lib_main_d_.g.event.html" class="tsd-signature-type">Event</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4166</li>
+							<li>Defined in lib/main.d.ts:4257</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -782,7 +813,7 @@
 					<div class="tsd-signature tsd-kind-icon">external<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4258</li>
+							<li>Defined in lib/main.d.ts:4349</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -799,7 +830,7 @@
 					<div class="tsd-signature tsd-kind-icon">focusing<wbr>Camera<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_lib_main_d_.g.camera.html" class="tsd-signature-type">Camera</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4459</li>
+							<li>Defined in lib/main.d.ts:4550</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -818,7 +849,7 @@
 					<div class="tsd-signature tsd-kind-icon">fps<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4191</li>
+							<li>Defined in lib/main.d.ts:4282</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -833,7 +864,7 @@
 					<div class="tsd-signature tsd-kind-icon">height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4199</li>
+							<li>Defined in lib/main.d.ts:4290</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -848,7 +879,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Last<wbr>Tick<wbr>Local<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4312</li>
+							<li>Defined in lib/main.d.ts:4403</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -866,7 +897,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>Loaded<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4209</li>
+							<li>Defined in lib/main.d.ts:4300</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -881,7 +912,7 @@
 					<div class="tsd-signature tsd-kind-icon">join<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.trigger.html" class="tsd-signature-type">Trigger</a><span class="tsd-signature-symbol">&lt;</span><a href="_lib_main_d_.g.joinevent.html" class="tsd-signature-type">JoinEvent</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4170</li>
+							<li>Defined in lib/main.d.ts:4261</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -896,7 +927,7 @@
 					<div class="tsd-signature tsd-kind-icon">last<wbr>Omitted<wbr>Local<wbr>Tick<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4321</li>
+							<li>Defined in lib/main.d.ts:4412</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -914,7 +945,7 @@
 					<div class="tsd-signature tsd-kind-icon">leave<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.trigger.html" class="tsd-signature-type">Trigger</a><span class="tsd-signature-symbol">&lt;</span><a href="_lib_main_d_.g.leaveevent.html" class="tsd-signature-type">LeaveEvent</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4174</li>
+							<li>Defined in lib/main.d.ts:4265</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -929,7 +960,7 @@
 					<div class="tsd-signature tsd-kind-icon">loading<wbr>Scene<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.loadingscene.html" class="tsd-signature-type">LoadingScene</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4214</li>
+							<li>Defined in lib/main.d.ts:4305</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -945,7 +976,7 @@
 					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.logger.html" class="tsd-signature-type">Logger</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4246</li>
+							<li>Defined in lib/main.d.ts:4337</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -960,7 +991,7 @@
 					<div class="tsd-signature tsd-kind-icon">modified<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4182</li>
+							<li>Defined in lib/main.d.ts:4273</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -975,7 +1006,7 @@
 					<div class="tsd-signature tsd-kind-icon">operation<wbr>Plugins<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4287</li>
+							<li>Defined in lib/main.d.ts:4378</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -998,7 +1029,7 @@
 					<div class="tsd-signature tsd-kind-icon">play<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4283</li>
+							<li>Defined in lib/main.d.ts:4374</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1018,7 +1049,7 @@
 					<div class="tsd-signature tsd-kind-icon">random<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.randomgenerator.html" class="tsd-signature-type">RandomGenerator</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4162</li>
+							<li>Defined in lib/main.d.ts:4253</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1033,7 +1064,7 @@
 					<div class="tsd-signature tsd-kind-icon">renderers<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.renderer.html" class="tsd-signature-type">Renderer</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4154</li>
+							<li>Defined in lib/main.d.ts:4245</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1048,7 +1079,7 @@
 					<div class="tsd-signature tsd-kind-icon">resized<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.trigger.html" class="tsd-signature-type">Trigger</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_lib_main_d_.g.commonsize.html" class="tsd-signature-type">CommonSize</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4293</li>
+							<li>Defined in lib/main.d.ts:4384</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1063,7 +1094,7 @@
 					<div class="tsd-signature tsd-kind-icon">resource<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.resourcefactory.html" class="tsd-signature-type">ResourceFactory</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4262</li>
+							<li>Defined in lib/main.d.ts:4353</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1078,7 +1109,7 @@
 					<div class="tsd-signature tsd-kind-icon">scenes<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.scene.html" class="tsd-signature-type">Scene</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4158</li>
+							<li>Defined in lib/main.d.ts:4249</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1093,7 +1124,7 @@
 					<div class="tsd-signature tsd-kind-icon">seed<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.trigger.html" class="tsd-signature-type">Trigger</a><span class="tsd-signature-symbol">&lt;</span><a href="_lib_main_d_.g.seedevent.html" class="tsd-signature-type">SeedEvent</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4178</li>
+							<li>Defined in lib/main.d.ts:4269</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1108,7 +1139,7 @@
 					<div class="tsd-signature tsd-kind-icon">self<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4231</li>
+							<li>Defined in lib/main.d.ts:4322</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1128,7 +1159,7 @@
 					<div class="tsd-signature tsd-kind-icon">skipping<wbr>Changed<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.trigger.html" class="tsd-signature-type">Trigger</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4304</li>
+							<li>Defined in lib/main.d.ts:4395</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1148,7 +1179,7 @@
 					<div class="tsd-signature tsd-kind-icon">snapshot<wbr>Request<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.trigger.html" class="tsd-signature-type">Trigger</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4251</li>
+							<li>Defined in lib/main.d.ts:4342</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1164,7 +1195,7 @@
 					<div class="tsd-signature tsd-kind-icon">storage<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.storage.html" class="tsd-signature-type">Storage</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4266</li>
+							<li>Defined in lib/main.d.ts:4357</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1179,7 +1210,7 @@
 					<div class="tsd-signature tsd-kind-icon">surface<wbr>Atlas<wbr>Set<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.surfaceatlasset.html" class="tsd-signature-type">SurfaceAtlasSet</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4325</li>
+							<li>Defined in lib/main.d.ts:4416</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1194,7 +1225,7 @@
 					<div class="tsd-signature tsd-kind-icon">vars<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4272</li>
+							<li>Defined in lib/main.d.ts:4363</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1210,7 +1241,7 @@
 					<div class="tsd-signature tsd-kind-icon">width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:4195</li>
+							<li>Defined in lib/main.d.ts:4286</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -1223,6 +1254,25 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+					<a name="_abortgame" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _abort<wbr>Game</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">_abort<wbr>Game<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in lib/main.d.ts:4827</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 					<a name="_callsceneassetholderhandler" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _call<wbr>Scene<wbr>Asset<wbr>Holder<wbr>Handler</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
@@ -1232,7 +1282,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4670</li>
+									<li>Defined in lib/main.d.ts:4767</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1257,7 +1307,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4687</li>
+									<li>Defined in lib/main.d.ts:4784</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1288,7 +1338,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4698</li>
+									<li>Defined in lib/main.d.ts:4795</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1302,58 +1352,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-					<a name="_dopopscene" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _do<wbr>Pop<wbr>Scene</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">_do<wbr>Pop<wbr>Scene<span class="tsd-signature-symbol">(</span>preserveCurrent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, fireSceneChanged<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in lib/main.d.ts:4740</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>preserveCurrent: <span class="tsd-signature-type">any</span></h5>
-								</li>
-								<li>
-									<h5>fireSceneChanged: <span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-					<a name="_dopushscene" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _do<wbr>Push<wbr>Scene</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">_do<wbr>Push<wbr>Scene<span class="tsd-signature-symbol">(</span>scene<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, loadingScene<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in lib/main.d.ts:4742</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>scene: <span class="tsd-signature-type">any</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> loadingScene: <span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 					<a name="_firesceneloaded" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _fire<wbr>Scene<wbr>Loaded</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
@@ -1363,7 +1361,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4666</li>
+									<li>Defined in lib/main.d.ts:4763</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1388,7 +1386,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4662</li>
+									<li>Defined in lib/main.d.ts:4759</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1413,7 +1411,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4739</li>
+									<li>Defined in lib/main.d.ts:4837</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1439,7 +1437,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4725</li>
+									<li>Defined in lib/main.d.ts:4822</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1458,7 +1456,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4707</li>
+									<li>Defined in lib/main.d.ts:4804</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1491,7 +1489,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4674</li>
+									<li>Defined in lib/main.d.ts:4771</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1516,7 +1514,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4721</li>
+									<li>Defined in lib/main.d.ts:4818</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1535,7 +1533,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4692</li>
+									<li>Defined in lib/main.d.ts:4789</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1563,7 +1561,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4678</li>
+									<li>Defined in lib/main.d.ts:4775</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1588,7 +1586,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4682</li>
+									<li>Defined in lib/main.d.ts:4779</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1604,23 +1602,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-					<a name="_start" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _start</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">_start<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in lib/main.d.ts:4741</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 					<a name="_startloadingglobalassets" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _start<wbr>Loading<wbr>Global<wbr>Assets</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
@@ -1630,7 +1611,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4713</li>
+									<li>Defined in lib/main.d.ts:4810</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1638,25 +1619,6 @@
 									<p>グローバルアセットの読み込みを開始する。
 									単体テスト用 (mainSceneなど特定アセットの存在を前提にする_loadAndStart()はテストに使いにくい) なので、通常ゲーム開発者が利用することはない</p>
 								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-					<a name="_terminategame" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _terminate<wbr>Game</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">_terminate<wbr>Game<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in lib/main.d.ts:4729</li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
@@ -1672,7 +1634,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4717</li>
+									<li>Defined in lib/main.d.ts:4814</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1697,7 +1659,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4609</li>
+									<li>Defined in lib/main.d.ts:4702</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1739,7 +1701,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4544</li>
+									<li>Defined in lib/main.d.ts:4635</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1783,7 +1745,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4658</li>
+									<li>Defined in lib/main.d.ts:4748</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1792,10 +1754,32 @@
 								</div>
 								<p>値は1970-01-01T00:00:00Zからのミリ秒での経過時刻である。
 								<code>Date.now()</code> と異なり、この値は消化されたティックの数から算出される擬似的な時刻である。</p>
-								<p>この関数は試験的なものである。
-								現在の実装では、戻り値は小数点以下の値を含む。ゲーム開発者はそのことに依存すべきではない。</p>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a name="isactiveinstance" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> is<wbr>Active<wbr>Instance</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Active<wbr>Instance<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in lib/main.d.ts:4755</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>このインスタンスがアクティブインスタンスであるかどうか返す。</p>
+								</div>
+								<p>ゲーム開発者は、この値の真偽に起因する処理で、ゲームのローカルな実行状態を変更してはならず、
+								<code>raiseEvent()</code> などによって、グローバルな状態を更新する必要がある。</p>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1809,15 +1793,18 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4570</li>
+									<li>Defined in lib/main.d.ts:4663</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このゲームを離脱する。</p>
-								</div>
-								<p>多人数プレイの場合、他のクライアントでは <code>Game#leave</code> イベントがfireされる。
-								このメソッドの呼び出し後、このクライアントの操作要求は送信されない。</p>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd><p>現在このメソッドは呼び出しても何も行わない。</p>
+										<p>このゲームを離脱する。</p>
+										<p>多人数プレイの場合、他のクライアントでは <code>Game#leave</code> イベントがfireされる。
+										このメソッドの呼び出し後、このクライアントの操作要求は送信されない。</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
@@ -1833,7 +1820,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4504</li>
+									<li>Defined in lib/main.d.ts:4595</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1869,7 +1856,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4478</li>
+									<li>Defined in lib/main.d.ts:4569</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1904,7 +1891,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4586</li>
+									<li>Defined in lib/main.d.ts:4679</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1936,7 +1923,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4595</li>
+									<li>Defined in lib/main.d.ts:4688</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1969,7 +1956,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4555</li>
+									<li>Defined in lib/main.d.ts:4646</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2004,7 +1991,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4615</li>
+									<li>Defined in lib/main.d.ts:4708</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2035,7 +2022,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4530</li>
+									<li>Defined in lib/main.d.ts:4621</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2068,7 +2055,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4492</li>
+									<li>Defined in lib/main.d.ts:4583</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2111,7 +2098,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4648</li>
+									<li>Defined in lib/main.d.ts:4741</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2158,7 +2145,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4509</li>
+									<li>Defined in lib/main.d.ts:4600</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2181,7 +2168,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4628</li>
+									<li>Defined in lib/main.d.ts:4721</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2210,7 +2197,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4578</li>
+									<li>Defined in lib/main.d.ts:4671</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2235,7 +2222,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4521</li>
+									<li>Defined in lib/main.d.ts:4612</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2276,7 +2263,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:4563</li>
+									<li>Defined in lib/main.d.ts:4654</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2335,6 +2322,12 @@
 								<a href="_lib_main_d_.g.game.html#_defaultloadingscene" class="tsd-kind-icon">_default<wbr>Loading<wbr>Scene</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+								<a href="_lib_main_d_.g.game.html#_dopopscene" class="tsd-kind-icon">_do<wbr>Pop<wbr>Scene</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+								<a href="_lib_main_d_.g.game.html#_dopushscene" class="tsd-kind-icon">_do<wbr>Push<wbr>Scene</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 								<a href="_lib_main_d_.g.game.html#_eventtriggermap" class="tsd-kind-icon">_event<wbr>Trigger<wbr>Map</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
@@ -2378,6 +2371,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 								<a href="_lib_main_d_.g.game.html#_scriptcaches" class="tsd-kind-icon">_script<wbr>Caches</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+								<a href="_lib_main_d_.g.game.html#_start" class="tsd-kind-icon">_start</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 								<a href="_lib_main_d_.g.game.html#_started" class="tsd-kind-icon">_started</a>
@@ -2485,6 +2481,9 @@
 								<a href="_lib_main_d_.g.game.html#width" class="tsd-kind-icon">width</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+								<a href="_lib_main_d_.g.game.html#_abortgame" class="tsd-kind-icon">_abort<wbr>Game</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 								<a href="_lib_main_d_.g.game.html#_callsceneassetholderhandler" class="tsd-kind-icon">_call<wbr>Scene<wbr>Asset<wbr>Holder<wbr>Handler</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
@@ -2492,12 +2491,6 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 								<a href="_lib_main_d_.g.game.html#_destroy" class="tsd-kind-icon">_destroy</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-								<a href="_lib_main_d_.g.game.html#_dopopscene" class="tsd-kind-icon">_do<wbr>Pop<wbr>Scene</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-								<a href="_lib_main_d_.g.game.html#_dopushscene" class="tsd-kind-icon">_do<wbr>Push<wbr>Scene</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 								<a href="_lib_main_d_.g.game.html#_firesceneloaded" class="tsd-kind-icon">_fire<wbr>Scene<wbr>Loaded</a>
@@ -2530,13 +2523,7 @@
 								<a href="_lib_main_d_.g.game.html#_setmuted" class="tsd-kind-icon">_set<wbr>Muted</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-								<a href="_lib_main_d_.g.game.html#_start" class="tsd-kind-icon">_start</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 								<a href="_lib_main_d_.g.game.html#_startloadingglobalassets" class="tsd-kind-icon">_start<wbr>Loading<wbr>Global<wbr>Assets</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-								<a href="_lib_main_d_.g.game.html#_terminategame" class="tsd-kind-icon">_terminate<wbr>Game</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 								<a href="_lib_main_d_.g.game.html#_updateeventtriggers" class="tsd-kind-icon">_update<wbr>Event<wbr>Triggers</a>
@@ -2549,6 +2536,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_lib_main_d_.g.game.html#getcurrenttime" class="tsd-kind-icon">get<wbr>Current<wbr>Time</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+								<a href="_lib_main_d_.g.game.html#isactiveinstance" class="tsd-kind-icon">is<wbr>Active<wbr>Instance</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_lib_main_d_.g.game.html#leavegame" class="tsd-kind-icon">leave<wbr>Game</a>
@@ -2616,6 +2606,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -2664,7 +2655,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
