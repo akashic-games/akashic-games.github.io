@@ -56,10 +56,7 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_impl_scene_.html">&quot;impl/Scene&quot;</a>
-				</li>
-				<li>
-					<a href="_impl_scene_.scene.html">Scene</a>
+					<a href="scene.html">Scene</a>
 				</li>
 			</ul>
 			<h1>Class Scene&lt;Command, ActionData&gt;</h1>
@@ -74,9 +71,8 @@
 					<div class="lead">
 						<p>コントローラにより制御される g.Scene 。</p>
 					</div>
-					<p>本シーンはローカルティック補間モードかつ手動進行として初期化され、
-					すべての g.MessageEvent がフレームワーク側で握りつぶされる点に注意。</p>
-					<p>本クラスのインスタンス生成時に渡されるパラメータは以下のように破壊的に変更される点に注意。</p>
+					<p>本シーンを利用した場合、すべての g.MessageEvent がフレームワーク側で握りつぶされる点に注意。
+					また、以下のパラメータの初期値が g.Scene と異なる点に注意。</p>
 					<ul>
 						<li>local: g.LocalTickMode.InterpolateLocal</li>
 						<li>tickGenerationMode: g.TickGenerationMode.Manual</li>
@@ -113,7 +109,7 @@
 					<li><span class="tsd-signature-type">Destroyable</span></li>
 					<li><span class="tsd-signature-type">Registrable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></li>
 					<li><span class="tsd-signature-type">StorageLoaderHandler</span></li>
-					<li><a href="../interfaces/_view_.view.html" class="tsd-signature-type">View</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Command</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">ActionData</span><span class="tsd-signature-symbol">&gt;</span></li>
+					<li><a href="../interfaces/view.html" class="tsd-signature-type">View</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Command</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">ActionData</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -123,83 +119,86 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="_impl_scene_.scene.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="scene.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_assetholders" class="tsd-kind-icon">_asset<wbr>Holders</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="_impl_scene_.scene.html#_controller" class="tsd-kind-icon">_controller</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_loaded" class="tsd-kind-icon">_loaded</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_loadingstate" class="tsd-kind-icon">_loading<wbr>State</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_prefetchrequested" class="tsd-kind-icon">_prefetch<wbr>Requested</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_ready" class="tsd-kind-icon">_ready</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_sceneassetholder" class="tsd-kind-icon">_scene<wbr>Asset<wbr>Holder</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_storageloader" class="tsd-kind-icon">_storage<wbr>Loader</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_timer" class="tsd-kind-icon">_timer</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#assetloadcompleted" class="tsd-kind-icon">asset<wbr>Load<wbr>Completed</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#assetloadfailed" class="tsd-kind-icon">asset<wbr>Load<wbr>Failed</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#assetloaded" class="tsd-kind-icon">asset<wbr>Loaded</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#assets" class="tsd-kind-icon">assets</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#children" class="tsd-kind-icon">children</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_impl_scene_.scene.html#commandreceived" class="tsd-kind-icon">command<wbr>Received</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#game" class="tsd-kind-icon">game</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#loaded" class="tsd-kind-icon">loaded</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#local" class="tsd-kind-icon">local</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#message" class="tsd-kind-icon">message</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_impl_scene_.scene.html#oneventfiltered_bound" class="tsd-kind-icon">on<wbr>Event<wbr>Filtered_<wbr>bound</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#operation" class="tsd-kind-icon">operation</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#pointdowncapture" class="tsd-kind-icon">point<wbr>Down<wbr>Capture</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#pointmovecapture" class="tsd-kind-icon">point<wbr>Move<wbr>Capture</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#pointupcapture" class="tsd-kind-icon">point<wbr>UpCapture</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#state" class="tsd-kind-icon">state</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#statechanged" class="tsd-kind-icon">state<wbr>Changed</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#storagevalues" class="tsd-kind-icon">storage<wbr>Values</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#tickgenerationmode" class="tsd-kind-icon">tick<wbr>Generation<wbr>Mode</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#update" class="tsd-kind-icon">update</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_assetholders" class="tsd-kind-icon">_asset<wbr>Holders</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><a href="scene.html#_controller" class="tsd-kind-icon">_controller</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="scene.html#_generatestickmanually" class="tsd-kind-icon">_generates<wbr>Tick<wbr>Manually</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_loaded" class="tsd-kind-icon">_loaded</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_loadingstate" class="tsd-kind-icon">_loading<wbr>State</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_prefetchrequested" class="tsd-kind-icon">_prefetch<wbr>Requested</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_ready" class="tsd-kind-icon">_ready</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_sceneassetholder" class="tsd-kind-icon">_scene<wbr>Asset<wbr>Holder</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="scene.html#_sentinitialevents" class="tsd-kind-icon">_sent<wbr>Initial<wbr>Events</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_storageloader" class="tsd-kind-icon">_storage<wbr>Loader</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_timer" class="tsd-kind-icon">_timer</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#assetloadcompleted" class="tsd-kind-icon">asset<wbr>Load<wbr>Completed</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#assetloadfailed" class="tsd-kind-icon">asset<wbr>Load<wbr>Failed</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#assetloaded" class="tsd-kind-icon">asset<wbr>Loaded</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#assets" class="tsd-kind-icon">assets</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#children" class="tsd-kind-icon">children</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="scene.html#commandreceived" class="tsd-kind-icon">command<wbr>Received</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#game" class="tsd-kind-icon">game</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#loaded" class="tsd-kind-icon">loaded</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#local" class="tsd-kind-icon">local</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="scene.html#oneventfiltered_bound" class="tsd-kind-icon">on<wbr>Event<wbr>Filtered_<wbr>bound</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#operation" class="tsd-kind-icon">operation</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#pointdowncapture" class="tsd-kind-icon">point<wbr>Down<wbr>Capture</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#pointmovecapture" class="tsd-kind-icon">point<wbr>Move<wbr>Capture</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#pointupcapture" class="tsd-kind-icon">point<wbr>UpCapture</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#state" class="tsd-kind-icon">state</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#statechanged" class="tsd-kind-icon">state<wbr>Changed</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#storagevalues" class="tsd-kind-icon">storage<wbr>Values</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#tickgenerationmode" class="tsd-kind-icon">tick<wbr>Generation<wbr>Mode</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#update" class="tsd-kind-icon">update</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_activate" class="tsd-kind-icon">_activate</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_deactivate" class="tsd-kind-icon">_deactivate</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_fireloaded" class="tsd-kind-icon">_fire<wbr>Loaded</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_fireready" class="tsd-kind-icon">_fire<wbr>Ready</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_load" class="tsd-kind-icon">_load</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_needsloading" class="tsd-kind-icon">_needs<wbr>Loading</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_notifysceneready" class="tsd-kind-icon">_notify<wbr>Scene<wbr>Ready</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_onsceneassetsload" class="tsd-kind-icon">_on<wbr>Scene<wbr>Assets<wbr>Load</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_onstorageloaderror" class="tsd-kind-icon">_on<wbr>Storage<wbr>Load<wbr>Error</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="_impl_scene_.scene.html#_onstorageloaded" class="tsd-kind-icon">_on<wbr>Storage<wbr>Loaded</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#append" class="tsd-kind-icon">append</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#clearinterval" class="tsd-kind-icon">clear<wbr>Interval</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#cleartimeout" class="tsd-kind-icon">clear<wbr>Timeout</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#createtimer" class="tsd-kind-icon">create<wbr>Timer</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#deletetimer" class="tsd-kind-icon">delete<wbr>Timer</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="_impl_scene_.scene.html#destroy" class="tsd-kind-icon">destroy</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#destroyed" class="tsd-kind-icon">destroyed</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#end" class="tsd-kind-icon">end</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#findpointsourcebypoint" class="tsd-kind-icon">find<wbr>Point<wbr>Source<wbr>ByPoint</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_impl_scene_.scene.html#firecontrollerupdate" class="tsd-kind-icon">fire<wbr>Controller<wbr>Update</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#gotoscene" class="tsd-kind-icon">goto<wbr>Scene</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#insertbefore" class="tsd-kind-icon">insert<wbr>Before</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#iscurrentscene" class="tsd-kind-icon">is<wbr>Current<wbr>Scene</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#modified" class="tsd-kind-icon">modified</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_impl_scene_.scene.html#oneventfiltered" class="tsd-kind-icon">on<wbr>Event<wbr>Filtered</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_impl_scene_.scene.html#onreceivedmessageevent" class="tsd-kind-icon">on<wbr>Received<wbr>Message<wbr>Event</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_impl_scene_.scene.html#onstatechanged" class="tsd-kind-icon">on<wbr>State<wbr>Changed</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#prefetch" class="tsd-kind-icon">prefetch</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#register" class="tsd-kind-icon">register</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#remove" class="tsd-kind-icon">remove</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#requestassets" class="tsd-kind-icon">request<wbr>Assets</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_impl_scene_.scene.html#send" class="tsd-kind-icon">send</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#serializestoragevalues" class="tsd-kind-icon">serialize<wbr>Storage<wbr>Values</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#setinterval" class="tsd-kind-icon">set<wbr>Interval</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#settimeout" class="tsd-kind-icon">set<wbr>Timeout</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_impl_scene_.scene.html#unregister" class="tsd-kind-icon">unregister</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_activate" class="tsd-kind-icon">_activate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_deactivate" class="tsd-kind-icon">_deactivate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_fireloaded" class="tsd-kind-icon">_fire<wbr>Loaded</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_fireready" class="tsd-kind-icon">_fire<wbr>Ready</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_load" class="tsd-kind-icon">_load</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_needsloading" class="tsd-kind-icon">_needs<wbr>Loading</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_notifysceneready" class="tsd-kind-icon">_notify<wbr>Scene<wbr>Ready</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_onsceneassetsload" class="tsd-kind-icon">_on<wbr>Scene<wbr>Assets<wbr>Load</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_onstorageloaderror" class="tsd-kind-icon">_on<wbr>Storage<wbr>Load<wbr>Error</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="scene.html#_onstorageloaded" class="tsd-kind-icon">_on<wbr>Storage<wbr>Loaded</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#append" class="tsd-kind-icon">append</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#clearinterval" class="tsd-kind-icon">clear<wbr>Interval</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#cleartimeout" class="tsd-kind-icon">clear<wbr>Timeout</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#createtimer" class="tsd-kind-icon">create<wbr>Timer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#deletetimer" class="tsd-kind-icon">delete<wbr>Timer</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="scene.html#destroy" class="tsd-kind-icon">destroy</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#destroyed" class="tsd-kind-icon">destroyed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#end" class="tsd-kind-icon">end</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#findpointsourcebypoint" class="tsd-kind-icon">find<wbr>Point<wbr>Source<wbr>ByPoint</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="scene.html#firecontrollerupdate" class="tsd-kind-icon">fire<wbr>Controller<wbr>Update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#gotoscene" class="tsd-kind-icon">goto<wbr>Scene</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#insertbefore" class="tsd-kind-icon">insert<wbr>Before</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#iscurrentscene" class="tsd-kind-icon">is<wbr>Current<wbr>Scene</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#modified" class="tsd-kind-icon">modified</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="scene.html#oneventfiltered" class="tsd-kind-icon">on<wbr>Event<wbr>Filtered</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="scene.html#onreceivedmessageevent" class="tsd-kind-icon">on<wbr>Received<wbr>Message<wbr>Event</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="scene.html#onstatechanged" class="tsd-kind-icon">on<wbr>State<wbr>Changed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#prefetch" class="tsd-kind-icon">prefetch</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="scene.html#raisetickifmessageeventexists" class="tsd-kind-icon">raise<wbr>Tick<wbr>IfMessage<wbr>Event<wbr>Exists</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#register" class="tsd-kind-icon">register</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#remove" class="tsd-kind-icon">remove</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#requestassets" class="tsd-kind-icon">request<wbr>Assets</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="scene.html#send" class="tsd-kind-icon">send</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#serializestoragevalues" class="tsd-kind-icon">serialize<wbr>Storage<wbr>Values</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#setinterval" class="tsd-kind-icon">set<wbr>Interval</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#settimeout" class="tsd-kind-icon">set<wbr>Timeout</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="scene.html#unregister" class="tsd-kind-icon">unregister</a></li>
 							</ul>
 						</section>
 					</div>
@@ -211,23 +210,23 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Scene<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/_impl_scene_.sceneparameters.html" class="tsd-signature-type">SceneParameters</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Command</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">ActionData</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_impl_scene_.scene.html" class="tsd-signature-type">Scene</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Scene<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="../interfaces/sceneparameters.html" class="tsd-signature-type">SceneParameters</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Command</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">ActionData</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="scene.html" class="tsd-signature-type">Scene</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides Scene.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/38026f4/packages/coe/src/impl/Scene.ts#L31">impl/Scene.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/eae4be4/packages/coe/src/impl/Scene.ts#L30">packages/coe/src/impl/Scene.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>params: <a href="../interfaces/_impl_scene_.sceneparameters.html" class="tsd-signature-type">SceneParameters</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Command</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">ActionData</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>params: <a href="../interfaces/sceneparameters.html" class="tsd-signature-type">SceneParameters</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Command</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">ActionData</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_impl_scene_.scene.html" class="tsd-signature-type">Scene</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="scene.html" class="tsd-signature-type">Scene</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -241,7 +240,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene._assetHolders</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2995</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3076</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -253,10 +252,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-protected">
 					<a name="_controller" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> _controller</h3>
-					<div class="tsd-signature tsd-kind-icon">_controller<span class="tsd-signature-symbol">:</span> <a href="_impl_basecontroller_.basecontroller.html" class="tsd-signature-type">BaseController</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Command</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">ActionData</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">_controller<span class="tsd-signature-symbol">:</span> <a href="basecontroller.html" class="tsd-signature-type">BaseController</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Command</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">ActionData</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/38026f4/packages/coe/src/impl/Scene.ts#L30">impl/Scene.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/eae4be4/packages/coe/src/impl/Scene.ts#L29">packages/coe/src/impl/Scene.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -267,6 +266,16 @@
 						<code>this.send()</code> のみで Controller と通信を行うべきである。</p>
 					</div>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_generatestickmanually" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _generates<wbr>Tick<wbr>Manually</h3>
+					<div class="tsd-signature tsd-kind-icon">_generates<wbr>Tick<wbr>Manually<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/eae4be4/packages/coe/src/impl/Scene.ts#L20">packages/coe/src/impl/Scene.ts:20</a></li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 					<a name="_loaded" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _loaded</h3>
@@ -274,7 +283,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene._loaded</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2968</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3049</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -303,7 +312,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene._loadingState</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2980</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3061</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -320,7 +329,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene._prefetchRequested</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2974</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3055</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -337,7 +346,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene._ready</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2950</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3031</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -353,7 +362,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene._sceneAssetHolder</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2990</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3071</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -362,6 +371,16 @@
 						</div>
 					</div>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_sentinitialevents" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _sent<wbr>Initial<wbr>Events</h3>
+					<div class="tsd-signature tsd-kind-icon">_sent<wbr>Initial<wbr>Events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/eae4be4/packages/coe/src/impl/Scene.ts#L21">packages/coe/src/impl/Scene.ts:21</a></li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 					<a name="_storageloader" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _storage<wbr>Loader</h3>
@@ -369,7 +388,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene._storageLoader</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2945</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3026</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -382,7 +401,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene._timer</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2985</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3066</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -398,7 +417,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.assetLoadCompleted</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2899</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:2980</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -416,7 +435,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.assetLoadFailed</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2892</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:2973</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -435,7 +454,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.assetLoaded</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2884</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:2965</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -453,7 +472,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.assets</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2829</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:2910</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -479,7 +498,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.children</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2822</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:2903</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -492,11 +511,11 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="commandreceived" class="tsd-anchor"></a>
 					<h3>command<wbr>Received</h3>
-					<div class="tsd-signature tsd-kind-icon">command<wbr>Received<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Command</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">command<wbr>Received<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Command</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new g.Trigger()</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/_view_.view.html">View</a>.<a href="../interfaces/_view_.view.html#commandreceived">commandReceived</a></p>
+						<p>Implementation of <a href="../interfaces/view.html">View</a>.<a href="../interfaces/view.html#commandreceived">commandReceived</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/38026f4/packages/coe/src/impl/Scene.ts#L22">impl/Scene.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/eae4be4/packages/coe/src/impl/Scene.ts#L19">packages/coe/src/impl/Scene.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -507,7 +526,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.game</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2835</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:2916</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -523,7 +542,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.loaded</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2877</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:2958</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -541,7 +560,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.local</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2853</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:2934</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -570,7 +589,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.message</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2912</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:2993</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -586,7 +605,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.name</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2866</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:2947</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -601,7 +620,7 @@
 					<div class="tsd-signature tsd-kind-icon">on<wbr>Event<wbr>Filtered_<wbr>bound<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/38026f4/packages/coe/src/impl/Scene.ts#L31">impl/Scene.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/eae4be4/packages/coe/src/impl/Scene.ts#L30">packages/coe/src/impl/Scene.ts:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -633,7 +652,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.operation</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2937</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3018</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -649,7 +668,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.pointDownCapture</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2919</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3000</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -667,7 +686,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.pointMoveCapture</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2926</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3007</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -685,7 +704,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.pointUpCapture</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2933</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3014</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -703,7 +722,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.state</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2903</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:2984</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -719,7 +738,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.stateChanged</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2908</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:2989</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -736,7 +755,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.storageValues</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2941</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3022</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -752,7 +771,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.tickGenerationMode</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2862</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:2943</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -772,7 +791,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from Scene.update</p>
 						<ul>
-							<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:2870</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:2951</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -795,7 +814,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene._activate</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3201</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3282</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -815,7 +834,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene._deactivate</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3205</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3286</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -835,7 +854,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene._fireLoaded</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3237</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3318</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -855,7 +874,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene._fireReady</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3233</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3314</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -875,7 +894,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene._load</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3213</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3294</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -895,7 +914,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene._needsLoading</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3209</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3290</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -915,7 +934,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene._notifySceneReady</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3229</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3310</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -935,7 +954,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene._onSceneAssetsLoad</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3217</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3298</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -955,7 +974,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene._onStorageLoadError</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3221</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3302</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -981,7 +1000,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene._onStorageLoaded</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3225</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3306</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1001,7 +1020,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.append</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3156</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3237</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1034,7 +1053,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.clearInterval</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3072</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3153</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1066,7 +1085,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.clearTimeout</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3112</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3193</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1098,7 +1117,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.createTimer</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3033</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3114</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1133,7 +1152,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.deleteTimer</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3038</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3119</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1165,7 +1184,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides Scene.destroy</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/38026f4/packages/coe/src/impl/Scene.ts#L58">impl/Scene.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/eae4be4/packages/coe/src/impl/Scene.ts#L61">packages/coe/src/impl/Scene.ts:61</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1183,7 +1202,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.destroyed</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3024</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3105</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1206,7 +1225,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.end</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3134</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3215</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1232,7 +1251,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.findPointSourceByPoint</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3179</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3260</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1275,7 +1294,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/38026f4/packages/coe/src/impl/Scene.ts#L70">impl/Scene.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/eae4be4/packages/coe/src/impl/Scene.ts#L73">packages/coe/src/impl/Scene.ts:73</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1293,7 +1312,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.gotoScene</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3126</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3207</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1334,7 +1353,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.insertBefore</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3166</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3247</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1374,7 +1393,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.isCurrentScene</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3116</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3197</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1397,7 +1416,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.modified</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3008</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3089</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1430,7 +1449,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/38026f4/packages/coe/src/impl/Scene.ts#L74">impl/Scene.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/eae4be4/packages/coe/src/impl/Scene.ts#L77">packages/coe/src/impl/Scene.ts:77</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1453,7 +1472,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/38026f4/packages/coe/src/impl/Scene.ts#L114">impl/Scene.ts:114</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/eae4be4/packages/coe/src/impl/Scene.ts#L136">packages/coe/src/impl/Scene.ts:136</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1476,7 +1495,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/38026f4/packages/coe/src/impl/Scene.ts#L118">impl/Scene.ts:118</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/eae4be4/packages/coe/src/impl/Scene.ts#L140">packages/coe/src/impl/Scene.ts:140</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1500,7 +1519,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.prefetch</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3190</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3271</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1517,6 +1536,23 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="raisetickifmessageeventexists" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> raise<wbr>Tick<wbr>IfMessage<wbr>Event<wbr>Exists</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">raise<wbr>Tick<wbr>IfMessage<wbr>Event<wbr>Exists<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/eae4be4/packages/coe/src/impl/Scene.ts#L127">packages/coe/src/impl/Scene.ts:127</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="register" class="tsd-anchor"></a>
 					<h3>register</h3>
@@ -1528,7 +1564,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.register</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3141</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3222</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1561,7 +1597,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.remove</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3172</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3253</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1594,7 +1630,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.requestAssets</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3197</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3278</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1632,7 +1668,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/38026f4/packages/coe/src/impl/Scene.ts#L53">impl/Scene.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/eae4be4/packages/coe/src/impl/Scene.ts#L56">packages/coe/src/impl/Scene.ts:56</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1659,7 +1695,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.serializeStorageValues</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3196</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3277</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1685,7 +1721,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.setInterval</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3050</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3131</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1736,7 +1772,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.setInterval</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3059</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3140</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1789,7 +1825,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.setInterval</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3067</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3148</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1847,7 +1883,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.setTimeout</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3088</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3169</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1900,7 +1936,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.setTimeout</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3098</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3179</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1953,7 +1989,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.setTimeout</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3107</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3188</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2009,7 +2045,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Scene.unregister</p>
 								<ul>
-									<li>Defined in /tmp/akashic-website-references-updater_4/lib/coe/node_modules/@akashic/akashic-engine/lib/main.d.ts:3148</li>
+									<li>Defined in node_modules/@akashic/akashic-engine/lib/main.d.ts:3229</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2039,258 +2075,333 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_controller_.html">"<wbr>Controller"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_scenewatcher_.html">"<wbr>Scene<wbr>Watcher"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_view_.html">"<wbr>View"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_global_.html">"global"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_impl_basecontroller_.html">"impl/<wbr>Base<wbr>Controller"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_impl_coecontroller_.html">"impl/COEController"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_impl_coemessageeventhandler_.html">"impl/COEMessage<wbr>Event<wbr>Handler"</a>
-					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_impl_scene_.html">"impl/<wbr>Scene"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_impl_index_.html">"impl/index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_index_.html">"index"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_parameters_.html">"parameters"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_session_.html">"session"</a>
-					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="basecontroller.html" class="tsd-kind-icon">Base<wbr>Controller</a>
+					</li>
+					<li class=" tsd-kind-class tsd-has-type-parameter">
+						<a href="coecontroller.html" class="tsd-kind-icon">COEController</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="coemessageeventhandler.html" class="tsd-kind-icon">COEMessage<wbr>Event<wbr>Handler</a>
+					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="_impl_scene_.scene.html" class="tsd-kind-icon">Scene</a>
+					<li class="current tsd-kind-class tsd-has-type-parameter">
+						<a href="scene.html" class="tsd-kind-icon">Scene</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-								<a href="_impl_scene_.scene.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="scene.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_assetholders" class="tsd-kind-icon">_asset<wbr>Holders</a>
+								<a href="scene.html#_assetholders" class="tsd-kind-icon">_asset<wbr>Holders</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-protected">
-								<a href="_impl_scene_.scene.html#_controller" class="tsd-kind-icon">_controller</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_loaded" class="tsd-kind-icon">_loaded</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_loadingstate" class="tsd-kind-icon">_loading<wbr>State</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_prefetchrequested" class="tsd-kind-icon">_prefetch<wbr>Requested</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_ready" class="tsd-kind-icon">_ready</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_sceneassetholder" class="tsd-kind-icon">_scene<wbr>Asset<wbr>Holder</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_storageloader" class="tsd-kind-icon">_storage<wbr>Loader</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_timer" class="tsd-kind-icon">_timer</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#assetloadcompleted" class="tsd-kind-icon">asset<wbr>Load<wbr>Completed</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#assetloadfailed" class="tsd-kind-icon">asset<wbr>Load<wbr>Failed</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#assetloaded" class="tsd-kind-icon">asset<wbr>Loaded</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#assets" class="tsd-kind-icon">assets</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#children" class="tsd-kind-icon">children</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_impl_scene_.scene.html#commandreceived" class="tsd-kind-icon">command<wbr>Received</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#game" class="tsd-kind-icon">game</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#loaded" class="tsd-kind-icon">loaded</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#local" class="tsd-kind-icon">local</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#message" class="tsd-kind-icon">message</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#name" class="tsd-kind-icon">name</a>
+								<a href="scene.html#_controller" class="tsd-kind-icon">_controller</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_impl_scene_.scene.html#oneventfiltered_bound" class="tsd-kind-icon">on<wbr>Event<wbr>Filtered_<wbr>bound</a>
+								<a href="scene.html#_generatestickmanually" class="tsd-kind-icon">_generates<wbr>Tick<wbr>Manually</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="scene.html#_loaded" class="tsd-kind-icon">_loaded</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="scene.html#_loadingstate" class="tsd-kind-icon">_loading<wbr>State</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="scene.html#_prefetchrequested" class="tsd-kind-icon">_prefetch<wbr>Requested</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="scene.html#_ready" class="tsd-kind-icon">_ready</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="scene.html#_sceneassetholder" class="tsd-kind-icon">_scene<wbr>Asset<wbr>Holder</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="scene.html#_sentinitialevents" class="tsd-kind-icon">_sent<wbr>Initial<wbr>Events</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="scene.html#_storageloader" class="tsd-kind-icon">_storage<wbr>Loader</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
+								<a href="scene.html#_timer" class="tsd-kind-icon">_timer</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#operation" class="tsd-kind-icon">operation</a>
+								<a href="scene.html#assetloadcompleted" class="tsd-kind-icon">asset<wbr>Load<wbr>Completed</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#pointdowncapture" class="tsd-kind-icon">point<wbr>Down<wbr>Capture</a>
+								<a href="scene.html#assetloadfailed" class="tsd-kind-icon">asset<wbr>Load<wbr>Failed</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#pointmovecapture" class="tsd-kind-icon">point<wbr>Move<wbr>Capture</a>
+								<a href="scene.html#assetloaded" class="tsd-kind-icon">asset<wbr>Loaded</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#pointupcapture" class="tsd-kind-icon">point<wbr>UpCapture</a>
+								<a href="scene.html#assets" class="tsd-kind-icon">assets</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#state" class="tsd-kind-icon">state</a>
+								<a href="scene.html#children" class="tsd-kind-icon">children</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="scene.html#commandreceived" class="tsd-kind-icon">command<wbr>Received</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#statechanged" class="tsd-kind-icon">state<wbr>Changed</a>
+								<a href="scene.html#game" class="tsd-kind-icon">game</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#storagevalues" class="tsd-kind-icon">storage<wbr>Values</a>
+								<a href="scene.html#loaded" class="tsd-kind-icon">loaded</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#tickgenerationmode" class="tsd-kind-icon">tick<wbr>Generation<wbr>Mode</a>
+								<a href="scene.html#local" class="tsd-kind-icon">local</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#update" class="tsd-kind-icon">update</a>
+								<a href="scene.html#message" class="tsd-kind-icon">message</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="scene.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="scene.html#oneventfiltered_bound" class="tsd-kind-icon">on<wbr>Event<wbr>Filtered_<wbr>bound</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="scene.html#operation" class="tsd-kind-icon">operation</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="scene.html#pointdowncapture" class="tsd-kind-icon">point<wbr>Down<wbr>Capture</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="scene.html#pointmovecapture" class="tsd-kind-icon">point<wbr>Move<wbr>Capture</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="scene.html#pointupcapture" class="tsd-kind-icon">point<wbr>UpCapture</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="scene.html#state" class="tsd-kind-icon">state</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="scene.html#statechanged" class="tsd-kind-icon">state<wbr>Changed</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="scene.html#storagevalues" class="tsd-kind-icon">storage<wbr>Values</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="scene.html#tickgenerationmode" class="tsd-kind-icon">tick<wbr>Generation<wbr>Mode</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="scene.html#update" class="tsd-kind-icon">update</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_activate" class="tsd-kind-icon">_activate</a>
+								<a href="scene.html#_activate" class="tsd-kind-icon">_activate</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_deactivate" class="tsd-kind-icon">_deactivate</a>
+								<a href="scene.html#_deactivate" class="tsd-kind-icon">_deactivate</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_fireloaded" class="tsd-kind-icon">_fire<wbr>Loaded</a>
+								<a href="scene.html#_fireloaded" class="tsd-kind-icon">_fire<wbr>Loaded</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_fireready" class="tsd-kind-icon">_fire<wbr>Ready</a>
+								<a href="scene.html#_fireready" class="tsd-kind-icon">_fire<wbr>Ready</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_load" class="tsd-kind-icon">_load</a>
+								<a href="scene.html#_load" class="tsd-kind-icon">_load</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_needsloading" class="tsd-kind-icon">_needs<wbr>Loading</a>
+								<a href="scene.html#_needsloading" class="tsd-kind-icon">_needs<wbr>Loading</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_notifysceneready" class="tsd-kind-icon">_notify<wbr>Scene<wbr>Ready</a>
+								<a href="scene.html#_notifysceneready" class="tsd-kind-icon">_notify<wbr>Scene<wbr>Ready</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_onsceneassetsload" class="tsd-kind-icon">_on<wbr>Scene<wbr>Assets<wbr>Load</a>
+								<a href="scene.html#_onsceneassetsload" class="tsd-kind-icon">_on<wbr>Scene<wbr>Assets<wbr>Load</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_onstorageloaderror" class="tsd-kind-icon">_on<wbr>Storage<wbr>Load<wbr>Error</a>
+								<a href="scene.html#_onstorageloaderror" class="tsd-kind-icon">_on<wbr>Storage<wbr>Load<wbr>Error</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
-								<a href="_impl_scene_.scene.html#_onstorageloaded" class="tsd-kind-icon">_on<wbr>Storage<wbr>Loaded</a>
+								<a href="scene.html#_onstorageloaded" class="tsd-kind-icon">_on<wbr>Storage<wbr>Loaded</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#append" class="tsd-kind-icon">append</a>
+								<a href="scene.html#append" class="tsd-kind-icon">append</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#clearinterval" class="tsd-kind-icon">clear<wbr>Interval</a>
+								<a href="scene.html#clearinterval" class="tsd-kind-icon">clear<wbr>Interval</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#cleartimeout" class="tsd-kind-icon">clear<wbr>Timeout</a>
+								<a href="scene.html#cleartimeout" class="tsd-kind-icon">clear<wbr>Timeout</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#createtimer" class="tsd-kind-icon">create<wbr>Timer</a>
+								<a href="scene.html#createtimer" class="tsd-kind-icon">create<wbr>Timer</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#deletetimer" class="tsd-kind-icon">delete<wbr>Timer</a>
+								<a href="scene.html#deletetimer" class="tsd-kind-icon">delete<wbr>Timer</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="_impl_scene_.scene.html#destroy" class="tsd-kind-icon">destroy</a>
+								<a href="scene.html#destroy" class="tsd-kind-icon">destroy</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#destroyed" class="tsd-kind-icon">destroyed</a>
+								<a href="scene.html#destroyed" class="tsd-kind-icon">destroyed</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#end" class="tsd-kind-icon">end</a>
+								<a href="scene.html#end" class="tsd-kind-icon">end</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#findpointsourcebypoint" class="tsd-kind-icon">find<wbr>Point<wbr>Source<wbr>ByPoint</a>
+								<a href="scene.html#findpointsourcebypoint" class="tsd-kind-icon">find<wbr>Point<wbr>Source<wbr>ByPoint</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="_impl_scene_.scene.html#firecontrollerupdate" class="tsd-kind-icon">fire<wbr>Controller<wbr>Update</a>
+								<a href="scene.html#firecontrollerupdate" class="tsd-kind-icon">fire<wbr>Controller<wbr>Update</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#gotoscene" class="tsd-kind-icon">goto<wbr>Scene</a>
+								<a href="scene.html#gotoscene" class="tsd-kind-icon">goto<wbr>Scene</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#insertbefore" class="tsd-kind-icon">insert<wbr>Before</a>
+								<a href="scene.html#insertbefore" class="tsd-kind-icon">insert<wbr>Before</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#iscurrentscene" class="tsd-kind-icon">is<wbr>Current<wbr>Scene</a>
+								<a href="scene.html#iscurrentscene" class="tsd-kind-icon">is<wbr>Current<wbr>Scene</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#modified" class="tsd-kind-icon">modified</a>
+								<a href="scene.html#modified" class="tsd-kind-icon">modified</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="_impl_scene_.scene.html#oneventfiltered" class="tsd-kind-icon">on<wbr>Event<wbr>Filtered</a>
+								<a href="scene.html#oneventfiltered" class="tsd-kind-icon">on<wbr>Event<wbr>Filtered</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="_impl_scene_.scene.html#onreceivedmessageevent" class="tsd-kind-icon">on<wbr>Received<wbr>Message<wbr>Event</a>
+								<a href="scene.html#onreceivedmessageevent" class="tsd-kind-icon">on<wbr>Received<wbr>Message<wbr>Event</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="_impl_scene_.scene.html#onstatechanged" class="tsd-kind-icon">on<wbr>State<wbr>Changed</a>
+								<a href="scene.html#onstatechanged" class="tsd-kind-icon">on<wbr>State<wbr>Changed</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#prefetch" class="tsd-kind-icon">prefetch</a>
+								<a href="scene.html#prefetch" class="tsd-kind-icon">prefetch</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="scene.html#raisetickifmessageeventexists" class="tsd-kind-icon">raise<wbr>Tick<wbr>IfMessage<wbr>Event<wbr>Exists</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#register" class="tsd-kind-icon">register</a>
+								<a href="scene.html#register" class="tsd-kind-icon">register</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#remove" class="tsd-kind-icon">remove</a>
+								<a href="scene.html#remove" class="tsd-kind-icon">remove</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#requestassets" class="tsd-kind-icon">request<wbr>Assets</a>
+								<a href="scene.html#requestassets" class="tsd-kind-icon">request<wbr>Assets</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_impl_scene_.scene.html#send" class="tsd-kind-icon">send</a>
+								<a href="scene.html#send" class="tsd-kind-icon">send</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#serializestoragevalues" class="tsd-kind-icon">serialize<wbr>Storage<wbr>Values</a>
+								<a href="scene.html#serializestoragevalues" class="tsd-kind-icon">serialize<wbr>Storage<wbr>Values</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#setinterval" class="tsd-kind-icon">set<wbr>Interval</a>
+								<a href="scene.html#setinterval" class="tsd-kind-icon">set<wbr>Interval</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#settimeout" class="tsd-kind-icon">set<wbr>Timeout</a>
+								<a href="scene.html#settimeout" class="tsd-kind-icon">set<wbr>Timeout</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="_impl_scene_.scene.html#unregister" class="tsd-kind-icon">unregister</a>
+								<a href="scene.html#unregister" class="tsd-kind-icon">unregister</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-has-type-parameter">
-						<a href="../interfaces/_impl_scene_.sceneparameters.html" class="tsd-kind-icon">Scene<wbr>Parameters</a>
+					<li class=" tsd-kind-class">
+						<a href="scenewatcher.html" class="tsd-kind-icon">Scene<wbr>Watcher</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="../interfaces/action.html" class="tsd-kind-icon">Action</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-is-not-exported">
+						<a href="../interfaces/coeextendchildsessionendmessage.html" class="tsd-kind-icon">COEExtend<wbr>Child<wbr>Session<wbr>End<wbr>Message</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="../interfaces/controller.html" class="tsd-kind-icon">Controller</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/initializearguments.html" class="tsd-kind-icon">Initialize<wbr>Arguments</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/initializeparameters.html" class="tsd-kind-icon">Initialize<wbr>Parameters</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/permission.html" class="tsd-kind-icon">Permission</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="../interfaces/sceneparameters.html" class="tsd-kind-icon">Scene<wbr>Parameters</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="../interfaces/startlocalsessionparameters.html" class="tsd-kind-icon">Start<wbr>Local<wbr>Session<wbr>Parameters</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="../interfaces/view.html" class="tsd-kind-icon">View</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-is-not-exported">
+						<a href="../globals.html#coemessage" class="tsd-kind-icon">COEMessage</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="../globals.html#trustedplayerid" class="tsd-kind-icon">Trusted<wbr>Player<wbr>Id</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="../globals.html#debugmode" class="tsd-kind-icon">debug<wbr>Mode</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="../globals.html#joinedplayerids" class="tsd-kind-icon">joined<wbr>Player<wbr>Ids</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="../globals.html#localsessioncount" class="tsd-kind-icon">local<wbr>Session<wbr>Count</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="../globals.html#roles" class="tsd-kind-icon">roles</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-is-not-exported">
+						<a href="../globals.html#window" class="tsd-kind-icon">window</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#addjoinedplayer" class="tsd-kind-icon">add<wbr>Joined<wbr>Player</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#exit" class="tsd-kind-icon">exit</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#exitsession" class="tsd-kind-icon">exit<wbr>Session</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#getdebugmode" class="tsd-kind-icon">get<wbr>Debug<wbr>Mode</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#getpermission" class="tsd-kind-icon">get<wbr>Permission</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#getsessionid" class="tsd-kind-icon">get<wbr>Session<wbr>Id</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#hasrole" class="tsd-kind-icon">has<wbr>Role</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#initialize" class="tsd-kind-icon">initialize</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#isjoinedplayer" class="tsd-kind-icon">is<wbr>Joined<wbr>Player</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#issandbox" class="tsd-kind-icon">is<wbr>Sandbox</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#istrustedaction" class="tsd-kind-icon">is<wbr>Trusted<wbr>Action</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#removejoinedplayer" class="tsd-kind-icon">remove<wbr>Joined<wbr>Player</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#startlocalsession" class="tsd-kind-icon">start<wbr>Local<wbr>Session</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="../globals.html#startsession" class="tsd-kind-icon">start<wbr>Session</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-is-not-exported">
+						<a href="../globals.html#permission" class="tsd-kind-icon">permission</a>
 					</li>
 				</ul>
 			</nav>
@@ -2309,6 +2420,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -2357,7 +2469,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
