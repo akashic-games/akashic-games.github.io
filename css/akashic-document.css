@@ -25,8 +25,8 @@
 	font-family: "Courier New", Consolas, monospace;
 }
 .akashic--document code:not(.hljs):not(.lang-plaintext) {
-	background:#FEE;
-	color:#C00;
+	background:#FFE8E8;
+	color:#B44;
 	padding: 1px 3px;
 	margin:0 2px;
 	border-radius: 2px;
@@ -110,13 +110,16 @@
 	display:block;
 	background:#E6EFEF;
 	border-left:solid 2px #C00;
-	font-style:italic;
 	padding:16px;
 	margin:20px 0 20px 6px;
 	}
 .akashic--document blockquote p {
 	color:#688;
 	}
+.akashic--document blockquote code:not(.hljs):not(.lang-plaintext) {
+	background:#CEDCDA;
+	color:#12842B;
+}
 .akashic--document img {
 	display:block;
 	max-width:100%;

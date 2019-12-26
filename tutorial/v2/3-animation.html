@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>アニメーションさせる</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?1576741553452">
-<link rel="stylesheet" href="/css/header.css?1576741553452">
-<link rel="stylesheet" href="/css/footer.css?1576741553452">
+<link rel="stylesheet" href="/css/common.css?1577338408910">
+<link rel="stylesheet" href="/css/header.css?1577338408910">
+<link rel="stylesheet" href="/css/footer.css?1577338408910">
 
 
-<link rel="stylesheet" href="/css/asset.css?1576741553452">
+<link rel="stylesheet" href="/css/asset.css?1577338408910">
 
-<link rel="stylesheet" href="/css/akashic-document.css?1576741553452">
+<link rel="stylesheet" href="/css/akashic-document.css?1577338408910">
 
-<link rel="stylesheet" href="/css/railscasts.css?1576741553452">
+<link rel="stylesheet" href="/css/railscasts.css?1577338408910">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?1576741553452"></script>
+<script src="/lib/common.js?1577338408910"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -346,15 +346,19 @@ module.exports = main;
 これは、Aksahic Engine のコンテンツは、現実の時間とは違う速度で実行されることがあるためです
 (例えば、Akashic Engine のゲームは、ニコニコ生放送上で実行されることがあります。その場合、タイムシフトではシークバーに連動する形で動作します)。この時、 <code>scene.setTimeout()</code> は実行速度を踏まえて経過時間を処理するのですが、 グローバルの <code>setTimeout()</code> は指定した時間そのままの時間経過を待ってしまうため、処理の実行タイミングがずれてしまうことがあり得ます。</p>
 <h2><a name="乱数"></a> 乱数</h2>
-<p>Akashic Engine は独自の乱数生成器を備えています。
-Akashic Engine に用意された乱数生成器を利用すると、指定した範囲の整数をランダムに生成できます。以下の式は 0 以上 9 以下の整数をランダムに一つ選んで返します。</p>
-<pre><code class="lang-javascript">g.game.random.get(0, 9);
+<p>Akashic Engine は独自の乱数生成器を備えています。以下のコードは 0 以上 1 未満の数値をランダムに一つ選んで返します。</p>
+<pre><code class="lang-javascript">g.game.random.generate();
 </code></pre>
-<p>JavaScript 標準関数の <code>Math.random()</code> を利用しても乱数を生成できますが、将来的な拡張で利用するために、Akashic Engine のゲームでは
-<code>game</code> オブジェクトの乱数生成器を利用してください。</p>
+<p>この関数は JavaScript の標準にある <code>Math.random()</code> と同じ機能ですが、 <strong>Akashic Engine のゲームでは原則 <code>g.game.random</code> を利用してください</strong> 。
+(このことは特にマルチプレイの場合に重要です。詳細は <a href="./multiplay/introduction.html">マルチプレイの基礎</a> の節で後述します)</p>
+<p><code>generate()</code> は実数を返しますが、整数の乱数が必要なことも多いでしょう。0 以上 <code>x</code> 未満の整数は、 <code>generate()</code> を使って次のように生成できます。</p>
+<pre><code class="lang-javascript">Math.floor(g.game.random.generate() * x);
+</code></pre>
+<p>このコードでは、 <code>generate()</code> の戻り値を <code>x</code> 倍することで「0 以上 <code>x</code> 未満の実数」にし、
+そこから <code>Math.floor()</code> で小数点以下を切り捨てて「0 以上 <code>x</code> 未満の整数」にしています (<code>Math.floor()</code> は JavaScript の標準にある関数です)。</p>
 <p>以下のプログラムは矩形を格子状に並べるプログラムです。ただし矩形の色は 4 種類の色の中からランダムに選んで決めています。</p>
-<pre><code class="lang-javascript">var size = 25,
-  margin = 15;
+<pre><code class="lang-javascript">var size = 25;
+var margin = 15;
 
 function main() {
   var scene = new g.Scene({ game: g.game });
@@ -372,7 +376,7 @@ function main() {
 
 function createRect(scene, x, y) {
   var colors = [&quot;blue&quot;, &quot;navy&quot;, &quot;royalblue&quot;, &quot;skyblue&quot;];
-  var idx = g.game.random.get(0, colors.length - 1);
+  var idx = Math.floor(g.game.random.generate() * colors.length);
   return (rect = new g.FilledRect({
     scene: scene,
     x: x,
@@ -386,6 +390,20 @@ function createRect(scene, x, y) {
 module.exports = main;
 </code></pre>
 <p><img src="/img/tutorial/sample10.png" alt="sample10"></p>
+<h3><a name="old-random"></a> 旧関数: g.game.random.get()</h3>
+<p><code>generate()</code> は Akashic Engine v2.5.1 で追加されました。
+それ以前のバージョンでは <code>get()</code> を利用してください (あるいは単に <code>akashic-cli</code>, <code>akashic-sandbox</code> を更新してください)。</p>
+<p>次のコードは <code>min</code> 以上 <code>max</code> 以下のランダムな整数を生成します。</p>
+<pre><code class="lang-javascript">g.game.random.get(min, max);
+</code></pre>
+<p><code>generate()</code> と <code>get()</code> の違いに気をつけてください。
+<code>get(min, max)</code> は「min 以上 max <strong>以下</strong> の整数」を、 <code>generate()</code> は「0 以上 1 <strong>未満</strong> の実数」を返します。</p>
+<blockquote>
+<p>この重複は歴史的経緯によるものです。
+Akashic Engine v1 では <code>get()</code> だけがありました。
+後に <code>Math.random()</code> 互換の <code>generate()</code> (0 以上 1 <strong>未満</strong>) を加えた結果、整数版は「以下」浮動小数点版は「未満」を生成する食い違いが生じました。</p>
+<p><code>get()</code> にはこの食い違いのほか「実数の乱数が生成できない」という課題があり、次のメジャーバージョンで非推奨にします。</p>
+</blockquote>
 <div class="navi-center">
 <a href="./2-basic.html">前（コンテンツ作成の基本）</a>
  | <a href="./">目次</a>
