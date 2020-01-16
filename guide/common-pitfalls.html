@@ -7,26 +7,27 @@
 <meta name="theme-color" content="#0F1F26">
 <title>よくある落とし穴</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?378ae70">
-<link rel="stylesheet" href="/css/header.css?378ae70">
-<link rel="stylesheet" href="/css/footer.css?378ae70">
+<link rel="stylesheet" href="/css/common.css?7db85b2">
+<link rel="stylesheet" href="/css/header.css?7db85b2">
+<link rel="stylesheet" href="/css/footer.css?7db85b2">
 
 
-<link rel="stylesheet" href="/css/asset.css?378ae70">
+<link rel="stylesheet" href="/css/asset.css?7db85b2">
 
-<link rel="stylesheet" href="/css/akashic-document.css?378ae70">
+<link rel="stylesheet" href="/css/akashic-document.css?7db85b2">
 
-<link rel="stylesheet" href="/css/railscasts.css?378ae70">
+<link rel="stylesheet" href="/css/railscasts.css?7db85b2">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?378ae70"></script>
+<script src="/lib/common.js?7db85b2"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
+
 <div class="head--spacer"></div>
 <div class="SP--head--menu--show"></div>
 <div class="SP--head--menu--hide"></div>
@@ -130,10 +131,8 @@ Akashic Engine のプレイはこの乱数生成器のシードを記録に含�
 <h2><a name="@akashic/akashic-engineをrequire()/importしてしまう" /> @akashic/akashic-engine を require()/import してしまう</h2>
 <p>Akashic Engine のパッケージ <strong><code>&quot;@akashic/akashic-engine&quot;</code> を、スクリプトアセット内で <code>require()</code> しないでください</strong> 。</p>
 <p>つまり、次のコードは(Akashic ゲームとしては)誤りです。</p>
-<pre><code>var g = require(&quot;@akashic/akashic-engine&quot;);
-</code></pre><p>TypeScript の場合の、次の記述も同様に誤りです。</p>
-<pre><code>import * as g from &quot;@akashic/akashic-engine&quot;;
-</code></pre><p>なぜなら、Akashic Engine の機能を提供する変数 <code>g</code> は、スクリプトアセット内では暗黙に存在するグローバル変数であるためです。変数 <code>g</code> は実行環境(akashic-sandbox など)によって初期化され、スクリプトアセットに与えられます。ゲーム開発者が自力で <code>require()</code> してしまった場合、実行環境が与えるものとコンフリクトして正しく動作しない可能性があります。</p>
+<pre><code>var g = require(&quot;@akashic/akashic-engine&quot;);</code></pre><p>TypeScript の場合の、次の記述も同様に誤りです。</p>
+<pre><code>import * as g from &quot;@akashic/akashic-engine&quot;;</code></pre><p>なぜなら、Akashic Engine の機能を提供する変数 <code>g</code> は、スクリプトアセット内では暗黙に存在するグローバル変数であるためです。変数 <code>g</code> は実行環境(akashic-sandbox など)によって初期化され、スクリプトアセットに与えられます。ゲーム開発者が自力で <code>require()</code> してしまった場合、実行環境が与えるものとコンフリクトして正しく動作しない可能性があります。</p>
 <p>基本的に、ゲーム開発者が明示的に <code>@akashic/akashic-engine</code> をインストールする必要はありません。</p>
 <p>ただしゼロから TypeScript で開発する場合は、 <code>g</code> の型定義(d.ts ファイル)が必要になります。その場合は <code>npm install -DE @akashic/akashic-engine</code> を実行して(<code>devDependencies</code> として)Akashic Engine をインストールし、
 <code>node_modules/@akashic/akashic-engine/lib/main.d.ts</code> をコンパイル対象に含めてください。</p>
@@ -192,94 +191,19 @@ array.sort(function (x, y) { return x.key - y.key; });
 
 console.log(array[0].value);  // ==&gt; &quot;the first&quot;
 console.log(array[4].value);  // ==&gt; &quot;the last&quot;
-console.log(array[1].value);  // ==&gt; &quot;foo&quot;, &quot;bar&quot; or &quot;zoo&quot; ???
-</code></pre><p>このコードは <code>array</code> の各要素を <code>key</code> プロパティの値の大小でソートするものです。
+console.log(array[1].value);  // ==&gt; &quot;foo&quot;, &quot;bar&quot; or &quot;zoo&quot; ???</code></pre><p>このコードは <code>array</code> の各要素を <code>key</code> プロパティの値の大小でソートするものです。
 <code>sort()</code> の実行後、 <code>array</code> の第 0 要素は <code>e</code> と、第 4 要素は <code>d</code> と必ず同値ですが、第 1 要素が何になるかは実装依存です。</p>
 <p>ゲーム開発者は、<strong><code>sort()</code> の比較関数が <code>0</code> を返す(等価な)要素の順序に依存しないように注意してください</strong> 。可能ならば、 <code>0</code> を返さないような比較関数を使うことを推奨します。</p>
 <h2><a name="edge-decode-error" /> Microsoft Edge でデコードエラーが出てしまう場合</h2>
 <p>Microsoft Edge で、オーディオファイル(.aac)の読み込み時に下記のエラーが出力されてゲームの進行が止まることがあります。</p>
-<pre><code>WEBAUDIO17014：デコードエラー：指定されたストリームが破損しているか、サポートされていません
-</code></pre><p>詳細な発生条件はわかっていませんが、他の環境では再生できるファイルでも再生できないことがあるようです。このエラーが出た場合、元ファイルのサンプルレートの変更や、出力するオーディオファイルのビットレートを変更を行うとエラーが解消される可能性があります。</p>
+<pre><code>WEBAUDIO17014：デコードエラー：指定されたストリームが破損しているか、サポートされていません</code></pre><p>詳細な発生条件はわかっていませんが、他の環境では再生できるファイルでも再生できないことがあるようです。このエラーが出た場合、元ファイルのサンプルレートの変更や、出力するオーディオファイルのビットレートを変更を行うとエラーが解消される可能性があります。</p>
 <p><a href="https://github.com/akashic-games/complete-audio">complete-audio</a> で変換している場合は、</p>
-<pre><code>complete-audio -b 32k sound.wav
-</code></pre><p>のように <code>-b</code> オプションで出力するオーディオファイルのビットレートを指定することができます。</p>
+<pre><code>complete-audio -b 32k sound.wav</code></pre><p>のように <code>-b</code> オプションで出力するオーディオファイルのビットレートを指定することができます。</p>
 
 		</div>
-		<script>
-			// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
-			// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
-			window.addEventListener('resize', function() {
-				var iframes = document.getElementsByClassName('akashic-content');
-				var contents = Array.prototype.slice.call(iframes);
-				contents.forEach(function(content) {
-					content.contentWindow.location.reload(true);
-				});
-			});
-		</script>
 	</section>
 	<footer class="safearea--LR">
 	<div class="responsive--width">
-
-		<ul class="foot--menu cfix">
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">入門</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/tutorial/v2/">Akashic Engine入門 v2</a></li>
-					<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
-					<li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">ガイド</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
-					<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-					<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-					<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-					<li><a href="/guide/storage.html">ストレージについて</a></li>
-					<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
-					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-					<li><a href="/guide/shader.html">シェーダの利用</a></li>
-					<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
-					<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
-					<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
-					<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">リファレンス</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-					<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
-					<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
-					<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
-					<li><a href="/reference/akashic-label/">akashic-label</a></li>
-					<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
-					<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
-					<li><a href="/reference/coe/">coe framework</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">サンプルデモ</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/demo/?title=helloworld">Hello World</a></li>
-					<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
-					<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
-					<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
-					<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
-					<li><a href="/demo/?title=demo-tile">タイル</a></li>
-					<li><a href="/demo/?title=label-sample">ラベル</a></li>
-					<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
-					<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
-					<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
-					<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
-					<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
-					<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
-					<li><a href="/asset/material.html">サンプルデモの素材</a></li>
-				</ul>
-			</li>
-		</ul>
 
 		<ul class="foot--creativecommons">
 			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
@@ -297,5 +221,17 @@ console.log(array[1].value);  // ==&gt; &quot;foo&quot;, &quot;bar&quot; or &quo
 </div>
 <div class="page--top"></div>
 <div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
 </body>
 </html>

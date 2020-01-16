@@ -7,26 +7,27 @@
 <meta name="theme-color" content="#0F1F26">
 <title>CompositeOperation の利用</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?378ae70">
-<link rel="stylesheet" href="/css/header.css?378ae70">
-<link rel="stylesheet" href="/css/footer.css?378ae70">
+<link rel="stylesheet" href="/css/common.css?7db85b2">
+<link rel="stylesheet" href="/css/header.css?7db85b2">
+<link rel="stylesheet" href="/css/footer.css?7db85b2">
 
 
-<link rel="stylesheet" href="/css/asset.css?378ae70">
+<link rel="stylesheet" href="/css/asset.css?7db85b2">
 
-<link rel="stylesheet" href="/css/akashic-document.css?378ae70">
+<link rel="stylesheet" href="/css/akashic-document.css?7db85b2">
 
-<link rel="stylesheet" href="/css/railscasts.css?378ae70">
+<link rel="stylesheet" href="/css/railscasts.css?7db85b2">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?378ae70"></script>
+<script src="/lib/common.js?7db85b2"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
+
 <div class="head--spacer"></div>
 <div class="SP--head--menu--show"></div>
 <div class="SP--head--menu--hide"></div>
@@ -104,7 +105,7 @@
 		<div class="inner responsive--width">
 			<h1>CompositeOperation の利用</h1>
 <h2><a name="これは"></a> これは</h2>
-<p><code>E#compositeOpration</code> の利用方法を記述したドキュメントです。対象バージョンは <a href="mailto:`akashic-engine@0.6.0">`akashic-engine@0.6.0</a>` 以降です。</p>
+<p><code>E#compositeOpration</code> の利用方法を記述したドキュメントです。対象バージョンは <code>akashic-engine@0.6.0</code> 以降です。</p>
 <h2><a name="compositeOperationとは"></a> compositeOperation とは</h2>
 <p><code>E#compositeOperation</code> とは、エンティティを描画する際の合成方法を指定するプロパティです。</p>
 <p>以下の値を指定可能です。</p>
@@ -126,7 +127,7 @@
 <p>先に描画された領域の上に重ねて描画します。これがデフォルトの合成方法となります。</p>
 <p>以下は、緑色、赤色、青色の <code>FilledRect</code> を重ねて描画する例です。</p>
 <p><img src="/img/guide/composite-operation/source-over.png" alt="source-over"></p>
-<pre><code class="lang-javascript">var green = new g.FilledRect({
+<pre><code class="language-javascript">var green = new g.FilledRect({
   scene: scene,
   x: 50,
   width: 100,
@@ -153,13 +154,12 @@ var blue = new g.FilledRect({
 blue.compositeOperation = g.CompositeOperation.SourceOver;
 scene.append(green);
 scene.append(red);
-scene.append(blue);
-</code></pre>
+scene.append(blue);</code></pre>
 <h2><a name="SourceAtop"></a> SourceAtop</h2>
 <p>先に描画された領域と重なった部分のみを描画します。</p>
 <p>以下の例は、赤色と青色の <code>FilledRect</code> に <code>SourceAtop</code> 指定し、緑色の <code>FilledRect</code> と重なった部分だけ描画する例です。</p>
 <p><img src="/img/guide/composite-operation/source-atop.png" alt="source-atop"></p>
-<pre><code class="lang-javascript">var green = new g.FilledRect({
+<pre><code class="language-javascript">var green = new g.FilledRect({
   scene: scene,
   x: 50,
   width: 100,
@@ -185,13 +185,12 @@ var blue = new g.FilledRect({
 blue.compositeOperation = g.CompositeOperation.SourceAtop;
 scene.append(green);
 scene.append(red);
-scene.append(blue);
-</code></pre>
+scene.append(blue);</code></pre>
 <h2><a name="Lighter"></a> Lighter</h2>
 <p>先に描画された領域と重なった部分の色を加算して描画します。</p>
 <p>以下の例は、赤色と青色の <code>FilledRect</code> に <code>Lighter</code> 指定したものです。</p>
 <p><img src="/img/guide/composite-operation/lighter.png" alt="lighter"></p>
-<pre><code class="lang-javascript">var green = new g.FilledRect({
+<pre><code class="language-javascript">var green = new g.FilledRect({
   scene: scene,
   x: 50,
   width: 100,
@@ -217,13 +216,12 @@ var blue = new g.FilledRect({
 blue.compositeOperation = g.CompositeOperation.Lighter;
 scene.append(green);
 scene.append(red);
-scene.append(blue);
-</code></pre>
+scene.append(blue);</code></pre>
 <h2><a name="ExperimentalSourceIn"></a> ExperimentalSourceIn</h2>
 <p>先に描画された領域と重なった部分に描画を行い、それ以外の部分を透明にします。</p>
 <p>以下の例は、三色の <code>FilledRect</code> に <code>ExperimentalSourceIn</code> 指定し、白色の <code>FilledRect</code> と重なった部分だけ描画する例です。</p>
 <p><img src="/img/guide/composite-operation/experimental-source-in.png" alt="ExperimentalSourceIn"></p>
-<pre><code class="lang-javascript">var bg = new g.FilledRect({
+<pre><code class="language-javascript">var bg = new g.FilledRect({
   scene: scene,
   x: 0,
   width: g.game.width,
@@ -258,13 +256,12 @@ blue.compositeOperation = g.CompositeOperation.ExperimentalSourceIn;
 scene.append(bg);
 scene.append(green);
 scene.append(red);
-sscene.append(blue);
-</code></pre>
+sscene.append(blue);</code></pre>
 <h2><a name="ExperimentalSourceOut"></a> ExperimentalSourceOut</h2>
 <p>先に描画された領域と重なっていない部分に描画を行い、それ以外の部分を透明にします。</p>
 <p>以下の例は、三色の <code>FilledRect</code> に <code>ExperimentalSourceOut</code> 指定したものです。</p>
 <p><img src="/img/guide/composite-operation/experimental-source-out.png" alt="ExperimentalSourceOut"></p>
-<pre><code class="lang-javascript">var green = new g.FilledRect({
+<pre><code class="language-javascript">var green = new g.FilledRect({
   scene: scene,
   x: 50,
   width: 100,
@@ -291,13 +288,12 @@ var blue = new g.FilledRect({
 blue.compositeOperation = g.CompositeOperation.ExperimentalSourceOut;
 scene.append(green);
 scene.append(red);
-sscene.append(blue);
-</code></pre>
+sscene.append(blue);</code></pre>
 <h2><a name="ExperimentalDestinationAtop"></a> ExperimentalDestinationAtop</h2>
 <p>描画する領域だけを表示し、先に描画された領域と重なった部分は描画先を表示します。</p>
 <p>以下の例は、三色の <code>FilledRect</code> に <code>ExperimentalDestinationAtop</code> 指定したものです。</p>
 <p><img src="/img/guide/composite-operation/experimental-destination-atop.png" alt="ExperimentalDestinationAtop"></p>
-<pre><code class="lang-javascript">var green = new g.FilledRect({
+<pre><code class="language-javascript">var green = new g.FilledRect({
   scene: scene,
   x: 50,
   width: 100,
@@ -324,13 +320,12 @@ var blue = new g.FilledRect({
 blue.compositeOperation = g.CompositeOperation.ExperimentalDestinationAtop;
 scene.append(green);
 scene.append(red);
-sscene.append(blue);
-</code></pre>
+sscene.append(blue);</code></pre>
 <h2><a name="ExperimentalDestinationIn"></a> ExperimentalDestinationIn</h2>
 <p>描画する領域だけを表示し、先に描画された領域と重なった部分は描画先を表示します。</p>
 <p>以下の例は、三色の <code>FilledRect</code> に <code>ExperimentalDestinationIn</code> 指定したものです。</p>
 <p><img src="/img/guide/composite-operation/experimental-destination-in.png" alt="ExperimentalDestinationIn"></p>
-<pre><code class="lang-javascript">var green = new g.FilledRect({
+<pre><code class="language-javascript">var green = new g.FilledRect({
   scene: scene,
   x: 50,
   width: 100,
@@ -357,12 +352,11 @@ var blue = new g.FilledRect({
 blue.compositeOperation = g.CompositeOperation.ExperimentalDestinationIn;
 scene.append(green);
 scene.append(red);
-sscene.append(blue);
-</code></pre>
+sscene.append(blue);</code></pre>
 <h2><a name="Copy"></a> Copy</h2>
 <p>先に描画された領域の状態に関わらず、全て上書きして描画します。描画内容が透明な場合、描画先の内容にかかわらず透明な画像が上書き描画されます。</p>
 <p><img src="/img/guide/composite-operation/copy.png" alt="copy"></p>
-<pre><code class="lang-javascript">var blue = new g.FilledRect({
+<pre><code class="language-javascript">var blue = new g.FilledRect({
   scene: scene,
   width: 100,
   height: 100,
@@ -372,13 +366,12 @@ blue.compositeOperation = g.CompositeOperation.SourceOver;
 var character = new g.Sprite({ scene: scene, src: scene.assets[&quot;character&quot;] });
 character.compositeOperation = g.CompositeOperation.Copy;
 scene.append(blue);
-scene.append(character);
-</code></pre>
+scene.append(character);</code></pre>
 <h2><a name="DestinationOut"></a> DestinationOut</h2>
 <p>描画する領域を透明にします。</p>
 <p>以下の例は、白い背景の上で、三色の <code>FilledRect</code> に <code>DestinationOut</code> 指定したものです。（この例では、コンテンツの背景に灰色の要素を置くことで、透明になった部分が分かりやすくなるようにしています）</p>
 <p><img src="/img/guide/composite-operation/destination-out.png" alt="copy"></p>
-<pre><code class="lang-javascript">var bg = new g.FilledRect({
+<pre><code class="language-javascript">var bg = new g.FilledRect({
   scene: scene,
   x: 0,
   width: g.game.width,
@@ -413,13 +406,12 @@ blue.compositeOperation = g.CompositeOperation.DestinationOut;
 scene.append(bg);
 scene.append(green);
 scene.append(red);
-sscene.append(blue);
-</code></pre>
+sscene.append(blue);</code></pre>
 <h2><a name="DestinationOver"></a> DestinationOver</h2>
 <p>先に描画された領域の下に描画します。</p>
 <p>以下の例は、赤色と青色の <code>FilledRect</code> に <code>DestinationOver</code> 指定し、緑色の <code>FilledRect</code> と重なった部分だけ描画する例です。</p>
 <p><img src="/img/guide/composite-operation/destination-over.png" alt="copy"></p>
-<pre><code class="lang-javascript">var green = new g.FilledRect({
+<pre><code class="language-javascript">var green = new g.FilledRect({
   scene: scene,
   x: 50,
   width: 100,
@@ -445,13 +437,12 @@ var blue = new g.FilledRect({
 blue.compositeOperation = g.CompositeOperation.DestinationOver;
 scene.append(green);
 scene.append(red);
-scene.append(blue);
-</code></pre>
+scene.append(blue);</code></pre>
 <h2><a name="Xor"></a> Xor</h2>
 <p>先に描画された領域と重なった部分のみ透明にします。</p>
 <p>以下の例は、三色の <code>FilledRect</code> に <code>Xor</code> 指定したものです。</p>
 <p><img src="/img/guide/composite-operation/xor.png" alt="copy"></p>
-<pre><code class="lang-javascript">var green = new g.FilledRect({
+<pre><code class="language-javascript">var green = new g.FilledRect({
   scene: scene,
   x: 50,
   width: 100,
@@ -478,8 +469,7 @@ var blue = new g.FilledRect({
 blue.compositeOperation = g.CompositeOperation.Xor;
 scene.append(green);
 scene.append(red);
-sscene.append(blue);
-</code></pre>
+sscene.append(blue);</code></pre>
 <h2><a name="未指定（undefined）"></a> 未指定（undefined）</h2>
 <p><code>E#compositeOperation</code> はデフォルトで未指定（ <code>undefined</code> ）ですが、この時の合成方法は親エンティティの <code>compositeOperation</code> によって変わってきます。</p>
 <ul>
@@ -494,7 +484,7 @@ sscene.append(blue);
 <p><code>SourceAtop</code> や <code>Lighter</code> を利用する際に、<code>Pane</code> を利用することで、先に描画された領域を合成対象に含めないようにすることが出来ます。</p>
 <p>例えば、以下のように背景（灰色の <code>FilledRect</code>）が存在する場合に、<code>SourceAtop</code> を使って赤色と青色の <code>FilledRect</code> のうち、緑色の <code>FilledRect</code> と重なる部分のみを描画したいケースを考えます。</p>
 <p><img src="/img/guide/composite-operation/source-atop-bg.png" alt="source-atop-bg"></p>
-<pre><code class="lang-javascript">var bg = new g.FilledRect({
+<pre><code class="language-javascript">var bg = new g.FilledRect({
   scene: scene,
   width: game.width,
   height: game.height,
@@ -525,19 +515,17 @@ var blue = new g.FilledRect({
 });
 scene.append(green);
 scene.append(red);
-scene.append(blue);
-</code></pre>
+scene.append(blue);</code></pre>
 <p>単純に、</p>
-<pre><code class="lang-javascript">red.compositeOperation = g.CompositeOperation.SourceOver;
-blue.compositeOperation = g.CompositeOperation.SourceOver;
-</code></pre>
+<pre><code class="language-javascript">red.compositeOperation = g.CompositeOperation.SourceOver;
+blue.compositeOperation = g.CompositeOperation.SourceOver;</code></pre>
 <p>としても、合成対象に背景が含まれてしまうので、赤色と青色の <code>FilledRect</code> はそのまま描画されます。</p>
 <p>このような場合に <code>Pane</code> を利用します。</p>
 <p><code>Pane</code> は内部に描画キャッシュを持ち、 子エンティティは描画キャッシュに描画されます。</p>
 <p>つまり、 <code>Pane</code> の子エンティティの合成対象に <code>Pane</code> 外のエンティティは含まれなくなります。</p>
 <p>以下の例では、緑色、赤色、青色の <code>FilledRect</code> を <code>Pane</code> に追加しています。</p>
 <p><img src="/img/guide/composite-operation/source-atop-pane.png" alt="source-atop-pane"></p>
-<pre><code class="lang-javascript">var bg = new g.FilledRect({
+<pre><code class="language-javascript">var bg = new g.FilledRect({
   scene: scene,
   width: game.width,
   height: game.height,
@@ -572,85 +560,12 @@ pane.append(green);
 pane.append(red);
 pane.append(blue);
 scene.append(bg);
-scene.append(pane);
-</code></pre>
+scene.append(pane);</code></pre>
 
 		</div>
-		<script>
-			// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
-			// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
-			window.addEventListener('resize', function() {
-				var iframes = document.getElementsByClassName('akashic-content');
-				var contents = Array.prototype.slice.call(iframes);
-				contents.forEach(function(content) {
-					content.contentWindow.location.reload(true);
-				});
-			});
-		</script>
 	</section>
 	<footer class="safearea--LR">
 	<div class="responsive--width">
-
-		<ul class="foot--menu cfix">
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">入門</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/tutorial/v2/">Akashic Engine入門 v2</a></li>
-					<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
-					<li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">ガイド</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
-					<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-					<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-					<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-					<li><a href="/guide/storage.html">ストレージについて</a></li>
-					<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
-					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-					<li><a href="/guide/shader.html">シェーダの利用</a></li>
-					<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
-					<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
-					<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
-					<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">リファレンス</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-					<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
-					<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
-					<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
-					<li><a href="/reference/akashic-label/">akashic-label</a></li>
-					<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
-					<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
-					<li><a href="/reference/coe/">coe framework</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">サンプルデモ</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/demo/?title=helloworld">Hello World</a></li>
-					<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
-					<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
-					<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
-					<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
-					<li><a href="/demo/?title=demo-tile">タイル</a></li>
-					<li><a href="/demo/?title=label-sample">ラベル</a></li>
-					<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
-					<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
-					<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
-					<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
-					<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
-					<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
-					<li><a href="/asset/material.html">サンプルデモの素材</a></li>
-				</ul>
-			</li>
-		</ul>
 
 		<ul class="foot--creativecommons">
 			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
@@ -668,5 +583,17 @@ scene.append(pane);
 </div>
 <div class="page--top"></div>
 <div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
 </body>
 </html>

@@ -7,26 +7,27 @@
 <meta name="theme-color" content="#0F1F26">
 <title>bmpfont-generator 利用ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?378ae70">
-<link rel="stylesheet" href="/css/header.css?378ae70">
-<link rel="stylesheet" href="/css/footer.css?378ae70">
+<link rel="stylesheet" href="/css/common.css?7db85b2">
+<link rel="stylesheet" href="/css/header.css?7db85b2">
+<link rel="stylesheet" href="/css/footer.css?7db85b2">
 
 
-<link rel="stylesheet" href="/css/asset.css?378ae70">
+<link rel="stylesheet" href="/css/asset.css?7db85b2">
 
-<link rel="stylesheet" href="/css/akashic-document.css?378ae70">
+<link rel="stylesheet" href="/css/akashic-document.css?7db85b2">
 
-<link rel="stylesheet" href="/css/railscasts.css?378ae70">
+<link rel="stylesheet" href="/css/railscasts.css?7db85b2">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?378ae70"></script>
+<script src="/lib/common.js?7db85b2"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
+
 <div class="head--spacer"></div>
 <div class="SP--head--menu--show"></div>
 <div class="SP--head--menu--hide"></div>
@@ -110,8 +111,7 @@
 <h2><a name="bitmap-image"></a> ビットマップ画像</h2>
 <p>bmpfont-generator を利用することで、以下のようなビットマップ画像と json ファイルを出力することができます。</p>
 <p><img src="/img/guide/bmpfont-generator/bmpfont.png" alt="ビットマップ画像"></p>
-<pre><code class="lang-glyph.json">{&quot;map&quot;:{&quot;63&quot;:{&quot;x&quot;:980,&quot;y&quot;:598},&quot;167&quot;:{&quot;x&quot;:1700,&quot;y&quot;:0},&quot;168&quot;:{&quot;x&quot;:280,&quot;y&quot;:0}...},&quot;missingGlyph&quot;:{&quot;x&quot;:120,&quot;y&quot;:676},&quot;width&quot;:20,&quot;height&quot;:26}
-
+<pre><code class="language-glyph.json">{&quot;map&quot;:{&quot;63&quot;:{&quot;x&quot;:980,&quot;y&quot;:598},&quot;167&quot;:{&quot;x&quot;:1700,&quot;y&quot;:0},&quot;168&quot;:{&quot;x&quot;:280,&quot;y&quot;:0}...},&quot;missingGlyph&quot;:{&quot;x&quot;:120,&quot;y&quot;:676},&quot;width&quot;:20,&quot;height&quot;:26}
 </code></pre>
 <h2><a name="install"></a> インストール方法</h2>
 <p>bmpfont-generator コマンドは Node.js 環境で動作します。各プラットフォームで、適当な方法で Node.js をインストールしてください。
@@ -123,121 +123,117 @@ Windows 環境の場合、以下の手順を参考にして node-canvas の実�
 <a href="http://www.delarre.net/posts/installing-node-canvas-for-windows/">Installing node-canvas for Windows</a></p>
 <h3>インストール</h3>
 <p>bmpfont-generator は以下のコマンドでインストールすることができます。</p>
-<pre><code class="lang-sh">npm install -g @akashic/bmpfont-generator
-</code></pre>
+<pre><code class="language-sh">npm install -g @akashic/bmpfont-generator</code></pre>
 <h2><a name="usage"></a> 使い方</h2>
 <p>bmpfont-generator は以下のコマンドで実行できます。</p>
-<pre><code class="lang-sh">bmpfont-generator --chars &#39;0123456789&#39; --height 14 --fill &#39;#ff0000&#39; sourceFont.ttf bitmap.png
-</code></pre>
+<pre><code class="language-sh">bmpfont-generator --chars &#39;0123456789&#39; --height 14 --fill &#39;#ff0000&#39; sourceFont.ttf bitmap.png</code></pre>
 <p>このコマンドを実行すると、sourceFont.ttf の数字のグリフを高さ 14px の赤色で描いて並べたビットマップ画像が bitmap.png として出力されます。
 また、bitmap_glyph.json ファイルも同時に出力されます。</p>
 <p>bmpfont-generator は以下のオプションを持ちます。</p>
-<pre><code class="lang-sh">bmpfont-generator [&lt;options&gt;]
-</code></pre>
+<pre><code class="language-sh">bmpfont-generator [&lt;options&gt;]</code></pre>
 <p><code>&lt;options&gt;</code> に指定可能なオプションは次のとおりです。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">オプション</th>
-<th style="text-align:center">短縮名</th>
-<th style="text-align:center">効果</th>
-<th style="text-align:center">必須</th>
-<th style="text-align:center">デフォルト値</th>
+<th align="center">オプション</th>
+<th align="center">短縮名</th>
+<th align="center">効果</th>
+<th align="center">必須</th>
+<th align="center">デフォルト値</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>--height &lt;size&gt;</code></td>
-<td style="text-align:center"><code>-H</code></td>
-<td style="text-align:center">文字の縦サイズ(px)</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">13</td>
+<tbody><tr>
+<td align="center"><code>--height &lt;size&gt;</code></td>
+<td align="center"><code>-H</code></td>
+<td align="center">文字の縦サイズ(px)</td>
+<td align="center"></td>
+<td align="center">13</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--fixed-width &lt;size&gt;</code></td>
-<td style="text-align:center"><code>-w</code></td>
-<td style="text-align:center">文字の横サイズ(px) 。指定した場合、文字の幅に関わらず size を幅の値とする</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td align="center"><code>--fixed-width &lt;size&gt;</code></td>
+<td align="center"><code>-w</code></td>
+<td align="center">文字の横サイズ(px) 。指定した場合、文字の幅に関わらず size を幅の値とする</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--chars &lt;string&gt;</code></td>
-<td style="text-align:center"><code>-c</code></td>
-<td style="text-align:center">書きだす文字の羅列</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">0-9,a-Z,各種記号</td>
+<td align="center"><code>--chars &lt;string&gt;</code></td>
+<td align="center"><code>-c</code></td>
+<td align="center">書きだす文字の羅列</td>
+<td align="center"></td>
+<td align="center">0-9,a-Z,各種記号</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--chars-file &lt;filepath&gt;</code></td>
-<td style="text-align:center"><code>-f</code></td>
-<td style="text-align:center">書き出す文字が羅列されたテキストファイルのパス</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td align="center"><code>--chars-file &lt;filepath&gt;</code></td>
+<td align="center"><code>-f</code></td>
+<td align="center">書き出す文字が羅列されたテキストファイルのパス</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--missing-glyph &lt;char&gt;</code></td>
-<td style="text-align:center"><code>-m</code></td>
-<td style="text-align:center">-c の指定に含まれない文字の代わりに用いる代替文字</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">フォントが持つ代替文字</td>
+<td align="center"><code>--missing-glyph &lt;char&gt;</code></td>
+<td align="center"><code>-m</code></td>
+<td align="center">-c の指定に含まれない文字の代わりに用いる代替文字</td>
+<td align="center"></td>
+<td align="center">フォントが持つ代替文字</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--missing-glyph-image &lt;filepath&gt;</code></td>
-<td style="text-align:center"><code>-M</code></td>
-<td style="text-align:center">代替文字として用いる画像ファイルのパス</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td align="center"><code>--missing-glyph-image &lt;filepath&gt;</code></td>
+<td align="center"><code>-M</code></td>
+<td align="center">代替文字として用いる画像ファイルのパス</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--fill &lt;fillstyle&gt;</code></td>
-<td style="text-align:center"><code>-F</code></td>
-<td style="text-align:center">フィルスタイル</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"><code>#000000</code></td>
+<td align="center"><code>--fill &lt;fillstyle&gt;</code></td>
+<td align="center"><code>-F</code></td>
+<td align="center">フィルスタイル</td>
+<td align="center"></td>
+<td align="center"><code>#000000</code></td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--stroke &lt;strokestyle&gt;</code></td>
-<td style="text-align:center"><code>-S</code></td>
-<td style="text-align:center">ストロークスタイル</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td align="center"><code>--stroke &lt;strokestyle&gt;</code></td>
+<td align="center"><code>-S</code></td>
+<td align="center">ストロークスタイル</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--quality &lt;quality&gt;</code></td>
-<td style="text-align:center"><code>-Q</code></td>
-<td style="text-align:center">1-100 の画質。指定する場合、 <code>pngquant</code> が必要</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">圧縮しない</td>
+<td align="center"><code>--quality &lt;quality&gt;</code></td>
+<td align="center"><code>-Q</code></td>
+<td align="center">1-100 の画質。指定する場合、 <code>pngquant</code> が必要</td>
+<td align="center"></td>
+<td align="center">圧縮しない</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--baseline &lt;baseline&gt;</code></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">ベースライン</td>
-<td style="text-align:center"></td>
-<td style="text-align:center">自動で計算された値</td>
+<td align="center"><code>--baseline &lt;baseline&gt;</code></td>
+<td align="center"></td>
+<td align="center">ベースライン</td>
+<td align="center"></td>
+<td align="center">自動で計算された値</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--no-anti-alias</code></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">アンチエイリアス無効化</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td align="center"><code>--no-anti-alias</code></td>
+<td align="center"></td>
+<td align="center">アンチエイリアス無効化</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--json &lt;filepath&gt;</code></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">json ファイルを書き出すパス</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"><code>&lt;outfileName&gt;_glyphs.json</code></td>
+<td align="center"><code>--json &lt;filepath&gt;</code></td>
+<td align="center"></td>
+<td align="center">json ファイルを書き出すパス</td>
+<td align="center"></td>
+<td align="center"><code>&lt;outfileName&gt;_glyphs.json</code></td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--no-json</code></td>
-<td style="text-align:center"></td>
-<td style="text-align:center">json ファイルを出力しない</td>
-<td style="text-align:center"></td>
+<td align="center"><code>--no-json</code></td>
+<td align="center"></td>
+<td align="center">json ファイルを出力しない</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p><code>fillstyle</code> は CSS の色 (color プロパティに指定できる値)を指定することができます。
 <code>strokestyle</code> は <code>fillstyle</code> と同様に CSS の色を指定することが出来ます。</p>
 <p><code>baseline</code> は省略時は自動で計算されるので、基本的には利用する必要はありません。</p>
@@ -254,8 +250,7 @@ Windows 環境の場合、以下の手順を参考にして node-canvas の実�
   map: g.game.scene().assets[&quot;bitmap_glyph&quot;],
   defaultGlyphWidth: 14
   defaultGlyphHeight: 14
-});
-</code></pre><p>TypeScript コードでは、 <code>g.game.scene().assets[&quot;bitmap&quot;] as g.ImageAsset</code> のように型を明示的にキャストする必要があります。</p>
+});</code></pre><p>TypeScript コードでは、 <code>g.game.scene().assets[&quot;bitmap&quot;] as g.ImageAsset</code> のように型を明示的にキャストする必要があります。</p>
 <p>ビットマップフォントはダイナミックフォントと同じく、以下のようなコードを書くことで利用できます。</p>
 <pre><code>var label = new g.Label({
     scene: g.game.scene(),
@@ -264,84 +259,11 @@ Windows 環境の場合、以下の手順を参考にして node-canvas の実�
     fontSize: 14,
     font: font
 });
-g.game.scene().append(label);
-</code></pre>
+g.game.scene().append(label);</code></pre>
 		</div>
-		<script>
-			// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
-			// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
-			window.addEventListener('resize', function() {
-				var iframes = document.getElementsByClassName('akashic-content');
-				var contents = Array.prototype.slice.call(iframes);
-				contents.forEach(function(content) {
-					content.contentWindow.location.reload(true);
-				});
-			});
-		</script>
 	</section>
 	<footer class="safearea--LR">
 	<div class="responsive--width">
-
-		<ul class="foot--menu cfix">
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">入門</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/tutorial/v2/">Akashic Engine入門 v2</a></li>
-					<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
-					<li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">ガイド</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
-					<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-					<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-					<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-					<li><a href="/guide/storage.html">ストレージについて</a></li>
-					<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
-					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-					<li><a href="/guide/shader.html">シェーダの利用</a></li>
-					<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
-					<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
-					<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
-					<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">リファレンス</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-					<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
-					<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
-					<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
-					<li><a href="/reference/akashic-label/">akashic-label</a></li>
-					<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
-					<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
-					<li><a href="/reference/coe/">coe framework</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">サンプルデモ</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/demo/?title=helloworld">Hello World</a></li>
-					<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
-					<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
-					<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
-					<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
-					<li><a href="/demo/?title=demo-tile">タイル</a></li>
-					<li><a href="/demo/?title=label-sample">ラベル</a></li>
-					<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
-					<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
-					<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
-					<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
-					<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
-					<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
-					<li><a href="/asset/material.html">サンプルデモの素材</a></li>
-				</ul>
-			</li>
-		</ul>
 
 		<ul class="foot--creativecommons">
 			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
@@ -359,5 +281,17 @@ g.game.scene().append(label);
 </div>
 <div class="page--top"></div>
 <div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
 </body>
 </html>
