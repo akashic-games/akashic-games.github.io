@@ -7,26 +7,27 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic-cli 利用ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?378ae70">
-<link rel="stylesheet" href="/css/header.css?378ae70">
-<link rel="stylesheet" href="/css/footer.css?378ae70">
+<link rel="stylesheet" href="/css/common.css?7db85b2">
+<link rel="stylesheet" href="/css/header.css?7db85b2">
+<link rel="stylesheet" href="/css/footer.css?7db85b2">
 
 
-<link rel="stylesheet" href="/css/asset.css?378ae70">
+<link rel="stylesheet" href="/css/asset.css?7db85b2">
 
-<link rel="stylesheet" href="/css/akashic-document.css?378ae70">
+<link rel="stylesheet" href="/css/akashic-document.css?7db85b2">
 
-<link rel="stylesheet" href="/css/railscasts.css?378ae70">
+<link rel="stylesheet" href="/css/railscasts.css?7db85b2">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?378ae70"></script>
+<script src="/lib/common.js?7db85b2"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
+
 <div class="head--spacer"></div>
 <div class="SP--head--menu--show"></div>
 <div class="SP--head--menu--hide"></div>
@@ -110,12 +111,10 @@ akashic コマンドは akashic-cli をインストールして使用するこ�
 <h2><a name="インストール方法"></a> インストール方法</h2>
 <p>akashic コマンド は、Node.js 環境で動作します。各プラットフォームで、適当な方法で Node.js をインストールしてください。この利用ガイドでは、 LTS 版の Node.js 環境を前提に説明を進めます。執筆時点での LTS 版のバージョンは 8.11.3 です。</p>
 <p>Windows や Mac のユーザであれば、<a href="https://nodejs.org/download/">Node.js の公式 Web サイト</a> から適切なパッケージをダウンロードし、インストールすることができます。</p>
-<pre><code class="lang-sh">npm install -g @akashic/akashic-cli
-</code></pre>
+<pre><code class="language-sh">npm install -g @akashic/akashic-cli</code></pre>
 <h2><a name="使い方"></a> 使い方</h2>
 <p>無事にインストールができていれば、以下のコマンドが実行できるようになっています。実行すると、akashic コマンドの簡単なヘルプが表示されます。</p>
-<pre><code class="lang-sh">$ akashic
-</code></pre>
+<pre><code class="language-sh">$ akashic</code></pre>
 <p><code>akashic</code> は以下のコマンドを持ちます。</p>
 <ul>
 <li>akashic init<ul>
@@ -161,50 +160,46 @@ akashic コマンドは akashic-cli をインストールして使用するこ�
 </ul>
 <p>init 以外のコマンドは、init によって生成される game.json を操作・出力・実行します。したがって通常、ゲーム開発時にはまず akashic init を実行し、その後必要に応じて他コマンドを実行することになります。</p>
 <h2><a name="init"></a> init</h2>
-<pre><code class="lang-sh">akashic init [&lt;options&gt;]
-</code></pre>
+<pre><code class="language-sh">akashic init [&lt;options&gt;]</code></pre>
 <p>新しく Akashic で動作するゲームをカレントディレクトリに生成します。</p>
 <p>このコマンドを実行すると、以下のような対話型のインターフェースが表示され、ゲーム画面の幅・高さおよびゲームの FPS を入力できます。</p>
-<pre><code class="lang-sh">$ npm install -g @akashic/akashic-cli
+<pre><code class="language-sh">$ npm install -g @akashic/akashic-cli
 $ cd GAME_HOME
 $ akashic init
 width: (320)
 height: (320)
-fps: (30)
-</code></pre>
+fps: (30)</code></pre>
 <p>また、本コマンドは、カレントディレクトリが空でない場合、エラーで失敗することがあります。
 (生成されるファイル・ディレクトリが既に存在する場合、エラーでコマンドが失敗します)。</p>
 <p><code>&lt;options&gt;</code>に指定可能なオプションは次のとおりです。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">オプション</th>
-<th style="text-align:center">短縮名</th>
-<th style="text-align:center">効果</th>
-<th style="text-align:center">デフォルト値</th>
+<th align="center">オプション</th>
+<th align="center">短縮名</th>
+<th align="center">効果</th>
+<th align="center">デフォルト値</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>--type &lt;type&gt;</code></td>
-<td style="text-align:center"><code>-t</code></td>
-<td style="text-align:center"><code>&lt;type&gt;</code> の値に応じたゲームが作成されます。詳細については後述します。</td>
-<td style="text-align:center"><code>javascript</code></td>
+<tbody><tr>
+<td align="center"><code>--type &lt;type&gt;</code></td>
+<td align="center"><code>-t</code></td>
+<td align="center"><code>&lt;type&gt;</code> の値に応じたゲームが作成されます。詳細については後述します。</td>
+<td align="center"><code>javascript</code></td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--force</code></td>
-<td style="text-align:center"><code>-f</code></td>
-<td style="text-align:center">生成されるファイル・ディレクトリが既に存在する場合でも、エラーにせず上書きします。</td>
-<td style="text-align:center"><code>false</code></td>
+<td align="center"><code>--force</code></td>
+<td align="center"><code>-f</code></td>
+<td align="center">生成されるファイル・ディレクトリが既に存在する場合でも、エラーにせず上書きします。</td>
+<td align="center"><code>false</code></td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--yes</code></td>
-<td style="text-align:center"><code>-y</code></td>
-<td style="text-align:center">対話型インターフェースを表示せずに、デフォルトの設定でゲームを生成します。</td>
-<td style="text-align:center"><code>false</code></td>
+<td align="center"><code>--yes</code></td>
+<td align="center"><code>-y</code></td>
+<td align="center">対話型インターフェースを表示せずに、デフォルトの設定でゲームを生成します。</td>
+<td align="center"><code>false</code></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3><a name="--typeオプション"></a> --type オプション</h3>
 <p>&lt;type&gt; に指定できる値は、 以下の通りです。指定しない場合、 <code>javascript</code> が指定されたものとして扱われます。</p>
 <ul>
@@ -224,9 +219,8 @@ fps: (30)
  +- script/
   +- main.js
  +- game.json
- +- package.json
-</code></pre><p><code>script/main.js</code> を編集することでゲームの作成が可能です。
-これらのディレクトリ・ファイルの詳細は  <a href="#initで作られるファイル">init で作られるファイル</a>  の節を参照してください。
+ +- package.json</code></pre><p><code>script/main.js</code> を編集することでゲームの作成が可能です。
+これらのディレクトリ・ファイルの詳細は  <a href="#init%E3%81%A7%E4%BD%9C%E3%82%89%E3%82%8C%E3%82%8B%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB">init で作られるファイル</a>  の節を参照してください。
 このゲームではサンプルとして以下のような処理が行われています。</p>
 <ul>
 <li>スプライトの表示</li>
@@ -257,8 +251,7 @@ fps: (30)
 <p><code>--type tyepescript</code> と同様に、TypeScript で書かれたゲームと、ビルドに必要なディレクトリ・ファイルが生成されます。</p>
 <p>ゲームの内容は、<code>--type javascript-shin-ichiba-ranking</code> を指定した場合に生成されるゲームと同一です。</p>
 <h2><a name="modify"></a> modify</h2>
-<pre><code class="lang-sh">akashic modify &lt;target&gt;
-</code></pre>
+<pre><code class="language-sh">akashic modify &lt;target&gt;</code></pre>
 <p>game.json に記述されている各種メタ情報を更新します。
 &lt;target&gt; に指定できる文字列は以下のとおりです:</p>
 <ul>
@@ -276,8 +269,7 @@ fps: (30)
 </li>
 </ul>
 <h2><a name="scan"></a> scan</h2>
-<pre><code class="lang-sh">akashic scan &lt;target&gt;
-</code></pre>
+<pre><code class="language-sh">akashic scan &lt;target&gt;</code></pre>
 <p>game.json に記述されているゲームのアセットや各種ライブラリ情報を更新します。
 &lt;target&gt; に指定できる文字列は以下のとおりです:</p>
 <ul>
@@ -292,8 +284,7 @@ fps: (30)
 </li>
 </ul>
 <p>game.json のアセット情報を更新する scan asset コマンドは、もう一つの引数 &lt;subtarget&gt; によって更新する情報を制御することができます。</p>
-<pre><code class="lang-sh">akashic scan asset &lt;subtarget&gt;
-</code></pre>
+<pre><code class="language-sh">akashic scan asset &lt;subtarget&gt;</code></pre>
 <p>&lt;subtarget&gt; に指定できる文字列とそれぞれの動作は次のとおりです:</p>
 <ul>
 <li>image<ul>
@@ -340,7 +331,7 @@ scan asset コマンドは、デフォルトでアセット ID として「フ�
 (audio/title.ogg と script/title.js は、同じ &quot;title&quot; という ID となって衝突し、エラーになります。これを回避するには後述する <code>--use-path-asset-id</code> オプションを利用してください。)
 このとき、ファイル名は以下の条件を全て満たす必要があります。</p>
 <ul>
-<li>半角英数字、アンダースコア &quot;_&quot;、ドル記号 &quot;\$&quot; のみで構成されている</li>
+<li>半角英数字、アンダースコア &quot;_&quot;、ドル記号 &quot;$&quot; のみで構成されている</li>
 <li>英字で始まっている</li>
 </ul>
 <p>ユーザは game.json を直接編集して、アセット ID を任意に変更することができます。
@@ -348,66 +339,59 @@ akashic コマンドはファイルパスを基準に操作を行うため、た
 <p><code>--use-path-asset-id</code> オプションを指定することで、 game.json があるディレクトリからの (拡張子を含めた) アセットの相対パスを ID にすることができます。
 同名ファイルのアセットが複数存在するケースで利用することができます。
 (このオプション利用時は上記のファイル名制限が無視されます。)</p>
-<pre><code class="lang-sh">akashic scan asset &lt;subtarget&gt; --use-path-asset-id
-</code></pre>
+<pre><code class="language-sh">akashic scan asset &lt;subtarget&gt; --use-path-asset-id</code></pre>
 <p>また <code>--update-asset-id</code> オプションを併用することで、すでに登録されているアセット ID を相対パスに変更することができます。</p>
-<pre><code class="lang-sh">akashic scan asset &lt;subtarget&gt; --use-path-asset-id --update-asset-id
-</code></pre>
+<pre><code class="language-sh">akashic scan asset &lt;subtarget&gt; --use-path-asset-id --update-asset-id</code></pre>
 <h2><a name="serve"></a> serve</h2>
-<pre><code class="lang-sh">akashic serve [&lt;options&gt;] [&lt;path&gt;]
-</code></pre>
+<pre><code class="language-sh">akashic serve [&lt;options&gt;] [&lt;path&gt;]</code></pre>
 <p><code>&lt;path&gt;</code> ディレクトリ(省略時はカレントディレクトリ)にあるゲームをホストする、マルチプレイ動作確認用サーバを起動します。</p>
 <p>起動後に表示される URL(デフォルトでは <code>http://localhost:3300/</code>)を Web ブラウザで開いてください。</p>
 <p><code>&lt;options&gt;</code> に指定可能なオプションは次のとおりです。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">オプション</th>
-<th style="text-align:center">短縮名</th>
-<th style="text-align:center">効果</th>
-<th style="text-align:center">デフォルト値</th>
+<th align="center">オプション</th>
+<th align="center">短縮名</th>
+<th align="center">効果</th>
+<th align="center">デフォルト値</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>--hostname &lt;hostname&gt;</code></td>
-<td style="text-align:center"><code>-H</code></td>
-<td style="text-align:center">起動するサーバのホスト名を指定します。</td>
-<td style="text-align:center"><code>localhost</code></td>
+<tbody><tr>
+<td align="center"><code>--hostname &lt;hostname&gt;</code></td>
+<td align="center"><code>-H</code></td>
+<td align="center">起動するサーバのホスト名を指定します。</td>
+<td align="center"><code>localhost</code></td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--port &lt;port&gt;</code></td>
-<td style="text-align:center"><code>-p</code></td>
-<td style="text-align:center">起動するサーバのポート番号を指定します。</td>
-<td style="text-align:center"><code>3300</code></td>
+<td align="center"><code>--port &lt;port&gt;</code></td>
+<td align="center"><code>-p</code></td>
+<td align="center">起動するサーバのポート番号を指定します。</td>
+<td align="center"><code>3300</code></td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--target-service &lt;name&gt;</code></td>
-<td style="text-align:center"><code>-s</code></td>
-<td style="text-align:center">指定されたサービスの挙動を模擬します。(後述)</td>
-<td style="text-align:center"><code>none</code></td>
+<td align="center"><code>--target-service &lt;name&gt;</code></td>
+<td align="center"><code>-s</code></td>
+<td align="center">指定されたサービスの挙動を模擬します。(後述)</td>
+<td align="center"><code>none</code></td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--verbose</code></td>
-<td style="text-align:center"><code>-v</code></td>
-<td style="text-align:center">詳細情報をログ出力します。</td>
-<td style="text-align:center"><code>false</code></td>
+<td align="center"><code>--verbose</code></td>
+<td align="center"><code>-v</code></td>
+<td align="center">詳細情報をログ出力します。</td>
+<td align="center"><code>false</code></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>ネットワークごしに(他の PC などから)マルチプレイを行いたい場合は、 <code>--hostname</code> に外部からアクセス可能なホスト名(IP アドレスなど)を指定してください。</p>
 <p>オプション <code>--target-service</code> には <code>none</code> または <code>nicolive</code> を指定できます。
 <code>nicolive</code> が指定された場合、特定の条件で <code>JoinEvent</code> が自動的に送られるなど、ニコニコ生放送 (ニコニコ新市場) に近い挙動で動作します。
 詳細はニコニコ新市場対応コンテンツのガイド文書 <a href="/guide/shin-ichiba/multi.html#debug">multi モードのゲーム作成</a> を参照してください。</p>
 <h2><a name="install"></a> install</h2>
-<pre><code class="lang-sh">akashic install [&lt;module&gt;]
-</code></pre>
+<pre><code class="language-sh">akashic install [&lt;module&gt;]</code></pre>
 <p><code>npm install</code> のラッパーコマンドです。</p>
 <p><code>&lt;module&gt;</code> を与えた場合、 <code>npm install --save &lt;module&gt;</code> と <code>npm shrinkwrap</code> を行い、また導入されたファイルの一覧を game.json に加えます。すなわち次のコマンドと概ね等価な振る舞いをします。</p>
-<pre><code class="lang-sh">npm install --save &lt;module&gt;
+<pre><code class="language-sh">npm install --save &lt;module&gt;
 npm shrinkwrap
-akashic scan globalScripts
-</code></pre>
+akashic scan globalScripts</code></pre>
 <p>@akashic-extension/ で提供される Akashic 向けの拡張機能の他、任意の npm パッケージをゲームに導入することができます。</p>
 <blockquote>
 <p>注意: Akashic は Node.js のコアモジュール(<code>http</code>, <code>path</code> など)をサポートしていません。コアモジュールに依存しているパッケージを導入した場合、エラーメッセージが表示されます。この場合、<code>npm install</code> は行われ、game.json も更新されますが、ゲームとして実行しようとするとエラーになります。</p>
@@ -424,91 +408,81 @@ Akashic のゲームとしてはサポートされていません。それらの
 game.json は更新されません。npm-shrinkwrap.json がない場合、利用しないでください。
 (意図しないバージョンのパッケージが導入される可能性があります。)</p>
 <h2><a name="uninstall"></a> uninstall</h2>
-<pre><code class="lang-sh">akashic uninstall &lt;module&gt;
-</code></pre>
+<pre><code class="language-sh">akashic uninstall &lt;module&gt;</code></pre>
 <p><code>npm uninstall --save &lt;module&gt;</code> を行い、 <code>npm shrinkwrap</code> して、削除されたファイルを game.json から取り除きます。</p>
 <p>(install コマンド同様、game.json と同じディレクトリに package.json という名前のファイルが存在する必要があります)</p>
 <h2><a name="update"></a> update</h2>
-<pre><code class="lang-sh">akashic update &lt;module&gt;
-</code></pre>
+<pre><code class="language-sh">akashic update &lt;module&gt;</code></pre>
 <p><code>npm update &lt;module&gt;</code> を行い、./node_modules 以下の npm パッケージを更新します。ファイルの変更は game.json に反映されます。</p>
 <p>(install コマンド同様、game.json と同じディレクトリに package.json という名前のファイルが存在する必要があります)</p>
 <p><code>&lt;module&gt;</code> を指定しなかった場合、全ての npm パッケージを更新します。npm update の詳細は <a href="https://docs.npmjs.com/cli/update">npm のドキュメント</a> を参照してください。</p>
 <h2><a name="export-zip"></a> export zip</h2>
-<pre><code class="lang-sh">akashic export zip [--output &lt;fileName&gt;] [--exclude &lt;excludedFileName&gt;]
-</code></pre>
+<pre><code class="language-sh">akashic export zip [--output &lt;fileName&gt;] [--exclude &lt;excludedFileName&gt;]</code></pre>
 <p>ゲームディレクトリを zip 形式で圧縮したファイルを <code>&lt;fileName&gt;</code> に出力します。
 <code>--output</code> オプションが指定されなかった場合、 <code>./game.zip</code> が指定されたかのように振る舞います。存在するファイル名・ディレクトリ名を指定した場合、エラーになります。</p>
 <p><code>--exclude</code> オプションが指定された場合、指定されたファイル <code>&lt;excludedFileName&gt;</code> は出力から除外されます。複数のファイルを除外したい場合は、次のように複数回 <code>--exclude</code> を指定してください。</p>
-<pre><code class="lang-sh">akashic export zip --exclude foo --exclude bar
-</code></pre>
+<pre><code class="language-sh">akashic export zip --exclude foo --exclude bar</code></pre>
 <p><code>--exclude</code> オプションが指定されなかった場合、次の名前が指定されたものとして振る舞います。</p>
 <ul>
 <li>./npm-shrinkwrap.json</li>
 <li>./package.json</li>
 </ul>
 <h2><a name="export-html"></a> export html</h2>
-<pre><code class="lang-sh">akashic export html --output &lt;dirName&gt; [--bundle] [--minify] [--magnify] [--no-strip]
-</code></pre>
+<pre><code class="language-sh">akashic export html --output &lt;dirName&gt; [--bundle] [--minify] [--magnify] [--no-strip]</code></pre>
 <p>単独でゲームを実行可能な HTML ファイル (と関連ファイル) を含むディレクトリを出力します。出力されたディレクトリの index.html を Web ブラウザで開くことで、 akashic-sandbox などの動作確認ツールなしにゲームを実行できます。</p>
 <p>利用可能なオプションは次のとおりです:</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">オプション</th>
-<th style="text-align:center">効果</th>
-<th style="text-align:center">デフォルト値</th>
+<th align="center">オプション</th>
+<th align="center">効果</th>
+<th align="center">デフォルト値</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>--output &lt;dirName&gt;</code></td>
-<td style="text-align:center">出力するフォルダを <code>&lt;dirName&gt;</code> にする</td>
-<td style="text-align:center">N/A</td>
+<tbody><tr>
+<td align="center"><code>--output &lt;dirName&gt;</code></td>
+<td align="center">出力するフォルダを <code>&lt;dirName&gt;</code> にする</td>
+<td align="center">N/A</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--bundle</code></td>
-<td style="text-align:center">スクリプトアセットやテキストアセットなど、可能なものを index.html にまとめる</td>
-<td style="text-align:center">指定なし</td>
+<td align="center"><code>--bundle</code></td>
+<td align="center">スクリプトアセットやテキストアセットなど、可能なものを index.html にまとめる</td>
+<td align="center">指定なし</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--minify</code></td>
-<td style="text-align:center">スクリプトアセットを minify する</td>
-<td style="text-align:center">指定なし</td>
+<td align="center"><code>--minify</code></td>
+<td align="center">スクリプトアセットを minify する</td>
+<td align="center">指定なし</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--magnify</code></td>
-<td style="text-align:center">ゲーム画面をブラウザのウィンドウサイズに合わせて拡縮するようにする</td>
-<td style="text-align:center">指定なし</td>
+<td align="center"><code>--magnify</code></td>
+<td align="center">ゲーム画面をブラウザのウィンドウサイズに合わせて拡縮するようにする</td>
+<td align="center">指定なし</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--inject &lt;fileName&gt;</code></td>
-<td style="text-align:center">出力 HTML の head 要素に <code>&lt;fileName&gt;</code> の内容を含める</td>
-<td style="text-align:center">指定なし</td>
+<td align="center"><code>--inject &lt;fileName&gt;</code></td>
+<td align="center">出力 HTML の head 要素に <code>&lt;fileName&gt;</code> の内容を含める</td>
+<td align="center">指定なし</td>
 </tr>
 <tr>
-<td style="text-align:center"><code>--no-strip</code></td>
-<td style="text-align:center">ゲーム実行に不要なファイルを出力から除外しない</td>
-<td style="text-align:center">指定なし</td>
+<td align="center"><code>--no-strip</code></td>
+<td align="center">ゲーム実行に不要なファイルを出力から除外しない</td>
+<td align="center">指定なし</td>
 </tr>
-</tbody>
-</table>
-<p><code>--inject</code> オプション(<a href="mailto:`akashic-cli@1.3.1">`akashic-cli@1.3.1</a>` で導入)は複数指定可能です。指定した順でファイルの内容が出力されます。ディレクトリ名も指定でき、その場合はディレクトリ内の全ファイルが出力されます(順不同)。</p>
+</tbody></table>
+<p><code>--inject</code> オプション(<code>akashic-cli@1.3.1</code> で導入)は複数指定可能です。指定した順でファイルの内容が出力されます。ディレクトリ名も指定でき、その場合はディレクトリ内の全ファイルが出力されます(順不同)。</p>
 <p><code>--output</code> オプションに存在するファイル名・ディレクトリ名を指定した場合、エラーになります。またゲームのディレクトリ以下のパスを指定することはできません。たとえば game.json のあるディレクトリで次のように指定するとエラーになります。</p>
-<pre><code class="lang-sh">$ akashic export html --output ./bundled  # エラー
-</code></pre>
+<pre><code class="language-sh">$ akashic export html --output ./bundled  # エラー</code></pre>
 <p><code>./bundled</code> ではなく <code>../bundled</code> にするなど、ゲームのディレクトリの外を指定してください。この場合、 <code>../bundled/index.html</code> を Web ブラウザで開くと、単独でゲームを実行できます。
 (ゲーム実行には <code>../bundled/</code> 以下のファイルがすべて必要である点に注意してください)</p>
-<pre><code class="lang-sh">$ akashic export html --output ../bundled
-</code></pre>
+<pre><code class="language-sh">$ akashic export html --output ../bundled</code></pre>
 <h2><a name="stat"></a> stat</h2>
-<pre><code class="lang-sh">akashic stat &lt;target&gt; [options...]
-</code></pre>
+<pre><code class="language-sh">akashic stat &lt;target&gt; [options...]</code></pre>
 <p><code>&lt;target&gt;</code> で指定された内容に関して情報を収集して出力します。現在 <code>&lt;target&gt;</code> に与えられるのは <code>size</code> のみです。</p>
 <h3><a name="ゲームの容量計算 (size)"></a> ゲームの容量計算 (size)</h3>
 <p><code>&lt;target&gt;</code> に <code>size</code> を指定すると、ゲームの容量を計算します。ゲームの容量とはゲームを配信する際にネットワーク通信が必要なコンテンツのファイルサイズの合計のことです。</p>
 <p>何もオプションを付けずに実行した場合、以下のように表示されます。</p>
-<pre><code class="lang-sh">$ akashic stat size
+<pre><code class="language-sh">$ akashic stat size
 image: 415.49KB (84%)
 text: 25.60KB (5%)
 ogg audio: 47.74KB
@@ -519,16 +493,14 @@ other: 1.44KB (0%)
   game.json: 1.44KB
 [ ] TOTAL SIZE (using ogg): 490.90KB (502685B)
 [*] TOTAL SIZE (using mp4): 496.19KB (508096B)
-[ ] TOTAL SIZE (using aac): 495.87KB (507775B)
-</code></pre>
+[ ] TOTAL SIZE (using aac): 495.87KB (507775B)</code></pre>
 <p>オーディオは mp4 と aac と ogg のうち合計容量が大きいものを利用して計算します。結果表示の <code>(87%)</code> の部分は全体用量に占めるそのカテゴリのファイルの割合を示しています。
 <code>game.json</code>, <code>node_moduels/</code> 以下のスクリプトは <code>other</code> に分類されます。</p>
 <p><code>--limit</code> オプションが指定されると、ゲームの容量が指定された値を超えた場合にエラーと表示され、コマンド自体の戻り値が正常終了時の <code>0</code> ではなく <code>1</code> になります。</p>
 <p>容量は <code>--limit 100KB</code> のように指定します。<code>1KB</code> は <code>1024B</code> として計算されます。単位として、<code>B</code>, <code>KB</code>, <code>MB</code>, <code>GB</code> が利用でき、末尾の <code>B</code> は省略できます。</p>
 <p><code>--raw</code> オプションが指定されると、以下のように合計容量のバイト数のみを表示して終了します。</p>
-<pre><code class="lang-sh">$ akashic stat size --raw
-1657274
-</code></pre>
+<pre><code class="language-sh">$ akashic stat size --raw
+1657274</code></pre>
 <h2><a name="initで作られるファイル"></a> init で作られるファイル</h2>
 <h3><a name="imageディレクトリ"></a> image ディレクトリ</h3>
 <p>画像素材を配置するディレクトリ。</p>
@@ -562,7 +534,7 @@ other: 1.44KB (0%)
 <p>ゲームの各種情報を記述するファイル。</p>
 <p><code>akashic init --type javascript-minimal</code> を実行した直後は以下のような内容になっています。
 (ただし width, height, fps は init で指定した値)</p>
-<pre><code class="lang-json">{
+<pre><code class="language-json">{
   &quot;width&quot;: 480,
   &quot;height&quot;: 480,
   &quot;fps&quot;: 30,
@@ -573,89 +545,16 @@ other: 1.44KB (0%)
       &quot;global&quot;: true
     }
   }
-}
-</code></pre>
+}</code></pre>
 <p>詳細な仕様は<a href="game-json.html">game.json の仕様</a>を参照してください。</p>
 <h2><a name="Node.js 開発者向けの追加情報"></a> Node.js 開発者向けの追加情報</h2>
 <p>akashic は、install, uninstall コマンドを除き、package.json に関知しません。</p>
 <p>ゲーム開発者は、npm install --save-dev jasmine して spec ディレクトリにテストを配置するなど、任意の開発フローを(Akashic のディレクトリ構成と衝突するなどの問題がない限り)とることができます。</p>
 
 		</div>
-		<script>
-			// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
-			// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
-			window.addEventListener('resize', function() {
-				var iframes = document.getElementsByClassName('akashic-content');
-				var contents = Array.prototype.slice.call(iframes);
-				contents.forEach(function(content) {
-					content.contentWindow.location.reload(true);
-				});
-			});
-		</script>
 	</section>
 	<footer class="safearea--LR">
 	<div class="responsive--width">
-
-		<ul class="foot--menu cfix">
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">入門</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/tutorial/v2/">Akashic Engine入門 v2</a></li>
-					<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
-					<li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">ガイド</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
-					<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-					<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-					<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-					<li><a href="/guide/storage.html">ストレージについて</a></li>
-					<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
-					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-					<li><a href="/guide/shader.html">シェーダの利用</a></li>
-					<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
-					<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
-					<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
-					<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">リファレンス</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-					<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
-					<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
-					<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
-					<li><a href="/reference/akashic-label/">akashic-label</a></li>
-					<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
-					<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
-					<li><a href="/reference/coe/">coe framework</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">サンプルデモ</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/demo/?title=helloworld">Hello World</a></li>
-					<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
-					<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
-					<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
-					<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
-					<li><a href="/demo/?title=demo-tile">タイル</a></li>
-					<li><a href="/demo/?title=label-sample">ラベル</a></li>
-					<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
-					<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
-					<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
-					<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
-					<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
-					<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
-					<li><a href="/asset/material.html">サンプルデモの素材</a></li>
-				</ul>
-			</li>
-		</ul>
 
 		<ul class="foot--creativecommons">
 			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
@@ -673,5 +572,17 @@ other: 1.44KB (0%)
 </div>
 <div class="page--top"></div>
 <div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
 </body>
 </html>

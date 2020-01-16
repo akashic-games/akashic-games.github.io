@@ -7,26 +7,27 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ストレージについて</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?378ae70">
-<link rel="stylesheet" href="/css/header.css?378ae70">
-<link rel="stylesheet" href="/css/footer.css?378ae70">
+<link rel="stylesheet" href="/css/common.css?7db85b2">
+<link rel="stylesheet" href="/css/header.css?7db85b2">
+<link rel="stylesheet" href="/css/footer.css?7db85b2">
 
 
-<link rel="stylesheet" href="/css/asset.css?378ae70">
+<link rel="stylesheet" href="/css/asset.css?7db85b2">
 
-<link rel="stylesheet" href="/css/akashic-document.css?378ae70">
+<link rel="stylesheet" href="/css/akashic-document.css?7db85b2">
 
-<link rel="stylesheet" href="/css/railscasts.css?378ae70">
+<link rel="stylesheet" href="/css/railscasts.css?7db85b2">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?378ae70"></script>
+<script src="/lib/common.js?7db85b2"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
+
 <div class="head--spacer"></div>
 <div class="SP--head--menu--show"></div>
 <div class="SP--head--menu--hide"></div>
@@ -106,7 +107,7 @@
 <p><strong>古い文書です。この文書を参照しないでください。特に、ニコニコ新市場対応コンテンツでは、ストレージ関連機能は利用できません。</strong></p>
 <h2><a name="これは"></a> これは</h2>
 <p>ストレージの仕様とゲームコンテンツからストレージを操作するストレージインターフェースの利用方法をまとめます。</p>
-<p>対象バージョンは <a href="mailto:`akashic-engine@1.0.0">`akashic-engine@1.0.0</a>` 以降ですが、サンプルコードでは 2.0.0 以降特有のメソッドなどを利用している箇所があります。</p>
+<p>対象バージョンは <code>akashic-engine@1.0.0</code> 以降ですが、サンプルコードでは 2.0.0 以降特有のメソッドなどを利用している箇所があります。</p>
 <h2><a name="ストレージ"></a> ストレージ</h2>
 <p><em>NOTE: この項目はストレージの仕様が現時点で未確定な部分があるため、仕様の概要のみを説明しています。</em></p>
 <p><strong>ストレージ</strong> は、ゲームコンテンツから利用できる、永続的なデータを保存するための機能です。</p>
@@ -173,10 +174,11 @@
 <p>ここからは、コード例を示しながらストレージインターフェースの利用方法を説明します。</p>
 <p>ストレージインターフェースの詳細な仕様は API リファレンスを参照してください。</p>
 <!-- TODO: APIリファレンスへのハイパーリンク -->
+
 <h3><a name="値の書き込み"></a> 値の書き込み</h3>
 <p>値の書き込みは <code>g.Storage#write()</code> を利用します。ゲームに紐づく <code>g.Storage</code> のインスタンスは <code>g.Game#storage</code> となります。</p>
 <p>例えば、Values リージョンに値を書き込むには以下のような記述を行います。</p>
-<pre><code class="lang-javascript">// g.StorageKeyを作成
+<pre><code class="language-javascript">// g.StorageKeyを作成
 var key = {
   region: g.StorageRegion.Values,
   regionKey: &quot;fruit.like&quot;,
@@ -189,8 +191,7 @@ var value = {
   tag: &quot;foo&quot;
 };
 // 書き込みを行う
-game.storage.write(key, value);
-</code></pre>
+game.storage.write(key, value);</code></pre>
 <p>この例において、<code>player</code> はゲームに参加しているプレイヤーを指す <code>g.Player</code> のインスタンスとなります。</p>
 <p>値の書き込みにはストレージキーを表す <code>g.StorageKey</code> と値を表す <code>g.StorageValue</code> が必要です。</p>
 <p>この例では、 <code>key</code> が <code>g.StorageKey</code>、 <code>value</code> が <code>g.StorageValue</code> となります。</p>
@@ -200,7 +201,7 @@ game.storage.write(key, value);
 <p><code>game.storage.write(key, value)</code> で実際に書き込みが行われます。</p>
 <p>ここで、ゲームコンテンツは書き込みの成功・失敗を検知することが出来ないことに注意して下さい。</p>
 <p>次に、Scores リージョンに値を書き込む例を示します。</p>
-<pre><code class="lang-javascript">var clickCounts = {};
+<pre><code class="language-javascript">var clickCounts = {};
 scene.pointDownCapture.add(function(o) {
   if (!o.player.id) {
     return;
@@ -222,8 +223,7 @@ scene.pointDownCapture.add(function(o) {
   };
   game.storage.write(key, value, option);
   clickCounts[o.player.id] = clickCount;
-});
-</code></pre>
+});</code></pre>
 <p>この例では、シーンのクリック数をゲームのスコアとしてストレージに保存しています。
 <code>o.player</code> により、クリックしたプレイヤーを取得しています。</p>
 <p>値を書き込む場合、同じゲームが同時に実行されているケースを想定する必要があります。</p>
@@ -235,7 +235,7 @@ scene.pointDownCapture.add(function(o) {
 <p>次に、Counts リージョンに値を書き込む例を示します。</p>
 <p>Counts リージョンでは、これまで Values リージョンや Scores リージョンの説明で行ったような値を指定した書き込みに加え、値のインクリメント、デクリメント処理を行うことが出来ます。</p>
 <p>以下の例では、ゲームのプレイ回数をインクリメントして保存しています。</p>
-<pre><code class="lang-javascript">scene.loaded.add(function() {
+<pre><code class="language-javascript">scene.loaded.add(function() {
   var key = {
     region: g.StorageRegion.Counts,
     regionKey: &quot;play&quot;,
@@ -247,16 +247,14 @@ scene.pointDownCapture.add(function(o) {
     operation: g.StorageCountsOperation.Incr
   };
   game.storage.write(key, value, option);
-});
-</code></pre>
+});</code></pre>
 <p><code>value.data</code> に数値を指定すると、指定した数値を現在の値に加算する処理となります。</p>
-<pre><code class="lang-javascript">// 現在の値に10加算する
-game.storage.write(key, { data: 10 }, option);
-</code></pre>
+<pre><code class="language-javascript">// 現在の値に10加算する
+game.storage.write(key, { data: 10 }, option);</code></pre>
 <h3><a name="値の読み込み"></a> 値の読み込み</h3>
 <p>値の読み込みはシーンの開始時に行われ、シーン開始後に読み込みを行うことはできません。</p>
 <p>以下のように読み込み行うストレージキーを <code>g.StorageReadKey</code> として生成し、その一覧を <code>g.Scene</code> のコンストラクタに指定します。</p>
-<pre><code class="lang-javascript">// ストレージから読み込むキーのリスト
+<pre><code class="language-javascript">// ストレージから読み込むキーのリスト
 var keys = [
     {region: g.StorageRegion.Values, regionKey: &quot;fruit.like&quot;, userId: game.vars.player.id, gameId: &quot;$gameId&quot;},
     {region: g.StorageRegion.Counts, regionKey: &quot;play&quot;, userId: game.vars.player.id, gameId: &quot;$gameId&quot;},
@@ -265,18 +263,16 @@ var keys = [
 var scene = new g.Scene({game: game, storageKeys: keys});
 scene.loaded.add(function() {
 ...
-});
-</code></pre>
+});</code></pre>
 <p>この例では、シーン開始前に、<code>g.Game#join</code> を通して参加者を表す <code>g.Player</code> が <code>game.vars.player</code> にセットされていることを想定しています。</p>
 <p>読み込んだ値は、シーン開始後に利用することができます。</p>
 <p>例えば、 <code>keys[0]</code> に対応する値を取得するには <code>scene.loaded.add</code> に登録したハンドラ内で</p>
-<pre><code class="lang-javascript">scene.storageValues.getOne(keys[0]);
-</code></pre>
+<pre><code class="language-javascript">scene.storageValues.getOne(keys[0]);</code></pre>
 <p>とします。</p>
 <p>値の一括取得を行う際は、 <code>g.StorageReadKey#regionKey</code> にアスタリスク <code>*</code> を含んだ文字列を指定します。</p>
 <p>例えば、 <code>a001.b00*</code> を指定すると <code>a001.b001</code> 、<code>a001.b002</code> のリージョンキーにマッチする値を取得できます。</p>
 <p>また、<code>g.StorageReadKey#userId</code> を アスタリスク <code>*</code> とすることができ、これは全ユーザにマッチすることになります。</p>
-<pre><code class="lang-javascript">var keys = [
+<pre><code class="language-javascript">var keys = [
   {
     region: g.StorageRegion.Counts,
     regionKey: &quot;play&quot;,
@@ -291,88 +287,15 @@ scene.loaded.add(function() {
   // =&gt; [{data: 2, storageKey: {region: g.StorageRegion.Counts, regionKey: &quot;play&quot;, userId: &quot;user1&quot;, gameId: &quot;2&quot;}},
   //     {data: 5, storageKey: {region: g.StorageRegion.Counts, regionKey: &quot;play&quot;, userId: &quot;user1&quot;, gameId: &quot;2&quot;}},
   //     {data: 8, storageKey: {region: g.StorageRegion.Counts, regionKey: &quot;play&quot;, userId: &quot;user1&quot;, gameId: &quot;2&quot;}}]
-});
-</code></pre>
+});</code></pre>
 <p><strong>リージョンキーとユーザ ID の一括取得を同時に指定することは出来ない</strong>ので注意が必要です。</p>
 <p>取得した値を表す <code>g.StorageValue</code> のメンバである <code>storageKey</code> は値に対応するストレージキーを表します。</p>
 <p>一括取得した値に対応するストレージキーを知りたい場合は、このメンバを利用します。</p>
 
 		</div>
-		<script>
-			// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
-			// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
-			window.addEventListener('resize', function() {
-				var iframes = document.getElementsByClassName('akashic-content');
-				var contents = Array.prototype.slice.call(iframes);
-				contents.forEach(function(content) {
-					content.contentWindow.location.reload(true);
-				});
-			});
-		</script>
 	</section>
 	<footer class="safearea--LR">
 	<div class="responsive--width">
-
-		<ul class="foot--menu cfix">
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">入門</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/tutorial/v2/">Akashic Engine入門 v2</a></li>
-					<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
-					<li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">ガイド</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
-					<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-					<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-					<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-					<li><a href="/guide/storage.html">ストレージについて</a></li>
-					<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
-					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-					<li><a href="/guide/shader.html">シェーダの利用</a></li>
-					<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
-					<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
-					<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
-					<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">リファレンス</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-					<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
-					<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
-					<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
-					<li><a href="/reference/akashic-label/">akashic-label</a></li>
-					<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
-					<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
-					<li><a href="/reference/coe/">coe framework</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">サンプルデモ</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/demo/?title=helloworld">Hello World</a></li>
-					<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
-					<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
-					<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
-					<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
-					<li><a href="/demo/?title=demo-tile">タイル</a></li>
-					<li><a href="/demo/?title=label-sample">ラベル</a></li>
-					<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
-					<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
-					<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
-					<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
-					<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
-					<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
-					<li><a href="/asset/material.html">サンプルデモの素材</a></li>
-				</ul>
-			</li>
-		</ul>
 
 		<ul class="foot--creativecommons">
 			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
@@ -390,5 +313,17 @@ scene.loaded.add(function() {
 </div>
 <div class="page--top"></div>
 <div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
 </body>
 </html>

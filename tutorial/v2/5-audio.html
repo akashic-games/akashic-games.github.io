@@ -7,26 +7,25 @@
 <meta name="theme-color" content="#0F1F26">
 <title>音を鳴らす</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?378ae70">
-<link rel="stylesheet" href="/css/header.css?378ae70">
-<link rel="stylesheet" href="/css/footer.css?378ae70">
+<link rel="stylesheet" href="/css/common.css?7db85b2">
+<link rel="stylesheet" href="/css/header.css?7db85b2">
+<link rel="stylesheet" href="/css/footer.css?7db85b2">
 
 
-<link rel="stylesheet" href="/css/asset.css?378ae70">
+<link rel="stylesheet" href="/css/akashic-document.css?7db85b2">
 
-<link rel="stylesheet" href="/css/akashic-document.css?378ae70">
-
-<link rel="stylesheet" href="/css/railscasts.css?378ae70">
+<link rel="stylesheet" href="/css/railscasts.css?7db85b2">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?378ae70"></script>
+<script src="/lib/common.js?7db85b2"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
+
 <div class="head--spacer"></div>
 <div class="SP--head--menu--show"></div>
 <div class="SP--head--menu--hide"></div>
@@ -100,24 +99,50 @@
 </header>
 
 <div id="BodyInner">
-	<section class="akashic--document safearea--LR">
-		<div class="inner responsive--width">
-			<h1>音を鳴らす</h1>
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3>Akashic Engine 入門</h3>
+<h4><a name="basic"></a> 導入</h4>
+<ul>
+<li><a href="./index.html">トップ</a></li>
+<li><a href="./1-introduction.html">akashic の導入</a></li>
+</ul>
+<h4><a name="basic"></a> シングルプレイのゲーム作成</h4>
+<ul>
+<li><a href="./2-basic.html">コンテンツ作成の基本</a></li>
+<li><a href="./3-animation.html">アニメーションさせる</a></li>
+<li><a href="./4-click.html">クリックできるようにする</a></li>
+<li><a href="./5-audio.html">音を鳴らす</a></li>
+<li><a href="./scale-anchor.html">拡縮とアンカーポイント</a></li>
+<li><a href="./6-otherdraw.html">色々な描画</a></li>
+<li><a href="./7-export.html">ゲームを公開する</a></li>
+<li><a href="./8-install.html">拡張ライブラリを使う</a></li>
+<li><a href="./9-appendix.html">より大規模なゲームを作るために</a></li>
+</ul>
+<h4><a name="multiplay"></a> マルチプレイのゲーム作成</h4>
+<ul>
+<li><a href="./multiplay/introduction.html">マルチプレイの基礎</a></li>
+<li><a href="./multiplay/each-player.html">プレイヤーごとに異なる描画を行う</a></li>
+<li><a href="./multiplay/camera.html">プレイヤーごとに異なる位置を表示する</a></li>
+<li><a href="./multiplay/join.html">Join と Leave</a></li>
+</ul>
+
+		</div>
+		<div class="twocol-main">
+			<div class="inner responsive--width--twocol">
+				<h1>音を鳴らす</h1>
 <h2><a name="効果音とBGM"></a> 効果音と BGM</h2>
 <p>Akashic Engine のゲームで音を鳴らす場合は、一つの効果音や音楽につき
 Ogg Vorbis 形式 (.ogg) と AAC 形式 (.aac) の二種類のファイルを用意する必要があります。これは、Web ページで音を再生する際に、利用可能な形式がブラウザごとに異なっているためです。</p>
 <p>ファイルが用意できたら <code>se1.ogg</code> と <code>se1.aac</code> を <code>audio</code> ディレクトリに配置して、
 <code>akashic scan</code> コマンドでアセットとして追加します。</p>
-<pre><code class="lang-sh">akashic scan asset
-</code></pre>
+<pre><code class="language-sh">akashic scan asset</code></pre>
 <p>音声アセットはアセットの <code>play()</code> メソッドを呼び出して再生します。例えば ID が <code>&quot;se1&quot;</code> の場合は、以下のコードで再生できます。</p>
-<pre><code class="lang-javascript">scene.assets[&quot;se1&quot;].play();
-</code></pre>
+<pre><code class="language-javascript">scene.assets[&quot;se1&quot;].play();</code></pre>
 <p>もし、TypeScript テンプレートを利用して開発する場合、 <code>scene.assets</code> は <code>g.Asset</code> というアセット全体を示す型の配列になっています。よって、そのままでは <code>g.AudioAsset</code> だけが持つ <code>play()</code> メソッドを使えません。以下のように <code>as</code> 演算子を使って <code>g.AudioAsset</code> であることを示す必要があります。</p>
-<pre><code class="lang-typescript">(scene.assets[&quot;se1&quot;] as g.AudioAsset).play();
-</code></pre>
+<pre><code class="language-typescript">(scene.assets[&quot;se1&quot;] as g.AudioAsset).play();</code></pre>
 <p>シーンで効果音を利用するには、他のアセットと同じようにシーンオブジェクトのパラメータオブジェクトにアセットの ID を列挙します。以下は画面のタップまたはクリックで効果音を再生する例です。</p>
-<pre><code class="lang-javascript">function main() {
+<pre><code class="language-javascript">function main() {
   var scene = new g.Scene({ game: g.game, assetIds: [&quot;se1&quot;] });
   scene.loaded.add(function() {
     scene.pointDownCapture.add(function() {
@@ -127,32 +152,29 @@ Ogg Vorbis 形式 (.ogg) と AAC 形式 (.aac) の二種類のファイルを用
   g.game.pushScene(scene);
 }
 
-module.exports = main;
-</code></pre>
+module.exports = main;</code></pre>
 <p>Akashic Engine では音声を自動的にループ再生させることで BGM を実現します。
 BGM をループ再生させるには、<code>game.json</code> を編集して該当アセットの
 <code>systemId</code> プロパティの値を <code>music</code> に変更します。</p>
 <p>例えば BGM として利用したいアセットの ID が <code>bgm</code> の場合、
 <code>akashic scan</code> 直後は <code>game.json</code> の対応箇所は次のようになっています。</p>
-<pre><code class="lang-json">&quot;bgm&quot;: {
+<pre><code class="language-json">&quot;bgm&quot;: {
   &quot;type&quot;: &quot;audio&quot;,
   &quot;path&quot;: &quot;audio/bgm&quot;,
   &quot;systemId&quot;: &quot;sound&quot;,
   &quot;duration&quot;: 8000
-}
-</code></pre>
+}</code></pre>
 <p>この部分を編集して以下のように <code>&quot;systemId&quot;: &quot;music&quot;</code> を指定します。</p>
-<pre><code class="lang-json">&quot;bgm&quot;: {
+<pre><code class="language-json">&quot;bgm&quot;: {
   &quot;type&quot;: &quot;audio&quot;,
   &quot;path&quot;: &quot;audio/bgm&quot;,
   &quot;systemId&quot;: &quot;music&quot;,
   &quot;duration&quot;: 8000
-}
-</code></pre>
+}</code></pre>
 <p>BGM も <code>play()</code> メソッドで再生を開始します。
 BGM は自動的にループ再生されるので、<code>play()</code> メソッドはシーンロード時に一度だけ呼び出します。</p>
 <p>以下のプログラムは上で出てきた効果音再生プログラムに BGM を追加したものです。</p>
-<pre><code class="lang-javascript">function main() {
+<pre><code class="language-javascript">function main() {
   var scene = new g.Scene({ game: g.game, assetIds: [&quot;bgm&quot;, &quot;se1&quot;] });
   scene.loaded.add(function() {
     scene.assets[&quot;bgm&quot;].play();
@@ -163,90 +185,18 @@ BGM は自動的にループ再生されるので、<code>play()</code> メソ�
   g.game.pushScene(scene);
 }
 
-module.exports = main;
-</code></pre>
+module.exports = main;</code></pre>
 <div class="navi-center">
-<a href="./4-click.html">前（クリックできるようにする）</a>
+<a href="./4-click.html">前 (クリックできるようにする)</a>
  | <a href="./">目次</a>
- | <a href="./scale-anchor.html">次（拡縮とアンカーポイント）</a>
+ | <a href="./scale-anchor.html">次 (拡縮とアンカーポイント)</a>
 </div>
 
+			</div>
 		</div>
-		<script>
-			// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
-			// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
-			window.addEventListener('resize', function() {
-				var iframes = document.getElementsByClassName('akashic-content');
-				var contents = Array.prototype.slice.call(iframes);
-				contents.forEach(function(content) {
-					content.contentWindow.location.reload(true);
-				});
-			});
-		</script>
 	</section>
 	<footer class="safearea--LR">
 	<div class="responsive--width">
-
-		<ul class="foot--menu cfix">
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">入門</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/tutorial/v2/">Akashic Engine入門 v2</a></li>
-					<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
-					<li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">ガイド</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
-					<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-					<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-					<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-					<li><a href="/guide/storage.html">ストレージについて</a></li>
-					<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-					<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
-					<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-					<li><a href="/guide/shader.html">シェーダの利用</a></li>
-					<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
-					<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
-					<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
-					<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">リファレンス</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-					<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
-					<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
-					<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
-					<li><a href="/reference/akashic-label/">akashic-label</a></li>
-					<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
-					<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
-					<li><a href="/reference/coe/">coe framework</a></li>
-				</ul>
-			</li>
-			<li class="foot--menu--item">
-				<p class="foot--menu--item--tab">サンプルデモ</p>
-				<ul class="foot--menu--item--list">
-					<li><a href="/demo/?title=helloworld">Hello World</a></li>
-					<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
-					<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
-					<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
-					<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
-					<li><a href="/demo/?title=demo-tile">タイル</a></li>
-					<li><a href="/demo/?title=label-sample">ラベル</a></li>
-					<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
-					<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
-					<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
-					<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
-					<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
-					<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
-					<li><a href="/asset/material.html">サンプルデモの素材</a></li>
-				</ul>
-			</li>
-		</ul>
 
 		<ul class="foot--creativecommons">
 			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
@@ -264,5 +214,17 @@ module.exports = main;
 </div>
 <div class="page--top"></div>
 <div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
 </body>
 </html>
