@@ -119,7 +119,7 @@ sandbox.config.js を利用することで、セッションパラメータや�
 <li>Akashic Sandbox、serve コマンドで有効</li>
 </ul>
 </li>
-<li>autoSendEvents<ul>
+<li>autoSendEventName<ul>
 <li>文字列</li>
 <li>events のメンバー名のいずれか</li>
 <li>Akashic Sandbox、serve コマンドで有効</li>
@@ -138,6 +138,7 @@ sandbox.config.js を利用することで、セッションパラメータや�
 </ul>
 </li>
 </ul>
+<p>(注意: 旧プロパティの <code>autoSendEvents</code> は非推奨となり将来削除されます。代わりに <code>autoSendEventName</code> を利用してください。)</p>
 <h2><a name="使い方"></a> 使い方</h2>
 <p>game.json と同じディレクトリに、以下のような JavaScript ファイルを置きます。ファイル名は sandbox.config.js とします。</p>
 <pre><code>var config = {
@@ -183,11 +184,11 @@ module.exports = config;</code></pre><p>Akashic Sandbox では、デベロッパ
 <p><img src="/img/guide/sandbox-config/sandbox-devmenu.png" alt="Akashic Sandboxのデベロッパーメニュー"></p>
 <p>akashic serve コマンドも同じように、デベロッパーメニューの Events タブからゲームにイベントを送信することができます。</p>
 <p><img src="/img/guide/sandbox-config/serve-devmenu.png" alt="akashic serveコマンドのデベロッパーメニュー"></p>
-<h2><a name="autoSendEvents"></a> autoSendEvents</h2>
+<h2><a name="autoSendEventName"></a> autoSendEventName</h2>
 <p>ゲーム起動時にイベントを自動送信することができます。イベントはあらかじめ events に記述しておく必要があります。
-autoSendEvents にイベント名（例えば startMyGameEvent）を記述し、Akashic Sandbox でゲームを起動すれば、イベントが自動送信されます。</p>
+autoSendEventName にイベント名（例えば startMyGameEvent）を記述し、Akashic Sandbox でゲームを起動すれば、イベントが自動送信されます。</p>
 <pre><code>var config = {
-    &quot;autoSendEvents&quot;: &quot;mySessionParameter&quot;
+    &quot;autoSendEventName&quot;: &quot;mySessionParameter&quot;
     &quot;events&quot;: {
         &quot;mySessionParameter&quot;: {} // 同上のため省略
     }
