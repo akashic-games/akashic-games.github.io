@@ -70,17 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p><code>Surface</code> に対して様々な表現によって書き込む事が出来ることを表すインターフェース。</p>
-					</div>
-					<p><code>Surface</code> を受け取る一部のクラスは、同時に <code>SurfaceEffector</code> を受け取り、
-						<code>Surface</code> の描画方法をカスタマイズできるようになっている。(現在は <code>Pane</code> のみ)
-						ゲーム開発者は、そのようなクラスに対して <code>SurfaceEffector</code> のインスタンスを生成して渡すことができる。
-					通常、 <code>SurfaceEffector</code> の個別のメソッドをゲーム開発者が呼び出す必要はない。</p>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -123,31 +112,16 @@
 									<li>Defined in lib/main.d.ts:5503</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>指定の大きさに拡大・縮小した描画結果の <code>Surface</code> を生成して返す。</p>
-								</div>
-								<p>通常、このメソッドはエンジンによって暗黙に呼び出される。ゲーム開発者が明示的に呼び出す必要はない。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>srcSurface: <a href="../classes/_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>拡大・縮小して描画する <code>Surface</code></p>
-									</div>
 								</li>
 								<li>
 									<h5>width: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>描画する幅</p>
-									</div>
 								</li>
 								<li>
 									<h5>height: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>描画する高さ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../classes/_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></h4>

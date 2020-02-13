@@ -70,14 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>ゲームの設定を表すインターフェース。
-						game.jsonによって定義される。</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -119,11 +111,6 @@
 							<li>Defined in lib/main.d.ts:4059</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>アセット宣言。ユニットテスト記述の都合上省略を許すが、通常非undefinedでしか使わない。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="audio" class="tsd-anchor"></a>
@@ -134,11 +121,6 @@
 							<li>Defined in lib/main.d.ts:4055</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>AudioSystemの追加定義。キーにsystem名を書く。不要(デフォルトの &quot;sound&quot; と &quot;music&quot; しか使わない)なら省略してよい。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="defaultloadingscene" class="tsd-anchor"></a>
@@ -149,13 +131,6 @@
 							<li>Defined in lib/main.d.ts:4084</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>デフォルトローディングシーンについての指定。
-								省略時または &quot;default&quot; を指定すると <code>DefaultLoadingScene</code> を表示する。
-							デフォルトローディングシーンを非表示にしたい場合は &quot;none&quot; を指定する。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="fps" class="tsd-anchor"></a>
@@ -166,11 +141,6 @@
 							<li>Defined in lib/main.d.ts:4043</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>ゲームのFPS。省略時は30。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="globalscripts" class="tsd-anchor"></a>
@@ -181,15 +151,6 @@
 							<li>Defined in lib/main.d.ts:4072</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>スクリプトアセットの簡略記述用テーブル。</p>
-						</div>
-						<p>グローバルアセットである <em>.js ファイル、</em>.json ファイルに限り、この配列にファイル名(コンテンツルートディレクトリから相対パス)を書くことができる。
-							ここにファイル名を書いた場合、 <code>assets</code> でのアセット定義は不要であり、拡張子 js であれば <code>ScriptAsset</code> として、
-							拡張子 json であれば <code>TextAsset</code> として扱われる。また常に &quot;global&quot;: true として扱われる。
-						ここに記述されたファイルのアセットIDは不定である。ゲーム開発者がこのファイルを読み込むためには、相対パスによる (<code>require()</code> を用いねばならない)</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="height" class="tsd-anchor"></a>
@@ -200,11 +161,6 @@
 							<li>Defined in lib/main.d.ts:4039</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>ゲーム画面の高さ。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="main" class="tsd-anchor"></a>
@@ -215,14 +171,6 @@
 							<li>Defined in lib/main.d.ts:4051</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>エントリポイント。require() できるパス。</p>
-						</div>
-						<p>省略された場合、アセット mainScene (典型的には script/mainScene.js)と
-							スナップショットローダ snapshotLoader (典型的には script/snapshotLoader.js; 必要なら)を使う従来の挙動が採用される。
-						省略可能だが、省略は非推奨である。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="modulemainscripts" class="tsd-anchor"></a>
@@ -233,12 +181,6 @@
 							<li>Defined in lib/main.d.ts:4078</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>require()解決用ののエントリポイントを格納したテーブル。</p>
-						</div>
-						<p>require()の第一引数をキーとした値が本テーブルに存在した場合、require()時にその値をパスとしたスクリプトアセットを評価する。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="operationplugins" class="tsd-anchor"></a>
@@ -249,11 +191,6 @@
 							<li>Defined in lib/main.d.ts:4063</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>操作プラグインの情報。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="width" class="tsd-anchor"></a>
@@ -264,11 +201,6 @@
 							<li>Defined in lib/main.d.ts:4035</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>ゲーム画面の幅。</p>
-						</div>
-					</div>
 				</section>
 			</section>
 		</div>

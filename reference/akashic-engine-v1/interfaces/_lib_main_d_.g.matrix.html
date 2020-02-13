@@ -70,14 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>変換行列を表すインターフェース。
-						通常ゲーム開発者が本インターフェースを直接利用する事はない。</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -126,17 +118,6 @@
 							<li>Defined in lib/main.d.ts:782</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>変換本体。
-							CanvasRenderingContext2D#transformの値と等しい。</p>
-							<pre><code>  a c e
-[ b d f ]
-  <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">1</span>
-</code></pre><p>配列の添え字では、 a(m11): 0, b(m12): 1, c(m21): 2, d(m22): 3, e(dx): 4, f(dy): 5 となる。
-							参考: <a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/transform">https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/transform</a></p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-private tsd-is-not-exported">
 					<a name="_modified" class="tsd-anchor"></a>
@@ -147,13 +128,6 @@
 							<li>Defined in lib/main.d.ts:769</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>変更フラグ。
-								本フラグが立っていても特に何も処理はされない。
-							本フラグの操作、本フラグを参照して値を再計算することは、いずれも利用する側で適切に処理をする必要がある。</p>
-						</div>
-					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
@@ -171,11 +145,6 @@
 									<li>Defined in lib/main.d.ts:824</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>この変換行列と同じ値を持つ変換行列を新しく作って返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.matrix.html" class="tsd-signature-type">Matrix</a></h4>
 						</li>
 					</ul>
@@ -193,18 +162,10 @@
 									<li>Defined in lib/main.d.ts:787</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>この変換行列に別の変換行列を掛け合わせる。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>matrix: <a href="_lib_main_d_.g.matrix.html" class="tsd-signature-type">Matrix</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>掛け合わせる変換行列</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -224,19 +185,10 @@
 									<li>Defined in lib/main.d.ts:836</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>この変換行列を逆行列に変換した結果を引数の座標系に適用した座標値を返す。
-									この変換行列の値自体や、引数の値は変更されない。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>point: <a href="_lib_main_d_.g.commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>逆行列を適用する座標</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.commonoffset.html" class="tsd-signature-type">CommonOffset</a></h4>
@@ -256,18 +208,10 @@
 									<li>Defined in lib/main.d.ts:792</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>この変換行列に別の変換行列を掛け合わせた新しい変換行列を返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>matrix: <a href="_lib_main_d_.g.matrix.html" class="tsd-signature-type">Matrix</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>掛け合わせる変換行列</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.matrix.html" class="tsd-signature-type">Matrix</a></h4>
@@ -287,18 +231,10 @@
 									<li>Defined in lib/main.d.ts:841</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>この変換行列と引数の座標系が表す行列の積を返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>point: <a href="_lib_main_d_.g.commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>この変換行列との積を求める座標</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.commonoffset.html" class="tsd-signature-type">CommonOffset</a></h4>
@@ -318,23 +254,10 @@
 									<li>Defined in lib/main.d.ts:847</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>この変換行列と引数の座標系が表す行列の積を返す。</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>deprecated</dt>
-									<dd><p>このメソッドは非推奨機能である。代わりに <code>multiplyPoint</code> を用いるべきである。</p>
-									</dd>
-								</dl>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>point: <a href="_lib_main_d_.g.commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>この変換行列との積を求める座標</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.commonoffset.html" class="tsd-signature-type">CommonOffset</a></h4>
@@ -354,24 +277,13 @@
 									<li>Defined in lib/main.d.ts:820</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>値を単位行列にリセットする。x/yの座標情報を初期値に反映させることも出来る。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> x: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>x座標。省略時は0として処理される</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> y: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>y座標。省略時は0として処理される</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -391,24 +303,13 @@
 									<li>Defined in lib/main.d.ts:830</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>拡縮を変換行列に反映させる。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>x: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>X方向の拡縮律</p>
-									</div>
 								</li>
 								<li>
 									<h5>y: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>y方向の拡縮律</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -428,51 +329,28 @@
 									<li>Defined in lib/main.d.ts:803</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>2D object利用の一般的な値を基に変換行列の値を再計算する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>width: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象の横幅</p>
-									</div>
 								</li>
 								<li>
 									<h5>height: <span class="tsd-signature-type">number</span></h5>
 								</li>
 								<li>
 									<h5>scaleX: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象の横方向への拡大率</p>
-									</div>
 								</li>
 								<li>
 									<h5>scaleY: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象の縦方向への拡大率</p>
-									</div>
 								</li>
 								<li>
 									<h5>angle: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>角度。単位は <code>degree</code> であり <code>radian</code> ではない</p>
-									</div>
 								</li>
 								<li>
 									<h5>x: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>x座標</p>
-									</div>
 								</li>
 								<li>
 									<h5>y: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>y座標</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -492,51 +370,28 @@
 									<li>Defined in lib/main.d.ts:814</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>update()</code> によって得られる行列の逆変換になるよう変換行列の値を再計算する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>width: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象の横幅</p>
-									</div>
 								</li>
 								<li>
 									<h5>height: <span class="tsd-signature-type">number</span></h5>
 								</li>
 								<li>
 									<h5>scaleX: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象の横方向への拡大率</p>
-									</div>
 								</li>
 								<li>
 									<h5>scaleY: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象の縦方向への拡大率</p>
-									</div>
 								</li>
 								<li>
 									<h5>angle: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>角度。単位は <code>degree</code> であり <code>radian</code> ではない</p>
-									</div>
 								</li>
 								<li>
 									<h5>x: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>x座標</p>
-									</div>
 								</li>
 								<li>
 									<h5>y: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>y座標</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>

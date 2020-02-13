@@ -70,16 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>サウンド再生を行うクラス。</p>
-					</div>
-					<p>本クラスのインスタンスは、 <code>AudioSystem#createPlayer()</code> によって明示的に、
-						または <code>AudioAsset#play()</code> によって暗黙的に生成される。
-					ゲーム開発者は本クラスのインスタンスを直接生成すべきではない。</p>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -141,11 +131,6 @@
 									<li>Defined in lib/main.d.ts:1380</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>AudioPlayer</code> のインスタンスを生成する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -168,11 +153,6 @@
 							<li>Defined in lib/main.d.ts:1371</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>ミュート中か否か。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 					<a name="_playbackrate" class="tsd-anchor"></a>
@@ -183,11 +163,6 @@
 							<li>Defined in lib/main.d.ts:1376</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>再生速度の倍率。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 					<a name="_system" class="tsd-anchor"></a>
@@ -198,8 +173,6 @@
 							<li>Defined in lib/main.d.ts:1380</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="currentaudio" class="tsd-anchor"></a>
@@ -210,12 +183,6 @@
 							<li>Defined in lib/main.d.ts:1350</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>再生中のオーディオアセット。
-							再生中のものがない場合、 <code>undefined</code> 。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="played" class="tsd-anchor"></a>
@@ -226,11 +193,6 @@
 							<li>Defined in lib/main.d.ts:1354</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p><code>play()</code> が呼び出された時に通知される <code>Trigger</code> 。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="stopped" class="tsd-anchor"></a>
@@ -241,11 +203,6 @@
 							<li>Defined in lib/main.d.ts:1358</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p><code>stop()</code> が呼び出された時に通知される <code>Trigger</code> 。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="volume" class="tsd-anchor"></a>
@@ -256,14 +213,6 @@
 							<li>Defined in lib/main.d.ts:1366</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>音量。</p>
-						</div>
-						<p>0 (無音) 以上 1.0 (最大) 以下の数値である。
-							この値は参照のためにのみ公開されている。ゲーム開発者はこの値を変更してはならない。
-						音量を変更したい場合、  <code>changeVolume()</code> メソッドを用いること。</p>
-					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
@@ -281,21 +230,10 @@
 									<li>Defined in lib/main.d.ts:1420</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>ミュート状態を変更する。</p>
-								</div>
-								<p>エンジンユーザが <code>AudioPlayer</code> の派生クラスを実装する場合は、
-									このメソッドをオーバーライドして実際にミュート状態を変更する処理を行うこと。
-								オーバーライド先のメソッドはこのメソッドを呼びださなければならない。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>muted: <span class="tsd-signature-type">boolean</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>ミュート状態にするか否か</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -315,22 +253,10 @@
 									<li>Defined in lib/main.d.ts:1432</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>再生速度を変更する。</p>
-								</div>
-								<p>エンジンユーザが <code>AudioPlayer</code> の派生クラスを実装し、
-									かつ <code>this._supportsPlaybackRate()</code> をオーバライドして真を返すようにするならば、
-									このメソッドもオーバーライドして実際に再生速度を変更する処理を行うこと。
-								オーバーライド先のメソッドはこのメソッドを呼びださなければならない。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>rate: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>再生速度の倍率。0以上でなければならない。1.0で等倍である。</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -350,16 +276,6 @@
 									<li>Defined in lib/main.d.ts:1452</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>音量の変更を通知する。</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>deprecated</dt>
-									<dd><p>このメソッドは実験的に導入されたが、利用されていない。将来的に削除される。</p>
-									</dd>
-								</dl>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -377,18 +293,6 @@
 									<li>Defined in lib/main.d.ts:1447</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>再生速度の変更に対応するか否か。</p>
-								</div>
-								<p>エンジンユーザが <code>AudioPlayer</code> の派生クラスを実装し、
-									再生速度の変更に対応する場合、このメソッドをオーバーライドして真を返さねばならない。
-								その場合 <code>_changePlaybackRate()</code> もオーバーライドし、実際の再生速度変更処理を実装しなければならない。</p>
-								<p>なおここで「再生速度の変更に対応する」は、任意の速度で実際に再生できることを意味しない。
-									実装は等倍速 (再生速度1.0) で実際に再生できなければならない。
-								しかしそれ以外の再生速度が指定された場合、実装はまるで音量がゼロであるかのように振舞ってもよい。</p>
-								<p>このメソッドが偽を返す場合、エンジンは音声の非等倍速度再生に対するデフォルトの処理を実行する。</p>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -406,12 +310,6 @@
 									<li>Defined in lib/main.d.ts:1403</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>音声の終了を検知できるか否か。
-									通常、ゲーム開発者がこのメソッドを利用する必要はない。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -429,18 +327,10 @@
 									<li>Defined in lib/main.d.ts:1409</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>音量を変更する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>volume: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>音量。0以上1.0以下でなければならない</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -460,19 +350,10 @@
 									<li>Defined in lib/main.d.ts:1391</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>AudioAsset</code> を再生する。</p>
-								</div>
-								<p>再生後、 <code>this.played</code> がfireされる。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>audio: <a href="_lib_main_d_.g.audioasset.html" class="tsd-signature-type">AudioAsset</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>再生するオーディオアセット</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -492,13 +373,6 @@
 									<li>Defined in lib/main.d.ts:1398</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>再生を停止する。</p>
-								</div>
-								<p>停止後、 <code>this.stopped</code> がfireされる。
-								再生中でない場合、何もしない(<code>stopped</code> もfireされない)。</p>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>

@@ -70,14 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>操作プラグインの実装すべきインターフェース。
-						Static methodについては <code>OperationPluginStatic</code> を参照。</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -118,11 +110,6 @@
 							<li>Defined in lib/main.d.ts:5547</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このプラグインが生成した操作を通知する <code>Trigger</code> 。</p>
-						</div>
-					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
@@ -140,13 +127,6 @@
 									<li>Defined in lib/main.d.ts:5564</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>operationTrigger</code> で通知した操作のデコードを行う。</p>
-								</div>
-								<p>通常、<code>operationTrigger</code> で通知した操作の情報は、 <code>g.OperationEvent#data</code> に保持されてゲームスクリプトに渡される。
-								このメソッドが存在する場合、 通知した操作をこのメソッドに渡して呼び出したその戻り値が <code>g.OperationEvent#data</code> に与えられるようになる。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -170,12 +150,6 @@
 									<li>Defined in lib/main.d.ts:5552</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このプラグインを開始する。
-									このメソッドの呼び出し以降、 <code>this.operationTrigger</code> がfireされる可能性がある。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -193,12 +167,6 @@
 									<li>Defined in lib/main.d.ts:5557</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このプラグインを停止する。
-									このメソッドの呼び出し以降、 <code>this.operationTrigger</code> がfireされることはない。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>

@@ -70,14 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>二次元の幾何的オブジェクト。位置とサイズ (に加えて傾きや透明度も) を持つ。
-						ゲーム開発者は <code>E</code> を使えばよく、通常このクラスを意識する必要はない。</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -156,11 +148,6 @@
 									<li>Defined in lib/main.d.ts:1780</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>デフォルト値で <code>Object2D</code> のインスタンスを生成する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.object2d.html" class="tsd-signature-type">Object2D</a></h4>
 						</li>
 						<li class="tsd-description">
@@ -169,20 +156,10 @@
 									<li>Defined in lib/main.d.ts:1784</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>指定されたパラメータで <code>Object2D</code> のインスタンスを生成する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>param: <a href="../interfaces/_lib_main_d_.g.object2dparameterobject.html" class="tsd-signature-type">Object2DParameterObject</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>初期化に用いるパラメータのオブジェクト</p>
-										</div>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.object2d.html" class="tsd-signature-type">Object2D</a></h4>
@@ -201,16 +178,6 @@
 							<li>Defined in lib/main.d.ts:1780</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>変換行列のキャッシュ。 <code>Object2D</code> は状態に変更があった時、本値の_modifiedをtrueにする必要がある。
-								初期値は <code>undefined</code> であり、 <code>getMatrix()</code> によって必要な時に生成されるため、
-							<code>if (this._matrix) this._matrix._modified = true</code> という式で記述する必要がある。</p>
-						</div>
-						<p>エンジンに組み込まれているSprite等のエンティティ群は、
-							すでに本処理を組み込んでいるため通常ゲーム開発者はこの値を意識する必要はない。
-						<code>Object2D</code> を継承したクラスを新たに作る場合には、本フィールドを適切に操作しなければならない。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="angle" class="tsd-anchor"></a>
@@ -221,13 +188,6 @@
 							<li>Defined in lib/main.d.ts:1763</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>オブジェクトの回転。度数で指定する。
-								初期値は <code>0</code> である。
-							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="compositeoperation" class="tsd-anchor"></a>
@@ -238,13 +198,6 @@
 							<li>Defined in lib/main.d.ts:1769</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>描画時の合成方法を指定する。
-								初期値は <code>undefined</code> となり、合成方法を指定しないことを意味する。
-							<code>E</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="height" class="tsd-anchor"></a>
@@ -256,13 +209,6 @@
 							<li>Defined in lib/main.d.ts:1739</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このオブジェクトの縦幅。
-								初期値は <code>0</code> である。実際の表示領域としてはscaleX, scaleY, angleの値も考慮する必要がある。
-							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="opacity" class="tsd-anchor"></a>
@@ -273,13 +219,6 @@
 							<li>Defined in lib/main.d.ts:1745</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>0～1でオブジェクトの不透明度を表す。
-								初期値は <code>1</code> である。本値が0の場合、Rendererは描画処理を省略する。
-							<code>E</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="scalex" class="tsd-anchor"></a>
@@ -290,13 +229,6 @@
 							<li>Defined in lib/main.d.ts:1751</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>オブジェクトの横方向の倍率。
-								初期値は <code>1</code> である。
-							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="scaley" class="tsd-anchor"></a>
@@ -307,13 +239,6 @@
 							<li>Defined in lib/main.d.ts:1757</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>オブジェクトの縦方向の倍率。
-								初期値は <code>1</code> である。
-							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="width" class="tsd-anchor"></a>
@@ -325,13 +250,6 @@
 							<li>Defined in lib/main.d.ts:1733</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このオブジェクトの横幅。
-								初期値は <code>0</code> である。実際の表示領域としてはscaleX, scaleY, angleの値も考慮する必要がある。
-							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="x" class="tsd-anchor"></a>
@@ -343,13 +261,6 @@
 							<li>Defined in lib/main.d.ts:1721</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このオブジェクトの横位置。
-								初期値は <code>0</code> である。実際の座標位置はscaleX, scaleY, angleの値も考慮する必要がある。
-							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="y" class="tsd-anchor"></a>
@@ -361,13 +272,6 @@
 							<li>Defined in lib/main.d.ts:1727</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このオブジェクトの縦位置。
-								初期値は <code>0</code> である。実際の座標位置はscaleX, scaleY, angleの値も考慮する必要がある。
-							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
@@ -385,11 +289,6 @@
 									<li>Defined in lib/main.d.ts:1851</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>公開のプロパティから内部の変換行列キャッシュを更新する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -407,11 +306,6 @@
 									<li>Defined in lib/main.d.ts:1846</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このオブジェクトの変換行列を得る。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_lib_main_d_.g.matrix.html" class="tsd-signature-type">Matrix</a></h4>
 						</li>
 					</ul>
@@ -429,26 +323,13 @@
 									<li>Defined in lib/main.d.ts:1812</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>オブジェクトを相対的に移動する。
-										このメソッドは <code>x</code> と <code>y</code> を同時に加算するためのユーティリティメソッドである。
-									<code>E</code> や <code>Camera2D</code> においてこのメソッドを呼び出した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>x: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>X座標に加算する値</p>
-									</div>
 								</li>
 								<li>
 									<h5>y: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Y座標に加算する値</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -469,26 +350,13 @@
 									<li>Defined in lib/main.d.ts:1797</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>オブジェクトを移動する。
-										このメソッドは <code>x</code> と <code>y</code> を同時に設定するためのユーティリティメソッドである。
-									<code>E</code> や <code>Camera2D</code> においてこのメソッドを呼び出した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>x: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>X座標</p>
-									</div>
 								</li>
 								<li>
 									<h5>y: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Y座標</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -499,20 +367,10 @@
 									<li>Defined in lib/main.d.ts:1804</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>オブジェクトを移動する。
-										このメソッドは <code>x</code> と <code>y</code> を同時に設定するためのユーティリティメソッドである。
-									<code>E</code> や <code>Camera2D</code> においてこのメソッドを呼び出した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>obj: <a href="../interfaces/_lib_main_d_.g.commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>X,Y座標</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -532,26 +390,13 @@
 									<li>Defined in lib/main.d.ts:1835</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>オブジェクトのサイズを相対的に変更する。
-										このメソッドは <code>width</code> と <code>height</code> を同時に加算するためのユーティリティメソッドである。
-									<code>E</code> や <code>Camera2D</code> においてこのメソッドを呼び出した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>width: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>加算する幅</p>
-									</div>
 								</li>
 								<li>
 									<h5>height: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>加算する高さ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -572,26 +417,13 @@
 									<li>Defined in lib/main.d.ts:1820</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>オブジェクトのサイズを設定する。
-										このメソッドは <code>width</code> と <code>height</code> を同時に設定するためのユーティリティメソッドである。
-									<code>E</code> や <code>Camera2D</code> においてこのメソッドを呼び出した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>width: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>幅</p>
-									</div>
 								</li>
 								<li>
 									<h5>height: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>高さ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -602,20 +434,10 @@
 									<li>Defined in lib/main.d.ts:1827</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>オブジェクトのサイズを設定する。
-										このメソッドは <code>width</code> と <code>height</code> を同時に設定するためのユーティリティメソッドである。
-									<code>E</code> や <code>Camera2D</code> においてこのメソッドを呼び出した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>size: <a href="../interfaces/_lib_main_d_.g.commonsize.html" class="tsd-signature-type">CommonSize</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>幅と高さ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -635,20 +457,10 @@
 									<li>Defined in lib/main.d.ts:1842</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>オブジェクトの拡大率を設定する。
-										このメソッドは <code>scaleX</code> と <code>scaleY</code> に同じ値を同時に設定するためのユーティリティメソッドである。
-									<code>E</code> や <code>Camera2D</code> においてこのメソッドを呼び出した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>scale: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>拡大率</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
