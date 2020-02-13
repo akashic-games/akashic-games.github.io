@@ -70,15 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>描画領域を表すクラス。</p>
-					</div>
-					<p>このクラスのインスタンスは、エンジンによって暗黙に生成される。
-					ゲーム開発者はこのクラスのインスタンスを明示的に生成する必要はなく、またできない。</p>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -143,44 +134,19 @@
 									<li>Defined in lib/main.d.ts:4908</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>Surface</code> のインスタンスを生成する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>width: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>描画領域の幅（整数値でなければならない）</p>
-										</div>
-									</div>
 								</li>
 								<li>
 									<h5>height: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>描画領域の高さ（整数値でなければならない）</p>
-										</div>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> drawable: <span class="tsd-signature-type">any</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>描画可能な実体。省略された場合、 <code>undefined</code></p>
-										</div>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> isDynamic: <span class="tsd-signature-type">boolean</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>drawableが動画であることを示す値。動画である時、真を渡さなくてはならない。省略された場合、偽。</p>
-										</div>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></h4>
@@ -199,11 +165,6 @@
 							<li>Defined in lib/main.d.ts:4908</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>本Surfaceが破棄済であるかを示す値。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 					<a name="_drawable" class="tsd-anchor"></a>
@@ -214,12 +175,6 @@
 							<li>Defined in lib/main.d.ts:4903</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>描画可能な実体。
-							具体的には renderer().drawImage() の実装が描画対象として利用できる値。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="animatingstarted" class="tsd-anchor"></a>
@@ -230,12 +185,6 @@
 							<li>Defined in lib/main.d.ts:4892</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>アニメーション再生開始イベント。
-							isDynamicが偽の時undefined。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="animatingstopped" class="tsd-anchor"></a>
@@ -246,12 +195,6 @@
 							<li>Defined in lib/main.d.ts:4897</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>アニメーション再生停止イベント。
-							isDynamicが偽の時undefined。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="height" class="tsd-anchor"></a>
@@ -263,12 +206,6 @@
 							<li>Defined in lib/main.d.ts:4882</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>描画領域の高さ。
-							この値を直接書き換えてはならない。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="isdynamic" class="tsd-anchor"></a>
@@ -279,12 +216,6 @@
 							<li>Defined in lib/main.d.ts:4887</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>本Surfaceの画像が動画であるかを示す値。真の時、動画。
-							この値は参照のみに利用され、変更してはならない。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="width" class="tsd-anchor"></a>
@@ -296,12 +227,6 @@
 							<li>Defined in lib/main.d.ts:4877</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>描画領域の幅。
-							この値を直接書き換えてはならない。</p>
-						</div>
-					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
@@ -320,12 +245,6 @@
 									<li>Defined in lib/main.d.ts:4929</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このSurfaceの破棄を行う。
-									以後、このSurfaceを利用することは出来なくなる。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -344,11 +263,6 @@
 									<li>Defined in lib/main.d.ts:4933</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このSurfaceが破棄済であるかどうかを判定する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -366,11 +280,6 @@
 									<li>Defined in lib/main.d.ts:4924</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このSurfaceが動画を再生中であるかどうかを判定する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -388,11 +297,6 @@
 									<li>Defined in lib/main.d.ts:4920</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このSurfaceへの描画手段を提供するRendererを生成して返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.renderer.html" class="tsd-signature-type">Renderer</a></h4>
 						</li>
 					</ul>

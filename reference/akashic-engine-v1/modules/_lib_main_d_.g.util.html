@@ -70,13 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>ユーティリティ。</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -123,8 +116,6 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter">
 								<h5><span class="tsd-flag ts-flagPrivate">Private</span> _on<wbr>Animating<wbr>Started<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></h5>
-								<div class="tsd-comment tsd-typography">
-								</div>
 								<ul class="tsd-parameters">
 									<li class="tsd-parameter-siganture">
 										<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-is-not-exported">
@@ -140,8 +131,6 @@
 							</li>
 							<li class="tsd-parameter">
 								<h5><span class="tsd-flag ts-flagPrivate">Private</span> _on<wbr>Animating<wbr>Stopped<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></h5>
-								<div class="tsd-comment tsd-typography">
-								</div>
 								<ul class="tsd-parameters">
 									<li class="tsd-parameter-siganture">
 										<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-is-not-exported">
@@ -174,18 +163,10 @@
 									<li>Defined in lib/main.d.ts:952</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>引数 <code>src</code> が <code>undefined</code> または <code>Surface</code> でそのまま返す。
-									そうでなくかつ <code>ImageAsset</code> であれば <code>Surface</code> に変換して返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>src: <a href="../classes/_lib_main_d_.g.asset.html" class="tsd-signature-type">Asset</a><span class="tsd-signature-symbol"> | </span><a href="../classes/_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></h5>
-									<div class="tsd-comment tsd-typography">
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../classes/_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></h4>
@@ -205,29 +186,13 @@
 									<li>Defined in lib/main.d.ts:987</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>idx文字目の文字のchar codeを返す。</p>
-								</div>
-								<p>これはString#charCodeAt()と次の点で異なる。</p>
-								<ul>
-									<li>idx文字目が上位サロゲートの時これを16bit左シフトし、idx+1文字目の下位サロゲートと論理和をとった値を返す。</li>
-									<li>idx文字目が下位サロゲートの時nullを返す。</li>
-								</ul>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>str: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>文字を取り出される文字列</p>
-									</div>
 								</li>
 								<li>
 									<h5>idx: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>取り出される文字の位置</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -248,12 +213,6 @@
 									<li>Defined in lib/main.d.ts:921</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>単位行列を生成して返す。
-									戻り値は、実行しているプラットフォームにとって最適な単位行列型であることが保証される。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_lib_main_d_.g.matrix.html" class="tsd-signature-type">Matrix</a></h4>
 						</li>
 						<li class="tsd-description">
@@ -262,43 +221,22 @@
 									<li>Defined in lib/main.d.ts:931</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>2D objectの一般的な値を基に新しい変換行列を生成して返す。
-									戻り値は、実行しているプラットフォームにとって最適な変換行列型であることが保証される。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>width: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象の横幅</p>
-									</div>
 								</li>
 								<li>
 									<h5>height: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象の縦幅</p>
-									</div>
 								</li>
 								<li>
 									<h5>scaleX: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象の横方向への拡大率</p>
-									</div>
 								</li>
 								<li>
 									<h5>scaleY: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象の縦方向への拡大率</p>
-									</div>
 								</li>
 								<li>
 									<h5>angle: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>角度。単位はdegreeでありradianではない</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_lib_main_d_.g.matrix.html" class="tsd-signature-type">Matrix</a></h4>
@@ -318,30 +256,16 @@
 									<li>Defined in lib/main.d.ts:938</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>e の描画内容を持つ Sprite を生成する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>scene: <a href="../classes/_lib_main_d_.g.scene.html" class="tsd-signature-type">Scene</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>作成したSpriteを登録するScene</p>
-									</div>
 								</li>
 								<li>
 									<h5>e: <a href="../classes/_lib_main_d_.g.e.html" class="tsd-signature-type">E</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Sprite化したいE</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> camera: <a href="../interfaces/_lib_main_d_.g.camera.html" class="tsd-signature-type">Camera</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>使用カメラ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../classes/_lib_main_d_.g.sprite.html" class="tsd-signature-type">Sprite</a></h4>
@@ -361,30 +285,16 @@
 									<li>Defined in lib/main.d.ts:945</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>scene の描画内容を持つ Sprite を生成する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>toScene: <a href="../classes/_lib_main_d_.g.scene.html" class="tsd-signature-type">Scene</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>作ったSpriteを登録するScene</p>
-									</div>
 								</li>
 								<li>
 									<h5>fromScene: <a href="../classes/_lib_main_d_.g.scene.html" class="tsd-signature-type">Scene</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Sprite化したいScene</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> camera: <a href="../interfaces/_lib_main_d_.g.camera.html" class="tsd-signature-type">Camera</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>使用カメラ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../classes/_lib_main_d_.g.sprite.html" class="tsd-signature-type">Sprite</a></h4>
@@ -404,36 +314,19 @@
 									<li>Defined in lib/main.d.ts:904</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>2点間(P1..P2)の距離(pixel)を返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>p1x: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>P1-X</p>
-									</div>
 								</li>
 								<li>
 									<h5>p1y: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>P1-Y</p>
-									</div>
 								</li>
 								<li>
 									<h5>p2x: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>P2-X</p>
-									</div>
 								</li>
 								<li>
 									<h5>p2y: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>P2-Y</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -453,24 +346,13 @@
 									<li>Defined in lib/main.d.ts:916</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>2つの矩形の中心座標(P1..P2)間の距離(pixel)を返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>p1: <a href="../interfaces/_lib_main_d_.g.commonarea.html" class="tsd-signature-type">CommonArea</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>矩形1</p>
-									</div>
 								</li>
 								<li>
 									<h5>p2: <a href="../interfaces/_lib_main_d_.g.commonarea.html" class="tsd-signature-type">CommonArea</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>矩形2</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -490,24 +372,13 @@
 									<li>Defined in lib/main.d.ts:910</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>2点間(P1..P2)の距離(pixel)を返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>p1: <a href="../interfaces/_lib_main_d_.g.commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>座標1</p>
-									</div>
 								</li>
 								<li>
 									<h5>p2: <a href="../interfaces/_lib_main_d_.g.commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>座標2</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -527,28 +398,13 @@
 									<li>Defined in lib/main.d.ts:974</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>与えられたパス文字列がディレクトリパスであると仮定して、対応するアセットを探す。
-										見つかった場合そのアセットを、そうでない場合 <code>undefined</code> を返す。
-										通常、ゲーム開発者がファイルパスを扱うことはなく、このメソッドを呼び出す必要はない。
-										ディレクトリ内に package.json が存在する場合、package.json 自体もアセットとして
-									<code>liveAssetPathTable</code> から参照可能でなければならないことに注意。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>resolvedPath: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>パス文字列</p>
-									</div>
 								</li>
 								<li>
 									<h5>liveAssetPathTable: <span class="tsd-signature-type">object</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>パス文字列のプロパティに対応するアセットを格納したオブジェクト</p>
-									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-index-signature">
 											<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="../classes/_lib_main_d_.g.asset.html" class="tsd-signature-type">Asset</a></h5>
@@ -573,26 +429,13 @@
 									<li>Defined in lib/main.d.ts:961</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>与えられたパス文字列がファイルパスであると仮定して、対応するアセットを探す。
-										見つかった場合そのアセットを、そうでない場合 <code>undefined</code> を返す。
-									通常、ゲーム開発者がファイルパスを扱うことはなく、このメソッドを呼び出す必要はない。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>resolvedPath: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>パス文字列</p>
-									</div>
 								</li>
 								<li>
 									<h5>liveAssetPathTable: <span class="tsd-signature-type">object</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>パス文字列のプロパティに対応するアセットを格納したオブジェクト</p>
-									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-index-signature">
 											<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="../classes/_lib_main_d_.g.asset.html" class="tsd-signature-type">Asset</a></h5>
@@ -617,31 +460,16 @@
 									<li>Defined in lib/main.d.ts:1016</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>アニメーティングハンドラを別のサーフェスへ移動する。</p>
-								</div>
-								<p>これはゲームエンジンが利用するものであり、ゲーム開発者が呼び出す必要はない。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>animatingHandler: <a href="_lib_main_d_.g.util.html#animatinghandler" class="tsd-signature-type">AnimatingHandler</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>アニメーティングハンドラ</p>
-									</div>
 								</li>
 								<li>
 									<h5>beforeSurface: <a href="../classes/_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>ハンドラ登録を解除するサーフェス</p>
-									</div>
 								</li>
 								<li>
 									<h5>afterSurface: <a href="../classes/_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>ハンドラを登録するサーフェス</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -661,25 +489,13 @@
 									<li>Defined in lib/main.d.ts:1006</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>サーフェスのアニメーティングイベントへのハンドラ登録。</p>
-								</div>
-								<p>これはゲームエンジンが利用するものであり、ゲーム開発者が呼び出す必要はない。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>animatingHandler: <a href="_lib_main_d_.g.util.html#animatinghandler" class="tsd-signature-type">AnimatingHandler</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>アニメーティングハンドラ</p>
-									</div>
 								</li>
 								<li>
 									<h5>surface: <a href="../classes/_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>サーフェス</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>

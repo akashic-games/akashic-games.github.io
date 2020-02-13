@@ -91,27 +91,9 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/77ab2a1/src/DefaultRubyParser.ts#L21">DefaultRubyParser.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/9e0528a/src/DefaultRubyParser.ts#L21">DefaultRubyParser.ts:21</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>文字列からルビをパースする。
-									このパーサは、akashic-labelのデフォルトルビ記法のためのパーサである。</p>
-								</div>
-								<p>このパーサを使う場合、ラベルに与える文字列にJSONのオブジェクトを表す文字列を含むことができる。
-									文字列中のオブジェクトはルビを表す要素として扱われる。
-									オブジェクトのメンバーには、ルビを表す <code>rt</code> と、本文を表す <code>rb</code> を含む必要がある。
-								これらのメンバー以外に、RubyOptions型が持つメンバーを含むことができる。</p>
-								<p>入力の例として、
-									&#39;これは{&quot;rb&quot;:&quot;本文&quot;,&quot;rt&quot;:&quot;ルビ&quot;, &quot;rubyFontSize&quot;: 2}です。&#39;
-									という文字列が与えられた場合、このパーサは
-									[&quot;これは&quot;, {rb:&quot;本文&quot;, rt: &quot;ルビ&quot;, rubyFontSize: 2}, &quot;です。&quot;]
-									という配列を返す。
-									また、 <code>{</code> や <code>}</code> は <code>\\</code> でエスケープする必要がある。
-									例として、括弧は <code>\\{</code> 、 バックスラッシュは <code>\\</code> を用いて表現する。
-								注意すべき点として、オブジェクトのプロパティ名はダブルクォートでくくられている必要がある。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>

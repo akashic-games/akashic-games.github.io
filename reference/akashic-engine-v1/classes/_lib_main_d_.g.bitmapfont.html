@@ -70,13 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>ラスタ画像によるフォント。</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -139,33 +132,13 @@
 									<li>Defined in lib/main.d.ts:5243</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>BitmapFont</code> のインスタンスを生成する。</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>deprecated</dt>
-									<dd><p>このコンストラクタは非推奨機能である。代わりに <code>BitmapFontParameterObject</code> を使うコンストラクタを用いるべきである。</p>
-									</dd>
-								</dl>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>src: <a href="_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a><span class="tsd-signature-symbol"> | </span><a href="_lib_main_d_.g.asset.html" class="tsd-signature-type">Asset</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>文字データとして利用する画像を表す <code>Surface</code> または <code>Asset</code>。文字を敷き詰めたもの</p>
-										</div>
-									</div>
 								</li>
 								<li>
 									<h5>map: <span class="tsd-signature-type">object</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>各文字から画像上の位置・サイズなどを特定する情報。コードポイントから <code>GlyphArea</code> への写像</p>
-										</div>
-									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-index-signature">
 											<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="../interfaces/_lib_main_d_.g.glypharea.html" class="tsd-signature-type">GlyphArea</a></h5>
@@ -174,27 +147,12 @@
 								</li>
 								<li>
 									<h5>defaultGlyphWidth: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p><code>map</code> で指定を省略した文字に使われる、デフォルトの文字の幅</p>
-										</div>
-									</div>
 								</li>
 								<li>
 									<h5>defaultGlyphHeight: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p><code>map</code> で指定を省略した文字に使われる、デフォルトの文字の高さ</p>
-										</div>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> missingGlyph: <a href="../interfaces/_lib_main_d_.g.glypharea.html" class="tsd-signature-type">GlyphArea</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p><code>map</code> に存在しないコードポイントの代わりに表示するべき文字の <code>GlyphArea</code></p>
-										</div>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.bitmapfont.html" class="tsd-signature-type">BitmapFont</a></h4>
@@ -205,20 +163,10 @@
 									<li>Defined in lib/main.d.ts:5255</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>各種パラメータを指定して <code>BitmapFont</code> のインスタンスを生成する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>param: <a href="../interfaces/_lib_main_d_.g.bitmapfontparameterobject.html" class="tsd-signature-type">BitmapFontParameterObject</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p><code>BitmapFont</code> に設定するパラメータ</p>
-										</div>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.bitmapfont.html" class="tsd-signature-type">BitmapFont</a></h4>
@@ -314,11 +262,6 @@
 									<li>Defined in lib/main.d.ts:5269</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>利用している <code>Surface</code> を破棄した上で、このフォントを破棄する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -337,11 +280,6 @@
 									<li>Defined in lib/main.d.ts:5273</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>破棄されたオブジェクトかどうかを判定する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -360,18 +298,10 @@
 									<li>Defined in lib/main.d.ts:5265</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>コードポイントに対応するグリフを返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>code: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>コードポイント</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.glyph.html" class="tsd-signature-type">Glyph</a></h4>

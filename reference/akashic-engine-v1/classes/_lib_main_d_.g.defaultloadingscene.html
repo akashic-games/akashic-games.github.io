@@ -70,15 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>デフォルトローディングシーン。</p>
-					</div>
-					<p><code>Game#_defaultLoadingScene</code> の初期値として利用される。
-					このシーンはいかなるアセットも用いてはならない。</p>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -213,20 +204,10 @@
 									<li>Defined in lib/main.d.ts:3244</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>DeafultLoadingScene</code> のインスタンスを生成する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>param: <a href="../interfaces/_lib_main_d_.g.defaultloadingsceneparameterobject.html" class="tsd-signature-type">DefaultLoadingSceneParameterObject</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>初期化に用いるパラメータのオブジェクト</p>
-										</div>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.defaultloadingscene.html" class="tsd-signature-type">DefaultLoadingScene</a></h4>
@@ -246,11 +227,6 @@
 							<li>Defined in lib/main.d.ts:2897</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p><code>Scene#requestAssets()</code> で動的に要求されたアセットの保持者。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported">
 					<a name="_explicitend" class="tsd-anchor"></a>
@@ -262,8 +238,6 @@
 							<li>Defined in lib/main.d.ts:3161</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported">
 					<a name="_loaded" class="tsd-anchor"></a>
@@ -275,24 +249,6 @@
 							<li>Defined in lib/main.d.ts:2870</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>読み込みが開始されたか否か。
-							すなわち、 <code>_load()</code> が呼び出された後か否か。</p>
-						</div>
-						<p>歴史的経緯により、このフラグの意味は「読み込みが終わった後」でも「loadedがfireされた後」でもない点に注意。
-						なお前者「(アセットとストレージの)読み込みが終わった後」は <code>_loadingState === SceneLoadState.Ready</code> に与えられる。</p>
-						<p>シーンの読み込みは概ね次の順で処理が進行する。</p>
-						<ul>
-							<li><code>_loaded</code> が真になる</li>
-							<li>各種読み込みが完了する</li>
-							<li><code>_loadingState</code> が <code>SceneLoadState.Ready</code> になる</li>
-							<li><code>_ready</code> がfireされる</li>
-							<li><code>_loadingState</code> が <code>SceneLoadState.ReadyFired</code> になる</li>
-							<li><code>loaded</code> がfireされる</li>
-							<li><code>_loadingState</code> が <code>SceneLoadState.LoadedFired</code> になる</li>
-						</ul>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported">
 					<a name="_loadingstate" class="tsd-anchor"></a>
@@ -304,12 +260,6 @@
 							<li>Defined in lib/main.d.ts:2882</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>アセットとストレージの読み込みが終わった後か否か。
-							「 <code>loaded</code> がfireされた後」ではない点に注意。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported">
 					<a name="_prefetchrequested" class="tsd-anchor"></a>
@@ -321,12 +271,6 @@
 							<li>Defined in lib/main.d.ts:2876</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>先読みが要求されたか否か。
-							すなわち、 <code>prefetch()</code> が呼び出された後か否か。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported">
 					<a name="_ready" class="tsd-anchor"></a>
@@ -338,11 +282,6 @@
 							<li>Defined in lib/main.d.ts:2852</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>アセットとストレージの読み込みが終わったことを通知するTrigger。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported">
 					<a name="_sceneassetholder" class="tsd-anchor"></a>
@@ -354,11 +293,6 @@
 							<li>Defined in lib/main.d.ts:2892</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>シーンのアセットの保持者。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported">
 					<a name="_storageloader" class="tsd-anchor"></a>
@@ -370,8 +304,6 @@
 							<li>Defined in lib/main.d.ts:2847</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported">
 					<a name="_targetscene" class="tsd-anchor"></a>
@@ -383,8 +315,6 @@
 							<li>Defined in lib/main.d.ts:3165</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported">
 					<a name="_timer" class="tsd-anchor"></a>
@@ -396,11 +326,6 @@
 							<li>Defined in lib/main.d.ts:2887</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>タイマー。通常は本変数直接ではなく、createTimer/deleteTimer/setInterval/clearInterval等の機構を利用する。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="assetloadcompleted" class="tsd-anchor"></a>
@@ -412,13 +337,6 @@
 							<li>Defined in lib/main.d.ts:2801</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>アセット読み込み完了イベント。</p>
-						</div>
-						<p>このシーンのアセットが一つ読み込みに失敗または成功する度にfireされる。
-						アセット読み込み中の動作をカスタマイズしたい場合に用いる。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="assetloadfailed" class="tsd-anchor"></a>
@@ -430,14 +348,6 @@
 							<li>Defined in lib/main.d.ts:2794</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>アセット読み込み失敗イベント。</p>
-						</div>
-						<p>このシーンのアセットが一つ読み込みに失敗する度にfireされる。
-							アセット読み込み中の動作をカスタマイズしたい場合に用いる。
-						このイベントをhandleする場合、ハンドラは <code>AssetLoadFailureInfo#cancelRetry</code> を真にすることでゲーム続行を断念することができる。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="assetloaded" class="tsd-anchor"></a>
@@ -449,13 +359,6 @@
 							<li>Defined in lib/main.d.ts:2786</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>アセット読み込み成功イベント。</p>
-						</div>
-						<p>このシーンのアセットが一つ読み込まれる度にfireされる。
-						アセット読み込み中の動作をカスタマイズしたい場合に用いる。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="assets" class="tsd-anchor"></a>
@@ -467,13 +370,6 @@
 							<li>Defined in lib/main.d.ts:2731</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このシーンで利用できるアセット。</p>
-						</div>
-						<p>アセットID をkeyに、対応するアセットのインスタンスを得ることができる。
-						keyはこのシーンの生成時、コンストラクタの第二引数 <code>assetIds</code> に渡された配列に含まれる文字列でなければならない。</p>
-					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -493,12 +389,6 @@
 							<li>Defined in lib/main.d.ts:2724</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このシーンの子エンティティ。</p>
-						</div>
-						<p>エンティティは <code>Scene#append()</code> によって追加され、 <code>Scene#remove()</code> によって削除される。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="game" class="tsd-anchor"></a>
@@ -510,11 +400,6 @@
 							<li>Defined in lib/main.d.ts:2737</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このシーンの属するゲーム。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="loaded" class="tsd-anchor"></a>
@@ -526,13 +411,6 @@
 							<li>Defined in lib/main.d.ts:2779</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>読み込み完了イベント。</p>
-						</div>
-						<p>このシーンの生成時に(コンストラクタで)指定されたすべてのアセットの読み込みが終了した後、一度だけfireされる。
-						このシーンのアセットを利用するすべての処理は、このイベントのfire後に実行されなければならない。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="local" class="tsd-anchor"></a>
@@ -544,24 +422,6 @@
 							<li>Defined in lib/main.d.ts:2755</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このシーンのローカルティック消化ポリシー。</p>
-						</div>
-						<ul>
-							<li><code>LocalTickMode.NonLocal</code> が与えられた場合、このシーンは非ローカルシーンと呼ばれる。
-							非ローカルシーンでは、他プレイヤーと共通の時間進行処理((非ローカル)ティックの消化)が行われる(updateがfireされる)。</li>
-							<li><code>LocalTickMode.FullLocal</code> が与えられた場合、このシーンはローカルシーンと呼ばれる。
-							ローカルシーンでは、他プレイヤーと独立な時間進行処理(ローカルティックの消化)が行われる。</li>
-							<li><code>LocalTickMode.InterpolateLocal</code> が与えられた場合、このシーンはローカルティック補間シーンと呼ばれる。
-								ローカルティック補間シーンは、非ローカルシーン同様にティックを消化するが、
-							消化すべき非ローカルティックがない場合にローカルティックが補間され消化される。</li>
-						</ul>
-						<p>ローカルシーンとローカルティック補間シーンに属するエンティティは、
-							すべてローカルである(強制的にローカルエンティティとして生成される)。
-						ローカルシーンは特にアセットロード中のような、他プレイヤーと同期すべきでないシーンのために存在する機能である。</p>
-						<p>この値は参照のためにのみ公開されている。ゲーム開発者はこの値を変更すべきではない。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="message" class="tsd-anchor"></a>
@@ -573,11 +433,6 @@
 							<li>Defined in lib/main.d.ts:2814</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>汎用メッセージイベント。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="name" class="tsd-anchor"></a>
@@ -589,11 +444,6 @@
 							<li>Defined in lib/main.d.ts:2768</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>シーンの識別用の名前。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="operation" class="tsd-anchor"></a>
@@ -605,11 +455,6 @@
 							<li>Defined in lib/main.d.ts:2839</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>シーン内での操作イベント。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="pointdowncapture" class="tsd-anchor"></a>
@@ -621,13 +466,6 @@
 							<li>Defined in lib/main.d.ts:2821</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>シーン内でのpoint downイベント。</p>
-						</div>
-						<p>このイベントは <code>E#pointDown</code> とは独立にfireされる。
-						すなわち、シーン内に同じ位置でのpoint downイベントに反応する <code>E</code> がある場合もない場合もこのイベントはfireされる。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="pointmovecapture" class="tsd-anchor"></a>
@@ -639,13 +477,6 @@
 							<li>Defined in lib/main.d.ts:2828</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>シーン内でのpoint moveイベント。</p>
-						</div>
-						<p>このイベントは <code>E#pointMove</code> とは独立にfireされる。
-						すなわち、シーン内に同じ位置でのpoint moveイベントに反応する <code>E</code> がある場合もない場合もこのイベントはfireされる。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="pointupcapture" class="tsd-anchor"></a>
@@ -657,13 +488,6 @@
 							<li>Defined in lib/main.d.ts:2835</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>シーン内でのpoint upイベント。</p>
-						</div>
-						<p>このイベントは <code>E#pointUp</code> とは独立にfireされる。
-						すなわち、シーン内に同じ位置でのpoint upイベントに反応する <code>E</code> がある場合もない場合もこのイベントはfireされる。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="state" class="tsd-anchor"></a>
@@ -675,11 +499,6 @@
 							<li>Defined in lib/main.d.ts:2805</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>シーンの状態。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="statechanged" class="tsd-anchor"></a>
@@ -691,12 +510,6 @@
 							<li>Defined in lib/main.d.ts:2810</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>シーンの状態変更イベント。
-							状態が初期化直後の <code>Standby</code> 状態以外に変化するときfireされる。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="storagevalues" class="tsd-anchor"></a>
@@ -708,11 +521,6 @@
 							<li>Defined in lib/main.d.ts:2843</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>シーン内で利用可能なストレージの値を保持する <code>StorageValueStore</code>。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="targetassetloaded" class="tsd-anchor"></a>
@@ -724,11 +532,6 @@
 							<li>Defined in lib/main.d.ts:3157</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>ローディングシーンの読み込み待ち対象シーンがアセットを読み込む度にfireされるTrigger。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="targetready" class="tsd-anchor"></a>
@@ -740,13 +543,6 @@
 							<li>Defined in lib/main.d.ts:3153</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>ローディングシーンの読み込みが完了した時にfireされるTrigger。
-								<code>explicitEnd</code> に真を渡して生成した場合、ローディングシーンを終了するには
-							このTriggerのfire後に明示的に <code>end()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="targetreset" class="tsd-anchor"></a>
@@ -758,12 +554,6 @@
 							<li>Defined in lib/main.d.ts:3147</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>ローディングシーンの読み込み待ち対象シーンが切り替わった場合にfireされるTrigger。
-							ゲーム開発者は、このTriggerをhandleしてローディングシーンの内容を初期化することができる。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="tickgenerationmode" class="tsd-anchor"></a>
@@ -775,15 +565,6 @@
 							<li>Defined in lib/main.d.ts:2764</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>時間経過の契機(ティック)をどのように生成するか。
-								<code>Manual</code> の場合、 <code>Game#raiseTick()</code> を呼び出さない限りティックが生成されない(時間経過しない)。
-								ただしローカルティック(ローカルシーンの間などの「各プレイヤー間で独立な時間経過処理」)はこの値の影響を受けない。
-							またこのシーンへの遷移直後、一度だけこの値に関わらずティックが生成される。</p>
-						</div>
-						<p>この値は参照のためにのみ公開されている。ゲーム開発者はこの値を変更すべきではない。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="update" class="tsd-anchor"></a>
@@ -795,11 +576,6 @@
 							<li>Defined in lib/main.d.ts:2772</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>時間経過イベント。本イベントの一度のfireにつき、常に1フレーム分の時間経過が起こる。</p>
-						</div>
-					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
@@ -818,8 +594,6 @@
 									<li>Defined in lib/main.d.ts:3078</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -838,8 +612,6 @@
 									<li>Defined in lib/main.d.ts:3196</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -858,8 +630,6 @@
 									<li>Defined in lib/main.d.ts:3082</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -878,8 +648,6 @@
 									<li>Defined in lib/main.d.ts:3200</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -898,8 +666,6 @@
 									<li>Defined in lib/main.d.ts:3114</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -918,8 +684,6 @@
 									<li>Defined in lib/main.d.ts:3110</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -938,8 +702,6 @@
 									<li>Defined in lib/main.d.ts:3204</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -964,8 +726,6 @@
 									<li>Defined in lib/main.d.ts:3208</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -990,8 +750,6 @@
 									<li>Defined in lib/main.d.ts:3090</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -1010,8 +768,6 @@
 									<li>Defined in lib/main.d.ts:3086</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -1030,8 +786,6 @@
 									<li>Defined in lib/main.d.ts:3106</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -1049,8 +803,6 @@
 									<li>Defined in lib/main.d.ts:3253</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -1069,8 +821,6 @@
 									<li>Defined in lib/main.d.ts:3094</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -1090,8 +840,6 @@
 									<li>Defined in lib/main.d.ts:3098</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -1117,8 +865,6 @@
 									<li>Defined in lib/main.d.ts:3102</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -1137,19 +883,6 @@
 									<li>Defined in lib/main.d.ts:3219</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>読み込み待ち対象シーンのアセットが一つ読み込まれる度に呼ばれるコールバック。
-										派生クラスが上書きすることができる。このメソッドは後方互換性のために存在する。
-										(内部メソッド(_で始まる)ではあるが、ローディングシーンをカスタマイズする方法が
-									なかった当時(<a href="mailto:akashic-engine@1.1.1">akashic-engine@1.1.1</a>以前)、文書上で存在に言及してしまっている)</p>
-								</div>
-								<p>現在はこれの代わりに <code>targetAssetLoaded</code> をhandleすること。</p>
-								<dl class="tsd-comment-tags">
-									<dt>deprecated</dt>
-									<dd></dd>
-								</dl>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -1173,8 +906,6 @@
 									<li>Defined in lib/main.d.ts:3265</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -1198,8 +929,6 @@
 									<li>Defined in lib/main.d.ts:3261</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -1223,8 +952,6 @@
 									<li>Defined in lib/main.d.ts:3257</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -1243,19 +970,10 @@
 									<li>Defined in lib/main.d.ts:3033</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>子エンティティを追加する。</p>
-								</div>
-								<p><code>this.children</code> の末尾に <code>e</code> を追加する(<code>e</code> はそれまでに追加されたすべての子エンティティより手前に表示される)。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>e: <a href="_lib_main_d_.g.e.html" class="tsd-signature-type">E</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>子エンティティとして追加するエンティティ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1276,18 +994,10 @@
 									<li>Defined in lib/main.d.ts:2970</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>setIntervalで作成した定期処理を解除する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>identifier: <a href="_lib_main_d_.g.timeridentifier.html" class="tsd-signature-type">TimerIdentifier</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>解除対象</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1308,18 +1018,10 @@
 									<li>Defined in lib/main.d.ts:2989</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>setTimeoutで作成した処理を削除する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>identifier: <a href="_lib_main_d_.g.timeridentifier.html" class="tsd-signature-type">TimerIdentifier</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>解除対象</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1340,21 +1042,10 @@
 									<li>Defined in lib/main.d.ts:2947</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>一定間隔で定期的に処理を実行するTimerを作成して返す。</p>
-								</div>
-								<p>戻り値は作成されたTimerである。
-									通常は <code>Scene#setInterval</code> を利用すればよく、ゲーム開発者がこのメソッドを呼び出す必要はない。
-								本メソッドが作成するTimerはフレーム経過によって動作する疑似タイマーであるため、実時間の影響は受けない。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>interval: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Timerの実行間隔（ミリ秒）</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.timer.html" class="tsd-signature-type">Timer</a></h4>
@@ -1375,18 +1066,10 @@
 									<li>Defined in lib/main.d.ts:2952</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Timerを削除する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>timer: <a href="_lib_main_d_.g.timer.html" class="tsd-signature-type">Timer</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>削除するTimer</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1428,11 +1111,6 @@
 									<li>Defined in lib/main.d.ts:2938</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>破棄済みであるかを返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -1452,13 +1130,6 @@
 									<li>Defined in lib/main.d.ts:3192</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>ローディングシーンを終了する。</p>
-								</div>
-								<p><code>Scene#end()</code> と異なり、このメソッドの呼び出しはこのシーンを破棄しない。(ローディングシーンは再利用される。)
-								このメソッドが呼び出される時、 <code>targetReady</code> がfireされた後でなければならない。</p>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -1477,30 +1148,16 @@
 									<li>Defined in lib/main.d.ts:3056</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>シーン内でその座標に反応する <code>PointSource</code> を返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>point: <a href="../interfaces/_lib_main_d_.g.commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象の座標</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> force: <span class="tsd-signature-type">boolean</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>touchable指定を無視する場合真を指定する。指定されなかった場合偽</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> camera: <a href="../interfaces/_lib_main_d_.g.camera.html" class="tsd-signature-type">Camera</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象のカメラ。指定されなかった場合undefined</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_lib_main_d_.g.pointsource.html" class="tsd-signature-type">PointSource</a></h4>
@@ -1521,11 +1178,6 @@
 									<li>Defined in lib/main.d.ts:3185</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>アセットロード待ち対象シーンの残りのロード待ちアセット数を取得する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
 					</ul>
@@ -1544,27 +1196,13 @@
 									<li>Defined in lib/main.d.ts:3003</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>次のシーンへの遷移を要求する。</p>
-								</div>
-								<p>このメソッドは、 <code>toPush</code> が真ならば <code>Game#pushScene()</code> の、でなければ <code>Game#replaceScene</code> のエイリアスである。
-									このメソッドは要求を行うだけである。呼び出し直後にはシーン遷移は行われていないことに注意。
-								このシーンが現在のシーンでない場合、 <code>AssertionError</code> がthrowされる。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>next: <a href="_lib_main_d_.g.scene.html" class="tsd-signature-type">Scene</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>遷移後のシーン</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> toPush: <span class="tsd-signature-type">boolean</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>現在のシーンを残したままにするなら真、削除して遷移するなら偽を指定する。省略された場合偽</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1585,26 +1223,13 @@
 									<li>Defined in lib/main.d.ts:3043</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>子エンティティを挿入する。</p>
-								</div>
-								<p><code>this.children</code> の<code>target</code>の位置に <code>e</code> を挿入する。
-								<code>target</code> が<code>this</code> の子でない場合、<code>append(e)</code>と同じ動作となる。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>e: <a href="_lib_main_d_.g.e.html" class="tsd-signature-type">E</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>子エンティティとして追加するエンティティ</p>
-									</div>
 								</li>
 								<li>
 									<h5>target: <a href="_lib_main_d_.g.e.html" class="tsd-signature-type">E</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>挿入位置にある子エンティティ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1625,11 +1250,6 @@
 									<li>Defined in lib/main.d.ts:2993</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このシーンが現在のシーンであるかどうかを返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -1648,20 +1268,10 @@
 									<li>Defined in lib/main.d.ts:2922</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このシーンが変更されたことをエンジンに通知する。</p>
-								</div>
-								<p>このメソッドは、このシーンに紐づいている <code>E</code> の <code>modified()</code> を呼び出すことで暗黙に呼び出される。
-								通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> isBubbling: <span class="tsd-signature-type">boolean</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>この関数をこのシーンの子の <code>modified()</code> から呼び出す場合、真を渡さなくてはならない。省略された場合、偽。</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1682,16 +1292,6 @@
 									<li>Defined in lib/main.d.ts:3067</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>アセットの先読みを要求する。</p>
-								</div>
-								<p><code>Scene</code> に必要なアセットは、通常、<code>Game#pushScene()</code> などによるシーン遷移にともなって暗黙に読み込みが開始される。
-									ゲーム開発者はこのメソッドを呼び出すことで、シーン遷移前にアセット読み込みを開始する(先読みする)ことができる。
-								先読み開始後、シーン遷移時までに読み込みが完了していない場合、通常の読み込み処理同様にローディングシーンが表示される。</p>
-								<p>このメソッドは <code>StorageLoader</code> についての先読み処理を行わない点に注意。
-								ストレージの場合、書き込みが行われる可能性があるため、順序を無視して先読みすることはできない。</p>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -1710,19 +1310,10 @@
 									<li>Defined in lib/main.d.ts:3018</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このSceneにエンティティを登録する。</p>
-								</div>
-								<p>このメソッドは各エンティティに対して暗黙に呼び出される。ゲーム開発者がこのメソッドを明示的に呼び出す必要はない。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>e: <a href="_lib_main_d_.g.e.html" class="tsd-signature-type">E</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>登録するエンティティ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1743,19 +1334,10 @@
 									<li>Defined in lib/main.d.ts:3049</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>子エンティティを削除する。
-									<code>this</code> の子から <code>e</code> を削除する。 <code>e</code> が <code>this</code> の子でない場合、何もしない。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>e: <a href="_lib_main_d_.g.e.html" class="tsd-signature-type">E</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>削除する子エンティティ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1815,21 +1397,10 @@
 									<li>Defined in lib/main.d.ts:3181</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>アセットロード待ち対象シーンを変更する。</p>
-								</div>
-								<p>このメソッドは、新たにシーンのロード待ちが必要になった場合にエンジンによって呼び出される。
-									(派生クラスはこの処理をオーバーライドしてもよいが、その場合その中で
-								このメソッド自身 (<code>g.LoadingScene.prototype.reset</code>) を呼び出す (<code>call()</code> する) 必要がある。)</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>targetScene: <a href="_lib_main_d_.g.scene.html" class="tsd-signature-type">Scene</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>アセットロード待ちが必要なシーン</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1850,12 +1421,6 @@
 									<li>Defined in lib/main.d.ts:3073</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>シーンが読み込んだストレージの値をシリアライズする。</p>
-								</div>
-								<p><code>Scene#storageValues</code> の内容をシリアライズする。</p>
-							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../modules/_lib_main_d_.g.html#storagevaluestoreserialization" class="tsd-signature-type">StorageValueStoreSerialization</a></h4>
 						</li>
 					</ul>
@@ -1874,34 +1439,16 @@
 									<li>Defined in lib/main.d.ts:2965</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>一定間隔で定期的に実行される処理を作成する。</p>
-								</div>
-								<p><code>interval</code> ミリ秒おきに <code>owner</code> を <code>this</code> として <code>handler</code> を呼び出す。
-									引数 <code>owner</code> は省略できるが、 <code>handler</code> は省略できない。
-								戻り値は <code>Scene#clearInterval</code> の引数に指定して定期実行を解除するために使える値である。</p>
-								<p>本定期処理はフレーム経過によって動作する疑似タイマーであるため、実時間の影響は受けない。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>interval: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>実行間隔(ミリ秒)</p>
-									</div>
 								</li>
 								<li>
 									<h5>owner: <span class="tsd-signature-type">any</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>handlerの所有者。省略された場合、null</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> handler: <span class="tsd-signature-type">function</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>処理</p>
-									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -1934,35 +1481,16 @@
 									<li>Defined in lib/main.d.ts:2984</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>一定時間後に一度だけ実行される処理を作成する。</p>
-								</div>
-								<p><code>milliseconds</code> ミリ秒後(以降)に、一度だけ <code>owner</code> を <code>this</code> として <code>handler</code> を呼び出す。
-									引数 <code>owner</code> は省略できるが、 <code>handler</code> は省略できない。
-								戻り値は <code>Scene#clearTimeout</code> の引数に指定して処理を削除するために使える値である。</p>
-								<p>本処理で計算される時間はフレーム経過によって動作する疑似タイマーであるため、実時間の影響は受けない。
-								時間の精度はそれほど高くないので、精度の高い処理であればupdateイベントで作成する必要がある。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>milliseconds: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>時間(ミリ秒)</p>
-									</div>
 								</li>
 								<li>
 									<h5>owner: <span class="tsd-signature-type">any</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>handlerの所有者。省略された場合、null</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> handler: <span class="tsd-signature-type">function</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>処理</p>
-									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -1995,19 +1523,10 @@
 									<li>Defined in lib/main.d.ts:3025</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このSceneからエンティティの登録を削除する。</p>
-								</div>
-								<p>このメソッドは各エンティティに対して暗黙に呼び出される。ゲーム開発者がこのメソッドを明示的に呼び出す必要はない。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>e: <a href="_lib_main_d_.g.e.html" class="tsd-signature-type">E</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>登録を削除するエンティティ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>

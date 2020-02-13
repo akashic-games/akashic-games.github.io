@@ -70,16 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p><code>Asset</code> を管理するクラス。</p>
-					</div>
-					<p>このクラスのインスタンスは <code>Game</code> に一つデフォルトで存在する(デフォルトアセットマネージャ)。
-					デフォルトアセットマネージャは、game.json に記述された通常のアセットを読み込むために利用される。</p>
-					<p>ゲーム開発者は、game.json に記述のないリソースを取得するために、このクラスのインスタンスを独自に生成してよい。</p>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -154,28 +144,13 @@
 									<li>Defined in lib/main.d.ts:535</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>AssetManager</code> のインスタンスを生成する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>game: <a href="_lib_main_d_.g.game.html" class="tsd-signature-type">Game</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>このインスタンスが属するゲーム</p>
-										</div>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> conf: <a href="../modules/_lib_main_d_.g.html#assetconfigurationmap" class="tsd-signature-type">AssetConfigurationMap</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>このアセットマネージャに与えるアセット定義。game.json の <code>&quot;assets&quot;</code> に相当。</p>
-										</div>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> audioSystemConfMap: <a href="../modules/_lib_main_d_.g.html#audiosystemconfigurationmap" class="tsd-signature-type">AudioSystemConfigurationMap</a></h5>
@@ -200,12 +175,6 @@
 							<li>Defined in lib/main.d.ts:499</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>読み込み済みのアセット。
-							requestAssets() で読み込みをリクエストしたゲーム開発者はコールバックでアセットを受け取るので、この変数を参照する必要は通常ない</p>
-						</div>
-					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -224,11 +193,6 @@
 							<li>Defined in lib/main.d.ts:515</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>読み込み済みのアセットの絶対パスからrequire解決用の仮想パスを引くためのテーブル。</p>
-						</div>
-					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -247,13 +211,6 @@
 							<li>Defined in lib/main.d.ts:508</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>読み込み済みのrequire解決用の仮想パスからアセットを引くためのテーブル。
-								アセットIDと異なり、ファイルパスは重複しうる (同じ画像を複数の名前で参照することはできる) ので、要素数は <code>_assets</code> 以下である。
-							この情報は逆引き用の補助的な値にすぎない。このクラスの読み込み済みアセットの管理はすべて <code>_assets</code> 経由で行う。</p>
-						</div>
-					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -272,11 +229,6 @@
 							<li>Defined in lib/main.d.ts:522</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>requireの第一引数から対応する仮想パスを引くためのテーブル。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 					<a name="_refcounts" class="tsd-anchor"></a>
@@ -287,13 +239,6 @@
 							<li>Defined in lib/main.d.ts:529</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>各アセットに対する参照の数。
-								参照は requestAssets() で増え、unrefAssets() で減る。
-							なおロード中であっても参照に数える。つまり (this._refCounts[id] &gt; 1) であるなら !!(this._assets[id] || this._loadings[id])</p>
-						</div>
-					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -312,11 +257,6 @@
 							<li>Defined in lib/main.d.ts:491</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>コンストラクタに渡されたアセットの設定。(assets.json が入っていることが期待される)</p>
-						</div>
-					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
@@ -335,11 +275,6 @@
 							<li>Defined in lib/main.d.ts:487</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このインスタンスが属するゲーム。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static tsd-is-not-exported">
 					<a name="max_error_count" class="tsd-anchor"></a>
@@ -367,11 +302,6 @@
 									<li>Defined in lib/main.d.ts:607</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>現在ロード中のアセットの数。(デバッグ用; 直接の用途はない)</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
 					</ul>
@@ -389,8 +319,6 @@
 									<li>Defined in lib/main.d.ts:601</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -441,8 +369,6 @@
 									<li>Defined in lib/main.d.ts:611</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -470,8 +396,6 @@
 									<li>Defined in lib/main.d.ts:615</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -518,11 +442,6 @@
 									<li>Defined in lib/main.d.ts:546</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このインスタンスを破棄する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -540,11 +459,6 @@
 									<li>Defined in lib/main.d.ts:550</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このインスタンスが破棄済みであるかどうかを返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -562,11 +476,6 @@
 									<li>Defined in lib/main.d.ts:561</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このインスタンスに与えられた <code>AssetConfigurationMap</code> のうち、グローバルアセットのIDをすべて返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
@@ -584,28 +493,13 @@
 									<li>Defined in lib/main.d.ts:573</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>アセットの取得を要求する。</p>
-								</div>
-								<p>要求したアセットが読み込み済みでない場合、読み込みが行われる。
-									取得した結果は <code>handler</code> を通して通知される。
-									ゲーム開発者はこのメソッドを呼び出してアセットを取得した場合、
-								同じアセットID(または取得したアセット)で <code>unrefAsset()</code> を呼び出さなければならない。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>assetIdOrConf: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_lib_main_d_.g.dynamicassetconfiguration.html" class="tsd-signature-type">DynamicAssetConfiguration</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>要求するアセットのIDまたは設定</p>
-									</div>
 								</li>
 								<li>
 									<h5>handler: <a href="../interfaces/_lib_main_d_.g.assetmanagerloadhandler.html" class="tsd-signature-type">AssetManagerLoadHandler</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>要求結果を受け取るハンドラ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -625,25 +519,13 @@
 									<li>Defined in lib/main.d.ts:588</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>複数のアセットの取得を要求する。
-									引数の各要素で <code>requestAsset()</code> を呼び出す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>assetIdOrConfs: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_lib_main_d_.g.dynamicassetconfiguration.html" class="tsd-signature-type">DynamicAssetConfiguration</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>取得するアセットのIDまたはアセット定義</p>
-									</div>
 								</li>
 								<li>
 									<h5>handler: <a href="../interfaces/_lib_main_d_.g.assetmanagerloadhandler.html" class="tsd-signature-type">AssetManagerLoadHandler</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>取得の結果を受け取るハンドラ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -663,19 +545,10 @@
 									<li>Defined in lib/main.d.ts:557</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>Asset</code> の読み込みを再試行する。</p>
-								</div>
-								<p>引数 <code>asset</code> は読み込みの失敗が (<code>Scene#assetLoadFail</code> で) 通知されたアセットでなければならない。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>asset: <a href="_lib_main_d_.g.asset.html" class="tsd-signature-type">Asset</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>読み込みを再試行するアセット</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -695,19 +568,10 @@
 									<li>Defined in lib/main.d.ts:580</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>アセットの参照カウントを減らす。
-									引数の各要素で <code>unrefAsset()</code> を呼び出す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>assetOrId: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="_lib_main_d_.g.asset.html" class="tsd-signature-type">Asset</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>参照カウントを減らすアセットまたはアセットID</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -727,19 +591,10 @@
 									<li>Defined in lib/main.d.ts:596</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>複数のアセットを解放する。
-									引数の各要素で <code>unrefAsset()</code> を呼び出す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>assetOrIds: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="_lib_main_d_.g.asset.html" class="tsd-signature-type">Asset</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>参照カウントを減らすアセットまたはアセットID</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>

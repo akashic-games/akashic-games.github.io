@@ -70,14 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>akashic-engineに描画される全てのエンティティを表す基底クラス。
-						本クラス単体に描画処理にはなく、直接利用する場合はchildrenを利用したコンテナとして程度で利用される。</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -206,25 +198,10 @@
 									<li>Defined in lib/main.d.ts:2012</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>属するシーンを指定して <code>E</code> のインスタンスを生成する。</p>
-								</div>
-								<dl class="tsd-comment-tags">
-									<dt>deprecated</dt>
-									<dd><p>このコンストラクタは非推奨機能である。代わりに <code>EParameterObject</code> を使うコンストラクタを用いるべきである。</p>
-									</dd>
-								</dl>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>scene: <a href="_lib_main_d_.g.scene.html" class="tsd-signature-type">Scene</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>このエンティティが属する <code>Scene</code></p>
-										</div>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.e.html" class="tsd-signature-type">E</a></h4>
@@ -236,20 +213,10 @@
 									<li>Defined in lib/main.d.ts:2018</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>各種パラメータを指定して <code>E</code> のインスタンスを生成する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>param: <a href="../interfaces/_lib_main_d_.g.eparameterobject.html" class="tsd-signature-type">EParameterObject</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>初期化に用いるパラメータのオブジェクト</p>
-										</div>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.e.html" class="tsd-signature-type">E</a></h4>
@@ -261,11 +228,6 @@
 									<li>Defined in lib/main.d.ts:2023</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>E</code> のインスタンスを生成する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -288,11 +250,6 @@
 							<li>Defined in lib/main.d.ts:1967</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>子にtouchableなものが含まれているかどうかを表す。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported">
 					<a name="_matrix" class="tsd-anchor"></a>
@@ -304,16 +261,6 @@
 							<li>Defined in lib/main.d.ts:1780</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>変換行列のキャッシュ。 <code>Object2D</code> は状態に変更があった時、本値の_modifiedをtrueにする必要がある。
-								初期値は <code>undefined</code> であり、 <code>getMatrix()</code> によって必要な時に生成されるため、
-							<code>if (this._matrix) this._matrix._modified = true</code> という式で記述する必要がある。</p>
-						</div>
-						<p>エンジンに組み込まれているSprite等のエンティティ群は、
-							すでに本処理を組み込んでいるため通常ゲーム開発者はこの値を意識する必要はない。
-						<code>Object2D</code> を継承したクラスを新たに作る場合には、本フィールドを適切に操作しなければならない。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 					<a name="_targetcameras" class="tsd-anchor"></a>
@@ -324,13 +271,6 @@
 							<li>Defined in lib/main.d.ts:1962</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このEが「映り込む」カメラの集合。
-								空でない配列が指定されている場合、配列内に存在しないCameraでの描画時にはこのEがスキップされる。
-							初期値はundefinedである。targetCamerasがこの値を暗黙に生成するので、ゲーム開発者はそちらを使うべきである。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="angle" class="tsd-anchor"></a>
@@ -342,13 +282,6 @@
 							<li>Defined in lib/main.d.ts:1763</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>オブジェクトの回転。度数で指定する。
-								初期値は <code>0</code> である。
-							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="children" class="tsd-anchor"></a>
@@ -359,12 +292,6 @@
 							<li>Defined in lib/main.d.ts:1938</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このエンティティの全子エンティティ。
-							子エンティティが存在しない場合、本フィールドの値は <code>undefined</code> または空配列である。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="compositeoperation" class="tsd-anchor"></a>
@@ -376,13 +303,6 @@
 							<li>Defined in lib/main.d.ts:1769</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>描画時の合成方法を指定する。
-								初期値は <code>undefined</code> となり、合成方法を指定しないことを意味する。
-							<code>E</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="height" class="tsd-anchor"></a>
@@ -395,13 +315,6 @@
 							<li>Defined in lib/main.d.ts:1739</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このオブジェクトの縦幅。
-								初期値は <code>0</code> である。実際の表示領域としてはscaleX, scaleY, angleの値も考慮する必要がある。
-							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="id" class="tsd-anchor"></a>
@@ -412,11 +325,6 @@
 							<li>Defined in lib/main.d.ts:1923</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このエンティティに割り振られる <code>Game</code> 単位で一意のID。(ただし <code>local</code> が真である場合を除く)</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="local" class="tsd-anchor"></a>
@@ -427,15 +335,6 @@
 							<li>Defined in lib/main.d.ts:1933</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このエンティティがローカルであるか否か。
-							コンストラクタで真が指定された時、または属するシーンがローカルシーンまたはローカルティック補間シーンである時、この値は真である。</p>
-						</div>
-						<p>この値が真である場合、このエンティティに対する point イベントはこのゲームインスタンスにのみ通知され、
-						他の参加者・視聴者には通知されない。また真である場合、 <code>id</code> の値の一意性は保証されない。</p>
-						<p>この値は参照のためにのみ公開されている。ゲーム開発者はこの値を直接変更してはならない。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="message" class="tsd-anchor"></a>
@@ -446,11 +345,6 @@
 							<li>Defined in lib/main.d.ts:1981</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このエンティティのmessageイベント。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="opacity" class="tsd-anchor"></a>
@@ -462,13 +356,6 @@
 							<li>Defined in lib/main.d.ts:1745</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>0～1でオブジェクトの不透明度を表す。
-								初期値は <code>1</code> である。本値が0の場合、Rendererは描画処理を省略する。
-							<code>E</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="parent" class="tsd-anchor"></a>
@@ -479,11 +366,6 @@
 							<li>Defined in lib/main.d.ts:1942</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>親。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="pointdown" class="tsd-anchor"></a>
@@ -494,11 +376,6 @@
 							<li>Defined in lib/main.d.ts:1985</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このエンティティのpoint downイベント。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="pointmove" class="tsd-anchor"></a>
@@ -509,11 +386,6 @@
 							<li>Defined in lib/main.d.ts:1993</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このエンティティのpoint moveイベント。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="pointup" class="tsd-anchor"></a>
@@ -524,11 +396,6 @@
 							<li>Defined in lib/main.d.ts:1989</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このエンティティのpoint upイベント。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="scalex" class="tsd-anchor"></a>
@@ -540,13 +407,6 @@
 							<li>Defined in lib/main.d.ts:1751</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>オブジェクトの横方向の倍率。
-								初期値は <code>1</code> である。
-							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="scaley" class="tsd-anchor"></a>
@@ -558,13 +418,6 @@
 							<li>Defined in lib/main.d.ts:1757</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>オブジェクトの縦方向の倍率。
-								初期値は <code>1</code> である。
-							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="scene" class="tsd-anchor"></a>
@@ -575,11 +428,6 @@
 							<li>Defined in lib/main.d.ts:1946</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このエンティティが属するシーン。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="state" class="tsd-anchor"></a>
@@ -590,11 +438,6 @@
 							<li>Defined in lib/main.d.ts:1950</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>様々な状態を表すビットフラグ。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="tag" class="tsd-anchor"></a>
@@ -605,12 +448,6 @@
 							<li>Defined in lib/main.d.ts:1955</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>ゲーム開発者向けのタグ情報管理コンテナ。
-							この値はゲームエンジンのロジックからは使用されず、ゲーム開発者は任意の目的に使用してよい。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="targetcameras" class="tsd-anchor"></a>
@@ -621,15 +458,6 @@
 							<li>Defined in lib/main.d.ts:2003</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このエンティティを表示できるカメラの配列。</p>
-						</div>
-						<p>初期値は空配列である。
-							この値が <code>undefined</code> または空配列である場合、このエンティティとその子孫はカメラによらず描画される。
-						空でない配列である場合、このエンティティとその子孫は、配列内に含まれるカメラでの描画の際にのみ表示される。</p>
-						<p>この値を変更した場合、 <code>this.modified()</code> を呼び出す必要がある。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="touchable" class="tsd-anchor"></a>
@@ -640,14 +468,6 @@
 							<li>Defined in lib/main.d.ts:2012</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>プレイヤーにとって触れられるオブジェクトであるかを表す。</p>
-						</div>
-						<p>この値が偽である場合、ポインティングイベントの対象にならない。
-						初期値は <code>false</code> である。</p>
-						<p><code>E</code> の他のプロパティと異なり、この値の変更後に <code>this.modified()</code> を呼び出す必要はない。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="update" class="tsd-anchor"></a>
@@ -658,11 +478,6 @@
 							<li>Defined in lib/main.d.ts:1977</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>時間経過イベント。本イベントの一度のfireにつき、常に1フレーム分の時間経過が起こる。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="width" class="tsd-anchor"></a>
@@ -675,13 +490,6 @@
 							<li>Defined in lib/main.d.ts:1733</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このオブジェクトの横幅。
-								初期値は <code>0</code> である。実際の表示領域としてはscaleX, scaleY, angleの値も考慮する必要がある。
-							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="x" class="tsd-anchor"></a>
@@ -694,13 +502,6 @@
 							<li>Defined in lib/main.d.ts:1721</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このオブジェクトの横位置。
-								初期値は <code>0</code> である。実際の座標位置はscaleX, scaleY, angleの値も考慮する必要がある。
-							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
 					<a name="y" class="tsd-anchor"></a>
@@ -713,13 +514,6 @@
 							<li>Defined in lib/main.d.ts:1727</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このオブジェクトの縦位置。
-								初期値は <code>0</code> である。実際の座標位置はscaleX, scaleY, angleの値も考慮する必要がある。
-							<code>E</code> や <code>Camera2D</code> においてこの値を変更した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-						</div>
-					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
@@ -737,8 +531,6 @@
 									<li>Defined in lib/main.d.ts:2156</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -765,8 +557,6 @@
 									<li>Defined in lib/main.d.ts:2164</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -784,8 +574,6 @@
 									<li>Defined in lib/main.d.ts:2160</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -803,8 +591,6 @@
 									<li>Defined in lib/main.d.ts:2168</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -829,11 +615,6 @@
 									<li>Defined in lib/main.d.ts:1851</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>公開のプロパティから内部の変換行列キャッシュを更新する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -851,18 +632,10 @@
 									<li>Defined in lib/main.d.ts:2060</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>子を追加する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>e: <a href="_lib_main_d_.g.e.html" class="tsd-signature-type">E</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>子エンティティとして追加するエンティティ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -882,18 +655,10 @@
 									<li>Defined in lib/main.d.ts:2152</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このEの包含矩形を計算する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> c: <a href="../interfaces/_lib_main_d_.g.camera.html" class="tsd-signature-type">Camera</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>使用カメラ。</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_lib_main_d_.g.commonrect.html" class="tsd-signature-type">CommonRect</a></h4>
@@ -914,13 +679,6 @@
 									<li>Defined in lib/main.d.ts:2085</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このエンティティを破棄する。</p>
-								</div>
-								<p>親がある場合、親からは <code>remove()</code> される。
-								子孫を持っている場合、子孫も破棄される。</p>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -939,11 +697,6 @@
 									<li>Defined in lib/main.d.ts:2089</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このエンティティが破棄済みであるかを返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -961,43 +714,19 @@
 									<li>Defined in lib/main.d.ts:2127</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>自身と自身の子孫の中で、その座標に反応する <code>PointSource</code> を返す。</p>
-								</div>
-								<p>戻り値は、対象が見つかった場合、 <code>target</code> に見つかったエンティティを持つ <code>PointSource</code> である。
-								対象が見つからなかった場合、 <code>undefined</code> である。戻り値が <code>undefined</code> でない場合、その <code>target</code> プロパティは次を満たす:</p>
-								<ul>
-									<li>このエンティティ(<code>this</code>) またはその子孫である</li>
-									<li><code>E#touchable</code> が真である</li>
-									<li>カメラ <code>camera</code> から可視である中で最も手前にある</li>
-								</ul>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>point: <a href="../interfaces/_lib_main_d_.g.commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象の座標</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> m: <a href="../interfaces/_lib_main_d_.g.matrix.html" class="tsd-signature-type">Matrix</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p><code>this</code> に適用する変換行列。省略された場合、単位行列</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> force: <span class="tsd-signature-type">boolean</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>touchable指定を無視する場合真を指定する。省略された場合、偽</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> camera: <a href="../interfaces/_lib_main_d_.g.camera.html" class="tsd-signature-type">Camera</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象のカメラ。指定されなかった場合undefined</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_lib_main_d_.g.pointsource.html" class="tsd-signature-type">PointSource</a></h4>
@@ -1017,11 +746,6 @@
 									<li>Defined in lib/main.d.ts:2054</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このエンティティが属する <code>Game</code> を返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.game.html" class="tsd-signature-type">Game</a></h4>
 						</li>
 					</ul>
@@ -1040,11 +764,6 @@
 									<li>Defined in lib/main.d.ts:1846</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このオブジェクトの変換行列を得る。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_lib_main_d_.g.matrix.html" class="tsd-signature-type">Matrix</a></h4>
 						</li>
 					</ul>
@@ -1062,14 +781,6 @@
 									<li>Defined in lib/main.d.ts:2146</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このEを非表示状態にする。</p>
-								</div>
-								<p><code>this.show()</code> が呼ばれるまでの間、このエンティティは各 <code>Renderer</code> によって描画されない。
-									また <code>Game#findPointSource()</code> で返されることもなくなる。
-								<code>this#pointDown</code>, <code>pointMove</code>, <code>pointUp</code> なども通常の方法ではfireされなくなる。</p>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -1087,25 +798,13 @@
 									<li>Defined in lib/main.d.ts:2069</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>子を挿入する。</p>
-								</div>
-								<p><code>target</code> が<code>this</code> の子でない場合、<code>append(e)</code> と同じ動作となる。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>e: <a href="_lib_main_d_.g.e.html" class="tsd-signature-type">E</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>子エンティティとして追加するエンティティ</p>
-									</div>
 								</li>
 								<li>
 									<h5>target: <a href="_lib_main_d_.g.e.html" class="tsd-signature-type">E</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>挿入位置にある子エンティティ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1125,24 +824,10 @@
 									<li>Defined in lib/main.d.ts:2102</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このエンティティに対する変更をエンジンに通知する。</p>
-								</div>
-								<p>このメソッドの呼び出し後、 <code>this</code> に対する変更が各 <code>Renderer</code> の描画に反映される。
-									ただし逆は真ではない。すなわち、再描画は他の要因によって行われることもある。
-								ゲーム開発者は、このメソッドを呼び出していないことをもって再描画が行われていないことを仮定してはならない。</p>
-								<p>本メソッドは、このオブジェクトの <code>Object2D</code> 由来のプロパティ (<code>x</code>, <code>y</code>, <code>angle</code> など) を変更した場合にも呼びだす必要がある。
-									本メソッドは、描画キャッシュの無効化処理を含まない。描画キャッシュを持つエンティティは、このメソッドとは別に <code>invalidate()</code> を提供している。
-								描画キャッシュの無効化も必要な場合は、このメソッドではなくそちらを呼び出す必要がある。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> isBubbling: <span class="tsd-signature-type">boolean</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>通常ゲーム開発者が指定する必要はない。この変更通知が、(このエンティティ自身のみならず)子孫の変更の通知を含む場合、真を渡さなければならない。省略された場合、偽。</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1163,26 +848,13 @@
 									<li>Defined in lib/main.d.ts:1812</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>オブジェクトを相対的に移動する。
-										このメソッドは <code>x</code> と <code>y</code> を同時に加算するためのユーティリティメソッドである。
-									<code>E</code> や <code>Camera2D</code> においてこのメソッドを呼び出した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>x: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>X座標に加算する値</p>
-									</div>
 								</li>
 								<li>
 									<h5>y: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Y座標に加算する値</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1204,26 +876,13 @@
 									<li>Defined in lib/main.d.ts:1797</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>オブジェクトを移動する。
-										このメソッドは <code>x</code> と <code>y</code> を同時に設定するためのユーティリティメソッドである。
-									<code>E</code> や <code>Camera2D</code> においてこのメソッドを呼び出した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>x: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>X座標</p>
-									</div>
 								</li>
 								<li>
 									<h5>y: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Y座標</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1235,20 +894,10 @@
 									<li>Defined in lib/main.d.ts:1804</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>オブジェクトを移動する。
-										このメソッドは <code>x</code> と <code>y</code> を同時に設定するためのユーティリティメソッドである。
-									<code>E</code> や <code>Camera2D</code> においてこのメソッドを呼び出した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>obj: <a href="../interfaces/_lib_main_d_.g.commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>X,Y座標</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1268,20 +917,10 @@
 									<li>Defined in lib/main.d.ts:2078</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>子を削除する。</p>
-								</div>
-								<p><code>e</code> が <code>this</code> の子でない場合、 <code>AssertionError</code> がthrowされる。
-								<code>e === undefined</code> であり親がない場合、 <code>AssertionError</code> がthrowされる。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> e: <a href="_lib_main_d_.g.e.html" class="tsd-signature-type">E</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>削除する子エンティティ。省略された場合、自身を親から削除する</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1301,26 +940,13 @@
 									<li>Defined in lib/main.d.ts:2037</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>自分自身と子孫の内容を描画する。</p>
-								</div>
-								<p>このメソッドは、 <code>Renderer#draw()</code> からエンティティのツリー構造をトラバースする過程で暗黙に呼び出される。
-								通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>renderer: <a href="_lib_main_d_.g.renderer.html" class="tsd-signature-type">Renderer</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>描画先に対するRenderer</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> camera: <a href="../interfaces/_lib_main_d_.g.camera.html" class="tsd-signature-type">Camera</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象のカメラ。省略された場合、undefined</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1340,28 +966,13 @@
 									<li>Defined in lib/main.d.ts:2050</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>自分自身の内容を描画する。</p>
-								</div>
-								<p>このメソッドは、 <code>Renderer#draw()</code> からエンティティのツリー構造をトラバースする過程で暗黙に呼び出される。
-								通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
-								<p>戻り値は、このエンティティの子孫の描画をスキップすべきであれば偽、でなければ真である。
-								(この値は、子孫の描画方法をカスタマイズする一部のサブクラスにおいて、通常の描画パスをスキップするために用いられる)</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>renderer: <a href="_lib_main_d_.g.renderer.html" class="tsd-signature-type">Renderer</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>描画先に対するRenderer</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> camera: <a href="../interfaces/_lib_main_d_.g.camera.html" class="tsd-signature-type">Camera</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>対象のカメラ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -1382,26 +993,13 @@
 									<li>Defined in lib/main.d.ts:1835</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>オブジェクトのサイズを相対的に変更する。
-										このメソッドは <code>width</code> と <code>height</code> を同時に加算するためのユーティリティメソッドである。
-									<code>E</code> や <code>Camera2D</code> においてこのメソッドを呼び出した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>width: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>加算する幅</p>
-									</div>
 								</li>
 								<li>
 									<h5>height: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>加算する高さ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1423,26 +1021,13 @@
 									<li>Defined in lib/main.d.ts:1820</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>オブジェクトのサイズを設定する。
-										このメソッドは <code>width</code> と <code>height</code> を同時に設定するためのユーティリティメソッドである。
-									<code>E</code> や <code>Camera2D</code> においてこのメソッドを呼び出した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>width: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>幅</p>
-									</div>
 								</li>
 								<li>
 									<h5>height: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>高さ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1454,20 +1039,10 @@
 									<li>Defined in lib/main.d.ts:1827</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>オブジェクトのサイズを設定する。
-										このメソッドは <code>width</code> と <code>height</code> を同時に設定するためのユーティリティメソッドである。
-									<code>E</code> や <code>Camera2D</code> においてこのメソッドを呼び出した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>size: <a href="../interfaces/_lib_main_d_.g.commonsize.html" class="tsd-signature-type">CommonSize</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>幅と高さ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1488,20 +1063,10 @@
 									<li>Defined in lib/main.d.ts:1842</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>オブジェクトの拡大率を設定する。
-										このメソッドは <code>scaleX</code> と <code>scaleY</code> に同じ値を同時に設定するためのユーティリティメソッドである。
-									<code>E</code> や <code>Camera2D</code> においてこのメソッドを呼び出した場合、 <code>modified()</code> を呼び出す必要がある。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>scale: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>拡大率</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1521,21 +1086,10 @@
 									<li>Defined in lib/main.d.ts:2112</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このメソッドは、 <code>E#findPointSourceByPoint()</code> 内で子孫の探索をスキップすべきか判断するために呼ばれる。
-										通常、子孫の描画方法をカスタマイズする一部のサブクラスにおいて、与えられた座標に対する子孫の探索を制御する場合に利用する。
-									ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
-								</div>
-								<p>戻り値は、子孫の探索をスキップすべきであれば偽、でなければ真である。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>point: <a href="../interfaces/_lib_main_d_.g.commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>このエンティティ（<code>this</code>）の位置を基準とした相対座標</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -1555,13 +1109,6 @@
 									<li>Defined in lib/main.d.ts:2138</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このEを表示状態にする。</p>
-								</div>
-								<p><code>this.hide()</code> によって非表示状態にされたエンティティを表示状態に戻す。
-								生成直後のエンティティは表示状態であり、 <code>hide()</code> を呼び出さない限りこのメソッドを呼び出す必要はない。</p>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -1579,11 +1126,6 @@
 									<li>Defined in lib/main.d.ts:2131</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>このEが表示状態であるかどうかを返す。</p>
-								</div>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>

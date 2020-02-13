@@ -70,18 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>スクリプトリソースを表すクラス。
-							本クラスのインスタンスをゲーム開発者が直接生成することはない。
-							game.jsonによって定義された内容をもとに暗黙的に生成されたインスタンスを、
-						Scene#assets、またはGame#assetsによって取得して利用する。</p>
-					</div>
-					<p>ScriptAsset#executeによって、本リソースが表すスクリプトを実行し、その結果を受け取る事が出来る。
-					requireによる参照とは異なり、executeはキャッシュされないため、何度でも呼び出し違う結果を受け取ることが出来る。</p>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -238,8 +226,6 @@
 									<li>Defined in lib/main.d.ts:323</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -264,20 +250,10 @@
 									<li>Defined in lib/main.d.ts:319</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>アセットの読み込みを行う。</p>
-								</div>
-								<p>ゲーム開発者がアセット読み込み失敗時の挙動をカスタマイズする際、読み込みを再試行する場合は、
-								(このメソッドではなく) <code>AssetLoadFailureInfo#cancelRetry</code> に真を代入する必要がある。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>loader: <a href="../interfaces/_lib_main_d_.g.assetloadhandler.html" class="tsd-signature-type">AssetLoadHandler</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>読み込み結果の通知を受け取るハンドラ</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -359,19 +335,6 @@
 									<li>Defined in lib/main.d.ts:309</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>現在利用中で解放出来ない <code>Asset</code> かどうかを返す。
-									戻り値は、利用中である場合真、でなければ偽である。</p>
-								</div>
-								<p>本メソッドは通常 <code>false</code> が返るべきである。
-									例えば <code>Sprite</code> の元画像として使われているケース等では、その <code>Sprite</code> によって <code>Asset</code> は <code>Surface</code> に変換されているべきで、
-								<code>Asset</code> が利用中で解放出来ない状態になっていない事を各プラットフォームで保障する必要がある。</p>
-								<p>唯一、例外的に本メソッドが <code>true</code> を返すことがあるのは音楽を表す <code>Asset</code> である。
-									BGM等はシーンをまたいで演奏することもありえる上、
-									演奏中のリソースのコピーを常に各プラットフォームに強制するにはコストがかかりすぎるため、
-								本メソッドは <code>true</code> を返し、適切なタイミングで <code>Asset</code> が解放されるよう制御する必要がある。</p>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>

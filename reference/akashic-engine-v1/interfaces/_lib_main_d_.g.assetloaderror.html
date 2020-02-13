@@ -70,17 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>アセットロードエラー。
-						<code>Asset#_load()</code> が失敗した時、<code>AssetLoadHandler#_onAssetError</code> に渡される。</p>
-					</div>
-					<p>エラーの理由は <code>message</code> から、そのおおまかな種別は <code>type</code> から得ることができる。
-						ただし特に <code>message</code> の内容はアセットの実装に依存するため、 <code>message</code> の値で処理を変更してはならない。
-					読み込みの再試行が可能かどうかは <code>retriable</code> で判断すべきである。</p>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -120,7 +109,7 @@
 					<div class="tsd-signature tsd-kind-icon">Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/af3e49f/typings/lib.core.d.ts#L854">typings/lib.core.d.ts:854</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/ba46ffc/typings/lib.core.d.ts#L854">typings/lib.core.d.ts:854</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -151,7 +140,7 @@
 									<li class="tsd-description">
 										<aside class="tsd-sources">
 											<ul>
-												<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/af3e49f/typings/lib.core.d.ts#L854">typings/lib.core.d.ts:854</a></li>
+												<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/ba46ffc/typings/lib.core.d.ts#L854">typings/lib.core.d.ts:854</a></li>
 											</ul>
 										</aside>
 										<h4 class="tsd-parameters-title">Parameters</h4>
@@ -186,7 +175,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_typings_lib_core_d_.error.html">Error</a>.<a href="_typings_lib_core_d_.error.html#message">message</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/af3e49f/typings/lib.core.d.ts#L852">typings/lib.core.d.ts:852</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/ba46ffc/typings/lib.core.d.ts#L852">typings/lib.core.d.ts:852</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -197,7 +186,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_typings_lib_core_d_.error.html">Error</a>.<a href="_typings_lib_core_d_.error.html#name">name</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/af3e49f/typings/lib.core.d.ts#L851">typings/lib.core.d.ts:851</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/ba46ffc/typings/lib.core.d.ts#L851">typings/lib.core.d.ts:851</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -210,13 +199,6 @@
 							<li>Defined in lib/main.d.ts:77</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>再試行できるエラーかどうか。</p>
-						</div>
-						<p><code>Asset#_load()</code> が再試行できない要因 (HTTP 404 Not Found など) で失敗した時、偽。でなければ真。
-						通常の場合 (<code>Scene</code> 経由で読み込んだ場合)、読み込み失敗回数が再試行回数上限 <code>AssetManager.MAX_ERROR_COUNT</code> を超えた際にも偽になる。</p>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="type" class="tsd-anchor"></a>
@@ -227,14 +209,6 @@
 							<li>Defined in lib/main.d.ts:85</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>エラーの種別。</p>
-						</div>
-						<p>ダンプやエラーメッセージ出力のためのエラー種別情報。
-							この値はあくまでも <code>message</code> (内容がアセットの実装依存) の補助情報である。
-						読み込み再試行の可否は <code>retriable</code> によって判断すべきである。</p>
-					</div>
 				</section>
 			</section>
 		</div>

@@ -115,17 +115,6 @@
 							<li>Defined in lib/main.d.ts:2643</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このシーンで用いるアセットIDの配列。
-							なおアセットIDとは、 game.jsonのassetsオブジェクトに含まれるキー文字列である。</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>undefined</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="explicitend" class="tsd-anchor"></a>
@@ -136,18 +125,6 @@
 							<li>Defined in lib/main.d.ts:3127</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>読み込み完了時に暗黙に呼び出される <code>LoadingScene#end()</code> を抑止するか否か。</p>
-						</div>
-						<p>この値を真にする場合、ゲーム開発者はローディングシーンを終了するために明示的に <code>end()</code> を呼び出す必要がある。
-						<code>end()</code> の呼び出しは <code>targetReady</code> のfire後でなければならない点に注意すること。</p>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>false</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
 					<a name="game" class="tsd-anchor"></a>
@@ -159,11 +136,6 @@
 							<li>Defined in lib/main.d.ts:2637</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このシーンの属するゲーム。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
 					<a name="local" class="tsd-anchor"></a>
@@ -175,30 +147,6 @@
 							<li>Defined in lib/main.d.ts:2668</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このシーンのローカルティック消化ポリシー。</p>
-						</div>
-						<ul>
-							<li><code>LocalTickMode.FullLocal</code> が与えられた場合、このシーンはローカルシーンと呼ばれる。
-							ローカルシーンでは、他プレイヤーと独立な時間進行処理(ローカルティックの消化)が行われる。</li>
-							<li><code>LocalTickMode.NonLocal</code> が与えられた場合、このシーンは非ローカルシーンと呼ばれる。
-								非ローカルシーンでは、他プレイヤーと共通の時間進行処理((非ローカル)ティックの消化)が行われる(updateがfireされる)。
-							ローカルティックを消化することはない。</li>
-							<li><code>LocalTickMode.InterpolateLocal</code> が与えられた場合、このシーンはローカルティック補間シーンと呼ばれる。
-								ローカルティック補間シーンでは、非ローカルシーン同様にティックを消化するが、
-							消化すべき非ローカルティックがない場合にローカルティックが補間され消化される。</li>
-						</ul>
-						<p>ローカルシーンに属するエンティティは、すべてローカルである(強制的にローカルエンティティとして生成される)。
-						ローカルシーンは特にアセットロード中のような、他プレイヤーと同期すべきでないシーンのために存在する機能である。</p>
-						<p><code>LocalTickMode</code> の代わりに <code>boolean</code> を与えることもできる。
-						偽は <code>LocalTickMode.NonLocal</code> 、 真は <code>FullLocal</code> と解釈される。</p>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>LocalTickMode.NonLocal</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
 					<a name="name" class="tsd-anchor"></a>
@@ -210,16 +158,6 @@
 							<li>Defined in lib/main.d.ts:2673</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このシーンの識別用の名前。</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>undefined</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
 					<a name="storagekeys" class="tsd-anchor"></a>
@@ -231,16 +169,6 @@
 							<li>Defined in lib/main.d.ts:2648</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このシーンで用いるストレージのキーを表す <code>StorageReadKey</code> の配列。</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>undefined</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
 					<a name="storagevaluesserialization" class="tsd-anchor"></a>
@@ -252,19 +180,6 @@
 							<li>Defined in lib/main.d.ts:2682</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このシーンで復元するストレージデータ。</p>
-						</div>
-						<p>falsyでない場合、 <code>Scene#serializeStorageValues()</code> の戻り値でなければならない。
-							この値を指定した場合、 <code>storageValues</code> の値は <code>serializeStorageValues()</code> を呼び出したシーン(元シーン)の持っていた値を再現したものになる。
-						この時、 <code>storageKeys</code> の値は元シーンと同じでなければならない。</p>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>undefined</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited tsd-is-not-exported">
 					<a name="tickgenerationmode" class="tsd-anchor"></a>
@@ -276,15 +191,6 @@
 							<li>Defined in lib/main.d.ts:2691</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>時間経過の契機(ティック)をどのように生成するか。</p>
-						</div>
-						<p>省略された場合、 <code>TickGenerationMode.ByClock</code> 。
-							<code>Manual</code> を指定した場合、 <code>Game#raiseTick()</code> を呼び出さない限りティックが生成されない(時間経過しない)。
-							ただしローカルティック(ローカルシーンの間などの「各プレイヤー間で独立な時間経過処理」)はこの値の影響を受けない。
-						またこのシーンへの遷移直後、一度だけこの値に関わらずティックが生成される。</p>
-					</div>
 				</section>
 			</section>
 		</div>

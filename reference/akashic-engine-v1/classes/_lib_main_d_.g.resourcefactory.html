@@ -70,16 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>リソースの生成を行うクラス。</p>
-					</div>
-					<p>このクラス (の実装クラス) のインスタンスはエンジンによって生成される。ゲーム開発者が生成する必要はない。
-						またこのクラスの各種アセット生成メソッドは、エンジンによって暗黙に呼び出されるものである。
-					通常ゲーム開発者が呼び出す必要はない。</p>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -185,61 +175,31 @@
 									<li>Defined in lib/main.d.ts:137</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>GlyphFactory を作成する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>fontFamily: <a href="../enums/_lib_main_d_.g.fontfamily.html" class="tsd-signature-type">FontFamily</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../enums/_lib_main_d_.g.fontfamily.html#sansserif" class="tsd-signature-type">SansSerif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/_lib_main_d_.g.fontfamily.html#serif" class="tsd-signature-type">Serif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/_lib_main_d_.g.fontfamily.html#monospace" class="tsd-signature-type">Monospace</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>フォントファミリ。g.FontFamilyの定義する定数、フォント名、またはそれらの配列で指定する。</p>
-									</div>
 								</li>
 								<li>
 									<h5>fontSize: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>フォントサイズ</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> baselineHeight: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>描画原点からベースラインまでの距離。生成する <code>g.Glyph</code> は
-										描画原点からこの値分下がったところにベースラインがあるかのように描かれる。省略された場合、 <code>fontSize</code> と同じ値として扱われる</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> fontColor: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>フォントの色。省略された場合、 <code>&quot;black&quot;</code> として扱われる</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> strokeWidth: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>ストローク(縁取り線)の幅。省略された場合、 <code>0</code> として扱われる</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> strokeColor: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>ストロークの色。省略された場合、 <code>&quot;black&quot;</code> として扱われる</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> strokeOnly: <span class="tsd-signature-type">boolean</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>ストロークのみを描画するか否か。省略された場合、偽として扱われる</p>
-									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> fontWeight: <a href="../enums/_lib_main_d_.g.fontweight.html" class="tsd-signature-type">FontWeight</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>フォントウェイト。省略された場合、 <code>FontWeight.Normal</code> として扱われる</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.glyphfactory.html" class="tsd-signature-type">GlyphFactory</a></h4>
@@ -317,26 +277,13 @@
 									<li>Defined in lib/main.d.ts:123</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Surface を作成する。
-										与えられたサイズで、ゲーム開発者が利用できる描画領域 (<code>Surface</code>) を作成して返す。
-									作成された直後のSurfaceは <code>Renderer#clear</code> 後の状態と同様であることが保証される。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>width: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>幅(ピクセル、整数値)</p>
-									</div>
 								</li>
 								<li>
 									<h5>height: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>高さ(ピクセル、整数値)</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.surface.html" class="tsd-signature-type">Surface</a></h4>

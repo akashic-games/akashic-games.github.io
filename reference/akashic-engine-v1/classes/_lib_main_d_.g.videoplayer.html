@@ -70,14 +70,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>ビデオ再生を行うクラス。</p>
-					</div>
-					<p>ゲーム開発者は本クラスのインスタンスを直接生成すべきではない。</p>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -132,11 +124,6 @@
 									<li>Defined in lib/main.d.ts:1623</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>VideoPlayer</code> のインスタンスを生成する。</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -159,8 +146,6 @@
 							<li>Defined in lib/main.d.ts:1623</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="currentvideo" class="tsd-anchor"></a>
@@ -171,12 +156,6 @@
 							<li>Defined in lib/main.d.ts:1603</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>再生中のビデオアセット。
-							再生中のものがない場合、 <code>undefined</code> 。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="played" class="tsd-anchor"></a>
@@ -187,11 +166,6 @@
 							<li>Defined in lib/main.d.ts:1607</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p><code>play()</code> が呼び出された時に通知される <code>Trigger</code> 。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="stopped" class="tsd-anchor"></a>
@@ -202,11 +176,6 @@
 							<li>Defined in lib/main.d.ts:1611</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p><code>stop()</code> が呼び出された時に通知される <code>Trigger</code> 。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
 					<a name="volume" class="tsd-anchor"></a>
@@ -217,14 +186,6 @@
 							<li>Defined in lib/main.d.ts:1619</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>音量。</p>
-						</div>
-						<p>0 (無音) 以上 1.0 (最大) 以下の数値である。
-							この値は参照のためにのみ公開されている。ゲーム開発者はこの値を変更してはならない。
-						音量を変更したい場合、  <code>changeVolume()</code> メソッドを用いること。</p>
-					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
@@ -242,21 +203,10 @@
 									<li>Defined in lib/main.d.ts:1650</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>音量を変更する。</p>
-								</div>
-								<p>エンジンユーザが <code>VideoPlayer</code> の派生クラスを実装する場合は、
-									このメソッドをオーバーライドして実際に音量を変更する処理を行うこと。
-								オーバーライド先のメソッドはこのメソッドを呼びださなければならない。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>volume: <span class="tsd-signature-type">number</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>音量。0以上1.0以下でなければならない</p>
-									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -276,12 +226,6 @@
 									<li>Defined in lib/main.d.ts:1634</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p><code>VideoAsset</code> を再生する。</p>
-								</div>
-								<p>再生後、 <code>this.played</code> がfireされる。</p>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -305,13 +249,6 @@
 									<li>Defined in lib/main.d.ts:1641</li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>再生を停止する。</p>
-								</div>
-								<p>再生中でない場合、何もしない。
-								停止後、 <code>this.stopped</code> がfireされる。</p>
-							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
