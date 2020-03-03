@@ -5,7 +5,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>bmpfont-generator 利用ガイド</title>
+<title>bmpfont-generator の仕様</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?84ae3b4">
 <link rel="stylesheet" href="/css/header.css?84ae3b4">
@@ -56,7 +56,7 @@
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
-				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
 				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
 			</ul>
 		</li>
@@ -103,32 +103,36 @@
 <div id="BodyInner">
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
-			<h1>bmpfont-generator 利用ガイド</h1>
-<p>Akashic ではビットマップフォントを使うことで、異なる動作環境でも同じ文字を表示させることができます。
-このビットマップフォントを利用するためには、ビットマップ画像が必要になります。
-この利用ガイドでは、ビットマップ画像を生成する方法と、生成に利用するツール bmpfont-generator について紹介します。</p>
-<p>また、この利用ガイドで解説する bmpfont-generator の対象バージョンは 4.0.0 以降です。</p>
-<h2><a name="bitmap-image"></a> ビットマップ画像</h2>
-<p>bmpfont-generator を利用することで、以下のようなビットマップ画像と json ファイルを出力することができます。</p>
-<p><img src="/img/guide/bmpfont-generator/bmpfont.png" alt="ビットマップ画像"></p>
-<pre><code class="language-glyph.json">{&quot;map&quot;:{&quot;63&quot;:{&quot;x&quot;:980,&quot;y&quot;:598},&quot;167&quot;:{&quot;x&quot;:1700,&quot;y&quot;:0},&quot;168&quot;:{&quot;x&quot;:280,&quot;y&quot;:0}...},&quot;missingGlyph&quot;:{&quot;x&quot;:120,&quot;y&quot;:676},&quot;width&quot;:20,&quot;height&quot;:26}
-</code></pre>
+			<h1>bmpfont-generator の仕様</h1>
+<p><strong>bmpfont-generator</strong> は、TrueType フォント (.ttf) ファイルから指定された文字の画像を生成するツールです。
+また Akashic Engine のビットマップフォントとして使う場合に必要になる、グリフ情報のデータを JSON 形式で同時に生成できます。</p>
+<p>ビットマップフォントとその利用法については、チュートリアルの <a href="/tutorial/v2/bitmap-font.html">ビットマップフォントを使う</a> を参照してください。</p>
 <h2><a name="install"></a> インストール方法</h2>
-<p>bmpfont-generator コマンドは Node.js 環境で動作します。各プラットフォームで、適当な方法で Node.js をインストールしてください。
+<p>bmpfont-generator は Node.js 環境で動作します。各プラットフォームで、適当な方法で Node.js をインストールしてください。
 この利用ガイドでは、 LTS 版の Node.js 環境を前提に説明を進めます。 執筆時点での LTS 版のバージョンは 10.16.0 です。</p>
-<h3>環境構築</h3>
-<p>bmpfont-generator を利用するには Cairo、node-canvas が必要です。
-Cairo は <a href="https://github.com/Automattic/node-canvas/tree/v1.x#installation">Cairo の README</a>を参考にしてインストールしてください。
-Windows 環境の場合、以下の手順を参考にして node-canvas の実行環境を用意してください。
-<a href="http://www.delarre.net/posts/installing-node-canvas-for-windows/">Installing node-canvas for Windows</a></p>
 <h3>インストール</h3>
 <p>bmpfont-generator は以下のコマンドでインストールすることができます。</p>
 <pre><code class="language-sh">npm install -g @akashic/bmpfont-generator</code></pre>
+<p>インストール後、コマンドラインで <code>bmpfont-generator</code> コマンドが利用できるようになります。</p>
+<blockquote>
+<p>古いバージョンの bmpfont-generator では、事前に Cairo をインストールしておく必要がありました。
+これは bmpfont-generator が <a href="https://github.com/Automattic/node-canvas">node-canvas</a> を利用しており、その動作に必要なためです。</p>
+<p>Cairo の事前インストールは、現在 Windows や Mac などの環境では不要になっています。
+それら以外の環境では引き続きインストールが必要な可能性があります。
+詳細は <a href="https://github.com/Automattic/node-canvas/blob/master/Readme.md#compiling">node-canvas の README</a> (英語) を参照してください。</p>
+</blockquote>
 <h2><a name="usage"></a> 使い方</h2>
-<p>bmpfont-generator は以下のコマンドで実行できます。</p>
+<p>bmpfont-generator の典型的な実行方法は次のようなものです。</p>
 <pre><code class="language-sh">bmpfont-generator --chars &#39;0123456789&#39; --height 14 --fill &#39;#ff0000&#39; sourceFont.ttf bitmap.png</code></pre>
-<p>このコマンドを実行すると、sourceFont.ttf の数字のグリフを高さ 14px の赤色で描いて並べたビットマップ画像が bitmap.png として出力されます。
-また、bitmap_glyph.json ファイルも同時に出力されます。</p>
+<p>このコマンドを実行すると、</p>
+<ul>
+<li>フォント sourceFont.ttf の、</li>
+<li>数字 (0123456789) のグリフを、</li>
+<li>高さ 14px で</li>
+<li>赤色で描いて並べたビットマップ画像</li>
+</ul>
+<p>が bitmap.png として出力されます。
+また同じディレクトリに、グリフ情報として bitmap_glyphs.json ファイルが出力されます。</p>
 <p>bmpfont-generator は以下のオプションを持ちます。</p>
 <pre><code class="language-sh">bmpfont-generator [&lt;options&gt;]</code></pre>
 <p><code>&lt;options&gt;</code> に指定可能なオプションは次のとおりです。</p>
@@ -236,30 +240,11 @@ Windows 環境の場合、以下の手順を参考にして node-canvas の実�
 </tbody></table>
 <p><code>fillstyle</code> は CSS の色 (color プロパティに指定できる値)を指定することができます。
 <code>strokestyle</code> は <code>fillstyle</code> と同様に CSS の色を指定することが出来ます。</p>
+<p>以下は <code>fillstyle</code> に <code>red</code> を指定した場合に生成される画像の例です。
+<img src="/img/guide/bmpfont-generator/red.png" alt="赤いビットマップ画像"></p>
 <p><code>baseline</code> は省略時は自動で計算されるので、基本的には利用する必要はありません。</p>
 <p><code>quality</code> オプションを指定する場合、 <code>pngquant</code> がインストールされている必要があります。</p>
-<p>例として、 <code>fillstyle</code> に <code>red</code> を指定した場合、以下のようなビットマップ画像が得られます。
-<img src="/img/guide/bmpfont-generator/red.png" alt="赤いビットマップ画像"></p>
-<h2><a name="build-in"></a> コンテンツへの組み込み</h2>
-<p>出力されたビットマップ画像を Akashic のゲームで利用するには、ファイルを game.json にアセットとして登録し、ゲームから読み込めるようにする必要があります。</p>
-<p><code>akashic init</code> コマンドで生成した Akashic ゲームであれば、
-ビットマップ画像と json ファイルをそれぞれ image/, text/ ディレクトリに置いて <code>akashic scan asset</code> を実行すると登録されます。</p>
-<p>登録後、Akashic ゲームで以下のようなコードを書くことで、フォントとして利用できます。</p>
-<pre><code>var font = new g.BitmapFont({
-  src: g.game.scene().assets[&quot;bitmap&quot;],
-  map: g.game.scene().assets[&quot;bitmap_glyph&quot;],
-  defaultGlyphWidth: 14
-  defaultGlyphHeight: 14
-});</code></pre><p>TypeScript コードでは、 <code>g.game.scene().assets[&quot;bitmap&quot;] as g.ImageAsset</code> のように型を明示的にキャストする必要があります。</p>
-<p>ビットマップフォントはダイナミックフォントと同じく、以下のようなコードを書くことで利用できます。</p>
-<pre><code>var label = new g.Label({
-    scene: g.game.scene(),
-    text: &quot;12345&quot;,
-    cssColor: &quot;black&quot;,
-    fontSize: 14,
-    font: font
-});
-g.game.scene().append(label);</code></pre>
+
 		</div>
 	</section>
 	<footer class="safearea--LR">

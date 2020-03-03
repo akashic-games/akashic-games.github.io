@@ -54,7 +54,7 @@
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
-				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator 利用ガイド</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
 				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
 			</ul>
 		</li>
@@ -116,6 +116,7 @@
 <li><a href="./5-audio.html">音を鳴らす</a></li>
 <li><a href="./scale-anchor.html">拡縮とアンカーポイント</a></li>
 <li><a href="./6-otherdraw.html">色々な描画</a></li>
+<li><a href="./bitmap-font.html">ビットマップフォントを使う</a></li>
 <li><a href="./7-export.html">ゲームを公開する</a></li>
 <li><a href="./8-install.html">拡張ライブラリを使う</a></li>
 <li><a href="./9-appendix.html">より大規模なゲームを作るために</a></li>
@@ -133,8 +134,8 @@
 			<div class="inner responsive--width--twocol">
 				<h1>色々な描画</h1>
 <h2><a name="文字列の表示"></a> 文字列の表示</h2>
-<p>Akashic Engine で文字列を表示するには、フォントとラベルが必要です。フォントは文字の形を表すオブジェクトです。ラベルはフォントを利用して文字列を描画するエンティティです。</p>
-<p>フォントには画像から生成するビットマップフォントと、システムにインストールされているフォントから生成するダイナミックフォントの二種類があります。このチュートリアルではダイナミックフォントを利用して文字列を表示する方法を説明します。</p>
+<p>Akashic Engine で文字列を表示するには、フォントとラベルが必要です。 <strong>フォント</strong> は文字の形を表すオブジェクトです。 <strong>ラベル</strong> はフォントを利用して文字列を描画するエンティティです。</p>
+<p>フォントには、システムにインストールされているフォントから生成するダイナミックフォントと、画像から生成するビットマップフォントの二種類があります。ビットマップフォントについては後述します。</p>
 <p>ダイナミックフォントは以下のコードで生成できます。</p>
 <pre><code class="language-javascript">var font = new g.DynamicFont({
   game: g.game,
@@ -148,7 +149,7 @@
 <li><code>g.FontFamily.Monospace</code>: 等幅フォント。</li>
 </ul>
 <p>引数の <code>size</code> プロパティは文字の大きさ、 <code>game</code> プロパティには <code>g.game</code> を渡します。</p>
-<p>文字列を描画するラベルは以下のコードで生成します。</p>
+<p>このフォントを使って、実際に文字列を描画するエンティティ・ラベルは以下のコードで生成します。</p>
 <pre><code class="language-javascript">var label = new g.Label({
   scene: scene,
   font: font,
@@ -318,7 +319,7 @@ module.exports = main;</code></pre>
 <div class="navi-center">
 <a href="./scale-anchor.html">前 (拡縮とアンカーポイント)</a>
  | <a href="./">目次</a>
- | <a href="./7-export.html">次 (ゲームを公開する)</a>
+ | <a href="./bitmap-font.html">次 (ビットマップフォントを使う)</a>
 </div>
 
 			</div>
