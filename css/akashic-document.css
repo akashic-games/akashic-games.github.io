@@ -80,6 +80,16 @@
 .akashic--document p + p {
 	margin-top:16px;
 }
+.akashic--document p.source-info {
+	color:#A8A0A0;
+	border:1px solid #D0C0C0;
+	padding:10px;
+	border-radius:3px;
+	background:#FCF8F8;
+}
+.akashic--document p.source-info a {
+	color:#E06060;
+}
 .akashic--document li {
 	color:#466;
 	line-height:1.5;

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>簡単なゲームを作ってローカル処理に触れよう</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?aa4267e">
+<link rel="stylesheet" href="/css/header.css?aa4267e">
+<link rel="stylesheet" href="/css/footer.css?aa4267e">
+
+
+<link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
+
+<link rel="stylesheet" href="/css/railscasts.css?aa4267e">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?aa4267e"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v2/">Akashic Engine入門 v2</a></li>
+				<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+				<li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				<li><a href="/reference/coe/">coe framework</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3>ニコ生ゲームを作ろう</h3>
+<ul>
+<li><strong><a href="./index.html">トップ</a></strong></li>
+<li><strong><a href="./introduction.html">ニコ生ゲームとは</a></strong></li>
+<li><strong><a href="./mod-game.html">ニコ生ゲームを作ろう・改造編</a></strong><ul>
+<li><a href="./install.html">インストール</a></li>
+<li><a href="./thiefBuster-mod.html">『泥棒バスター』を改造する</a></li>
+<li><a href="./speed-jigsaw-mod.html">『スピードジグソー』を改造する</a></li>
+</ul>
+</li>
+<li><strong><a href="./ranking-top.html">ニコ生ゲームを作ろう・ランキングゲーム編</a></strong><ul>
+<li><a href="./ranking.html">ランキング対応ゲーム</a></li>
+<li><a href="./ranking-by-template.html">テンプレートでわかるランキング対応ゲーム</a></li>
+</ul>
+</li>
+<li><strong><a href="./multi-top.html">ニコ生ゲームを作ろう・マルチプレイゲーム編</a></strong><ul>
+<li><a href="./multi-ready.html">マルチプレイ開発予備知識</a></li>
+<li><a href="./column-about-multi.html">マルチプレイゲームを知ろう</a></li>
+<li><a href="./column-local-process.html">簡単なゲームを作ってローカル処理に触れよう</a></li>
+<li><a href="./column-join-leave.html">Join と Leave とニコ生の話</a></li>
+<li><a href="./column-make-multi.html">実際にマルチプレイゲームを考えて作ろう</a></li>
+</ul>
+</li>
+<li><strong><a href="./submit.html">ニコ生ゲームを投稿しよう</a></strong></li>
+<li><strong><a href="./play.html">ニコ生ゲームで遊ぼう</a></strong></li>
+<li><strong><a href="./links.html">関連資料・困った時は</a></strong></li>
+</ul>
+
+		</div>
+		<div class="twocol-main">
+			<div class="inner responsive--width--twocol">
+				<h1>簡単なゲームを作ってローカル処理に触れよう</h1>
+<p class="source-info">
+この文書は、 <a href="https://github.com/akashic-contents/shin-ichiba-doc/wiki/%E3%83%9E%E3%83%AB%E3%83%81%E3%83%97%E3%83%AC%E3%82%A4%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%92%E4%BD%9C%E3%82%8D%E3%81%862-%E7%B0%A1%E5%8D%98%E3%81%AA%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E5%87%A6%E7%90%86%E3%81%AB%E8%A7%A6%E3%82%8C%E3%82%88%E3%81%86">新市場技術資料wiki の同名記事</a> で公開されていた内容を調整して転載したものです。
+文体などは他のページと異なることがあります。
+</p>
+
+<h2>ローカルとグローバル</h2>
+<p>前回の記事にて、マルチプレイゲームとはなんなのかを定義しました。
+おさらいしておきますと</p>
+<ul>
+<li>他人が存在する</li>
+<li>共有物や他人と相互に干渉し合う</li>
+</ul>
+<p>という特徴を持つものがマルチプレイゲームでした。</p>
+<p>しかし、<strong>他人と何でも共有すればいいというものではありません。</strong>
+例えば、自分がアイテムを使おうとしてカバンの中を開いた時、それが他の人に伝わると困ります。
+カバンの画像が勝手に出てきては<strong>邪魔</strong>です。</p>
+<p>マルチプレイゲームを作る際には<strong>共有する部分</strong>と<strong>自分だけが使える専有部分</strong>を常に考える必要があります。
+先の例ではカバンを開いているという状態は専有部分にあたり、他人と共有しません。</p>
+<p>AkashicEngine の世界においては<strong>専有部分を特にローカルと呼びます。</strong>また、共有部分をグローバルと呼ぶことがあります。
+何も考えずに作ったものは原則<strong>グローバル</strong>なものになります。つまり<strong>参加者全員の環境で同期</strong>されます。
+同期されたくない時に意図的にローカルな物を作る。それ以外は全部同期される、という原則を覚えましょう。</p>
+<h2>簡単なゲームを作ってみる</h2>
+<p>ローカルとグローバルを考えるため、<strong>AkashicEngine 入門の記事を参考に</strong>みんなでボタンを押すゲームを考えてみましょう。
+<a href="https://akashic-games.github.io/tutorial/v2/multiplay/introduction.html">https://akashic-games.github.io/tutorial/v2/multiplay/introduction.html</a></p>
+<p>この記事では自分の PC 上でマルチプレイを動作チェックする方法なども書かれているため、まずはコピペで試してみましょう。
+すでにシングルプレイやランキング対応ゲームの作成環境が整っている前提の記事ですから、まだの場合には以下の入門ページを挟むことをお勧めします。
+<a href="https://akashic-games.github.io/tutorial/v2/1-introduction.html">https://akashic-games.github.io/tutorial/v2/1-introduction.html</a></p>
+<h3>早押しゲーム</h3>
+<img src="/img/shin-ichiba/multi/02-01.png" width="600px">
+
+<p>入門文書のマルチプレイゲームサンプルを参考に作りました。ボタンを押すと押した人にスコアが入ります。ゲームっぽくするために以下の機能が追加で入っています。</p>
+<ul>
+<li>ボタンを押すとランダムに数秒間ボタンが押せなくなる（早押しした人だけに点が入る）</li>
+<li>ボタンが押せるようになってから早く押せば押すほどスコアが高く入る</li>
+<li>参加者全員のうち、獲得得点の上位５名を表示</li>
+</ul>
+<p>終わりはありません。飽きたらブラウザを閉じて終わりです。
+ソースコードは短いですが掲載するにはちょっと長いかもしれません。ラベル内で改行するために拡張機能の一つとして akashic-label を使っています。</p>
+<pre><code class="language-js">const Label = require(&quot;@akashic-extension/akashic-label&quot;);
+
+function main(param) {
+  const MAXIMUM_BUTTON_TIMER_COUNT = 150;
+  let timer = 0;
+  let buttonDisabled = false;
+  let button;
+  const scoreTable = {};
+
+  const scene = new g.Scene({
+    game: g.game,
+    assetIds: [&quot;button&quot;, &quot;se&quot;]
+  });
+
+  const font = new g.DynamicFont({
+    game: g.game,
+    fontFamily: g.FontFamily.SansSerif,
+    size: 20
+  });
+  const rankingLabel = new Label({
+    scene: scene,
+    font: font,
+    text: &quot;ランキング&quot;,
+    fontSize: 20,
+    textColor: &quot;white&quot;,
+    width: 100
+  });
+
+  scene.loaded.add(() =&gt; {
+    // 背景とスコアボード用背景の初期化
+    const scoreBoard = new g.FilledRect({
+      scene: scene,
+      cssColor: &quot;black&quot;,
+      height: g.game.height,
+      width: g.game.width / 5
+    });
+
+    const background = new g.FilledRect({
+      scene: scene,
+      cssColor: &quot;rgba(0,0,0,0.2)&quot;,
+      height: g.game.height,
+      width: g.game.width - scoreBoard.width
+    });
+
+    scoreBoard.x = g.game.width - scoreBoard.width;
+    scene.append(background);
+    scene.append(scoreBoard);
+
+    // ボタンの初期化
+    button = new g.Sprite({
+      scene: scene,
+      src: scene.assets[&quot;button&quot;],
+      touchable: true
+    });
+    button.y = g.game.height / 2 - button.height / 2;
+    button.x = background.width / 2 - button.width / 2;
+    scene.append(button);
+
+    // ランキング用テキストの配置
+    rankingLabel.x = scoreBoard.x;
+    rankingLabel.width = scoreBoard.width;
+    rankingLabel.modified();
+    scene.append(rankingLabel);
+
+    // ボタンタイマーを初期化
+    timer = g.game.random.get(30, MAXIMUM_BUTTON_TIMER_COUNT);
+
+    // ボタンを押された時の処理
+    button.pointDown.add(event =&gt; {
+      if (buttonDisabled) {
+        return;
+      }
+
+      // ボタンが押せるようになってからの経過時間が少ないほどスコアが高い
+      const score = Math.floor(1000 / -timer);
+      if (scoreTable[event.player.id] == null) {
+        scoreTable[event.player.id] = 0;
+      }
+      scoreTable[event.player.id] += score;
+      timer = g.game.random.get(30, MAXIMUM_BUTTON_TIMER_COUNT);
+
+      // スコアボードの処理 スコアボードを元に点数の配列を作り、上位５名を出す
+      const topFive = Object.keys(scoreTable)
+        .map(id =&gt; {
+          return { score: scoreTable[id], id: id };
+        })
+        .sort((a, b) =&gt; {
+          return b.score - a.score;
+        })
+        .slice(0, 5);
+
+      // その５名を表示するテキストを作る
+      let rankingText = &quot;ランキング\n&quot;;
+      topFive.forEach((score, rank) =&gt; {
+        rankingText += `${rank + 1}位: ${score.id}さん(${score.score}pt)\n`;
+      });
+      rankingLabel.text = rankingText;
+      rankingLabel.invalidate();
+    });
+  });
+
+  // メインループ
+  scene.update.add(() =&gt; {
+    timer--;
+    // タイマーが1以上でボタンが有効の時はボタンを無効にする
+    if (timer &gt; 0 &amp;&amp; !buttonDisabled) {
+      button.opacity = 0.2;
+      button.modified();
+      buttonDisabled = true;
+    } else if (timer === 0 &amp;&amp; buttonDisabled) {
+      button.opacity = 1;
+      button.modified();
+      buttonDisabled = false;
+    }
+  });
+
+  g.game.pushScene(scene);
+}
+
+module.exports = main;</code></pre>
+<h2>ローカルとグローバルのちょっと詳しい話</h2>
+<h3>ローカルとグローバルの境界線</h3>
+<p>今回の早押しゲームでは、グローバルな情報のみを取り扱いました。
+画面に出てくるボタンはみんなが触れるためグローバルなオブジェクトでした。これは直感的ですね。</p>
+<p>ではスコアはどうでしょう。<strong>これもグローバルな情報</strong>です。ランキングの状態を全員で揃えるために<strong>自分のスコアはみんなで共有する</strong>必要があります。
+言い換えれば、グローバルなスコア一覧表をゲームがもっていて、ボタンを押した結果がそこに格納されていくわけです。</p>
+<p>ではローカルとは何なのか。ここでいうローカルとはブラウザや js で実行中のゲームを意味し、他人同士のゲーム上で違うもの、が該当します。</p>
+<p>例えば、３人のプレイヤー A、B、C が早押しゲームをプレイしたとしましょう。
+この時、誰のブラウザ上においてもボタンの位置は同じですし、全員のスコアも一致しているはずです。
+B のブラウザでは A の得点は 5 点だが、A のブラウザでは 500 点になっている、というようなことはあっては破綻します。一致していないと困ります。
+オンラインゲームでは所持金、手持ちパーティ、クエストの進行状況など、全ての環境で一致している必要があるデータが大量にあります。</p>
+<p>逆を言えば<strong>みんなで一致させたくないもの</strong>、一致していないもの、がローカルになります。ローカルとグローバルの境界線はここにあります。同様に、ローカルなものを操作する処理がローカル処理です。
+例えば、プレイヤーは誰なのか。言い換えれば、このブラウザで早押しゲームをプレイしているのは A、B、C のうち誰なのか、という情報はブラウザでそれぞれ違うためローカルな情報です。
+このローカルな情報を扱うローカル処理を早押しゲームに追加してみます。具体的には、自分のスコアの表示です。</p>
+<img src="/img/shin-ichiba/multi/02-02.png" width="600px">
+
+<p>ソースコードは割愛しました。以下のリポジトリからダウンロードできるので確認してみてください。
+また、以下のリポジトリでのソースコードは、JavaScript を拡張した TypeScript を使って書かれています。
+基本的には細部が異なるだけで JavaScript 同様に読めると思いますが、もし気になる場合には JavaScript に変換した結果を読むと助けになるかもしれません。</p>
+<pre><code class="language-sh">npm run build</code></pre>
+<p>上記コマンドで TypeScript が JavaScript に変換され、結果は script/main.js として出力されます。</p>
+<p>本講座では基本的に記事上は JavaScript を扱っていく予定ですが、今後本格的なゲームを作っていくにあたりいまのうちに TypeScript に慣れていくとバグに悩まされることが少なくなるかもしれません。</p>
+<p>完成版のソースコード一式はこちらです。
+<a href="https://github.com/akashic-contents/button-multi">https://github.com/akashic-contents/button-multi</a></p>
+<p>この例では、スコア一覧から自分のスコアを抜き出し画面に表示させています。またこの時自分のスコアが１位かそうでないかで表示色を変えています。
+スコアの色は人によって異なり、スコアの中身も人によって異なります。そのためこの自分のスコア表示はローカルな処理と言えます。</p>
+<h3>ローカル処理と制約</h3>
+<p>ローカルとグローバルの境界線がわかったところで、マルチプレイ制作上の注意点を一つお伝えします。
+ローカルな情報を扱う場合、自分にしか発生しない処理というものがよく現れます。今回の例では１位の時は赤くする、がそれです。</p>
+<p>この、ローカルな処理内において、やってはいけないことがいくつかあります。その中でも特にありがちなのが<strong>グローバルな物への操作</strong>です。
+<strong>参照だけなら問題ありません。</strong> 今回の例でも、グローバルなスコア一覧表を参照して自分のスコアを取得しています。
+ローカルな処理は発生する人としない人がいるため、そこで直接グローバルを操作しても他人へは反映されません。
+例えば１位の表示中は毎秒スコアが増加する、みたいな処理を考えてみます。この時分岐した処理の中にスコア一覧への加算処理を書いてしまうとそれは１位になった人にしか発生しないため、他の人とスコア一覧表の内容にズレが発生しゲームが破綻します。</p>
+<p><strong>ローカルな情報を使って条件分岐を書いた場合は必ずローカルな処理</strong>です。
+ローカルな処理の中でグローバルなオブジェクトの生成、更新、削除を行なってはいけません。今回は詳細は省きますが、同じ理由によりローカルな処理内で g.random を使ってもいけません。</p>
+<p>まとめますと</p>
+<ul>
+<li>ローカルな情報を使って条件分岐を書くと、ローカルな処理が書ける</li>
+<li>ローカルな情報は人によって違うため、人によって処理が行われる時と行われない時がある</li>
+<li>ローカルな処理内でグローバルな物を操作すると同期が行われずゲームが壊れる</li>
+</ul>
+<p>となります。</p>
+<p>実際には今回の例では、スコア表示用ラベルがグローバルでもさしたる問題はおきません。破壊的な変更、イベントの発生、情報の参照などがないからです。
+しかしローカルなボタンを作ったりエンティティの情報を参照したりするなど、<strong>大規模なゲームを作っていく際にはローカルとグローバルを意識することが必要</strong>になります。
+いまのうちからこのような考え方の癖をつけておくと後々楽になるかもしれません。</p>
+<p>以上が、ローカルな処理を書く上での注意点のまとめです。</p>
+<h2>次は</h2>
+<p>ローカル処理が境界線を乗り越えて同期を壊してしまったバグは、TypeScript のコンパイルなどでは誤りを検出できないため人間が気をつけてやる必要があります。
+ローカルとグローバルの話は非常に重要なため、次回も少し触れるつもりです。</p>
+<p>また、早押しボタンだけでは一瞬で飽きてしまうため本格的なゲームを小分けに作っていきます。</p>
+<div class="navi-center">
+<a href="./column-about-multi.html">前 (マルチプレイゲームを知ろう)</a>
+ | <a href="./index.html">目次</a>
+ | <a href="./column-join-leave.html">次 (JoinとLeaveとニコ生の話)</a>
+</div>
+
+			</div>
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
+</body>
+</html>
