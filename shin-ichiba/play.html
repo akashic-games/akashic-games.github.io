@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>ニコ生ゲームで遊ぼう</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?aa4267e">
+<link rel="stylesheet" href="/css/header.css?aa4267e">
+<link rel="stylesheet" href="/css/footer.css?aa4267e">
+
+
+<link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
+
+<link rel="stylesheet" href="/css/railscasts.css?aa4267e">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?aa4267e"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v2/">Akashic Engine入門 v2</a></li>
+				<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+				<li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				<li><a href="/reference/coe/">coe framework</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3>ニコ生ゲームを作ろう</h3>
+<ul>
+<li><strong><a href="./index.html">トップ</a></strong></li>
+<li><strong><a href="./introduction.html">ニコ生ゲームとは</a></strong></li>
+<li><strong><a href="./mod-game.html">ニコ生ゲームを作ろう・改造編</a></strong><ul>
+<li><a href="./install.html">インストール</a></li>
+<li><a href="./thiefBuster-mod.html">『泥棒バスター』を改造する</a></li>
+<li><a href="./speed-jigsaw-mod.html">『スピードジグソー』を改造する</a></li>
+</ul>
+</li>
+<li><strong><a href="./ranking-top.html">ニコ生ゲームを作ろう・ランキングゲーム編</a></strong><ul>
+<li><a href="./ranking.html">ランキング対応ゲーム</a></li>
+<li><a href="./ranking-by-template.html">テンプレートでわかるランキング対応ゲーム</a></li>
+</ul>
+</li>
+<li><strong><a href="./multi-top.html">ニコ生ゲームを作ろう・マルチプレイゲーム編</a></strong><ul>
+<li><a href="./multi-ready.html">マルチプレイ開発予備知識</a></li>
+<li><a href="./column-about-multi.html">マルチプレイゲームを知ろう</a></li>
+<li><a href="./column-local-process.html">簡単なゲームを作ってローカル処理に触れよう</a></li>
+<li><a href="./column-join-leave.html">Join と Leave とニコ生の話</a></li>
+<li><a href="./column-make-multi.html">実際にマルチプレイゲームを考えて作ろう</a></li>
+</ul>
+</li>
+<li><strong><a href="./submit.html">ニコ生ゲームを投稿しよう</a></strong></li>
+<li><strong><a href="./play.html">ニコ生ゲームで遊ぼう</a></strong></li>
+<li><strong><a href="./links.html">関連資料・困った時は</a></strong></li>
+</ul>
+
+		</div>
+		<div class="twocol-main">
+			<div class="inner responsive--width--twocol">
+				<h1>ニコ生ゲームで遊ぼう</h1>
+<p>投稿・申請したゲームは、通常数分のうちにニコニコ生放送で起動できるようになります。</p>
+<h2>起動の流れ</h2>
+<p>ニコ生ゲームは、あくまで生放送の枠内で遊ばれるもののため、誰でも起動できるわけではありません。</p>
+<ol>
+<li>プレミアム会員の視聴者が、ニコ生ゲームをリクエストする (プレミアム会員であれば配信者自身でも可)</li>
+<li>配信者がリクエストされたものから選んで起動する</li>
+</ol>
+<p>という形で、あくまで配信者が起動するものになっています。</p>
+<p>またリクエストには制限があり、一度リクエストすると一定時間はリクエストができません (他の視聴者にリクエストしてもらう必要があります)。
+ただし「自分が投稿した自作ゲーム」に限っては、このリクエスト制限がありません (そうでないと自作ゲームをデバッグすることも難しくなってしまうため)。</p>
+<h2>配信する</h2>
+<p>他の配信者に遊んでもらうにせよ、大抵はまず動作確認のために自分の見ている配信で起動してみる必要があるでしょう。
+手っ取り早いのは自分が配信してしまうことです。</p>
+<p>nicocas アプリはスマホがあれば誰でも配信できるのでお試しください。</p>
+<p><strong><a href="http://site.nicovideo.jp/nicocas/app/">http://site.nicovideo.jp/nicocas/app/</a></strong></p>
+<h2>起動する</h2>
+<p>配信の中でゲームをリクエストし、実際に起動する方法は、ニコニコヘルプの以下のページに画像つきで紹介されています。</p>
+<p><strong><a href="https://qa.nicovideo.jp/faq/show/10839">https://qa.nicovideo.jp/faq/show/10839</a></strong></p>
+<div class="navi-center">
+<a href="./submit.html">前 (ニコ生ゲームを投稿しよう)</a>
+ | <a href="./index.html">目次</a>
+ | <a href="./links.html">次 (関連資料・困った時は)</a>
+</div>
+
+			</div>
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>『泥棒バスター』を改造する</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?aa4267e">
+<link rel="stylesheet" href="/css/header.css?aa4267e">
+<link rel="stylesheet" href="/css/footer.css?aa4267e">
+
+
+<link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
+
+<link rel="stylesheet" href="/css/railscasts.css?aa4267e">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?aa4267e"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v2/">Akashic Engine入門 v2</a></li>
+				<li><a href="/tutorial/tutorial.html">Akashic Engine入門 v1(deprecated)</a></li>
+				<li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				<li><a href="/reference/coe/">coe framework</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3>ニコ生ゲームを作ろう</h3>
+<ul>
+<li><strong><a href="./index.html">トップ</a></strong></li>
+<li><strong><a href="./introduction.html">ニコ生ゲームとは</a></strong></li>
+<li><strong><a href="./mod-game.html">ニコ生ゲームを作ろう・改造編</a></strong><ul>
+<li><a href="./install.html">インストール</a></li>
+<li><a href="./thiefBuster-mod.html">『泥棒バスター』を改造する</a></li>
+<li><a href="./speed-jigsaw-mod.html">『スピードジグソー』を改造する</a></li>
+</ul>
+</li>
+<li><strong><a href="./ranking-top.html">ニコ生ゲームを作ろう・ランキングゲーム編</a></strong><ul>
+<li><a href="./ranking.html">ランキング対応ゲーム</a></li>
+<li><a href="./ranking-by-template.html">テンプレートでわかるランキング対応ゲーム</a></li>
+</ul>
+</li>
+<li><strong><a href="./multi-top.html">ニコ生ゲームを作ろう・マルチプレイゲーム編</a></strong><ul>
+<li><a href="./multi-ready.html">マルチプレイ開発予備知識</a></li>
+<li><a href="./column-about-multi.html">マルチプレイゲームを知ろう</a></li>
+<li><a href="./column-local-process.html">簡単なゲームを作ってローカル処理に触れよう</a></li>
+<li><a href="./column-join-leave.html">Join と Leave とニコ生の話</a></li>
+<li><a href="./column-make-multi.html">実際にマルチプレイゲームを考えて作ろう</a></li>
+</ul>
+</li>
+<li><strong><a href="./submit.html">ニコ生ゲームを投稿しよう</a></strong></li>
+<li><strong><a href="./play.html">ニコ生ゲームで遊ぼう</a></strong></li>
+<li><strong><a href="./links.html">関連資料・困った時は</a></strong></li>
+</ul>
+
+		</div>
+		<div class="twocol-main">
+			<div class="inner responsive--width--twocol">
+				<h1>『泥棒バスター』を改造する</h1>
+<p>ニコ生ゲームの作成には、原則としてプログラミングの知識が必要になります。
+一方公式のゲームの一部は、サンプルとしてソースコードや利用素材が公開されています。
+素材を差し替えるなどサンプルの改造でプログラミングなしに遊ぶことができます。</p>
+<p>ここでは、公式サンプル『泥棒バスター』と『スピードジグソー』(次頁)の改造方法をご紹介します。</p>
+<p class="source-info">
+この文書は、 <a href="https://dwango.github.io/niconico/jikken-housou/akashic-content1/">https://dwango.github.io/niconico/jikken-housou/akashic-content1/</a> で公開されていた記事を調整して転載したものです。
+文体などは他のページと異なることがあります。
+</p>
+
+<h2><a name="install"></a> 環境の用意</h2>
+<p>直接プログラミングをしないとはいえ、動作確認のためには開発用ツールが必要です。
+<a href="./install.html">インストール</a> を参照して、 Akashic Engine の開発用ツール <code>akashic-sandbox</code>, <code>akashic-cli</code> をインストールしてください。</p>
+<h2><a name="get-source"></a> ソースの用意</h2>
+<p>次に元ネタを持ってきましょう。今回のテーマは「改造」ですので、元ネタが必要です。</p>
+<p>今回利用するゲームは『泥棒バスター』というゲームです。RPG アツマールにも登録されているので、まだやったことの無い人は、一度やってみてください。</p>
+<p><strong><a href="https://game.nicovideo.jp/atsumaru/games/gm8599">https://game.nicovideo.jp/atsumaru/games/gm8599</a></strong></p>
+<p>こういう感じのゲームです。</p>
+<p><img src="/img/shin-ichiba/thiefBuster-mod/thiefBuster.png" alt="泥棒バスター"></p>
+<ul>
+<li>画面をタップすると攻撃と移動の両方を行います</li>
+<li>3 種類の敵がいて、それぞれ特徴があり、敵を倒すと得点が入ります</li>
+<li>敵がドアまで到達すると減点になります</li>
+<li>ドアに到達する前に倒し続ければコンボボーナスが入ります</li>
+<li>途中で武器が現れることがあり、武器を攻撃するとパワーアップできます</li>
+</ul>
+<p>・・といったゲームですね。</p>
+<p>大体ゲーム内容がわかったところで、このゲームのソースコードをダウンロードしましょう！　 GitHub というところに登録されています。</p>
+<p><strong><a href="https://github.com/akashic-contents/thiefBuster">https://github.com/akashic-contents/thiefBuster</a></strong></p>
+<p>今回は完全なソースコードは不要なので、ゲームのバイナリだけダウンロードしたいと思います。画面右の方に release というリンクがあるので、こちらを選択してください。</p>
+<p><img src="/img/shin-ichiba/thiefBuster-mod/github-releases.png" alt="GitHubのrelease"></p>
+<p>release のページに移ったら、次に最新のリリースに含まれる game.zip というファイルを選択してください。</p>
+<p><img src="/img/shin-ichiba/thiefBuster-mod/download-gamezip.png" alt="game.zipのダウンロード"></p>
+<p>この手順の通りにやると最新版の game.zip をダウンロードできますが、本記事時点の最新版でよければこちらのリンクからダウンロードすることもできます。</p>
+<p><strong><a href="https://github.com/akashic-contents/thiefBuster/releases/download/v0.0.0/game.zip">https://github.com/akashic-contents/thiefBuster/releases/download/v0.0.0/game.zip</a></strong></p>
+<p>ZIP ファイルの解凍方法がわかる方は、ダウンロードしたファイルを解凍してください。Windows ユーザの方は、エクスプローラ等からファイルを右クリックし、そこで出てくるすべて展開というメニューで解凍できます。</p>
+<p><img src="/img/shin-ichiba/thiefBuster-mod/thiefBuster-extract.png" alt="泥棒バスターの解凍"></p>
+<p>こういったダイアログが出てくると思うので、展開というボタンを押せば展開されます。</p>
+<p><img src="/img/shin-ichiba/thiefBuster-mod/extract-folder.png" alt="泥棒バスターの解凍"></p>
+<p>まずはダウンロードしたものを実行してみましょう。</p>
+<p><a href="./install.html">インストール</a> で利用した CUI ツールを起動して、以下のようなコマンドを実行してください。</p>
+<pre><code class="language-sh">cd C:\Users\toyokazu_tsugehara\Downloads\game\game</code></pre>
+<p>cd の後は環境によって違います。「ダウンロードした場所\game\game」という感じのものです。</p>
+<p>本文章上は場所の区切りを示す記号が <code>\</code>（バックスラッシュ）に見えていますが、多くの環境では <code>￥</code>（円記号）のような表示になっていると思います。</p>
+<p>これは日本語キーボードの <code>￥</code> キー、英語キーボードの <code>\</code> キーを押下すると、環境に応じて表示が変わる文字として扱われるもので、どちらも正常です。以後、 <code>￥</code> に見える環境では <code>\</code> を <code>￥</code> に読み替えてください。</p>
+<p>「cd&nbsp;」と、cd の後の半角スペースまで入力してから、エクスプローラからドラッグすると間違えなくて済みます。</p>
+<p><img src="/img/shin-ichiba/thiefBuster-mod/drag-to-command-prompt.png" alt="エクスプローラからコマンドプロンプトにドラッグ"></p>
+<p>ドラッグ＆ドロップに成功するとこのような表示になります。</p>
+<p><img src="/img/shin-ichiba/thiefBuster-mod/folder-dropped.png" alt="ドラッグ＆ドロップの成功"></p>
+<p>これで Enter キーを押すと、表示がこのように変わります。</p>
+<p><img src="/img/shin-ichiba/thiefBuster-mod/cd-finished.png" alt="cdの成功"></p>
+<p>これで、ゲームをダウンロードした場所で作業している事になるので、以下のコマンドを実行してください。</p>
+<pre><code class="language-sh">akashic-sandbox</code></pre>
+<p>実行すると下図の表示が出ています。「localhost の 3000 番ポートでこのゲーム用のサーバを起動したので、 <a href="http://localhost:3000">http://localhost:3000</a> にブラウザでアクセスしてください」という趣旨のメッセージが表示されています。</p>
+<p><img src="/img/shin-ichiba/thiefBuster-mod/akashic-sandbox-launched.png" alt="Akashic Sandboxの起動"></p>
+<p><a href="http://localhost:3000">http://localhost:3000</a> を Chrome 等のブラウザで開いてみると、無事、ゲームが実行されている様子を見る事ができます。</p>
+<p>akashic-sandbox はゲームを実行するためのサーバを起動するためのコマンドで、このコマンドを CUI ツールで実行する事で、みなさんの PC 上でゲームを実行できます。</p>
+<p>その前に実行した cd というコマンドは、作業場所を移すコマンドで、この cd を使う事でゲームを切り替える事ができます。</p>
+<p>CUI ツールの操作は少し難易度が高いですが、どのゲームを作るのにも行う作業になるので、cd でゲームを切り替えて akashic-sandbox で実行、という使い方は覚えておく事をオススメします。</p>
+<p>akashic-sandbox を実行した CUI ツールと、<a href="http://localhost:3000">http://localhost:3000</a> で開いたブラウザは、以下でも使うのでそのままにしておいてください。</p>
+<h2><a name="mod"></a> ゲームの改造</h2>
+<p>長くなってしまいましたが、準備が整ったので、いよいよゲームを改造していきたいと思います。今回は画像の改造だけで、ゲームの見た目を変えるという事をやりたいと思います。</p>
+<p>泥棒バスターを解凍したフォルダの中に、game というフォルダがあります。この中に、ゲームに必要なリソースが一式入っています。</p>
+<p>その中の、asapj というフォルダの中に色々なリソースファイルが入っています。この辺りの画像をいじれば、ゲーム中の画像も変わります。</p>
+<p>asapj フォルダの中にある stg_player というフォルダを覗いてみると、stg_player.png というファイルがあります。</p>
+<p><img src="/img/shin-ichiba/thiefBuster-mod/stg_player.png" alt="stg_player.png"></p>
+<p>これを改造すればプレイヤーが変わりそうな気配があります。ゲームの仕組みはよくわかりませんが、まずは変えてみましょう。以下辺りが怪しいですね！</p>
+<p><img src="/img/shin-ichiba/thiefBuster-mod/ayashii.png" alt="変えればプレイヤーが変わりそうな場所"></p>
+<p>これは、明らかに「1」が通常時の手、「2」が攻撃をした時の手、「３」がキャラクターの画像でしょう。</p>
+<p>なんとなく差し替えてみようと思います。こちらの手元ではこうなりました。みなさんも是非、記事を読むだけでなく、実際に改造してみてください。</p>
+<p><img src="/img/shin-ichiba/thiefBuster-mod/stg_player_nimobachan.png" alt="画像を実際に変えた様子"></p>
+<p>ここで、先ほど開いているままのブラウザのリロードをしてください。私の手元ではこのような画面になりました。</p>
+<p><img src="/img/shin-ichiba/thiefBuster-mod/thief-nicomoBuster.png" alt="泥棒バスターの画像が変わった様子"></p>
+<p>もうちょっといじってみましょうか。
+せっかくゲームを改造したので、タイトル画像も変えちゃいましょう。
+asapj の下の nw_title の下の、title_logo.png という画像が怪しいです。</p>
+<p><img src="/img/shin-ichiba/thiefBuster-mod/title_logo.png" alt="title_log.png"></p>
+<p>これを変えてみましょう。私の手元ではこうなりました。</p>
+<p><img src="/img/shin-ichiba/thiefBuster-mod/title_logo_nicomobachan.png" alt="タイトル画像を変えた様子"></p>
+<p>またブラウザをリロードすると、タイトルが変わっているのが確認できると思います。</p>
+<h2><a name="submit"></a> 投稿</h2>
+<p>このように、ゲームの改造は、環境を作るまでが少し大変ですが、一度作ってしまばえゲームによっては割と簡単にできます。</p>
+<p>既に公開しているニコ生ゲームの内、いくつかのゲームのソースコードが公開されていますので、是非改造してみてください。</p>
+<ul>
+<li>『泥棒バスター』: <a href="https://github.com/akashic-contents/thiefBuster">https://github.com/akashic-contents/thiefBuster</a></li>
+<li>今回作った改造版泥棒バスター『泥棒ニコモバスター』: <a href="https://github.com/akashic-contents/thiefBuster-nicomoba">https://github.com/akashic-contents/thiefBuster-nicomoba</a></li>
+<li>(次のページで改造を紹介する) 『スポードジグソー』: <a href="https://github.com/akashic-contents/speed-jigsaw">https://github.com/akashic-contents/speed-jigsaw</a></li>
+</ul>
+<p>ここでは画像を変更しましたが、BGM や、プログラミングの知識のある方はソースコード自体も自由に改造いただけます。</p>
+<p>作成したゲームは <a href="./submit.html">ニコ生ゲームを投稿しよう</a> を参考にぜひ投稿してみてください。</p>
+<div class="navi-center">
+<a href="./install.html">前 (インストール)</a>
+ | <a href="./index.html">目次</a>
+ | <a href="./speed-jigsaw-mod.html">次 (『スピードジグソー』を改造する)</a>
+</div>
+
+			</div>
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は<br><a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています</li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
+</body>
+</html>
