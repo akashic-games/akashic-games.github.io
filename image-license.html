@@ -15,12 +15,14 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>Join と Leave</title>
+<title>この Web サイトの画像について</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?aa4267e">
 <link rel="stylesheet" href="/css/header.css?aa4267e">
 <link rel="stylesheet" href="/css/footer.css?aa4267e">
 
+
+<link rel="stylesheet" href="/css/asset.css?aa4267e">
 
 <link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
 
@@ -109,79 +111,25 @@
 </header>
 
 <div id="BodyInner">
-	<section class="akashic--document safearea--LR twocol">
-		<div class="twocol-side">
-			<h3>Akashic Engine 入門</h3>
-<h4><a name="basic"></a> 導入</h4>
+	<section class="akashic--document safearea--LR">
+		<div class="inner responsive--width">
+			<h1>この Web サイトの画像について</h1>
+<a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">
+    <img alt="クリエイティブ・コモンズ・ライセンス" src="https://licensebuttons.net/l/by/2.1/jp/88x31.png">
+</a>
+
+<p>このサイトの画像は、<strong>次に掲げるものを除き</strong> <a href="https://licensebuttons.net/l/by/2.1/jp/88x31.png">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a> の下に提供されています。
+次の画像は改変や再配布を許諾していません。</p>
 <ul>
-<li><a href="../index.html">トップ</a></li>
-<li><a href="../1-introduction.html">akashic の導入</a></li>
+<li><a href="https://akashic-games.github.io/img/shin-ichiba/10839_06.png">https://akashic-games.github.io/img/shin-ichiba/10839_06.png</a><img src="/img/shin-ichiba/10839_06.png" width="200" /></li>
+<li><a href="https://akashic-games.github.io/img/shin-ichiba/speed-jigsaw-mod/illust-ya-puzzle-image.png">https://akashic-games.github.io/img/shin-ichiba/speed-jigsaw-mod/illust-ya-puzzle-image.png</a><ul>
+<li><a href="https://www.irasutoya.com/">いらすとや</a> さんで公開されている画像を組み合わせたものです。そちらの規約に従ってください。<img src="/img/shin-ichiba/speed-jigsaw-mod/illust-ya-puzzle-image.png" width="200" />
+
+</li>
 </ul>
-<h4><a name="basic"></a> シングルプレイのゲーム作成</h4>
-<ul>
-<li><a href="../2-basic.html">コンテンツ作成の基本</a></li>
-<li><a href="../display-order.html">表示順の制御</a></li>
-<li><a href="../3-animation.html">アニメーションさせる</a></li>
-<li><a href="../4-click.html">クリックできるようにする</a></li>
-<li><a href="../5-audio.html">音を鳴らす</a></li>
-<li><a href="../scale-anchor.html">拡縮とアンカーポイント</a></li>
-<li><a href="../6-otherdraw.html">色々な描画</a></li>
-<li><a href="../bitmap-font.html">ビットマップフォントを使う</a></li>
-<li><a href="../7-export.html">ゲームを公開する</a></li>
-<li><a href="../8-install.html">拡張ライブラリを使う</a></li>
-<li><a href="../9-appendix.html">より大規模なゲームを作るために</a></li>
-</ul>
-<h4><a name="multiplay"></a> マルチプレイのゲーム作成</h4>
-<ul>
-<li><a href="./introduction.html">マルチプレイの基礎</a></li>
-<li><a href="./each-player.html">プレイヤーごとに異なる描画を行う</a></li>
-<li><a href="./camera.html">プレイヤーごとに異なる位置を表示する</a></li>
-<li><a href="./join.html">Join と Leave</a></li>
+</li>
 </ul>
 
-		</div>
-		<div class="twocol-main">
-			<div class="inner responsive--width--twocol">
-				<h1>Join と Leave</h1>
-<h2><a name="join"></a> Join</h2>
-<p>各プレイヤーには「join しているか否か」という二値の状態が存在します。これは実行環境が規定する値です。「join しているプレイヤー」が何を意味するかは、実行環境によって定まります。</p>
-<p>あるプレイヤーが join 状態になる時、 <code>g.game.join</code> が fire され <code>g.JoinEvent</code> が与えられます。同様に join 状態でなくなる時、 <code>g.game.leave</code> が fire され <code>g.LeaveEvent</code> が与えられます。</p>
-<blockquote>
-<p>これ自体は環境依存が強くあまり使い出のない機能ですが、
-<strong>ニコニコ生放送上で実行する場合、配信者のプレイヤーだけが join します</strong> (leave はしません)。そのため、配信者と視聴者を区別するための情報として利用することができます。</p>
-</blockquote>
-<p>次のコードは、最後に join したプレイヤーを記憶して参照する例です。</p>
-<pre><code class="language-javascript">var lastJoinedPlayerId = null;
-
-g.game.join.add(function(ev) {
-  lastJoinedPlayerId = ev.player.id;
-});
-
-scene.pointDownCapture.add(function(ev) {
-  if (ev.player.id === lastJoinedPlayerId) {
-    // ニコニコ生放送上で動かす場合、イベントを生成した(＝画面を押下した)のが「配信者」である時のみ実行される
-    // ...
-  }
-
-  if (g.game.selfId === lastJoinedPlayerId) {
-    // ニコニコ生放送上で動かす場合、この実行環境(インスタンス)が「配信者」のものである時のみ実行される
-    // ...
-  }
-});</code></pre>
-<p>なお <code>g.game.selfId</code> は、今そのゲームを実行している環境(インスタンス)のプレイヤー ID です。このコード例のように、あるイベントの生成元が自分(このインスタンス自身)かどうかを判断したい時に利用できます。</p>
-<p><code>g.game.join</code> や <code>g.game.leave</code> の動作確認は <code>akashic serve</code> コマンドでも行うことができます。</p>
-<p><img src="/img/tutorial/cli-serve.png" alt="serve"></p>
-<p>画面上側、ツールバー上の「Join Me」ボタンを押すと、そのウィンドウ(インスタンス)のプレイヤーが join します (<code>g.game.join</code> が fire されます)。
-join 済みの場合は「Leave Me」ボタンに切り替わり、 <code>g.game.leave</code> を fire させることができます。</p>
-<h2><a name="niconico"></a> ニコニコ新市場対応</h2>
-<p>その他、ニコニコ生放送に関する内容は、 <a href="/guide/">開発者向けガイド</a> の <a href="/guide/shin-ichiba/">ニコニコ生放送で遊べるゲームの作成</a> を参照してください。</p>
-<div class="navi-center">
-<a href="./camera.html">前 (プレイヤーごとに異なる位置を表示する)</a>
- | <a href="../">目次</a>
- | -
-</div>
-
-			</div>
 		</div>
 	</section>
 	<footer class="safearea--LR">
