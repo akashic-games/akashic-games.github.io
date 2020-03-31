@@ -196,10 +196,10 @@
 </ul>
 <p>ここでは例として、(a) に上記 PixelMplus の PixelMplus10-Regular.ttf を、 (b) に次の内容の chars.txt を使います。</p>
 <pre><code>あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをんがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽぁぃぅぇぉゃゅょっーアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポァィゥェォャュョッー１２３４５６７８９０！”＃＄％＆’（）＝｜＠「」『』｀＋＊；：、。，．＜＞・？＿</code></pre><p>これらを置いたディレクトリで次のコマンドを実行すると、同じディレクトリに画像 font.png と、グリフ情報 font_glyphs.json が生成されます。(上記の画像はこの font.png です)</p>
-<pre><code class="language-sh">bmpfont-generator ./PixelMplus10-Regular.ttf ./font.png -f chars.txt -H 20 -F &#39;#555555&#39; -w 22</code></pre>
+<pre><code class="language-sh">bmpfont-generator ./PixelMplus10-Regular.ttf ./font.png -f chars.txt -H 20 -F &#39;#555555&#39;</code></pre>
 <p>コマンド中のファイル名部分は、用意したファイルに合わせて変更してください。</p>
 <p>なおここで <code>-H</code> は文字のサイズ (ピクセル単位) を、 <code>-F</code> は文字色 (<code>g.FilledRect</code> や CSS の色と同じ形式) を指定するオプションです。(すなわち高さ 20 ピクセル、色が暗めのグレー (#555555) を指定しています)</p>
-<p><code>-w</code> は文字の幅 (ピクセル単位) を強制的に固定するもので、通常は必要ありません。このフォントと現在の bmpfont-generaotr の機能上、 <a href="/guide/asset-recommended-spec.html">隣の文字が滲んでしまう</a> のを避けるために指定しています。その他 bmpfont-generator のオプションの詳細は、<a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a> を参照してください。</p>
+<p>その他 bmpfont-generator のオプションの詳細は、<a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a> を参照してください。</p>
 <blockquote>
 <p>bmpfont-generator の利用にあたっては、 <strong>フォントのライセンスに注意してください</strong> 。</p>
 <p>特に商用 (有償) のフォントでは、ライセンスによっては 「フォントの代替として機能するようなもの」を作成しての利用が許諾されていない場合があります。
