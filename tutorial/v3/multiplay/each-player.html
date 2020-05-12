@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162208211-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162208211-1');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>プレイヤーごとに異なる描画を行う</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?aa4267e">
+<link rel="stylesheet" href="/css/header.css?aa4267e">
+<link rel="stylesheet" href="/css/footer.css?aa4267e">
+
+
+<link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
+
+<link rel="stylesheet" href="/css/railscasts.css?aa4267e">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?aa4267e"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
+				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				<li><a href="/reference/coe/">coe framework</a></li>
+				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3>Akashic Engine 入門</h3>
+<h4><a name="basic"></a> 導入</h4>
+<ul>
+<li><a href="../index.html">トップ</a></li>
+<li><a href="../introduction.html">akashic の導入</a></li>
+</ul>
+<h4><a name="basic"></a> シングルプレイのゲーム作成</h4>
+<ul>
+<li><a href="../basic.html">コンテンツ作成の基本</a></li>
+<li><a href="../display-order.html">表示順の制御</a></li>
+<li><a href="../animation.html">アニメーションさせる</a></li>
+<li><a href="../click.html">クリックできるようにする</a></li>
+<li><a href="../audio.html">音を鳴らす</a></li>
+<li><a href="../scale-anchor.html">拡縮とアンカーポイント</a></li>
+<li><a href="../otherdraw.html">色々な描画</a></li>
+<li><a href="../bitmap-font.html">ビットマップフォントを使う</a></li>
+<li><a href="../export.html">ゲームを公開する</a></li>
+<li><a href="../install.html">拡張ライブラリを使う</a></li>
+<li><a href="../appendix.html">より大規模なゲームを作るために</a></li>
+</ul>
+<h4><a name="multiplay"></a> マルチプレイのゲーム作成</h4>
+<ul>
+<li><a href="./introduction.html">マルチプレイの基礎</a></li>
+<li><a href="./each-player.html">プレイヤーごとに異なる描画を行う</a></li>
+<li><a href="./camera.html">プレイヤーごとに異なる位置を表示する</a></li>
+<li><a href="./join.html">Join と Leave</a></li>
+</ul>
+
+		</div>
+		<div class="twocol-main">
+			<div class="inner responsive--width--twocol">
+				<h1>プレイヤーごとに異なる描画を行う</h1>
+<p>前節ではマルチプレイに対応する方法として、「イベントを生成したプレイヤーごとに処理を行えばよい」ということを述べました。また「全プレイヤーの手元で、同じタイミングで同じイベントを消化することで同じ状態を再現する」という、Akashic のマルチプレイのデザインに触れました。</p>
+<p>しかしこれだけでは、作成できるゲームは、全プレイヤーがまったく同じ画面を見るものに限られます。たとえば将棋は作成できるでしょう。将棋盤や持ち駒の情報は全プレイヤー共通で、一画面にすべて表示してしまうことが可能だからです(後手が盤面上側になってしまうという問題はありますが)。しかし別のゲームでは、たとえば各プレイヤーで違うアイテムを使うために、プレイヤーごとのアイテム切り替え UI を作りたいかもしれません。この場合プレイヤーごとにアイテム切り替え UI の状態は異なる必要があります。</p>
+<p>そのような状況に対応するため、Akashic Engine はローカルエンティティ・ローカルイベントという概念を持っています。</p>
+<p><strong>ローカルエンティティ</strong> とは、「そのエンティティを参照するイベントがすべてローカルになる」エンティティ (<code>g.E</code>) です。
+<strong>ローカルイベント</strong> は、通常のイベントと同様ですが「それを生成したプレイヤーにだけ通知される」という特徴を持つイベントです。</p>
+<p><a name="local-event"></a></p>
+<h2>ローカルイベント</h2>
+<p>Akashic のイベント <code>g.Event</code> は、原則的に全てプレイヤー間で共有されます。前述のとおり Akashic のマルチプレイは、各プレイヤーが発生させたイベントを全プレイヤー間で共有することで実現されているためです。</p>
+<p>この原則の例外がローカルイベントです。あるイベントがローカルであるとき、そのイベントは、それを生成したプレイヤー以外には共有されません。ローカルイベントは「生成したプレイヤー自身にしか通知されない」ため、プレイヤーごとに異なる処理を実現するのに利用することができます。</p>
+<p>イベントがローカルであるか否かは、真理値 <code>g.Event#local</code> によって表されます。この値はイベントの生成時に決定され、変化しません。ゲーム開発者はこの値を変更してはいけません。</p>
+<p>その性質から、ローカルイベントに起因する処理においては、ゲームのグローバルな実行状態を破壊してはいけません。特に非ローカルなエンティティの生成や操作を行ってはいけない点に注意が必要です。これについては後述します。</p>
+<p><a name="local-entity"></a></p>
+<h2>ローカルエンティティ</h2>
+<p>一部のケースを除き、ゲーム開発者が自分でイベントを生成することはありません。ローカルイベントは多くの場合、ローカルエンティティによって生成されます。</p>
+<p>ローカルエンティティとは、「そのエンティティを参照するイベントがすべてローカルになる」エンティティ <code>g.E</code> です。</p>
+<p>例えばポイント押下イベント <code>g.PointDownEvent</code> には、押下した位置のエンティティを参照する <code>target</code> プロパティが存在します。この <code>target</code> のエンティティがローカルである時、 <code>g.PointDownEvent</code> はローカルになります。そのイベントはそれを生成した(画面を押下した)プレイヤー自身にしか通知されません。</p>
+<p>ローカルエンティティは、エンティティのコンストラクタ引数の <code>local</code> プロパティに <code>true</code> を与えることで生成できます。以下は、シーン <code>scene</code> に属するローカルな <code>g.Sprite</code> を生成するコードの例です。</p>
+<pre><code class="language-js">var sprite = new g.Sprite({
+  scene: scene,
+  src: scene.asset.getImageById(&quot;chara1&quot;), // (アセットID &quot;chara1&quot; のイメージアセットがある想定)
+  local: true // ローカルであることを指定
+});</code></pre>
+<p>その性質から、ローカルエンティティは、必ずしも全てのエンジンインスタンス上に同じように存在し表示されている必要がありません。すなわちプレイヤー別の UI を実現することができます。</p>
+<p>クリックした位置に四角形を表示するだけのコンテンツに、プレイヤー別の色選択 UI を表示するコードは次のようなものになります。</p>
+<pre><code class="language-javascript">var scene = new g.Scene();
+
+scene.onLoad.add(function() {
+  var userColors = {}; // ユーザ別の色テーブル
+
+  // 画面がタッチされた時、矩形を置く
+  scene.onPointDownCapture.add(function(ev) {
+    // 対象がある(他のtouchableに対するpointDown)なら無視
+    if (ev.target != null) {
+      return;
+    }
+
+    // クリックしたプレイヤーの色で矩形を生成
+    var rect = new g.FilledRect({
+      scene: scene,
+      x: ev.point.x,
+      y: ev.point.y,
+      width: 15,
+      height: 15,
+      cssColor: userColors[ev.player.id] || &quot;red&quot; // そのプレイヤーの選択している色(なければ赤)
+    });
+    scene.append(rect);
+  });
+
+  // ローカルエンティティで色切り替えボタン (緑)
+  var greenButton = new g.FilledRect({
+    scene: scene,
+    local: true, // ローカルにする
+    x: 5,
+    y: 5,
+    width: 10,
+    height: 10,
+    cssColor: &quot;green&quot;,
+    touchable: true,
+    opacity: 0.3
+  });
+  greenButton.onPointUp.add(function(ev) {
+    // ローカルエンティティのUIの表示を変更
+    greenButton.opacity = 1;
+    greenButton.modified();
+    blueButton.opacity = 0.3; // 非選択状態のものは半透明に
+    blueButton.modified();
+
+    // 全員に自分の色変更イベントを送信 (後述)
+    g.game.raiseEvent(new g.MessageEvent({ color: &quot;green&quot; }));
+  });
+  scene.append(greenButton);
+
+  // ローカルエンティティ色切り替えボタン (青)
+  var blueButton = new g.FilledRect({
+    scene: scene,
+    local: true, // ローカルエンティティ
+    x: 20,
+    y: 5,
+    width: 10,
+    height: 10,
+    cssColor: &quot;blue&quot;,
+    touchable: true,
+    opacity: 0.3
+  });
+  blueButton.onPointUp.add(function() {
+    // ローカルエンティティのUIの表示を変更
+    greenButton.opacity = 0.3; // 非選択状態のものは半透明に
+    greenButton.modified();
+    blueButton.opacity = 1;
+    blueButton.modified();
+
+    // 全員に自分の色変更イベントを送信 (後述)
+    g.game.raiseEvent(new g.MessageEvent({ color: &quot;blue&quot; }));
+  });
+  scene.append(blueButton);
+
+  // (raiseEvent()で全プレイヤーに送信された)MessageEventを受け取る処理: 送信プレイヤーの色情報を更新する
+  scene.onMessage.add(function(msg) {
+    // 関係ないイベントは無視して抜ける
+    if (!msg.data || !msg.data.color) return;
+
+    // イベントを送信したプレイヤーの色情報を更新する
+    userColors[msg.player.id] = msg.data.color;
+  });
+});</code></pre>
+<p>このコードでは、画面左上に緑と青のボタン(ただの矩形ですが)が表示され、画面のその他の位置をタッチすると矩形が表示されるものです。</p>
+<p>緑と青のボタンはローカルエンティティで作られていて、プレイヤー別に異なる状態になり、またボタンに対する操作は操作したプレイヤー自身にしか通知されません。そのプレイヤーが非選択状態のボタンは半透明で表示されます。</p>
+<p><a name="raise-event"></a></p>
+<h2>raiseEvent()</h2>
+<p>上のコード例の中で説明していないのが <code>g.game.raiseEvent()</code> です。</p>
+<p>上述のとおり、ローカルエンティティの操作はすべて操作した本人にしか通知されません (イベントが全体に共有されません)。ローカルイベントに応じてゲームの実行状態を変更しても、それは本人にしか反映されません。上のコード例で言えば、仮に <code>blueButton.onPointUp</code> で直接 <code>userColors</code> を変更しても、それはあくまでボタンを押した本人の手元でしか反映されないことになります。この場合、その後画面をクリックした時、本人の手元では青の矩形が表示されるようになりますが、他のプレイヤーの手元では (<code>userColors</code> が変更されていないので) 同じ位置に赤の矩形が表示されてしまいます。</p>
+<p>これを解決するには、ローカル処理の中から「ゲーム開発者が明示的に全体にイベントを共有する」処理が必要です。それが <code>g.game.raiseEvent()</code> です。</p>
+<p><code>raiseEvent()</code> で <code>g.MessageEvent</code> を生成してそれを全体に共有し、 <code>userColors</code> の変更は <code>g.MessageEvent</code> のハンドラ <code>g.Scene#message</code> の中で行うことで、すべてのプレイヤーの手元で <code>userColors</code> の変更を行うことができます。</p>
+<p><code>g.MessageEvent</code> はゲーム開発者が生成できるイベントで、第一引数に任意のデータを与えることができます。このデータは、受信側 (<code>scene.onMessage</code> の中) では <code>msg.data</code> として参照できます。イベントにはそれを生成したプレイヤー情報がついているので、 上のコード例では <code>scene.onMessage</code> 内で <code>msg.player.id</code> で送信したプレイヤーを特定して、色情報を更新しています。</p>
+<p>流れを整理すると次のようになります。</p>
+<ol>
+<li>ローカルエンティティで表示した UI をプレイヤー A が操作する</li>
+<li>プレイヤー A にローカルイベントが通知される</li>
+<li>プレイヤー A の手元で起きたローカルイベントの処理が <code>raiseEvent()</code> を呼び出す (プレイヤー A の色情報を送信する)</li>
+<li><code>raiseEvent()</code> されたイベントが全プレイヤーに通知される</li>
+<li><code>raiseEvent()</code> されたイベントを処理してゲームのグローバルな実行状態を変更する (全員がプレイヤー A の矩形の色情報を更新する)</li>
+</ol>
+<p><code>raiseEvent()</code> はローカルイベントの処理中にしか呼び出すべきではないことに注意してください。非ローカルイベントで行う処理は全プレイヤーが実行するため、そこで <code>raiseEvent()</code> を呼び出すと、プレイヤーの人数分のイベントが輻輳して送信されることになってしまいます。</p>
+<p><a name="local-operation"></a></p>
+<h2>ローカル処理とその制限</h2>
+<p>ローカルイベントに起因して実行される処理を、<strong>ローカル処理</strong> と呼ぶことにします。</p>
+<p>これは、主に <code>g.E#pointDown</code> などにローカルイベントが通知された時の処理を指します。ローカル処理中に呼び出された <code>g.Scene#setTimeout()</code> が引き起こす処理もローカル処理に含みます。</p>
+<p>ローカル処理には、そこでのみ許される処理や、逆に禁止される処理が存在します。</p>
+<ul>
+<li>ローカル処理で禁止される処理<ul>
+<li>ローカルでないエンティティの生成・操作</li>
+<li>シーン遷移</li>
+<li>(ローカル処理以外で利用している)乱数生成器(<code>g.Game#random</code> など)の利用</li>
+</ul>
+</li>
+<li>ローカル処理で許される処理<ul>
+<li>ローカルエンティティの生成・操作</li>
+<li><code>g.Game#focusingCamera</code> の変更 (次節で説明します)</li>
+<li><code>Math.random()</code> の利用 (ローカル処理でのみ可能)</li>
+<li>全体への通知 (<code>g.Game#raiseEvent()</code> の呼び出し) (ローカル処理でのみ可能)</li>
+</ul>
+</li>
+</ul>
+<p>ローカルイベントはそれを発生させたプレイヤーにとってしか存在しないので、ローカル処理では「プレイヤー間で間接的に共有されている実行状態」を破壊してはいけません。すなわち、同じ操作によって同じ実行状態が再現できなくなるような変更をしてはいけません。</p>
+<p>例として、幅・高さが 100 で、 <code>touchable</code> が真である、ローカルでない矩形のエンティティを考えます。ローカル処理の中でこのエンティティの位置を原点から (200, 0) の位置に移動させたとします。するとそれ以降、たとえば (50, 50) の位置に対するポイント押下イベントの結果は、プレイヤー間によって異なるものになってしまいます。このようなエンティティ操作に限らず、ローカル処理では「非ローカルエンティティの生成」や「シーン遷移」「(ゲーム開発者が作った)ゲーム状態の変更」など、破壊的操作のほとんどを行ってはいけません。</p>
+<p>通常の場合と異なり、Akashic Engine の乱数生成器 (<code>g.Game#random</code>) の利用も避けてください。ローカル処理によって特定のプレイヤーでのみ乱数生成が行われると、乱数生成器の内部状態が変わります。その結果、それ以降で各プレイヤーが乱数を生成した時に得られる数の系列が、一人だけ異なるものになってしまいます。ローカル処理で乱数を利用したい時(またその時のみ)は、 <code>Math.random()</code> を用いるべきです。
+(正確には、ローカル処理以外でまったく使われていない乱数生成器であれば、ローカル処理中で利用しても問題はありません。
+<code>new g.XorshiftRandomGenerator()</code> によって独自に生成した乱数生成器を、ローカル処理専用に用いることはできます。ただしこの場合、乱数生成器の生成時に同一シードを与えてしまうと、ローカル処理であるにも関わらず乱数の系列が他プレイヤーと同じになることには注意してください)</p>
+<div class="navi-center">
+<a href="マルチプレイの基礎">前 ()</a>
+ | <a href="../">目次</a>
+ | <a href="./camera.html">次 (プレイヤーごとに異なる位置を表示する)</a>
+</div>
+
+			</div>
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は、一部を除き <a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています: <a href="/image-license.html">詳細</a></li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
+</body>
+</html>
