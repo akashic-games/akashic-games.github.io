@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162208211-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162208211-1');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>より大規模なゲームを作るために</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?aa4267e">
+<link rel="stylesheet" href="/css/header.css?aa4267e">
+<link rel="stylesheet" href="/css/footer.css?aa4267e">
+
+
+<link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
+
+<link rel="stylesheet" href="/css/railscasts.css?aa4267e">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?aa4267e"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
+				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				<li><a href="/reference/coe/">coe framework</a></li>
+				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3>Akashic Engine 入門</h3>
+<h4><a name="basic"></a> 導入</h4>
+<ul>
+<li><a href="./index.html">トップ</a></li>
+<li><a href="./introduction.html">akashic の導入</a></li>
+</ul>
+<h4><a name="basic"></a> シングルプレイのゲーム作成</h4>
+<ul>
+<li><a href="./basic.html">コンテンツ作成の基本</a></li>
+<li><a href="./display-order.html">表示順の制御</a></li>
+<li><a href="./animation.html">アニメーションさせる</a></li>
+<li><a href="./click.html">クリックできるようにする</a></li>
+<li><a href="./audio.html">音を鳴らす</a></li>
+<li><a href="./scale-anchor.html">拡縮とアンカーポイント</a></li>
+<li><a href="./otherdraw.html">色々な描画</a></li>
+<li><a href="./bitmap-font.html">ビットマップフォントを使う</a></li>
+<li><a href="./export.html">ゲームを公開する</a></li>
+<li><a href="./install.html">拡張ライブラリを使う</a></li>
+<li><a href="./appendix.html">より大規模なゲームを作るために</a></li>
+</ul>
+<h4><a name="multiplay"></a> マルチプレイのゲーム作成</h4>
+<ul>
+<li><a href="./multiplay/introduction.html">マルチプレイの基礎</a></li>
+<li><a href="./multiplay/each-player.html">プレイヤーごとに異なる描画を行う</a></li>
+<li><a href="./multiplay/camera.html">プレイヤーごとに異なる位置を表示する</a></li>
+<li><a href="./multiplay/join.html">Join と Leave</a></li>
+</ul>
+
+		</div>
+		<div class="twocol-main">
+			<div class="inner responsive--width--twocol">
+				<h1>より大規模なゲームを作るために</h1>
+<h2><a name="scene-change"></a> シーンの切り替え</h2>
+<p>Akashic Engine では、タイトル場面・プレイ場面・スコア場面のように、ゲームの場面ごとにそれぞれ対応するシーンを作成しそれらを切り替えて表示できます。シーンの切り替えには <code>Game</code> オブジェクトに用意されたメソッドを利用します。</p>
+<ul>
+<li><code>g.game.replaceScene()</code></li>
+<li><code>g.game.pushScene()</code></li>
+<li><code>g.game.popScene()</code></li>
+</ul>
+<p><code>replaceScene()</code> は現在のシーンを破棄して次のシーンに遷移します。
+<code>pushScene()</code> を利用すると現在のシーンを保存して次のシーンに遷移します。
+<code>pushScene()</code> でシーン遷移した場合、<code>popScene()</code> で元のシーンに戻ることができます。</p>
+<p>以下のプログラムでは <code>replaceScene()</code> を利用して、画面のタップまたはクリックで 2 つのシーンを切り替えています。</p>
+<pre><code class="language-javascript">function main() {
+  g.game.pushScene(createSceneA());
+}
+
+function createSceneA() {
+  var scene = new g.Scene();
+  scene.onLoad.add(function() {
+    scene.append(createRect(scene, &quot;red&quot;));
+    scene.onPointDownCapture.add(function() {
+      g.game.replaceScene(createSceneB());
+    });
+  });
+  return scene;
+}
+
+function createSceneB() {
+  var scene = new g.Scene();
+  scene.onLoad.add(function() {
+    scene.append(createRect(scene, &quot;blue&quot;));
+    scene.onPointDownCapture.add(function() {
+      g.game.replaceScene(createSceneA());
+    });
+  });
+  return scene;
+}
+
+function createRect(scene, color) {
+  return new g.FilledRect({
+    scene: scene,
+    cssColor: color,
+    width: 32,
+    height: 32
+  });
+}
+
+module.exports = main;</code></pre>
+<h2><a name="split-file"></a> ファイル分割</h2>
+<p>Akashic Engine のスクリプトを複数のファイルに分けて記述した場合、
+<code>require()</code> を使って他のファイルの関数を読み込んで利用します。</p>
+<p><code>MainScene.js</code> に以下のコードが記述されているとします。</p>
+<pre><code class="language-javascript">module.exports.create = function() {
+  var scene = new g.Scene();
+  scene.onLoad.add(function() {
+    var rect = new g.FilledRect({
+      scene: scene,
+      cssColor: &quot;red&quot;,
+      width: 32,
+      height: 32
+    });
+    scene.append(rect);
+  });
+  return scene;
+};</code></pre>
+<p><code>mainScene.js</code> はシーンの作成処理を独立させたファイルです。コード中で <code>module.exports</code> に <code>create</code> 関数を代入しています。このコードを <code>akashic scan</code> でアセットとして追加すると関数を他のファイルから利用できます。</p>
+<p>例えば <code>main.js</code> から利用する場合は、次のようなコードになります。</p>
+<pre><code class="language-javascript">var MainScene = require(&quot;./MainScene&quot;);
+
+function main() {
+  g.game.pushScene(MainScene.create());
+}
+
+module.exports = main;</code></pre>
+<h2><a name="more-info"></a> より高度な情報</h2>
+<p>ここまでの説明で Akashic Engine を利用してゲームを作るのに必要な情報を一通り説明しました。より詳細な情報については以下もご覧ください。</p>
+<ul>
+<li><strong><a href="/reference/akashic-engine-v3/modules/_lib_main_d_.g.html">API リファレンス</a></strong><ul>
+<li>Akashic Engine で利用可能なすべてのメソッドとプロパティを列挙しています。</li>
+</ul>
+</li>
+<li><strong><a href="/guide/index.html">開発者向けガイド</a></strong><ul>
+<li>関連ツール類の仕様やその他の技術文書です。</li>
+</ul>
+</li>
+</ul>
+<div class="navi-center">
+<a href="./install.html">前 (拡張ライブラリを使う)</a>
+ | <a href="./">目次</a>
+ | <a href="./multiplay/introduction.html">前 (マルチプレイの基礎)</a>
+</div>
+
+			</div>
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は、一部を除き <a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています: <a href="/image-license.html">詳細</a></li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
+</body>
+</html>
