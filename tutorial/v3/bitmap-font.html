@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162208211-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162208211-1');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>ビットマップフォントを使う</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?aa4267e">
+<link rel="stylesheet" href="/css/header.css?aa4267e">
+<link rel="stylesheet" href="/css/footer.css?aa4267e">
+
+
+<link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
+
+<link rel="stylesheet" href="/css/railscasts.css?aa4267e">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?aa4267e"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
+				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				<li><a href="/reference/coe/">coe framework</a></li>
+				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3>Akashic Engine 入門</h3>
+<h4><a name="basic"></a> 導入</h4>
+<ul>
+<li><a href="./index.html">トップ</a></li>
+<li><a href="./introduction.html">akashic の導入</a></li>
+</ul>
+<h4><a name="basic"></a> シングルプレイのゲーム作成</h4>
+<ul>
+<li><a href="./basic.html">コンテンツ作成の基本</a></li>
+<li><a href="./display-order.html">表示順の制御</a></li>
+<li><a href="./animation.html">アニメーションさせる</a></li>
+<li><a href="./click.html">クリックできるようにする</a></li>
+<li><a href="./audio.html">音を鳴らす</a></li>
+<li><a href="./scale-anchor.html">拡縮とアンカーポイント</a></li>
+<li><a href="./otherdraw.html">色々な描画</a></li>
+<li><a href="./bitmap-font.html">ビットマップフォントを使う</a></li>
+<li><a href="./export.html">ゲームを公開する</a></li>
+<li><a href="./install.html">拡張ライブラリを使う</a></li>
+<li><a href="./appendix.html">より大規模なゲームを作るために</a></li>
+</ul>
+<h4><a name="multiplay"></a> マルチプレイのゲーム作成</h4>
+<ul>
+<li><a href="./multiplay/introduction.html">マルチプレイの基礎</a></li>
+<li><a href="./multiplay/each-player.html">プレイヤーごとに異なる描画を行う</a></li>
+<li><a href="./multiplay/camera.html">プレイヤーごとに異なる位置を表示する</a></li>
+<li><a href="./multiplay/join.html">Join と Leave</a></li>
+</ul>
+
+		</div>
+		<div class="twocol-main">
+			<div class="inner responsive--width--twocol">
+				<h1>ビットマップフォントを使う</h1>
+<h2><a name="bitmap-font"></a> ビットマップフォント</h2>
+<p>前節では、ダイナミックフォント (<code>g.DynamicFont</code>) を使って文字列の表示を行いました。
+これはシステムにインストールされているフォントを利用するものでした。
+もう一つの選択肢として、Akashic Engine はビットマップフォントを提供しています。</p>
+<p>ビットマップフォントは、事前に準備した文字画像を利用するフォントです。
+ダイナミックフォントとは一長一短の関係にあります。</p>
+<table>
+<thead>
+<tr>
+<th align="right"></th>
+<th align="center">ダイナミックフォント</th>
+<th align="center">ビットマップフォント</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="right"><strong>事前準備</strong></td>
+<td align="center">不要</td>
+<td align="center">必要<br/>(画像とグリフ情報が必要)</td>
+</tr>
+<tr>
+<td align="right"><strong>使用できる文字</strong></td>
+<td align="center">大半の文字</td>
+<td align="center">画像に含まれるもののみ</td>
+</tr>
+<tr>
+<td align="right"><strong>文字のデザイン</strong></td>
+<td align="center">システムに依存</td>
+<td align="center">画像で自由に作成可</td>
+</tr>
+</tbody></table>
+<p>使う可能性のある文字が事前に分かっている場合 (スコア表示など) には、
+ビットマップフォントを使うことで、任意のデザインで動作環境を問わず文字を描画できます。</p>
+<p>たとえば Akashic Engine で作成された『<a href="https://github.com/akashic-contents/akashic-trash">ゴミをゴミ箱に入れるだけのゲーム</a>』(以下の画像)では、画面左上の「TIME」の数値や右下「SCORE」の数値部分がビットマップフォントで作られています。</p>
+<p><img src="/img/tutorial/gomi-game-ss.png" alt="『ゴミを〜』のスクリーンショット"></p>
+<p>このゲームでは、「SCORE」の部分は固定の画像ですが、スコア自体は値に応じて変動するため固定の画像では描画できません。0〜9 の画像をフォントとして扱うことでこの描画が実現されています。</p>
+<h2><a name="bmpfont-generator"></a> bmpfont-generator</h2>
+<p>デザイン性の高いビットマップフォント用画像は、画像編集ソフトで作成することになるでしょう。
+一方で、既存のフォントのデザインをそのまま利用したい場合も考えられます。
+この場合には、Akashic Engine の周辺ツールとして提供されている bmpfont-generator が便利です。</p>
+<p><strong>bmpfont-generator</strong> は、TrueType フォント (.ttf) ファイルから指定された文字の画像を生成するツールです。また Akashic Engine のビットマップフォントとして使う場合に必要になる、グリフ情報のデータを JSON 形式で同時に生成できます。</p>
+<p>たとえば <a href="http://itouhiro.hatenablog.com/entry/20130602/font">PixelMplus</a> フォントから次のような画像を生成できます 。</p>
+<p><img src="/img/tutorial/pixelmplus.png" alt="文字画像の例"></p>
+<p>このチュートリアルでは、bmpfont-generator の出力でビットマップフォントを生成し文字列を表示します。</p>
+<p>bmpfont-generator は次のコマンドでインストールできます。</p>
+<pre><code class="language-sh">npm install -g @akashic/bmpfont-generator</code></pre>
+<p>これによりコマンド <code>bmpfont-generator</code> が使用できるようになります。
+さらに次のファイルを用意します。</p>
+<ul>
+<li>(a) TrueType フォント (.ttf) ファイル</li>
+<li>(b) 画像に含めたい文字が書かれたテキストファイル</li>
+</ul>
+<p>ここでは例として、(a) に上記 PixelMplus の PixelMplus10-Regular.ttf を、 (b) に次の内容の chars.txt を使います。</p>
+<pre><code>あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをんがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽぁぃぅぇぉゃゅょっーアイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポァィゥェォャュョッー１２３４５６７８９０！”＃＄％＆’（）＝｜＠「」『』｀＋＊；：、。，．＜＞・？＿</code></pre><p>これらを置いたディレクトリで次のコマンドを実行すると、同じディレクトリに画像 font.png と、グリフ情報 font_glyphs.json が生成されます。(上記の画像はこの font.png です)</p>
+<pre><code class="language-sh">bmpfont-generator ./PixelMplus10-Regular.ttf ./font.png -f chars.txt -H 20 -F &#39;#555555&#39;</code></pre>
+<p>コマンド中のファイル名部分は、用意したファイルに合わせて変更してください。</p>
+<p>なおここで <code>-H</code> は文字のサイズ (ピクセル単位) を、 <code>-F</code> は文字色 (<code>g.FilledRect</code> や CSS の色と同じ形式) を指定するオプションです。(すなわち高さ 20 ピクセル、色が暗めのグレー (#555555) を指定しています)</p>
+<p>その他 bmpfont-generator のオプションの詳細は、<a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a> を参照してください。</p>
+<blockquote>
+<p>bmpfont-generator の利用にあたっては、 <strong>フォントのライセンスに注意してください</strong> 。</p>
+<p>特に商用 (有償) のフォントでは、ライセンスによっては 「フォントの代替として機能するようなもの」を作成しての利用が許諾されていない場合があります。
+Akashic Engine のビットマップフォントはこれに該当する可能性があります。</p>
+</blockquote>
+<h2><a name="usage"></a> コンテンツでの利用</h2>
+<p>出力された文字画像を Akashic のゲームで利用するには、ファイルを game.json にアセットとして登録し、ゲームから読み込めるようにする必要があります。</p>
+<p><code>akashic init</code> コマンドで生成した Akashic ゲームであれば、文字画像と JSON ファイルをそれぞれ image/, text/ ディレクトリに置いて <code>akashic scan asset</code> を実行すると登録されます。</p>
+<p>登録後、以下のようなコードでビットマップフォントを生成できます。</p>
+<pre><code class="language-javascript">// 上で生成した font.png と font_glyphs.json に対応するアセットを取得
+var fontAsset = g.game.scene().asset.getImageById(&quot;font&quot;);
+var fontGlyphAsset = g.game.scene().asset.getTextById(&quot;font_glyphs&quot;);
+
+// テキストアセット (JSON) の内容をオブジェクトに変換
+var glyphInfo = JSON.parse(fontGlyphAsset.data);
+
+// ビットマップフォントを生成
+var font = new g.BitmapFont({
+  src: fontAsset,
+  glyphInfo: glyphInfo
+});</code></pre>
+<p><code>fontGlyphAsset</code> に <code>map</code>, <code>width</code>, <code>height</code> など「画像のどこに何の文字があるか」を指定する情報が含まれているテキストアセットです。
+この例のように bmpfont-generator が生成したグリフ情報があれば、それをそのまま与えることができます。
+画像編集ソフトで文字画像を自作した場合は、これらの値を自力で指定する必要があります。</p>
+<p>ビットマップフォントは、ダイナミックフォントと同じく <code>g.Label</code> の <code>font</code> プロパティに指定して利用できます。</p>
+<pre><code class="language-javascript">var label = new g.Label({
+  scene: g.game.scene(),
+  text: &quot;「こんにちは、アカシックエンジンです」&quot;,
+  fontSize: 20,
+  font: font
+});
+
+// 画面中央に配置
+label.x = (g.game.width - label.width) / 2;
+label.y = (g.game.height - label.height) / 2;
+label.modified();
+
+g.game.scene().append(label);</code></pre>
+<p><img src="/img/tutorial/bmpfont-example-ss.png" alt="ビットマップフォントを使ったスクリーンショット"></p>
+<div class="navi-center">
+<a href="./otherdraw.html">前 (色々な描画)</a>
+ | <a href="./">目次</a>
+ | <a href="./export.html">次 (ゲームを公開する)</a>
+</div>
+
+			</div>
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は、一部を除き <a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています: <a href="/image-license.html">詳細</a></li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
+</body>
+</html>
