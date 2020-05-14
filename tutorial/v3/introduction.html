@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162208211-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162208211-1');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>akashic 導入</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?aa4267e">
+<link rel="stylesheet" href="/css/header.css?aa4267e">
+<link rel="stylesheet" href="/css/footer.css?aa4267e">
+
+
+<link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
+
+<link rel="stylesheet" href="/css/railscasts.css?aa4267e">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?aa4267e"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
+				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				<li><a href="/reference/coe/">coe framework</a></li>
+				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3>Akashic Engine 入門</h3>
+<h4><a name="basic"></a> 導入</h4>
+<ul>
+<li><a href="./index.html">トップ</a></li>
+<li><a href="./introduction.html">akashic の導入</a></li>
+</ul>
+<h4><a name="basic"></a> シングルプレイのゲーム作成</h4>
+<ul>
+<li><a href="./basic.html">コンテンツ作成の基本</a></li>
+<li><a href="./display-order.html">表示順の制御</a></li>
+<li><a href="./animation.html">アニメーションさせる</a></li>
+<li><a href="./click.html">クリックできるようにする</a></li>
+<li><a href="./audio.html">音を鳴らす</a></li>
+<li><a href="./scale-anchor.html">拡縮とアンカーポイント</a></li>
+<li><a href="./otherdraw.html">色々な描画</a></li>
+<li><a href="./bitmap-font.html">ビットマップフォントを使う</a></li>
+<li><a href="./export.html">ゲームを公開する</a></li>
+<li><a href="./install.html">拡張ライブラリを使う</a></li>
+<li><a href="./appendix.html">より大規模なゲームを作るために</a></li>
+</ul>
+<h4><a name="multiplay"></a> マルチプレイのゲーム作成</h4>
+<ul>
+<li><a href="./multiplay/introduction.html">マルチプレイの基礎</a></li>
+<li><a href="./multiplay/each-player.html">プレイヤーごとに異なる描画を行う</a></li>
+<li><a href="./multiplay/camera.html">プレイヤーごとに異なる位置を表示する</a></li>
+<li><a href="./multiplay/join.html">Join と Leave</a></li>
+</ul>
+
+		</div>
+		<div class="twocol-main">
+			<div class="inner responsive--width--twocol">
+				<h1>akashic 導入</h1>
+<h2><a name="develop-tools"></a> 開発に必要なもの</h2>
+<p>Akashic Engine のゲーム開発には基本的なプログラミングの知識が必要です。
+Akashic Engine は JavaScript や TypeScript を利用してゲームのコードを書きます。このチュートリアルでは JavaScript を利用します。チュートリアルでは JavaScript の細かな機能や文法については解説していません。
+JavaScript に初めて触れる方や、知識に不安のある方は、適宜インターネット上の解説記事や入門書を参照してください。</p>
+<p>チュートリアルで説明している内容を試すには、コンピュータ (Windows, Mac, Linux など) とインターネット接続環境が必要です。
+Akashic Engine を利用したゲーム開発にはプログラミング作業が必要になり、その過程で次のような操作を行う必要があります。</p>
+<ul>
+<li>テキストエディタを利用してソースファイルを作成する。</li>
+<li>CUI ウインドウを利用してコマンドを実行する。</li>
+<li>開発に必要なプログラムをインターネットからダウンロードしてインストールする。</li>
+</ul>
+<p>これらの操作は利用しているコンピュータの種類やバージョンによって異なる場合があります。インターネットで検索してもやり方が分からない場合は、詳しい人に相談してください。</p>
+<h2><a name="develop-environment"></a> 開発環境の構築</h2>
+<h3><a name="install-node"></a> Node.js のインストール</h3>
+<p>Akashic Engine のゲーム開発には Node.js が必要です。
+Node.js は JavaScript のプログラムの実行と開発に必要なツールをまとめたソフトウェアです。
+Node.js には <code>node</code> コマンドと <code>npm</code> コマンドが付属します。
+<code>node</code> コマンドは JavaScript のプログラムを動かすコマンドです。
+Akashic Engine のツールは JavaScript で開発されており、実行に <code>node</code> コマンドを利用します。
+<code>npm</code> コマンドは JavaScript に関連するツールやライブラリを簡単に導入するコマンドです。
+Akashic Engine 本体も <code>npm</code> コマンドでダウンロードとインストールを行います。</p>
+<p>Node.js をインストールする方法はいくつかありますが、
+<a href="https://nodejs.org/ja/">公式サイト</a>に用意されているインストーラを利用するのが簡単です。
+Node.js には最新の機能を利用できる最新版と、長期間利用可能な LTS 版(推奨版)があります。
+Akashic Engine はどちらのバージョンでも動作しますが、このチュートリアルは LTS 版を前提に説明を進めます。</p>
+<p>Node.js はコマンドプロンプト (Windows) やターミナル (Mac) などの端末エミュレータにコマンドを入力して操作します。コマンドを入力するウインドウのことを、このチュートリアルでは CUI ウインドウとよびます。インストールが正常に行われたかどうかを確認するために、
+CUI ウインドウに次のコマンドを入力してください。</p>
+<pre><code class="language-sh">node -v</code></pre>
+<p>このコマンドは Node.js のバージョンを画面に出力します。正常にインストールされていれば次のようにバージョン番号が表示されます。</p>
+<pre><code class="language-sh">v12.16.2</code></pre>
+<p><code>v12.16.2</code> は執筆時点での LTS 版のバージョンです。新しいバージョンがリリースされるとこの数字は大きくなります。</p>
+<h3><a name="install-akashic-engine"></a> Akashic Engine のインストール</h3>
+<p>Akashic Engine のインストールには <code>npm</code> コマンドを利用します。
+<code>npm</code> コマンドを利用すると <code>npm install -g &lt;パッケージ名&gt;</code> でツールやライブラリをインストールできます。
+Akashic Engine のゲーム開発には次の 2 つのパッケージが必要です。</p>
+<ul>
+<li><code>@akashic/akashic-cli</code></li>
+<li><code>@akashic/akashic-sandbox</code></li>
+</ul>
+<p>登録ができたら次のコマンドで必要なツールをインストールします。</p>
+<pre><code class="language-sh">npm install -g @akashic/akashic-cli
+npm install -g @akashic/akashic-sandbox</code></pre>
+<p>インストールが完了すると、<code>akashic</code> コマンドと <code>akashic-sandbox</code> コマンドを利用できるようになります。以下のコマンドでそれぞれのコマンドのバージョンを表示することができます。エラーが表示されるバージョンが表示できれば、インストールが正常に行われています。</p>
+<pre><code class="language-sh">akashic -V
+akashic-sandbox -V</code></pre>
+<p>執筆時点では <code>akashic</code> のバージョンとして <code>1.13.3</code>、
+<code>akashic-sandbox</code> のバージョンとして <code>0.16.3</code> が表示されます。</p>
+<h2><a name="create-empty-game"></a> 空のゲームの作成</h2>
+<p>Akashic Engine のゲームには設定ファイル (<code>game.json</code>) と、ゲームを起動するプログラムが必要です。
+<code>game.json</code> はゲームの設定とゲームが利用するアセットを記述する JSON 形式のファイルです。アセットはプログラムのソースコードや画像、音声ファイルなどゲームの実行に必要なファイルのことです。</p>
+<p>以下は <code>game.json</code> の例です。
+(この内容の完全な詳細は <a href="https://akashic-games.github.io/guide/game-json.html">game.json の仕様</a> を参照してください。)</p>
+<pre><code class="language-json">{
+  &quot;width&quot;: 320,
+  &quot;height&quot;: 320,
+  &quot;fps&quot;: 30,
+  &quot;main&quot;: &quot;./main.js&quot;,
+  &quot;assets&quot;: {
+    &quot;main&quot;: {
+      &quot;type&quot;: &quot;script&quot;,
+      &quot;path&quot;: &quot;main.js&quot;,
+      &quot;global&quot;: true
+    }
+  },
+  &quot;environment&quot;: {
+    &quot;sandbox-runtime&quot;: &quot;3&quot;
+  }
+}</code></pre>
+<p>ここで指定している <code>main.js</code> がゲームが最初に読み込むプログラムです。
+<code>assets.main</code> プロパティで、<code>main.js</code> がスクリプトアセットであること、
+<code>main</code> プロパティで最初に読み込むスクリプトであることを表しています。</p>
+<p><code>main.js</code> は最初のシーンを作成します。シーンはゲームの場面を表すオブジェクトです。例えば、タイトル場面、プレイ場面、スコア場面など必要に応じて作成できます。
+Akashic Engine のゲームには最低 1 つのシーンが必要です。次のプログラムは空のシーンを作成して、そのシーンを表示します。</p>
+<pre><code class="language-javascript">function main() {
+  var scene = new g.Scene();
+  g.game.pushScene(scene);
+}
+
+module.exports = main;</code></pre>
+<p>上のコードを <code>main.js</code> という名前で保存します。作成したゲームを動かすには、<code>game.json</code> と <code>main.js</code> を同じディレクトリに配置し、そのディレクトリで次のコマンドを実行します。</p>
+<pre><code class="language-sh">akashic-sandbox</code></pre>
+<p>実行すると画面に次のように表示されます。</p>
+<pre><code class="language-sh">please access to http://localhost:3000/game/ by web-browser</code></pre>
+<p>ウェブブラウザを起動して <code>http://localhost:3000/game/</code> を開くとゲームが実行されます。今のところシーンに何も配置していないので何も表示されません。</p>
+<p>以下は、<code>main.js</code> に赤い矩形を表示するコードを追加したものです。</p>
+<pre><code class="language-javascript">function main() {
+  var scene = new g.Scene();
+  scene.onLoad.add(function() {
+    var rect = new g.FilledRect({
+      scene: scene,
+      cssColor: &quot;#ff0000&quot;,
+      width: 32,
+      height: 32
+    });
+    scene.append(rect);
+  });
+  g.game.pushScene(scene);
+}
+
+module.exports = main;</code></pre>
+<p><code>main.js</code> をこの内容に書き換えて <code>http://localhost:3000/game/</code> を再読み込みすると赤い矩形が表示されます。</p>
+<p><img src="/img/tutorial/sample01.png" alt="sample01"></p>
+<p><code>akashic-sandbox</code> を終了するには CUI ウインドウに <code>Ctrl-C</code> を入力します。</p>
+<blockquote>
+<p><code>Ctrl-C</code> はキーボードの <code>Ctrl</code> キーを押しながら <code>C</code> キーを押すという意味です。</p>
+</blockquote>
+<h2><a name="use-akashic-init"></a> akashic init の利用</h2>
+<p><code>akashic init</code> を利用すると、ゲームに必要なファイルを作ることができます。空のディレクトリを作成してその中で次のコマンドを実行します。</p>
+<pre><code class="language-sh">akashic init</code></pre>
+<p>コマンドを入力すると、ゲームの仕様をいくつか質問されます。最初は、</p>
+<pre><code class="language-sh">width (320)</code></pre>
+<p>と表示されます。ここで数字を入力して Enter キーを押すとゲームの幅 (width) を指定できます。何も入力せずに Enter を押すと幅はカッコ内に表示された大きさになります。ここではそのまま Enter を押します。</p>
+<p>続けてゲームの高さ (height) と FPS を指定できます。ここではどちらも初期値を使います。値の指定が終わると、</p>
+<pre><code class="language-sh">INFO: Done!</code></pre>
+<p>と表示され、いくつかのファイルやフォルダが作られます。</p>
+<p><code>akashic init</code> は予め用意されたテンプレートをもとにファイルを作成します。
+利用するテンプレートの種類は <code>-t</code> オプションで切り替えることができます。
+標準で対応しているテンプレートは以下の通りです。
+下記テンプレートについての説明については<a href="/guide/akashic-cli.html#--type%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3">こちら</a>を参照してください。</p>
+<ul>
+<li><code>javascript</code> (省略時)</li>
+<li><code>javascript-minimal</code></li>
+<li><code>javascript-shin-ichiba-ranking</code></li>
+<li><code>typescript</code></li>
+<li><code>typescript-minimal</code></li>
+<li><code>typescript-shin-ichiba-ranking</code></li>
+</ul>
+<p>例えば、TypeScript でゲームを作る場合は、以下のコマンドを入力します。</p>
+<pre><code class="language-sh">akashic init -t typescript</code></pre>
+<blockquote>
+<p>Windows 10 の PowerShell 上で <code>akashic init</code> などを実行すると、権限エラーが発生して実行に失敗することがあります。
+これは、PowerShell の実行ポリシーがデフォルトで Restricted(スクリプトの実行が許可されていない状態)になっているためです。
+PowerShell 上で <code>akashic init</code> などを実行可能にするために以下の手順を実行してください。</p>
+<ol>
+<li>Powershell のアイコンを右クリックして「管理者として実行する」を選択することで、Powershell を管理者権限で起動します。</li>
+<li>Powershell 上で <code>Set-ExecutionPolicy RemoteSigned</code> を実行して、実行ポリシーを RemoteSigned(手元の PC でスクリプトを実行できる状態)に変更します。実行後選択肢が出力されるので、ここで <code>Y</code> と Enter キーを入力します。</li>
+<li>Powershell 上で <code>Get-ExecutionPolicy</code> を実行して、実行ポリシーが RemoteSigned に変わっていることを確認します。
+これで、実行ポリシーの変更を明示的に行わない限りは永続的に PowerShell で akashic-cli 等のスクリプトの実行が可能になります。</li>
+</ol>
+<p>また、永続的ではなくその時起動した PowerShell 上限定で実行ポリシーを変更したい場合は、その PowerShell 上で <code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine</code> を実行します。
+実行ポリシーについての詳細は<a href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6">Microsoft の公式ページ</a>を参照してください。</p>
+</blockquote>
+<div class="navi-center">
+ -
+ | <a href="./">目次</a>
+ | <a href="./basic.html">次 (コンテンツ作成の基本)</a>
+</div>
+
+			</div>
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は、一部を除き <a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています: <a href="/image-license.html">詳細</a></li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
+</body>
+</html>

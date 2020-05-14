@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162208211-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162208211-1');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>アニメーションさせる</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?aa4267e">
+<link rel="stylesheet" href="/css/header.css?aa4267e">
+<link rel="stylesheet" href="/css/footer.css?aa4267e">
+
+
+<link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
+
+<link rel="stylesheet" href="/css/railscasts.css?aa4267e">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?aa4267e"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
+				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				<li><a href="/reference/coe/">coe framework</a></li>
+				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3>Akashic Engine 入門</h3>
+<h4><a name="basic"></a> 導入</h4>
+<ul>
+<li><a href="./index.html">トップ</a></li>
+<li><a href="./introduction.html">akashic の導入</a></li>
+</ul>
+<h4><a name="basic"></a> シングルプレイのゲーム作成</h4>
+<ul>
+<li><a href="./basic.html">コンテンツ作成の基本</a></li>
+<li><a href="./display-order.html">表示順の制御</a></li>
+<li><a href="./animation.html">アニメーションさせる</a></li>
+<li><a href="./click.html">クリックできるようにする</a></li>
+<li><a href="./audio.html">音を鳴らす</a></li>
+<li><a href="./scale-anchor.html">拡縮とアンカーポイント</a></li>
+<li><a href="./otherdraw.html">色々な描画</a></li>
+<li><a href="./bitmap-font.html">ビットマップフォントを使う</a></li>
+<li><a href="./export.html">ゲームを公開する</a></li>
+<li><a href="./install.html">拡張ライブラリを使う</a></li>
+<li><a href="./appendix.html">より大規模なゲームを作るために</a></li>
+</ul>
+<h4><a name="multiplay"></a> マルチプレイのゲーム作成</h4>
+<ul>
+<li><a href="./multiplay/introduction.html">マルチプレイの基礎</a></li>
+<li><a href="./multiplay/each-player.html">プレイヤーごとに異なる描画を行う</a></li>
+<li><a href="./multiplay/camera.html">プレイヤーごとに異なる位置を表示する</a></li>
+<li><a href="./multiplay/join.html">Join と Leave</a></li>
+</ul>
+
+		</div>
+		<div class="twocol-main">
+			<div class="inner responsive--width--twocol">
+				<h1>アニメーションさせる</h1>
+<p><a name="animation"></a></p>
+<h2><a name="animation"></a> アニメーション</h2>
+<p>Akashic Engine のコンテンツは固定 FPS で動作します。
+FPS の値は 1 秒間に画面を更新する回数です。エンティティの位置や大きさなどを画面更新の度に変化させると、エンティティをアニメーションさせることができます。</p>
+<p>エンティティには位置や大きさを表すプロパティが用意されており、プログラムで読み書きできます。例えば <code>FilledRect</code> の場合、以下のプロパティが存在します。
+<code>cssColor</code> 以外のプロパティは <code>Sprite</code> など他のエンティティにも存在します。</p>
+<div class="table--scroll">
+<table>
+<thead>
+<tr>
+<th>プロパティ名</th>
+<th>値の種類</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cssColor</code></td>
+<td>CSS 色を表す文字列</td>
+<td>塗りつぶす色</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>数値</td>
+<td>エンティティのX座標</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>数値</td>
+<td>エンティティのY座標</td>
+</tr>
+<tr>
+<td><code>width</code></td>
+<td>数値</td>
+<td>エンティティの幅</td>
+</tr>
+<tr>
+<td><code>height</code></td>
+<td>数値</td>
+<td>エンティティの高さ</td>
+</tr>
+<tr>
+<td><code>opacity</code></td>
+<td><code>0.0</code>以上<code>1.0</code>以下の数値</td>
+<td>不透明度。<code>0.0</code>で透明、<code>1.0</code>で不透明</td>
+</tr>
+<tr>
+<td><code>scaleX</code></td>
+<td>数値</td>
+<td>横方向の拡大率</td>
+</tr>
+<tr>
+<td><code>scaleY</code></td>
+<td>数値</td>
+<td>縦方向の拡大率</td>
+</tr>
+<tr>
+<td><code>angle</code></td>
+<td>数値</td>
+<td>回転角度(度)。回転の軸はアンカーポイントの位置</td>
+</tr>
+<tr>
+<td><code>anchorX</code></td>
+<td>数値または <code>null</code></td>
+<td>アンカーポイントの水平成分。 <code>0.0</code>でエンティティの左端、<code>1.0</code>で右端。<a href="./scale-anchor.html">（詳細）</a></td>
+</tr>
+<tr>
+<td><code>anchorY</code></td>
+<td>数値または <code>null</code></td>
+<td>アンカーポイントの垂直成分。 <code>0.0</code>でエンティティの上端、<code>1.0</code>で下端。<a href="./scale-anchor.html">（詳細）</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>これらのプロパティの値を変更したら、ゲーム開発者は <code>modified()</code> メソッドを明示的に呼び出して、
+Akashic Engine にプロパティの変更を通知する必要があります。</p>
+<p>例えば、<code>FilledRect</code> オブジェクトの <code>rect</code> を右方向に 20、下方向に 10 移動するコードは次のようになります。</p>
+<pre><code class="language-javascript">rect.x += 20;
+rect.y += 10;
+rect.modified();</code></pre>
+<p>シーンオブジェクトの <code>onUpdate</code> トリガーはシーンのフレームを描画するたびに呼び出されます。以下はシーンの <code>onUpdate</code> トリガーを利用して矩形 <code>rect</code> を右に移動させるコードです。</p>
+<pre><code class="language-javascript">scene.onUpdate.add(function() {
+  ++rect.x;
+  rect.modified();
+});</code></pre>
+<p>シーンオブジェクトの <code>onUpdate</code> トリガーにハンドラを登録する処理は、シーンの読み込み後に行う必要があります。プログラム全体は以下のようになります。</p>
+<pre><code class="language-javascript">function main() {
+  var scene = new g.Scene();
+  scene.onLoad.add(function() {
+    var rect = createRect(scene);
+    scene.append(rect);
+    // scene の onUpdate を設定し、毎フレーム実行する処理を記述
+    scene.onUpdate.add(function() {
+      ++rect.x;
+      rect.modified();
+    });
+  });
+  g.game.pushScene(scene);
+}
+
+function createRect(scene) {
+  return new g.FilledRect({
+    scene: scene,
+    width: 30,
+    height: 30,
+    cssColor: &quot;red&quot;
+  });
+}
+
+module.exports = main;</code></pre>
+<p><img src="/img/tutorial/sample07.gif" alt="sample07"></p>
+<p>エンティティ自体も <code>onUpdate</code> トリガーを備えています。以下はエンティティ <code>rect</code> のトリガーを利用したコードです。</p>
+<pre><code class="language-javascript">rect.onUpdate.add(function() {
+  ++rect.x;
+  rect.modified();
+});</code></pre>
+<p>シーンのトリガーでできることはエンティティのトリガーでも実現できますが、トリガーの寿命に違いがあります。シーンのトリガーがシーンが切り替わるまで有効なのに対して、エンティティのトリガーはエンティティが破棄されるまで有効になります。例えばシーンの途中でエンティティが破棄された場合はトリガーが無効になります。以下の例では矩形が画面の中央に到達したら <code>destroy()</code> メソッドでエンティティを破棄しています。</p>
+<pre><code class="language-javascript">function main() {
+  var scene = new g.Scene();
+  scene.onLoad.add(function() {
+    var rect = createRect(scene);
+    scene.append(rect);
+    // rect の update を利用
+    rect.onUpdate.add(function() {
+      moveRect(rect);
+    });
+  });
+  g.game.pushScene(scene);
+}
+
+function createRect(scene) {
+  // 前の例と同じ
+}
+
+function moveRect(rect) {
+  ++rect.x;
+  rect.modified();
+  if (rect.x &gt; g.game.width / 2) rect.destroy();
+}
+
+module.exports = main;</code></pre>
+<p><img src="/img/tutorial/sample08.gif" alt="sample08"></p>
+<h2><a name="frame-animation">フレームアニメーション</h2>
+<p><code>g.FrameSprite</code> を利用すると、パラパラ漫画のように画像を切り替えていくアニメーション(フレームアニメーション)を手軽に行うことができます。</p>
+<p>例えば次のような画像を考えます。</p>
+<p><img src="/img/tutorial/sample-explosion.png" alt="元画像"></p>
+<p>この画像はアニメーションの様子が 100x100 サイズのフレームとして順番に並んでいます。</p>
+<p>以下は、<code>g.FrameSprite</code> を使ってこの画像をアニメーションするプログラムです。</p>
+<pre><code>function main() {
+  var scene = new g.Scene({
+    assetIds: [&quot;explosion&quot;]  // 上の画像は &quot;explosion&quot; というアセットIDであるとします
+  });
+  scene.onLoad.add(function () {
+    var frameSprite = new g.FrameSprite({
+      scene: scene,
+      src: scene.asset.getImageById(&quot;explosion&quot;),
+      // エンティティのサイズ
+      width: 100,
+      height: 100,
+
+      // 元画像のフレーム1つのサイズ
+      srcWidth: 100,
+      srcHeight: 100,
+
+      // アニメーションに利用するフレームのインデックス配列
+      // インデックスは元画像の左上から右にsrcWidthとsrcHeightの矩形を並べて数え上げ、右端に達したら一段下の左端から右下に達するまで繰り返す
+      frames: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+
+      // アニメーションをループする（省略した場合ループする）
+      loop: true
+    });
+    scene.append(frameSprite);
+    frameSprite.start();
+  });
+  g.game.pushScene(scene);
+}
+
+module.exports = main;</code></pre><p><img src="/img/tutorial/sample-framesprite.gif" alt="FrameSprite"></p>
+<p>フレームアニメーションを表示するには <code>FrameSprite</code> エンティティを使います。 <code>FrameSprite</code> エンティティのパラメータオブジェクトのプロパティには、最初に表示するフレームを指定する <code>frameNumber</code> やフレーム遷移の速度を指定する <code>interval</code> を指定することができます。
+<code>start()</code> メソッドを呼び出すまでアニメーションは開始されません。アニメーションを終了したい場合は、 <code>stop()</code> メソッドを呼び出します。</p>
+<h2><a name="timer-function"></a> タイマー関数</h2>
+<p>3 秒後にエンティティを破棄したいなど、指定時間後に処理を行う場合は、シーンオブジェクトの <code>scene.setTimeout()</code> メソッドを利用します。
+<code>scene.setTimeout()</code> にはコールバック関数とミリ秒単位の時間を引数として渡します。例えば、シーン <code>scene</code> があり、3 秒後すなわち 3000 ミリ秒後に処理を行う場合、以下のように記述します。</p>
+<pre><code class="language-javascript">scene.setTimeout(function() {
+  // 3秒後に行う処理
+}, 3000);</code></pre>
+<p><code>scene.setTimeout()</code> ではミリ秒単位で時間を指定できますが、実際にはフレーム単位で処理が行われます。例えばゲームが 30FPS、つまり 1 秒間に 30 フレーム描画している場合、1 フレームの長さは約 33 ミリ秒なので、実際の処理時間は 33 ミリ秒単位に切り上げられます。</p>
+<p>以下は <code>scene.setTimeout()</code> を使って 3 秒後に矩形 <code>rect</code> を破棄するコードです。</p>
+<pre><code class="language-javascript">scene.setTimeout(function() {
+  rect.destroy();
+}, 3000);</code></pre>
+<p>一定時間ごとに繰り返し処理をする場合は、シーンオブジェクトの <code>scene.setInterval()</code> メソッドを利用します。
+<code>scene.setInterval()</code> メソッドの利用方法は <code>scene.setTimeout()</code> メソッドと同じです。以下は 0.5 秒おきに矩形の色を切り替えるコードです。</p>
+<pre><code class="language-javascript">var flg = false;
+scene.setInterval(function() {
+  rect.cssColor = flg ? &quot;red&quot; : &quot;black&quot;;
+  rect.modified();
+  flg = !flg;
+}, 500);</code></pre>
+<p><code>scene.setTimeout()</code> と <code>scene.setInterval()</code> に登録した関数は、それぞれ <code>scene.clearTimeout()</code> と <code>scene.clearInterval()</code> 関数で登録を解除できます。引数には <code>scene.setTimeout()</code> と <code>scene.setInterval()</code> が返す ID を指定します。以下のプログラムでは <code>scene.setInterval()</code> で登録した関数を 3 秒後に <code>scene.clearInterval()</code> で解除しています。</p>
+<pre><code class="language-javascript">function main() {
+  var scene = new g.Scene();
+  scene.onLoad.add(function() {
+    var rect = createRect(scene);
+    scene.append(rect);
+    var intervalId = scene.setInterval(function() {
+      rect.x += 10;
+      rect.modified();
+    }, 200);
+    scene.setTimeout(function() {
+      scene.clearInterval(intervalId);
+    }, 3000);
+  });
+  g.game.pushScene(scene);
+}
+
+function createRect(scene) {
+  return new g.FilledRect({
+    scene: scene,
+    width: 30,
+    height: 30,
+    cssColor: &quot;red&quot;
+  });
+}
+
+module.exports = main;</code></pre>
+<p><img src="/img/tutorial/sample09.gif" alt="sample09"></p>
+<p><strong><code>scene.setTimeout()</code> ではない、グローバルの <code>setTimeout()</code> や、同じくグローバルの <code>setInterval()</code> は使用しないよう注意してください。</strong>
+これは、Aksahic Engine のコンテンツは、現実の時間とは違う速度で実行されることがあるためです
+(例えば、Akashic Engine のゲームは、ニコニコ生放送上で実行されることがあります。その場合、タイムシフトではシークバーに連動する形で動作します)。この時、 <code>scene.setTimeout()</code> は実行速度を踏まえて経過時間を処理するのですが、 グローバルの <code>setTimeout()</code> は指定した時間そのままの時間経過を待ってしまうため、処理の実行タイミングがずれてしまうことがあり得ます。</p>
+<h2><a name="random-number"></a> 乱数</h2>
+<p>Akashic Engine は独自の乱数生成器を備えています。以下のコードは 0 以上 1 未満の数値をランダムに一つ選んで返します。</p>
+<pre><code class="language-javascript">g.game.random.generate();</code></pre>
+<p>この関数は JavaScript の標準にある <code>Math.random()</code> と同じ機能ですが、 <strong>Akashic Engine のゲームでは原則 <code>g.game.random</code> を利用してください</strong> 。
+(このことは特にマルチプレイの場合に重要です。詳細は <a href="./multiplay/introduction.html">マルチプレイの基礎</a> の節で後述します)</p>
+<p><code>generate()</code> は実数を返しますが、整数の乱数が必要なことも多いでしょう。0 以上 <code>x</code> 未満の整数は、 <code>generate()</code> を使って次のように生成できます。</p>
+<pre><code class="language-javascript">Math.floor(g.game.random.generate() * x);</code></pre>
+<p>このコードでは、 <code>generate()</code> の戻り値を <code>x</code> 倍することで「0 以上 <code>x</code> 未満の実数」にし、
+そこから <code>Math.floor()</code> で小数点以下を切り捨てて「0 以上 <code>x</code> 未満の整数」にしています (<code>Math.floor()</code> は JavaScript の標準にある関数です)。</p>
+<p>以下のプログラムは矩形を格子状に並べるプログラムです。ただし矩形の色は 4 種類の色の中からランダムに選んで決めています。</p>
+<pre><code class="language-javascript">var size = 25;
+var margin = 15;
+
+function main() {
+  var scene = new g.Scene();
+  scene.onLoad.add(function() {
+    var x, y, rect;
+    for (y = 0; y &lt; g.game.height; y += size + margin) {
+      for (x = 0; x &lt; g.game.width; x += size + margin) {
+        rect = createRect(scene, x, y);
+        scene.append(rect);
+      }
+    }
+  });
+  g.game.pushScene(scene);
+}
+
+function createRect(scene, x, y) {
+  var colors = [&quot;blue&quot;, &quot;navy&quot;, &quot;royalblue&quot;, &quot;skyblue&quot;];
+  var idx = Math.floor(g.game.random.generate() * colors.length);
+  return new g.FilledRect({
+    scene: scene,
+    x: x,
+    y: y,
+    width: size,
+    height: size,
+    cssColor: colors[idx]
+  });
+}
+
+module.exports = main;</code></pre>
+<p><img src="/img/tutorial/sample10.png" alt="sample10"></p>
+<div class="navi-center">
+<a href="./display-order.html">前 (表示順を制御する)</a>
+ | <a href="./">目次</a>
+ | <a href="./click.html">次 (クリックできるようにする)</a>
+</div>
+
+			</div>
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は、一部を除き <a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています: <a href="/image-license.html">詳細</a></li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
+</body>
+</html>
