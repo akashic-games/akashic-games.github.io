@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162208211-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162208211-1');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>デザインガイドライン</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?aa4267e">
+<link rel="stylesheet" href="/css/header.css?aa4267e">
+<link rel="stylesheet" href="/css/footer.css?aa4267e">
+
+
+<link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
+
+<link rel="stylesheet" href="/css/railscasts.css?aa4267e">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?aa4267e"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
+				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				<li><a href="/reference/coe/">coe framework</a></li>
+				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3>ニコ生ゲームを作ろう</h3>
+<ul>
+<li><strong><a href="./index.html">トップ</a></strong></li>
+<li><strong><a href="./introduction.html">ニコ生ゲームとは</a></strong></li>
+<li><strong><a href="./mod-game.html">ニコ生ゲームを作ろう・改造編</a></strong><ul>
+<li><a href="./install.html">インストール</a></li>
+<li><a href="./thiefBuster-mod.html">『泥棒バスター』を改造する</a></li>
+<li><a href="./speed-jigsaw-mod.html">『スピードジグソー』を改造する</a></li>
+</ul>
+</li>
+<li><strong><a href="./ranking-top.html">ニコ生ゲームを作ろう・ランキングゲーム編</a></strong><ul>
+<li><a href="./ranking.html">ランキング対応ゲーム</a></li>
+<li><a href="./ranking-by-template.html">テンプレートでわかるランキング対応ゲーム</a></li>
+</ul>
+</li>
+<li><strong><a href="./multi-top.html">ニコ生ゲームを作ろう・マルチプレイゲーム編</a></strong><ul>
+<li><a href="./multi-ready.html">マルチプレイ開発予備知識</a></li>
+<li><a href="./column-about-multi.html">マルチプレイゲームを知ろう</a></li>
+<li><a href="./column-local-process.html">簡単なゲームを作ってローカル処理に触れよう</a></li>
+<li><a href="./column-join-leave.html">Join と Leave とニコ生の話</a></li>
+<li><a href="./column-make-multi.html">実際にマルチプレイゲームを考えて作ろう</a></li>
+</ul>
+</li>
+<li><strong><a href="./submit.html">ニコ生ゲームを投稿しよう</a></strong></li>
+<li><strong><a href="./play.html">ニコ生ゲームで遊ぼう</a></strong></li>
+<li><strong><a href="./design-guidelines.html">デザインガイドライン</a></strong></li>
+<li><strong><a href="./links.html">関連資料・困った時は</a></strong></li>
+</ul>
+
+		</div>
+		<div class="twocol-main">
+			<div class="inner responsive--width--twocol">
+				<h1>デザインガイドライン</h1>
+<h2>本ガイドラインについて</h2>
+<ul>
+<li>「つりっくま」等のニコ生ゲームや、「おしゃべりトピック」等の放送ネタの開発をおこなう際、<ul>
+<li>PC やスマートフォンアプリのプレイヤー上の UI とコンテンツ操作が衝突する</li>
+<li>スマートフォンアプリでのポートレト表示において画面が小さすぎて操作しづらい..等の理由で、ユーザーが満足な操作をおこなえないことがあります</li>
+</ul>
+</li>
+<li>より多くのユーザーが満足できるコンテンツづくりを開発者の皆様におこなっていただけるよう本ガイドラインを作成しました</li>
+<li>なお、本資料で提示するのは、<u><strong>クリックやタップ、スワイプ操作の必要な「ボタン」やその UI のガイドライン</strong></u>となります<ul>
+<li><u>クリックやタップ操作の無い UI や、その他のグラフィックに関しては、本資料の記載事項を考慮する必要はございません</u></li>
+</ul>
+</li>
+</ul>
+<h2>A：ボタン等の設置を避けるべきエリア</h2>
+<p>本項で説明するエリアに、クリックやタップが必要なボタン等を設置することは、PC・スマートフォンアプリのプレイヤー UI と競合し、ユーザー操作をおこなえなくなる可能性があります。ここにボタン等を設置することは避けることを推奨します。</p>
+<table border="1">
+    <tr>
+        <td style="width:15%;"></td>
+        <td style="width:40%;"></td>
+        <td style="width:45%;">
+            <p>下記のUIと競合します</p>
+        </td>
+    </tr>
+    <tr>
+        <td>A-1.避けること<span style="color:red;">強く</span>推奨</td>
+        <td style="vertical-align:top;">
+            <br /><br />
+            <a href="/img/shin-ichiba/design/tbl-a-1-size.png" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-a-1-size.png" width="216" height="126"/>
+            </a>
+            <br /><br /><br /><br />
+            <a href="/img/shin-ichiba/design/tbl-a-1-ratio.png" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-a-1-ratio.png" width="216" height="126">
+            </a>
+        </td>
+        <td style="text-align:left">
+            <strong>①：スマートフォンアプリフルスクリーン時　右上にあるプレイヤーボタン</strong>
+            <br />
+            <a href="/img/shin-ichiba/design/tbl-a-1-player-btn.jpg" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-a-1-player-btn.jpg" width="216" height="126">
+            </a>
+            <br />
+            <strong>②：PCフルスクリーン時　プレイヤー出現UI（下部領域）</strong>
+            <br /><br />
+            <a href="/img/shin-ichiba/design/tbl-a-1-under-player.gif" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-a-1-under-player.gif" width="216" height="126">
+            </a>
+            <br />
+            <p>※プレイヤー非表示時であっても、下部6.7%領域にマウスを移動すると上のようにプレイヤーが出現し、コンテンツが操作しづらくなります。</p>
+        </td>
+    </tr>
+    <tr>
+        <td>A-2.避けることを推奨</td>
+        <td>
+            <br /><br />
+            <a href="/img/shin-ichiba/design/tbl-a-2-size.png" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-a-2-size.png" width="216" height="126">
+            </a>
+            <br /><br />
+            <a href="/img/shin-ichiba/design/tbl-a-2-ratio.png" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-a-2-ratio.png" width="216" height="126">
+            </a>
+        </td>
+        <td style="text-align:left">
+            <strong>PC、スマートフォンで放送者が投稿するコメントが描画されることがある</strong>
+            <br /><br /><br />
+            <strong>PC</strong><br />
+            <a href="/img/shin-ichiba/design/tbl-a-2-pc.jpg" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-a-2-pc.jpg" width="216" height="126" />
+            </a>
+            <br /><br />
+            <strong>スマートフォン<strong><br />
+            <a href="/img/shin-ichiba/design/tbl-a-2-sp.png" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-a-2-sp.png" width="216" height="126" />
+            </a>
+        </td>
+    </tr>
+</table>
+
+<h3>本エリアにボタン等の設置を検討する場合、下記をご確認ください</h3>
+<ul>
+<li>1.ユーザーの主たるコンテンツ操作と衝突しないか？<ul>
+<li>画面全体がクリック/タップできるコンテンツ　 → 　エリア外をタップすれば済むため、問題ありません</li>
+<li>コンテンツのメイン操作ではなく、補助的なボタン（オプション/設定など）の設置である　 → 　推奨はしませんが、コンテンツ制作者でご判断ください。</li>
+</ul>
+</li>
+<li>2.本エリア外に十分なクリック/タップ領域が確保されているか？<ul>
+<li>下記表をご確認ください。</li>
+</ul>
+</li>
+</ul>
+<table border="1">
+    <tr>
+        <td>問題なし</td>
+        <td>
+            <a href="/img/shin-ichiba/design/tbl-a-3-ok.png" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-a-3-ok.png" width="216" height="126" />
+            </a>
+        </td>
+        <td>
+            <p>本エリア外に半分以上、クリック/タップ領域が確保されている</p>
+        </td>
+    </tr>
+    <tr>
+        <td><span style="color:red;">問題あり</span></td>
+        <td>
+            <a href="/img/shin-ichiba/design/tbl-a-3-ng.png" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-a-3-ng.png" width="216" height="126" />
+            </a>
+        </td>
+        <td><span style="color:red;">本エリア外に半分以上、クリック/タップ領域が確保されていない</span>
+        </td>
+    </tr>
+</table>
+
+<h2>B：スワイプ操作を避けるべき（且つ、可能であればボタンの設置も避けるべき）エリア</h2>
+<p>本項で説明するエリアでスワイプ操作をおこなわせるのは、スマートフォンアプリのプレイヤー UI と競合し、ユーザーが操作をおこなえなくなる可能性が高いです。ここでスワイプ操作をおこなわせるのは避けることを<strong><span style="color:red;">強く</span>推奨</strong>します。</p>
+<table border="1">
+    <tr>
+        <td style="padding:5px;"></td>
+        <td style="padding:5px;vertical-align:top;">
+            <p>下記のUIと競合します</p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="/img/shin-ichiba/design/tbl-b-size.png" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-b-size.png" width="216" height="126" />
+            </a>
+            <a href="/img/shin-ichiba/design/tbl-b-ratio.png" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-b-ratio.png" width="216" height="126" />
+            </a>
+        </td>
+        <td style="vertical-align:top; text-align:left;">
+            <p>
+            <strong>iOS：フルスクリーン時OS標準UI</strong><br />
+            1.右上：コントローラーセンター<br />
+            2.左下：通知<br />
+            3.下部：ホームに戻る<br />
+            4.左右：セーフエリア外（マージンエリア）<br />
+            <br /><br />
+            <strong>Android：フルスクリーン時OS標準UI<br /></strong>
+            1.上部：ステータスバー
+            </p>
+        </td>
+    </tr>
+</table>
+
+<h3>本エリアでスワイプ操作/ボタン等の設置を検討する場合、下記をご確認ください</h3>
+<ul>
+<li>ユーザーの主たるコンテンツ操作と衝突しないか？<ul>
+<li>画面全体をスワイプ操作するコンテンツ　 → 　問題ありません</li>
+</ul>
+</li>
+</ul>
+<h2>A、B のまとめ</h2>
+<ul>
+<li>非推奨領域を表した透過 png を制作しましたので、こちらのデザインに当てはめご利用ください<ul>
+<li>基本的には、白地のエリアに、クリックやタップの必要な「ボタン」やその他「UI」の操作をおさえることを推奨します</li>
+<li>白地以外での操作をおこなう場合は、上記ガイドラインをご参照のうえ、ユーザー操作が極力快適におこなえるよう、デザイン調整をご検討ください</li>
+</ul>
+</li>
+</ul>
+<a href="/img/shin-ichiba/design/a-b-summary.png" target="_blank">
+    <img src="/img/shin-ichiba/design/a-b-summary.png" />
+</a>
+
+<ul>
+<li><strong>赤色...UI 設置を避けることを強く推奨</strong></li>
+<li><strong>黄色...UI 設置を避けることを推奨</strong></li>
+<li><strong>オレンジ色...スワイプ操作を避けることを強く推奨</strong></li>
+</ul>
+<h2>C：UI の最小サイズ</h2>
+<p>コンテンツ上に設置されるボタン等の UI のタップ範囲が小さいと、スマートフォンアプリのポートレイト視聴時にタップしづらいなど問題が出ることがあります。下記を参考に作成してください。</p>
+<table border="1">
+    <tr>
+        <td style="vertical-align:top;">
+            <p><span style="color:red;">下記未満のサイズは推奨しません</span></p>
+        </td>
+        <td style="vertical-align:top;">
+            <p>可能であれば、下記程度のサイズを確保してください</p>
+        </td>
+    </tr>
+    <tr>
+        <td style="">
+            <a href="/img/shin-ichiba/design/tbl-c-size-ng.png" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-c-size-ng.png" width="216" height="126" />
+            </a>
+            <br />
+            <a href="/img/shin-ichiba/design/tbl-c-ratio-ng.png" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-c-ratio-ng.png" width="216" height="126" />
+            </a>
+        </td>
+        <td style="vertical-align:top;">
+            <a href="/img/shin-ichiba/design/tbl-c-size-ok.png" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-c-size-ok.png" width="216" height="126" />
+            </a>
+            <br />
+            <a href="/img/shin-ichiba/design/tbl-c-ratio-ok.png" target="_blank">
+                <img src="/img/shin-ichiba/design/tbl-c-ratio-ok.png" width="216" height="126" />
+            </a>
+        </td>
+    </tr>
+</table>
+
+<div class="navi-center">
+<a href="./play.html">前 (ニコ生ゲームで遊ぼう)</a>
+ | <a href="./index.html">目次</a>
+ | <a href="./links.html">次 (関連資料・困った時は)</a>
+</div>
+
+			</div>
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は、一部を除き <a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています: <a href="/image-license.html">詳細</a></li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
+</body>
+</html>
