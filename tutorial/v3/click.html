@@ -15,14 +15,12 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>Akashic Engine 関連情報一覧</title>
+<title>クリックできるようにする</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?aa4267e">
 <link rel="stylesheet" href="/css/header.css?aa4267e">
 <link rel="stylesheet" href="/css/footer.css?aa4267e">
 
-
-<link rel="stylesheet" href="/css/asset.css?aa4267e">
 
 <link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
 
@@ -112,60 +110,144 @@
 </header>
 
 <div id="BodyInner">
-	<section class="akashic--document safearea--LR">
-		<div class="inner responsive--width">
-			<h1>Akashic Engine 関連情報一覧</h1>
-<p>ここでは、チュートリアルに記載しきれなかった Akashic Engine のより詳細な情報が記載されている Web ページを紹介します。</p>
-<h2><a name="creation-procedure"></a> コンテンツ作成手順</h2>
-<p>以下の記事では、 Akashic Engine の環境構築～コンテンツを作成して RPG アツマールや、ニコニコ新市場に投稿する方法を実際にコンテンツを作成することを通して解説しています。</p>
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3>Akashic Engine 入門</h3>
+<h4><a name="basic"></a> 導入</h4>
 <ul>
-<li><a href="https://dwango.github.io/niconico/jikken-housou/akashic-content1">泥棒バスターを改造してみよう</a></li>
-<li><a href="https://dwango.github.io/niconico/jikken-housou/akashic-content2">ツールを作ってみよう</a></li>
-<li><a href="https://dwango.github.io/niconico/jikken-housou/akashic-content3">ゲームを作ってみよう</a></li>
+<li><a href="./index.html">トップ</a></li>
+<li><a href="./introduction.html">akashic の導入</a></li>
 </ul>
-<h2><a name="practical-usage"></a> 実践的な使い方</h2>
-<p>実践的な使い方やより高度な機能を利用するには、開発者向けガイドの記事を参照してください。</p>
+<h4><a name="basic"></a> シングルプレイのゲーム作成</h4>
 <ul>
-<li><a href="/guide/index.html">開発者向けガイド</a></li>
+<li><a href="./basic.html">コンテンツ作成の基本</a></li>
+<li><a href="./display-order.html">表示順の制御</a></li>
+<li><a href="./animation.html">アニメーションさせる</a></li>
+<li><a href="./click.html">クリックできるようにする</a></li>
+<li><a href="./audio.html">音を鳴らす</a></li>
+<li><a href="./scale-anchor.html">拡縮とアンカーポイント</a></li>
+<li><a href="./otherdraw.html">色々な描画</a></li>
+<li><a href="./bitmap-font.html">ビットマップフォントを使う</a></li>
+<li><a href="./export.html">ゲームを公開する</a></li>
+<li><a href="./install.html">拡張ライブラリを使う</a></li>
+<li><a href="./appendix.html">より大規模なゲームを作るために</a></li>
 </ul>
-<p>Akashic Engine で利用可能なすべてのメソッドとプロパティを列挙した API リファレンスも実際のプログラミングで役に立ちます。</p>
+<h4><a name="multiplay"></a> マルチプレイのゲーム作成</h4>
 <ul>
-<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">API リファレンス(v2)</a></li>
-<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">API リファレンス(v1)</a></li>
-</ul>
-<p>以下の記事は、ニコニコ新市場対応コンテンツにフォーカスした解説になっていますが、これらは Akashic Engine 製のコンテンツに共通で適用できる知識でもあります。</p>
-<ul>
-<li><a href="https://ch.nicovideo.jp/shin-ichiba/blomaga/ar1697055">ニコニコ新市場対応コンテンツをマルチプレーで動かす方法</a></li>
-<li><a href="https://ch.nicovideo.jp/shin-ichiba/blomaga/ar1703995">ニコニコ新市場対応コンテンツでの躓きポイントと対策集</a></li>
-<li><a href="https://ch.nicovideo.jp/shin-ichiba/blomaga/ar1706019">ニコニコ新市場対応コンテンツの衝突判定</a></li>
-</ul>
-<h2><a name="example"></a> コンテンツ例</h2>
-<p>以下は、Akashic Engine で作成したサンプルコード一覧です。</p>
-<ul>
-<li><a href="/demo/?title=helloworld">Hello World</a></li>
-<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
-<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
-<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
-<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
-<li><a href="/demo/?title=demo-tile">タイル</a></li>
-<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
-<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
-<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
-<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
-</ul>
-<p>以下は、 Akashic Engine 製の公式コンテンツとそのコード一覧です。</p>
-<ul>
-<li><a href="https://game.nicovideo.jp/atsumaru/users/69422851">RPG アツマールに投稿された公式コンテンツ一覧</a></li>
-<li><a href="https://github.com/akashic-contents">公式コンテンツのソースコード一覧</a></li>
-</ul>
-<h2><a name="other"></a> その他</h2>
-<ul>
-<li><a href="https://twitter.com/akashic_talk">公式 twitter アカウント</a><ul>
-<li>Akashic Engine やニコニコ新市場対応コンテンツに関する最新情報をお届けしています。</li>
-</ul>
-</li>
+<li><a href="./multiplay/introduction.html">マルチプレイの基礎</a></li>
+<li><a href="./multiplay/each-player.html">プレイヤーごとに異なる描画を行う</a></li>
+<li><a href="./multiplay/camera.html">プレイヤーごとに異なる位置を表示する</a></li>
+<li><a href="./multiplay/join.html">Join と Leave</a></li>
 </ul>
 
+		</div>
+		<div class="twocol-main">
+			<div class="inner responsive--width--twocol">
+				<h1>クリックできるようにする</h1>
+<h2><a name="point-event"></a> ポイントイベント</h2>
+<p>エンティティの <code>touchable</code> プロパティを <code>true</code> にすると、ゲーム画面のタップやクリックなどのユーザ操作を検出できるようになります。
+Akashic Engine ではユーザがタップやクリックするとポイントイベントが発生します。ポイントイベントを受け取るトリガーには以下の 3 種類があります</p>
+<div class="table--scroll">
+<table>
+<thead>
+<tr>
+<th>トリガー名</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>onPointDown</code></td>
+<td>画面に指が触れた。マウスのボタンが押された</td>
+</tr>
+<tr>
+<td><code>onPointMove</code></td>
+<td>画面に触れた指が移動した。ボタンが押された状態でマウスが移動した</td>
+</tr>
+<tr>
+<td><code>onPointUp</code></td>
+<td>画面から指が離れた。マウスのボタンが離された</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>それぞれのイベントに対応するトリガーを利用することで、イベント発生時に処理を実行できます。</p>
+<p>以下は矩形エンティティ <code>rect</code> にポイントイベントを受け取るハンドラを設定して自身の色を変える例です。</p>
+<pre><code class="language-javascript">rect.touchable = true;
+rect.onPointDown.add(function() {
+  rect.cssColor = &quot;red&quot;;
+  rect.modified();
+});
+rect.onPointUp.add(function() {
+  rect.cssColor = &quot;gray&quot;;
+  rect.modified();
+});</code></pre>
+<p>ポイントイベントが発生した座標を取得するには、トリガーに渡す関数に引数を追加します。例えば、矩形エンティティ <code>rect</code> の <code>onPointDown</code>
+トリガーの座標を取得するには、以下のようなコードになります。</p>
+<pre><code class="language-javascript">rect.onPointDown.add(function (ev) {
+  var x = ev.point.x;
+  var y = ev.point.y;
+  ...
+});</code></pre>
+<p>追加した引数 <code>ev</code> にポイントイベントが与えられています。この変数には以下のプロパティがあります。</p>
+<div class="table--scroll">
+<table>
+<thead>
+<tr>
+<th>プロパティ</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ev.point.x</code>,<code>ev.point.y</code></td>
+<td>最後に<code>onPointDown</code>が発生した座標。座標系の原点はエンティティの座標</td>
+</tr>
+<tr>
+<td><code>ev.startDelta.x</code>,<code>ev.startDelta.y</code></td>
+<td>最後に<code>onPointDown</code>が発生した座標から、現在のポイント座標までの移動量。ただし<code>onPointDown</code>イベントでは利用できない</td>
+</tr>
+<tr>
+<td><code>ev.prevDelta.x</code>,<code>ev.prevDelta.y</code></td>
+<td>最後に<code>onPointMove</code>が発生した座標から、現在のポイント座標までの移動量。ただし<code>onPointDown</code>イベントでは利用できない</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p>以下は矩形エンティティ <code>rect</code> を指やマウス操作で移動するコード例です。</p>
+<pre><code class="language-javascript">rect.onPointMove.add(function(ev) {
+  rect.x += ev.prevDelta.x;
+  rect.y += ev.prevDelta.y;
+  rect.modified();
+});</code></pre>
+<p>エンティティに重なりがあり、その両方がポイントイベントを受け取れる状態にある場合は、最前面に表示されているエンティティがポイントイベントを受け取ります。</p>
+<p>シーンオブジェクトの <code>onPointDownCapture</code>, <code>onPointMoveCapture</code>, <code>onPointUpCapture</code> トリガーを利用すると、配置されているエンティティとは無関係に、シーン全体でポイントイベントを取得できます。これらのトリガーはシーン上にイベントを受け取るエンティティが存在していたとしても常に呼び出されます。</p>
+<p>以下は、画面に指が触れた時、もしくはマウスのボタンが押されたときに、その座標に矩形エンティティを配置するコードです。</p>
+<pre><code class="language-javascript">var scene = new g.Scene();
+scene.onLoad.add(function() {
+  scene.onPointDownCapture.add(function(ev) {
+    var size = 20;
+    var rect = new g.FilledRect({
+      scene: scene,
+      x: ev.point.x - size / 2,
+      y: ev.point.y - size / 2,
+      width: size,
+      height: size,
+      cssColor: &quot;blue&quot;
+    });
+    scene.append(rect);
+  });
+});</code></pre>
+<p><img src="/img/tutorial/sample11.png" alt="sample11"></p>
+<div class="navi-center">
+<a href="./animation.html">前 (アニメーションさせる)</a>
+ | <a href="./">目次</a>
+ | <a href="./audio.html">次 (音を鳴らす)</a>
+</div>
+
+			</div>
 		</div>
 	</section>
 	<footer class="safearea--LR">

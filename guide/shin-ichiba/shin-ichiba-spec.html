@@ -15,7 +15,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>ニコニコ新市場対応コンテンツ関連の仕様</title>
+<title>ニコ生ゲーム関連の仕様</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?aa4267e">
 <link rel="stylesheet" href="/css/header.css?aa4267e">
@@ -114,10 +114,10 @@
 <div id="BodyInner">
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
-			<h1>ニコニコ新市場対応コンテンツ関連の仕様</h1>
+			<h1>ニコ生ゲーム関連の仕様</h1>
 <p>ここまでの文書で述べたことを含め、仕様や要求事項をまとめます。</p>
 <h2><a name="supported-modes"></a> モード</h2>
-<p>ニコニコ新市場対応コンテンツでは、 game.json に <code>environment.niconico.supportedModes</code> の値が定義されている必要があります。</p>
+<p>ニコ生ゲームでは、 game.json に <code>environment.niconico.supportedModes</code> の値が定義されている必要があります。</p>
 <p>この値は文字列の配列でなければなりません。
 配列の各要素は、次のいずれかでなければなりません。</p>
 <ul>
@@ -183,7 +183,7 @@ scene.loaded.add(() =&gt; {
 <pre><code class="language-plaintext">g.game.vars.gameState.clearThreshold</code></pre>
 <p>ただしこの値は将来の拡張のために予約されているものです。現在のところ参照されません。</p>
 <h2><a name="session-parameter"></a> セッションパラメータ</h2>
-<p>ニコニコ生放送で実行されている時、新市場コンテンツにはいくつかの追加情報が与えられます:</p>
+<p>ニコニコ生放送で実行されている時、ニコ生ゲームにはいくつかの追加情報が与えられます:</p>
 <ul>
 <li>どのモードでゲームが起動されたか</li>
 <li>ランキングモード時の制限時間</li>
@@ -210,7 +210,7 @@ scene.loaded.add(function () {
 <p>セッションパラメータが与えられない場合には、そもそもこのイベントが来ないか、あるいは来たイベントに <code>parameters</code> がありません。</p>
 <p>Akashic Engine では通常、イベントはシーンのロードタイミング(<code>g.Scene#loaded</code>)より後に受信されるため、 <code>loaded</code> の処理中にはこの値を参照できないことに注意してください。これは仕様による制限です。</p>
 <p>厳密にセッションパラメータの受信を待って <code>loaded</code> の初期化処理を行いたい場合は、 <code>loaded</code> ではなく <code>message</code> トリガーの fire を待って処理を行う必要があります。
-(ただしそうするとニコニコ新市場以外(RPG アツマールなど)では動作しないコンテンツになってしまうので、「 <code>g.Scene#update</code> の fire を数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
+(ただしそうするとニコニコ生放送以外(RPG アツマールなど)では動作しないコンテンツになってしまうので、「 <code>g.Scene#update</code> の fire を数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
 <h3><a name="mode"></a> モード (mode)</h3>
 <p>セッションパラメータ <code>sessionParameters</code> がある時、 <code>sessionParameters.mode</code> で <strong>モード</strong> を参照できます。</p>
 <p>この値は game.json の <code>environment.niconico.supportedModes</code> に記述した文字列のいずれかで、実際にゲームが起動されたモードを表します。
@@ -240,7 +240,7 @@ scene.loaded.add(function () {
 <p>セッションパラメータ <code>sessionParameters</code> がある時、 <code>sessionParameters.gameTimeLimit</code> の値が与えられることがあります。</p>
 <p>この値は後方互換性のために残されているものです。 <code>totalTimeLimit</code> を利用してください。</p>
 <h2><a name="preferred-session-parameters"></a> prefereredSessionParameters</h2>
-<p>ニコニコ新市場対応コンテンツの game.json に <code>environment.niconico.prefereredSessionParameters</code> フィールドがある場合、
+<p>ニコ生ゲームの game.json に <code>environment.niconico.prefereredSessionParameters</code> フィールドがある場合、
 その内容はコンテンツにとって望ましいセッションパラメータの値として解釈されます。</p>
 <p><code>prefereredSessionParameters</code> は、与えられる場合、オブジェクトでなければなりません。
 そのプロパティとして指定できるものは次の通りです (2019 年 12 月現在):</p>

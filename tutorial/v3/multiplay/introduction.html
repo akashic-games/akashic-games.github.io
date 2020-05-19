@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162208211-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162208211-1');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>マルチプレイの基礎</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?aa4267e">
+<link rel="stylesheet" href="/css/header.css?aa4267e">
+<link rel="stylesheet" href="/css/footer.css?aa4267e">
+
+
+<link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
+
+<link rel="stylesheet" href="/css/railscasts.css?aa4267e">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?aa4267e"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
+				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				<li><a href="/reference/coe/">coe framework</a></li>
+				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3>Akashic Engine 入門</h3>
+<h4><a name="basic"></a> 導入</h4>
+<ul>
+<li><a href="../index.html">トップ</a></li>
+<li><a href="../introduction.html">akashic の導入</a></li>
+</ul>
+<h4><a name="basic"></a> シングルプレイのゲーム作成</h4>
+<ul>
+<li><a href="../basic.html">コンテンツ作成の基本</a></li>
+<li><a href="../display-order.html">表示順の制御</a></li>
+<li><a href="../animation.html">アニメーションさせる</a></li>
+<li><a href="../click.html">クリックできるようにする</a></li>
+<li><a href="../audio.html">音を鳴らす</a></li>
+<li><a href="../scale-anchor.html">拡縮とアンカーポイント</a></li>
+<li><a href="../otherdraw.html">色々な描画</a></li>
+<li><a href="../bitmap-font.html">ビットマップフォントを使う</a></li>
+<li><a href="../export.html">ゲームを公開する</a></li>
+<li><a href="../install.html">拡張ライブラリを使う</a></li>
+<li><a href="../appendix.html">より大規模なゲームを作るために</a></li>
+</ul>
+<h4><a name="multiplay"></a> マルチプレイのゲーム作成</h4>
+<ul>
+<li><a href="./introduction.html">マルチプレイの基礎</a></li>
+<li><a href="./each-player.html">プレイヤーごとに異なる描画を行う</a></li>
+<li><a href="./camera.html">プレイヤーごとに異なる位置を表示する</a></li>
+<li><a href="./join.html">Join と Leave</a></li>
+</ul>
+
+		</div>
+		<div class="twocol-main">
+			<div class="inner responsive--width--twocol">
+				<h1>マルチプレイの基礎</h1>
+<p><a name="intro"></a></p>
+<p>Akashic Engine では、マルチプレイのゲームを作成することができます。</p>
+<blockquote>
+<p>ただしマルチプレイゲームの実行には、独自のサーバソフトウェアが必要になります。そのためシングルプレイのゲームと比べ、Web 上で公開するハードルは高くなります。
+(シングルプレイであれば、出力した HTML ファイルをレンタルサーバなどにアップロードするだけでよく、独自のサーバソフトウェアの実行は必要ありません。また<a href="https://game.nicovideo.jp/atsumaru/">RPG アツマール</a>のような HTML5 ゲーム投稿サイトで公開することもでき、この場合はサーバを用意する必要さえありません)</p>
+<p>Akashic Engine で作成されたゲームは、ニコニコ生放送の放送内で遊ぶことができます。この場合、ゲーム開発者がサーバを用意する必要はありません。放送内では放送者と視聴者複数でマルチプレイすることもでき、現時点では、事実上これが Akashic Engine のマルチプレイゲームを一般に公開する方法です。ニコニコ生放送上で実行するためのコンテンツについては <a href="https://akashic-games.github.io/guide/shin-ichiba/">ニコニコ生放送で遊べるゲームの作成</a> をご覧ください。</p>
+<p>詳細はリンク先に譲りますが、ゲーム作成上は特別な対応は必要なく、 game.json の <code>environment.niconico.supportedModes</code> に <code>&quot;multi&quot;</code> を指定する必要がある程度です。</p>
+</blockquote>
+<p><a name="helloworld"></a></p>
+<h2>マルチプレイの Hello World</h2>
+<p>マルチプレイゲームのコーディングに特別な準備は必要ありません。</p>
+<p>Akashic Engine の提供する各種イベントには、全て「誰がそのイベントを生成したか」の情報が付与されています。たとえば <code>g.E#pointDown</code> のハンドラに与えられる <code>g.PointDownEvent</code> には <code>player</code> プロパティがあり、「誰が画面をタッチしたのか」識別することができます。</p>
+<p>操作したプレイヤーに応じて処理を分ければ、自動的にマルチプレイゲームに対応できます。</p>
+<p>例えば、一番最初にボタンを押したプレイヤーに得点が入る「早押しボタン」のようなコンテンツは、次のようなコードで作ることができます。</p>
+<pre><code class="language-javascript">var scene = new g.Scene({
+    assetIds: [&quot;button&quot;]  // button は適当な画像のアセットID
+});
+
+scene.onLoad.add(function () {
+    var button = new g.Sprite({
+        scene: scene,
+        src: scene.asset.getImageById(&quot;button&quot;),
+        touchable: true
+    });
+
+    var scores = {};  // 得点を格納するテーブル
+
+    // エンティティ button が押された時:
+    button.onPointDown.add(funciton (ev) {
+        var playerId = ev.player.id;   // 押したプレイヤーのID
+
+        if (scores[playerId] == null) {  // 初回の場合は0点で初期化
+            scores[playerId] = 0;
+        }
+
+        scores[playerId]++;   // 押したプレイヤーの得点を加算
+    });
+
+    scene.append(button);
+});</code></pre>
+<p><code>pointDown</code> のハンドラに与えられる引数 <code>ev</code> (<code>g.PointDownEvent</code>) の <code>player</code> プロパティでプレイヤーを識別し、プレイヤーごとに得点を求めています。
+<code>player.id</code> はプレイヤーごとにユニークな文字列または <code>undefined</code> です。</p>
+<p>このコンテンツは、もちろん現実的には「ボタンの表示タイミングをランダムにする」「ボタンを押した時間によって得点を変える」「ボタンを押した時の画像や効果音をつける」「一定時間後に全員のスコアを表示して勝敗を決める」といった処理を足していかないとゲームらしくはなりませんが、骨格としてはマルチプレイに対応したものになっています。</p>
+<p>もう少し画面上で分かりやすい例として、「各プレイヤーに対応するキャラクタ画像がクリックした位置に移動するコンテンツ」を考えます。</p>
+<p>キャラ画像としては <a href="https://akashic-games.github.io/asset/material.html">素材ページ</a> の次の画像を <code>chara.png</code> として利用します。</p>
+<p><img src="/img/tutorial/chara.png" alt="chara.png"></p>
+<p>コードは次のようなものになります。</p>
+<pre><code class="language-javascript">var scene = new g.Scene({
+  assetIds: [&quot;chara&quot;]
+});
+
+scene.onLoad.add(function() {
+  var characters = {}; // キャラクタ管理テーブル
+
+  // 画面内のどこかが押されたとき
+  scene.onPointDownCapture.add(function(ev) {
+    var x = ev.point.x; // 押された位置のX座標
+    var y = ev.point.y; // 押された位置のY座標
+    var playerId = ev.player.id; // 押したプレイヤーのID
+
+    if (characters[playerId] == null) {
+      // プレイヤー playerId にとって初めての操作の場合: キャラクタデータを生成
+      var chara = {
+        targetX: x,
+        targetY: y,
+        entity: new g.Sprite({
+          scene: scene,
+          src: scene.asset.getImageById(&quot;chara&quot;),
+          x: x,
+          y: y
+        })
+      };
+      characters[playerId] = chara;
+
+      // キャラクタのフレームごとの処理(目標座標 (targetX, targetY) に近づくように位置を更新)を登録
+      chara.entity.onUpdate.add(function() {
+        var diffX = chara.targetX - chara.entity.x;
+        var diffY = chara.targetY - chara.entity.y;
+
+        // 既に目標座標にいるなら何もせず抜ける
+        if (diffX === 0 &amp;&amp; diffY === 0) return;
+
+        // 目標座標から各軸10px以上離れていたら、1割ずつ接近。10px以下なら目標座標に移動
+        chara.entity.x += Math.abs(diffX) &gt; 10 ? Math.floor(diffX / 10) : diffX;
+        chara.entity.y += Math.abs(diffY) &gt; 10 ? Math.floor(diffY / 10) : diffY;
+
+        chara.entity.modified(); // 変更を反映
+      });
+
+      scene.append(chara.entity); // シーンに生成したキャラクタ画像を追加
+    } else {
+      // プレイヤー playerId のキャラが既にいる場合: キャラの目標座標を、クリックされた位置に更新
+      characters[playerId].targetX = x;
+      characters[playerId].targetY = y;
+    }
+  });
+});</code></pre>
+<p>コードは増えていますが、</p>
+<ul>
+<li>プレイヤーごとの情報を管理するテーブル (この例では <code>characters</code>) を作り、</li>
+<li>イベントの <code>player</code> プロパティを参照して、プレイヤーごとの処理を行う</li>
+</ul>
+<p>という点では「早押しボタン」と同じ構造になっています。</p>
+<p><a name="debug"></a></p>
+<h2>動作確認</h2>
+<p>ここまで、ゲームの動作確認には Akashic Sandbox (<code>akashic-sandbox</code>) を利用してきました。しかしこのツールはシングルプレイの動作確認を行うためのものです。マルチプレイの確認を行うことはできません。ブラウザで複数のウィンドウを開いても、それぞれ独立した別のゲームプレイになってしまいます。</p>
+<p>akashic-cli v1.5.1 以降には、マルチプレイゲームの動作確認機能 (<code>serve</code> コマンド) が追加されています。これは(独立したツールではなく) akashic-cli に組み込まれていますが、 akashic-sandbox 同様サーバとして動作するコマンドです。</p>
+<p>インストールされている akashic-cli のバージョンは次のコマンドで確認できます。</p>
+<pre><code class="language-sh">akashic -V</code></pre>
+<p>1.5.1 より小さい値が表示された場合は、次のコマンドで akashic-cli の最新版をインストールしてください。</p>
+<pre><code class="language-sh">npm install -g @akashic/akashic-cli</code></pre>
+<p>インストール後、game.json のあるディレクトリで、次のコマンドを実行してください。</p>
+<pre><code class="language-sh">akashic serve</code></pre>
+<p>実行後、 <code>http://localhost:3300/</code> にアクセスしてください。次のような画面が表示されます。</p>
+<p><img src="/img/tutorial/cli-serve.png" alt="serve"></p>
+<p>先の例の「各プレイヤーに対応するキャラクタ画像がクリックした位置に移動するコンテンツ」の場合、画面をクリックするとキャラクタ画像が表示されます。もう一度クリックするとキャラクタ画像が移動します。</p>
+<p>この状態でもう一つブラウザウィンドウを開き、同じ URL を読み込むと、同じゲームプレイに接続することができます。それぞれの画面をクリックすると、それぞれのキャラクタ画像が操作されます。これでマルチプレイの動作を確認することができます。</p>
+<p><img src="/img/tutorial/cli-serve-multi-window.png" alt="複数ウィンドウ"></p>
+<p>なお <code>akashic serve</code> は <code>akashic-sandbox</code> と異なり、ブラウザをリロードしてもゲームプレイがリセットされません。リセットは画面内のボタンで行います。</p>
+<p><img src="/img/tutorial/cli-serve-play-control.png" alt="プレイコントロール"></p>
+<p>画面内のツールバー左側に、ゲームプレイ全般の操作を行うボタンが配置されています。次の機能があります。</p>
+<ul>
+<li>一番左の電源ボタン: ゲームプレイをリセットします。</li>
+<li>二番目のポーズボタン: ゲームプレイをポーズします。</li>
+<li>三番目のインスタンス追加ボタン: 同じ URL でブラウザウィンドウを開きます(マルチプレイのプレイヤーを増やします)。</li>
+</ul>
+<p><code>akashic serve</code> コマンドは、 <code>akashic-sandbox</code> と同様に Ctrl-C で終了することができます。</p>
+<p><a name="architecture-intro"></a></p>
+<h2>Akashic におけるマルチプレイ</h2>
+<p><code>akashic serve</code> でしばらくプレイした後に、ブラウザウィンドウを追加すると、最初にビデオ映像を早送りするような画面が表示されることに気がつきます。これは Akashic Engine のマルチプレイの実現方法に起因する動作です。</p>
+<p>Akashic におけるマルチプレイは、プレイヤー間でゲームの実行状態を「間接的に」共有することで実現されています。
+Akashic はプレイヤー間で実行状態を直接的に共有することはしませんが、その代わりに <strong>全てのプレイヤーが行う全ての操作を共有します</strong> 。ゲーム内で行われた全操作を全プレイヤーに通知することで、全プレイヤーの手元でまったく同じ処理を行い、結果として同じ実行状態を再現します。
+<strong>同じゲームスクリプトに、同じ経過フレーム数で同じイベントを与えれば、同じ実行状態に至るはずだ</strong> 、というのが、Akashic Engine のマルチプレイの基本的なデザインです。後から参加したプレイヤーに、早送りで最新状態に追いつく動作が発生するのはこのためです。</p>
+<p><code>Math.random()</code> ではなく <code>g.game.random</code> を使う必要があるのもこのためです。
+<code>Math.random()</code> を使うと、その結果は実行環境(ブラウザウィンドウ)ごとに異なるので、同じイベントを与えても同じ状態が再現されなくなってしまいます。
+<code>g.game.random</code> は一つのゲームプレイ内で全員が同じ乱数シードと乱数生成アルゴリズムを使うように作られているので、この問題がありません。</p>
+<p><code>Math.random()</code> のような制約はつきますが、このデザインによってゲーム開発者は、ゲーム状態の通知や共有などの問題をほぼ気にすることなく、手軽にマルチプレイのゲームを作成することができます。</p>
+<div class="navi-center">
+<a href="../appendix.html">より大規模なゲームを作るために</a>
+ | <a href="../">目次</a>
+ | <a href="./each-player.html">次 (プレイヤーごとに異なる描画を行う)</a>
+</div>
+
+			</div>
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は、一部を除き <a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています: <a href="/image-license.html">詳細</a></li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
+</body>
+</html>

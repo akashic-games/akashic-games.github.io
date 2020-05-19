@@ -15,7 +15,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>ニコ生ゲームとは</title>
+<title>プレイヤーごとに異なる位置を表示する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?aa4267e">
 <link rel="stylesheet" href="/css/header.css?aa4267e">
@@ -112,77 +112,59 @@
 <div id="BodyInner">
 	<section class="akashic--document safearea--LR twocol">
 		<div class="twocol-side">
-			<h3>ニコ生ゲームを作ろう</h3>
+			<h3>Akashic Engine 入門</h3>
+<h4><a name="basic"></a> 導入</h4>
 <ul>
-<li><strong><a href="./index.html">トップ</a></strong></li>
-<li><strong><a href="./introduction.html">ニコ生ゲームとは</a></strong></li>
-<li><strong><a href="./mod-game.html">ニコ生ゲームを作ろう・改造編</a></strong><ul>
-<li><a href="./install.html">インストール</a></li>
-<li><a href="./thiefBuster-mod.html">『泥棒バスター』を改造する</a></li>
-<li><a href="./speed-jigsaw-mod.html">『スピードジグソー』を改造する</a></li>
+<li><a href="../index.html">トップ</a></li>
+<li><a href="../introduction.html">akashic の導入</a></li>
 </ul>
-</li>
-<li><strong><a href="./ranking-top.html">ニコ生ゲームを作ろう・ランキングゲーム編</a></strong><ul>
-<li><a href="./ranking.html">ランキング対応ゲーム</a></li>
-<li><a href="./ranking-by-template.html">テンプレートでわかるランキング対応ゲーム</a></li>
+<h4><a name="basic"></a> シングルプレイのゲーム作成</h4>
+<ul>
+<li><a href="../basic.html">コンテンツ作成の基本</a></li>
+<li><a href="../display-order.html">表示順の制御</a></li>
+<li><a href="../animation.html">アニメーションさせる</a></li>
+<li><a href="../click.html">クリックできるようにする</a></li>
+<li><a href="../audio.html">音を鳴らす</a></li>
+<li><a href="../scale-anchor.html">拡縮とアンカーポイント</a></li>
+<li><a href="../otherdraw.html">色々な描画</a></li>
+<li><a href="../bitmap-font.html">ビットマップフォントを使う</a></li>
+<li><a href="../export.html">ゲームを公開する</a></li>
+<li><a href="../install.html">拡張ライブラリを使う</a></li>
+<li><a href="../appendix.html">より大規模なゲームを作るために</a></li>
 </ul>
-</li>
-<li><strong><a href="./multi-top.html">ニコ生ゲームを作ろう・マルチプレイゲーム編</a></strong><ul>
-<li><a href="./multi-ready.html">マルチプレイ開発予備知識</a></li>
-<li><a href="./column-about-multi.html">マルチプレイゲームを知ろう</a></li>
-<li><a href="./column-local-process.html">簡単なゲームを作ってローカル処理に触れよう</a></li>
-<li><a href="./column-join-leave.html">Join と Leave とニコ生の話</a></li>
-<li><a href="./column-make-multi.html">実際にマルチプレイゲームを考えて作ろう</a></li>
-</ul>
-</li>
-<li><strong><a href="./submit.html">ニコ生ゲームを投稿しよう</a></strong></li>
-<li><strong><a href="./play.html">ニコ生ゲームで遊ぼう</a></strong></li>
-<li><strong><a href="./links.html">関連資料・困った時は</a></strong></li>
+<h4><a name="multiplay"></a> マルチプレイのゲーム作成</h4>
+<ul>
+<li><a href="./introduction.html">マルチプレイの基礎</a></li>
+<li><a href="./each-player.html">プレイヤーごとに異なる描画を行う</a></li>
+<li><a href="./camera.html">プレイヤーごとに異なる位置を表示する</a></li>
+<li><a href="./join.html">Join と Leave</a></li>
 </ul>
 
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<h1>ニコ生ゲームとは</h1>
-<p><strong>ニコ生ゲーム</strong> は、<a href="https://live.nicovideo.jp/">ニコニコ生放送</a> の配信内で起動して、配信者と視聴者で一緒に遊ぶことができるゲームです。</p>
-<p>ゲーム画面は配信画面にオーバーレイする形で表示されます。</p>
-<p><img src="/img/shin-ichiba/10839_06.png" alt="ニコ生ゲームが起動されている様子"></p>
-<!-- TODO 画像使っていいか確認？　出元は https://qa.nicovideo.jp/faq/show/10839 (を調整) -->
-
-<p>いわゆるゲーム配信・ゲーム実況とは異なり、ニコ生ゲームは配信者と視聴者全員のスマートフォンや PC 上で実行されます。
-この特徴を活かして様々な形態のゲームが作られています (<a href="https://site.live.nicovideo.jp/ichiba.html">紹介サイト</a>) 。</p>
-<ul>
-<li>シングルプレイのゲームの得点を、 <strong>視聴者全員と競う</strong> (『つりっくま』など)</li>
-<li>配信者が操作するキャラクタを、 <strong>視聴者が助ける</strong> (『ニコニコテレビちゃんジャンプ』など)</li>
-<li>配信者がボス役となって <strong>視聴者たちと戦う</strong> (『だるまさんが転んだ』など)</li>
-</ul>
-<p>さらには、『おしゃべりトピック』(<a href="https://ch.nicovideo.jp/shin-ichiba/blomaga/ar1859302">紹介</a>) のように必ずしもゲームでないものもあります。</p>
-<blockquote>
-<p>ニコ生ゲームは、そのような「ゲームでないもの」を含む名前として、 <strong>放送ネタ</strong> と呼ばれることがあります。
-簡単のため、このページでは単にニコ生ゲームと呼びます。</p>
-</blockquote>
-<h2>ユーザ投稿ニコ生ゲーム</h2>
-<p>ニコ生ゲームには、公式で提供されているものの他、ユーザによって作成・投稿されたものがあります。</p>
-<p>ニコ生ゲームは <a href="https://akashic-games.github.io/">Akashic Engine</a> で作成することができます。
-Akashic Engine はドワンゴが公開している JavaScript ゲームエンジンで、無償で利用できます。
-またゲームの投稿にも料金などは必要ありません。
-PC さえあれば気軽にゲームを作成することができます。</p>
-<p>実際に投稿されたゲームは、次のページで一覧することができます。</p>
-<p><a href="https://game.nicovideo.jp/atsumaru/search/tag/%E3%83%8B%E3%82%B3%E7%94%9F%E3%82%B2%E3%83%BC%E3%83%A0"><strong>RPG アツマールで「ニコ生ゲーム」タグがつけられたゲームの一覧</strong></a><br>
-<a href="https://game.nicovideo.jp/atsumaru/search/tag/%E3%83%8B%E3%82%B3%E3%83%8B%E3%82%B3%E6%96%B0%E5%B8%82%E5%A0%B4%E5%AF%BE%E5%BF%9C"><strong>RPG アツマールで「ニコニコ新市場対応」タグがつけられたゲームの一覧</strong></a> (以前使われていたタグです。現在は「ニコ生ゲーム」タグが推奨です)</p>
-<p>なお <a href="https://game.nicovideo.jp/atsumaru/">RPG アツマール</a> は、niconico の自作ゲーム投稿コミュニティサービスです。
-ユーザ作成のニコ生ゲームは、RPG アツマールへの投稿を経てニコニコ生放送にも投稿されるようになっています。
-上記のページでニコ生ゲームが一覧できるのはこのためです。</p>
-<blockquote>
-<p>特に一人プレイ対応のニコ生ゲームは、RPG アツマール上でもプレイできます。
-ぜひ上記のリンクから遊んでみてください。</p>
-</blockquote>
+				<h1>プレイヤーごとに異なる位置を表示する</h1>
+<p>広いフィールドの一部を画面に表示するようなゲームの場合、マルチプレイではプレイヤーごとに異なる場所を表示したくなることが考えられます。そのような場合のために、Akashic Engine は <code>g.Camera</code> を提供しています。</p>
+<p><a name="camera"></a></p>
+<h2>カメラ</h2>
+<p>カメラは、インターフェース <code>g.Camera</code> で表現されます。現在の Akashic Engine が実装を提供する唯一のカメラは <code>g.Camera2D</code> です。これは 2D ゲーム用途のカメラであり、次のように生成することができます。</p>
+<pre><code>var camera = new g.Camera2D({ game: g.game });</code></pre><p>生成されたカメラは、そのままでは描画に影響を与えません。カメラを <code>g.Game#focusingCamera</code> に設定することで、ゲーム画面の描画に対してカメラの設定を適用することができます。</p>
+<pre><code>g.game.focusingCamera = camera;</code></pre><p>この状態で <code>camera</code> のプロパティを変更することで、ゲーム画面全体の描画内容を制御することができます。</p>
+<p><code>Camera2D</code> は <code>Object2D</code> を実装しており、<code>x</code>, <code>y</code> によって描画位置のオフセットや、<code>scaleX</code>, <code>scaleY</code> によって描画結果の拡大率を設定できます。たとえば以下のような記述により、画面全体を 30 度傾けることができます。</p>
+<pre><code>camera.angle = 30;
+camera.modified();</code></pre><p><code>Camera2D</code> のオフセットや回転角度は、エンティティとは逆方向に作用することに注意してください。すなわち、たとえば X 座標のオフセット <code>Camera2D#x</code> を 10 に設定した場合、移動するのは描画される範囲です。その中で描画されるエンティティの描画位置は元の位置から (右ではなく) 左に 10 ピクセルずれます。</p>
+<p>エンティティなどと同様、カメラの値の変更後には <code>modified()</code> を呼び出す必要があります。
+<code>Game#focusingCamera</code> の既定値は <code>undefined</code> です。</p>
+<p><a name="ignore-camera"></a></p>
+<h2>カメラの transform の無視</h2>
+<p>現在の Akashic Engine は、カメラの transform(<code>x</code>, <code>y</code> による描画位置オフセットなど)を無視する方法を直接には提供していません。すべてのエンティティは <code>Game#focusingCamera</code> のオフセットや拡大の影響を受けます。</p>
+<p>画面中央に自機を固定したい場合や、「現在のスコア」のようなカメラの影響を受けないエンティティを作成したい場合は、ゲーム開発者が自力でカメラのオフセットなどを引いた(逆変換した)位置に置く必要があります。</p>
+<p>別の方法としては、描画処理 <code>E#renderSelf()</code> をオーバーライドしてこの逆変換するエンティティ (<code>E</code>) の派生クラスを作り、それを使うこともできます。この方法の実装例としては akashic-engine の <code>DefaultLoadingScene</code> のソースコードを参照してください。ただし将来的には、この仕様は変更される可能性があります。</p>
 <div class="navi-center">
-&nbsp;- <!-- %nbsp; は prettier に変に整形される暫定対策 -->
-| <a href="./index.html">目次</a>
-| <a href="./mod-game.html">次 (ニコ生ゲームを作ろう・改造編)</a>
+<a href="./each-player.html">前 (プレイヤーごとに異なる描画を行う)</a>
+ | <a href="../">目次</a>
+ | <a href="./join.html">次 (JoinとLeave)</a>
 </div>
-
 
 			</div>
 		</div>
