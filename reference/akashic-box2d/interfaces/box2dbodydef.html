@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>BodyOption | @akashic-extension/akashic-box2d</title>
+	<title>Box2DBodyDef | @akashic-extension/akashic-box2d</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,28 +56,21 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="bodyoption.html">BodyOption</a>
+					<a href="box2dbodydef.html">Box2DBodyDef</a>
 				</li>
 			</ul>
-			<h1>Interface BodyOption</h1>
+			<h1>Interface Box2DBodyDef</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>ボディタイプの定義。</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">BodyOption</span>
+						<span class="target">Box2DBodyDef</span>
 					</li>
 				</ul>
 			</section>
@@ -88,18 +81,18 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bodyoption.html#active" class="tsd-kind-icon">active</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bodyoption.html#allowsleep" class="tsd-kind-icon">allow<wbr>Sleep</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bodyoption.html#angulardamping" class="tsd-kind-icon">angular<wbr>Damping</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bodyoption.html#angularvelocity" class="tsd-kind-icon">angular<wbr>Velocity</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bodyoption.html#awake" class="tsd-kind-icon">awake</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bodyoption.html#bullet" class="tsd-kind-icon">bullet</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bodyoption.html#fixedrotation" class="tsd-kind-icon">fixed<wbr>Rotation</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bodyoption.html#inertiascale" class="tsd-kind-icon">inertia<wbr>Scale</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bodyoption.html#lineardamping" class="tsd-kind-icon">linear<wbr>Damping</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bodyoption.html#linearvelocity" class="tsd-kind-icon">linear<wbr>Velocity</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bodyoption.html#type" class="tsd-kind-icon">type</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="bodyoption.html#userdata" class="tsd-kind-icon">user<wbr>Data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="box2dbodydef.html#active" class="tsd-kind-icon">active</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="box2dbodydef.html#allowsleep" class="tsd-kind-icon">allow<wbr>Sleep</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="box2dbodydef.html#angulardamping" class="tsd-kind-icon">angular<wbr>Damping</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="box2dbodydef.html#angularvelocity" class="tsd-kind-icon">angular<wbr>Velocity</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="box2dbodydef.html#awake" class="tsd-kind-icon">awake</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="box2dbodydef.html#bullet" class="tsd-kind-icon">bullet</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="box2dbodydef.html#fixedrotation" class="tsd-kind-icon">fixed<wbr>Rotation</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="box2dbodydef.html#gravityscale" class="tsd-kind-icon">gravity<wbr>Scale</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="box2dbodydef.html#lineardamping" class="tsd-kind-icon">linear<wbr>Damping</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="box2dbodydef.html#linearvelocity" class="tsd-kind-icon">linear<wbr>Velocity</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="box2dbodydef.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="box2dbodydef.html#userdata" class="tsd-kind-icon">user<wbr>Data</a></li>
 							</ul>
 						</section>
 					</div>
@@ -110,194 +103,122 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="active" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> active</h3>
-					<div class="tsd-signature tsd-kind-icon">active<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<div class="tsd-signature tsd-kind-icon">active<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L40">Box2DOptions.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/parateters.ts#L21">parateters.ts:21</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>開始時にボディをアクティブとするかどうか。
-							未指定の場合は true となる。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="allowsleep" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> allow<wbr>Sleep</h3>
-					<div class="tsd-signature tsd-kind-icon">allow<wbr>Sleep<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<div class="tsd-signature tsd-kind-icon">allow<wbr>Sleep<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L45">Box2DOptions.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/parateters.ts#L26">parateters.ts:26</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>ボディのスリープを許可するかどうか。
-							未指定の場合は true となる。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="angulardamping" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> angular<wbr>Damping</h3>
-					<div class="tsd-signature tsd-kind-icon">angular<wbr>Damping<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<div class="tsd-signature tsd-kind-icon">angular<wbr>Damping<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L50">Box2DOptions.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/parateters.ts#L31">parateters.ts:31</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>角速度の減衰率。
-							未指定の場合は 0 となる。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="angularvelocity" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> angular<wbr>Velocity</h3>
-					<div class="tsd-signature tsd-kind-icon">angular<wbr>Velocity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<div class="tsd-signature tsd-kind-icon">angular<wbr>Velocity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L55">Box2DOptions.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/parateters.ts#L36">parateters.ts:36</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>角速度。
-							未指定の場合は 0 となる。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="awake" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> awake</h3>
-					<div class="tsd-signature tsd-kind-icon">awake<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<div class="tsd-signature tsd-kind-icon">awake<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L60">Box2DOptions.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/parateters.ts#L41">parateters.ts:41</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>ボディの初期状態をアウェイクにするかスリープにするか。
-							未指定の場合は true となる。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="bullet" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> bullet</h3>
-					<div class="tsd-signature tsd-kind-icon">bullet<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<div class="tsd-signature tsd-kind-icon">bullet<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L65">Box2DOptions.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/parateters.ts#L46">parateters.ts:46</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>他のボディとの衝突時に貫通を許可するかどうか。
-							未指定の場合は false となる。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="fixedrotation" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> fixed<wbr>Rotation</h3>
-					<div class="tsd-signature tsd-kind-icon">fixed<wbr>Rotation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<div class="tsd-signature tsd-kind-icon">fixed<wbr>Rotation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L70">Box2DOptions.ts:70</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/parateters.ts#L51">parateters.ts:51</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>回転を固定させるかどうか。
-							未指定の場合は false となる。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="inertiascale" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> inertia<wbr>Scale</h3>
-					<div class="tsd-signature tsd-kind-icon">inertia<wbr>Scale<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="gravityscale" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> gravity<wbr>Scale</h3>
+					<div class="tsd-signature tsd-kind-icon">gravity<wbr>Scale<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L85">Box2DOptions.ts:85</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/parateters.ts#L66">parateters.ts:66</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>慣性テンソルのスケール。
-							未指定の場合は 1 となる。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="lineardamping" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> linear<wbr>Damping</h3>
-					<div class="tsd-signature tsd-kind-icon">linear<wbr>Damping<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<div class="tsd-signature tsd-kind-icon">linear<wbr>Damping<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L75">Box2DOptions.ts:75</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/parateters.ts#L56">parateters.ts:56</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>速度の減衰率。
-							未指定の場合は 0 となる。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="linearvelocity" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> linear<wbr>Velocity</h3>
-					<div class="tsd-signature tsd-kind-icon">linear<wbr>Velocity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">b2.Common.Math.b2Vec2</span></div>
+					<div class="tsd-signature tsd-kind-icon">linear<wbr>Velocity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">box2dweb.Common.Math.b2Vec2</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L80">Box2DOptions.ts:80</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/parateters.ts#L61">parateters.ts:61</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>ボディの初期速度。
-							未指定の場合は (0, 0) となる。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="type" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> type</h3>
-					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L30">Box2DOptions.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/parateters.ts#L11">parateters.ts:11</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>BodyTypeを指定する。
-							未指定の場合はStaticとなる。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="userdata" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> user<wbr>Data</h3>
-					<div class="tsd-signature tsd-kind-icon">user<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<div class="tsd-signature tsd-kind-icon">user<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L35">Box2DOptions.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/parateters.ts#L16">parateters.ts:16</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>ボディのユーザデータを指定する。
-							未指定の場合は <code>createBody()</code> 実行時にエンティティのIDが指定される。</p>
-						</div>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -317,59 +238,65 @@
 					<li class=" tsd-kind-class">
 						<a href="../classes/box2d.html" class="tsd-kind-icon">Box2D</a>
 					</li>
+					<li class=" tsd-kind-class">
+						<a href="../classes/contactmanager.html" class="tsd-kind-icon">Contact<wbr>Manager</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="bodyoption.html" class="tsd-kind-icon">Body<wbr>Option</a>
+						<a href="box2dbodydef.html" class="tsd-kind-icon">Box2DBody<wbr>Def</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="bodyoption.html#active" class="tsd-kind-icon">active</a>
+								<a href="box2dbodydef.html#active" class="tsd-kind-icon">active</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="bodyoption.html#allowsleep" class="tsd-kind-icon">allow<wbr>Sleep</a>
+								<a href="box2dbodydef.html#allowsleep" class="tsd-kind-icon">allow<wbr>Sleep</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="bodyoption.html#angulardamping" class="tsd-kind-icon">angular<wbr>Damping</a>
+								<a href="box2dbodydef.html#angulardamping" class="tsd-kind-icon">angular<wbr>Damping</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="bodyoption.html#angularvelocity" class="tsd-kind-icon">angular<wbr>Velocity</a>
+								<a href="box2dbodydef.html#angularvelocity" class="tsd-kind-icon">angular<wbr>Velocity</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="bodyoption.html#awake" class="tsd-kind-icon">awake</a>
+								<a href="box2dbodydef.html#awake" class="tsd-kind-icon">awake</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="bodyoption.html#bullet" class="tsd-kind-icon">bullet</a>
+								<a href="box2dbodydef.html#bullet" class="tsd-kind-icon">bullet</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="bodyoption.html#fixedrotation" class="tsd-kind-icon">fixed<wbr>Rotation</a>
+								<a href="box2dbodydef.html#fixedrotation" class="tsd-kind-icon">fixed<wbr>Rotation</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="bodyoption.html#inertiascale" class="tsd-kind-icon">inertia<wbr>Scale</a>
+								<a href="box2dbodydef.html#gravityscale" class="tsd-kind-icon">gravity<wbr>Scale</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="bodyoption.html#lineardamping" class="tsd-kind-icon">linear<wbr>Damping</a>
+								<a href="box2dbodydef.html#lineardamping" class="tsd-kind-icon">linear<wbr>Damping</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="bodyoption.html#linearvelocity" class="tsd-kind-icon">linear<wbr>Velocity</a>
+								<a href="box2dbodydef.html#linearvelocity" class="tsd-kind-icon">linear<wbr>Velocity</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="bodyoption.html#type" class="tsd-kind-icon">type</a>
+								<a href="box2dbodydef.html#type" class="tsd-kind-icon">type</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="bodyoption.html#userdata" class="tsd-kind-icon">user<wbr>Data</a>
+								<a href="box2dbodydef.html#userdata" class="tsd-kind-icon">user<wbr>Data</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface">
-						<a href="box2doption.html" class="tsd-kind-icon">Box2DOption</a>
+						<a href="box2dfixturedef.html" class="tsd-kind-icon">Box2DFixture<wbr>Def</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="box2dparameter.html" class="tsd-kind-icon">Box2DParameter</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="contactmanagerparameter.html" class="tsd-kind-icon">Contact<wbr>Manager<wbr>Parameter</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="ebody.html" class="tsd-kind-icon">EBody</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="fixtureoption.html" class="tsd-kind-icon">Fixture<wbr>Option</a>
 					</li>
 				</ul>
 			</nav>
@@ -441,5 +368,14 @@
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-162208211-1', '');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>

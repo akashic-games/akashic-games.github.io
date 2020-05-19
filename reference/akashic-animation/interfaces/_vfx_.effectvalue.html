@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Box2DOption | @akashic-extension/akashic-box2d</title>
+	<title>EffectValue | @akashic-extension/akashic-animation</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@akashic-extension/akashic-box2d</a>
+					<a href="../index.html" class="title">@akashic-extension/akashic-animation</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,28 +56,24 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="box2doption.html">Box2DOption</a>
+					<a href="../modules/_vfx_.html">&quot;vfx&quot;</a>
+				</li>
+				<li>
+					<a href="_vfx_.effectvalue.html">EffectValue</a>
 				</li>
 			</ul>
-			<h1>Interface Box2DOption</h1>
+			<h1>Interface EffectValue</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>物理エンジンの世界生成時に指定するオプション。</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Box2DOption</span>
+						<span class="target">EffectValue</span>
 					</li>
 				</ul>
 			</section>
@@ -85,64 +81,26 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-external">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="box2doption.html#gravity" class="tsd-kind-icon">gravity</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="box2doption.html#scale" class="tsd-kind-icon">scale</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="box2doption.html#sleep" class="tsd-kind-icon">sleep</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-external"><a href="_vfx_.effectvalue.html#emitterop" class="tsd-kind-icon">emitter<wbr>Op</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-external">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="gravity" class="tsd-anchor"></a>
-					<h3>gravity</h3>
-					<div class="tsd-signature tsd-kind-icon">gravity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+					<a name="emitterop" class="tsd-anchor"></a>
+					<h3>emitter<wbr>Op</h3>
+					<div class="tsd-signature tsd-kind-icon">emitter<wbr>Op<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EmitterOperation.start</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">EmitterOperation.stop</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">EmitterOperation.pause</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L10">Box2DOptions.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/9b68456/src/vfx.ts#L50">vfx.ts:50</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>重力の方向 (m/s^2)。</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="scale" class="tsd-anchor"></a>
-					<h3>scale</h3>
-					<div class="tsd-signature tsd-kind-icon">scale<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L14">Box2DOptions.ts:14</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>スケール (pixel/m)。</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="sleep" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> sleep</h3>
-					<div class="tsd-signature tsd-kind-icon">sleep<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L19">Box2DOptions.ts:19</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>停止した物体を物理演算対象とするかどうか。
-							省略時はtrue。</p>
-						</div>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -152,42 +110,48 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class="current tsd-kind-external-module tsd-is-external">
+						<a href="../modules/_vfx_.html">"vfx"</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="../enums/bodytype.html" class="tsd-kind-icon">Body<wbr>Type</a>
+					<li class=" tsd-kind-enum tsd-parent-kind-external-module tsd-is-external">
+						<a href="../enums/_vfx_.emitteroperation.html" class="tsd-kind-icon">Emitter<wbr>Operation</a>
 					</li>
-					<li class=" tsd-kind-class">
-						<a href="../classes/box2d.html" class="tsd-kind-icon">Box2D</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-external">
+						<a href="_vfx_.effect.html" class="tsd-kind-icon">Effect</a>
 					</li>
-					<li class=" tsd-kind-interface">
-						<a href="bodyoption.html" class="tsd-kind-icon">Body<wbr>Option</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-external">
+						<a href="_vfx_.effectparameterobject.html" class="tsd-kind-icon">Effect<wbr>Parameter<wbr>Object</a>
 					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface">
-						<a href="box2doption.html" class="tsd-kind-icon">Box2DOption</a>
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module tsd-is-external">
+						<a href="_vfx_.effectvalue.html" class="tsd-kind-icon">Effect<wbr>Value</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="box2doption.html#gravity" class="tsd-kind-icon">gravity</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="box2doption.html#scale" class="tsd-kind-icon">scale</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="box2doption.html#sleep" class="tsd-kind-icon">sleep</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-external">
+								<a href="_vfx_.effectvalue.html#emitterop" class="tsd-kind-icon">emitter<wbr>Op</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface">
-						<a href="ebody.html" class="tsd-kind-icon">EBody</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-external">
+						<a href="_vfx_.emitterparameterobject.html" class="tsd-kind-icon">Emitter<wbr>Parameter<wbr>Object</a>
 					</li>
-					<li class=" tsd-kind-interface">
-						<a href="fixtureoption.html" class="tsd-kind-icon">Fixture<wbr>Option</a>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-external tsd-is-not-exported">
+						<a href="../modules/_vfx_.html#defaultrandomfunc" class="tsd-kind-icon">default<wbr>Random<wbr>Func</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-external tsd-is-not-exported">
+						<a href="../modules/_vfx_.html#randomgenerator" class="tsd-kind-icon">random<wbr>Generator</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-external">
+						<a href="../modules/_vfx_.html#createeffect" class="tsd-kind-icon">create<wbr>Effect</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-external tsd-is-not-exported">
+						<a href="../modules/_vfx_.html#initdefaultrandomfunc" class="tsd-kind-icon">init<wbr>Default<wbr>Random<wbr>Func</a>
 					</li>
 				</ul>
 			</nav>
@@ -259,5 +223,14 @@
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-162208211-1', '');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>
