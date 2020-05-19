@@ -15,7 +15,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>ニコ生ゲームとは</title>
+<title>Join と Leave</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?aa4267e">
 <link rel="stylesheet" href="/css/header.css?aa4267e">
@@ -112,77 +112,75 @@
 <div id="BodyInner">
 	<section class="akashic--document safearea--LR twocol">
 		<div class="twocol-side">
-			<h3>ニコ生ゲームを作ろう</h3>
+			<h3>Akashic Engine 入門</h3>
+<h4><a name="basic"></a> 導入</h4>
 <ul>
-<li><strong><a href="./index.html">トップ</a></strong></li>
-<li><strong><a href="./introduction.html">ニコ生ゲームとは</a></strong></li>
-<li><strong><a href="./mod-game.html">ニコ生ゲームを作ろう・改造編</a></strong><ul>
-<li><a href="./install.html">インストール</a></li>
-<li><a href="./thiefBuster-mod.html">『泥棒バスター』を改造する</a></li>
-<li><a href="./speed-jigsaw-mod.html">『スピードジグソー』を改造する</a></li>
+<li><a href="../index.html">トップ</a></li>
+<li><a href="../introduction.html">akashic の導入</a></li>
 </ul>
-</li>
-<li><strong><a href="./ranking-top.html">ニコ生ゲームを作ろう・ランキングゲーム編</a></strong><ul>
-<li><a href="./ranking.html">ランキング対応ゲーム</a></li>
-<li><a href="./ranking-by-template.html">テンプレートでわかるランキング対応ゲーム</a></li>
+<h4><a name="basic"></a> シングルプレイのゲーム作成</h4>
+<ul>
+<li><a href="../basic.html">コンテンツ作成の基本</a></li>
+<li><a href="../display-order.html">表示順の制御</a></li>
+<li><a href="../animation.html">アニメーションさせる</a></li>
+<li><a href="../click.html">クリックできるようにする</a></li>
+<li><a href="../audio.html">音を鳴らす</a></li>
+<li><a href="../scale-anchor.html">拡縮とアンカーポイント</a></li>
+<li><a href="../otherdraw.html">色々な描画</a></li>
+<li><a href="../bitmap-font.html">ビットマップフォントを使う</a></li>
+<li><a href="../export.html">ゲームを公開する</a></li>
+<li><a href="../install.html">拡張ライブラリを使う</a></li>
+<li><a href="../appendix.html">より大規模なゲームを作るために</a></li>
 </ul>
-</li>
-<li><strong><a href="./multi-top.html">ニコ生ゲームを作ろう・マルチプレイゲーム編</a></strong><ul>
-<li><a href="./multi-ready.html">マルチプレイ開発予備知識</a></li>
-<li><a href="./column-about-multi.html">マルチプレイゲームを知ろう</a></li>
-<li><a href="./column-local-process.html">簡単なゲームを作ってローカル処理に触れよう</a></li>
-<li><a href="./column-join-leave.html">Join と Leave とニコ生の話</a></li>
-<li><a href="./column-make-multi.html">実際にマルチプレイゲームを考えて作ろう</a></li>
-</ul>
-</li>
-<li><strong><a href="./submit.html">ニコ生ゲームを投稿しよう</a></strong></li>
-<li><strong><a href="./play.html">ニコ生ゲームで遊ぼう</a></strong></li>
-<li><strong><a href="./links.html">関連資料・困った時は</a></strong></li>
+<h4><a name="multiplay"></a> マルチプレイのゲーム作成</h4>
+<ul>
+<li><a href="./introduction.html">マルチプレイの基礎</a></li>
+<li><a href="./each-player.html">プレイヤーごとに異なる描画を行う</a></li>
+<li><a href="./camera.html">プレイヤーごとに異なる位置を表示する</a></li>
+<li><a href="./join.html">Join と Leave</a></li>
 </ul>
 
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<h1>ニコ生ゲームとは</h1>
-<p><strong>ニコ生ゲーム</strong> は、<a href="https://live.nicovideo.jp/">ニコニコ生放送</a> の配信内で起動して、配信者と視聴者で一緒に遊ぶことができるゲームです。</p>
-<p>ゲーム画面は配信画面にオーバーレイする形で表示されます。</p>
-<p><img src="/img/shin-ichiba/10839_06.png" alt="ニコ生ゲームが起動されている様子"></p>
-<!-- TODO 画像使っていいか確認？　出元は https://qa.nicovideo.jp/faq/show/10839 (を調整) -->
+				<h1>Join と Leave</h1>
+<h2><a name="join"></a> Join</h2>
+<p>各プレイヤーには「join しているか否か」という二値の状態が存在します。これは実行環境が規定する値です。「join しているプレイヤー」が何を意味するかは、実行環境によって定まります。</p>
+<p>あるプレイヤーが join 状態になる時、 <code>g.game.onJoin</code> が fire され <code>g.JoinEvent</code> が与えられます。同様に join 状態でなくなる時、 <code>g.game.onLeave</code> が fire され <code>g.LeaveEvent</code> が与えられます。</p>
+<blockquote>
+<p>これ自体は環境依存が強くあまり使い出のない機能ですが、
+<strong>ニコニコ生放送上で実行する場合、配信者のプレイヤーだけが join します</strong> (leave はしません)。そのため、配信者と視聴者を区別するための情報として利用することができます。</p>
+</blockquote>
+<p>次のコードは、最後に join したプレイヤーを記憶して参照する例です。</p>
+<pre><code class="language-javascript">var lastJoinedPlayerId = null;
 
-<p>いわゆるゲーム配信・ゲーム実況とは異なり、ニコ生ゲームは配信者と視聴者全員のスマートフォンや PC 上で実行されます。
-この特徴を活かして様々な形態のゲームが作られています (<a href="https://site.live.nicovideo.jp/ichiba.html">紹介サイト</a>) 。</p>
-<ul>
-<li>シングルプレイのゲームの得点を、 <strong>視聴者全員と競う</strong> (『つりっくま』など)</li>
-<li>配信者が操作するキャラクタを、 <strong>視聴者が助ける</strong> (『ニコニコテレビちゃんジャンプ』など)</li>
-<li>配信者がボス役となって <strong>視聴者たちと戦う</strong> (『だるまさんが転んだ』など)</li>
-</ul>
-<p>さらには、『おしゃべりトピック』(<a href="https://ch.nicovideo.jp/shin-ichiba/blomaga/ar1859302">紹介</a>) のように必ずしもゲームでないものもあります。</p>
-<blockquote>
-<p>ニコ生ゲームは、そのような「ゲームでないもの」を含む名前として、 <strong>放送ネタ</strong> と呼ばれることがあります。
-簡単のため、このページでは単にニコ生ゲームと呼びます。</p>
-</blockquote>
-<h2>ユーザ投稿ニコ生ゲーム</h2>
-<p>ニコ生ゲームには、公式で提供されているものの他、ユーザによって作成・投稿されたものがあります。</p>
-<p>ニコ生ゲームは <a href="https://akashic-games.github.io/">Akashic Engine</a> で作成することができます。
-Akashic Engine はドワンゴが公開している JavaScript ゲームエンジンで、無償で利用できます。
-またゲームの投稿にも料金などは必要ありません。
-PC さえあれば気軽にゲームを作成することができます。</p>
-<p>実際に投稿されたゲームは、次のページで一覧することができます。</p>
-<p><a href="https://game.nicovideo.jp/atsumaru/search/tag/%E3%83%8B%E3%82%B3%E7%94%9F%E3%82%B2%E3%83%BC%E3%83%A0"><strong>RPG アツマールで「ニコ生ゲーム」タグがつけられたゲームの一覧</strong></a><br>
-<a href="https://game.nicovideo.jp/atsumaru/search/tag/%E3%83%8B%E3%82%B3%E3%83%8B%E3%82%B3%E6%96%B0%E5%B8%82%E5%A0%B4%E5%AF%BE%E5%BF%9C"><strong>RPG アツマールで「ニコニコ新市場対応」タグがつけられたゲームの一覧</strong></a> (以前使われていたタグです。現在は「ニコ生ゲーム」タグが推奨です)</p>
-<p>なお <a href="https://game.nicovideo.jp/atsumaru/">RPG アツマール</a> は、niconico の自作ゲーム投稿コミュニティサービスです。
-ユーザ作成のニコ生ゲームは、RPG アツマールへの投稿を経てニコニコ生放送にも投稿されるようになっています。
-上記のページでニコ生ゲームが一覧できるのはこのためです。</p>
-<blockquote>
-<p>特に一人プレイ対応のニコ生ゲームは、RPG アツマール上でもプレイできます。
-ぜひ上記のリンクから遊んでみてください。</p>
-</blockquote>
+g.game.onJoin.add(function(ev) {
+  lastJoinedPlayerId = ev.player.id;
+});
+
+scene.onPointDownCapture.add(function(ev) {
+  if (ev.player.id === lastJoinedPlayerId) {
+    // ニコニコ生放送上で動かす場合、イベントを生成した(＝画面を押下した)のが「配信者」である時のみ実行される
+    // ...
+  }
+
+  if (g.game.selfId === lastJoinedPlayerId) {
+    // ニコニコ生放送上で動かす場合、この実行環境(インスタンス)が「配信者」のものである時のみ実行される
+    // ...
+  }
+});</code></pre>
+<p>なお <code>g.game.selfId</code> は、今そのゲームを実行している環境(インスタンス)のプレイヤー ID です。このコード例のように、あるイベントの生成元が自分(このインスタンス自身)かどうかを判断したい時に利用できます。</p>
+<p><code>g.game.onJoin</code> や <code>g.game.onLeave</code> の動作確認は <code>akashic serve</code> コマンドでも行うことができます。</p>
+<p><img src="/img/tutorial/cli-serve.png" alt="serve"></p>
+<p>画面上側、ツールバー上の「Join Me」ボタンを押すと、そのウィンドウ(インスタンス)のプレイヤーが join します (<code>g.game.onJoin</code> が fire されます)。
+join 済みの場合は「Leave Me」ボタンに切り替わり、 <code>g.game.onLeave</code> を fire させることができます。</p>
+<h2><a name="niconico"></a> ニコ生ゲーム</h2>
+<p>その他、ニコニコ生放送に関する内容は、 <a href="/guide/">開発者向けガイド</a> の <a href="/guide/shin-ichiba/">ニコニコ生放送で遊べるゲームの作成</a> を参照してください。</p>
 <div class="navi-center">
-&nbsp;- <!-- %nbsp; は prettier に変に整形される暫定対策 -->
-| <a href="./index.html">目次</a>
-| <a href="./mod-game.html">次 (ニコ生ゲームを作ろう・改造編)</a>
+<a href="./camera.html">前 (プレイヤーごとに異なる位置を表示する)</a>
+ | <a href="../">目次</a>
+ | -
 </div>
-
 
 			</div>
 		</div>

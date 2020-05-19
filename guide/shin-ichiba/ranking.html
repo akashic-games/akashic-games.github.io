@@ -163,7 +163,7 @@ scene.loaded.add(function (){
 <p>ここまでの内容で、ランキングモード対応のゲームを作成することができます。
 以下はより発展的な内容です。</p>
 <h2><a name="session-parameter"></a> セッションパラメータとランキング対応ゲームテンプレート</h2>
-<p>ニコニコ新市場は、起動したゲームコンテンツに対していくつかの補助情報を提供します。
+<p>ニコニコ生放送は、起動したゲームコンテンツに対していくつかの補助情報を提供します。
 ランキングモードの場合、これには次のような内容が含まれます。</p>
 <ul>
 <li>制限時間</li>
@@ -233,7 +233,7 @@ $ akashic init -t typescript-shin-ichiba-ranking    # TypeScript版のサンプ�
 <h2><a name="declare-time-limit"> 制限時間の表明</h2>
 <p>制限時間 <code>totalTimeLimit</code> の値は、ゲーム開発者の希望する値を game.json で表明することができます。
 game.json で <code>environment.niconico.preferredSessionParameters.totalTimeLimit</code> を指定することで、
-ニコニコ新市場はその値を参照して制限時間を決定します。</p>
+ニコ生ゲームはその値を参照して制限時間を決定します。</p>
 <p>たとえば、デフォルトの 80 秒前後ではなく 30 秒で終わるゲームが作成したい場合は、 game.json に次のように記述します。</p>
 <pre><code class="language-json">{
   &quot;environment&quot;: {
@@ -306,7 +306,7 @@ Niconico タブをクリックすると、下記のような画面(v0.13.54 時�
 <p>mode で「ランキング(ranking)」を選択することで、akashic-sandbox は次のように動作します。</p>
 <ul>
 <li><code>totalTimeLimit</code> (制限時間) がゲーム開始時に送られます。また、この値を指定することができます。<ul>
-<li>ただしこの値は、あくまで akashic-sandbox 上でのデバッグのためのもので、ニコニコ新市場で実際に起動された時の値は保証されません。</li>
+<li>ただしこの値は、あくまで akashic-sandbox 上でのデバッグのためのもので、ニコニコ生放送で実際に起動された時の値は保証されません。</li>
 </ul>
 </li>
 <li>制限時間までの残り時間がカウントされます。</li>
@@ -314,10 +314,10 @@ Niconico タブをクリックすると、下記のような画面(v0.13.54 時�
 </ul>
 <blockquote>
 <p>なおインストールされている akashic-sandbox のバージョンは次のコマンドで確認できます。</p>
-<pre><code>akashic-sandbox -V</code></pre><p>バージョンが 0.13.40 未満の場合は、<a href="/tutorial/v2/1-introduction.html#Akashic%20Engine%20%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">Akashic Engine のインストール</a>を参照してインストールしなおしてください。</p>
+<pre><code>akashic-sandbox -V</code></pre><p>バージョンが 0.13.40 未満の場合は、<a href="/tutorial/v3/introduction.html#Akashic%20Engine%20%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">Akashic Engine のインストール</a>を参照してインストールしなおしてください。</p>
 </blockquote>
 <div class="navi-center">
-<a href="./shin-ichiba-intro.html">前 (ニコニコ新市場対応コンテンツ)</a>
+<a href="./shin-ichiba-intro.html">前 (ニコ生ゲーム)</a>
  | <a href="./">目次</a>
  | <a href="./multi.html">次 (multi モードのゲーム作成)</a>
 </div>

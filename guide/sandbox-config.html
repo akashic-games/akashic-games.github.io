@@ -120,7 +120,7 @@
 <p>Akashic で開発されたゲームの動作確認ツールとして、 Akashic Sandbox (<code>akashic-sandbox</code>) と Akashic-cli の serve コマンドがあります。
 sandbox.config.js は、これらのツールの機能を取り扱う設定ファイルです。
 sandbox.config.js を利用することで、セッションパラメータや起動引数に関わる動作確認を効率化・自動化することができます。</p>
-<p>（セッションパラメータの詳細は<a href="./ranking.html">ニコニコ新市場対応コンテンツ作成ガイド</a>を参照してください）</p>
+<p>（セッションパラメータの詳細は<a href="./ranking.html">ニコ生ゲーム作成ガイド</a>を参照してください）</p>
 <h2><a name="形式"></a> 形式</h2>
 <p>sandbox.config.js は JavaScript として実行可能なコードと、export されるモジュールとして記述されます。モジュールは以下の名前のプロパティと、対応する値を持ちます。</p>
 <ul>
@@ -157,10 +157,10 @@ sandbox.config.js を利用することで、セッションパラメータや�
 
 module.exports = config;</code></pre><p>このファイルに以下の名前のプロパティを記述することで、各種設定を利用できます。</p>
 <h2><a name="events"></a> events</h2>
-<p>events には、Akashic ゲームで扱う playlog イベントを事前に記述することができます。特に、ニコニコ新市場対応コンテンツを作成する場合に、セッションパラメータの動作確認を行うために利用することができます。</p>
+<p>events には、Akashic ゲームで扱う playlog イベントを事前に記述することができます。特に、ニコ生ゲームを作成する場合に、セッションパラメータの動作確認を行うために利用することができます。</p>
 <p>events は、任意のプロパティ名を持ったオブジェクトです。プロパティ名はイベント名として、開発ツールの一覧に表示されます。各プロパティは、送りたい playlog イベントの配列です。</p>
 <p>（playlog の詳細な仕様は<a href="https://github.com/akashic-games/playlog">playlog</a>を参照してください）</p>
-<p>例として、ニコニコ新市場で実行されるゲームにセッションパラメータを送りたい場合、sandbox.config.js には以下のように記述します。</p>
+<p>例として、ニコニコ生放送で実行されるゲームにセッションパラメータを送りたい場合、sandbox.config.js には以下のように記述します。</p>
 <pre><code>var config = {
     &quot;events&quot;: {
         &quot;mySessionParameter&quot;: [

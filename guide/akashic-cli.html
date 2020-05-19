@@ -242,14 +242,14 @@ fps: (30)</code></pre>
 <p>最低限の処理しか記述されていない空のゲームが生成されます。
 <code>script/main.js</code> を編集することでゲームの作成が可能です。</p>
 <h4><a name="javascript-shin-ichiba-ranking"></a> javascript-shin-ichiba-ranking</h4>
-<p>ニコニコ新市場のランキングに対応したゲームの雛形が生成されます。
+<p>ニコ生ゲームのランキングに対応したゲームの雛形が生成されます。
 <code>script/main.js</code> を編集することでゲームの作成が可能です。基本的に <code>script/_bootstrap.js</code> を編集する必要はありません。
 このゲームでは、<code>script/main.js</code> の <code>main</code> 関数の引数 <code>param</code> に以下の値が新たに付与されています。</p>
 <ul>
-<li><code>param.sessionParameter</code>: <a href="/guide/shin-ichiba-content#session-parameter">セッションパラメータ</a></li>
+<li><code>param.sessionParameter</code>: <a href="/guide/shin-ichiba/shin-ichiba-spec#session-parameter">セッションパラメータ</a></li>
 <li><code>param.isAtsumaru</code>:ゲームが動作している環境が RPG アツマール上かどうかを表す boolean 値</li>
 </ul>
-<p>ランキングモードに対応したニコニコ新市場コンテンツの作り方については、<a href="/guide/shin-ichiba-ranking-tutorial">こちら</a>を参照してください。</p>
+<p>ランキングモードに対応したニコ生ゲームの作り方については、<a href="/guide/shin-ichiba/ranking">こちら</a>を参照してください。</p>
 <h4><a name="typescript"></a> typescript</h4>
 <p>TypeScript で書かれたゲームと、ビルドに必要なディレクトリ・ファイルが生成されます。
 これらをビルドすることで、game ディレクトリ以下に Akashic で動作するゲームを生成します。
@@ -394,8 +394,8 @@ akashic コマンドはファイルパスを基準に操作を行うため、た
 </tbody></table>
 <p>ネットワークごしに(他の PC などから)マルチプレイを行いたい場合は、 <code>--hostname</code> に外部からアクセス可能なホスト名(IP アドレスなど)を指定してください。</p>
 <p>オプション <code>--target-service</code> には <code>none</code> または <code>nicolive</code> を指定できます。
-<code>nicolive</code> が指定された場合、特定の条件で <code>JoinEvent</code> が自動的に送られるなど、ニコニコ生放送 (ニコニコ新市場) に近い挙動で動作します。
-詳細はニコニコ新市場対応コンテンツのガイド文書 <a href="/guide/shin-ichiba/multi.html#debug">multi モードのゲーム作成</a> を参照してください。</p>
+<code>nicolive</code> が指定された場合、特定の条件で <code>JoinEvent</code> が自動的に送られるなど、ニコニコ生放送に近い挙動で動作します。
+詳細はニコ生ゲームのガイド文書 <a href="/guide/shin-ichiba/multi.html#debug">multi モードのゲーム作成</a> を参照してください。</p>
 <h2><a name="install"></a> install</h2>
 <pre><code class="language-sh">akashic install [&lt;module&gt;]</code></pre>
 <p><code>npm install</code> のラッパーコマンドです。</p>
