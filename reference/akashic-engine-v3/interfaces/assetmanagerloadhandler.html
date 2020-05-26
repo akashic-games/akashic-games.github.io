@@ -102,13 +102,13 @@
 					<a name="_onasseterror" class="tsd-anchor"></a>
 					<h3>_on<wbr>Asset<wbr>Error</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">_on<wbr>Asset<wbr>Error<span class="tsd-signature-symbol">(</span>asset<span class="tsd-signature-symbol">: </span><a href="assetlike.html" class="tsd-signature-type">AssetLike</a>, error<span class="tsd-signature-symbol">: </span><a href="assetloaderror.html" class="tsd-signature-type">AssetLoadError</a>, retryCallback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">_on<wbr>Asset<wbr>Error<span class="tsd-signature-symbol">(</span>asset<span class="tsd-signature-symbol">: </span><a href="assetlike.html" class="tsd-signature-type">AssetLike</a>, error<span class="tsd-signature-symbol">: </span><a href="assetloaderror.html" class="tsd-signature-type">AssetLoadError</a>, retryCallback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>asset<span class="tsd-signature-symbol">: </span><a href="assetlike.html" class="tsd-signature-type">AssetLike</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManagerLoadHandler.ts#L15">src/domain/AssetManagerLoadHandler.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManagerLoadHandler.ts#L15">engine/AssetManagerLoadHandler.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -131,13 +131,13 @@
 									</div>
 								</li>
 								<li>
-									<h5>retryCallback: <span class="tsd-signature-type">function</span></h5>
+									<h5>retryCallback: <span class="tsd-signature-symbol">(</span>asset<span class="tsd-signature-symbol">: </span><a href="assetlike.html" class="tsd-signature-type">AssetLike</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>読み込みの再試行を行うコールバック関数。<code>AssetManager#retryLoad()</code> が設定される。</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+											<ul class="tsd-signatures tsd-kind-type-literal">
 												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>asset<span class="tsd-signature-symbol">: </span><a href="assetlike.html" class="tsd-signature-type">AssetLike</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
@@ -169,7 +169,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManagerLoadHandler.ts#L21">src/domain/AssetManagerLoadHandler.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManagerLoadHandler.ts#L21">engine/AssetManagerLoadHandler.ts:21</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -288,5 +288,14 @@
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-162208211-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>
