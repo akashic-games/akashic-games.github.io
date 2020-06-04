@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>LocalTickMode | @akashic/akashic-engine</title>
+	<title>SceneMode | @akashic/akashic-engine</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,87 +56,59 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="localtickmode.html">LocalTickMode</a>
+					<a href="scenemode.html">SceneMode</a>
 				</li>
 			</ul>
-			<h1>Enumeration LocalTickMode</h1>
+			<h1>Interface SceneMode</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>シーンに与えるローカルティックの種類</p>
-					</div>
-				</div>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">SceneMode</span>
+					</li>
+				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Enumeration members</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="localtickmode.html#fulllocal" class="tsd-kind-icon">Full<wbr>Local</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="localtickmode.html#interpolatelocal" class="tsd-kind-icon">Interpolate<wbr>Local</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="localtickmode.html#nonlocal" class="tsd-kind-icon">Non<wbr>Local</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="scenemode.html#local" class="tsd-kind-icon">local</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="scenemode.html#tickgenerationmode" class="tsd-kind-icon">tick<wbr>Generation<wbr>Mode</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Enumeration members</h2>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="fulllocal" class="tsd-anchor"></a>
-					<h3>Full<wbr>Local</h3>
-					<div class="tsd-signature tsd-kind-icon">Full<wbr>Local<span class="tsd-signature-symbol">:</span> </div>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="local" class="tsd-anchor"></a>
+					<h3>local</h3>
+					<div class="tsd-signature tsd-kind-icon">local<span class="tsd-signature-symbol">:</span> <a href="../globals.html#localtickmodestring" class="tsd-signature-type">LocalTickModeString</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/types/LocalTickMode.ts#L15">src/types/LocalTickMode.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/GameHandlerSet.ts#L6">engine/GameHandlerSet.ts:6</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>ローカルティックのみ受け取る。
-							ローカルシーン。</p>
-						</div>
-					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="interpolatelocal" class="tsd-anchor"></a>
-					<h3>Interpolate<wbr>Local</h3>
-					<div class="tsd-signature tsd-kind-icon">Interpolate<wbr>Local<span class="tsd-signature-symbol">:</span> </div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="tickgenerationmode" class="tsd-anchor"></a>
+					<h3>tick<wbr>Generation<wbr>Mode</h3>
+					<div class="tsd-signature tsd-kind-icon">tick<wbr>Generation<wbr>Mode<span class="tsd-signature-symbol">:</span> <a href="../globals.html#tickgenerationmodestring" class="tsd-signature-type">TickGenerationModeString</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/types/LocalTickMode.ts#L21">src/types/LocalTickMode.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/GameHandlerSet.ts#L7">engine/GameHandlerSet.ts:7</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>消化すべきティックがない場合にローカルティックを受け取る。
-							ローカルティック補間シーン。</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="nonlocal" class="tsd-anchor"></a>
-					<h3>Non<wbr>Local</h3>
-					<div class="tsd-signature tsd-kind-icon">Non<wbr>Local<span class="tsd-signature-symbol">:</span> </div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/types/LocalTickMode.ts#L9">src/types/LocalTickMode.ts:9</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>ローカルティックを受け取らない。
-							通常の(非ローカル)シーン。</p>
-						</div>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -152,17 +124,14 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-enum">
-						<a href="localtickmode.html" class="tsd-kind-icon">Local<wbr>Tick<wbr>Mode</a>
+					<li class="current tsd-kind-interface">
+						<a href="scenemode.html" class="tsd-kind-icon">Scene<wbr>Mode</a>
 						<ul>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="localtickmode.html#fulllocal" class="tsd-kind-icon">Full<wbr>Local</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="scenemode.html#local" class="tsd-kind-icon">local</a>
 							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="localtickmode.html#interpolatelocal" class="tsd-kind-icon">Interpolate<wbr>Local</a>
-							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="localtickmode.html#nonlocal" class="tsd-kind-icon">Non<wbr>Local</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="scenemode.html#tickgenerationmode" class="tsd-kind-icon">tick<wbr>Generation<wbr>Mode</a>
 							</li>
 						</ul>
 					</li>
@@ -239,5 +208,14 @@
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-162208211-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>

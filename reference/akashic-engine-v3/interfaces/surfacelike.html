@@ -78,9 +78,6 @@
 				<ul class="tsd-hierarchy">
 					<li>
 						<a href="commonsize.html" class="tsd-signature-type">CommonSize</a>
-					</li>
-					<li>
-						<a href="destroyable.html" class="tsd-signature-type">Destroyable</a>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">SurfaceLike</span>
@@ -103,18 +100,15 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-private"><a href="surfacelike.html#_drawable" class="tsd-kind-icon">_drawable</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="surfacelike.html#animatingstarted" class="tsd-kind-icon">animating<wbr>Started</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="surfacelike.html#animatingstopped" class="tsd-kind-icon">animating<wbr>Stopped</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="surfacelike.html#height" class="tsd-kind-icon">height</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="surfacelike.html#isdynamic" class="tsd-kind-icon">is<wbr>Dynamic</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="surfacelike.html#width" class="tsd-kind-icon">width</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="surfacelike.html#destroy" class="tsd-kind-icon">destroy</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface tsd-is-inherited"><a href="surfacelike.html#destroyed" class="tsd-kind-icon">destroyed</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="surfacelike.html#destroy" class="tsd-kind-icon">destroy</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="surfacelike.html#destroyed" class="tsd-kind-icon">destroyed</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="surfacelike.html#isplaying" class="tsd-kind-icon">is<wbr>Playing</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="surfacelike.html#renderer" class="tsd-kind-icon">renderer</a></li>
 							</ul>
@@ -130,45 +124,13 @@
 					<div class="tsd-signature tsd-kind-icon">_drawable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/SurfaceLike.ts#L45">src/interfaces/SurfaceLike.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/SurfaceLike.ts#L25">pdi-types/SurfaceLike.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>描画可能な実体。
 							具体的には renderer().drawImage() の実装が描画対象として利用できる値。</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="animatingstarted" class="tsd-anchor"></a>
-					<h3>animating<wbr>Started</h3>
-					<div class="tsd-signature tsd-kind-icon">animating<wbr>Started<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/SurfaceLike.ts#L32">src/interfaces/SurfaceLike.ts:32</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>アニメーション再生開始イベント。
-							isDynamicが偽の時undefined。</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="animatingstopped" class="tsd-anchor"></a>
-					<h3>animating<wbr>Stopped</h3>
-					<div class="tsd-signature tsd-kind-icon">animating<wbr>Stopped<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/SurfaceLike.ts#L38">src/interfaces/SurfaceLike.ts:38</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>アニメーション再生停止イベント。
-							isDynamicが偽の時undefined。</p>
 						</div>
 					</div>
 				</section>
@@ -179,29 +141,13 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="commonsize.html">CommonSize</a>.<a href="commonsize.html#height">height</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/SurfaceLike.ts#L20">src/interfaces/SurfaceLike.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/SurfaceLike.ts#L18">pdi-types/SurfaceLike.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>描画領域の高さ。
 							この値を直接書き換えてはならない。</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="isdynamic" class="tsd-anchor"></a>
-					<h3>is<wbr>Dynamic</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Dynamic<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/SurfaceLike.ts#L26">src/interfaces/SurfaceLike.ts:26</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>本Surfaceの画像が動画であるかを示す値。真の時、動画。
-							この値は参照のみに利用され、変更してはならない。</p>
 						</div>
 					</div>
 				</section>
@@ -212,7 +158,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="commonsize.html">CommonSize</a>.<a href="commonsize.html#width">width</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/SurfaceLike.ts#L14">src/interfaces/SurfaceLike.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/SurfaceLike.ts#L12">pdi-types/SurfaceLike.ts:12</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -225,46 +171,44 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="destroy" class="tsd-anchor"></a>
 					<h3>destroy</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
 						<li class="tsd-signature tsd-kind-icon">destroy<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="destroyable.html">Destroyable</a>.<a href="destroyable.html#destroy">destroy</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/types/Destroyable.ts#L11">src/types/Destroyable.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/SurfaceLike.ts#L40">pdi-types/SurfaceLike.ts:40</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>オブジェクトを破棄する。</p>
+									<p>このSurfaceの破棄を行う。</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="destroyed" class="tsd-anchor"></a>
 					<h3>destroyed</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
 						<li class="tsd-signature tsd-kind-icon">destroyed<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="destroyable.html">Destroyable</a>.<a href="destroyable.html#destroyed">destroyed</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/types/Destroyable.ts#L16">src/types/Destroyable.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/SurfaceLike.ts#L45">pdi-types/SurfaceLike.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>破棄されたオブジェクトかどうかを判定する。</p>
+									<p>このSurfaceが破棄済みであるかどうかを判定する。</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -281,7 +225,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/SurfaceLike.ts#L55">src/interfaces/SurfaceLike.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/SurfaceLike.ts#L35">pdi-types/SurfaceLike.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -303,7 +247,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/SurfaceLike.ts#L50">src/interfaces/SurfaceLike.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/SurfaceLike.ts#L30">pdi-types/SurfaceLike.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -335,25 +279,16 @@
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-private">
 								<a href="surfacelike.html#_drawable" class="tsd-kind-icon">_drawable</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="surfacelike.html#animatingstarted" class="tsd-kind-icon">animating<wbr>Started</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="surfacelike.html#animatingstopped" class="tsd-kind-icon">animating<wbr>Stopped</a>
-							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
 								<a href="surfacelike.html#height" class="tsd-kind-icon">height</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="surfacelike.html#isdynamic" class="tsd-kind-icon">is<wbr>Dynamic</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
 								<a href="surfacelike.html#width" class="tsd-kind-icon">width</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="surfacelike.html#destroy" class="tsd-kind-icon">destroy</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface tsd-is-inherited">
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="surfacelike.html#destroyed" class="tsd-kind-icon">destroyed</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
@@ -437,5 +372,14 @@
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-162208211-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>
