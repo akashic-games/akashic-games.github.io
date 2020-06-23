@@ -66,13 +66,6 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>ボディとエンティティを紐づけるインタフェース。</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -88,8 +81,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ebody.html#b2body" class="tsd-kind-icon">b2body</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ebody.html#b2body" class="tsd-kind-icon">b2<wbr>Body</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ebody.html#entity" class="tsd-kind-icon">entity</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ebody.html#id" class="tsd-kind-icon">id</a></li>
 							</ul>
 						</section>
 					</div>
@@ -99,18 +93,13 @@
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="b2body" class="tsd-anchor"></a>
-					<h3>b2body</h3>
-					<div class="tsd-signature tsd-kind-icon">b2body<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">b2.Dynamics.b2Body</span></div>
+					<h3>b2<wbr>Body</h3>
+					<div class="tsd-signature tsd-kind-icon">b2<wbr>Body<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">box2dweb.Dynamics.b2Body</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L146">Box2DOptions.ts:146</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/parateters.ts#L158">parateters.ts:158</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Box2DWebのボディ。</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="entity" class="tsd-anchor"></a>
@@ -118,14 +107,19 @@
 					<div class="tsd-signature tsd-kind-icon">entity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">E</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/5c98c69/src/Box2DOptions.ts#L142">Box2DOptions.ts:142</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/parateters.ts#L153">parateters.ts:153</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Akashicのエンティティ。</p>
-						</div>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="id" class="tsd-anchor"></a>
+					<h3>id</h3>
+					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/parateters.ts#L148">parateters.ts:148</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -145,11 +139,20 @@
 					<li class=" tsd-kind-class">
 						<a href="../classes/box2d.html" class="tsd-kind-icon">Box2D</a>
 					</li>
-					<li class=" tsd-kind-interface">
-						<a href="bodyoption.html" class="tsd-kind-icon">Body<wbr>Option</a>
+					<li class=" tsd-kind-class">
+						<a href="../classes/contactmanager.html" class="tsd-kind-icon">Contact<wbr>Manager</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="box2doption.html" class="tsd-kind-icon">Box2DOption</a>
+						<a href="box2dbodydef.html" class="tsd-kind-icon">Box2DBody<wbr>Def</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="box2dfixturedef.html" class="tsd-kind-icon">Box2DFixture<wbr>Def</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="box2dparameter.html" class="tsd-kind-icon">Box2DParameter</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="contactmanagerparameter.html" class="tsd-kind-icon">Contact<wbr>Manager<wbr>Parameter</a>
 					</li>
 				</ul>
 				<ul class="current">
@@ -157,18 +160,18 @@
 						<a href="ebody.html" class="tsd-kind-icon">EBody</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="ebody.html#b2body" class="tsd-kind-icon">b2body</a>
+								<a href="ebody.html#b2body" class="tsd-kind-icon">b2<wbr>Body</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="ebody.html#entity" class="tsd-kind-icon">entity</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="ebody.html#id" class="tsd-kind-icon">id</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface">
-						<a href="fixtureoption.html" class="tsd-kind-icon">Fixture<wbr>Option</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
@@ -239,5 +242,14 @@
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-162208211-1', '');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>

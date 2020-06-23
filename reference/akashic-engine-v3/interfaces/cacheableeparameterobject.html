@@ -131,11 +131,11 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="anchorx" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> anchorX</h3>
-					<div class="tsd-signature tsd-kind-icon">anchorX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<div class="tsd-signature tsd-kind-icon">anchorX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2dparameterobject.html">Object2DParameterObject</a>.<a href="object2dparameterobject.html#anchorx">anchorX</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L73">src/domain/Object2D.ts:73</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L80">engine/Object2D.ts:80</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -143,24 +143,26 @@
 							<p>オブジェクトのアンカーの横位置。アンカーについては以下の通り。</p>
 							<ul>
 								<li>アンカーとして設定した箇所がこのオブジェクトの基点 (位置、拡縮・回転の基点) となる。</li>
-								<li>単位は相対値 (左上端が (0, 0) 中央が (0.5, 0,5) 右下端が (1,1) ) である。</li>
+								<li>単位は相対値 (左上端が (0, 0) 中央が (0.5, 0,5) 右下端が (1,1) ) である。
+								初期値は <code>0</code> である。</li>
 							</ul>
 						</div>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>0</p>
-							</dd>
-						</dl>
+						<p>NOTE: <code>anchorX</code> または <code>anchorY</code> のどちらかを明示的に <code>null</code> に指定した場合、
+							このオブジェクトのアンカーは前バージョン(v2.x.x 以前)のデフォルトの挙動 (位置 <code>x</code>, <code>y</code> は左上端を基準に、拡大・縮小・回転の基点は中央を基準に決定) と同様になる。
+						これは前バージョンとの後方互換性のために存在する。</p>
+						<ul>
+							<li>@default 0</li>
+						</ul>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="anchory" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> anchorY</h3>
-					<div class="tsd-signature tsd-kind-icon">anchorY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<div class="tsd-signature tsd-kind-icon">anchorY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2dparameterobject.html">Object2DParameterObject</a>.<a href="object2dparameterobject.html#anchory">anchorY</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L81">src/domain/Object2D.ts:81</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L93">engine/Object2D.ts:93</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -168,14 +170,16 @@
 							<p>オブジェクトのアンカーの縦位置。アンカーについては以下の通り。</p>
 							<ul>
 								<li>アンカーとして設定した箇所がこのオブジェクトの基点 (位置、拡縮・回転の基点) となる。</li>
-								<li>単位は相対値 (左上端が (0, 0) 中央が (0.5, 0,5) 右下端が (1,1) ) である。</li>
+								<li>単位は相対値 (左上端が (0, 0) 中央が (0.5, 0,5) 右下端が (1,1) ) である。
+								初期値は <code>0</code> である。</li>
 							</ul>
 						</div>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>0</p>
-							</dd>
-						</dl>
+						<p>NOTE: <code>anchorX</code> または <code>anchorY</code> のどちらを明示的に <code>null</code> に指定した場合、
+							このオブジェクトのアンカーは前バージョン(v2.x.x 以前)のデフォルトの挙動 (位置 <code>x</code>, <code>y</code> は左上端を基準に、拡大・縮小・回転の基点は中央を基準に決定) と同様になる。
+						これは前バージョンとの後方互換性のために存在する。</p>
+						<ul>
+							<li>@default 0</li>
+						</ul>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
@@ -185,7 +189,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2dparameterobject.html">Object2DParameterObject</a>.<a href="object2dparameterobject.html#angle">angle</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L58">src/domain/Object2D.ts:58</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L59">engine/Object2D.ts:59</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -204,9 +208,9 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> children</h3>
 					<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <a href="../classes/e.html" class="tsd-signature-type">E</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="eparameterobject.html">EParameterObject</a>.<a href="eparameterobject.html#children">children</a></p>
+						<p>Inherited from <a href="filledrectparameterobject.html">FilledRectParameterObject</a>.<a href="filledrectparameterobject.html#children">children</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L89">src/domain/entities/E.ts:89</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L81">engine/entities/E.ts:81</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -223,17 +227,18 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="compositeoperation" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> composite<wbr>Operation</h3>
-					<div class="tsd-signature tsd-kind-icon">composite<wbr>Operation<span class="tsd-signature-symbol">:</span> <a href="../enums/compositeoperation.html" class="tsd-signature-type">CompositeOperation</a></div>
+					<div class="tsd-signature tsd-kind-icon">composite<wbr>Operation<span class="tsd-signature-symbol">:</span> <a href="../enums/compositeoperation.html" class="tsd-signature-type">CompositeOperation</a><span class="tsd-signature-symbol"> | </span><a href="../globals.html#compositeoperationstring" class="tsd-signature-type">CompositeOperationString</a></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2dparameterobject.html">Object2DParameterObject</a>.<a href="object2dparameterobject.html#compositeoperation">compositeOperation</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L65">src/domain/Object2D.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L67">engine/Object2D.ts:67</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>描画時の合成方法を指定する。
-							省略された場合、合成方法を指定しない（親の合成方法を利用する）。</p>
+								省略された場合、合成方法を指定しない（親の合成方法を利用する）。
+							なお <code>CompositeOperation</code> での指定は非推奨である。 <code>CompositeOperationString</code> を利用すること。</p>
 						</div>
 						<dl class="tsd-comment-tags">
 							<dt>default</dt>
@@ -249,7 +254,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2dparameterobject.html">Object2DParameterObject</a>.<a href="object2dparameterobject.html#height">height</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L33">src/domain/Object2D.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L34">engine/Object2D.ts:34</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -268,9 +273,9 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> hidden</h3>
 					<div class="tsd-signature tsd-kind-icon">hidden<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="eparameterobject.html">EParameterObject</a>.<a href="eparameterobject.html#hidden">hidden</a></p>
+						<p>Inherited from <a href="filledrectparameterobject.html">FilledRectParameterObject</a>.<a href="filledrectparameterobject.html#hidden">hidden</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L102">src/domain/entities/E.ts:102</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L94">engine/entities/E.ts:94</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -289,9 +294,9 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> id</h3>
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="eparameterobject.html">EParameterObject</a>.<a href="eparameterobject.html#id">id</a></p>
+						<p>Inherited from <a href="filledrectparameterobject.html">FilledRectParameterObject</a>.<a href="filledrectparameterobject.html#id">id</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L110">src/domain/entities/E.ts:110</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L102">engine/entities/E.ts:102</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -312,9 +317,9 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> local</h3>
 					<div class="tsd-signature tsd-kind-icon">local<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="eparameterobject.html">EParameterObject</a>.<a href="eparameterobject.html#local">local</a></p>
+						<p>Inherited from <a href="filledrectparameterobject.html">FilledRectParameterObject</a>.<a href="filledrectparameterobject.html#local">local</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L77">src/domain/entities/E.ts:77</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L69">engine/entities/E.ts:69</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -338,7 +343,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2dparameterobject.html">Object2DParameterObject</a>.<a href="object2dparameterobject.html#opacity">opacity</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L40">src/domain/Object2D.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L41">engine/Object2D.ts:41</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -358,9 +363,9 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> parent</h3>
 					<div class="tsd-signature tsd-kind-icon">parent<span class="tsd-signature-symbol">:</span> <a href="../classes/e.html" class="tsd-signature-type">E</a><span class="tsd-signature-symbol"> | </span><a href="../classes/scene.html" class="tsd-signature-type">Scene</a></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="eparameterobject.html">EParameterObject</a>.<a href="eparameterobject.html#parent">parent</a></p>
+						<p>Inherited from <a href="filledrectparameterobject.html">FilledRectParameterObject</a>.<a href="filledrectparameterobject.html#parent">parent</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L83">src/domain/entities/E.ts:83</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L75">engine/entities/E.ts:75</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -381,7 +386,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2dparameterobject.html">Object2DParameterObject</a>.<a href="object2dparameterobject.html#scalex">scaleX</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L46">src/domain/Object2D.ts:46</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L47">engine/Object2D.ts:47</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -402,7 +407,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2dparameterobject.html">Object2DParameterObject</a>.<a href="object2dparameterobject.html#scaley">scaleY</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L52">src/domain/Object2D.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L53">engine/Object2D.ts:53</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -421,9 +426,9 @@
 					<h3>scene</h3>
 					<div class="tsd-signature tsd-kind-icon">scene<span class="tsd-signature-symbol">:</span> <a href="../classes/scene.html" class="tsd-signature-type">Scene</a></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="eparameterobject.html">EParameterObject</a>.<a href="eparameterobject.html#scene">scene</a></p>
+						<p>Inherited from <a href="filledrectparameterobject.html">FilledRectParameterObject</a>.<a href="filledrectparameterobject.html#scene">scene</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L67">src/domain/entities/E.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L59">engine/entities/E.ts:59</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -437,9 +442,9 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> shader<wbr>Program</h3>
 					<div class="tsd-signature tsd-kind-icon">shader<wbr>Program<span class="tsd-signature-symbol">:</span> <a href="shaderprogramlike.html" class="tsd-signature-type">ShaderProgramLike</a></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="eparameterobject.html">EParameterObject</a>.<a href="eparameterobject.html#shaderprogram">shaderProgram</a></p>
+						<p>Inherited from <a href="filledrectparameterobject.html">FilledRectParameterObject</a>.<a href="filledrectparameterobject.html#shaderprogram">shaderProgram</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L132">src/domain/entities/E.ts:132</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L124">engine/entities/E.ts:124</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -464,9 +469,9 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> tag</h3>
 					<div class="tsd-signature tsd-kind-icon">tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="eparameterobject.html">EParameterObject</a>.<a href="eparameterobject.html#tag">tag</a></p>
+						<p>Inherited from <a href="filledrectparameterobject.html">FilledRectParameterObject</a>.<a href="filledrectparameterobject.html#tag">tag</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L117">src/domain/entities/E.ts:117</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L109">engine/entities/E.ts:109</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -486,9 +491,9 @@
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> touchable</h3>
 					<div class="tsd-signature tsd-kind-icon">touchable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="eparameterobject.html">EParameterObject</a>.<a href="eparameterobject.html#touchable">touchable</a></p>
+						<p>Inherited from <a href="filledrectparameterobject.html">FilledRectParameterObject</a>.<a href="filledrectparameterobject.html#touchable">touchable</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L96">src/domain/entities/E.ts:96</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L88">engine/entities/E.ts:88</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -510,7 +515,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2dparameterobject.html">Object2DParameterObject</a>.<a href="object2dparameterobject.html#width">width</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L27">src/domain/Object2D.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L28">engine/Object2D.ts:28</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -531,7 +536,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2dparameterobject.html">Object2DParameterObject</a>.<a href="object2dparameterobject.html#x">x</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L15">src/domain/Object2D.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L16">engine/Object2D.ts:16</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -552,7 +557,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2dparameterobject.html">Object2DParameterObject</a>.<a href="object2dparameterobject.html#y">y</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L21">src/domain/Object2D.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L22">engine/Object2D.ts:22</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -718,5 +723,14 @@
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-162208211-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>

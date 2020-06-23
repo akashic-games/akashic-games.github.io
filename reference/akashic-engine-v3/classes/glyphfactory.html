@@ -127,13 +127,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Glyph<wbr>Factory<span class="tsd-signature-symbol">(</span>fontFamily<span class="tsd-signature-symbol">: </span><a href="../enums/fontfamily.html" class="tsd-signature-type">FontFamily</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../enums/fontfamily.html#sansserif" class="tsd-signature-type">SansSerif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/fontfamily.html#serif" class="tsd-signature-type">Serif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/fontfamily.html#monospace" class="tsd-signature-type">Monospace</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span>, fontSize<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, baselineHeight<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, fontColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeWidth<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, strokeColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeOnly<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, fontWeight<span class="tsd-signature-symbol">?: </span><a href="../enums/fontweight.html" class="tsd-signature-type">FontWeight</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="glyphfactory.html" class="tsd-signature-type">GlyphFactory</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Glyph<wbr>Factory<span class="tsd-signature-symbol">(</span>fontFamily<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, fontSize<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, baselineHeight<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, fontColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeWidth<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, strokeColor<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, strokeOnly<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, fontWeight<span class="tsd-signature-symbol">?: </span><a href="../globals.html#fontweightstring" class="tsd-signature-type">FontWeightString</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="glyphfactory.html" class="tsd-signature-type">GlyphFactory</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/GlyphFactory.ts#L68">src/implementations/GlyphFactory.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/GlyphFactory.ts#L67">pdi-common-impls/GlyphFactory.ts:67</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -144,10 +144,10 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>fontFamily: <a href="../enums/fontfamily.html" class="tsd-signature-type">FontFamily</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../enums/fontfamily.html#sansserif" class="tsd-signature-type">SansSerif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/fontfamily.html#serif" class="tsd-signature-type">Serif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/fontfamily.html#monospace" class="tsd-signature-type">Monospace</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>fontFamily: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>フォントファミリ。g.FontFamilyの定義する定数、フォント名、またはそれらの配列</p>
+											<p>フォントファミリ。フォント名、またはそれらの配列</p>
 										</div>
 									</div>
 								</li>
@@ -160,7 +160,7 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> baselineHeight: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;fontSize</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> baselineHeight: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = fontSize</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>ベースラインの高さ</p>
@@ -168,10 +168,10 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> fontColor: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;black&quot;</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> fontColor: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;black&quot;</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> strokeWidth: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> strokeWidth: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>輪郭幅</p>
@@ -179,7 +179,7 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> strokeColor: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;black&quot;</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> strokeColor: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;black&quot;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>輪郭色</p>
@@ -187,7 +187,7 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> strokeOnly: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> strokeOnly: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>輪郭を描画するか否か</p>
@@ -195,7 +195,7 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> fontWeight: <a href="../enums/fontweight.html" class="tsd-signature-type">FontWeight</a><span class="tsd-signature-symbol"> =&nbsp;FontWeight.Normal</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> fontWeight: <a href="../globals.html#fontweightstring" class="tsd-signature-type">FontWeightString</a><span class="tsd-signature-symbol"> = &quot;normal&quot;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>フォントウェイト</p>
@@ -217,7 +217,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/glyphfactorylike.html">GlyphFactoryLike</a>.<a href="../interfaces/glyphfactorylike.html#baselineheight">baselineHeight</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/GlyphFactory.ts#L33">src/implementations/GlyphFactory.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/GlyphFactory.ts#L32">pdi-common-impls/GlyphFactory.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -234,7 +234,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/glyphfactorylike.html">GlyphFactoryLike</a>.<a href="../interfaces/glyphfactorylike.html#fontcolor">fontColor</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/GlyphFactory.ts#L40">src/implementations/GlyphFactory.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/GlyphFactory.ts#L39">pdi-common-impls/GlyphFactory.ts:39</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -247,11 +247,11 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="fontfamily" class="tsd-anchor"></a>
 					<h3>font<wbr>Family</h3>
-					<div class="tsd-signature tsd-kind-icon">font<wbr>Family<span class="tsd-signature-symbol">:</span> <a href="../enums/fontfamily.html" class="tsd-signature-type">FontFamily</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../enums/fontfamily.html#sansserif" class="tsd-signature-type">SansSerif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/fontfamily.html#serif" class="tsd-signature-type">Serif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/fontfamily.html#monospace" class="tsd-signature-type">Monospace</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">font<wbr>Family<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/glyphfactorylike.html">GlyphFactoryLike</a>.<a href="../interfaces/glyphfactorylike.html#fontfamily">fontFamily</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/GlyphFactory.ts#L19">src/implementations/GlyphFactory.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/GlyphFactory.ts#L18">pdi-common-impls/GlyphFactory.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -268,7 +268,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/glyphfactorylike.html">GlyphFactoryLike</a>.<a href="../interfaces/glyphfactorylike.html#fontsize">fontSize</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/GlyphFactory.ts#L26">src/implementations/GlyphFactory.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/GlyphFactory.ts#L25">pdi-common-impls/GlyphFactory.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -281,11 +281,11 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="fontweight" class="tsd-anchor"></a>
 					<h3>font<wbr>Weight</h3>
-					<div class="tsd-signature tsd-kind-icon">font<wbr>Weight<span class="tsd-signature-symbol">:</span> <a href="../enums/fontweight.html" class="tsd-signature-type">FontWeight</a></div>
+					<div class="tsd-signature tsd-kind-icon">font<wbr>Weight<span class="tsd-signature-symbol">:</span> <a href="../globals.html#fontweightstring" class="tsd-signature-type">FontWeightString</a></div>
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/glyphfactorylike.html">GlyphFactoryLike</a>.<a href="../interfaces/glyphfactorylike.html#fontweight">fontWeight</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/GlyphFactory.ts#L47">src/implementations/GlyphFactory.ts:47</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/GlyphFactory.ts#L46">pdi-common-impls/GlyphFactory.ts:46</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -302,7 +302,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/glyphfactorylike.html">GlyphFactoryLike</a>.<a href="../interfaces/glyphfactorylike.html#strokecolor">strokeColor</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/GlyphFactory.ts#L61">src/implementations/GlyphFactory.ts:61</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/GlyphFactory.ts#L60">pdi-common-impls/GlyphFactory.ts:60</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -319,7 +319,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/glyphfactorylike.html">GlyphFactoryLike</a>.<a href="../interfaces/glyphfactorylike.html#strokeonly">strokeOnly</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/GlyphFactory.ts#L68">src/implementations/GlyphFactory.ts:68</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/GlyphFactory.ts#L67">pdi-common-impls/GlyphFactory.ts:67</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -336,7 +336,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/glyphfactorylike.html">GlyphFactoryLike</a>.<a href="../interfaces/glyphfactorylike.html#strokewidth">strokeWidth</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/GlyphFactory.ts#L54">src/implementations/GlyphFactory.ts:54</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/GlyphFactory.ts#L53">pdi-common-impls/GlyphFactory.ts:53</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -360,7 +360,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/glyphfactorylike.html">GlyphFactoryLike</a>.<a href="../interfaces/glyphfactorylike.html#create">create</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/GlyphFactory.ts#L108">src/implementations/GlyphFactory.ts:108</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/GlyphFactory.ts#L107">pdi-common-impls/GlyphFactory.ts:107</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -504,5 +504,14 @@
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-162208211-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>
