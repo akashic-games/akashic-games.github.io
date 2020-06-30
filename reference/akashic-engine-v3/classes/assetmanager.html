@@ -104,14 +104,16 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="assetmanager.html#_assets" class="tsd-kind-icon">_assets</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="assetmanager.html#_audiosystemmanager" class="tsd-kind-icon">_audio<wbr>System<wbr>Manager</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="assetmanager.html#_defaultaudiosystemid" class="tsd-kind-icon">_default<wbr>Audio<wbr>System<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="assetmanager.html#_liveassetpathtable" class="tsd-kind-icon">_live<wbr>Asset<wbr>Path<wbr>Table</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="assetmanager.html#_liveassetvirtualpathtable" class="tsd-kind-icon">_live<wbr>Asset<wbr>Virtual<wbr>Path<wbr>Table</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="assetmanager.html#_loadings" class="tsd-kind-icon">_loadings</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="assetmanager.html#_modulemainscripts" class="tsd-kind-icon">_module<wbr>Main<wbr>Scripts</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="assetmanager.html#_refcounts" class="tsd-kind-icon">_ref<wbr>Counts</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="assetmanager.html#_resourcefactory" class="tsd-kind-icon">_resource<wbr>Factory</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="assetmanager.html#_virtualpathtoidtable" class="tsd-kind-icon">_virtual<wbr>Path<wbr>ToId<wbr>Table</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="assetmanager.html#configuration" class="tsd-kind-icon">configuration</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="assetmanager.html#game" class="tsd-kind-icon">game</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="assetmanager.html#max_error_count" class="tsd-kind-icon">MAX_<wbr>ERROR_<wbr>COUNT</a></li>
 							</ul>
 						</section>
@@ -147,13 +149,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Asset<wbr>Manager<span class="tsd-signature-symbol">(</span>game<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Game</span>, conf<span class="tsd-signature-symbol">?: </span><a href="../globals.html#assetconfigurationmap" class="tsd-signature-type">AssetConfigurationMap</a>, audioSystemConfMap<span class="tsd-signature-symbol">?: </span><a href="../globals.html#audiosystemconfigurationmap" class="tsd-signature-type">AudioSystemConfigurationMap</a>, moduleMainScripts<span class="tsd-signature-symbol">?: </span><a href="../globals.html#modulemainscriptsmap" class="tsd-signature-type">ModuleMainScriptsMap</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="assetmanager.html" class="tsd-signature-type">AssetManager</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Asset<wbr>Manager<span class="tsd-signature-symbol">(</span>gameParams<span class="tsd-signature-symbol">?: </span><a href="../interfaces/assetmanagerparametergamelike.html" class="tsd-signature-type">AssetManagerParameterGameLike</a>, conf<span class="tsd-signature-symbol">?: </span><a href="../globals.html#assetconfigurationmap" class="tsd-signature-type">AssetConfigurationMap</a>, audioSystemConfMap<span class="tsd-signature-symbol">?: </span><a href="../globals.html#audiosystemconfigurationmap" class="tsd-signature-type">AudioSystemConfigurationMap</a>, moduleMainScripts<span class="tsd-signature-symbol">?: </span><a href="../globals.html#modulemainscriptsmap" class="tsd-signature-type">ModuleMainScriptsMap</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="assetmanager.html" class="tsd-signature-type">AssetManager</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L168">src/domain/AssetManager.ts:168</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L180">engine/AssetManager.ts:180</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -164,10 +166,10 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>game: <span class="tsd-signature-type">Game</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> gameParams: <a href="../interfaces/assetmanagerparametergamelike.html" class="tsd-signature-type">AssetManagerParameterGameLike</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
-											<p>このインスタンスが属するゲーム</p>
+											<p>このインスタンスが属するゲーム。ゲーム開発者が指定する必要はない。</p>
 										</div>
 									</div>
 								</li>
@@ -181,9 +183,19 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> audioSystemConfMap: <a href="../globals.html#audiosystemconfigurationmap" class="tsd-signature-type">AudioSystemConfigurationMap</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>このアセットマネージャに与えるオーディオシステムの宣言。</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> moduleMainScripts: <a href="../globals.html#modulemainscriptsmap" class="tsd-signature-type">ModuleMainScriptsMap</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>このアセットマネージャに与える require() 解決用のエントリポイント。</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="assetmanager.html" class="tsd-signature-type">AssetManager</a></h4>
@@ -196,10 +208,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_assets" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _assets</h3>
-					<div class="tsd-signature tsd-kind-icon">_assets<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<div class="tsd-signature tsd-kind-icon">_assets<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L135">src/domain/AssetManager.ts:135</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L132">engine/AssetManager.ts:132</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -218,12 +230,42 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_liveassetpathtable" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _live<wbr>Asset<wbr>Path<wbr>Table</h3>
-					<div class="tsd-signature tsd-kind-icon">_live<wbr>Asset<wbr>Path<wbr>Table<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<a name="_audiosystemmanager" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _audio<wbr>System<wbr>Manager</h3>
+					<div class="tsd-signature tsd-kind-icon">_audio<wbr>System<wbr>Manager<span class="tsd-signature-symbol">:</span> <a href="audiosystemmanager.html" class="tsd-signature-type">AudioSystemManager</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L149">src/domain/AssetManager.ts:149</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L170">engine/AssetManager.ts:170</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>オーディオシステム群</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_defaultaudiosystemid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _default<wbr>Audio<wbr>System<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">_default<wbr>Audio<wbr>System<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"music"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"sound"</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L175">engine/AssetManager.ts:175</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>デフォルトで利用されるオーディオシステムのID。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_liveassetpathtable" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _live<wbr>Asset<wbr>Path<wbr>Table</h3>
+					<div class="tsd-signature tsd-kind-icon">_live<wbr>Asset<wbr>Path<wbr>Table<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L146">engine/AssetManager.ts:146</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -243,10 +285,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_liveassetvirtualpathtable" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _live<wbr>Asset<wbr>Virtual<wbr>Path<wbr>Table</h3>
-					<div class="tsd-signature tsd-kind-icon">_live<wbr>Asset<wbr>Virtual<wbr>Path<wbr>Table<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<div class="tsd-signature tsd-kind-icon">_live<wbr>Asset<wbr>Virtual<wbr>Path<wbr>Table<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L143">src/domain/AssetManager.ts:143</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L140">engine/AssetManager.ts:140</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -268,10 +310,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_loadings" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _loadings</h3>
-					<div class="tsd-signature tsd-kind-icon">_loadings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<div class="tsd-signature tsd-kind-icon">_loadings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L168">src/domain/AssetManager.ts:168</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L180">engine/AssetManager.ts:180</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -294,7 +336,7 @@
 					<div class="tsd-signature tsd-kind-icon">_module<wbr>Main<wbr>Scripts<span class="tsd-signature-symbol">:</span> <a href="../globals.html#modulemainscriptsmap" class="tsd-signature-type">ModuleMainScriptsMap</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L155">src/domain/AssetManager.ts:155</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L152">engine/AssetManager.ts:152</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -306,10 +348,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_refcounts" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _ref<wbr>Counts</h3>
-					<div class="tsd-signature tsd-kind-icon">_ref<wbr>Counts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<div class="tsd-signature tsd-kind-icon">_ref<wbr>Counts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L163">src/domain/AssetManager.ts:163</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L160">engine/AssetManager.ts:160</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -329,12 +371,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_virtualpathtoidtable" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _virtual<wbr>Path<wbr>ToId<wbr>Table</h3>
-					<div class="tsd-signature tsd-kind-icon">_virtual<wbr>Path<wbr>ToId<wbr>Table<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<a name="_resourcefactory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _resource<wbr>Factory</h3>
+					<div class="tsd-signature tsd-kind-icon">_resource<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="../interfaces/resourcefactorylike.html" class="tsd-signature-type">ResourceFactoryLike</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L128">src/domain/AssetManager.ts:128</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L165">engine/AssetManager.ts:165</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>各種リソースのファクトリ。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_virtualpathtoidtable" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _virtual<wbr>Path<wbr>ToId<wbr>Table</h3>
+					<div class="tsd-signature tsd-kind-icon">_virtual<wbr>Path<wbr>ToId<wbr>Table<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L125">engine/AssetManager.ts:125</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -354,10 +411,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="configuration" class="tsd-anchor"></a>
 					<h3>configuration</h3>
-					<div class="tsd-signature tsd-kind-icon">configuration<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<div class="tsd-signature tsd-kind-icon">configuration<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L122">src/domain/AssetManager.ts:122</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L119">engine/AssetManager.ts:119</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -374,28 +431,13 @@
 						</ul>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="game" class="tsd-anchor"></a>
-					<h3>game</h3>
-					<div class="tsd-signature tsd-kind-icon">game<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Game</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L117">src/domain/AssetManager.ts:117</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>このインスタンスが属するゲーム。</p>
-						</div>
-					</div>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
 					<a name="max_error_count" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> MAX_<wbr>ERROR_<wbr>COUNT</h3>
-					<div class="tsd-signature tsd-kind-icon">MAX_<wbr>ERROR_<wbr>COUNT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;3</span></div>
+					<div class="tsd-signature tsd-kind-icon">MAX_<wbr>ERROR_<wbr>COUNT<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 3</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L112">src/domain/AssetManager.ts:112</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L114">engine/AssetManager.ts:114</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -412,7 +454,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L548">src/domain/AssetManager.ts:548</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L564">engine/AssetManager.ts:564</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -434,7 +476,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L475">src/domain/AssetManager.ts:475</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L491">engine/AssetManager.ts:491</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -459,7 +501,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L420">src/domain/AssetManager.ts:420</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L436">engine/AssetManager.ts:436</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -485,7 +527,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L555">src/domain/AssetManager.ts:555</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L571">engine/AssetManager.ts:571</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -513,7 +555,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L574">src/domain/AssetManager.ts:574</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L590">engine/AssetManager.ts:590</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -538,7 +580,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L514">src/domain/AssetManager.ts:514</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L530">engine/AssetManager.ts:530</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -561,7 +603,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L203">src/domain/AssetManager.ts:203</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L220">engine/AssetManager.ts:220</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -583,7 +625,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L220">src/domain/AssetManager.ts:220</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L236">engine/AssetManager.ts:236</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -605,7 +647,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L250">src/domain/AssetManager.ts:250</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L266">engine/AssetManager.ts:266</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -621,13 +663,13 @@
 					<a name="peekallliveassetsbypattern" class="tsd-anchor"></a>
 					<h3>peek<wbr>All<wbr>Live<wbr>Assets<wbr>ByPattern</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">peek<wbr>All<wbr>Live<wbr>Assets<wbr>ByPattern&lt;T&gt;<span class="tsd-signature-symbol">(</span>patternOrFilter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">peek<wbr>All<wbr>Live<wbr>Assets<wbr>ByPattern&lt;T&gt;<span class="tsd-signature-symbol">(</span>patternOrFilter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>accessorPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L403">src/domain/AssetManager.ts:403</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L419">engine/AssetManager.ts:419</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -646,7 +688,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>patternOrFilter: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span></h5>
+									<h5>patternOrFilter: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>accessorPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>取得するアセットのパスパターンまたはフィルタ</p>
 									</div>
@@ -672,7 +714,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L371">src/domain/AssetManager.ts:371</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L387">engine/AssetManager.ts:387</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -718,7 +760,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L387">src/domain/AssetManager.ts:387</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L403">engine/AssetManager.ts:403</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -761,7 +803,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L295">src/domain/AssetManager.ts:295</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L311">engine/AssetManager.ts:311</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -802,7 +844,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L338">src/domain/AssetManager.ts:338</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L354">engine/AssetManager.ts:354</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -834,13 +876,13 @@
 					<a name="resolvepatternstoassetids" class="tsd-anchor"></a>
 					<h3>resolve<wbr>Patterns<wbr>ToAsset<wbr>Ids</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">resolve<wbr>Patterns<wbr>ToAsset<wbr>Ids<span class="tsd-signature-symbol">(</span>patternOrFilters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">resolve<wbr>Patterns<wbr>ToAsset<wbr>Ids<span class="tsd-signature-symbol">(</span>patternOrFilters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>accessorPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L268">src/domain/AssetManager.ts:268</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L284">engine/AssetManager.ts:284</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -853,7 +895,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>patternOrFilters: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>patternOrFilters: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>accessorPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>パターンまたはフィルタ。仕様は <code>AssetAccessor#getAllImages()</code> を参照</p>
 									</div>
@@ -873,7 +915,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L230">src/domain/AssetManager.ts:230</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L246">engine/AssetManager.ts:246</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -905,7 +947,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L325">src/domain/AssetManager.ts:325</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L341">engine/AssetManager.ts:341</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -937,7 +979,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/AssetManager.ts#L355">src/domain/AssetManager.ts:355</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AssetManager.ts#L371">engine/AssetManager.ts:371</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -983,6 +1025,12 @@
 								<a href="assetmanager.html#_assets" class="tsd-kind-icon">_assets</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="assetmanager.html#_audiosystemmanager" class="tsd-kind-icon">_audio<wbr>System<wbr>Manager</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="assetmanager.html#_defaultaudiosystemid" class="tsd-kind-icon">_default<wbr>Audio<wbr>System<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="assetmanager.html#_liveassetpathtable" class="tsd-kind-icon">_live<wbr>Asset<wbr>Path<wbr>Table</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
@@ -998,13 +1046,13 @@
 								<a href="assetmanager.html#_refcounts" class="tsd-kind-icon">_ref<wbr>Counts</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="assetmanager.html#_resourcefactory" class="tsd-kind-icon">_resource<wbr>Factory</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="assetmanager.html#_virtualpathtoidtable" class="tsd-kind-icon">_virtual<wbr>Path<wbr>ToId<wbr>Table</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="assetmanager.html#configuration" class="tsd-kind-icon">configuration</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="assetmanager.html#game" class="tsd-kind-icon">game</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
 								<a href="assetmanager.html#max_error_count" class="tsd-kind-icon">MAX_<wbr>ERROR_<wbr>COUNT</a>
@@ -1138,5 +1186,14 @@
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-162208211-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>
