@@ -100,11 +100,6 @@
 				<pre><code class="language-sh">npm install
 npm run build</code></pre>
 				<h2 id="-">テスト方法</h2>
-				<ol>
-					<li><a href="https://github.com/palantir/tslint" title="TSLint">TSLint</a> を使ったLint</li>
-					<li><a href="http://jasmine.github.io" title="Jasmine">Jasmine</a> を使ったテスト</li>
-				</ol>
-				<p>がそれぞれ実行されます。</p>
 				<pre><code class="language-sh">npm <span class="hljs-built_in">test</span></code></pre>
 				<h2 id="-">注意点</h2>
 				<p>Box2DWebでは <code>Math.random()</code> が使われている箇所があります。(該当メソッド: <code>Box2D.Common.Math.b2Math.Random()</code> , <code>Box2D.Common.Math.b2Math.RandomRange()</code> )</p>
@@ -133,17 +128,23 @@ npm run build</code></pre>
 					<li class=" tsd-kind-class">
 						<a href="classes/box2d.html" class="tsd-kind-icon">Box2D</a>
 					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/bodyoption.html" class="tsd-kind-icon">Body<wbr>Option</a>
+					<li class=" tsd-kind-class">
+						<a href="classes/contactmanager.html" class="tsd-kind-icon">Contact<wbr>Manager</a>
 					</li>
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/box2doption.html" class="tsd-kind-icon">Box2DOption</a>
+						<a href="interfaces/box2dbodydef.html" class="tsd-kind-icon">Box2DBody<wbr>Def</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/box2dfixturedef.html" class="tsd-kind-icon">Box2DFixture<wbr>Def</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/box2dparameter.html" class="tsd-kind-icon">Box2DParameter</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/contactmanagerparameter.html" class="tsd-kind-icon">Contact<wbr>Manager<wbr>Parameter</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/ebody.html" class="tsd-kind-icon">EBody</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/fixtureoption.html" class="tsd-kind-icon">Fixture<wbr>Option</a>
 					</li>
 				</ul>
 			</nav>
@@ -215,5 +216,14 @@ npm run build</code></pre>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-162208211-1', '');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>
