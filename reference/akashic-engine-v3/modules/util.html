@@ -84,6 +84,13 @@
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="util.html#distance" class="tsd-kind-icon">distance</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="util.html#distancebetweenareas" class="tsd-kind-icon">distance<wbr>Between<wbr>Areas</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="util.html#distancebetweenoffsets" class="tsd-kind-icon">distance<wbr>Between<wbr>Offsets</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter"><a href="util.html#enumtosnakecase" class="tsd-kind-icon">enum<wbr>ToSnake<wbr>Case</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-parent-kind-module"><a href="util.html#compositeoperationstringtable" class="tsd-kind-icon">composite<wbr>Operation<wbr>String<wbr>Table</a></li>
 							</ul>
 						</section>
 					</div>
@@ -101,7 +108,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Util.ts#L47">src/domain/Util.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L49">engine/Util.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -143,7 +150,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Util.ts#L14">src/domain/Util.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L16">engine/Util.ts:16</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -192,7 +199,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Util.ts#L32">src/domain/Util.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L34">engine/Util.ts:34</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -229,7 +236,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Util.ts#L23">src/domain/Util.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L25">engine/Util.ts:25</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -255,6 +262,99 @@
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
 					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+					<a name="enumtosnakecase" class="tsd-anchor"></a>
+					<h3>enum<wbr>ToSnake<wbr>Case</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">enum<wbr>ToSnake<wbr>Case&lt;T, U&gt;<span class="tsd-signature-symbol">(</span>enumDef<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span>, val<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L70">engine/Util.ts:70</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>enum の値の文字列を snake-case に変換した文字列を返す。</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd><p>非推奨である。非推奨の機能との互換性確保のために存在する。ゲーム開発者が使用すべきではない。</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h4>
+								</li>
+								<li>
+									<h4>U<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>enumDef: <span class="tsd-signature-symbol">{}</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-index-signature">
+											<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+									</ul>
+								</li>
+								<li>
+									<h5>val: <span class="tsd-signature-type">T</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">U</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-module">
+					<a name="compositeoperationstringtable" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> composite<wbr>Operation<wbr>String<wbr>Table</h3>
+					<div class="tsd-signature tsd-kind-icon">composite<wbr>Operation<wbr>String<wbr>Table<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L80">engine/Util.ts:80</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>CompositeOperation を CompositeOperationString に読み替えるテーブル。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>deprecated</dt>
+							<dd><p>非推奨である。非推奨の機能との互換性のために存在する。ゲーム開発者が使用すべきではない。</p>
+							</dd>
+						</dl>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="compositeoperationstringtable.__computed" class="tsd-anchor"></a>
+						<h3>__computed</h3>
+						<div class="tsd-signature tsd-kind-icon">__computed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"xor"</span><span class="tsd-signature-symbol"> = &quot;xor&quot;</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L81">engine/Util.ts:81</a></li>
+								<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L82">engine/Util.ts:82</a></li>
+								<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L83">engine/Util.ts:83</a></li>
+								<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L84">engine/Util.ts:84</a></li>
+								<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L85">engine/Util.ts:85</a></li>
+								<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L86">engine/Util.ts:86</a></li>
+								<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L87">engine/Util.ts:87</a></li>
+								<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L88">engine/Util.ts:88</a></li>
+								<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L89">engine/Util.ts:89</a></li>
+								<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L90">engine/Util.ts:90</a></li>
+								<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Util.ts#L91">engine/Util.ts:91</a></li>
+							</ul>
+						</aside>
+					</section>
 				</section>
 			</section>
 		</div>
@@ -297,6 +397,12 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="util.html#distancebetweenoffsets" class="tsd-kind-icon">distance<wbr>Between<wbr>Offsets</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-has-type-parameter">
+						<a href="util.html#enumtosnakecase" class="tsd-kind-icon">enum<wbr>ToSnake<wbr>Case</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-module">
+						<a href="util.html#compositeoperationstringtable" class="tsd-kind-icon">composite<wbr>Operation<wbr>String<wbr>Table</a>
 					</li>
 				</ul>
 			</nav>
@@ -369,5 +475,14 @@
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-162208211-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>
