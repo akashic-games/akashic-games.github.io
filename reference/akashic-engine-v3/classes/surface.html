@@ -88,7 +88,6 @@
 				<ul class="tsd-hierarchy">
 					<li><a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a></li>
 					<li><a href="../interfaces/commonsize.html" class="tsd-signature-type">CommonSize</a></li>
-					<li><a href="../interfaces/destroyable.html" class="tsd-signature-type">Destroyable</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -106,10 +105,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="surface.html#_destroyed" class="tsd-kind-icon">_destroyed</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="surface.html#_drawable" class="tsd-kind-icon">_drawable</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="surface.html#animatingstarted" class="tsd-kind-icon">animating<wbr>Started</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="surface.html#animatingstopped" class="tsd-kind-icon">animating<wbr>Stopped</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="surface.html#height" class="tsd-kind-icon">height</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="surface.html#isdynamic" class="tsd-kind-icon">is<wbr>Dynamic</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="surface.html#width" class="tsd-kind-icon">width</a></li>
 							</ul>
 						</section>
@@ -131,13 +127,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Surface<span class="tsd-signature-symbol">(</span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, drawable<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span>, isDynamic<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="surface.html" class="tsd-signature-type">Surface</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Surface<span class="tsd-signature-symbol">(</span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, drawable<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="surface.html" class="tsd-signature-type">Surface</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/Surface.ts#L56">src/implementations/Surface.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/Surface.ts#L36">pdi-common-impls/Surface.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -171,14 +167,6 @@
 										</div>
 									</div>
 								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> isDynamic: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>drawableが動画であることを示す値。動画である時、真を渡さなくてはならない。省略された場合、偽。</p>
-										</div>
-									</div>
-								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="surface.html" class="tsd-signature-type">Surface</a></h4>
 						</li>
@@ -193,7 +181,7 @@
 					<div class="tsd-signature tsd-kind-icon">_destroyed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/Surface.ts#L56">src/implementations/Surface.ts:56</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/Surface.ts#L36">pdi-common-impls/Surface.ts:36</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -209,7 +197,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/surfacelike.html">SurfaceLike</a>.<a href="../interfaces/surfacelike.html#_drawable">_drawable</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/Surface.ts#L50">src/implementations/Surface.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/Surface.ts#L30">pdi-common-impls/Surface.ts:30</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -220,47 +208,13 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="animatingstarted" class="tsd-anchor"></a>
-					<h3>animating<wbr>Started</h3>
-					<div class="tsd-signature tsd-kind-icon">animating<wbr>Started<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/surfacelike.html">SurfaceLike</a>.<a href="../interfaces/surfacelike.html#animatingstarted">animatingStarted</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/Surface.ts#L37">src/implementations/Surface.ts:37</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>アニメーション再生開始イベント。
-							isDynamicが偽の時undefined。</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="animatingstopped" class="tsd-anchor"></a>
-					<h3>animating<wbr>Stopped</h3>
-					<div class="tsd-signature tsd-kind-icon">animating<wbr>Stopped<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></div>
-					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/surfacelike.html">SurfaceLike</a>.<a href="../interfaces/surfacelike.html#animatingstopped">animatingStopped</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/Surface.ts#L43">src/implementations/Surface.ts:43</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>アニメーション再生停止イベント。
-							isDynamicが偽の時undefined。</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="height" class="tsd-anchor"></a>
 					<h3>height</h3>
 					<div class="tsd-signature tsd-kind-icon">height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/commonsize.html">CommonSize</a>.<a href="../interfaces/commonsize.html#height">height</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/Surface.ts#L25">src/implementations/Surface.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/Surface.ts#L23">pdi-common-impls/Surface.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -271,30 +225,13 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="isdynamic" class="tsd-anchor"></a>
-					<h3>is<wbr>Dynamic</h3>
-					<div class="tsd-signature tsd-kind-icon">is<wbr>Dynamic<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/surfacelike.html">SurfaceLike</a>.<a href="../interfaces/surfacelike.html#isdynamic">isDynamic</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/Surface.ts#L31">src/implementations/Surface.ts:31</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>本Surfaceの画像が動画であるかを示す値。真の時、動画。
-							この値は参照のみに利用され、変更してはならない。</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="width" class="tsd-anchor"></a>
 					<h3>width</h3>
 					<div class="tsd-signature tsd-kind-icon">width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/commonsize.html">CommonSize</a>.<a href="../interfaces/commonsize.html#width">width</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/Surface.ts#L19">src/implementations/Surface.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/Surface.ts#L17">pdi-common-impls/Surface.ts:17</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -316,9 +253,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/destroyable.html">Destroyable</a>.<a href="../interfaces/destroyable.html#destroy">destroy</a></p>
+								<p>Implementation of <a href="../interfaces/surfacelike.html">SurfaceLike</a>.<a href="../interfaces/surfacelike.html#destroy">destroy</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/Surface.ts#L98">src/implementations/Surface.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/Surface.ts#L69">pdi-common-impls/Surface.ts:69</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -340,9 +277,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/destroyable.html">Destroyable</a>.<a href="../interfaces/destroyable.html#destroyed">destroyed</a></p>
+								<p>Implementation of <a href="../interfaces/surfacelike.html">SurfaceLike</a>.<a href="../interfaces/surfacelike.html#destroyed">destroyed</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/Surface.ts#L111">src/implementations/Surface.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/Surface.ts#L76">pdi-common-impls/Surface.ts:76</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -365,7 +302,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/surfacelike.html">SurfaceLike</a>.<a href="../interfaces/surfacelike.html#isplaying">isPlaying</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/Surface.ts#L92">src/implementations/Surface.ts:92</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/Surface.ts#L63">pdi-common-impls/Surface.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -388,7 +325,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/surfacelike.html">SurfaceLike</a>.<a href="../interfaces/surfacelike.html#renderer">renderer</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/implementations/Surface.ts#L87">src/implementations/Surface.ts:87</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/Surface.ts#L58">pdi-common-impls/Surface.ts:58</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -427,16 +364,7 @@
 								<a href="surface.html#_drawable" class="tsd-kind-icon">_drawable</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="surface.html#animatingstarted" class="tsd-kind-icon">animating<wbr>Started</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="surface.html#animatingstopped" class="tsd-kind-icon">animating<wbr>Stopped</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="surface.html#height" class="tsd-kind-icon">height</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="surface.html#isdynamic" class="tsd-kind-icon">is<wbr>Dynamic</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="surface.html#width" class="tsd-kind-icon">width</a>
@@ -528,5 +456,14 @@
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-162208211-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>
