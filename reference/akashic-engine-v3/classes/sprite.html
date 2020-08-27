@@ -96,7 +96,6 @@
 				<ul class="tsd-hierarchy">
 					<li><a href="../interfaces/commonarea.html" class="tsd-signature-type">CommonArea</a></li>
 					<li><a href="../interfaces/commonarea.html" class="tsd-signature-type">CommonArea</a></li>
-					<li><a href="../interfaces/destroyable.html" class="tsd-signature-type">Destroyable</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -148,6 +147,11 @@
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="sprite.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="sprite.html#onmessage" class="tsd-kind-icon">on<wbr>Message</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="sprite.html#onpointdown" class="tsd-kind-icon">on<wbr>Point<wbr>Down</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="sprite.html#onpointmove" class="tsd-kind-icon">on<wbr>Point<wbr>Move</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="sprite.html#onpointup" class="tsd-kind-icon">on<wbr>Point<wbr>Up</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="sprite.html#onupdate" class="tsd-kind-icon">on<wbr>Update</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="sprite.html#pointdown" class="tsd-kind-icon">point<wbr>Down</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="sprite.html#pointmove" class="tsd-kind-icon">point<wbr>Move</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited"><a href="sprite.html#pointup" class="tsd-kind-icon">point<wbr>Up</a></li>
@@ -161,11 +165,11 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="sprite.html#_calculateboundingrect" class="tsd-kind-icon">_calculate<wbr>Bounding<wbr>Rect</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="sprite.html#_disabletouchpropagation" class="tsd-kind-icon">_disable<wbr>Touch<wbr>Propagation</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="sprite.html#_enabletouchpropagation" class="tsd-kind-icon">_enable<wbr>Touch<wbr>Propagation</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="sprite.html#_handleanimationstart" class="tsd-kind-icon">_handle<wbr>Animation<wbr>Start</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="sprite.html#_handleanimationstop" class="tsd-kind-icon">_handle<wbr>Animation<wbr>Stop</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="sprite.html#_handleupdate" class="tsd-kind-icon">_handle<wbr>Update</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="sprite.html#_invalidateself" class="tsd-kind-icon">_invalidate<wbr>Self</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="sprite.html#_istargetoperation" class="tsd-kind-icon">_is<wbr>Target<wbr>Operation</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="sprite.html#_onanimatingstarted" class="tsd-kind-icon">_on<wbr>Animating<wbr>Started</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="sprite.html#_onanimatingstopped" class="tsd-kind-icon">_on<wbr>Animating<wbr>Stopped</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="sprite.html#_onupdate" class="tsd-kind-icon">_on<wbr>Update</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private"><a href="sprite.html#_updatematrix" class="tsd-kind-icon">_update<wbr>Matrix</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sprite.html#anchor" class="tsd-kind-icon">anchor</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="sprite.html#append" class="tsd-kind-icon">append</a></li>
@@ -210,7 +214,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="e.html">E</a>.<a href="e.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L106">src/domain/entities/Sprite.ts:106</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L106">engine/entities/Sprite.ts:106</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -242,7 +246,7 @@
 					<div class="tsd-signature tsd-kind-icon">_before<wbr>Src<span class="tsd-signature-symbol">:</span> <a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/imageassetlike.html" class="tsd-signature-type">ImageAssetLike</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L101">src/domain/entities/Sprite.ts:101</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L101">engine/entities/Sprite.ts:101</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -254,7 +258,7 @@
 					<div class="tsd-signature tsd-kind-icon">_before<wbr>Surface<span class="tsd-signature-symbol">:</span> <a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L106">src/domain/entities/Sprite.ts:106</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L106">engine/entities/Sprite.ts:106</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -265,9 +269,9 @@
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _has<wbr>Touchable<wbr>Children</h3>
 					<div class="tsd-signature tsd-kind-icon">_has<wbr>Touchable<wbr>Children<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="e.html">E</a>.<a href="e.html#_hastouchablechildren">_hasTouchableChildren</a></p>
+						<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#_hastouchablechildren">_hasTouchableChildren</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L201">src/domain/entities/E.ts:201</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L193">engine/entities/E.ts:193</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -283,7 +287,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#_matrix">_matrix</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L188">src/domain/Object2D.ts:188</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L200">engine/Object2D.ts:200</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -303,7 +307,7 @@
 					<div class="tsd-signature tsd-kind-icon">_stretch<wbr>Matrix<span class="tsd-signature-symbol">:</span> <a href="../interfaces/matrix.html" class="tsd-signature-type">Matrix</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L96">src/domain/entities/Sprite.ts:96</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L96">engine/entities/Sprite.ts:96</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -315,7 +319,7 @@
 					<div class="tsd-signature tsd-kind-icon">_surface<span class="tsd-signature-symbol">:</span> <a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L91">src/domain/entities/Sprite.ts:91</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L91">engine/entities/Sprite.ts:91</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -328,7 +332,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#anchorx">anchorX</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L163">src/domain/Object2D.ts:163</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L175">engine/Object2D.ts:175</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -342,7 +346,7 @@
 							</ul>
 						</div>
 						<p>NOTE: <code>anchorX</code> または <code>anchorY</code> のどちらを明示的に <code>null</code> に指定した場合、
-							このオブジェクトのアンカーは前バージョンと同様の挙動 (位置 <code>x</code>, <code>y</code> は左上端を基準に、拡大・縮小・回転の基点は中央を基準に決定) となる。
+							このオブジェクトのアンカーは前バージョン(v2.x.x 以前)のデフォルトの挙動 (位置 <code>x</code>, <code>y</code> は左上端を基準に、拡大・縮小・回転の基点は中央を基準に決定) と同様になる。
 						これは前バージョンとの後方互換性のために存在する。</p>
 					</div>
 				</section>
@@ -353,7 +357,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#anchory">anchorY</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L176">src/domain/Object2D.ts:176</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L188">engine/Object2D.ts:188</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -367,7 +371,7 @@
 							</ul>
 						</div>
 						<p>NOTE: <code>anchorX</code> または <code>anchorY</code> のどちらを明示的に <code>null</code> に指定した場合、
-							このオブジェクトのアンカーは前バージョンと同様の挙動 (位置 <code>x</code>, <code>y</code> は左上端を基準に、拡大・縮小・回転の基点は中央を基準に決定) となる。
+							このオブジェクトのアンカーは前バージョン(v2.x.x 以前)のデフォルトの挙動 (位置 <code>x</code>, <code>y</code> は左上端を基準に、拡大・縮小・回転の基点は中央を基準に決定) と同様になる。
 						これは前バージョンとの後方互換性のために存在する。</p>
 					</div>
 				</section>
@@ -378,7 +382,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#angle">angle</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L143">src/domain/Object2D.ts:143</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L155">engine/Object2D.ts:155</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -394,9 +398,9 @@
 					<h3>children</h3>
 					<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <a href="e.html" class="tsd-signature-type">E</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="e.html">E</a>.<a href="e.html#children">children</a></p>
+						<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#children">children</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L160">src/domain/entities/E.ts:160</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L152">engine/entities/E.ts:152</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -409,11 +413,11 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="compositeoperation" class="tsd-anchor"></a>
 					<h3>composite<wbr>Operation</h3>
-					<div class="tsd-signature tsd-kind-icon">composite<wbr>Operation<span class="tsd-signature-symbol">:</span> <a href="../enums/compositeoperation.html" class="tsd-signature-type">CompositeOperation</a></div>
+					<div class="tsd-signature tsd-kind-icon">composite<wbr>Operation<span class="tsd-signature-symbol">:</span> <a href="../enums/compositeoperation.html" class="tsd-signature-type">CompositeOperation</a><span class="tsd-signature-symbol"> | </span><a href="../globals.html#compositeoperationstring" class="tsd-signature-type">CompositeOperationString</a></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#compositeoperation">compositeOperation</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L150">src/domain/Object2D.ts:150</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L162">engine/Object2D.ts:162</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -432,7 +436,7 @@
 						<p>Implementation of <a href="../interfaces/commonarea.html">CommonArea</a>.<a href="../interfaces/commonarea.html#height">height</a></p>
 						<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#height">height</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L115">src/domain/Object2D.ts:115</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L127">engine/Object2D.ts:127</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -448,9 +452,9 @@
 					<h3>id</h3>
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="e.html">E</a>.<a href="e.html#id">id</a></p>
+						<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#id">id</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L143">src/domain/entities/E.ts:143</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L135">engine/entities/E.ts:135</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -464,9 +468,9 @@
 					<h3>local</h3>
 					<div class="tsd-signature tsd-kind-icon">local<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="e.html">E</a>.<a href="e.html#local">local</a></p>
+						<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#local">local</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L154">src/domain/entities/E.ts:154</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L146">engine/entities/E.ts:146</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -486,7 +490,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#opacity">opacity</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L122">src/domain/Object2D.ts:122</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L134">engine/Object2D.ts:134</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -502,9 +506,9 @@
 					<h3>parent</h3>
 					<div class="tsd-signature tsd-kind-icon">parent<span class="tsd-signature-symbol">:</span> <a href="e.html" class="tsd-signature-type">E</a><span class="tsd-signature-symbol"> | </span><a href="scene.html" class="tsd-signature-type">Scene</a></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="e.html">E</a>.<a href="e.html#parent">parent</a></p>
+						<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#parent">parent</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L165">src/domain/entities/E.ts:165</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L157">engine/entities/E.ts:157</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -520,7 +524,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#scalex">scaleX</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L129">src/domain/Object2D.ts:129</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L141">engine/Object2D.ts:141</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -538,7 +542,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#scaley">scaleY</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L136">src/domain/Object2D.ts:136</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L148">engine/Object2D.ts:148</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -554,9 +558,9 @@
 					<h3>scene</h3>
 					<div class="tsd-signature tsd-kind-icon">scene<span class="tsd-signature-symbol">:</span> <a href="scene.html" class="tsd-signature-type">Scene</a></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="e.html">E</a>.<a href="e.html#scene">scene</a></p>
+						<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#scene">scene</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L170">src/domain/entities/E.ts:170</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L162">engine/entities/E.ts:162</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -570,9 +574,9 @@
 					<h3>shader<wbr>Program</h3>
 					<div class="tsd-signature tsd-kind-icon">shader<wbr>Program<span class="tsd-signature-symbol">:</span> <a href="../interfaces/shaderprogramlike.html" class="tsd-signature-type">ShaderProgramLike</a></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="e.html">E</a>.<a href="e.html#shaderprogram">shaderProgram</a></p>
+						<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#shaderprogram">shaderProgram</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L195">src/domain/entities/E.ts:195</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L187">engine/entities/E.ts:187</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -593,7 +597,7 @@
 					<div class="tsd-signature tsd-kind-icon">src<span class="tsd-signature-symbol">:</span> <a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/imageassetlike.html" class="tsd-signature-type">ImageAssetLike</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L60">src/domain/entities/Sprite.ts:60</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L60">engine/entities/Sprite.ts:60</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -610,7 +614,7 @@
 					<div class="tsd-signature tsd-kind-icon">src<wbr>Height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L74">src/domain/entities/Sprite.ts:74</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L74">engine/entities/Sprite.ts:74</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -627,7 +631,7 @@
 					<div class="tsd-signature tsd-kind-icon">src<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L67">src/domain/entities/Sprite.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L67">engine/entities/Sprite.ts:67</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -644,7 +648,7 @@
 					<div class="tsd-signature tsd-kind-icon">srcX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L80">src/domain/entities/Sprite.ts:80</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L80">engine/entities/Sprite.ts:80</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -660,7 +664,7 @@
 					<div class="tsd-signature tsd-kind-icon">srcY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L86">src/domain/entities/Sprite.ts:86</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L86">engine/entities/Sprite.ts:86</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -675,9 +679,9 @@
 					<h3>state</h3>
 					<div class="tsd-signature tsd-kind-icon">state<span class="tsd-signature-symbol">:</span> <a href="../enums/entitystateflags.html" class="tsd-signature-type">EntityStateFlags</a></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="e.html">E</a>.<a href="e.html#state">state</a></p>
+						<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#state">state</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L175">src/domain/entities/E.ts:175</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L167">engine/entities/E.ts:167</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -691,9 +695,9 @@
 					<h3>tag</h3>
 					<div class="tsd-signature tsd-kind-icon">tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from <a href="e.html">E</a>.<a href="e.html#tag">tag</a></p>
+						<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#tag">tag</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L181">src/domain/entities/E.ts:181</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L173">engine/entities/E.ts:173</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -711,7 +715,7 @@
 						<p>Implementation of <a href="../interfaces/commonarea.html">CommonArea</a>.<a href="../interfaces/commonarea.html#width">width</a></p>
 						<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#width">width</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L108">src/domain/Object2D.ts:108</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L120">engine/Object2D.ts:120</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -730,7 +734,7 @@
 						<p>Implementation of <a href="../interfaces/commonarea.html">CommonArea</a>.<a href="../interfaces/commonarea.html#x">x</a></p>
 						<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#x">x</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L94">src/domain/Object2D.ts:94</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L106">engine/Object2D.ts:106</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -749,7 +753,7 @@
 						<p>Implementation of <a href="../interfaces/commonarea.html">CommonArea</a>.<a href="../interfaces/commonarea.html#y">y</a></p>
 						<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#y">y</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L101">src/domain/Object2D.ts:101</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L113">engine/Object2D.ts:113</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -772,9 +776,37 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#message">message</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#message">message</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L224">src/domain/entities/E.ts:224</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L291">engine/entities/E.ts:291</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>このエンティティのmessageイベント。</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd><p>非推奨である。将来的に削除される。代わりに <code>onMessage</code> を利用すること。</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="messageevent.html" class="tsd-signature-type">MessageEvent</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="onmessage" class="tsd-anchor"></a>
+					<h3>on<wbr>Message</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> onMessage<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="messageevent.html" class="tsd-signature-type">MessageEvent</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#onmessage">onMessage</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L216">engine/entities/E.ts:216</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -787,6 +819,98 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="onpointdown" class="tsd-anchor"></a>
+					<h3>on<wbr>Point<wbr>Down</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> onPointDown<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="pointdownevent.html" class="tsd-signature-type">PointDownEvent</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#onpointdown">onPointDown</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L226">engine/entities/E.ts:226</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>このエンティティのpoint downイベント。</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="pointdownevent.html" class="tsd-signature-type">PointDownEvent</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="onpointmove" class="tsd-anchor"></a>
+					<h3>on<wbr>Point<wbr>Move</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> onPointMove<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="pointmoveevent.html" class="tsd-signature-type">PointMoveEvent</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#onpointmove">onPointMove</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L247">engine/entities/E.ts:247</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>このエンティティのpoint moveイベント。</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="pointmoveevent.html" class="tsd-signature-type">PointMoveEvent</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="onpointup" class="tsd-anchor"></a>
+					<h3>on<wbr>Point<wbr>Up</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> onPointUp<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="pointupevent.html" class="tsd-signature-type">PointUpEvent</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#onpointup">onPointUp</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L237">engine/entities/E.ts:237</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>このエンティティのpoint upイベント。</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="pointupevent.html" class="tsd-signature-type">PointUpEvent</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+					<a name="onupdate" class="tsd-anchor"></a>
+					<h3>on<wbr>Update</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> onUpdate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#onupdate">onUpdate</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L206">engine/entities/E.ts:206</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>時間経過イベント。本イベントの一度のfireにつき、常に1フレーム分の時間経過が起こる。</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
 					<a name="pointdown" class="tsd-anchor"></a>
 					<h3>point<wbr>Down</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
@@ -795,15 +919,20 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#pointdown">pointDown</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#pointdown">pointDown</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L234">src/domain/entities/E.ts:234</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L301">engine/entities/E.ts:301</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>このエンティティのpoint downイベント。</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd><p>非推奨である。将来的に削除される。代わりに <code>onPointDown</code> を利用すること。</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="pointdownevent.html" class="tsd-signature-type">PointDownEvent</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
@@ -818,15 +947,20 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#pointmove">pointMove</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#pointmove">pointMove</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L255">src/domain/entities/E.ts:255</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L321">engine/entities/E.ts:321</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>このエンティティのpoint moveイベント。</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd><p>非推奨である。将来的に削除される。代わりに <code>onPointMove</code> を利用すること。</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="pointmoveevent.html" class="tsd-signature-type">PointMoveEvent</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
@@ -841,15 +975,20 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#pointup">pointUp</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#pointup">pointUp</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L245">src/domain/entities/E.ts:245</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L311">engine/entities/E.ts:311</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>このエンティティのpoint upイベント。</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd><p>非推奨である。将来的に削除される。代わりに <code>onPointUp</code> を利用すること。</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="pointupevent.html" class="tsd-signature-type">PointUpEvent</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
@@ -865,9 +1004,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#touchable">touchable</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#touchable">touchable</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L270">src/domain/entities/E.ts:270</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L262">engine/entities/E.ts:262</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -882,9 +1021,9 @@
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#touchable">touchable</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#touchable">touchable</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L273">src/domain/entities/E.ts:273</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L265">engine/entities/E.ts:265</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -914,15 +1053,20 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#update">update</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#update">update</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L214">src/domain/entities/E.ts:214</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L281">engine/entities/E.ts:281</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>時間経過イベント。本イベントの一度のfireにつき、常に1フレーム分の時間経過が起こる。</p>
 								</div>
+								<dl class="tsd-comment-tags">
+									<dt>deprecated</dt>
+									<dd><p>非推奨である。将来的に削除される。代わりに <code>onUpdate</code> を利用すること。</p>
+									</dd>
+								</dl>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
@@ -940,9 +1084,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#_calculateboundingrect">_calculateBoundingRect</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#_calculateboundingrect">_calculateBoundingRect</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L676">src/domain/entities/E.ts:676</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L721">engine/entities/E.ts:721</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -966,9 +1110,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#_disabletouchpropagation">_disableTouchPropagation</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#_disabletouchpropagation">_disableTouchPropagation</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L743">src/domain/entities/E.ts:743</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L788">engine/entities/E.ts:788</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -986,9 +1130,66 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#_enabletouchpropagation">_enableTouchPropagation</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#_enabletouchpropagation">_enableTouchPropagation</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L732">src/domain/entities/E.ts:732</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L777">engine/entities/E.ts:777</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="_handleanimationstart" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _handle<wbr>Animation<wbr>Start</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">_handle<wbr>Animation<wbr>Start<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L143">engine/entities/Sprite.ts:143</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="_handleanimationstop" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _handle<wbr>Animation<wbr>Stop</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">_handle<wbr>Animation<wbr>Stop<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L152">engine/entities/Sprite.ts:152</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="_handleupdate" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _handle<wbr>Update</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">_handle<wbr>Update<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L136">engine/entities/Sprite.ts:136</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1007,7 +1208,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L207">src/domain/entities/Sprite.ts:207</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L202">engine/entities/Sprite.ts:202</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1023,9 +1224,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#_istargetoperation">_isTargetOperation</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#_istargetoperation">_isTargetOperation</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L755">src/domain/entities/E.ts:755</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L800">engine/entities/E.ts:800</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1040,63 +1241,6 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="_onanimatingstarted" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _on<wbr>Animating<wbr>Started</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">_on<wbr>Animating<wbr>Started<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L143">src/domain/entities/Sprite.ts:143</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="_onanimatingstopped" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _on<wbr>Animating<wbr>Stopped</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">_on<wbr>Animating<wbr>Stopped<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L152">src/domain/entities/Sprite.ts:152</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="_onupdate" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _on<wbr>Update</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">_on<wbr>Update<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L136">src/domain/entities/Sprite.ts:136</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 					<a name="_updatematrix" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _update<wbr>Matrix</h3>
@@ -1108,7 +1252,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#_updatematrix">_updateMatrix</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L352">src/domain/Object2D.ts:352</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L365">engine/Object2D.ts:365</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1131,7 +1275,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#anchor">anchor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L329">src/domain/Object2D.ts:329</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L342">engine/Object2D.ts:342</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1163,9 +1307,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#append">append</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#append">append</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L400">src/domain/entities/E.ts:400</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L445">engine/entities/E.ts:445</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1195,9 +1339,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#calculateboundingrect">calculateBoundingRect</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#calculateboundingrect">calculateBoundingRect</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L643">src/domain/entities/E.ts:643</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L688">engine/entities/E.ts:688</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1218,9 +1362,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides <a href="e.html">E</a>.<a href="e.html#destroy">destroy</a></p>
+								<p>Overrides <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#destroy">destroy</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L192">src/domain/entities/Sprite.ts:192</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L192">engine/entities/Sprite.ts:192</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1251,10 +1395,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/destroyable.html">Destroyable</a>.<a href="../interfaces/destroyable.html#destroyed">destroyed</a></p>
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#destroyed">destroyed</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#destroyed">destroyed</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L506">src/domain/entities/E.ts:506</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L551">engine/entities/E.ts:551</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1275,9 +1418,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#findpointsourcebypoint">findPointSourceByPoint</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#findpointsourcebypoint">findPointSourceByPoint</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L573">src/domain/entities/E.ts:573</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L618">engine/entities/E.ts:618</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1320,14 +1463,14 @@
 					<a name="game" class="tsd-anchor"></a>
 					<h3>game</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">game<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Game</span></li>
+						<li class="tsd-signature tsd-kind-icon">game<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="game.html" class="tsd-signature-type">Game</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#game">game</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#game">game</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L391">src/domain/entities/E.ts:391</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L436">engine/entities/E.ts:436</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1335,7 +1478,7 @@
 									<p>このエンティティが属する <code>Game</code> を返す。</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Game</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="game.html" class="tsd-signature-type">Game</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -1350,7 +1493,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#getmatrix">getMatrix</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L337">src/domain/Object2D.ts:337</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L350">engine/Object2D.ts:350</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1371,9 +1514,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#globaltolocal">globalToLocal</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#globaltolocal">globalToLocal</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L664">src/domain/entities/E.ts:664</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L709">engine/entities/E.ts:709</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1403,9 +1546,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#hide">hide</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#hide">hide</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L632">src/domain/entities/E.ts:632</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L677">engine/entities/E.ts:677</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1429,9 +1572,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#insertbefore">insertBefore</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#insertbefore">insertBefore</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L412">src/domain/entities/E.ts:412</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L457">engine/entities/E.ts:457</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1469,7 +1612,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L182">src/domain/entities/Sprite.ts:182</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L182">engine/entities/Sprite.ts:182</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1491,9 +1634,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#localtoglobal">localToGlobal</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#localtoglobal">localToGlobal</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L651">src/domain/entities/E.ts:651</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L696">engine/entities/E.ts:696</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1518,14 +1661,14 @@
 					<a name="modified" class="tsd-anchor"></a>
 					<h3>modified</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">modified<span class="tsd-signature-symbol">(</span>isBubbling<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">modified<span class="tsd-signature-symbol">(</span>_isBubbling<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#modified">modified</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#modified">modified</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L522">src/domain/entities/E.ts:522</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L567">engine/entities/E.ts:567</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1542,10 +1685,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> isBubbling: <span class="tsd-signature-type">boolean</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>通常ゲーム開発者が指定する必要はない。この変更通知が、(このエンティティ自身のみならず)子孫の変更の通知を含む場合、真を渡さなければならない。省略された場合、偽。</p>
-									</div>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> _isBubbling: <span class="tsd-signature-type">boolean</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1563,7 +1703,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#moveby">moveBy</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L265">src/domain/Object2D.ts:265</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L278">engine/Object2D.ts:278</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1604,7 +1744,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#moveto">moveTo</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L237">src/domain/Object2D.ts:237</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L250">engine/Object2D.ts:250</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1635,7 +1775,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#moveto">moveTo</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L244">src/domain/Object2D.ts:244</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L257">engine/Object2D.ts:257</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1667,9 +1807,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#remove">remove</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#remove">remove</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L439">src/domain/entities/E.ts:439</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L484">engine/entities/E.ts:484</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1701,9 +1841,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#render">render</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#render">render</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L329">src/domain/entities/E.ts:329</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L371">engine/entities/E.ts:371</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1736,14 +1876,14 @@
 					<a name="renderself" class="tsd-anchor"></a>
 					<h3>render<wbr>Self</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">render<wbr>Self<span class="tsd-signature-symbol">(</span>renderer<span class="tsd-signature-symbol">: </span><a href="../interfaces/rendererlike.html" class="tsd-signature-type">RendererLike</a>, camera<span class="tsd-signature-symbol">?: </span><a href="../interfaces/camera.html" class="tsd-signature-type">Camera</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">render<wbr>Self<span class="tsd-signature-symbol">(</span>renderer<span class="tsd-signature-symbol">: </span><a href="../interfaces/rendererlike.html" class="tsd-signature-type">RendererLike</a>, _camera<span class="tsd-signature-symbol">?: </span><a href="../interfaces/camera.html" class="tsd-signature-type">Camera</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides <a href="e.html">E</a>.<a href="e.html#renderself">renderSelf</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/Sprite.ts#L162">src/domain/entities/Sprite.ts:162</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/Sprite.ts#L162">engine/entities/Sprite.ts:162</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1758,7 +1898,7 @@
 									<h5>renderer: <a href="../interfaces/rendererlike.html" class="tsd-signature-type">RendererLike</a></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> camera: <a href="../interfaces/camera.html" class="tsd-signature-type">Camera</a></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> _camera: <a href="../interfaces/camera.html" class="tsd-signature-type">Camera</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -1776,7 +1916,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#resizeby">resizeBy</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L308">src/domain/Object2D.ts:308</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L321">engine/Object2D.ts:321</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1817,7 +1957,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#resizeto">resizeTo</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L277">src/domain/Object2D.ts:277</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L290">engine/Object2D.ts:290</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1848,7 +1988,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#resizeto">resizeTo</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L285">src/domain/Object2D.ts:285</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L298">engine/Object2D.ts:298</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1882,7 +2022,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="object2d.html">Object2D</a>.<a href="object2d.html#scale">scale</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/Object2D.ts#L319">src/domain/Object2D.ts:319</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Object2D.ts#L332">engine/Object2D.ts:332</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1909,14 +2049,14 @@
 					<a name="shouldfindchildrenbypoint" class="tsd-anchor"></a>
 					<h3>should<wbr>Find<wbr>Children<wbr>ByPoint</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">should<wbr>Find<wbr>Children<wbr>ByPoint<span class="tsd-signature-symbol">(</span>point<span class="tsd-signature-symbol">: </span><a href="../interfaces/commonoffset.html" class="tsd-signature-type">CommonOffset</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">should<wbr>Find<wbr>Children<wbr>ByPoint<span class="tsd-signature-symbol">(</span>_point<span class="tsd-signature-symbol">: </span><a href="../interfaces/commonoffset.html" class="tsd-signature-type">CommonOffset</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#shouldfindchildrenbypoint">shouldFindChildrenByPoint</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#shouldfindchildrenbypoint">shouldFindChildrenByPoint</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L556">src/domain/entities/E.ts:556</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L601">engine/entities/E.ts:601</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1930,10 +2070,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>point: <a href="../interfaces/commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>このエンティティ（<code>this</code>）の位置を基準とした相対座標</p>
-									</div>
+									<h5>_point: <a href="../interfaces/commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -1949,9 +2086,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#show">show</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#show">show</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L617">src/domain/entities/E.ts:617</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L662">engine/entities/E.ts:662</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1974,9 +2111,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="e.html">E</a>.<a href="e.html#visible">visible</a></p>
+								<p>Inherited from <a href="filledrect.html">FilledRect</a>.<a href="filledrect.html#visible">visible</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/domain/entities/E.ts#L607">src/domain/entities/E.ts:607</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/entities/E.ts#L652">engine/entities/E.ts:652</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -2102,6 +2239,21 @@
 								<a href="sprite.html#message" class="tsd-kind-icon">message</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="sprite.html#onmessage" class="tsd-kind-icon">on<wbr>Message</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="sprite.html#onpointdown" class="tsd-kind-icon">on<wbr>Point<wbr>Down</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="sprite.html#onpointmove" class="tsd-kind-icon">on<wbr>Point<wbr>Move</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="sprite.html#onpointup" class="tsd-kind-icon">on<wbr>Point<wbr>Up</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
+								<a href="sprite.html#onupdate" class="tsd-kind-icon">on<wbr>Update</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
 								<a href="sprite.html#pointdown" class="tsd-kind-icon">point<wbr>Down</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-inherited">
@@ -2126,19 +2278,19 @@
 								<a href="sprite.html#_enabletouchpropagation" class="tsd-kind-icon">_enable<wbr>Touch<wbr>Propagation</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="sprite.html#_handleanimationstart" class="tsd-kind-icon">_handle<wbr>Animation<wbr>Start</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="sprite.html#_handleanimationstop" class="tsd-kind-icon">_handle<wbr>Animation<wbr>Stop</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="sprite.html#_handleupdate" class="tsd-kind-icon">_handle<wbr>Update</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="sprite.html#_invalidateself" class="tsd-kind-icon">_invalidate<wbr>Self</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 								<a href="sprite.html#_istargetoperation" class="tsd-kind-icon">_is<wbr>Target<wbr>Operation</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="sprite.html#_onanimatingstarted" class="tsd-kind-icon">_on<wbr>Animating<wbr>Started</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="sprite.html#_onanimatingstopped" class="tsd-kind-icon">_on<wbr>Animating<wbr>Stopped</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="sprite.html#_onupdate" class="tsd-kind-icon">_on<wbr>Update</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 								<a href="sprite.html#_updatematrix" class="tsd-kind-icon">_update<wbr>Matrix</a>
@@ -2293,5 +2445,14 @@
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-162208211-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>

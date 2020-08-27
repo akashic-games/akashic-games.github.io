@@ -97,6 +97,8 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-private"><a href="videoplayerlike.html#_loop" class="tsd-kind-icon">_loop</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="videoplayerlike.html#currentvideo" class="tsd-kind-icon">current<wbr>Video</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="videoplayerlike.html#onplay" class="tsd-kind-icon">on<wbr>Play</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="videoplayerlike.html#onstop" class="tsd-kind-icon">on<wbr>Stop</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="videoplayerlike.html#played" class="tsd-kind-icon">played</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="videoplayerlike.html#stopped" class="tsd-kind-icon">stopped</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="videoplayerlike.html#volume" class="tsd-kind-icon">volume</a></li>
@@ -121,7 +123,7 @@
 					<div class="tsd-signature tsd-kind-icon">_loop<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/VideoPlayerLike.ts#L43">src/interfaces/VideoPlayerLike.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/VideoPlayerLike.ts#L55">pdi-types/VideoPlayerLike.ts:55</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -133,7 +135,7 @@
 					<div class="tsd-signature tsd-kind-icon">current<wbr>Video<span class="tsd-signature-symbol">:</span> <a href="videoassetlike.html" class="tsd-signature-type">VideoAssetLike</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/VideoPlayerLike.ts#L19">src/interfaces/VideoPlayerLike.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/VideoPlayerLike.ts#L19">pdi-types/VideoPlayerLike.ts:19</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -144,12 +146,12 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="played" class="tsd-anchor"></a>
-					<h3>played</h3>
-					<div class="tsd-signature tsd-kind-icon">played<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="videoplayerevent.html" class="tsd-signature-type">VideoPlayerEvent</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="onplay" class="tsd-anchor"></a>
+					<h3>on<wbr>Play</h3>
+					<div class="tsd-signature tsd-kind-icon">on<wbr>Play<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="videoplayerevent.html" class="tsd-signature-type">VideoPlayerEvent</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/VideoPlayerLike.ts#L24">src/interfaces/VideoPlayerLike.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/VideoPlayerLike.ts#L24">pdi-types/VideoPlayerLike.ts:24</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -159,12 +161,12 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="stopped" class="tsd-anchor"></a>
-					<h3>stopped</h3>
-					<div class="tsd-signature tsd-kind-icon">stopped<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="videoplayerevent.html" class="tsd-signature-type">VideoPlayerEvent</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="onstop" class="tsd-anchor"></a>
+					<h3>on<wbr>Stop</h3>
+					<div class="tsd-signature tsd-kind-icon">on<wbr>Stop<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="videoplayerevent.html" class="tsd-signature-type">VideoPlayerEvent</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/VideoPlayerLike.ts#L29">src/interfaces/VideoPlayerLike.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/VideoPlayerLike.ts#L29">pdi-types/VideoPlayerLike.ts:29</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -174,12 +176,52 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="played" class="tsd-anchor"></a>
+					<h3>played</h3>
+					<div class="tsd-signature tsd-kind-icon">played<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="videoplayerevent.html" class="tsd-signature-type">VideoPlayerEvent</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/VideoPlayerLike.ts#L44">pdi-types/VideoPlayerLike.ts:44</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>play()</code> が呼び出された時に通知される <code>Trigger</code> 。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>deprecated</dt>
+							<dd><p>非推奨である。将来的に削除される。代わりに <code>onPlay</code> を利用すること。</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="stopped" class="tsd-anchor"></a>
+					<h3>stopped</h3>
+					<div class="tsd-signature tsd-kind-icon">stopped<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Trigger</span><span class="tsd-signature-symbol">&lt;</span><a href="videoplayerevent.html" class="tsd-signature-type">VideoPlayerEvent</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/VideoPlayerLike.ts#L50">pdi-types/VideoPlayerLike.ts:50</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>stop()</code> が呼び出された時に通知される <code>Trigger</code> 。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>deprecated</dt>
+							<dd><p>非推奨である。将来的に削除される。代わりに <code>onStop</code> を利用すること。</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="volume" class="tsd-anchor"></a>
 					<h3>volume</h3>
 					<div class="tsd-signature tsd-kind-icon">volume<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/VideoPlayerLike.ts#L38">src/interfaces/VideoPlayerLike.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/VideoPlayerLike.ts#L38">pdi-types/VideoPlayerLike.ts:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -204,7 +246,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/VideoPlayerLike.ts#L69">src/interfaces/VideoPlayerLike.ts:69</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/VideoPlayerLike.ts#L81">pdi-types/VideoPlayerLike.ts:81</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -238,14 +280,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/VideoPlayerLike.ts#L51">src/interfaces/VideoPlayerLike.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/VideoPlayerLike.ts#L63">pdi-types/VideoPlayerLike.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p><code>VideoAsset</code> を再生する。</p>
 								</div>
-								<p>再生後、 <code>this.played</code> がfireされる。</p>
+								<p>再生後、 <code>this.onPlay</code> がfireされる。</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -267,7 +309,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/7fb9ab7/src/interfaces/VideoPlayerLike.ts#L59">src/interfaces/VideoPlayerLike.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-types/VideoPlayerLike.ts#L71">pdi-types/VideoPlayerLike.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -275,7 +317,7 @@
 									<p>再生を停止する。</p>
 								</div>
 								<p>再生中でない場合、何もしない。
-								停止後、 <code>this.stopped</code> がfireされる。</p>
+								停止後、 <code>this.onStop</code> がfireされる。</p>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
@@ -303,6 +345,12 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="videoplayerlike.html#currentvideo" class="tsd-kind-icon">current<wbr>Video</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="videoplayerlike.html#onplay" class="tsd-kind-icon">on<wbr>Play</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="videoplayerlike.html#onstop" class="tsd-kind-icon">on<wbr>Stop</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="videoplayerlike.html#played" class="tsd-kind-icon">played</a>
@@ -397,5 +445,14 @@
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+<script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-162208211-1', 'auto');
+        ga('send', 'pageview');
+    </script>
 </body>
 </html>
