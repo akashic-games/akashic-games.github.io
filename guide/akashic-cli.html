@@ -399,9 +399,8 @@ akashic コマンドはファイルパスを基準に操作を行うため、た
 <h2><a name="install"></a> install</h2>
 <pre><code class="language-sh">akashic install [&lt;module&gt;]</code></pre>
 <p><code>npm install</code> のラッパーコマンドです。</p>
-<p><code>&lt;module&gt;</code> を与えた場合、 <code>npm install --save &lt;module&gt;</code> と <code>npm shrinkwrap</code> を行い、また導入されたファイルの一覧を game.json に加えます。すなわち次のコマンドと概ね等価な振る舞いをします。</p>
+<p><code>&lt;module&gt;</code> を与えた場合、 <code>npm install --save &lt;module&gt;</code> を行い、また導入されたファイルの一覧を game.json に加えます。すなわち次のコマンドと概ね等価な振る舞いをします。</p>
 <pre><code class="language-sh">npm install --save &lt;module&gt;
-npm shrinkwrap
 akashic scan globalScripts</code></pre>
 <p>@akashic-extension/ で提供される Akashic 向けの拡張機能の他、任意の npm パッケージをゲームに導入することができます。</p>
 <blockquote>
@@ -416,11 +415,11 @@ Akashic のゲームとしてはサポートされていません。それらの
 (<code>akashic init</code> が提供するビルトインのテンプレートには含まれています。)</p>
 <p><code>&lt;module&gt;</code> を省略した場合、単に <code>npm install</code> を行います。
 (package.json に依存生が記録されたパッケージが導入されます。)
-game.json は更新されません。npm-shrinkwrap.json がない場合、利用しないでください。
+game.json は更新されません。package-lock.json がない場合、利用しないでください。
 (意図しないバージョンのパッケージが導入される可能性があります。)</p>
 <h2><a name="uninstall"></a> uninstall</h2>
 <pre><code class="language-sh">akashic uninstall &lt;module&gt;</code></pre>
-<p><code>npm uninstall --save &lt;module&gt;</code> を行い、 <code>npm shrinkwrap</code> して、削除されたファイルを game.json から取り除きます。</p>
+<p><code>npm uninstall --save &lt;module&gt;</code> を行い、削除されたファイルを game.json から取り除きます。</p>
 <p>(install コマンド同様、game.json と同じディレクトリに package.json という名前のファイルが存在する必要があります)</p>
 <h2><a name="update"></a> update</h2>
 <pre><code class="language-sh">akashic update &lt;module&gt;</code></pre>
@@ -428,16 +427,9 @@ game.json は更新されません。npm-shrinkwrap.json がない場合、利�
 <p>(install コマンド同様、game.json と同じディレクトリに package.json という名前のファイルが存在する必要があります)</p>
 <p><code>&lt;module&gt;</code> を指定しなかった場合、全ての npm パッケージを更新します。npm update の詳細は <a href="https://docs.npmjs.com/cli/update">npm のドキュメント</a> を参照してください。</p>
 <h2><a name="export-zip"></a> export zip</h2>
-<pre><code class="language-sh">akashic export zip [--output &lt;fileName&gt;] [--exclude &lt;excludedFileName&gt;]</code></pre>
+<pre><code class="language-sh">akashic export zip [--output &lt;fileName&gt;]</code></pre>
 <p>ゲームディレクトリを zip 形式で圧縮したファイルを <code>&lt;fileName&gt;</code> に出力します。
 <code>--output</code> オプションが指定されなかった場合、 <code>./game.zip</code> が指定されたかのように振る舞います。存在するファイル名・ディレクトリ名を指定した場合、エラーになります。</p>
-<p><code>--exclude</code> オプションが指定された場合、指定されたファイル <code>&lt;excludedFileName&gt;</code> は出力から除外されます。複数のファイルを除外したい場合は、次のように複数回 <code>--exclude</code> を指定してください。</p>
-<pre><code class="language-sh">akashic export zip --exclude foo --exclude bar</code></pre>
-<p><code>--exclude</code> オプションが指定されなかった場合、次の名前が指定されたものとして振る舞います。</p>
-<ul>
-<li>./npm-shrinkwrap.json</li>
-<li>./package.json</li>
-</ul>
 <h2><a name="export-html"></a> export html</h2>
 <pre><code class="language-sh">akashic export html --output &lt;dirName&gt; [--bundle] [--minify] [--magnify] [--no-strip]</code></pre>
 <p>単独でゲームを実行可能な HTML ファイル (と関連ファイル) を含むディレクトリを出力します。出力されたディレクトリの index.html を Web ブラウザで開くことで、 akashic-sandbox などの動作確認ツールなしにゲームを実行できます。</p>
