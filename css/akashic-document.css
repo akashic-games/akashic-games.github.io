@@ -80,15 +80,21 @@
 .akashic--document p + p {
 	margin-top:16px;
 }
-.akashic--document p.source-info {
+.akashic--document .warn-info,
+.akashic--document .source-info {
 	color:#A8A0A0;
 	border:1px solid #D0C0C0;
 	padding:10px;
 	border-radius:3px;
 	background:#FCF8F8;
 }
-.akashic--document p.source-info a {
+.akashic--document .warn-info a,
+.akashic--document .source-info a {
 	color:#E06060;
+}
+.akashic--document .warn-info p,
+.akashic--document .source-info p {
+	color:inherit;
 }
 .akashic--document li {
 	color:#466;
@@ -262,3 +268,10 @@
 	}
 }
 /*↑コンテンツ用↑*/
+
+/* ページ内リンクの遷移先の位置調整 */
+.akashic--document a.anchor{
+    display: block;
+    padding-top: 70px;
+    margin-top: -70px;
+}

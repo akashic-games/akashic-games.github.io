@@ -15,20 +15,20 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>色々な描画</title>
+<title>クリッピングする</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?aa4267e">
-<link rel="stylesheet" href="/css/header.css?aa4267e">
-<link rel="stylesheet" href="/css/footer.css?aa4267e">
+<link rel="stylesheet" href="/css/common.css?8311d7d">
+<link rel="stylesheet" href="/css/header.css?8311d7d">
+<link rel="stylesheet" href="/css/footer.css?8311d7d">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
+<link rel="stylesheet" href="/css/akashic-document.css?8311d7d">
 
-<link rel="stylesheet" href="/css/railscasts.css?aa4267e">
+<link rel="stylesheet" href="/css/railscasts.css?8311d7d">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?aa4267e"></script>
+<script src="/lib/common.js?8311d7d"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -112,10 +112,11 @@
 <div id="BodyInner">
 	<section class="akashic--document safearea--LR twocol">
 		<div class="twocol-side">
-			<h3>Akashic Engine 入門</h3>
+			<h3>Akashic Engine 入門<br>(v3 版)</h3>
 <h4><a name="basic"></a> 導入</h4>
 <ul>
 <li><a href="./index.html">トップ</a></li>
+<li><a href="./v3-migration-guide.html">v2 からの移行</a></li>
 <li><a href="./introduction.html">akashic の導入</a></li>
 </ul>
 <h4><a name="basic"></a> シングルプレイのゲーム作成</h4>
@@ -126,11 +127,17 @@
 <li><a href="./click.html">クリックできるようにする</a></li>
 <li><a href="./audio.html">音を鳴らす</a></li>
 <li><a href="./scale-anchor.html">拡縮とアンカーポイント</a></li>
-<li><a href="./otherdraw.html">色々な描画</a></li>
+<li><a href="./text.html">文字列を表示する</a></li>
 <li><a href="./bitmap-font.html">ビットマップフォントを使う</a></li>
+<li><a href="./clipping.html">クリッピングする</a></li>
 <li><a href="./export.html">ゲームを公開する</a></li>
-<li><a href="./install.html">拡張ライブラリを使う</a></li>
-<li><a href="./appendix.html">より大規模なゲームを作るために</a></li>
+</ul>
+<h4><a name="advanced"></a> より大規模なゲームを作るために</h4>
+<ul>
+<li><a href="./scene.html">シーンを切り替える</a></li>
+<li><a href="./require.html">スクリプトを分割する</a></li>
+<li><a href="./assetPaths.html">複数アセットをまとめて扱う</a></li>
+<li><a href="./library.html">拡張ライブラリを使う</a></li>
 </ul>
 <h4><a name="multiplay"></a> マルチプレイのゲーム作成</h4>
 <ul>
@@ -143,138 +150,19 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<h1>色々な描画</h1>
-<h2><a name="draw-text"></a> 文字列の表示</h2>
-<p>Akashic Engine で文字列を表示するには、フォントとラベルが必要です。 <strong>フォント</strong> は文字の形を表すオブジェクトです。 <strong>ラベル</strong> はフォントを利用して文字列を描画するエンティティです。</p>
-<p>フォントには、システムにインストールされているフォントから生成するダイナミックフォントと、画像から生成するビットマップフォントの二種類があります。ビットマップフォントについては後述します。</p>
-<p>ダイナミックフォントは以下のコードで生成できます。</p>
-<pre><code class="language-javascript">var font = new g.DynamicFont({
-  game: g.game,
-  fontFamily: g.FontFamily.Serif,
-  size: 15
-});</code></pre>
-<p>引数の <code>fontFamily</code> プロパティは、フォントの種類で以下のいずれかの値を指定します。</p>
-<ul>
-<li><code>g.FontFamily.SansSerif</code>: サンセリフ体・ゴシック体のフォント。</li>
-<li><code>g.FontFamily.Serif</code>: セリフ体・明朝体のフォント。</li>
-<li><code>g.FontFamily.Monospace</code>: 等幅フォント。</li>
-</ul>
-<p>引数の <code>size</code> プロパティは文字の大きさ、 <code>game</code> プロパティには <code>g.game</code> を渡します。</p>
-<p>このフォントを使って、実際に文字列を描画するエンティティ・ラベルは以下のコードで生成します。</p>
-<pre><code class="language-javascript">var label = new g.Label({
-  scene: scene,
-  font: font,
-  text: &quot;Hello World!&quot;,
-  fontSize: 15,
-  textColor: &quot;blue&quot;
-});</code></pre>
-<p>ラベル特有のプロパティとして次のものがあります。</p>
-<div class="table--scroll">
-<table>
-<thead>
-<tr>
-<th>プロパティ名</th>
-<th>値の種類</th>
-<th>意味</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>text</code></td>
-<td>文字列</td>
-<td>表示する文字列</td>
-</tr>
-<tr>
-<td><code>font</code></td>
-<td>フォントオブジェクト</td>
-<td>利用する字形</td>
-</tr>
-<tr>
-<td><code>fontSize</code></td>
-<td>数値</td>
-<td>文字の大きさ</td>
-</tr>
-<tr>
-<td><code>textColor</code></td>
-<td>CSS色を表す文字列</td>
-<td>文字の色</td>
-</tr>
-</tbody>
-</table>
+				<div class="warn-info" style="margin-bottom:40px">
+    <p>
+        <b style="font-size: 1.2rem;">Akashic Engine v3 は現在ベータ版として公開されています。</b>
+    </p>
+    <p>
+        特に、2020-09-16 現在、ニコ生ゲームとして投稿することはできないので注意してください。
+        正式にリリースする際には <a href="https://twitter.com/akashic_talk">https://twitter.com/akashic_talk</a> でお知らせします。
+    </p>
 </div>
 
-<p>以下のプログラムでは、ダイナミックフォントとラベルを利用して文字列を描画しています。</p>
-<pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
-  scene.onLoad.add(function() {
-    var font = new g.DynamicFont({
-      game: g.game,
-      fontFamily: g.FontFamily.SansSerif,
-      size: 15
-    });
-    var label = new g.Label({
-      scene: scene,
-      font: font,
-      text: &quot;Hello World!&quot;,
-      fontSize: 15,
-      textColor: &quot;blue&quot;,
-      x: 10,
-      y: 20
-    });
-    scene.append(label);
-  });
-  g.game.pushScene(scene);
-}
 
-module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample12.png" alt="sample12"></p>
-<p>ダイナミックフォントはシステムにインストールされているフォントを利用するため、実行環境により描画が異なる場合があります。すべての環境で同じ出力にしたい場合や、パフォーマンスが要求される場合は、ダイナミックフォントの代わりにビットマップフォントを利用してください。</p>
-<p>ラベルは高速化のために描画内容をキャッシュしています。そのために文字列を変更した場合は、<code>invalidate()</code>
-メソッドで変更を通知する必要があります。以下はラベル <code>label</code> の文字列を書き換える例です。</p>
-<pre><code class="language-javascript">label.text = label.text + &quot;*&quot;;
-label.invalidate();</code></pre>
-<p>ラベルでは以下のプロパティを変更した場合に <code>invalidate()</code>
-メソッドを呼び出す必要があります。</p>
-<ul>
-<li><code>text</code></li>
-<li><code>font</code></li>
-<li><code>fontSize</code></li>
-</ul>
-<p><code>x</code> や <code>y</code> などのエンティティ共通のプロパティの変更時はこれまで通り
-<code>modified()</code> を呼び出してください。
-<code>invalidate()</code> は <code>modified()</code> の機能を含んでいるので、
-<code>invalidate()</code> を呼び出した場合は <code>modified()</code> の呼び出しは不要です。</p>
-<p>以下は、500 ミリ秒ごとにカウンタの値を増やすプログラム例です。</p>
-<pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
-  scene.onLoad.add(function() {
-    var font = new g.DynamicFont({
-      fontFamily: g.FontFamily.SansSerif,
-      size: 15,
-      game: g.game
-    });
-    var count = 0;
-    var label = new g.Label({
-      scene: scene,
-      font: font,
-      text: count + &quot;&quot;,
-      fontSize: 30,
-      textColor: &quot;black&quot;,
-      x: 10,
-      y: 10
-    });
-    scene.append(label);
-    scene.setInterval(function() {
-      label.text = ++count + &quot;&quot;;
-      label.invalidate();
-    }, 500);
-  });
-  g.game.pushScene(scene);
-}
-
-module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample13.gif" alt="sample13"></p>
-<h2><a name="clipping"></a> クリッピング</h2>
+<h1>クリッピングする</h1>
+<h2><a name="pane"></a> ペイン</h2>
 <p>ペインは <code>E</code> と同じように子要素をまとめるためのエンティティです。ペインを使うことで描画内容のクリッピングを実現できます。
 <code>E</code> と異なり、<code>Pane</code> は子孫要素の描画領域を <code>Pane</code> の大きさに限定します。子要素が <code>Pane</code> の大きさをはみ出して描画しようとした場合、はみ出した部分は描画されません。</p>
 <pre><code class="language-javascript">function main() {
@@ -327,12 +215,10 @@ module.exports = main;</code></pre>
 
 module.exports = main;</code></pre>
 <p><img src="/img/tutorial/sample14.gif" alt="sample14"></p>
-<p><a class="asset--material--download" href="/zip/tutorial/v3/sample-otherdraw.zip">サンプルコード ダウンロード</a></p>
-
 <div class="navi-center">
-<a href="./scale-anchor.html">前 (拡縮とアンカーポイント)</a>
+<a href="./bitmap-font.html">前 (ビットマップフォントを使う)</a>
  | <a href="./">目次</a>
- | <a href="./bitmap-font.html">次 (ビットマップフォントを使う)</a>
+ | <a href="./export.html">次 (ゲームを公開する)</a>
 </div>
 
 			</div>

@@ -17,18 +17,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic 導入</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?aa4267e">
-<link rel="stylesheet" href="/css/header.css?aa4267e">
-<link rel="stylesheet" href="/css/footer.css?aa4267e">
+<link rel="stylesheet" href="/css/common.css?8311d7d">
+<link rel="stylesheet" href="/css/header.css?8311d7d">
+<link rel="stylesheet" href="/css/footer.css?8311d7d">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
+<link rel="stylesheet" href="/css/akashic-document.css?8311d7d">
 
-<link rel="stylesheet" href="/css/railscasts.css?aa4267e">
+<link rel="stylesheet" href="/css/railscasts.css?8311d7d">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?aa4267e"></script>
+<script src="/lib/common.js?8311d7d"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -112,10 +112,11 @@
 <div id="BodyInner">
 	<section class="akashic--document safearea--LR twocol">
 		<div class="twocol-side">
-			<h3>Akashic Engine 入門</h3>
+			<h3>Akashic Engine 入門<br>(v3 版)</h3>
 <h4><a name="basic"></a> 導入</h4>
 <ul>
 <li><a href="./index.html">トップ</a></li>
+<li><a href="./v3-migration-guide.html">v2 からの移行</a></li>
 <li><a href="./introduction.html">akashic の導入</a></li>
 </ul>
 <h4><a name="basic"></a> シングルプレイのゲーム作成</h4>
@@ -126,11 +127,17 @@
 <li><a href="./click.html">クリックできるようにする</a></li>
 <li><a href="./audio.html">音を鳴らす</a></li>
 <li><a href="./scale-anchor.html">拡縮とアンカーポイント</a></li>
-<li><a href="./otherdraw.html">色々な描画</a></li>
+<li><a href="./text.html">文字列を表示する</a></li>
 <li><a href="./bitmap-font.html">ビットマップフォントを使う</a></li>
+<li><a href="./clipping.html">クリッピングする</a></li>
 <li><a href="./export.html">ゲームを公開する</a></li>
-<li><a href="./install.html">拡張ライブラリを使う</a></li>
-<li><a href="./appendix.html">より大規模なゲームを作るために</a></li>
+</ul>
+<h4><a name="advanced"></a> より大規模なゲームを作るために</h4>
+<ul>
+<li><a href="./scene.html">シーンを切り替える</a></li>
+<li><a href="./require.html">スクリプトを分割する</a></li>
+<li><a href="./assetPaths.html">複数アセットをまとめて扱う</a></li>
+<li><a href="./library.html">拡張ライブラリを使う</a></li>
 </ul>
 <h4><a name="multiplay"></a> マルチプレイのゲーム作成</h4>
 <ul>
@@ -143,7 +150,18 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<h1>akashic 導入</h1>
+				<div class="warn-info" style="margin-bottom:40px">
+    <p>
+        <b style="font-size: 1.2rem;">Akashic Engine v3 は現在ベータ版として公開されています。</b>
+    </p>
+    <p>
+        特に、2020-09-16 現在、ニコ生ゲームとして投稿することはできないので注意してください。
+        正式にリリースする際には <a href="https://twitter.com/akashic_talk">https://twitter.com/akashic_talk</a> でお知らせします。
+    </p>
+</div>
+
+
+<h1>akashic 導入</h1>
 <h2><a name="develop-tools"></a> 開発に必要なもの</h2>
 <p>Akashic Engine のゲーム開発には基本的なプログラミングの知識が必要です。
 Akashic Engine は JavaScript や TypeScript を利用してゲームのコードを書きます。このチュートリアルでは JavaScript を利用します。チュートリアルでは JavaScript の細かな機能や文法については解説していません。
@@ -189,8 +207,7 @@ npm install -g @akashic/akashic-sandbox</code></pre>
 <p>インストールが完了すると、<code>akashic</code> コマンドと <code>akashic-sandbox</code> コマンドを利用できるようになります。以下のコマンドでそれぞれのコマンドのバージョンを表示することができます。エラーが表示されるバージョンが表示できれば、インストールが正常に行われています。</p>
 <pre><code class="language-sh">akashic -V
 akashic-sandbox -V</code></pre>
-<p>執筆時点では <code>akashic</code> のバージョンとして <code>1.13.3</code>、
-<code>akashic-sandbox</code> のバージョンとして <code>0.16.3</code> が表示されます。</p>
+<p>執筆時点では <code>akashic</code> のバージョンとして <code>1.14.67</code>、 <code>akashic-sandbox</code> のバージョンとして <code>0.16.20</code> が表示されます。</p>
 <h2><a name="create-empty-game"></a> 空のゲームの作成</h2>
 <p>Akashic Engine のゲームには設定ファイル (<code>game.json</code>) と、ゲームを起動するプログラムが必要です。
 <code>game.json</code> はゲームの設定とゲームが利用するアセットを記述する JSON 形式のファイルです。アセットはプログラムのソースコードや画像、音声ファイルなどゲームの実行に必要なファイルのことです。</p>
@@ -252,7 +269,7 @@ module.exports = main;</code></pre>
 </blockquote>
 <h2><a name="use-akashic-init"></a> akashic init の利用</h2>
 <p><code>akashic init</code> を利用すると、ゲームに必要なファイルを作ることができます。空のディレクトリを作成してその中で次のコマンドを実行します。</p>
-<pre><code class="language-sh">akashic init</code></pre>
+<pre><code class="language-sh">akashic init -t javascript-v3</code></pre>
 <p>コマンドを入力すると、ゲームの仕様をいくつか質問されます。最初は、</p>
 <pre><code class="language-sh">width (320)</code></pre>
 <p>と表示されます。ここで数字を入力して Enter キーを押すとゲームの幅 (width) を指定できます。何も入力せずに Enter を押すと幅はカッコ内に表示された大きさになります。ここではそのまま Enter を押します。</p>
@@ -264,15 +281,20 @@ module.exports = main;</code></pre>
 標準で対応しているテンプレートは以下の通りです。
 下記テンプレートについての説明については<a href="/guide/akashic-cli.html#--type%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3">こちら</a>を参照してください。</p>
 <ul>
-<li><code>javascript</code> (省略時)</li>
-<li><code>javascript-minimal</code></li>
-<li><code>javascript-shin-ichiba-ranking</code></li>
-<li><code>typescript</code></li>
-<li><code>typescript-minimal</code></li>
-<li><code>typescript-shin-ichiba-ranking</code></li>
+<li><code>javascript-v3</code></li>
+<li><code>javascript-minimal-v3</code></li>
+<li><code>javascript-shin-ichiba-ranking-v3</code></li>
+<li><code>typescript-v3</code></li>
+<li><code>typescript-minimal-v3</code></li>
+<li><code>typescript-shin-ichiba-ranking-v3</code></li>
 </ul>
+<blockquote>
+<p>2020-09-16 現在、v3 系はベータ版のため、テンプレート名で明示的に <code>-v3</code> を指定する必要があります。
+(<code>javascript</code>, <code>typescirpt-minimal</code> などは v2 版のコンテンツを生成します。)</p>
+<p>これは一時的な措置です。正式リリース時には <code>-t javascript</code> などで v3 版のコンテンツが生成されるようになります。</p>
+</blockquote>
 <p>例えば、TypeScript でゲームを作る場合は、以下のコマンドを入力します。</p>
-<pre><code class="language-sh">akashic init -t typescript</code></pre>
+<pre><code class="language-sh">akashic init -t typescript-v3</code></pre>
 <blockquote>
 <p>Windows 10 の PowerShell 上で <code>akashic init</code> などを実行すると、権限エラーが発生して実行に失敗することがあります。
 これは、PowerShell の実行ポリシーがデフォルトで Restricted(スクリプトの実行が許可されていない状態)になっているためです。
@@ -287,7 +309,7 @@ PowerShell 上で <code>akashic init</code> などを実行可能にするため
 実行ポリシーについての詳細は<a href="https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6">Microsoft の公式ページ</a>を参照してください。</p>
 </blockquote>
 <div class="navi-center">
- -
+ <a href="./v3-migration-guide.html">前 (v2 からの移行)</a>
  | <a href="./">目次</a>
  | <a href="./basic.html">次 (コンテンツ作成の基本)</a>
 </div>

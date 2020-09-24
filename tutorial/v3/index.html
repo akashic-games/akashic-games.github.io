@@ -17,18 +17,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>Akashic Engine 入門 (v3 版)</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?aa4267e">
-<link rel="stylesheet" href="/css/header.css?aa4267e">
-<link rel="stylesheet" href="/css/footer.css?aa4267e">
+<link rel="stylesheet" href="/css/common.css?8311d7d">
+<link rel="stylesheet" href="/css/header.css?8311d7d">
+<link rel="stylesheet" href="/css/footer.css?8311d7d">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
+<link rel="stylesheet" href="/css/akashic-document.css?8311d7d">
 
-<link rel="stylesheet" href="/css/railscasts.css?aa4267e">
+<link rel="stylesheet" href="/css/railscasts.css?8311d7d">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?aa4267e"></script>
+<script src="/lib/common.js?8311d7d"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -112,10 +112,11 @@
 <div id="BodyInner">
 	<section class="akashic--document safearea--LR twocol">
 		<div class="twocol-side">
-			<h3>Akashic Engine 入門</h3>
+			<h3>Akashic Engine 入門<br>(v3 版)</h3>
 <h4><a name="basic"></a> 導入</h4>
 <ul>
 <li><a href="./index.html">トップ</a></li>
+<li><a href="./v3-migration-guide.html">v2 からの移行</a></li>
 <li><a href="./introduction.html">akashic の導入</a></li>
 </ul>
 <h4><a name="basic"></a> シングルプレイのゲーム作成</h4>
@@ -126,11 +127,17 @@
 <li><a href="./click.html">クリックできるようにする</a></li>
 <li><a href="./audio.html">音を鳴らす</a></li>
 <li><a href="./scale-anchor.html">拡縮とアンカーポイント</a></li>
-<li><a href="./otherdraw.html">色々な描画</a></li>
+<li><a href="./text.html">文字列を表示する</a></li>
 <li><a href="./bitmap-font.html">ビットマップフォントを使う</a></li>
+<li><a href="./clipping.html">クリッピングする</a></li>
 <li><a href="./export.html">ゲームを公開する</a></li>
-<li><a href="./install.html">拡張ライブラリを使う</a></li>
-<li><a href="./appendix.html">より大規模なゲームを作るために</a></li>
+</ul>
+<h4><a name="advanced"></a> より大規模なゲームを作るために</h4>
+<ul>
+<li><a href="./scene.html">シーンを切り替える</a></li>
+<li><a href="./require.html">スクリプトを分割する</a></li>
+<li><a href="./assetPaths.html">複数アセットをまとめて扱う</a></li>
+<li><a href="./library.html">拡張ライブラリを使う</a></li>
 </ul>
 <h4><a name="multiplay"></a> マルチプレイのゲーム作成</h4>
 <ul>
@@ -143,7 +150,18 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<h1>Akashic Engine 入門 (v3 版)</h1>
+				<div class="warn-info" style="margin-bottom:40px">
+    <p>
+        <b style="font-size: 1.2rem;">Akashic Engine v3 は現在ベータ版として公開されています。</b>
+    </p>
+    <p>
+        特に、2020-09-16 現在、ニコ生ゲームとして投稿することはできないので注意してください。
+        正式にリリースする際には <a href="https://twitter.com/akashic_talk">https://twitter.com/akashic_talk</a> でお知らせします。
+    </p>
+</div>
+
+
+<h1>Akashic Engine 入門 (v3 版)</h1>
 <h2><a name="get-first"></a> はじめに</h2>
 <p>Akashic Engine は JavaScript で動作するゲームエンジンです。マルチプラットフォームで動作するゲームを開発できます。
 Akashic Engine はオープンソースで開発されているフリーソフトウェアです。作成したゲームの公開にロイヤリティは必要ありません。</p>
@@ -151,10 +169,11 @@ Akashic Engine はオープンソースで開発されているフリーソフ�
 <blockquote>
 <p>Akashic Engine の現在の実装は 2D 描画を主体とするゲームに特化しています。</p>
 </blockquote>
-<p>このページは Akashic Engine v3 系を対象としています。非推奨の過去版の文書は <a href="/tutorial/v2">こちら(v2)</a> と <a href="/tutorial/tutorial.html">こちら(v1)</a> です。</p>
+<p>このページは Akashic Engine v3 系を対象としています。過去版については <a href="/tutorial/v2">こちら(v2)</a> と <a href="/tutorial/tutorial.html">こちら(v1)</a> を参照してください。</p>
 <h2>目次</h2>
 <h3><a name="setup"></a> 導入</h3>
 <ul>
+<li><a href="./v3-migration-guide.html">v2 からの移行</a></li>
 <li><a href="./introduction.html">akashic の導入</a><ul>
 <li><a href="./introduction.html#develop-tools">開発に必要なもの</a></li>
 <li><a href="./introduction.html#develop-environment">開発環境の構築</a></li>
@@ -196,9 +215,9 @@ Akashic Engine はオープンソースで開発されているフリーソフ�
 <li><a href="./scale-anchor.html#anchor">アンカーポイント</a></li>
 </ul>
 </li>
-<li><a href="./otherdraw.html">色々な描画</a><ul>
-<li><a href="./otherdraw.html#draw-text">文字列の表示</a></li>
-<li><a href="./otherdraw.html#clipping">クリッピング</a></li>
+<li><a href="./text.html">文字列を表示する</a><ul>
+<li><a href="./text.html#font">フォント</a></li>
+<li><a href="./text.html#label">ラベル</a></li>
 </ul>
 </li>
 <li><a href="./bitmap-font.html">ビットマップフォントを使う</a><ul>
@@ -207,22 +226,37 @@ Akashic Engine はオープンソースで開発されているフリーソフ�
 <li><a href="./bitmap-font.html%22#usage">コンテンツでの利用</a></li>
 </ul>
 </li>
+<li><a href="./clipping.html">クリッピングする</a><ul>
+<li><a href="./clipping.html#pane">ペイン</a></li>
+</ul>
+</li>
 <li><a href="./export.html">ゲームを公開する</a><ul>
 <li><a href="./export.html#export-for-standalone">スタンドアロン形式にエクスポート</a></li>
 <li><a href="./export.html#export-for-nicolive">ニコニコ生放送で遊べるゲームとしてエクスポート</a></li>
 </ul>
 </li>
-<li><a href="./install.html">拡張ライブラリを使う</a><ul>
-<li><a href="./install.html#add-npm-package">akashic コンテンツに npm パッケージを追加する</a></li>
-<li><a href="./install.html#use-extend-package">akashic 向けではない拡張ライブラリの利用</a></li>
-<li><a href="./install.html#caution">注意</a></li>
-<li><a href="./install.html#npm%20%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">npm について</a></li>
+</ul>
+<h3><a name="advanced"></a> より大規模なゲームを作るために</h3>
+<ul>
+<li><a href="./scene.html">シーンを切り替える</a><ul>
+<li><a href="./scene.html#scene">シーン</a></li>
 </ul>
 </li>
-<li><a href="./appendix.html">より大規模なゲームを作るために</a><ul>
-<li><a href="./appendix.html#scene-change">シーンの切り替え</a></li>
-<li><a href="./appendix.html#split-file">ファイル分割</a></li>
-<li><a href="./appendix.html#more-info">より高度な情報</a></li>
+<li><a href="./require.html">スクリプトを分割する</a><ul>
+<li><a href="./require.html#require">require() と module.exports</a></li>
+</ul>
+</li>
+<li><a href="./assetPaths.html">複数アセットをまとめて扱う</a><ul>
+<li><a href="./assetPaths.html#assets-dir">assets/ ディレクトリ</a></li>
+<li><a href="./assetPaths.html#asset-paths">パスによるアセット読み込み</a></li>
+<li><a href="./assetPaths.html#get-asset-by-path">パスによるアセット取得</a></li>
+</ul>
+</li>
+<li><a href="./library.html">拡張ライブラリを使う</a><ul>
+<li><a href="./library.html#add-npm-package">akashic コンテンツに npm パッケージを追加する</a></li>
+<li><a href="./library.html#use-extend-package">akashic 向けではない拡張ライブラリの利用</a></li>
+<li><a href="./library.html#caution">注意</a></li>
+<li><a href="./library.html#npm">npm について</a></li>
 </ul>
 </li>
 </ul>

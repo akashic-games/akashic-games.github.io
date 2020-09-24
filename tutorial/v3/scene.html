@@ -15,7 +15,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>クリックできるようにする</title>
+<title>シーンを切り替える</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?8311d7d">
 <link rel="stylesheet" href="/css/header.css?8311d7d">
@@ -161,110 +161,79 @@
 </div>
 
 
-<h1>クリックできるようにする</h1>
-<h2><a name="point-event"></a> ポイントイベント</h2>
-<p>エンティティの <code>touchable</code> プロパティを <code>true</code> にすると、ゲーム画面のタップやクリックなどのユーザ操作を検出できるようになります。
-Akashic Engine ではユーザがタップやクリックするとポイントイベントが発生します。ポイントイベントを受け取るトリガーには以下の 3 種類があります</p>
-<div class="table--scroll">
-<table>
-<thead>
-<tr>
-<th>トリガー名</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>onPointDown</code></td>
-<td>画面に指が触れた。マウスのボタンが押された</td>
-</tr>
-<tr>
-<td><code>onPointMove</code></td>
-<td>画面に触れた指が移動した。ボタンが押された状態でマウスが移動した</td>
-</tr>
-<tr>
-<td><code>onPointUp</code></td>
-<td>画面から指が離れた。マウスのボタンが離された</td>
-</tr>
-</tbody>
-</table>
-</div>
+<h1>シーンを切り替える</h1>
+<h2><a name="scene"></a> シーン</h2>
+<p>シーンは、主に次の役割を担うクラスです。</p>
+<ul>
+<li>アセットの読み込みと管理<ul>
+<li>シーン内で利用するアセットを宣言し、必要ならローディング画面を出して読み込みを待つ</li>
+<li>シーンの終了時に不要なアセットを解放する</li>
+</ul>
+</li>
+<li>エンティティの管理<ul>
+<li>シーンに <code>append()</code> されているエンティティを表示する</li>
+<li>シーンの終了時にエンティティを破棄する</li>
+</ul>
+</li>
+<li>ゲーム処理の記述<ul>
+<li>アセット読み込み完了や、毎フレームのタイミングを通知する</li>
+</ul>
+</li>
+</ul>
+<p>Akashic のコンテンツには、最低でも一つのシーンが必要です。
+ここまでの例でも、<code>akashic init</code> が生成するテンプレートでも、必ず <code>new g.Scene()</code> でシーンを生成して利用していました。</p>
+<p>シーンが一つである必要はありません。
+タイトル場面・プレイ場面・スコア場面のように、ゲームの場面ごとにそれぞれ対応するシーンを作成しそれらを切り替えて表示できます。</p>
+<p>シーンの切り替えには <code>Game</code> オブジェクトに用意されたメソッドを利用します。</p>
+<ul>
+<li><code>g.game.replaceScene()</code></li>
+<li><code>g.game.pushScene()</code></li>
+<li><code>g.game.popScene()</code></li>
+</ul>
+<p><code>replaceScene()</code> は現在のシーンを破棄して次のシーンに遷移します。
+<code>pushScene()</code> を利用すると現在のシーンを保存して次のシーンに遷移します。
+<code>pushScene()</code> でシーン遷移した場合、<code>popScene()</code> で元のシーンに戻ることができます。</p>
+<p>以下のプログラムでは <code>replaceScene()</code> を利用して、画面のタップまたはクリックで 2 つのシーンを切り替えています。</p>
+<pre><code class="language-javascript">function main() {
+  g.game.pushScene(createSceneA());
+}
 
-<p>それぞれのイベントに対応するトリガーを利用することで、イベント発生時に処理を実行できます。</p>
-<p>以下は矩形エンティティ <code>rect</code> にポイントイベントを受け取るハンドラを設定して自身の色を変える例です。</p>
-<pre><code class="language-javascript">rect.touchable = true;
-rect.onPointDown.add(function() {
-  rect.cssColor = &quot;red&quot;;
-  rect.modified();
-});
-rect.onPointUp.add(function() {
-  rect.cssColor = &quot;gray&quot;;
-  rect.modified();
-});</code></pre>
-<p>ポイントイベントが発生した座標を取得するには、トリガーに渡す関数に引数を追加します。例えば、矩形エンティティ <code>rect</code> の <code>onPointDown</code>
-トリガーの座標を取得するには、以下のようなコードになります。</p>
-<pre><code class="language-javascript">rect.onPointDown.add(function (ev) {
-  var x = ev.point.x;
-  var y = ev.point.y;
-  ...
-});</code></pre>
-<p>追加した引数 <code>ev</code> にポイントイベントが与えられています。この変数には以下のプロパティがあります。</p>
-<div class="table--scroll">
-<table>
-<thead>
-<tr>
-<th>プロパティ</th>
-<th>意味</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ev.point.x</code>,<code>ev.point.y</code></td>
-<td>最後に<code>onPointDown</code>が発生した座標。座標系の原点はエンティティの座標</td>
-</tr>
-<tr>
-<td><code>ev.startDelta.x</code>,<code>ev.startDelta.y</code></td>
-<td>最後に<code>onPointDown</code>が発生した座標から、現在のポイント座標までの移動量。ただし<code>onPointDown</code>イベントでは利用できない</td>
-</tr>
-<tr>
-<td><code>ev.prevDelta.x</code>,<code>ev.prevDelta.y</code></td>
-<td>最後に<code>onPointMove</code>が発生した座標から、現在のポイント座標までの移動量。ただし<code>onPointDown</code>イベントでは利用できない</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p>以下は矩形エンティティ <code>rect</code> を指やマウス操作で移動するコード例です。</p>
-<pre><code class="language-javascript">rect.onPointMove.add(function(ev) {
-  rect.x += ev.prevDelta.x;
-  rect.y += ev.prevDelta.y;
-  rect.modified();
-});</code></pre>
-<p>エンティティに重なりがあり、その両方がポイントイベントを受け取れる状態にある場合は、最前面に表示されているエンティティがポイントイベントを受け取ります。</p>
-<p>シーンオブジェクトの <code>onPointDownCapture</code>, <code>onPointMoveCapture</code>, <code>onPointUpCapture</code> トリガーを利用すると、配置されているエンティティとは無関係に、シーン全体でポイントイベントを取得できます。これらのトリガーはシーン上にイベントを受け取るエンティティが存在していたとしても常に呼び出されます。</p>
-<p>以下は、画面に指が触れた時、もしくはマウスのボタンが押されたときに、その座標に矩形エンティティを配置するコードです。</p>
-<pre><code class="language-javascript">var scene = new g.Scene();
-scene.onLoad.add(function() {
-  scene.onPointDownCapture.add(function(ev) {
-    var size = 20;
-    var rect = new g.FilledRect({
-      scene: scene,
-      x: ev.point.x - size / 2,
-      y: ev.point.y - size / 2,
-      width: size,
-      height: size,
-      cssColor: &quot;blue&quot;
+function createSceneA() {
+  var scene = new g.Scene();
+  scene.onLoad.add(function() {
+    scene.append(createRect(scene, &quot;red&quot;));
+    scene.onPointDownCapture.add(function() {
+      g.game.replaceScene(createSceneB());
     });
-    scene.append(rect);
   });
-});</code></pre>
-<p><img src="/img/tutorial/sample11.png" alt="sample11"></p>
-<p><a class="asset--material--download" href="/zip/tutorial/v3/sample-click.zip">サンプルコード ダウンロード</a></p>
+  return scene;
+}
 
+function createSceneB() {
+  var scene = new g.Scene();
+  scene.onLoad.add(function() {
+    scene.append(createRect(scene, &quot;blue&quot;));
+    scene.onPointDownCapture.add(function() {
+      g.game.replaceScene(createSceneA());
+    });
+  });
+  return scene;
+}
+
+function createRect(scene, color) {
+  return new g.FilledRect({
+    scene: scene,
+    cssColor: color,
+    width: 32,
+    height: 32
+  });
+}
+
+module.exports = main;</code></pre>
 <div class="navi-center">
-<a href="./animation.html">前 (アニメーションさせる)</a>
+<a href="./export.html">前 (ゲームを公開する)</a>
  | <a href="./">目次</a>
- | <a href="./audio.html">次 (音を鳴らす)</a>
+ | <a href="./require.html">次 (スクリプトを分割する)</a>
 </div>
 
 			</div>

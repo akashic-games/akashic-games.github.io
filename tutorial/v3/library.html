@@ -15,7 +15,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>クリックできるようにする</title>
+<title>拡張ライブラリを使う</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?8311d7d">
 <link rel="stylesheet" href="/css/header.css?8311d7d">
@@ -161,110 +161,50 @@
 </div>
 
 
-<h1>クリックできるようにする</h1>
-<h2><a name="point-event"></a> ポイントイベント</h2>
-<p>エンティティの <code>touchable</code> プロパティを <code>true</code> にすると、ゲーム画面のタップやクリックなどのユーザ操作を検出できるようになります。
-Akashic Engine ではユーザがタップやクリックするとポイントイベントが発生します。ポイントイベントを受け取るトリガーには以下の 3 種類があります</p>
-<div class="table--scroll">
-<table>
-<thead>
-<tr>
-<th>トリガー名</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>onPointDown</code></td>
-<td>画面に指が触れた。マウスのボタンが押された</td>
-</tr>
-<tr>
-<td><code>onPointMove</code></td>
-<td>画面に触れた指が移動した。ボタンが押された状態でマウスが移動した</td>
-</tr>
-<tr>
-<td><code>onPointUp</code></td>
-<td>画面から指が離れた。マウスのボタンが離された</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p>それぞれのイベントに対応するトリガーを利用することで、イベント発生時に処理を実行できます。</p>
-<p>以下は矩形エンティティ <code>rect</code> にポイントイベントを受け取るハンドラを設定して自身の色を変える例です。</p>
-<pre><code class="language-javascript">rect.touchable = true;
-rect.onPointDown.add(function() {
-  rect.cssColor = &quot;red&quot;;
-  rect.modified();
-});
-rect.onPointUp.add(function() {
-  rect.cssColor = &quot;gray&quot;;
-  rect.modified();
-});</code></pre>
-<p>ポイントイベントが発生した座標を取得するには、トリガーに渡す関数に引数を追加します。例えば、矩形エンティティ <code>rect</code> の <code>onPointDown</code>
-トリガーの座標を取得するには、以下のようなコードになります。</p>
-<pre><code class="language-javascript">rect.onPointDown.add(function (ev) {
-  var x = ev.point.x;
-  var y = ev.point.y;
-  ...
-});</code></pre>
-<p>追加した引数 <code>ev</code> にポイントイベントが与えられています。この変数には以下のプロパティがあります。</p>
-<div class="table--scroll">
-<table>
-<thead>
-<tr>
-<th>プロパティ</th>
-<th>意味</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ev.point.x</code>,<code>ev.point.y</code></td>
-<td>最後に<code>onPointDown</code>が発生した座標。座標系の原点はエンティティの座標</td>
-</tr>
-<tr>
-<td><code>ev.startDelta.x</code>,<code>ev.startDelta.y</code></td>
-<td>最後に<code>onPointDown</code>が発生した座標から、現在のポイント座標までの移動量。ただし<code>onPointDown</code>イベントでは利用できない</td>
-</tr>
-<tr>
-<td><code>ev.prevDelta.x</code>,<code>ev.prevDelta.y</code></td>
-<td>最後に<code>onPointMove</code>が発生した座標から、現在のポイント座標までの移動量。ただし<code>onPointDown</code>イベントでは利用できない</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p>以下は矩形エンティティ <code>rect</code> を指やマウス操作で移動するコード例です。</p>
-<pre><code class="language-javascript">rect.onPointMove.add(function(ev) {
-  rect.x += ev.prevDelta.x;
-  rect.y += ev.prevDelta.y;
-  rect.modified();
-});</code></pre>
-<p>エンティティに重なりがあり、その両方がポイントイベントを受け取れる状態にある場合は、最前面に表示されているエンティティがポイントイベントを受け取ります。</p>
-<p>シーンオブジェクトの <code>onPointDownCapture</code>, <code>onPointMoveCapture</code>, <code>onPointUpCapture</code> トリガーを利用すると、配置されているエンティティとは無関係に、シーン全体でポイントイベントを取得できます。これらのトリガーはシーン上にイベントを受け取るエンティティが存在していたとしても常に呼び出されます。</p>
-<p>以下は、画面に指が触れた時、もしくはマウスのボタンが押されたときに、その座標に矩形エンティティを配置するコードです。</p>
-<pre><code class="language-javascript">var scene = new g.Scene();
-scene.onLoad.add(function() {
-  scene.onPointDownCapture.add(function(ev) {
-    var size = 20;
-    var rect = new g.FilledRect({
-      scene: scene,
-      x: ev.point.x - size / 2,
-      y: ev.point.y - size / 2,
-      width: size,
-      height: size,
-      cssColor: &quot;blue&quot;
-    });
-    scene.append(rect);
-  });
-});</code></pre>
-<p><img src="/img/tutorial/sample11.png" alt="sample11"></p>
-<p><a class="asset--material--download" href="/zip/tutorial/v3/sample-click.zip">サンプルコード ダウンロード</a></p>
-
+<h1>拡張ライブラリを使う</h1>
+<p>Akashic Engine に限らず、Node.js では、npm コマンドを利用して自作のパッケージを公開したり、既に公開されているパッケージをダウンロード・インストールすることができます。
+Akashic Engine の拡張ライブラリは npm パッケージとして実装できます。ゲーム開発者は npm の仕組みを使うことで、拡張ライブラリを自由に公開・利用することができます。</p>
+<p>既に公開されている拡張ライブラリとしては、トゥイーンアニメーションライブラリの <a href="https://github.com/akashic-games/akashic-timeline">akashic-timeline</a>
+や高機能版テキスト描画エンティティの <a href="https://github.com/akashic-games/akashic-label">akashic-label</a> などが挙げられます。</p>
+<h2><a name="add-npm-package">Akashic コンテンツに拡張ライブラリを追加する</a></h2>
+<p>拡張ライブラリは、akashic コマンドの <code>akashic install</code> を利用することでゲームに追加できます。</p>
+<p>例えば、コンテンツから akashic-timeline (パッケージ名は <code>@akashic-extension/akashic-timeline</code>) を利用したい場合、game.json の置かれているディレクトリで以下のコマンドを実行します。</p>
+<pre><code class="language-sh">akashic install @akashic-extension/akashic-timeline</code></pre>
+<p><code>akashic install</code> コマンドは、内部的に <code>npm install --save -save-exact</code> を実行することで、拡張ライブラリを <code>node_modules</code> ディレクトリにダウンロード・インストールします。さらに、インストールされた拡張ライブラリの情報(ファイルパスなど)を game.json に書き込みます。これは、Akashic コンテンツでは、予めすべてのリソースへのパスが game.json に書き込まれている必要があるためです。これによりコンテンツ内から <code>require()</code> を使って拡張ライブラリを読み込めるようになります。</p>
+<p>例として、 <code>akashic-timeline</code> の拡張ライブラリをコンテンツに追加すると、game.json には以下のような記述が追加されます。</p>
+<pre><code class="language-json">&quot;globalScripts&quot;: [
+    &quot;node_modules/@akashic-extension/akashic-timeline/lib/ActionType.js&quot;,
+    &quot;node_modules/@akashic-extension/akashic-timeline/lib/Easing.js&quot;,
+    &quot;node_modules/@akashic-extension/akashic-timeline/lib/Timeline.js&quot;,
+    &quot;node_modules/@akashic-extension/akashic-timeline/lib/Tween.js&quot;,
+    &quot;node_modules/@akashic-extension/akashic-timeline/lib/index.js&quot;
+],
+&quot;moduleMainScripts&quot;: {
+    &quot;@akashic-extension/akashic-timeline&quot;: &quot;node_modules/@akashic-extension/akashic-timeline/lib/index.js&quot;
+}</code></pre>
+<p>コンテンツからは、以下のようにして拡張ライブラリを読み込めます。</p>
+<pre><code class="language-javascript">var tl = require(&quot;@akashic-extension/akashic-timeline&quot;);</code></pre>
+<p>akashic-timeline の実際的な使い方は <a href="https://github.com/akashic-games/akashic-timeline/blob/master/getstarted.md">ドキュメント</a> を参照してください。</p>
+<p>拡張ライブラリが不要になった場合、 <code>akashic uninstall</code> コマンドを使うことで、拡張ライブラリをコンテンツから削除することができます。</p>
+<pre><code class="language-sh">akashic uninstall @akashic-extension/akashic-timeline</code></pre>
+<p>このコマンドは、 <code>npm uninstall</code> を実行して拡張ライブラリを削除したのち、game.json から関連する情報を削除します。</p>
+<p>誤って <code>npm install</code> コマンドで拡張ライブラリをインストールした場合は、 <code>npm uninstall</code> コマンドで拡張ライブラリを一度アンインストールし、その後 <code>akashic install</code> コマンドで再インストールしてください。</p>
+<p>（拡張ライブラリを再インストールしてもインストールしたライブラリを正常に利用できない場合、一度 <code>node_modules</code> ディレクトリを削除して、インストール済みの拡張ライブラリ全体を再インストールしてください。）</p>
+<h2><a name="use-extend-package">Akashic 向け拡張ライブラリではないパッケージの利用</a></h2>
+<p><code>akashic install</code> コマンドは、Akashic 向けの拡張ライブラリではない npm パッケージもインストールできます。たとえば、シミュレーションゲームで敵キャラクタの移動ルートを決めるために「グラフ探索アルゴリズムを実装した汎用のライブラリパッケージ」を導入して使う、というようなことができます。</p>
+<p>ただし、Akashic Engine はそのようなパッケージの動作を保証してはいません。
+Akashic Engine で利用できるパッケージの条件は、 <code>fs</code> や <code>http</code> などの Node.js コアモジュールを利用していないこと、 <code>Math.random()</code> を利用していないことです。また、原則的に DOM を利用することもできません。これらは Akashic Engine の動作に意図しない影響を及ぼすため、利用しないでください。</p>
+<h2><a name="caution"> 注意</a></h2>
+<p><code>akashic install</code> を用いる必要があるのは、「コンテンツの実行時に必要な npm パッケージ」だけであることに注意してください。</p>
+<p>実行時に必要ない npm パッケージは、 <code>akashic install</code> ではなく <code>npm install</code> を利用してください。例えば、TypeScript や Browserify などのビルドツールは、通常実行時には利用されません(コンテンツから <code>require()</code> されません)。これらを <code>akashic install</code> してしまうと、不要なファイルが game.json に書き込まれてしまい、ロードに時間がかかる、コンテンツが実行時エラーを起こすなどの問題が生じる場合があります。</p>
+<p>ある npm パッケージがコンテンツ実行に必要なのか、ビルドに必要なのかは、package.json の dependencies と devDependencies のどちらに記述するかの違いとして考えることができます。一般には、package.json の dependencies に記述されるものは <code>akashic install</code> を、それ以外は <code>npm install</code> を実行してインストールしてください。
+package.json の仕様については、 <a href="https://docs.npmjs.com/files/package.json">こちら</a> に詳しい説明があります。</p>
+<h2><a name="npm"></a> npm について</h2>
+<p>npm コマンドの詳細な使い方については、 <a href="https://docs.npmjs.com/">npm 公式サイト</a> を参照してください。</p>
 <div class="navi-center">
-<a href="./animation.html">前 (アニメーションさせる)</a>
+<a href="./assetPaths.html">前 (複数アセットをまとめて扱う)</a>
  | <a href="./">目次</a>
- | <a href="./audio.html">次 (音を鳴らす)</a>
+ | <a href="./multiplay/introduction.html">次 (マルチプレイの基礎)</a>
 </div>
 
 			</div>
