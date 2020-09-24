@@ -17,18 +17,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>アニメーションさせる</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?aa4267e">
-<link rel="stylesheet" href="/css/header.css?aa4267e">
-<link rel="stylesheet" href="/css/footer.css?aa4267e">
+<link rel="stylesheet" href="/css/common.css?8311d7d">
+<link rel="stylesheet" href="/css/header.css?8311d7d">
+<link rel="stylesheet" href="/css/footer.css?8311d7d">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
+<link rel="stylesheet" href="/css/akashic-document.css?8311d7d">
 
-<link rel="stylesheet" href="/css/railscasts.css?aa4267e">
+<link rel="stylesheet" href="/css/railscasts.css?8311d7d">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?aa4267e"></script>
+<script src="/lib/common.js?8311d7d"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -112,10 +112,11 @@
 <div id="BodyInner">
 	<section class="akashic--document safearea--LR twocol">
 		<div class="twocol-side">
-			<h3>Akashic Engine 入門</h3>
+			<h3>Akashic Engine 入門<br>(v3 版)</h3>
 <h4><a name="basic"></a> 導入</h4>
 <ul>
 <li><a href="./index.html">トップ</a></li>
+<li><a href="./v3-migration-guide.html">v2 からの移行</a></li>
 <li><a href="./introduction.html">akashic の導入</a></li>
 </ul>
 <h4><a name="basic"></a> シングルプレイのゲーム作成</h4>
@@ -126,11 +127,17 @@
 <li><a href="./click.html">クリックできるようにする</a></li>
 <li><a href="./audio.html">音を鳴らす</a></li>
 <li><a href="./scale-anchor.html">拡縮とアンカーポイント</a></li>
-<li><a href="./otherdraw.html">色々な描画</a></li>
+<li><a href="./text.html">文字列を表示する</a></li>
 <li><a href="./bitmap-font.html">ビットマップフォントを使う</a></li>
+<li><a href="./clipping.html">クリッピングする</a></li>
 <li><a href="./export.html">ゲームを公開する</a></li>
-<li><a href="./install.html">拡張ライブラリを使う</a></li>
-<li><a href="./appendix.html">より大規模なゲームを作るために</a></li>
+</ul>
+<h4><a name="advanced"></a> より大規模なゲームを作るために</h4>
+<ul>
+<li><a href="./scene.html">シーンを切り替える</a></li>
+<li><a href="./require.html">スクリプトを分割する</a></li>
+<li><a href="./assetPaths.html">複数アセットをまとめて扱う</a></li>
+<li><a href="./library.html">拡張ライブラリを使う</a></li>
 </ul>
 <h4><a name="multiplay"></a> マルチプレイのゲーム作成</h4>
 <ul>
@@ -143,8 +150,18 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<h1>アニメーションさせる</h1>
-<p><a name="animation"></a></p>
+				<div class="warn-info" style="margin-bottom:40px">
+    <p>
+        <b style="font-size: 1.2rem;">Akashic Engine v3 は現在ベータ版として公開されています。</b>
+    </p>
+    <p>
+        特に、2020-09-16 現在、ニコ生ゲームとして投稿することはできないので注意してください。
+        正式にリリースする際には <a href="https://twitter.com/akashic_talk">https://twitter.com/akashic_talk</a> でお知らせします。
+    </p>
+</div>
+
+
+<h1>アニメーションさせる</h1>
 <h2><a name="animation"></a> アニメーション</h2>
 <p>Akashic Engine のコンテンツは固定 FPS で動作します。
 FPS の値は 1 秒間に画面を更新する回数です。エンティティの位置や大きさなどを画面更新の度に変化させると、エンティティをアニメーションさせることができます。</p>

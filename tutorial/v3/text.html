@@ -15,7 +15,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>クリックできるようにする</title>
+<title>文字列を表示する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?8311d7d">
 <link rel="stylesheet" href="/css/header.css?8311d7d">
@@ -161,110 +161,142 @@
 </div>
 
 
-<h1>クリックできるようにする</h1>
-<h2><a name="point-event"></a> ポイントイベント</h2>
-<p>エンティティの <code>touchable</code> プロパティを <code>true</code> にすると、ゲーム画面のタップやクリックなどのユーザ操作を検出できるようになります。
-Akashic Engine ではユーザがタップやクリックするとポイントイベントが発生します。ポイントイベントを受け取るトリガーには以下の 3 種類があります</p>
+<h1>文字列を表示する</h1>
+<h2><a name="font"></a> フォント</h2>
+<p>Akashic Engine で文字列を表示するには、フォントとラベルが必要です。 <strong>フォント</strong> は文字の形を表すオブジェクトです。 <strong>ラベル</strong> はフォントを利用して文字列を描画するエンティティです。</p>
+<p>フォントには、システムにインストールされているフォントから生成するダイナミックフォントと、画像から生成するビットマップフォントの二種類があります。ビットマップフォントについては後述します。</p>
+<p>ダイナミックフォントは以下のコードで生成できます。</p>
+<pre><code class="language-javascript">var font = new g.DynamicFont({
+  game: g.game,
+  fontFamily: g.FontFamily.Serif,
+  size: 15
+});</code></pre>
+<p>引数の <code>fontFamily</code> プロパティは、フォントの種類で以下のいずれかの値を指定します。</p>
+<ul>
+<li><code>g.FontFamily.SansSerif</code>: サンセリフ体・ゴシック体のフォント。</li>
+<li><code>g.FontFamily.Serif</code>: セリフ体・明朝体のフォント。</li>
+<li><code>g.FontFamily.Monospace</code>: 等幅フォント。</li>
+</ul>
+<p>引数の <code>size</code> プロパティは文字の大きさ、 <code>game</code> プロパティには <code>g.game</code> を渡します。</p>
+<h2><a name="label"></a> ラベル</h2>
+<p>上のフォントを使って、実際に文字列を描画するエンティティ・ラベルは以下のコードで生成します。</p>
+<pre><code class="language-javascript">var label = new g.Label({
+  scene: scene,
+  font: font,
+  text: &quot;Hello World!&quot;,
+  fontSize: 15,
+  textColor: &quot;blue&quot;
+});</code></pre>
+<p>ラベル特有のプロパティとして次のものがあります。</p>
 <div class="table--scroll">
 <table>
 <thead>
 <tr>
-<th>トリガー名</th>
-<th>内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>onPointDown</code></td>
-<td>画面に指が触れた。マウスのボタンが押された</td>
-</tr>
-<tr>
-<td><code>onPointMove</code></td>
-<td>画面に触れた指が移動した。ボタンが押された状態でマウスが移動した</td>
-</tr>
-<tr>
-<td><code>onPointUp</code></td>
-<td>画面から指が離れた。マウスのボタンが離された</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<p>それぞれのイベントに対応するトリガーを利用することで、イベント発生時に処理を実行できます。</p>
-<p>以下は矩形エンティティ <code>rect</code> にポイントイベントを受け取るハンドラを設定して自身の色を変える例です。</p>
-<pre><code class="language-javascript">rect.touchable = true;
-rect.onPointDown.add(function() {
-  rect.cssColor = &quot;red&quot;;
-  rect.modified();
-});
-rect.onPointUp.add(function() {
-  rect.cssColor = &quot;gray&quot;;
-  rect.modified();
-});</code></pre>
-<p>ポイントイベントが発生した座標を取得するには、トリガーに渡す関数に引数を追加します。例えば、矩形エンティティ <code>rect</code> の <code>onPointDown</code>
-トリガーの座標を取得するには、以下のようなコードになります。</p>
-<pre><code class="language-javascript">rect.onPointDown.add(function (ev) {
-  var x = ev.point.x;
-  var y = ev.point.y;
-  ...
-});</code></pre>
-<p>追加した引数 <code>ev</code> にポイントイベントが与えられています。この変数には以下のプロパティがあります。</p>
-<div class="table--scroll">
-<table>
-<thead>
-<tr>
-<th>プロパティ</th>
+<th>プロパティ名</th>
+<th>値の種類</th>
 <th>意味</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>ev.point.x</code>,<code>ev.point.y</code></td>
-<td>最後に<code>onPointDown</code>が発生した座標。座標系の原点はエンティティの座標</td>
+<td><code>text</code></td>
+<td>文字列</td>
+<td>表示する文字列</td>
 </tr>
 <tr>
-<td><code>ev.startDelta.x</code>,<code>ev.startDelta.y</code></td>
-<td>最後に<code>onPointDown</code>が発生した座標から、現在のポイント座標までの移動量。ただし<code>onPointDown</code>イベントでは利用できない</td>
+<td><code>font</code></td>
+<td>フォントオブジェクト</td>
+<td>利用する字形</td>
 </tr>
 <tr>
-<td><code>ev.prevDelta.x</code>,<code>ev.prevDelta.y</code></td>
-<td>最後に<code>onPointMove</code>が発生した座標から、現在のポイント座標までの移動量。ただし<code>onPointDown</code>イベントでは利用できない</td>
+<td><code>fontSize</code></td>
+<td>数値</td>
+<td>文字の大きさ</td>
+</tr>
+<tr>
+<td><code>textColor</code></td>
+<td>CSS色を表す文字列</td>
+<td>文字の色</td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<p>以下は矩形エンティティ <code>rect</code> を指やマウス操作で移動するコード例です。</p>
-<pre><code class="language-javascript">rect.onPointMove.add(function(ev) {
-  rect.x += ev.prevDelta.x;
-  rect.y += ev.prevDelta.y;
-  rect.modified();
-});</code></pre>
-<p>エンティティに重なりがあり、その両方がポイントイベントを受け取れる状態にある場合は、最前面に表示されているエンティティがポイントイベントを受け取ります。</p>
-<p>シーンオブジェクトの <code>onPointDownCapture</code>, <code>onPointMoveCapture</code>, <code>onPointUpCapture</code> トリガーを利用すると、配置されているエンティティとは無関係に、シーン全体でポイントイベントを取得できます。これらのトリガーはシーン上にイベントを受け取るエンティティが存在していたとしても常に呼び出されます。</p>
-<p>以下は、画面に指が触れた時、もしくはマウスのボタンが押されたときに、その座標に矩形エンティティを配置するコードです。</p>
-<pre><code class="language-javascript">var scene = new g.Scene();
-scene.onLoad.add(function() {
-  scene.onPointDownCapture.add(function(ev) {
-    var size = 20;
-    var rect = new g.FilledRect({
-      scene: scene,
-      x: ev.point.x - size / 2,
-      y: ev.point.y - size / 2,
-      width: size,
-      height: size,
-      cssColor: &quot;blue&quot;
+<p>以下のプログラムでは、ダイナミックフォントとラベルを利用して文字列を描画しています。</p>
+<pre><code class="language-javascript">function main() {
+  var scene = new g.Scene();
+  scene.onLoad.add(function() {
+    var font = new g.DynamicFont({
+      game: g.game,
+      fontFamily: g.FontFamily.SansSerif,
+      size: 15
     });
-    scene.append(rect);
+    var label = new g.Label({
+      scene: scene,
+      font: font,
+      text: &quot;Hello World!&quot;,
+      fontSize: 15,
+      textColor: &quot;blue&quot;,
+      x: 10,
+      y: 20
+    });
+    scene.append(label);
   });
-});</code></pre>
-<p><img src="/img/tutorial/sample11.png" alt="sample11"></p>
-<p><a class="asset--material--download" href="/zip/tutorial/v3/sample-click.zip">サンプルコード ダウンロード</a></p>
+  g.game.pushScene(scene);
+}
 
+module.exports = main;</code></pre>
+<p><img src="/img/tutorial/sample12.png" alt="sample12"></p>
+<p>ダイナミックフォントはシステムにインストールされているフォントを利用するため、実行環境により描画が異なる場合があります。すべての環境で同じ出力にしたい場合や、パフォーマンスが要求される場合は、ダイナミックフォントの代わりにビットマップフォントを利用してください。</p>
+<p>ラベルは高速化のために描画内容をキャッシュしています。そのために文字列を変更した場合は、<code>invalidate()</code>
+メソッドで変更を通知する必要があります。以下はラベル <code>label</code> の文字列を書き換える例です。</p>
+<pre><code class="language-javascript">label.text = label.text + &quot;*&quot;;
+label.invalidate();</code></pre>
+<p>ラベルでは以下のプロパティを変更した場合に <code>invalidate()</code>
+メソッドを呼び出す必要があります。</p>
+<ul>
+<li><code>text</code></li>
+<li><code>font</code></li>
+<li><code>fontSize</code></li>
+</ul>
+<p><code>x</code> や <code>y</code> などのエンティティ共通のプロパティの変更時はこれまで通り
+<code>modified()</code> を呼び出してください。
+<code>invalidate()</code> は <code>modified()</code> の機能を含んでいるので、
+<code>invalidate()</code> を呼び出した場合は <code>modified()</code> の呼び出しは不要です。</p>
+<p>以下は、500 ミリ秒ごとにカウンタの値を増やすプログラム例です。</p>
+<pre><code class="language-javascript">function main() {
+  var scene = new g.Scene();
+  scene.onLoad.add(function() {
+    var font = new g.DynamicFont({
+      fontFamily: g.FontFamily.SansSerif,
+      size: 15,
+      game: g.game
+    });
+    var count = 0;
+    var label = new g.Label({
+      scene: scene,
+      font: font,
+      text: count + &quot;&quot;,
+      fontSize: 30,
+      textColor: &quot;black&quot;,
+      x: 10,
+      y: 10
+    });
+    scene.append(label);
+    scene.setInterval(function() {
+      label.text = ++count + &quot;&quot;;
+      label.invalidate();
+    }, 500);
+  });
+  g.game.pushScene(scene);
+}
+
+module.exports = main;</code></pre>
+<p><img src="/img/tutorial/sample13.gif" alt="sample13"></p>
 <div class="navi-center">
-<a href="./animation.html">前 (アニメーションさせる)</a>
+<a href="./scale-anchor.html">前 (拡縮とアンカーポイント)</a>
  | <a href="./">目次</a>
- | <a href="./audio.html">次 (音を鳴らす)</a>
+ | <a href="./bitmap-font.html">次 (ビットマップフォントを使う)</a>
 </div>
 
 			</div>

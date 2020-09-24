@@ -17,20 +17,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>game.json の仕様</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?aa4267e">
-<link rel="stylesheet" href="/css/header.css?aa4267e">
-<link rel="stylesheet" href="/css/footer.css?aa4267e">
+<link rel="stylesheet" href="/css/common.css?8311d7d">
+<link rel="stylesheet" href="/css/header.css?8311d7d">
+<link rel="stylesheet" href="/css/footer.css?8311d7d">
 
 
-<link rel="stylesheet" href="/css/asset.css?aa4267e">
+<link rel="stylesheet" href="/css/asset.css?8311d7d">
 
-<link rel="stylesheet" href="/css/akashic-document.css?aa4267e">
+<link rel="stylesheet" href="/css/akashic-document.css?8311d7d">
 
-<link rel="stylesheet" href="/css/railscasts.css?aa4267e">
+<link rel="stylesheet" href="/css/railscasts.css?8311d7d">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?aa4267e"></script>
+<script src="/lib/common.js?8311d7d"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -195,8 +195,7 @@ akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli 利用ガイド<
 &quot;script/main.js&quot; というゲームスクリプト一つだけを使うゲームであること、またエントリポイントはその &quot;./script/main.js&quot; であることを定義しています。</p>
 <h3>assets (アセット定義)</h3>
 <p>game.json のオブジェクト中、 <strong>assets</strong> の値は、オブジェクトでなければなりません。そのオブジェクトの各キーはアセット ID、値はその ID のアセット定義です。</p>
-<p><strong>アセット ID</strong> は、ゲーム開発者が任意に設定できる文字列です。アセット ID は「半角英数字、アンダースコア &quot;_&quot;、ドル記号 &quot;$&quot;」のみで構成され、かつ「英字で始まっている」必要があります。ゲームスクリプト内で、Akashic エンジンが読み込んだ各アセットは
-<code>g.Scene#assets</code> オブジェクトから参照できます (グローバルアセットを除く。後述)。アセット ID はこのオブジェクトのキーとして利用されます。すなわち、アセット ID が &quot;foo&quot; のアセットは、<code>scene.assets.foo</code> のような形で参照することができます。</p>
+<p><strong>アセット ID</strong> は、ゲーム開発者が任意に設定できる文字列です。アセット ID は「半角英数字、アンダースコア &quot;_&quot;、ドル記号 &quot;$&quot;」のみで構成され、かつ「英字で始まっている」必要があります。あるシーンで読み込んだアセットは <code>g.Scene#assets</code> オブジェクトから参照できます。アセット ID はこのオブジェクトのキーとして利用されます。すなわち、アセット ID が &quot;foo&quot; のアセットは、<code>scene.assets[&quot;foo&quot;]</code> のような形で参照することができます。</p>
 <p><strong>アセット定義</strong> は、オブジェクトであり、少なくとも以下の値を持つことができます:</p>
 <ul>
 <li>type (必須)<ul>
@@ -217,6 +216,7 @@ akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli 利用ガイド<
 </li>
 </ul>
 <p>global の値が真に設定されたアセットは、<strong>グローバルアセット</strong> になります。通常のアセットは、シーン単位で管理されます。アセットを利用する場合、<code>g.Scene</code> のコンストラクタでそのアセット ID を指定する必要があります。しかしグローバルアセットは、シーン単位ではなく、ゲーム内において常に利用可能なアセットになります。通常のアセットが <code>g.Scene#assets</code> から参照できるのに対して、グローバルアセットは <code>g.Game#assets</code> から参照できます。</p>
+<p>(なお Akashic Engine v3 以降では、より柔軟な API を提供する <code>g.Scene#asset</code> (s がないことに注意) 経由でもアセットを参照できます)</p>
 <p>type の値によっては、アセット定義にさらに追加の制約や必須プロパティが存在します。</p>
 <ul>
 <li>&quot;image&quot;<ul>
@@ -290,11 +290,13 @@ akashic-engine の提供する require()は、Node.js などのそれと異な�
 <p>例えば、 <code>canvas</code> と <code>webgl</code> という 2 つのレンダラー識別子が利用可能な環境において、
 <code>webgl</code> を優先して使いたい場合は、<code>&quot;renderers&quot;: [&quot;webgl&quot;, &quot;canvas&quot;]</code> と記述します。</p>
 <p>レンダラー識別子として<code>&quot;auto&quot;</code> を指定した場合は、Akashic エンジンが自動的にレンダラーを決定します。また、game.json に renderers を定義しなかった場合の挙動は <code>&quot;renderers&quot;: [&quot;auto&quot;]</code> を指定した場合と等価になります。</p>
-<h3>defaultLoadingScene</h3>
+<h3><a name="defaultLoadingScene" class="anchor"></a>defaultLoadingScene</h3>
 <p><strong>defaultLoadingScene</strong> は、グローバルアセット読み込み中のローディングシーンなど、デフォルトのローディングシーンについての設定です。
 akashic-engine&#64;1.11.2 では <code>&quot;default&quot;</code> または <code>&quot;none&quot;</code> を指定できます。
 <code>&quot;default&quot;</code> を指定または省略時はエンジンに用意されているデフォルトのローディングシーンを表示します。
 <code>&quot;none&quot;</code> を指定するとそれらのローディングシーンを非表示にできます。</p>
+<p>akashic-engine&#64;3.0.0 で <code>&quot;compact&quot;</code> が導入されました。
+<code>&quot;compact&quot;</code> を指定すると背景が透過になり、プログレスバーが画面中央ではなく右下の方に小さく表示されます。</p>
 <h3>environment</h3>
 <p>akashic-engine&#64;2.0.0 で導入。</p>
 <p><strong>environment</strong> は、ゲームを実行する環境やエンジンに対する要求を指定するためのオブジェクトです。オブジェクトのキーは要求の種類、値は要求内容です(必要なバージョンなど)。</p>
