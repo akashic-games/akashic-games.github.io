@@ -167,48 +167,68 @@
 新たにゲームを作成する場合は次の <a href="./introduction.html">akashic の導入</a> に進んでください。</p>
 </blockquote>
 <p>Akashic Engine v3 では、一部の仕様が v2 から破壊的に変更されています。この文書では、Akashic Engine v2 系で作成されたコンテンツを v3 に移行するために必要な作業と、主な追加機能を紹介します。</p>
-<h3>変更点ハイライト</h3>
+<h3>目次</h3>
 <ul>
-<li><a href="#anchor-point">アンカーポイントの挙動を統一</a></li>
-<li><a href="#trigger-name">ばらばらだった Trigger の命名規則を整理・統一</a></li>
-<li><a href="#deprecated-enum">g.TextAlign.Left の代わりに文字列で &quot;left&quot; と書けるように (前者は非推奨に)</a></li>
-<li><a href="#assetpaths">アセットを (従来の ID だけでなく) ファイルパスで、さらに複数まとめて扱えるように</a></li>
+<li><a href="#settings">設定の更新 (必須)</a></li>
+<li><a href="#breaking-changes">仕様変更への追従 (必須)</a></li>
+<li><a href="#deprecation">非推奨機能の変更</a></li>
+<li><a href="#features">機能追加・変更</a></li>
 </ul>
-<h2>移行に必須の作業</h2>
-<h3>allowUmdGlobalAccess を有効にする (TypeScript のみ)</h3>
+<h2><a name="settings" class="anchor"></a> 設定の更新 (必須)</h2>
+<p>v2 で作られたコンテンツを v3 に移行するには、次の作業が必要です。</p>
+<ul>
+<li>game.json を変更して v3 コンテンツとして扱うよう設定する</li>
+<li>(TypeScript のみ) 型定義ファイルを index.runtime.d.ts に移行する</li>
+<li>(TypeScript のみ) allowUmdGlobalAccess オプションを有効にする</li>
+</ul>
+<p>これらは v2 系で作られた全てのゲームで必要です。</p>
 <blockquote>
-<p>NOTE: akashic-cli の最新バージョンを用いて <code>akashic init</code> で新規作成した場合には影響はありません。
-Akashic Engine v2 で作成されたコンテンツを Akashic Engine v3 へ移行する場合に必要となります。</p>
+<p><strong>NOTE</strong>: akashic-cli の最新バージョンを用いて <code>akashic init -t javascript-v3</code> などを実行した場合、これらの作業はすべて済んだ状態で生成されます。
+あくまでも Akashic Engine v2 で作成されたコンテンツを Akashic Engine v3 へ移行する場合に必要な作業です。</p>
 </blockquote>
-<p>次のコマンドで Akashic Engine v3 をインストールします。</p>
-<pre><code class="language-sh">npm install --save-dev @akashic/akashic-engine</code></pre>
-<p>tsconfig.json の <code>compilerOptions</code> プロパティに <code>allowUmdGlobalAccess</code> を追加します。</p>
-<pre><code class="language-diff">&quot;compilerOptions&quot;: {
-    ...
-+   &quot;allowUmdGlobalAccess&quot;: true
-},</code></pre>
-<p>コンパイル時に <code>--allowUmdGlobalAccess</code> の指定が必須になるため、TypeScript の要求バージョンが 3.5 以上になります。
-TypeScript のバージョンが 3.5 未満の場合は、TypeScript を 3.5 以上に更新してください。</p>
-<h3>開発時に参照する型定義の場所が &quot;lib/main.d.ts&quot; から &quot;index.runtime.d.ts&quot; へ (TypeScript のみ)</h3>
-<blockquote>
-<p>NOTE: akashic-cli の最新バージョンを用いて <code>akashic init</code> で新規作成した場合には影響はありません。
-Akashic Engine v2 で作成されたコンテンツを Akashic Engine v3 へ移行する場合に必要となります。</p>
-</blockquote>
-<p>ゲーム開発時に参照する型定義の場所が <code>lib/main.d.ts</code> から <code>index.runtime.d.ts</code> に変更されます。
+<h3>game.json の sandbox-runtime を &quot;3&quot; にする</h3>
+<p>ゲームディレクトリにある game.json を編集して、 <code>environment</code> プロパティ内の <code>sandbox-rutnime</code> の値を <code>&quot;3&quot;</code> に変更してください。</p>
+<pre><code class="language-diff"> {
+   ...
+   &quot;environment&quot;: {
+-    &quot;sandbox-runtime&quot;: &quot;2&quot;
++    &quot;sandbox-runtime&quot;: &quot;3&quot;
+   }
+ }</code></pre>
+<p><code>akashic-sandbox</code> や <code>akashic serve</code> コマンドは、この値によってゲームの実行に利用するエンジンのバージョンを決めています。</p>
+<h3>(TypeScript のみ) 開発時に参照する型定義ファイルを &quot;lib/main.d.ts&quot; から &quot;index.runtime.d.ts&quot; へ</h3>
+<p>TypeScript で開発している場合、型定義ファイルも v3 系のものを利用する必要があります。また v3 系ではこの型定義ファイル名が変更されています。</p>
+<p>まず次のコマンドで Akashic Engine v3 をインストールします。</p>
+<pre><code class="language-sh">npm install --save-dev @akashic/akashic-engine@3</code></pre>
+<p>型定義ファイルが <code>lib/main.d.ts</code> から <code>index.runtime.d.ts</code> に変更されているので、
 tsconfig.json の <code>files</code> プロパティを下記のように変更します。</p>
 <pre><code class="language-diff">&quot;files&quot;: [
 -   &quot;node_modules/@akashic/akashic-engine/lib/main.d.ts&quot;
 +   &quot;node_modules/@akashic/akashic-engine/index.runtime.d.ts&quot;
 ],</code></pre>
-<h3><a name="anchor-point" class="anchor"></a>アンカーポイントの仕様変更への追従</h3>
-<p>前バージョン(v2.x.x 以前)のデフォルトの挙動は「座標 (x, y) の基点はエンティティの左上、回転・拡大縮小の基点は中央」でした。Akashic Engine v3 からは 座標・回転・拡大縮小の基点が左上の (0, 0) へ統一されます。</p>
-<p>前バージョン(v2.x.x 以前) のデフォルトの挙動は非推奨となりましたが、<code>g.E#anchorX</code> または <code>g.E#anchorY</code> に明示的に <code>null</code> を指定することで再現できます。</p>
+<h3>(TypeScript のみ) allowUmdGlobalAccess を有効にする</h3>
+<p>エンジン内部の変更のため、 TypeScript コンパイル時のオプションとして <code>--allowUmdGlobalAccess</code> が必要になりました。</p>
+<p>tsconfig.json の <code>compilerOptions</code> プロパティに <code>allowUmdGlobalAccess</code> (<code>--</code> なし) を追加します。</p>
+<pre><code class="language-diff">&quot;compilerOptions&quot;: {
+    ...
++   &quot;allowUmdGlobalAccess&quot;: true
+},</code></pre>
+<p><code>--allowUmdGlobalAccess</code> が必須になるため、TypeScript の要求バージョンが 3.5 以上になります。
+バージョン 3.5 未満の場合は、TypeScript を 3.5 以上に更新してください。</p>
+<h2><a name="breaking-changes" class="anchor"></a> 仕様変更への追従 (必須)</h2>
+<p>v3 では、v2 での非推奨機能の廃止を中心に、いくつかの仕様変更が行われています。
+当該の機能を利用している場合は追従が必要になります。</p>
+<h3><a name="anchor-point" class="anchor"></a>アンカーポイント未指定時の回転・拡縮の基準点が左上に</h3>
+<p>v2 では、アンカーポイント未指定 (デフォルト) の場合、「座標 (x, y) の基点はエンティティの左上、回転・拡大縮小の基点はエンティティの中央」になっていました。
+一方で、アンカーポイントを指定した場合は、座標・回転・拡大縮小の基点が全てアンカーポイントの位置になっていました。</p>
+<p>Akashic Engine v3 からはこの不整合を解消して単純化します: <strong>アンカーポイントのデフォルト値は (0, 0) になります</strong> 。つまり、特に指定してしない場合、座標・回転・拡大縮小の基点はエンティティの左上端に統一されます。</p>
+<p>なお移行措置として、 <code>g.E#anchorX</code> または <code>g.E#anchorY</code> に明示的に <code>null</code> を指定することで v2 のデフォルトの挙動を再現できます。これは非推奨の挙動です。</p>
 <pre><code class="language-js">const e = new g.E({
     ...
     anchorX: null // 前バージョンのデフォルト挙動の再現
 });</code></pre>
-<h3>Game#random[0]の廃止</h3>
-<p>非推奨だった <code>g.game.random[0]</code> が廃止されます。 <code>g.game.random</code> を利用してください。</p>
+<h3>Game#random[0] の廃止</h3>
+<p>非推奨だった <code>g.game.random[0]</code> が廃止されます。同じ形で利用できる <code>g.game.random</code> を利用してください。</p>
 <pre><code class="language-ts">g.game.random.generate();</code></pre>
 <h3>Scene#setTimeout(), Scene#setInterval() の一部引数順序のメソッドの廃止</h3>
 <p><code>g.Scene#setInterval()</code> および <code>g.Scene#setTimeout()</code> で非推奨だった引数順序のメソッドが廃止になりました。</p>
@@ -250,32 +270,22 @@ setTimeout(handler: () =&gt; void, milliseconds: number, owner?: any)</code></pr
 <ul>
 <li>TypeScript では <code>g.Scene#tickGenerationMode</code> の型が <code>g.TickGenerationModeString</code> になります。</li>
 </ul>
-<h4>前バージョン(v2.x.x 以前) のコード</h4>
-<pre><code class="language-js">const scene = new g.Scene({
-  ...
-  tickGenerationMode: g.TickGenerationMode.Manual
-});</code></pre>
-<h4>Akashic Engine v3 のコード</h4>
-<pre><code class="language-js">const scene = new g.Scene({
-  ...
-  tickGenerationMode: &quot;manual&quot;
-});</code></pre>
 </li>
 <li><p><code>g.LocalTickMode</code> が廃止になりました。 利用している場合、代わりに <code>g.LocalTickModeString</code> (<code>&quot;full-local&quot; | &quot;non-local&quot; | &quot;interpolate-local&quot;</code>) を利用してください。</p>
 <ul>
-<li><p>TypeScript では <code>g.Scene#local</code> の型が <code>g.LocalTickModeString</code> になります。</p>
-</li>
-<li><p>これにより、 <code>g.Scene#local</code> が boolean だった当時 (v1 系) のコードとは互換性がなくなります。</p>
-</li>
+<li>TypeScript では <code>g.Scene#local</code> の型が <code>g.LocalTickModeString</code> になります。</li>
+<li>これにより、 <code>g.Scene#local</code> が boolean だった当時 (v1 系) のコードとは互換性がなくなります。</li>
 </ul>
 <h4>前バージョン(v2.x.x 以前) のコード</h4>
 <pre><code class="language-js">const scene = new g.Scene({
-  ...
+  ...,
+  tickGenerationMode: g.TickGenerationMode.Manual,
   local: g.LocalTickMode.NonLocal
 });</code></pre>
 <h4>Akashic Engine v3 のコード</h4>
 <pre><code class="language-js">const scene = new g.Scene({
-  ...
+  ...,
+  tickGenerationMode: &quot;manual&quot;,
   local: &quot;non-local&quot;
 });</code></pre>
 </li>
@@ -290,7 +300,8 @@ setTimeout(handler: () =&gt; void, milliseconds: number, owner?: any)</code></pr
 });</code></pre>
 </li>
 </ul>
-<h2>推奨の作業 (新たに非推奨となる機能)</h2>
+<h2><a name="deprecation" class="anchor"></a> 非推奨機能の変更</h2>
+<p>新たに次の機能が非推奨になります。v3 では旧バージョンとの互換性が維持されますが、移行を推奨します。</p>
 <h3><a name="trigger-name" class="anchor"></a>Trigger 名の移行</h3>
 <p><code>Game#join</code> や <code>Scene#loaded</code> など、統一感のなかったトリガーの変数名を整理しました。前バージョン(v2.x.x 以前)のトリガーの変数名は非推奨となります。</p>
 <p>下記の表ではトリガー名が変更となった一部のクラスを記述しています。</p>
@@ -312,7 +323,7 @@ setTimeout(handler: () =&gt; void, milliseconds: number, owner?: any)</code></pr
         <td>onLeave</td>
     </tr>
     <tr>
-        <td>playerInfo</td>
+        <td>N/A</td>
         <td>onPlayerInfo</td>
     </tr>
     <tr>
@@ -426,8 +437,8 @@ const label = new g.Label({
 <p><code>g.RandomGenerator#get()</code> が非推奨になりました。代わりに <code>g.RandomGenerator#generate()</code> を利用してください。</p>
 <h3>NinePatchSurfaceEffector の移行</h3>
 <p><code>g.NinePatchSurfaceEffector</code> が非推奨になりました。代わりに <a href="#drawninepatch">g.SurfaceUtil#drawNinePatch()</a> を利用してください。</p>
-<h2>新規追加機能紹介</h2>
-<h3><a name="assetpaths" class="anchor"></a>読み込むアセットをファイルパスで複数まとめて指定できるように</h3>
+<h2><a name="features" class="anchor"></a> 追加機能など</h2>
+<h3><a name="assetpaths" class="anchor"></a> 読み込むアセットをファイルパスで複数まとめて指定できるように</h3>
 <p>g.Scene のコンストラクタ引数に <code>assetPaths?: string[]</code> が追加されます。</p>
 <p>アセット ID の配列を渡す従来の <code>assetIds?: string[]</code> とは異なり、ファイルパスの配列を渡すことで読み込むアセットを指定できるようになります。
 ここでのファイルパスは game.json のあるディレクトリをルート (<code>/</code>) とする スラッシュ区切りの絶対パスとなります。以降これをファイルパス形式と呼びます。</p>
@@ -492,7 +503,40 @@ const imageWidth = (scene.assets[&quot;foo&quot;] as g.ImageAsset).width;
 // getImageById()での取得
 const imageWidth = scene.asset.getImageById(&quot;foo&quot;).width;
 // (返り値の型が ImageAsset になっているので、キャストなしで `width` にアクセスできます)</code></pre>
-<p>詳細は<a href="https://akashic-games.github.io/reference/akashic-engine-v3/classes/scene.html#asset">API リファレンス</a> を参照してください。</p>
+<p><code>g.Scene#assets</code> の完全な機能一覧は <a href="https://akashic-games.github.io/reference/akashic-engine-v3/classes/scene.html#asset">API リファレンス</a> を参照してください。</p>
+<h3><a name="assets-dir" class="anchor"></a> assets/ ディレクトリに全ての種類のアセットを置けるように</h3>
+<p>従来の <code>image/</code>, <code>audio/</code> などのディレクトリに加えて、 <code>assets/</code> ディレクトリが利用できるようになりました。
+このディレクトリ内においたアセットは、 <code>akashic scan asset</code> でスキャンされ、 game.json に登録されます。</p>
+<p>ただし <code>assets/</code> は、他のディレクトリと次の点で異なります。</p>
+<ul>
+<li>全ての種類のアセットがスキャンされ登録される</li>
+<li>アセットの種別がファイルの拡張子から自動的に決定される</li>
+<li>アセット ID が不定になる</li>
+</ul>
+<p>これにより、従来は不可能だった次のようなフォルダ構造が可能になります。</p>
+<ul>
+<li>assets/<ul>
+<li>stage1/<ul>
+<li>map.json</li>
+<li>background.png</li>
+<li>bgm.aac</li>
+<li>bgm.ogg</li>
+</ul>
+</li>
+<li>stage2/<ul>
+<li>map.json</li>
+<li>background.png</li>
+<li>bgm.aac</li>
+<li>bgm.ogg</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>「アセット ID が不定になる」ため、利用には上述の <code>filePaths</code> や <code>scene.assets.getImage()</code> などを利用することになります。この仕様の背景などについては v3 チュートリアルの <a href="/tutorial/v3/assetPaths.html">複数のアセットをまとめて扱う</a> をご覧ください。</p>
+<blockquote>
+<p>厳密には、これは Akashic Engine の追加機能ではなく、 <code>akashic scan asset</code> コマンドの機能拡張です (akashic-cli v1.14.3 以降で利用可能)。ただし上述のとおり「アセット ID が不定になる」性質上、v3 の追加機能がないと利用できません。事実上 v3 以降専用の仕様となります。</p>
+</blockquote>
 <h3>エンティティの座標系を変換するメソッドを追加</h3>
 <p>エンティティの座標系を変換するメソッド <code>E#localToGlobal()</code>, <code>E#globalToLocal()</code> が追加されます。</p>
 <ul>
