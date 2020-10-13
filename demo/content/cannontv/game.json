@@ -146,7 +146,7 @@
 		}
 	},
 	"environment": {
-		"sandbox-runtime": "2"
+		"sandbox-runtime": "3"
 	},
 	"globalScripts": [
 		"node_modules/@akashic-extension/akashic-tile/lib/Tile.js",

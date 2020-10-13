@@ -74,7 +74,7 @@ GammaEnemy.prototype.onDied = function() {
                     p.spr.modified();
                 }
             });
-            p.spr.compositeOperation = g.CompositeOperation.SourceOver;
+            p.spr.compositeOperation = "source-over";
             if (i % 2 === 0) {
                 p.spr.scaleX = 4;
                 p.spr.scaleY = 4;

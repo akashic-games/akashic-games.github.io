@@ -2,10 +2,10 @@ var killedEnemy = 0;
 
 function main() {
 	let scene = new g.Scene({game: g.game});
-	scene.loaded.add(function() {
+	scene.onLoad.add(function() {
 		makeEnemy(scene);
 	});
-	scene.pointDownCapture.add(function(event) {
+	scene.onPointDownCapture.add(function(event) {
 		var point = event.point;
 		if (event.target) {
 			point.x += event.target.x;
@@ -13,7 +13,7 @@ function main() {
 		}
 		makeShot(scene, point);
 	});
-	scene.update.add(function () {
+	scene.onUpdate.add(function () {
 		if (killedEnemy === 36) {
 			gameOver(scene);
 			return true; // trueを返すと(`scene.update` から)この関数の登録が解除されます。
@@ -35,7 +35,7 @@ function makeEnemy(scene) {
 				x: i * (16 + 4) + 64,
 				y: j * (16 + 4) + 30
 			});
-			movingEnemy.update.add(function() { // add(func, obj)の形式で呼び出すと、objがfunc呼び出しの際thisとして扱われます。
+			movingEnemy.onUpdate.add(function() { // add(func, obj)の形式で呼び出すと、objがfunc呼び出しの際thisとして扱われます。
 				if (scene.game.age % scene.game.fps === 0) {
 					var tick = Math.round(scene.game.age / scene.game.fps) % 4;
 					if (tick === 0 || tick === 1) {
@@ -72,7 +72,7 @@ function makeShot(scene, point) {
 		y: point.y
 	});
 
-	shot.update.add(function () {
+	shot.onUpdate.add(function () {
 		shot.y -= 10;
 		if (shot.y < 0 || killedEnemy === 36) {
 			shot.destroy();
@@ -98,7 +98,7 @@ function makeShot(scene, point) {
 
 function gameOver(scene) {
 	var dfont = new g.DynamicFont({
-		fontFamily: g.FontFamily.Serif,
+		fontFamily: "serif",
 		size: 80,
 		game: scene.game
 	});
@@ -110,7 +110,7 @@ function gameOver(scene) {
 	});
 	label.x = scene.game.width / 2 - label.width / 2;
 	label.y = 0;
-	label.update.add(function() {
+	label.onUpdate.add(function() {
 		if (this.y < scene.game.height / 2 - this.height / 2)
 			this.y += 2;
 		this.invalidate();

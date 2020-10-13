@@ -2,10 +2,11 @@
 	"width": 512,
 	"height": 384,
 	"fps": 30,
+	"main": "./script/main.js",
 	"assets": {
-		"mainScene": {
+		"main": {
 			"type": "script",
-			"path": "script/mainScene.js",
+			"path": "script/main.js",
 			"global": true
 		},
 		"font16": {
@@ -307,6 +308,6 @@
 		}
 	},
 	"environment": {
-		"sandbox-runtime": "2"
+		"sandbox-runtime": "3"
 	}
 }

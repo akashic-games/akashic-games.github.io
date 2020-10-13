@@ -31,7 +31,7 @@ var Combo = /** @class */ (function () {
         for (; _digit > defaultText.length; defaultText += "0")
             ; // コンボ用ラベル初期テキスト作成
         // コンボ用ラベル3桁左よせ
-        this.label = entityUtil_1.entityUtil.createLabel(this.scene, defaultText, _font, _digit, g.TextAlign.Left);
+        this.label = entityUtil_1.entityUtil.createLabel(this.scene, defaultText, _font, _digit, "left");
         this.label.update.handle(function () {
             entityUtil_1.entityUtil.setLabelText(_this.label, String(_this.comboNum));
         });

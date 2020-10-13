@@ -37,7 +37,7 @@ function Particle(params) {
             y: this.pos.y
         });
     }
-    this.spr.compositeOperation = g.CompositeOperation.Lighter;
+    this.spr.compositeOperation = "lighter";
     Global.gameCore.gameLayer.append(this.spr);
 }
 

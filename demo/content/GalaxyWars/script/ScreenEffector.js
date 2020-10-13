@@ -73,7 +73,7 @@ ScreenEffector.prototype.renderSelf = function(renderer, camera) {
         if (this.cntr > 0) {
             this.backRenderer.save();
             this.backRenderer.opacity(0.8);
-            this.backRenderer.setCompositeOperation(g.CompositeOperation.Lighter);
+            this.backRenderer.setCompositeOperation("lighter");
 
             var s = 1.075;
             var th = Math.PI * 2 / game.fps * this.cntr * 0.01;

@@ -11,6 +11,6 @@
   "author": "",
   "license": "",
   "devDependencies": {
-    "@akashic/akashic-sandbox": "^0.4.5"
+    "@akashic/akashic-sandbox": "^0.16.21"
   }
 }

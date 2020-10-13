@@ -2,10 +2,11 @@
 	"width": 640,
 	"height": 480,
 	"fps": 30,
+	"main": "./script/main.js",
 	"assets": {
-		"mainScene": {
+		"main": {
 			"type": "script",
-			"path": "script/mainScene.js",
+			"path": "script/main.js",
 			"global": true
 		},
 		"demo": {
@@ -122,6 +123,6 @@
 		"node_modules/@akashic-extension/akashic-animation/package.json"
 	],
 	"environment": {
-		"sandbox-runtime": "2"
+		"sandbox-runtime": "3"
 	}
 }

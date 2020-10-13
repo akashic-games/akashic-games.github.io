@@ -44,7 +44,7 @@ Background.prototype.update = function() {
         });
         star.modified();
         var that = this;
-        star.update.add(function() {
+        star.onUpdate.add(function() {
             var t = Math.min(1, that.cntr / 60);
             var dy = front ? 8 : 4;
             dy += dy * 2.5 * (1 - t);

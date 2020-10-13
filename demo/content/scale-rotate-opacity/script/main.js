@@ -6,16 +6,16 @@ function main(param) {
 	});
 
 	// シーン初期化時の処理
-	scene.loaded.add(function() {
+	scene.onLoad.add(function() {
 		// 回転するエンティティを生成
 		var rotatingEntity = new g.Sprite({
 			scene: scene,
-			src: scene.assets["player"],
+			src: scene.asset.getImageById("player"),
 			x: 20,
 			y: 20
 		});
 		// update トリガーを使い、毎フレーム呼び出される処理を登録
-		rotatingEntity.update.add(function () {
+		rotatingEntity.onUpdate.add(function () {
 			rotatingEntity.angle++; // 回転角度を変更
 			rotatingEntity.modified(); // 変更をエンジンに通知
 		});
@@ -25,12 +25,12 @@ function main(param) {
 		var counterForScale = 0;  // 拡大率を制御する変数
 		var scalingEntity = new g.Sprite({
 			scene: scene,
-			src: scene.assets["player"],
+			src: scene.asset.getImageById("player"),
 			x: 120,
 			y: 20
 		});
 		// update トリガーを使い、毎フレーム呼び出される処理を登録
-		scalingEntity.update.add(function () {
+		scalingEntity.onUpdate.add(function () {
 			counterForScale += 0.05;
 			var scaleFactor = 2 * Math.abs(Math.sin(counterForScale));  // counterForScale の値に応じて 0〜2 の間で変動する値
 			scalingEntity.scale(scaleFactor); // 拡大率を変更
@@ -42,12 +42,12 @@ function main(param) {
 		var counterForOpacity = 0;  // 不透明度を制御する変数
 		var blinkingEntity = new g.Sprite({
 			scene: scene,
-			src: scene.assets["player"],
+			src: scene.asset.getImageById("player"),
 			x: 220,
 			y: 20
 		});
 		// update トリガーを使い、毎フレーム呼び出される処理を登録
-		blinkingEntity.update.add(function () {
+		blinkingEntity.onUpdate.add(function () {
 			counterForOpacity += 0.1;
 			var opacity = (Math.sin(counterForOpacity) + 1) / 2;  // counterForOpacity の値に応じて 0〜1 の間で変動する値
 			blinkingEntity.opacity = opacity; // 不透明度を変更

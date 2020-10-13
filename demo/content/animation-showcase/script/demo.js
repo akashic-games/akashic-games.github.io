@@ -1,8 +1,11 @@
 "use strict";
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -36,7 +39,7 @@ var HEIGHT = 320;
 function equipSecondaryBloodSword(actor) {
     // attach cell "sword" retrieved from actor's skin by name to bone "arm_l2"
     var m = new g.PlainMatrix();
-    m.update(0, 0, 1, 1, -90, 0, 60);
+    m.update(0, 0, 1, 1, -90, 0, 60, null, null);
     var attachment = actor.attach("sword", "arm_l2", m);
     // add collider (collision detection object)
     // CellAttachmentCollider uses CellAttachment as collision volume source
@@ -81,10 +84,18 @@ function updateParticles(actor, particles) {
         _loop_1(i);
     }
 }
-function attachBoneNameText(actor) {
+function attachBoneNameText(actor, font, scene) {
     var attachments = [];
     actor.skeleton.bones.forEach(function (bone) {
-        attachments.push(actor.attach(new SystemTextAttachment(bone.name), bone.name));
+        var text = new g.Label({
+            scene: scene,
+            text: bone.name,
+            fontSize: font.size,
+            textAlign: "left",
+            font: font,
+            maxWidth: 128
+        });
+        attachments.push(actor.attach(new CancelRotationAttachment(text), bone.name));
     });
     return attachments;
 }
@@ -116,26 +127,25 @@ function invertMatrix(m) {
     mi[5] = -(a * f - b * e) / dt;
     return mi;
 }
-var SystemTextAttachment = /** @class */ (function (_super) {
-    __extends(SystemTextAttachment, _super);
-    function SystemTextAttachment(text) {
+var CancelRotationAttachment = /** @class */ (function (_super) {
+    __extends(CancelRotationAttachment, _super);
+    function CancelRotationAttachment(e) {
         var _this = _super.call(this) || this;
-        _this.text = text;
+        _this.e = e;
         return _this;
     }
-    SystemTextAttachment.prototype.render = function (renderer) {
+    CancelRotationAttachment.prototype.render = function (renderer) {
         var mi = invertMatrix(this.posture.m._matrix);
         if (!mi) {
             return;
         }
         renderer.save();
-        {
-            renderer.transform(mi); // cancel posture matrix
-            renderer.drawSystemText(this.text, this.posture.m._matrix[4], this.posture.m._matrix[5], 128, 12, g.TextAlign.Left, g.TextBaseline.Alphabetic, "#FF8080", g.FontFamily.Monospace, 4, "#000FF", false);
-        }
+        renderer.transform(mi); // cancel posture matrix
+        renderer.translate(this.posture.m._matrix[4], this.posture.m._matrix[5]);
+        this.e.render(renderer);
         renderer.restore();
     };
-    return SystemTextAttachment;
+    return CancelRotationAttachment;
 }(asa.Attachment));
 var DemoScene = /** @class */ (function (_super) {
     __extends(DemoScene, _super);
@@ -147,6 +157,15 @@ var DemoScene = /** @class */ (function (_super) {
     }
     DemoScene.prototype.onLoaded = function () {
         var _this = this;
+        this.font = new g.DynamicFont({
+            game: g.game,
+            fontFamily: "monospace",
+            fontColor: "#FF8080",
+            strokeWidth: 4,
+            strokeColor: "#000FF",
+            strokeOnly: false,
+            size: 14
+        });
         //
         // Load ASA resource
         //
@@ -173,11 +192,11 @@ var DemoScene = /** @class */ (function (_super) {
         this.actor.boneCoordsVisible = false;
         this.actor.ended.add(function () {
             _this.playBtn.setState(false);
-            game.logger.info("アニメーション再生終了イベント");
+            console.info("アニメーション再生終了イベント");
         });
         this.actor.calculated("root", true).add(function (param) {
             if (param.left.time === param.currentFrame && param.left.userData) {
-                game.logger.info((param.posture ? "[P]" : "[_]") +
+                console.info((param.posture ? "[P]" : "[_]") +
                     "root: " + param.currentFrame + ": " +
                     param.left.userData.str +
                     (param.posture ? "" : "(handling past user data)"));
@@ -200,9 +219,9 @@ var DemoScene = /** @class */ (function (_super) {
         for (var i = 0; i < 30; i++) {
             this.particles.push(new Particle(this));
         }
-        this.update.add(this.onUpdate, this);
+        this.onUpdate.add(this.handleUpdate, this);
     };
-    DemoScene.prototype.onUpdate = function () {
+    DemoScene.prototype.handleUpdate = function () {
         updateParticles(this.actor, this.particles);
         this.actor.modified();
         this.actor.calc();
@@ -212,65 +231,107 @@ var DemoScene = /** @class */ (function (_super) {
     DemoScene.prototype.setupButtons = function () {
         var _this = this;
         var btnX = 0;
-        var showBoneBtn = new UI.ToggleButton({ scene: this, src: this.assets["showbone"], x: btnX, y: 0, touchable: true, onoff: this.actor.nullVisible });
+        var showBoneBtn = new UI.ToggleButton({
+            scene: this,
+            src: this.asset.getImageById("showbone"),
+            x: btnX,
+            y: 0,
+            touchable: true,
+            onoff: this.actor.nullVisible
+        });
         showBoneBtn.toggled.add(function (onoff) {
             if (onoff) {
                 _this.actor.nullVisible = true;
                 _this.actor.boneCoordsVisible = true;
-                _this.attachments = attachBoneNameText(_this.actor);
-                game.logger.info("NULLとボーン座標系の表示");
+                _this.attachments = attachBoneNameText(_this.actor, _this.font, _this);
+                console.info("NULLとボーン座標系の表示");
             }
             else {
                 _this.actor.nullVisible = false;
                 _this.actor.boneCoordsVisible = false;
                 removeBoneNameText(_this.actor, _this.attachments);
-                game.logger.info("NULLとボーン座標系の非表示");
+                console.info("NULLとボーン座標系の非表示");
             }
         });
         this.append(showBoneBtn);
         btnX += showBoneBtn.width;
-        var subWeaponBtn = new UI.ToggleButton({ scene: this, src: this.assets["subweapon"], x: btnX, y: 0, touchable: true, onoff: false });
+        var subWeaponBtn = new UI.ToggleButton({
+            scene: this,
+            src: this.asset.getImageById("subweapon"),
+            x: btnX,
+            y: 0,
+            touchable: true,
+            onoff: false
+        });
         subWeaponBtn.toggled.add(function (onoff) {
             if (onoff) {
                 _this.equipment = equipSecondaryBloodSword(_this.actor);
-                game.logger.info("サブウェポンの装備");
+                console.info("サブウェポンの装備");
             }
             else if (_this.equipment) {
                 _this.actor.removeAttachment(_this.equipment.attachment);
                 _this.actor.removeCollider(_this.equipment.collider);
-                game.logger.info("サブウェポンの非装備");
+                console.info("サブウェポンの非装備");
             }
         });
         this.append(subWeaponBtn);
         btnX += subWeaponBtn.width;
-        var yrotBtn = new UI.ToggleButton({ scene: this, src: this.assets["yrot"], x: btnX, y: 0, touchable: true, onoff: false });
+        var yrotBtn = new UI.ToggleButton({
+            scene: this,
+            src: this.asset.getImageById("yrot"),
+            x: btnX,
+            y: 0,
+            touchable: true,
+            onoff: false
+        });
         yrotBtn.toggled.add(function (onoff) {
             if (onoff) {
                 rotateBody(_this.actor);
-                game.logger.info("アニメーション計算ハンドラによる回転開始");
+                console.info("アニメーション計算ハンドラによる回転開始");
             }
             else {
                 stopBody(_this.actor);
-                game.logger.info("アニメーション計算ハンドラによる回転終了");
+                console.info("アニメーション計算ハンドラによる回転終了");
             }
         });
         this.append(yrotBtn);
         btnX += yrotBtn.width;
-        var particleBtn = new UI.ToggleButton({ scene: this, src: this.assets["particle"], x: btnX, y: 0, touchable: true, onoff: false });
+        var particleBtn = new UI.ToggleButton({
+            scene: this,
+            src: this.asset.getImageById("particle"),
+            x: btnX,
+            y: 0,
+            touchable: true,
+            onoff: false
+        });
         particleBtn.toggled.add(function (onoff) {
             Particle.running = onoff;
-            game.logger.info("衝突判定用パーティクル: " + (particleBtn.onoff ? "オン" : "オフ"));
+            console.info("衝突判定用パーティクル: " + (particleBtn.onoff ? "オン" : "オフ"));
         });
         this.append(particleBtn);
         btnX += particleBtn.width;
-        var loopBtn = new UI.ToggleButton({ scene: this, src: this.assets["loop"], x: btnX, y: 0, touchable: true, onoff: this.actor.loop });
+        var loopBtn = new UI.ToggleButton({
+            scene: this,
+            src: this.asset.getImageById("loop"),
+            x: btnX,
+            y: 0,
+            touchable: true,
+            onoff: this.actor.loop
+        });
         loopBtn.toggled.add(function (onoff) {
             _this.actor.loop = onoff;
-            game.logger.info("アニメーションループ: " + (loopBtn.onoff ? "オン" : "オフ"));
+            console.info("アニメーションループ: " + (loopBtn.onoff ? "オン" : "オフ"));
         });
         this.append(loopBtn);
         btnX += loopBtn.width;
-        var playBtn = new UI.ToggleButton({ scene: this, src: this.assets["play"], x: btnX, y: 0, touchable: true, onoff: true });
+        var playBtn = new UI.ToggleButton({
+            scene: this,
+            src: this.asset.getImageById("play"),
+            x: btnX,
+            y: 0,
+            touchable: true,
+            onoff: true
+        });
         playBtn.toggled.add(function (onoff) {
             if (onoff) {
                 _this.actor.play(ANIMATION_NAME, _this.actor.currentFrame, _this.actor.loop, PLAY_SPEED);
@@ -278,7 +339,7 @@ var DemoScene = /** @class */ (function (_super) {
             else {
                 _this.actor.pause = true;
             }
-            game.logger.info("アニメーション: " + (playBtn.onoff ? "再生" : "停止"));
+            console.info("アニメーション: " + (playBtn.onoff ? "再生" : "停止"));
         });
         this.append(playBtn);
         btnX += playBtn.width;
