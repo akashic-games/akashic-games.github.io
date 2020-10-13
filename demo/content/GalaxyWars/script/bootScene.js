@@ -7,7 +7,7 @@ var game = g.game;
 //
 function Logo(params) {
     g.E.prototype.constructor.call(this, params);
-    this.surface = g.Util.asSurface(params.src);
+    this.surface = g.SurfaceUtil.asSurface(params.src);
 
     this.backSurface = game.resourceFactory.createSurface(game.width, game.height);
 
@@ -20,7 +20,7 @@ function Logo(params) {
 
 Logo.prototype = Object.create(g.E.prototype);
 
-Logo.prototype.__update = function() {
+Logo.prototype.__onUpdate = function() {
     var vScale = this.maxLineScale / (game.fps * 2);
 
     if (this.seg === 0) {
@@ -86,7 +86,7 @@ Logo.prototype.renderSelf = function(renderer, camera) {
     renderer.drawImage(this.backSurface, 0, 0, this.backSurface.width, this.backSurface.height, 0, 0);
     renderer.restore();
 
-    this.__update();
+    this.__onUpdate();
 
     return true;
 }
@@ -102,7 +102,7 @@ Logo.prototype.destroy = function() {
 function createBootScene() {
     var scene = new g.Scene({ game: game });
 
-    scene.loaded.add(function() {
+    scene.onLoad.add(function() {
         var asset = game.assets["akashic"]
         var logo = new Logo({
             scene: scene,
@@ -110,7 +110,7 @@ function createBootScene() {
             width: asset.width,
             height: asset.height
         });
-        logo.update.add(function() {
+        logo.onUpdate.add(function() {
             logo.modified();
         });
         scene.append(logo);

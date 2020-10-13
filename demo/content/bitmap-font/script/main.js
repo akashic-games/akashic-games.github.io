@@ -6,7 +6,7 @@ function main(param) {
 			"mplus1c_regular_jis1_glyph"
 		]
 	});
-	scene.loaded.add(function() {
+	scene.onLoad.add(function() {
 		// 背景の黒
 		var bg = new g.FilledRect({
 			scene: scene,
@@ -19,9 +19,9 @@ function main(param) {
 		scene.append(bg);
 
 		// BitmapFont を生成
-		var glyph = JSON.parse(scene.assets["mplus1c_regular_jis1_glyph"].data);
+		var glyph = JSON.parse(scene.asset.getTextById("mplus1c_regular_jis1_glyph").data);
 		var font = new g.BitmapFont({
-			src: scene.assets["mplus1c_regular_jis1"],
+			src: scene.asset.getImageById("mplus1c_regular_jis1"),
 			map: glyph.map,
 			defaultGlyphWidth: glyph.width,
 			defaultGlyphHeight: glyph.height,
@@ -47,7 +47,7 @@ function main(param) {
 			x: 0,
 			y: 130,
 			width: g.game.width,
-			textAlign: g.TextAlign.Center,
+			textAlign: "center",
 			widthAutoAdjust: false, // Centerなのでwidthを自動調整させない
 			text: "名前はまだ無い。"
 		});
@@ -61,7 +61,7 @@ function main(param) {
 			x: 0,
 			y: 160,
 			width: g.game.width,
-			textAlign: g.TextAlign.Right,
+			textAlign: "right",
 			widthAutoAdjust: false, // Rightなのでwidthを自動調整させない
 			text: "どこで生れたかとんと見当がつかぬ。"
 		});
@@ -71,7 +71,7 @@ function main(param) {
 		[label1, label2, label3].forEach(function (l) {
 			var flag = false;
 			l.touchable = true; // ポイントイベントを受け取るよう指定
-			l.pointUp.add(function () {
+			l.onPointUp.add(function () {
 				flag = !flag;
 				if (flag) {
 					l.fontSize = 25;

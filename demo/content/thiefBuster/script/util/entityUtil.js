@@ -121,7 +121,7 @@ var entityUtil;
             nums[nums.length] = "9";
         }
         var text = nums.join("");
-        var label = createLabel(_scene, text, _bitmapFont, _digit, g.TextAlign.Right);
+        var label = createLabel(_scene, text, _bitmapFont, _digit, "right");
         return label;
     }
     entityUtil.createNumLabel = createNumLabel;

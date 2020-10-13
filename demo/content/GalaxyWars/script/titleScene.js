@@ -75,12 +75,12 @@ function createCells(scene, root, cellSize) {
 // さざなみ計算用バッファ生成
 //
 function createHeightBuffer(cellSize) {
-    heights = [];
+    var heights = [];
     for (var i = 0; i < 3; i++) {
         var col = [];
-        for (j = 0; j < game.height / cellSize; j++) {
+        for (var j = 0; j < game.height / cellSize; j++) {
             var filledZero = [];
-            for (k = 0; k < game.width / cellSize; k++) {
+            for (var k = 0; k < game.width / cellSize; k++) {
                 filledZero.push(0);
             }
             col.push(filledZero);
@@ -96,7 +96,7 @@ function createHeightBuffer(cellSize) {
 function createTitleScene() {
     var scene = new g.Scene({ game: game, assetIds: ["version"] });
 
-    scene.loaded.add(function() {
+    scene.onLoad.add(function() {
 
         var root = new ScreenEffector({
             scene: scene,
@@ -108,8 +108,8 @@ function createTitleScene() {
         scene.append(root);
 
         var cellSize = 16;
-        this.cells = createCells(scene, root, cellSize);
-        this.heights = createHeightBuffer(cellSize);
+        var cells = createCells(scene, root, cellSize);
+        var heights = createHeightBuffer(cellSize);
 
         var titleImageAsset = game.assets["title"];
         var title = new g.Sprite({
@@ -154,7 +154,7 @@ function createTitleScene() {
 
         var cntr = 0;
         var showHiScore = false;
-        scene.update.add(function() {
+        scene.onUpdate.add(function() {
             if (root.mosaicLevel > 1) {
                 root.mosaicLevel--;
             } else {
@@ -177,13 +177,13 @@ function createTitleScene() {
                     showHiScore = true;
                 }
                 if (math.random() < 0.025) {
-                    var x = this.cells[0].length * math.random() | 0;
-                    var y = this.cells.length * math.random() | 0;
-                    this.heights[(cntr + 1) % 3][y][x] = 2.0;
+                    var x = cells[0].length * math.random() | 0;
+                    var y = cells.length * math.random() | 0;
+                    heights[(cntr + 1) % 3][y][x] = 2.0;
                 }
             }
 
-            updateCellColor(this.cells, ripple(this.heights, cntr));
+            updateCellColor(cells, ripple(heights, cntr));
 
             cntr++;
         });

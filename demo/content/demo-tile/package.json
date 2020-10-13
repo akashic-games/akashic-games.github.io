@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@akashic-extension/akashic-tile": "~2.0.1"
+    "@akashic-extension/akashic-tile": "~3.0.0-beta.1"
   }
 }

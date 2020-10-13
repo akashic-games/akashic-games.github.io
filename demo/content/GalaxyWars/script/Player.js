@@ -45,7 +45,7 @@ Player.prototype.onCollision = function(e) {
             case ItemType.SHIELD:
             if (this.shieldCntr <= 0) {
                 for (var i = 0; i < 8; i++) {
-                    Global.gameCore.entities.push(s = new Shield(i, 8));
+                    Global.gameCore.entities.push(new Shield(i, 8));
                 }
                 getter = function() { return that.shieldCntr; };
             }

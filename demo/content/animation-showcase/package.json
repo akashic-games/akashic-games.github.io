@@ -1,5 +1,5 @@
 {
-  "name": "akashic-animation-sample-Showcase",
+  "name": "animation-showcase",
   "private": true,
   "version": "2.0.1",
   "description": "",
@@ -10,10 +10,6 @@
   "author": "DWANGO Co., Ltd.",
   "license": "MIT",
   "dependencies": {
-    "@akashic-extension/akashic-animation": "~3.0.0"
-  },
-  "devDependencies": {
-    "@akashic/akashic-engine": "~2.0.0",
-    "typescript": "^2.1.6"
+    "@akashic-extension/akashic-animation": "4.0.0-beta.1"
   }
 }

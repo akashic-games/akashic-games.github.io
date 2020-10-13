@@ -127,7 +127,7 @@ function HitEffectEmitter(entity, dir) {
 //
 HitEffectEmitter.prototype.update = function() {
     for (var i = 0; i < 4; i++) {
-        var spd = 100 + 200 * math.random();;
+        var spd = 100 + 200 * math.random();
         var th = math.random() * Math.PI * 2;
         var vel = null;
         if (this.dir) {

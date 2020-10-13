@@ -5,17 +5,31 @@
 </head>
 <body>
 	<div id="container"></div>
-	<script src="/demo/lib/akashic-engine.js"></script>
-	<script src="/demo/lib/game-driver.strip.js"></script>
-	<script src="/demo/lib/pdi-browser.strip.js"></script>
-	<script src="/demo/lib/game-storage.strip.js"></script>
-	<script src="/demo/content/akashic-loader.js"></script>
+	<script src="/demo/lib/engineFilesV3_0_0_beta_9.js"></script>
 	<script>
+	window.engineFiles = engineFilesV3_0_0_beta_9;
+	var originalRequire;
+	(function () {
+		window.require = function (moduleName) {
+			switch (moduleName) {
+				case "@akashic/akashic-engine":
+					return engineFiles.akashicEngine;
+				case "@akashic/pdi-browser":
+					return engineFiles.pdiBrowser;
+				case "@akashic/game-driver":
+					return engineFiles.gameDriver;
+				default:
+					return originalRequire.apply(this, arguments);
+			}
+		};
+	})();
+
 	window.addEventListener("load", function () {
+		originalRequire = window.require;
 		function getParameterByName(name) {
 			name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 			var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-			    results = regex.exec(location.search);
+				results = regex.exec(location.search);
 			return results === null ? undefined : decodeURIComponent(results[1].replace(/\+/g, " "));
 		}
 
@@ -27,5 +41,7 @@
 		start(title + "/game.json", title + "/");
 	});
 	</script>
+	<script src="/demo/lib/game-storage.strip.js"></script>
+	<script src="/demo/content/akashic-loader.js"></script>
 </body>
 </html>

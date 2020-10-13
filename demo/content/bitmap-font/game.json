@@ -21,6 +21,6 @@
 		}
 	},
 	"environment": {
-		"sandbox-runtime": "2"
+		"sandbox-runtime": "3"
 	}
 }

@@ -9,7 +9,7 @@ function intersectArea(a, b) {
 // 乱数
 //
 function random() {
-    return g.game.random.get(0, 65535) / 65535;
+    return g.game.random.generate();
 }
 
 module.exports.intersectArea = intersectArea;

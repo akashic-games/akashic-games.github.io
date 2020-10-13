@@ -13,7 +13,7 @@ var game = g.game;
 function createGameScene() {
     var scene = new g.Scene({ game: game });
 
-    scene.loaded.add(function() {
+    scene.onLoad.add(function() {
 
         Global.gameCore = new GameCore(scene);
 
@@ -34,7 +34,7 @@ function createGameScene() {
 
         // game loop
         var showResultUI = false;
-        scene.update.add(function() {
+        scene.onUpdate.add(function() {
             Global.gameCore.update();
 
             if (!showResultUI && Global.gameCore.player.hp <= 0) {
