@@ -15,7 +15,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>表示順を制御する</title>
+<title>akashic を試してみる</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?8311d7d">
 <link rel="stylesheet" href="/css/header.css?8311d7d">
@@ -166,126 +166,80 @@
 </div>
 
 
-<h1>表示順を制御する</h1>
-<p>このページのサンプルコードを<a class="asset--material--download" href="/zip/tutorial/v3/sample-display-order.zip">ダウンロード</a></p>
-
-<h2><a name="nested-entity"></a> エンティティの入れ子</h2>
-<p>シーンにエンティティを <code>append()</code> できるのと同様、エンティティにもまた別のエンティティを <code>append()</code> することができます。
-すなわちエンティティは入れ子構造にできます。</p>
-<p>エンティティ <code>p</code> と <code>c</code> があり、 <code>p.append(c)</code> された時、<code>c</code> を「 <code>p</code> の子エンティティ」と呼びます。 <code>p</code> を「 <code>c</code> の親エンティティ」と呼びます。</p>
-<p>エンティティを入れ子構造にすることには、二つの意義があります。</p>
-<ul>
-<li>複数のエンティティをまとめて操作する</li>
-<li>表示順を制御する</li>
-</ul>
-<p>第一に、複数のエンティティを一度に操作したい時に利用できます。
-子エンティティは親エンティティに追従して動くためです。</p>
-<p>特に <code>E</code> エンティティは、それ自体は何も描画しないエンティティで、複数のエンティティをグループ化する場合に便利です。</p>
-<p>例えばエンティティ <code>E</code> に子エンティティとして <code>FilledRect</code> を追加する場合は、次のようなコードになります。</p>
-<pre><code class="language-javascript">var group = new g.E({ scene: scene });
-var child = new g.FilledRect({
-  scene: scene,
-  width: 30,
-  height: 30,
-  cssColor: &quot;red&quot;
-});
-group.append(child); // group の子エンティティに child を追加</code></pre>
-<p>以下のプログラムでは、<code>angle</code> を設定した <code>E</code> オブジェクトに 3 つの矩形を追加しています。矩形の座標系は <code>E</code> を基準にして変わるので、3 つの矩形は斜めに配置されます。</p>
-<pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
-  scene.onLoad.add(function() {
-    var group = new g.E({ scene: scene, x: 50, y: 50, angle: 30 });
-    var rect1 = createRect(scene, 0, 0, &quot;darkgreen&quot;);
-    group.append(rect1);
-    var rect2 = createRect(scene, 30, 0, &quot;darkorange&quot;);
-    group.append(rect2);
-    var rect3 = createRect(scene, 60, 0, &quot;darkred&quot;);
-    group.append(rect3);
-    scene.append(group);
-  });
-  g.game.pushScene(scene);
-}
-
-function createRect(scene, x, y, color) {
-  return new g.FilledRect({
-    scene: scene,
-    width: 30,
-    height: 30,
-    x: x,
-    y: y,
-    cssColor: color
-  });
-}
-
-module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample05.png" alt="sample05"></p>
-<blockquote>
-<p>Tips: <code>new</code> する時に親が決まっているなら、次のように <code>parent</code> プロパティで親を指定してしまうこともできます。</p>
-<pre><code class="language-javascript">var group = new g.E({ scene: scene });
-var child = new g.FilledRect({
-  scene: scene,
-  width: 30,
-  height: 30,
-  cssColor: &quot;red&quot;,
-  parent: group // parent プロパティで生成時に親を指定
-});</code></pre>
-</blockquote>
-<h2><a name="display-order"></a> 描画順</h2>
-<p>エンティティを入れ子にする二つ目の意義は、描画順の制御です。</p>
-<ul>
-<li>エンティティは、自分のどの子エンティティよりも先に (奥側に) 描画されます。</li>
-<li>同じ親を持つエンティティは、親に <code>append()</code> で追加された順に描画されます。</li>
-</ul>
-<p>言い換えると、エンティティのツリーは行きがけ順 (pre-order) で描画されます。
-これを利用することでエンティティの前後関係を制御できます。</p>
-<h2><a name="modify-children"></a> 子エンティティの変更</h2>
-<p>上では子エンティティの描画順を「 <code>append()</code> で追加された順」としましたが、子エンティティの順序 (＝描画順) は、追加後でも自由に制御することもできます。</p>
-<p>まず <code>append()</code> されたエンティティは、 <code>remove()</code> メソッドで親エンティティから切り離すことができます。</p>
-<pre><code class="language-javascript">group.remove(child); // group の子エンティティから child を削除</code></pre>
-<p>エンティティの <code>remove()</code> を引数なしで呼び出すと、自分を親から切り離します。つまり上のコードは次のように書くこともできます。</p>
-<pre><code class="language-javascript">child.remove(); // child の親の子エンティティから child を削除</code></pre>
-<p>切り離されたエンティティは、また別のエンティティにの子になることができます。 <code>append()</code> された時親エンティティが既にある場合は、切り離してから新たな親の子エンティティになります。</p>
-<p>また <code>append()</code> の代わりに <code>insertBefore()</code> を利用することもできます。 <code>append()</code> は常に「最後の子要素として」追加する関数ですが、 <code>insertBefore()</code> は子エンティティの中での順番を指定できます。次のように記述した場合、</p>
-<pre><code class="language-javascript">parent.insertBefore(child, target);</code></pre>
-<p><code>parent</code> の子エンティティ <code>target</code> の直前の子要素として <code>child</code> を追加します。</p>
-<p>前述のとおり、子エンティティ間の順序を制御することで、描画順を制御できることに注意してください。
-たとえばゲーム内に &quot;地面&quot; と &quot;キャラクタ&quot; と &quot;宝箱&quot; があり、「宝箱の <code>Sprite</code> はいつ生成してもキャラクタの &quot;奥&quot; に表示したい」というような場合に、 <code>insertBefore()</code> を使うことができます。</p>
-<blockquote>
-<p>NOTE: もっとも、 &quot;地面&quot; と &quot;地表のアイテム&quot; と &quot;キャラクタ&quot; のように、描画順序の定まったカテゴリ分けができる場合、最初にそれらのカテゴリをまとめるエンティティを生成してしまう方が、単純になることもあるでしょう。</p>
-<pre><code class="language-javascript">// 表示順別ごとにエンティティをグループ化するための E を作って、
-var groundLayer = new g.E({ scene: scene });
-var itemLayer = new g.E({ scene: scene });
-var characterLayer = new g.E({ scene: scene });
-
-// シーンに表示順で追加しておく。
-scene.append(groundLayer);
-scene.append(itemLayer);
-scene.append(characterLayer);
-
-// 地面画像は groundLayer に追加。
-const groundSprite = new g.Sprite({
-  scene: scene,
-  src: scene.asset.getImageById(&quot;ground&quot;),
-  x: 0,
-  y: 0,
-  parent: groundLayer // 親を groundLayer に
-});
-
-// キャラ画像は characterLayer に追加。
-const playerSprite = new g.Sprite({
-  scene: scene,
-  src: scene.asset.getImageById(&quot;player&quot;),
-  x: 100,
-  y: 100,
-  parent: characterLayer // 親を characterLayer に
-});</code></pre>
-<p>このように生成しておけば、 &quot;アイテム&quot; は常に <code>itemLayer</code> の子にするだけで適切な順序で描画されます。
-<code>insertBefore()</code> での細かい順序制御は、 &quot;アイテム&quot; 間の表示順を制御する必要がなければ、必要ありません。</p>
-</blockquote>
+<h1>akashic を試してみる</h1>
+<h2><a name="play-game"></a> まずは動かしてみよう</h2>
+<p>Akashic Engine はウェブブラウザとテキストエディタがあれば簡単にゲームを開発することができます。
+まずは Akashic Engine でどのようなゲームが作成できるのかを見てみましょう。</p>
+<p><a href="https://github.com/akashic-games/akashic-engine-standalone-builder/releases">こちらのページ</a> から最新バージョンの bundle.zip をダウンロードしてください。
+zip ファイルを展開し、その中の index.html をウェブブラウザで開くと Akashic Engine のサンプルゲームが実行されます。</p>
+<p>samples ディレクトリには Akashic Engine の拡張ライブラリを用いたサンプルゲームがあります。
+<a href="https://github.com/akashic-games/akashic-timeline">akashic-timeline</a> を使えばトゥイーンアニメーションを実現できたり、
+<a href="https://github.com/akashic-games/akashic-box2d">akashic-box2d</a> を使えば <a href="https://dic.nicovideo.jp/a/%E3%83%8B%E3%82%B3%E3%83%8B%E3%82%B3%E3%82%BF%E3%83%AF%E3%83%BC">ニコニコタワー</a> のような物理演算をゲームに適用することができます。</p>
+<h2><a name="make-game"></a> 作ってみよう</h2>
+<p>ダウンロードしたファイルの中にある <code>akashic-engine-standalone-x.y.z.js</code> (x, y, z は Akashic Engine のバージョンにより異なります) を利用することで、
+任意の HTML ファイルから Akashic Engine を実行することができます。</p>
+<p>以下は非常に簡単なゲームのサンプルです。</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ja&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;Akashic Game Sample&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;canvas id=&quot;canvas&quot; width=&quot;800&quot; height=&quot;450&quot;&gt;&lt;/canvas&gt;
+    &lt;script src=&quot;akashic-engine-standalone-x.y.z.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+      AE.initialize({
+        canvas: document.getElementById(&quot;canvas&quot;),
+        configuration: {
+          fps: 60,
+          assets: {
+            aco: {
+              type: &quot;image&quot;,
+              path: &quot;./images/aco.png&quot;,
+              width: 128,
+              height: 288
+            }
+          }
+        },
+        mainFunc: function(g) {
+          // ここにゲームコードを記述します
+          var scene = new g.Scene({
+            game: g.game,
+            assetIds: [&quot;aco&quot;]
+          });
+          scene.onLoad.addOnce(function() {
+            var sprite = new g.FrameSprite({
+              scene: scene,
+              src: scene.asset.getImageById(&quot;aco&quot;),
+              width: 32,
+              height: 48,
+              frames: [5, 6, 7, 6],
+              interval: 500
+            });
+            sprite.start();
+            scene.append(sprite);
+          });
+          g.game.pushScene(scene);
+        }
+      });
+    &lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>上記の内容の HTML ファイルと、先ほど展開したファイルの中にある <code>akashic-engine-standalone-x.y.z.js</code> と <code>images</code> ディレクトリを同ディレクトリに保存して、ウェブブラウザで見てみましょう。
+キャラクタが一定の間隔でアニメーションしている画面が表示されるかと思います。</p>
+<p>たとえば <code>interval: 500</code> の数字を <code>100</code> に変更してみるとどうでしょう。アニメーション間隔が短くなりました。
+または <code>frames: [20, 21, 22, 23]</code> としてみるとどうでしょうか。キャラクタが眠ってしまいました。</p>
+<h2><a name="for-more-details"></a> より本格的なゲーム開発のために</h2>
+<p>以上で簡単なゲームを作成することができました。
+このサンプルは非常に単純なもので、ゲームと呼ぶには程遠いかもしれません。
+しかし、小規模なシングルプレイのゲームであれば上記の HTML にコードを加えていくだけで作成することもできるでしょう。</p>
+<p>Akashic Engine では複数人が参加できるマルチプレイゲームを作成したり、作成したゲームをニコニコ生放送上で実行することができます。
+このようなより本格的なゲームを開発するためには、次章以降で説明する周辺ツールの導入が必要になります。</p>
 <div class="navi-center">
-<a href="./basic.html">前 (コンテンツ作成の基本)</a>
+ -
  | <a href="./">目次</a>
- | <a href="./animation.html">次 (アニメーションさせる)</a>
+ | <a href="./index.html">次 (導入)</a>
 </div>
 
 			</div>
