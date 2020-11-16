@@ -2,6 +2,8 @@
 	"width": 970,
 	"height": 250,
 	"fps": 60,
+	"title": "いくぜ！ 超会議",
+	"description": "ニコニコ超会議2018に合わせてniconicoトップページに掲載されていたミニゲームです。[合同会社イクシール](http://www.ixill.net/)様制作。",
 	"main": "./script/main.js",
 	"operationPlugins": [
 		{

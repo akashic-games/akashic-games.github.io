@@ -2,6 +2,8 @@
 	"width": 320,
 	"height": 320,
 	"fps": 30,
+	"title": "akashic-timeline",
+	"description": "拡張ライブラリ[akashic-timeline](https://github.com/akashic-games/akashic-timeline)でトゥイーンアニメーションアニメーションを制御することができます。",
 	"main": "./script/main.js",
 	"assets": {
 		"main": {
@@ -10,13 +12,15 @@
 			"global": true
 		}
 	},
+	"moduleMainScripts": {
+		"@akashic-extension/akashic-timeline": "node_modules/@akashic-extension/akashic-timeline/lib/index.js"
+	},
 	"globalScripts": [
 		"node_modules/@akashic-extension/akashic-timeline/lib/Easing.js",
 		"node_modules/@akashic-extension/akashic-timeline/lib/ActionType.js",
 		"node_modules/@akashic-extension/akashic-timeline/lib/Timeline.js",
 		"node_modules/@akashic-extension/akashic-timeline/lib/Tween.js",
-		"node_modules/@akashic-extension/akashic-timeline/lib/index.js",
-		"node_modules/@akashic-extension/akashic-timeline/package.json"
+		"node_modules/@akashic-extension/akashic-timeline/lib/index.js"
 	],
 	"environment": {
 		"sandbox-runtime": "3"

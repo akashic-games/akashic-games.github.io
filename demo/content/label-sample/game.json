@@ -2,6 +2,8 @@
 	"width": 320,
 	"height": 320,
 	"fps": 30,
+	"title": "akashic-label",
+	"description": "拡張ライブラリ[akashic-label](https://github.com/akashic-games/akashic-label)でルビや改行を含むテキストを描画することが出来ます。",
 	"main": "./script/main.js",
 	"assets": {
 		"main": {
@@ -60,13 +62,15 @@
 			"path": "text/mplus-glyph.json"
 		}
 	},
+	"moduleMainScripts": {
+		"@akashic-extension/akashic-label": "node_modules/@akashic-extension/akashic-label/lib/index.js"
+	},
 	"globalScripts": [
 		"node_modules/@akashic-extension/akashic-label/lib/Label.js",
 		"node_modules/@akashic-extension/akashic-label/lib/DefaultRubyParser.js",
 		"node_modules/@akashic-extension/akashic-label/lib/RubyParser.js",
 		"node_modules/@akashic-extension/akashic-label/lib/FragmentDrawInfo.js",
-		"node_modules/@akashic-extension/akashic-label/lib/index.js",
-		"node_modules/@akashic-extension/akashic-label/package.json"
+		"node_modules/@akashic-extension/akashic-label/lib/index.js"
 	],
 	"environment": {
 		"sandbox-runtime": "3"

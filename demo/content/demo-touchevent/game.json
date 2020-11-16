@@ -2,6 +2,8 @@
 	"width": 480,
 	"height": 320,
 	"fps": 30,
+	"title": "タッチイベント",
+	"description": "タッチ操作のサンプルです。画面中央のスイッチをクリック(タップ)すると画像と明るさが変化します。\n\nこのサンプルで使用している素材は[素材ページ](https://akashic-games.github.io/asset/material.html#SWITCH)で公開・配布しています。",
 	"main": "./script/main.js",
 	"assets": {
 		"main": {
