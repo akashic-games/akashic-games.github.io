@@ -1,0 +1,63 @@
+{
+	"type": "object",
+	"required": [
+		"fps",
+		"width",
+		"height"
+	],
+	"properties": {
+		"fps": {
+			"title": "ゲームのフレームレート",
+			"description": "ゲームのフレームレートを指定します",
+			"type": "integer",
+			"minimum": 1,
+			"maximum": 60
+		},
+		"width": {
+			"title": "ゲームキャンバスの横幅",
+			"description": "ゲームキャンバスの横幅を px で指定します",
+			"type": "integer",
+			"minimum": 1,
+			"maximum": 2048
+		},
+		"height": {
+			"title": "ゲームキャンバスの縦幅",
+			"description": "ゲームキャンバスの縦幅を px で指定します",
+			"type": "integer",
+			"minimum": 1,
+			"maximum": 2048
+		},
+		"assets": {
+			"type": "object",
+			"title": "ゲームのアセット情報",
+			"description": "ゲームで利用するアセット情報を {\"アセットID\": アセット情報} の形式で指定します",
+			"patternProperties": {
+				".+$": {
+					"type": "object",
+					"require": [
+						"id",
+						"type",
+						"path"
+					],
+					"properties": {
+						"type": {
+							"type": "string"
+						},
+						"id": {
+							"type": "string"
+						},
+						"path": {
+							"type": "string"
+						},
+						"width": {
+							"type": "integer"
+						},
+						"height": {
+							"type": "integer"
+						}
+					}
+				}
+			}
+		}
+	}
+}

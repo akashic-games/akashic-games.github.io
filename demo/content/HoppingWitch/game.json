@@ -2,6 +2,8 @@
 	"width": 512,
 	"height": 384,
 	"fps": 30,
+	"title": "Hopping Witch",
+	"description": "画面をクリック(タップ)すると自機が空中でジャンプします。スクロールする地形に自機が接触するとゲームオーバーです。\n\nこのサンプルで使用している素材は[素材ページ](https://akashic-games.github.io/asset/material.html#HOPPINGWITCH)で公開・配布しています。",
 	"main": "./script/main.js",
 	"assets": {
 		"main": {

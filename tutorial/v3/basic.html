@@ -17,18 +17,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>コンテンツ作成の基本</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?8311d7d">
-<link rel="stylesheet" href="/css/header.css?8311d7d">
-<link rel="stylesheet" href="/css/footer.css?8311d7d">
+<link rel="stylesheet" href="/css/common.css?5ddd7a0">
+<link rel="stylesheet" href="/css/header.css?5ddd7a0">
+<link rel="stylesheet" href="/css/footer.css?5ddd7a0">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?8311d7d">
+<link rel="stylesheet" href="/css/akashic-document.css?5ddd7a0">
 
-<link rel="stylesheet" href="/css/railscasts.css?8311d7d">
+<link rel="stylesheet" href="/css/railscasts.css?5ddd7a0">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?8311d7d"></script>
+<script src="/lib/common.js?5ddd7a0"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -376,7 +376,8 @@ function createRect(scene) {
 
 module.exports = main;</code></pre>
 <p>プログラムを <code>akashic-sandbox</code> で実行すると以下のように表示されます。</p>
-<p><img src="/img/tutorial/sample02.png" alt="sample02"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtMi1iYXNpYy0xL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
+
 <p>実行中にゲーム自身の情報を参照する際は <code>g.game</code> オブジェクトを利用します。
 <code>g.game</code> オブジェクトはこれまでもシーンを作成する際の引数に登場していました。
 Akashic Engine のいくつかのオブジェクトは明示的に <code>g.game</code> オブジェクトを渡す必要があります。</p>
@@ -420,7 +421,8 @@ function createRect(scene, x, y) {
 }
 
 module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample03.png" alt="sample03"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtMi1iYXNpYy0yL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
+
 <h2><a name="image"></a> 画像を扱う</h2>
 <p>Akashic Engine では PNG 形式と JPEG 形式の画像を扱えます。ここでは以下の PNG 画像 (<code>player.png</code>) をシーンに追加します。</p>
 <p><img src="/img/tutorial/player.png" alt="player"></p>
@@ -486,7 +488,8 @@ INFO: Done!</code></pre>
 }
 
 module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample04.png" alt="sample04"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtMi1iYXNpYy0zL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
+
 <p>画像やオーディオなどのアセットは、シーンの生成時に、<code>assetIds</code> プロパティで利用するアセットの ID を指定します。
 スクリプトアセットは例外で、指定しなくても自動的に読み込まれます (<code>akashic scan</code> コマンドで登録した場合)。</p>
 <p>アセットの ID は <code>game.json</code> に登録されている名前です。

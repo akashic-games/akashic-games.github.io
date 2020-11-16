@@ -2,6 +2,8 @@
 	"width": 640,
 	"height": 480,
 	"fps": 30,
+	"title": "akashic-animation",
+	"description": "拡張ライブラリ[akashic-animation](https://github.com/akashic-games/akashic-animation)でアニメーションを制御することができます。",
 	"main": "./script/main.js",
 	"assets": {
 		"main": {
@@ -92,6 +94,9 @@
 			"global": true
 		}
 	},
+	"moduleMainScripts": {
+		"@akashic-extension/akashic-animation": "node_modules/@akashic-extension/akashic-animation/lib/index.js"
+	},
 	"globalScripts": [
 		"node_modules/@akashic-extension/akashic-animation/lib/Actor.js",
 		"node_modules/@akashic-extension/akashic-animation/lib/Skeleton.js",
@@ -119,8 +124,7 @@
 		"node_modules/@akashic-extension/akashic-animation/lib/AABB.js",
 		"node_modules/@akashic-extension/akashic-animation/lib/AttrId.js",
 		"node_modules/@akashic-extension/akashic-animation/lib/AnimationHandlerParams.js",
-		"node_modules/@akashic-extension/akashic-animation/lib/index.js",
-		"node_modules/@akashic-extension/akashic-animation/package.json"
+		"node_modules/@akashic-extension/akashic-animation/lib/index.js"
 	],
 	"environment": {
 		"sandbox-runtime": "3"
