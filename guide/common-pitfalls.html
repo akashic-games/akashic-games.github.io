@@ -227,9 +227,9 @@ console.log(array[1].value);  // ==&gt; &quot;foo&quot;, &quot;bar&quot; or &quo
 例えば背景を灰色にするための方法は以下のようになります。</p>
 <p>次のような内容のテキストファイル <code>injectdata.txt</code> を準備します。</p>
 <pre><code class="language-html">&lt;style&gt;
-body {
-  background: silver;
-}
+  body {
+    background: silver;
+  }
 &lt;/style&gt;</code></pre>
 <p>以下のように <code>akashic export html</code> コマンドを実行します。</p>
 <pre><code class="language-sh">akashic export html --atsumaru -o ./game.zip --inject ./injectdata.txt</code></pre>

@@ -250,7 +250,7 @@ rect.onPointUp.add(function() {
 <p>エンティティに重なりがあり、その両方がポイントイベントを受け取れる状態にある場合は、最前面に表示されているエンティティがポイントイベントを受け取ります。</p>
 <p>シーンオブジェクトの <code>onPointDownCapture</code>, <code>onPointMoveCapture</code>, <code>onPointUpCapture</code> トリガーを利用すると、配置されているエンティティとは無関係に、シーン全体でポイントイベントを取得できます。これらのトリガーはシーン上にイベントを受け取るエンティティが存在していたとしても常に呼び出されます。</p>
 <p>以下は、画面に指が触れた時、もしくはマウスのボタンが押されたときに、その座標に矩形エンティティを配置するコードです。</p>
-<pre><code class="language-javascript">var scene = new g.Scene();
+<pre><code class="language-javascript">var scene = new g.Scene({ game: g.game });
 scene.onLoad.add(function() {
   scene.onPointDownCapture.add(function(ev) {
     var size = 20;
@@ -265,7 +265,8 @@ scene.onLoad.add(function() {
     scene.append(rect);
   });
 });</code></pre>
-<p><img src="/img/tutorial/sample11.png" alt="sample11"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtY2xpY2stMS9nYW1lLmpzb24ifQ==" width="600" height="400"></iframe>
+
 <div class="navi-center">
 <a href="./animation.html">前 (アニメーションさせる)</a>
  | <a href="./">目次</a>

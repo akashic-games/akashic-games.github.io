@@ -178,7 +178,7 @@
 </ul>
 <p>例として、「赤い矩形を描画するだけのシーンを作る処理」を持つ <code>redRectScene.js</code> を考えます。それは次のような内容になります:</p>
 <pre><code class="language-javascript">module.exports.create = function() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var rect = new g.FilledRect({
       scene: scene,

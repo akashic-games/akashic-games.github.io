@@ -242,7 +242,7 @@ akashic-sandbox -V</code></pre>
 <p><code>main.js</code> は最初のシーンを作成します。シーンはゲームの場面を表すオブジェクトです。例えば、タイトル場面、プレイ場面、スコア場面など必要に応じて作成できます。
 Akashic Engine のゲームには最低 1 つのシーンが必要です。次のプログラムは空のシーンを作成して、そのシーンを表示します。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   g.game.pushScene(scene);
 }
 
@@ -254,7 +254,7 @@ module.exports = main;</code></pre>
 <p>ウェブブラウザを起動して <code>http://localhost:3000/game/</code> を開くとゲームが実行されます。今のところシーンに何も配置していないので何も表示されません。</p>
 <p>以下は、<code>main.js</code> に赤い矩形を表示するコードを追加したものです。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var rect = new g.FilledRect({
       scene: scene,
@@ -269,7 +269,8 @@ module.exports = main;</code></pre>
 
 module.exports = main;</code></pre>
 <p><code>main.js</code> をこの内容に書き換えて <code>http://localhost:3000/game/</code> を再読み込みすると赤い矩形が表示されます。</p>
-<p><img src="/img/tutorial/sample01.png" alt="sample01"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtaW50cm9kdWN0aW9uLTEvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
+
 <p><code>akashic-sandbox</code> を終了するには CUI ウインドウに <code>Ctrl-C</code> を入力します。</p>
 <blockquote>
 <p><code>Ctrl-C</code> はキーボードの <code>Ctrl</code> キーを押しながら <code>C</code> キーを押すという意味です。</p>

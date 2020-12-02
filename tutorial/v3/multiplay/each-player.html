@@ -187,7 +187,7 @@
 });</code></pre>
 <p>その性質から、ローカルエンティティは、必ずしも全てのエンジンインスタンス上に同じように存在し表示されている必要がありません。すなわちプレイヤー別の UI を実現することができます。</p>
 <p>クリックした位置に四角形を表示するだけのコンテンツに、プレイヤー別の色選択 UI を表示するコードは次のようなものになります。</p>
-<pre><code class="language-javascript">var scene = new g.Scene();
+<pre><code class="language-javascript">var scene = new g.Scene({ game: g.game });
 
 scene.onLoad.add(function() {
   var userColors = {}; // ユーザ別の色テーブル

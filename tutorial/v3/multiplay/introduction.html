@@ -178,6 +178,7 @@
 <p>操作したプレイヤーに応じて処理を分ければ、自動的にマルチプレイゲームに対応できます。</p>
 <p>例えば、一番最初にボタンを押したプレイヤーに得点が入る「早押しボタン」のようなコンテンツは、次のようなコードで作ることができます。</p>
 <pre><code class="language-javascript">var scene = new g.Scene({
+    game: g.game,
     assetIds: [&quot;button&quot;]  // button は適当な画像のアセットID
 });
 
@@ -211,6 +212,7 @@ scene.onLoad.add(function () {
 <p><img src="/img/tutorial/chara.png" alt="chara.png"></p>
 <p>コードは次のようなものになります。</p>
 <pre><code class="language-javascript">var scene = new g.Scene({
+  game: g.game,
   assetIds: [&quot;chara&quot;]
 });
 

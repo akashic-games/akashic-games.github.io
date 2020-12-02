@@ -206,7 +206,7 @@
 }
 
 function createSceneA() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     scene.append(createRect(scene, &quot;red&quot;));
     scene.onPointDownCapture.add(function() {
@@ -217,7 +217,7 @@ function createSceneA() {
 }
 
 function createSceneB() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     scene.append(createRect(scene, &quot;blue&quot;));
     scene.onPointDownCapture.add(function() {

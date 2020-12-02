@@ -173,7 +173,7 @@
 <p>ペインは <code>E</code> と同じように子要素をまとめるためのエンティティです。ペインを使うことで描画内容のクリッピングを実現できます。
 <code>E</code> と異なり、<code>Pane</code> は子孫要素の描画領域を <code>Pane</code> の大きさに限定します。子要素が <code>Pane</code> の大きさをはみ出して描画しようとした場合、はみ出した部分は描画されません。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var pane = new g.Pane({ scene: scene, width: 50, height: 50 });
     var rect = new g.FilledRect({
@@ -192,13 +192,14 @@
 }
 
 module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample06.png" alt="sample06"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtY2xpcHBpbmctMS9nYW1lLmpzb24ifQ==" width="600" height="400"></iframe>
+
 <p>ラベル同様、ペインも描画内容をキャッシュしています。ペイン自体のプロパティ (例えば <code>width</code> や <code>height</code>) を書き換えた場合は、
 <code>invalidate()</code> を呼び出す必要があります。</p>
 <p>少し紛らわしい点として、ペインが保持している子エンティティの変更時には子エンティティの <code>modified()</code> や <code>invalidate()</code> のみを呼び出せばよいという点です。子エンティティの変更はペインに通知されて自動的にキャッシュの更新が行われます。</p>
 <p>以下のプログラムでは、ペイン内に配置した矩形を回転させています。ペインを利用していますが、ペイン自体のプロパティは変更していないので、矩形オブジェクトの <code>modified()</code> の呼び出しをしていますが、ペイン自体の <code>invalidate()</code> の呼び出しはしていません。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene({});
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var pane = new g.Pane({ scene: scene, width: 50, height: 50 });
     var rect = new g.FilledRect({
@@ -221,7 +222,8 @@ module.exports = main;</code></pre>
 }
 
 module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample14.gif" alt="sample14"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtY2xpcHBpbmctMi9nYW1lLmpzb24ifQ==" width="600" height="400"></iframe>
+
 <div class="navi-center">
 <a href="./bitmap-font.html">前 (ビットマップフォントを使う)</a>
  | <a href="./">目次</a>

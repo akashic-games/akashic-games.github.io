@@ -175,14 +175,14 @@
 <p>ダイナミックフォントは以下のコードで生成できます。</p>
 <pre><code class="language-javascript">var font = new g.DynamicFont({
   game: g.game,
-  fontFamily: g.FontFamily.Serif,
+  fontFamily: &quot;sans-serif&quot;,
   size: 15
 });</code></pre>
 <p>引数の <code>fontFamily</code> プロパティは、フォントの種類で以下のいずれかの値を指定します。</p>
 <ul>
-<li><code>g.FontFamily.SansSerif</code>: サンセリフ体・ゴシック体のフォント。</li>
-<li><code>g.FontFamily.Serif</code>: セリフ体・明朝体のフォント。</li>
-<li><code>g.FontFamily.Monospace</code>: 等幅フォント。</li>
+<li><code>&quot;sans-serif&quot;</code>: サンセリフ体・ゴシック体のフォント。</li>
+<li><code>&quot;serif&quot;</code>: セリフ体・明朝体のフォント。</li>
+<li><code>&quot;monospace&quot;</code>: 等幅フォント。</li>
 </ul>
 <p>引数の <code>size</code> プロパティは文字の大きさ、 <code>game</code> プロパティには <code>g.game</code> を渡します。</p>
 <h2><a name="label"></a> ラベル</h2>
@@ -231,11 +231,11 @@
 
 <p>以下のプログラムでは、ダイナミックフォントとラベルを利用して文字列を描画しています。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var font = new g.DynamicFont({
       game: g.game,
-      fontFamily: g.FontFamily.SansSerif,
+      fontFamily: &quot;sans-serif&quot;,
       size: 15
     });
     var label = new g.Label({
@@ -253,7 +253,8 @@
 }
 
 module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample12.png" alt="sample12"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtdGV4dC0xL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
+
 <p>ダイナミックフォントはシステムにインストールされているフォントを利用するため、実行環境により描画が異なる場合があります。すべての環境で同じ出力にしたい場合や、パフォーマンスが要求される場合は、ダイナミックフォントの代わりにビットマップフォントを利用してください。</p>
 <p>ラベルは高速化のために描画内容をキャッシュしています。そのために文字列を変更した場合は、<code>invalidate()</code>
 メソッドで変更を通知する必要があります。以下はラベル <code>label</code> の文字列を書き換える例です。</p>
@@ -272,10 +273,10 @@ label.invalidate();</code></pre>
 <code>invalidate()</code> を呼び出した場合は <code>modified()</code> の呼び出しは不要です。</p>
 <p>以下は、500 ミリ秒ごとにカウンタの値を増やすプログラム例です。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var font = new g.DynamicFont({
-      fontFamily: g.FontFamily.SansSerif,
+      fontFamily: &quot;sans-serif&quot;,
       size: 15,
       game: g.game
     });
@@ -299,7 +300,8 @@ label.invalidate();</code></pre>
 }
 
 module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample13.gif" alt="sample13"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtdGV4dC0yL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
+
 <div class="navi-center">
 <a href="./scale-anchor.html">前 (拡縮とアンカーポイント)</a>
  | <a href="./">目次</a>
