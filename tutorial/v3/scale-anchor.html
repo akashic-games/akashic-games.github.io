@@ -190,7 +190,8 @@ scene.append(sprite);</code></pre>
 <p><img src="/img/tutorial/player.png" alt="player.png"></p>
 <p>これは次のような表示になります。
 画面左上端を軸に回転したので見切れています。</p>
-<p><img src="/img/tutorial/sample_scale-anchor_01.png" alt="拡大・回転のゲーム画面"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtc2NhbGUtYW5jaG9yLTEvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
+
 <p>拡縮や回転角度は、生成後に同名のプロパティを通して変更することもできます。
 (参考: <a href="./animation.html#animation">アニメーションの節</a> の表)</p>
 <pre><code class="language-javascript">// 縦横ともに等倍にする
@@ -203,7 +204,8 @@ sprite.angle = 0;
 // 変更を反映
 sprite.modified();</code></pre>
 <p>次のような表示になります。</p>
-<p><img src="/img/tutorial/sample_scale-anchor_02.png" alt="拡大・回転を戻したゲーム画面"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtc2NhbGUtYW5jaG9yLTIvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
+
 <h2><a name="anchor"></a> アンカーポイント</h2>
 <p>上の例でわかるように、エンティティの拡大・縮小・回転・移動は、デフォルトではエンティティの左上を基準に行われます。</p>
 <p>エンティティにアンカーポイントを指定することで、この基準位置を設定できます。
@@ -224,7 +226,8 @@ sprite.modified();</code></pre>
 scene.append(sprite); // シーン scene があるものとします</code></pre>
 <p><code>anchorX</code>, <code>anchorY</code> は <code>0.0</code> がエンティティの左端・上端を、 <code>1.0</code> がエンティティの右端・下端を表します。
 この例ではどちらも <code>1.0</code> を与えているので、この <code>Sprite</code> は右下端を基準に配置され、次のような表示になります。</p>
-<p><img src="/img/tutorial/sample_scale-anchor_03.png" alt="アンカーポイントを指定したゲーム画面"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtc2NhbGUtYW5jaG9yLTMvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
+
 <p>エンティティの X, Y 座標を画面右下端 (<code>g.game.width</code>, <code>g.game.height</code>) にしていますが、
 基準がエンティティの右下端なので、ちょうど画面右下端に沿う位置に配置されます。
 またエンティティ右下端を基準に拡大・回転されて、ゲーム画面から一部見切れています。</p>
@@ -239,7 +242,8 @@ sprite.angle = 0;
 // 変更を反映
 sprite.modified();</code></pre>
 <p>これを実行すると次のような表示になります。</p>
-<p><img src="/img/tutorial/sample_scale-anchor_04.png" alt="アンカーポイントを動かしたゲーム画面"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtc2NhbGUtYW5jaG9yLTQvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
+
 <p><code>anchorX</code>, <code>anchorY</code> の初期値は <code>0</code> です。
 初期値の場合、拡大・回転と移動はエンティティの左上端を基準に行われます。</p>
 <blockquote>

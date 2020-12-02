@@ -341,21 +341,21 @@ scene.append(rect);</code></pre>
 <p>エンティティをシーンに追加する操作は、シーンの読み込み後に行う必要があります。シーンの読み込み完了のようなタイミングを通知するのに、
 Akashic Engine はトリガー(<code>g.Trigger</code>)とよばれる仕組みを利用します。トリガーには <code>add()</code> メソッドで関数を登録することができます。トリガーに対応するイベントが発生すると、登録されたメソッドが呼び出されます。</p>
 <p>シーンの読み込み完了のタイミングを知るには <code>scene.onLoad</code> トリガーを利用します。次の例では <code>handleSceneLoad()</code> 関数を <code>scene.onLoad</code> トリガーに登録しています。</p>
-<pre><code class="language-javascript">var scene = new g.Scene();
+<pre><code class="language-javascript">var scene = new g.Scene({ game: g.game });
 scene.onLoad.add(handleSceneLoad);
 
 function handleSceneLoad() {
   // シーンが読み込まれたときに行う処理
 }</code></pre>
 <p>無名関数を利用すると、次のような書き方もできます。</p>
-<pre><code class="language-javascript">var scene = new g.Scene(;
+<pre><code class="language-javascript">var scene = new g.Scene({ game: g.game });
 
 scene.onLoad.add(function() {
   // シーンが読み込まれたときに行う処理
 });</code></pre>
 <p>以下は、これまで説明した内容を利用して、座標 (50, 50) に幅 100、高さ 100 の赤色の矩形を表示するプログラムです。座標は初期状態ではシーンの左上が原点で、右に行くほど X の値が大きくなり、下に行くほど Y の値が大きくなります。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var rect = createRect(scene);
     scene.append(rect);
@@ -381,7 +381,7 @@ module.exports = main;</code></pre>
 <p>実行中にゲーム自身の情報を参照する際は <code>g.game</code> オブジェクトを利用します。
 <code>g.game</code> オブジェクトはこれまでもシーンを作成する際の引数に登場していました。
 Akashic Engine のいくつかのオブジェクトは明示的に <code>g.game</code> オブジェクトを渡す必要があります。</p>
-<pre><code class="language-javascript">var scene = new g.Scene();</code></pre>
+<pre><code class="language-javascript">var scene = new g.Scene({ game: g.game });</code></pre>
 <p><code>g.game</code> オブジェクトの <code>width</code> プロパティと <code>height</code> プロパティには、
 <code>game.json</code> に指定したゲームの幅と高さが格納されています。この値を利用すると、例えば以下のようにゲーム全体を青色で塗りつぶすように矩形を配置できます。</p>
 <pre><code class="language-javascript">var backgroundRect = new g.FilledRect({
@@ -396,7 +396,7 @@ Akashic Engine のいくつかのオブジェクトは明示的に <code>g.game<
   rectMargin = 10;
 
 function main() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var x, y, rect;
     for (y = 0; y &lt; g.game.height; y += rectHeight + rectMargin) {
@@ -474,6 +474,7 @@ INFO: Done!</code></pre>
 <p>以下はシーンに画像を表示するプログラムです。</p>
 <pre><code class="language-javascript">function main() {
   var scene = new g.Scene({
+    game: g.game,
     assetIds: [&quot;player&quot;] // シーン内で利用するアセットID
   });
 
@@ -495,13 +496,13 @@ module.exports = main;</code></pre>
 <p>アセットの ID は <code>game.json</code> に登録されている名前です。
 これはアセットを <code>akashic scan</code> で登録した場合は、ファイル名から拡張子をのぞいた文字列になっています。
 例えば <code>player.png</code> の場合、アセット ID は <code>player</code> になります。</p>
-<pre><code class="language-javascript">var scene = new g.Scene({ assetIds: [&quot;player&quot;] });</code></pre>
+<pre><code class="language-javascript">var scene = new g.Scene({ game: g.game, assetIds: [&quot;player&quot;] });</code></pre>
 <p>画像を表示するには <code>Sprite</code> エンティティを使います。
 <code>Sprite</code> エンティティのパラメータオブジェクトには <code>src</code> プロパティがあります。ここに画像アセットオブジェクトを指定すると、対応する画像を表示するエンティティが作成されます。</p>
 <p>シーンに読み込んだアセットオブジェクトは、 <code>scene.asset</code> から取り出すことができます。アセット ID が <code>player</code> であれば次のコードで参照できます。</p>
 <pre><code class="language-javascript">scene.asset.getImageById(&quot;player&quot;);</code></pre>
 <p>アセット ID ではなく、アセットのファイルパスを <code>Scene</code> に渡すことでも、アセットを読み込むことができます。</p>
-<pre><code class="language-javascript">var scene = new g.Scene({ assetPaths: [&quot;/image/player.png&quot;] });</code></pre>
+<pre><code class="language-javascript">var scene = new g.Scene({ game: g.game, assetPaths: [&quot;/image/player.png&quot;] });</code></pre>
 <p>アセットパスを用いてアセットを参照する場合、 game.json のあるディレクトリからの絶対パス表記を用いる必要があることに注意してください。
 アセットは次のコードで参照できます。</p>
 <pre><code class="language-javascript">scene.asset.getImage(&quot;/image/player.png&quot;);</code></pre>

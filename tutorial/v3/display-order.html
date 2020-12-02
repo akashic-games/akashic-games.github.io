@@ -192,7 +192,7 @@ var child = new g.FilledRect({
 group.append(child); // group の子エンティティに child を追加</code></pre>
 <p>以下のプログラムでは、<code>angle</code> を設定した <code>E</code> オブジェクトに 3 つの矩形を追加しています。矩形の座標系は <code>E</code> を基準にして変わるので、3 つの矩形は斜めに配置されます。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var group = new g.E({ scene: scene, x: 50, y: 50, angle: 30 });
     var rect1 = createRect(scene, 0, 0, &quot;darkgreen&quot;);
@@ -218,7 +218,8 @@ function createRect(scene, x, y, color) {
 }
 
 module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample05.png" alt="sample05"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtZGlzcGxheS1vcmRlci0xL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
+
 <blockquote>
 <p>Tips: <code>new</code> する時に親が決まっているなら、次のように <code>parent</code> プロパティで親を指定してしまうこともできます。</p>
 <pre><code class="language-javascript">var group = new g.E({ scene: scene });
