@@ -15,7 +15,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>Akashic Engine 逆引きリファレンス</title>
+<title>回転する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?5ddd7a0">
 <link rel="stylesheet" href="/css/header.css?5ddd7a0">
@@ -116,15 +116,15 @@
 			<h3>Akashic Engine 逆引きリファレンス</h3>
 <h4><a name="drawing"></a> 描画</h4>
 <ul>
-<li><a href="./drawing/entity.html">エンティティを追加・削除する</a></li>
-<li><a href="./drawing/image.html">画像を表示する</a></li>
-<li><a href="./drawing/rotate.html">回転する</a></li>
-<li><a href="./drawing/scale.html">拡大する</a></li>
-<li><a href="./drawing/rotate-anchor.html">回転・拡大の基準点を変える</a></li>
-<li><a href="./drawing/opacity.html">半透明にする (透明度を変える)</a></li>
-<li><a href="./drawing/hidden.html">非表示にする</a></li>
-<li><a href="./drawing/display-order.html">描画順を変える</a></li>
-<li><a href="./drawing/multiple-entities.html">複数のエンティティをまとめて扱う</a></li>
+<li><a href="./entity.html">エンティティを追加・削除する</a></li>
+<li><a href="./image.html">画像を表示する</a></li>
+<li><a href="./rotate.html">回転する</a></li>
+<li><a href="./scale.html">拡大する</a></li>
+<li><a href="./rotate-anchor.html">回転・拡大の基準点を変える</a></li>
+<li><a href="./opacity.html">半透明にする (透明度を変える)</a></li>
+<li><a href="./hidden.html">非表示にする</a></li>
+<li><a href="./display-order.html">描画順を変える</a></li>
+<li><a href="./multiple-entities.html">複数のエンティティをまとめて扱う</a></li>
 <li><a href="./">エンティティの描画方法を変える (compositeOperation)</a></li>
 <li><a href="./">フレームアニメーション (パラパラアニメ) する</a></li>
 <li><a href="./">トゥイーンアニメーションする</a></li>
@@ -196,86 +196,48 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<h1>Akashic Engine 逆引きリファレンス</h1>
-<h2>目次</h2>
-<h3><a name="drawing"></a> 描画</h3>
+				<h1>回転する</h1>
+<p>エンティティは <code>angle</code> プロパティで回転させることができます。</p>
+<h2>凡例</h2>
+<pre><code class="language-javascript">var sprite = new g.Sprite({
+  ...,      // その他のプロパティ
+  angle: 30 // 時計方向に 30 度回転した状態で生成する
+});</code></pre>
+<pre><code class="language-javascript">sprite.angle = 45; // 時計方向に 45 度回転した状態にする
+sprite.modified(); // modified() で表示に反映</code></pre>
+<p>回転は、 <a href="./scale.html"><code>scaleX</code>, <code>scaleY</code> による拡大・縮小</a> と同じく、デフォルトではエンティティの左上端を基準に行われます。
+この基準位置を変えるには、 <a href="./rotate-anchor.html"><code>anchorX</code>, <code>anchorY</code> を利用してください</a> 。</p>
+<h2>利用例</h2>
+<p>次のコンテンツは、画像 (を表示する <code>g.Sprite</code>) を 45 度回転した状態で表示します。</p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvZHJhd2luZy9yb3RhdGUvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
+
+<h2>詳細</h2>
+<p>エンティティを回転させるには <code>angle</code> プロパティを利用します。</p>
+<p>下記のコードでは、生成した <code>Sprite</code> は 45 度回転した状態で描画されます。</p>
+<pre><code class="language-javascript">var sprite = new g.Sprite({
+  scene: scene, // シーン scene があるものとします
+  src: scene.asset.getImageById(&quot;player&quot;), // アセットID &quot;player&quot; が画像アセットだとします
+  x: 0,
+  y: 0,
+  angle: 45
+});
+
+scene.append(sprite);</code></pre>
+<p>生成後のエンティティの回転角度は、 <code>angle</code> プロパティで参照できます。</p>
+<pre><code class="language-javascript">sprite.angle; // ==&gt; 45</code></pre>
+<p><code>angle</code> プロパティに代入することで、回転角度を変更できます。表示への反映には <code>modified()</code> メソッドを呼び出す必要があります。</p>
+<pre><code class="language-javascript">sprite.angle += 10; // 現状からさらに 10 度回転させる
+sprite.modified(); // modified() で表示に反映</code></pre>
+<h2>関連情報</h2>
 <ul>
-<li><a href="./drawing/entity.html">エンティティを追加・削除する</a></li>
-<li><a href="./drawing/image.html">画像を表示する</a></li>
-<li><a href="./drawing/rotate.html">回転する</a></li>
-<li><a href="./drawing/scale.html">拡大する</a></li>
-<li><a href="./drawing/rotate-anchor.html">回転・拡大の基準点を変える</a></li>
-<li><a href="./drawing/opacity.html">半透明にする (透明度を変える)</a></li>
-<li><a href="./drawing/hidden.html">非表示にする</a></li>
-<li><a href="./drawing/display-order.html">描画順を変える</a></li>
-<li><a href="./drawing/multiple-entities.html">複数のエンティティをまとめて扱う</a></li>
-<li><a href="./">エンティティの描画方法を変える (compositeOperation)</a></li>
-<li><a href="./">フレームアニメーション (パラパラアニメ) する</a></li>
-<li><a href="./">トゥイーンアニメーションする</a></li>
-<li><a href="./">クリッピングする</a></li>
-<li><a href="./">シェーダを利用する</a></li>
+<li><a href="/tutorial/v3/scale-anchor.html#scale-and-rot">チュートリアル</a></li>
+<li><a href="/reference/akashic-engine-v3/classes/e.html">API リファレンス</a></li>
 </ul>
-<h3><a name="operation"></a> 操作</h3>
-<ul>
-<li><a href="./">クリック・タップできるようにする</a></li>
-<li><a href="./">ドラッグ・スワイプで動かす</a></li>
-<li><a href="./">ダブルクリック・ダブルタップできるようにする</a></li>
-<li><a href="./">画面全体をクリック・タップできるようにする</a></li>
-</ul>
-<h3><a name="sound"></a> 音声</h3>
-<ul>
-<li><a href="./">効果音・BGM を再生する</a></li>
-<li><a href="./">効果音・BGM を止める</a></li>
-<li><a href="./">効果音・BGM の音量を変える</a></li>
-<li><a href="./">全体音量を変える</a></li>
-</ul>
-<h3><a name="label"></a> 文字列</h3>
-<ul>
-<li><a href="./">文字列を描画する</a></li>
-<li><a href="./">文字列の色を変える</a></li>
-<li><a href="./">文字列を中央寄せ・右寄せする</a></li>
-<li><a href="./">複数行の文字列を描画する</a></li>
-<li><a href="./">ビットマップフォントを使う</a></li>
-<li><a href="./">ビットマップフォントを作る</a></li>
-</ul>
-<h3><a name="logic"></a> ゲームロジック</h3>
-<ul>
-<li><a href="./">乱数を使う</a></li>
-<li><a href="./">一定時間後に処理を実行する</a></li>
-<li><a href="./">定期的に処理を実行する</a></li>
-<li><a href="./">エンティティ同士の当たり判定を調べる</a></li>
-<li><a href="./">シーンを切り替える</a></li>
-<li><a href="./">前のシーンに戻る</a></li>
-<li><a href="./">指定位置にあるタッチ可能なエンティティを探す</a></li>
-</ul>
-<h3><a name="setting"></a> ゲーム設定</h3>
-<ul>
-<li><a href="./">画面サイズを変える</a></li>
-<li><a href="./">FPS を変える</a></li>
-</ul>
-<h3><a name="asset"></a> アセット</h3>
-<ul>
-<li><a href="./">ゲームにアセットを追加する</a></li>
-<li><a href="./">ゲームからアセットを削除する</a></li>
-<li><a href="./">アセットを読み込む</a></li>
-<li><a href="./">読み込んだアセットを取得する</a></li>
-<li><a href="./">スクリプトを分割する (複数のスクリプトを使う)</a></li>
-<li><a href="./">シーン内で動的にアセットを読み込む</a></li>
-</ul>
-<h3><a name="extension"></a> 拡張ライブラリ</h3>
-<ul>
-<li><a href="./">拡張ライブラリを導入する</a></li>
-<li><a href="./">拡張ライブラリを削除する</a></li>
-<li><a href="./">非 Akashic Engine 向けライブラリを利用する</a></li>
-</ul>
-<h3><a name="release"></a> 公開</h3>
-<ul>
-<li><a href="./">HTML5 ゲームとして出力する</a></li>
-<li><a href="./">ニコ生ゲームとして出力する</a></li>
-<li><a href="./">RPG アツマールでの背景色を指定する</a></li>
-<li><a href="./">RPG アツマールでスコアボードを表示する</a></li>
-<li><a href="./">RPG アツマールでのみ処理を行う</a></li>
-</ul>
+<div class="navi-center">
+<a href="./image.html">前 (画像を表示する)</a>
+ | <a href="../">目次</a>
+ | <a href="./scale.html">次 (拡大する)</a>
+</div>
 
 			</div>
 		</div>
