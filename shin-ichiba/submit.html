@@ -72,8 +72,6 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
 				<li><a href="/reference/akashic-engine-v3/globals.html">akashic-engine v3.x</a></li>
 				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
 				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
@@ -83,6 +81,8 @@
 				<li><a href="/reference/coe/">coe framework</a></li>
 				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
 				<li><a href="/reference/collision-js/">collision-js</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x (旧版)</a></li>
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x (旧版)</a></li>
 			</ul>
 		</li>
 		<li class="head--menu--item">
@@ -162,7 +162,7 @@ RPG アツマールに投稿・公開後、ニコ生ゲームとして申請を�
 (ディレクトリ内に game.zip というファイルが既にある場合は、 game.zip の代わりに .zip で終わる適当なファイル名を指定してください)</p>
 <p><code>--atsumaru</code> オプションをつけることで、RPG アツマールとニコニコ生放送に対応した形式のファイルを生成します。</p>
 <h3>注意点</h3>
-<p>2018 年 10 月現在、ニコ生ゲームは、 <strong>zip ファイルの展開後のサイズが 10MB 以下である必要があります</strong> 。これを超える場合、アツマールには投稿できますが、ニコ生ゲームとして登録申請する際に失敗するので注意してください。</p>
+<p>現在のところ、ニコ生ゲームは <strong>zip ファイルの展開後のサイズが 10MB 以下である必要があります</strong> 。これを超える場合、アツマールには投稿できますが、ニコ生ゲームとして登録申請する際に失敗するので注意してください。</p>
 <p>また事前に <strong>全てのテキストファイル (.js, .json, .txt) の文字コードが UTF-8 であることを確認してください</strong> 。
 <code>akashic export</code> コマンドは、効率化のためできるだけテキストファイルを一つにまとめます。このとき Shift JIS など、UTF-8 でない文字コードが使われていると、game.zip の中身が文字化けしてしまうことがあります。</p>
 <h2><a name="submit-to-atsumaru"></a> RPG アツマールに投稿</h2>
