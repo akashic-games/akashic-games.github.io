@@ -74,8 +74,6 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
 				<li><a href="/reference/akashic-engine-v3/globals.html">akashic-engine v3.x</a></li>
 				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
 				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
@@ -85,6 +83,8 @@
 				<li><a href="/reference/coe/">coe framework</a></li>
 				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
 				<li><a href="/reference/collision-js/">collision-js</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x (旧版)</a></li>
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x (旧版)</a></li>
 			</ul>
 		</li>
 		<li class="head--menu--item">
@@ -187,8 +187,8 @@ Akashic Engine のプレイはこの乱数生成器のシードを記録に含�
 <p>なお <code>akashic init --type typescript</code> で生成される TypeScript 用テンプレートは、最初からコンパイル結果が ES5 互換になるように設定されています。そのため <code>const</code> や <code>=&gt;</code> など、TypeScript がサポートする各種構文を利用することができます。
 (あくまでも構文のみです。 <code>Map</code> など根本的に実装がないと動かない機能には対応できません。)</p>
 <p>また <code>akashic init --type javascript-minimal</code> で生成される JavaScript 用テンプレート(デフォルトテンプレート)では、 <code>npm run lint</code> を実行するとコードを lint できます。
-ES2015 以降の構文を検出するとエラーを表示するように設定されているので、チェックに使うことができます。(2018-08-31 現在、予定)</p>
-<p><code>akashic export</code> も、ES2015 以降の構文を検出すると警告を表示します。(2018-08-31 現在、予定)</p>
+ES2015 以降の構文を検出するとエラーを表示するように設定されているので、チェックに使うことができます。</p>
+<p><code>akashic export</code> も、ES2015 以降の構文を検出すると警告を表示します。</p>
 <h2><a name="Array.prototype.sortの安定性を仮定してしまう" /> Array.prototype.sort の安定性を仮定してしまう</h2>
 <p>ECMAScript の言語仕様上、 <code>Array.prototype.sort</code> が安定なソートであることは保証されていません。つまり、 <code>sort()</code> に与えられた比較関数が、ある二つの要素について <code>0</code> を返した時(等価であるとした時)、ソート後のそれらの順序は実装依存です。
 (実際、あるバージョンの Safari と Chrome では <code>sort()</code> の結果が異なる場合があることが分かっています。)</p>
