@@ -45,7 +45,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
 				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
 				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
 			</ul>
@@ -74,6 +74,7 @@
 			<ul class="head--menu--item--list">
 				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
 				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-engine-v3/globals.html">akashic-engine v3.x</a></li>
 				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
 				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
 				<li><a href="/reference/akashic-label/">akashic-label</a></li>
@@ -155,18 +156,7 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<div class="warn-info" style="margin-bottom:40px">
-    <p>
-        <b style="font-size: 1.2rem;">Akashic Engine v3 は現在ベータ版として公開されています。</b>
-    </p>
-    <p>
-        特に、2020-09-16 現在、ニコ生ゲームとして投稿することはできないので注意してください。
-        正式にリリースする際には <a href="https://twitter.com/akashic_talk">https://twitter.com/akashic_talk</a> でお知らせします。
-    </p>
-</div>
-
-
-<h1>コンテンツ作成の基本</h1>
+				<h1>コンテンツ作成の基本</h1>
 <p>このページのサンプルコードを<a class="asset--material--download" href="/zip/tutorial/v3/sample-basic.zip">ダウンロード</a></p>
 
 <h2><a name="entity"></a> エンティティ</h2>
@@ -337,7 +327,7 @@ scene.append(rect);</code></pre>
 
 <p>表中のほとんどのプロパティは <code>FilledRect</code> 以外のオブジェクトでも共通です。
 <code>FilledRect</code> 特有のプロパティは矩形の色を指定する <code>cssColor</code> のみです。また、他のエンティティと異なり <code>width</code> と <code>height</code> の指定が必須になっています。</p>
-<p>それぞれのエンティティで指定可能な値や初期値は API リファレンス(RC 版)に書かれています。例えば <code>FilledRect</code> であれば<a href="/reference/akashic-engine-v3/classes/filledrect.html">こちら</a>のドキュメントに書かれています。</p>
+<p>それぞれのエンティティで指定可能な値や初期値は API リファレンスに書かれています。例えば <code>FilledRect</code> であれば<a href="/reference/akashic-engine-v3/classes/filledrect.html">こちら</a>のドキュメントに書かれています。</p>
 <p>エンティティをシーンに追加する操作は、シーンの読み込み後に行う必要があります。シーンの読み込み完了のようなタイミングを通知するのに、
 Akashic Engine はトリガー(<code>g.Trigger</code>)とよばれる仕組みを利用します。トリガーには <code>add()</code> メソッドで関数を登録することができます。トリガーに対応するイベントが発生すると、登録されたメソッドが呼び出されます。</p>
 <p>シーンの読み込み完了のタイミングを知るには <code>scene.onLoad</code> トリガーを利用します。次の例では <code>handleSceneLoad()</code> 関数を <code>scene.onLoad</code> トリガーに登録しています。</p>
@@ -428,7 +418,7 @@ module.exports = main;</code></pre>
 <p><img src="/img/tutorial/player.png" alt="player"></p>
 <p>Akashic Engine のゲームには推奨されるディレクトリ構造があります。このディレクトリ構造に従うことで、面倒な作業を自動化できます。例えば画像は、アセットとして <code>game.json</code> に登録する必要があります。追加したい画像が <code>image</code> ディレクトリに置かれている場合、次のコマンドで <code>game.json</code> にアセットの情報が追加されます。</p>
 <pre><code class="language-sh">akashic scan asset</code></pre>
-<p><code>akashic scan asset</code> がアセットを探すディレクトリは以下の 4 つで、それぞれ配置するアセットの種類が決まっています。</p>
+<p><code>akashic scan asset</code> がアセットを探すディレクトリは以下の 5 つで、それぞれ配置するアセットの種類が決まっています。</p>
 <div class="table--scroll">
 <table>
 <thead>
@@ -453,6 +443,13 @@ module.exports = main;</code></pre>
 <tr>
 <td><code>text</code></td>
 <td>その他のデータ(テキスト形式)を配置する</td>
+</tr>
+<tr>
+<td><code>assets</code></td>
+<td>
+  上記 4 種類全てのアセットを配置できる<br>
+  (v3 以降で利用可能。柔軟ですが他と扱いが違うため、詳細は <a href="/tutorial/v3/assetPaths.html">後述</a> します)
+</td>
 </tr>
 </tbody>
 </table>

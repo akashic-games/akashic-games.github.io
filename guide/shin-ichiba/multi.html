@@ -47,7 +47,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
 				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
 				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
 			</ul>
@@ -76,6 +76,7 @@
 			<ul class="head--menu--item--list">
 				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
 				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-engine-v3/globals.html">akashic-engine v3.x</a></li>
 				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
 				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
 				<li><a href="/reference/akashic-label/">akashic-label</a></li>
@@ -119,7 +120,7 @@
 <p>game.json で <code>&quot;supportedModes&quot;</code> に <code>&quot;multi&quot;</code> を指定したゲームは、マルチプレイで起動されるよう登録されます。</p>
 <p>ランキングモードと異なり、モード <code>&quot;multi&quot;</code> には特別な要件はありません。
 Akashic のマルチプレイコンテンツがそのまま動作するので、
-<a href="/tutorial/v2/#multiplay">チュートリアルのマルチプレイゲーム作成の節</a> を参照してコンテンツを作成してください。</p>
+<a href="/tutorial/v3/multiplay/introduction.html">チュートリアルのマルチプレイゲーム作成の節</a> を参照してコンテンツを作成してください。</p>
 <h2><a name="debug"></a> 動作確認</h2>
 <p>動作確認は、Akashic Engine のコンテンツとして単に <code>akashic serve</code> コマンドで行うことができます。
 ただしこの時 <code>--target-service</code> オプションが利用できます。</p>
@@ -139,7 +140,7 @@ Akashic のマルチプレイコンテンツがそのまま動作するので、
 </ul>
 </li>
 </ul>
-<p><a href="/tutorial/v2/multiplay/join.html">Join と Leave の節</a> でも記載のとおり、ニコニコ生放送では「放送者がただ一人 Join する」動作になっています。
+<p><a href="/tutorial/v3/multiplay/join.html">Join と Leave の節</a> でも記載のとおり、ニコニコ生放送では「放送者がただ一人 Join する」動作になっています。
 しかし <code>akashic serve</code> コマンド自身はそのことに関知しておらず、毎回「Join Me」ボタンを手で押す必要がありました。
 この不便を軽減するものとして <code>-s nicolive</code> オプションが利用できます。</p>
 <h2><a name="player-name"></a> プレイヤー名問題</h2>

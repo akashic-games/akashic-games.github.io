@@ -45,7 +45,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
 				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
 				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
 			</ul>
@@ -74,6 +74,7 @@
 			<ul class="head--menu--item--list">
 				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
 				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-engine-v3/globals.html">akashic-engine v3.x</a></li>
 				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
 				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
 				<li><a href="/reference/akashic-label/">akashic-label</a></li>
@@ -155,18 +156,7 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<div class="warn-info" style="margin-bottom:40px">
-    <p>
-        <b style="font-size: 1.2rem;">Akashic Engine v3 は現在ベータ版として公開されています。</b>
-    </p>
-    <p>
-        特に、2020-09-16 現在、ニコ生ゲームとして投稿することはできないので注意してください。
-        正式にリリースする際には <a href="https://twitter.com/akashic_talk">https://twitter.com/akashic_talk</a> でお知らせします。
-    </p>
-</div>
-
-
-<h1>akashic 導入</h1>
+				<h1>akashic 導入</h1>
 <p>前章では Akashic Engine を利用した簡単なゲームを作成しました。
 より本格的なゲームの開発や、作成したゲームを生放送でプレイする際には周辺ツールの導入が必要となります。</p>
 <h2><a name="develop-tools"></a> 開発に必要なもの</h2>
@@ -277,7 +267,7 @@ module.exports = main;</code></pre>
 </blockquote>
 <h2><a name="use-akashic-init"></a> akashic init の利用</h2>
 <p><code>akashic init</code> を利用すると、ゲームに必要なファイルを作ることができます。空のディレクトリを作成してその中で次のコマンドを実行します。</p>
-<pre><code class="language-sh">akashic init -t javascript-v3</code></pre>
+<pre><code class="language-sh">akashic init -t javascript</code></pre>
 <p>コマンドを入力すると、ゲームの仕様をいくつか質問されます。最初は、</p>
 <pre><code class="language-sh">width (320)</code></pre>
 <p>と表示されます。ここで数字を入力して Enter キーを押すとゲームの幅 (width) を指定できます。何も入力せずに Enter を押すと幅はカッコ内に表示された大きさになります。ここではそのまま Enter を押します。</p>
@@ -289,20 +279,15 @@ module.exports = main;</code></pre>
 標準で対応しているテンプレートは以下の通りです。
 下記テンプレートについての説明については<a href="/guide/akashic-cli.html#--type%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3">こちら</a>を参照してください。</p>
 <ul>
-<li><code>javascript-v3</code></li>
-<li><code>javascript-minimal-v3</code></li>
-<li><code>javascript-shin-ichiba-ranking-v3</code></li>
-<li><code>typescript-v3</code></li>
-<li><code>typescript-minimal-v3</code></li>
-<li><code>typescript-shin-ichiba-ranking-v3</code></li>
+<li><code>javascript</code></li>
+<li><code>javascript-minimal</code></li>
+<li><code>javascript-shin-ichiba-ranking</code></li>
+<li><code>typescript</code></li>
+<li><code>typescript-minimal</code></li>
+<li><code>typescript-shin-ichiba-ranking</code></li>
 </ul>
-<blockquote>
-<p>2020-09-16 現在、v3 系はベータ版のため、テンプレート名で明示的に <code>-v3</code> を指定する必要があります。
-(<code>javascript</code>, <code>typescirpt-minimal</code> などは v2 版のコンテンツを生成します。)</p>
-<p>これは一時的な措置です。正式リリース時には <code>-t javascript</code> などで v3 版のコンテンツが生成されるようになります。</p>
-</blockquote>
 <p>例えば、TypeScript でゲームを作る場合は、以下のコマンドを入力します。</p>
-<pre><code class="language-sh">akashic init -t typescript-v3</code></pre>
+<pre><code class="language-sh">akashic init -t typescript</code></pre>
 <blockquote>
 <p>Windows 10 の PowerShell 上で <code>akashic init</code> などを実行すると、権限エラーが発生して実行に失敗することがあります。
 これは、PowerShell の実行ポリシーがデフォルトで Restricted(スクリプトの実行が許可されていない状態)になっているためです。
