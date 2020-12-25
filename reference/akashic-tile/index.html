@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> @akashic-extension/akashic-tile</h1>
+			<h1>@akashic-extension/akashic-tile</h1>
 		</div>
 	</div>
 </header>
@@ -67,7 +67,9 @@
 				<p align="center">
 					<img src="https://github.com/akashic-games/akashic-tile/blob/master/img/akashic.png">
 				</p>
-				<h1 id="akashic-tile">akashic-tile</h1>
+				<a href="#akashic-tile" id="akashic-tile" style="color: inherit; text-decoration: none;">
+					<h1>akashic-tile</h1>
+				</a>
 				<p><strong>akashic-tile</strong> は、 <a href="https://akashic-games.github.io/">Akashic Engine</a> 用のタイルマップ描画ライブラリです。</p>
 				<p>例えば幅32、高さ32の画像を敷き詰めたマップチップ画像のアセット <code>mapchipImage</code> を持つシーン <code>scene</code> がある時、
 				マップチップを敷き詰めた画像(タイルマップ)を表示するエンティティを生成できます。</p>
@@ -82,18 +84,17 @@
     <span class="hljs-string">[0,</span> <span class="hljs-number">0</span><span class="hljs-string">,</span> <span class="hljs-number">1</span><span class="hljs-string">,</span> <span class="hljs-number">0</span><span class="hljs-string">]</span>
   <span class="hljs-string">]</span>
 <span class="hljs-string">});</span>
-<span class="hljs-string">scene.append(tile);</span>
-</code></pre><p>ここで <code>tileData</code> の内容は、マップチップのインデックスです。
+<span class="hljs-string">scene.append(tile);</span></code></pre><p>ここで <code>tileData</code> の内容は、マップチップのインデックスです。
 					マップチップのインデックスとは、マップチップ画像の各マップチップに対して、左上を0として順に振られた番号です。
 					すなわちインデックス0はマップチップ画像の一番左上の幅32、高さ32の部分を表します。
 				インデックス1はその右隣の幅32、高さ32の部分を表します。</p>
-				<h2 id="-">利用方法</h2>
+				<a href="#利用方法" id="利用方法" style="color: inherit; text-decoration: none;">
+					<h2>利用方法</h2>
+				</a>
 				<p><a href="https://github.com/akashic-games/akashic-cli">akashic-cli</a>をインストールした後、</p>
-				<pre><code class="lang-sh">akashic install @akashic-extension/akashic-tile
-</code></pre>
+				<pre><code class="language-sh">akashic install @akashic-extension/akashic-tile</code></pre>
 				<p>でインストールできます。コンテンツからは、</p>
-				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> at = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@akashic-extension/akashic-tile"</span>);
-</code></pre>
+				<pre><code class="language-javascript"><span class="hljs-keyword">var</span> at = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@akashic-extension/akashic-tile"</span>);</code></pre>
 				<p>で利用してください。
 				詳細な利用方法については、以下を参照してください。</p>
 				<ul>
@@ -101,13 +102,16 @@
 					<li>このリポジトリ同梱の<a href="https://github.com/akashic-games/akashic-tile/tree/master/sample">サンプルコード</a>
 					Akashic Engineの詳細な利用方法については、 <a href="https://akashic-games.github.io/">公式ページ</a> を参照してください。</li>
 				</ul>
-				<h2 id="-">ビルド方法</h2>
+				<a href="#ビルド方法" id="ビルド方法" style="color: inherit; text-decoration: none;">
+					<h2>ビルド方法</h2>
+				</a>
 				<p><strong>akashic-tile</strong>はTypeScriptで書かれたライブラリであるため、ビルドにはnode.jsが必要です。</p>
 				<p><code>npm run build</code> によりビルドできます。</p>
-				<pre><code class="lang-sh">npm install
-npm run build
-</code></pre>
-				<h2 id="-">ライセンス</h2>
+				<pre><code class="language-sh">npm install
+npm run build</code></pre>
+				<a href="#ライセンス" id="ライセンス" style="color: inherit; text-decoration: none;">
+					<h2>ライセンス</h2>
+				</a>
 				<p>本リポジトリは MIT License の元で公開されています。
 				詳しくは <a href="./LICENSE">LICENSE</a> をご覧ください。</p>
 				<p>ただし、画像ファイルおよび音声ファイルは
@@ -121,13 +125,13 @@ npm run build
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_tile_.html">"<wbr>Tile"</a>
+						<a href="modules/_tile_.html">&quot;<wbr>Tile&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_tileparameterobject_.html">"<wbr>Tile<wbr>Parameter<wbr>Object"</a>
+						<a href="modules/_tileparameterobject_.html">&quot;<wbr>Tile<wbr>Parameter<wbr>Object&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_index_.html">"index"</a>
+						<a href="modules/_index_.html">&quot;index&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -150,6 +154,7 @@ npm run build
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -198,7 +203,7 @@ npm run build
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
@@ -209,7 +214,7 @@ npm run build
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-162208211-1', '');
+        ga('create', 'UA-162208211-1', 'auto');
         ga('send', 'pageview');
     </script>
 </body>

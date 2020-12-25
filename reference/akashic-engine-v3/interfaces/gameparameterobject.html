@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GameParameterObject | @akashic/akashic-engine</title>
+	<title>GameParameterObject | Akashic Engine</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@akashic/akashic-engine</a>
+					<a href="../index.html" class="title">Akashic Engine</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -92,6 +92,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="gameparameterobject.html#configuration" class="tsd-kind-icon">configuration</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="gameparameterobject.html#enginemodule" class="tsd-kind-icon">engine<wbr>Module</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="gameparameterobject.html#handlerset" class="tsd-kind-icon">handler<wbr>Set</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="gameparameterobject.html#mainfunc" class="tsd-kind-icon">main<wbr>Func</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="gameparameterobject.html#operationpluginviewinfo" class="tsd-kind-icon">operation<wbr>Plugin<wbr>View<wbr>Info</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="gameparameterobject.html#resourcefactory" class="tsd-kind-icon">resource<wbr>Factory</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="gameparameterobject.html#selfid" class="tsd-kind-icon">self<wbr>Id</a></li>
@@ -105,10 +106,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="assetbase" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> asset<wbr>Base</h3>
-					<div class="tsd-signature tsd-kind-icon">asset<wbr>Base<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<div class="tsd-signature tsd-kind-icon">asset<wbr>Base<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Game.ts#L147">engine/Game.ts:147</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Game.ts#L213">src/Game.ts:213</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -128,7 +129,7 @@
 					<div class="tsd-signature tsd-kind-icon">configuration<span class="tsd-signature-symbol">:</span> <a href="gameconfiguration.html" class="tsd-signature-type">GameConfiguration</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Game.ts#L131">engine/Game.ts:131</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Game.ts#L197">src/Game.ts:197</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -143,7 +144,7 @@
 					<div class="tsd-signature tsd-kind-icon">engine<wbr>Module<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Game.ts#L126">engine/Game.ts:126</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Game.ts#L192">src/Game.ts:192</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -161,7 +162,7 @@
 					<div class="tsd-signature tsd-kind-icon">handler<wbr>Set<span class="tsd-signature-symbol">:</span> <a href="gamehandlerset.html" class="tsd-signature-type">GameHandlerSet</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Game.ts#L141">engine/Game.ts:141</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Game.ts#L207">src/Game.ts:207</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -171,12 +172,33 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="mainfunc" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> main<wbr>Func</h3>
+					<div class="tsd-signature tsd-kind-icon">main<wbr>Func<span class="tsd-signature-symbol">:</span> <a href="../globals.html#gamemainfunction" class="tsd-signature-type">GameMainFunction</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Game.ts#L232">src/Game.ts:232</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>エントリポイントの関数。
+							この値が指定された場合 <code>GameConfiguration#main</code> の値は無視される。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
+							</dd>
+						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="operationpluginviewinfo" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> operation<wbr>Plugin<wbr>View<wbr>Info</h3>
 					<div class="tsd-signature tsd-kind-icon">operation<wbr>Plugin<wbr>View<wbr>Info<span class="tsd-signature-symbol">:</span> <a href="operationpluginviewinfo.html" class="tsd-signature-type">OperationPluginViewInfo</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Game.ts#L159">engine/Game.ts:159</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Game.ts#L225">src/Game.ts:225</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -193,10 +215,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="resourcefactory" class="tsd-anchor"></a>
 					<h3>resource<wbr>Factory</h3>
-					<div class="tsd-signature tsd-kind-icon">resource<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="resourcefactorylike.html" class="tsd-signature-type">ResourceFactoryLike</a></div>
+					<div class="tsd-signature tsd-kind-icon">resource<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="resourcefactory.html" class="tsd-signature-type">ResourceFactory</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Game.ts#L136">engine/Game.ts:136</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Game.ts#L202">src/Game.ts:202</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -208,10 +230,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="selfid" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> self<wbr>Id</h3>
-					<div class="tsd-signature tsd-kind-icon">self<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<div class="tsd-signature tsd-kind-icon">self<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Game.ts#L153">engine/Game.ts:153</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Game.ts#L219">src/Game.ts:219</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -253,6 +275,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="gameparameterobject.html#handlerset" class="tsd-kind-icon">handler<wbr>Set</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="gameparameterobject.html#mainfunc" class="tsd-kind-icon">main<wbr>Func</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="gameparameterobject.html#operationpluginviewinfo" class="tsd-kind-icon">operation<wbr>Plugin<wbr>View<wbr>Info</a>

@@ -69,6 +69,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p><code>Label</code> のコンストラクタに渡すことができるパラメータ。</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -89,6 +96,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_labelparameterobject_.labelparameterobject.html#anchorx" class="tsd-kind-icon">anchorX</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_labelparameterobject_.labelparameterobject.html#anchory" class="tsd-kind-icon">anchorY</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_labelparameterobject_.labelparameterobject.html#angle" class="tsd-kind-icon">angle</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_labelparameterobject_.labelparameterobject.html#children" class="tsd-kind-icon">children</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_labelparameterobject_.labelparameterobject.html#compositeoperation" class="tsd-kind-icon">composite<wbr>Operation</a></li>
@@ -110,8 +119,8 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_labelparameterobject_.labelparameterobject.html#scalex" class="tsd-kind-icon">scaleX</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_labelparameterobject_.labelparameterobject.html#scaley" class="tsd-kind-icon">scaleY</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_labelparameterobject_.labelparameterobject.html#scene" class="tsd-kind-icon">scene</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_labelparameterobject_.labelparameterobject.html#shaderprogram" class="tsd-kind-icon">shader<wbr>Program</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_labelparameterobject_.labelparameterobject.html#tag" class="tsd-kind-icon">tag</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_labelparameterobject_.labelparameterobject.html#targetcameras" class="tsd-kind-icon">target<wbr>Cameras</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_labelparameterobject_.labelparameterobject.html#text" class="tsd-kind-icon">text</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_labelparameterobject_.labelparameterobject.html#textalign" class="tsd-kind-icon">text<wbr>Align</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_labelparameterobject_.labelparameterobject.html#textcolor" class="tsd-kind-icon">text<wbr>Color</a></li>
@@ -129,37 +138,123 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="anchorx" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> anchorX</h3>
+					<div class="tsd-signature tsd-kind-icon">anchorX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#anchorx">anchorX</a></p>
+						<ul>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:67</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>オブジェクトのアンカーの横位置。アンカーについては以下の通り。</p>
+							<ul>
+								<li>アンカーとして設定した箇所がこのオブジェクトの基点 (位置、拡縮・回転の基点) となる。</li>
+								<li>単位は相対値 (左上端が (0, 0) 中央が (0.5, 0,5) 右下端が (1,1) ) である。
+								初期値は <code>0</code> である。</li>
+							</ul>
+						</div>
+						<p>NOTE: <code>anchorX</code> または <code>anchorY</code> のどちらかを明示的に <code>null</code> に指定した場合、
+							このオブジェクトのアンカーは前バージョン(v2.x.x 以前)のデフォルトの挙動 (位置 <code>x</code>, <code>y</code> は左上端を基準に、拡大・縮小・回転の基点は中央を基準に決定) と同様になる。
+						これは前バージョンとの後方互換性のために存在する。</p>
+						<ul>
+							<li>@default 0</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="anchory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> anchorY</h3>
+					<div class="tsd-signature tsd-kind-icon">anchorY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#anchory">anchorY</a></p>
+						<ul>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:79</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>オブジェクトのアンカーの縦位置。アンカーについては以下の通り。</p>
+							<ul>
+								<li>アンカーとして設定した箇所がこのオブジェクトの基点 (位置、拡縮・回転の基点) となる。</li>
+								<li>単位は相対値 (左上端が (0, 0) 中央が (0.5, 0,5) 右下端が (1,1) ) である。
+								初期値は <code>0</code> である。</li>
+							</ul>
+						</div>
+						<p>NOTE: <code>anchorX</code> または <code>anchorY</code> のどちらを明示的に <code>null</code> に指定した場合、
+							このオブジェクトのアンカーは前バージョン(v2.x.x 以前)のデフォルトの挙動 (位置 <code>x</code>, <code>y</code> は左上端を基準に、拡大・縮小・回転の基点は中央を基準に決定) と同様になる。
+						これは前バージョンとの後方互換性のために存在する。</p>
+						<ul>
+							<li>@default 0</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="angle" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> angle</h3>
 					<div class="tsd-signature tsd-kind-icon">angle<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.angle</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#angle">angle</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1772</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:48</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>オブジェクトの回転。度数で指定する。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>0</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="children" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> children</h3>
 					<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.children</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#children">children</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1951</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:73</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このエンティティの全子エンティティ。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="compositeoperation" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> composite<wbr>Operation</h3>
-					<div class="tsd-signature tsd-kind-icon">composite<wbr>Operation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CompositeOperation.SourceOver</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.SourceAtop</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.Lighter</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.Copy</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.ExperimentalSourceIn</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.ExperimentalSourceOut</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.ExperimentalDestinationAtop</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.ExperimentalDestinationIn</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.DestinationOut</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.DestinationOver</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.Xor</span></div>
+					<div class="tsd-signature tsd-kind-icon">composite<wbr>Operation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CompositeOperation</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperationString</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.compositeOperation</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#compositeoperation">compositeOperation</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1778</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:55</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>描画時の合成方法を指定する。
+								省略された場合、合成方法を指定しない（親の合成方法を利用する）。
+							なお <code>CompositeOperation</code> での指定は非推奨である。 <code>CompositeOperationString</code> を利用すること。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="fixlinegap" class="tsd-anchor"></a>
@@ -167,9 +262,15 @@
 					<div class="tsd-signature tsd-kind-icon">fix<wbr>Line<wbr>Gap<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/LabelParameterObject.ts#L67">LabelParameterObject.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/LabelParameterObject.ts#L67">src/LabelParameterObject.ts:67</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>ルビを持つ行と持たない行の行間を統一するかどうか。
+							初期値は偽である。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="font" class="tsd-anchor"></a>
@@ -177,9 +278,14 @@
 					<div class="tsd-signature tsd-kind-icon">font<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Font</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/LabelParameterObject.ts#L15">LabelParameterObject.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/LabelParameterObject.ts#L15">src/LabelParameterObject.ts:15</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>描画に利用されるフォント。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="fontsize" class="tsd-anchor"></a>
@@ -187,42 +293,83 @@
 					<div class="tsd-signature tsd-kind-icon">font<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/LabelParameterObject.ts#L24">LabelParameterObject.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/LabelParameterObject.ts#L24">src/LabelParameterObject.ts:24</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>フォントサイズ。
+								0 以上の数値でなければならない。
+								これは <code>LabelParameterObject#font</code> に与えられたフォントを
+								<code>fontSize</code> フォントサイズ相当で描画するよう指示する値である。
+							歴史的経緯によりフォントサイズと説明されているが、実際には拡大縮小率を求めるために用いられている。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="height" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> height</h3>
 					<div class="tsd-signature tsd-kind-icon">height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.height</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#height">height</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1751</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:27</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このオブジェクトの縦幅。実際の表示領域としてはscaleX, scaleY, angleの値も考慮する必要がある。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>0</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="hidden" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> hidden</h3>
 					<div class="tsd-signature tsd-kind-icon">hidden<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.hidden</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#hidden">hidden</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1969</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:84</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このエンティティの表示状態。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>false</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="id" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> id</h3>
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.id</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#id">id</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1976</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:91</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このエンティティに割り振られる <code>E#id</code> の値。
+								エンジンが一意の ID を設定するため、通常指定する必要はない。
+							この値は、スナップショットローダがエンティティを復元する際にのみ指定されるべきである。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="linebreak" class="tsd-anchor"></a>
@@ -230,9 +377,14 @@
 					<div class="tsd-signature tsd-kind-icon">line<wbr>Break<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/LabelParameterObject.ts#L35">LabelParameterObject.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/LabelParameterObject.ts#L35">src/LabelParameterObject.ts:35</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>自動改行を行うかどうか。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="linebreakrule" class="tsd-anchor"></a>
@@ -240,9 +392,14 @@
 					<div class="tsd-signature tsd-kind-icon">line<wbr>Break<wbr>Rule<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">rt.LineBreakRule</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/LabelParameterObject.ts#L100">LabelParameterObject.ts:100</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/LabelParameterObject.ts#L100">src/LabelParameterObject.ts:100</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>禁則処理の挙動を指定する関数。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="linegap" class="tsd-anchor"></a>
@@ -250,42 +407,83 @@
 					<div class="tsd-signature tsd-kind-icon">line<wbr>Gap<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/LabelParameterObject.ts#L42">LabelParameterObject.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/LabelParameterObject.ts#L42">src/LabelParameterObject.ts:42</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>行間サイズ。
+								初期値は0である。
+							-1 * fontSize 以上の数値でなければならない。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="local" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> local</h3>
 					<div class="tsd-signature tsd-kind-icon">local<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.local</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#local">local</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1941</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:63</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このエンティティがローカルであるか否か。
+							コンストラクタで真が指定された時、または属するシーンがローカルシーンまたはローカルティック補間シーンである時、この値は真である。</p>
+						</div>
+						<p>この値が真である場合、このエンティティに対する point イベントはこのゲームインスタンスにのみ通知され、
+						他の参加者・視聴者には通知されない。また真である場合、 <code>id</code> の値の一意性は保証されない。</p>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>false</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="opacity" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> opacity</h3>
 					<div class="tsd-signature tsd-kind-icon">opacity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.opacity</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#opacity">opacity</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1757</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:33</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>0～1でオブジェクトの不透明度を表す。
+							この値が0の場合、Rendererは描画処理を省略する。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>1</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="parent" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> parent</h3>
 					<div class="tsd-signature tsd-kind-icon">parent<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">E</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Scene</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.parent</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#parent">parent</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1946</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:68</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このエンティティの親</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="rubyenabled" class="tsd-anchor"></a>
@@ -293,9 +491,15 @@
 					<div class="tsd-signature tsd-kind-icon">ruby<wbr>Enabled<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/LabelParameterObject.ts#L61">LabelParameterObject.ts:61</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/LabelParameterObject.ts#L61">src/LabelParameterObject.ts:61</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>ルビを使うかどうか。
+							初期値は真である。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="rubyoptions" class="tsd-anchor"></a>
@@ -303,9 +507,14 @@
 					<div class="tsd-signature tsd-kind-icon">ruby<wbr>Options<span class="tsd-signature-symbol">:</span> <a href="_rubyparser_.rubyoptions.html" class="tsd-signature-type">RubyOptions</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/LabelParameterObject.ts#L94">LabelParameterObject.ts:94</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/LabelParameterObject.ts#L94">src/LabelParameterObject.ts:94</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>ルビのレイアウト設定。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="rubyparser" class="tsd-anchor"></a>
@@ -313,64 +522,123 @@
 					<div class="tsd-signature tsd-kind-icon">ruby<wbr>Parser<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">rt.RubyParser</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/LabelParameterObject.ts#L89">LabelParameterObject.ts:89</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/LabelParameterObject.ts#L89">src/LabelParameterObject.ts:89</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>ルビを解釈するパーサ。
+								初期値は DefaultRubyParser.ts で定義している parse() 関数である。
+							任意の文法でルビを記述する場合、この値に適切な関数を指定する必要がある。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="scalex" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> scaleX</h3>
 					<div class="tsd-signature tsd-kind-icon">scaleX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.scaleX</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#scalex">scaleX</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1762</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:38</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>オブジェクトの横方向の倍率。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>1</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="scaley" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> scaleY</h3>
 					<div class="tsd-signature tsd-kind-icon">scaleY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.scaleY</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#scaley">scaleY</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1767</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:43</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>オブジェクトの縦方向の倍率。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>1</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="scene" class="tsd-anchor"></a>
 					<h3>scene</h3>
 					<div class="tsd-signature tsd-kind-icon">scene<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Scene</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.scene</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#scene">scene</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1932</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:54</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このエンティティが属するシーン。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="shaderprogram" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> shader<wbr>Program</h3>
+					<div class="tsd-signature tsd-kind-icon">shader<wbr>Program<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ShaderProgram</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#shaderprogram">shaderProgram</a></p>
+						<ul>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:111</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このエンティティの描画時に利用されるシェーダプログラム。
+								このエンティティの <code>renderer#isSupportedShaderProgram()</code> が偽を返した場合、
+							<code>renderer#setShaderProgram()</code> は呼ばれないことに注意。</p>
+						</div>
+						<p>また <code>g.FilledRect</code> やその親エンティティに本値を指定した場合、対象の <code>g.FilledRect</code> の描画結果は不定である。
+						これは実装上の制限に基づく現バージョンの仕様である。</p>
+						<p>この値に <code>undefined</code> を指定した場合、親のシェーダプログラムを利用する。
+						この値に <code>null</code> を指定した場合、明示的にデフォルトのシェーダプログラムを利用する。</p>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="tag" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> tag</h3>
 					<div class="tsd-signature tsd-kind-icon">tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.tag</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#tag">tag</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1982</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:97</li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="targetcameras" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> target<wbr>Cameras</h3>
-					<div class="tsd-signature tsd-kind-icon">target<wbr>Cameras<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Camera</span><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.targetCameras</p>
-						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1958</li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>ゲーム開発者向けのタグ情報管理コンテナ。
+							この値はゲームエンジンのロジックからは使用されず、ゲーム開発者は任意の目的に使用してよい。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="text" class="tsd-anchor"></a>
@@ -378,19 +646,30 @@
 					<div class="tsd-signature tsd-kind-icon">text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/LabelParameterObject.ts#L10">LabelParameterObject.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/LabelParameterObject.ts#L10">src/LabelParameterObject.ts:10</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>描画する文字列。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="textalign" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> text<wbr>Align</h3>
-					<div class="tsd-signature tsd-kind-icon">text<wbr>Align<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TextAlign.Left</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">TextAlign.Center</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">TextAlign.Right</span></div>
+					<div class="tsd-signature tsd-kind-icon">text<wbr>Align<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">TextAlign</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">g.TextAlignString</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/LabelParameterObject.ts#L48">LabelParameterObject.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/LabelParameterObject.ts#L48">src/LabelParameterObject.ts:48</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>文字列の描画位置。
+							初期値は <code>&quot;left&quot;</code> である。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="textcolor" class="tsd-anchor"></a>
@@ -398,20 +677,38 @@
 					<div class="tsd-signature tsd-kind-icon">text<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/LabelParameterObject.ts#L55">LabelParameterObject.ts:55</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/LabelParameterObject.ts#L55">src/LabelParameterObject.ts:55</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>文字列の描画色をCSS Color形式で指定する。
+								元の描画色に重ねて表示されるため、アルファ値を指定した場合は元の描画色が透けて表示される。
+							初期値は <code>undefined</code> となり、 描画色の変更を行わない。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="touchable" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> touchable</h3>
 					<div class="tsd-signature tsd-kind-icon">touchable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.touchable</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#touchable">touchable</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1964</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:79</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>プレイヤーにとって触れられるオブジェクトであるかを表す。
+							この値が偽である場合、ポインティングイベントの対象にならない。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>false</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="trimmargintop" class="tsd-anchor"></a>
@@ -419,9 +716,16 @@
 					<div class="tsd-signature tsd-kind-icon">trim<wbr>Margin<wbr>Top<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/LabelParameterObject.ts#L74">LabelParameterObject.ts:74</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/LabelParameterObject.ts#L74">src/LabelParameterObject.ts:74</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>フォントの上端にある余白を描画するかどうか。
+								真の場合、文字の描画内容が崩れない範囲で余白を詰めて描画される。
+							初期値は偽である。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
 					<a name="width" class="tsd-anchor"></a>
@@ -430,9 +734,15 @@
 					<aside class="tsd-sources">
 						<p>Overrides Object2DParameterObject.width</p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/LabelParameterObject.ts#L30">LabelParameterObject.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/LabelParameterObject.ts#L30">src/LabelParameterObject.ts:30</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>横幅。
+							<code>lineBreak</code> が真の場合、描画する文字列はこの幅に収まるよう改行される。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="widthautoadjust" class="tsd-anchor"></a>
@@ -440,31 +750,59 @@
 					<div class="tsd-signature tsd-kind-icon">width<wbr>Auto<wbr>Adjust<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/LabelParameterObject.ts#L82">LabelParameterObject.ts:82</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/LabelParameterObject.ts#L82">src/LabelParameterObject.ts:82</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>width</code> プロパティを <code>this.text</code> の描画に必要な幅で自動的に更新するかを表す。
+								<code>textAlign</code> を <code>&quot;left&quot;</code> 以外にする場合、この値は <code>false</code> にすべきである。
+								(<code>textAlign</code> は <code>width</code> を元に描画位置を調整するため、 <code>true</code> の場合左寄せで右寄せでも描画結果が変わらなくなる)
+							初期値は偽である。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="x" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> x</h3>
 					<div class="tsd-signature tsd-kind-icon">x<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.x</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#x">x</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1736</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:12</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このオブジェクトの横位置。実際の座標位置はscaleX, scaleY, angle, anchorX, anchorYの値も考慮する必要がある。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>0</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="y" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> y</h3>
 					<div class="tsd-signature tsd-kind-icon">y<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.y</p>
+						<p>Inherited from <a href="_labelparameterobject_.labelparameterobject.html">LabelParameterObject</a>.<a href="_labelparameterobject_.labelparameterobject.html#y">y</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1741</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:17</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このオブジェクトの縦位置。実際の座標位置はscaleX, scaleY, angle, anchorX, anchorYの値も考慮する必要がある。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>0</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -475,22 +813,22 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_defaultrubyparser_.html">"<wbr>Default<wbr>Ruby<wbr>Parser"</a>
+						<a href="../modules/_defaultrubyparser_.html">&quot;<wbr>Default<wbr>Ruby<wbr>Parser&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_fragmentdrawinfo_.html">"<wbr>Fragment<wbr>Draw<wbr>Info"</a>
+						<a href="../modules/_fragmentdrawinfo_.html">&quot;<wbr>Fragment<wbr>Draw<wbr>Info&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_label_.html">"<wbr>Label"</a>
+						<a href="../modules/_label_.html">&quot;<wbr>Label&quot;</a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_labelparameterobject_.html">"<wbr>Label<wbr>Parameter<wbr>Object"</a>
+						<a href="../modules/_labelparameterobject_.html">&quot;<wbr>Label<wbr>Parameter<wbr>Object&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_rubyparser_.html">"<wbr>Ruby<wbr>Parser"</a>
+						<a href="../modules/_rubyparser_.html">&quot;<wbr>Ruby<wbr>Parser&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_index_.html">"index"</a>
+						<a href="../modules/_index_.html">&quot;index&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -501,6 +839,12 @@
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_labelparameterobject_.labelparameterobject.html" class="tsd-kind-icon">Label<wbr>Parameter<wbr>Object</a>
 						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_labelparameterobject_.labelparameterobject.html#anchorx" class="tsd-kind-icon">anchorX</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_labelparameterobject_.labelparameterobject.html#anchory" class="tsd-kind-icon">anchorY</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="_labelparameterobject_.labelparameterobject.html#angle" class="tsd-kind-icon">angle</a>
 							</li>
@@ -565,10 +909,10 @@
 								<a href="_labelparameterobject_.labelparameterobject.html#scene" class="tsd-kind-icon">scene</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_labelparameterobject_.labelparameterobject.html#tag" class="tsd-kind-icon">tag</a>
+								<a href="_labelparameterobject_.labelparameterobject.html#shaderprogram" class="tsd-kind-icon">shader<wbr>Program</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_labelparameterobject_.labelparameterobject.html#targetcameras" class="tsd-kind-icon">target<wbr>Cameras</a>
+								<a href="_labelparameterobject_.labelparameterobject.html#tag" class="tsd-kind-icon">tag</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_labelparameterobject_.labelparameterobject.html#text" class="tsd-kind-icon">text</a>
@@ -601,6 +945,9 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_labelparameterobject_.html#rt" class="tsd-kind-icon">rt</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -618,6 +965,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -666,7 +1014,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
@@ -677,7 +1025,7 @@
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-162208211-1', '');
+        ga('create', 'UA-162208211-1', 'auto');
         ga('send', 'pageview');
     </script>
 </body>

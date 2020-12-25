@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>DynamicFontParameterObject | @akashic/akashic-engine</title>
+	<title>DynamicFontParameterObject | Akashic Engine</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@akashic/akashic-engine</a>
+					<a href="../index.html" class="title">Akashic Engine</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -112,10 +112,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="fontcolor" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> font<wbr>Color</h3>
-					<div class="tsd-signature tsd-kind-icon">font<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<div class="tsd-signature tsd-kind-icon">font<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/DynamicFont.ts#L58">engine/DynamicFont.ts:58</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/DynamicFont.ts#L50">src/DynamicFont.ts:50</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -135,7 +135,7 @@
 					<div class="tsd-signature tsd-kind-icon">font<wbr>Family<span class="tsd-signature-symbol">:</span> <a href="../enums/fontfamily.html" class="tsd-signature-type">FontFamily</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../enums/fontfamily.html#sansserif" class="tsd-signature-type">SansSerif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/fontfamily.html#serif" class="tsd-signature-type">Serif</a><span class="tsd-signature-symbol"> | </span><a href="../enums/fontfamily.html#monospace" class="tsd-signature-type">Monospace</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/DynamicFont.ts#L40">engine/DynamicFont.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/DynamicFont.ts#L32">src/DynamicFont.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -155,7 +155,7 @@
 					<div class="tsd-signature tsd-kind-icon">font<wbr>Weight<span class="tsd-signature-symbol">:</span> <a href="../enums/fontweight.html" class="tsd-signature-type">FontWeight</a><span class="tsd-signature-symbol"> | </span><a href="../globals.html#fontweightstring" class="tsd-signature-type">FontWeightString</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/DynamicFont.ts#L65">engine/DynamicFont.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/DynamicFont.ts#L57">src/DynamicFont.ts:57</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -172,23 +172,17 @@
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="game" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> game</h3>
+					<h3>game</h3>
 					<div class="tsd-signature tsd-kind-icon">game<span class="tsd-signature-symbol">:</span> <a href="../classes/game.html" class="tsd-signature-type">Game</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/DynamicFont.ts#L28">engine/DynamicFont.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/DynamicFont.ts#L20">src/DynamicFont.ts:20</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>ゲームインスタンス。
-							ゲーム開発者が指定する必要はない。</p>
+							<p>ゲームインスタンス。</p>
 						</div>
-						<dl class="tsd-comment-tags">
-							<dt>default</dt>
-							<dd><p>g.game</p>
-							</dd>
-						</dl>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
@@ -197,7 +191,7 @@
 					<div class="tsd-signature tsd-kind-icon">hint<span class="tsd-signature-symbol">:</span> <a href="dynamicfonthint.html" class="tsd-signature-type">DynamicFontHint</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/DynamicFont.ts#L52">engine/DynamicFont.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/DynamicFont.ts#L44">src/DynamicFont.ts:44</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -213,7 +207,7 @@
 					<div class="tsd-signature tsd-kind-icon">size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/DynamicFont.ts#L45">engine/DynamicFont.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/DynamicFont.ts#L37">src/DynamicFont.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -225,10 +219,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="strokecolor" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stroke<wbr>Color</h3>
-					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Color<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/DynamicFont.ts#L77">engine/DynamicFont.ts:77</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/DynamicFont.ts#L69">src/DynamicFont.ts:69</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -245,10 +239,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="strokeonly" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stroke<wbr>Only</h3>
-					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Only<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Only<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/DynamicFont.ts#L83">engine/DynamicFont.ts:83</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/DynamicFont.ts#L75">src/DynamicFont.ts:75</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -265,10 +259,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="strokewidth" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stroke<wbr>Width</h3>
-					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<div class="tsd-signature tsd-kind-icon">stroke<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/DynamicFont.ts#L71">engine/DynamicFont.ts:71</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/DynamicFont.ts#L63">src/DynamicFont.ts:63</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -285,10 +279,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="surfaceatlasset" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> surface<wbr>Atlas<wbr>Set</h3>
-					<div class="tsd-signature tsd-kind-icon">surface<wbr>Atlas<wbr>Set<span class="tsd-signature-symbol">:</span> <a href="surfaceatlassetlike.html" class="tsd-signature-type">SurfaceAtlasSetLike</a></div>
+					<div class="tsd-signature tsd-kind-icon">surface<wbr>Atlas<wbr>Set<span class="tsd-signature-symbol">:</span> <a href="../classes/surfaceatlasset.html" class="tsd-signature-type">SurfaceAtlasSet</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/DynamicFont.ts#L89">engine/DynamicFont.ts:89</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/DynamicFont.ts#L81">src/DynamicFont.ts:81</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">

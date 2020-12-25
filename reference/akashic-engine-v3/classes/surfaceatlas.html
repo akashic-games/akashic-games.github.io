@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SurfaceAtlas | @akashic/akashic-engine</title>
+	<title>SurfaceAtlas | Akashic Engine</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@akashic/akashic-engine</a>
+					<a href="../index.html" class="title">Akashic Engine</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -83,12 +83,6 @@
 					</li>
 				</ul>
 			</section>
-			<section class="tsd-panel">
-				<h3>Implements</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/surfaceatlaslike.html" class="tsd-signature-type">SurfaceAtlasLike</a></li>
-				</ul>
-			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -118,6 +112,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="surfaceatlas.html#destroyed" class="tsd-kind-icon">destroyed</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="surfaceatlas.html#getaccessscore" class="tsd-kind-icon">get<wbr>Access<wbr>Score</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="surfaceatlas.html#getatlasusedsize" class="tsd-kind-icon">get<wbr>Atlas<wbr>Used<wbr>Size</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="surfaceatlas.html#reset" class="tsd-kind-icon">reset</a></li>
 							</ul>
 						</section>
 					</div>
@@ -129,19 +124,19 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Surface<wbr>Atlas<span class="tsd-signature-symbol">(</span>surface<span class="tsd-signature-symbol">: </span><a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Surface<wbr>Atlas<span class="tsd-signature-symbol">(</span>surface<span class="tsd-signature-symbol">: </span><a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/SurfaceAtlas.ts#L44">pdi-common-impls/SurfaceAtlas.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlas.ts#L42">src/SurfaceAtlas.ts:42</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>surface: <a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a></h5>
+									<h5>surface: <a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a></h4>
@@ -156,9 +151,8 @@
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _access<wbr>Score</h3>
 					<div class="tsd-signature tsd-kind-icon">_access<wbr>Score<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/surfaceatlaslike.html">SurfaceAtlasLike</a>.<a href="../interfaces/surfaceatlaslike.html#_accessscore">_accessScore</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/SurfaceAtlas.ts#L39">pdi-common-impls/SurfaceAtlas.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlas.ts#L37">src/SurfaceAtlas.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -167,10 +161,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_emptysurfaceatlasslothead" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _empty<wbr>Surface<wbr>Atlas<wbr>Slot<wbr>Head</h3>
-					<div class="tsd-signature tsd-kind-icon">_empty<wbr>Surface<wbr>Atlas<wbr>Slot<wbr>Head<span class="tsd-signature-symbol">:</span> <a href="../interfaces/surfaceatlasslotlike.html" class="tsd-signature-type">SurfaceAtlasSlotLike</a></div>
+					<div class="tsd-signature tsd-kind-icon">_empty<wbr>Surface<wbr>Atlas<wbr>Slot<wbr>Head<span class="tsd-signature-symbol">:</span> <a href="surfaceatlasslot.html" class="tsd-signature-type">SurfaceAtlasSlot</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/SurfaceAtlas.ts#L34">pdi-common-impls/SurfaceAtlas.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlas.ts#L32">src/SurfaceAtlas.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -179,11 +173,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_surface" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _surface</h3>
-					<div class="tsd-signature tsd-kind-icon">_surface<span class="tsd-signature-symbol">:</span> <a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a></div>
+					<div class="tsd-signature tsd-kind-icon">_surface<span class="tsd-signature-symbol">:</span> <a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/surfaceatlaslike.html">SurfaceAtlasLike</a>.<a href="../interfaces/surfaceatlaslike.html#_surface">_surface</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/SurfaceAtlas.ts#L29">pdi-common-impls/SurfaceAtlas.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlas.ts#L27">src/SurfaceAtlas.ts:27</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -195,7 +188,7 @@
 					<div class="tsd-signature tsd-kind-icon">_used<wbr>Rectangle<wbr>Area<wbr>Size<span class="tsd-signature-symbol">:</span> <a href="../interfaces/commonsize.html" class="tsd-signature-type">CommonSize</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/SurfaceAtlas.ts#L44">pdi-common-impls/SurfaceAtlas.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlas.ts#L42">src/SurfaceAtlas.ts:42</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -208,13 +201,13 @@
 					<a name="_acquiresurfaceatlasslot" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _acquire<wbr>Surface<wbr>Atlas<wbr>Slot</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">_acquire<wbr>Surface<wbr>Atlas<wbr>Slot<span class="tsd-signature-symbol">(</span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/surfaceatlasslotlike.html" class="tsd-signature-type">SurfaceAtlasSlotLike</a></li>
+						<li class="tsd-signature tsd-kind-icon">_acquire<wbr>Surface<wbr>Atlas<wbr>Slot<span class="tsd-signature-symbol">(</span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="surfaceatlasslot.html" class="tsd-signature-type">SurfaceAtlasSlot</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/SurfaceAtlas.ts#L56">pdi-common-impls/SurfaceAtlas.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlas.ts#L65">src/SurfaceAtlas.ts:65</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -228,7 +221,7 @@
 									<h5>height: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/surfaceatlasslotlike.html" class="tsd-signature-type">SurfaceAtlasSlotLike</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="surfaceatlasslot.html" class="tsd-signature-type">SurfaceAtlasSlot</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -236,13 +229,13 @@
 					<a name="_updateusedrectangleareasize" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _update<wbr>Used<wbr>Rectangle<wbr>Area<wbr>Size</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">_update<wbr>Used<wbr>Rectangle<wbr>Area<wbr>Size<span class="tsd-signature-symbol">(</span>slot<span class="tsd-signature-symbol">: </span><a href="../interfaces/surfaceatlasslotlike.html" class="tsd-signature-type">SurfaceAtlasSlotLike</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">_update<wbr>Used<wbr>Rectangle<wbr>Area<wbr>Size<span class="tsd-signature-symbol">(</span>slot<span class="tsd-signature-symbol">: </span><a href="surfaceatlasslot.html" class="tsd-signature-type">SurfaceAtlasSlot</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/SurfaceAtlas.ts#L106">pdi-common-impls/SurfaceAtlas.ts:106</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlas.ts#L115">src/SurfaceAtlas.ts:115</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -250,7 +243,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>slot: <a href="../interfaces/surfaceatlasslotlike.html" class="tsd-signature-type">SurfaceAtlasSlotLike</a></h5>
+									<h5>slot: <a href="surfaceatlasslot.html" class="tsd-signature-type">SurfaceAtlasSlot</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -261,14 +254,13 @@
 					<a name="addsurface" class="tsd-anchor"></a>
 					<h3>add<wbr>Surface</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Surface<span class="tsd-signature-symbol">(</span>surface<span class="tsd-signature-symbol">: </span><a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a>, offsetX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, offsetY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/surfaceatlasslotlike.html" class="tsd-signature-type">SurfaceAtlasSlotLike</a></li>
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Surface<span class="tsd-signature-symbol">(</span>surface<span class="tsd-signature-symbol">: </span><a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a>, offsetX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, offsetY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="surfaceatlasslot.html" class="tsd-signature-type">SurfaceAtlasSlot</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/surfaceatlaslike.html">SurfaceAtlasLike</a>.<a href="../interfaces/surfaceatlaslike.html#addsurface">addSurface</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/SurfaceAtlas.ts#L126">pdi-common-impls/SurfaceAtlas.ts:126</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlas.ts#L135">src/SurfaceAtlas.ts:135</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -279,7 +271,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>surface: <a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a></h5>
+									<h5>surface: <a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>追加するサーフェス</p>
 									</div>
@@ -309,7 +301,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/surfaceatlasslotlike.html" class="tsd-signature-type">SurfaceAtlasSlotLike</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="surfaceatlasslot.html" class="tsd-signature-type">SurfaceAtlasSlot</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -322,9 +314,8 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/surfaceatlaslike.html">SurfaceAtlasLike</a>.<a href="../interfaces/surfaceatlaslike.html#destroy">destroy</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/SurfaceAtlas.ts#L144">pdi-common-impls/SurfaceAtlas.ts:144</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlas.ts#L153">src/SurfaceAtlas.ts:153</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -346,9 +337,8 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/surfaceatlaslike.html">SurfaceAtlasLike</a>.<a href="../interfaces/surfaceatlaslike.html#destroyed">destroyed</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/SurfaceAtlas.ts#L151">pdi-common-impls/SurfaceAtlas.ts:151</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlas.ts#L160">src/SurfaceAtlas.ts:160</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -370,7 +360,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/SurfaceAtlas.ts#L162">pdi-common-impls/SurfaceAtlas.ts:162</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlas.ts#L171">src/SurfaceAtlas.ts:171</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -386,9 +376,8 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/surfaceatlaslike.html">SurfaceAtlasLike</a>.<a href="../interfaces/surfaceatlaslike.html#getatlasusedsize">getAtlasUsedSize</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/SurfaceAtlas.ts#L158">pdi-common-impls/SurfaceAtlas.ts:158</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlas.ts#L167">src/SurfaceAtlas.ts:167</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -397,6 +386,23 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/commonsize.html" class="tsd-signature-type">CommonSize</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="reset" class="tsd-anchor"></a>
+					<h3>reset</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">reset<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlas.ts#L51">src/SurfaceAtlas.ts:51</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -452,6 +458,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="surfaceatlas.html#getatlasusedsize" class="tsd-kind-icon">get<wbr>Atlas<wbr>Used<wbr>Size</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="surfaceatlas.html#reset" class="tsd-kind-icon">reset</a>
 							</li>
 						</ul>
 					</li>

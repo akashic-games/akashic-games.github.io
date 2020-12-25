@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SoundAudioSystem | @akashic/akashic-engine</title>
+	<title>SoundAudioSystem | Akashic Engine</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@akashic/akashic-engine</a>
+					<a href="../index.html" class="title">Akashic Engine</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -70,7 +70,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="audiosystem.html" class="tsd-signature-type">AudioSystem</a>
+						<span class="tsd-signature-type">AudioSystem</span>
 						<ul class="tsd-hierarchy">
 							<li>
 								<span class="target">SoundAudioSystem</span>
@@ -82,7 +82,7 @@
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/audiosystemlike.html" class="tsd-signature-type">AudioSystemLike</a></li>
+					<li><span class="tsd-signature-type">AudioSystem</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -147,7 +147,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L243">pdi-common-impls/AudioSystem.ts:243</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L241">src/AudioSystem.ts:241</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -170,7 +170,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#_destroyrequestedassets">_destroyRequestedAssets</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L45">pdi-common-impls/AudioSystem.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L42">src/AudioSystem.ts:42</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -179,7 +179,7 @@
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-index-signature">
-								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="../interfaces/audioassetlike.html" class="tsd-signature-type">AudioAssetLike</a></h5>
+								<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><a href="../interfaces/audioasset.html" class="tsd-signature-type">AudioAsset</a></h5>
 							</li>
 						</ul>
 					</div>
@@ -191,7 +191,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#_explicitmuted">_explicitMuted</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L62">pdi-common-impls/AudioSystem.ts:62</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L59">src/AudioSystem.ts:59</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -205,10 +205,9 @@
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _muted</h3>
 					<div class="tsd-signature tsd-kind-icon">_muted<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/audiosystemlike.html">AudioSystemLike</a>.<a href="../interfaces/audiosystemlike.html#_muted">_muted</a></p>
-						<p>Inherited from <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#_muted">_muted</a></p>
+						<p>Inherited from <a href="musicaudiosystem.html">MusicAudioSystem</a>.<a href="musicaudiosystem.html#_muted">_muted</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L40">pdi-common-impls/AudioSystem.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L37">src/AudioSystem.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -217,11 +216,11 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-private">
 					<a name="_resourcefactory" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _resource<wbr>Factory</h3>
-					<div class="tsd-signature tsd-kind-icon">_resource<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="../interfaces/resourcefactorylike.html" class="tsd-signature-type">ResourceFactoryLike</a></div>
+					<div class="tsd-signature tsd-kind-icon">_resource<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="../interfaces/resourcefactory.html" class="tsd-signature-type">ResourceFactory</a></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#_resourcefactory">_resourceFactory</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L56">pdi-common-impls/AudioSystem.ts:56</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L53">src/AudioSystem.ts:53</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -234,7 +233,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#_suppressed">_suppressed</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L51">pdi-common-impls/AudioSystem.ts:51</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L48">src/AudioSystem.ts:48</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -250,7 +249,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#_volume">_volume</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L35">pdi-common-impls/AudioSystem.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L32">src/AudioSystem.ts:32</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -261,20 +260,19 @@
 					<h3>id</h3>
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/audiosystemlike.html">AudioSystemLike</a>.<a href="../interfaces/audiosystemlike.html#id">id</a></p>
-						<p>Inherited from <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#id">id</a></p>
+						<p>Inherited from <a href="musicaudiosystem.html">MusicAudioSystem</a>.<a href="musicaudiosystem.html#id">id</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L30">pdi-common-impls/AudioSystem.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L27">src/AudioSystem.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="players" class="tsd-anchor"></a>
 					<h3>players</h3>
-					<div class="tsd-signature tsd-kind-icon">players<span class="tsd-signature-symbol">:</span> <a href="../interfaces/audioplayerlike.html" class="tsd-signature-type">AudioPlayerLike</a><span class="tsd-signature-symbol">[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">players<span class="tsd-signature-symbol">:</span> <a href="../interfaces/audioplayer.html" class="tsd-signature-type">AudioPlayer</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L243">pdi-common-impls/AudioSystem.ts:243</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L241">src/AudioSystem.ts:241</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -291,18 +289,18 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#volume">volume</a></p>
+								<p>Inherited from <a href="musicaudiosystem.html">MusicAudioSystem</a>.<a href="musicaudiosystem.html#volume">volume</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L66">pdi-common-impls/AudioSystem.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L63">src/AudioSystem.ts:63</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#volume">volume</a></p>
+								<p>Inherited from <a href="musicaudiosystem.html">MusicAudioSystem</a>.<a href="musicaudiosystem.html#volume">volume</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L70">pdi-common-impls/AudioSystem.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L67">src/AudioSystem.ts:67</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -328,7 +326,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L315">pdi-common-impls/AudioSystem.ts:315</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L314">src/AudioSystem.ts:314</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -353,7 +351,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L322">pdi-common-impls/AudioSystem.ts:322</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L321">src/AudioSystem.ts:321</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -379,7 +377,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#_onmutedchanged">_onMutedChanged</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L291">pdi-common-impls/AudioSystem.ts:291</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L290">src/AudioSystem.ts:290</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -399,7 +397,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#_onvolumechanged">_onVolumeChanged</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L337">pdi-common-impls/AudioSystem.ts:337</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L336">src/AudioSystem.ts:336</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -417,10 +415,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/audiosystemlike.html">AudioSystemLike</a>.<a href="../interfaces/audiosystemlike.html#_reset">_reset</a></p>
-								<p>Overrides <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#_reset">_reset</a></p>
+								<p>Overrides AudioSystem._reset</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L278">pdi-common-impls/AudioSystem.ts:278</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L277">src/AudioSystem.ts:277</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -438,10 +435,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/audiosystemlike.html">AudioSystemLike</a>.<a href="../interfaces/audiosystemlike.html#_setmuted">_setMuted</a></p>
-								<p>Inherited from <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#_setmuted">_setMuted</a></p>
+								<p>Inherited from <a href="musicaudiosystem.html">MusicAudioSystem</a>.<a href="musicaudiosystem.html#_setmuted">_setMuted</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L113">pdi-common-impls/AudioSystem.ts:113</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L111">src/AudioSystem.ts:111</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -465,10 +461,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/audiosystemlike.html">AudioSystemLike</a>.<a href="../interfaces/audiosystemlike.html#_setplaybackrate">_setPlaybackRate</a></p>
-								<p>Overrides <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#_setplaybackrate">_setPlaybackRate</a></p>
+								<p>Overrides AudioSystem._setPlaybackRate</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L301">pdi-common-impls/AudioSystem.ts:301</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L300">src/AudioSystem.ts:300</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -494,7 +489,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#_updatemuted">_updateMuted</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L136">pdi-common-impls/AudioSystem.ts:136</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L134">src/AudioSystem.ts:134</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -507,18 +502,17 @@
 					<a name="createplayer" class="tsd-anchor"></a>
 					<h3>create<wbr>Player</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">create<wbr>Player<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/audioplayerlike.html" class="tsd-signature-type">AudioPlayerLike</a></li>
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Player<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/audioplayer.html" class="tsd-signature-type">AudioPlayer</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/audiosystemlike.html">AudioSystemLike</a>.<a href="../interfaces/audiosystemlike.html#createplayer">createPlayer</a></p>
-								<p>Overrides <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#createplayer">createPlayer</a></p>
+								<p>Overrides AudioSystem.createPlayer</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L250">pdi-common-impls/AudioSystem.ts:250</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L248">src/AudioSystem.ts:248</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/audioplayerlike.html" class="tsd-signature-type">AudioPlayerLike</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/audioplayer.html" class="tsd-signature-type">AudioPlayer</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -526,24 +520,23 @@
 					<a name="findplayers" class="tsd-anchor"></a>
 					<h3>find<wbr>Players</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">find<wbr>Players<span class="tsd-signature-symbol">(</span>asset<span class="tsd-signature-symbol">: </span><a href="../interfaces/audioassetlike.html" class="tsd-signature-type">AudioAssetLike</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/audioplayerlike.html" class="tsd-signature-type">AudioPlayerLike</a><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">find<wbr>Players<span class="tsd-signature-symbol">(</span>asset<span class="tsd-signature-symbol">: </span><a href="../interfaces/audioasset.html" class="tsd-signature-type">AudioAsset</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/audioplayer.html" class="tsd-signature-type">AudioPlayer</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/audiosystemlike.html">AudioSystemLike</a>.<a href="../interfaces/audiosystemlike.html#findplayers">findPlayers</a></p>
-								<p>Overrides <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#findplayers">findPlayers</a></p>
+								<p>Overrides AudioSystem.findPlayers</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L260">pdi-common-impls/AudioSystem.ts:260</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L258">src/AudioSystem.ts:258</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>asset: <a href="../interfaces/audioassetlike.html" class="tsd-signature-type">AudioAssetLike</a></h5>
+									<h5>asset: <a href="../interfaces/audioasset.html" class="tsd-signature-type">AudioAsset</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/audioplayerlike.html" class="tsd-signature-type">AudioPlayerLike</a><span class="tsd-signature-symbol">[]</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/audioplayer.html" class="tsd-signature-type">AudioPlayer</a><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -551,21 +544,20 @@
 					<a name="requestdestroy" class="tsd-anchor"></a>
 					<h3>request<wbr>Destroy</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">request<wbr>Destroy<span class="tsd-signature-symbol">(</span>asset<span class="tsd-signature-symbol">: </span><a href="../interfaces/audioassetlike.html" class="tsd-signature-type">AudioAssetLike</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">request<wbr>Destroy<span class="tsd-signature-symbol">(</span>asset<span class="tsd-signature-symbol">: </span><a href="../interfaces/audioasset.html" class="tsd-signature-type">AudioAsset</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/audiosystemlike.html">AudioSystemLike</a>.<a href="../interfaces/audiosystemlike.html#requestdestroy">requestDestroy</a></p>
-								<p>Inherited from <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#requestdestroy">requestDestroy</a></p>
+								<p>Inherited from <a href="musicaudiosystem.html">MusicAudioSystem</a>.<a href="musicaudiosystem.html#requestdestroy">requestDestroy</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L94">pdi-common-impls/AudioSystem.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L92">src/AudioSystem.ts:92</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>asset: <a href="../interfaces/audioassetlike.html" class="tsd-signature-type">AudioAssetLike</a></h5>
+									<h5>asset: <a href="../interfaces/audioasset.html" class="tsd-signature-type">AudioAsset</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -581,10 +573,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/audiosystemlike.html">AudioSystemLike</a>.<a href="../interfaces/audiosystemlike.html#stopall">stopAll</a></p>
-								<p>Overrides <a href="audiosystem.html">AudioSystem</a>.<a href="audiosystem.html#stopall">stopAll</a></p>
+								<p>Overrides AudioSystem.stopAll</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/pdi-common-impls/AudioSystem.ts#L268">pdi-common-impls/AudioSystem.ts:268</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystem.ts#L267">src/AudioSystem.ts:267</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>

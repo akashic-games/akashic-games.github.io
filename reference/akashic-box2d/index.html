@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>@akashic-extension/akashic-box2d</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for @akashic-extension/akashic-box2d">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> @akashic-extension/akashic-box2d</h1>
+			<h1>@akashic-extension/akashic-box2d</h1>
 		</div>
 	</div>
 </header>
@@ -67,7 +67,9 @@
 				<p align="center">
 					<img src="img/akashic.png"/>
 				</p>
-				<h1 id="akashic-box2d">akashic-box2d</h1>
+				<a href="#akashic-box2d" id="akashic-box2d" style="color: inherit; text-decoration: none;">
+					<h1>akashic-box2d</h1>
+				</a>
 				<p><strong>akashic-box2d</strong> は、2D物理演算ライブラリである<a href="https://github.com/hecht-software/box2dweb">Box2DWeb</a>をAkashicで利用するためのモジュールです。</p>
 				<p>本モジュールでは、AkashicでBox2DWebを使う際に便利となるよう、次の機能を提供します。</p>
 				<ul>
@@ -77,11 +79,13 @@
 				</ul>
 				<p>本モジュールは <strong>AkashicとBox2DWebとの紐づけ</strong> と <strong>一部の便利機能</strong> のみを提供しています。
 				そのため、その他多くの機能はBox2DWebを直接利用することになります。</p>
-				<h2 id="-">利用方法</h2>
+				<a href="#利用方法" id="利用方法" style="color: inherit; text-decoration: none;">
+					<h2>利用方法</h2>
+				</a>
 				<p><a href="https://github.com/akashic-games/akashic-cli">akashic-cli</a>をインストールした後、</p>
 				<pre><code class="language-sh">akashic install @akashic-extension/akashic-box2d</code></pre>
 				<p>でインストールできます。コンテンツからは、</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">var</span> b2 = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@akashic-extension/akashic-box2d"</span>);</code></pre>
+				<pre><code class="language-javascript"><span class="hljs-keyword">var</span> b2 = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;@akashic-extension/akashic-box2d&quot;</span>);</code></pre>
 				<p>で利用してください。
 				詳細な利用方法については、以下を参照してください。</p>
 				<ul>
@@ -94,17 +98,25 @@
 					</li>
 				</ul>
 				<p>Akashic Engineの詳細な利用方法については、 <a href="https://akashic-games.github.io/">公式ページ</a> を参照してください。</p>
-				<h2 id="-">ビルド方法</h2>
+				<a href="#ビルド方法" id="ビルド方法" style="color: inherit; text-decoration: none;">
+					<h2>ビルド方法</h2>
+				</a>
 				<p><strong>akashic-box2d</strong> はTypeScriptで書かれたライブラリであるため、ビルドにはNode.jsが必要です。</p>
 				<p><code>npm run build</code> によりgulpを使ってビルドできます。</p>
 				<pre><code class="language-sh">npm install
 npm run build</code></pre>
-				<h2 id="-">テスト方法</h2>
+				<a href="#テスト方法" id="テスト方法" style="color: inherit; text-decoration: none;">
+					<h2>テスト方法</h2>
+				</a>
 				<pre><code class="language-sh">npm <span class="hljs-built_in">test</span></code></pre>
-				<h2 id="-">注意点</h2>
+				<a href="#注意点" id="注意点" style="color: inherit; text-decoration: none;">
+					<h2>注意点</h2>
+				</a>
 				<p>Box2DWebでは <code>Math.random()</code> が使われている箇所があります。(該当メソッド: <code>Box2D.Common.Math.b2Math.Random()</code> , <code>Box2D.Common.Math.b2Math.RandomRange()</code> )</p>
 				<p>該当メソッドは利用せず、かわりに <code>g.game.random</code> を利用してください。</p>
-				<h2 id="-">ライセンス</h2>
+				<a href="#ライセンス" id="ライセンス" style="color: inherit; text-decoration: none;">
+					<h2>ライセンス</h2>
+				</a>
 				<p>本リポジトリは MIT License の元で公開されています。
 				詳しくは <a href="https://github.com/akashic-games/akashic-box2d/blob/master/LICENSE">LICENSE</a> をご覧ください。</p>
 				<p>ただし、画像ファイルおよび音声ファイルは
@@ -156,73 +168,32 @@ npm run build</code></pre>
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 		</div>
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-162208211-1', '');
+        ga('create', 'UA-162208211-1', 'auto');
         ga('send', 'pageview');
     </script>
 </body>

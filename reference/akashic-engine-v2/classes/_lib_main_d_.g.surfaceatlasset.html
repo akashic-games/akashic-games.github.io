@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SurfaceAtlasSet | @akashic/akashic-engine - v2.6.3</title>
+	<title>SurfaceAtlasSet | @akashic/akashic-engine - v2.6.6</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@akashic/akashic-engine - v2.6.3</a>
+					<a href="../index.html" class="title">@akashic/akashic-engine - v2.6.6</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -73,8 +73,9 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>DynamicFontで使用される、SurfaceAtlasを管理する。</p>
+						<p>DynamicFont で使用される SurfaceAtlas を管理するクラス。</p>
 					</div>
+					<p>歴史的経緯のため、名前に反して DynamicFont 専用のクラスであり、汎用の SurfaceAtlas 管理クラスではない点に注意。</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -117,10 +118,10 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.surfaceatlasset.html#_deleteatlas" class="tsd-kind-icon">_delete<wbr>Atlas</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.surfaceatlasset.html#_findleastfrequentlyusedatlasindex" class="tsd-kind-icon">_find<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas<wbr>Index</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.surfaceatlasset.html#_moveglyphsurface" class="tsd-kind-icon">_move<wbr>Glyph<wbr>Surface</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.surfaceatlasset.html#_reallocateatlas" class="tsd-kind-icon">_reallocate<wbr>Atlas</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.surfaceatlasset.html#_removeleastfrequentlyusedatlas" class="tsd-kind-icon">_remove<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.surfaceatlasset.html#addatlas" class="tsd-kind-icon">add<wbr>Atlas</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_lib_main_d_.g.surfaceatlasset.html#_spliceleastfrequentlyusedatlas" class="tsd-kind-icon">_splice<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.surfaceatlasset.html#addglyph" class="tsd-kind-icon">add<wbr>Glyph</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.surfaceatlasset.html#changemaxatlasnum" class="tsd-kind-icon">change<wbr>Max<wbr>Atlas<wbr>Num</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.surfaceatlasset.html#destroy" class="tsd-kind-icon">destroy</a></li>
@@ -129,6 +130,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.surfaceatlasset.html#getatlasnum" class="tsd-kind-icon">get<wbr>Atlas<wbr>Num</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.surfaceatlasset.html#getatlassize" class="tsd-kind-icon">get<wbr>Atlas<wbr>Size</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.surfaceatlasset.html#getmaxatlasnum" class="tsd-kind-icon">get<wbr>Max<wbr>Atlas<wbr>Num</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_lib_main_d_.g.surfaceatlasset.html#touchglyph" class="tsd-kind-icon">touch<wbr>Glyph</a></li>
 							</ul>
 						</section>
 					</div>
@@ -146,7 +148,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:6244</li>
+									<li>Defined in lib/main.d.ts:6240</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -168,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">_atlas<wbr>Glyphs<wbr>Table<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.glyph.html" class="tsd-signature-type">Glyph</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:6228</li>
+							<li>Defined in lib/main.d.ts:6224</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -180,7 +182,7 @@
 					<div class="tsd-signature tsd-kind-icon">_atlas<wbr>Size<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_lib_main_d_.g.commonsize.html" class="tsd-signature-type">CommonSize</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:6240</li>
+							<li>Defined in lib/main.d.ts:6236</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -192,7 +194,7 @@
 					<div class="tsd-signature tsd-kind-icon">_current<wbr>Atlas<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:6244</li>
+							<li>Defined in lib/main.d.ts:6240</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -204,7 +206,7 @@
 					<div class="tsd-signature tsd-kind-icon">_max<wbr>Atlas<wbr>Num<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:6232</li>
+							<li>Defined in lib/main.d.ts:6228</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -216,7 +218,7 @@
 					<div class="tsd-signature tsd-kind-icon">_resource<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.resourcefactory.html" class="tsd-signature-type">ResourceFactory</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:6236</li>
+							<li>Defined in lib/main.d.ts:6232</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -228,7 +230,7 @@
 					<div class="tsd-signature tsd-kind-icon">_surface<wbr>Atlases<span class="tsd-signature-symbol">:</span> <a href="_lib_main_d_.g.surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:6224</li>
+							<li>Defined in lib/main.d.ts:6220</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -240,7 +242,7 @@
 					<div class="tsd-signature tsd-kind-icon">INITIAL_<wbr>MAX_<wbr>SURFACEATLAS_<wbr>NUM<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in lib/main.d.ts:6220</li>
+							<li>Defined in lib/main.d.ts:6216</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -262,7 +264,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:6249</li>
+									<li>Defined in lib/main.d.ts:6245</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -278,23 +280,48 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-					<a name="_moveglyphsurface" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _move<wbr>Glyph<wbr>Surface</h3>
+					<a name="_findleastfrequentlyusedatlasindex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _find<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas<wbr>Index</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">_move<wbr>Glyph<wbr>Surface<span class="tsd-signature-symbol">(</span>glyph<span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.glyph.html" class="tsd-signature-type">Glyph</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a></li>
+						<li class="tsd-signature tsd-kind-icon">_find<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas<wbr>Index<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:6260</li>
+									<li>Defined in lib/main.d.ts:6252</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>空き領域のあるSurfaceAtlasを探索する。
-									glyphが持つ情報をSurfaceAtlasへ移動し、移動したSurfaceAtlasの情報でglyphを置き換える。</p>
+									<p>surfaceAtlases の最も利用されていない SurfaceAtlas を探し、 そのインデックスを返す。</p>
 								</div>
+								<p>_surfaceAtlases の長さが 0 の場合、 -1 を返す。</p>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+					<a name="_moveglyphsurface" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _move<wbr>Glyph<wbr>Surface</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">_move<wbr>Glyph<wbr>Surface<span class="tsd-signature-symbol">(</span>glyph<span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.glyph.html" class="tsd-signature-type">Glyph</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in lib/main.d.ts:6269</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>空き領域のある SurfaceAtlas を探索する。
+										glyph が持つ情報を SurfaceAtlas へ移動し、移動した SurfaceAtlas の情報で glyph を置き換える。
+									glyph が持っていた surface は破棄される。</p>
+								</div>
+								<p>移動に成功した場合 <code>true</code> を、失敗した (空き領域が見つからなかった) 場合 <code>false</code> を返す。</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -302,7 +329,7 @@
 									<h5>glyph: <a href="_lib_main_d_.g.glyph.html" class="tsd-signature-type">Glyph</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -316,7 +343,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:6265</li>
+									<li>Defined in lib/main.d.ts:6274</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -329,55 +356,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-					<a name="_removeleastfrequentlyusedatlas" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _remove<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas</h3>
+					<a name="_spliceleastfrequentlyusedatlas" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _splice<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">_remove<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas<span class="tsd-signature-symbol">(</span>removedNum<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_main_d_.g.removeatlasdata.html" class="tsd-signature-type">RemoveAtlasData</a></li>
+						<li class="tsd-signature tsd-kind-icon">_splice<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:6254</li>
+									<li>Defined in lib/main.d.ts:6260</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>使用度の低いサーフェスアトラスを配列から削除する。</p>
+									<p>surfaceAtlases の最も利用されていない SurfaceAtlas を切り離して返す。</p>
 								</div>
+								<p>返された SurfaceAtlas に紐づいていたすべての Glyph はサーフェスを失う (_isSurfaceValid が偽になる) 。
+								_surfaceAtlases の長さが 0 の場合、 何もせず null を返す。</p>
 							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>removedNum: <span class="tsd-signature-type">number</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_lib_main_d_.g.removeatlasdata.html" class="tsd-signature-type">RemoveAtlasData</a></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-					<a name="addatlas" class="tsd-anchor"></a>
-					<h3>add<wbr>Atlas</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Atlas<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in lib/main.d.ts:6274</li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>サーフェスアトラスを追加する。</p>
-								</div>
-								<p>保持している_surfaceAtlasesの数が最大値以上の場合、削除してから追加する。</p>
-								<p>このメソッドは、このSurfaceAtlasSetに紐づいている <code>DynamnicFont</code> の <code>constructor</code> から暗黙に呼び出される。
-								通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">null</span>
+							</h4>
 						</li>
 					</ul>
 				</section>
@@ -385,21 +386,22 @@
 					<a name="addglyph" class="tsd-anchor"></a>
 					<h3>add<wbr>Glyph</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Glyph<span class="tsd-signature-symbol">(</span>glyph<span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.glyph.html" class="tsd-signature-type">Glyph</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a></li>
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Glyph<span class="tsd-signature-symbol">(</span>glyph<span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.glyph.html" class="tsd-signature-type">Glyph</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:6316</li>
+									<li>Defined in lib/main.d.ts:6315</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>サーフェスアトラスにグリフを追加する。</p>
+									<p>グリフを追加する。</p>
 								</div>
-								<p>このメソッドは、このSurfaceAtlasSetに紐づいている <code>DynamnicFont</code> の <code>glyphForCharacter()</code> から暗黙に呼び出される。
-								通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
+								<p>glyph が持っていたサーフェスは破棄され、このクラスが管理するいずれかの (サーフェスアトラスの) サーフェスに紐づけられる。
+								追加に成功した場合 <code>true</code> を、失敗した (空き領域が見つからなかった) 場合 <code>false</code> を返す。</p>
+								<p>通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -410,7 +412,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_lib_main_d_.g.surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -424,7 +426,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:6301</li>
+									<li>Defined in lib/main.d.ts:6299</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -458,7 +460,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_lib_main_d_.g.destroyable.html">Destroyable</a>.<a href="../interfaces/_lib_main_d_.g.destroyable.html#destroy">destroy</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:6320</li>
+									<li>Defined in lib/main.d.ts:6329</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -481,7 +483,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_lib_main_d_.g.destroyable.html">Destroyable</a>.<a href="../interfaces/_lib_main_d_.g.destroyable.html#destroyed">destroyed</a></p>
 								<ul>
-									<li>Defined in lib/main.d.ts:6324</li>
+									<li>Defined in lib/main.d.ts:6333</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -503,15 +505,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:6282</li>
+									<li>Defined in lib/main.d.ts:6281</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>引数で指定されたindexのサーフェスアトラスを取得する。</p>
 								</div>
-								<p>このメソッドは、このSurfaceAtlasSetに紐づいている <code>DynamnicFont</code> の <code>glyphForCharacter()</code> から暗黙に呼び出される。
-								通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
+								<p>通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -536,15 +537,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:6289</li>
+									<li>Defined in lib/main.d.ts:6287</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>サーフェスアトラスの保持数を取得する。</p>
 								</div>
-								<p>このメソッドは、このSurfaceAtlasSetに紐づいている <code>DynamnicFont</code> の <code>glyphForCharacter()</code> から暗黙に呼び出される。
-								通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
+								<p>通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
@@ -560,15 +560,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:6308</li>
+									<li>Defined in lib/main.d.ts:6305</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>サーフェスアトラスのサイズを取得する。</p>
 								</div>
-								<p>このメソッドは、このSurfaceAtlasSetに紐づいている <code>DynamnicFont</code> の <code>glyphForCharacter()</code> から暗黙に呼び出される。
-								通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
+								<p>通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_lib_main_d_.g.commonsize.html" class="tsd-signature-type">CommonSize</a></h4>
 						</li>
@@ -584,7 +583,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in lib/main.d.ts:6293</li>
+									<li>Defined in lib/main.d.ts:6291</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -593,6 +592,40 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a name="touchglyph" class="tsd-anchor"></a>
+					<h3>touch<wbr>Glyph</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">touch<wbr>Glyph<span class="tsd-signature-symbol">(</span>glyph<span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.glyph.html" class="tsd-signature-type">Glyph</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in lib/main.d.ts:6325</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>グリフの利用を通知する。</p>
+								</div>
+								<p>サーフェスが不足した時、このクラスは最も利用頻度の低いサーフェスを解放して再利用する。
+								このメソッドによるグリフの利用通知は、利用頻度の低いサーフェスを特定するために利用される。</p>
+								<p>通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>glyph: <a href="_lib_main_d_.g.glyph.html" class="tsd-signature-type">Glyph</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>グリフ</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -641,16 +674,16 @@
 								<a href="_lib_main_d_.g.surfaceatlasset.html#_deleteatlas" class="tsd-kind-icon">_delete<wbr>Atlas</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+								<a href="_lib_main_d_.g.surfaceatlasset.html#_findleastfrequentlyusedatlasindex" class="tsd-kind-icon">_find<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas<wbr>Index</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 								<a href="_lib_main_d_.g.surfaceatlasset.html#_moveglyphsurface" class="tsd-kind-icon">_move<wbr>Glyph<wbr>Surface</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
 								<a href="_lib_main_d_.g.surfaceatlasset.html#_reallocateatlas" class="tsd-kind-icon">_reallocate<wbr>Atlas</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-								<a href="_lib_main_d_.g.surfaceatlasset.html#_removeleastfrequentlyusedatlas" class="tsd-kind-icon">_remove<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-								<a href="_lib_main_d_.g.surfaceatlasset.html#addatlas" class="tsd-kind-icon">add<wbr>Atlas</a>
+								<a href="_lib_main_d_.g.surfaceatlasset.html#_spliceleastfrequentlyusedatlas" class="tsd-kind-icon">_splice<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_lib_main_d_.g.surfaceatlasset.html#addglyph" class="tsd-kind-icon">add<wbr>Glyph</a>
@@ -675,6 +708,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_lib_main_d_.g.surfaceatlasset.html#getmaxatlasnum" class="tsd-kind-icon">get<wbr>Max<wbr>Atlas<wbr>Num</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+								<a href="_lib_main_d_.g.surfaceatlasset.html#touchglyph" class="tsd-kind-icon">touch<wbr>Glyph</a>
 							</li>
 						</ul>
 					</li>

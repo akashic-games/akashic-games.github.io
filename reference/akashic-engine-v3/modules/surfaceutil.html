@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SurfaceUtil | @akashic/akashic-engine</title>
+	<title>SurfaceUtil | Akashic Engine</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@akashic/akashic-engine</a>
+					<a href="../index.html" class="title">Akashic Engine</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -66,6 +66,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Surface に関連するユーティリティ。</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -96,7 +103,7 @@
 					<div class="tsd-signature tsd-kind-icon">Animating<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>_handleAnimationStart<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">; </span>_handleAnimationStop<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceUtil.ts#L25">engine/SurfaceUtil.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceUtil.ts#L26">src/SurfaceUtil.ts:26</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -146,13 +153,13 @@
 					<a name="assurface" class="tsd-anchor"></a>
 					<h3>as<wbr>Surface</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">as<wbr>Surface<span class="tsd-signature-symbol">(</span>src<span class="tsd-signature-symbol">: </span><a href="../interfaces/imageassetlike.html" class="tsd-signature-type">ImageAssetLike</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a></li>
+						<li class="tsd-signature tsd-kind-icon">as<wbr>Surface<span class="tsd-signature-symbol">(</span>src<span class="tsd-signature-symbol">: </span><a href="../interfaces/imageasset.html" class="tsd-signature-type">ImageAsset</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceUtil.ts#L13">engine/SurfaceUtil.ts:13</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceUtil.ts#L14">src/SurfaceUtil.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -164,12 +171,12 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>src: <a href="../interfaces/imageassetlike.html" class="tsd-signature-type">ImageAssetLike</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a></h5>
+									<h5>src: <a href="../interfaces/imageasset.html" class="tsd-signature-type">ImageAsset</a><span class="tsd-signature-symbol"> | </span><a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
 									<div class="tsd-comment tsd-typography">
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -177,13 +184,13 @@
 					<a name="drawninepatch" class="tsd-anchor"></a>
 					<h3>draw<wbr>Nine<wbr>Patch</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">draw<wbr>Nine<wbr>Patch<span class="tsd-signature-symbol">(</span>destSurface<span class="tsd-signature-symbol">: </span><a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a>, srcSurface<span class="tsd-signature-symbol">: </span><a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a>, borderWidth<span class="tsd-signature-symbol">?: </span><a href="../interfaces/commonrect.html" class="tsd-signature-type">CommonRect</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">draw<wbr>Nine<wbr>Patch<span class="tsd-signature-symbol">(</span>destSurface<span class="tsd-signature-symbol">: </span><a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a>, srcSurface<span class="tsd-signature-symbol">: </span><a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a>, borderWidth<span class="tsd-signature-symbol">?: </span><a href="../interfaces/commonrect.html" class="tsd-signature-type">CommonRect</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceUtil.ts#L84">engine/SurfaceUtil.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceUtil.ts#L81">src/SurfaceUtil.ts:81</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -198,13 +205,13 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>destSurface: <a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a></h5>
+									<h5>destSurface: <a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>描画先 <code>Surface</code></p>
 									</div>
 								</li>
 								<li>
-									<h5>srcSurface: <a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a></h5>
+									<h5>srcSurface: <a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>描画元 <code>Surface</code></p>
 									</div>
@@ -224,13 +231,13 @@
 					<a name="migrateanimatinghandler" class="tsd-anchor"></a>
 					<h3>migrate<wbr>Animating<wbr>Handler</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">migrate<wbr>Animating<wbr>Handler<span class="tsd-signature-symbol">(</span>animatingHandler<span class="tsd-signature-symbol">: </span><a href="surfaceutil.html#animatinghandler" class="tsd-signature-type">AnimatingHandler</a>, _beforeSurface<span class="tsd-signature-symbol">: </span><a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a>, afterSurface<span class="tsd-signature-symbol">: </span><a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">migrate<wbr>Animating<wbr>Handler<span class="tsd-signature-symbol">(</span>animatingHandler<span class="tsd-signature-symbol">: </span><a href="surfaceutil.html#animatinghandler" class="tsd-signature-type">AnimatingHandler</a>, _beforeSurface<span class="tsd-signature-symbol">: </span><a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a>, afterSurface<span class="tsd-signature-symbol">: </span><a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceUtil.ts#L60">engine/SurfaceUtil.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceUtil.ts#L61">src/SurfaceUtil.ts:61</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -248,10 +255,10 @@
 									</div>
 								</li>
 								<li>
-									<h5>_beforeSurface: <a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a></h5>
+									<h5>_beforeSurface: <a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a></h5>
 								</li>
 								<li>
-									<h5>afterSurface: <a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a></h5>
+									<h5>afterSurface: <a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>ハンドラを登録するサーフェス</p>
 									</div>
@@ -265,13 +272,13 @@
 					<a name="setupanimatinghandler" class="tsd-anchor"></a>
 					<h3>setup<wbr>Animating<wbr>Handler</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">setup<wbr>Animating<wbr>Handler<span class="tsd-signature-symbol">(</span>animatingHandler<span class="tsd-signature-symbol">: </span><a href="surfaceutil.html#animatinghandler" class="tsd-signature-type">AnimatingHandler</a>, surface<span class="tsd-signature-symbol">: </span><a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">setup<wbr>Animating<wbr>Handler<span class="tsd-signature-symbol">(</span>animatingHandler<span class="tsd-signature-symbol">: </span><a href="surfaceutil.html#animatinghandler" class="tsd-signature-type">AnimatingHandler</a>, surface<span class="tsd-signature-symbol">: </span><a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceUtil.ts#L45">engine/SurfaceUtil.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceUtil.ts#L46">src/SurfaceUtil.ts:46</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -289,7 +296,7 @@
 									</div>
 								</li>
 								<li>
-									<h5>surface: <a href="../interfaces/surfacelike.html" class="tsd-signature-type">SurfaceLike</a></h5>
+									<h5>surface: <a href="../interfaces/surface.html" class="tsd-signature-type">Surface</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>サーフェス</p>
 									</div>
@@ -309,9 +316,6 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="collision.html">Collision</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="eventindex.html">Event<wbr>Index</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="exceptionfactory.html">Exception<wbr>Factory</a>

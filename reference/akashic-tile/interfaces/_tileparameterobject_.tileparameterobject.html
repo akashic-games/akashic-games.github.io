@@ -89,6 +89,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#anchorx" class="tsd-kind-icon">anchorX</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#anchory" class="tsd-kind-icon">anchorY</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#angle" class="tsd-kind-icon">angle</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#children" class="tsd-kind-icon">children</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#compositeoperation" class="tsd-kind-icon">composite<wbr>Operation</a></li>
@@ -102,9 +104,9 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#scalex" class="tsd-kind-icon">scaleX</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#scaley" class="tsd-kind-icon">scaleY</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#scene" class="tsd-kind-icon">scene</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#shaderprogram" class="tsd-kind-icon">shader<wbr>Program</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_tileparameterobject_.tileparameterobject.html#src" class="tsd-kind-icon">src</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#tag" class="tsd-kind-icon">tag</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_tileparameterobject_.tileparameterobject.html#targetcameras" class="tsd-kind-icon">target<wbr>Cameras</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_tileparameterobject_.tileparameterobject.html#tiledata" class="tsd-kind-icon">tile<wbr>Data</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_tileparameterobject_.tileparameterobject.html#tileheight" class="tsd-kind-icon">tile<wbr>Height</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_tileparameterobject_.tileparameterobject.html#tilewidth" class="tsd-kind-icon">tile<wbr>Width</a></li>
@@ -120,103 +122,255 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="anchorx" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> anchorX</h3>
+					<div class="tsd-signature tsd-kind-icon">anchorX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#anchorx">anchorX</a></p>
+						<ul>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:67</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>オブジェクトのアンカーの横位置。アンカーについては以下の通り。</p>
+							<ul>
+								<li>アンカーとして設定した箇所がこのオブジェクトの基点 (位置、拡縮・回転の基点) となる。</li>
+								<li>単位は相対値 (左上端が (0, 0) 中央が (0.5, 0,5) 右下端が (1,1) ) である。
+								初期値は <code>0</code> である。</li>
+							</ul>
+						</div>
+						<p>NOTE: <code>anchorX</code> または <code>anchorY</code> のどちらかを明示的に <code>null</code> に指定した場合、
+							このオブジェクトのアンカーは前バージョン(v2.x.x 以前)のデフォルトの挙動 (位置 <code>x</code>, <code>y</code> は左上端を基準に、拡大・縮小・回転の基点は中央を基準に決定) と同様になる。
+						これは前バージョンとの後方互換性のために存在する。</p>
+						<ul>
+							<li>@default 0</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="anchory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> anchorY</h3>
+					<div class="tsd-signature tsd-kind-icon">anchorY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#anchory">anchorY</a></p>
+						<ul>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:79</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>オブジェクトのアンカーの縦位置。アンカーについては以下の通り。</p>
+							<ul>
+								<li>アンカーとして設定した箇所がこのオブジェクトの基点 (位置、拡縮・回転の基点) となる。</li>
+								<li>単位は相対値 (左上端が (0, 0) 中央が (0.5, 0,5) 右下端が (1,1) ) である。
+								初期値は <code>0</code> である。</li>
+							</ul>
+						</div>
+						<p>NOTE: <code>anchorX</code> または <code>anchorY</code> のどちらを明示的に <code>null</code> に指定した場合、
+							このオブジェクトのアンカーは前バージョン(v2.x.x 以前)のデフォルトの挙動 (位置 <code>x</code>, <code>y</code> は左上端を基準に、拡大・縮小・回転の基点は中央を基準に決定) と同様になる。
+						これは前バージョンとの後方互換性のために存在する。</p>
+						<ul>
+							<li>@default 0</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="angle" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> angle</h3>
 					<div class="tsd-signature tsd-kind-icon">angle<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.angle</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#angle">angle</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1772</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:48</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>オブジェクトの回転。度数で指定する。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>0</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="children" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> children</h3>
 					<div class="tsd-signature tsd-kind-icon">children<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.children</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#children">children</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1951</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:73</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このエンティティの全子エンティティ。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="compositeoperation" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> composite<wbr>Operation</h3>
-					<div class="tsd-signature tsd-kind-icon">composite<wbr>Operation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CompositeOperation.SourceOver</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.SourceAtop</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.Lighter</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.Copy</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.ExperimentalSourceIn</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.ExperimentalSourceOut</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.ExperimentalDestinationAtop</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.ExperimentalDestinationIn</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.DestinationOut</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.DestinationOver</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperation.Xor</span></div>
+					<div class="tsd-signature tsd-kind-icon">composite<wbr>Operation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CompositeOperation</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">CompositeOperationString</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.compositeOperation</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#compositeoperation">compositeOperation</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1778</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:55</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>描画時の合成方法を指定する。
+								省略された場合、合成方法を指定しない（親の合成方法を利用する）。
+							なお <code>CompositeOperation</code> での指定は非推奨である。 <code>CompositeOperationString</code> を利用すること。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="height" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> height</h3>
 					<div class="tsd-signature tsd-kind-icon">height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.height</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#height">height</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1751</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:27</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このオブジェクトの縦幅。実際の表示領域としてはscaleX, scaleY, angleの値も考慮する必要がある。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>0</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="hidden" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> hidden</h3>
 					<div class="tsd-signature tsd-kind-icon">hidden<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.hidden</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#hidden">hidden</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1969</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:84</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このエンティティの表示状態。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>false</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="id" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> id</h3>
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.id</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#id">id</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1976</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:91</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このエンティティに割り振られる <code>E#id</code> の値。
+								エンジンが一意の ID を設定するため、通常指定する必要はない。
+							この値は、スナップショットローダがエンティティを復元する際にのみ指定されるべきである。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="local" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> local</h3>
 					<div class="tsd-signature tsd-kind-icon">local<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.local</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#local">local</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1941</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:63</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このエンティティがローカルであるか否か。
+							コンストラクタで真が指定された時、または属するシーンがローカルシーンまたはローカルティック補間シーンである時、この値は真である。</p>
+						</div>
+						<p>この値が真である場合、このエンティティに対する point イベントはこのゲームインスタンスにのみ通知され、
+						他の参加者・視聴者には通知されない。また真である場合、 <code>id</code> の値の一意性は保証されない。</p>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>false</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="opacity" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> opacity</h3>
 					<div class="tsd-signature tsd-kind-icon">opacity<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.opacity</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#opacity">opacity</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1757</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:33</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>0～1でオブジェクトの不透明度を表す。
+							この値が0の場合、Rendererは描画処理を省略する。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>1</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="parent" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> parent</h3>
 					<div class="tsd-signature tsd-kind-icon">parent<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">E</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Scene</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.parent</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#parent">parent</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1946</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:68</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このエンティティの親</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="redrawarea" class="tsd-anchor"></a>
@@ -224,74 +378,138 @@
 					<div class="tsd-signature tsd-kind-icon">redraw<wbr>Area<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CommonArea</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/dbea4c5/src/TileParameterObject.ts#L33">TileParameterObject.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/3b2d675/src/TileParameterObject.ts#L33">src/TileParameterObject.ts:33</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>マップチップが描画される領域。
+							与えられた場合、それ以降は指定された領域の外のマップチップは再描画されない。</p>
+						</div>
+						<p>画面外にあたるなどの、不要なマップチップの再描画をしないことで、描画を最適化するために利用できる。</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="scalex" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> scaleX</h3>
 					<div class="tsd-signature tsd-kind-icon">scaleX<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.scaleX</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#scalex">scaleX</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1762</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:38</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>オブジェクトの横方向の倍率。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>1</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="scaley" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> scaleY</h3>
 					<div class="tsd-signature tsd-kind-icon">scaleY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.scaleY</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#scaley">scaleY</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1767</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:43</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>オブジェクトの縦方向の倍率。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>1</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="scene" class="tsd-anchor"></a>
 					<h3>scene</h3>
 					<div class="tsd-signature tsd-kind-icon">scene<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Scene</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.scene</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#scene">scene</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1932</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:54</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このエンティティが属するシーン。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="shaderprogram" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> shader<wbr>Program</h3>
+					<div class="tsd-signature tsd-kind-icon">shader<wbr>Program<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ShaderProgram</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#shaderprogram">shaderProgram</a></p>
+						<ul>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:111</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このエンティティの描画時に利用されるシェーダプログラム。
+								このエンティティの <code>renderer#isSupportedShaderProgram()</code> が偽を返した場合、
+							<code>renderer#setShaderProgram()</code> は呼ばれないことに注意。</p>
+						</div>
+						<p>また <code>g.FilledRect</code> やその親エンティティに本値を指定した場合、対象の <code>g.FilledRect</code> の描画結果は不定である。
+						これは実装上の制限に基づく現バージョンの仕様である。</p>
+						<p>この値に <code>undefined</code> を指定した場合、親のシェーダプログラムを利用する。
+						この値に <code>null</code> を指定した場合、明示的にデフォルトのシェーダプログラムを利用する。</p>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="src" class="tsd-anchor"></a>
 					<h3>src</h3>
-					<div class="tsd-signature tsd-kind-icon">src<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Surface</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Asset</span></div>
+					<div class="tsd-signature tsd-kind-icon">src<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Surface</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ImageAsset</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/dbea4c5/src/TileParameterObject.ts#L5">TileParameterObject.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/3b2d675/src/TileParameterObject.ts#L5">src/TileParameterObject.ts:5</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>マップチップ画像。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="tag" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> tag</h3>
 					<div class="tsd-signature tsd-kind-icon">tag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.tag</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#tag">tag</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1982</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:97</li>
 						</ul>
 					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="targetcameras" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> target<wbr>Cameras</h3>
-					<div class="tsd-signature tsd-kind-icon">target<wbr>Cameras<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Camera</span><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.targetCameras</p>
-						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1958</li>
-						</ul>
-					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>ゲーム開発者向けのタグ情報管理コンテナ。
+							この値はゲームエンジンのロジックからは使用されず、ゲーム開発者は任意の目的に使用してよい。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>undefined</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="tiledata" class="tsd-anchor"></a>
@@ -299,9 +517,18 @@
 					<div class="tsd-signature tsd-kind-icon">tile<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/dbea4c5/src/TileParameterObject.ts#L25">TileParameterObject.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/3b2d675/src/TileParameterObject.ts#L25">src/TileParameterObject.ts:25</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>タイルのデータ。
+							マップチップのインデックスの配列。</p>
+						</div>
+						<p><code>Tile</code> は <code>src</code> の画像を、幅 <code>tileWidth</code> 高さ <code>tileHeight</code> の画像(マップチップ)を敷き詰めたものとみなし、
+							左上から 0 基準のインデックス番号を与える。この値はそのインデックス番号の配列である。
+						<code>Tile</code> はこの配列の内容に従い、マップチップを左上から敷き詰めて描画する。</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="tileheight" class="tsd-anchor"></a>
@@ -309,9 +536,14 @@
 					<div class="tsd-signature tsd-kind-icon">tile<wbr>Height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/dbea4c5/src/TileParameterObject.ts#L15">TileParameterObject.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/3b2d675/src/TileParameterObject.ts#L15">src/TileParameterObject.ts:15</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>マップチップ一つの高さ。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="tilewidth" class="tsd-anchor"></a>
@@ -319,53 +551,99 @@
 					<div class="tsd-signature tsd-kind-icon">tile<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/dbea4c5/src/TileParameterObject.ts#L10">TileParameterObject.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-tile/blob/3b2d675/src/TileParameterObject.ts#L10">src/TileParameterObject.ts:10</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>マップチップ一つの幅。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="touchable" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> touchable</h3>
 					<div class="tsd-signature tsd-kind-icon">touchable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from EParameterObject.touchable</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#touchable">touchable</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1964</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/entities/E.d.ts:79</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>プレイヤーにとって触れられるオブジェクトであるかを表す。
+							この値が偽である場合、ポインティングイベントの対象にならない。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>false</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="width" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> width</h3>
 					<div class="tsd-signature tsd-kind-icon">width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.width</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#width">width</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1746</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:22</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このオブジェクトの横幅。実際の表示領域としてはscaleX, scaleY, angleの値も考慮する必要がある。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>0</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="x" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> x</h3>
 					<div class="tsd-signature tsd-kind-icon">x<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.x</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#x">x</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1736</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:12</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このオブジェクトの横位置。実際の座標位置はscaleX, scaleY, angle, anchorX, anchorYの値も考慮する必要がある。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>0</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="y" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> y</h3>
 					<div class="tsd-signature tsd-kind-icon">y<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-						<p>Inherited from Object2DParameterObject.y</p>
+						<p>Inherited from <a href="_tileparameterobject_.tileparameterobject.html">TileParameterObject</a>.<a href="_tileparameterobject_.tileparameterobject.html#y">y</a></p>
 						<ul>
-							<li>Defined in ./node_modules/@akashic/akashic-engine/lib/main.d.ts:1741</li>
+							<li>Defined in node_modules/@akashic/akashic-engine/lib/Object2D.d.ts:17</li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このオブジェクトの縦位置。実際の座標位置はscaleX, scaleY, angle, anchorX, anchorYの値も考慮する必要がある。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>default</dt>
+							<dd><p>0</p>
+							</dd>
+						</dl>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -376,13 +654,13 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_tile_.html">"<wbr>Tile"</a>
+						<a href="../modules/_tile_.html">&quot;<wbr>Tile&quot;</a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_tileparameterobject_.html">"<wbr>Tile<wbr>Parameter<wbr>Object"</a>
+						<a href="../modules/_tileparameterobject_.html">&quot;<wbr>Tile<wbr>Parameter<wbr>Object&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_index_.html">"index"</a>
+						<a href="../modules/_index_.html">&quot;index&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -393,6 +671,12 @@
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_tileparameterobject_.tileparameterobject.html" class="tsd-kind-icon">Tile<wbr>Parameter<wbr>Object</a>
 						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_tileparameterobject_.tileparameterobject.html#anchorx" class="tsd-kind-icon">anchorX</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_tileparameterobject_.tileparameterobject.html#anchory" class="tsd-kind-icon">anchorY</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="_tileparameterobject_.tileparameterobject.html#angle" class="tsd-kind-icon">angle</a>
 							</li>
@@ -432,14 +716,14 @@
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="_tileparameterobject_.tileparameterobject.html#scene" class="tsd-kind-icon">scene</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_tileparameterobject_.tileparameterobject.html#shaderprogram" class="tsd-kind-icon">shader<wbr>Program</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_tileparameterobject_.tileparameterobject.html#src" class="tsd-kind-icon">src</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="_tileparameterobject_.tileparameterobject.html#tag" class="tsd-kind-icon">tag</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_tileparameterobject_.tileparameterobject.html#targetcameras" class="tsd-kind-icon">target<wbr>Cameras</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_tileparameterobject_.tileparameterobject.html#tiledata" class="tsd-kind-icon">tile<wbr>Data</a>
@@ -483,6 +767,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -531,7 +816,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
@@ -542,7 +827,7 @@
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-162208211-1', '');
+        ga('create', 'UA-162208211-1', 'auto');
         ga('send', 'pageview');
     </script>
 </body>

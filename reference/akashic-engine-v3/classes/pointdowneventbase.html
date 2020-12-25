@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>PointDownEventBase | @akashic/akashic-engine</title>
+	<title>PointDownEventBase | Akashic Engine</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@akashic/akashic-engine</a>
+					<a href="../index.html" class="title">Akashic Engine</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -102,27 +102,27 @@
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/event.html" class="tsd-signature-type">Event</a></li>
+					<li><span class="tsd-signature-type">Event</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="pointdowneventbase.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="pointdowneventbase.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="pointdowneventbase.html#eventflags" class="tsd-kind-icon">event<wbr>Flags</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="pointdowneventbase.html#local" class="tsd-kind-icon">local</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="pointdowneventbase.html#player" class="tsd-kind-icon">player</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="pointdowneventbase.html#point" class="tsd-kind-icon">point</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="pointdowneventbase.html#pointerid" class="tsd-kind-icon">pointer<wbr>Id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="pointdowneventbase.html#priority" class="tsd-kind-icon">priority</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="pointdowneventbase.html#target" class="tsd-kind-icon">target</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite"><a href="pointdowneventbase.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
@@ -130,20 +130,20 @@
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Point<wbr>Down<wbr>Event<wbr>Base<span class="tsd-signature-symbol">(</span>pointerId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span>, point<span class="tsd-signature-symbol">: </span><a href="../interfaces/commonoffset.html" class="tsd-signature-type">CommonOffset</a>, player<span class="tsd-signature-symbol">?: </span><a href="../interfaces/player.html" class="tsd-signature-type">Player</a>, local<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span>, priority<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="pointdowneventbase.html" class="tsd-signature-type">PointDownEventBase</a></li>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Point<wbr>Down<wbr>Event<wbr>Base<span class="tsd-signature-symbol">(</span>pointerId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span>, point<span class="tsd-signature-symbol">: </span><a href="../interfaces/commonoffset.html" class="tsd-signature-type">CommonOffset</a>, player<span class="tsd-signature-symbol">?: </span><a href="../interfaces/player.html" class="tsd-signature-type">Player</a>, local<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span>, eventFlags<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="pointdowneventbase.html" class="tsd-signature-type">PointDownEventBase</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Overrides <a href="pointeventbase.html">PointEventBase</a>.<a href="pointeventbase.html#constructor">constructor</a></p>
+								<p>Inherited from <a href="pointeventbase.html">PointEventBase</a>.<a href="pointeventbase.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Event.ts#L109">engine/Event.ts:109</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Event.ts#L90">src/Event.ts:90</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -152,7 +152,7 @@
 									<h5>pointerId: <span class="tsd-signature-type">number</span></h5>
 								</li>
 								<li>
-									<h5>target: <span class="tsd-signature-type">T</span></h5>
+									<h5>target: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
 								</li>
 								<li>
 									<h5>point: <a href="../interfaces/commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
@@ -161,10 +161,10 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> player: <a href="../interfaces/player.html" class="tsd-signature-type">Player</a></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> local: <span class="tsd-signature-type">boolean</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> local: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> priority: <span class="tsd-signature-type">number</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> eventFlags: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="pointdowneventbase.html" class="tsd-signature-type">PointDownEventBase</a></h4>
@@ -175,25 +175,35 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="eventflags" class="tsd-anchor"></a>
+					<h3>event<wbr>Flags</h3>
+					<div class="tsd-signature tsd-kind-icon">event<wbr>Flags<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="pointeventbase.html">PointEventBase</a>.<a href="pointeventbase.html#eventflags">eventFlags</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Event.ts#L85">src/Event.ts:85</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="local" class="tsd-anchor"></a>
 					<h3>local</h3>
 					<div class="tsd-signature tsd-kind-icon">local<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/event.html">Event</a>.<a href="../interfaces/event.html#local">local</a></p>
 						<p>Inherited from <a href="pointeventbase.html">PointEventBase</a>.<a href="pointeventbase.html#local">local</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Event.ts#L89">engine/Event.ts:89</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Event.ts#L86">src/Event.ts:86</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="player" class="tsd-anchor"></a>
 					<h3>player</h3>
-					<div class="tsd-signature tsd-kind-icon">player<span class="tsd-signature-symbol">:</span> <a href="../interfaces/player.html" class="tsd-signature-type">Player</a></div>
+					<div class="tsd-signature tsd-kind-icon">player<span class="tsd-signature-symbol">:</span> <a href="../interfaces/player.html" class="tsd-signature-type">Player</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="pointeventbase.html">PointEventBase</a>.<a href="pointeventbase.html#player">player</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Event.ts#L90">engine/Event.ts:90</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Event.ts#L87">src/Event.ts:87</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -204,7 +214,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="pointeventbase.html">PointEventBase</a>.<a href="pointeventbase.html#point">point</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Event.ts#L92">engine/Event.ts:92</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Event.ts#L89">src/Event.ts:89</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -215,30 +225,18 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="pointeventbase.html">PointEventBase</a>.<a href="pointeventbase.html#pointerid">pointerId</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Event.ts#L91">engine/Event.ts:91</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-					<a name="priority" class="tsd-anchor"></a>
-					<h3>priority</h3>
-					<div class="tsd-signature tsd-kind-icon">priority<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/event.html">Event</a>.<a href="../interfaces/event.html#priority">priority</a></p>
-						<p>Inherited from <a href="pointeventbase.html">PointEventBase</a>.<a href="pointeventbase.html#priority">priority</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Event.ts#L88">engine/Event.ts:88</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Event.ts#L88">src/Event.ts:88</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="target" class="tsd-anchor"></a>
 					<h3>target</h3>
-					<div class="tsd-signature tsd-kind-icon">target<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span></div>
+					<div class="tsd-signature tsd-kind-icon">target<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="pointeventbase.html">PointEventBase</a>.<a href="pointeventbase.html#target">target</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Event.ts#L93">engine/Event.ts:93</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Event.ts#L90">src/Event.ts:90</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -247,10 +245,9 @@
 					<h3>type</h3>
 					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"point-down"</span><span class="tsd-signature-symbol"> = &quot;point-down&quot;</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/event.html">Event</a>.<a href="../interfaces/event.html#type">type</a></p>
 						<p>Overrides <a href="pointeventbase.html">PointEventBase</a>.<a href="pointeventbase.html#type">type</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Event.ts#L109">engine/Event.ts:109</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Event.ts#L107">src/Event.ts:107</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -271,8 +268,11 @@
 					<li class="current tsd-kind-class tsd-has-type-parameter">
 						<a href="pointdowneventbase.html" class="tsd-kind-icon">Point<wbr>Down<wbr>Event<wbr>Base</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
 								<a href="pointdowneventbase.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="pointdowneventbase.html#eventflags" class="tsd-kind-icon">event<wbr>Flags</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="pointdowneventbase.html#local" class="tsd-kind-icon">local</a>
@@ -285,9 +285,6 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="pointdowneventbase.html#pointerid" class="tsd-kind-icon">pointer<wbr>Id</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
-								<a href="pointdowneventbase.html#priority" class="tsd-kind-icon">priority</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="pointdowneventbase.html#target" class="tsd-kind-icon">target</a>
