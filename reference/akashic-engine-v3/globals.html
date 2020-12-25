@@ -372,7 +372,7 @@
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>アセット宣言</p>
+							<p> Khai báo asset</p>
 						</div>
 					</div>
 					<div class="tsd-type-declaration">
@@ -395,7 +395,7 @@
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>オーディオシステム宣言</p>
+							<p>Khai báo Audio system</p>
 						</div>
 					</div>
 					<div class="tsd-type-declaration">
@@ -418,24 +418,23 @@
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>描画時の合成方法。</p>
+							<p>Phương pháp tổng hợp khi vẽ (drawing)</p>
 						</div>
 						<ul>
-							<li><code>&quot;source-over&quot;</code>: 先に描画された領域の上に描画する。</li>
-							<li><code>&quot;source-atop&quot;</code>: 先に描画された領域と重なった部分のみを描画する。</li>
-							<li><code>&quot;lighter&quot;</code>: 先に描画された領域と重なった部分の色を加算して描画する。</li>
-							<li><code>&quot;copy&quot;</code>: 先に描画された領域を全て無視して描画する。</li>
-							<li><code>&quot;experimental-source-in&quot;</code>: 先に描画された領域と重なった部分に描画を行い、それ以外の部分を透明にする。</li>
-							<li><code>&quot;experimental-source-out&quot;</code>: 先に描画された領域と重なっていない部分に描画を行い、それ以外の部分を透明にする。</li>
-							<li><code>&quot;experimental-destination-atop&quot;</code>: 描画する領域だけを表示し、先に描画された領域と重なった部分は描画先を表示する。</li>
-							<li><code>&quot;experimental-destination-in&quot;</code>: 先に描画された領域と重なっていない部分を透明にし、重なった部分は描画先を表示する。</li>
-							<li><code>&quot;destination-out&quot;</code>: 描画する領域を透明にする。</li>
-							<li><code>&quot;destination-over&quot;</code>: 先に描画された領域の下に描画する。</li>
-							<li><code>&quot;xor&quot;</code>: 先に描画された領域と重なった部分のみ透明にする。</li>
+							<li><code>&quot;source-over&quot;</code>: Vẽ lên vùng đã được vẽ trước đó.</li>
+							<li><code>&quot;source-atop&quot;</code>: Chỉ vẽ phần chồng lên vùng đã vẽ trước đó</li>
+							<li><code>&quot;lighter&quot;</code>: Vẽ bằng cách thêm màu cho phần chồng lên vùng đã vẽ trước đó</li>
+							<li><code>&quot;copy&quot;</code>: Vẽ bỏ qua toàn bộ vùng đã vẽ trước đó</li>
+							<li><code>&quot;experimental-source-in&quot;</code>: Vẽ lên phần chồng lên vùng đã vẽ trước đó, các phần khác thì để trong suốt</li>
+							<li><code>&quot;experimental-source-out&quot;</code>: Vẽ lên phần không trùng với vùng đã vẽ trước đó, các phần khác thì để trong suốt</li>
+							<li><code>&quot;experimental-destination-atop&quot;</code>: Chỉ hiển thị vùng vẽ, phần chồng lên vùng đã được vẽ trước đó thì hiển thị nơi vẽ (drawing destination)</li>
+							<li><code>&quot;experimental-destination-in&quot;</code>: Làm cho phần không trùng với vùng đã vẽ trước đó thành trong suốt, phần trùng thì hiển thị nơi vẽ (drawing destination)</li>
+							<li><code>&quot;destination-out&quot;</code>: Làm cho vùng vẽ thành trong suốt</li>
+							<li><code>&quot;destination-over&quot;</code>: Vẽ bên dưới vùng đã được vẽ trước đó</li>
+							<li><code>&quot;xor&quot;</code>: Chỉ làm cho phần trùng với vùng đã được vẽ trước đó thành trong suốt</li>
 						</ul>
-						<p><code>experimental-</code> がつくものは、環境によって描画結果が大きく異なることがある。
-							動作については HTML5 Canvas の globalCompositeOperation も参照のこと。
-						(ただし将来にわたってそれと互換である保証はない)</p>
+						<p>Đối với các mục có <code>experimental-</code> thì có thể có sự khác biệt lớn về kết quả vẽ tùy thuộc vào môi trường. Về hoạt động thì cũng tham chiếu globalCompositeOperation của HTML5 Canvas
+						(Tuy nhiên không đảm bảo là sẽ tương thích trong tương lai )</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
@@ -459,9 +458,9 @@
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>イベントフィルタ。</p>
+							<p>Event filter</p>
 						</div>
-						<p>詳細は <code>Game#addEventFilter()</code> のドキュメントを参照。</p>
+						<p>Chi tiết xin xem tài liệu <code>Game#addEventFilter()</code></p>
 					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
@@ -496,20 +495,20 @@
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>イベントの種別。</p>
+							<p>Phân loại event</p>
 						</div>
 						<ul>
-							<li><code>&quot;unknown&quot;</code>: 不明なイベント。ゲーム開発者はこの値を利用してはならない。</li>
-							<li><code>&quot;join&quot;</code>: プレイヤーの参加を表すイベント。</li>
-							<li><code>&quot;leave&quot;</code>: プレイヤーの離脱を表すイベント。</li>
-							<li><code>&quot;timestamp&quot;</code>: タイムスタンプを表すイベント。</li>
-							<li><code>&quot;player-info&quot;</code>: プレイヤー情報を表すイベント。</li>
-							<li><code>&quot;seed&quot;</code>: 乱数生成器の生成を表すイベント。この値は現在利用されていない。</li>
-							<li><code>&quot;point-down&quot;</code>: ポイントダウンイベント。</li>
-							<li><code>&quot;point-move&quot;</code>: ポイントムーブイベント。</li>
-							<li><code>&quot;point-up&quot;</code>: ポイントアップイベント。</li>
-							<li><code>&quot;message&quot;</code>: 汎用的なメッセージを表すイベント。</li>
-							<li><code>&quot;operation&quot;</code>: 操作プラグインが通知する操作を表すイベント。</li>
+							<li><code>&quot;unknown&quot;</code>: Event không xác định. Người phát triển không được sử dụng giá trị này</li>
+							<li><code>&quot;join&quot;</code>: Event thể hiện sự tham gia của player</li>
+							<li><code>&quot;leave&quot;</code>: Event thể hiện sự thoát ra của player</li>
+							<li><code>&quot;timestamp&quot;</code>: Event thể hiện time stamp</li>
+							<li><code>&quot;player-info&quot;</code>: Event thể hiện thông tin của player</li>
+							<li><code>&quot;seed&quot;</code>: Event thể hiển việc tạo ra bộ số ngẫu nhiên (Random number generator). Hiện giá trị này không được sử dụng</li>
+							<li><code>&quot;point-down&quot;</code>: Point down event</li>
+							<li><code>&quot;point-move&quot;</code>: Point move event</li>
+							<li><code>&quot;point-up&quot;</code>: Point up event</li>
+							<li><code>&quot;message&quot;</code>: Event thể hiển thông điệp (message) đa dụng</li>
+							<li><code>&quot;operation&quot;</code>: Event thể hiện hoạt động operation plugin ra thông báo</li>
 						</ul>
 					</div>
 				</section>
@@ -524,11 +523,11 @@
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>フォントのウェイト。</p>
+							<p>Độ đậm của font</p>
 						</div>
 						<ul>
-							<li><code>&quot;normal&quot;</code>: 通常のウェイト。</li>
-							<li><code>&quot;bold&quot;</code>: 太字のウェイト。</li>
+							<li><code>&quot;normal&quot;</code>: Chữ bình thường</li>
+							<li><code>&quot;bold&quot;</code>: Chữ đậm</li>
 						</ul>
 					</div>
 				</section>
@@ -543,12 +542,12 @@
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>シーンがローカルティックを受け取る方法。</p>
+							<p>Phương pháp scene nhận local ticks </p>
 						</div>
 						<ul>
-							<li><code>&quot;non-local&quot;</code>: ローカルティックを受け取らない。通常の (非ローカルの) シーン。</li>
-							<li><code>&quot;full-local&quot;</code>: ローカルティックのみを受け取る。ローカルシーン。</li>
-							<li><code>&quot;interpolate-local&quot;</code> 消化すべき非ローカルティックがない間、ローカルティックを受け取る。ローカルティック補間シーン。</li>
+							<li><code>&quot;non-local&quot;</code>: Không nhận local ticks. Scene bình thường (không phải local)</li>
+							<li><code>&quot;full-local&quot;</code>: Local scene, chỉ nhận local ticks</li>
+							<li><code>&quot;interpolate-local&quot;</code> Nhận local ticks trong khi không có non-local ticks cần sử dụng. Local ticks interpolation scene</li>
 						</ul>
 					</div>
 				</section>
@@ -563,7 +562,7 @@
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>require()解決用のエントリポイント</p>
+							<p>Entry point dùng để giải quyết require()</p>
 						</div>
 					</div>
 					<div class="tsd-type-declaration">
@@ -641,14 +640,14 @@
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>そのSceneの状態を表す列挙子。</p>
+							<p>Enumerator thể hiện trạng thái của Scene đó</p>
 						</div>
 						<ul>
-							<li>&quot;destroyed&quot;: すでに破棄されているシーンで、再利用が不可能になっている状態を表す</li>
-							<li>&quot;standby&quot;: 初期化された状態のシーンで、シーンスタックへ追加されることを待っている状態を表す</li>
-							<li>&quot;active&quot;: シーンスタックの一番上にいるシーンで、ゲームのカレントシーンとして活性化されている状態を表す</li>
-							<li>&quot;deactive&quot;: シーンスタックにいるが一番上ではないシーンで、裏側で非活性状態になっていることを表す</li>
-							<li>&quot;before-destroyed&quot;: これから破棄されるシーンで、再利用が不可能になっている状態を表す</li>
+							<li>&quot;destroyed&quot;: Là scene đã bị phá hủy (detroyed), thể hiện trạng thái không thể tái sử dụng</li>
+							<li>&quot;standby&quot;: Là scene ở trạng thái đã được khởi tạo, thể hiện trạng thái đang chờ được thêm vào Scene stack</li>
+							<li>&quot;active&quot;: Là scene trên cùng của Scene stack, thể hiện trạng thái đã được kích hoạt là current scene của game</li>
+							<li>&quot;deactive&quot;:Là scene ở trong scene stack nhưng không scene trên cùng, thể hiện đang ở trạng thái không hoạt động (inactived) phía sau scene </li>
+							<li>&quot;before-destroyed&quot;: Là scene sắp bị phá hủy (destroyed), thể hiện trạng thái không thể sử dụng lại được nữa </li>
 						</ul>
 					</div>
 				</section>
@@ -683,12 +682,12 @@
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>テキストの描画位置。</p>
+							<p>Vị trí vẽ của text</p>
 						</div>
 						<ul>
-							<li><code>&quot;left&quot;</code>: 左寄せ。</li>
-							<li><code>&quot;center&quot;</code>: 中央寄せ。</li>
-							<li><code>&quot;right&quot;</code>: 右寄せ。</li>
+							<li><code>&quot;left&quot;</code>: Canh trái</li>
+							<li><code>&quot;center&quot;</code>: Canh giữa</li>
+							<li><code>&quot;right&quot;</code>: Canh phải</li>
 						</ul>
 					</div>
 				</section>
@@ -703,14 +702,14 @@
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>シーンにおいて、時間経過の契機 (ティック) をどのように生成するか。
-							ただしローカルティック (ローカルシーン中などの「各プレイヤー間で独立な時間経過処理」) はこのモードの影響を受けない。</p>
+							<p>Làm sao để tạo ra khoảnh khoắc thời gian trôi qua (ticks) ở scene? 
+							Tuy nhiên local ticks (xử lý thời gian trôi qua độc lập giữa các layers như trong local scene) thì không chịu ảnh hưởng của mode này.</p>
 						</div>
 						<ul>
-							<li><code>&quot;by-clock&quot;</code>: 実際の時間経過に従う。</li>
-							<li><code>&quot;manual&quot;</code>: コンテンツが生成する。</li>
+							<li><code>&quot;by-clock&quot;</code>: Theo thời gian trôi qua thực tế </li>
+							<li><code>&quot;manual&quot;</code>: Content được tạo</li>
 						</ul>
-						<p><code>&quot;manual&quot;</code> を指定した <code>Scene</code> においては、 <code>Game#raiseTick()</code> を呼び出さない限り時間経過が起きない。</p>
+						<p> Ở <code>Scene</code> đã chỉ định <code>&quot;manual&quot;</code>, thời gian trôi qua sẽ không xảy ra nếu bạn không gọi <code>Game#raiseTick()</code> </p>
 					</div>
 				</section>
 			</section>
@@ -775,9 +774,9 @@
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>g.game<code>を返すだけの関数。
-この関数はスクリプトアセットの中でのみ動作し、スクリプトアセットの外の場合はエラーとなる。
-ゲーム開発者が指定する必要がないパラメータ</code>game` を省略させるための特殊な関数である。</p>
+									<p><code>Function chỉ trả về </code>g.game,
+<code>function này chỉ hoạt động trong Script asset, ở ngoài Script asset sẽ phát sinh lỗi.</code>
+Đây là function đặc thù dùng để giản lược thông số game,<code> thông số mà không cần người phát triển game chỉ định.</code></p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="classes/game.html" class="tsd-signature-type">Game</a></h4>
@@ -851,19 +850,19 @@
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>パスパターンを関数に変換する。</p>
+									<p>Convert một path pattern thành một funtion</p>
 								</div>
-								<p>パスパターンは、パス文字列、または0個以上の <code>**</code>, <code>*</code>, <code>?</code> を含むパス文字列である。
-									(実装の単純化のため、いわゆる glob のうちよく使われそうなものだけをサポートしている。)
-								詳細は <code>AssetAccessor#getAllImages()</code> の仕様を参照のこと。</p>
-								<p>戻り値は、文字列一つを受け取り、パターンにマッチするか否かを返す関数。</p>
+								<p>Path pattern là chuỗi path hoặc là chuỗi path có chứa không hoặc nhiều hơn <code>**</code>, <code>*</code>, <code>?</code>
+									(Để đơn giản hóa việc thực thi, nó chỉ hỗ trợ những thứ gọi là glob, cái mà có khả năng sử dụng được) 
+								Chi tiết xem mô tả của <code>AssetAccessor#getAllImages()</code></p>
+								<p>Giá trị trả về là hàm nhận một chuỗi ký tự và trả về xem có khớp với pattern hay không </p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>pattern: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>パターン文字列</p>
+										<p>Chuỗi pattern</p>
 									</div>
 								</li>
 							</ul>
