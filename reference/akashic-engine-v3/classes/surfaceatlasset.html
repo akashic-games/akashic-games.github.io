@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SurfaceAtlasSet | @akashic/akashic-engine</title>
+	<title>SurfaceAtlasSet | Akashic Engine</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@akashic/akashic-engine</a>
+					<a href="../index.html" class="title">Akashic Engine</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -69,8 +69,9 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>DynamicFontで使用される、SurfaceAtlasを管理する。</p>
+						<p>DynamicFont で使用される SurfaceAtlas を管理するクラス。</p>
 					</div>
+					<p>歴史的経緯のため、名前に反して DynamicFont 専用のクラスであり、汎用の SurfaceAtlas 管理クラスではない点に注意。</p>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-hierarchy">
@@ -79,12 +80,6 @@
 					<li>
 						<span class="target">SurfaceAtlasSet</span>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implements</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/surfaceatlassetlike.html" class="tsd-signature-type">SurfaceAtlasSetLike</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -113,10 +108,10 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="surfaceatlasset.html#_deleteatlas" class="tsd-kind-icon">_delete<wbr>Atlas</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="surfaceatlasset.html#_findleastfrequentlyusedatlasindex" class="tsd-kind-icon">_find<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas<wbr>Index</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="surfaceatlasset.html#_moveglyphsurface" class="tsd-kind-icon">_move<wbr>Glyph<wbr>Surface</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="surfaceatlasset.html#_reallocateatlas" class="tsd-kind-icon">_reallocate<wbr>Atlas</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="surfaceatlasset.html#_removeleastfrequentlyusedatlas" class="tsd-kind-icon">_remove<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="surfaceatlasset.html#addatlas" class="tsd-kind-icon">add<wbr>Atlas</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="surfaceatlasset.html#_spliceleastfrequentlyusedatlas" class="tsd-kind-icon">_splice<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="surfaceatlasset.html#addglyph" class="tsd-kind-icon">add<wbr>Glyph</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="surfaceatlasset.html#changemaxatlasnum" class="tsd-kind-icon">change<wbr>Max<wbr>Atlas<wbr>Num</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="surfaceatlasset.html#destroy" class="tsd-kind-icon">destroy</a></li>
@@ -125,6 +120,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="surfaceatlasset.html#getatlasnum" class="tsd-kind-icon">get<wbr>Atlas<wbr>Num</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="surfaceatlasset.html#getatlasusedsize" class="tsd-kind-icon">get<wbr>Atlas<wbr>Used<wbr>Size</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="surfaceatlasset.html#getmaxatlasnum" class="tsd-kind-icon">get<wbr>Max<wbr>Atlas<wbr>Num</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="surfaceatlasset.html#touchglyph" class="tsd-kind-icon">touch<wbr>Glyph</a></li>
 							</ul>
 						</section>
 					</div>
@@ -142,7 +138,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L82">engine/SurfaceAtlasSet.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L102">src/SurfaceAtlasSet.ts:102</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -161,10 +157,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_atlasglyphstable" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _atlas<wbr>Glyphs<wbr>Table</h3>
-					<div class="tsd-signature tsd-kind-icon">_atlas<wbr>Glyphs<wbr>Table<span class="tsd-signature-symbol">:</span> <a href="../interfaces/glyphlike.html" class="tsd-signature-type">GlyphLike</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">_atlas<wbr>Glyphs<wbr>Table<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Glyph</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L62">engine/SurfaceAtlasSet.ts:62</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L82">src/SurfaceAtlasSet.ts:82</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -176,7 +172,7 @@
 					<div class="tsd-signature tsd-kind-icon">_atlas<wbr>Size<span class="tsd-signature-symbol">:</span> <a href="../interfaces/commonsize.html" class="tsd-signature-type">CommonSize</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L77">engine/SurfaceAtlasSet.ts:77</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L97">src/SurfaceAtlasSet.ts:97</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -188,7 +184,7 @@
 					<div class="tsd-signature tsd-kind-icon">_current<wbr>Atlas<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L82">engine/SurfaceAtlasSet.ts:82</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L102">src/SurfaceAtlasSet.ts:102</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -200,7 +196,7 @@
 					<div class="tsd-signature tsd-kind-icon">_max<wbr>Atlas<wbr>Num<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L67">engine/SurfaceAtlasSet.ts:67</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L87">src/SurfaceAtlasSet.ts:87</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -209,10 +205,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_resourcefactory" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _resource<wbr>Factory</h3>
-					<div class="tsd-signature tsd-kind-icon">_resource<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="../interfaces/resourcefactorylike.html" class="tsd-signature-type">ResourceFactoryLike</a></div>
+					<div class="tsd-signature tsd-kind-icon">_resource<wbr>Factory<span class="tsd-signature-symbol">:</span> <a href="../interfaces/resourcefactory.html" class="tsd-signature-type">ResourceFactory</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L72">engine/SurfaceAtlasSet.ts:72</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L92">src/SurfaceAtlasSet.ts:92</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -221,10 +217,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_surfaceatlases" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _surface<wbr>Atlases</h3>
-					<div class="tsd-signature tsd-kind-icon">_surface<wbr>Atlases<span class="tsd-signature-symbol">:</span> <a href="../interfaces/surfaceatlaslike.html" class="tsd-signature-type">SurfaceAtlasLike</a><span class="tsd-signature-symbol">[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">_surface<wbr>Atlases<span class="tsd-signature-symbol">:</span> <a href="surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L57">engine/SurfaceAtlasSet.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L77">src/SurfaceAtlasSet.ts:77</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -236,7 +232,7 @@
 					<div class="tsd-signature tsd-kind-icon">INITIAL_<wbr>MAX_<wbr>SURFACEATLAS_<wbr>NUM<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 10</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L52">engine/SurfaceAtlasSet.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L72">src/SurfaceAtlasSet.ts:72</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -258,7 +254,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L105">engine/SurfaceAtlasSet.ts:105</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L125">src/SurfaceAtlasSet.ts:125</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -274,31 +270,56 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="_moveglyphsurface" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _move<wbr>Glyph<wbr>Surface</h3>
+					<a name="_findleastfrequentlyusedatlasindex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _find<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas<wbr>Index</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">_move<wbr>Glyph<wbr>Surface<span class="tsd-signature-symbol">(</span>glyph<span class="tsd-signature-symbol">: </span><a href="../interfaces/glyphlike.html" class="tsd-signature-type">GlyphLike</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/surfaceatlaslike.html" class="tsd-signature-type">SurfaceAtlasLike</a></li>
+						<li class="tsd-signature tsd-kind-icon">_find<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas<wbr>Index<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L143">engine/SurfaceAtlasSet.ts:143</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L139">src/SurfaceAtlasSet.ts:139</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>空き領域のあるSurfaceAtlasを探索する。
-									glyphが持つ情報をSurfaceAtlasへ移動し、移動したSurfaceAtlasの情報でglyphを置き換える。</p>
+									<p>surfaceAtlases の最も利用されていない SurfaceAtlas を探し、 そのインデックスを返す。</p>
 								</div>
+								<p>_surfaceAtlases の長さが 0 の場合、 -1 を返す。</p>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
+					<a name="_moveglyphsurface" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _move<wbr>Glyph<wbr>Surface</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">_move<wbr>Glyph<wbr>Surface<span class="tsd-signature-symbol">(</span>glyph<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Glyph</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L184">src/SurfaceAtlasSet.ts:184</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>空き領域のある SurfaceAtlas を探索する。
+										glyph が持つ情報を SurfaceAtlas へ移動し、移動した SurfaceAtlas の情報で glyph を置き換える。
+									glyph が持っていた surface は破棄される。</p>
+								</div>
+								<p>移動に成功した場合 <code>true</code> を、失敗した (空き領域が見つからなかった) 場合 <code>false</code> を返す。</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>glyph: <a href="../interfaces/glyphlike.html" class="tsd-signature-type">GlyphLike</a></h5>
+									<h5>glyph: <span class="tsd-signature-type">Glyph</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/surfaceatlaslike.html" class="tsd-signature-type">SurfaceAtlasLike</a></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -312,7 +333,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L167">engine/SurfaceAtlasSet.ts:167</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L208">src/SurfaceAtlasSet.ts:208</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -325,56 +346,26 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="_removeleastfrequentlyusedatlas" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _remove<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas</h3>
+					<a name="_spliceleastfrequentlyusedatlas" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _splice<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">_remove<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas<span class="tsd-signature-symbol">(</span>removedNum<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/removeatlasdata.html" class="tsd-signature-type">RemoveAtlasData</a></li>
+						<li class="tsd-signature tsd-kind-icon">_splice<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L117">engine/SurfaceAtlasSet.ts:117</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L158">src/SurfaceAtlasSet.ts:158</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>使用度の低いサーフェスアトラスを配列から削除する。</p>
+									<p>surfaceAtlases の最も利用されていない SurfaceAtlas を切り離して返す。</p>
 								</div>
+								<p>返された SurfaceAtlas に紐づいていたすべての Glyph はサーフェスを失う (_isSurfaceValid が偽になる) 。
+								_surfaceAtlases の長さが 0 の場合、 何もせず null を返す。</p>
 							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>removedNum: <span class="tsd-signature-type">number</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/removeatlasdata.html" class="tsd-signature-type">RemoveAtlasData</a></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="addatlas" class="tsd-anchor"></a>
-					<h3>add<wbr>Atlas</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Atlas<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/surfaceatlassetlike.html">SurfaceAtlasSetLike</a>.<a href="../interfaces/surfaceatlassetlike.html#addatlas">addAtlas</a></p>
-								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L194">engine/SurfaceAtlasSet.ts:194</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>サーフェスアトラスを追加する。</p>
-								</div>
-								<p>保持している_surfaceAtlasesの数が最大値以上の場合、削除してから追加する。</p>
-								<p>このメソッドは、このSurfaceAtlasSetに紐づいている <code>DynamnicFont</code> の <code>constructor</code> から暗黙に呼び出される。
-								通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -382,33 +373,33 @@
 					<a name="addglyph" class="tsd-anchor"></a>
 					<h3>add<wbr>Glyph</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Glyph<span class="tsd-signature-symbol">(</span>glyph<span class="tsd-signature-symbol">: </span><a href="../interfaces/glyphlike.html" class="tsd-signature-type">GlyphLike</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/surfaceatlaslike.html" class="tsd-signature-type">SurfaceAtlasLike</a></li>
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Glyph<span class="tsd-signature-symbol">(</span>glyph<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Glyph</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/surfaceatlassetlike.html">SurfaceAtlasSetLike</a>.<a href="../interfaces/surfaceatlassetlike.html#addglyph">addGlyph</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L263">engine/SurfaceAtlasSet.ts:263</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L280">src/SurfaceAtlasSet.ts:280</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>サーフェスアトラスにグリフを追加する。</p>
+									<p>グリフを追加する。</p>
 								</div>
-								<p>このメソッドは、このSurfaceAtlasSetに紐づいている <code>DynamnicFont</code> の <code>glyphForCharacter()</code> から暗黙に呼び出される。
-								通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
+								<p>glyph が持っていたサーフェスは破棄され、このクラスが管理するいずれかの (サーフェスアトラスの) サーフェスに紐づけられる。
+								追加に成功した場合 <code>true</code> を、失敗した (空き領域が見つからなかった) 場合 <code>false</code> を返す。</p>
+								<p>通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>glyph: <a href="../interfaces/glyphlike.html" class="tsd-signature-type">GlyphLike</a></h5>
+									<h5>glyph: <span class="tsd-signature-type">Glyph</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>グリフ</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/surfaceatlaslike.html" class="tsd-signature-type">SurfaceAtlasLike</a></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -421,9 +412,8 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/surfaceatlassetlike.html">SurfaceAtlasSetLike</a>.<a href="../interfaces/surfaceatlassetlike.html#changemaxatlasnum">changeMaxAtlasNum</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L238">engine/SurfaceAtlasSet.ts:238</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L254">src/SurfaceAtlasSet.ts:254</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -455,9 +445,8 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/surfaceatlassetlike.html">SurfaceAtlasSetLike</a>.<a href="../interfaces/surfaceatlassetlike.html#destroy">destroy</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L284">engine/SurfaceAtlasSet.ts:284</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L318">src/SurfaceAtlasSet.ts:318</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -478,9 +467,8 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/surfaceatlassetlike.html">SurfaceAtlasSetLike</a>.<a href="../interfaces/surfaceatlassetlike.html#destroyed">destroyed</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L296">engine/SurfaceAtlasSet.ts:296</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L330">src/SurfaceAtlasSet.ts:330</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -496,22 +484,20 @@
 					<a name="getatlas" class="tsd-anchor"></a>
 					<h3>get<wbr>Atlas</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Atlas<span class="tsd-signature-symbol">(</span>index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/surfaceatlaslike.html" class="tsd-signature-type">SurfaceAtlasLike</a></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Atlas<span class="tsd-signature-symbol">(</span>index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/surfaceatlassetlike.html">SurfaceAtlasSetLike</a>.<a href="../interfaces/surfaceatlassetlike.html#getatlas">getAtlas</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L210">engine/SurfaceAtlasSet.ts:210</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L227">src/SurfaceAtlasSet.ts:227</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>引数で指定されたindexのサーフェスアトラスを取得する。</p>
 								</div>
-								<p>このメソッドは、このSurfaceAtlasSetに紐づいている <code>DynamnicFont</code> の <code>glyphForCharacter()</code> から暗黙に呼び出される。
-								通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
+								<p>通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -522,7 +508,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/surfaceatlaslike.html" class="tsd-signature-type">SurfaceAtlasLike</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="surfaceatlas.html" class="tsd-signature-type">SurfaceAtlas</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -535,17 +521,15 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/surfaceatlassetlike.html">SurfaceAtlasSetLike</a>.<a href="../interfaces/surfaceatlassetlike.html#getatlasnum">getAtlasNum</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L220">engine/SurfaceAtlasSet.ts:220</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L236">src/SurfaceAtlasSet.ts:236</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>サーフェスアトラスの保持数を取得する。</p>
 								</div>
-								<p>このメソッドは、このSurfaceAtlasSetに紐づいている <code>DynamnicFont</code> の <code>glyphForCharacter()</code> から暗黙に呼び出される。
-								通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
+								<p>通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 						</li>
@@ -560,17 +544,15 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/surfaceatlassetlike.html">SurfaceAtlasSetLike</a>.<a href="../interfaces/surfaceatlassetlike.html#getatlasusedsize">getAtlasUsedSize</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L252">engine/SurfaceAtlasSet.ts:252</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L267">src/SurfaceAtlasSet.ts:267</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>サーフェスアトラスのサイズを取得する。</p>
 								</div>
-								<p>このメソッドは、このSurfaceAtlasSetに紐づいている <code>DynamnicFont</code> の <code>glyphForCharacter()</code> から暗黙に呼び出される。
-								通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
+								<p>通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/commonsize.html" class="tsd-signature-type">CommonSize</a></h4>
 						</li>
@@ -585,9 +567,8 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/surfaceatlassetlike.html">SurfaceAtlasSetLike</a>.<a href="../interfaces/surfaceatlassetlike.html#getmaxatlasnum">getMaxAtlasNum</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/SurfaceAtlasSet.ts#L227">engine/SurfaceAtlasSet.ts:227</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L243">src/SurfaceAtlasSet.ts:243</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -596,6 +577,40 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="touchglyph" class="tsd-anchor"></a>
+					<h3>touch<wbr>Glyph</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">touch<wbr>Glyph<span class="tsd-signature-symbol">(</span>glyph<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Glyph</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/SurfaceAtlasSet.ts#L304">src/SurfaceAtlasSet.ts:304</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>グリフの利用を通知する。</p>
+								</div>
+								<p>サーフェスが不足した時、このクラスは最も利用頻度の低いサーフェスを解放して再利用する。
+								このメソッドによるグリフの利用通知は、利用頻度の低いサーフェスを特定するために利用される。</p>
+								<p>通常、ゲーム開発者がこのメソッドを呼び出す必要はない。</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>glyph: <span class="tsd-signature-type">Glyph</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>グリフ</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -644,16 +659,16 @@
 								<a href="surfaceatlasset.html#_deleteatlas" class="tsd-kind-icon">_delete<wbr>Atlas</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
+								<a href="surfaceatlasset.html#_findleastfrequentlyusedatlasindex" class="tsd-kind-icon">_find<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas<wbr>Index</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="surfaceatlasset.html#_moveglyphsurface" class="tsd-kind-icon">_move<wbr>Glyph<wbr>Surface</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="surfaceatlasset.html#_reallocateatlas" class="tsd-kind-icon">_reallocate<wbr>Atlas</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="surfaceatlasset.html#_removeleastfrequentlyusedatlas" class="tsd-kind-icon">_remove<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="surfaceatlasset.html#addatlas" class="tsd-kind-icon">add<wbr>Atlas</a>
+								<a href="surfaceatlasset.html#_spliceleastfrequentlyusedatlas" class="tsd-kind-icon">_splice<wbr>Least<wbr>Frequently<wbr>Used<wbr>Atlas</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="surfaceatlasset.html#addglyph" class="tsd-kind-icon">add<wbr>Glyph</a>
@@ -678,6 +693,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="surfaceatlasset.html#getmaxatlasnum" class="tsd-kind-icon">get<wbr>Max<wbr>Atlas<wbr>Num</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="surfaceatlasset.html#touchglyph" class="tsd-kind-icon">touch<wbr>Glyph</a>
 							</li>
 						</ul>
 					</li>

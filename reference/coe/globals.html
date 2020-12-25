@@ -81,6 +81,7 @@
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/action.html" class="tsd-kind-icon">Action</a></li>
+								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/broadcastdatabuffer.html" class="tsd-kind-icon">Broadcast<wbr>Data<wbr>Buffer</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/coeextendchildsessionendmessage.html" class="tsd-kind-icon">COEExtend<wbr>Child<wbr>Session<wbr>End<wbr>Message</a></li>
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/controller.html" class="tsd-kind-icon">Controller</a></li>
 								<li class="tsd-kind-interface"><a href="interfaces/initializearguments.html" class="tsd-kind-icon">Initialize<wbr>Arguments</a></li>
@@ -117,6 +118,8 @@
 								<li class="tsd-kind-function"><a href="globals.html#getdebugmode" class="tsd-kind-icon">get<wbr>Debug<wbr>Mode</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#getpermission" class="tsd-kind-icon">get<wbr>Permission</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#getsessionid" class="tsd-kind-icon">get<wbr>Session<wbr>Id</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#handlejoinevent" class="tsd-kind-icon">handle<wbr>Join<wbr>Event</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#handleleaveevent" class="tsd-kind-icon">handle<wbr>Leave<wbr>Event</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#hasrole" class="tsd-kind-icon">has<wbr>Role</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#initialize" class="tsd-kind-icon">initialize</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#isjoinedplayer" class="tsd-kind-icon">is<wbr>Joined<wbr>Player</a></li>
@@ -144,7 +147,7 @@
 					<div class="tsd-signature tsd-kind-icon">COEMessage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">COEChildSessionStartMessage</span><span class="tsd-signature-symbol"> | </span><a href="interfaces/coeextendchildsessionendmessage.html" class="tsd-signature-type">COEExtendChildSessionEndMessage</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">COEEndMessage</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/impl/COEMessageEventHandler.ts#L13">packages/coe/src/impl/COEMessageEventHandler.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/impl/COEMessageEventHandler.ts#L13">packages/coe/src/impl/COEMessageEventHandler.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -157,7 +160,7 @@
 					<div class="tsd-signature tsd-kind-icon">Trusted<wbr>Player<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">":akashic"</span><span class="tsd-signature-symbol"> = &quot;:akashic&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L109">packages/coe/src/global.ts:109</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L114">packages/coe/src/global.ts:114</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -167,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">debug<wbr>Mode<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L16">packages/coe/src/global.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L16">packages/coe/src/global.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -177,7 +180,7 @@
 					<div class="tsd-signature tsd-kind-icon">joined<wbr>Player<wbr>Ids<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L111">packages/coe/src/global.ts:111</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L116">packages/coe/src/global.ts:116</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -187,8 +190,8 @@
 					<div class="tsd-signature tsd-kind-icon">local<wbr>Session<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L142">packages/coe/src/global.ts:142</a></li>
-							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/session.ts#L13">packages/coe/src/session.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L147">packages/coe/src/global.ts:147</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/session.ts#L6">packages/coe/src/session.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -198,7 +201,7 @@
 					<div class="tsd-signature tsd-kind-icon">roles<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L15">packages/coe/src/global.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L15">packages/coe/src/global.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -208,7 +211,7 @@
 					<div class="tsd-signature tsd-kind-icon">window<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L6">packages/coe/src/global.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L6">packages/coe/src/global.ts:6</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -225,7 +228,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L117">packages/coe/src/global.ts:117</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L122">packages/coe/src/global.ts:122</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -256,7 +259,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L201">packages/coe/src/global.ts:201</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L206">packages/coe/src/global.ts:206</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -291,7 +294,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L188">packages/coe/src/global.ts:188</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L193">packages/coe/src/global.ts:193</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -332,7 +335,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L138">packages/coe/src/global.ts:138</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L143">packages/coe/src/global.ts:143</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -354,7 +357,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L26">packages/coe/src/global.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L26">packages/coe/src/global.ts:26</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -376,7 +379,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L33">packages/coe/src/global.ts:33</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L33">packages/coe/src/global.ts:33</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -385,6 +388,52 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">SessionId</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="handlejoinevent" class="tsd-anchor"></a>
+					<h3>handle<wbr>Join<wbr>Event</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">handle<wbr>Join<wbr>Event<span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">g.JoinEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L83">packages/coe/src/global.ts:83</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> e: <span class="tsd-signature-type">g.JoinEvent</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="handleleaveevent" class="tsd-anchor"></a>
+					<h3>handle<wbr>Leave<wbr>Event</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">handle<wbr>Leave<wbr>Event<span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">g.LeaveEvent</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L87">packages/coe/src/global.ts:87</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> e: <span class="tsd-signature-type">g.LeaveEvent</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -398,7 +447,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L104">packages/coe/src/global.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L109">packages/coe/src/global.ts:109</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -426,7 +475,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L42">packages/coe/src/global.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L43">packages/coe/src/global.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -457,7 +506,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L89">packages/coe/src/global.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L94">packages/coe/src/global.ts:94</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -485,7 +534,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L11">packages/coe/src/global.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L11">packages/coe/src/global.ts:11</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -507,7 +556,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L97">packages/coe/src/global.ts:97</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L102">packages/coe/src/global.ts:102</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -538,7 +587,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L128">packages/coe/src/global.ts:128</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L133">packages/coe/src/global.ts:133</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -569,7 +618,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L149">packages/coe/src/global.ts:149</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L154">packages/coe/src/global.ts:154</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -602,7 +651,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L177">packages/coe/src/global.ts:177</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L182">packages/coe/src/global.ts:182</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -634,7 +683,7 @@
 					<div class="tsd-signature tsd-kind-icon">permission<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L17">packages/coe/src/global.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L17">packages/coe/src/global.ts:17</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -643,7 +692,7 @@
 						<div class="tsd-signature tsd-kind-icon">advance<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> = false</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L18">packages/coe/src/global.ts:18</a></li>
+								<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L18">packages/coe/src/global.ts:18</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -653,7 +702,7 @@
 						<div class="tsd-signature tsd-kind-icon">advance<wbr>Request<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> = false</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L20">packages/coe/src/global.ts:20</a></li>
+								<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L20">packages/coe/src/global.ts:20</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -663,7 +712,7 @@
 						<div class="tsd-signature tsd-kind-icon">aggregation<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> = false</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/akashic-games/coe/blob/6bec621/packages/coe/src/global.ts#L19">packages/coe/src/global.ts:19</a></li>
+								<li>Defined in <a href="https://github.com/akashic-games/coe/blob/294bddd/packages/coe/src/global.ts#L19">packages/coe/src/global.ts:19</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -697,6 +746,9 @@
 					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/action.html" class="tsd-kind-icon">Action</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-has-type-parameter">
+						<a href="interfaces/broadcastdatabuffer.html" class="tsd-kind-icon">Broadcast<wbr>Data<wbr>Buffer</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/coeextendchildsessionendmessage.html" class="tsd-kind-icon">COEExtend<wbr>Child<wbr>Session<wbr>End<wbr>Message</a>
@@ -760,6 +812,12 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#getsessionid" class="tsd-kind-icon">get<wbr>Session<wbr>Id</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#handlejoinevent" class="tsd-kind-icon">handle<wbr>Join<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#handleleaveevent" class="tsd-kind-icon">handle<wbr>Leave<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#hasrole" class="tsd-kind-icon">has<wbr>Role</a>
@@ -826,7 +884,6 @@
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

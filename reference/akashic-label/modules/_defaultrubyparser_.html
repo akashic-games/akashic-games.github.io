@@ -70,6 +70,12 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_defaultrubyparser_.html#rp" class="tsd-kind-icon">rp</a></li>
+							</ul>
+						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
@@ -77,6 +83,19 @@
 							</ul>
 						</section>
 					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="rp" class="tsd-anchor"></a>
+					<h3>rp</h3>
+					<div class="tsd-signature tsd-kind-icon">rp<span class="tsd-signature-symbol">:</span> <a href="_rubyparser_.html" class="tsd-signature-type">&quot;RubyParser&quot;</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/DefaultRubyParser.ts#L1">src/DefaultRubyParser.ts:1</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -91,9 +110,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/DefaultRubyParser.ts#L21">DefaultRubyParser.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/DefaultRubyParser.ts#L21">src/DefaultRubyParser.ts:21</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>文字列からルビをパースする。
+									このパーサは、akashic-labelのデフォルトルビ記法のためのパーサである。</p>
+								</div>
+								<p>このパーサを使う場合、ラベルに与える文字列にJSONのオブジェクトを表す文字列を含むことができる。
+									文字列中のオブジェクトはルビを表す要素として扱われる。
+									オブジェクトのメンバーには、ルビを表す <code>rt</code> と、本文を表す <code>rb</code> を含む必要がある。
+								これらのメンバー以外に、RubyOptions型が持つメンバーを含むことができる。</p>
+								<p>入力の例として、
+									&#39;これは{&quot;rb&quot;:&quot;本文&quot;,&quot;rt&quot;:&quot;ルビ&quot;, &quot;rubyFontSize&quot;: 2}です。&#39;
+									という文字列が与えられた場合、このパーサは
+									[&quot;これは&quot;, {rb:&quot;本文&quot;, rt: &quot;ルビ&quot;, rubyFontSize: 2}, &quot;です。&quot;]
+									という配列を返す。
+									また、 <code>{</code> や <code>}</code> は <code>\\</code> でエスケープする必要がある。
+									例として、括弧は <code>\\{</code> 、 バックスラッシュは <code>\\</code> を用いて表現する。
+								注意すべき点として、オブジェクトのプロパティ名はダブルクォートでくくられている必要がある。</p>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -113,27 +150,30 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_defaultrubyparser_.html">"<wbr>Default<wbr>Ruby<wbr>Parser"</a>
+						<a href="_defaultrubyparser_.html">&quot;<wbr>Default<wbr>Ruby<wbr>Parser&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_fragmentdrawinfo_.html">"<wbr>Fragment<wbr>Draw<wbr>Info"</a>
+						<a href="_fragmentdrawinfo_.html">&quot;<wbr>Fragment<wbr>Draw<wbr>Info&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_label_.html">"<wbr>Label"</a>
+						<a href="_label_.html">&quot;<wbr>Label&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_labelparameterobject_.html">"<wbr>Label<wbr>Parameter<wbr>Object"</a>
+						<a href="_labelparameterobject_.html">&quot;<wbr>Label<wbr>Parameter<wbr>Object&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_rubyparser_.html">"<wbr>Ruby<wbr>Parser"</a>
+						<a href="_rubyparser_.html">&quot;<wbr>Ruby<wbr>Parser&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_index_.html">"index"</a>
+						<a href="_index_.html">&quot;index&quot;</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_defaultrubyparser_.html#rp" class="tsd-kind-icon">rp</a>
+					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_defaultrubyparser_.html#parse" class="tsd-kind-icon">parse</a>
 					</li>
@@ -154,6 +194,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -202,7 +243,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
@@ -213,7 +254,7 @@
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-162208211-1', '');
+        ga('create', 'UA-162208211-1', 'auto');
         ga('send', 'pageview');
     </script>
 </body>

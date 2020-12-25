@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Box2D | @akashic-extension/akashic-box2d</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for @akashic-extension/akashic-box2d">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -66,18 +66,19 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>AkashicのエンティティをBox2DWebのb2Worldに追加し、演算結果をエンティティに反映するクラス。</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
 						<span class="target">Box2D</span>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implements</h3>
-				<ul class="tsd-hierarchy">
-					<li><span class="tsd-signature-type">Destroyable</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -94,6 +95,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="box2d.html#_createbodycount" class="tsd-kind-icon">_create<wbr>Body<wbr>Count</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="box2d.html#_matrix" class="tsd-kind-icon">_matrix</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="box2d.html#bodies" class="tsd-kind-icon">bodies</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="box2d.html#scale" class="tsd-kind-icon">scale</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="box2d.html#world" class="tsd-kind-icon">world</a></li>
@@ -117,7 +119,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="box2d.html#radian" class="tsd-kind-icon">radian</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="box2d.html#removebody" class="tsd-kind-icon">remove<wbr>Body</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="box2d.html#step" class="tsd-kind-icon">step</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="box2d.html#stepbody" class="tsd-kind-icon">step<wbr>Body</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="box2d.html#stepbodies" class="tsd-kind-icon">step<wbr>Bodies</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="box2d.html#vec2" class="tsd-kind-icon">vec2</a></li>
 							</ul>
 						</section>
@@ -136,13 +138,23 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L42">Box2D.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L44">Box2D.ts:44</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p><code>Box2D</code> のインスタンスを生成する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>param: <a href="../interfaces/box2dparameter.html" class="tsd-signature-type">Box2DParameter</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p><code>b2World</code> の生成オプション</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="box2d.html" class="tsd-signature-type">Box2D</a></h4>
@@ -155,22 +167,37 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_createbodycount" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _create<wbr>Body<wbr>Count</h3>
-					<div class="tsd-signature tsd-kind-icon">_create<wbr>Body<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
+					<div class="tsd-signature tsd-kind-icon">_create<wbr>Body<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L42">Box2D.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L42">Box2D.ts:42</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_matrix" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _matrix</h3>
+					<div class="tsd-signature tsd-kind-icon">_matrix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PlainMatrix</span><span class="tsd-signature-symbol"> = new g.PlainMatrix()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L44">Box2D.ts:44</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="bodies" class="tsd-anchor"></a>
 					<h3>bodies</h3>
-					<div class="tsd-signature tsd-kind-icon">bodies<span class="tsd-signature-symbol">:</span> <a href="../interfaces/ebody.html" class="tsd-signature-type">EBody</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">bodies<span class="tsd-signature-symbol">:</span> <a href="../interfaces/ebody.html" class="tsd-signature-type">EBody</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L35">Box2D.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L35">Box2D.ts:35</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>このクラスが保持する <code>EBody</code> のリスト。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="scale" class="tsd-anchor"></a>
@@ -178,9 +205,14 @@
 					<div class="tsd-signature tsd-kind-icon">scale<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L40">Box2D.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L40">Box2D.ts:40</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>物理世界のピクセルサイズとAkashicのピクセルサイズのスケール比。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="world" class="tsd-anchor"></a>
@@ -188,9 +220,14 @@
 					<div class="tsd-signature tsd-kind-icon">world<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">box2dweb.Dynamics.b2World</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L30">Box2D.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L30">Box2D.ts:30</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>b2World</code> のインスタンス。</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -205,25 +242,38 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L68">Box2D.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L71">Box2D.ts:71</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>このクラスにボディを追加し、その <code>EBody</code> を返す。
+										すでに同エンティティが追加されている場合は何もせず <code>null</code> を返す。
+									エンティティのアンカーポイントが (0.5, 0.5) に指定される点に注意。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>entity: <span class="tsd-signature-type">E</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>対象のエンティティ</p>
+									</div>
 								</li>
 								<li>
 									<h5>bodyDef: <span class="tsd-signature-type">box2dweb.Dynamics.b2BodyDef</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>対象のb2BodyDef</p>
+									</div>
 								</li>
 								<li>
 									<h5>fixtureDef: <span class="tsd-signature-type">box2dweb.Dynamics.b2FixtureDef</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">box2dweb.Dynamics.b2FixtureDef</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>対象のb2FixtureDefまたは対象のb2FixtureDefの配列</p>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/ebody.html" class="tsd-signature-type">EBody</a>
-								<span class="tsd-signature-symbol"> | </span>
-								<span class="tsd-signature-type">null</span>
-							</h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/ebody.html" class="tsd-signature-type">EBody</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -237,13 +287,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L243">Box2D.ts:243</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L261">Box2D.ts:261</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p><code>b2BodyDef</code> インスタンスを生成する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>bodyDef: <a href="../interfaces/box2dbodydef.html" class="tsd-signature-type">Box2DBodyDef</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Box2DBodyDef</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">box2dweb.Dynamics.b2BodyDef</span></h4>
@@ -260,13 +318,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L192">Box2D.ts:192</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L208">Box2D.ts:208</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>円を表す <code>b2CircleShape</code> インスタンスを生成する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>diameter: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>直径 px</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">box2dweb.Collision.Shapes.b2CircleShape</span></h4>
@@ -283,9 +349,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L210">Box2D.ts:210</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L226">Box2D.ts:226</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>b2FixtureDefインスタンスを生成する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -306,9 +377,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L200">Box2D.ts:200</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L216">Box2D.ts:216</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>任意の多角形を表す <code>b2PolygonShape</code> インスタンスを生成する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -329,16 +405,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L182">Box2D.ts:182</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L198">Box2D.ts:198</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>長方形を表す <code>b2PolygonShape</code> インスタンスを生成する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>width: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>横幅 px</p>
+									</div>
 								</li>
 								<li>
 									<h5>height: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>縦幅 px</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">box2dweb.Collision.Shapes.b2PolygonShape</span></h4>
@@ -355,13 +442,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L285">Box2D.ts:285</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L303">Box2D.ts:303</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>ラジアンを度に変換する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>radian: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>対象のラジアン</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -378,9 +473,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L137">Box2D.ts:137</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L153">Box2D.ts:153</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>このクラスのインスタンスを破棄する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -395,9 +495,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L145">Box2D.ts:145</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L161">Box2D.ts:161</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>このクラスのインスタンスが破棄済みであるかを返す。</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -412,19 +517,24 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L112">Box2D.ts:112</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L128">Box2D.ts:128</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>エンティティからこのクラスに追加されている <code>EBody</code> を返す。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>entity: <span class="tsd-signature-type">E</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>エンティティ</p>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/ebody.html" class="tsd-signature-type">EBody</a>
-								<span class="tsd-signature-symbol"> | </span>
-								<span class="tsd-signature-type">null</span>
-							</h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/ebody.html" class="tsd-signature-type">EBody</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -438,19 +548,24 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L125">Box2D.ts:125</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L141">Box2D.ts:141</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p><code>b2Body</code> からこのクラスに追加されている <code>EBody</code> を返す。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>b2Body: <span class="tsd-signature-type">box2dweb.Dynamics.b2Body</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>b2Body</p>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/ebody.html" class="tsd-signature-type">EBody</a>
-								<span class="tsd-signature-symbol"> | </span>
-								<span class="tsd-signature-type">null</span>
-							</h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/ebody.html" class="tsd-signature-type">EBody</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -464,19 +579,33 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L167">Box2D.ts:167</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L183">Box2D.ts:183</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>ボディ同士の接触を、Box2DWebのユーザデータを参照して検出する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>body1: <a href="../interfaces/ebody.html" class="tsd-signature-type">EBody</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>対象のボディ</p>
+									</div>
 								</li>
 								<li>
 									<h5>body2: <a href="../interfaces/ebody.html" class="tsd-signature-type">EBody</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>対象のボディ</p>
+									</div>
 								</li>
 								<li>
 									<h5>contact: <span class="tsd-signature-type">box2dweb.Dynamics.Contacts.b2Contact</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>対象のb2Contacts</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -493,13 +622,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L293">Box2D.ts:293</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L311">Box2D.ts:311</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>度をラジアンに変換する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>degree: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>対象の度</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -516,13 +653,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L99">Box2D.ts:99</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L115">Box2D.ts:115</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>このクラスに追加された <code>EBody</code> を削除する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>ebody: <a href="../interfaces/ebody.html" class="tsd-signature-type">EBody</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>削除する <code>EBody</code></p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -539,19 +684,34 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L156">Box2D.ts:156</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L172">Box2D.ts:172</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>時間を経過させ、このクラスに追加されたエンティティの座標と角度を変更する。
+									このメソッドは暗黙的に <code>E#modified()</code> を呼び出している。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>dt: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>経過させる時間単位</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> velocityIteration: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;10</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> velocityIteration: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 10</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>速度演算のイテレーション回数 省略時は10</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> positionIteration: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;10</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> positionIteration: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 10</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>位置演算のイテレーション回数 省略時は10</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -559,16 +719,16 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="stepbody" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> step<wbr>Body</h3>
+					<a name="stepbodies" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> step<wbr>Bodies</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">step<wbr>Body<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">step<wbr>Bodies<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L306">Box2D.ts:306</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L324">Box2D.ts:324</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -585,16 +745,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/63591c2/src/Box2D.ts#L302">Box2D.ts:302</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-box2d/blob/0ad86da/src/Box2D.ts#L320">Box2D.ts:320</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>この物理エンジン世界のビクセルスケールに変換した <code>b2Vec2</code> インスタンスを生成する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>x: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>x方向のピクセル値</p>
+									</div>
 								</li>
 								<li>
 									<h5>y: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>y方向のピクセル値</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">box2dweb.Common.Math.b2Vec2</span></h4>
@@ -626,6 +797,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="box2d.html#_createbodycount" class="tsd-kind-icon">_create<wbr>Body<wbr>Count</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="box2d.html#_matrix" class="tsd-kind-icon">_matrix</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="box2d.html#bodies" class="tsd-kind-icon">bodies</a>
@@ -682,7 +856,7 @@
 								<a href="box2d.html#step" class="tsd-kind-icon">step</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="box2d.html#stepbody" class="tsd-kind-icon">step<wbr>Body</a>
+								<a href="box2d.html#stepbodies" class="tsd-kind-icon">step<wbr>Bodies</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="box2d.html#vec2" class="tsd-kind-icon">vec2</a>
@@ -719,73 +893,32 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 		</div>
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-162208211-1', '');
+        ga('create', 'UA-162208211-1', 'auto');
         ga('send', 'pageview');
     </script>
 </body>

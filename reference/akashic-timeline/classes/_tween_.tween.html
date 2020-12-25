@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Tween | @akashic-extension/akashic-timeline</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for @akashic-extension/akashic-timeline">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -69,6 +69,14 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>オブジェクトの状態を変化させるアクションを定義するクラス。
+						本クラスのインスタンス生成には<code>Timeline#create()</code>を利用する。</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -91,6 +99,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tween_.tween.html#_destroyedhandler" class="tsd-kind-icon">_destroyed<wbr>Handler</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_tween_.tween.html#_initialprop" class="tsd-kind-icon">_initial<wbr>Prop</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_tween_.tween.html#_laststep" class="tsd-kind-icon">_last<wbr>Step</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tween_.tween.html#_loop" class="tsd-kind-icon">_loop</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_tween_.tween.html#_modifiedhandler" class="tsd-kind-icon">_modified<wbr>Handler</a></li>
@@ -109,6 +118,8 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_tween_.tween.html#_push" class="tsd-kind-icon">_push</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tween_.tween.html#by" class="tsd-kind-icon">by</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tween_.tween.html#call" class="tsd-kind-icon">call</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tween_.tween.html#cancel" class="tsd-kind-icon">cancel</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tween_.tween.html#complete" class="tsd-kind-icon">complete</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tween_.tween.html#con" class="tsd-kind-icon">con</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tween_.tween.html#cue" class="tsd-kind-icon">cue</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_tween_.tween.html#deserializestate" class="tsd-kind-icon">deserialize<wbr>State</a></li>
@@ -145,16 +156,31 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L48">Tween.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L52">Tween.ts:52</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Tweenを生成する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>target: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>対象となるオブジェクト</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> option: <a href="../interfaces/_tweenoption_.tweenoption.html" class="tsd-signature-type">TweenOption</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>オプション</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_tween_.tween.html" class="tsd-signature-type">Tween</a></h4>
@@ -167,16 +193,16 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="_destroyedhandler" class="tsd-anchor"></a>
 					<h3>_destroyed<wbr>Handler</h3>
-					<div class="tsd-signature tsd-kind-icon">_destroyed<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<div class="tsd-signature tsd-kind-icon">_destroyed<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L37">Tween.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L37">Tween.ts:37</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
+							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
 									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 								</ul>
@@ -190,12 +216,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_initialprop" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _initial<wbr>Prop</h3>
+					<div class="tsd-signature tsd-kind-icon">_initial<wbr>Prop<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L52">Tween.ts:52</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p><code>_target</code>の初期プロパティ。</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_laststep" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _last<wbr>Step</h3>
 					<div class="tsd-signature tsd-kind-icon">_last<wbr>Step<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_tween_.tweenaction.html" class="tsd-signature-type">TweenAction</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L44">Tween.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L44">Tween.ts:44</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -205,23 +246,23 @@
 					<div class="tsd-signature tsd-kind-icon">_loop<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L35">Tween.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L35">Tween.ts:35</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="_modifiedhandler" class="tsd-anchor"></a>
 					<h3>_modified<wbr>Handler</h3>
-					<div class="tsd-signature tsd-kind-icon">_modified<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<div class="tsd-signature tsd-kind-icon">_modified<wbr>Handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L36">Tween.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L36">Tween.ts:36</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
+							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
 									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 								</ul>
@@ -240,9 +281,14 @@
 					<div class="tsd-signature tsd-kind-icon">_pararel<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L48">Tween.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L48">Tween.ts:48</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>次に追加するアクションが並列実行か否か。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="_stepindex" class="tsd-anchor"></a>
@@ -250,7 +296,7 @@
 					<div class="tsd-signature tsd-kind-icon">_step<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L34">Tween.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L34">Tween.ts:34</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -260,9 +306,15 @@
 					<div class="tsd-signature tsd-kind-icon">_steps<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_tween_.tweenaction.html" class="tsd-signature-type">TweenAction</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L43">Tween.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L43">Tween.ts:43</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>ステップのリスト。ステップはアクションで構成されており、
+							1ステップ内に複数のアクションが存在する場合、それらは並列実行される。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="_target" class="tsd-anchor"></a>
@@ -270,7 +322,7 @@
 					<div class="tsd-signature tsd-kind-icon">_target<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L33">Tween.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L33">Tween.ts:33</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -280,9 +332,15 @@
 					<div class="tsd-signature tsd-kind-icon">paused<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L31">Tween.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L31">Tween.ts:31</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>アクションの実行が一時停止状態かどうかを表すフラグ。
+							一時停止する場合は<code>true</code>をセットする。</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -297,13 +355,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L327">Tween.ts:327</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L393">Tween.ts:393</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>アニメーションを実行する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>delta: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>前フレームからの経過時間</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -320,7 +386,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L461">Tween.ts:461</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L534">Tween.ts:534</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -343,9 +409,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L451">Tween.ts:451</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L524">Tween.ts:524</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p><code>this._pararel</code>が<code>false</code>の場合は新規にステップを作成し、アクションを追加する。
+									<code>this._pararel</code>が<code>true</code>の場合は最後に作成したステップにアクションを追加する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -360,28 +432,46 @@
 					<a name="by" class="tsd-anchor"></a>
 					<h3>by</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">by<span class="tsd-signature-symbol">(</span>props<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a>, multiply<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">by<span class="tsd-signature-symbol">(</span>props<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a>, multiply<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L104">Tween.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L109">Tween.ts:109</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>オブジェクトの状態を変化させるアクションを追加する。
+									変化内容はアクション開始時を基準とした相対値で指定する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>props: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>変化内容</p>
+									</div>
 								</li>
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>変化に要する時間（ミリ秒）</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> =&nbsp;Easing.linear</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> = Easing.linear</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Easing関数（指定しない場合は<code>Easing.linear</code>）</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> multiply: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> multiply: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p><code>true</code>を指定すると<code>props</code>の値をアクション開始時の値に掛け合わせた値が終了値となる（指定しない場合は<code>false</code>）</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -392,21 +482,29 @@
 					<a name="call" class="tsd-anchor"></a>
 					<h3>call</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">call<span class="tsd-signature-symbol">(</span>func<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">call<span class="tsd-signature-symbol">(</span>func<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L144">Tween.ts:144</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L149">Tween.ts:149</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>関数を即座に実行するアクションを追加する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>func: <span class="tsd-signature-type">function</span></h5>
+									<h5>func: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>実行する関数</p>
+									</div>
 									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
+										<li class="tsd-parameter-signature">
 											<ul class="tsd-signatures tsd-kind-type-literal">
 												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 											</ul>
@@ -424,6 +522,62 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="cancel" class="tsd-anchor"></a>
+					<h3>cancel</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">cancel<span class="tsd-signature-symbol">(</span>revert<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L356">Tween.ts:356</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>このTweenに追加されたすべてのアクションを取り消す。
+										<code>revert</code>を<code>true</code> にした場合、ターゲットのプロパティをアクション開始前に戻す。
+									ただし<code>Tween#call()</code>や<code>Tween#every()</code>により変更されたプロパティは戻らない点に注意。</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> revert: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>ターゲットのプロパティをアクション開始前に戻すかどうか (指定しない場合は <code>false</code>)</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="complete" class="tsd-anchor"></a>
+					<h3>complete</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">complete<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L317">Tween.ts:317</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>このTweenに追加されたすべてのアクションを即座に完了する。
+									<code>Tween#loop</code>が<code>true</code>の場合、ループの終端までのアクションがすべて実行される。</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="con" class="tsd-anchor"></a>
 					<h3>con</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -433,9 +587,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L121">Tween.ts:121</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L126">Tween.ts:126</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>次に追加されるアクションを、このメソッド呼び出しの直前に追加されたアクションと並列に実行させる。
+									<code>Tween#con()</code>で並列実行を指定されたアクションが全て終了後、次の並列実行を指定されていないアクションを実行する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
 						</li>
 					</ul>
@@ -444,24 +604,29 @@
 					<a name="cue" class="tsd-anchor"></a>
 					<h3>cue</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">cue<span class="tsd-signature-symbol">(</span>funcs<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">cue<span class="tsd-signature-symbol">(</span>funcs<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L169">Tween.ts:169</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L174">Tween.ts:174</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>待機時間をキーとして実行したい関数を複数指定する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>funcs: <span class="tsd-signature-type">object</span></h5>
+									<h5>funcs: <span class="tsd-signature-symbol">{}</span></h5>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-index-signature">
-											<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">function</span></h5>
+											<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
 											<ul class="tsd-parameters">
-												<li class="tsd-parameter-siganture">
+												<li class="tsd-parameter-signature">
 													<ul class="tsd-signatures tsd-kind-type-literal">
 														<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 													</ul>
@@ -490,9 +655,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L429">Tween.ts:429</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L501">Tween.ts:501</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Tweenの実行状態を復元する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -507,21 +677,29 @@
 					<a name="every" class="tsd-anchor"></a>
 					<h3>every</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">every<span class="tsd-signature-symbol">(</span>func<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">every<span class="tsd-signature-symbol">(</span>func<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, p<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L194">Tween.ts:194</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L199">Tween.ts:199</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>指定した時間を経過するまで毎フレーム指定した関数を呼び出すアクションを追加する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>func: <span class="tsd-signature-type">function</span></h5>
+									<h5>func: <span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, p<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>毎フレーム呼び出される関数。第一引数は経過時間、第二引数はEasingした結果の変化量（0-1）となる。</p>
+									</div>
 									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
+										<li class="tsd-parameter-signature">
 											<ul class="tsd-signatures tsd-kind-type-literal">
 												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, p<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 											</ul>
@@ -544,9 +722,15 @@
 								</li>
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>変化に要する時間（ミリ秒）</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> =&nbsp;Easing.linear</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> = Easing.linear</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Easing関数（指定しない場合は<code>Easing.linear</code>）</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -557,22 +741,33 @@
 					<a name="fadein" class="tsd-anchor"></a>
 					<h3>fade<wbr>In</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">fade<wbr>In<span class="tsd-signature-symbol">(</span>duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">fade<wbr>In<span class="tsd-signature-symbol">(</span>duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L211">Tween.ts:211</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L216">Tween.ts:216</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>ターゲットをフェードインさせるアクションを追加する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>変化に要する時間（ミリ秒）</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> =&nbsp;Easing.linear</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> = Easing.linear</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Easing関数（指定しない場合は<code>Easing.linear</code>）</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -583,22 +778,33 @@
 					<a name="fadeout" class="tsd-anchor"></a>
 					<h3>fade<wbr>Out</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">fade<wbr>Out<span class="tsd-signature-symbol">(</span>duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">fade<wbr>Out<span class="tsd-signature-symbol">(</span>duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L220">Tween.ts:220</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L225">Tween.ts:225</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>ターゲットをフェードアウトさせるアクションを追加する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>変化に要する時間（ミリ秒）</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> =&nbsp;Easing.linear</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> = Easing.linear</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Easing関数（指定しない場合は<code>Easing.linear</code>）</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -615,9 +821,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L312">Tween.ts:312</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L378">Tween.ts:378</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>アニメーションが終了しているかどうかを返す。
+									<code>_target</code>が破棄された場合又は、全アクションの実行が終了した場合に<code>true</code>を返す。</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
@@ -626,28 +838,45 @@
 					<a name="moveby" class="tsd-anchor"></a>
 					<h3>move<wbr>By</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">move<wbr>By<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">move<wbr>By<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L242">Tween.ts:242</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L247">Tween.ts:247</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>ターゲットを指定した相対座標に移動するアクションを追加する。相対座標の基準値はアクション開始時の座標となる。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>x: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>x座標</p>
+									</div>
 								</li>
 								<li>
 									<h5>y: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>y座標</p>
+									</div>
 								</li>
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>変化に要する時間（ミリ秒）</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> =&nbsp;Easing.linear</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> = Easing.linear</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Easing関数（指定しない場合は<code>Easing.linear</code>）</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -658,28 +887,45 @@
 					<a name="moveto" class="tsd-anchor"></a>
 					<h3>move<wbr>To</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">move<wbr>To<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">move<wbr>To<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L231">Tween.ts:231</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L236">Tween.ts:236</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>ターゲットを指定した座標に移動するアクションを追加する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>x: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>x座標</p>
+									</div>
 								</li>
 								<li>
 									<h5>y: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>y座標</p>
+									</div>
 								</li>
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>変化に要する時間（ミリ秒）</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> =&nbsp;Easing.linear</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> = Easing.linear</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Easing関数（指定しない場合は<code>Easing.linear</code>）</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -690,25 +936,39 @@
 					<a name="movex" class="tsd-anchor"></a>
 					<h3>moveX</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">moveX<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">moveX<span class="tsd-signature-symbol">(</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L252">Tween.ts:252</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L257">Tween.ts:257</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>ターゲットのX座標を指定した座標に移動するアクションを追加する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>x: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>x座標</p>
+									</div>
 								</li>
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>変化に要する時間（ミリ秒）</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> =&nbsp;Easing.linear</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> = Easing.linear</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Easing関数（指定しない場合は<code>Easing.linear</code>）</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -719,25 +979,39 @@
 					<a name="movey" class="tsd-anchor"></a>
 					<h3>moveY</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">moveY<span class="tsd-signature-symbol">(</span>y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">moveY<span class="tsd-signature-symbol">(</span>y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L262">Tween.ts:262</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L267">Tween.ts:267</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>ターゲットのY座標を指定した座標に移動するアクションを追加する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>y: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>y座標</p>
+									</div>
 								</li>
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>変化に要する時間（ミリ秒）</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> =&nbsp;Easing.linear</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> = Easing.linear</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Easing関数（指定しない場合は<code>Easing.linear</code>）</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -754,9 +1028,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L159">Tween.ts:159</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L164">Tween.ts:164</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>一時停止するアクションを追加する。
+									内部的には<code>Tween#call()</code>で<code>Tween#paused</code>に<code>true</code>をセットしている。</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
 						</li>
 					</ul>
@@ -765,25 +1045,39 @@
 					<a name="rotateby" class="tsd-anchor"></a>
 					<h3>rotate<wbr>By</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">rotate<wbr>By<span class="tsd-signature-symbol">(</span>angle<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">rotate<wbr>By<span class="tsd-signature-symbol">(</span>angle<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L282">Tween.ts:282</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L287">Tween.ts:287</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>ターゲットをアクション開始時の角度を基準とした相対角度に回転するアクションを追加する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>angle: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>角度</p>
+									</div>
 								</li>
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>変化に要する時間（ミリ秒）</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> =&nbsp;Easing.linear</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> = Easing.linear</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Easing関数（指定しない場合は<code>Easing.linear</code>）</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -794,25 +1088,39 @@
 					<a name="rotateto" class="tsd-anchor"></a>
 					<h3>rotate<wbr>To</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">rotate<wbr>To<span class="tsd-signature-symbol">(</span>angle<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">rotate<wbr>To<span class="tsd-signature-symbol">(</span>angle<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L272">Tween.ts:272</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L277">Tween.ts:277</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>ターゲットを指定した角度に回転するアクションを追加する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>angle: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>角度</p>
+									</div>
 								</li>
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>変化に要する時間（ミリ秒）</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> =&nbsp;Easing.linear</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> = Easing.linear</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Easing関数（指定しない場合は<code>Easing.linear</code>）</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -823,28 +1131,45 @@
 					<a name="scaleby" class="tsd-anchor"></a>
 					<h3>scale<wbr>By</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">scale<wbr>By<span class="tsd-signature-symbol">(</span>scaleX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, scaleY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">scale<wbr>By<span class="tsd-signature-symbol">(</span>scaleX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, scaleY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L304">Tween.ts:304</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L309">Tween.ts:309</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>ターゲットのアクション開始時の倍率に指定した倍率を掛け合わせた倍率に拡縮するアクションを追加する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>scaleX: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>X方向の倍率</p>
+									</div>
 								</li>
 								<li>
 									<h5>scaleY: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Y方向の倍率</p>
+									</div>
 								</li>
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>変化に要する時間（ミリ秒）</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> =&nbsp;Easing.linear</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> = Easing.linear</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Easing関数（指定しない場合は<code>Easing.linear</code>）</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -855,28 +1180,45 @@
 					<a name="scaleto" class="tsd-anchor"></a>
 					<h3>scale<wbr>To</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">scale<wbr>To<span class="tsd-signature-symbol">(</span>scaleX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, scaleY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">scale<wbr>To<span class="tsd-signature-symbol">(</span>scaleX<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, scaleY<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L293">Tween.ts:293</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L298">Tween.ts:298</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>ターゲットを指定した倍率に拡縮するアクションを追加する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>scaleX: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>X方向の倍率</p>
+									</div>
 								</li>
 								<li>
 									<h5>scaleY: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Y方向の倍率</p>
+									</div>
 								</li>
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>変化に要する時間（ミリ秒）</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> =&nbsp;Easing.linear</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> = Easing.linear</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Easing関数（指定しない場合は<code>Easing.linear</code>）</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -893,9 +1235,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L401">Tween.ts:401</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L472">Tween.ts:472</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Tweenの実行状態をシリアライズして返す。</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_tweenstateserialization_.tweenstateserialization.html" class="tsd-signature-type">TweenStateSerialization</a></h4>
 						</li>
 					</ul>
@@ -904,25 +1251,39 @@
 					<a name="to" class="tsd-anchor"></a>
 					<h3>to</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">(</span>props<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+						<li class="tsd-signature tsd-kind-icon">to<span class="tsd-signature-symbol">(</span>props<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, duration<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, easing<span class="tsd-signature-symbol">?: </span><a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L84">Tween.ts:84</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L89">Tween.ts:89</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>オブジェクトの状態を変化させるアクションを追加する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>props: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>変化内容</p>
+									</div>
 								</li>
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>変化に要する時間（ミリ秒）</p>
+									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_easingtype_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> =&nbsp;Easing.linear</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> easing: <a href="../modules/_tween_.html#easingtype" class="tsd-signature-type">EasingType</a><span class="tsd-signature-symbol"> = Easing.linear</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Easing関数（指定しない場合は<code>Easing.linear</code>）</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -939,13 +1300,21 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/43e1813/src/Tween.ts#L130">Tween.ts:130</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-timeline/blob/c5c30ff/src/Tween.ts#L135">Tween.ts:135</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>オブジェクトの変化を停止するアクションを追加する。</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>duration: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>停止する時間（ミリ秒）</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
@@ -960,29 +1329,29 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_actiontype_.html">"<wbr>Action<wbr>Type"</a>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_actiontype_.html">&quot;<wbr>Action<wbr>Type&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_easing_.html">"<wbr>Easing"</a>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_easing_.html">&quot;<wbr>Easing&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_easingtype_.html">"<wbr>Easing<wbr>Type"</a>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_easingtype_.html">&quot;<wbr>Easing<wbr>Type&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_timeline_.html">"<wbr>Timeline"</a>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_timeline_.html">&quot;<wbr>Timeline&quot;</a>
 					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_tween_.html">"<wbr>Tween"</a>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_tween_.html">&quot;<wbr>Tween&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_tweenoption_.html">"<wbr>Tween<wbr>Option"</a>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_tweenoption_.html">&quot;<wbr>Tween<wbr>Option&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_tweenstateserialization_.html">"<wbr>Tween<wbr>State<wbr>Serialization"</a>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_tweenstateserialization_.html">&quot;<wbr>Tween<wbr>State<wbr>Serialization&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="../modules/_index_.html">"index"</a>
+					<li class=" tsd-kind-module">
+						<a href="../modules/_index_.html">&quot;index&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -990,7 +1359,7 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+					<li class="current tsd-kind-class tsd-parent-kind-module">
 						<a href="_tween_.tween.html" class="tsd-kind-icon">Tween</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
@@ -998,6 +1367,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_tween_.tween.html#_destroyedhandler" class="tsd-kind-icon">_destroyed<wbr>Handler</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_tween_.tween.html#_initialprop" class="tsd-kind-icon">_initial<wbr>Prop</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_tween_.tween.html#_laststep" class="tsd-kind-icon">_last<wbr>Step</a>
@@ -1037,6 +1409,12 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_tween_.tween.html#call" class="tsd-kind-icon">call</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_tween_.tween.html#cancel" class="tsd-kind-icon">cancel</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_tween_.tween.html#complete" class="tsd-kind-icon">complete</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_tween_.tween.html#con" class="tsd-kind-icon">con</a>
@@ -1099,8 +1477,23 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
 						<a href="../interfaces/_tween_.tweenaction.html" class="tsd-kind-icon">Tween<wbr>Action</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+						<a href="../modules/_tween_.html#actiontype" class="tsd-kind-icon">Action<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+						<a href="../modules/_tween_.html#easing" class="tsd-kind-icon">Easing</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+						<a href="../modules/_tween_.html#easingtype" class="tsd-kind-icon">Easing<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+						<a href="../modules/_tween_.html#tweenoption" class="tsd-kind-icon">Tween<wbr>Option</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+						<a href="../modules/_tween_.html#tweenstateserialization" class="tsd-kind-icon">Tween<wbr>State<wbr>Serialization</a>
 					</li>
 				</ul>
 			</nav>
@@ -1112,73 +1505,41 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+				<li class="tsd-kind-namespace"><span class="tsd-kind-icon">Namespace</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 			</ul>
 		</div>
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-162208211-1', '');
+        ga('create', 'UA-162208211-1', 'auto');
         ga('send', 'pageview');
     </script>
 </body>

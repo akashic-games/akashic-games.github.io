@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>AudioSystemManager | @akashic/akashic-engine</title>
+	<title>AudioSystemManager | Akashic Engine</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@akashic/akashic-engine</a>
+					<a href="../index.html" class="title">Akashic Engine</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -101,13 +101,14 @@
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="audiosystemmanager.html#sound" class="tsd-kind-icon">sound</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="audiosystemmanager.html#_initializeaudiosystems" class="tsd-kind-icon">_initialize<wbr>Audio<wbr>Systems</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="audiosystemmanager.html#_reset" class="tsd-kind-icon">_reset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="audiosystemmanager.html#_setmuted" class="tsd-kind-icon">_set<wbr>Muted</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="audiosystemmanager.html#_setplaybackrate" class="tsd-kind-icon">_set<wbr>Playback<wbr>Rate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="audiosystemmanager.html#stopall" class="tsd-kind-icon">stop<wbr>All</a></li>
 							</ul>
 						</section>
 					</div>
@@ -119,19 +120,19 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Audio<wbr>System<wbr>Manager<span class="tsd-signature-symbol">(</span>resourceFactory<span class="tsd-signature-symbol">: </span><a href="../interfaces/resourcefactorylike.html" class="tsd-signature-type">ResourceFactoryLike</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="audiosystemmanager.html" class="tsd-signature-type">AudioSystemManager</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Audio<wbr>System<wbr>Manager<span class="tsd-signature-symbol">(</span>resourceFactory<span class="tsd-signature-symbol">: </span><a href="../interfaces/resourcefactory.html" class="tsd-signature-type">ResourceFactory</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="audiosystemmanager.html" class="tsd-signature-type">AudioSystemManager</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AudioSystemManager.ts#L25">engine/AudioSystemManager.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystemManager.ts#L26">src/AudioSystemManager.ts:26</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>resourceFactory: <a href="../interfaces/resourcefactorylike.html" class="tsd-signature-type">ResourceFactoryLike</a></h5>
+									<h5>resourceFactory: <a href="../interfaces/resourcefactory.html" class="tsd-signature-type">ResourceFactory</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="audiosystemmanager.html" class="tsd-signature-type">AudioSystemManager</a></h4>
@@ -147,7 +148,7 @@
 					<div class="tsd-signature tsd-kind-icon">_muted<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AudioSystemManager.ts#L25">engine/AudioSystemManager.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystemManager.ts#L26">src/AudioSystemManager.ts:26</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -156,10 +157,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="music" class="tsd-anchor"></a>
 					<h3>music</h3>
-					<div class="tsd-signature tsd-kind-icon">music<span class="tsd-signature-symbol">:</span> <a href="../interfaces/audiosystemlike.html" class="tsd-signature-type">AudioSystemLike</a></div>
+					<div class="tsd-signature tsd-kind-icon">music<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">AudioSystem</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AudioSystemManager.ts#L15">engine/AudioSystemManager.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystemManager.ts#L15">src/AudioSystemManager.ts:15</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -171,10 +172,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="sound" class="tsd-anchor"></a>
 					<h3>sound</h3>
-					<div class="tsd-signature tsd-kind-icon">sound<span class="tsd-signature-symbol">:</span> <a href="../interfaces/audiosystemlike.html" class="tsd-signature-type">AudioSystemLike</a></div>
+					<div class="tsd-signature tsd-kind-icon">sound<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">AudioSystem</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AudioSystemManager.ts#L20">engine/AudioSystemManager.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystemManager.ts#L21">src/AudioSystemManager.ts:21</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -184,19 +185,19 @@
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
 					<a name="_initializeaudiosystems" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _initialize<wbr>Audio<wbr>Systems</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">_initialize<wbr>Audio<wbr>Systems<span class="tsd-signature-symbol">(</span>resourceFactory<span class="tsd-signature-symbol">: </span><a href="../interfaces/resourcefactorylike.html" class="tsd-signature-type">ResourceFactoryLike</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">_initialize<wbr>Audio<wbr>Systems<span class="tsd-signature-symbol">(</span>resourceFactory<span class="tsd-signature-symbol">: </span><a href="../interfaces/resourcefactory.html" class="tsd-signature-type">ResourceFactory</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AudioSystemManager.ts#L63">engine/AudioSystemManager.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystemManager.ts#L64">src/AudioSystemManager.ts:64</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -204,7 +205,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>resourceFactory: <a href="../interfaces/resourcefactorylike.html" class="tsd-signature-type">ResourceFactoryLike</a></h5>
+									<h5>resourceFactory: <a href="../interfaces/resourcefactory.html" class="tsd-signature-type">ResourceFactory</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -221,7 +222,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AudioSystemManager.ts#L35">engine/AudioSystemManager.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystemManager.ts#L36">src/AudioSystemManager.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -240,7 +241,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AudioSystemManager.ts#L44">engine/AudioSystemManager.ts:44</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystemManager.ts#L45">src/AudioSystemManager.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -265,7 +266,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/AudioSystemManager.ts#L55">engine/AudioSystemManager.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystemManager.ts#L56">src/AudioSystemManager.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -276,6 +277,23 @@
 									<h5>rate: <span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="stopall" class="tsd-anchor"></a>
+					<h3>stop<wbr>All</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">stop<wbr>All<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/AudioSystemManager.ts#L77">src/AudioSystemManager.ts:77</a></li>
+								</ul>
+							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -320,6 +338,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="audiosystemmanager.html#_setplaybackrate" class="tsd-kind-icon">_set<wbr>Playback<wbr>Rate</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="audiosystemmanager.html#stopall" class="tsd-kind-icon">stop<wbr>All</a>
 							</li>
 						</ul>
 					</li>
