@@ -2,6 +2,8 @@
 	"width": 640,
 	"height": 360,
 	"fps": 30,
+	"title": "泥棒バスター",
+	"description": "泥棒に工具をぶつけて逃走を阻止しましょう。",
 	"assets": {
 		"before_the_start": {
 			"type": "image",

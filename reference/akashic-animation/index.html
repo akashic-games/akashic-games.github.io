@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>@akashic-extension/akashic-animation</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for @akashic-extension/akashic-animation">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -56,7 +56,7 @@
 					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
-			<h1> @akashic-extension/akashic-animation</h1>
+			<h1>@akashic-extension/akashic-animation</h1>
 		</div>
 	</div>
 </header>
@@ -67,99 +67,109 @@
 				<p align="center">
 					<img src="img/akashic-animation.png" />
 				</p>
-				<h1 id="akashic-animation">Akashic Animation</h1>
+				<a href="#akashic-animation" id="akashic-animation" style="color: inherit; text-decoration: none;">
+					<h1>Akashic Animation</h1>
+				</a>
 				<p>Akashic Animationは<a href="https://akashic-games.github.io/">Akashic Engine</a>向けのアニメーションライブラリです。</p>
-				<h2 id="-">利用方法</h2>
+				<a href="#利用方法" id="利用方法" style="color: inherit; text-decoration: none;">
+					<h2>利用方法</h2>
+				</a>
 				<p><a href="https://github.com/akashic-games/akashic-cli">akashic-cli</a>をインストールした後、</p>
-				<pre><code class="lang-sh">akashic install @akashic-extension/akashic-animation
-</code></pre>
+				<pre><code class="language-sh">akashic install @akashic-extension/akashic-animation</code></pre>
 				<p>でインストールできます。コンテンツからは、</p>
-				<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> aa = <span class="hljs-built_in">require</span>(<span class="hljs-string">"@akashic-extension/akashic-animation"</span>);
-</code></pre>
+				<pre><code class="language-javascript"><span class="hljs-keyword">var</span> aa = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;@akashic-extension/akashic-animation&quot;</span>);</code></pre>
 				<p>で利用してください。</p>
 				<p>Akashic Engineの詳細な利用方法については、 <a href="https://akashic-games.github.io/">公式ページ</a> を参照してください。</p>
-				<h2 id="api-">APIリファレンス</h2>
+				<a href="#apiリファレンス" id="apiリファレンス" style="color: inherit; text-decoration: none;">
+					<h2>APIリファレンス</h2>
+				</a>
 				<p><a href="https://akashic-games.github.io/reference/akashic-animation/index.html">こちら</a>。</p>
-				<h2 id="-">補足</h2>
-				<h3 id="-">ループアニメーションの補間</h3>
+				<a href="#補足" id="補足" style="color: inherit; text-decoration: none;">
+					<h2>補足</h2>
+				</a>
+				<a href="#ループアニメーションの補間" id="ループアニメーションの補間" style="color: inherit; text-decoration: none;">
+					<h3>ループアニメーションの補間</h3>
+				</a>
 				<p>アニメーションをループ再生するとき、最後のフレームと最初のフレームの間は常に線形補間になります。</p>
-				<h3 id="-">キーフレームの外挿</h3>
+				<a href="#キーフレームの外挿" id="キーフレームの外挿" style="color: inherit; text-decoration: none;">
+					<h3>キーフレームの外挿</h3>
+				</a>
 				<p>再生するアニメーションの0フレーム目がキーフレームでない時、akashic-animationは0フレーム目に初期値を与えます。初期値は属性により異なります（次の表参照）。</p>
 				<table>
 					<thead>
 						<tr>
-							<th style="text-align:left">属性</th>
-							<th style="text-align:left">値</th>
+							<th align="left">属性</th>
+							<th align="left">値</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td style="text-align:left">X,Y座標</td>
-							<td style="text-align:left">0, 0</td>
+					<tbody><tr>
+							<td align="left">X,Y座標</td>
+							<td align="left">0, 0</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">Z回転</td>
-							<td style="text-align:left">0</td>
+							<td align="left">Z回転</td>
+							<td align="left">0</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">X,Yスケール</td>
-							<td style="text-align:left">1, 1</td>
+							<td align="left">X,Yスケール</td>
+							<td align="left">1, 1</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">ローカルX,Yスケール</td>
-							<td style="text-align:left">1, 1</td>
+							<td align="left">ローカルX,Yスケール</td>
+							<td align="left">1, 1</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">アルファ</td>
-							<td style="text-align:left">1</td>
+							<td align="left">アルファ</td>
+							<td align="left">1</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">ローカルアルファ</td>
-							<td style="text-align:left">無し</td>
+							<td align="left">ローカルアルファ</td>
+							<td align="left">無し</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">セル</td>
-							<td style="text-align:left">無し</td>
+							<td align="left">セル</td>
+							<td align="left">無し</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">セル中心座標</td>
-							<td style="text-align:left">0, 0</td>
+							<td align="left">セル中心座標</td>
+							<td align="left">0, 0</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">セルUV</td>
-							<td style="text-align:left">0, 0</td>
+							<td align="left">セルUV</td>
+							<td align="left">0, 0</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">優先順位</td>
-							<td style="text-align:left">0</td>
+							<td align="left">優先順位</td>
+							<td align="left">0</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">可視・不可視</td>
-							<td style="text-align:left">可視</td>
+							<td align="left">可視・不可視</td>
+							<td align="left">可視</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">円アタリ判定半径</td>
-							<td style="text-align:left">0</td>
+							<td align="left">円アタリ判定半径</td>
+							<td align="left">0</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">水平フリップ</td>
-							<td style="text-align:left">しない</td>
+							<td align="left">水平フリップ</td>
+							<td align="left">しない</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">垂直フリップ</td>
-							<td style="text-align:left">しない</td>
+							<td align="left">垂直フリップ</td>
+							<td align="left">しない</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">ユーザデータ</td>
-							<td style="text-align:left">無し</td>
+							<td align="left">ユーザデータ</td>
+							<td align="left">無し</td>
 						</tr>
-					</tbody>
-				</table>
+				</tbody></table>
 				<p>最終フレームがキーフレームでない時も同様に値を与えます。この値は最後のキーフレームと同じ値になります。</p>
-				<h3 id="e-modified-actor-calc-">E#modified()とActor#calc()の順序</h3>
+				<a href="#emodifiedとactorcalcの順序" id="emodifiedとactorcalcの順序" style="color: inherit; text-decoration: none;">
+					<h3>E#modified()とActor#calc()の順序</h3>
+				</a>
 				<p><code>Actor#calc()</code>はActor自体の座標や回転の値から導かれる行列を利用します。そのため、<code>Actor#calc()</code>の前に<code>Actor#modified()</code>を実行してください。さらに<code>Collider</code>は<code>Actor#calc()</code>の計算結果を利用します。</p>
 				<p>以上から、Actorを利用したプログラムはおよそ次のような順序で実行することになります。</p>
-				<pre><code class="lang-typescript"><span class="hljs-comment">// アクターの更新</span>
+				<pre><code class="language-typescript"><span class="hljs-comment">// アクターの更新</span>
 actor.x += <span class="hljs-number">10</span>;
 actor.angle += <span class="hljs-number">1</span>;
 actor.modified();
@@ -177,26 +187,37 @@ actor.colliders.forEach(<span class="hljs-function"><span class="hljs-keyword">f
     <span class="hljs-keyword">if</span> (! volume) <span class="hljs-keyword">return</span>;
     <span class="hljs-keyword">var</span> aabb = volume.aabb();
     <span class="hljs-comment">// 具体的な計算</span>
-});
-</code></pre>
-				<h3 id="attachment">Attachment</h3>
+});</code></pre>
+				<a href="#attachment" id="attachment" style="color: inherit; text-decoration: none;">
+					<h3>Attachment</h3>
+				</a>
 				<p><code>Attachment</code>は<code>Actor</code>のボーンに描画可能なオブジェクトをアタッチするクラスです。現在は<code>Actor</code>のスキンからセルを取り出し、それを任意のボーンにアタッチすることできます。</p>
-				<h3 id="collider">Collider</h3>
+				<a href="#collider" id="collider" style="color: inherit; text-decoration: none;">
+					<h3>Collider</h3>
+				</a>
 				<p><code>Collider</code>は衝突判定に必要な値を導出するクラスです。<code>asabn</code>ファイルにセルに基づいた当たり判定の情報が記述されている時、自動的に<code>BoneCellCollider</code>が生成されます。</p>
 				<p><code>CellAttachmentCollider</code>は<code>CellAttachment</code>を衝突判定に利用するコライダーです。Actorにセルをアタッチした時、これで当たり判定を扱いたい時に利用してください。</p>
 				<p><code>Collider</code>には<code>name</code>と<code>tag</code>の２つのプロパティがあります。<code>name</code>はコンバータによって使用される可能性があります。<code>BoneCellCollider</code>ではボーン名が設定されます。</p>
 				<p><code>tag</code>はコンバータも<code>akashic-animation</code>も利用することはありません。衝突判定に必要な情報を紐付けるなどご利用ください。</p>
-				<h3 id="volume">Volume</h3>
+				<a href="#volume" id="volume" style="color: inherit; text-decoration: none;">
+					<h3>Volume</h3>
+				</a>
 				<p>当たり判定の領域を表すクラスです。<code>Collider#getVolume()</code>を用いて取得できます。</p>
 				<p><code>Volume#aabb()</code>でAABBを取得できます。</p>
 				<p><code>Volume</code>にはいくつかの派生クラスがあります。Colliderの返す<code>Volue</code>の型を確認しダウンキャストすることでより具体的な情報が得られます。</p>
 				<p><code>Volume#aabbFirst</code>フラグはDCCツールまたはプログラム中で設定されます。これは当たり判定でAABBを優先する（ダウンキャスト後の詳細な情報でなく）ことを示します。</p>
-				<h3 id="-">アニメーションの座標系</h3>
+				<a href="#アニメーションの座標系" id="アニメーションの座標系" style="color: inherit; text-decoration: none;">
+					<h3>アニメーションの座標系</h3>
+				</a>
 				<p>akashic-animationは <code>Actor#x,Actor#y</code> を原点とする座標系で描画されます。</p>
-				<h3 id="-">アニメーション計算ハンドラ</h3>
+				<a href="#アニメーション計算ハンドラ" id="アニメーション計算ハンドラ" style="color: inherit; text-decoration: none;">
+					<h3>アニメーション計算ハンドラ</h3>
+				</a>
 				<p><code>Actor#calculated()</code>を用いることでアニメーションの計算結果を変更したり、ユーザデータを受け取ることが出来ます。</p>
-				<h4 id="-javascript-">標準的なハンドラの書き方 (JavaScript)</h4>
-				<pre><code class="lang-js">actor.calculated(<span class="hljs-string">"root"</span>, <span class="hljs-literal">true</span>).handle(<span class="hljs-keyword">this</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">param</span>) </span>{ <span class="hljs-comment">// rootボーンにハンドラ登録</span>
+				<a href="#標準的なハンドラの書き方-javascript" id="標準的なハンドラの書き方-javascript" style="color: inherit; text-decoration: none;">
+					<h4>標準的なハンドラの書き方 (JavaScript)</h4>
+				</a>
+				<pre><code class="language-js">actor.calculated(<span class="hljs-string">&quot;root&quot;</span>, <span class="hljs-literal">true</span>).handle(<span class="hljs-built_in">this</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">param</span>) </span>{ <span class="hljs-comment">// rootボーンにハンドラ登録</span>
     <span class="hljs-keyword">if</span> (param.left.time === param.currentFrame &amp;&amp; param.left.userData) {
         <span class="hljs-comment">// 現在時刻のユーザデータが存在するとき、効果音を再生する</span>
         playSound(param.left.userData.str);
@@ -209,24 +230,25 @@ actor.colliders.forEach(<span class="hljs-function"><span class="hljs-keyword">f
         <span class="hljs-comment">// Posture#updateMatrix()の結果を書き換え</span>
         param.posture.m._matrix[<span class="hljs-number">5</span>] += <span class="hljs-number">10</span>;
     }
-}, <span class="hljs-string">"root handler"</span>); <span class="hljs-comment">// g.Trigger.removeByName() でハンドラを削除するときに利用するハンドラ名</span>
-</code></pre>
-				<h4 id="animationhandlerparam">AnimationHandlerParam</h4>
+}, <span class="hljs-string">&quot;root handler&quot;</span>); <span class="hljs-comment">// g.Trigger.removeByName() でハンドラを削除するときに利用するハンドラ名</span></code></pre>
+				<a href="#animationhandlerparam" id="animationhandlerparam" style="color: inherit; text-decoration: none;">
+					<h4>AnimationHandlerParam</h4>
+				</a>
 				<p>登録されたハンドラには<code>AnimationHandlerParam</code>型のオブジェクトが渡されます。</p>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> AnimationHandlerParam {
+				<pre><code class="language-typescript"><span class="hljs-keyword">interface</span> AnimationHandlerParam {
     posture?: Posture;
     left?: AnimationHandlerKeyFrameInfo;
     right?: AnimationHandlerKeyFrameInfo;
     currentFrame: <span class="hljs-built_in">number</span>;
     frameCount: <span class="hljs-built_in">number</span>;
- };
-</code></pre>
-				<pre><code class="lang-typescript"><span class="hljs-keyword">interface</span> AnimationHandlerKeyFrameInfo {
-    time: <span class="hljs-built_in">number</span>;
+ };</code></pre>
+				<pre><code class="language-typescript"><span class="hljs-keyword">interface</span> AnimationHandlerKeyFrameInfo {
+    <span class="hljs-attr">time</span>: <span class="hljs-built_in">number</span>;
     userData?: <span class="hljs-built_in">any</span>;
-}
-</code></pre>
-				<h4 id="-">アニメーション計算ハンドラの実行タイミング</h4>
+}</code></pre>
+				<a href="#アニメーション計算ハンドラの実行タイミング" id="アニメーション計算ハンドラの実行タイミング" style="color: inherit; text-decoration: none;">
+					<h4>アニメーション計算ハンドラの実行タイミング</h4>
+				</a>
 				<p>ハンドラが実行されるタイミングは２つあります。ハンドラ実行タイミングによって<code>AnimationHandlerParam</code>に格納される値が変わります。</p>
 				<ul>
 					<li>各ボーンのアニメーション計算開始前<ul>
@@ -252,92 +274,100 @@ actor.colliders.forEach(<span class="hljs-function"><span class="hljs-keyword">f
 					</li>
 				</ul>
 				<p><em>ハンドラは<code>posture</code>が<code>undefined</code>かどうか確認することで呼び出しタイミングを区別できます。</em></p>
-				<h3 id="-">アニメーション再生終了ハンドラ</h3>
+				<a href="#アニメーション再生終了ハンドラ" id="アニメーション再生終了ハンドラ" style="color: inherit; text-decoration: none;">
+					<h3>アニメーション再生終了ハンドラ</h3>
+				</a>
 				<p> <code>Actor#ended</code>を用いることでアニメーション再生が終了したタイミングで呼び出されるハンドラを登録できます。</p>
-				<pre><code class="lang-js"> actor.ended.handle(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+				<pre><code class="language-js"> actor.ended.handle(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
      stopBGM();
      goNextScene();
- });
-</code></pre>
-				<h3 id="-">制限</h3>
-				<h4 id="actor-e-collider-">Actorを他のEの子にするとColliderが正しく当たり判定領域を求められない</h4>
+ });</code></pre>
+				<a href="#制限" id="制限" style="color: inherit; text-decoration: none;">
+					<h3>制限</h3>
+				</a>
+				<a href="#actorを他のeの子にするとcolliderが正しく当たり判定領域を求められない" id="actorを他のeの子にするとcolliderが正しく当たり判定領域を求められない" style="color: inherit; text-decoration: none;">
+					<h4>Actorを他のEの子にするとColliderが正しく当たり判定領域を求められない</h4>
+				</a>
 				<p><code>Collider</code> は <code>Actor#calc()</code> の結果を用いますが <code>Actor#calc()</code> は <code>Actor#parent</code> の行列を参照しません。</p>
-				<h4 id="-">属性の継承関係を変更できない</h4>
+				<a href="#属性の継承関係を変更できない" id="属性の継承関係を変更できない" style="color: inherit; text-decoration: none;">
+					<h4>属性の継承関係を変更できない</h4>
+				</a>
 				<p>ボーンの扱う属性の継承関係は次のように固定されています。</p>
 				<table>
 					<thead>
 						<tr>
-							<th style="text-align:left">属性</th>
-							<th style="text-align:left">継承</th>
+							<th align="left">属性</th>
+							<th align="left">継承</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td style="text-align:left">行列</td>
-							<td style="text-align:left">YES</td>
+					<tbody><tr>
+							<td align="left">行列</td>
+							<td align="left">YES</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">透明度</td>
-							<td style="text-align:left">YES</td>
+							<td align="left">透明度</td>
+							<td align="left">YES</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">参照セル</td>
-							<td style="text-align:left">NO</td>
+							<td align="left">参照セル</td>
+							<td align="left">NO</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">セル中心位置</td>
-							<td style="text-align:left">NO</td>
+							<td align="left">セル中心位置</td>
+							<td align="left">NO</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">セルUV</td>
-							<td style="text-align:left">NO</td>
+							<td align="left">セルUV</td>
+							<td align="left">NO</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">セル描画順位</td>
-							<td style="text-align:left">NO</td>
+							<td align="left">セル描画順位</td>
+							<td align="left">NO</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">セル可視フラグ</td>
-							<td style="text-align:left">NO</td>
+							<td align="left">セル可視フラグ</td>
+							<td align="left">NO</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">セル左右反転</td>
-							<td style="text-align:left">NO</td>
+							<td align="left">セル左右反転</td>
+							<td align="left">NO</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">セル上下反転</td>
-							<td style="text-align:left">NO</td>
+							<td align="left">セル上下反転</td>
+							<td align="left">NO</td>
 						</tr>
-					</tbody>
-				</table>
-				<h3 id="-">アルファブレンドモード</h3>
+				</tbody></table>
+				<a href="#アルファブレンドモード" id="アルファブレンドモード" style="color: inherit; text-decoration: none;">
+					<h3>アルファブレンドモード</h3>
+				</a>
 				<p>akashic-animationでは、セル毎にアルファブレンドを指定できるようになっています。
 				現在サポートしているアルファブレンドは以下の通りです。</p>
 				<table>
 					<thead>
 						<tr>
-							<th style="text-align:left">アルファブレンド</th>
-							<th style="text-align:left">説明</th>
+							<th align="left">アルファブレンド</th>
+							<th align="left">説明</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr>
-							<td style="text-align:left">normal</td>
-							<td style="text-align:left">デフォルトの設定です。描画元のセルを描画先の内容の上に描きます</td>
+					<tbody><tr>
+							<td align="left">normal</td>
+							<td align="left">デフォルトの設定です。描画元のセルを描画先の内容の上に描きます</td>
 						</tr>
 						<tr>
-							<td style="text-align:left">add</td>
-							<td style="text-align:left">描画先の内容の色(背景色)と描画元のセルの重なる部分のカラー値が加算されます</td>
+							<td align="left">add</td>
+							<td align="left">描画先の内容の色(背景色)と描画元のセルの重なる部分のカラー値が加算されます</td>
 						</tr>
-					</tbody>
-				</table>
-				<h2 id="-">ビルド方法</h2>
+				</tbody></table>
+				<a href="#ビルド方法" id="ビルド方法" style="color: inherit; text-decoration: none;">
+					<h2>ビルド方法</h2>
+				</a>
 				<p>akashic-animationはTypeScriptで書かれたライブラリであるため、ビルドにはnode.jsが必要です。</p>
 				<p><code>npm run build</code> によりgulpを使ってビルドできます。</p>
-				<pre><code class="lang-sh">npm install
-npm run build
-</code></pre>
-				<h2 id="-">ライセンス</h2>
+				<pre><code class="language-sh">npm install
+npm run build</code></pre>
+				<a href="#ライセンス" id="ライセンス" style="color: inherit; text-decoration: none;">
+					<h2>ライセンス</h2>
+				</a>
 				<p>本リポジトリは MIT License の元で公開されています。
 				詳しくは <a href="./LICENSE">LICENSE</a> をご覧ください。</p>
 				<p>ただし、画像ファイルおよび音声ファイルは
@@ -353,122 +383,122 @@ npm run build
 					<li class="label tsd-is-external">
 						<span>Internals</span>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_aabb_.html">"AABB"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_aabb_.html">&quot;AABB&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_actor_.html">"<wbr>Actor"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_actor_.html">&quot;<wbr>Actor&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_actorparameterobject_.html">"<wbr>Actor<wbr>Parameter<wbr>Object"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_actorparameterobject_.html">&quot;<wbr>Actor<wbr>Parameter<wbr>Object&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_alphablendmode_.html">"<wbr>Alpha<wbr>Blend<wbr>Mode"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_alphablendmode_.html">&quot;<wbr>Alpha<wbr>Blend<wbr>Mode&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_animationhandlerparams_.html">"<wbr>Animation<wbr>Handler<wbr>Params"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_animationhandlerparams_.html">&quot;<wbr>Animation<wbr>Handler<wbr>Params&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_animeparams_.html">"<wbr>Anime<wbr>Params"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_animeparams_.html">&quot;<wbr>Anime<wbr>Params&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_attachment_.html">"<wbr>Attachment"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_attachment_.html">&quot;<wbr>Attachment&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_attrid_.html">"<wbr>Attr<wbr>Id"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_attrid_.html">&quot;<wbr>Attr<wbr>Id&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_bone_.html">"<wbr>Bone"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_bone_.html">&quot;<wbr>Bone&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_bonecellcollider_.html">"<wbr>Bone<wbr>Cell<wbr>Collider"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_bonecellcollider_.html">&quot;<wbr>Bone<wbr>Cell<wbr>Collider&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_boneset_.html">"<wbr>Bone<wbr>Set"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_boneset_.html">&quot;<wbr>Bone<wbr>Set&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_boxvolume_.html">"<wbr>Box<wbr>Volume"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_boxvolume_.html">&quot;<wbr>Box<wbr>Volume&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_cell_.html">"<wbr>Cell"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_cell_.html">&quot;<wbr>Cell&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_cellattachment_.html">"<wbr>Cell<wbr>Attachment"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_cellattachment_.html">&quot;<wbr>Cell<wbr>Attachment&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_cellattachmentcollider_.html">"<wbr>Cell<wbr>Attachment<wbr>Collider"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_cellattachmentcollider_.html">&quot;<wbr>Cell<wbr>Attachment<wbr>Collider&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_circlecollider_.html">"<wbr>Circle<wbr>Collider"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_circlecollider_.html">&quot;<wbr>Circle<wbr>Collider&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_circlevolume_.html">"<wbr>Circle<wbr>Volume"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_circlevolume_.html">&quot;<wbr>Circle<wbr>Volume&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_collider_.html">"<wbr>Collider"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_collider_.html">&quot;<wbr>Collider&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_colliderinfo_.html">"<wbr>Collider<wbr>Info"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_colliderinfo_.html">&quot;<wbr>Collider<wbr>Info&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_container_.html">"<wbr>Container"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_container_.html">&quot;<wbr>Container&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_containerv2_.html">"<wbr>Container<wbr>V2"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_containerv2_.html">&quot;<wbr>Container<wbr>V2&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_containerv3_.html">"<wbr>Container<wbr>V3"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_containerv3_.html">&quot;<wbr>Container<wbr>V3&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_content_.html">"<wbr>Content"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_content_.html">&quot;<wbr>Content&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_contenttype_.html">"<wbr>Content<wbr>Type"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_contenttype_.html">&quot;<wbr>Content<wbr>Type&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_finalizedcell_.html">"<wbr>Finalized<wbr>Cell"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_finalizedcell_.html">&quot;<wbr>Finalized<wbr>Cell&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_posture_.html">"<wbr>Posture"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_posture_.html">&quot;<wbr>Posture&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_resource_.html">"<wbr>Resource"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_resource_.html">&quot;<wbr>Resource&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_size2_.html">"<wbr>Size2"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_size2_.html">&quot;<wbr>Size2&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_skeleton_.html">"<wbr>Skeleton"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_skeleton_.html">&quot;<wbr>Skeleton&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_skin_.html">"<wbr>Skin"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_skin_.html">&quot;<wbr>Skin&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_vector2_.html">"<wbr>Vector2"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_vector2_.html">&quot;<wbr>Vector2&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_volume_.html">"<wbr>Volume"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_volume_.html">&quot;<wbr>Volume&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_aps_emitter_.html">"aps/<wbr>Emitter"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_aps_emitter_.html">&quot;aps/<wbr>Emitter&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_aps_particle_.html">"aps/<wbr>Particle"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_aps_particle_.html">&quot;aps/<wbr>Particle&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_aps_particlesystem_.html">"aps/<wbr>Particle<wbr>System"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_aps_particlesystem_.html">&quot;aps/<wbr>Particle<wbr>System&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_aps_index_.html">"aps/index"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_aps_index_.html">&quot;aps/index&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="modules/_index_.html">"index"</a>
+					<li class=" tsd-kind-module">
+						<a href="modules/_index_.html">&quot;index&quot;</a>
 					</li>
 					<li class="label tsd-is-external">
 						<span>Externals</span>
 					</li>
-					<li class=" tsd-kind-external-module tsd-is-external">
-						<a href="modules/_vfx_.html">"vfx"</a>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_vfx_.html">&quot;vfx&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -484,73 +514,37 @@ npm run build
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
 				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
 				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 			</ul>
 		</div>
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-162208211-1', '');
+        ga('create', 'UA-162208211-1', 'auto');
         ga('send', 'pageview');
     </script>
 </body>

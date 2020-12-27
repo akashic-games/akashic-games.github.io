@@ -2,6 +2,8 @@
 	"width": 320,
 	"height": 240,
 	"fps": 30,
+	"title": "拡縮・回転・透明度",
+	"description": "g.Eのscale,rotate,opacityプロパティで拡縮・回転・透明度が制御できます。",
 	"main": "./script/main.js",
 	"assets": {
 		"main": {

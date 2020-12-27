@@ -17,20 +17,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic-cli 利用ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?8311d7d">
-<link rel="stylesheet" href="/css/header.css?8311d7d">
-<link rel="stylesheet" href="/css/footer.css?8311d7d">
+<link rel="stylesheet" href="/css/common.css?5ddd7a0">
+<link rel="stylesheet" href="/css/header.css?5ddd7a0">
+<link rel="stylesheet" href="/css/footer.css?5ddd7a0">
 
 
-<link rel="stylesheet" href="/css/asset.css?8311d7d">
+<link rel="stylesheet" href="/css/asset.css?5ddd7a0">
 
-<link rel="stylesheet" href="/css/akashic-document.css?8311d7d">
+<link rel="stylesheet" href="/css/akashic-document.css?5ddd7a0">
 
-<link rel="stylesheet" href="/css/railscasts.css?8311d7d">
+<link rel="stylesheet" href="/css/railscasts.css?5ddd7a0">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?8311d7d"></script>
+<script src="/lib/common.js?5ddd7a0"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -47,7 +47,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
 				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
 				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
 			</ul>
@@ -74,8 +74,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-engine-v3/globals.html">akashic-engine v3.x</a></li>
 				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
 				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
 				<li><a href="/reference/akashic-label/">akashic-label</a></li>
@@ -84,6 +83,8 @@
 				<li><a href="/reference/coe/">coe framework</a></li>
 				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
 				<li><a href="/reference/collision-js/">collision-js</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x (旧版)</a></li>
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x (旧版)</a></li>
 			</ul>
 		</li>
 		<li class="head--menu--item">
@@ -317,15 +318,17 @@ fps: (30)</code></pre>
 </li>
 <li>(なし)<ul>
 <li>上記すべてを行います。</li>
+<li>さらに assets/ ディレクトリ以下の全種類の素材を列挙してアセット情報を更新します。</li>
 </ul>
 </li>
 </ul>
-<p>game.json の管理しているアセット情報には、ファイルパスだけでなく以下のような情報も含まれます。素材の増減時だけでなく、これらの変更時にも scan asset コマンドを実行してください。</p>
+<p>game.json の管理しているアセット情報には、ファイルパスだけでなく以下のような情報も含まれます。
+したがって素材の増減時だけでなく、これらの変更時にも scan asset コマンドを実行してください。</p>
 <ul>
 <li>画像素材の幅・高さ</li>
 <li>(将来のバージョンにおいて) 音素材の再生時間</li>
 </ul>
-<p>また scan asset コマンドは新たに追加するアセット定義に対し、type に応じて以下の初期値を与えます。
+<p>scan asset コマンドは、新たに追加するアセット定義に対し、type に応じて以下の初期値を与えます。
 (値の詳細は<a href="game-json.html">game.json の仕様</a>を参照してください)</p>
 <ul>
 <li>&quot;type&quot;: &quot;script&quot;<ul>
@@ -338,22 +341,27 @@ fps: (30)</code></pre>
 </li>
 </ul>
 <p>scan asset コマンドによる素材の列挙は、ディレクトリを再帰的に検索します。つまり、image/ のサブディレクトリに置かれた画像素材なども、列挙されアセット情報に登録されます。</p>
-<p>各素材をアセットとして使用するには、アセットを識別する ID (アセット ID) が必要になります。
-scan asset コマンドは、デフォルトでアセット ID として「ファイル名から拡張子を取り除いたもの」を設定します。
-(audio/title.ogg と script/title.js は、同じ &quot;title&quot; という ID となって衝突し、エラーになります。これを回避するには後述する <code>--use-path-asset-id</code> オプションを利用してください。)
-このとき、ファイル名は以下の条件を全て満たす必要があります。</p>
+<h3>アセットID</h3>
+<p>Akashic コンテンツから各アセットにアクセスするには、アセットを識別する ID (アセット ID) またはファイルパス (Akashic Engine v3 以降) を利用します。</p>
+<p>scan asset コマンドは、アセット ID として通常「ファイル名から拡張子を取り除いたもの」を登録します。</p>
+<blockquote>
+<p>このため audio/title.ogg と script/title.js は、同じ &quot;title&quot; という ID となって衝突し、エラーになることに注意してください。
+この制限を回避するため、 Akashic Engine v3 以降では assets/ ディレクトリ (後述) を利用できます。</p>
+</blockquote>
+<p>またアセットのファイル名は以下の条件を全て満たす必要があります。</p>
 <ul>
 <li>半角英数字、アンダースコア &quot;_&quot;、ドル記号 &quot;$&quot; のみで構成されている</li>
 <li>英字で始まっている</li>
 </ul>
 <p>ユーザは game.json を直接編集して、アセット ID を任意に変更することができます。
-akashic コマンドはファイルパスを基準に操作を行うため、たとえば画像素材の ID を変更した後にその画像のサイズを変更しても、適切に game.json の幅・高さ情報を更新します。</p>
-<p><code>--use-path-asset-id</code> オプションを指定することで、 game.json があるディレクトリからの (拡張子を含めた) アセットの相対パスを ID にすることができます。
-同名ファイルのアセットが複数存在するケースで利用することができます。
-(このオプション利用時は上記のファイル名制限が無視されます。)</p>
-<pre><code class="language-sh">akashic scan asset &lt;subtarget&gt; --use-path-asset-id</code></pre>
-<p>また <code>--update-asset-id</code> オプションを併用することで、すでに登録されているアセット ID を相対パスに変更することができます。</p>
-<pre><code class="language-sh">akashic scan asset &lt;subtarget&gt; --use-path-asset-id --update-asset-id</code></pre>
+akashic コマンドはファイルパスを基準に操作を行うため、たとえば画像素材の ID を変更した後にその画像のサイズを変更しても、適切に game.json の幅・高さ情報が更新されます。</p>
+<h3>assets/ ディレクトリとアセットパス</h3>
+<p>assets/ ディレクトリは、上述のとおり全ての種類の素材を置くことができるディレクトリです。</p>
+<p>また scan asset コマンドは、assets/ ディレクトリに限り、アセット ID を「ファイル名から拡張子を取り除いたもの」ではなく、ユニークな自動生成の値にします。
+そのため title.ogg と title.png など、名前が重複するアセットもそのまま置くことができます。</p>
+<p>これによって他のディレクトリよりも柔軟なフォルダ構造で素材を管理できます。</p>
+<p>ただし ID が自動生成で不定な値になるので、ゲーム内からアセット ID でアクセスすることはできなくなります。
+Akashic Engine v3 以降で利用できる <a href="/tutorial/v3/assetPaths.html">ファイルパスによるアセットアクセス</a> を利用してください。</p>
 <h2><a name="serve"></a> serve</h2>
 <pre><code class="language-sh">akashic serve [&lt;options&gt;] [&lt;path&gt;]</code></pre>
 <p><code>&lt;path&gt;</code> ディレクトリ(省略時はカレントディレクトリ)にあるゲームをホストする、マルチプレイ動作確認用サーバを起動します。</p>

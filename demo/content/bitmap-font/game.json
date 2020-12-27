@@ -2,6 +2,8 @@
 	"width": 320,
 	"height": 320,
 	"fps": 30,
+	"title": "ビットマップフォント",
+	"description": "[g.BitmapFont](https://akashic-games.github.io/reference/akashic-engine-v1/classes/_lib_main_d_.g.bitmapfont.html)と[g.Label](https://akashic-games.github.io/reference/akashic-engine-v1/classes/_lib_main_d_.g.label.html)を使うと、ビットマップフォントでテキストを描画できます。テキストをクリック(タップ)すると色とサイズが変化します。\n\nビットマップフォント画像(mplus1c_regular_jis1.png)は[M+ FONTS](https://mplus-fonts.osdn.jp/index.html)のM+ Type-1 Regularから[bmpfont-generator](https://github.com/akashic-games/bmpfont-generator)で生成したものです。",
 	"main": "./script/main.js",
 	"assets": {
 		"main": {

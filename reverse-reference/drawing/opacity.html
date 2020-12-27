@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162208211-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162208211-1');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>半透明にする (透明度を変える)</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?5ddd7a0">
+<link rel="stylesheet" href="/css/header.css?5ddd7a0">
+<link rel="stylesheet" href="/css/footer.css?5ddd7a0">
+
+
+<link rel="stylesheet" href="/css/akashic-document.css?5ddd7a0">
+
+<link rel="stylesheet" href="/css/railscasts.css?5ddd7a0">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?5ddd7a0"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
+				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
+				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v3/globals.html">akashic-engine v3.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				<li><a href="/reference/coe/">coe framework</a></li>
+				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
+				<li><a href="/reference/collision-js/">collision-js</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x (旧版)</a></li>
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x (旧版)</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3>Akashic Engine 逆引きリファレンス</h3>
+<h4><a name="drawing"></a> 描画</h4>
+<ul>
+<li><a href="./entity.html">エンティティを追加・削除する</a></li>
+<li><a href="./image.html">画像を表示する</a></li>
+<li><a href="./rotate.html">回転する</a></li>
+<li><a href="./scale.html">拡大する</a></li>
+<li><a href="./rotate-anchor.html">回転・拡大の基準点を変える</a></li>
+<li><a href="./opacity.html">半透明にする (透明度を変える)</a></li>
+<li><a href="./hidden.html">非表示にする</a></li>
+<li><a href="./display-order.html">描画順を変える</a></li>
+<li><a href="./multiple-entities.html">複数のエンティティをまとめて扱う</a></li>
+<li><a href="./">エンティティの描画方法を変える (compositeOperation)</a></li>
+<li><a href="./">フレームアニメーション (パラパラアニメ) する</a></li>
+<li><a href="./">トゥイーンアニメーションする</a></li>
+<li><a href="./">クリッピングする</a></li>
+<li><a href="./">シェーダを利用する</a></li>
+</ul>
+<h4><a name="operation"></a> 操作</h4>
+<ul>
+<li><a href="./">クリック・タップできるようにする</a></li>
+<li><a href="./">ドラッグ・スワイプで動かす</a></li>
+<li><a href="./">ダブルクリック・ダブルタップできるようにする</a></li>
+<li><a href="./">画面全体をクリック・タップできるようにする</a></li>
+</ul>
+<h4><a name="sound"></a> 音声</h4>
+<ul>
+<li><a href="./">効果音・BGM を再生する</a></li>
+<li><a href="./">効果音・BGM を止める</a></li>
+<li><a href="./">効果音・BGM の音量を変える</a></li>
+<li><a href="./">全体音量を変える</a></li>
+</ul>
+<h4><a name="label"></a> 文字列</h4>
+<ul>
+<li><a href="./">文字列を描画する</a></li>
+<li><a href="./">文字列の色を変える</a></li>
+<li><a href="./">文字列を中央寄せ・右寄せする</a></li>
+<li><a href="./">複数行の文字列を描画する</a></li>
+<li><a href="./">ビットマップフォントを使う</a></li>
+<li><a href="./">ビットマップフォントを作る</a></li>
+</ul>
+<h4><a name="logic"></a> ゲームロジック</h4>
+<ul>
+<li><a href="./">乱数を使う</a></li>
+<li><a href="./">一定時間後に処理を実行する</a></li>
+<li><a href="./">定期的に処理を実行する</a></li>
+<li><a href="./">エンティティ同士の当たり判定を調べる</a></li>
+<li><a href="./">シーンを切り替える</a></li>
+<li><a href="./">前のシーンに戻る</a></li>
+<li><a href="./">指定位置にあるタッチ可能なエンティティを探す</a></li>
+</ul>
+<h4><a name="setting"></a> ゲーム設定</h4>
+<ul>
+<li><a href="./">画面サイズを変える</a></li>
+<li><a href="./">FPS を変える</a></li>
+</ul>
+<h4><a name="asset"></a> アセット</h4>
+<ul>
+<li><a href="./">ゲームにアセットを追加する</a></li>
+<li><a href="./">ゲームからアセットを削除する</a></li>
+<li><a href="./">アセットを読み込む</a></li>
+<li><a href="./">読み込んだアセットを取得する</a></li>
+<li><a href="./">スクリプトを分割する (複数のスクリプトを使う)</a></li>
+<li><a href="./">シーン内で動的にアセットを読み込む</a></li>
+</ul>
+<h4><a name="extension"></a> 拡張ライブラリ</h4>
+<ul>
+<li><a href="./">拡張ライブラリを導入する</a></li>
+<li><a href="./">拡張ライブラリを削除する</a></li>
+<li><a href="./">非 Akashic Engine 向けライブラリを利用する</a></li>
+</ul>
+<h4><a name="release"></a> 公開</h4>
+<ul>
+<li><a href="./">HTML5 ゲームとして出力する</a></li>
+<li><a href="./">ニコ生ゲームとして出力する</a></li>
+<li><a href="./">RPG アツマールでの背景色を指定する</a></li>
+<li><a href="./">RPG アツマールでスコアボードを表示する</a></li>
+<li><a href="./">RPG アツマールでのみ処理を行う</a></li>
+</ul>
+
+		</div>
+		<div class="twocol-main">
+			<div class="inner responsive--width--twocol">
+				<h1>半透明にする (透明度を変える)</h1>
+<p>エンティティの透明度を変更するには、<code>opacity</code> プロパティを利用します。</p>
+<h2>凡例</h2>
+<pre><code class="language-javascript">var sprite = new g.Sprite({
+  ...,      // その他のプロパティ
+  opacity: 0.5 // 半透明にした状態で表示する
+});</code></pre>
+<pre><code class="language-javascript">sprite.opacity = 1; // 完全に不透明にする
+sprite.modified(); // modified() で表示に反映</code></pre>
+<p><code>opacity</code> は不透明度を表し、 0.0 (完全に透明) ～ 1.0(完全に不透明) の数値で指定できます。初期値は <code>1</code> となります。
+値は、 0.0 未満の場合、もしくは 1.0 を超えた値の場合は完全に不透明で表示されます。</p>
+<p>非表示・表示を切り替えるだけの場合、 <a href="./hidden.html">hide(), show()も利用できます。</a></p>
+<h2>利用例</h2>
+<p>次のコンテンツは、画像 (を表示する <code>g.Sprite</code>) を半透明の状態で表示します。</p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvZHJhd2luZy9vcGFjaXR5L2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
+
+<h2>詳細</h2>
+<p>エンティティの透明度を変更するには <code>opacity</code> プロパティを利用します。</p>
+<p>下記のコードでは、生成した <code>Sprite</code> は 完全に透明の状態で描画されます。</p>
+<pre><code class="language-javascript">var sprite = new g.Sprite({
+  scene: scene,
+  src: scene.asset.getImageById(&quot;player&quot;), // アセットID &quot;player&quot; が画像アセットだとします
+  x: 0,
+  y: 0,
+  opacity: 0
+});
+
+scene.append(sprite);</code></pre>
+<p>生成後のエンティティの透明度は、 <code>opacity</code> プロパティで参照できます。</p>
+<pre><code class="language-javascript">sprite.opacity; // ==&gt; 0</code></pre>
+<p><code>opacity</code> プロパティに代入することで、透明度を変更できます。表示への反映には <code>modified()</code> メソッドを呼び出す必要があります。</p>
+<pre><code class="language-javascript">sprite.opacity += 0.1; // 現状からさらに 10% の不透明度で表示する
+sprite.modified(); // modified() で表示に反映</code></pre>
+<h2>関連情報</h2>
+<ul>
+<li><a href="/reference/akashic-engine-v3/classes/e.html#opacity">API リファレンス</a></li>
+</ul>
+<div class="navi-center">
+<a href="./rotate-anchor.html">前 (回転・拡大の基準点を変える)</a>
+ | <a href="../">目次</a>
+ | <a href="./hidden.html">次 (非表示にする)</a>
+</div>
+
+			</div>
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は、一部を除き <a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています: <a href="/image-license.html">詳細</a></li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
+</body>
+</html>

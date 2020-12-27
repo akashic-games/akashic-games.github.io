@@ -17,20 +17,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>よくある落とし穴</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?8311d7d">
-<link rel="stylesheet" href="/css/header.css?8311d7d">
-<link rel="stylesheet" href="/css/footer.css?8311d7d">
+<link rel="stylesheet" href="/css/common.css?5ddd7a0">
+<link rel="stylesheet" href="/css/header.css?5ddd7a0">
+<link rel="stylesheet" href="/css/footer.css?5ddd7a0">
 
 
-<link rel="stylesheet" href="/css/asset.css?8311d7d">
+<link rel="stylesheet" href="/css/asset.css?5ddd7a0">
 
-<link rel="stylesheet" href="/css/akashic-document.css?8311d7d">
+<link rel="stylesheet" href="/css/akashic-document.css?5ddd7a0">
 
-<link rel="stylesheet" href="/css/railscasts.css?8311d7d">
+<link rel="stylesheet" href="/css/railscasts.css?5ddd7a0">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?8311d7d"></script>
+<script src="/lib/common.js?5ddd7a0"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -47,7 +47,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
 				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
 				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
 			</ul>
@@ -74,8 +74,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-engine-v3/globals.html">akashic-engine v3.x</a></li>
 				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
 				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
 				<li><a href="/reference/akashic-label/">akashic-label</a></li>
@@ -84,6 +83,8 @@
 				<li><a href="/reference/coe/">coe framework</a></li>
 				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
 				<li><a href="/reference/collision-js/">collision-js</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x (旧版)</a></li>
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x (旧版)</a></li>
 			</ul>
 		</li>
 		<li class="head--menu--item">
@@ -186,8 +187,8 @@ Akashic Engine のプレイはこの乱数生成器のシードを記録に含�
 <p>なお <code>akashic init --type typescript</code> で生成される TypeScript 用テンプレートは、最初からコンパイル結果が ES5 互換になるように設定されています。そのため <code>const</code> や <code>=&gt;</code> など、TypeScript がサポートする各種構文を利用することができます。
 (あくまでも構文のみです。 <code>Map</code> など根本的に実装がないと動かない機能には対応できません。)</p>
 <p>また <code>akashic init --type javascript-minimal</code> で生成される JavaScript 用テンプレート(デフォルトテンプレート)では、 <code>npm run lint</code> を実行するとコードを lint できます。
-ES2015 以降の構文を検出するとエラーを表示するように設定されているので、チェックに使うことができます。(2018-08-31 現在、予定)</p>
-<p><code>akashic export</code> も、ES2015 以降の構文を検出すると警告を表示します。(2018-08-31 現在、予定)</p>
+ES2015 以降の構文を検出するとエラーを表示するように設定されているので、チェックに使うことができます。</p>
+<p><code>akashic export</code> も、ES2015 以降の構文を検出すると警告を表示します。</p>
 <h2><a name="Array.prototype.sortの安定性を仮定してしまう" /> Array.prototype.sort の安定性を仮定してしまう</h2>
 <p>ECMAScript の言語仕様上、 <code>Array.prototype.sort</code> が安定なソートであることは保証されていません。つまり、 <code>sort()</code> に与えられた比較関数が、ある二つの要素について <code>0</code> を返した時(等価であるとした時)、ソート後のそれらの順序は実装依存です。
 (実際、あるバージョンの Safari と Chrome では <code>sort()</code> の結果が異なる場合があることが分かっています。)</p>
@@ -211,6 +212,29 @@ console.log(array[1].value);  // ==&gt; &quot;foo&quot;, &quot;bar&quot; or &quo
 <pre><code>WEBAUDIO17014：デコードエラー：指定されたストリームが破損しているか、サポートされていません</code></pre><p>詳細な発生条件はわかっていませんが、他の環境では再生できるファイルでも再生できないことがあるようです。このエラーが出た場合、元ファイルのサンプルレートの変更や、出力するオーディオファイルのビットレートを変更を行うとエラーが解消される可能性があります。</p>
 <p><a href="https://github.com/akashic-games/complete-audio">complete-audio</a> で変換している場合は、</p>
 <pre><code>complete-audio -b 32k sound.wav</code></pre><p>のように <code>-b</code> オプションで出力するオーディオファイルのビットレートを指定することができます。</p>
+<h2><a name="audio-problem" /> 一部の環境でゲーム開始時に自動的に音声が再生されない</h2>
+<p>Akashic ゲームで「一部の音声が、ユーザが操作 (クリックなど) した時にしか再生できない」という現象が発生することがあり、以下のブラウザでその現象が確認されています。</p>
+<ul>
+<li>Google Chrome</li>
+<li>Safari</li>
+<li>一部環境の Opera</li>
+</ul>
+<p>この現象の原因は、ブラウザの Web 広告対策のために音声再生が制限されることがあるためです。
+しかし現状では、そのブラウザの制限を完全になくしてゲーム開始時に自動的に音声を再生させる方法は見いだせていません。ですので、ゲームデザインとして最初に一度以上クリックさせるような作りにするという形で対応してください。</p>
+<h2><a name="background-color-in-atsumaru" /> RPG アツマール環境で背景が真っ黒になる</h2>
+<p>ニコ生ゲームとして配信画面を透過するために、ゲームの背景に何も描画していない場合、 RPG アツマールではその部分が真っ黒になります。PRG アツマールでは投稿時にゲーム画面の「枠外」の色を選べますが、これはゲーム画面には適用されません。</p>
+<p>この問題は、 <code>akashic export html</code> コマンドのオプション <code>--inject</code> を使うことで回避できます。</p>
+<p><code>--inject &lt;filepath&gt;</code> は、出力される HTML ファイルの <code>head</code> 要素の末尾に <code>&lt;filepath&gt;</code> のファイルの内容を書き込むオプションです。この HTML ファイルは、アツマール (もしくは、 Web サーバに置いた時) でのみ利用され、ニコニコ生放送上では使われません。
+例えば背景を灰色にするための方法は以下のようになります。</p>
+<p>次のような内容のテキストファイル <code>injectdata.txt</code> を準備します。</p>
+<pre><code class="language-html">&lt;style&gt;
+  body {
+    background: silver;
+  }
+&lt;/style&gt;</code></pre>
+<p>以下のように <code>akashic export html</code> コマンドを実行します。</p>
+<pre><code class="language-sh">akashic export html --atsumaru -o ./game.zip --inject ./injectdata.txt</code></pre>
+<p>上記例によって生成される HTML ファイルには <code>injectdata.txt</code> で指定した style 要素が含まれるため、アツマール上ではゲーム画面部分の背景色が灰色になります。 ここでは、 background の色だけ指定していますが、単なる HTML/CSS なので、任意の記述ができます。</p>
 
 		</div>
 	</section>

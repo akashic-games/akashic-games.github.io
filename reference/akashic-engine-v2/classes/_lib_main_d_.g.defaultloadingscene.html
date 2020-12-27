@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>DefaultLoadingScene | @akashic/akashic-engine - v2.6.3</title>
+	<title>DefaultLoadingScene | @akashic/akashic-engine - v2.6.6</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@akashic/akashic-engine - v2.6.3</a>
+					<a href="../index.html" class="title">@akashic/akashic-engine - v2.6.6</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -1133,7 +1133,7 @@
 					<a name="_onstorageloaderror" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _on<wbr>Storage<wbr>Load<wbr>Error</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-private tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">_on<wbr>Storage<wbr>Load<wbr>Error<span class="tsd-signature-symbol">(</span>error<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_main_d_.g.storageloaderror.html" class="tsd-signature-type">StorageLoadError</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">_on<wbr>Storage<wbr>Load<wbr>Error<span class="tsd-signature-symbol">(</span>_error<span class="tsd-signature-symbol">: </span><a href="../interfaces/_lib_main_d_.g.storageloaderror.html" class="tsd-signature-type">StorageLoadError</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -1149,7 +1149,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>error: <a href="../interfaces/_lib_main_d_.g.storageloaderror.html" class="tsd-signature-type">StorageLoadError</a></h5>
+									<h5>_error: <a href="../interfaces/_lib_main_d_.g.storageloaderror.html" class="tsd-signature-type">StorageLoadError</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1181,7 +1181,7 @@
 					<a name="_ontargetassetloaded" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _on<wbr>Target<wbr>Asset<wbr>Loaded</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">_on<wbr>Target<wbr>Asset<wbr>Loaded<span class="tsd-signature-symbol">(</span>asset<span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.asset.html" class="tsd-signature-type">Asset</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">_on<wbr>Target<wbr>Asset<wbr>Loaded<span class="tsd-signature-symbol">(</span>_asset<span class="tsd-signature-symbol">: </span><a href="_lib_main_d_.g.asset.html" class="tsd-signature-type">Asset</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -1195,7 +1195,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>asset: <a href="_lib_main_d_.g.asset.html" class="tsd-signature-type">Asset</a></h5>
+									<h5>_asset: <a href="_lib_main_d_.g.asset.html" class="tsd-signature-type">Asset</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -1655,7 +1655,7 @@
 					<a name="modified" class="tsd-anchor"></a>
 					<h3>modified</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">modified<span class="tsd-signature-symbol">(</span>isBubbling<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">modified<span class="tsd-signature-symbol">(</span>_isBubbling<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -1675,10 +1675,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> isBubbling: <span class="tsd-signature-type">boolean</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>この関数をこのシーンの子の <code>modified()</code> から呼び出す場合、真を渡さなくてはならない。省略された場合、偽。</p>
-									</div>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> _isBubbling: <span class="tsd-signature-type">boolean</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>

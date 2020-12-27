@@ -17,18 +17,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>アニメーションさせる</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?8311d7d">
-<link rel="stylesheet" href="/css/header.css?8311d7d">
-<link rel="stylesheet" href="/css/footer.css?8311d7d">
+<link rel="stylesheet" href="/css/common.css?5ddd7a0">
+<link rel="stylesheet" href="/css/header.css?5ddd7a0">
+<link rel="stylesheet" href="/css/footer.css?5ddd7a0">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?8311d7d">
+<link rel="stylesheet" href="/css/akashic-document.css?5ddd7a0">
 
-<link rel="stylesheet" href="/css/railscasts.css?8311d7d">
+<link rel="stylesheet" href="/css/railscasts.css?5ddd7a0">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?8311d7d"></script>
+<script src="/lib/common.js?5ddd7a0"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -45,7 +45,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
 				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
 				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
 			</ul>
@@ -72,8 +72,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-engine-v3/globals.html">akashic-engine v3.x</a></li>
 				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
 				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
 				<li><a href="/reference/akashic-label/">akashic-label</a></li>
@@ -82,6 +81,8 @@
 				<li><a href="/reference/coe/">coe framework</a></li>
 				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
 				<li><a href="/reference/collision-js/">collision-js</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x (旧版)</a></li>
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x (旧版)</a></li>
 			</ul>
 		</li>
 		<li class="head--menu--item">
@@ -155,18 +156,7 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<div class="warn-info" style="margin-bottom:40px">
-    <p>
-        <b style="font-size: 1.2rem;">Akashic Engine v3 は現在ベータ版として公開されています。</b>
-    </p>
-    <p>
-        特に、2020-09-16 現在、ニコ生ゲームとして投稿することはできないので注意してください。
-        正式にリリースする際には <a href="https://twitter.com/akashic_talk">https://twitter.com/akashic_talk</a> でお知らせします。
-    </p>
-</div>
-
-
-<h1>アニメーションさせる</h1>
+				<h1>アニメーションさせる</h1>
 <p>このページのサンプルコードを<a class="asset--material--download" href="/zip/tutorial/v3/sample-animation.zip">ダウンロード</a></p>
 
 <h2><a name="animation"></a> アニメーション</h2>
@@ -256,7 +246,7 @@ rect.modified();</code></pre>
 });</code></pre>
 <p>シーンオブジェクトの <code>onUpdate</code> トリガーにハンドラを登録する処理は、シーンの読み込み後に行う必要があります。プログラム全体は以下のようになります。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var rect = createRect(scene);
     scene.append(rect);
@@ -279,7 +269,8 @@ function createRect(scene) {
 }
 
 module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample07.gif" alt="sample07"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtYW5pbWF0aW9uLTEvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
+
 <p>エンティティ自体も <code>onUpdate</code> トリガーを備えています。以下はエンティティ <code>rect</code> のトリガーを利用したコードです。</p>
 <pre><code class="language-javascript">rect.onUpdate.add(function() {
   ++rect.x;
@@ -287,7 +278,7 @@ module.exports = main;</code></pre>
 });</code></pre>
 <p>シーンのトリガーでできることはエンティティのトリガーでも実現できますが、トリガーの寿命に違いがあります。シーンのトリガーがシーンが切り替わるまで有効なのに対して、エンティティのトリガーはエンティティが破棄されるまで有効になります。例えばシーンの途中でエンティティが破棄された場合はトリガーが無効になります。以下の例では矩形が画面の中央に到達したら <code>destroy()</code> メソッドでエンティティを破棄しています。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var rect = createRect(scene);
     scene.append(rect);
@@ -310,7 +301,8 @@ function moveRect(rect) {
 }
 
 module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample08.gif" alt="sample08"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtYW5pbWF0aW9uLTIvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
+
 <h2><a name="frame-animation">フレームアニメーション</h2>
 <p><code>g.FrameSprite</code> を利用すると、パラパラ漫画のように画像を切り替えていくアニメーション(フレームアニメーション)を手軽に行うことができます。</p>
 <p>例えば次のような画像を考えます。</p>
@@ -319,6 +311,7 @@ module.exports = main;</code></pre>
 <p>以下は、<code>g.FrameSprite</code> を使ってこの画像をアニメーションするプログラムです。</p>
 <pre><code>function main() {
   var scene = new g.Scene({
+    game: g.game,
     assetIds: [&quot;explosion&quot;]  // 上の画像は &quot;explosion&quot; というアセットIDであるとします
   });
   scene.onLoad.add(function () {
@@ -346,7 +339,8 @@ module.exports = main;</code></pre>
   g.game.pushScene(scene);
 }
 
-module.exports = main;</code></pre><p><img src="/img/tutorial/sample-framesprite.gif" alt="FrameSprite"></p>
+module.exports = main;</code></pre><iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtYW5pbWF0aW9uLTMvZ2FtZS5qc29uP2hvZ2UifQ==" width="600" height="400"></iframe>
+
 <p>フレームアニメーションを表示するには <code>FrameSprite</code> エンティティを使います。 <code>FrameSprite</code> エンティティのパラメータオブジェクトのプロパティには、最初に表示するフレームを指定する <code>frameNumber</code> やフレーム遷移の速度を指定する <code>interval</code> を指定することができます。
 <code>start()</code> メソッドを呼び出すまでアニメーションは開始されません。アニメーションを終了したい場合は、 <code>stop()</code> メソッドを呼び出します。</p>
 <h2><a name="timer-function"></a> タイマー関数</h2>
@@ -370,7 +364,7 @@ scene.setInterval(function() {
 }, 500);</code></pre>
 <p><code>scene.setTimeout()</code> と <code>scene.setInterval()</code> に登録した関数は、それぞれ <code>scene.clearTimeout()</code> と <code>scene.clearInterval()</code> 関数で登録を解除できます。引数には <code>scene.setTimeout()</code> と <code>scene.setInterval()</code> が返す ID を指定します。以下のプログラムでは <code>scene.setInterval()</code> で登録した関数を 3 秒後に <code>scene.clearInterval()</code> で解除しています。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var rect = createRect(scene);
     scene.append(rect);
@@ -395,7 +389,8 @@ function createRect(scene) {
 }
 
 module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample09.gif" alt="sample09"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtYW5pbWF0aW9uLTQvZ2FtZS5qc29uP2hvZ2UifQ==" width="600" height="400"></iframe>
+
 <p><strong><code>scene.setTimeout()</code> ではない、グローバルの <code>setTimeout()</code> や、同じくグローバルの <code>setInterval()</code> は使用しないよう注意してください。</strong>
 これは、Aksahic Engine のコンテンツは、現実の時間とは違う速度で実行されることがあるためです
 (例えば、Akashic Engine のゲームは、ニコニコ生放送上で実行されることがあります。その場合、タイムシフトではシークバーに連動する形で動作します)。この時、 <code>scene.setTimeout()</code> は実行速度を踏まえて経過時間を処理するのですが、 グローバルの <code>setTimeout()</code> は指定した時間そのままの時間経過を待ってしまうため、処理の実行タイミングがずれてしまうことがあり得ます。</p>
@@ -413,7 +408,7 @@ module.exports = main;</code></pre>
 var margin = 15;
 
 function main() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var x, y, rect;
     for (y = 0; y &lt; g.game.height; y += size + margin) {
@@ -440,7 +435,8 @@ function createRect(scene, x, y) {
 }
 
 module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample10.png" alt="sample10"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtYW5pbWF0aW9uLTUvZ2FtZS5qc29uP2hvZ2UifQ==" width="600" height="400"></iframe>
+
 <div class="navi-center">
 <a href="./display-order.html">前 (表示順を制御する)</a>
  | <a href="./">目次</a>

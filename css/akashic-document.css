@@ -136,7 +136,8 @@
 	background:#CEDCDA;
 	color:#12842B;
 }
-.akashic--document img {
+.akashic--document img,
+.akashic--document iframe {
 	display:block;
 	max-width:100%;
 	margin:30px auto;

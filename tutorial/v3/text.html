@@ -17,18 +17,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>文字列を表示する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?8311d7d">
-<link rel="stylesheet" href="/css/header.css?8311d7d">
-<link rel="stylesheet" href="/css/footer.css?8311d7d">
+<link rel="stylesheet" href="/css/common.css?5ddd7a0">
+<link rel="stylesheet" href="/css/header.css?5ddd7a0">
+<link rel="stylesheet" href="/css/footer.css?5ddd7a0">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?8311d7d">
+<link rel="stylesheet" href="/css/akashic-document.css?5ddd7a0">
 
-<link rel="stylesheet" href="/css/railscasts.css?8311d7d">
+<link rel="stylesheet" href="/css/railscasts.css?5ddd7a0">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?8311d7d"></script>
+<script src="/lib/common.js?5ddd7a0"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -45,7 +45,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
 				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
 				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
 			</ul>
@@ -72,8 +72,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-engine-v3/globals.html">akashic-engine v3.x</a></li>
 				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
 				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
 				<li><a href="/reference/akashic-label/">akashic-label</a></li>
@@ -82,6 +81,8 @@
 				<li><a href="/reference/coe/">coe framework</a></li>
 				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
 				<li><a href="/reference/collision-js/">collision-js</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x (旧版)</a></li>
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x (旧版)</a></li>
 			</ul>
 		</li>
 		<li class="head--menu--item">
@@ -155,18 +156,7 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<div class="warn-info" style="margin-bottom:40px">
-    <p>
-        <b style="font-size: 1.2rem;">Akashic Engine v3 は現在ベータ版として公開されています。</b>
-    </p>
-    <p>
-        特に、2020-09-16 現在、ニコ生ゲームとして投稿することはできないので注意してください。
-        正式にリリースする際には <a href="https://twitter.com/akashic_talk">https://twitter.com/akashic_talk</a> でお知らせします。
-    </p>
-</div>
-
-
-<h1>文字列を表示する</h1>
+				<h1>文字列を表示する</h1>
 <p>このページのサンプルコードを<a class="asset--material--download" href="/zip/tutorial/v3/sample-text.zip">ダウンロード</a></p>
 
 <h2><a name="font"></a> フォント</h2>
@@ -175,14 +165,14 @@
 <p>ダイナミックフォントは以下のコードで生成できます。</p>
 <pre><code class="language-javascript">var font = new g.DynamicFont({
   game: g.game,
-  fontFamily: g.FontFamily.Serif,
+  fontFamily: &quot;sans-serif&quot;,
   size: 15
 });</code></pre>
 <p>引数の <code>fontFamily</code> プロパティは、フォントの種類で以下のいずれかの値を指定します。</p>
 <ul>
-<li><code>g.FontFamily.SansSerif</code>: サンセリフ体・ゴシック体のフォント。</li>
-<li><code>g.FontFamily.Serif</code>: セリフ体・明朝体のフォント。</li>
-<li><code>g.FontFamily.Monospace</code>: 等幅フォント。</li>
+<li><code>&quot;sans-serif&quot;</code>: サンセリフ体・ゴシック体のフォント。</li>
+<li><code>&quot;serif&quot;</code>: セリフ体・明朝体のフォント。</li>
+<li><code>&quot;monospace&quot;</code>: 等幅フォント。</li>
 </ul>
 <p>引数の <code>size</code> プロパティは文字の大きさ、 <code>game</code> プロパティには <code>g.game</code> を渡します。</p>
 <h2><a name="label"></a> ラベル</h2>
@@ -231,11 +221,11 @@
 
 <p>以下のプログラムでは、ダイナミックフォントとラベルを利用して文字列を描画しています。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var font = new g.DynamicFont({
       game: g.game,
-      fontFamily: g.FontFamily.SansSerif,
+      fontFamily: &quot;sans-serif&quot;,
       size: 15
     });
     var label = new g.Label({
@@ -253,7 +243,8 @@
 }
 
 module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample12.png" alt="sample12"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtdGV4dC0xL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
+
 <p>ダイナミックフォントはシステムにインストールされているフォントを利用するため、実行環境により描画が異なる場合があります。すべての環境で同じ出力にしたい場合や、パフォーマンスが要求される場合は、ダイナミックフォントの代わりにビットマップフォントを利用してください。</p>
 <p>ラベルは高速化のために描画内容をキャッシュしています。そのために文字列を変更した場合は、<code>invalidate()</code>
 メソッドで変更を通知する必要があります。以下はラベル <code>label</code> の文字列を書き換える例です。</p>
@@ -272,10 +263,10 @@ label.invalidate();</code></pre>
 <code>invalidate()</code> を呼び出した場合は <code>modified()</code> の呼び出しは不要です。</p>
 <p>以下は、500 ミリ秒ごとにカウンタの値を増やすプログラム例です。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var font = new g.DynamicFont({
-      fontFamily: g.FontFamily.SansSerif,
+      fontFamily: &quot;sans-serif&quot;,
       size: 15,
       game: g.game
     });
@@ -299,7 +290,8 @@ label.invalidate();</code></pre>
 }
 
 module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample13.gif" alt="sample13"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtdGV4dC0yL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
+
 <div class="navi-center">
 <a href="./scale-anchor.html">前 (拡縮とアンカーポイント)</a>
  | <a href="./">目次</a>

@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>CellAttachmentCollider | @akashic-extension/akashic-animation</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for @akashic-extension/akashic-animation">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -69,6 +69,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>CellAttachmentをアタリ判定に用いるコライダー</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -127,7 +134,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_collider_.collider.html">Collider</a>.<a href="_collider_.collider.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/9b68456/src/CellAttachmentCollider.ts#L23">CellAttachmentCollider.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/7029538/src/CellAttachmentCollider.ts#L23">src/CellAttachmentCollider.ts:23</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -155,7 +162,7 @@
 					<div class="tsd-signature tsd-kind-icon">_volume<span class="tsd-signature-symbol">:</span> <a href="_boxvolume_.boxvolume.html" class="tsd-signature-type">BoxVolume</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/9b68456/src/CellAttachmentCollider.ts#L23">CellAttachmentCollider.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/7029538/src/CellAttachmentCollider.ts#L23">src/CellAttachmentCollider.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -166,9 +173,15 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_collider_.collider.html">Collider</a>.<a href="_collider_.collider.html#aabbfirst">aabbFirst</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/9b68456/src/Collider.ts#L38">Collider.ts:38</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/7029538/src/Collider.ts#L38">src/Collider.ts:38</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>AABB優先フラグ</p>
+						</div>
+						<p><code>getVolume()</code>の返す<code>Volume</code>はこの値がコピーされる。</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="cellattachment" class="tsd-anchor"></a>
@@ -176,7 +189,7 @@
 					<div class="tsd-signature tsd-kind-icon">cell<wbr>Attachment<span class="tsd-signature-symbol">:</span> <a href="_cellattachment_.cellattachment.html" class="tsd-signature-type">CellAttachment</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/9b68456/src/CellAttachmentCollider.ts#L22">CellAttachmentCollider.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/7029538/src/CellAttachmentCollider.ts#L22">src/CellAttachmentCollider.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -187,9 +200,14 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_collider_.collider.html">Collider</a>.<a href="_collider_.collider.html#dirty">dirty</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/9b68456/src/Collider.ts#L23">Collider.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/7029538/src/Collider.ts#L23">src/Collider.ts:23</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>dirtyフラグ。開発者はこれを使うことはない。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="enabled" class="tsd-anchor"></a>
@@ -198,9 +216,16 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_collider_.collider.html">Collider</a>.<a href="_collider_.collider.html#enabled">enabled</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/9b68456/src/Collider.ts#L31">Collider.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/7029538/src/Collider.ts#L31">src/Collider.ts:31</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>有効・無効フラグ</p>
+						</div>
+						<p><code>false</code>の時、<code>getVolume()</code>は<code>undefined</code>を返す。
+						初期値は<code>true</code>である。</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="name" class="tsd-anchor"></a>
@@ -209,9 +234,15 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_collider_.collider.html">Collider</a>.<a href="_collider_.collider.html#name">name</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/9b68456/src/Collider.ts#L13">Collider.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/7029538/src/Collider.ts#L13">src/Collider.ts:13</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>名前</p>
+						</div>
+						<p>利用方法の詳細は各派生クラスのリファレンスを参照してください。</p>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="tag" class="tsd-anchor"></a>
@@ -220,9 +251,14 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_collider_.collider.html">Collider</a>.<a href="_collider_.collider.html#tag">tag</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/9b68456/src/Collider.ts#L18">Collider.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/7029538/src/Collider.ts#L18">src/Collider.ts:18</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>コンバータによってはこれに値を与える。どう使うかは開発者次第。システムは関知しない</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -238,7 +274,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_collider_.collider.html">Collider</a>.<a href="_collider_.collider.html#getvolume">getVolume</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/9b68456/src/CellAttachmentCollider.ts#L32">CellAttachmentCollider.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/7029538/src/CellAttachmentCollider.ts#L32">src/CellAttachmentCollider.ts:32</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="_boxvolume_.boxvolume.html" class="tsd-signature-type">BoxVolume</a></h4>
@@ -249,20 +285,20 @@
 					<a name="onattached" class="tsd-anchor"></a>
 					<h3>on<wbr>Attached</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">on<wbr>Attached<span class="tsd-signature-symbol">(</span>actor<span class="tsd-signature-symbol">: </span><a href="_actor_.actor.html" class="tsd-signature-type">Actor</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">on<wbr>Attached<span class="tsd-signature-symbol">(</span>actor<span class="tsd-signature-symbol">: </span><a href="../modules/_collider_.html#actor" class="tsd-signature-type">Actor</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_collider_.collider.html">Collider</a>.<a href="_collider_.collider.html#onattached">onAttached</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/9b68456/src/Collider.ts#L50">Collider.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-animation/blob/7029538/src/Collider.ts#L50">src/Collider.ts:50</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>actor: <a href="_actor_.actor.html" class="tsd-signature-type">Actor</a></h5>
+									<h5>actor: <a href="../modules/_collider_.html#actor" class="tsd-signature-type">Actor</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -277,8 +313,8 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="../modules/_cellattachmentcollider_.html">"<wbr>Cell<wbr>Attachment<wbr>Collider"</a>
+					<li class="current tsd-kind-module">
+						<a href="../modules/_cellattachmentcollider_.html">&quot;<wbr>Cell<wbr>Attachment<wbr>Collider&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -286,7 +322,7 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+					<li class="current tsd-kind-class tsd-parent-kind-module">
 						<a href="_cellattachmentcollider_.cellattachmentcollider.html" class="tsd-kind-icon">Cell<wbr>Attachment<wbr>Collider</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
@@ -323,7 +359,16 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+						<a href="../modules/_cellattachmentcollider_.html#boxvolume" class="tsd-kind-icon">Box<wbr>Volume</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+						<a href="../modules/_cellattachmentcollider_.html#cellattachment" class="tsd-kind-icon">Cell<wbr>Attachment</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+						<a href="../modules/_cellattachmentcollider_.html#collider" class="tsd-kind-icon">Collider</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module tsd-is-not-exported">
 						<a href="../modules/_cellattachmentcollider_.html#multiply" class="tsd-kind-icon">multiply</a>
 					</li>
 				</ul>
@@ -336,27 +381,11 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
 				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
@@ -364,45 +393,35 @@
 				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
 				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-162208211-1', '');
+        ga('create', 'UA-162208211-1', 'auto');
         ga('send', 'pageview');
     </script>
 </body>

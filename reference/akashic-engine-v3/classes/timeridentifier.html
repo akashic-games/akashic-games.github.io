@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TimerIdentifier | @akashic/akashic-engine</title>
+	<title>TimerIdentifier | Akashic Engine</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@akashic/akashic-engine</a>
+					<a href="../index.html" class="title">Akashic Engine</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -93,16 +93,6 @@
 								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="timeridentifier.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
-							<h3>Properties</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="timeridentifier.html#_fired" class="tsd-kind-icon">_fired</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="timeridentifier.html#_firedowner" class="tsd-kind-icon">_fired<wbr>Owner</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="timeridentifier.html#_handler" class="tsd-kind-icon">_handler</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="timeridentifier.html#_handlerowner" class="tsd-kind-icon">_handler<wbr>Owner</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="timeridentifier.html#_timer" class="tsd-kind-icon">_timer</a></li>
-							</ul>
-						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
@@ -120,13 +110,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Timer<wbr>Identifier<span class="tsd-signature-symbol">(</span>timer<span class="tsd-signature-symbol">: </span><a href="timer.html" class="tsd-signature-type">Timer</a>, handler<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span>, handlerOwner<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, fired<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">(</span>c<span class="tsd-signature-symbol">: </span><a href="timeridentifier.html" class="tsd-signature-type">TimerIdentifier</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span>, firedOwner<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="timeridentifier.html" class="tsd-signature-type">TimerIdentifier</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Timer<wbr>Identifier<span class="tsd-signature-symbol">(</span>timer<span class="tsd-signature-symbol">: </span><a href="timer.html" class="tsd-signature-type">Timer</a>, handler<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span>, handlerOwner<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, fired<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>c<span class="tsd-signature-symbol">: </span><a href="timeridentifier.html" class="tsd-signature-type">TimerIdentifier</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span>, firedOwner<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="timeridentifier.html" class="tsd-signature-type">TimerIdentifier</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/TimerManager.ts#L34">engine/TimerManager.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/TimerManager.ts#L34">src/TimerManager.ts:34</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -153,25 +143,7 @@
 									<h5>handlerOwner: <span class="tsd-signature-type">any</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> fired: <span class="tsd-signature-symbol">(</span>c<span class="tsd-signature-symbol">: </span><a href="timeridentifier.html" class="tsd-signature-type">TimerIdentifier</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
-									<ul class="tsd-parameters">
-										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal">
-												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>c<span class="tsd-signature-symbol">: </span><a href="timeridentifier.html" class="tsd-signature-type">TimerIdentifier</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-											</ul>
-											<ul class="tsd-descriptions">
-												<li class="tsd-description">
-													<h4 class="tsd-parameters-title">Parameters</h4>
-													<ul class="tsd-parameters">
-														<li>
-															<h5>c: <a href="timeridentifier.html" class="tsd-signature-type">TimerIdentifier</a></h5>
-														</li>
-													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-												</li>
-											</ul>
-										</li>
-									</ul>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> fired: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>c<span class="tsd-signature-symbol">: </span><a href="timeridentifier.html" class="tsd-signature-type">TimerIdentifier</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span></h5>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> firedOwner: <span class="tsd-signature-type">any</span></h5>
@@ -180,105 +152,6 @@
 							<h4 class="tsd-returns-title">Returns <a href="timeridentifier.html" class="tsd-signature-type">TimerIdentifier</a></h4>
 						</li>
 					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_fired" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _fired</h3>
-					<div class="tsd-signature tsd-kind-icon">_fired<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>c<span class="tsd-signature-symbol">: </span><a href="timeridentifier.html" class="tsd-signature-type">TimerIdentifier</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/TimerManager.ts#L29">engine/TimerManager.ts:29</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>c<span class="tsd-signature-symbol">: </span><a href="timeridentifier.html" class="tsd-signature-type">TimerIdentifier</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>c: <a href="timeridentifier.html" class="tsd-signature-type">TimerIdentifier</a></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_firedowner" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _fired<wbr>Owner</h3>
-					<div class="tsd-signature tsd-kind-icon">_fired<wbr>Owner<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/TimerManager.ts#L34">engine/TimerManager.ts:34</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_handler" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _handler</h3>
-					<div class="tsd-signature tsd-kind-icon">_handler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/TimerManager.ts#L19">engine/TimerManager.ts:19</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_handlerowner" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _handler<wbr>Owner</h3>
-					<div class="tsd-signature tsd-kind-icon">_handler<wbr>Owner<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/TimerManager.ts#L24">engine/TimerManager.ts:24</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_timer" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _timer</h3>
-					<div class="tsd-signature tsd-kind-icon">_timer<span class="tsd-signature-symbol">:</span> <a href="timer.html" class="tsd-signature-type">Timer</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/TimerManager.ts#L14">engine/TimerManager.ts:14</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -293,7 +166,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/TimerManager.ts#L61">engine/TimerManager.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/TimerManager.ts#L61">src/TimerManager.ts:61</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -312,7 +185,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/TimerManager.ts#L45">engine/TimerManager.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/TimerManager.ts#L45">src/TimerManager.ts:45</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -329,7 +202,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/TimerManager.ts#L54">engine/TimerManager.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/TimerManager.ts#L54">src/TimerManager.ts:54</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -355,21 +228,6 @@
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
 								<a href="timeridentifier.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="timeridentifier.html#_fired" class="tsd-kind-icon">_fired</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="timeridentifier.html#_firedowner" class="tsd-kind-icon">_fired<wbr>Owner</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="timeridentifier.html#_handler" class="tsd-kind-icon">_handler</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="timeridentifier.html#_handlerowner" class="tsd-kind-icon">_handler<wbr>Owner</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="timeridentifier.html#_timer" class="tsd-kind-icon">_timer</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="timeridentifier.html#_handleelapse" class="tsd-kind-icon">_handle<wbr>Elapse</a>

@@ -1,0 +1,26 @@
+{
+	"width": 480,
+	"height": 320,
+	"fps": 60,
+	"main": "./main.js",
+	"assets": {
+		"main": {
+			"type": "script",
+			"path": "main.js",
+			"global": true
+		},
+		"font": {
+			"type": "image",
+			"width": 512,
+			"height": 220,
+			"path": "image/font.png"
+		},
+		"font_glyphs": {
+			"type": "text",
+			"path": "text/font_glyphs.json"
+		}
+	},
+	"environment": {
+		"sandbox-runtime": "3"
+	}
+}

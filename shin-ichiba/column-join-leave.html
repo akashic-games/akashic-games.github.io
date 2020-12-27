@@ -17,18 +17,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>Join と Leave とニコ生の話</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?8311d7d">
-<link rel="stylesheet" href="/css/header.css?8311d7d">
-<link rel="stylesheet" href="/css/footer.css?8311d7d">
+<link rel="stylesheet" href="/css/common.css?5ddd7a0">
+<link rel="stylesheet" href="/css/header.css?5ddd7a0">
+<link rel="stylesheet" href="/css/footer.css?5ddd7a0">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?8311d7d">
+<link rel="stylesheet" href="/css/akashic-document.css?5ddd7a0">
 
-<link rel="stylesheet" href="/css/railscasts.css?8311d7d">
+<link rel="stylesheet" href="/css/railscasts.css?5ddd7a0">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?8311d7d"></script>
+<script src="/lib/common.js?5ddd7a0"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -45,7 +45,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
 				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
 				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
 			</ul>
@@ -72,8 +72,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-engine-v3/globals.html">akashic-engine v3.x</a></li>
 				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
 				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
 				<li><a href="/reference/akashic-label/">akashic-label</a></li>
@@ -82,6 +81,8 @@
 				<li><a href="/reference/coe/">coe framework</a></li>
 				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
 				<li><a href="/reference/collision-js/">collision-js</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x (旧版)</a></li>
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x (旧版)</a></li>
 			</ul>
 		</li>
 		<li class="head--menu--item">
@@ -175,7 +176,7 @@ Join と Leave の利用は <strong>マルチプレイゲームにおいて必�
 <h3>ニコ生における Join</h3>
 <p>さて、 <strong>マルチプレイゲームを公開する現状唯一の手段</strong> は「ニコ生ゲーム」として公開することです。すなわちニコニコ生放送を使う事です。
 自分でサーバーを用意し、akashic serve の仕組みを十分に理解し場合によっては手を加えるなどすれば可能かもしれませんが、大多数の方にとってはニコ生ゲームが現状唯一の手段でしょう。</p>
-<p><a href="https://akashic-games.github.io/tutorial/v2/multiplay/join.html">Akashic Engine 入門での説明</a> にもありますが、ニコ生ゲームにおいては Join が発生するのは一度だけ。生主のみがゲームに Join し Leave することはありません。
+<p><a href="https://akashic-games.github.io/tutorial/v3/multiplay/join.html">Akashic Engine 入門での説明</a> にもありますが、ニコ生ゲームにおいては Join が発生するのは一度だけ。生主のみがゲームに Join し Leave することはありません。
 （厳密に言えばゲームを起動した人、なのですが詳細は割愛します）</p>
 <p>つまり世界観としては、Join した生主とそこに干渉する視聴者、という構図が出来上がります。絵を描きました。</p>
 <p><img src="/img/shin-ichiba/multi/03-01.png" alt="絵"></p>
@@ -289,7 +290,7 @@ function mainLoop() {
 <p>処理の中で gameStatus を代入する代わりに、 <strong>raiseEvent</strong> を使っています。重要です。
 なぜなら <strong>このイベントはマスターの PC 上でしか発生しない</strong> ため、視聴者全員の PC にある gameStatus が変わらないのです。
 逆にマスター以外の PC ではシーンに closeButton がないため、ここでローカル処理として closeButton を消しています。</p>
-<p>さて、raiseEvent については<a href="https://akashic-games.github.io/tutorial/v2/multiplay/each-player.html#raise-event">Akashic Engine 入門のページ</a>にも説明がありますが少しみてみましょう。
+<p>さて、raiseEvent については<a href="https://akashic-games.github.io/tutorial/v3/multiplay/each-player.html#raise-event">Akashic Engine 入門のページ</a>にも説明がありますが少しみてみましょう。
 ローカル処理のなかで全体へ影響を及ぼしたくなった場合は、raiseEvent で全員にイベントを送信するのが Akashic の流儀です。以下に受信側のコードを貼っていきます。</p>
 <pre><code class="language-ts">// raiseEventを処理するところ。raiseEvent時につけたmessage名で処理を分岐する
 scene.message.add(ev =&gt; {

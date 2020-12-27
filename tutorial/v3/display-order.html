@@ -17,18 +17,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>表示順を制御する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?8311d7d">
-<link rel="stylesheet" href="/css/header.css?8311d7d">
-<link rel="stylesheet" href="/css/footer.css?8311d7d">
+<link rel="stylesheet" href="/css/common.css?5ddd7a0">
+<link rel="stylesheet" href="/css/header.css?5ddd7a0">
+<link rel="stylesheet" href="/css/footer.css?5ddd7a0">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?8311d7d">
+<link rel="stylesheet" href="/css/akashic-document.css?5ddd7a0">
 
-<link rel="stylesheet" href="/css/railscasts.css?8311d7d">
+<link rel="stylesheet" href="/css/railscasts.css?5ddd7a0">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?8311d7d"></script>
+<script src="/lib/common.js?5ddd7a0"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -45,7 +45,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
 				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
 				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
 			</ul>
@@ -72,8 +72,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-engine-v3/globals.html">akashic-engine v3.x</a></li>
 				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
 				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
 				<li><a href="/reference/akashic-label/">akashic-label</a></li>
@@ -82,6 +81,8 @@
 				<li><a href="/reference/coe/">coe framework</a></li>
 				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
 				<li><a href="/reference/collision-js/">collision-js</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x (旧版)</a></li>
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x (旧版)</a></li>
 			</ul>
 		</li>
 		<li class="head--menu--item">
@@ -155,18 +156,7 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<div class="warn-info" style="margin-bottom:40px">
-    <p>
-        <b style="font-size: 1.2rem;">Akashic Engine v3 は現在ベータ版として公開されています。</b>
-    </p>
-    <p>
-        特に、2020-09-16 現在、ニコ生ゲームとして投稿することはできないので注意してください。
-        正式にリリースする際には <a href="https://twitter.com/akashic_talk">https://twitter.com/akashic_talk</a> でお知らせします。
-    </p>
-</div>
-
-
-<h1>表示順を制御する</h1>
+				<h1>表示順を制御する</h1>
 <p>このページのサンプルコードを<a class="asset--material--download" href="/zip/tutorial/v3/sample-display-order.zip">ダウンロード</a></p>
 
 <h2><a name="nested-entity"></a> エンティティの入れ子</h2>
@@ -192,7 +182,7 @@ var child = new g.FilledRect({
 group.append(child); // group の子エンティティに child を追加</code></pre>
 <p>以下のプログラムでは、<code>angle</code> を設定した <code>E</code> オブジェクトに 3 つの矩形を追加しています。矩形の座標系は <code>E</code> を基準にして変わるので、3 つの矩形は斜めに配置されます。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene();
+  var scene = new g.Scene({ game: g.game });
   scene.onLoad.add(function() {
     var group = new g.E({ scene: scene, x: 50, y: 50, angle: 30 });
     var rect1 = createRect(scene, 0, 0, &quot;darkgreen&quot;);
@@ -218,7 +208,8 @@ function createRect(scene, x, y, color) {
 }
 
 module.exports = main;</code></pre>
-<p><img src="/img/tutorial/sample05.png" alt="sample05"></p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtZGlzcGxheS1vcmRlci0xL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
+
 <blockquote>
 <p>Tips: <code>new</code> する時に親が決まっているなら、次のように <code>parent</code> プロパティで親を指定してしまうこともできます。</p>
 <pre><code class="language-javascript">var group = new g.E({ scene: scene });

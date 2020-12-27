@@ -17,18 +17,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>v2 からの移行</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?8311d7d">
-<link rel="stylesheet" href="/css/header.css?8311d7d">
-<link rel="stylesheet" href="/css/footer.css?8311d7d">
+<link rel="stylesheet" href="/css/common.css?5ddd7a0">
+<link rel="stylesheet" href="/css/header.css?5ddd7a0">
+<link rel="stylesheet" href="/css/footer.css?5ddd7a0">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?8311d7d">
+<link rel="stylesheet" href="/css/akashic-document.css?5ddd7a0">
 
-<link rel="stylesheet" href="/css/railscasts.css?8311d7d">
+<link rel="stylesheet" href="/css/railscasts.css?5ddd7a0">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?8311d7d"></script>
+<script src="/lib/common.js?5ddd7a0"></script>
 
 
 <script src="/lib/highlight.pack.js"></script>
@@ -45,7 +45,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/tutorial/v2/">Akashic Engine入門</a></li>
+				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
 				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
 				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
 			</ul>
@@ -72,8 +72,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
-				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x(deprecated)</a></li>
-				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x</a></li>
+				<li><a href="/reference/akashic-engine-v3/globals.html">akashic-engine v3.x</a></li>
 				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
 				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
 				<li><a href="/reference/akashic-label/">akashic-label</a></li>
@@ -82,6 +81,8 @@
 				<li><a href="/reference/coe/">coe framework</a></li>
 				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
 				<li><a href="/reference/collision-js/">collision-js</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x (旧版)</a></li>
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x (旧版)</a></li>
 			</ul>
 		</li>
 		<li class="head--menu--item">
@@ -155,23 +156,13 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<div class="warn-info" style="margin-bottom:40px">
-    <p>
-        <b style="font-size: 1.2rem;">Akashic Engine v3 は現在ベータ版として公開されています。</b>
-    </p>
-    <p>
-        特に、2020-09-16 現在、ニコ生ゲームとして投稿することはできないので注意してください。
-        正式にリリースする際には <a href="https://twitter.com/akashic_talk">https://twitter.com/akashic_talk</a> でお知らせします。
-    </p>
-</div>
-
-
-<h1>v2 からの移行</h1>
+				<h1>v2 からの移行</h1>
 <blockquote>
 <p>このページは、 <strong>Akashic Engine v2 で作成されたコンテンツを v3 に移行する</strong> ためのものです。
 新たにゲームを作成する場合は次の <a href="./introduction.html">akashic の導入</a> に進んでください。</p>
 </blockquote>
-<p>Akashic Engine v3 では、一部の仕様が v2 から破壊的に変更されています。この文書では、Akashic Engine v2 系で作成されたコンテンツを v3 に移行するために必要な作業と、主な追加機能を紹介します。</p>
+<p>Akashic Engine v3 では、v2 から主に内部構造を整理したバージョンですが、一部破壊的に変更した仕様があり、ゲーム開発者に影響します。
+この文書では、Akashic Engine v2 系で作成されたコンテンツを v3 に移行するために必要な作業と、主な追加機能を紹介します。</p>
 <h3>目次</h3>
 <ul>
 <li><a href="#settings">設定の更新 (必須)</a></li>
@@ -188,7 +179,7 @@
 </ul>
 <p>これらは v2 系で作られた全てのゲームで必要です。</p>
 <blockquote>
-<p><strong>NOTE</strong>: akashic-cli の最新バージョンを用いて <code>akashic init -t javascript-v3</code> などを実行した場合、これらの作業はすべて済んだ状態で生成されます。
+<p><strong>NOTE</strong>: akashic-cli の最新バージョンを用いて <code>akashic init -t javascript</code> などを実行した場合、これらの作業はすべて済んだ状態で生成されます。
 あくまでも Akashic Engine v2 で作成されたコンテンツを Akashic Engine v3 へ移行する場合に必要な作業です。</p>
 </blockquote>
 <h3>game.json の sandbox-runtime を &quot;3&quot; にする</h3>

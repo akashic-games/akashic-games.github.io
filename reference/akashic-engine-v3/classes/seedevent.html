@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>SeedEvent | @akashic/akashic-engine</title>
+	<title>SeedEvent | Akashic Engine</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@akashic/akashic-engine</a>
+					<a href="../index.html" class="title">Akashic Engine</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -85,7 +85,7 @@
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/event.html" class="tsd-signature-type">Event</a></li>
+					<li><span class="tsd-signature-type">Event</span></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -101,8 +101,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="seedevent.html#eventflags" class="tsd-kind-icon">event<wbr>Flags</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="seedevent.html#generator" class="tsd-kind-icon">generator</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="seedevent.html#priority" class="tsd-kind-icon">priority</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="seedevent.html#type" class="tsd-kind-icon">type</a></li>
 							</ul>
 						</section>
@@ -115,13 +115,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Seed<wbr>Event<span class="tsd-signature-symbol">(</span>generator<span class="tsd-signature-symbol">: </span><a href="randomgenerator.html" class="tsd-signature-type">RandomGenerator</a>, priority<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="seedevent.html" class="tsd-signature-type">SeedEvent</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Seed<wbr>Event<span class="tsd-signature-symbol">(</span>generator<span class="tsd-signature-symbol">: </span><a href="randomgenerator.html" class="tsd-signature-type">RandomGenerator</a>, eventFlags<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="seedevent.html" class="tsd-signature-type">SeedEvent</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Event.ts#L291">engine/Event.ts:291</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Event.ts#L287">src/Event.ts:287</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -130,7 +130,7 @@
 									<h5>generator: <a href="randomgenerator.html" class="tsd-signature-type">RandomGenerator</a></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> priority: <span class="tsd-signature-type">number</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> eventFlags: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="seedevent.html" class="tsd-signature-type">SeedEvent</a></h4>
@@ -141,23 +141,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="eventflags" class="tsd-anchor"></a>
+					<h3>event<wbr>Flags</h3>
+					<div class="tsd-signature tsd-kind-icon">event<wbr>Flags<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Event.ts#L286">src/Event.ts:286</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="generator" class="tsd-anchor"></a>
 					<h3>generator</h3>
 					<div class="tsd-signature tsd-kind-icon">generator<span class="tsd-signature-symbol">:</span> <a href="randomgenerator.html" class="tsd-signature-type">RandomGenerator</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Event.ts#L291">engine/Event.ts:291</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="priority" class="tsd-anchor"></a>
-					<h3>priority</h3>
-					<div class="tsd-signature tsd-kind-icon">priority<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/event.html">Event</a>.<a href="../interfaces/event.html#priority">priority</a></p>
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Event.ts#L290">engine/Event.ts:290</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Event.ts#L287">src/Event.ts:287</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -166,9 +165,8 @@
 					<h3>type</h3>
 					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"seed"</span><span class="tsd-signature-symbol"> = &quot;seed&quot;</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/event.html">Event</a>.<a href="../interfaces/event.html#type">type</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/Event.ts#L289">engine/Event.ts:289</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Event.ts#L285">src/Event.ts:285</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -193,10 +191,10 @@
 								<a href="seedevent.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="seedevent.html#generator" class="tsd-kind-icon">generator</a>
+								<a href="seedevent.html#eventflags" class="tsd-kind-icon">event<wbr>Flags</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="seedevent.html#priority" class="tsd-kind-icon">priority</a>
+								<a href="seedevent.html#generator" class="tsd-kind-icon">generator</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="seedevent.html#type" class="tsd-kind-icon">type</a>

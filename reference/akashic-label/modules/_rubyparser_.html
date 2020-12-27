@@ -108,24 +108,45 @@
 					<div class="tsd-signature tsd-kind-icon">Fragment<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_rubyparser_.rubyfragment.html" class="tsd-signature-type">RubyFragment</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/RubyParser.ts#L43">RubyParser.ts:43</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/RubyParser.ts#L43">src/RubyParser.ts:43</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>文字とルビに分解されたtext。文字は必ず1文字ずつに分解される。</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
 					<a name="linebreakrule" class="tsd-anchor"></a>
 					<h3>Line<wbr>Break<wbr>Rule</h3>
-					<div class="tsd-signature tsd-kind-icon">Line<wbr>Break<wbr>Rule<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<div class="tsd-signature tsd-kind-icon">Line<wbr>Break<wbr>Rule<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>fragments<span class="tsd-signature-symbol">: </span><a href="_rubyparser_.html#fragment" class="tsd-signature-type">Fragment</a><span class="tsd-signature-symbol">[]</span>, index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/RubyParser.ts#L65">RubyParser.ts:65</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/RubyParser.ts#L65">src/RubyParser.ts:65</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>禁則処理の挙動を指定する関数。</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>param</dt>
+							<dd><p>その行に含まれる予定のフラグメント</p>
+							</dd>
+							<dt>param</dt>
+							<dd><p>その行で予定されている改行位置</p>
+							</dd>
+							<dt>returns</dt>
+							<dd><p>禁則処理を適用した改行位置処理を適用した改行位置</p>
+							</dd>
+						</dl>
+					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
 									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>fragments<span class="tsd-signature-symbol">: </span><a href="_rubyparser_.html#fragment" class="tsd-signature-type">Fragment</a><span class="tsd-signature-symbol">[]</span>, index<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
@@ -149,17 +170,17 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module">
 					<a name="rubyparser" class="tsd-anchor"></a>
 					<h3>Ruby<wbr>Parser</h3>
-					<div class="tsd-signature tsd-kind-icon">Ruby<wbr>Parser<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<div class="tsd-signature tsd-kind-icon">Ruby<wbr>Parser<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="_rubyparser_.html#fragment" class="tsd-signature-type">Fragment</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/RubyParser.ts#L45">RubyParser.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/RubyParser.ts#L45">src/RubyParser.ts:45</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias">
 									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_rubyparser_.html#fragment" class="tsd-signature-type">Fragment</a><span class="tsd-signature-symbol">[]</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
@@ -184,13 +205,13 @@
 					<a name="flatmap" class="tsd-anchor"></a>
 					<h3>flatmap</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">flatmap&lt;T, U&gt;<span class="tsd-signature-symbol">(</span>arr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span>, func<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">flatmap&lt;T, U&gt;<span class="tsd-signature-symbol">(</span>arr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span>, func<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/2f40720/src/RubyParser.ts#L67">RubyParser.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-label/blob/734c060/src/RubyParser.ts#L67">src/RubyParser.ts:67</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -208,10 +229,10 @@
 									<h5>arr: <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 								<li>
-									<h5>func: <span class="tsd-signature-type">function</span></h5>
+									<h5>func: <span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">[]</span></h5>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
-											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+											<ul class="tsd-signatures tsd-kind-type-literal">
 												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>e<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">[]</span></li>
 											</ul>
 											<ul class="tsd-descriptions">
@@ -222,10 +243,7 @@
 															<h5>e: <span class="tsd-signature-type">T</span></h5>
 														</li>
 													</ul>
-													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">U</span>
-														<span class="tsd-signature-symbol"> | </span>
-														<span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">[]</span>
-													</h4>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">U</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">U</span><span class="tsd-signature-symbol">[]</span></h4>
 												</li>
 											</ul>
 										</li>
@@ -245,22 +263,22 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_defaultrubyparser_.html">"<wbr>Default<wbr>Ruby<wbr>Parser"</a>
+						<a href="_defaultrubyparser_.html">&quot;<wbr>Default<wbr>Ruby<wbr>Parser&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_fragmentdrawinfo_.html">"<wbr>Fragment<wbr>Draw<wbr>Info"</a>
+						<a href="_fragmentdrawinfo_.html">&quot;<wbr>Fragment<wbr>Draw<wbr>Info&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_label_.html">"<wbr>Label"</a>
+						<a href="_label_.html">&quot;<wbr>Label&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_labelparameterobject_.html">"<wbr>Label<wbr>Parameter<wbr>Object"</a>
+						<a href="_labelparameterobject_.html">&quot;<wbr>Label<wbr>Parameter<wbr>Object&quot;</a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_rubyparser_.html">"<wbr>Ruby<wbr>Parser"</a>
+						<a href="_rubyparser_.html">&quot;<wbr>Ruby<wbr>Parser&quot;</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_index_.html">"index"</a>
+						<a href="_index_.html">&quot;index&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -304,6 +322,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -352,7 +371,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
@@ -363,7 +382,7 @@
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-162208211-1', '');
+        ga('create', 'UA-162208211-1', 'auto');
         ga('send', 'pageview');
     </script>
 </body>

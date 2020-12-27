@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Leave | @akashic/akashic-engine</title>
+	<title>Leave | Akashic Engine</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@akashic/akashic-engine</a>
+					<a href="../index.html" class="title">Akashic Engine</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -56,7 +56,7 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/eventindex.html">EventIndex</a>
+					<a href="eventindex.html">EventIndex</a>
 				</li>
 				<li>
 					<a href="eventindex.leave.html">Leave</a>
@@ -77,9 +77,9 @@
 							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="eventindex.leave.html#code" class="tsd-kind-icon">Code</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="eventindex.leave.html#eventflags" class="tsd-kind-icon">Event<wbr>Flags</a></li>
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="eventindex.leave.html#local" class="tsd-kind-icon">Local</a></li>
 								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="eventindex.leave.html#playerid" class="tsd-kind-icon">Player<wbr>Id</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="eventindex.leave.html#priority" class="tsd-kind-icon">Priority</a></li>
 							</ul>
 						</section>
 					</div>
@@ -93,7 +93,17 @@
 					<div class="tsd-signature tsd-kind-icon">Code<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = 0</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/EventIndex.ts#L41">engine/EventIndex.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/EventIndex.ts#L41">src/EventIndex.ts:41</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
+					<a name="eventflags" class="tsd-anchor"></a>
+					<h3>Event<wbr>Flags</h3>
+					<div class="tsd-signature tsd-kind-icon">Event<wbr>Flags<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = 1</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/EventIndex.ts#L42">src/EventIndex.ts:42</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -103,7 +113,7 @@
 					<div class="tsd-signature tsd-kind-icon">Local<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = 3</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/EventIndex.ts#L44">engine/EventIndex.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/EventIndex.ts#L44">src/EventIndex.ts:44</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -113,17 +123,7 @@
 					<div class="tsd-signature tsd-kind-icon">Player<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = 2</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/EventIndex.ts#L43">engine/EventIndex.ts:43</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="priority" class="tsd-anchor"></a>
-					<h3>Priority</h3>
-					<div class="tsd-signature tsd-kind-icon">Priority<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = 1</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/2997455/src/engine/EventIndex.ts#L42">engine/EventIndex.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/EventIndex.ts#L43">src/EventIndex.ts:43</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -135,82 +135,78 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/collision.html">Collision</a>
-					</li>
-					<li class="current tsd-kind-module">
-						<a href="../modules/eventindex.html">Event<wbr>Index</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/exceptionfactory.html">Exception<wbr>Factory</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/pathutil.html">Path<wbr>Util</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/surfaceutil.html">Surface<wbr>Util</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/util.html">Util</a>
-					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="eventindex.general.html" class="tsd-kind-icon">General</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="eventindex.join.html" class="tsd-kind-icon">Join</a>
-					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-enum tsd-parent-kind-module">
-						<a href="eventindex.leave.html" class="tsd-kind-icon">Leave</a>
+					<li class="current tsd-kind-enum tsd-is-external">
+						<a href="eventindex.html" class="tsd-kind-icon">Event<wbr>Index</a>
 						<ul>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="eventindex.leave.html#code" class="tsd-kind-icon">Code</a>
+							<li class=" tsd-kind-enum tsd-parent-kind-enum">
+								<a href="eventindex.general.html" class="tsd-kind-icon">General</a>
 							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="eventindex.leave.html#local" class="tsd-kind-icon">Local</a>
+							<li class=" tsd-kind-enum tsd-parent-kind-enum">
+								<a href="eventindex.join.html" class="tsd-kind-icon">Join</a>
 							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="eventindex.leave.html#playerid" class="tsd-kind-icon">Player<wbr>Id</a>
+							<li class="current tsd-kind-enum tsd-parent-kind-enum">
+								<a href="eventindex.leave.html" class="tsd-kind-icon">Leave</a>
+								<ul>
+									<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+										<a href="eventindex.leave.html#code" class="tsd-kind-icon">Code</a>
+									</li>
+									<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+										<a href="eventindex.leave.html#eventflags" class="tsd-kind-icon">Event<wbr>Flags</a>
+									</li>
+									<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+										<a href="eventindex.leave.html#local" class="tsd-kind-icon">Local</a>
+									</li>
+									<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+										<a href="eventindex.leave.html#playerid" class="tsd-kind-icon">Player<wbr>Id</a>
+									</li>
+								</ul>
 							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="eventindex.leave.html#priority" class="tsd-kind-icon">Priority</a>
+							<li class=" tsd-kind-enum tsd-parent-kind-enum">
+								<a href="eventindex.message.html" class="tsd-kind-icon">Message</a>
+							</li>
+							<li class=" tsd-kind-enum tsd-parent-kind-enum">
+								<a href="eventindex.operation.html" class="tsd-kind-icon">Operation</a>
+							</li>
+							<li class=" tsd-kind-enum tsd-parent-kind-enum">
+								<a href="eventindex.playerinfo.html" class="tsd-kind-icon">Player<wbr>Info</a>
+							</li>
+							<li class=" tsd-kind-enum tsd-parent-kind-enum">
+								<a href="eventindex.pointdown.html" class="tsd-kind-icon">Point<wbr>Down</a>
+							</li>
+							<li class=" tsd-kind-enum tsd-parent-kind-enum">
+								<a href="eventindex.pointmove.html" class="tsd-kind-icon">Point<wbr>Move</a>
+							</li>
+							<li class=" tsd-kind-enum tsd-parent-kind-enum">
+								<a href="eventindex.pointup.html" class="tsd-kind-icon">Point<wbr>Up</a>
+							</li>
+							<li class=" tsd-kind-enum tsd-parent-kind-enum">
+								<a href="eventindex.tick.html" class="tsd-kind-icon">Tick</a>
+							</li>
+							<li class=" tsd-kind-enum tsd-parent-kind-enum">
+								<a href="eventindex.ticklist.html" class="tsd-kind-icon">Tick<wbr>List</a>
+							</li>
+							<li class=" tsd-kind-enum tsd-parent-kind-enum">
+								<a href="eventindex.timestamp.html" class="tsd-kind-icon">Timestamp</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
+								<a href="eventindex.html#code" class="tsd-kind-icon">Code</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
+								<a href="eventindex.html#eventflags" class="tsd-kind-icon">Event<wbr>Flags</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum tsd-is-external">
+								<a href="eventindex.html#playerid" class="tsd-kind-icon">Player<wbr>Id</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="eventindex.message.html" class="tsd-kind-icon">Message</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="eventindex.operation.html" class="tsd-kind-icon">Operation</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="eventindex.playerinfo.html" class="tsd-kind-icon">Player<wbr>Info</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="eventindex.pointdown.html" class="tsd-kind-icon">Point<wbr>Down</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="eventindex.pointmove.html" class="tsd-kind-icon">Point<wbr>Move</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="eventindex.pointup.html" class="tsd-kind-icon">Point<wbr>Up</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="eventindex.tick.html" class="tsd-kind-icon">Tick</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="eventindex.ticklist.html" class="tsd-kind-icon">Tick<wbr>List</a>
-					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="eventindex.timestamp.html" class="tsd-kind-icon">Timestamp</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
