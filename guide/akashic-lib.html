@@ -69,6 +69,7 @@
 				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
 				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
 				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+				<li><a href="/guide/acceleration-tips.html">高速化TIPS</a></li>
 			</ul>
 		</li>
 		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
@@ -141,33 +142,33 @@
 <h2><a name="format"></a> 形式</h2>
 <p>以下は妥当な akashic-lib.json の例です。</p>
 <pre><code class="language-json">{
-    &quot;gameCofigurationData&quot;: {
-        &quot;environment&quot;: {
-            &quot;external&quot;: {
-                &quot;contentStorage&quot;: &quot;1&quot;
-            }
-        }
+  &quot;gameCofigurationData&quot;: {
+    &quot;environment&quot;: {
+      &quot;external&quot;: {
+        &quot;contentStorage&quot;: &quot;1&quot;
+      }
+    }
+  },
+  &quot;assetList&quot;: [
+    {
+      &quot;type&quot;: &quot;image&quot;,
+      &quot;path&quot;: &quot;assets/images/player.png&quot;,
+      &quot;width&quot;: 128,
+      &quot;height&quot;: 128
     },
-    &quot;assetList&quot;: [
-        {
-            &quot;type&quot;: &quot;image&quot;,
-            &quot;path&quot;: &quot;assets/images/player.png&quot;,
-            &quot;width&quot;: 128,
-            &quot;height&quot;: 128,
-        },
-        {
-            &quot;type&quot;: &quot;audio&quot;,
-            &quot;path&quot;: &quot;assets/audios/se_start&quot;,
-            &quot;duration&quot;: 560,
-            &quot;systemId&quot;: &quot;sound&quot;
-        },
-        {
-            &quot;type&quot;: &quot;audio&quot;,
-            &quot;path&quot;: &quot;assets/audios/bgm_opening&quot;,
-            &quot;duration&quot;: 51889,
-            &quot;systemId&quot;: &quot;music&quot;
-        }
-    ]
+    {
+      &quot;type&quot;: &quot;audio&quot;,
+      &quot;path&quot;: &quot;assets/audios/se_start&quot;,
+      &quot;duration&quot;: 560,
+      &quot;systemId&quot;: &quot;sound&quot;
+    },
+    {
+      &quot;type&quot;: &quot;audio&quot;,
+      &quot;path&quot;: &quot;assets/audios/bgm_opening&quot;,
+      &quot;duration&quot;: 51889,
+      &quot;systemId&quot;: &quot;music&quot;
+    }
+  ]
 }</code></pre>
 <p>すべての値は省略が可能です。
 したがって <code>{}</code> も妥当な akashic-lib.json の一例です。</p>
@@ -176,13 +177,13 @@
 執筆時点の <code>akashic</code> の最新バージョンである <code>2.2.0</code> においては <code>environment.external</code> のみサポートしています。</p>
 <p>以下の akashic-lib.json を例とします。</p>
 <pre><code class="language-json">{
-    &quot;gameConfigurationData&quot;: {
-        &quot;environment&quot;: {
-            &quot;external&quot;: {
-                &quot;contentStorage&quot;: &quot;1&quot;
-            }
-        }
+  &quot;gameConfigurationData&quot;: {
+    &quot;environment&quot;: {
+      &quot;external&quot;: {
+        &quot;contentStorage&quot;: &quot;1&quot;
+      }
     }
+  }
 }</code></pre>
 <p>この akashic-lib.json を含むモジュールを <code>akashic install</code> すると、インストール元の game.json が以下のように書き換えられます。</p>
 <pre><code class="language-diff">{
@@ -204,29 +205,29 @@
 (ただし、ゲーム開発者が game.json の <code>environment.external</code> を手動で編集する必要は通常ありません。)</p>
 <h2><a name="assetList"></a> assetList</h2>
 <p>game.json の assets フィールドに転写される配列値です。
-アセットIDはそのアセットが存在するパスに変換されます。</p>
+アセット ID はそのアセットが存在するパスに変換されます。</p>
 <p>以下の akashic-lib.json を例とします。</p>
 <pre><code class="language-json">{
-    &quot;assetList&quot;: [
-        {
-            &quot;type&quot;: &quot;image&quot;,
-            &quot;path&quot;: &quot;assets/images/player.png&quot;,
-            &quot;width&quot;: 128,
-            &quot;height&quot;: 128,
-        },
-        {
-            &quot;type&quot;: &quot;audio&quot;,
-            &quot;path&quot;: &quot;assets/audios/se_start&quot;,
-            &quot;duration&quot;: 560,
-            &quot;systemId&quot;: &quot;sound&quot;
-        },
-        {
-            &quot;type&quot;: &quot;audio&quot;,
-            &quot;path&quot;: &quot;assets/audios/bgm_opening&quot;,
-            &quot;duration&quot;: 51889,
-            &quot;systemId&quot;: &quot;music&quot;
-        }
-    ]
+  &quot;assetList&quot;: [
+    {
+      &quot;type&quot;: &quot;image&quot;,
+      &quot;path&quot;: &quot;assets/images/player.png&quot;,
+      &quot;width&quot;: 128,
+      &quot;height&quot;: 128
+    },
+    {
+      &quot;type&quot;: &quot;audio&quot;,
+      &quot;path&quot;: &quot;assets/audios/se_start&quot;,
+      &quot;duration&quot;: 560,
+      &quot;systemId&quot;: &quot;sound&quot;
+    },
+    {
+      &quot;type&quot;: &quot;audio&quot;,
+      &quot;path&quot;: &quot;assets/audios/bgm_opening&quot;,
+      &quot;duration&quot;: 51889,
+      &quot;systemId&quot;: &quot;music&quot;
+    }
+  ]
 }</code></pre>
 <p>これを <code>akashic install</code> すると、インストール元の game.json が以下のように書き換えられます。
 (ここではインストール対象のモジュール名を <code>some-library</code> としています。)</p>

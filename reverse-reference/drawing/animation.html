@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162208211-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-162208211-1');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>トゥイーンアニメーションする</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?5ddd7a0">
+<link rel="stylesheet" href="/css/header.css?5ddd7a0">
+<link rel="stylesheet" href="/css/footer.css?5ddd7a0">
+
+
+<link rel="stylesheet" href="/css/akashic-document.css?5ddd7a0">
+
+<link rel="stylesheet" href="/css/railscasts.css?5ddd7a0">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?5ddd7a0"></script>
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
+				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
+				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/storage.html">ストレージについて</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
+				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+				<li><a href="/guide/acceleration-tips.html">高速化TIPS</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v3/globals.html">akashic-engine v3.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				<li><a href="/reference/coe/">coe framework</a></li>
+				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
+				<li><a href="/reference/collision-js/">collision-js</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x (旧版)</a></li>
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x (旧版)</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3>Akashic Engine 逆引きリファレンス</h3>
+<h4><a name="drawing"></a> 描画</h4>
+<ul>
+<li><a href="./entity.html">エンティティを追加・削除する</a></li>
+<li><a href="./image.html">画像を表示する</a></li>
+<li><a href="./rotate.html">回転する</a></li>
+<li><a href="./scale.html">拡大する</a></li>
+<li><a href="./rotate-anchor.html">回転・拡大の基準点を変える</a></li>
+<li><a href="./opacity.html">半透明にする (透明度を変える)</a></li>
+<li><a href="./hidden.html">非表示にする</a></li>
+<li><a href="./display-order.html">描画順を変える</a></li>
+<li><a href="./multiple-entities.html">複数のエンティティをまとめて扱う</a></li>
+<li><a href="./composite-operation.html">エンティティの描画方法を変える (compositeOperation)</a></li>
+<li><a href="./frame-animation.html">フレームアニメーション (パラパラアニメ) する</a></li>
+<li><a href="./animation.html">トゥイーンアニメーションする</a></li>
+<li><a href="./move-image.html">画像を動かす</a></li>
+<li><a href="./clipping.html">クリッピングする</a></li>
+<li><a href="./shader.html">シェーダを利用する</a></li>
+</ul>
+<h4><a name="operation"></a> 操作</h4>
+<ul>
+<li><a href="../operation/click.html">クリック・タップできるようにする</a></li>
+<li><a href="../operation/drag.html">ドラッグ・スワイプで動かす</a></li>
+<li><a href="../operation/double-click.html">ダブルクリック・ダブルタップできるようにする</a></li>
+<li><a href="../operation/click-scene.html">画面全体をクリック・タップできるようにする</a></li>
+</ul>
+<h4><a name="sound"></a> 音声</h4>
+<ul>
+<li><a href="../sound/play">効果音・BGM を再生する</a></li>
+<li><a href="../sound/stop">効果音・BGM を止める</a></li>
+<li><a href="../sound/change-volume">効果音・BGM の音量を変える</a></li>
+<li><a href="../sound/change-volume-all">全体音量を変える</a></li>
+</ul>
+<h4><a name="label"></a> 文字列</h4>
+<ul>
+<li><a href="../text/draw.html">文字列を描画する</a></li>
+<li><a href="../text/color.html">文字列の色を変える</a></li>
+<li><a href="../text/align.html">文字列を中央寄せ・右寄せする</a></li>
+<li><a href="../text/multiline.html">複数行の文字列を描画する</a></li>
+<li><a href="../text/bitmapfont-use.html">ビットマップフォントを使う</a></li>
+<li><a href="../text/bitmapfont-create.html">ビットマップフォントを作る</a></li>
+</ul>
+<h4><a name="logic"></a> ゲームロジック</h4>
+<ul>
+<li><a href="../">乱数を使う</a></li>
+<li><a href="../">一定時間後に処理を実行する</a></li>
+<li><a href="../">定期的に処理を実行する</a></li>
+<li><a href="../">エンティティ同士の当たり判定を調べる</a></li>
+<li><a href="../">シーンを切り替える</a></li>
+<li><a href="../">前のシーンに戻る</a></li>
+<li><a href="../">指定位置にあるタッチ可能なエンティティを探す</a></li>
+</ul>
+<h4><a name="setting"></a> ゲーム設定</h4>
+<ul>
+<li><a href="../">画面サイズを変える</a></li>
+<li><a href="../">FPS を変える</a></li>
+</ul>
+<h4><a name="asset"></a> アセット</h4>
+<ul>
+<li><a href="../">ゲームにアセットを追加する</a></li>
+<li><a href="../">ゲームからアセットを削除する</a></li>
+<li><a href="../">アセットを読み込む</a></li>
+<li><a href="../">読み込んだアセットを取得する</a></li>
+<li><a href="../">スクリプトを分割する (複数のスクリプトを使う)</a></li>
+<li><a href="../">シーン内で動的にアセットを読み込む</a></li>
+</ul>
+<h4><a name="extension"></a> 拡張ライブラリ</h4>
+<ul>
+<li><a href="../">拡張ライブラリを導入する</a></li>
+<li><a href="../">拡張ライブラリを削除する</a></li>
+<li><a href="../">非 Akashic Engine 向けライブラリを利用する</a></li>
+</ul>
+<h4><a name="release"></a> 公開</h4>
+<ul>
+<li><a href="../">HTML5 ゲームとして出力する</a></li>
+<li><a href="../">ニコ生ゲームとして出力する</a></li>
+<li><a href="../">RPG アツマールでの背景色を指定する</a></li>
+<li><a href="../">RPG アツマールでスコアボードを表示する</a></li>
+<li><a href="../">RPG アツマールでのみ処理を行う</a></li>
+</ul>
+
+		</div>
+		<div class="twocol-main">
+			<div class="inner responsive--width--twocol">
+				<h1>トゥイーンアニメーションする</h1>
+<p>トゥイーンアニメーションを行うには <code>akashic-timeline</code> を利用します。</p>
+<h2>凡例</h2>
+<pre><code class="language-javascript">var tl = require(&quot;@akashic-extension/akashic-timeline&quot;);
+var timeline = new tl.Timeline(scene);
+// e を現在位置から座標(300, 0)へ2000ミリ秒かけて動かすアニメーションを実行
+timeline.create(e).moveTo(300, 0, 2000);</code></pre>
+<p>フレームアニメーションを行うには <a href="./frame-animation.html"><code>g.FrameSprite</code> を利用してください。</a></p>
+<h2>利用例</h2>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvZHJhd2luZy9hbmltYXRpb24vZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
+
+<h2>詳細</h2>
+<p><code>akashic-timeline</code> は Akashic Engine 向けのトゥイーンアニメーションライブラリです。</p>
+<p><code>akashic-timeline</code> のインストールは game.json が置かれているディレクトリで以下のコマンドを実行してください。</p>
+<pre><code class="language-sh">akashic install @akashic-extension/akashic-timeline</code></pre>
+<p>akashic-timeline を利用したいシーンで以下のように require を行い、<code>scene.onLoad</code> 内で <code>Timeline</code> を生成します。</p>
+<pre><code class="language-javascript">var tl = require(&quot;@akashic-extension/akashic-timeline&quot;);
+
+scene.onLoad.add(function() {
+  var timeline = new tl.Timeline(scene);
+  var tween = timeline.create(rect);
+});</code></pre>
+<p><code>timeline.create()</code> を呼び出すことで <code>rect</code> をアニメーション対象とした <code>Tween</code> を生成することが出来ます。<code>Tween</code> とはアニメーションの実行単位であるアクションを操作するオブジェクトです。</p>
+<p><code>timeline.create()</code> では <code>modified</code> オプションが省略された場合、<code>Tween</code> の対象オブジェクトの <code>modified()</code>が与えられます。
+これまでの例では、 <code>modified</code> オプションで <code>rect.modified</code> を指定していました。 この <code>modified</code> オプションは、毎フレーム、アクションを実行した度に呼び出される関数を指定するものです。通常は Akashic のエンティティの <code>modified()</code> 関数を指定することになりますが、 <code>Tile</code> や <code>Label</code> のような内部描画キャッシュを持つエンティティの場合は、必要に応じて <code>invalidate()</code> 関数を指定してください。</p>
+<h3>移動</h3>
+<p>エンティティの移動を行うアニメーションは <code>moveX()</code>, <code>moveY()</code>, <code>moveTo()</code>, <code>moveBy()</code> があり、<code>.</code> で繋げることで続けて実行することが出来ます。下記のコードでは、X 座標 100 の位置に 1 秒かけて移動した後、Y 座標 50 に 2 秒かけて移動するアニメーションを行います。</p>
+<pre><code class="language-javascript">timeline
+  .create(rect)
+  .moveX(100, 1000)
+  .moveY(50, 2000);</code></pre>
+<p>X 座標と Y 座標を同時に変化させたい場合は <code>moveTo()</code> アクションを利用します。
+下記のコードでは、2 秒掛けて X 座標 300、Y 座標 400 の位置に移動するアニメーションを行います。</p>
+<pre><code class="language-javascript">timeline.create(rect).moveTo(300, 400, 2000);</code></pre>
+<p>上記の例では絶対位置への移動でしたが、現在の位置からの相対位置に移動させるには <code>moveBy()</code> を利用することで相対位置への移動を行うことが出来ます。</p>
+<h3>Easing</h3>
+<p>Easing とはアニメーションの加速や減速方法を定義した関数です。 akashic-timeline では各アクションに様々な Easing を指定することが出来ます。
+Easing を指定しない場合は、エンティティは直線的な動作で移動します。この時、内部的には <code>Easing.linear</code> が指定されています。</p>
+<pre><code class="language-javascript">timeline.create(rect).moveTo(300, 400, 2000);</code></pre>
+<p><code>moveTo()</code> などの最後の引数に他の <code>Easing</code> を指定することで複雑なアニメーションをさせることが出来ます。<code>Easing</code> の詳細は<a href="/reference/akashic-timeline/modules/_easing_.easing.html">API リファレンスを参照してください。</a></p>
+<pre><code class="language-javascript">timeline.create(rect).moveTo(300, 400, 2000, tl.Easing.easeInCubic);</code></pre>
+<h3>回転</h3>
+<p><code>rotateTo()</code> や <code>rotateBy()</code> を使うことで回転アニメーションを実現することが出来ます。</p>
+<p>下記のコードでは、四角形を 90 度回転させています。</p>
+<pre><code class="language-javascript">timeline.create(rect).rotateTo(90, 1000);</code></pre>
+<h3>ループ</h3>
+<p>ループは <code>timeline.create()</code> の <code>loop</code> オプションで指定することが出来ます。</p>
+<pre><code class="language-javascript">timeline.create(rect, { loop: true }).rotateTo(90, 1000);</code></pre>
+<h3>並列実行</h3>
+<p>アクションを並列実行するには <code>con()</code> を利用します。 <code>con()</code> を呼び出した直前のアクションと直後のアクションを並列に実行することができます。</p>
+<p>下記の例では、<code>moveTo()</code> で移動しながら <code>rotateTo()</code> で回転しています。</p>
+<pre><code class="language-javascript">timeline
+  .create(rect)
+  .moveTo(200, 200, 1000)
+  .con()
+  .rotateTo(180, 2000);</code></pre>
+<h3>その他のプロパティ制御</h3>
+<p><code>moveTo()</code> や <code>rotateTo()</code> を使ってのアニメーションは内部的にアニメーション対象の x, y, angle 等のプロパティを変化させています。他のプロパティを制御したい場合は <code>to()</code> を使用することができます。</p>
+<p>下記のコードでは、 <code>FilledRect</code> の <code>width</code> と <code>height</code> を変化させています。</p>
+<pre><code class="language-javascript">timeline
+  .create(rect, { loop: true })
+  .to({ width: 500, height: 200 }, 1000)
+  .to({ width: 0, height: 0 }, 1000);</code></pre>
+<p>開始位置からの相対値を指定したい場合は <code>by()</code> を使用することができます。</p>
+<p><code>to()</code> や <code>by()</code> を使用して数値型のプロパティを変化させることはできますが、 <code>FilledRect</code> の <code>cssColor</code> プロパティなど、数値型以外のプロパティを変化させることは出来ません。数値型以外のプロパティを変化させるには <code>every()</code> を使用することでプロパティを変化させることができます。下記のコードでは、<code>every()</code> に指定した関数の中で第二引数に変化量（0〜1）が渡されてくるので、 その値を元に <code>cssColor</code> を変化させています。</p>
+<pre><code class="language-javascript">timeline.create(rect).every(function(elapsed, progress) {
+  var c = Math.floor(255 * progress);
+  rect.cssColor = `rgb(${c},0,${c} )`;
+}, 5000);</code></pre>
+<h3>アクションの完了と取り消し</h3>
+<p>すべてのアクションを完了させたい場合は <code>complete()</code> を利用します。
+下記のコードでは、<code>FilledRect</code> をクリックすると 2 秒掛けて透過度が 0 になるというアニメーションを即座に完了させることができます。</p>
+<pre><code class="language-javascript">var tween = timeline.create(rect).to({ opacity: 0 }, 2000);
+rect.pointDown.add(function() {
+  tween.complete();
+});</code></pre>
+<p>また、アニメーションをその時点で取り消したい場合は <code>cancel()</code> を利用します。</p>
+<pre><code class="language-javascript">var tween = timeline.create(rect).to({ opacity: 0 }, 2000);
+rect.pointDown.add(function() {
+  tween.cancel();
+});</code></pre>
+<p>特定の <code>Timeline</code> に紐付いたすべての <code>Tween</code> を完了させたい場合は <code>timeline.completeAll()</code> を、取り消したい場合は <code>timeline.cancelAll()</code> を利用することができます。</p>
+<h3>Tween の破棄タイミング</h3>
+<p><code>timeline.create()</code> で作成した <code>Tween</code> は <code>timeline.remove()</code> で破棄することができます。</p>
+<p>破棄された <code>Tween</code> で定義したアクションは全て実行されなくなります。</p>
+<p>また、以下の場合に <code>Tween</code> は自動的に破棄されます。</p>
+<ul>
+<li>全アクションが終了し、ループしない場合</li>
+<li>アニメーション対象が破棄された場合</li>
+</ul>
+<h2>関連情報</h2>
+<ul>
+<li><a href="/reference/akashic-timeline/index.html">API リファレンス</a></li>
+</ul>
+<div class="navi-center">
+<a href="./frame-animation.html">前 (フレームアニメーション (パラパラアニメ) する)</a>
+ | <a href="../">目次</a>
+ | <a href="./move-image.html">次 (画像を動かす)</a>
+</div>
+
+			</div>
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は、一部を除き <a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています: <a href="/image-license.html">詳細</a></li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
+</body>
+</html>
