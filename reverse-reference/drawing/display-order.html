@@ -67,6 +67,7 @@
 				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
 				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
 				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+				<li><a href="/guide/acceleration-tips.html">高速化TIPS</a></li>
 			</ul>
 		</li>
 		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
@@ -127,72 +128,73 @@
 <li><a href="./hidden.html">非表示にする</a></li>
 <li><a href="./display-order.html">描画順を変える</a></li>
 <li><a href="./multiple-entities.html">複数のエンティティをまとめて扱う</a></li>
-<li><a href="./">エンティティの描画方法を変える (compositeOperation)</a></li>
-<li><a href="./">フレームアニメーション (パラパラアニメ) する</a></li>
-<li><a href="./">トゥイーンアニメーションする</a></li>
-<li><a href="./">クリッピングする</a></li>
-<li><a href="./">シェーダを利用する</a></li>
+<li><a href="./composite-operation.html">エンティティの描画方法を変える (compositeOperation)</a></li>
+<li><a href="./frame-animation.html">フレームアニメーション (パラパラアニメ) する</a></li>
+<li><a href="./animation.html">トゥイーンアニメーションする</a></li>
+<li><a href="./move-image.html">画像を動かす</a></li>
+<li><a href="./clipping.html">クリッピングする</a></li>
+<li><a href="./shader.html">シェーダを利用する</a></li>
 </ul>
 <h4><a name="operation"></a> 操作</h4>
 <ul>
-<li><a href="./">クリック・タップできるようにする</a></li>
-<li><a href="./">ドラッグ・スワイプで動かす</a></li>
-<li><a href="./">ダブルクリック・ダブルタップできるようにする</a></li>
-<li><a href="./">画面全体をクリック・タップできるようにする</a></li>
+<li><a href="../operation/click.html">クリック・タップできるようにする</a></li>
+<li><a href="../operation/drag.html">ドラッグ・スワイプで動かす</a></li>
+<li><a href="../operation/double-click.html">ダブルクリック・ダブルタップできるようにする</a></li>
+<li><a href="../operation/click-scene.html">画面全体をクリック・タップできるようにする</a></li>
 </ul>
 <h4><a name="sound"></a> 音声</h4>
 <ul>
-<li><a href="./">効果音・BGM を再生する</a></li>
-<li><a href="./">効果音・BGM を止める</a></li>
-<li><a href="./">効果音・BGM の音量を変える</a></li>
-<li><a href="./">全体音量を変える</a></li>
+<li><a href="../sound/play">効果音・BGM を再生する</a></li>
+<li><a href="../sound/stop">効果音・BGM を止める</a></li>
+<li><a href="../sound/change-volume">効果音・BGM の音量を変える</a></li>
+<li><a href="../sound/change-volume-all">全体音量を変える</a></li>
 </ul>
 <h4><a name="label"></a> 文字列</h4>
 <ul>
-<li><a href="./">文字列を描画する</a></li>
-<li><a href="./">文字列の色を変える</a></li>
-<li><a href="./">文字列を中央寄せ・右寄せする</a></li>
-<li><a href="./">複数行の文字列を描画する</a></li>
-<li><a href="./">ビットマップフォントを使う</a></li>
-<li><a href="./">ビットマップフォントを作る</a></li>
+<li><a href="../text/draw.html">文字列を描画する</a></li>
+<li><a href="../text/color.html">文字列の色を変える</a></li>
+<li><a href="../text/align.html">文字列を中央寄せ・右寄せする</a></li>
+<li><a href="../text/multiline.html">複数行の文字列を描画する</a></li>
+<li><a href="../text/bitmapfont-use.html">ビットマップフォントを使う</a></li>
+<li><a href="../text/bitmapfont-create.html">ビットマップフォントを作る</a></li>
 </ul>
 <h4><a name="logic"></a> ゲームロジック</h4>
 <ul>
-<li><a href="./">乱数を使う</a></li>
-<li><a href="./">一定時間後に処理を実行する</a></li>
-<li><a href="./">定期的に処理を実行する</a></li>
-<li><a href="./">エンティティ同士の当たり判定を調べる</a></li>
-<li><a href="./">シーンを切り替える</a></li>
-<li><a href="./">前のシーンに戻る</a></li>
-<li><a href="./">指定位置にあるタッチ可能なエンティティを探す</a></li>
+<li><a href="../">乱数を使う</a></li>
+<li><a href="../">一定時間後に処理を実行する</a></li>
+<li><a href="../">定期的に処理を実行する</a></li>
+<li><a href="../">エンティティ同士の当たり判定を調べる</a></li>
+<li><a href="../">シーンを切り替える</a></li>
+<li><a href="../">前のシーンに戻る</a></li>
+<li><a href="../">指定位置にあるタッチ可能なエンティティを探す</a></li>
 </ul>
 <h4><a name="setting"></a> ゲーム設定</h4>
 <ul>
-<li><a href="./">画面サイズを変える</a></li>
-<li><a href="./">FPS を変える</a></li>
+<li><a href="../">画面サイズを変える</a></li>
+<li><a href="../">FPS を変える</a></li>
 </ul>
 <h4><a name="asset"></a> アセット</h4>
 <ul>
-<li><a href="./">ゲームにアセットを追加する</a></li>
-<li><a href="./">ゲームからアセットを削除する</a></li>
-<li><a href="./">アセットを読み込む</a></li>
-<li><a href="./">読み込んだアセットを取得する</a></li>
-<li><a href="./">スクリプトを分割する (複数のスクリプトを使う)</a></li>
-<li><a href="./">シーン内で動的にアセットを読み込む</a></li>
+<li><a href="../">ゲームにアセットを追加する</a></li>
+<li><a href="../">ゲームからアセットを削除する</a></li>
+<li><a href="../">アセットを読み込む</a></li>
+<li><a href="../">読み込んだアセットを取得する</a></li>
+<li><a href="../">スクリプトを分割する (複数のスクリプトを使う)</a></li>
+<li><a href="../">シーン内で動的にアセットを読み込む</a></li>
 </ul>
 <h4><a name="extension"></a> 拡張ライブラリ</h4>
 <ul>
-<li><a href="./">拡張ライブラリを導入する</a></li>
-<li><a href="./">拡張ライブラリを削除する</a></li>
-<li><a href="./">非 Akashic Engine 向けライブラリを利用する</a></li>
+<li><a href="../">拡張ライブラリを導入する</a></li>
+<li><a href="../">拡張ライブラリを削除する</a></li>
+<li><a href="../">非 Akashic Engine 向けライブラリを利用する</a></li>
 </ul>
 <h4><a name="release"></a> 公開</h4>
 <ul>
-<li><a href="./">HTML5 ゲームとして出力する</a></li>
-<li><a href="./">ニコ生ゲームとして出力する</a></li>
-<li><a href="./">RPG アツマールでの背景色を指定する</a></li>
-<li><a href="./">RPG アツマールでスコアボードを表示する</a></li>
-<li><a href="./">RPG アツマールでのみ処理を行う</a></li>
+<li><a href="../">HTML5 ゲームとして出力する</a></li>
+<li><a href="../">ニコ生ゲームとして出力する</a></li>
+<li><a href="../">RPG アツマールでの背景色を指定する</a></li>
+<li><a href="../">RPG アツマールでスコアボードを表示する</a></li>
+<li><a href="../">RPG アツマールでのみ処理を行う</a></li>
 </ul>
 
 		</div>
@@ -208,7 +210,7 @@
 scene.insertBefore(entity, targetEntity); // targetEntity の直前に entity を挿入し、entity は先に(奥側に)描画される</code></pre>
 <p><code>insertBefore()</code> は子エンティティの中での挿入位置を指定して追加できます。</p>
 <h2>利用例</h2>
-<p>次のコンテンツは、既に追加されている緑と赤の短形に青の短形を赤の直前の子要素として追加しています。</p>
+<p>次のコンテンツは、既に追加されている緑と赤の矩形に青の矩形を赤の直前の子要素として追加しています。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvZHJhd2luZy9kaXNwbGF5LW9yZGVyL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
 
 <h2>詳細</h2>
