@@ -61,7 +61,7 @@
 				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
 				<li><a href="/guide/storage.html">ストレージについて</a></li>
 				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/atsumaru.html">ゲームアツマール投稿ガイド</a></li>
 				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
@@ -214,7 +214,7 @@ scene.loaded.add(function () {
 <p>セッションパラメータが与えられない場合には、そもそもこのイベントが来ないか、あるいは来たイベントに <code>parameters</code> がありません。</p>
 <p>Akashic Engine では通常、イベントはシーンのロードタイミング(<code>g.Scene#loaded</code>)より後に受信されるため、 <code>loaded</code> の処理中にはこの値を参照できないことに注意してください。これは仕様による制限です。</p>
 <p>厳密にセッションパラメータの受信を待って <code>loaded</code> の初期化処理を行いたい場合は、 <code>loaded</code> ではなく <code>message</code> トリガーの fire を待って処理を行う必要があります。
-(ただしそうするとニコニコ生放送以外(RPG アツマールなど)では動作しないコンテンツになってしまうので、「 <code>g.Scene#update</code> の fire を数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
+(ただしそうするとニコニコ生放送以外(ゲームアツマールなど)では動作しないコンテンツになってしまうので、「 <code>g.Scene#update</code> の fire を数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
 <h3><a name="mode"></a> モード (mode)</h3>
 <p>セッションパラメータ <code>sessionParameters</code> がある時、 <code>sessionParameters.mode</code> で <strong>モード</strong> を参照できます。</p>
 <p>この値は game.json の <code>environment.niconico.supportedModes</code> に記述した文字列のいずれかで、実際にゲームが起動されたモードを表します。

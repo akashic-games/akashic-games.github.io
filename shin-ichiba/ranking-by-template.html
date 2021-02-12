@@ -59,7 +59,7 @@
 				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
 				<li><a href="/guide/storage.html">ストレージについて</a></li>
 				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/atsumaru.html">ゲームアツマール投稿ガイド</a></li>
 				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
@@ -274,7 +274,7 @@ scene.update.add(updateHandler);</code></pre>
 <p>制限時間は (game.json で希望値を申告していても) 必ず <code>param.sessionParameter</code> から取得してください。</p>
 <p>というのも、第一に game.json での記述は、あくまで &quot;希望値の申告&quot; であるためです。
 ゲーム実行時の実際の制限時間が保証されるわけではありません。</p>
-<p>第二に、 <a href="./introduction.html">ニコ生ゲームでは</a> でも述べた通り、ランキング対応ゲームは RPG アツマールでも公開できます (デフォルトでされます)。RPG アツマール上では単にシングルプレイのゲームという扱いになるため、ニコ生による自動終了やスコア集計はなく、 <strong>制限時間も与えられません</strong> 。
+<p>第二に、 <a href="./introduction.html">ニコ生ゲームでは</a> でも述べた通り、ランキング対応ゲームは ゲームアツマールでも公開できます (デフォルトでされます)。ゲームアツマール上では単にシングルプレイのゲームという扱いになるため、ニコ生による自動終了やスコア集計はなく、 <strong>制限時間も与えられません</strong> 。
 そのため上のコードのように、制限時間が与えられなかった時は 60 秒として動作する、といった処理が必要です。</p>
 </blockquote>
 <p>制限時間は「ゲーム起動から終了までの全ての時間」であることに注意してください。
@@ -308,22 +308,22 @@ scene.update.add(updateHandler);</code></pre>
 というのも、通信遅延などで起動が遅れた場合などでは、最悪 <code>score</code> の代入が間に合わずにゲームが終了されてしまう可能性があるためです。
 途中までプレイできていたのに 0 点扱いになってしまうと、プレイヤーからは不具合に見える動作になってしまいます。</p>
 </blockquote>
-<h2>RPG アツマール向けの処理</h2>
+<h2>ゲームアツマール向けの処理</h2>
 <p>シングルプレイの Akashic ゲームで、制限時間の処理とスコアの設定ができれば、ランキング対応は完了です。</p>
-<p>ただし、ランキング対応ゲームは RPG アツマール上でも公開できます (デフォルトでされます)。
-RPG アツマール上では単にシングルプレイのゲームとして扱われるため、ニコ生による自動終了や集計はありません。
-そのため現実的には、RPG アツマール上固有の処理を実現したい場合が多くあります。</p>
+<p>ただし、ランキング対応ゲームは ゲームアツマール上でも公開できます (デフォルトでされます)。
+ゲームアツマール上では単にシングルプレイのゲームとして扱われるため、ニコ生による自動終了や集計はありません。
+そのため現実的には、ゲームアツマール上固有の処理を実現したい場合が多くあります。</p>
 <ul>
 <li>ゲーム終了後、リスタートボタンを表示して最初に戻れるようにする</li>
 <li>ゲーム終了時、PRG アツマールのスコアボードを表示する</li>
 </ul>
 <p>このような時に、テンプレートの <code>param.isAtsumaru</code> が利用できます。
-この値は RPG アツマール上でゲームが実行されている時にのみ <code>true</code> になります。</p>
-<p>テンプレートでは、この変数を使って「制限時間経過後に RPG アツマールのスコアボードを表示する」ようになっています。
+この値は ゲームアツマール上でゲームが実行されている時にのみ <code>true</code> になります。</p>
+<p>テンプレートでは、この変数を使って「制限時間経過後に ゲームアツマールのスコアボードを表示する」ようになっています。
 これは次のコードで実現されています。</p>
 <pre><code class="language-javascript">var updateHandler = function() {
   if (time &lt;= 0) {
-    // RPGアツマール環境であればランキングを表示します
+    // ゲームアツマール環境であればランキングを表示します
     if (param.isAtsumaru) {
       var boardId_1 = 1;
       window.RPGAtsumaru.experimental.scoreboards
@@ -337,9 +337,9 @@ RPG アツマール上では単にシングルプレイのゲームとして扱�
   // ... 中略 ...
 };
 scene.update.add(updateHandler);</code></pre>
-<p>RPG アツマール上でのみ使える API (＝ <code>window.RPGAtsumaru</code>) については、<a href="https://atsumaru.github.io/api-references/">RPG アツマールの API リファレンス</a> を参照してください。</p>
+<p>ゲームアツマール上でのみ使える API (＝ <code>window.RPGAtsumaru</code>) については、<a href="https://atsumaru.github.io/api-references/">ゲームアツマールの API リファレンス</a> を参照してください。</p>
 <h2><a name="submit"></a> 投稿</h2>
-<p>ゲームが作成できたら、RPG アツマールを通して投稿できます。 <a href="./submit.html">ニコ生ゲームを投稿しよう</a> を参照して、投稿してみてください。</p>
+<p>ゲームが作成できたら、ゲームアツマールを通して投稿できます。 <a href="./submit.html">ニコ生ゲームを投稿しよう</a> を参照して、投稿してみてください。</p>
 <div class="navi-center">
 <a href="./ranking.html">前 (ランキング対応ゲーム)</a>
  | <a href="./index.html">目次</a>

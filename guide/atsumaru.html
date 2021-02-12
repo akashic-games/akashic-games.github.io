@@ -15,7 +15,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>RPG アツマール投稿ガイド</title>
+<title>ゲームアツマール投稿ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?5ddd7a0">
 <link rel="stylesheet" href="/css/header.css?5ddd7a0">
@@ -61,7 +61,7 @@
 				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
 				<li><a href="/guide/storage.html">ストレージについて</a></li>
 				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/atsumaru.html">ゲームアツマール投稿ガイド</a></li>
 				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
@@ -118,17 +118,17 @@
 <div id="BodyInner">
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
-			<h1>RPG アツマール投稿ガイド</h1>
+			<h1>ゲームアツマール投稿ガイド</h1>
 <h2><a name="これは"></a> これは</h2>
-<p>Akashic で制作したゲームを<a href="https://game.nicovideo.jp/atsumaru/">RPG アツマール</a>に投稿する手順を解説します。
-RPG アツマールは&quot;作って遊んでコメントできる ゲーム投稿コミュニティサービス&quot;です。詳しくは公式ページの<a href="http://site.nicovideo.jp/atsumaru/about/">RPG アツマールとは</a>を御覧ください。</p>
-<p><strong><a href="./export-atsumaru.html">ニコ生ゲームの投稿</a>とは異なるので注意してください</strong>。ニコ生ゲームは、RPG アツマールでもニコニコ生放送でも実行できる代わり、以下の手順よりも zip ファイルが大きくなります。(実行時の読み込みデータサイズは変わりません)</p>
+<p>Akashic で制作したゲームを<a href="https://game.nicovideo.jp/atsumaru/">ゲームアツマール</a>に投稿する手順を解説します。
+ゲームアツマールは&quot;作って遊んでコメントできる ゲーム投稿コミュニティサービス&quot;です。詳しくは公式ページの<a href="http://site.nicovideo.jp/atsumaru/about/">ゲームアツマールとは</a>を御覧ください。</p>
+<p><strong><a href="./export-atsumaru.html">ニコ生ゲームの投稿</a>とは異なるので注意してください</strong>。ニコ生ゲームは、ゲームアツマールでもニコニコ生放送でも実行できる代わり、以下の手順よりも zip ファイルが大きくなります。(実行時の読み込みデータサイズは変わりません)</p>
 <h2><a name="投稿方法"></a> 投稿方法</h2>
 <p>次の３つのステップで投稿します。</p>
 <ol>
 <li>Akashic で作成したゲームをスタンドアロン形式にエクスポートする</li>
 <li>エクスポートされたゲームを zip 圧縮する</li>
-<li>zip 圧縮されたゲームを RPG アツマールにアップロードする</li>
+<li>zip 圧縮されたゲームを ゲームアツマールにアップロードする</li>
 </ol>
 <h3><a name="スタンドアロン形式にエクスポート"></a> スタンドアロン形式にエクスポート</h3>
 <p><code>akashic</code>コマンドの<code>export</code>コマンドを利用します。コマンドは game.json ファイルのあるディレクトリで実行してください。</p>
@@ -139,8 +139,8 @@ RPG アツマールは&quot;作って遊んでコメントできる ゲーム投
 <p>Windows7 の場合は、エクスプローラーで mygame フォルダを右クリックして → &quot;送る(N)&quot; → &quot;圧縮 (zip 形式) フォルダー&quot; を選択することで圧縮できます。</p>
 <p>Mac の場合は、 Finder で mygame フォルダを Control キーを押しながらクリックするか、2 本指でタップしてショートカットメニューから &quot;圧縮&quot; を選択することで圧縮できます。</p>
 <p>その他の OS については OS 付属の説明書をご確認ください。</p>
-<h3><a name="RPGアツマールに投稿"></a> RPG アツマールに投稿</h3>
-<p><a href="https://game.nicovideo.jp/atsumaru/">RPG アツマールトップページ</a>右にある &quot;ゲームを投稿する&quot; リンクから投稿することが出来ます（ニコニコにログインしていないときはここでログインページに自動的に進みます）。以降は&quot;ゲーム新規登録&quot;ページの案内に従ってください。</p>
+<h3><a name="ゲームアツマールに投稿"></a> ゲームアツマールに投稿</h3>
+<p><a href="https://game.nicovideo.jp/atsumaru/">ゲームアツマールトップページ</a>右にある &quot;ゲームを投稿する&quot; リンクから投稿することが出来ます（ニコニコにログインしていないときはここでログインページに自動的に進みます）。以降は&quot;ゲーム新規登録&quot;ページの案内に従ってください。</p>
 
 		</div>
 	</section>
