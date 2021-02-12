@@ -61,7 +61,7 @@
 				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
 				<li><a href="/guide/storage.html">ストレージについて</a></li>
 				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/atsumaru.html">ゲームアツマール投稿ガイド</a></li>
 				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
@@ -119,19 +119,19 @@
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
 			<h1>投稿と申請</h1>
-<p>ニコ生ゲームの投稿は、<a href="https://game.nicovideo.jp/atsumaru/">RPG アツマール</a> を通して行います。</p>
-<p>RPG アツマールは、&quot;作って遊んでコメントできる ゲーム投稿コミュニティサービス&quot; です(<a href="http://site.nicovideo.jp/atsumaru/about/">紹介</a>)。
-Akashic ゲームをこの RPG アツマールに投稿・公開した後、申請を行うことで、ニコニコ生放送でも遊べるようになります。</p>
+<p>ニコ生ゲームの投稿は、<a href="https://game.nicovideo.jp/atsumaru/">ゲームアツマール</a> を通して行います。</p>
+<p>ゲームアツマールは、&quot;作って遊んでコメントできる ゲーム投稿コミュニティサービス&quot; です(<a href="http://site.nicovideo.jp/atsumaru/about/">紹介</a>)。
+Akashic ゲームをこの ゲームアツマールに投稿・公開した後、申請を行うことで、ニコニコ生放送でも遊べるようになります。</p>
 <p>次の手順で行います。</p>
 <ol>
 <li>投稿用 zip ファイルを生成</li>
-<li>RPG アツマールに投稿し、ニコ生ゲームとして登録申請</li>
+<li>ゲームアツマールに投稿し、ニコ生ゲームとして登録申請</li>
 </ol>
 <h3><a name="generate-zip"></a> 投稿用 zip ファイルを生成</h3>
 <p>game.json のあるディレクトリで、次のコマンドを実行して zip ファイルを生成します。</p>
 <pre><code class="language-sh">akashic export html --output &lt;zipFileName&gt; --atsumaru</code></pre>
 <p><code>&lt;zipFileName&gt;</code> には、 <code>.zip</code> で終わるパスを指定してください (<code>./game.zip</code> など)。
-<code>--atsumaru</code> オプションをつけることで、RPG アツマールとニコニコ生放送に対応した形式のファイルを生成します。</p>
+<code>--atsumaru</code> オプションをつけることで、ゲームアツマールとニコニコ生放送に対応した形式のファイルを生成します。</p>
 <p><code>export html</code> コマンドによって、以下のファイル・ディレクトリを圧縮した zip ファイル <code>&lt;zipFileName&gt;</code> が生成されます。</p>
 <ul>
 <li><code>files</code> ディレクトリ<ul>
@@ -153,9 +153,9 @@ Akashic ゲームをこの RPG アツマールに投稿・公開した後、申�
 <p>現在のところ、ニコ生ゲームは <strong>この zip ファイルの展開後のサイズが 10MB 以下である必要があります</strong> 。これを超える場合、アツマールには投稿できますが、ニコ生ゲームとして登録申請する際に失敗するので注意してください。</p>
 <p>また事前に <strong>テキストファイル(スクリプトアセットとテキストアセット)の文字コードが UTF-8 であることを確認してください</strong> 。
 Shift JIS など、UTF-8 でない文字コードが使われている場合、<code>akashic</code> コマンドが複数ファイルを一つにまとめる際に文字化けしてしまう恐れがあります。</p>
-<h3><a name="submit-to-atsumaru"></a> RPG アツマールに投稿し、ニコ生ゲームとして登録申請</h3>
-<p><a href="https://game.nicovideo.jp/atsumaru/">RPG アツマール</a> への投稿は、Web サイト上で行います。大まかな手順は以下の通りです。</p>
-<p>RPG アツマールの <a href="https://game.nicovideo.jp/atsumaru/game/edit/new">投稿ページ</a> を開きます。(ニコニコアカウントでのログインが求められます。)
+<h3><a name="submit-to-atsumaru"></a> ゲームアツマールに投稿し、ニコ生ゲームとして登録申請</h3>
+<p><a href="https://game.nicovideo.jp/atsumaru/">ゲームアツマール</a> への投稿は、Web サイト上で行います。大まかな手順は以下の通りです。</p>
+<p>ゲームアツマールの <a href="https://game.nicovideo.jp/atsumaru/game/edit/new">投稿ページ</a> を開きます。(ニコニコアカウントでのログインが求められます。)
 zip ファイルを「ゲームファイル」の欄で選択もしくはドラッグ＆ドロップします。</p>
 <p><img src="/img/guide/export-atsumaru/upload_game.png" alt="ゲームアップロード"></p>
 <p>残りの入力項目に入力して、その内容を保存します。</p>
@@ -163,7 +163,7 @@ zip ファイルを「ゲームファイル」の欄で選択もしくはドラ�
 <li>詳細な入力・操作方法については、ゲーム投稿ページの案内に従ってください。</li>
 <li>ここで指定した「ゲーム名」「アイコン画像」「紹介文」はニコニコ生放送にも反映されます。</li>
 <li>ニコニコ生放送での表示の都合上、「アイコン」は 160x160 以上 320x320 以下の画像である必要があります。(幅と高さが同じ(正方形の)画像を推奨します)</li>
-<li>「ゲーム表示サイズ」は RPG アツマール上での表示にのみ影響します。ゲームの解像度 (<code>game.json</code> の <code>&quot;width&quot;</code>, <code>&quot;height&quot;</code>) と同じ値を指定することを推奨します。</li>
+<li>「ゲーム表示サイズ」は ゲームアツマール上での表示にのみ影響します。ゲームの解像度 (<code>game.json</code> の <code>&quot;width&quot;</code>, <code>&quot;height&quot;</code>) と同じ値を指定することを推奨します。</li>
 <li>「非公開」「限定公開」状態ではニコ生ゲームに登録申請できないので、「公開」を選択してください。</li>
 </ul>
 <p>内容保存後、マイページにリダイレクトされます。マイページで投稿対象のゲーム中の 「その他 ＞ ニコ生ゲームに登録申請」を選択します。</p>
@@ -173,7 +173,7 @@ zip ファイルを「ゲームファイル」の欄で選択もしくはドラ�
 <p>投稿対象のゲームに「ニコ生ゲームに登録申請済み」と表示されたら完了です。</p>
 <p><img src="/img/guide/export-atsumaru/export_complete.png" alt="登録申請完了"></p>
 <h2><a name="updating-content"></a> コンテンツの更新</h2>
-<p>RPG アツマールでは、一度アップロードしたゲームの内容を更新することができます。ニコ生ゲームとしては、更新後に改めて登録申請が必要になることに注意してください。</p>
+<p>ゲームアツマールでは、一度アップロードしたゲームの内容を更新することができます。ニコ生ゲームとしては、更新後に改めて登録申請が必要になることに注意してください。</p>
 <p><img src="/img/guide/export-atsumaru/update_ui.png" alt="更新UI"></p>
 <p>更新は、登録申請と同じ画面で「アップデート」ボタンを押して zip ファイルをアップロードして更新した後、改めて「ニコ生ゲームに登録申請」してください。</p>
 <h2><a name="trouble-shooting"></a> トラブルシューティング</h2>

@@ -61,7 +61,7 @@
 				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
 				<li><a href="/guide/storage.html">ストレージについて</a></li>
 				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-				<li><a href="/guide/atsumaru.html">RPGアツマール投稿ガイド</a></li>
+				<li><a href="/guide/atsumaru.html">ゲームアツマール投稿ガイド</a></li>
 				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
@@ -223,8 +223,8 @@ console.log(array[1].value);  // ==&gt; &quot;foo&quot;, &quot;bar&quot; or &quo
 </ul>
 <p>この現象の原因は、ブラウザの Web 広告対策のために音声再生が制限されることがあるためです。
 しかし現状では、そのブラウザの制限を完全になくしてゲーム開始時に自動的に音声を再生させる方法は見いだせていません。ですので、ゲームデザインとして最初に一度以上クリックさせるような作りにするという形で対応してください。</p>
-<h2><a name="background-color-in-atsumaru" /> RPG アツマール環境で背景が真っ黒になる</h2>
-<p>ニコ生ゲームとして配信画面を透過するために、ゲームの背景に何も描画していない場合、 RPG アツマールではその部分が真っ黒になります。PRG アツマールでは投稿時にゲーム画面の「枠外」の色を選べますが、これはゲーム画面には適用されません。</p>
+<h2><a name="background-color-in-atsumaru" /> ゲームアツマール環境で背景が真っ黒になる</h2>
+<p>ニコ生ゲームとして配信画面を透過するために、ゲームの背景に何も描画していない場合、 ゲームアツマールではその部分が真っ黒になります。PRG アツマールでは投稿時にゲーム画面の「枠外」の色を選べますが、これはゲーム画面には適用されません。</p>
 <p>この問題は、 <code>akashic export html</code> コマンドのオプション <code>--inject</code> を使うことで回避できます。</p>
 <p><code>--inject &lt;filepath&gt;</code> は、出力される HTML ファイルの <code>head</code> 要素の末尾に <code>&lt;filepath&gt;</code> のファイルの内容を書き込むオプションです。この HTML ファイルは、アツマール (もしくは、 Web サーバに置いた時) でのみ利用され、ニコニコ生放送上では使われません。
 例えば背景を灰色にするための方法は以下のようになります。</p>
