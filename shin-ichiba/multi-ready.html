@@ -137,6 +137,7 @@
 <li><a href="./column-local-process.html">簡単なゲームを作ってローカル処理に触れよう</a></li>
 <li><a href="./column-join-leave.html">Join と Leave とニコ生の話</a></li>
 <li><a href="./column-make-multi.html">実際にマルチプレイゲームを考えて作ろう</a></li>
+<li><a href="./player-info.html">ユーザ名を使う</a></li>
 </ul>
 </li>
 <li><strong><a href="./submit.html">ニコ生ゲームを投稿しよう</a></strong></li>
@@ -166,7 +167,11 @@
       ]
     }
   }
-}</code></pre><h2><a name="debug"></a> 動作確認</h2>
+}</code></pre><h2><a name="player-info"></a> ユーザ名の取得</h2>
+<p>マルチプレイのニコ生ゲームでは、ニコニコのユーザ名を利用することができます。
+これについては別項 <a href="./player-info.html">ユーザ名を使う</a> を参照してください。</p>
+<p>ただし必要となる機能の関係上、 Akashic Engine v3 以降で作成されている必要があります。</p>
+<h2><a name="debug"></a> 動作確認</h2>
 <p>マルチプレイのニコ生ゲームの動作確認は、Akashic ゲームとして単に <code>akashic serve</code> コマンドで行うことができます。
 ただしニコ生ゲームの場合は <code>--target-service</code> オプションが利用できます。</p>
 <pre><code class="language-shell">$ akashic serve --target-service nicolive</code></pre>
