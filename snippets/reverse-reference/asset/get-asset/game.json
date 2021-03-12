@@ -1,0 +1,28 @@
+{
+  "width": 320,
+  "height": 320,
+  "fps": 60,
+  "main": "./main.js",
+  "assets": {
+    "main": {
+      "type": "script",
+      "path": "main.js",
+      "global": true
+    },
+    "player": {
+      "type": "image",
+      "width": 63,
+      "height": 53,
+      "path": "image/player.png"
+    },
+    "sound1": {
+      "type": "audio",
+      "path": "audio/sound1",
+      "systemId": "sound",
+      "duration": 863
+    }
+  },
+  "environment": {
+    "sandbox-runtime": "3"
+  }
+}
