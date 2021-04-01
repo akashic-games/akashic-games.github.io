@@ -69,11 +69,7 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>オブジェクトの衝突を表す。</p>
-						<ul>
-							<li>矩形交差による衝突</li>
-							<li>2点間の距離による衝突</li>
-						</ul>
+						<p>オブジェクトなどの衝突判定機能を提供する。</p>
 					</div>
 				</div>
 			</section>
@@ -86,6 +82,8 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="collision.html#intersect" class="tsd-kind-icon">intersect</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="collision.html#intersectareas" class="tsd-kind-icon">intersect<wbr>Areas</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="collision.html#intersectentities" class="tsd-kind-icon">intersect<wbr>Entities</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="collision.html#intersectlinesegments" class="tsd-kind-icon">intersect<wbr>Line<wbr>Segments</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="collision.html#within" class="tsd-kind-icon">within</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="collision.html#withinareas" class="tsd-kind-icon">within<wbr>Areas</a></li>
 							</ul>
@@ -105,13 +103,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Collision.ts#L22">src/Collision.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/d5c298f/src/Collision.ts#L144">src/Collision.ts:144</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>矩形交差による衝突判定を行い、その結果を返す。
-									戻り値は、矩形t1, t2が交差しているとき真、でなければ偽。</p>
+									戻り値は、二つの矩形t1, t2が交差しているとき真、でなければ偽。</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -119,49 +117,49 @@
 								<li>
 									<h5>x1: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>t1-X</p>
+										<p>t1のX座標</p>
 									</div>
 								</li>
 								<li>
 									<h5>y1: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>t1-Y</p>
+										<p>t1のY座標</p>
 									</div>
 								</li>
 								<li>
 									<h5>width1: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>t1幅</p>
+										<p>t1の幅</p>
 									</div>
 								</li>
 								<li>
 									<h5>height1: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>t1高さ</p>
+										<p>t1の高さ</p>
 									</div>
 								</li>
 								<li>
 									<h5>x2: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>t2-X</p>
+										<p>t2のX座標</p>
 									</div>
 								</li>
 								<li>
 									<h5>y2: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>t2-Y</p>
+										<p>t2のY座標</p>
 									</div>
 								</li>
 								<li>
 									<h5>width2: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>t2幅</p>
+										<p>t2の幅</p>
 									</div>
 								</li>
 								<li>
 									<h5>height2: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>t2高さ</p>
+										<p>t2の高さ</p>
 									</div>
 								</li>
 							</ul>
@@ -179,7 +177,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Collision.ts#L41">src/Collision.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/d5c298f/src/Collision.ts#L167">src/Collision.ts:167</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -187,6 +185,8 @@
 									<p>矩形交差による衝突判定を行い、その結果を返す。
 									戻り値は、矩形t1, t2が交差しているとき真、でなければ偽。</p>
 								</div>
+								<p>特に、回転・拡大を利用していない、親が同じエンティティ同士の衝突判定に利用することができる。
+								条件を満たさない場合は <code>withinAreas()</code> や、より重いが正確な <code>intersectEntities()</code> の利用を検討すること。</p>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
@@ -208,6 +208,110 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="intersectentities" class="tsd-anchor"></a>
+					<h3>intersect<wbr>Entities</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">intersect<wbr>Entities<span class="tsd-signature-symbol">(</span>e1<span class="tsd-signature-symbol">: </span><a href="../classes/e.html" class="tsd-signature-type">E</a>, e2<span class="tsd-signature-symbol">: </span><a href="../classes/e.html" class="tsd-signature-type">E</a>, area1<span class="tsd-signature-symbol">?: </span><a href="../interfaces/commonarea.html" class="tsd-signature-type">CommonArea</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span>, area2<span class="tsd-signature-symbol">?: </span><a href="../interfaces/commonarea.html" class="tsd-signature-type">CommonArea</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/d5c298f/src/Collision.ts#L35">src/Collision.ts:35</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>二つのエンティティの衝突判定を行い、その結果を返す。</p>
+								</div>
+								<p>回転・拡大されたエンティティや、親の異なるエンティティ同士も扱える汎用の衝突判定処理。
+									ただし計算量が多いので、大量のエンティティ間のすべての衝突を確認するような状況では利用を避けることが望ましい。
+									親が同じで回転・拡大を行わないエンティティ同士の場合は、より軽量な Collision.intersectAreas() を利用すること。
+								親が同じで中心座標同士の距離だけで判定してよい場合は、より軽量な Collision.withinAreas() を利用すること。</p>
+								<p>対象のエンティティの座標や大きさなどを変更した場合、
+								この関数の呼び出し前にそのエンティティの modified() を呼び出しておく必要がある。</p>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>e1: <a href="../classes/e.html" class="tsd-signature-type">E</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>衝突判定するエンティティ</p>
+									</div>
+								</li>
+								<li>
+									<h5>e2: <a href="../classes/e.html" class="tsd-signature-type">E</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>衝突判定するエンティティ</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> area1: <a href="../interfaces/commonarea.html" class="tsd-signature-type">CommonArea</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>e1 の当たり判定領域。省略された場合、<code>{ x: 0, y: 0, width: e1.width, hegiht: e1.height }</code></p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> area2: <a href="../interfaces/commonarea.html" class="tsd-signature-type">CommonArea</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>e2 の当たり判定領域。省略された場合、<code>{ x: 0, y: 0, width: e2.width, hegiht: e2.height }</code></p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="intersectlinesegments" class="tsd-anchor"></a>
+					<h3>intersect<wbr>Line<wbr>Segments</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">intersect<wbr>Line<wbr>Segments<span class="tsd-signature-symbol">(</span>p1<span class="tsd-signature-symbol">: </span><a href="../interfaces/commonoffset.html" class="tsd-signature-type">CommonOffset</a>, p2<span class="tsd-signature-symbol">: </span><a href="../interfaces/commonoffset.html" class="tsd-signature-type">CommonOffset</a>, q1<span class="tsd-signature-symbol">: </span><a href="../interfaces/commonoffset.html" class="tsd-signature-type">CommonOffset</a>, q2<span class="tsd-signature-symbol">: </span><a href="../interfaces/commonoffset.html" class="tsd-signature-type">CommonOffset</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/d5c298f/src/Collision.ts#L122">src/Collision.ts:122</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>線分同士の衝突判定 (交差判定) を行い、その結果を返す。</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>p1: <a href="../interfaces/commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>線分の端点の一つ</p>
+									</div>
+								</li>
+								<li>
+									<h5>p2: <a href="../interfaces/commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>線分の端点の一つ</p>
+									</div>
+								</li>
+								<li>
+									<h5>q1: <a href="../interfaces/commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>もう一つの線分の端点の一つ</p>
+									</div>
+								</li>
+								<li>
+									<h5>q2: <a href="../interfaces/commonoffset.html" class="tsd-signature-type">CommonOffset</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>もう一つの線分の端点の一つ</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
 					<a name="within" class="tsd-anchor"></a>
 					<h3>within</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
@@ -217,7 +321,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Collision.ts#L54">src/Collision.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/d5c298f/src/Collision.ts#L180">src/Collision.ts:180</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -231,25 +335,25 @@
 								<li>
 									<h5>t1x: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>t1-X</p>
+										<p>一点の X 座標</p>
 									</div>
 								</li>
 								<li>
 									<h5>t1y: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>t1-X</p>
+										<p>一点の Y 座標</p>
 									</div>
 								</li>
 								<li>
 									<h5>t2x: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>t1-X</p>
+										<p>もう一点の X 座標</p>
 									</div>
 								</li>
 								<li>
 									<h5>t2y: <span class="tsd-signature-type">number</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>t1-X</p>
+										<p>もう一点の Y 座標</p>
 									</div>
 								</li>
 								<li>
@@ -270,7 +374,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/105de1d/src/Collision.ts#L65">src/Collision.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/d5c298f/src/Collision.ts#L191">src/Collision.ts:191</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -333,6 +437,12 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="collision.html#intersectareas" class="tsd-kind-icon">intersect<wbr>Areas</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="collision.html#intersectentities" class="tsd-kind-icon">intersect<wbr>Entities</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="collision.html#intersectlinesegments" class="tsd-kind-icon">intersect<wbr>Line<wbr>Segments</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="collision.html#within" class="tsd-kind-icon">within</a>
@@ -411,14 +521,5 @@
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
 <script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
-<script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-162208211-1', 'auto');
-        ga('send', 'pageview');
-    </script>
 </body>
 </html>
