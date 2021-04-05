@@ -5,7 +5,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>指定位置にあるタッチ可能なエンティティを探す</title>
+<title>FPS を変える</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?5ddd7a06">
 <link rel="stylesheet" href="/css/header.css?5ddd7a06">
@@ -151,33 +151,33 @@
 </ul>
 <h4><a name="logic"></a> ゲームロジック</h4>
 <ul>
-<li><a href="./random.html">乱数を使う</a></li>
-<li><a href="./timer-timeout.html">一定時間後に処理を実行する</a></li>
-<li><a href="./timer-interval.html">定期的に処理を実行する</a></li>
-<li><a href="./intersect.html">エンティティ同士の当たり判定を調べる</a></li>
-<li><a href="./scene.html">シーンを切り替える</a></li>
-<li><a href="./popscene.html">前のシーンに戻る</a></li>
-<li><a href="./find-touchable-entity.html">指定位置にあるタッチ可能なエンティティを探す</a></li>
+<li><a href="../logic/random.html">乱数を使う</a></li>
+<li><a href="../logic/timer-timeout.html">一定時間後に処理を実行する</a></li>
+<li><a href="../logic/timer-interval.html">定期的に処理を実行する</a></li>
+<li><a href="../logic/intersect.html">エンティティ同士の当たり判定を調べる</a></li>
+<li><a href="../logic/scene.html">シーンを切り替える</a></li>
+<li><a href="../logic/popscene.html">前のシーンに戻る</a></li>
+<li><a href="../logic/find-touchable-entity.html">指定位置にあるタッチ可能なエンティティを探す</a></li>
 </ul>
 <h4><a name="setting"></a> ゲーム設定</h4>
 <ul>
-<li><a href="../">画面サイズを変える</a></li>
-<li><a href="../">FPS を変える</a></li>
+<li><a href="./game-size.html">画面サイズを変える</a></li>
+<li><a href="./fps.html">FPS を変える</a></li>
 </ul>
 <h4><a name="asset"></a> アセット</h4>
 <ul>
-<li><a href="../">ゲームにアセットを追加する</a></li>
-<li><a href="../">ゲームからアセットを削除する</a></li>
-<li><a href="../">アセットを読み込む</a></li>
-<li><a href="../">読み込んだアセットを取得する</a></li>
-<li><a href="../">スクリプトを分割する (複数のスクリプトを使う)</a></li>
-<li><a href="../">シーン内で動的にアセットを読み込む</a></li>
+<li><a href="../asset/add-asset">ゲームにアセットを追加する</a></li>
+<li><a href="../asset/remove-asset">ゲームからアセットを削除する</a></li>
+<li><a href="../asset/read-asset">アセットを読み込む</a></li>
+<li><a href="../asset/get-asset.html">読み込んだアセットを取得する</a></li>
+<li><a href="../asset/split-script.html">スクリプトを分割する (複数のスクリプトを使う)</a></li>
+<li><a href="../asset/request-asset.html">シーン内で動的にアセットを読み込む</a></li>
 </ul>
 <h4><a name="extension"></a> 拡張ライブラリ</h4>
 <ul>
-<li><a href="../">拡張ライブラリを導入する</a></li>
-<li><a href="../">拡張ライブラリを削除する</a></li>
-<li><a href="../">非 Akashic Engine 向けライブラリを利用する</a></li>
+<li><a href="../extension/install.html">拡張ライブラリを導入する</a></li>
+<li><a href="../extension/uninstall.html">拡張ライブラリを削除する</a></li>
+<li><a href="../extension/other-library.html">非 Akashic Engine 向けライブラリを利用する</a></li>
 </ul>
 <h4><a name="release"></a> 公開</h4>
 <ul>
@@ -191,31 +191,26 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<h1>指定位置にあるタッチ可能なエンティティを探す</h1>
-<p>指定位置にあるタッチ可能なエンティティを探すには、<code>g.Scene#findPointSourceByPoint()</code> を利用します。</p>
+				<h1>FPS を変える</h1>
+<p>FPS を変えるには、<code>game.json</code> の <code>fps</code> プロパティの値を変更します。</p>
 <h2>凡例</h2>
-<pre><code class="language-javascript">// 指定座標上にタッチ可能なエンティティが存在する場合は、戻り値の target プロパティにエンティティが格納される。
-var pointSource = scene.findPointSourceByPoint({ x: 10, y: 10 });
-if (pointSource.target) {
-  // 指定された座標にエンティティが存在した場合。pointSource.target は見つかったエンティティ
-} else {
-  // 存在しなかった場合
+<pre><code class="language-json">{
+    &quot;width&quot;: 1280,
+    &quot;height&quot;: 720,
+    &quot;fps&quot;: 30,
+    ...
 }</code></pre>
-<h2>利用例</h2>
-<p>次のコンテンツは、画面中央の十字部分を矩形が通過した時に矩形の色をランダムで変更します。</p>
-<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvbG9naWMvZmluZC10b3VjaGFibGUtZW50aXR5L2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
-
 <h2>詳細</h2>
-<p><code>g.Scene#findPointSourceByPoint()</code> はシーン内で引数に渡された座標にあるタッチ可能なエンティティのうち、もっとも手前にあるエンティティを戻り値の <code>target</code> プロパティに格納して返します。対象が存在しない場合は <code>target</code> プロパティが <code>undefined</code> になります。
-<code>g.Scene#findPointSourceByPoint()</code> では、第二引数 に <code>true</code> を渡すことで、タッチ可能指定を無視することが可能です。省略された場合はタッチ可能なエンティティを対象とします。</p>
+<p><code>game.json</code> の <code>fps</code> プロパティの値を変更することで FPS を変更することができます。</p>
+<p>FPS の値は 1 秒間に画面を更新する回数です。値は 1 以上 60 以下 が指定可能です。(30 または 60 を推奨しています)</p>
 <h2>関連情報</h2>
 <ul>
-<li><a href="reference/akashic-engine-v3/classes/scene.html#findpointsourcebypoint">API リファレンス</a></li>
+<li><a href="/guide/akashic-cli.html">game.json の仕様</a></li>
 </ul>
 <div class="navi-center">
-<a href="./popscene.html">前 (前のシーンに戻る)</a>
+<a href="./game-size.html">前 (画面サイズを変える)</a>
  | <a href="../">目次</a>
- | <a href="../setting/game-size.html">次 (画面サイズを変える)</a>
+ | <a href="../asset/add-asset.html">次 (ゲームにアセットを追加する)</a>
 </div>
 
 			</div>
