@@ -5,7 +5,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>指定位置にあるタッチ可能なエンティティを探す</title>
+<title>拡張ライブラリを導入する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?5ddd7a06">
 <link rel="stylesheet" href="/css/header.css?5ddd7a06">
@@ -151,33 +151,33 @@
 </ul>
 <h4><a name="logic"></a> ゲームロジック</h4>
 <ul>
-<li><a href="./random.html">乱数を使う</a></li>
-<li><a href="./timer-timeout.html">一定時間後に処理を実行する</a></li>
-<li><a href="./timer-interval.html">定期的に処理を実行する</a></li>
-<li><a href="./intersect.html">エンティティ同士の当たり判定を調べる</a></li>
-<li><a href="./scene.html">シーンを切り替える</a></li>
-<li><a href="./popscene.html">前のシーンに戻る</a></li>
-<li><a href="./find-touchable-entity.html">指定位置にあるタッチ可能なエンティティを探す</a></li>
+<li><a href="../logic/random.html">乱数を使う</a></li>
+<li><a href="../logict/imer-timeout.html">一定時間後に処理を実行する</a></li>
+<li><a href="../logic/timer-interval.html">定期的に処理を実行する</a></li>
+<li><a href="../logic/intersect.html">エンティティ同士の当たり判定を調べる</a></li>
+<li><a href="../logic/scene.html">シーンを切り替える</a></li>
+<li><a href="../logic/popscene.html">前のシーンに戻る</a></li>
+<li><a href="../logic/find-touchable-entity.html">指定位置にあるタッチ可能なエンティティを探す</a></li>
 </ul>
 <h4><a name="setting"></a> ゲーム設定</h4>
 <ul>
-<li><a href="../">画面サイズを変える</a></li>
-<li><a href="../">FPS を変える</a></li>
+<li><a href="../setting/game-size.html">画面サイズを変える</a></li>
+<li><a href="../setting/fps.html">FPS を変える</a></li>
 </ul>
 <h4><a name="asset"></a> アセット</h4>
 <ul>
-<li><a href="../">ゲームにアセットを追加する</a></li>
-<li><a href="../">ゲームからアセットを削除する</a></li>
-<li><a href="../">アセットを読み込む</a></li>
-<li><a href="../">読み込んだアセットを取得する</a></li>
-<li><a href="../">スクリプトを分割する (複数のスクリプトを使う)</a></li>
-<li><a href="../">シーン内で動的にアセットを読み込む</a></li>
+<li><a href="../asset/add-asset">ゲームにアセットを追加する</a></li>
+<li><a href="../asset/remove-asset">ゲームからアセットを削除する</a></li>
+<li><a href="../asset/read-asset">アセットを読み込む</a></li>
+<li><a href="../asset/get-asset.html">読み込んだアセットを取得する</a></li>
+<li><a href="../asset/split-script.html">スクリプトを分割する (複数のスクリプトを使う)</a></li>
+<li><a href="../asset/request-asset.html">シーン内で動的にアセットを読み込む</a></li>
 </ul>
 <h4><a name="extension"></a> 拡張ライブラリ</h4>
 <ul>
-<li><a href="../">拡張ライブラリを導入する</a></li>
-<li><a href="../">拡張ライブラリを削除する</a></li>
-<li><a href="../">非 Akashic Engine 向けライブラリを利用する</a></li>
+<li><a href="./install.html">拡張ライブラリを導入する</a></li>
+<li><a href="./uninstall.html">拡張ライブラリを削除する</a></li>
+<li><a href="./other-library.html">非 Akashic Engine 向けライブラリを利用する</a></li>
 </ul>
 <h4><a name="release"></a> 公開</h4>
 <ul>
@@ -191,31 +191,48 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<h1>指定位置にあるタッチ可能なエンティティを探す</h1>
-<p>指定位置にあるタッチ可能なエンティティを探すには、<code>g.Scene#findPointSourceByPoint()</code> を利用します。</p>
+				<h1>拡張ライブラリを導入する</h1>
+<p>拡張ライブラリを導入するには <code>akashic</code> コマンドの <code>akashic install</code> を利用します。</p>
 <h2>凡例</h2>
-<pre><code class="language-javascript">// 指定座標上にタッチ可能なエンティティが存在する場合は、戻り値の target プロパティにエンティティが格納される。
-var pointSource = scene.findPointSourceByPoint({ x: 10, y: 10 });
-if (pointSource.target) {
-  // 指定された座標にエンティティが存在した場合。pointSource.target は見つかったエンティティ
-} else {
-  // 存在しなかった場合
-}</code></pre>
-<h2>利用例</h2>
-<p>次のコンテンツは、画面中央の十字部分を矩形が通過した時に矩形の色をランダムで変更します。</p>
-<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvbG9naWMvZmluZC10b3VjaGFibGUtZW50aXR5L2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
-
+<pre><code class="language-sh">akashic install @akashic-extension/akashic-timeline</code></pre>
+<p>インストールしたライブラリの利用方法は、各ライブラリの README などを参照してください。</p>
 <h2>詳細</h2>
-<p><code>g.Scene#findPointSourceByPoint()</code> はシーン内で引数に渡された座標にあるタッチ可能なエンティティのうち、もっとも手前にあるエンティティを戻り値の <code>target</code> プロパティに格納して返します。対象が存在しない場合は <code>target</code> プロパティが <code>undefined</code> になります。
-<code>g.Scene#findPointSourceByPoint()</code> では、第二引数 に <code>true</code> を渡すことで、タッチ可能指定を無視することが可能です。省略された場合はタッチ可能なエンティティを対象とします。</p>
+<p><code>akashic install</code> コマンドは <code>game.json</code> の置かれているディレクトリでコマンドを実行します。</p>
+<p>このコマンドは、内部的に <code>npm install --save -save-exact</code> を実行することで、拡張ライブラリを <code>node_modules</code> ディレクトリにダウンロード・インストールします。さらに、インストールされた拡張ライブラリの情報(ファイルパスなど)を game.json に書き込みます。これは、Akashic コンテンツでは、予めすべてのリソースへのパスが game.json に書き込まれている必要があるためです。これによりコンテンツ内から <code>require()</code> を使って拡張ライブラリを読み込めるようになります。</p>
+<p><code>akashic-timeline</code> の拡張ライブラリをコンテンツに追加すると、<code>game.json</code> には以下のような記述が追加されます。<code>game.json</code> に追加される記述についてはゲーム開発者が意識する必要はありません。</p>
+<pre><code class="language-json">{
+    ...
+    &quot;globalScripts&quot;: [
+        &quot;node_modules/@akashic-extension/akashic-timeline/lib/ActionType.js&quot;,
+        &quot;node_modules/@akashic-extension/akashic-timeline/lib/Easing.js&quot;,
+        &quot;node_modules/@akashic-extension/akashic-timeline/lib/Timeline.js&quot;,
+        &quot;node_modules/@akashic-extension/akashic-timeline/lib/Tween.js&quot;,
+        &quot;node_modules/@akashic-extension/akashic-timeline/lib/index.js&quot;
+    ],
+    &quot;moduleMainScripts&quot;: {
+        &quot;@akashic-extension/akashic-timeline&quot;: &quot;node_modules/@akashic-extension/akashic-timeline/lib/index.js&quot;
+    }
+}</code></pre>
+<p>公式に提供されている Akashic 向け拡張ライブラリには次のようなものがあります。</p>
+<ul>
+<li><a href="https://github.com/akashic-games/akashic-animation">akashic-animation</a>: Akashic Engine 用のアニメーションライブラリです。</li>
+<li><a href="https://github.com/akashic-games/akashic-box2d">akashic-box2d</a>: 2D 物理演算ライブラリである Box2DWeb を Akashic で利用するためのモジュールです。</li>
+<li><a href="https://github.com/akashic-games/akashic-hover-plugin">akashic-hover-plugin</a>: Akashic でマウスホバー可能なエンティティを利用することができるプラグインです。</li>
+<li><a href="https://github.com/akashic-games/akashic-label">akashic-label</a>:Akashic Engine 用のテキスト描画ライブラリです。</li>
+<li><a href="https://github.com/akashic-games/akashic-tile">akashic-tile</a>: Akashic Engine 用のタイルマップ描画ライブラリです。</li>
+<li><a href="https://github.com/akashic-games/akashic-timeline">akashic-timeline</a>:Akashic Engine 用のトゥイーンアニメーションライブラリです。</li>
+<li><a href="https://github.com/akashic-games/collision-js">collision-js</a>: 算術ライブラリを含むコリジョンライブラリです。</li>
+<li><a href="https://github.com/akashic-games/raycaster-js">raycaster-js</a>: raycasting 法によってタイルマップを 3D 描画するソフトウェアレンダラーです。</li>
+</ul>
+<p>公式で公開されている Akashic Engine 向け拡張ライブラリ以外のライブラリを利用する場合は、それら各ライブラリの利用条件・ライセンスにも従う必要があります。</p>
 <h2>関連情報</h2>
 <ul>
-<li><a href="reference/akashic-engine-v3/classes/scene.html#findpointsourcebypoint">API リファレンス</a></li>
+<li><a href="/tutorial/v3/library.html">拡張ライブラリを使う</a></li>
 </ul>
 <div class="navi-center">
-<a href="./popscene.html">前 (前のシーンに戻る)</a>
+<a href="../asset/request-asset.html">前 (シーン内で動的にアセットを読み込む)</a>
  | <a href="../">目次</a>
- | <a href="../setting/game-size.html">次 (画面サイズを変える)</a>
+ | <a href="./uninstall.html">次 (拡張ライブラリを削除する)</a>
 </div>
 
 			</div>
