@@ -5,7 +5,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>非 Akashic Engine 向けライブラリを利用する</title>
+<title>ゲームアツマールでのみ処理を行う</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?5ddd7a06">
 <link rel="stylesheet" href="/css/header.css?5ddd7a06">
@@ -152,17 +152,17 @@
 <h4><a name="logic"></a> ゲームロジック</h4>
 <ul>
 <li><a href="../logic/random.html">乱数を使う</a></li>
-<li><a href="../logict/imer-timeout.html">一定時間後に処理を実行する</a></li>
+<li><a href="../logic/timer-timeout.html">一定時間後に処理を実行する</a></li>
 <li><a href="../logic/timer-interval.html">定期的に処理を実行する</a></li>
-<li><a href="../logic/intersect.html">エンティティ同士の当たり判定を調べる</a></li>
+<li><a href="../logic/intersect">エンティティ同士の当たり判定を調べる</a></li>
 <li><a href="../logic/scene.html">シーンを切り替える</a></li>
 <li><a href="../logic/popscene.html">前のシーンに戻る</a></li>
 <li><a href="../logic/find-touchable-entity.html">指定位置にあるタッチ可能なエンティティを探す</a></li>
 </ul>
 <h4><a name="setting"></a> ゲーム設定</h4>
 <ul>
-<li><a href="../setting/game-size.html">画面サイズを変える</a></li>
-<li><a href="../setting/fps.html">FPS を変える</a></li>
+<li><a href="../">画面サイズを変える</a></li>
+<li><a href="../">FPS を変える</a></li>
 </ul>
 <h4><a name="asset"></a> アセット</h4>
 <ul>
@@ -175,40 +175,57 @@
 </ul>
 <h4><a name="extension"></a> 拡張ライブラリ</h4>
 <ul>
-<li><a href="./install.html">拡張ライブラリを導入する</a></li>
-<li><a href="./uninstall.html">拡張ライブラリを削除する</a></li>
-<li><a href="./other-library.html">非 Akashic Engine 向けライブラリを利用する</a></li>
+<li><a href="../extension/install.html">拡張ライブラリを導入する</a></li>
+<li><a href="../extension/uninstall.html">拡張ライブラリを削除する</a></li>
+<li><a href="../extension/other-library.html">非 Akashic Engine 向けライブラリを利用する</a></li>
 </ul>
 <h4><a name="release"></a> 公開</h4>
 <ul>
-<li><a href="../">HTML5 ゲームとして出力する</a></li>
-<li><a href="../">ニコ生ゲームとして出力する</a></li>
-<li><a href="../">ゲームアツマールでの背景色を指定する</a></li>
-<li><a href="../">ゲームアツマールでスコアボードを表示する</a></li>
-<li><a href="../">ゲームアツマールでのみ処理を行う</a></li>
+<li><a href="./export-html.html">HTML5 ゲームとして出力する</a></li>
+<li><a href="./export-niconama.html">ニコ生ゲームとして出力する</a></li>
+<li><a href="./atsumaru-bgcolor.html">ゲームアツマールでの背景色を指定する</a></li>
+<li><a href="./atsumaru-scoreboard.html">ゲームアツマールでスコアボードを表示する</a></li>
+<li><a href="./atsumaru.html">ゲームアツマールでのみ処理を行う</a></li>
 </ul>
 
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<h1>非 Akashic Engine 向けライブラリを利用する</h1>
-<p>非 Akashic Engine 向けライブラリを利用するには Akashic 向け拡張ライブラリと同様に <code>akashic</code> コマンドの <code>akashic install</code> を利用します。</p>
+				<h1>ゲームアツマールでのみ処理を行う</h1>
+<p>ゲームアツマールでのみ処理を行うには、 <code>param.isAtsumaru</code> パラメータを利用します。</p>
 <h2>凡例</h2>
-<pre><code class="language-sh">akashic install sample-library</code></pre>
+<pre><code class="language-javascript">var updateHandler = function() {
+  if (time &lt;= 0) {
+    // ゲームアツマール環境であればランキングを表示します
+    if (param.isAtsumaru) {
+      var boardId_1 = 1;
+      window.RPGAtsumaru.experimental.scoreboards
+        .setRecord(boardId_1, g.game.vars.gameState.score)
+        .then(function() {
+          window.RPGAtsumaru.experimental.scoreboards.display(boardId_1);
+        });
+    }
+    ...
+  }
+};
+scene.update.add(updateHandler);</code></pre>
 <h2>詳細</h2>
-<p><code>akashic install</code> コマンドは、Akashic 向け拡張ライブラリではない npm パッケージもインストールできます。
-例えば「迷路を自動生成する」「マップ上の 2 点の最短経路を求める」といった処理には、(Akashic Engine 専用ではない) 汎用のライブラリが利用できるかもしれません。そのようなライブラリが npm パッケージとして公開されていれば、 <code>akashic install</code> でインストールして利用できます。</p>
-<p>ただし、Akashic Engine はそのようなパッケージの動作を保証してはいません。 Akashic Engine で利用できるパッケージの条件は、 <code>fs</code> や <code>http</code> などの Node.js コアモジュールを利用していないこと、 <code>Math.random()</code> を利用していないことです。
-また、原則的に DOM を利用することもできません。これらは Akashic Engine の動作に意図しない影響を及ぼすため、利用しないでください。</p>
-<p>公式で公開されている Akashic Engine 向け拡張ライブラリ以外のライブラリを利用する場合は、それら各ライブラリの利用条件・ライセンスにも従う必要があります。</p>
+<p>テンプレートの <code>param.isAtsumaru</code> はゲームが動作している環境がゲームアツマール上で実行されている時にのみ <code>true</code> になります。
+(テンプレートについては、<a href="/shin-ichiba/ranking-by-template.html">テンプレートでわかるランキングゲーム</a> を参照してください。)
+<code>param.isAtsumaru</code> を参照することにより、下記のようなケースでゲームアツマール上固有の処理を実現したい場合に利用できます。</p>
+<ul>
+<li>ゲーム終了後、リスタートボタンを表示して最初に戻れるようにする</li>
+<li>ゲーム終了時、PRG アツマールのスコアボードを表示する</li>
+</ul>
+<p>ゲームアツマール上でのみ使える API (＝ <code>window.RPGAtsumaru</code>) については、<a href="https://atsumaru.github.io/api-references/">ゲームアツマールの API リファレンス</a> を参照してください。</p>
 <h2>関連情報</h2>
 <ul>
-<li><a href="/tutorial/v3/library.html">拡張ライブラリを使う</a></li>
+<li><a href="/shin-ichiba/ranking-by-template.html">テンプレートでわかるランキングゲーム</a></li>
 </ul>
 <div class="navi-center">
-<a href="./uninstall.html">前 (拡張ライブラリを削除する)</a>
+<a href="./atsumaru-scoreboard.html">前 (ゲームアツマールでスコアボードを表示する)</a>
  | <a href="../">目次</a>
- | <a href="../release/export-html.html">次 (HTML5 ゲームとして出力する)</a>
+ | -
 </div>
 
 			</div>

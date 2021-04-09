@@ -5,7 +5,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>非 Akashic Engine 向けライブラリを利用する</title>
+<title>HTML5 ゲームとして出力する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?5ddd7a06">
 <link rel="stylesheet" href="/css/header.css?5ddd7a06">
@@ -152,17 +152,17 @@
 <h4><a name="logic"></a> ゲームロジック</h4>
 <ul>
 <li><a href="../logic/random.html">乱数を使う</a></li>
-<li><a href="../logict/imer-timeout.html">一定時間後に処理を実行する</a></li>
+<li><a href="../logic/timer-timeout.html">一定時間後に処理を実行する</a></li>
 <li><a href="../logic/timer-interval.html">定期的に処理を実行する</a></li>
-<li><a href="../logic/intersect.html">エンティティ同士の当たり判定を調べる</a></li>
+<li><a href="../logic/intersect">エンティティ同士の当たり判定を調べる</a></li>
 <li><a href="../logic/scene.html">シーンを切り替える</a></li>
 <li><a href="../logic/popscene.html">前のシーンに戻る</a></li>
 <li><a href="../logic/find-touchable-entity.html">指定位置にあるタッチ可能なエンティティを探す</a></li>
 </ul>
 <h4><a name="setting"></a> ゲーム設定</h4>
 <ul>
-<li><a href="../setting/game-size.html">画面サイズを変える</a></li>
-<li><a href="../setting/fps.html">FPS を変える</a></li>
+<li><a href="../">画面サイズを変える</a></li>
+<li><a href="../">FPS を変える</a></li>
 </ul>
 <h4><a name="asset"></a> アセット</h4>
 <ul>
@@ -175,40 +175,43 @@
 </ul>
 <h4><a name="extension"></a> 拡張ライブラリ</h4>
 <ul>
-<li><a href="./install.html">拡張ライブラリを導入する</a></li>
-<li><a href="./uninstall.html">拡張ライブラリを削除する</a></li>
-<li><a href="./other-library.html">非 Akashic Engine 向けライブラリを利用する</a></li>
+<li><a href="../extension/install.html">拡張ライブラリを導入する</a></li>
+<li><a href="../extension/uninstall.html">拡張ライブラリを削除する</a></li>
+<li><a href="../extension/other-library.html">非 Akashic Engine 向けライブラリを利用する</a></li>
 </ul>
 <h4><a name="release"></a> 公開</h4>
 <ul>
-<li><a href="../">HTML5 ゲームとして出力する</a></li>
-<li><a href="../">ニコ生ゲームとして出力する</a></li>
-<li><a href="../">ゲームアツマールでの背景色を指定する</a></li>
-<li><a href="../">ゲームアツマールでスコアボードを表示する</a></li>
-<li><a href="../">ゲームアツマールでのみ処理を行う</a></li>
+<li><a href="./export-html.html">HTML5 ゲームとして出力する</a></li>
+<li><a href="./export-niconama.html">ニコ生ゲームとして出力する</a></li>
+<li><a href="./atsumaru-bgcolor.html">ゲームアツマールでの背景色を指定する</a></li>
+<li><a href="./atsumaru-scoreboard.html">ゲームアツマールでスコアボードを表示する</a></li>
+<li><a href="./atsumaru.html">ゲームアツマールでのみ処理を行う</a></li>
 </ul>
 
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<h1>非 Akashic Engine 向けライブラリを利用する</h1>
-<p>非 Akashic Engine 向けライブラリを利用するには Akashic 向け拡張ライブラリと同様に <code>akashic</code> コマンドの <code>akashic install</code> を利用します。</p>
+				<h1>HTML5 ゲームとして出力する</h1>
+<p>HTML5 ゲームとして出力するには、<code>akashic export html</code> コマンドを利用します。</p>
 <h2>凡例</h2>
-<pre><code class="language-sh">akashic install sample-library</code></pre>
+<pre><code class="language-sh">akashic export html --magnify --output ../mygame</code></pre>
 <h2>詳細</h2>
-<p><code>akashic install</code> コマンドは、Akashic 向け拡張ライブラリではない npm パッケージもインストールできます。
-例えば「迷路を自動生成する」「マップ上の 2 点の最短経路を求める」といった処理には、(Akashic Engine 専用ではない) 汎用のライブラリが利用できるかもしれません。そのようなライブラリが npm パッケージとして公開されていれば、 <code>akashic install</code> でインストールして利用できます。</p>
-<p>ただし、Akashic Engine はそのようなパッケージの動作を保証してはいません。 Akashic Engine で利用できるパッケージの条件は、 <code>fs</code> や <code>http</code> などの Node.js コアモジュールを利用していないこと、 <code>Math.random()</code> を利用していないことです。
-また、原則的に DOM を利用することもできません。これらは Akashic Engine の動作に意図しない影響を及ぼすため、利用しないでください。</p>
-<p>公式で公開されている Akashic Engine 向け拡張ライブラリ以外のライブラリを利用する場合は、それら各ライブラリの利用条件・ライセンスにも従う必要があります。</p>
+<p><code>akashic export</code> コマンドは <code>game.json</code> ファイルのあるディレクトリで実行してください。このコマンドでエクスポートされるのは <code>index.html</code> と必要なアセットを含むディレクトリです。このディレクトリを適当な web サーバにアップロードし、ブラウザで index.html を閲覧するとゲームが動作します。<code>index.html</code> は iframe 要素で読み込むこともできます。
+エクスポートされたディレクトリを zip 圧縮すれば、ゲームアツマールに投稿することもできます。投稿の手順は <a href="/guide/atsumaru.html">ゲームアツマール投稿ガイド</a> を参考にしてください。</p>
+<p><code>--output</code> オプションで保存するディレクトリを指定できますが、ゲームのディレクトリ内部に保存するディレクトリを指定することはできません。凡例のようにゲームのディレクトリの外を指定してください。</p>
+<p><code>--magnify</code> オプションを指定すると、Akashic のゲーム画面がブラウザのゲーム表示領域に合わせて拡大されます。指定しない場合、描画サイズは <code>game.json</code> に記述されたゲームサイズに固定されます。</p>
+<p><code>--minify</code> オプションを指定すると、JavaScript のコードをミニファイします。圧縮してファイルサイズを削減したいときに利用できます。</p>
+<p><code>--bundle</code> を指定すると、JavaScript のコードを 1 ファイルにまとめてファイル数を削減します。ゲームに含まれるファイル数が多いときにファイルアクセス数を減らすことができます。</p>
+<p><code>--hash-filename</code> オプションを指定すると、エクスポート内容のファイル名を難読化します。</p>
 <h2>関連情報</h2>
 <ul>
-<li><a href="/tutorial/v3/library.html">拡張ライブラリを使う</a></li>
+<li><a href="/tutorial/v3/export.html">チュートリアル</a></li>
+<li><a href="/guide/akashic-cli.html#export-html">akashic-cli 利用ガイド</a></li>
 </ul>
 <div class="navi-center">
-<a href="./uninstall.html">前 (拡張ライブラリを削除する)</a>
+<a href="../extension/other-library.html">前 (非 Akashic Engine 向けライブラリを利用する)</a>
  | <a href="../">目次</a>
- | <a href="../release/export-html.html">次 (HTML5 ゲームとして出力する)</a>
+ | <a href="./export-niconama.html">次 (ニコ生ゲームとして出力する)</a>
 </div>
 
 			</div>
