@@ -163,9 +163,9 @@ Ogg Vorbis 形式 (.ogg) と AAC 形式 (.aac) の二種類のファイルを用
 <p>シーンで効果音を利用するには、他のアセットと同じようにシーンオブジェクトのパラメータオブジェクトにアセットの ID を列挙します。以下は画面のタップまたはクリックで効果音を再生する例です。</p>
 <pre><code class="language-javascript">function main() {
   var scene = new g.Scene({
-		game: g.game,
-		assetIds: [&quot;se1&quot;]
-	});
+    game: g.game,
+    assetIds: [&quot;se1&quot;]
+  });
   scene.onLoad.add(function() {
     scene.onPointDownCapture.add(function() {
       scene.asset.getAudioById(&quot;se1&quot;).play();
@@ -198,9 +198,9 @@ BGM は自動的にループ再生されるので、<code>play()</code> メソ�
 <p>以下のプログラムは上で出てきた効果音再生プログラムに BGM を追加したものです。</p>
 <pre><code class="language-javascript">function main() {
   var scene = new g.Scene({
-		game: g.game,
-		assetIds: [&quot;bgm&quot;, &quot;se1&quot;]
-	});
+    game: g.game,
+    assetIds: [&quot;bgm&quot;, &quot;se1&quot;]
+  });
   scene.onLoad.add(function() {
     scene.asset.getAudioById(&quot;bgm&quot;).play();
     scene.onPointDownCapture.add(function() {
