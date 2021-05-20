@@ -118,8 +118,11 @@
 <ul>
 <li><code>&quot;single&quot;</code> - ひとりプレイモードに対応する場合</li>
 <li><code>&quot;ranking&quot;</code> - ランキングモードに対応する場合</li>
-<li><code>&quot;multi&quot;</code> - マルチプレイモードに対応する場合</li>
+<li><code>&quot;multi_admission&quot;</code> - マルチプレイモードに対応する場合</li>
+<li><code>&quot;multi&quot;</code> - マルチプレイモードに対応する場合で、起動時にプレイヤー募集をしない場合</li>
 </ul>
+<p><code>&quot;multi_admission&quot;</code> と <code>&quot;multi&quot;</code> は排他的です。両方を指定した場合、 <code>&quot;multi&quot;</code> は無視されます。</p>
+<p><code>&quot;ranking&quot;</code> または <code>&quot;multi_admission&quot;</code> の場合、ゲーム起動時に <a href="#admission">プレイヤーの募集</a> が行われます。</p>
 <h2><a name="resolution-and-fps"></a> 解像度と FPS</h2>
 <p>次の値である必要があります。</p>
 <ul>
@@ -255,6 +258,22 @@ scene.loaded.add(function () {
 </tbody></table>
 <p>この値はあくまでも参考値として扱われます。
 実際に渡されるセッションパラメータが、ここで指定した値と同じである保証はありません。</p>
+<h2><a name="admission"></a> プレイヤーの募集</h2>
+<p><code>&quot;ranking&quot;</code>, <code>&quot;multi_admission&quot;</code> モードのニコ生ゲームは、ゲームの実際の起動に先立ってプレイヤーの募集が行われます。
+これはニコニコ生放送の <a href="https://site.live.nicovideo.jp/recent/namagame.html">生ゲームプレイ中</a> ページの「視聴者を待っている番組」欄に配信を掲出します。</p>
+<img src="/img/guide/shin-ichiba-spec/playing-nicolive-game.png" width="70%" alt="視聴者を待っている画面ページ" />
+
+<p>募集中は次のような画面が表示されます。配信者は任意のタイミングで募集を打ち切ってゲームを開始することができます。</p>
+<img src="/img/guide/shin-ichiba-spec/admission-app.png" width="70%" alt="プレイヤー募集画面" />
+
+<p>プレイヤー募集は設定したモードに従って自動的に行われます。
+またゲームの外部で、起動前に行われるため、ゲーム内での特別な対応は不要です。</p>
+<blockquote>
+<p>プレイヤー募集は、あくまでも配信外から視聴者 (プレイヤーの候補) を募集する (＝「生ゲームプレイ中」ページに掲出する) 機能であることに注意してください。</p>
+<p>オンラインゲームのいわゆるマッチング機能のようなものではなく、何人集まったか、誰が集まったかなどの情報がゲームに与えられることはありません。
+ゲーム側での特別な対応なしにプレイヤー募集を利用できるのはこのためです。</p>
+<p>たとえばゲームの内容的に人数制限があり、参加者と観戦者を分けるようなゲームでは、ゲーム内で改めて参加者を募る必要があります。(配信内での &quot;参加者&quot; の募集)</p>
+</blockquote>
 <div class="navi-center">
 <a href="./export-atsumaru.html">前 (投稿と申請)</a>
  | <a href="./">目次</a>
