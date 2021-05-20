@@ -125,7 +125,7 @@
 <ul>
 <li><strong>ランキングモード</strong> (<code>&quot;ranking&quot;</code>): 一人プレイのゲームを、放送者と各視聴者がそれぞれ遊び、スコアを競う</li>
 <li><strong>ひとりで遊ぶモード</strong> (<code>&quot;single&quot;</code>): 一人プレイのゲームを放送者が遊び、視聴者はその様子を見る</li>
-<li><strong>みんなで遊ぶモード</strong> (<code>&quot;multi&quot;</code>): 放送者と視聴者複数人で一つのゲームプレイで遊ぶ</li>
+<li><strong>みんなで遊ぶモード</strong> (<code>&quot;multi_admission&quot;</code>): 放送者と視聴者複数人で一つのゲームプレイで遊ぶ</li>
 </ul>
 <p>モードを指定するには、<code>game.json</code> に <code>environment.niconico.supportedModes</code> プロパティを加え、そのゲームが対応するモードを(配列で)全て列挙してください。ニコニコ生放送には、ここで列挙されたそれぞれのモードで起動できるように登録されます。</p>
 <p>次の例は、ランキングモードに対応する game.json の記述例です。</p>
@@ -137,7 +137,10 @@
   }
 }</code></pre>
 <p><strong><code>&quot;ranking&quot;</code> モードを指定する場合は、ゲーム内でスコアを設定する必要があります</strong> (後述) 。
-<code>&quot;single&quot;</code> や <code>&quot;multi&quot;</code> の場合は、そのような条件はありません。普通の Akashic Engine のコンテンツとしてシングルプレイ・マルチプレイのコンテンツを作るだけで投稿できます。</p>
+それ以外のモードでは、そのような条件はありません。普通の Akashic Engine のコンテンツとしてシングルプレイ・マルチプレイのコンテンツを作るだけで投稿できます。</p>
+<blockquote>
+<p><code>&quot;multi_admission&quot;</code> の代わりに <code>&quot;multi&quot;</code> を指定することもできます。 <code>&quot;multi&quot;</code> は「起動時にニコ生がプレイヤー募集を行わない」点を除き <code>&quot;multi_admission&quot;</code> と同じです。特に意図がなければ、募集を行う <code>&quot;multi_admission&quot;</code> の利用をおすすめします。詳細は <a href="./shin-ichiba-spec.html#admission">プレイヤーの募集</a> を参照してください。</p>
+</blockquote>
 <h2><a name="resolution-and-fps"></a> 解像度と FPS</h2>
 <p>モードを決めたら、それに応じたコンテンツを作る必要があります。
 選んだモードに関わらず、画面解像度と FPS には次の制約があります。</p>
@@ -161,7 +164,7 @@ INFO: Done!</code></pre>
   &quot;fps&quot;: 30,
   &quot;...&quot;: &quot;(その他の値)&quot;
 }</code></pre>
-<p>この他のゲームで必要な対応や、開発ツールでの動作確認方法はモードによります。次の節で <code>&quot;ranking&quot;</code> モードのゲームについて、その次では <code>&quot;multi&quot;</code> モードのゲームについて述べます。</p>
+<p>この他のゲームで必要な対応や、開発ツールでの動作確認方法はモードによります。次の節で <code>&quot;ranking&quot;</code> モードのゲームについて、その次では <code>&quot;multi_admission</code>&quot; モードのゲームについて述べます。</p>
 <div class="navi-center">
  -
  | <a href="./">目次</a>
