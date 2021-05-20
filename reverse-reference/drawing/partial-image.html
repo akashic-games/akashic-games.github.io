@@ -5,7 +5,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>複数行の文字列を描画する</title>
+<title>画像の一部分を表示する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?5ddd7a06">
 <link rel="stylesheet" href="/css/header.css?5ddd7a06">
@@ -110,16 +110,16 @@
 			<h3>Akashic Engine 逆引きリファレンス</h3>
 <h4><a name="drawing"></a> 描画</h4>
 <ul>
-<li><a href="../drawing/entity.html">エンティティを追加・削除する</a></li>
-<li><a href="../drawing/image.html">画像を表示する</a></li>
-<li><a href="../drawing/partial-image.html">画像の一部分を表示する</a></li>
-<li><a href="../drawing/rotate.html">回転する</a></li>
-<li><a href="../drawing/scale.html">拡大する</a></li>
-<li><a href="../drawing/rotate-anchor.html">回転・拡大の基準点を変える</a></li>
-<li><a href="../drawing/opacity.html">半透明にする (透明度を変える)</a></li>
-<li><a href="../drawing/hidden.html">非表示にする</a></li>
-<li><a href="../drawing/display-order.html">描画順を変える</a></li>
-<li><a href="../drawing/multiple-entities.html">複数のエンティティをまとめて扱う</a></li>
+<li><a href="./entity.html">エンティティを追加・削除する</a></li>
+<li><a href="./image.html">画像を表示する</a></li>
+<li><a href="./partial-image.html">画像の一部分を表示する</a></li>
+<li><a href="./rotate.html">回転する</a></li>
+<li><a href="./scale.html">拡大する</a></li>
+<li><a href="./rotate-anchor.html">回転・拡大の基準点を変える</a></li>
+<li><a href="./opacity.html">半透明にする (透明度を変える)</a></li>
+<li><a href="./hidden.html">非表示にする</a></li>
+<li><a href="./display-order.html">描画順を変える</a></li>
+<li><a href="./multiple-entities.html">複数のエンティティをまとめて扱う</a></li>
 <li><a href="./composite-operation.html">エンティティの描画方法を変える (compositeOperation)</a></li>
 <li><a href="./frame-animation.html">フレームアニメーション (パラパラアニメ) する</a></li>
 <li><a href="./animation.html">トゥイーンアニメーションする</a></li>
@@ -162,65 +162,72 @@
 </ul>
 <h4><a name="setting"></a> ゲーム設定</h4>
 <ul>
-<li><a href="./">画面サイズを変える</a></li>
-<li><a href="./">FPS を変える</a></li>
+<li><a href="../setting/game-size.html">画面サイズを変える</a></li>
+<li><a href="../setting/fps.html">FPS を変える</a></li>
 </ul>
 <h4><a name="asset"></a> アセット</h4>
 <ul>
-<li><a href="./">ゲームにアセットを追加する</a></li>
-<li><a href="./">ゲームからアセットを削除する</a></li>
-<li><a href="./">アセットを読み込む</a></li>
-<li><a href="./">読み込んだアセットを取得する</a></li>
-<li><a href="./">スクリプトを分割する (複数のスクリプトを使う)</a></li>
-<li><a href="./">シーン内で動的にアセットを読み込む</a></li>
+<li><a href="../asset/add-asset.html">ゲームにアセットを追加する</a></li>
+<li><a href="../asset/remove-asset.html">ゲームからアセットを削除する</a></li>
+<li><a href="../asset/read-asset.html">アセットを読み込む</a></li>
+<li><a href="../asset/get-asset.html">読み込んだアセットを取得する</a></li>
+<li><a href="../asset/split-script.html">スクリプトを分割する (複数のスクリプトを使う)</a></li>
+<li><a href="../asset/request-asset.html">シーン内で動的にアセットを読み込む</a></li>
 </ul>
 <h4><a name="extension"></a> 拡張ライブラリ</h4>
 <ul>
-<li><a href="./">拡張ライブラリを導入する</a></li>
-<li><a href="./">拡張ライブラリを削除する</a></li>
-<li><a href="./">非 Akashic Engine 向けライブラリを利用する</a></li>
+<li><a href="../extension/install.html">拡張ライブラリを導入する</a></li>
+<li><a href="../extension/uninstall.html">拡張ライブラリを削除する</a></li>
+<li><a href="../extension/other-library.html">非 Akashic Engine 向けライブラリを利用する</a></li>
 </ul>
 <h4><a name="release"></a> 公開</h4>
 <ul>
-<li><a href="./">HTML5 ゲームとして出力する</a></li>
-<li><a href="./">ニコ生ゲームとして出力する</a></li>
-<li><a href="./">ゲームアツマールでの背景色を指定する</a></li>
-<li><a href="./">ゲームアツマールでスコアボードを表示する</a></li>
-<li><a href="./">ゲームアツマールでのみ処理を行う</a></li>
+<li><a href="../release/export-html.html">HTML5 ゲームとして出力する</a></li>
+<li><a href="../release/export-niconama.html">ニコ生ゲームとして出力する</a></li>
+<li><a href="../release/atsumaru-bgcolor.html">ゲームアツマールでの背景色を指定する</a></li>
+<li><a href="../release/atsumaru-scoreboard.html">ゲームアツマールでスコアボードを表示する</a></li>
+<li><a href="../release/atsumaru.html">ゲームアツマールでのみ処理を行う</a></li>
 </ul>
 
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<h1>複数行の文字列を描画する</h1>
-<p>Akashic Engine で複数行の文字列を描画する場合、 akashic-label を利用します。</p>
+				<h1>画像の一部分を表示する</h1>
+<p>画像の一部を表示するには <code>Sprite</code> エンティティの <code>srcWidth</code>, <code>srcHeight</code> や <code>srcX</code>, <code>srcY</code> を利用します。</p>
 <h2>凡例</h2>
-<pre><code class="language-javascript">var al = require(&quot;@akashic-extension/akashic-label&quot;);
-var label = new al.Label({
+<pre><code class="language-javascript">var sprite = new g.Sprite({
   scene: scene,
-  text: &quot;こんにちは\rこんばんは\rさようなら&quot;,
-  font: font,
-  fontSize: 30,
-  width: g.game.width
-});
-scene.append(label);</code></pre>
+  src: scene.asset.getImageById(&quot;player&quot;), // アセットID &quot;player&quot; が画像アセットだとします
+  width: 30,
+  height: 25,
+  srcX: 15 // 描画元範囲の左端を指定します
+  srcY: 10 // 描画元範囲分の上端を指定します
+  srcWidth: 30, // 描画元範囲の幅の値。エンティティの幅で拡大し描画します
+  srcHeight: 25, // 描画元範囲の高さの値。エンティティの高さで拡大し描画します
+});</code></pre>
+<pre><code class="language-javascript">sprite.srcX = 25;
+sprite.srcY = 5;
+sprite.invalidate(); // invalidate() で表示に反映します</code></pre>
+<p>画像を拡大して表示するには <a href="./scale.html"><code>scaleX</code>, <code>scaleY</code>を利用してください。</a></p>
+<p>画像を回転して表示するには<a href="./rotate.html"><code>angle</code> を利用してください。</a></p>
 <h2>利用例</h2>
-<p>次の例は、文字列を複数行で描画します。</p>
-<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvdGV4dC9tdWx0aWxpbmUvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
+<p>次のコンテンツは、左側に画像の一部分を表示し、右側に全体の画像を表示しています。</p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvZHJhd2luZy9wYXJ0aWFsLWltYWdlL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
 
 <h2>詳細</h2>
-<p>Akashic Engine 標準の <code>Label</code> エンティティは複数行の文字列をサポートしていません。複数行の描画は akashic-label ライブラリがサポートしています。そのため、ライブラリをコンテンツに導入する必要があります。
-akashic-label は <code>Label</code> に近い方法で利用できるエンティティを提供します。このエンティティを使うことで、複数行の描画のほか、ルビ表示や禁則処理などの機能を利用することができます。
-コンテンツに akashic-label を導入するには、以下のコマンドを実行します。</p>
-<pre><code>akashic install @akashic-extension/akashic-label</code></pre><h2>関連情報</h2>
+<p>画像の一部を表示するには、<code>Sprite</code> エンティティの <code>srcWidth</code>, <code>srcHeight</code>, <code>srcX</code>, <code>srcY</code> プロパティを利用します。</p>
+<p><code>srcWidth</code>, <code>srcHeight</code> は描画元範囲の幅または高さをエンティティの幅、高さに合わせて拡大または縮小し描画します。<code>srcX</code>, <code>srcY</code> は描画元範囲の左端、上端を指定します。</p>
+<p><code>Sprite</code> では、 <code>width</code>, <code>height</code> を省略すると画像(src) の幅、高さになります。省略時には <code>srcWidth</code>, <code>srcHeight</code> を使用しても <code>width</code>, <code>height</code> の値は変わりません。
+そのため <code>srcWidth</code>, <code>srcHeight</code> を使用する場合、拡大しないのであれば <code>width</code>, <code>height</code> にも <code>srcWidth</code>,<code>srcHeight</code> と同じ値を指定する必要があります。</p>
+<p>これらの値を変更した場合は、<code>invalidate()</code> を呼び出す必要があります。</p>
+<h2>関連情報</h2>
 <ul>
-<li><a href="/tutorial/v3/text.html">チュートリアル</a></li>
-<li><a href="/reference/akashic-engine-v3/classes/label.html">API リファレンス</a></li>
+<li><a href="/reference/akashic-engine-v3/classes/sprite.html#srcwidth">API リファレンス</a></li>
 </ul>
 <div class="navi-center">
-<a href="./align.html">前 (文字列を中央寄せ・右寄せする)</a>
+<a href="./image.html">前 (画像を表示する)</a>
  | <a href="../">目次</a>
- | <a href="./bitmapfont-use.html">次 (ビットマップフォントを使う)</a>
+ | <a href="./rotate.html">次 (回転する)</a>
 </div>
 
 			</div>
