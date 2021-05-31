@@ -15,7 +15,7 @@ function main() {
 			scene: scene,
 			font: mplusfont,
 			text: "こんにちは",
-			fontSize: 48,
+			fontSize: 26,
 			x: 100,
 			y: 50
 		});
