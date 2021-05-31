@@ -2,16 +2,16 @@
   "width": 320,
   "height": 320,
   "fps": 60,
-  "main": "./main.js",
+  "main": "./script/main.js",
   "assets": {
     "main": {
       "type": "script",
-      "path": "main.js",
+      "path": "script/main.js",
       "global": true
     },
     "redRectScene": {
       "type": "script",
-      "path": "script/src/redRectScene.js",
+      "path": "script/redRectScene.js",
       "global": true
     }
   },

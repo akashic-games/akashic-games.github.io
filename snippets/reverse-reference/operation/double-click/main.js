@@ -15,16 +15,13 @@ function main() {
 
 		var isRightAfterClick = false;
 		var doubleClickTimer = null;
+
 		rect.onPointDown.add(function () {
 			if (isRightAfterClick) {
+				isRightAfterClick = false;
 				rect.cssColor = rect.cssColor === "red" ? "blue" : "red";
 				rect.modified();
 				return;
-			}
-			isRightAfterClick = false;
-			if (doubleClickTimer) {
-				scene.clearTimeout(doubleClickTimer);
-				doubleClickTimer = null;
 			}
 		});
 		rect.onPointUp.add(function () {
