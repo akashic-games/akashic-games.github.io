@@ -29,9 +29,9 @@ function main(param) {
           // プレイヤーが発射する弾を生成します
           var shot = new g.Sprite({
               scene: scene,
-              src: scene.assets["shot"],
-              width: scene.assets["shot"].width,
-              height: scene.assets["shot"].height
+              src: scene.asset.getImageById("shot"),
+              width: scene.asset.getImageById("shot").width,
+              height: scene.asset.getImageById("shot").height
           });
           // 弾の初期座標を、プレイヤーの少し右に設定します
           shot.x = player.x + player.width;

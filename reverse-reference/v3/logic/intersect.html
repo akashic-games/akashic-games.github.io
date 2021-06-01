@@ -37,6 +37,7 @@
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
 				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
+				<li><a href="/reverse-reference/v3/">Akashic Engine逆引きリファレンス</a></li>
 				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
 				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
 			</ul>
@@ -213,10 +214,6 @@ g.Collision.withinAreas(rect1, rect2, 2); // 中心座標同士の距離が 2 �
 <!-- intersectEntities() が akashic-engine@3.0.4 からなので、AE@3.0.4 が含まれた engine-files 生成後に playgroud も更新 -->
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvbG9naWMvaW50ZXJzZWN0L2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
 
-<blockquote>
-<p><strong>利用しているエンジンが古いので、エラーになっています</strong>
-(intersectEntities() がまだないため。このコード自体は akashic-sandbox などでは利用できるようになっています)</p>
-</blockquote>
 <h2>詳細</h2>
 <p>二つのエンティティの当たり判定を行うには、<code>g.Collision.intersectEntities()</code> を利用します。</p>
 <p><code>g.Collision.intersectEntities()</code> は回転・拡大されたエンティティや、親の異なるエンティティ同士も扱えます。ただし、計算量が多いので大量のエンティティ間のすべての衝突を確認するような状況では利用を避けるべきです。</p>
