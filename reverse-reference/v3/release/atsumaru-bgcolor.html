@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ゲームアツマールでの背景色を指定する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?5ddd7a06">
-<link rel="stylesheet" href="/css/header.css?5ddd7a06">
-<link rel="stylesheet" href="/css/footer.css?5ddd7a06">
+<link rel="stylesheet" href="/css/common.css?5e73188c">
+<link rel="stylesheet" href="/css/header.css?5e73188c">
+<link rel="stylesheet" href="/css/footer.css?5e73188c">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?5ddd7a06">
+<link rel="stylesheet" href="/css/akashic-document.css?5e73188c">
 
-<link rel="stylesheet" href="/css/railscasts.css?5ddd7a06">
+<link rel="stylesheet" href="/css/railscasts.css?5e73188c">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?5ddd7a06"></script>
+<script src="/lib/common.js?5e73188c"></script>
 
 
 
@@ -46,20 +46,20 @@
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
 				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
 				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-				<li><a href="/guide/storage.html">ストレージについて</a></li>
-				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-				<li><a href="/guide/atsumaru.html">ゲームアツマール投稿ガイド</a></li>
-				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-				<li><a href="/guide/shader.html">シェーダの利用</a></li>
-				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
-				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
 				<li><a href="/guide/acceleration-tips.html">高速化TIPS</a></li>
+				<!--li><a href="/guide/storage.html">ストレージについて</a></li-->
 			</ul>
 		</li>
 		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
@@ -185,6 +185,7 @@
 <ul>
 <li><a href="../release/export-html.html">HTML5 ゲームとして出力する</a></li>
 <li><a href="../release/export-nicolive.html">ニコ生ゲームとして出力する</a></li>
+<li><a href="../release/export-atsumaru.html">ゲームアツマール向けに出力する</a></li>
 <li><a href="../release/atsumaru-bgcolor.html">ゲームアツマールでの背景色を指定する</a></li>
 <li><a href="../release/atsumaru-scoreboard.html">ゲームアツマールでスコアボードを表示する</a></li>
 <li><a href="../release/atsumaru.html">ゲームアツマールでのみ処理を行う</a></li>
@@ -194,6 +195,9 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>ゲームアツマールでの背景色を指定する</h1>
+<blockquote>
+<p>要加筆: このページは現在、 <a href="https://akashic-games.github.io/guide/atsumaru.html">アツマールのマルチプレイゲーム</a> には対応していません。</p>
+</blockquote>
 <p>ゲームアツマールでの背景色を指定するには、<code>akashic export html</code> コマンドの <code>--inject</code> オプションを利用します。</p>
 <h2>凡例</h2>
 <pre><code class="language-sh">akashic export html --atsumaru -o ./game.zip --inject ./injectdata.txt</code></pre>
@@ -211,7 +215,7 @@
 <p>凡例ように <code>injectdata.txt</code> を準備し、<code>akashic export html</code> コマンドを実行します。</p>
 <p>生成される HTML ファイルには <code>injectdata.txt</code> で指定した style 要素が含まれるため、アツマール上ではゲーム画面部分の背景色が灰色になります。 ここでは、 background の色だけ指定していますが、単なる HTML/CSS なので任意の記述ができます。</p>
 <div class="navi-center">
-<a href="./export-nicolive.html">前 (ニコ生ゲームとして出力する)</a>
+<a href="./export-atsumaru.html">前 (ゲームアツマール向けに出力する)</a>
  | <a href="../">目次</a>
  | <a href="./atsumaru-scoreboard.html">次 (ゲームアツマールでスコアボードを表示する)</a>
 </div>

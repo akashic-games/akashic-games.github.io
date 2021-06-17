@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>マルチプレイの基礎</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?5ddd7a06">
-<link rel="stylesheet" href="/css/header.css?5ddd7a06">
-<link rel="stylesheet" href="/css/footer.css?5ddd7a06">
+<link rel="stylesheet" href="/css/common.css?5e73188c">
+<link rel="stylesheet" href="/css/header.css?5e73188c">
+<link rel="stylesheet" href="/css/footer.css?5e73188c">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?5ddd7a06">
+<link rel="stylesheet" href="/css/akashic-document.css?5e73188c">
 
-<link rel="stylesheet" href="/css/railscasts.css?5ddd7a06">
+<link rel="stylesheet" href="/css/railscasts.css?5e73188c">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?5ddd7a06"></script>
+<script src="/lib/common.js?5e73188c"></script>
 
 
 
@@ -46,20 +46,20 @@
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
 				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
 				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-				<li><a href="/guide/storage.html">ストレージについて</a></li>
-				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-				<li><a href="/guide/atsumaru.html">ゲームアツマール投稿ガイド</a></li>
-				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-				<li><a href="/guide/shader.html">シェーダの利用</a></li>
-				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
-				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
 				<li><a href="/guide/acceleration-tips.html">高速化TIPS</a></li>
+				<!--li><a href="/guide/storage.html">ストレージについて</a></li-->
 			</ul>
 		</li>
 		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
@@ -147,7 +147,6 @@
 (シングルプレイであれば、出力した HTML ファイルをレンタルサーバなどにアップロードするだけでよく、独自のサーバソフトウェアの実行は必要ありません。また<a href="https://game.nicovideo.jp/atsumaru/">ゲームアツマール</a>のような HTML5 ゲーム投稿サイトで公開することもでき、この場合はサーバを用意する必要さえありません)</p>
 <p>Akashic Engine で作成されたゲームは、ニコニコ生放送の放送内で遊ぶことができます。この場合、ゲーム開発者がサーバを用意する必要はありません。放送内では放送者と視聴者複数でマルチプレイすることもでき、現時点では、事実上これが Akashic Engine のマルチプレイゲームを一般に公開する方法です。ニコニコ生放送上で実行するためのコンテンツについては <a href="https://akashic-games.github.io/guide/shin-ichiba/">ニコニコ生放送で遊べるゲームの作成</a> をご覧ください。</p>
 <p>詳細はリンク先に譲りますが、ゲーム作成上は特別な対応は必要なく、 game.json の <code>environment.niconico.supportedModes</code> に <code>&quot;multi_admission&quot;</code> を指定する必要がある程度です。</p>
-<p>2021-05-17 追記: ゲームアツマールでもマルチプレイゲームを公開できるようになります (<a href="https://ch.nicovideo.jp/indies-game/blomaga/ar2002108">2021 年夏予定</a>) 。投稿方法などは定まり次第別途まとめます。</p>
 </blockquote>
 <p><a name="helloworld"></a></p>
 <h2>マルチプレイの Hello World</h2>

@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>Join と Leave</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?5ddd7a06">
-<link rel="stylesheet" href="/css/header.css?5ddd7a06">
-<link rel="stylesheet" href="/css/footer.css?5ddd7a06">
+<link rel="stylesheet" href="/css/common.css?5e73188c">
+<link rel="stylesheet" href="/css/header.css?5e73188c">
+<link rel="stylesheet" href="/css/footer.css?5e73188c">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?5ddd7a06">
+<link rel="stylesheet" href="/css/akashic-document.css?5e73188c">
 
-<link rel="stylesheet" href="/css/railscasts.css?5ddd7a06">
+<link rel="stylesheet" href="/css/railscasts.css?5e73188c">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?5ddd7a06"></script>
+<script src="/lib/common.js?5e73188c"></script>
 
 
 
@@ -46,20 +46,20 @@
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
 				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
 				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-				<li><a href="/guide/storage.html">ストレージについて</a></li>
-				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-				<li><a href="/guide/atsumaru.html">ゲームアツマール投稿ガイド</a></li>
-				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-				<li><a href="/guide/shader.html">シェーダの利用</a></li>
-				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
-				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
 				<li><a href="/guide/acceleration-tips.html">高速化TIPS</a></li>
+				<!--li><a href="/guide/storage.html">ストレージについて</a></li-->
 			</ul>
 		</li>
 		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
@@ -144,6 +144,7 @@
 <li><a href="../multiplay/each-player.html">プレイヤーごとに異なる描画を行う</a></li>
 <li><a href="../multiplay/camera.html">プレイヤーごとに異なる位置を表示する</a></li>
 <li><a href="../multiplay/join.html">Join と Leave</a></li>
+<li><a href="../multiplay/release-multiplay.html">マルチプレイゲームを公開する</a></li>
 </ul>
 
 		</div>
@@ -154,8 +155,33 @@
 <p>各プレイヤーには「join しているか否か」という二値の状態が存在します。これは実行環境が規定する値です。「join しているプレイヤー」が何を意味するかは、実行環境によって定まります。</p>
 <p>あるプレイヤーが join 状態になる時、 <code>g.game.onJoin</code> が fire され <code>g.JoinEvent</code> が与えられます。同様に join 状態でなくなる時、 <code>g.game.onLeave</code> が fire され <code>g.LeaveEvent</code> が与えられます。</p>
 <blockquote>
-<p>これ自体は環境依存が強くあまり使い出のない機能ですが、
-<strong>ニコニコ生放送上で実行する場合、配信者のプレイヤーだけが join します</strong> (leave はしません)。そのため、配信者と視聴者を区別するための情報として利用することができます。</p>
+<p>元々はその名の通り「ゲームに参加する」動作を表現するために作られた機能ですが、
+歴史的経緯から、現在は実行環境が規定する「特殊なプレイヤー」を通知するものになっています。</p>
+<p>特に <strong>ニコニコ生放送上で実行する場合に、配信者と視聴者を区別するために利用できます</strong> 。</p>
+<table>
+ <thead>
+  <tr>
+   <th></th>
+   <th>joinするプレイヤー</th>
+   <th>いつjoin状態になるか</th>
+   <th>いつjoin状態でなくなるか</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><b>ニコニコ生放送</b><br/>(mode: "multi_admission")</td>
+   <td>配信者</td>
+   <td>ゲーム開始直後</td>
+   <td>なし(joinしたまま)</td>
+  </tr>
+  <tr>
+   <td><b>ゲームアツマール</b><br/>(マルチプレイ)</td>
+   <td>部屋を作ったプレイヤー</td>
+   <td>ゲーム開始直後</td>
+   <td>なし(joinしたまま)</td>
+  </tr>
+ </tbody>
+</table>
 </blockquote>
 <p>次のコードは、最後に join したプレイヤーを記憶して参照する例です。</p>
 <pre><code class="language-javascript">var lastJoinedPlayerId = null;
@@ -167,11 +193,13 @@ g.game.onJoin.add(function(ev) {
 scene.onPointDownCapture.add(function(ev) {
   if (ev.player.id === lastJoinedPlayerId) {
     // ニコニコ生放送上で動かす場合、イベントを生成した(＝画面を押下した)のが「配信者」である時のみ実行される
+    // ゲームアツマール (マルチプレイ) では、イベントを作成した(＝画面を押下した)のが「部屋を作ったプレイヤー」である時のみ実行される
     // ...
   }
 
   if (g.game.selfId === lastJoinedPlayerId) {
     // ニコニコ生放送上で動かす場合、この実行環境(インスタンス)が「配信者」のものである時のみ実行される
+    // ゲームアツマール (マルチプレイ) では、この実行環境(インスタンス)が「部屋を作ったプレイヤー」のものである時のみ実行される
     // ...
   }
 });</code></pre>
@@ -180,12 +208,16 @@ scene.onPointDownCapture.add(function(ev) {
 <p><img src="/img/tutorial/cli-serve.png" alt="serve"></p>
 <p>画面上側、ツールバー上の「Join Me」ボタンを押すと、そのウィンドウ(インスタンス)のプレイヤーが join します (<code>g.game.onJoin</code> が fire されます)。
 join 済みの場合は「Leave Me」ボタンに切り替わり、 <code>g.game.onLeave</code> を fire させることができます。</p>
-<h2><a name="niconico"></a> ニコ生ゲーム</h2>
+<h2><a name="niconico"></a> ニコ生ゲーム・ゲームアツマール用動作確認</h2>
+<p><code>akashic serve</code> コマンドは、 <code>--target-service</code> (省略名 <code>-s</code>) オプションに <code>nicolive</code> を指定して起動すると、ニコ生ゲームの開発に便利な振る舞いになります。
+この状態では「Join Me」ボタンが無効になり、最初に開いたウィンドウのプレイヤーだけが必ず join します (配信者役になります) 。
+そのため都度ボタンを押す手間が省けます。</p>
+<pre><code class="language-sh">akashic serve --target-service nicolive</code></pre>
 <p>その他、ニコニコ生放送に関する内容は、 <a href="/guide/">開発者向けガイド</a> の <a href="/guide/shin-ichiba/">ニコニコ生放送で遊べるゲームの作成</a> を参照してください。</p>
 <div class="navi-center">
 <a href="./camera.html">前 (プレイヤーごとに異なる位置を表示する)</a>
  | <a href="../">目次</a>
- | -
+ | <a href="./release-multiplay.html">前 (マルチプレイゲームを公開する)</a>
 </div>
 
 			</div>
