@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>マルチプレイ開発予備知識</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?5ddd7a06">
-<link rel="stylesheet" href="/css/header.css?5ddd7a06">
-<link rel="stylesheet" href="/css/footer.css?5ddd7a06">
+<link rel="stylesheet" href="/css/common.css?5e73188c">
+<link rel="stylesheet" href="/css/header.css?5e73188c">
+<link rel="stylesheet" href="/css/footer.css?5e73188c">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?5ddd7a06">
+<link rel="stylesheet" href="/css/akashic-document.css?5e73188c">
 
-<link rel="stylesheet" href="/css/railscasts.css?5ddd7a06">
+<link rel="stylesheet" href="/css/railscasts.css?5e73188c">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?5ddd7a06"></script>
+<script src="/lib/common.js?5e73188c"></script>
 
 
 
@@ -46,20 +46,20 @@
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list">
 				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
 				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
-				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
-				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
-				<li><a href="/guide/storage.html">ストレージについて</a></li>
-				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
-				<li><a href="/guide/atsumaru.html">ゲームアツマール投稿ガイド</a></li>
-				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
-				<li><a href="/guide/shader.html">シェーダの利用</a></li>
-				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
-				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
 				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
 				<li><a href="/guide/acceleration-tips.html">高速化TIPS</a></li>
+				<!--li><a href="/guide/storage.html">ストレージについて</a></li-->
 			</ul>
 		</li>
 		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
@@ -188,10 +188,41 @@
 </li>
 </ul>
 <p><a href="/tutorial/v3/multiplay/join.html">Join と Leave の節</a> でも記載のとおり、ニコニコ生放送では「放送者がただ一人 Join する」動作になっています。
-しかし <code>akashic serve</code> コマンド自身はそのことに関知しておらず、毎回「Join Me」ボタンを手で押す必要がありました。
-この不便を軽減するものとして <code>-s nicolive</code> オプションが利用できます。</p>
+<code>--target-service</code> を指定すると、「Join Me」ボタンを逐一押さずに放送者を含めた動作を確認することができます。</p>
 <h2><a name="submit"></a> 投稿</h2>
 <p>作成したゲームの投稿手順はランキングゲームと同様です。<a href="./submit.html">ニコ生ゲームを投稿しよう</a> を参照して、投稿してみてください。</p>
+<blockquote>
+<p><strong>補足: アツマール対応の表明</strong> <a name="atsumaru"></a></p>
+<p>Akashic のマルチプレイゲームは、ゲームアツマールでも公開できます。
+ただしニコ生ゲームと異なり配信者はいません。
+ユーザがまず「部屋」を作成して、その部屋を訪れたユーザとマルチプレイゲームを遊ぶ形になります。</p>
+<p>マルチプレイのニコ生ゲームは、内容によってニコニコ生放送専用であるかどうかが分かれるでしょう。
+例えば「配信者が配信上で発した言葉を使う」ゲームは、アツマールでは遊べません。
+一方で配信者も視聴者も同じ立場のゲームであれば、アツマールでも同じように遊べるはずです。</p>
+<p>game.json で <code>external.atsumaru.supportedModes</code> に <code>[&quot;multi&quot;]</code> を指定すると、アツマールでの実行もサポートすることができます。
+次の例は、ニコ生ゲーム向けの指定とアツマール向けの指定を両方行ったものです。</p>
+<pre><code class="language-json">{
+  // ... その他の記述 ...
+
+  &quot;environment&quot;: {
+    &quot;niconico&quot;: {
+      &quot;supportedModes&quot;: [&quot;multi_admission&quot;]
+    },
+    &quot;atsumaru&quot;: {
+      &quot;supportedModes&quot;: [&quot;multi&quot;]
+    }
+  }
+}</code></pre>
+<p>後述しますがニコ生ゲームは、まずゲームアツマールに投稿して、その後に「ニコ生ゲームとして申請」することで公開されます。
+そのため上のように指定しておけば、ニコ生ゲームの公開時にそのままアツマールでも公開されます。</p>
+<p>逆にアツマールに対応 <strong>しない</strong> 場合、そのままだとアツマール上では動かないだけのゲームになるので、以下のいずれかを行うことを推奨します。</p>
+<ul>
+<li>アツマール上での説明文に「ニコ生のみ対応、アツマール上では遊べない」ことを明記する</li>
+<li>アツマール側を「限定公開」にする (アツマール上では一般に公開しない)</li>
+<li>アツマールで動作している時向けの挙動を実装する (e.g. CPU 戦モード)</li>
+</ul>
+<p>ゲームアツマール向けのゲームについては <a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a> も参照してください。</p>
+</blockquote>
 <div class="navi-center">
 <a href="./multi-top.html">前 (ニコ生ゲームを作ろう・マルチプレイゲーム編)</a>
  | <a href="./index.html">目次</a>
