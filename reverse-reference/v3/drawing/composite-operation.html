@@ -52,7 +52,6 @@
 				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
 				<li><a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
-				<li><a href="/guide/composite-operation.html">CompositeOperationの利用</a></li>
 				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
 				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
@@ -117,6 +116,7 @@
 <li><a href="../drawing/rotate.html">回転する</a></li>
 <li><a href="../drawing/scale.html">拡大する</a></li>
 <li><a href="../drawing/rotate-anchor.html">回転・拡大の基準点を変える</a></li>
+<li><a href="../drawing/nine-patch.html">ナインパッチを利用する</a></li>
 <li><a href="../drawing/opacity.html">半透明にする (透明度を変える)</a></li>
 <li><a href="../drawing/hidden.html">非表示にする</a></li>
 <li><a href="../drawing/display-order.html">描画順を変える</a></li>
@@ -146,6 +146,7 @@
 <ul>
 <li><a href="../text/draw.html">文字列を描画する</a></li>
 <li><a href="../text/color.html">文字列の色を変える</a></li>
+<li><a href="../text/bold.html">文字列を太字にする</a></li>
 <li><a href="../text/align.html">文字列を中央寄せ・右寄せする</a></li>
 <li><a href="../text/multiline.html">複数行の文字列を描画する</a></li>
 <li><a href="../text/bitmapfont-use.html">ビットマップフォントを使う</a></li>
@@ -209,7 +210,7 @@ scene.append(red); // シーンに追加する</code></pre>
 <pre><code class="language-javascript">red.compositeOperation = &quot;lighter&quot;; // 既存のオブジェクトを変更
 red.modified(); // modified() で表示に反映</code></pre>
 <h2>利用例</h2>
-<p>次のコンテンツは、先に描画された緑の矩形の領域と重なった部分のみを描画します。</p>
+<p>次のコンテンツは、<code>g.E#compositeOperation</code> の各値を反映した内容を表示します。&quot;次へ&quot;, &quot;前へ&quot; のラベルを押下することで描画内容が変更されます。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvZHJhd2luZy9jb21wb3NpdGUtb3BlcmF0aW9uL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
 
 <h2>詳細</h2>
@@ -228,6 +229,7 @@ red.modified(); // modified() で表示に反映</code></pre>
 <li><code>&quot;destination-over&quot;</code>: 先に描画された領域の下に描画する。</li>
 <li><code>&quot;xor&quot;</code>: 先に描画された領域と重なった部分のみ透明にする。</li>
 </ul>
+<h3>Pane の利用</h3>
 <p><code>&quot;source-atop&quot;</code> や <code>&quot;ligther&quot;</code> を利用する際に、<code>Pane</code> を利用することで、先に描画された領域を合成対象に含めないようにすることが出来ます。
 下記のコードでは <code>Pane</code> の子エンティティを合成対象にし <code>Pane</code> の外にある <code>bg</code> は含まれなくなります。</p>
 <pre><code class="language-javascript">function main() {
@@ -271,7 +273,6 @@ function createRect(scene, width, height, x, y, color) {
 module.exports = main;</code></pre>
 <h2>関連情報</h2>
 <ul>
-<li><a href="/guide/composite-operation.html">CompositeOperation の利用</a></li>
 <li><a href="/reference/akashic-engine-v3/classes/e.html#compositeoperation">API リファレンス</a></li>
 </ul>
 <div class="navi-center">
