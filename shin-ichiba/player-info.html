@@ -192,6 +192,8 @@ scene.onPointDownCapture.add(function(ev) {
   }
 });
 
+// 以下で名前利用の許諾ダイアログを表示します。
+// ただし、この関数はローカルイベント契機でのみ呼び出してください (後述) 。
 resolvePlayerInfo({ raises: true });</code></pre>
 <h2><a name="api"></a> API</h2>
 <p><code>resolvePlahyerInfo(opts, callback)</code> は、一つまたは二つの引数をとる関数です。</p>
@@ -353,6 +355,21 @@ module.exports = function() {
   g.game.pushScene(scene);
 };</code></pre>
 <p>なお「ローカルエンティティ」や <code>g.game.raiseEvent()</code> など、Akashic Engine のマルチプレイ関連の機能については、チュートリアルの <a href="https://akashic-games.github.io/tutorial/v3/multiplay/introduction.html">マルチプレイの基礎</a> や <a href="https://akashic-games.github.io/tutorial/v3/multiplay/each-player.html">プレイヤーごとに異なる描画を行う</a> を参照してください。</p>
+<h2><a name="limitation"></a> 利用上の制限</h2>
+<h3><a name="limitation-scene"></a> 呼び出し中にシーン遷移しない</h3>
+<p><code>resolvePlayerInfo()</code> の呼び出し後、 <strong>コールバックが呼び出されるまでの間に、シーン遷移を行わないでください</strong> 。</p>
+<p>これは実装に起因する制限です。
+一部のタイムアウト判定に <code>scene.setTimeout()</code> が利用されている関係上、シーンを切り替えてしまうと正しく動作しなくなるケースがあります。</p>
+<h3><a name="limitation-local"></a> ローカル処理でのみ使う</h3>
+<p><code>resolvePlayerInfo()</code> は、 <strong>ローカルイベントの処理 (ローカル処理) 内でのみ利用してください</strong> 。</p>
+<p>言い換えると、原則ローカルエンティティ (<code>local: true</code> をつけて生成したもの) の <code>onPointDown</code> や <code>onPointUp</code> のハンドラ内でのみ呼び出すようにしてください。
+「ゲーム開始時に強制的に全員のプレイヤー名を取得する」といった使い方はできません。</p>
+<p>これは、マルチプレイの参加者が「途中から」ゲーム画面を開く可能性があるためです (ニコ生ゲームの起動中に配信を見始めたなど)。
+この時 Akashic Engine は最新フレームに追いつくためゲームを早送りで実行しますが、早送り中に名前取得ダイアログが表示されても操作はできません。
+また早送り終了後に仮に名前取得が許諾されて <code>PlayerInfoEvent</code> が通知されても、ゲームは既に参加者募集中ではないなど、状態の混乱が考えられます。
+さらに早送り中にシーン切り替えが発生すると、前述の「呼び出し中にシーン遷移しない」に反する可能性があります。</p>
+<p>ゲーム開始時に参加者が確定しないゲーム (手番のプレイヤーを都度抽選するなど) の場合は、
+「参加者が決まるたびに (名前利用を許諾していなければ) 許諾を促すボタンを表示する」など、「いつ見始めても参加できる」形を検討してください。</p>
 <h2><a name="suppl"></a> 細かな補足</h2>
 <h3><a name="conflicted-names"></a> 名前の重複</h3>
 <p>名前利用を許諾しなかった場合に自動生成される名前 (<code>&quot;ゲスト123&quot;</code> など) は重複する可能性があることに気をつけてください。自動生成に限らず、ユーザ名は重複する可能性があります。</p>
