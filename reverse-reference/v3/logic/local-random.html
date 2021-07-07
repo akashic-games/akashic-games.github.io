@@ -5,7 +5,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>非 Akashic Engine 向けライブラリを利用する</title>
+<title>プレイヤー固有の乱数を生成する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?5e73188c">
 <link rel="stylesheet" href="/css/header.css?5e73188c">
@@ -196,24 +196,46 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<h1>非 Akashic Engine 向けライブラリを利用する</h1>
-<p>非 Akashic Engine 向けライブラリを利用するには、 Akashic 向け拡張ライブラリと同様に <code>akashic</code> コマンドの <code>akashic install</code> を利用します。</p>
+				<h1>プレイヤー固有の乱数を生成する</h1>
+<p>プレイヤー固有の乱数を生成するには <code>g.game.localRandom</code> を利用します。</p>
 <h2>凡例</h2>
-<pre><code class="language-sh">akashic install sample-library</code></pre>
+<pre><code class="language-javascript">g.game.localRandom.generate();</code></pre>
+<pre><code class="language-javascript">var localRect = new g.FilledRect({
+  ...,      // その他のプロパティ
+  local: true // ローカルであることを指定
+});
+scene.append(localRect);
+
+localRect.onPointDown.add(function () {
+  var random = g.game.localRandom.generate(); // 0 以上 1 未満の整数を取得。この値は各プレイヤーで異なる
+  localRect.width = 30 + random * 100;
+  localRect.modified();
+});</code></pre>
+<p>全員に同じ乱数を生成するには <a href="./random.html"><code>g.game.random</code> を利用してください。</a></p>
+<h2>利用例</h2>
+<p>次のコンテンツは、矩形をクリックするとランダムに矩形の大きさが変わります。</p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvbG9naWMvbG9jYWxSYW5kb20vZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
+
 <h2>詳細</h2>
-<p><code>akashic install</code> コマンドは、Akashic 向け拡張ライブラリではない npm パッケージもインストールできます。
-例えば「迷路を自動生成する」「マップ上の 2 点の最短経路を求める」といった処理には、(Akashic Engine 専用ではない) 汎用のライブラリが利用できるかもしれません。そのようなライブラリが npm パッケージとして公開されていれば、 <code>akashic install</code> でインストールして利用できます。</p>
-<p>ただし、Akashic Engine はそのようなパッケージの動作を保証してはいません。 Akashic Engine で利用できるパッケージの条件は、 <code>fs</code> や <code>http</code> などの Node.js コアモジュールを利用していないこと、 <code>Math.random()</code> を利用していないことです。
-また、原則的に DOM を利用することもできません。これらは Akashic Engine の動作に意図しない影響を及ぼすため、利用しないでください。</p>
-<p>公式で公開されている Akashic Engine 向け拡張ライブラリ以外のライブラリを利用する場合は、それら各ライブラリの利用条件・ライセンスにも従う必要があります。</p>
+<p><code>g.game.localRandom</code> は、各プレイヤーでシード値が異なる乱数生成器です。
+すなわち、同じ順序・同じタイミングで生成しても、プレイヤーごとに異なる値が得られます。</p>
+<p><code>g.game.localRandom</code> は、<code>Math.random()</code> と同じ機能(0 以上 1 未満のランダムな浮動小数点数を生成する)の関数です。
+Akashic Engine の乱数生成器には、他に <a href="./random.html"><code>g.game.random</code></a> があります。
+<a href="./random.html"><code>g.game.random</code></a> と対比して、ローカル処理での用途を明確にするため <code>g.game.localRandom</code> が作成されました。</p>
+<p><code>g.game.localRandom</code> は、<code>local: true</code> をつけて生成したローカルエンティティのイベントなど、ローカル処理中でのみ利用してください。
+ローカル処理以外で利用した場合、ゲームのグローバルな実行状態を破壊する恐れがあります。
+詳しくは<a href="/tutorial/v3/multiplay/each-player.html">プレイヤーごとに異なる描画を行う</a>を参照してください。</p>
+<p>また、<code>Math.random()</code> を利用したコンテンツを akashic-sandbox で実行すると警告ダイアログが出ますが、<code>g.game.localRandom</code> では警告はでません。</p>
+<p><code>generate()</code> は実数を返しますが、整数の乱数が必要なことも多いでしょう。0 以上 x 未満の整数は、 <code>generate()</code> を使って次のように生成できます。このコードでは、 <code>generate()</code> の戻り値を x 倍することで「0 以上 x 未満の実数」にし、 そこから <code>Math.floor()</code> で小数点以下を切り捨てて「0 以上 x 未満の整数」にしています。</p>
+<pre><code class="language-javascript">Math.floor(g.game.localRandom.generate() * x);</code></pre>
 <h2>関連情報</h2>
 <ul>
-<li><a href="/tutorial/v3/library.html">拡張ライブラリを使う</a></li>
+<li><a href="/reference/akashic-engine-v3/classes/game.html#localrandom">API リファレンス</a></li>
 </ul>
 <div class="navi-center">
-<a href="./uninstall.html">前 (拡張ライブラリを削除する)</a>
+<a href="./random.html">前 (乱数を使う)</a>
  | <a href="../">目次</a>
- | <a href="../release/export-html.html">次 (HTML5 ゲームとして出力する)</a>
+ | <a href="./timer-timeout.html">次 (一定時間後に処理を実行する)</a>
 </div>
 
 			</div>

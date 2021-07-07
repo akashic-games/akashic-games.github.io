@@ -432,6 +432,65 @@ game.json は更新されません。package-lock.json がない場合、利用�
 <pre><code class="language-sh">akashic export zip [--output &lt;fileName&gt;]</code></pre>
 <p>ゲームディレクトリを zip 形式で圧縮したファイルを <code>&lt;fileName&gt;</code> に出力します。
 <code>--output</code> オプションが指定されなかった場合、 <code>./game.zip</code> が指定されたかのように振る舞います。存在するファイル名・ディレクトリ名を指定した場合、エラーになります。</p>
+<p>利用可能なオプションは次のとおりです:</p>
+<table>
+<thead>
+<tr>
+<th align="center">オプション</th>
+<th align="center">効果</th>
+<th align="center">デフォルト値</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>--output &lt;fileName&gt;</code></td>
+<td align="center">出力するファイルを <code>&lt;fileName&gt;</code> にする</td>
+<td align="center"><code>game.zip</code></td>
+</tr>
+<tr>
+<td align="center"><code>--bundle</code></td>
+<td align="center">スクリプトアセットを 1 つのファイルにまとめる</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--minify</code></td>
+<td align="center">スクリプトアセットを minify する</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--hash-filename</code></td>
+<td align="center">ファイル名を難読化する</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--no-strip</code></td>
+<td align="center">ゲーム実行に不要なファイルを出力から除外しない</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--no-es5-downpile</code></td>
+<td align="center">JavaScript を ES5 に変換しない</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--no-omit-empty-js</code></td>
+<td align="center">空のスクリプトファイルを出力を省略しない</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--no-omit-unbundled-js</code></td>
+<td align="center"><code>--bundle</code> オプションが指定されている場合でも不要なスクリプトファイルを除外しない</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--target-service &lt;service&gt;</code></td>
+<td align="center">指定されたサービスに合わせて出力を調整する</td>
+<td align="center"><code>none</code></td>
+</tr>
+</tbody></table>
+<p><code>--target-service</code> オプションは <code>none</code> または <code>nicolive</code> を指定できます。
+<code>nicolive</code> が指定された場合、ニコ生ゲームを想定したファイルとして出力します。</p>
+<p>ただし、ニコ生ゲームに投稿する場合には <code>akashic export html</code> の <code>--atsumaru</code> を利用してください。
+詳細はニコニコ生放送で遊べるゲームの作成の <a href="/guide/shin-ichiba/export-atsumaru">投稿と申請</a> を参照してください。</p>
 <h2><a name="export-html"></a> export html</h2>
 <pre><code class="language-sh">akashic export html --output &lt;dirName&gt; [--bundle] [--minify] [--magnify] [--no-strip]</code></pre>
 <p>単独でゲームを実行可能な HTML ファイル (と関連ファイル) を含むディレクトリを出力します。出力されたディレクトリの index.html を Web ブラウザで開くことで、 akashic-sandbox などの動作確認ツールなしにゲームを実行できます。</p>
@@ -471,7 +530,27 @@ game.json は更新されません。package-lock.json がない場合、利用�
 </tr>
 <tr>
 <td align="center"><code>--no-strip</code></td>
-<td align="center">ゲーム実行に不要なファイルを出力から除外しない</td>
+<td align="center">ゲーム実行に不要なファイルを出力から除外しない (通常は使用しないでください)</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--hash-filename</code></td>
+<td align="center">アセットファイル名を難読化する</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--auto-send-event-name &lt;eventName&gt;</code></td>
+<td align="center">ゲーム開始時に自動的に送信されるイベント名を指定する</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--atsumaru</code></td>
+<td align="center">ゲームアツマールとニコニコ生放送に対応した形式のファイルを生成する</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--no-omit-unbundled-js</code></td>
+<td align="center"><code>--atsumaru</code> オプションが指定されている場合でも不要なスクリプトファイルを除外しない</td>
 <td align="center">指定なし</td>
 </tr>
 </tbody></table>
@@ -481,6 +560,8 @@ game.json は更新されません。package-lock.json がない場合、利用�
 <p><code>./bundled</code> ではなく <code>../bundled</code> にするなど、ゲームのディレクトリの外を指定してください。この場合、 <code>../bundled/index.html</code> を Web ブラウザで開くと、単独でゲームを実行できます。
 (ゲーム実行には <code>../bundled/</code> 以下のファイルがすべて必要である点に注意してください)</p>
 <pre><code class="language-sh">$ akashic export html --output ../bundled</code></pre>
+<p><code>--auto-send-event-name &lt;eventName&gt;</code> オプションを指定する場合、 <code>sandbox.config.js</code> が必要となります。
+<code>sandbox.config.js</code> については <a href="/guide/sandbox-config.html">sandbox.config.js の仕様</a> を参照してください。</p>
 <h2><a name="stat"></a> stat</h2>
 <pre><code class="language-sh">akashic stat &lt;target&gt; [options...]</code></pre>
 <p><code>&lt;target&gt;</code> で指定された内容に関して情報を収集して出力します。現在 <code>&lt;target&gt;</code> に与えられるのは <code>size</code> のみです。</p>
