@@ -5,7 +5,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>文字列を太字にする</title>
+<title>Akashic Engine 向け拡張ライブラリを作成する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?5e73188c">
 <link rel="stylesheet" href="/css/header.css?5e73188c">
@@ -197,41 +197,191 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<h1>文字列を太字にする</h1>
-<p>文字列を太字にするには <code>g.DynamicFont</code> の <code>fontWeight</code> プロパティで <code>&quot;bold&quot;</code> を指定します。</p>
-<h2>凡例</h2>
-<pre><code class="language-javascript">var font = new g.DynamicFont({
-  game: g.game,
-  fontFamily: &quot;sans-serif&quot;,  // フォントファミリ
-  fontWeight: &quot;bold&quot;,  //  フォントウェイト
-  size: 15
-});
+				<h1>Akashic Engine 向け拡張ライブラリを作成する</h1>
+<blockquote>
+<p>本ページの内容は npm モジュール知識を前提にしています。詳細は <a href="https://docs.npmjs.com/packages-and-modules">npm の文書</a> などを参照してください</p>
+</blockquote>
+<p>Akashic Engine 向けに作成した拡張ライブラリは <a href="https://www.npmjs.com/">npmjs</a> や <a href="https://github.co.jp/features/packages">GitHub Packages</a> などにより公開することもできます。</p>
+<p>拡張ライブラリをパッケージを公開することで複数のゲームコンテンツでロジックを共有することができます。
+Akashic が提供する公式の拡張ライブラリも適宜参考にしてください。</p>
+<ul>
+<li><a href="https://github.com/akashic-games/akashic-timeline">akashic-timeline</a></li>
+<li><a href="https://github.com/akashic-games/akashic-label">akashic-label</a></li>
+<li><a href="https://github.com/akashic-games/akashic-box2d">akashic-box2d</a></li>
+</ul>
+<h2>準備</h2>
+<p>拡張ライブラリを npm モジュールとして公開する場合、以下のファイルが必要になります。</p>
+<ul>
+<li>package.json</li>
+<li>メインスクリプト (.js ファイル)</li>
+<li>README</li>
+<li>LICENCE (必要に応じて)</li>
+</ul>
+<p>以下では Akashic Engine の拡張ライブラリを作成する上で重要となる、メインスクリプトに関する説明を記述しています。</p>
+<h2>実装例 1: 独自のエンティティを提供するライブラリ</h2>
+<p><code>g.E</code> を拡張したクラスの作成は <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Inheritance_and_the_prototype_chain">JavaScript のプロトタイプチェーンと継承</a> により実現できます。
+TypeScript または EcmaScript 6 以上の実行をサポートしたブラウザでは <a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Classes">class シンタックス</a> により簡潔に記述できます。
+以下は class シンタックスを利用した <code>g.E</code> の継承例です。</p>
+<pre><code class="language-javascript">// 拡張ライブラリ側
 
-var label = new g.Label({
-  ...,      // その他のプロパティ
-  font: font,
-  text: &quot;Hello World!&quot;
-});
-scene.append(label);</code></pre>
-<h2>利用例</h2>
-<p>次のコンテンツは、 太字指定ありとなしの <code>Label</code> を表示しています。</p>
-<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvdGV4dC9ib2xkL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
+class HelloE extends g.E {
+  constructor(param) {
+    super(param);
+    // 初期化処理...
+  }
 
-<h2>詳細</h2>
-<p>太字にするには <code>g.DynamicFont</code> の <code>fontWeight</code> プロパティで <code>&quot;bold&quot;</code> を指定します。
-省略時には通常ウェイトの <code>&quot;normal&quot;</code> が指定されます。
-<code>fontWeight</code> は参照のためにのみ公開されているので、<code>g.DynamicFont</code> を生成後に値を変更することはできません。</p>
-<p>生成後の値は、 <code>fontWeight</code> プロパティで参照できます。</p>
-<pre><code class="language-javascript">font.fontWeight; // =&gt; &quot;bold&quot;</code></pre>
+  hello() {
+    console.log(&quot;hello!&quot;);
+  }
+}
+
+module.exports.HelloE = HelloE;</code></pre>
+<h3>ファイル構成</h3>
+<p>上記を npm モジュールとして公開する場合、以下のような package.json を作成します。(<code>npm init</code> コマンドでも作成できます。)</p>
+<p><code>name</code> や <code>license</code> などの各フィールドの内容は適宜変更してください。</p>
+<pre><code class="language-javascript">{
+  &quot;name&quot;: &quot;sample-library&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;Helloを言えるエンティティ&quot;,
+  &quot;author&quot;: &quot;akashic-games&quot;,
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;main&quot;: &quot;lib/index.js&quot;,
+  &quot;files&quot;: [
+    &quot;lib&quot; // lib ディレクトリをパッケージに含ませることに注意
+  ]
+}</code></pre>
+<p><code>main</code> には <code>HelloE</code> を exports した js ファイルを指定します。
+例えば <code>lib</code> ディレクトリに格納した場合は <code>lib/index.js</code> とします。
+<code>main</code> に指定したスクリプトファイルは忘れずに <code>files</code> へ記述しておく必要があります。</p>
+<p>大まかなファイル構成は以下となります。</p>
+<pre><code>package.json
+README
+LICENSE
+lib/index.js
+lib/index.d.ts (TypeScript で開発された場合)</code></pre><h3>ローカルでの動作確認</h3>
+<p><code>npm pack</code> コマンドを利用すると npm パッケージされる <code>.tgz</code> ファイルが生成できます。
+このファイルを <code>akashic install</code> コマンドでインストールすることでローカルで動作確認ができます。</p>
+<pre><code class="language-sh">$ npm pack # sample-library-1.0.0.tgz が出力される
+$ cd PATH/TO/CONTENT # コンテンツへ移動
+$ akashic install PATH/TO/LIBRARY/sample-library-1.0.0-tgz # 拡張ライブラリをローカルでインストール</code></pre>
+<p><code>akashic install</code> 後、コンテンツ側で以下のように <code>require()</code> が利用できるかを確認します。</p>
+<pre><code class="language-javascript">var HelloE = require(&quot;sample-library&quot;).HelloE;
+
+var e = new HelloE({
+  scene: g.game.scene()
+});
+e.hello(); // hello!</code></pre>
+<h3>拡張ライブラリの公開</h3>
+<p>ローカルでの動作確認ができれば npm パッケージとして公開できます。
+詳細については割愛しますが、 <code>npm adduser</code> で任意のパッケージホスティングサービスへ認証後 <code>npm publish</code> を実行します。</p>
+<pre><code class="language-sh">$ npm adduser # npmjs などにログイン
+$ npm publish # パッケージを公開</code></pre>
+<p>パッケージが公開されたかどうかについては <code>npm view</code> コマンドで確認できます。</p>
+<pre><code class="language-sh">$ npm view sample-library</code></pre>
+<h3>公開された拡張ライブラリの利用</h3>
+<p>公開された拡張ライブラリは、ローカルでの動作確認と同様に <code>akashic install</code> コマンドで利用できます。</p>
+<pre><code class="language-sh">$ akashic install sample-library</code></pre>
+<h2>実装例 2: 画像アセットを含んだ拡張ライブラリ</h2>
+<p>package.json と同一ディレクトリに akashic-lib.json という名前のファイルを設置しておくことで、<code>akashic install</code> コマンド時に画像アセットや音声アセットを自動的にスキャンすることができます。
+akashic-lib.json の仕様については <a href="/guide/akashic-lib.html">こちら</a> を参照してください。</p>
+<p>画像アセット・音声アセットを含むライブラリ側は、アセットのパスを解決するために <code>require.resolve()</code> を利用します。
+通常のゲーム開発であれば <code>scene.asset.getImage(&quot;/assets/sample.png&quot;)</code> のように game.json からのパスを指定してアセットを読み込みますが、
+拡張ライブラリ側では game.json の場所が不定となるため、この関数を使ってアセットのパスを解決します。</p>
+<blockquote>
+<p>拡張ライブラリ内で <code>scene.asset.getImage(&quot;/assets/sample.png&quot;)</code> を実行すると通常は game.json の場所をルートとして <code>/assets/sample.png</code> を参照してしまいます。しかしアセットの実ファイルは <code>/node_modules/sample-library/assets/sample.png</code> のように <code>node_modules</code> 以下に格納されているため、<code>resolve.require()</code> を使わないと常にアセットが見つからない状態となってしまいます。</p>
+</blockquote>
+<pre><code class="language-javascript">// 独自のアセットを利用したのスプライトを生成する例
+module.exports.createSprite = function(scene) {
+  var src = scene.asset.getImage(require.resolve(&quot;../image/frame.png&quot;)); // &quot;node_modules/sample-library/lib/index.js&quot; で実行された場合は &quot;node_modules/sample-library/image/frame.png&quot;
+  return new g.Sprite({
+    scene: scene,
+    src: src,
+    width: src.width,
+    height: src.height
+  });
+};</code></pre>
+<p>拡張ライブラリの利用側は、 <code>g.Scene</code> の生成時に <code>assetPaths</code> で読み込むアセットのパスを指定します。</p>
+<pre><code class="language-javascript">// main.js
+var createSprite = require(&quot;sample-library&quot;).createSprite;
+
+module.exports = function() {
+  var scene = new g.Scene({
+    // ...
+    assetPaths: [
+      &quot;/node_modules/sample-library/image/frame.png&quot; // ライブラリの画像アセットを指定 (通常はハードコーディングすべきではありません！)
+    ]
+  });
+
+  scene.onLoad.addOnce(function() {
+    var sprite = createSprite(scene);
+    // ...
+  });
+  // ...
+};</code></pre>
+<p>不要なハードコーディングを避けるためにも、拡張ライブラリ側で必要なアセットを利用側へ提供することを推奨します。
+以下は <code>getAssetPaths()</code> という関数でアセットパスの配列を export する例です。</p>
+<pre><code class="language-javascript">// my-dialog-lib
+
+// 必要なアセットのパスを配列として返す
+module.exports.getAssetPaths = function() {
+  return [
+    require.resolve(&quot;../image/frame.png&quot;),
+    require.resolve(&quot;../image/button.png&quot;)
+    // ...
+  ];
+};
+
+// 部分的に必要なアセットのパスを配列として返す
+module.exports.getConfirmDialogAssetPaths = function() {
+  return [
+    require.resolve(&quot;../image/confirm_frame.png&quot;),
+    require.resolve(&quot;../image/confirm_button.png&quot;)
+  ];
+};</code></pre>
+<p>利用側は <code>my-dialog-lib</code> が提供する関数を呼び出すだけでアセットパスを解決できます。</p>
+<pre><code class="language-javascript">var dlg = require(&quot;my-dialog-lib&quot;);
+
+module.exports = function() {
+  var scene = new g.Scene({
+    // ...
+    assetPaths: [
+      &quot;/assets/stage1/**/*&quot;,
+      ...dlg.getAssetPaths() // my-dialog-lib の実行に必要なアセット
+    ]
+  });
+
+  // ...
+
+  var scene2 = new g.Scene({
+    // ...
+    assetPaths: [
+      &quot;/assets/stage1/**/*&quot;,
+      ...dlg.getConfirmDialogAssetPaths() // 部分的に必要なアセット
+    ]
+  });
+};</code></pre>
+<h3>akashic-lib.json のスキャン</h3>
+<p>カレントディレクトリに akashic-lib.json が存在する状態で <code>akashic scan asset</code> を実行すると、 akashic-lib.json の <code>assetList</code> フィールドにアセットのスキャン結果が追記されます。
+スキャンを初めて実行する場合は <code>{}</code> のような空の JSON を含ませた akashic-lib.json をあらかじめ作成しておいてください。</p>
+<blockquote>
+<p>画像つきアセットを作成する場合はアセットファイルや akashic-lib.json を package.json の files フィールドに追加しておく必要があります。</p>
+</blockquote>
+<h2>注意点</h2>
+<p><strong>拡張ライブラリ内では <code>@akashic/akashic-engine</code> を <code>require()</code> しないでください。</strong></p>
+<p>Akashic における拡張ライブラリはゲームコンテンツと同様のコンテキスト・スコープで実行されるため、常に <code>globalThis.g</code> が参照できる状態となります。
+したがって、<code>var g = require(&quot;@akashic/akashic-engine&quot;)</code> のように <code>g</code> の値を解決してしまうとコンストラクタ等価性が失われ、意図しない挙動を起こしてしまいます。</p>
+<p>TypeScript の場合は <code>g</code> の型を解決する必要があります。
+型解決の仕方については akashic-engine のバージョンにより異なりますのでご留意ください。
+通常は <code>akashic init --type typescript</code> で出力される tsconfig.json の設定ファイルがそのまま利用できます。</p>
 <h2>関連情報</h2>
 <ul>
-<li><a href="/tutorial/v3/text.html">チュートリアル</a></li>
-<li><a href="/reference/akashic-engine-v3/classes/dynamicfont.html#fontweight">API リファレンス</a></li>
+<li><a href="/guide/akashic-lib.html">akashic-lib.json の仕様</a></li>
+<li><a href="/tutorial/v3/library.html">拡張ライブラリを使う</a></li>
 </ul>
 <div class="navi-center">
-<a href="./color.html">前 (文字列の色を変える)</a>
+<a href="./other-library.html">前 (非 Akashic Engine 向けライブラリを利用する)</a>
  | <a href="../">目次</a>
- | <a href="./align.html">次 (文字列を中央寄せ・右寄せする)</a>
+ | <a href="../release/export-html.html">次 (HTML5 ゲームとして出力する)</a>
 </div>
 
 			</div>
