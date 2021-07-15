@@ -1,0 +1,41 @@
+name: Issue Broken Link
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    name: Node ${{ matrix.node }} / ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [14.x]
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: linkcheck
+        run: |
+          npm install broken-link-checker
+          npx broken-link-checker https://akashic-games.github.io/ -o --requests 1 | grep BROKEN > ./link_check_result.txt
+        continue-on-error: true
+      - name: grep-result
+        id: result
+        run: |
+          BROKEN_RESULT="$(cat ./link_check_result.txt)"
+          BROKEN_RESULT="${BROKEN_RESULT//$'\n'/'%0A'}"
+          echo "::set-output name=BROKEN_RESULT::$BROKEN_RESULT"
+      - name: issue
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RESULT: ${{ steps.result.outputs.BROKEN_RESULT }}
+        with:
+          filename: .github/issue-linkcheck.md
