@@ -7,32 +7,29 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    name: Node ${{ matrix.node }} / ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [14.x]
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node }}
       - name: Checkout code
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0
-      - name: linkcheck
+          fetch-depth: 1
+      - name: link check
         run: |
           npm install broken-link-checker
           npx broken-link-checker https://akashic-games.github.io/ -o --requests 1 | grep BROKEN > ./link_check_result.txt
         continue-on-error: true
-      - name: grep-result
+      - name: save result
         id: result
         run: |
           BROKEN_RESULT="$(cat ./link_check_result.txt)"
           BROKEN_RESULT="${BROKEN_RESULT//$'\n'/'%0A'}"
           echo "::set-output name=BROKEN_RESULT::$BROKEN_RESULT"
-      - name: issue
+      - name: count result
+        id: count
+        run: |
+          echo "::set-output name=count::$(cat ./link_check_result.txt | wc -l)"
+      - name: create issue
+        if: steps.count.outputs.count > 0
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
