@@ -16,7 +16,7 @@ jobs:
       - name: link check
         run: |
           npm install broken-link-checker
-          npx broken-link-checker https://akashic-games.github.io/ -o --requests 1 | grep BROKEN > ./link_check_result.txt
+          npx broken-link-checker https://akashic-games.github.io/ -r -o --requests 1 | grep BROKEN > ./link_check_result.txt
         continue-on-error: true
       - name: save result
         id: result
