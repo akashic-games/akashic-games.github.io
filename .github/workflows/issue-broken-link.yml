@@ -35,5 +35,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RESULT: ${{ steps.result.outputs.BROKEN_RESULT }}
         with:
-          filename: .github/issue-linkcheck.md
+          filename: .github/issue-broken-link-template.md
           update_existing: true
