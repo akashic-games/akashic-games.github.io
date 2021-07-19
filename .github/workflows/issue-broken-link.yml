@@ -36,3 +36,4 @@ jobs:
           RESULT: ${{ steps.result.outputs.BROKEN_RESULT }}
         with:
           filename: .github/issue-linkcheck.md
+          update_existing: true
