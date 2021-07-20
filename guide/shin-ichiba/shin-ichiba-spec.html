@@ -112,7 +112,7 @@
 			<h1>ニコ生ゲーム関連の仕様</h1>
 <p>ここまでの文書で述べたことを含め、仕様や要求事項をまとめます。</p>
 <h2><a name="supported-modes"></a> モード</h2>
-<p>ニコ生ゲームでは、 game.json に <code>environment.niconico.supportedModes</code> の値が定義されている必要があります。</p>
+<p>ニコ生ゲームでは、 game.json に <code>environment.nicolive.supportedModes</code> の値が定義されている必要があります。</p>
 <p>この値は文字列の配列でなければなりません。
 配列の各要素は、次のいずれかでなければなりません。</p>
 <ul>
@@ -127,6 +127,12 @@
 <p>ゲームアツマール向けの設定 <code>environment.atsumaru.supportedModes</code> と混同しないよう注意してください。
 コンテンツがゲームアツマールでも動作する場合、両方指定することができます。
 詳細は <a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a> を参照してください。</p>
+</blockquote>
+<blockquote>
+<p>以前は <code>environment.nicolive</code> ではなく <code>environment.niconico</code> プロパティを利用していました。
+(同じニコニコのサービスである) ゲームアツマール向けの <code>environment.atsumaru</code> の追加に伴い、 <code>niconico</code> は非推奨になっています。
+互換性のため、当面の間 <code>environment.niconico</code> も引き続きサポートされます。
+<code>environment.niconico</code> と <code>environment.nicolive</code> が両方指定されている場合、 <code>niconico</code> 側の指定は無視されます。</p>
 </blockquote>
 <h2><a name="resolution-and-fps"></a> 解像度と FPS</h2>
 <p>次の値である必要があります。</p>
@@ -216,7 +222,7 @@ scene.loaded.add(function () {
 (ただしそうするとニコニコ生放送以外(ゲームアツマールなど)では動作しないコンテンツになってしまうので、「 <code>g.Scene#update</code> の fire を数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
 <h3><a name="mode"></a> モード (mode)</h3>
 <p>セッションパラメータ <code>sessionParameters</code> がある時、 <code>sessionParameters.mode</code> で <strong>モード</strong> を参照できます。</p>
-<p>この値は game.json の <code>environment.niconico.supportedModes</code> に記述した文字列のいずれかで、実際にゲームが起動されたモードを表します。
+<p>この値は game.json の <code>environment.nicolive.supportedModes</code> (旧仕様で投稿した場合は <code>environment.niconico.supportedModes</code>) に記述した文字列のいずれかで、実際にゲームが起動されたモードを表します。
 例えば、 <code>&quot;single&quot;</code> が送られてきたら「ひとりで遊ぶ」モードで、 <code>&quot;ranking&quot;</code> が送られてきたら「ランキング」モードで、ゲームが起動されています。</p>
 <h3><a name="total-time-limit"></a> 制限時間 (totalTimeLimit)</h3>
 <p>セッションパラメータ <code>sessionParameters</code> がある時、 <code>sessionParameters.totalTimeLimit</code> の値は <strong>制限時間</strong> です。</p>
@@ -243,7 +249,7 @@ scene.loaded.add(function () {
 <p>セッションパラメータ <code>sessionParameters</code> がある時、 <code>sessionParameters.gameTimeLimit</code> の値が与えられることがあります。</p>
 <p>この値は後方互換性のために残されているものです。 <code>totalTimeLimit</code> を利用してください。</p>
 <h2><a name="preferred-session-parameters"></a> prefereredSessionParameters</h2>
-<p>ニコ生ゲームの game.json に <code>environment.niconico.prefereredSessionParameters</code> フィールドがある場合、
+<p>ニコ生ゲームの game.json に <code>environment.nicolive.prefereredSessionParameters</code> フィールドがある場合、
 その内容はコンテンツにとって望ましいセッションパラメータの値として解釈されます。</p>
 <p><code>prefereredSessionParameters</code> は、与えられる場合、オブジェクトでなければなりません。
 そのプロパティとして指定できるものは次の通りです:</p>
@@ -263,6 +269,9 @@ scene.loaded.add(function () {
 </tbody></table>
 <p>この値はあくまでも参考値として扱われます。
 実際に渡されるセッションパラメータが、ここで指定した値と同じである保証はありません。</p>
+<blockquote>
+<p>後方互換性のため、 <code>environment.nicolive</code> がなく <code>environment.niconico</code> がある場合、そちらが参照されます。</p>
+</blockquote>
 <h2><a name="admission"></a> プレイヤーの募集</h2>
 <p><code>&quot;ranking&quot;</code>, <code>&quot;multi_admission&quot;</code> モードのニコ生ゲームは、ゲームの実際の起動に先立ってプレイヤーの募集が行われます。
 これはニコニコ生放送の <a href="https://site.live.nicovideo.jp/recent/namagame.html">生ゲームプレイ中</a> ページの「視聴者を待っている番組」欄に配信を掲出します。</p>

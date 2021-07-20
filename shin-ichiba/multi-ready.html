@@ -147,12 +147,12 @@
 <p><a href="./column-about-multi.html">次ページ</a> から、これを補足する内容のコラム形式の文書になるので、そちらも併せてご覧ください。</p>
 <h2><a name="declare-multi"></a> マルチプレイ対応の表明</h2>
 <p>一点だけ「単に Akashic ゲームを作成する」以外に必要な作業があり、それは「このゲームはマルチプレイゲームである」と表明することです。</p>
-<p>これは game.json の <code>environment.niconico.supportedModes</code> の値に <code>[&quot;multi_admission&quot;]</code> を設定することで行われます。</p>
+<p>これは game.json の <code>environment.nicolive.supportedModes</code> の値に <code>[&quot;multi_admission&quot;]</code> を設定することで行われます。</p>
 <pre><code>{
   // ... その他の記述 ...
 
   &quot;environment&quot;: {
-    &quot;niconico&quot;: {
+    &quot;nicolive&quot;: {
       &quot;supportedModes&quot;: [
         &quot;multi_admission&quot;
       ]
@@ -162,6 +162,11 @@
 <p><code>&quot;multi_admission&quot;</code> の代わりに <code>&quot;multi&quot;</code> を指定することもできます。
 <code>&quot;multi&quot;</code> の場合、起動時にプレイヤー募集が行われません。
 詳細は別項 <a href="../guide/shin-ichiba/shin-ichiba-spec.html#admission">プレイヤーの募集</a> を参照してください。</p>
+</blockquote>
+<blockquote>
+<p>以前は <code>environment.nicolive</code> ではなく <code>environment.niconico</code> プロパティを利用していました。
+現在 <code>environment.niconico</code> は非推奨になっています。
+詳細は別項 <a href="../guide/shin-ichiba/shin-ichiba-spec.html#supported-modes">ニコ生ゲーム関連の仕様</a> を参照してください。</p>
 </blockquote>
 <h2><a name="player-info"></a> ユーザ名の取得</h2>
 <p>マルチプレイのニコ生ゲームでは、ニコニコのユーザ名を利用することができます。
@@ -204,7 +209,7 @@
   // ... その他の記述 ...
 
   &quot;environment&quot;: {
-    &quot;niconico&quot;: {
+    &quot;nicolive&quot;: {
       &quot;supportedModes&quot;: [&quot;multi_admission&quot;]
     },
     &quot;atsumaru&quot;: {

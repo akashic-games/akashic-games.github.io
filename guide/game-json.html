@@ -312,9 +312,19 @@ akashic-engine&#64;1.11.2 では <code>&quot;default&quot;</code> または <cod
 <td>akashic-sandbox でゲームを実行する際、実行するエンジンのバージョンを決定するために利用されます。 akashic-engine&#64;2.0.0 以降で作成しているゲームの場合、 `"2"` を指定してください。省略された場合、 `"1"` として解釈されます。</td>
 </tr>
 <tr>
+<td><code>"atsumaru"</code></td>
+<td>オブジェクト</td>
+<td>ゲームアツマールへの投稿時に参照される設定。詳細は <a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a> を参照してください。</td>
+</tr>
+<tr>
+<td><code>"nicolive"</code></td>
+<td>オブジェクト</td>
+<td>ニコ生ゲームとして登録する場合に参照される設定。詳細は <a href="/guide/shin-ichiba/">ニコニコ生放送上で遊べるゲームの作成</a> を参照してください。</td>
+</tr>
+<tr>
 <td><code>"niconico"</code></td>
 <td>オブジェクト</td>
-<td>ニコニコ生放送上で利用できるように登録する場合に参照される設定。詳細は <a href="/guide/shin-ichiba/">ニコニコ生放送上で遊べるゲームの作成</a> を参照してください。</td>
+<td>非推奨。ニコ生ゲームとして登録する場合の情報としては、 `"nicolive"` を利用してください。この値は後方互換性のために残されていますが、非推奨です。 `"nicolive"` と両方指定されている場合、無視されます。</td>
 </tr>
 </tbody>
 </table>
