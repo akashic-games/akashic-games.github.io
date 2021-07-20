@@ -273,6 +273,11 @@ scene.onLoad.add(function() {
 <li><code>raiseEvent()</code> されたイベントを処理してゲームのグローバルな実行状態を変更する (全員がプレイヤー A の矩形の色情報を更新する)</li>
 </ol>
 <p><code>raiseEvent()</code> はローカルイベントの処理中にしか呼び出すべきではないことに注意してください。非ローカルイベントで行う処理は全プレイヤーが実行するため、そこで <code>raiseEvent()</code> を呼び出すと、プレイヤーの人数分のイベントが輻輳して送信されることになってしまいます。</p>
+<blockquote>
+<p><strong><code>raiseEvent()</code> でイベントを送信する際、 <code>undefined</code> を送信しないでください</strong>。実装上の制約のため、この値は一部サービス上で <code>null</code> に変換される場合があります。
+akashic-cli v2.10.17 以降の akashic serve では、動作確認のためこの挙動を再現します。</p>
+<p>Tips: <code>undefined</code> または <code>null</code> を判定したい場合は厳格等価演算子 (<code>=== undefined</code>) の代わりに等価演算子 (<code>== null</code>) を利用することができます。</p>
+</blockquote>
 <p><a name="local-operation"></a></p>
 <h2>ローカル処理とその制限</h2>
 <p>ローカルイベントに起因して実行される処理を、<strong>ローカル処理</strong> と呼ぶことにします。</p>
