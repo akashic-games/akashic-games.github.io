@@ -227,12 +227,12 @@ $ akashic init -t typescript-shin-ichiba-ranking    # TypeScript版のサンプ�
 <p>たとえば制限時間から逆算して「クリア画面」を作るような場合、念のため、<strong>制限時間の 10 秒ほど前にはゲーム上の演出が完了するように作る</strong> ことを推奨します。</p>
 <h2><a name="declare-time-limit"> 制限時間の表明</h2>
 <p>制限時間 <code>totalTimeLimit</code> の値は、ゲーム開発者の希望する値を game.json で表明することができます。
-game.json で <code>environment.niconico.preferredSessionParameters.totalTimeLimit</code> を指定することで、
+game.json で <code>environment.nicolive.preferredSessionParameters.totalTimeLimit</code> を指定することで、
 ニコ生ゲームはその値を参照して制限時間を決定します。</p>
 <p>たとえば、デフォルトの 80 秒前後ではなく 30 秒で終わるゲームが作成したい場合は、 game.json に次のように記述します。</p>
 <pre><code class="language-json">{
   &quot;environment&quot;: {
-    &quot;niconico&quot;: {
+    &quot;nicolive&quot;: {
       &quot;supportedModes&quot;: [&quot;ranking&quot;],
       &quot;preferredSessionParameters&quot;: {
         &quot;totalTimeLimit&quot;: 30

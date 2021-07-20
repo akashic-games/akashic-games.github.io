@@ -207,16 +207,21 @@ cd game</code></pre><p><code>mkdir</code> で <code>game</code> というフォ�
 <p>現実にオリジナルのゲームを作る場合は、このコードを削って作成するのが簡単でしょう。具体的なゲーム作成方法は <a href="https://akashic-games.github.io/tutorial/v3/" target="_blank">Akashic Engine 入門</a> (別ページで開きます) の「シングルプレイのゲーム作成」パートを参照してください。以下「入門」ページを読んだ後の読者を想定します。</p>
 <h2><a name="declare-ranking"></a> ランキング対応の表明</h2>
 <p>最初に必要なのは「この Akashic ゲームはランキング対応ゲームである」と表明することです。</p>
-<p>これは game.json の <code>environment.niconico.supportedModes</code> の値に <code>[&quot;ranking&quot;]</code> を設定することで行われます。テンプレートコードの game.json では、既に次のように記述されています。</p>
+<p>これは game.json の <code>environment.nicolive.supportedModes</code> の値に <code>[&quot;ranking&quot;]</code> を設定することで行われます。テンプレートコードの game.json では、既に次のように記述されています。</p>
 <pre><code class="language-json">{
   // ... その他の記述 ...
 
   &quot;environment&quot;: {
-    &quot;niconico&quot;: {
+    &quot;nicolive&quot;: {
       &quot;supportedModes&quot;: [&quot;ranking&quot;]
     }
   }
 }</code></pre>
+<blockquote>
+<p>以前は <code>environment.nicolive</code> ではなく <code>environment.niconico</code> プロパティを利用していました。
+現在 <code>environment.niconico</code> は非推奨になっています。
+詳細は別項 <a href="../guide/shin-ichiba/shin-ichiba-spec.html#supported-modes">ニコ生ゲーム関連の仕様</a> を参照してください。</p>
+</blockquote>
 <h2><a name="declare-timelimit"></a> 制限時間の申告</h2>
 <p>表明した以上はランキング対応でなければなりません。単なるシングルプレイの Akashic ゲームと、ランキング対応ゲームの違いは、大きく次の二つです。</p>
 <ul>
@@ -224,13 +229,13 @@ cd game</code></pre><p><code>mkdir</code> で <code>game</code> というフォ�
 <li>スコアが自動的に集計され、ランキング形式で発表されること</li>
 </ul>
 <p>そのためまず決めることは <strong>制限時間</strong> 、「このゲームは何秒のゲームなのか」です。
-game.json に <code>environment.niconico.preferredSessionParameters.totalTimeLimit</code> の項目を記述すると、希望の制限時間を申告することができます。</p>
+game.json に <code>environment.nicolive.preferredSessionParameters.totalTimeLimit</code> の項目を記述すると、希望の制限時間を申告することができます。</p>
 <p>次の例では、希望制限時間を 30 秒としています。</p>
 <pre><code class="language-json">{
   // ... その他の記述 ...
 
   &quot;environment&quot;: {
-    &quot;niconico&quot;: {
+    &quot;nicolive&quot;: {
       &quot;supportedModes&quot;: [&quot;ranking&quot;],
       &quot;preferredSessionParameters&quot;: {
         &quot;totalTimeLimit&quot;: 30
@@ -240,6 +245,9 @@ game.json に <code>environment.niconico.preferredSessionParameters.totalTimeLim
 }</code></pre>
 <p><code>totalTimeLimit</code> には 20 以上 200 以下の整数を指定できます。</p>
 <p>特に指定しなかった場合は、適当なデフォルト値が使われます (現在は 80 秒程度になります)。テンプレートでは特に指定していないので、必要なら上の例を参考に記述を追加してください。</p>
+<blockquote>
+<p>後方互換性のため、 <code>environment.nicolive</code> がなく <code>environment.niconico</code> がある場合、そちらが参照されます。</p>
+</blockquote>
 <h2><a name="handle-timelimit"></a> 制限時間の処理</h2>
 <p>制限時間は、上記のように申告さえしておけば (あるいはしなくても) 他の対応は不要です。 <strong>ゲームは制限時間に応じて自動的に・強制的に終了されます</strong> 。</p>
 <p>しかし現実には、「残り時間をゲーム画面に表示したい」といったことはよくあるでしょう。

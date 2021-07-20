@@ -127,11 +127,11 @@
 <li><strong>ひとりで遊ぶモード</strong> (<code>&quot;single&quot;</code>): 一人プレイのゲームを放送者が遊び、視聴者はその様子を見る</li>
 <li><strong>みんなで遊ぶモード</strong> (<code>&quot;multi_admission&quot;</code>): 放送者と視聴者複数人で一つのゲームプレイで遊ぶ</li>
 </ul>
-<p>モードを指定するには、<code>game.json</code> に <code>environment.niconico.supportedModes</code> プロパティを加え、そのゲームが対応するモードを(配列で)全て列挙してください。ニコニコ生放送には、ここで列挙されたそれぞれのモードで起動できるように登録されます。</p>
+<p>モードを指定するには、<code>game.json</code> に <code>environment.nicolive.supportedModes</code> プロパティを加え、そのゲームが対応するモードを(配列で)全て列挙してください。ニコニコ生放送には、ここで列挙されたそれぞれのモードで起動できるように登録されます。</p>
 <p>次の例は、ランキングモードに対応する game.json の記述例です。</p>
 <pre><code class="language-json">{
   &quot;environment&quot;: {
-    &quot;niconico&quot;: {
+    &quot;nicolive&quot;: {
       &quot;supportedModes&quot;: [&quot;ranking&quot;]
     }
   }
@@ -140,6 +140,9 @@
 それ以外のモードでは、そのような条件はありません。普通の Akashic Engine のコンテンツとしてシングルプレイ・マルチプレイのコンテンツを作るだけで投稿できます。</p>
 <blockquote>
 <p><code>&quot;multi_admission&quot;</code> の代わりに <code>&quot;multi&quot;</code> を指定することもできます。 <code>&quot;multi&quot;</code> は「起動時にニコ生がプレイヤー募集を行わない」点を除き <code>&quot;multi_admission&quot;</code> と同じです。特に意図がなければ、募集を行う <code>&quot;multi_admission&quot;</code> の利用をおすすめします。詳細は <a href="./shin-ichiba-spec.html#admission">プレイヤーの募集</a> を参照してください。</p>
+</blockquote>
+<blockquote>
+<p>以前は <code>environment.nicolive</code> ではなく <code>environment.niconico</code> プロパティを利用していました。現在 <code>environment.niconico</code> は非推奨になっています。詳細は <a href="./shin-ichiba-spec.html#supported-modes">ニコ生ゲーム関連の仕様</a> を参照してください。</p>
 </blockquote>
 <h2><a name="resolution-and-fps"></a> 解像度と FPS</h2>
 <p>モードを決めたら、それに応じたコンテンツを作る必要があります。
