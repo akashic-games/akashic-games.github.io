@@ -308,8 +308,8 @@ akashic-engine&#64;1.11.2 では <code>&quot;default&quot;</code> または <cod
 <tbody>
 <tr>
 <td><code>"sandbox-runtime"</code></td>
-<td><code>"1"</code> または <code>"2"</code> (文字列)</td>
-<td>akashic-sandbox でゲームを実行する際、実行するエンジンのバージョンを決定するために利用されます。 akashic-engine&#64;2.0.0 以降で作成しているゲームの場合、 `"2"` を指定してください。省略された場合、 `"1"` として解釈されます。</td>
+<td><code>"1"</code>, <code>"2"</code> または <code>"3"</code> (文字列)</td>
+<td>akashic-sandbox でゲームを実行する際、実行するエンジンのバージョンを決定するために利用されます。<br>Akashic Engine v3 系で作成しているゲームの場合、 <code>"3"</code> を指定してください。<br/>v2 系で作成しているゲームの場合、 <code>"2"</code> を指定してください。<br>省略された場合、 <code>"1"</code> として解釈されます。</td>
 </tr>
 <tr>
 <td><code>"atsumaru"</code></td>
@@ -370,7 +370,10 @@ akashic-engine&#64;1.11.2 では <code>&quot;default&quot;</code> または <cod
     &quot;node_modules/@akashic-extension/akashic-timeline/lib/Tween.js&quot;,
     &quot;node_modules/@akashic-extension/akashic-timeline/lib/index.js&quot;,
     &quot;node_modules/@akashic-extension/akashic-timeline/package.json&quot;
-  ]
+  ],
+  &quot;environment&quot;: {
+    &quot;sandbox-runtime&quot;: &quot;2&quot;
+  }
 }</code></pre>
 
 		</div>

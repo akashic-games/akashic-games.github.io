@@ -267,6 +267,11 @@ module.exports = main;</code></pre>
 <p>続けてゲームの高さ (height) と FPS を指定できます。ここではどちらも初期値を使います。値の指定が終わると、</p>
 <pre><code class="language-sh">INFO: Done!</code></pre>
 <p>と表示され、いくつかのファイルやフォルダが作られます。</p>
+<blockquote>
+<p><code>akashic</code> のバージョンが古い場合、Akashic Engine v2 系 (旧版) 向けのゲームが生成されてしまうので注意してください。
+生成された game.json を開いて、 <code>&quot;environment&quot;</code> の <code>&quot;sandbox-runtime&quot;</code> が <code>&quot;3&quot;</code> になっていれば、v3 系のコンテンツが生成されています。</p>
+<p>古い場合は <code>npm install -g @akashic/akashic-cli</code> を実行して更新できます。</p>
+</blockquote>
 <p><code>akashic init</code> は予め用意されたテンプレートをもとにファイルを作成します。
 利用するテンプレートの種類は <code>-t</code> オプションで切り替えることができます。
 標準で対応しているテンプレートは以下の通りです。
