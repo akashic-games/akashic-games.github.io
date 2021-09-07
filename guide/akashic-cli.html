@@ -382,22 +382,95 @@ Akashic Engine v3 以降で利用できる <a href="/tutorial/v3/assetPaths.html
 <td align="center"><code>3300</code></td>
 </tr>
 <tr>
+<td align="center"><code>--verbose</code></td>
+<td align="center"><code>-v</code></td>
+<td align="center">詳細情報をログ出力します。</td>
+<td align="center"><code>false</code></td>
+</tr>
+<tr>
+<td align="center"><code>--no-auto-start</code></td>
+<td align="center"><code>-A</code></td>
+<td align="center">ブラウザ画面を開いた時、コンテンツに引数を渡す起動画面を表示します。</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
 <td align="center"><code>--target-service &lt;name&gt;</code></td>
 <td align="center"><code>-s</code></td>
 <td align="center">指定されたサービスの挙動を模擬します。(後述)</td>
 <td align="center"><code>none</code></td>
 </tr>
 <tr>
-<td align="center"><code>--verbose</code></td>
-<td align="center"><code>-v</code></td>
-<td align="center">詳細情報をログ出力します。</td>
-<td align="center"><code>false</code></td>
+<td align="center"><code>--watch</code></td>
+<td align="center"><code>-W</code></td>
+<td align="center">アセットディレクトリを監視し、変更時にホットリロードを行います。</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--server-external-script &lt;filepath&gt;</code></td>
+<td align="center">N/A</td>
+<td align="center">指定ファイルの js を評価し、Game#external に代入します。</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--debug-playlog &lt;path&gt;</code></td>
+<td align="center">N/A</td>
+<td align="center">指定した playlog.json を読み込みます。</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--allow-external</code></td>
+<td align="center">N/A</td>
+<td align="center">sandbox.config.js からの外部アクセスを許可する URL を読み込みます。</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--no-open-browser</code></td>
+<td align="center">N/A</td>
+<td align="center">起動時にブラウザを開かないようにします。</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--preserve-disconnected</code></td>
+<td align="center">N/A</td>
+<td align="center">サーバとの切断時に子ウィンドウを閉じないようにします。</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--experimental-open &lt;num&gt;</code></td>
+<td align="center">N/A</td>
+<td align="center">指定数の子ウィンドウを開いて起動します。</td>
+<td align="center">指定なし</td>
 </tr>
 </tbody></table>
 <p>ネットワークごしに(他の PC などから)マルチプレイを行いたい場合は、 <code>--hostname</code> に外部からアクセス可能なホスト名(IP アドレスなど)を指定してください。</p>
-<p>オプション <code>--target-service</code> には <code>none</code> または <code>nicolive</code> を指定できます。
-<code>nicolive</code> が指定された場合、特定の条件で <code>JoinEvent</code> が自動的に送られるなど、ニコニコ生放送に近い挙動で動作します。
-詳細はニコ生ゲームのガイド文書 <a href="/guide/shin-ichiba/multi.html#debug">multi_admission モードのゲーム作成</a> を参照してください。</p>
+<p>オプション <code>--target-service</code> には下記の値を指定できます。</p>
+<ul>
+<li><code>nicolive</code>: ニコニコ生放送</li>
+<li><code>atsumaru:single</code>: ゲームアツマール シングル<ul>
+<li>(<code>atsumaru</code> は非推奨となり <code>atsumaru:single</code> のエイリアスとなります。)</li>
+</ul>
+</li>
+<li><code>atsumaru:multi</code>: ゲームアツマール マルチ</li>
+<li><code>none</code>: なし (デフォルト値)</li>
+</ul>
+<p><code>atsumaru:single</code> が指定された場合、<code>window.RPGAtsumaru</code> が使用できるようになります。
+<code>RPGAtsumaru</code> はゲームアツマールでの実行時 (マルチプレイ除く) にのみ使える API です。詳細は<a href="https://atsumaru.github.io/api-references/">ゲームアツマール API リファレンス</a>を参照してください。</p>
+<p>akashic serve では、Akashic ゲームから利用頻度の高い一部機能(<code>RPGAtsumaru.scoreboards</code> や <code>RPGAtsumaru.volume</code> など)のモックを提供しています。
+モックはダミー実装で、完全な動作確認用ではなくゲームアツマール向けのコードを扱うパスの簡易的な確認用となります。ほとんどが呼び出すとコンソールログが出力されるだけとなります。
+モックの動作は詳細な文書化はされていないため、こちらの<a href="https://github.com/akashic-games/akashic-cli/blob/master/packages/akashic-cli-serve/src/client/atsumaru/RPGAtsumaruApi.ts">ソースコード</a>を参照する必要があります。</p>
+<p><code>nicolive</code>, <code>atsumaru:multi</code> が指定された場合、特定の条件で <code>JoinEvent</code> が自動的に送られるなど、ニコニコ生放送に近い次のような挙動で動作します。</p>
+<ul>
+<li>放送者役をいちいち Join させなくてもいいように<ul>
+<li>起動後、最初に開かれたブラウザウィンドウのプレイヤーを必ず Join させる</li>
+<li>「新規プレイ」ボタンでゲームを始める時も、このブラウザウィンドウのプレイヤーを Join させる</li>
+<li>「Join Me」ボタンが無効になる</li>
+</ul>
+</li>
+<li>コンテンツ起動時に与えられる引数を、ニコニコ生放送と同様のものに<ul>
+<li>詳細割愛 (通常、ゲーム開発者がこの値を参照する必要はありません)</li>
+</ul>
+</li>
+</ul>
 <h2><a name="install"></a> install</h2>
 <pre><code class="language-sh">akashic install [&lt;module&gt;]</code></pre>
 <p><code>npm install</code> のラッパーコマンドです。</p>
