@@ -193,9 +193,10 @@ scene.loaded.add(() =&gt; {
 <pre><code class="language-plaintext">g.game.vars.gameState.clearThreshold</code></pre>
 <p>ただしこの値は将来の拡張のために予約されているものです。現在のところ参照されません。</p>
 <h2><a name="session-parameter"></a> セッションパラメータ</h2>
-<p>ニコニコ生放送で実行されている時、ニコ生ゲームにはいくつかの追加情報が与えられます:</p>
+<p>実行時、ニコ生ゲームにはいくつかの追加情報が与えられます:</p>
 <ul>
-<li>どのモードでゲームが起動されたか</li>
+<li>どのサービスで実行されているか</li>
+<li>どのモードで起動されたか</li>
 <li>ランキングモード時の制限時間</li>
 <li>ランキングモード時の共通乱数シード など</li>
 </ul>
@@ -220,7 +221,24 @@ scene.loaded.add(function () {
 <p>セッションパラメータが与えられない場合には、そもそもこのイベントが来ないか、あるいは来たイベントに <code>parameters</code> がありません。</p>
 <p>Akashic Engine では通常、イベントはシーンのロードタイミング(<code>g.Scene#loaded</code>)より後に受信されるため、 <code>loaded</code> の処理中にはこの値を参照できないことに注意してください。これは仕様による制限です。</p>
 <p>厳密にセッションパラメータの受信を待って <code>loaded</code> の初期化処理を行いたい場合は、 <code>loaded</code> ではなく <code>message</code> トリガーの fire を待って処理を行う必要があります。
-(ただしそうするとニコニコ生放送以外(ゲームアツマールなど)では動作しないコンテンツになってしまうので、「 <code>g.Scene#update</code> の fire を数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
+(ただしそうするとセッションパラメータが送られない環境(ゲームアツマールのシングルプレイゲームなど)では動作しないコンテンツになってしまうので、「 <code>g.Scene#update</code> の fire を数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
+<h3><a name="service"></a> サービス (service)</h3>
+<p>セッションパラメータ <code>sessionParameters</code> がある時、 <code>sessionParameters.service</code> は実行環境を表す値です。</p>
+<p>値は次のいずれかです:</p>
+<ul>
+<li><code>&quot;nicolive&quot;</code>: ニコニコ生放送</li>
+<li><code>&quot;atsumaru&quot;</code>: ゲームアツマール (のマルチプレイ)</li>
+</ul>
+<blockquote>
+<p>セッションパラメータはニコニコ生放送の仕様ですが、この値から分かるようにゲームアツマールでも与えられます。</p>
+<p>ただし技術的背景の違いから、 <strong>ゲームアツマールでもシングルプレイの場合には与えられない</strong> ことに注意してください。
+これにはランキングモードのニコ生ゲームがアツマールで起動された場合も該当します。
+以下の <code>totalTimeLimit</code> (ランキングモードの制限時間情報) なども含めて、シングルプレイのアツマール環境では与えられません。</p>
+<p>実質的に、現在のこの値は <strong>アツマールとニコ生で別の処理を行いたいマルチプレイゲーム</strong> のための値です。</p>
+<p>たとえばゲームアツマールには、「配信者」にあたるプレイヤーが存在しないので、
+「配信者が口頭で視聴者に向けて発言すること」を活用したニコ生ゲームはそのままでは遊べません。
+このような場合に、この値で処理を分岐することで「アツマールでは配信者なしで遊べるルールで動作させる」などの対応が可能です。</p>
+</blockquote>
 <h3><a name="mode"></a> モード (mode)</h3>
 <p>セッションパラメータ <code>sessionParameters</code> がある時、 <code>sessionParameters.mode</code> で <strong>モード</strong> を参照できます。</p>
 <p>この値は game.json の <code>environment.nicolive.supportedModes</code> (旧仕様で投稿した場合は <code>environment.niconico.supportedModes</code>) に記述した文字列のいずれかで、実際にゲームが起動されたモードを表します。
