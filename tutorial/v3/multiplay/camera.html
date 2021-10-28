@@ -151,11 +151,13 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>プレイヤーごとに異なる位置を表示する</h1>
+<p>このページのサンプルコードを<a class="asset--material--download" href="/zip/tutorial/v3/multiplay/sample-camera.zip">ダウンロード</a></p>
+
 <p>広いフィールドの一部を画面に表示するようなゲームの場合、マルチプレイではプレイヤーごとに異なる場所を表示したくなることが考えられます。そのような場合のために、Akashic Engine は <code>g.Camera</code> を提供しています。</p>
 <p><a name="camera"></a></p>
 <h2>カメラ</h2>
 <p>カメラは、インターフェース <code>g.Camera</code> で表現されます。現在の Akashic Engine が実装を提供する唯一のカメラは <code>g.Camera2D</code> です。これは 2D ゲーム用途のカメラであり、次のように生成することができます。</p>
-<pre><code>var camera = new g.Camera2D({ game: g.game });</code></pre><p>生成されたカメラは、そのままでは描画に影響を与えません。カメラを <code>g.Game#focusingCamera</code> に設定することで、ゲーム画面の描画に対してカメラの設定を適用することができます。</p>
+<pre><code>var camera = new g.Camera2D({});</code></pre><p>生成されたカメラは、そのままでは描画に影響を与えません。カメラを <code>g.Game#focusingCamera</code> に設定することで、ゲーム画面の描画に対してカメラの設定を適用することができます。</p>
 <pre><code>g.game.focusingCamera = camera;</code></pre><p>この状態で <code>camera</code> のプロパティを変更することで、ゲーム画面全体の描画内容を制御することができます。</p>
 <p><code>Camera2D</code> は <code>Object2D</code> を実装しており、<code>x</code>, <code>y</code> によって描画位置のオフセットや、<code>scaleX</code>, <code>scaleY</code> によって描画結果の拡大率を設定できます。たとえば以下のような記述により、画面全体を 30 度傾けることができます。</p>
 <pre><code>camera.angle = 30;
