@@ -442,6 +442,18 @@ Akashic Engine v3 以降で利用できる <a href="/tutorial/v3/assetPaths.html
 <td align="center">指定数の子ウィンドウを開いて起動します。</td>
 <td align="center">指定なし</td>
 </tr>
+<tr>
+<td align="center"><code>--ssl-cert &lt;certificatePath&gt;</code></td>
+<td align="center">N/A</td>
+<td align="center">HTTPS で起動するための SSL 証明書のパスを指定します。</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--ssl-key &lt;privatekeyPath&gt;</code></td>
+<td align="center">N/A</td>
+<td align="center">HTTPS で起動するための 秘密鍵のパスを指定します。</td>
+<td align="center">指定なし</td>
+</tr>
 </tbody></table>
 <p>ネットワークごしに(他の PC などから)マルチプレイを行いたい場合は、 <code>--hostname</code> に外部からアクセス可能なホスト名(IP アドレスなど)を指定してください。</p>
 <p>オプション <code>--target-service</code> には下記の値を指定できます。</p>
@@ -472,6 +484,10 @@ Akashic Engine v3 以降で利用できる <a href="/tutorial/v3/assetPaths.html
 </ul>
 </li>
 </ul>
+<p>HTTPS で起動する場合は、<code>--ssl-cert</code> と <code>--ssl-key</code> オプションを指定してください。
+自己証明書による起動もできますが、OS やブラウザにより証明書を登録する必要などがあり得ます。</p>
+<p>また、自己証明書での起動では、<code>node-fetch</code> で自己証明書によるエラーが出ますので、下記のように証明書エラーを無視する環境変数を設定して serve を起動する必要があります。</p>
+<pre><code class="language-sh">env NODE_TLS_REJECT_UNAUTHORIZED=0 akashic serve . --ssl-cert &lt;certificatePath&gt; --ssl-key &lt;privatekeyPath&gt;</code></pre>
 <h2><a name="install"></a> install</h2>
 <pre><code class="language-sh">akashic install [&lt;module&gt;]</code></pre>
 <p><code>npm install</code> のラッパーコマンドです。</p>
