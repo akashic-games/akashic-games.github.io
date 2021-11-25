@@ -1,0 +1,42 @@
+{
+	"width": 320,
+	"height": 320,
+	"fps": 60,
+	"main": "./main.js",
+	"assets": {
+		"main": {
+			"type": "script",
+			"path": "main.js",
+			"global": true
+		}
+	},
+	"moduleMainScripts": {
+		"@akashic-extension/collision-js": "node_modules/@akashic-extension/collision-js/lib/index.js"
+	},
+	"globalScripts": [
+		"node_modules/@akashic-extension/collision-js/lib/math/Vec2.js",
+		"node_modules/@akashic-extension/collision-js/lib/math/Vec3.js",
+		"node_modules/@akashic-extension/collision-js/lib/math/Mat22.js",
+		"node_modules/@akashic-extension/collision-js/lib/math/utils.js",
+		"node_modules/@akashic-extension/collision-js/lib/math/index.js",
+		"node_modules/@akashic-extension/collision-js/lib/math/Vec3Like.js",
+		"node_modules/@akashic-extension/collision-js/lib/math/Vec2Like.js",
+		"node_modules/@akashic-extension/collision-js/lib/math/Mat33.js",
+		"node_modules/@akashic-extension/collision-js/lib/index.js",
+		"node_modules/@akashic-extension/collision-js/lib/sign.js",
+		"node_modules/@akashic-extension/collision-js/lib/collision/Line.js",
+		"node_modules/@akashic-extension/collision-js/lib/collision/AABB.js",
+		"node_modules/@akashic-extension/collision-js/lib/collision/Box.js",
+		"node_modules/@akashic-extension/collision-js/lib/collision/intersect.js",
+		"node_modules/@akashic-extension/collision-js/lib/collision/gjk.js",
+		"node_modules/@akashic-extension/collision-js/lib/collision/Circle.js",
+		"node_modules/@akashic-extension/collision-js/lib/collision/Segment.js",
+		"node_modules/@akashic-extension/collision-js/lib/collision/Polygon.js",
+		"node_modules/@akashic-extension/collision-js/lib/collision/Contact.js",
+		"node_modules/@akashic-extension/collision-js/lib/collision/index.js",
+		"node_modules/@akashic-extension/collision-js/package.json"
+	],
+	"environment": {
+		"sandbox-runtime": "3"
+	}
+}

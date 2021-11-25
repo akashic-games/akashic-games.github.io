@@ -31,6 +31,11 @@
 			"dir": "demo-tile"
 		},
 		{
+			"caption": "SVGサンプル",
+			"description": "SVGを利用したサンプルコンテンツです。",
+			"dir": "svg-sample"
+		},
+		{
 			"caption": "akashic-label",
 			"description": "拡張ライブラリ[akashic-label](https://github.com/akashic-games/akashic-label)でルビや改行を含むテキストを描画することが出来ます。",
 			"dir": "label-sample"
