@@ -104,7 +104,7 @@
 					<div class="tsd-signature tsd-kind-icon">args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/d5c298f/src/GameMainParameterObject.ts#L16">src/GameMainParameterObject.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/e752bf7/src/GameMainParameterObject.ts#L18">src/GameMainParameterObject.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -119,7 +119,7 @@
 					<div class="tsd-signature tsd-kind-icon">global<wbr>Args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/d5c298f/src/GameMainParameterObject.ts#L23">src/GameMainParameterObject.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/e752bf7/src/GameMainParameterObject.ts#L25">src/GameMainParameterObject.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -136,15 +136,17 @@
 					<div class="tsd-signature tsd-kind-icon">snapshot<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/d5c298f/src/GameMainParameterObject.ts#L11">src/GameMainParameterObject.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/akashic-games/akashic-engine/blob/e752bf7/src/GameMainParameterObject.ts#L13">src/GameMainParameterObject.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>スナップショット。</p>
 						</div>
-						<p>以前にこのゲームによって <code>Game#saveSnapshot()</code> を呼び出した時に渡した値のいずれかが与えられる。
-						指定された場合、ゲーム開発者は <code>saveSnapshot()</code> 呼び出し時のゲームの実行状態を再現せねばならない。</p>
+						<p>以前にこのゲームが <code>Game#reqestSaveSnapshot()</code> で保存を要求したスナップショットのいずれかが渡される。
+							指定された場合、ゲーム開発者はスナップショット生成時のゲームの実行状態を再現せねばならない。
+							指定されなかった場合は、新規にゲーム実行を開始せねばならない。
+						<code>requestSaveSnapshot()</code> を利用しないゲームにおいては、常に指定されない。</p>
 					</div>
 				</section>
 			</section>
