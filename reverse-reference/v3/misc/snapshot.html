@@ -210,15 +210,15 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>スナップショットを保存する</h1>
-<p>スナップショットを保存するには、 <code>g.game.saveSnapshot()</code> を利用します。</p>
+<p>スナップショットを保存するには、 <code>g.game.requestSaveSnapshot()</code> を利用します。</p>
 <h2>凡例</h2>
 <p>スナップショットの保存:</p>
-<pre><code class="language-javascript">if (g.game.shouldSaveSnapshot()) {
+<pre><code class="language-javascript">g.game.requestSaveSnapshot(function() {
   var snapshot = {
     // ゲームの実行状態を表すオブジェクト
   };
-  g.game.saveSnapshot(snapshot);
-}</code></pre>
+  return { snapshot: snapshot };
+});</code></pre>
 <p>スナップショットからの復元:</p>
 <pre><code class="language-javascript">// main スクリプトでエクスポートされている関数
 // (game.json の &quot;main&quot; に指定されている、実行開始時に最初に実行されるスクリプトの関数)
@@ -239,7 +239,7 @@ function main(param) {
 <h2>関連情報</h2>
 <ul>
 <li><a href="/tutorial/v3/multiplay/snapshot.html">チュートリアル</a></li>
-<li><a href="/reference/akashic-engine-v3/classes/game.html#savesnapshot">API リファレンス</a></li>
+<li><a href="/reference/akashic-engine-v3/classes/game.html#requestsavesnapshot">API リファレンス</a></li>
 </ul>
 <div class="navi-center">
 <a href="../release/atsumaru.html">前 (ゲームアツマールでのみ処理を行う)</a>
