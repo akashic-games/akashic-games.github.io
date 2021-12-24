@@ -41,6 +41,7 @@
 				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
 				<li><a href="/reverse-reference/v3/">Akashic Engine逆引きリファレンス</a></li>
 				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
+				<li><a href="/recent-changes/">Akashic Engine 更新情報</a></li>
 				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
 			</ul>
 		</li>
@@ -271,10 +272,10 @@ scene.loaded.add(function () {
 <h3><a name="game-time-limit"></a> 旧仕様: gameTimeLimit</h3>
 <p>セッションパラメータ <code>sessionParameters</code> がある時、 <code>sessionParameters.gameTimeLimit</code> の値が与えられることがあります。</p>
 <p>この値は後方互換性のために残されているものです。 <code>totalTimeLimit</code> を利用してください。</p>
-<h2><a name="preferred-session-parameters"></a> prefereredSessionParameters</h2>
-<p>ニコ生ゲームの game.json に <code>environment.nicolive.prefereredSessionParameters</code> フィールドがある場合、
+<h2><a name="preferred-session-parameters"></a> preferredSessionParameters</h2>
+<p>ニコ生ゲームの game.json に <code>environment.nicolive.preferredSessionParameters</code> フィールドがある場合、
 その内容はコンテンツにとって望ましいセッションパラメータの値として解釈されます。</p>
-<p><code>prefereredSessionParameters</code> は、与えられる場合、オブジェクトでなければなりません。
+<p><code>preferredSessionParameters</code> は、与えられる場合、オブジェクトでなければなりません。
 そのプロパティとして指定できるものは次の通りです:</p>
 <table>
 <thead>

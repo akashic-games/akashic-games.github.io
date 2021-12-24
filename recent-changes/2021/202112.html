@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+<meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
+<meta name="theme-color" content="#0F1F26">
+<title>更新情報 (〜2021/12/24)</title>
+<link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="stylesheet" href="/css/common.css?5e73188c">
+<link rel="stylesheet" href="/css/header.css?5e73188c">
+<link rel="stylesheet" href="/css/footer.css?5e73188c">
+
+
+<link rel="stylesheet" href="/css/akashic-document.css?5e73188c">
+
+<link rel="stylesheet" href="/css/railscasts.css?5e73188c">
+
+
+<script src="/lib/jquery-3.2.1.min.js"></script>
+<script src="/lib/common.js?5e73188c"></script>
+
+
+
+<script src="/lib/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<div class="head--spacer"></div>
+<div class="SP--head--menu--show"></div>
+<div class="SP--head--menu--hide"></div>
+
+<div class="head--menu--outer">
+	<ul class="head--menu">
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
+				<li><a href="/reverse-reference/v3/">Akashic Engine逆引きリファレンス</a></li>
+				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
+				<li><a href="/recent-changes/">Akashic Engine 更新情報</a></li>
+				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/guide/akashic-cli.html">akashic-cli利用ガイド</a></li>
+				<li><a href="/guide/bmpfont-generator.html">bmpfont-generator の仕様</a></li>
+				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
+				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
+				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
+				<li><a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a></li>
+				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
+				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
+				<li><a href="/guide/shader.html">シェーダの利用</a></li>
+				<li><a href="/guide/asset-recommended-spec.html">素材の推奨仕様</a></li>
+				<li><a href="/guide/template-guide.html">akashic initテンプレート利用ガイド</a></li>
+				<li><a href="/guide/common-pitfalls.html">よくある落とし穴</a></li>
+				<li><a href="/guide/acceleration-tips.html">高速化TIPS</a></li>
+				<!--li><a href="/guide/storage.html">ストレージについて</a></li-->
+			</ul>
+		</li>
+		<li class="head--menu--item"><a class="head--logo" href="/" title="ホーム"></a></li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/reference/akashic-engine-v3/globals.html">akashic-engine v3.x</a></li>
+				<li><a href="/reference/akashic-timeline/">akashic-timeline</a></li>
+				<li><a href="/reference/akashic-animation/">akashic-animation</a></li>
+				<li><a href="/reference/akashic-label/">akashic-label</a></li>
+				<li><a href="/reference/akashic-tile/">akashic-tile</a></li>
+				<li><a href="/reference/akashic-box2d/">akashic-box2d</a></li>
+				<li><a href="/reference/coe/">coe framework</a></li>
+				<li><a href="/reference/raycaster-js/">raycaster-js</a></li>
+				<li><a href="/reference/collision-js/">collision-js</a></li>
+				<li><a href="/reference/aimgui/">AimGui</a></li>
+				<li><a href="/reference/akashic-engine-v2/modules/_lib_main_d_.g.html">akashic-engine v2.x (旧版)</a></li>
+				<li><a href="/reference/akashic-engine-v1/modules/_lib_main_d_.g.html">akashic-engine v1.x (旧版)</a></li>
+			</ul>
+		</li>
+		<li class="head--menu--item">
+			<p class="head--menu--item--tab"></p>
+			<ul class="head--menu--item--list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=svg-sample">SVGサンプル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=box2d-sample">2D 物理演算</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/demo/?title=collision-js">collision-js</a></li>
+				<li><a href="/demo/?title=aimgui">AimGui</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<header id="akashic-page-header">
+	<div class="SP--head--logo--box"><a class="head--logo" href="/" title="ホーム"></a></div>
+</header>
+
+<div id="BodyInner">
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3><a href="../">Akashic Engine 更新情報</a></h3>
+<h3>更新情報</h3>
+<ul>
+<li><a href="../2021/202112.html">2021 年 10-12 月</a></li>
+</ul>
+
+		</div>
+		<div class="twocol-main">
+			<div class="inner responsive--width--twocol">
+				<h1>更新情報 (〜2021/12/24)</h1>
+<h2><a name="aimgui"></a> GUI ライブラリ AimGui を公開</h2>
+<p>Akashic Engine 用のシンプルな GUI ライブラリ AimGui を公開しました。</p>
+<p>ラベル、ボタン、ラジオボタン、チェックボックス、スライダー、テキストボックスなどに加え、
+リサイズ可能なウィンドウ、モーダルウィンドウなどを手軽に作成することができます。
+たとえば次のような UI を、</p>
+<p><img src="/img/recent-changes/202112/aimgui-sample.gif" alt="AimGui サンプル"></p>
+<p>以下のコードで実現できます。</p>
+<pre><code class="language-javascript">const guiE = new aimgui.GuiE({
+    scene,
+    width: g.game.width,
+    height: g.game.height,
+    font
+});
+
+scene.append(guiE);
+
+// GUIで操作するデータ。
+const gameSetting = {
+    volume: 0.5,
+};
+
+// GUIの配置と応答の実装。
+guiE.run = gui =&gt; {
+    gui.window(&quot;Debug Tool&quot;) // ウインドウを配置。
+        .position(16, 16) // 初期位置の指定。
+        .size(240, 240) // 初期サイズの指定。
+        .show(gui =&gt; { // 表示。
+            // ラベルの表示。
+            gui.label(&quot;サウンドテスト&quot;);
+            // ボリュームを変更するスライダー。
+            gui.slider(&quot;ボリューム&quot;, gameSetting, &quot;volume&quot;, 0, 1);
+            // 音声を再生するボタン。
+            if (gui.button(&quot;再生&quot;)) {
+                scene.asset.getAudio(&quot;/audio/se&quot;)
+                    .play()
+                    .changeVolume(gameSetting.volume);
+            }
+        });
+};</code></pre>
+<p>詳細な利用方法は以下を参照してください:</p>
+<ul>
+<li><a href="https://akashic-games.github.io/demo/?title=aimgui">サンプルデモ</a></li>
+<li><a href="https://github.com/akashic-games/aimgui/tree/main/sample">サンプルデモのサンプルコード</a></li>
+<li><a href="https://akashic-games.github.io/reference/aimgui/">API リファレンス</a></li>
+</ul>
+<h2><a name="svg"></a> SVG ファイルをアセットとして利用できるように (実験的機能追加)</h2>
+<p>Akashic Engine v3.2.0 以降では、新たに SVG ファイルを画像アセットとして利用できます。
+SVG ファイルを利用することで、PNG ファイルではぼやけてしまう画像の拡大描画を行うことができます。
+また今まで Akashic Engine で表現することが難しかった円や曲線などを手軽に描画することが可能になります。</p>
+<p>以下は、 <strong>画面をドラッグするとそのサイズの円を置く</strong> コンテンツです。</p>
+<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvZGVtby9jb250ZW50L3N2Zy1zYW1wbGUvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
+
+<p>SVG ファイルを利用するには、ゲームの <code>image/</code> フォルダまたは <code>assets/</code> フォルダに拡張子 .svg のファイルを置き、 <code>akashic scan asset</code> を実行します。
+すると他のアセット同様 game.json に登録されます。</p>
+<pre><code class="language-json">&quot;circle&quot;: {
+  &quot;type&quot;: &quot;vector-image&quot;,
+  &quot;width&quot;: 100,
+  &quot;height&quot;: 100,
+  &quot;path&quot;: &quot;image/circle.svg&quot;
+}</code></pre>
+<p>SVG ファイルを使うベクタ画像アセットは、そのままでは <code>g.Sprite</code> などに利用できません。
+<code>createSurface()</code> でサーフェス (<code>g.Surface</code>) に変換 (ラスタライズ) する必要があります。</p>
+<pre><code class="language-javascript">var asset = scene.asset.getVectorImage(&quot;image/circle.svg&quot;);
+var surface = asset.createSurface(200, 200); // SVG 画像を 200x200 のサーフェスにラスタライズ
+
+if (!surface) {
+  // ! SVG が利用できない場合のフォールバック対応
+}
+
+var sprite = new g.Surface({
+  scene: scene,
+  src: surface // g.Sprite のソース画像として利用
+});</code></pre>
+<p>ゲーム開発者自身が生成した <code>g.Surface</code> はエンジンによるリソース開放処理が行われません。
+描画用メモリの枯渇を防ぐためにも、適切なタイミングで <code>g.Surface</code> を開放してください。
+また、現時点では上の例のように <code>createSurface()</code> が <code>null</code> を返す状況を考慮する必要があります
+(ブラウザ環境以外での実行時に失敗することがあるため。&quot;ranking&quot; 形式以外のニコ生ゲームにも当てはまります) 。
+詳細は逆引きリファレンスの <a href="https://akashic-games.github.io/reverse-reference/v3/asset/svg-asset.html">SVG ファイルを画像アセットとして利用する</a> を参照してください。</p>
+<h2><a name="snapshot"></a> マルチプレイへの途中参加時などの &quot;早送り&quot; 処理を短縮できるように</h2>
+<p>Akashic Engine は、ゲームプレイ中に行われた全操作を原則全プレイヤーに共有します。
+この動作によって、細かな通信を意識することなく手軽にマルチプレイゲームを作成することが可能です (参考: <a href="https://akashic-games.github.io/tutorial/v3/multiplay/introduction.html#architecture-intro">Akashic におけるマルチプレイ</a>)。</p>
+<p>ただしこの動作には「長時間起動されるゲームに弱い」という弱点があります。
+プレイ中のゲームに途中から参加する場合、まず「それまでに行われた全操作」を早送りで実行して、ゲームの最新状態に追いつかなくてはならないためです。
+一度の起動でメインゲーム部分を繰り返し遊ぶなど、長時間起動されるゲームでは、この早送りの時間が長くなります。</p>
+<p>Akashic Engine v3.2.2 以降  では、この早送り時間を短縮するために <strong>スナップショット</strong> 機能が追加されています。
+一プレイ内で繰り返し遊ぶメインゲーム部分がちょうど終わった時などに、
+区切りのいいタイミングで <code>g.game.requestSaveSnapshot()</code> を呼び出してスナップショットを保存することができます。</p>
+<pre><code class="language-javascript">g.game.requestSaveSnapshot(function () {
+  // その時のゲームの実行状態を表す &quot;スナップショット&quot;
+  var snapshot = {
+    highscore: g.game.vars.highscore, // 例: そのプレイ中に繰り返し遊んだ中で最も高かったスコア情報
+  };
+  return snapshot;
+});</code></pre>
+<p>保存されたスナップショットは、必要に応じて自動的に取得され、ゲーム起動時に与えられます。
+ゲーム開発者はスナップショットが与えられた時に、保存時のゲーム状態を再現してください。</p>
+<pre><code class="language-javascript">function main(param) {
+  if (param.snapshot) {
+    // 過去に保存したスナップショットが与えられたので、そこから保存時の状態 (シーンなど) を作る
+  } else {
+    // スナップショットが与えられていないので従来どおりの起動。起動時のシーンなどを作る。
+  }
+}</code></pre>
+<p>併せて akashic-cli@2.14.14 以降では、スナップショットの動作を確認するための機能が追加されています。
+詳細はチュートリアルの <a href="https://akashic-games.github.io/tutorial/v3/multiplay/snapshot.html">早送り時間を短縮する</a> を参照してください。</p>
+<p><img src="/img/tutorial/cli-serve-playback-tool.png" alt="serve の Playback ツール"></p>
+<h2><a name="init-github"></a> akashic init で Git リポジトリからテンプレートを取得できるように</h2>
+<p><code>akashic init</code> コマンドでは、<code>-t</code> オプションで利用するテンプレートを指定できます。
+テンプレートの一覧は <code>akashic init -l</code> で確認することができます。</p>
+<p>akashic-cli@2.11.5 以降では、これに加えて任意の Github のリポジトリの内容をテンプレートとして利用できます (<code>git</code> コマンドがインストールされている必要があります)。
+以下は <a href="https://github.com/akashic-contents/niconicSnake">https://github.com/akashic-contents/niconicSnake</a> の内容を取得する利用例です。</p>
+<pre><code class="language-sh">akashic init -t github:akashic-contents/niconicSnake</code></pre>
+<p><code>-t</code> オプションに <code>github:&lt;owner&gt;/&lt;repository&gt;</code> と指定することによって、 <code>http://github.com/&lt;owner&gt;/&lt;repository&gt;</code> のリポジトリをそのまま取得します。
+自作のテンプレートを Github で公開している場合などに利用できます。
+また、 <code>ghe:&lt;owner&gt;/&lt;repository&gt;</code> で GitHub Enterprise のリポジトリの内容を取得することも可能です (<code>@akashic/akashic-cli@2.12.0</code> 以降)。</p>
+<p>なおこの機能では任意の Github リポジトリを指定できるため、Akashic コンテンツでないものや、最悪の場合悪意のあるスクリプトなども取得する恐れがあります。
+そのため自作のテンプレートを置いたリポジトリや信頼できるリポジトリのみ使うようにしてください。</p>
+<p>関連 PR:</p>
+<ul>
+<li><a href="https://github.com/akashic-games/akashic-cli/pull/869">https://github.com/akashic-games/akashic-cli/pull/869</a></li>
+<li><a href="https://github.com/akashic-games/akashic-cli/pull/881">https://github.com/akashic-games/akashic-cli/pull/881</a></li>
+</ul>
+<h2><a name="bugfixes"></a> 主な不具合修正</h2>
+<h3><a name="nicolive-missed"></a> game.json の environment.nicolive の一部の指定が無視されていた問題を修正</h3>
+<p>ニコ生ゲームの設定を記述するプロパティ <code>environment.nicolive</code> のうち、 <code>preferredSessionParameters</code> の値が無視されていました。
+この値は現在のところ、ランキングモードの制限時間を指定する以下のプロパティでのみ利用されています。</p>
+<pre><code class="language-javascript">environment.nicolive.preferredSessionParameters.totalTimeLimit</code></pre>
+<p>この設定が無視され、常にデフォルトの制限時間で起動されていました。
+この不具合は、2021/11/30 に修正済みです。</p>
+<h3><a name="cli-install-failure"></a> npm@7.13.0 以前の npm で、 akashic-cli のインストールに失敗する不具合の修正</h3>
+<p>v7.13.0 以前の npm において、 v2.12.0 以前の akashic-cli のインストールに失敗する問題があります。</p>
+<p>この不具合は、 akashic-cli@2.12.1 で修正済みです。</p>
+<h3><a name="export-wrong-warn"></a> akashic export html で誤った警告が表示される不具合の修正</h3>
+<p>akashic-cli@2.13.1 以前のバージョンで <code>akashic export html --atsumaru</code> を実行した時、「Akashic Engine v3 is in beta」などの警告が誤って表示されます。
+これは内部の仕様変更に起因するもので、出力される zip ファイルに問題はありません。</p>
+<p>この不具合は、 akashic-cli@2.14.0 で修正済みです。</p>
+<h3><a name="wrong-is-atsumaru"></a> akashic init の生成するテンプレートの isAtsumaru 変数の値が誤っている不具合の修正</h3>
+<p>akashic-cli@2.12.0 以前の <code>akashic init</code> で、以下のテンプレートに含まれるコードが誤っていました。</p>
+<ul>
+<li><code>typescript-shin-ichiba-ranking</code></li>
+<li><code>javascript-shin-ichiba-ranking</code></li>
+</ul>
+<p>このテンプレートの main.js 中の変数 <code>param.isAtsumaru</code> は、ゲーム実行時の環境がゲームアツマールかどうかを表すものです。
+ゲームアツマールのマルチプレイで起動された時、この値が誤って偽になっていました。</p>
+<p>この不具合は、 akashic-cli@2.12.1 で修正済みです。</p>
+<h3><a name="wrong-silence"></a> シーンをまたいで BGM を再生した場合 BGM が止まってしまうことがある不具合の修正</h3>
+<p>以下のような手順で Akashic コンテンツを実行させると、 (4) の後に BGM の再生が止まってしまう問題がありました。</p>
+<ol>
+<li>music のオーディオアセット(BGM)である A をロードするシーンに遷移する</li>
+<li>A を 再生する</li>
+<li>A をロードしないシーンに遷移する</li>
+<li>A をロードするシーンに遷移する</li>
+</ol>
+<p>Akashic Engine において music のアセットは、シーンが変わっても他の music が再生されるまで再生され続けます。
+そのため上の手順では (2) 以降ずっと再生され続けるべきですが、 (4) の後に再生が止まっていました。</p>
+<p>この不具合は、 akashic-engine@3.2.1 で修正済みです。</p>
+<h3><a name="other-fixes"></a> その他不具合の修正</h3>
+<ul>
+<li>リプレイ再生時、無駄なティック取得を行う場合がある問題を修正</li>
+<li>akashic-cli-serve で「Save playlog」ボタン(旧「今までのプレイ情報を保存」ボタン)を押した時ゲーム進行が止まる不具合の修正</li>
+<li>akashic-cli-serve で --debug-playlog を指定するとゲームが動かない問題を修正</li>
+<li>akashic-cli-serve で --debug-playlog に絶対パスを指定できなかった問題を修正</li>
+</ul>
+
+			</div>
+		</div>
+	</section>
+	<footer class="safearea--LR">
+	<div class="responsive--width">
+
+		<ul class="foot--creativecommons">
+			<li class="foot--creativecommons--ban"><a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank"><img alt="クリエイティブ・コモンズ・ライセンス" src="https://i.creativecommons.org/l/by/2.1/jp/80x15.png"></a></li>
+			<li class="foot--creativecommons--txt">このサイトの画像は、一部を除き <a rel="license" href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本 ライセンス</a><br>の下に提供されています: <a href="/image-license.html">詳細</a></li>
+		</ul>
+
+		<ul class="foot--license">
+			<li class="foot--license--akashic"><a href="https://akashic-games.github.io"></a></li>
+			<li class="foot--license--dwango"><a href="http://dwango.co.jp" target="_blank">&copy; dwango</a></li>
+		</ul>
+
+	</div>
+</footer>
+
+</div>
+<div class="page--top"></div>
+<div class="window--dark"></div>
+
+<script>
+	// リサイズ時にコンテンツのリサイズができない状態なので暫定対応でコンテンツをリロードしている
+	// TODO: リサイズ時にコンテンツも追従する仕組みを作成する
+	window.addEventListener('resize', function() {
+		var iframes = document.getElementsByClassName('akashic-content');
+		var contents = Array.prototype.slice.call(iframes);
+		contents.forEach(function(content) {
+			content.contentWindow.location.reload(true);
+		});
+	});
+</script>
+</body>
+</html>

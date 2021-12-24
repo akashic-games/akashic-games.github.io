@@ -39,6 +39,7 @@
 				<li><a href="/tutorial/v3/">Akashic Engine入門</a></li>
 				<li><a href="/reverse-reference/v3/">Akashic Engine逆引きリファレンス</a></li>
 				<li><a href="/shin-ichiba/">ニコ生ゲームを作ろう</a></li>
+				<li><a href="/recent-changes/">Akashic Engine 更新情報</a></li>
 				<!--li><a href="/tutorial/akashic-info.html">Akashic Engine関連情報一覧</a></li-->
 			</ul>
 		</li>
@@ -248,7 +249,7 @@ SVG ファイルを利用することで今まで Akashic Engine で表現する
 <p>ゲームコンテンツから利用する場合、SVG の画像データを <code>g.Surface</code> に変換 (ラスタライズ) します。
 ゲーム開発者自身が生成した <code>g.Surface</code> はエンジンによるリソース開放処理が行われません。
 描画用メモリの枯渇を防ぐためにも、適切なタイミングで <code>g.Surface</code> を開放してください。</p>
-<pre><code class="language-javascript">var asset = scene.asset.getVectorImageById(&quot;sample.svg&quot;);
+<pre><code class="language-javascript">var asset = scene.asset.getVectorImageById(&quot;sample&quot;);
 var surface = asset.createSurface(200, 200); // 当該の SVG 画像を 200x200 のサーフェスにラスタライズ
 
 if (!surface) {
