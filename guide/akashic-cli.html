@@ -203,13 +203,25 @@ fps: (30)</code></pre>
 <td align="center"><code>--force</code></td>
 <td align="center"><code>-f</code></td>
 <td align="center">生成されるファイル・ディレクトリが既に存在する場合でも、エラーにせず上書きします。</td>
-<td align="center"><code>false</code></td>
+<td align="center">指定なし</td>
 </tr>
 <tr>
 <td align="center"><code>--yes</code></td>
 <td align="center"><code>-y</code></td>
 <td align="center">対話型インターフェースを表示せずに、デフォルトの設定でゲームを生成します。</td>
-<td align="center"><code>false</code></td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--list</code></td>
+<td align="center"><code>-l</code></td>
+<td align="center"><code>--type</code> オプションで利用可能なテンプレートのリストを表示します。</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center"><code>--repository &lt;reponame&gt;</code></td>
+<td align="center"><code>-r</code></td>
+<td align="center">テンプレートを検索できるリポジトリを指定します。</td>
+<td align="center">指定なし</td>
 </tr>
 </tbody></table>
 <h3><a name="--typeオプション"></a> --type オプション</h3>
@@ -222,6 +234,7 @@ fps: (30)</code></pre>
 <li><code>typescript-minimal</code></li>
 <li><code>typescript-shin-ichiba-ranking</code></li>
 </ul>
+<p>また、&lt;type&gt;に <code>github:&lt;owner&gt;/&lt;repository&gt;</code> と指定することで GitHub (github.com) からテンプレートを取得することができます。</p>
 <h4><a name="javascript"></a> javascript</h4>
 <p>下記のディレクトリ・ファイルを含む JavaScript で書かれたゲームが生成されます。</p>
 <pre><code>GAME_HOME
@@ -262,6 +275,62 @@ fps: (30)</code></pre>
 <h4><a name="typescript-shin-ichiba-ranking"></a> typescript-shin-ichiba-ranking</h4>
 <p><code>--type tyepescript</code> と同様に、TypeScript で書かれたゲームと、ビルドに必要なディレクトリ・ファイルが生成されます。</p>
 <p>ゲームの内容は、<code>--type javascript-shin-ichiba-ranking</code> を指定した場合に生成されるゲームと同一です。</p>
+<h4><a name="github-template"></a> GitHub リポジトリからのテンプレート生成</h4>
+<p><code>--type github:&lt;owner&gt;/&lt;repository&gt;</code> と指定した場合、GitHub からテンプレートを取得することができます。private repository など認証が必要な場合は <code>akashic config</code> で <code>init.github.protocol</code> を <code>ssh</code> に設定してください。</p>
+<pre><code class="language-sh">akashic config set init.github.protocol ssh # 初回のみ。認証を必要としない場合は不要。
+akashic init -t github:your-orgs/your-repo</code></pre>
+<p>また <code>ghe:&lt;owner&gt;/&lt;repository&gt;</code> と指定することで GitHub Enterprise からテンプレートを生成できます。 GitHub Enterprise の URL は <code>akashic config</code> により設定できます。</p>
+<pre><code class="language-sh">akashic config set init.ghe.host your.company.com # 初回のみ
+akashic init -t ghe:your-orgs/your-repo</code></pre>
+<p>akashic init では以下の設定を利用します。設定は <code>akashic config</code> コマンドを利用して行います。</p>
+<table>
+<thead>
+<tr>
+<th align="center">プロパティ名</th>
+<th align="center">内容</th>
+<th align="center">デフォルト値</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">init.repository</td>
+<td align="center">テンプレート配信サーバの URL。空文字列の時はサーバを利用しません。</td>
+<td align="center">空文字列</td>
+</tr>
+<tr>
+<td align="center">init.defaultTemplateType</td>
+<td align="center">テンプレートの種類が省略されたときに利用するテンプレート名。</td>
+<td align="center"><code>javascript</code></td>
+</tr>
+<tr>
+<td align="center">init.localTemplateDirectory</td>
+<td align="center">ローカルファイルシステムでテンプレートを保存する場所。</td>
+<td align="center"><code>$HOME/.akashic-templates/</code></td>
+</tr>
+<tr>
+<td align="center">init.github.host</td>
+<td align="center">GitHub のホスト名。</td>
+<td align="center"><code>github.com</code></td>
+</tr>
+<tr>
+<td align="center">init.github.protocol</td>
+<td align="center">GitHub からプロジェクトを clone する際のプロトコル。https または ssh が指定可能。</td>
+<td align="center"><code>https</code></td>
+</tr>
+<tr>
+<td align="center">init.ghe.host</td>
+<td align="center">GitHub Enterprise のホスト名。</td>
+<td align="center">指定なし</td>
+</tr>
+<tr>
+<td align="center">init.ghe.protocol</td>
+<td align="center">GitHub Enterprise からプロジェクトを clone する際のプロトコル。https または ssh が指定可能。</td>
+<td align="center"><code>https</code></td>
+</tr>
+</tbody></table>
+<h3>アクセス確認と保存</h3>
+<p><code>-t gihtub:</code> や <code>ghe:</code>、<code>-r</code> オプションで URL へアクセスする場合はプロンプトにて確認を行います。
+プロンプトにて URL へのアクセスを許可した場合は、<code>$HOME/.akashicrc</code> へ最大 4 件保存します。5 件目を保存する場合は、最初の 1 件目が削除されます。
+また、保存されている値とオプションで指定された値が同じ場合は、確認のプロンプトをスキップします。</p>
 <h2><a name="modify"></a> modify</h2>
 <pre><code class="language-sh">akashic modify &lt;target&gt;</code></pre>
 <p>game.json に記述されている各種メタ情報を更新します。

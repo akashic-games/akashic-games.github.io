@@ -131,36 +131,39 @@
 <p><img src="/img/recent-changes/202112/aimgui-sample.gif" alt="AimGui サンプル"></p>
 <p>以下のコードで実現できます。</p>
 <pre><code class="language-javascript">const guiE = new aimgui.GuiE({
-    scene,
-    width: g.game.width,
-    height: g.game.height,
-    font
+  scene,
+  width: g.game.width,
+  height: g.game.height,
+  font
 });
 
 scene.append(guiE);
 
 // GUIで操作するデータ。
 const gameSetting = {
-    volume: 0.5,
+  volume: 0.5
 };
 
 // GUIの配置と応答の実装。
 guiE.run = gui =&gt; {
-    gui.window(&quot;Debug Tool&quot;) // ウインドウを配置。
-        .position(16, 16) // 初期位置の指定。
-        .size(240, 240) // 初期サイズの指定。
-        .show(gui =&gt; { // 表示。
-            // ラベルの表示。
-            gui.label(&quot;サウンドテスト&quot;);
-            // ボリュームを変更するスライダー。
-            gui.slider(&quot;ボリューム&quot;, gameSetting, &quot;volume&quot;, 0, 1);
-            // 音声を再生するボタン。
-            if (gui.button(&quot;再生&quot;)) {
-                scene.asset.getAudio(&quot;/audio/se&quot;)
-                    .play()
-                    .changeVolume(gameSetting.volume);
-            }
-        });
+  gui
+    .window(&quot;Debug Tool&quot;) // ウインドウを配置。
+    .position(16, 16) // 初期位置の指定。
+    .size(240, 240) // 初期サイズの指定。
+    .show(gui =&gt; {
+      // 表示。
+      // ラベルの表示。
+      gui.label(&quot;サウンドテスト&quot;);
+      // ボリュームを変更するスライダー。
+      gui.slider(&quot;ボリューム&quot;, gameSetting, &quot;volume&quot;, 0, 1);
+      // 音声を再生するボタン。
+      if (gui.button(&quot;再生&quot;)) {
+        scene.asset
+          .getAudio(&quot;/audio/se&quot;)
+          .play()
+          .changeVolume(gameSetting.volume);
+      }
+    });
 };</code></pre>
 <p>詳細な利用方法は以下を参照してください:</p>
 <ul>
@@ -207,13 +210,13 @@ var sprite = new g.Surface({
 <p>ただしこの動作には「長時間起動されるゲームに弱い」という弱点があります。
 プレイ中のゲームに途中から参加する場合、まず「それまでに行われた全操作」を早送りで実行して、ゲームの最新状態に追いつかなくてはならないためです。
 一度の起動でメインゲーム部分を繰り返し遊ぶなど、長時間起動されるゲームでは、この早送りの時間が長くなります。</p>
-<p>Akashic Engine v3.2.2 以降  では、この早送り時間を短縮するために <strong>スナップショット</strong> 機能が追加されています。
+<p>Akashic Engine v3.2.2 以降 では、この早送り時間を短縮するために <strong>スナップショット</strong> 機能が追加されています。
 一プレイ内で繰り返し遊ぶメインゲーム部分がちょうど終わった時などに、
 区切りのいいタイミングで <code>g.game.requestSaveSnapshot()</code> を呼び出してスナップショットを保存することができます。</p>
-<pre><code class="language-javascript">g.game.requestSaveSnapshot(function () {
+<pre><code class="language-javascript">g.game.requestSaveSnapshot(function() {
   // その時のゲームの実行状態を表す &quot;スナップショット&quot;
   var snapshot = {
-    highscore: g.game.vars.highscore, // 例: そのプレイ中に繰り返し遊んだ中で最も高かったスコア情報
+    highscore: g.game.vars.highscore // 例: そのプレイ中に繰り返し遊んだ中で最も高かったスコア情報
   };
   return snapshot;
 });</code></pre>
@@ -249,7 +252,7 @@ var sprite = new g.Surface({
 <h3><a name="nicolive-missed"></a> game.json の environment.nicolive の一部の指定が無視されていた問題を修正</h3>
 <p>ニコ生ゲームの設定を記述するプロパティ <code>environment.nicolive</code> のうち、 <code>preferredSessionParameters</code> の値が無視されていました。
 この値は現在のところ、ランキングモードの制限時間を指定する以下のプロパティでのみ利用されています。</p>
-<pre><code class="language-javascript">environment.nicolive.preferredSessionParameters.totalTimeLimit</code></pre>
+<pre><code class="language-javascript">environment.nicolive.preferredSessionParameters.totalTimeLimit;</code></pre>
 <p>この設定が無視され、常にデフォルトの制限時間で起動されていました。
 この不具合は、2021/11/30 に修正済みです。</p>
 <h3><a name="cli-install-failure"></a> npm@7.13.0 以前の npm で、 akashic-cli のインストールに失敗する不具合の修正</h3>
