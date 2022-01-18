@@ -476,20 +476,20 @@ Akashic Engine v3 以降で利用できる <a href="/tutorial/v3/assetPaths.html
 </tr>
 <tr>
 <td align="center"><code>--watch</code></td>
-<td align="center"><code>-W</code></td>
-<td align="center">アセットディレクトリを監視し、変更時にホットリロードを行います。</td>
+<td align="center"><code>-w</code></td>
+<td align="center">アセットディレクトリを監視し、変更時に新規プレイを作成します。</td>
 <td align="center">指定なし</td>
 </tr>
 <tr>
 <td align="center"><code>--server-external-script &lt;filepath&gt;</code></td>
 <td align="center">N/A</td>
-<td align="center">指定ファイルの js を評価し、Game#external に代入します。</td>
+<td align="center">指定ファイルの js を評価し、アクティブインスタンスの g.game.external に代入します。</td>
 <td align="center">指定なし</td>
 </tr>
 <tr>
 <td align="center"><code>--debug-playlog &lt;path&gt;</code></td>
 <td align="center">N/A</td>
-<td align="center">指定した playlog.json を読み込みます。</td>
+<td align="center">指定した playlog.json を読み込みます(エンジン開発用、または開発中のオプションです)。</td>
 <td align="center">指定なし</td>
 </tr>
 <tr>
@@ -528,16 +528,20 @@ Akashic Engine v3 以降で利用できる <a href="/tutorial/v3/assetPaths.html
 <td align="center">HTTPS で起動するための 秘密鍵のパスを指定します。</td>
 <td align="center">指定なし</td>
 </tr>
+<tr>
+<td align="center"><code>--cors-allow-origin &lt;origin&gt;</code></td>
+<td align="center">N/A</td>
+<td align="center">Access-Control-Allow-Origin レスポンスヘッダーの値を指定します。</td>
+<td align="center">指定なし</td>
+</tr>
 </tbody></table>
 <p>ネットワークごしに(他の PC などから)マルチプレイを行いたい場合は、 <code>--hostname</code> に外部からアクセス可能なホスト名(IP アドレスなど)を指定してください。</p>
 <p>オプション <code>--target-service</code> には下記の値を指定できます。</p>
 <ul>
 <li><code>nicolive</code>: ニコニコ生放送</li>
-<li><code>atsumaru:single</code>: ゲームアツマール シングル<ul>
-<li>(<code>atsumaru</code> は非推奨となり <code>atsumaru:single</code> のエイリアスとなります。)</li>
-</ul>
-</li>
+<li><code>atsumaru:single</code>: ゲームアツマール シングル</li>
 <li><code>atsumaru:multi</code>: ゲームアツマール マルチ</li>
+<li><code>atsumaru</code>: 非推奨です。 <code>atsumaru:single</code> を利用してください。</li>
 <li><code>none</code>: なし (デフォルト値)</li>
 </ul>
 <p><code>atsumaru:single</code> が指定された場合、<code>window.RPGAtsumaru</code> が使用できるようになります。
