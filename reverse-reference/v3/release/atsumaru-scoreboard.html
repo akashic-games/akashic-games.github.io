@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ゲームアツマールでスコアボードを表示する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?5e73188c">
-<link rel="stylesheet" href="/css/header.css?5e73188c">
-<link rel="stylesheet" href="/css/footer.css?5e73188c">
+<link rel="stylesheet" href="/css/common.css?87d132e9">
+<link rel="stylesheet" href="/css/header.css?87d132e9">
+<link rel="stylesheet" href="/css/footer.css?87d132e9">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?5e73188c">
+<link rel="stylesheet" href="/css/akashic-document.css?87d132e9">
 
-<link rel="stylesheet" href="/css/railscasts.css?5e73188c">
+<link rel="stylesheet" href="/css/railscasts.css?87d132e9">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?5e73188c"></script>
+<script src="/lib/common.js?87d132e9"></script>
 
 
 
@@ -114,100 +114,469 @@
 <div id="BodyInner">
 	<section class="akashic--document safearea--LR twocol">
 		<div class="twocol-side">
-			<h3><a href="../">Akashic Engine 逆引きリファレンス</a></h3>
-<h4><a name="drawing"></a> 描画</h4>
-<ul>
-<li><a href="../drawing/entity.html">エンティティを追加・削除する</a></li>
-<li><a href="../drawing/image.html">画像を表示する</a></li>
-<li><a href="../drawing/partial-image.html">画像の一部分を表示する</a></li>
-<li><a href="../drawing/rotate.html">回転する</a></li>
-<li><a href="../drawing/scale.html">拡大する</a></li>
-<li><a href="../drawing/rotate-anchor.html">回転・拡大の基準点を変える</a></li>
-<li><a href="../drawing/nine-patch.html">ナインパッチを利用する</a></li>
-<li><a href="../drawing/opacity.html">半透明にする (透明度を変える)</a></li>
-<li><a href="../drawing/hidden.html">非表示にする</a></li>
-<li><a href="../drawing/display-order.html">描画順を変える</a></li>
-<li><a href="../drawing/multiple-entities.html">複数のエンティティをまとめて扱う</a></li>
-<li><a href="../drawing/composite-operation.html">エンティティの描画方法を変える (compositeOperation)</a></li>
-<li><a href="../drawing/move-image.html">画像を動かす</a></li>
-<li><a href="../drawing/frame-animation.html">フレームアニメーション (パラパラアニメ) する</a></li>
-<li><a href="../drawing/animation.html">トゥイーンアニメーションする</a></li>
-<li><a href="../drawing/clipping.html">クリッピングする</a></li>
-<li><a href="../drawing/shader.html">シェーダを利用する</a></li>
-</ul>
-<h4><a name="operation"></a> 操作</h4>
-<ul>
-<li><a href="../operation/click.html">クリック・タップできるようにする</a></li>
-<li><a href="../operation/drag.html">ドラッグ・スワイプで動かす</a></li>
-<li><a href="../operation/double-click.html">ダブルクリック・ダブルタップできるようにする</a></li>
-<li><a href="../operation/click-scene">画面全体をクリック・タップできるようにする</a></li>
-</ul>
-<h4><a name="sound"></a> 音声</h4>
-<ul>
-<li><a href="../sound/play">効果音・BGM を再生する</a></li>
-<li><a href="../sound/stop">効果音・BGM を止める</a></li>
-<li><a href="../sound/change-volume">効果音・BGM の音量を変える</a></li>
-<li><a href="../sound/change-volume-all">全体音量を変える</a></li>
-</ul>
-<h4><a name="label"></a> 文字列</h4>
-<ul>
-<li><a href="../text/draw.html">文字列を描画する</a></li>
-<li><a href="../text/color.html">文字列の色を変える</a></li>
-<li><a href="../text/bold.html">文字列を太字にする</a></li>
-<li><a href="../text/align.html">文字列を中央寄せ・右寄せする</a></li>
-<li><a href="../text/multiline.html">複数行の文字列を描画する</a></li>
-<li><a href="../text/ruby.html">文字列にルビを振る</a></li>
-<li><a href="../text/bitmapfont-use.html">ビットマップフォントを使う</a></li>
-<li><a href="../text/bitmapfont-create.html">ビットマップフォントを作る</a></li>
-</ul>
-<h4><a name="logic"></a> ゲームロジック</h4>
-<ul>
-<li><a href="../logic/random.html">乱数を使う</a></li>
-<li><a href="../logic/local-random.html">プレイヤー固有の乱数を生成する</a></li>
-<li><a href="../logic/timer-timeout.html">一定時間後に処理を実行する</a></li>
-<li><a href="../logic/timer-interval.html">定期的に処理を実行する</a></li>
-<li><a href="../logic/intersect">エンティティ同士の当たり判定を調べる</a></li>
-<li><a href="../logic/collision">複雑な条件の当たり判定を調べる</a></li>
-<li><a href="../logic/scene.html">シーンを切り替える</a></li>
-<li><a href="../logic/popscene.html">前のシーンに戻る</a></li>
-<li><a href="../logic/find-touchable-entity.html">指定位置にあるタッチ可能なエンティティを探す</a></li>
-<li><a href="../logic/box2d.html">2D 物理演算を行う</a></li>
-</ul>
-<h4><a name="setting"></a> ゲーム設定</h4>
-<ul>
-<li><a href="../setting/game-size.html">画面サイズを変える</a></li>
-<li><a href="../setting/fps.html">FPS を変える</a></li>
-</ul>
-<h4><a name="asset"></a> アセット</h4>
-<ul>
-<li><a href="../asset/add-asset.html">ゲームにアセットを追加する</a></li>
-<li><a href="../asset/remove-asset.html">ゲームからアセットを削除する</a></li>
-<li><a href="../asset/read-asset.html">アセットを読み込む</a></li>
-<li><a href="../asset/get-asset.html">読み込んだアセットを取得する</a></li>
-<li><a href="../asset/split-script.html">スクリプトを分割する (複数のスクリプトを使う)</a></li>
-<li><a href="../asset/request-asset.html">シーン内で動的にアセットを読み込む</a></li>
-<li><a href="../asset/svg-asset.html">SVG ファイルを画像アセットとして利用する</a></li>
-</ul>
-<h4><a name="extension"></a> 拡張ライブラリ</h4>
-<ul>
-<li><a href="../extension/install.html">拡張ライブラリを導入する</a></li>
-<li><a href="../extension/uninstall.html">拡張ライブラリを削除する</a></li>
-<li><a href="../extension/other-library.html">非 Akashic Engine 向けライブラリを利用する</a></li>
-<li><a href="../extension/development.html">拡張ライブラリを作成する</a></li>
-</ul>
-<h4><a name="release"></a> 公開</h4>
-<ul>
-<li><a href="../release/export-html.html">HTML5 ゲームとして出力する</a></li>
-<li><a href="../release/export-nicolive.html">ニコ生ゲームとして出力する</a></li>
-<li><a href="../release/export-atsumaru.html">ゲームアツマール向けに出力する</a></li>
-<li><a href="../release/atsumaru-bgcolor.html">ゲームアツマールでの背景色を指定する</a></li>
-<li><a href="../release/atsumaru-scoreboard.html">ゲームアツマールでスコアボードを表示する</a></li>
-<li><a href="../release/atsumaru.html">ゲームアツマールでのみ処理を行う</a></li>
-</ul>
-<h4><a name="misc"></a> その他</h4>
-<ul>
-<li><a href="../misc/snapshot.html">スナップショットを保存する</a></li>
-</ul>
+			<h3>
+	<a href="../">Akashic Engine 逆引きリファレンス</a>
+</h3>
+
+
+	
+	
+	<label class="accordion-label" for="accordion_state_0">描画</label>
+	<input type="checkbox" class="accordion-state" id="accordion_state_0" checked></input>
+	<ul>
+		
+			<li>
+				
+					<a href="../drawing/entity.html">エンティティを追加・削除する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/image.html">画像を表示する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/partial-image.html">画像の一部分を表示する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/rotate.html">回転する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/scale.html">拡大する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/rotate-anchor.html">回転・拡大の基準点を変える</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/nine-patch.html">ナインパッチを利用する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/opacity.html">半透明にする (透明度を変える)</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/hidden.html">非表示にする</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/display-order.html">描画順を変える</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/multiple-entities.html">複数のエンティティをまとめて扱う</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/composite-operation.html">エンティティの描画方法を変える (compositeOperation)</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/move-image.html">画像を動かす</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/frame-animation.html">フレームアニメーション (パラパラアニメ) する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/animation.html">トゥイーンアニメーションする</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/clipping.html">クリッピングする</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/shader.html">シェーダを利用する</a>
+				
+			</li>
+		
+	</ul>
+
+	
+	
+	<label class="accordion-label" for="accordion_state_1">操作</label>
+	<input type="checkbox" class="accordion-state" id="accordion_state_1" checked></input>
+	<ul>
+		
+			<li>
+				
+					<a href="../operation/click.html">クリック・タップできるようにする</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../operation/drag.html">ドラッグ・スワイプで動かす</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../operation/double-click.html">ダブルクリック・ダブルタップできるようにする</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../operation/click-scene.html">画面全体をクリック・タップできるようにする</a>
+				
+			</li>
+		
+	</ul>
+
+	
+	
+	<label class="accordion-label" for="accordion_state_2">音声</label>
+	<input type="checkbox" class="accordion-state" id="accordion_state_2" checked></input>
+	<ul>
+		
+			<li>
+				
+					<a href="../sound/play.html">効果音・BGM を再生する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../sound/stop.html">効果音・BGM を止める</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../sound/change-volume.html">効果音・BGM の音量を変える</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../sound/change-volume-all.html">全体音量を変える</a>
+				
+			</li>
+		
+	</ul>
+
+	
+	
+	<label class="accordion-label" for="accordion_state_3">文字列</label>
+	<input type="checkbox" class="accordion-state" id="accordion_state_3" checked></input>
+	<ul>
+		
+			<li>
+				
+					<a href="../text/draw.html">文字列を描画する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../text/color.html">文字列の色を変える</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../text/bold.html">文字列を太字にする</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../text/align.html">文字列を中央寄せ・右寄せする</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../text/multiline.html">複数行の文字列を描画する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../text/ruby.html">文字列にルビを振る</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../text/bitmapfont-use.html">ビットマップフォントを使う</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../text/bitmapfont-create.html">ビットマップフォントを作る</a>
+				
+			</li>
+		
+	</ul>
+
+	
+	
+	<label class="accordion-label" for="accordion_state_4">ゲームロジック</label>
+	<input type="checkbox" class="accordion-state" id="accordion_state_4" checked></input>
+	<ul>
+		
+			<li>
+				
+					<a href="../logic/random.html">乱数を使う</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../logic/local-random.html">プレイヤー固有の乱数を生成する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../logic/timer-timeout.html">一定時間後に処理を実行する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../logic/timer-interval.html">定期的に処理を実行する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../logic/intersect.html">エンティティ同士の当たり判定を調べる</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../logic/collision.html">複雑な条件の当たり判定を調べる</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../logic/scene.html">シーンを切り替える</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../logic/popscene.html">前のシーンに戻る</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../logic/find-touchable-entity.html">指定位置にあるタッチ可能なエンティティを探す</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../logic/box2d.html">2D 物理演算を行う</a>
+				
+			</li>
+		
+	</ul>
+
+	
+	
+	<label class="accordion-label" for="accordion_state_5">ゲーム設定</label>
+	<input type="checkbox" class="accordion-state" id="accordion_state_5" checked></input>
+	<ul>
+		
+			<li>
+				
+					<a href="../setting/game-size.html">画面サイズを変える</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../setting/fps.html">FPS を変える</a>
+				
+			</li>
+		
+	</ul>
+
+	
+	
+	<label class="accordion-label" for="accordion_state_6">アセット</label>
+	<input type="checkbox" class="accordion-state" id="accordion_state_6" checked></input>
+	<ul>
+		
+			<li>
+				
+					<a href="../asset/add-asset.html">ゲームにアセットを追加する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../asset/remove-asset.html">ゲームからアセットを削除する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../asset/read-asset.html">アセットを読み込む</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../asset/get-asset.html">読み込んだアセットを取得する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../asset/split-script.html">スクリプトを分割する (複数のスクリプトを使う)</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../asset/request-asset.html">シーン内で動的にアセットを読み込む</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../asset/svg-asset.html">SVG ファイルを画像アセットとして利用する</a>
+				
+			</li>
+		
+	</ul>
+
+	
+	
+	<label class="accordion-label" for="accordion_state_7">拡張ライブラリ</label>
+	<input type="checkbox" class="accordion-state" id="accordion_state_7" checked></input>
+	<ul>
+		
+			<li>
+				
+					<a href="../extension/install.html">拡張ライブラリを導入する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../extension/uninstall.html">拡張ライブラリを削除する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../extension/other-library.html">非 Akashic Engine 向けライブラリを利用する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../extension/development.html">拡張ライブラリを作成する</a>
+				
+			</li>
+		
+	</ul>
+
+	
+	
+	<label class="accordion-label" for="accordion_state_8">公開</label>
+	<input type="checkbox" class="accordion-state" id="accordion_state_8" ></input>
+	<ul>
+		
+			<li>
+				
+					<a href="../release/export-html.html">HTML5 ゲームとして出力する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../release/export-nicolive.html">ニコ生ゲームとして出力する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../release/export-atsumaru.html">ゲームアツマール向けに出力する</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../release/atsumaru-bgcolor.html">ゲームアツマールでの背景色を指定する</a>
+				
+			</li>
+		
+			<li>
+				
+					<b>ゲームアツマールでスコアボードを表示する</b>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../release/atsumaru.html">ゲームアツマールでのみ処理を行う</a>
+				
+			</li>
+		
+	</ul>
+
+	
+	
+	<label class="accordion-label" for="accordion_state_9">その他</label>
+	<input type="checkbox" class="accordion-state" id="accordion_state_9" checked></input>
+	<ul>
+		
+			<li>
+				
+					<a href="../misc/snapshot.html">スナップショットを保存する</a>
+				
+			</li>
+		
+	</ul>
+
 
 		</div>
 		<div class="twocol-main">
