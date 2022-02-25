@@ -36,7 +36,8 @@
 .akashic--document h1,
 .akashic--document h2,
 .akashic--document h3,
-.akashic--document h4 { line-height: 1.2;}
+.akashic--document h4,
+.akashic--document label.accordion-label { line-height: 1.2;}
 .akashic--document h1 {
 	color:#9CC; font-size:28px;
 	margin:20px 0 40px 0;
@@ -57,12 +58,18 @@
 	text-align: center;
 	margin: 32px 0;
 }
+.akashic--document label.accordion-label {
+	display:block;
+	color:#699; font-size:16px;
+	margin:10px 0;
+	}
 
 @media screen and (max-width:calc(959px + 260px)){
 .akashic--document h1 { font-size:24px;}
 .akashic--document h2 { font-size:20px;}
 .akashic--document h3 { font-size:16px;}
 .akashic--document h4 { font-size:15px;}
+.akashic--document label.accordion-label { font-size:15px;}
 }
 /*↑見出し系↑*/
 /*↓文章・リスト・引用・画像↓*/
@@ -248,8 +255,15 @@
 .akashic--document .twocol-side h3 {
 	color: #c00;
 	}
+.akashic--document .twocol-side ul {
+	margin: 15px 0 20px 22px;
+	font-size: 15px;
+	}
 .akashic--document .twocol-side li {
 	list-style: circle;
+	}
+.akashic--document .twocol-side li > a:only-child {
+	margin: 0;
 	}
 .akashic--document .twocol-side li + li {
 	margin-bottom: 2px;
@@ -276,6 +290,18 @@
 	}
 }
 /*↑コンテンツ用↑*/
+
+/* アコーディオンメニュー用 */
+/* input.accordion-state の直後に表示を切り替えたい要素が来る前提。詳細は src/common/menu.ejs を参照 */
+input.accordion-state {
+	display: inline;
+	position: absolute;
+	visibility: hidden;
+}
+input.accordion-state:checked + * {
+	display: none !important;
+}
+/* ↑アコーディオンメニュー用 */
 
 /* ページ内リンクの遷移先の位置調整 */
 .akashic--document a.anchor{
