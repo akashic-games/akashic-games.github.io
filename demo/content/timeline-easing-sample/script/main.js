@@ -36,8 +36,8 @@ function main(param) {
         t: 0,
         att: 0.5,
         numOfFlash: 4,
-        state: "stop",
-        loop: false
+        state: "playing",
+        loop: true
     };
     scene.onLoad.add(function () {
         var bg = new g.FilledRect({
