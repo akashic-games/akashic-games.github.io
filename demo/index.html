@@ -7,23 +7,27 @@
 <meta name="theme-color" content="#0F1F26">
 <title>Akashic Engine - Samples</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?46ab668d">
-<link rel="stylesheet" href="/css/header.css?46ab668d">
-<link rel="stylesheet" href="/css/footer.css?46ab668d">
+<link rel="stylesheet" href="/css/common.css?81b623ac">
+<link rel="stylesheet" href="/css/header.css?81b623ac">
+<link rel="stylesheet" href="/css/footer.css?81b623ac">
 
 
-<link rel="stylesheet" href="/css/asset.css?46ab668d">
+<link rel="stylesheet" href="/css/asset.css?81b623ac">
 
-<link rel="stylesheet" href="/css/railscasts.css?46ab668d">
+<link rel="stylesheet" href="/css/railscasts.css?81b623ac">
+
+<link rel="stylesheet" href="/css/akashic-document.css?81b623ac">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?46ab668d"></script>
+<script src="/lib/common.js?81b623ac"></script>
 
+
+<script src="/lib/sampleDemo.js?81b623ac"></script>
 
 
 </head>
-<body>
+<body class="demo">
 <div class="head--spacer"></div>
 <div class="SP--head--menu--show"></div>
 <div class="SP--head--menu--hide"></div>
@@ -109,9 +113,37 @@
 </header>
 
 <div id="BodyInner">
-	<div id="app"></div>
-	<script src="/lib/highlight.pack.js"></script>
-	<script src="/demo/dist/bundle.js?46ab668d"></script>
+	<section class="akashic--document safearea--LR twocol">
+		<div class="twocol-side">
+			<h3>サンプルデモ</h3>
+			<ul id="menu-list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=svg-sample">SVGサンプル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=box2d-sample">2D 物理演算</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=timeline-easing-sample">イージング一覧</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/demo/?title=collision-js">collision-js</a></li>
+				<li><a href="/demo/?title=aimgui">AimGui</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</div>
+		<div class="twocol-main no-border">
+			<div id="app"></div>
+			<script src="/lib/highlight.pack.js"></script>
+			<script src="/demo/dist/bundle.js?81b623ac"></script>
+		</div>
+	</section>
 	<footer class="safearea--LR">
 	<div class="responsive--width">
 
