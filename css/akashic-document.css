@@ -363,3 +363,11 @@ input.accordion-state:checked + * {
 	padding-top: 70px;
 	margin-top: -70px;
 }
+
+/* サンプルデモページ */
+.demo .akashic--document {
+    margin-top: 40px;
+}
+.demo .akashic--document img {
+	margin: 0;
+}

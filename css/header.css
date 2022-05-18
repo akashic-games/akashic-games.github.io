@@ -287,3 +287,9 @@ header:after {
 	}
 }
 /*↑メニュー＞コンテンツ↑*/
+
+/* サンプルデモページ */
+.demo .head--spacer {
+	top: 0;
+	position: fixed;
+}

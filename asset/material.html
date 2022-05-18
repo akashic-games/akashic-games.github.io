@@ -7,23 +7,25 @@
 <meta name="theme-color" content="#0F1F26">
 <title>サンプルデモの素材 - Akashic Engine</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?46ab668d">
-<link rel="stylesheet" href="/css/header.css?46ab668d">
-<link rel="stylesheet" href="/css/footer.css?46ab668d">
+<link rel="stylesheet" href="/css/common.css?81b623ac">
+<link rel="stylesheet" href="/css/header.css?81b623ac">
+<link rel="stylesheet" href="/css/footer.css?81b623ac">
 
 
-<link rel="stylesheet" href="/css/asset.css?46ab668d">
+<link rel="stylesheet" href="/css/asset.css?81b623ac">
 
-<link rel="stylesheet" href="/css/akashic-document.css?46ab668d">
+<link rel="stylesheet" href="/css/akashic-document.css?81b623ac">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?46ab668d"></script>
+<script src="/lib/common.js?81b623ac"></script>
 
 
+<script src="/lib/sampleDemo.js?81b623ac"></script>
 
-</head>
-<body>
+
+</head>a
+<body class="demo">
 <div class="head--spacer"></div>
 <div class="SP--head--menu--show"></div>
 <div class="SP--head--menu--hide"></div>
@@ -109,213 +111,241 @@
 </header>
 
 <div id="BodyInner">
-	<section class="asset--material safearea--LR">
-		<div class="inner responsive--width">
+	<section class="akashic--document safearea--LR twocol">
 
-			<h1>サンプルデモの素材</h1>
+		<div class="twocol-side">
+			<h3>サンプルデモ</h3>
+			<ul id="menu-list">
+				<li><a href="/demo/?title=helloworld">Hello World</a></li>
+				<li><a href="/demo/?title=scale-rotate-opacity">拡縮・回転・透明度</a></li>
+				<li><a href="/demo/?title=bitmap-font">ビットマップフォント</a></li>
+				<li><a href="/demo/?title=framesprite">フレームアニメーション</a></li>
+				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
+				<li><a href="/demo/?title=demo-tile">タイル</a></li>
+				<li><a href="/demo/?title=svg-sample">SVGサンプル</a></li>
+				<li><a href="/demo/?title=label-sample">ラベル</a></li>
+				<li><a href="/demo/?title=box2d-sample">2D 物理演算</a></li>
+				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
+				<li><a href="/demo/?title=timeline-sample">トゥイーン制御</a></li>
+				<li><a href="/demo/?title=timeline-easing-sample">イージング一覧</a></li>
+				<li><a href="/demo/?title=simpleShot">アブストラクトシューティング</a></li>
+				<li><a href="/demo/?title=HoppingWitch">HOPPING WITCH</a></li>
+				<li><a href="/demo/?title=GalaxyWars">GALAXY WARS</a></li>
+				<li><a href="/demo/?title=cannontv">いくぜ！ 超会議</a></li>
+				<li><a href="/demo/?title=collision-js">collision-js</a></li>
+				<li><a href="/demo/?title=aimgui">AimGui</a></li>
+				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
+			</ul>
+		</div>
 
-			<p>動作テストやゲーム開発等にご自由にお使いください。<br>
-				これらは<a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本ライセンス</a>の下に提供されています。</p>
+		<div class="twocol-main asset--material">
+			<div class="inner responsive--width">
 
-			<h2 id="TILE" name="TILE">タイル</h2>
+				<h1>サンプルデモの素材</h1>
 
-			<p>サンプルデモ<a href="/asset/tile.html">タイル</a>や<a href="/asset/hoppingwitch.html">HOPPING WITCH</a>で使用している素材です。<br>
-				1つのタイルの大きさは縦横32ピクセルです。</p>
+				<p>動作テストやゲーム開発等にご自由にお使いください。<br>
+					これらは<a href="http://creativecommons.org/licenses/by/2.1/jp/" target="_blank">クリエイティブ・コモンズ 表示 2.1 日本ライセンス</a>の下に提供されています。</p>
 
-			<ul><!--
---><li><img src="/img/asset/material/map.png" alt=""></li><!--
---></ul>
+				<h2 id="TILE" name="TILE">タイル</h2>
 
-			<p><a class="asset--material--download" href="/zip/tilechip.zip">タイル ダウンロード</a></p>
+				<p>サンプルデモ<a href="/asset/tile.html">タイル</a>や<a href="/asset/hoppingwitch.html">HOPPING WITCH</a>で使用している素材です。<br>
+					1つのタイルの大きさは縦横32ピクセルです。</p>
 
-			<h2 id="GALAXYWARS" name="GALAXYWARS">GALAXY WARS</h2>
+				<ul>
+					<li><img src="/img/asset/material/map.png" alt=""></li>
+				</ul>
 
-			<p>サンプルデモ<a href="/asset/galaxywars.html">GALAXY WARS</a>で使用している素材です。<br>
-				GALAXY WARSでは他にも<a href="#BITMAPFONT">ビットマップフォント</a>の素材を使用しています。</p>
+				<p><a class="asset--material--download" href="/zip/tilechip.zip">タイル ダウンロード</a></p>
 
-			<ul><!--
---><li><img src="/img/asset/material/galaxywars/player.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars/alphaEnemy.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars/betaEnemy.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars/gammaEnemy.png" alt=""></li><!--
---></ul>
-			<ul><!--
---><li><img src="/img/asset/material/galaxywars/ball.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars/enemyMissile.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars/missle.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars/particle.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars/shield.png" alt=""></li><!--
---></ul>
-			<ul><!--
---><li><img src="/img/asset/material/galaxywars/star01.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars/star02.png" alt=""></li><!--
---></ul>
-			<ul><!--
---><li><img src="/img/asset/material/galaxywars/item01.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars/item02.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars/item03.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars/item04.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars/item05.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars/item06.png" alt=""></li><!--
---></ul>
-			<ul><!--
---><li><img src="/img/asset/material/galaxywars/startButton.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars/returnButton.png" alt=""></li><!--
---></ul>
-			<ul><!--
---><li><img src="/img/asset/material/galaxywars/title.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars/gameover.png" alt=""></li><!--
---></ul>
+				<h2 id="GALAXYWARS" name="GALAXYWARS">GALAXY WARS</h2>
 
-			<p><a class="asset--material--download" href="/zip/galaxywars.zip">GALAXY WARS ダウンロード</a></p>
+				<p>サンプルデモ<a href="/asset/galaxywars.html">GALAXY WARS</a>で使用している素材です。<br>
+					GALAXY WARSでは他にも<a href="#BITMAPFONT">ビットマップフォント</a>の素材を使用しています。</p>
 
-			<h2>GALAXY WARS拡張パック</h2>
+				<ul>
+					<li><img src="/img/asset/material/galaxywars/player.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars/alphaEnemy.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars/betaEnemy.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars/gammaEnemy.png" alt=""></li>
+				</ul>
+				<ul>
+					<li><img src="/img/asset/material/galaxywars/ball.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars/enemyMissile.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars/missle.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars/particle.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars/shield.png" alt=""></li>
+				</ul>
+				<ul>
+					<li><img src="/img/asset/material/galaxywars/star01.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars/star02.png" alt=""></li>
+				</ul>
+				<ul>
+				<li><img src="/img/asset/material/galaxywars/item01.png" alt=""></li>
+				<li><img src="/img/asset/material/galaxywars/item02.png" alt=""></li>
+				<li><img src="/img/asset/material/galaxywars/item03.png" alt=""></li>
+				<li><img src="/img/asset/material/galaxywars/item04.png" alt=""></li>
+				<li><img src="/img/asset/material/galaxywars/item05.png" alt=""></li>
+				<li><img src="/img/asset/material/galaxywars/item06.png" alt=""></li>
+				</ul>
+				<ul>
+					<li><img src="/img/asset/material/galaxywars/startButton.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars/returnButton.png" alt=""></li>
+				</ul>
+				<ul>
+				<li><img src="/img/asset/material/galaxywars/title.png" alt=""></li>
+				<li><img src="/img/asset/material/galaxywars/gameover.png" alt=""></li>
+				</ul>
 
-			<p>サンプルデモ<a href="/asset/galaxywars.html">GALAXY WARS</a>の未使用素材です。</p>
+				<p><a class="asset--material--download" href="/zip/galaxywars.zip">GALAXY WARS ダウンロード</a></p>
 
-			<ul><!--
---><li><img src="/img/asset/material/galaxywars-expansion/a_01.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/a_02.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/a_03.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/a_04.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/a_05.png" alt=""></li><!--
---></ul>
-			<ul><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_01.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_02.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_03.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_04.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_05.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_06.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_07.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_08.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_09.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_10.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_11.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_12.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_13.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_14.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_15.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_20.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_21.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_22.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_23.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/b_24.png" alt=""></li><!--
---></ul>
-			<ul><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_01.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_02.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_03.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_04.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_05.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_06.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_07.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_08.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_09.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_10.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_11.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_12.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_13.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_14.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_15.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_16.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_17.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_18.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_19.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_20.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_21.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_22.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_23.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_24.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_25.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_26.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_27.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_28.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_29.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_30.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_31.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_32.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_33.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_34.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_35.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_36.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_37.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/c_38.png" alt=""></li><!--
---></ul>
-			<ul><!--
---><li><img src="/img/asset/material/galaxywars-expansion/e_01.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/e_02.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/e_03.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/e_04.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/e_05.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/e_06.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/e_07.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/e_08.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/e_09.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/e_10.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/e_11.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/e_12.png" alt=""></li><!--
---></ul>
-			<ul><!--
---><li><img src="/img/asset/material/galaxywars-expansion/g_01.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/g_02.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/g_03.png" alt=""></li><!--
---></ul>
-			<ul><!--
---><li><img src="/img/asset/material/galaxywars-expansion/d_01.png" alt=""></li><!--
---><li><img src="/img/asset/material/galaxywars-expansion/d_02.png" alt=""></li><!--
---></ul>
+				<h2>GALAXY WARS拡張パック</h2>
 
-			<p><a class="asset--material--download" href="/zip/galaxywars-expansion.zip">GALAXY WARS拡張パック ダウンロード</a></p>
+				<p>サンプルデモ<a href="/asset/galaxywars.html">GALAXY WARS</a>の未使用素材です。</p>
 
-			<h2 id="HOPPINGWITCH" name="HOPPINGWITCH">HOPPING WITCH</h2>
+				<ul>
+					<li><img src="/img/asset/material/galaxywars-expansion/a_01.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/a_02.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/a_03.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/a_04.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/a_05.png" alt=""></li>
+				</ul>
+				<ul>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_01.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_02.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_03.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_04.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_05.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_06.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_07.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_08.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_09.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_10.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_11.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_12.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_13.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_14.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_15.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_20.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_21.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_22.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_23.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/b_24.png" alt=""></li>
+				</ul>
+				<ul>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_01.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_02.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_03.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_04.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_05.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_06.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_07.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_08.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_09.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_10.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_11.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_12.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_13.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_14.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_15.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_16.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_17.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_18.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_19.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_20.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_21.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_22.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_23.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_24.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_25.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_26.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_27.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_28.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_29.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_30.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_31.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_32.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_33.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_34.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_35.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_36.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_37.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/c_38.png" alt=""></li>
+				</ul>
+				<ul>
+					<li><img src="/img/asset/material/galaxywars-expansion/e_01.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/e_02.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/e_03.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/e_04.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/e_05.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/e_06.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/e_07.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/e_08.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/e_09.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/e_10.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/e_11.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/e_12.png" alt=""></li>
+				</ul>
+				<ul>
+					<li><img src="/img/asset/material/galaxywars-expansion/g_01.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/g_02.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/g_03.png" alt=""></li>
+				</ul>
+				<ul>
+					<li><img src="/img/asset/material/galaxywars-expansion/d_01.png" alt=""></li>
+					<li><img src="/img/asset/material/galaxywars-expansion/d_02.png" alt=""></li>
+				</ul>
 
-			<p>サンプルゲーム<a href="/asset/hoppingwitch.html">HOPPING WITCH</a>で使用している素材です。<br>
-				HOPPING WITCHでは他にも<a href="#TILE">タイル</a>と<a href="#BITMAPFONT">ビットマップフォント</a>の素材を使用しています。</p>
+				<p><a class="asset--material--download" href="/zip/galaxywars-expansion.zip">GALAXY WARS拡張パック ダウンロード</a></p>
 
-			<ul><!--
---><li><img src="/img/asset/material/hoppingwitch/player.png" alt=""></li><!--
---><li><img src="/img/asset/material/hoppingwitch/player_miss.png" alt=""></li><!--
---><li><img src="/img/asset/material/hoppingwitch/score.png" alt=""></li><!--
---><li><img src="/img/asset/material/hoppingwitch/button_start.png" alt=""></li><!--
---><li><img src="/img/asset/material/hoppingwitch/button_back.png" alt=""></li><!--
---></ul>
-			<ul><!--
---><li><img src="/img/asset/material/hoppingwitch/title.png" alt=""></li><!--
---><li><img src="/img/asset/material/hoppingwitch/gameover.png" alt=""></li><!--
---></ul>
-			<ul><!--
---><li><img src="/img/asset/material/hoppingwitch/background.png" alt=""></li><!--
---></ul>
+				<h2 id="HOPPINGWITCH" name="HOPPINGWITCH">HOPPING WITCH</h2>
 
-			<p><a class="asset--material--download" href="/zip/hoppingwitch.zip">HOPPING WITCH ダウンロード</a></p>
+				<p>サンプルゲーム<a href="/asset/hoppingwitch.html">HOPPING WITCH</a>で使用している素材です。<br>
+					HOPPING WITCHでは他にも<a href="#TILE">タイル</a>と<a href="#BITMAPFONT">ビットマップフォント</a>の素材を使用しています。</p>
 
-			<h2 id="BITMAPFONT" name="BITMAPFONT">ビットマップフォント</h2>
+				<ul>
+					<li><img src="/img/asset/material/hoppingwitch/player.png" alt=""></li>
+					<li><img src="/img/asset/material/hoppingwitch/player_miss.png" alt=""></li>
+					<li><img src="/img/asset/material/hoppingwitch/score.png" alt=""></li>
+					<li><img src="/img/asset/material/hoppingwitch/button_start.png" alt=""></li>
+					<li><img src="/img/asset/material/hoppingwitch/button_back.png" alt=""></li>
+				</ul>
+				<ul>
+					<li><img src="/img/asset/material/hoppingwitch/title.png" alt=""></li>
+					<li><img src="/img/asset/material/hoppingwitch/gameover.png" alt=""></li>
+				</ul>
+				<ul>
+					<li><img src="/img/asset/material/hoppingwitch/background.png" alt=""></li>
+				</ul>
 
-			<p>サンプルデモ<a href="/asset/hoppingwitch.html">HOPPING WITCH</a>や<a href="/asset/galaxywars.html">GALAXY WARS</a>で使用している素材です。<br>
-				詳細は同梱されている「README.txt」ファイルをご確認ください。</p>
+				<p><a class="asset--material--download" href="/zip/hoppingwitch.zip">HOPPING WITCH ダウンロード</a></p>
 
-			<ul><!--
---><li><img src="/img/asset/material/font16_1.png" alt=""></li><!--
---><li><img src="/img/asset/material/font16_2.png" alt=""></li><!--
---></ul>
-			<ul><!--
---><li><img src="/img/asset/material/font20_1.png" alt=""></li><!--
---><li><img src="/img/asset/material/font20_2.png" alt=""></li><!--
---></ul>
+				<h2 id="BITMAPFONT" name="BITMAPFONT">ビットマップフォント</h2>
 
-			<p><a class="asset--material--download" href="/zip/font.zip">ビットマップフォント ダウンロード</a></p>
+				<p>サンプルデモ<a href="/asset/hoppingwitch.html">HOPPING WITCH</a>や<a href="/asset/galaxywars.html">GALAXY WARS</a>で使用している素材です。<br>
+					詳細は同梱されている「README.txt」ファイルをご確認ください。</p>
 
-			<h2 id="SWITCH" name="SWITCH">スイッチ</h2>
+				<ul>
+					<li><img src="/img/asset/material/font16_1.png" alt=""></li>
+					<li><img src="/img/asset/material/font16_2.png" alt=""></li>
+				</ul>
+				<ul>
+					<li><img src="/img/asset/material/font20_1.png" alt=""></li>
+					<li><img src="/img/asset/material/font20_2.png" alt=""></li>
+				</ul>
 
-			<p>サンプルデモ<a href="/asset/touchevent.html">タッチイベント</a>で使用している素材です。</p>
+				<p><a class="asset--material--download" href="/zip/font.zip">ビットマップフォント ダウンロード</a></p>
 
-			<ul><!--
---><li><img src="/img/asset/material/switch.png" alt=""></li><!--
---></ul>
+				<h2 id="SWITCH" name="SWITCH">スイッチ</h2>
 
-			<p><a class="asset--material--download" href="/zip/switch.zip">スイッチ ダウンロード</a></p>
+				<p>サンプルデモ<a href="/asset/touchevent.html">タッチイベント</a>で使用している素材です。</p>
 
+				<ul>
+					<li><img src="/img/asset/material/switch.png" alt=""></li>
+				</ul>
+
+				<p><a class="asset--material--download" href="/zip/switch.zip">スイッチ ダウンロード</a></p>
+
+			</div>
 		</div>
 	</section>
     <footer class="safearea--LR">

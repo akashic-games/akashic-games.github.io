@@ -153,3 +153,8 @@ body.lock,
 	content: '';
 }
 /*↑ページトップ↑*/
+
+/* border なし */
+.no-border {
+	border: none !important;
+}
