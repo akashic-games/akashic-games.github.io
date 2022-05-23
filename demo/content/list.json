@@ -71,6 +71,11 @@
 			"dir": "cannontv",
 			"backgroundColor": "transparent",
 			"asFullWidth": true
+		},
+		{
+			"caption": "つりっくま風ゲーム",
+			"description": "つりっくま風ゲームのテンプレートです。画像を差し替えたするとオリジナルのゲームを作成できます。",
+			"dir": "tsurikkuma-style-game"
 		}
 	]
 }

@@ -1,0 +1,27 @@
+{
+  "name": "tsurikkuma-style-game",
+  "private": true,
+  "version": "0.1.0",
+  "description": "tsurikkuma-style game",
+  "scripts": {
+    "build": "rimraf ./script && tsc && akashic-cli-scan asset script",
+    "update": "akashic-cli-scan asset && akashic-cli-scan globalScripts",
+    "start": "akashic-sandbox",
+    "lint": "eslint src/**/*.ts --fix"
+  },
+  "author": "DWANGO Co., Ltd.",
+  "license": "MIT",
+  "devDependencies": {
+    "@akashic/akashic-cli-scan": "~0.15.36",
+    "@akashic/akashic-engine": "~3.4.1",
+    "@akashic/akashic-sandbox": "~0.17.47",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
+    "eslint": "^8.15.0",
+    "rimraf": "3.0.2",
+    "typescript": "4.6.4"
+  },
+  "dependencies": {
+    "@akashic-extension/akashic-timeline": "^3.1.0"
+  }
+}
