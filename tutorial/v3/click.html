@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>クリックできるようにする</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -103,6 +103,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -337,19 +338,19 @@ Akashic Engine ではユーザがタップやクリックするとポイント�
 <p>それぞれのイベントに対応するトリガーを利用することで、イベント発生時に処理を実行できます。</p>
 <p>以下は矩形エンティティ <code>rect</code> にポイントイベントを受け取るハンドラを設定して自身の色を変える例です。</p>
 <pre><code class="language-javascript">rect.touchable = true;
-rect.onPointDown.add(function() {
+rect.onPointDown.add(() =&gt; {
   rect.cssColor = &quot;red&quot;;
   rect.modified();
 });
-rect.onPointUp.add(function() {
+rect.onPointUp.add(() =&gt; {
   rect.cssColor = &quot;gray&quot;;
   rect.modified();
 });</code></pre>
 <p>ポイントイベントが発生した座標を取得するには、トリガーに渡す関数に引数を追加します。例えば、矩形エンティティ <code>rect</code> の <code>onPointDown</code>
 トリガーの座標を取得するには、以下のようなコードになります。</p>
-<pre><code class="language-javascript">rect.onPointDown.add(function (ev) {
-  var x = ev.point.x;
-  var y = ev.point.y;
+<pre><code class="language-javascript">rect.onPointDown.add(ev =&gt; {
+  const x = ev.point.x;
+  const y = ev.point.y;
   ...
 });</code></pre>
 <p>追加した引数 <code>ev</code> にポイントイベントが与えられています。この変数には以下のプロパティがあります。</p>
@@ -379,7 +380,7 @@ rect.onPointUp.add(function() {
 </div>
 
 <p>以下は矩形エンティティ <code>rect</code> を指やマウス操作で移動するコード例です。</p>
-<pre><code class="language-javascript">rect.onPointMove.add(function(ev) {
+<pre><code class="language-javascript">rect.onPointMove.add(ev =&gt; {
   rect.x += ev.prevDelta.x;
   rect.y += ev.prevDelta.y;
   rect.modified();
@@ -387,11 +388,11 @@ rect.onPointUp.add(function() {
 <p>エンティティに重なりがあり、その両方がポイントイベントを受け取れる状態にある場合は、最前面に表示されているエンティティがポイントイベントを受け取ります。</p>
 <p>シーンオブジェクトの <code>onPointDownCapture</code>, <code>onPointMoveCapture</code>, <code>onPointUpCapture</code> トリガーを利用すると、配置されているエンティティとは無関係に、シーン全体でポイントイベントを取得できます。これらのトリガーはシーン上にイベントを受け取るエンティティが存在していたとしても常に呼び出されます。</p>
 <p>以下は、画面に指が触れた時、もしくはマウスのボタンが押されたときに、その座標に矩形エンティティを配置するコードです。</p>
-<pre><code class="language-javascript">var scene = new g.Scene({ game: g.game });
-scene.onLoad.add(function() {
-  scene.onPointDownCapture.add(function(ev) {
-    var size = 20;
-    var rect = new g.FilledRect({
+<pre><code class="language-javascript">const scene = new g.Scene({ game: g.game });
+scene.onLoad.add(() =&gt; {
+  scene.onPointDownCapture.add(ev =&gt; {
+    const size = 20;
+    const rect = new g.FilledRect({
       scene: scene,
       x: ev.point.x - size / 2,
       y: ev.point.y - size / 2,

@@ -1,10 +1,10 @@
-var size = 25;
-var margin = 15;
+const size = 25;
+const margin = 15;
 
 function main() {
-	var scene = new g.Scene({ game: g.game });
-	scene.onLoad.add(function () {
-		var x, y, rect;
+	const scene = new g.Scene({ game: g.game });
+	scene.onLoad.add(() => {
+		let x, y, rect;
 		for (y = 0; y < g.game.height; y += size + margin) {
 			for (x = 0; x < g.game.width; x += size + margin) {
 				rect = createRect(scene, x, y);
@@ -16,8 +16,8 @@ function main() {
 }
 
 function createRect(scene, x, y) {
-	var colors = ["blue", "navy", "royalblue", "skyblue"];
-	var idx = Math.floor(g.game.random.generate() * colors.length);
+	const colors = ["blue", "navy", "royalblue", "skyblue"];
+	const idx = Math.floor(g.game.random.generate() * colors.length);
 	return new g.FilledRect({
 		scene: scene,
 		x: x,

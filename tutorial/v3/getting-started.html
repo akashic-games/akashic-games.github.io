@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic を試してみる</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -103,6 +103,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -339,14 +340,14 @@ zip ファイルを展開し、その中の index.html をウェブブラウザ�
             }
           }
         },
-        mainFunc: function(g) {
+        mainFunc: g =&gt; {
           // ここにゲームコードを記述します
-          var scene = new g.Scene({
+          const scene = new g.Scene({
             game: g.game,
             assetIds: [&quot;aco&quot;]
           });
-          scene.onLoad.addOnce(function() {
-            var sprite = new g.FrameSprite({
+          scene.onLoad.addOnce(() =&gt; {
+            const sprite = new g.FrameSprite({
               scene: scene,
               src: scene.asset.getImageById(&quot;aco&quot;),
               width: 32,

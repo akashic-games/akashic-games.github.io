@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ビットマップフォントを使う</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -103,6 +103,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -373,14 +374,14 @@ Akashic Engine のビットマップフォントはこれに該当する可能�
 <p><code>akashic init</code> コマンドで生成した Akashic ゲームであれば、文字画像と JSON ファイルをそれぞれ image/, text/ ディレクトリに置いて <code>akashic scan asset</code> を実行すると登録されます。</p>
 <p>登録後、以下のようなコードでビットマップフォントを生成できます。</p>
 <pre><code class="language-javascript">// 上で生成した font.png と font_glyphs.json に対応するアセットを取得
-var fontAsset = g.game.scene().asset.getImageById(&quot;font&quot;);
-var fontGlyphAsset = g.game.scene().asset.getTextById(&quot;font_glyphs&quot;);
+const fontAsset = g.game.scene().asset.getImageById(&quot;font&quot;);
+const fontGlyphAsset = g.game.scene().asset.getTextById(&quot;font_glyphs&quot;);
 
 // テキストアセット (JSON) の内容をオブジェクトに変換
-var glyphInfo = JSON.parse(fontGlyphAsset.data);
+const glyphInfo = JSON.parse(fontGlyphAsset.data);
 
 // ビットマップフォントを生成
-var font = new g.BitmapFont({
+const font = new g.BitmapFont({
   src: fontAsset,
   glyphInfo: glyphInfo
 });</code></pre>
@@ -388,7 +389,7 @@ var font = new g.BitmapFont({
 この例のように bmpfont-generator が生成したグリフ情報があれば、それをそのまま与えることができます。
 画像編集ソフトで文字画像を自作した場合は、これらの値を自力で指定する必要があります。</p>
 <p>ビットマップフォントは、ダイナミックフォントと同じく <code>g.Label</code> の <code>font</code> プロパティに指定して利用できます。</p>
-<pre><code class="language-javascript">var label = new g.Label({
+<pre><code class="language-javascript">const label = new g.Label({
   scene: g.game.scene(),
   text: &quot;「こんにちは、アカシックエンジンです」&quot;,
   fontSize: 20,

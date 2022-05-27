@@ -1,22 +1,22 @@
 function main(param) {
-	var scene = new g.Scene({
+	const scene = new g.Scene({
 		game: g.game,
 		assetIds: ["font", "font_glyphs"]
 	});
-	scene.onLoad.add(function () {
+	scene.onLoad.add(() => {
 		// font.png と font_glyphs.json に対応するアセットを取得
-		var fontAsset = g.game.scene().asset.getImageById("font");
-		var fontGlyphAsset = g.game.scene().asset.getTextById("font_glyphs");
+		const fontAsset = g.game.scene().asset.getImageById("font");
+		const fontGlyphAsset = g.game.scene().asset.getTextById("font_glyphs");
 
 		// テキストアセット (JSON) の内容をオブジェクトに変換
-		var glyphInfo = JSON.parse(fontGlyphAsset.data);
+		const glyphInfo = JSON.parse(fontGlyphAsset.data);
 
 		// ビットマップフォントを生成
-		var font = new g.BitmapFont({
+		const font = new g.BitmapFont({
 			src: fontAsset,
 			glyphInfo: glyphInfo
 		});
-		var label = new g.Label({
+		const label = new g.Label({
 			scene: g.game.scene(),
 			text: "「こんにちは、アカシックエンジンです」",
 			fontSize: 20,

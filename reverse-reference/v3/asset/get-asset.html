@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>読み込んだアセットを取得する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -103,6 +103,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -160,6 +161,12 @@
 			<li>
 				
 					<a href="../drawing/rotate-anchor.html">回転・拡大の基準点を変える</a>
+				
+			</li>
+		
+			<li>
+				
+					<a href="../drawing/inversion.html">反転する</a>
 				
 			</li>
 		
@@ -471,6 +478,12 @@
 		
 			<li>
 				
+					<a href="../asset/global-asset.html">グローバルアセットを使う</a>
+				
+			</li>
+		
+			<li>
+				
 					<a href="../asset/split-script.html">スクリプトを分割する (複数のスクリプトを使う)</a>
 				
 			</li>
@@ -653,6 +666,8 @@ const imageWidth = (scene.assets[&quot;foo&quot;] as g.ImageAsset).width;
 // getImageById()での取得
 const imageWidth = scene.asset.getImageById(&quot;foo&quot;).width;
 // (返り値の型が ImageAsset になっているので、キャストなしで `width` にアクセスできます)</code></pre>
+<h3>グローバルアセットの取得</h3>
+<p>グローバルアセットも同様の方法で取得することができます。どのシーンでも取得できることを除いて、取得方法に特別な違いはまりません。</p>
 <h3>Scene#assets からの取得</h3>
 <p><code>g.Scene#assets</code> でもアセット ID からアセットを取得することができます。Akashic Engine v2 以前ではアセットを参照する唯一の方法でした。</p>
 <pre><code class="language-javascript">const foo = scene.assets[&quot;foo&quot;];</code></pre>
@@ -665,7 +680,7 @@ const imageWidth = scene.asset.getImageById(&quot;foo&quot;).width;
 <div class="navi-center">
 <a href="./read-asset">前 (アセットを読み込む)</a>
  | <a href="../">目次</a>
- | <a href="./split-script.html">次 (スクリプトを分割する (複数のスクリプトを使う))</a>
+ | <a href="./global-asset.html">次 (グローバルアセットを使う)</a>
 </div>
 
 			</div>

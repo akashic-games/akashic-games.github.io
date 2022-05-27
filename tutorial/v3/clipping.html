@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>クリッピングする</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -103,6 +103,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -310,10 +311,10 @@
 <p>ペインは <code>E</code> と同じように子要素をまとめるためのエンティティです。ペインを使うことで描画内容のクリッピングを実現できます。
 <code>E</code> と異なり、<code>Pane</code> は子孫要素の描画領域を <code>Pane</code> の大きさに限定します。子要素が <code>Pane</code> の大きさをはみ出して描画しようとした場合、はみ出した部分は描画されません。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene({ game: g.game });
-  scene.onLoad.add(function() {
-    var pane = new g.Pane({ scene: scene, width: 50, height: 50 });
-    var rect = new g.FilledRect({
+  const scene = new g.Scene({ game: g.game });
+  scene.onLoad.add(() =&gt; {
+    const pane = new g.Pane({ scene: scene, width: 50, height: 50 });
+    const rect = new g.FilledRect({
       scene: scene,
       width: 50,
       height: 50,
@@ -336,10 +337,10 @@ module.exports = main;</code></pre>
 <p>少し紛らわしい点として、ペインが保持している子エンティティの変更時には子エンティティの <code>modified()</code> や <code>invalidate()</code> のみを呼び出せばよいという点です。子エンティティの変更はペインに通知されて自動的にキャッシュの更新が行われます。</p>
 <p>以下のプログラムでは、ペイン内に配置した矩形を回転させています。ペインを利用していますが、ペイン自体のプロパティは変更していないので、矩形オブジェクトの <code>modified()</code> の呼び出しをしていますが、ペイン自体の <code>invalidate()</code> の呼び出しはしていません。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene({ game: g.game });
-  scene.onLoad.add(function() {
-    var pane = new g.Pane({ scene: scene, width: 50, height: 50 });
-    var rect = new g.FilledRect({
+  const scene = new g.Scene({ game: g.game });
+  scene.onLoad.add(() =&gt; {
+    const pane = new g.Pane({ scene: scene, width: 50, height: 50 });
+    const rect = new g.FilledRect({
       scene: scene,
       width: 50,
       height: 50,
@@ -350,7 +351,7 @@ module.exports = main;</code></pre>
     });
     pane.append(rect);
     scene.append(pane);
-    rect.onUpdate.add(function() {
+    rect.onUpdate.add(() =&gt; {
       ++rect.angle;
       rect.modified();
     });

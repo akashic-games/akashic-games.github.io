@@ -1,11 +1,11 @@
 function main() {
-  var scene = new g.Scene({
+  const scene = new g.Scene({
     game: g.game,
     assetIds: ["player"] // シーン内で利用するアセットID
   });
 
-  scene.loaded.add(function() {
-    var sprite = new g.Sprite({
+  scene.loaded.add(() => {
+    const sprite = new g.Sprite({
       scene: scene,
       src: scene.assets["player"]
     });

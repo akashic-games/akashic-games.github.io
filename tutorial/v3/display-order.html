@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>表示順を制御する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -103,6 +103,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -319,8 +320,8 @@
 子エンティティは親エンティティに追従して動くためです。</p>
 <p>特に <code>E</code> エンティティは、それ自体は何も描画しないエンティティで、複数のエンティティをグループ化する場合に便利です。</p>
 <p>例えばエンティティ <code>E</code> に子エンティティとして <code>FilledRect</code> を追加する場合は、次のようなコードになります。</p>
-<pre><code class="language-javascript">var group = new g.E({ scene: scene });
-var child = new g.FilledRect({
+<pre><code class="language-javascript">const group = new g.E({ scene: scene });
+const child = new g.FilledRect({
   scene: scene,
   width: 30,
   height: 30,
@@ -329,14 +330,14 @@ var child = new g.FilledRect({
 group.append(child); // group の子エンティティに child を追加</code></pre>
 <p>以下のプログラムでは、<code>angle</code> を設定した <code>E</code> オブジェクトに 3 つの矩形を追加しています。矩形の座標系は <code>E</code> を基準にして変わるので、3 つの矩形は斜めに配置されます。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene({ game: g.game });
-  scene.onLoad.add(function() {
-    var group = new g.E({ scene: scene, x: 50, y: 50, angle: 30 });
-    var rect1 = createRect(scene, 0, 0, &quot;darkgreen&quot;);
+  const scene = new g.Scene({ game: g.game });
+  scene.onLoad.add(() =&gt; {
+    const group = new g.E({ scene: scene, x: 50, y: 50, angle: 30 });
+    const rect1 = createRect(scene, 0, 0, &quot;darkgreen&quot;);
     group.append(rect1);
-    var rect2 = createRect(scene, 30, 0, &quot;darkorange&quot;);
+    const rect2 = createRect(scene, 30, 0, &quot;darkorange&quot;);
     group.append(rect2);
-    var rect3 = createRect(scene, 60, 0, &quot;darkred&quot;);
+    const rect3 = createRect(scene, 60, 0, &quot;darkred&quot;);
     group.append(rect3);
     scene.append(group);
   });
@@ -359,8 +360,8 @@ module.exports = main;</code></pre>
 
 <blockquote>
 <p>Tips: <code>new</code> する時に親が決まっているなら、次のように <code>parent</code> プロパティで親を指定してしまうこともできます。</p>
-<pre><code class="language-javascript">var group = new g.E({ scene: scene });
-var child = new g.FilledRect({
+<pre><code class="language-javascript">const group = new g.E({ scene: scene });
+const child = new g.FilledRect({
   scene: scene,
   width: 30,
   height: 30,
@@ -391,9 +392,9 @@ var child = new g.FilledRect({
 <blockquote>
 <p>NOTE: もっとも、 &quot;地面&quot; と &quot;地表のアイテム&quot; と &quot;キャラクタ&quot; のように、描画順序の定まったカテゴリ分けができる場合、最初にそれらのカテゴリをまとめるエンティティを生成してしまう方が、単純になることもあるでしょう。</p>
 <pre><code class="language-javascript">// 表示順別ごとにエンティティをグループ化するための E を作って、
-var groundLayer = new g.E({ scene: scene });
-var itemLayer = new g.E({ scene: scene });
-var characterLayer = new g.E({ scene: scene });
+const groundLayer = new g.E({ scene: scene });
+const itemLayer = new g.E({ scene: scene });
+const characterLayer = new g.E({ scene: scene });
 
 // シーンに表示順で追加しておく。
 scene.append(groundLayer);

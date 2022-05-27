@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>スクリプトを分割する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -103,6 +103,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -314,10 +315,10 @@
 <li>他のスクリプトから <code>require()</code> で sub.js を読み込んで利用する</li>
 </ul>
 <p>例として、「赤い矩形を描画するだけのシーンを作る処理」を持つ <code>redRectScene.js</code> を考えます。それは次のような内容になります:</p>
-<pre><code class="language-javascript">module.exports.create = function() {
-  var scene = new g.Scene({ game: g.game });
-  scene.onLoad.add(function() {
-    var rect = new g.FilledRect({
+<pre><code class="language-javascript">module.exports.create = () =&gt; {
+  const scene = new g.Scene({ game: g.game });
+  scene.onLoad.add(() =&gt; {
+    const rect = new g.FilledRect({
       scene: scene,
       cssColor: &quot;red&quot;,
       width: 32,
@@ -335,7 +336,7 @@
 すると <code>require()</code> 関数でそのファイルを読み込むことができるようになります。
 <code>require()</code> の引数は、読み込む .js ファイルの相対パスです。</p>
 <p>たとえば同じディレクトリの <code>main.js</code> から利用する場合は、次のようなコードになります。</p>
-<pre><code class="language-javascript">var redRectScene = require(&quot;./redRectScene&quot;);
+<pre><code class="language-javascript">const redRectScene = require(&quot;./redRectScene&quot;);
 
 function main() {
   g.game.pushScene(redRectScene.create());

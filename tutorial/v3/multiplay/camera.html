@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>プレイヤーごとに異なる位置を表示する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -103,6 +103,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -310,11 +311,14 @@
 <p><a name="camera"></a></p>
 <h2>カメラ</h2>
 <p>カメラは、インターフェース <code>g.Camera</code> で表現されます。現在の Akashic Engine が実装を提供する唯一のカメラは <code>g.Camera2D</code> です。これは 2D ゲーム用途のカメラであり、次のように生成することができます。</p>
-<pre><code>var camera = new g.Camera2D({});</code></pre><p>生成されたカメラは、そのままでは描画に影響を与えません。カメラを <code>g.Game#focusingCamera</code> に設定することで、ゲーム画面の描画に対してカメラの設定を適用することができます。</p>
-<pre><code>g.game.focusingCamera = camera;</code></pre><p>この状態で <code>camera</code> のプロパティを変更することで、ゲーム画面全体の描画内容を制御することができます。</p>
+<pre><code class="language-javascript">const camera = new g.Camera2D({});</code></pre>
+<p>生成されたカメラは、そのままでは描画に影響を与えません。カメラを <code>g.Game#focusingCamera</code> に設定することで、ゲーム画面の描画に対してカメラの設定を適用することができます。</p>
+<pre><code class="language-javascript">g.game.focusingCamera = camera;</code></pre>
+<p>この状態で <code>camera</code> のプロパティを変更することで、ゲーム画面全体の描画内容を制御することができます。</p>
 <p><code>Camera2D</code> は <code>Object2D</code> を実装しており、<code>x</code>, <code>y</code> によって描画位置のオフセットや、<code>scaleX</code>, <code>scaleY</code> によって描画結果の拡大率を設定できます。たとえば以下のような記述により、画面全体を 30 度傾けることができます。</p>
-<pre><code>camera.angle = 30;
-camera.modified();</code></pre><p><code>Camera2D</code> のオフセットや回転角度は、エンティティとは逆方向に作用することに注意してください。すなわち、たとえば X 座標のオフセット <code>Camera2D#x</code> を 10 に設定した場合、移動するのは描画される範囲です。その中で描画されるエンティティの描画位置は元の位置から (右ではなく) 左に 10 ピクセルずれます。</p>
+<pre><code class="language-javascript">camera.angle = 30;
+camera.modified();</code></pre>
+<p><code>Camera2D</code> のオフセットや回転角度は、エンティティとは逆方向に作用することに注意してください。すなわち、たとえば X 座標のオフセット <code>Camera2D#x</code> を 10 に設定した場合、移動するのは描画される範囲です。その中で描画されるエンティティの描画位置は元の位置から (右ではなく) 左に 10 ピクセルずれます。</p>
 <p>エンティティなどと同様、カメラの値の変更後には <code>modified()</code> を呼び出す必要があります。
 <code>Game#focusingCamera</code> の既定値は <code>undefined</code> です。</p>
 <p><a name="ignore-camera"></a></p>

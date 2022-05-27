@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>プレイヤーごとに異なる描画を行う</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -103,6 +103,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -323,27 +324,27 @@
 <p>ローカルエンティティとは、「そのエンティティを参照するイベントがすべてローカルになる」エンティティ <code>g.E</code> です。</p>
 <p>例えばポイント押下イベント <code>g.PointDownEvent</code> には、押下した位置のエンティティを参照する <code>target</code> プロパティが存在します。この <code>target</code> のエンティティがローカルである時、 <code>g.PointDownEvent</code> はローカルになります。そのイベントはそれを生成した(画面を押下した)プレイヤー自身にしか通知されません。</p>
 <p>ローカルエンティティは、エンティティのコンストラクタ引数の <code>local</code> プロパティに <code>true</code> を与えることで生成できます。以下は、シーン <code>scene</code> に属するローカルな <code>g.Sprite</code> を生成するコードの例です。</p>
-<pre><code class="language-js">var sprite = new g.Sprite({
+<pre><code class="language-js">const sprite = new g.Sprite({
   scene: scene,
   src: scene.asset.getImageById(&quot;chara1&quot;), // (アセットID &quot;chara1&quot; のイメージアセットがある想定)
   local: true // ローカルであることを指定
 });</code></pre>
 <p>その性質から、ローカルエンティティは、必ずしも全てのエンジンインスタンス上に同じように存在し表示されている必要がありません。すなわちプレイヤー別の UI を実現することができます。</p>
 <p>クリックした位置に四角形を表示するだけのコンテンツに、プレイヤー別の色選択 UI を表示するコードは次のようなものになります。</p>
-<pre><code class="language-javascript">var scene = new g.Scene({ game: g.game });
+<pre><code class="language-javascript">const scene = new g.Scene({ game: g.game });
 
-scene.onLoad.add(function() {
-  var userColors = {}; // ユーザ別の色テーブル
+scene.onLoad.add(() =&gt; {
+  const userColors = {}; // ユーザ別の色テーブル
 
   // 画面がタッチされた時、矩形を置く
-  scene.onPointDownCapture.add(function(ev) {
+  scene.onPointDownCapture.add(ev =&gt; {
     // 対象がある(他のtouchableに対するpointDown)なら無視
     if (ev.target != null) {
       return;
     }
 
     // クリックしたプレイヤーの色で矩形を生成
-    var rect = new g.FilledRect({
+    const rect = new g.FilledRect({
       scene: scene,
       x: ev.point.x,
       y: ev.point.y,
@@ -355,7 +356,7 @@ scene.onLoad.add(function() {
   });
 
   // ローカルエンティティで色切り替えボタン (緑)
-  var greenButton = new g.FilledRect({
+  const greenButton = new g.FilledRect({
     scene: scene,
     local: true, // ローカルにする
     x: 5,
@@ -366,7 +367,7 @@ scene.onLoad.add(function() {
     touchable: true,
     opacity: 0.3
   });
-  greenButton.onPointUp.add(function(ev) {
+  greenButton.onPointUp.add(ev =&gt; {
     // ローカルエンティティのUIの表示を変更
     greenButton.opacity = 1;
     greenButton.modified();
@@ -379,7 +380,7 @@ scene.onLoad.add(function() {
   scene.append(greenButton);
 
   // ローカルエンティティ色切り替えボタン (青)
-  var blueButton = new g.FilledRect({
+  const blueButton = new g.FilledRect({
     scene: scene,
     local: true, // ローカルエンティティ
     x: 20,
@@ -390,7 +391,7 @@ scene.onLoad.add(function() {
     touchable: true,
     opacity: 0.3
   });
-  blueButton.onPointUp.add(function() {
+  blueButton.onPointUp.add(() =&gt; {
     // ローカルエンティティのUIの表示を変更
     greenButton.opacity = 0.3; // 非選択状態のものは半透明に
     greenButton.modified();
@@ -403,7 +404,7 @@ scene.onLoad.add(function() {
   scene.append(blueButton);
 
   // (raiseEvent()で全プレイヤーに送信された)MessageEventを受け取る処理: 送信プレイヤーの色情報を更新する
-  scene.onMessage.add(function(msg) {
+  scene.onMessage.add(msg =&gt; {
     // 関係ないイベントは無視して抜ける
     if (!msg.data || !msg.data.color) return;
 

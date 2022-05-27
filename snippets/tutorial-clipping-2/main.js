@@ -1,8 +1,8 @@
 function main() {
-	var scene = new g.Scene({ game: g.game });
-	scene.onLoad.add(function () {
-		var pane = new g.Pane({ scene: scene, width: 50, height: 50 });
-		var rect = new g.FilledRect({
+	const scene = new g.Scene({ game: g.game });
+	scene.onLoad.add(() => {
+		const pane = new g.Pane({ scene: scene, width: 50, height: 50 });
+		const rect = new g.FilledRect({
 			scene: scene,
 			width: 50,
 			height: 50,
@@ -13,7 +13,7 @@ function main() {
 		});
 		pane.append(rect);
 		scene.append(pane);
-		rect.onUpdate.add(function () {
+		rect.onUpdate.add(() => {
 			++rect.angle;
 			rect.modified();
 		});

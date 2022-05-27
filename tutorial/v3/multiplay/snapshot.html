@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>スキップ時間を短縮する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -103,6 +103,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -341,8 +342,8 @@
 <h3><a name="save"></a> スナップショットの保存</h3>
 <p>スナップショットの保存は、 <code>g.game.requestSaveSnapshot()</code> によって要求することができます。</p>
 <p>詳細な仕様は後述しますが、このメソッドは主に以下の形で利用します。</p>
-<pre><code class="language-typescript">g.game.requestSaveSnapshot(function() {
-  var snapshot = {
+<pre><code class="language-typescript">g.game.requestSaveSnapshot(() =&gt; {
+  const snapshot = {
     // ゲームの実行状態を表すデータ
   };
   return { snapshot: snapshot };
@@ -363,17 +364,17 @@
 <pre><code class="language-js">// script/main.js (mainスクリプト)
 
 function main() {
-  var scene = new g.Scene({ game: g.game });
-  scene.onLoad.add(function() {
+  const scene = new g.Scene({ game: g.game });
+  scene.onLoad.add(() =&gt; {
     g.game.vars.value = 0;
 
-    var font = new g.DynamicFont({
+    const font = new g.DynamicFont({
       game: g.game,
       fontFamily: &quot;sans-serif&quot;,
       size: 15
     });
 
-    var label = new g.Label({
+    const label = new g.Label({
       scene: scene,
       font: font,
       fontSize: 15,
@@ -381,7 +382,7 @@ function main() {
       x: g.game.width / 2,
       y: g.game.height / 2
     });
-    label.onUpdate.add(function() {
+    label.onUpdate.add(() =&gt; {
       label.text = &quot;&quot; + g.game.vars.value++;
       label.invalidate();
     });
@@ -397,20 +398,20 @@ module.exports = main;</code></pre>
 function main(param) {
   // 引数 param に snapshot プロパティがあればそこから復元。
   // なければ通常のゲーム開始だが、ここでは「空オブジェクト ({}) からの復元」として一本化。
-  var snapshot = param.snapshot || {};
+  const snapshot = param.snapshot || {};
 
-  var scene = new g.Scene({ game: g.game });
-  scene.onLoad.add(function() {
+  const scene = new g.Scene({ game: g.game });
+  scene.onLoad.add(() =&gt; {
     // スナップショットからの復元なら保存されていた値、そうでなければ 0 で初期化。
     g.game.vars.value = snapshot.val || 0;
 
-    var font = new g.DynamicFont({
+    const font = new g.DynamicFont({
       game: g.game,
       fontFamily: &quot;sans-serif&quot;,
       size: 15
     });
 
-    var label = new g.Label({
+    const label = new g.Label({
       scene: scene,
       id: snapshot.labelId || undefined, // エンティティIDを復元していることに注意(後述)。
       font: font,
@@ -419,16 +420,16 @@ function main(param) {
       x: g.game.width / 2,
       y: g.game.height / 2
     });
-    label.onUpdate.add(function() {
+    label.onUpdate.add(() =&gt; {
       label.text = &quot;&quot; + g.game.vars.value++;
       label.invalidate();
     });
     scene.append(label);
 
     // 1 分 (60 * 1000 ms) おきにスナップショットを保存。
-    scene.setInterval(function() {
-      g.game.requestSaveSnapshot(function() {
-        var snapshot = {
+    scene.setInterval(() =&gt; {
+      g.game.requestSaveSnapshot(() =&gt; {
+        const snapshot = {
           val: g.game.vars.value,
           labelId: label.id
         };
@@ -472,16 +473,16 @@ module.exports = main;</code></pre>
 <p><strong>スナップショットは、 <code>requestSaveSnapshot()</code> に与えた関数 (コールバック) の中で生成してください</strong> 。</p>
 <p>以下はこれに反するコード例です。</p>
 <pre><code class="language-typescript">// NG: スナップショットを事前に生成している
-var snapshot = {
+const snapshot = {
   // ...
 };
-g.game.requestSaveSnapshot(function() {
+g.game.requestSaveSnapshot(() =&gt; {
   return { snapshot: snapshot };
 });</code></pre>
 <p>次のように、 <code>requestSaveSnapshot()</code> に与えた関数の中で生成してください。</p>
 <pre><code class="language-typescript">// OK: スナップショットを保存直前に生成している
-g.game.requestSaveSnapshot(function() {
-  var snapshot = {
+g.game.requestSaveSnapshot(() =&gt; {
+  const snapshot = {
     // ...
   };
   return { snapshot: snapshot };
@@ -496,16 +497,16 @@ g.game.requestSaveSnapshot(function() {
 </blockquote>
 <p><code>requestSaveSnapshot()</code> を呼び出す時、スナップショットを事前に生成してしまうと、「フレームの終了時」の状態と異なる可能性があります。
 例えば次のようなコードが考えられます。</p>
-<pre><code class="language-typescript">var score = 0;
-scene.onPointDownCapture.add(function() {
+<pre><code class="language-typescript">let score = 0;
+scene.onPointDownCapture.add(() =&gt; {
   score++;
 });
 
-scne.onMessage.add(function(ev) {
+scne.onMessage.add(ev =&gt; {
   if (ev.data &amp;&amp; ev.data.type === &quot;SNAPSHOT&quot;) {
     // NG: スナップショットを事前に生成している
-    var snapshot = { score: score };
-    g.game.requestSaveSnapshot(function() {
+    const snapshot = { score: score };
+    g.game.requestSaveSnapshot(() =&gt; {
       return { snapshot: snapshot };
     });
   }
@@ -518,10 +519,10 @@ scne.onMessage.add(function(ev) {
 そうなると、スナップショットに保存される <code>score</code> の値と、このフレームの終了時の <code>score</code> の値は 1 ずれてしまいます。</p>
 <p>次のように <code>requestSaveSnapshot()</code> のコールバック内でスナップショットを生成すれば、この問題は起きません。
 <code>g.MessaveEvent</code> によって更新された後の <code>score</code> の値がスナップショットに保存されます。</p>
-<pre><code class="language-typescript">scne.onMessage.add(function(ev) {
+<pre><code class="language-typescript">scne.onMessage.add(ev =&gt; {
   if (ev.data &amp;&amp; ev.data.type === &quot;SNAPSHOT&quot;) {
-    g.game.requestSaveSnapshot(function() {
-      var snapshot = { score: score };
+    g.game.requestSaveSnapshot(() =&gt; {
+      const snapshot = { score: score };
       return { snapshot: snapshot };
     });
   }

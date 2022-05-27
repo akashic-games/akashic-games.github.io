@@ -1,10 +1,10 @@
 function main() {
-	var scene = new g.Scene({ game: g.game });
-	scene.onLoad.add(function () {
-		var rect = createRect(scene);
+	const scene = new g.Scene({ game: g.game });
+	scene.onLoad.add(() => {
+		const rect = createRect(scene);
 		scene.append(rect);
 		// scene の onUpdate を設定し、毎フレーム実行する処理を記述
-		scene.onUpdate.add(function () {
+		scene.onUpdate.add(() => {
 			++rect.x;
 			rect.modified();
 		});

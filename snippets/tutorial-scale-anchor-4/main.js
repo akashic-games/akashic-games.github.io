@@ -1,11 +1,11 @@
 function main() {
-	var scene = new g.Scene({
+	const scene = new g.Scene({
 		game: g.game,
 		assetIds: ["player"]
 	});
 
-	scene.onLoad.add(function () {
-		var sprite = new g.Sprite({
+	scene.onLoad.add(() => {
+		const sprite = new g.Sprite({
 			scene: scene,
 			src: scene.asset.getImageById("player"),
 			x: g.game.width, // g.game.width と height はゲーム画面の幅と高さです

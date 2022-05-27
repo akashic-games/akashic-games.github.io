@@ -1,13 +1,13 @@
 function main() {
-	var scene = new g.Scene({ game: g.game });
-	scene.onLoad.add(function () {
-		var font = new g.DynamicFont({
+	const scene = new g.Scene({ game: g.game });
+	scene.onLoad.add(() => {
+		const font = new g.DynamicFont({
 			fontFamily: "sans-serif",
 			size: 15,
 			game: g.game
 		});
-		var count = 0;
-		var label = new g.Label({
+		let count = 0;
+		const label = new g.Label({
 			scene: scene,
 			font: font,
 			text: count + "",
@@ -17,7 +17,7 @@ function main() {
 			y: 10
 		});
 		scene.append(label);
-		scene.setInterval(function () {
+		scene.setInterval(() => {
 			label.text = ++count + "";
 			label.invalidate();
 		}, 500);
