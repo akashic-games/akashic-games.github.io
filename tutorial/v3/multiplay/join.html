@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>Join と Leave</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -103,6 +103,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -339,13 +340,13 @@
 </table>
 </blockquote>
 <p>次のコードは、最後に join したプレイヤーを記憶して参照する例です。</p>
-<pre><code class="language-javascript">var lastJoinedPlayerId = null;
+<pre><code class="language-javascript">let lastJoinedPlayerId = null;
 
-g.game.onJoin.add(function(ev) {
+g.game.onJoin.add(ev =&gt; {
   lastJoinedPlayerId = ev.player.id;
 });
 
-scene.onPointDownCapture.add(function(ev) {
+scene.onPointDownCapture.add(ev =&gt; {
   if (ev.player.id === lastJoinedPlayerId) {
     // ニコニコ生放送上で動かす場合、イベントを生成した(＝画面を押下した)のが「配信者」である時のみ実行される
     // ゲームアツマール (マルチプレイ) では、イベントを作成した(＝画面を押下した)のが「部屋を作ったプレイヤー」である時のみ実行される

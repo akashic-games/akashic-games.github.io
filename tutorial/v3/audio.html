@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>音を鳴らす</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -103,6 +103,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -316,12 +317,12 @@ Ogg Vorbis 形式 (.ogg) と AAC 形式 (.aac) の二種類のファイルを用
 <pre><code class="language-javascript">scene.asset.getAudioById(&quot;se1&quot;).play();</code></pre>
 <p>シーンで効果音を利用するには、他のアセットと同じようにシーンオブジェクトのパラメータオブジェクトにアセットの ID を列挙します。以下は画面のタップまたはクリックで効果音を再生する例です。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene({
+  const scene = new g.Scene({
     game: g.game,
     assetIds: [&quot;se1&quot;]
   });
-  scene.onLoad.add(function() {
-    scene.onPointDownCapture.add(function() {
+  scene.onLoad.add(() =&gt; {
+    scene.onPointDownCapture.add(() =&gt; {
       scene.asset.getAudioById(&quot;se1&quot;).play();
     });
   });
@@ -351,13 +352,13 @@ BGM をループ再生させるには、<code>game.json</code> を編集して�
 BGM は自動的にループ再生されるので、<code>play()</code> メソッドはシーンロード時に一度だけ呼び出します。</p>
 <p>以下のプログラムは上で出てきた効果音再生プログラムに BGM を追加したものです。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene({
+  const scene = new g.Scene({
     game: g.game,
     assetIds: [&quot;bgm&quot;, &quot;se1&quot;]
   });
-  scene.onLoad.add(function() {
+  scene.onLoad.add(() =&gt; {
     scene.asset.getAudioById(&quot;bgm&quot;).play();
-    scene.onPointDownCapture.add(function() {
+    scene.onPointDownCapture.add(() =&gt; {
       scene.asset.getAudioById(&quot;se1&quot;).play();
     });
   });

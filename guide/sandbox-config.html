@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>sandbox.config.js の仕様</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/asset.css?c846f947">
+<link rel="stylesheet" href="/css/asset.css?db379921">
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -105,6 +105,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -149,6 +150,12 @@ sandbox.config.js を利用することで、セッションパラメータや�
 <li>arguments<ul>
 <li>オブジェクト (詳細は後述)</li>
 <li>ゲームに渡す起動引数</li>
+<li>serve コマンドで有効</li>
+</ul>
+</li>
+<li>client<ul>
+<li>オブジェクト (詳細は後述)</li>
+<li>クライアント環境 (ブラウザなど) のための設定</li>
 <li>serve コマンドで有効</li>
 </ul>
 </li>
@@ -212,7 +219,7 @@ autoSendEventName にイベント名（例えば startMyGameEvent）を記述し
 module.exports = config;</code></pre><h2><a name="showMenu"></a> showMenu</h2>
 <p>この項目に true を指定されている場合、常にデベロッパーメニューが開いた状態で Akashic ゲームが実行されます。</p>
 <pre><code>var config = {
-   &quot;showMenu&quot;: true
+    &quot;showMenu&quot;: true
 }
 
 module.exports = config;</code></pre><h2><a name="arguments"></a> arguments</h2>
@@ -222,7 +229,34 @@ module.exports = config;</code></pre><h2><a name="arguments"></a> arguments</h2>
 <p>起動引数の内容はゲームが実行される環境によって決定されます。
 arguments に起動引数を記述することで、serve コマンドで各サービスの動作を確認することができます。</p>
 <p>具体的な内容はゲームが実行されるサービスによって決まります。各サービスの動作を確認するために serve でも起動引数を指定して実行することができます。</p>
-
+<h2><a name="client"></a> client</h2>
+<p>client の external には、外部プラグインを記述することができます。
+外部プラグインは、 Akashic ゲームの実行環境によって与えられる機能です。</p>
+<p>serve コマンドでは、自分でモック実装を用意することで、任意の外部プラグインが存在する状態のゲームを動作確認することができます。</p>
+<p>serve の外部プラグインのモック実装を利用するには、オブジェクトを返す関数をエクスポートするファイルを用意する必要があります。
+例として、<code>console.log()</code> を実行する外部プラグインのモックを作成する場合、<code>./plugin/pluginMock.js</code> を以下のように記述します。</p>
+<pre><code>module.exports = () =&gt; ({
+  return {
+    foo: function () { console.log(&quot;fooooo&quot;);}
+  };
+});</code></pre><p><code>./plugin/pluginMock.js</code> がある状態で、 game.json と sandbox.config.js に以下の記述がある場合、 serve コマンドで実行した Akashic ゲームは <code>g.game.external.fooPlugin</code> を利用することができます。</p>
+<p>game.json</p>
+<pre><code>{
+    ...
+    &quot;environment&quot;: {
+        &quot;external&quot;: {
+            &quot;fooPlugin&quot;: &quot;0&quot; // この値は現状固定値です
+        }
+    }
+}</code></pre><p>sandbox.config.js</p>
+<pre><code>var config = {
+    &quot;client&quot;: {
+        &quot;external&quot;: {
+            &quot;fooPlugin&quot;: &quot;./plugin/pluginMock.js&quot;
+        }
+    }
+}
+module.exports = config;</code></pre>
 		</div>
 	</section>
 	<footer class="safearea--LR">

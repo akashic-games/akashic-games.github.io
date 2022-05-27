@@ -1,7 +1,7 @@
 function main() {
-	var scene = new g.Scene({ game: g.game });
-	scene.onLoad.add(function () {
-		var rect = new g.FilledRect({
+	const scene = new g.Scene({ game: g.game });
+	scene.onLoad.add(() => {
+		const rect = new g.FilledRect({
 			scene: scene,
 			cssColor: "#ff0000",
 			width: 32,

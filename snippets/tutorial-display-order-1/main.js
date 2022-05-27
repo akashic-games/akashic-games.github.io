@@ -1,13 +1,13 @@
 function main() {
 	// 表示順の制御
-	var scene = new g.Scene({ game: g.game });
-	scene.onLoad.add(function () {
-		var group = new g.E({ scene: scene, x: 50, y: 50, angle: 30 });
-		var rect1 = createRect(scene, 0, 0, "darkgreen");
+	const scene = new g.Scene({ game: g.game });
+	scene.onLoad.add(() => {
+		const group = new g.E({ scene: scene, x: 50, y: 50, angle: 30 });
+		const rect1 = createRect(scene, 0, 0, "darkgreen");
 		group.append(rect1);
-		var rect2 = createRect(scene, 30, 0, "darkorange");
+		const rect2 = createRect(scene, 30, 0, "darkorange");
 		group.append(rect2);
-		var rect3 = createRect(scene, 60, 0, "darkred");
+		const rect3 = createRect(scene, 60, 0, "darkred");
 		group.append(rect3);
 		scene.append(group);
 	});

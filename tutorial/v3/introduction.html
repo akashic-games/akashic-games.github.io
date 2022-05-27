@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic 導入</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -103,6 +103,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -379,7 +380,7 @@ akashic-sandbox -V</code></pre>
 <p><code>main.js</code> は最初のシーンを作成します。シーンはゲームの場面を表すオブジェクトです。例えば、タイトル場面、プレイ場面、スコア場面など必要に応じて作成できます。
 Akashic Engine のゲームには最低 1 つのシーンが必要です。次のプログラムは空のシーンを作成して、そのシーンを表示します。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene({ game: g.game });
+  const scene = new g.Scene({ game: g.game });
   g.game.pushScene(scene);
 }
 
@@ -391,9 +392,9 @@ module.exports = main;</code></pre>
 <p>ウェブブラウザを起動して <code>http://localhost:3000/game/</code> を開くとゲームが実行されます。今のところシーンに何も配置していないので何も表示されません。</p>
 <p>以下は、<code>main.js</code> に赤い矩形を表示するコードを追加したものです。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene({ game: g.game });
-  scene.onLoad.add(function() {
-    var rect = new g.FilledRect({
+  const scene = new g.Scene({ game: g.game });
+  scene.onLoad.add(() =&gt; {
+    const rect = new g.FilledRect({
       scene: scene,
       cssColor: &quot;#ff0000&quot;,
       width: 32,

@@ -1,10 +1,10 @@
 function main() {
-	var scene = new g.Scene({
+	const scene = new g.Scene({
 		game: g.game,
 		assetIds: ["explosion"]
 	});
-	scene.onLoad.add(function () {
-		var frameSprite = new g.FrameSprite({
+	scene.onLoad.add(() => {
+		const frameSprite = new g.FrameSprite({
 			scene: scene,
 			src: scene.asset.getImageById("explosion"),
 			// エンティティのサイズ

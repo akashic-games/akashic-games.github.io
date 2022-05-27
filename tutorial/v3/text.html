@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>文字列を表示する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -103,6 +103,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -310,7 +311,7 @@
 <p>Akashic Engine で文字列を表示するには、フォントとラベルが必要です。 <strong>フォント</strong> は文字の形を表すオブジェクトです。 <strong>ラベル</strong> はフォントを利用して文字列を描画するエンティティです。</p>
 <p>フォントには、システムにインストールされているフォントから生成するダイナミックフォントと、画像から生成するビットマップフォントの二種類があります。ビットマップフォントについては後述します。</p>
 <p>ダイナミックフォントは以下のコードで生成できます。</p>
-<pre><code class="language-javascript">var font = new g.DynamicFont({
+<pre><code class="language-javascript">const font = new g.DynamicFont({
   game: g.game,
   fontFamily: &quot;sans-serif&quot;,
   size: 15
@@ -324,7 +325,7 @@
 <p>引数の <code>size</code> プロパティは文字の大きさ、 <code>game</code> プロパティには <code>g.game</code> を渡します。</p>
 <h2><a name="label"></a> ラベル</h2>
 <p>上のフォントを使って、実際に文字列を描画するエンティティ・ラベルは以下のコードで生成します。</p>
-<pre><code class="language-javascript">var label = new g.Label({
+<pre><code class="language-javascript">const label = new g.Label({
   scene: scene,
   font: font,
   text: &quot;Hello World!&quot;,
@@ -368,14 +369,14 @@
 
 <p>以下のプログラムでは、ダイナミックフォントとラベルを利用して文字列を描画しています。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene({ game: g.game });
-  scene.onLoad.add(function() {
-    var font = new g.DynamicFont({
+  const scene = new g.Scene({ game: g.game });
+  scene.onLoad.add(() =&gt; {
+    const font = new g.DynamicFont({
       game: g.game,
       fontFamily: &quot;sans-serif&quot;,
       size: 15
     });
-    var label = new g.Label({
+    const label = new g.Label({
       scene: scene,
       font: font,
       text: &quot;Hello World!&quot;,
@@ -410,15 +411,15 @@ label.invalidate();</code></pre>
 <code>invalidate()</code> を呼び出した場合は <code>modified()</code> の呼び出しは不要です。</p>
 <p>以下は、500 ミリ秒ごとにカウンタの値を増やすプログラム例です。</p>
 <pre><code class="language-javascript">function main() {
-  var scene = new g.Scene({ game: g.game });
-  scene.onLoad.add(function() {
-    var font = new g.DynamicFont({
+  const scene = new g.Scene({ game: g.game });
+  scene.onLoad.add(() =&gt; {
+    const font = new g.DynamicFont({
       fontFamily: &quot;sans-serif&quot;,
       size: 15,
       game: g.game
     });
-    var count = 0;
-    var label = new g.Label({
+    let count = 0;
+    const label = new g.Label({
       scene: scene,
       font: font,
       text: count + &quot;&quot;,
@@ -428,7 +429,7 @@ label.invalidate();</code></pre>
       y: 10
     });
     scene.append(label);
-    scene.setInterval(function() {
+    scene.setInterval(() =&gt; {
       label.text = ++count + &quot;&quot;;
       label.invalidate();
     }, 500);

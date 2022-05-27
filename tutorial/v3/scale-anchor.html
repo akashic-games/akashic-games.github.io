@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>拡縮とアンカーポイント</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?c846f947">
-<link rel="stylesheet" href="/css/header.css?c846f947">
-<link rel="stylesheet" href="/css/footer.css?c846f947">
+<link rel="stylesheet" href="/css/common.css?db379921">
+<link rel="stylesheet" href="/css/header.css?db379921">
+<link rel="stylesheet" href="/css/footer.css?db379921">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?c846f947">
+<link rel="stylesheet" href="/css/akashic-document.css?db379921">
 
-<link rel="stylesheet" href="/css/railscasts.css?c846f947">
+<link rel="stylesheet" href="/css/railscasts.css?db379921">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?c846f947"></script>
+<script src="/lib/common.js?db379921"></script>
 
 
 
@@ -103,6 +103,7 @@
 				<li><a href="/demo/?title=aimgui">AimGui</a></li>
 				<li><a href="/demo/?title=tsurikkuma-style-game">つりっくま風ゲーム</a></li>
 				<li><a href="/demo/?title=oekaki">おえかき</a></li>
+				<li><a href="/demo/?title=software-keyboard-sample">ソフトウェアキーボード</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 		</li>
@@ -312,7 +313,7 @@
 (参考: <a href="./basic.html#entity">エンティティの節</a> の表)</p>
 <p>たとえば以下のように生成した <code>Sprite</code> は、
 元のサイズよりも横方向に 2 倍、縦方向に 1.5 倍拡大してさらに 45 度回転した状態で描画されます。</p>
-<pre><code class="language-javascript">var sprite = new g.Sprite({
+<pre><code class="language-javascript">const sprite = new g.Sprite({
   scene: scene, // シーン scene があるものとします
   src: scene.asset.getImageById(&quot;player&quot;), // アセットID &quot;player&quot; が画像アセットだとします
   x: 0,
@@ -348,7 +349,7 @@ sprite.modified();</code></pre>
 <p>エンティティにアンカーポイントを指定することで、この基準位置を設定できます。
 アンカーポイントは <code>anchorX</code>, <code>anchorY</code> プロパティで与えることができます。
 (akashic-engine&#0064;2.5.4 以降 (akashic-sandbox&#0064;0.15.11, akashic-cli&#0064;1.7.28 以降))</p>
-<pre><code class="language-javascript">var sprite = new g.Sprite({
+<pre><code class="language-javascript">const sprite = new g.Sprite({
   scene: scene,
   src: scene.asset.getImageById(&quot;player&quot;), // アセットID &quot;player&quot; が画像アセットだとします
   x: g.game.width, // g.game.width と height はゲーム画面の幅と高さです

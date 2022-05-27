@@ -1,9 +1,9 @@
 function main() {
-	var scene = new g.Scene({ game: g.game });
-	scene.onLoad.add(function () {
-		scene.onPointDownCapture.add(function (ev) {
-			var size = 20;
-			var rect = new g.FilledRect({
+	const scene = new g.Scene({ game: g.game });
+	scene.onLoad.add(() => {
+		scene.onPointDownCapture.add(ev => {
+			const size = 20;
+			const rect = new g.FilledRect({
 				scene: scene,
 				x: ev.point.x - size / 2,
 				y: ev.point.y - size / 2,
