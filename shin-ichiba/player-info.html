@@ -324,22 +324,22 @@
   }
 }</code></pre>
 <p>スクリプトアセット内で、 <code>require()</code> で関数 <code>resolvePlayerInfo()</code> を取得します。</p>
-<pre><code class="language-javascript">var resolvePlayerInfo = require(&quot;@akashic-extension/resolve-player-info&quot;)
+<pre><code class="language-javascript">const resolvePlayerInfo = require(&quot;@akashic-extension/resolve-player-info&quot;)
   .resolvePlayerInfo;</code></pre>
 <p>TypeScript の場合は <code>import</code> を利用してください。</p>
 <pre><code class="language-typescript">import { resolvePlayerInfo } from &quot;@akashic-extension/resolve-player-info&quot;;</code></pre>
 <h2><a name="obtain-name"></a> 名前の取得</h2>
 <p>得られた <code>resolvePlayerInfo()</code> のもっとも簡単な用法は、引数として <code>{ raises: true }</code> を与えて呼び出すことです。これにより名前利用の許諾ダイアログが表示され、ダイアログに応答したプレイヤーのユーザ名情報が <code>g.game.onPlayerInfo</code> で通知されます。</p>
 <p>また以降そのプレイヤーが生成したイベント (画面押下の <code>g.PointDownEvent</code> など) には、 <code>player.name</code> プロパティにユーザ名が含まれるようになります。</p>
-<pre><code class="language-javascript">var nameTable = {};
-g.game.onPlayerInfo.add(function(ev) {
+<pre><code class="language-javascript">const nameTable = {};
+g.game.onPlayerInfo.add(ev =&gt; {
   // 各プレイヤーが名前利用許諾のダイアログに応答した時、通知されます。
   // ev.player.name にそのプレイヤーの名前が含まれます。
   // (ev.player.id には (最初から) プレイヤーIDが含まれています)
   nameTable[ev.player.id] = ev.player.name;
 });
 
-scene.onPointDownCapture.add(function(ev) {
+scene.onPointDownCapture.add(ev =&gt; {
   // onPlayerInfo での通知後、そのプレイヤーが生成したイベントには名前情報が与えられます。
   if (ev.player.name != null) {
     console.log(ev.player.name + &quot; さんが操作しました&quot;);
@@ -429,20 +429,20 @@ resolvePlayerInfo({ raises: true });</code></pre>
 </tbody></table>
 <h2><a name="code-example"></a> コード例</h2>
 <p>マルチプレイゲーム内で参加ボタンを表示し、押したプレイヤーに名前利用の許諾を求めるコードは、次のようなものになります。</p>
-<pre><code class="language-javascript">var resolvePlayerInfo = require(&quot;@akashic-extension/resolve-player-info&quot;)
+<pre><code class="language-javascript">const resolvePlayerInfo = require(&quot;@akashic-extension/resolve-player-info&quot;)
   .resolvePlayerInfo;
 
-module.exports = function() {
-  var scene = new g.Scene({ game: g.game });
-  scene.onLoad.add(function() {
-    var font = new g.DynamicFont({
+module.exports = () =&gt; {
+  const scene = new g.Scene({ game: g.game });
+  scene.onLoad.add(() =&gt; {
+    const font = new g.DynamicFont({
       game: g.game,
       fontFamily: &quot;sans-serif&quot;,
       size: 15
     });
 
     // 「参加」ボタン (Label)
-    var entryButton = new g.Label({
+    const entryButton = new g.Label({
       scene: scene,
       x: 10,
       y: 10,
@@ -453,7 +453,7 @@ module.exports = function() {
       local: true, // ローカルエンティティにする
       touchable: true
     });
-    entryButton.onPointUp.add(function(ev) {
+    entryButton.onPointUp.add(ev =&gt; {
       // 「参加」ボタンを押された時: 参加処理の代わりに名前取得の許諾を求める。
       // プレイヤーがダイアログに応じると、 raiseEvent() で名前情報が全体に通知されるので、
       // onPlayerInfo でそれを受信した時に参加者とする。
@@ -462,10 +462,10 @@ module.exports = function() {
     scene.append(entryButton);
 
     // 参加者の情報を保持するテーブル
-    var playersTable = {};
-    g.game.onPlayerInfo.add(function(ev) {
-      var player = ev.player;
-      var anonymous = !ev.userData.accepted;
+    const playersTable = {};
+    g.game.onPlayerInfo.add(ev =&gt; {
+      const player = ev.player;
+      const anonymous = !ev.userData.accepted;
       playersTable[player.id] = {
         name: player.name, // 名前
         anonymous: anonymous, // 名前利用を拒否したか (自動生成の名前か)
@@ -474,7 +474,7 @@ module.exports = function() {
     });
 
     // 参加を「締め切る」ボタン (Label)
-    var startButton = new g.Label({
+    const startButton = new g.Label({
       scene: scene,
       x: 10,
       y: 10,
@@ -485,7 +485,7 @@ module.exports = function() {
       local: true, // ローカルエンティティにする
       touchable: true
     });
-    startButton.onPointUp.add(function() {
+    startButton.onPointUp.add(() =&gt; {
       // 参加が締め切られた。
       // この時点 playersTable に登録されているプレイヤーが「参加者」。
       // 名前が playersTable[(プレイヤーID)].name から参照できる。
@@ -493,13 +493,13 @@ module.exports = function() {
 
       // 参加者情報を受け取りゲーム部分のシーンを作成する関数 createGameScene()
       // (このコード例では定義していないので各ゲームで作成してください)
-      var gameScene = createGameScene(playersTable);
+      const gameScene = createGameScene(playersTable);
       // それに replaceScene することでゲーム本編を開始する。
       g.game.replaceScene(gameScene);
     });
 
-    g.game.onJoin.add(function(ev) {
-      var broadcasterPlayerId = ev.player.id; // 放送者のプレイヤーID
+    g.game.onJoin.add(ev =&gt; {
+      const broadcasterPlayerId = ev.player.id; // 放送者のプレイヤーID
       // 自分が放送者なら、「締め切る」ボタンを表示。
       if (g.game.selfId === broadcasterPlayerId) {
         scene.append(startButton);

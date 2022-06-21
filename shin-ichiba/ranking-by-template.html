@@ -408,12 +408,12 @@ game.json に <code>environment.nicolive.preferredSessionParameters.totalTimeLim
 あるいは残り時間が短くなったら結果発表演出を行いたい、ということも考えられます。</p>
 <p>テンプレートのコードでも残り時間の表示を行なっています。
 テンプレートの main.js では、 <code>main()</code> の引数 <code>param</code> から制限時間を取得しています。次の箇所がそれです。</p>
-<pre><code class="language-javascript">var time = 60; // 制限時間
+<pre><code class="language-javascript">let time = 60; // 制限時間
 if (param.sessionParameter.totalTimeLimit) {
   time = param.sessionParameter.totalTimeLimit;
 }</code></pre>
 <p>この値を使って、次のように <code>scene.update</code> で 1 フレームごとにカウントダウンしていき、ラベル <code>timeLabel</code> で画面に表示しています。</p>
-<pre><code class="language-javascript">var updateHandler = function() {
+<pre><code class="language-javascript">const updateHandler = () =&gt; {
   if (time &lt;= 0) {
     // (中略)
     scene.update.remove(updateHandler); // このハンドラを削除＝カウントダウンを停止
@@ -443,7 +443,7 @@ scene.update.add(updateHandler);</code></pre>
 <pre><code class="language-javascript">g.game.vars.gameState = { score: 0 };</code></pre>
 <p>テンプレートのゲームは、単に画面がクリックされたら 1 点加算するというものでした。
 これは次の記述で実現されています。</p>
-<pre><code class="language-javascript">scene.pointDownCapture.add(function() {
+<pre><code class="language-javascript">scene.pointDownCapture.add(() =&gt; {
   // 制限時間以内であればタッチ1回ごとにSCOREに+1します
   if (time &gt; 0) {
     g.game.vars.gameState.score++;
@@ -475,14 +475,14 @@ scene.update.add(updateHandler);</code></pre>
 この値は ゲームアツマール上でゲームが実行されている時にのみ <code>true</code> になります。</p>
 <p>テンプレートでは、この変数を使って「制限時間経過後に ゲームアツマールのスコアボードを表示する」ようになっています。
 これは次のコードで実現されています。</p>
-<pre><code class="language-javascript">var updateHandler = function() {
+<pre><code class="language-javascript">const updateHandler = () =&gt; {
   if (time &lt;= 0) {
     // ゲームアツマール環境であればランキングを表示します
     if (param.isAtsumaru) {
-      var boardId_1 = 1;
+      const boardId_1 = 1;
       window.RPGAtsumaru.experimental.scoreboards
         .setRecord(boardId_1, g.game.vars.gameState.score)
-        .then(function() {
+        .then(() =&gt; {
           window.RPGAtsumaru.experimental.scoreboards.display(boardId_1);
         });
     }

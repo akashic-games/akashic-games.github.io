@@ -395,15 +395,14 @@ g.game.join.addOnce(e =&gt; {
 <p>あとはゲームのメインループ内でこの値の変化をチェックし、null じゃなくなったときに募集を開始すればいいわけです。gameStatus、つまりゲームの状態を初期化(initializing)に進めます。</p>
 <pre><code class="language-ts">// 毎フレーム呼び出される処理。ゲームステータスで分岐する
 function mainLoop() {
-    if (gameStatus === &quot;gameMasterWaiting&quot;) {
-        if (gameMasterId !== null) {
-            onGameMasterArrive();
-            gameStatus = &quot;initializing&quot;;
-        }
+  if (gameStatus === &quot;gameMasterWaiting&quot;) {
+    if (gameMasterId !== null) {
+      onGameMasterArrive();
+      gameStatus = &quot;initializing&quot;;
     }
-
-
-// -- 略 --</code></pre>
+  }
+  // -- 略 --
+}</code></pre>
 <p>onGameMasterArrive()の中は大まかに以下のようになっていて、自分がゲームマスターなのかどうかによって参加締め切りボタンか参加ボタンのいずれかを出しています。
 またこの時に画面のテキストも変えています。</p>
 <pre><code class="language-ts">function onGameMasterArrive() {
