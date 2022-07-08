@@ -1037,7 +1037,7 @@ function createHitStagingEffect( hitID, posx, posy, animEndCall){
 		opacity: 0.0,
 	});
 
-	var tmpAnim = createClearAnimation( hitID, cmn.SCREEN_WIDTH/4 -1 , cmn.SCREEN_HEIGHT/4 -1 , 
+	var tmpAnim = createClearAnimation( hitID, -2, -2,
 	function () {
 		this.stop();
 		if(bgStep<=2)bgStep++; //待ち状況の時、1STEP進める
