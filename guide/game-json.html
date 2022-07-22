@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>game.json の仕様</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?db379921">
-<link rel="stylesheet" href="/css/header.css?db379921">
-<link rel="stylesheet" href="/css/footer.css?db379921">
+<link rel="stylesheet" href="/css/common.css?e9245b20">
+<link rel="stylesheet" href="/css/header.css?e9245b20">
+<link rel="stylesheet" href="/css/footer.css?e9245b20">
 
 
-<link rel="stylesheet" href="/css/asset.css?db379921">
+<link rel="stylesheet" href="/css/asset.css?e9245b20">
 
-<link rel="stylesheet" href="/css/akashic-document.css?db379921">
+<link rel="stylesheet" href="/css/akashic-document.css?e9245b20">
 
-<link rel="stylesheet" href="/css/railscasts.css?db379921">
+<link rel="stylesheet" href="/css/railscasts.css?e9245b20">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?db379921"></script>
+<script src="/lib/common.js?e9245b20"></script>
 
 
 
@@ -141,7 +141,7 @@ akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli 利用ガイド<
 <li>画面の幅 (ピクセル)</li>
 </ul>
 </li>
-<li>heigth (必須)<ul>
+<li>height (必須)<ul>
 <li>数値</li>
 <li>画面の高さ (ピクセル)</li>
 </ul>
@@ -302,6 +302,12 @@ akashic-engine&#64;1.11.2 では <code>&quot;default&quot;</code> または <cod
 <code>&quot;none&quot;</code> を指定するとそれらのローディングシーンを非表示にできます。</p>
 <p>akashic-engine&#64;3.0.0 で <code>&quot;compact&quot;</code> が導入されました。
 <code>&quot;compact&quot;</code> を指定すると背景が透過になり、プログレスバーが画面中央ではなく右下の方に小さく表示されます。</p>
+<h3><a name="defaultSkippingScene" class="anchor"></a>defaultSkippingScene</h3>
+<p><strong>defaultSkippingScene</strong> は、早送り中の描画についての設定です。
+akashic-engine&#64;3.4.0 では <code>&quot;fast-forward&quot;</code>, <code>&quot;indicator&quot;</code>, <code>&quot;none&quot;</code> を指定できます。
+<code>&quot;fast-forward&quot;</code> を指定、または省略した場合は早送り中のゲーム状態をそのまま描画します。
+<code>&quot;indicator&quot;</code> を指定すると早送り中はエンジンに用意されている専用のスキッピングシーンを描画します。
+<code>&quot;none&quot;</code> を指定すると早送り中の描画を非表示にできます。</p>
 <h3>environment</h3>
 <p>akashic-engine&#64;2.0.0 で導入。</p>
 <p><strong>environment</strong> は、ゲームを実行する環境やエンジンに対する要求を指定するためのオブジェクトです。オブジェクトのキーは要求の種類、値は要求内容です(必要なバージョンなど)。</p>
