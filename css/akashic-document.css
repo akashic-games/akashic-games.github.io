@@ -202,8 +202,7 @@
 	color: #366;
 	line-height: 1.2;
 	text-align: center;
-	margin-top: 24px;
-	margin-bottom: 24px;
+	margin: 24px auto;
 }
 .akashic--document table th {
 	background: #EED;
@@ -218,6 +217,9 @@
 }
 .akashic--document table td:first-child {
 	border-left: 0;
+}
+.akashic--document table td img {
+	margin: 15px auto;
 }
 /* 横スクロール用 */
 .akashic--document .table--scroll {
