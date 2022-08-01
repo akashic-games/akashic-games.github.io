@@ -1,0 +1,34 @@
+{
+	"width": 800,
+	"height": 450,
+	"fps": 30,
+	"main": "./script/main.js",
+	"title": "バネ",
+	"description": "[バネ](https://github.com/akashic-contents/spring)のサンプルです。赤い箱をドラッグすると追従して赤い箱が動き、ドラッグが解除されたとき箱を投げることができます。 オレンジ色のオブジェクトに箱を押し付けることで、バネのような動作で押し付けた方向とは反対に箱を加速させることができます。",
+	"assets": {
+		"main": {
+			"type": "script",
+			"path": "script/main.js",
+			"global": true
+		},
+		"parameters": {
+			"type": "script",
+			"path": "script/parameters.js",
+			"global": true
+		}
+	},
+	"environment": {
+		"sandbox-runtime": "3"
+	},
+	"globalScripts": [
+		"node_modules/@akashic-extension/akashic-box2d/lib/Box2D.js",
+		"node_modules/@akashic-extension/akashic-box2d/lib/ContactManager.js",
+		"node_modules/@akashic-extension/akashic-box2d/lib/index.js",
+		"node_modules/@akashic-extension/akashic-box2d/lib/parameters.js",
+		"node_modules/box2dweb/box2d.js"
+	],
+	"moduleMainScripts": {
+		"@akashic-extension/akashic-box2d": "node_modules/@akashic-extension/akashic-box2d/lib/index.js",
+		"box2dweb": "node_modules/box2dweb/box2d.js"
+	}
+}

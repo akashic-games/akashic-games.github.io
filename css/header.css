@@ -265,6 +265,21 @@ header:after {
 	background: #900;
 	color: #FFF;
 }
+/* pc用 サンプルデモのリンク */
+.head--menu--item#demo {
+	top: -9px;
+}
+.head--menu--item .demo-link {
+	color:#FFF;
+	width: 104px;
+	font-size: 12px;
+	text-decoration: none;
+}
+.head--menu--item--tab#demo,
+.head--menu--item--list#demo {
+	display: none;
+}
+
 @media screen and (max-width:959px) {
 	.head--menu--item--list {
 		visibility: visible;
@@ -284,6 +299,17 @@ header:after {
 	}
 	.head--menu--item--list li a:hover {
 		background: #C00;
+	}
+	/* sp用 サンプルデモのメニュー */
+	.head--menu--item#demo {
+		top: auto;
+	}
+	.head--menu--item .demo-link {
+		display: none;
+	}
+	.head--menu--item--tab#demo,
+	.head--menu--item--list#demo {
+		display: block;
 	}
 }
 /*↑メニュー＞コンテンツ↑*/

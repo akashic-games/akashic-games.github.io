@@ -1,0 +1,29 @@
+{
+	"width": 800,
+	"height": 450,
+	"fps": 30,
+	"main": "./script/main.js",
+	"title": "ぶつかると散る",
+	"description": "[ぶつかると散る](https://github.com/akashic-contents/hit-break)のサンプルです。タッチされた場所の下部より赤い箱が上に打ち出されます。 箱同士が衝突すると斜め 4 方向へ箱が分裂して飛び散ります。",
+	"assets": {
+		"main": {
+			"type": "script",
+			"path": "script/main.js",
+			"global": true
+		}
+	},
+	"environment": {
+		"sandbox-runtime": "3"
+	},
+	"globalScripts": [
+		"node_modules/@akashic-extension/akashic-box2d/lib/Box2D.js",
+		"node_modules/@akashic-extension/akashic-box2d/lib/ContactManager.js",
+		"node_modules/@akashic-extension/akashic-box2d/lib/index.js",
+		"node_modules/@akashic-extension/akashic-box2d/lib/parameters.js",
+		"node_modules/box2dweb/box2d.js"
+	],
+	"moduleMainScripts": {
+		"@akashic-extension/akashic-box2d": "node_modules/@akashic-extension/akashic-box2d/lib/index.js",
+		"box2dweb": "node_modules/box2dweb/box2d.js"
+	}
+}
