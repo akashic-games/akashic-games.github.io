@@ -502,6 +502,21 @@ scene.update.add(updateHandler);</code></pre>
 };
 scene.update.add(updateHandler);</code></pre>
 <p>ゲームアツマール上でのみ使える API (＝ <code>window.RPGAtsumaru</code>) については、<a href="https://atsumaru.github.io/api-references/">ゲームアツマールの API リファレンス</a> を参照してください。</p>
+<h2><a name="random"></a> 注意点: 乱数について</h2>
+<p>前述のとおりランキング対応ゲームは、配信者・各視聴者の手元で個別に実行されるシングルプレイのゲームです。</p>
+<p>このため <strong><code>g.game.random</code> で生成される乱数が、プレイヤー間で一致しません</strong> 。
+言い換えると、 <code>g.game.random</code> と <code>g.game.localRandom</code> がどちらも各プレイヤー固有の乱数を生成してしまいます。</p>
+<blockquote>
+<p>これはマルチプレイゲームと異なる点に注意してください。マルチプレイの場合、エンジンが乱数シードを揃えるため、 <code>g.game.random</code> の結果はプレイヤー間で一致します。</p>
+</blockquote>
+<p>そこでランキング対応ゲームテンプレートは、プレイヤー間で共通の乱数生成器 (<strong>共通乱数生成器</strong>) を独自に提供しています。</p>
+<p>テンプレートの main.js 内、 <code>main()</code> の引数が <code>param</code> の時、共通乱数生成器は <code>param.random</code> で取得できます。</p>
+<pre><code class="language-typescript">function main(param) {
+  const random = param.random; // 共通乱数生成器
+  const r = random.generate(); // プレイヤー間で共通の乱数値を生成
+}</code></pre>
+<p>ランダム性を持たせつつ、全プレイヤーが等しい条件で競うようなゲームを作成する場合は、この共通乱数生成器を利用してください。
+もちろんトランプの手札や麻雀の配牌のように、プレイヤーごとにランダムに異なる状態を作りたいゲームでは、単に <code>g.game.random</code> (か <code>g.game.localRandom</code>) を利用することになるでしょう。</p>
 <h2><a name="submit"></a> 投稿</h2>
 <p>ゲームが作成できたら、ゲームアツマールを通して投稿できます。 <a href="./submit.html">ニコ生ゲームを投稿しよう</a> を参照して、投稿してみてください。</p>
 <div class="navi-center">
