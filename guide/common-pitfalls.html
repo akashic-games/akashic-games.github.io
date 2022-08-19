@@ -145,15 +145,17 @@ Akashic Engine 自体は、それらの機能を意図的に使えなくする�
 <p>なお Akashic Engine v2.3.6 以降では、試験的に <code>g.Game#getCurrentTime()</code> を導入しています。これは <code>Date.now()</code> と同じく 1970 年 1 月 1 日 0 時 0 分 0 秒(UTC)からの経過時刻(ミリ秒)を返す関数(ただし小数点以下を含む)です。
 <code>Date.now()</code> と異なり、リプレイ時にも元のプレイ当時の時刻が再現されます。しかし、この関数もローディングシーンの時間に影響は受けるため、マルチプレイのプレイヤー間で一致する時刻情報としては利用できません。あくまで演出上のものとして扱う必要があります。</p>
 <h2><a name="Math.random()を使ってしまう" /> Math.random()を使ってしまう</h2>
-<p>明らかに、 <code>Math.random()</code> の戻り値(擬似乱数)は一定ではありません。
-Akashic ゲームでは基本的に <code>Math.random()</code> を利用しないでください(次節の例外を除き)。</p>
+<p><code>Math.random()</code> は利用しないでください。 <code>Date.now()</code> 同様、リプレイを後から見た時に (生成される乱数が変わってしまうため) おかしくなってしまうためです。</p>
 <p>代わりに、Akashic Engine が提供する乱数生成器 <code>g.Game#random</code> を利用してください。これは乱数シードとアルゴリズムが一つのプレイの中で統一された乱数生成器です。
 Akashic Engine のプレイはこの乱数生成器のシードを記録に含めるため、 <code>g.Game#random</code> の生成結果はリプレイ時にも保たれます。</p>
 <h2><a name="g.Game#randomをローカル処理に使ってしまう" /> g.Game#random をローカル処理に使ってしまう</h2>
-<p>ただし、例外的に <code>g.Game#random</code> を利用すべきでない箇所も存在します。</p>
-<p>ローカルエンティティがもたらすローカルイベントの処理中 (ローカル処理中) がそれです。ローカルイベントは「プレイヤー間で共有されない」「プレイとして記録に残らない」例外的なイベントであるため、むしろ <code>g.Game#random</code> を使ってしまうと、マルチプレイの他プレイヤーと乱数生成の系列がずれてしまいます。ローカル処理においてだけはむしろ <code>Math.random()</code> (やゲーム開発者が独自に生成した <code>g.XorshiftRandomGenerator</code> など) を使う必要があります。</p>
+<p>ローカル処理では、 <code>g.Game#random</code> ではなく <code>g.Game#localRandom</code> を利用してください。</p>
+<p>ローカル処理とは、「一人のプレイヤーの手元でしか発生しない処理」です。主に (ローカルエンティティをクリックした時に生じる) ローカルイベント起因の処理が該当します。ローカルイベントは「プレイヤー間で共有されない」「プレイとして記録に残らない」例外的なイベントであるため、一人のプレイヤーの手元でしか生じません。ここで <code>g.Game#random</code> を使ってしまうと、マルチプレイの他プレイヤーと乱数生成の系列がずれてしまいます。</p>
 <p>イベントフィルタ機能 (<code>g.Game#addEventFilter()</code>) を使っている場合、イベントフィルタやそこから実行される処理もローカル処理です。それらの中でも <code>g.Game#random</code> を利用しないでください。</p>
-<p><code>Math.random()</code> と <code>g.Game#random</code> の使い分けは非常に紛らわしいのですが、少なくとも <strong>ローカルエンティティやイベントフィルタを利用しない一般的なコンテンツでは、 <code>Math.random()</code> を使うべき局面はない</strong> ということは言えます。</p>
+<blockquote>
+<p>なお <code>g.Game#localRandom</code> は Akashic Engine v3.0.0 で追加されました。
+それ以前のバージョンでは <code>Math.random()</code> を利用してください。これは Akashic ゲームで <code>Math.random()</code> を利用すべき唯一のケースでした。v3 系以降、 <code>Math.random()</code> を利用すべき局面はなくなっています。</p>
+</blockquote>
 <h2><a name="@akashic/akashic-engineをrequire()/importしてしまう" /> @akashic/akashic-engine を require()/import してしまう</h2>
 <p>Akashic Engine のパッケージ <strong><code>&quot;@akashic/akashic-engine&quot;</code> を、スクリプトアセット内で <code>require()</code> しないでください</strong> 。</p>
 <p>つまり、次のコードは(Akashic ゲームとしては)誤りです。</p>
@@ -237,6 +239,9 @@ console.log(array[1].value);  // ==&gt; &quot;foo&quot;, &quot;bar&quot; or &quo
 <h2><a name="background-color-in-atsumaru"></a> ゲームアツマール環境で背景が真っ黒になる</h2>
 <p><code>akashic export html</code> コマンドのオプション <code>--inject</code> を使うことで回避できます。</p>
 <p>詳細は逆引きリファレンス <a href="/reverse-reference/v3/release/atsumaru-bgcolor.html">ゲームアツマールでの背景色を指定する</a> を参照してください。</p>
+<h2><a name="ranking-random"></a> ランキング対応ニコ生ゲームで、意図せずプレイヤーごとに乱数が異なる</h2>
+<p>ランキング対応ニコ生ゲームでは、<code>g.Game#random</code> を利用してもプレイヤーごとに異なる乱数が生成されます。(<code>g.Game#localRandom</code> と同じになってしまう)</p>
+<p>プレイヤー間で共通の乱数を生成する場合は、ランキングゲームテンプレートが独自に提供する乱数生成器を利用する必要があります。詳細は、<a href="/shin-ichiba/ranking-by-template.html#random">テンプレートでわかるランキング対応ゲーム の 注意点: 乱数について</a> を参照してください。</p>
 
 		</div>
 	</section>
