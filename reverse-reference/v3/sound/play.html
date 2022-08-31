@@ -614,6 +614,9 @@
 			<div class="inner responsive--width--twocol">
 				<h1>効果音・BGM を再生する</h1>
 <p>音声アセットは <code>g.AudioAsset#play()</code> メソッドを用いて再生することができます。</p>
+<blockquote>
+<p>Google Chrome や iOS 上の Safari ではユーザ操作 (クリックなど) があるまで音が鳴らないという仕様があります。ゲームの開始直後から BGM を再生するような場合は最初に一度以上ユーザ操作 (クリックなど) をさせるような作りにしてください。詳細は<a href="/guide/common-pitfalls.html#audio-problem">一部の環境でゲーム開始時に自動的に音声が再生されない</a>を参照してください。</p>
+</blockquote>
 <h2>凡例</h2>
 <pre><code class="language-javascript">scene.asset.getAudioById(&quot;sound1&quot;).play(); // アセット ID &quot;sound1&quot; の音声アセットが再生される</code></pre>
 <p>音声アセットは <code>play()</code> メソッドで再生できます。
@@ -636,11 +639,13 @@
 }</code></pre>
 <p>音声アセットの再生・停止はシーンの読み込み後に行う必要があります。このシーンの読み込み完了のタイミングを知るには <code>scene.onLoad</code> トリガーを利用します。
 シーン内で読み込まれている音声アセットは <a href="/akashic-engine/v3/classes/AssetAccessor.html#getAudioById"><code>scene.asset.getAudioById()</code></a> や <a href="/akashic-engine/v3/classes/AssetAccessor.html#getAudio"><code>scene.asset.getAudio()</code></a> で取得できます。アセットはシーンの生成時に <code>assetIds</code> または <code>assetPaths</code> で指定して読み込ませることができます。</p>
-<pre><code class="language-javascript">var scene = new g.Scene({ game: g.game, assetIds: [&quot;sound1&quot;] }); // シーン生成時にそのシーンで利用する音声アセットを予め指定する
-scene.onLoad.add(function() {
+<pre><code class="language-javascript">const scene = new g.Scene({ game: g.game, assetIds: [&quot;sound1&quot;] }); // シーン生成時にそのシーンで利用する音声アセットを予め指定する
+scene.onLoad.add(() =&gt; {
   // 中略
-  var sound1 = scene.asset.getAudioById(&quot;sound1&quot;); // アセット ID &quot;sound1&quot; の音声アセットを取得
-  sound1.play();
+  const sound1 = scene.asset.getAudioById(&quot;sound1&quot;); // アセット ID &quot;sound1&quot; の音声アセットを取得
+  scene.onPointDownCapture.add(() =&gt; {
+    sound1.play(); // 画面 をクリック・タップしたときに sound1 を再生する
+  });
 });</code></pre>
 <p>Ogg Vorbis 形式 と AAC 形式の複数の音声ファイルを用意するために、<a href="https://github.com/akashic-games/complete-audio">complete-audio</a>を利用することができます。これは .wav, .mp4, .mp3, .ogg, .aac のどれか一つのファイルを与えると、Akashic Engine で必要な形式のファイルを一揃え生成するツールです。</p>
 <h2>関連情報</h2>
