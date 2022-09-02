@@ -163,17 +163,47 @@ sandbox.config.js を利用することで、セッションパラメータや�
 <li>serve コマンドで有効</li>
 </ul>
 </li>
+<li>backgroundImage<ul>
+<li>文字列</li>
+<li>画像のローカルパス、もしくは URL</li>
+<li>serve コマンドで有効</li>
+</ul>
+</li>
+<li>backgroundColor<ul>
+<li>文字列</li>
+<li>画面の背景色</li>
+<li>serve コマンドで有効</li>
+</ul>
+</li>
+<li>externalAssets<ul>
+<li>配列 (詳細は後述)</li>
+<li>外部アセットの値</li>
+<li>serve コマンドで有効</li>
+</ul>
+</li>
 <li>client<ul>
 <li>オブジェクト (詳細は後述)</li>
 <li>クライアント環境 (ブラウザなど) のための設定</li>
 <li>serve コマンドで有効</li>
 </ul>
 </li>
+<li>server<ul>
+<li>オブジェクト (詳細は後述)</li>
+<li>サーバ側のための設定</li>
+<li>serve コマンドで有効</li>
+</ul>
+</li>
+<li>warn<ul>
+<li>オブジェクト (詳細は後述)</li>
+<li>各種警告表示の設定</li>
+<li>Akashic Sandbox、serve コマンドで有効</li>
+</ul>
+</li>
 </ul>
 <p>(注意: 旧プロパティの <code>autoSendEvents</code> は非推奨となり将来削除されます。代わりに <code>autoSendEventName</code> を利用してください。)</p>
 <h2><a name="使い方"></a> 使い方</h2>
 <p>game.json と同じディレクトリに、以下のような JavaScript ファイルを置きます。ファイル名は sandbox.config.js とします。</p>
-<pre><code>var config = {
+<pre><code>const config = {
 }
 
 module.exports = config;</code></pre><p>このファイルに以下の名前のプロパティを記述することで、各種設定を利用できます。</p>
@@ -182,7 +212,7 @@ module.exports = config;</code></pre><p>このファイルに以下の名前の�
 <p>events は、任意のプロパティ名を持ったオブジェクトです。プロパティ名はイベント名として、開発ツールの一覧に表示されます。各プロパティは、送りたい playlog イベントの配列です。</p>
 <p>（playlog の詳細な仕様は<a href="https://github.com/akashic-games/playlog">playlog</a>を参照してください）</p>
 <p>例として、ニコニコ生放送で実行されるゲームにセッションパラメータを送りたい場合、sandbox.config.js には以下のように記述します。</p>
-<pre><code>var config = {
+<pre><code>const config = {
     &quot;events&quot;: {
         &quot;mySessionParameter&quot;: [
             [
@@ -219,7 +249,7 @@ module.exports = config;</code></pre><p>Akashic Sandbox では、デベロッパ
 <h2><a name="autoSendEventName"></a> autoSendEventName</h2>
 <p>ゲーム起動時にイベントを自動送信することができます。イベントはあらかじめ events に記述しておく必要があります。
 autoSendEventName にイベント名（例えば startMyGameEvent）を記述し、Akashic Sandbox でゲームを起動すれば、イベントが自動送信されます。</p>
-<pre><code>var config = {
+<pre><code>const config = {
     &quot;autoSendEventName&quot;: &quot;mySessionParameter&quot;
     &quot;events&quot;: {
         &quot;mySessionParameter&quot;: {} // 同上のため省略
@@ -228,7 +258,7 @@ autoSendEventName にイベント名（例えば startMyGameEvent）を記述し
 
 module.exports = config;</code></pre><h2><a name="showMenu"></a> showMenu</h2>
 <p>この項目に true を指定されている場合、常にデベロッパーメニューが開いた状態で Akashic ゲームが実行されます。</p>
-<pre><code>var config = {
+<pre><code>const config = {
     &quot;showMenu&quot;: true
 }
 
@@ -239,6 +269,26 @@ module.exports = config;</code></pre><h2><a name="arguments"></a> arguments</h2>
 <p>起動引数の内容はゲームが実行される環境によって決定されます。
 arguments に起動引数を記述することで、serve コマンドで各サービスの動作を確認することができます。</p>
 <p>具体的な内容はゲームが実行されるサービスによって決まります。各サービスの動作を確認するために serve でも起動引数を指定して実行することができます。</p>
+<h2><a name="backgroundImage"></a> backgroundImage</h2>
+<p>backgroundImage を指定することで ゲーム画面の背景に画像を表示できます。
+値には、画像のローカルパスか URL の指定ができます。</p>
+<p>serve の実行画面で表示オプションボタンから <code>Show background image</code> のチェックボックスのオン/オフで指定した画像の表示/非表示が切り替えられます。</p>
+<p><img src="/img/guide/sandbox-config/serve-ui-background-image.png" alt="akashic serve の表示オプションボタン"></p>
+<h2><a name="backgroundColor"></a> backgroundColor</h2>
+<p>backgroundColor を指定することで ゲーム画面の背景色を表示できます。
+値には CSS の background-color に利用できる値の文字列やカラーコードが指定できます。</p>
+<pre><code class="language-javascript">const config = {
+    &quot;backgroundColor&quot;: &quot;blue&quot;. // カラーコードの場合は &quot;#0000ff&quot; を指定
+}
+
+module.exports = config;</code></pre>
+<p>serve の実行画面で表示オプションボタンから <code>Show background color</code> のチェックボックスのオン/オフで指定した背景色の表示/非表示が切り替えられます。</p>
+<p><img src="/img/guide/sandbox-config/serve-ui-background-color.png" alt="akashic serveの表示オプションボタン"></p>
+<h2><a name="externalAssets"></a> externalAssets</h2>
+<p>externalAssets には外部アセットとして許可する URL の配列を指定します。
+値には文字列か正規表現の配列が指定できます。
+指定した URL と一致しない外部アセットへのアクセスはエラーとなります。</p>
+<p>serve コマンドで外部アセットのを利用する場合は --allow-external オプションを指定します。</p>
 <h2><a name="client"></a> client</h2>
 <p>client の external には、外部プラグインを記述することができます。
 外部プラグインは、 Akashic ゲームの実行環境によって与えられる機能です。</p>
@@ -259,14 +309,66 @@ arguments に起動引数を記述することで、serve コマンドで各サ�
         }
     }
 }</code></pre><p>sandbox.config.js</p>
-<pre><code>var config = {
-    &quot;client&quot;: {
+<pre><code>const config = {
+  client: {
+    external: {
+      fooPlugin: &quot;./plugin/pluginMock.js&quot;
+    }
+  }
+};
+module.exports = config;</code></pre><h2><a name="server"></a> server</h2>
+<p>client の external と同様に server の external にも、外部プラグインを記述することができます。
+マルチプレイの動作確認を行う akashic serve コマンドでは、ブラウザだけでなくサーバ側でもゲームが実行されます。server.external は、サーバ側で実行されるゲームの external の値を設定します。</p>
+<p>serve の外部プラグインのモック実装を利用するには、オブジェクトを返す関数をエクスポートするファイルを用意する必要があります。
+例として、<code>console.log()</code> を実行する外部プラグインのモックを作成する場合、<code>./plugin/pluginMock.js</code> を以下のように記述します。</p>
+<pre><code>module.exports = () =&gt; ({
+  return {
+    foo: function () { console.log(&quot;fooooo&quot;);}
+  };
+});</code></pre><p><code>./plugin/pluginMock.js</code> がある状態で、 sandbox.config.js に以下の記述がある場合、 serve コマンドで実行した Akashic ゲームは <code>g.game.external.serverPlugin</code> を利用することができます。</p>
+<p>sandbox.config.js</p>
+<pre><code>const config = {
+    &quot;server&quot;: {
         &quot;external&quot;: {
-            &quot;fooPlugin&quot;: &quot;./plugin/pluginMock.js&quot;
+            &quot;serverPlugin&quot;: &quot;./plugin/pluginMock.js&quot;
         }
     }
 }
-module.exports = config;</code></pre>
+module.exports = config;</code></pre><h2><a name="warn"></a> warn</h2>
+<p>warn は下記のプロパティを持ち、Akashic Sandbox、serve での各種警告の表示を設定できます。
+各プロパティが true または指定されていない時場合に警告が表示されます。</p>
+<table>
+<thead>
+<tr>
+<th align="center">プロパティ名</th>
+<th align="center">内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">es6</td>
+<td align="center">ES6 以降でサポートされるオブジェクトが使われている場合警告を出すかどうか</td>
+</tr>
+<tr>
+<td align="center">useDate</td>
+<td align="center">現在時刻が参照された時に警告するかどうか (現在は Date.now() の呼び出しのみ対応)</td>
+</tr>
+<tr>
+<td align="center">useMathRandom</td>
+<td align="center">Math.random() の警告を出すかどうか</td>
+</tr>
+<tr>
+<td align="center">drawOutOfCanvas</td>
+<td align="center">範囲外描画されている場合に警告を出すかどうか</td>
+</tr>
+<tr>
+<td align="center">drawDestinationEmpty</td>
+<td align="center">描画先が空の場合に警告を出すかどうか</td>
+</tr>
+</tbody></table>
+<p>useDate, useMathRandom は Akashic Engine での利用に注意が必要なメソッドを警告します。
+<code>Date.now()</code>, <code>Math.random()</code> の利用が非推奨である理由は <a href="/tutorial/v3/multiplay/introduction.html#architecture-intro">Akashic におけるマルチプレイ</a> や <a href="/guide/common-pitfalls.html#%E7%8F%BE%E5%9C%A8%E6%99%82%E5%88%BB%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86">よくある落とし穴</a>を参照してください。
+drawOutOfCanvas, drawDestinationEmpty は 環境によって画面表示が崩れるような描画方法を警告します。</p>
+
 		</div>
 	</section>
 	<footer class="safearea--LR">
