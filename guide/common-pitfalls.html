@@ -165,45 +165,6 @@ Akashic Engine のプレイはこの乱数生成器のシードを記録に含�
 <p>ただしゼロから TypeScript で開発する場合は、 <code>g</code> の型定義(d.ts ファイル)が必要になります。その場合は <code>npm install -DE @akashic/akashic-engine</code> を実行して(<code>devDependencies</code> として)Akashic Engine をインストールし、
 <code>node_modules/@akashic/akashic-engine/lib/main.d.ts</code> をコンパイル対象に含めてください。</p>
 <p><code>akashic init --type typescript</code> で生成される TypeScript 用テンプレートでは、最初から Akashic Engine の型定義ファイルがコンパイル対象に含まれているので、特別な対応は必要ありません。</p>
-<h2><a name="ES2015以降の機能・構文を使ってしまう" /> ES2015 以降の機能・構文を使ってしまう</h2>
-<p>JavaScript の言語仕様である ECMAScript (ECMA-262)にはいくつかのバージョンがあり、俗に ES5, ES2015(ES6), ES2016, ES2017 などと呼称されます。
-2015 年策定の ES2015 以降については、2018 年現在でも、特に古めのスマートフォンでのサポート状況にばらつきがあります。</p>
-<p>動作の互換性のため、 <strong>現在のところ、ES2015 以降の構文や機能は利用しないことを強く推奨します</strong> 。これには少なくとも次の構文と機能が含まれます。</p>
-<ul>
-<li>構文<ul>
-<li><code>const</code>, <code>let</code></li>
-<li><code>for-of</code></li>
-<li><code>=&gt;</code> (アロー関数)</li>
-<li><code>class</code>, <code>extends</code></li>
-<li><code>async</code>, <code>await</code></li>
-<li>スプレッド演算子 <code>...</code></li>
-<li>冪乗演算子 <code>**</code></li>
-<li>分割代入</li>
-<li>デフォルト引数</li>
-<li>テンプレート文字列リテラル など</li>
-</ul>
-</li>
-<li>機能<ul>
-<li><code>Map</code></li>
-<li><code>Set</code></li>
-<li><code>Symbol</code></li>
-<li><code>Promise</code></li>
-<li><code>Reflect</code></li>
-<li><code>Proxy</code></li>
-<li><code>Array.prototype.find</code></li>
-<li><code>Array.prototype.includes</code></li>
-<li><code>Object.values</code></li>
-<li><code>Object.entries</code> など</li>
-</ul>
-</li>
-</ul>
-<p>現実的に、古めのスマートフォン環境固有の問題が報告されても、ゲーム開発者にとっては現象確認さえ容易でないことが多いと考えられるためです。</p>
-<p>もちろん、できるだけ広範な環境をサポートするために新しめの機能を避けるかどうかは、Akashic Engine 固有の議論ではありません。しかし「元のプレイと異なる環境でリプレイを閲覧する」などのユースケースが生じやすい Akashic ゲームでは、特に問題になりやすいので注意してください。</p>
-<p>なお <code>akashic init --type typescript</code> で生成される TypeScript 用テンプレートは、最初からコンパイル結果が ES5 互換になるように設定されています。そのため <code>const</code> や <code>=&gt;</code> など、TypeScript がサポートする各種構文を利用することができます。
-(あくまでも構文のみです。 <code>Map</code> など根本的に実装がないと動かない機能には対応できません。)</p>
-<p>また <code>akashic init --type javascript-minimal</code> で生成される JavaScript 用テンプレート(デフォルトテンプレート)では、 <code>npm run lint</code> を実行するとコードを lint できます。
-ES2015 以降の構文を検出するとエラーを表示するように設定されているので、チェックに使うことができます。</p>
-<p><code>akashic export</code> も、ES2015 以降の構文を検出すると警告を表示します。</p>
 <h2><a name="Array.prototype.sortの安定性を仮定してしまう" /> Array.prototype.sort の安定性を仮定してしまう</h2>
 <p>ECMAScript の言語仕様上、 <code>Array.prototype.sort</code> が安定なソートであることは保証されていません。つまり、 <code>sort()</code> に与えられた比較関数が、ある二つの要素について <code>0</code> を返した時(等価であるとした時)、ソート後のそれらの順序は実装依存です。
 (実際、あるバージョンの Safari と Chrome では <code>sort()</code> の結果が異なる場合があることが分かっています。)</p>
