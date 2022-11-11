@@ -165,39 +165,40 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>更新情報 (〜2022/mm/dd)</h1>
-<h2><a name="sandbox-config-warn"></a> sandbox.config.js で各種警告の表示を設定できるように</h2>
-<p>sandbox.config.js に warn が追加されました。warn の各プロパティの値に真偽値を設定することにより、Akashic Sandbox や serve での警告の表示を制御できるようになります。</p>
-<p>下記の各プロパティの値が true または指定されていない場合に警告が表示されます。</p>
-<table>
-<thead>
-<tr>
-<th align="center">プロパティ名</th>
-<th align="center">内容</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">es6</td>
-<td align="center">ES6 以降でサポートされるオブジェクトが使われている場合警告を出すかどうか</td>
-</tr>
-<tr>
-<td align="center">useDate</td>
-<td align="center">現在時刻が参照された時に警告するかどうか (現在は Date.now() の呼び出しのみ対応)</td>
-</tr>
-<tr>
-<td align="center">useMathRandom</td>
-<td align="center">Math.random() の警告を出すかどうか</td>
-</tr>
-<tr>
-<td align="center">drawOutOfCanvas</td>
-<td align="center">範囲外描画されている場合に警告を出すかどうか</td>
-</tr>
-<tr>
-<td align="center">drawDestinationEmpty</td>
-<td align="center">描画先が空の場合に警告を出すかどうか</td>
-</tr>
-</tbody></table>
+<h2><a name="sandbox-config-warn"></a> sandbox.config.js で各種警告、表示設定、ウィンドウサイズを設定できるように</h2>
+<p>akashic-sandbox や akashic serve コマンドの設定ファイル <a href="/guide/sandbox-config.html">sandbox.config.js</a> で、次の内容を指定できるようになりました。</p>
+<ul>
+<li>akashic serve の表示オプション (ウィンドウサイズ合わせてゲーム画面を拡大縮小するなど)</li>
+<li>akashic serve で子ウィンドウを開いた時のサイズ</li>
+<li>akashic-sandbox, akashic serve の各種警告機能の有効・無効</li>
+</ul>
+<h3>表示オプション</h3>
+<p>sandbox.config.js に displayOptions が追加されました。displayOptions の各プロパティの値を設定することにより、serve の実行画面の各種表示を設定できます。</p>
+<p>詳細は<a href="/guide/sandbox-config.html#displayOptions">sandbox.config.js の仕様の displayOptions</a>を参照してください。</p>
+<h3>子ウィンドウを開いた時のサイズ</h3>
+<p>sandbox.config.js に windowSize windowSize を設定することにより、Akashic serve で新規インスタンス表示時のウィンドウサイズを設定できます。</p>
+<p>詳細は<a href="/guide/sandbox-config.html#windowSize">sandbox.config.js の仕様の windowSize</a>を参照してください。</p>
+<h3>各種警告機能の有効・無効</h3>
+<p>sandbox.config.js に warn が追加されました。warn の各プロパティの値に真偽値を設定することにより、Akashic Sandbox や serve での警告の表示を制御できるようになります。意図的な処理で警告が出てしまう場合に、警告を抑止するために利用できます。
+各プロパティのデフォルト値は全てオンとなります。</p>
+<p>詳細は<a href="/guide/sandbox-config.html#warn">sandbox.config.js の仕様の warn</a>を参照してください。</p>
+<p>以下の sandbox.config.js の例は、ゲーム画面をウィンドウサイズに合わせ拡大縮小し、子ウィンドウを開いた時のサイズを 640x360 で指定しています。</p>
+<p>sandbox.config.js</p>
+<pre><code class="language-javascript">module.exports = {
+  displayOptions: {
+    // akashic serve のゲーム画面をブラウザウィンドウに合わせて拡大縮小する
+    fitsToScreen: true
+  },
+  // akashic serve で子ウィンドウを開いた時のサイズを 640x360 に
+  windowSize: {
+    width: 640,
+    height: 360
+  }
+};</code></pre>
 <h2><a name="misc-features"></a> その他の改善・拡張</h2>
 <ul>
+<li>akashic-sandbox や serve で ES2015 以降の構文や機能を利用した場合の警告を廃止。</li>
+<li>akashic serve で子ウィンドウのデフォルトサイズを、ゲーム画面のサイズに応じて決定するように。</li>
 <li>sandbox.config.js に server.external プロパティを追加。<ul>
 <li><a href="/guide/sandbox-config.html#server">sandbox.config.js の仕様</a></li>
 </ul>

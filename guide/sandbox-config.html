@@ -336,6 +336,7 @@ module.exports = config;</code></pre><h2><a name="server"></a> server</h2>
 }
 module.exports = config;</code></pre><h2><a name="warn"></a> warn</h2>
 <p>warn は下記のプロパティを持ち、Akashic Sandbox、serve での各種警告の表示を設定できます。
+意図的な処理で警告が出てしまう場合に、警告を抑止するために利用できます。
 各プロパティが true または指定されていない時場合に警告が表示されます。</p>
 <table>
 <thead>
@@ -346,7 +347,7 @@ module.exports = config;</code></pre><h2><a name="warn"></a> warn</h2>
 </thead>
 <tbody><tr>
 <td align="center">es6</td>
-<td align="center">ES6 以降でサポートされるオブジェクトが使われている場合警告を出すかどうか</td>
+<td align="center">ES6 以降でサポートされるオブジェクトが使われている場合警告を出すかどうか(非推奨)</td>
 </tr>
 <tr>
 <td align="center">useDate</td>
@@ -365,10 +366,92 @@ module.exports = config;</code></pre><h2><a name="warn"></a> warn</h2>
 <td align="center">描画先が空の場合に警告を出すかどうか</td>
 </tr>
 </tbody></table>
+<p>IE のサポート終了により ES2015 以降の構文や機能が使えるようになったため、es6 は非推奨となりました。 serve や akashic-sandbox@0.18.1 以降では機能しません。</p>
 <p>useDate, useMathRandom は Akashic Engine での利用に注意が必要なメソッドを警告します。
 <code>Date.now()</code>, <code>Math.random()</code> の利用が非推奨である理由は <a href="/tutorial/v3/multiplay/introduction.html#architecture-intro">Akashic におけるマルチプレイ</a> や <a href="/guide/common-pitfalls.html#%E7%8F%BE%E5%9C%A8%E6%99%82%E5%88%BB%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86">よくある落とし穴</a>を参照してください。
 drawOutOfCanvas, drawDestinationEmpty は 環境によって画面表示が崩れるような描画方法を警告します。</p>
-
+<p>sandbox.config.js</p>
+<pre><code>const config = {
+  warn: {
+    useDate: true,
+    useMathRandom: true,
+    drawOutOfCanvas: true
+  }
+};
+module.exports = config;</code></pre><h2><a name="displayOptions"></a> displayOptions</h2>
+<p>displayOptions は下記のプロパティを持ち、serve の実行画面の各種表示を設定できます。
+serve の実行画面の表示オプションボタン内の各チェックボックスを操作した場合はそちらが優先されます。</p>
+<table>
+<thead>
+<tr>
+<th align="center">プロパティ名</th>
+<th align="center">内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">fitsToScreen</td>
+<td align="center">ゲーム画面をブラウザサイズに合わせて拡縮するか</td>
+</tr>
+<tr>
+<td align="center">backgroundImage</td>
+<td align="center">コンテンツ実行画面の背景に表示する画像のローカルパス、もしくは URL</td>
+</tr>
+<tr>
+<td align="center">backgroundColor</td>
+<td align="center">コンテンツ実行画面に表示される背景色<br>(値には CSS の background-color に利用できる色の文字列やカラーコードが指定できます)</td>
+</tr>
+<tr>
+<td align="center">showsGrid</td>
+<td align="center">グリッドを表示するか</td>
+</tr>
+<tr>
+<td align="center">showsProfiler</td>
+<td align="center">プロファイラを表示するか</td>
+</tr>
+<tr>
+<td align="center">showsDesignGuideline</td>
+<td align="center">ニコ生ゲームのデザインガイドライン画像を表示するか</td>
+</tr>
+</tbody></table>
+<p>sandbox.config.js</p>
+<pre><code>const config = {
+  displayOptions: {
+    fitsToScreen: true,
+    backgroundImage: &quot;./path/to/image.png&quot;,
+    backgroundColor: &quot;red&quot;,
+    showsGrid: true,
+    showsProfiler: false,
+    showsDesignGuideline: false
+  }
+};
+module.exports = config;</code></pre><h2><a name="windowSize"></a> windowSize</h2>
+<p>serve の実行画面で新規インスタンス表示時のウィンドウサイズを設定できます。
+値は下記となり、省略時は &quot;auto&quot; となります。</p>
+<table>
+<thead>
+<tr>
+<th align="center">値</th>
+<th align="center">内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">{width: number; height: number}</td>
+<td align="center">指定値でウィンドウを表示</td>
+</tr>
+<tr>
+<td align="center">&quot;auto&quot;</td>
+<td align="center">game.json の width,height の値を元にウィンドウを表示</td>
+</tr>
+<tr>
+<td align="center">&quot;inherit&quot;</td>
+<td align="center">親ウィンドウのサイズを引き継いでウィンドウを表示</td>
+</tr>
+</tbody></table>
+<p>sandbox.config.js</p>
+<pre><code>const config = {
+  windowSize: { width: 1280, height: 800 }
+};
+module.exports = config;</code></pre>
 		</div>
 	</section>
 	<footer class="safearea--LR">
