@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>v2 からの移行</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -328,8 +328,13 @@
 <li><a href="#deprecation">非推奨機能の変更</a></li>
 <li><a href="#features">機能追加・変更</a></li>
 </ul>
-<h2><a name="settings" class="anchor"></a> 設定の更新 (必須)</h2>
-<p>v2 で作られたコンテンツを v3 に移行するには、次の作業が必要です。</p>
+
+			<h2>
+				<a name="settings" class="anchor" href="#settings">
+					<span class="header-link">#</span>
+				</a>
+				 設定の更新 (必須)
+			</h2><p>v2 で作られたコンテンツを v3 に移行するには、次の作業が必要です。</p>
 <ul>
 <li>game.json を変更して v3 コンテンツとして扱うよう設定する</li>
 <li>(TypeScript のみ) 型定義ファイルを index.runtime.d.ts に移行する</li>
@@ -348,47 +353,64 @@
 -    &quot;sandbox-runtime&quot;: &quot;2&quot;
 +    &quot;sandbox-runtime&quot;: &quot;3&quot;
    }
- }</code></pre>
+ }
+</code></pre>
 <p><code>akashic-sandbox</code> や <code>akashic serve</code> コマンドは、この値によってゲームの実行に利用するエンジンのバージョンを決めています。</p>
 <h3>(TypeScript のみ) 開発時に参照する型定義ファイルを &quot;lib/main.d.ts&quot; から &quot;index.runtime.d.ts&quot; へ</h3>
 <p>TypeScript で開発している場合、型定義ファイルも v3 系のものを利用する必要があります。また v3 系ではこの型定義ファイル名が変更されています。</p>
 <p>まず次のコマンドで Akashic Engine v3 をインストールします。</p>
-<pre><code class="language-sh">npm install --save-dev @akashic/akashic-engine@3</code></pre>
+<pre><code class="language-sh">npm install --save-dev @akashic/akashic-engine@3
+</code></pre>
 <p>型定義ファイルが <code>lib/main.d.ts</code> から <code>index.runtime.d.ts</code> に変更されているので、
 tsconfig.json の <code>files</code> プロパティを下記のように変更します。</p>
 <pre><code class="language-diff">&quot;files&quot;: [
 -   &quot;node_modules/@akashic/akashic-engine/lib/main.d.ts&quot;
 +   &quot;node_modules/@akashic/akashic-engine/index.runtime.d.ts&quot;
-],</code></pre>
+],
+</code></pre>
 <h3>(TypeScript のみ) allowUmdGlobalAccess を有効にする</h3>
 <p>エンジン内部の変更のため、 TypeScript コンパイル時のオプションとして <code>--allowUmdGlobalAccess</code> が必要になりました。</p>
 <p>tsconfig.json の <code>compilerOptions</code> プロパティに <code>allowUmdGlobalAccess</code> (<code>--</code> なし) を追加します。</p>
 <pre><code class="language-diff">&quot;compilerOptions&quot;: {
     ...
 +   &quot;allowUmdGlobalAccess&quot;: true
-},</code></pre>
+},
+</code></pre>
 <p><code>--allowUmdGlobalAccess</code> が必須になるため、TypeScript の要求バージョンが 3.5 以上になります。
 バージョン 3.5 未満の場合は、TypeScript を 3.5 以上に更新してください。</p>
-<h2><a name="breaking-changes" class="anchor"></a> 仕様変更への追従 (必須)</h2>
-<p>v3 では、v2 での非推奨機能の廃止を中心に、いくつかの仕様変更が行われています。
+
+			<h2>
+				<a name="breaking-changes" class="anchor" href="#breaking-changes">
+					<span class="header-link">#</span>
+				</a>
+				 仕様変更への追従 (必須)
+			</h2><p>v3 では、v2 での非推奨機能の廃止を中心に、いくつかの仕様変更が行われています。
 当該の機能を利用している場合は追従が必要になります。</p>
-<h3><a name="anchor-point" class="anchor"></a>アンカーポイント未指定時の回転・拡縮の基準点が左上に</h3>
-<p>v2 では、アンカーポイント未指定 (デフォルト) の場合、「座標 (x, y) の基点はエンティティの左上、回転・拡大縮小の基点はエンティティの中央」になっていました。
+
+			<h3>
+				<a name="anchor-point" class="anchor" href="#anchor-point">
+					<span class="header-link">#</span>
+				</a>
+				アンカーポイント未指定時の回転・拡縮の基準点が左上に
+			</h3><p>v2 では、アンカーポイント未指定 (デフォルト) の場合、「座標 (x, y) の基点はエンティティの左上、回転・拡大縮小の基点はエンティティの中央」になっていました。
 一方で、アンカーポイントを指定した場合は、座標・回転・拡大縮小の基点が全てアンカーポイントの位置になっていました。</p>
 <p>Akashic Engine v3 からはこの不整合を解消して単純化します: <strong>アンカーポイントのデフォルト値は (0, 0) になります</strong> 。つまり、特に指定してしない場合、座標・回転・拡大縮小の基点はエンティティの左上端に統一されます。</p>
 <p>なお移行措置として、 <code>g.E#anchorX</code> または <code>g.E#anchorY</code> に明示的に <code>null</code> を指定することで v2 のデフォルトの挙動を再現できます。これは非推奨の挙動です。</p>
 <pre><code class="language-js">const e = new g.E({
     ...
     anchorX: null // 前バージョンのデフォルト挙動の再現
-});</code></pre>
+});
+</code></pre>
 <h3>Game#random[0] の廃止</h3>
 <p>非推奨だった <code>g.game.random[0]</code> が廃止されます。同じ形で利用できる <code>g.game.random</code> を利用してください。</p>
-<pre><code class="language-ts">g.game.random.generate();</code></pre>
+<pre><code class="language-ts">g.game.random.generate();
+</code></pre>
 <h3>Scene#setTimeout(), Scene#setInterval() の一部引数順序のメソッドの廃止</h3>
 <p><code>g.Scene#setInterval()</code> および <code>g.Scene#setTimeout()</code> で非推奨だった引数順序のメソッドが廃止になりました。</p>
 <p>下記の形式を利用してください。</p>
 <pre><code class="language-ts">setInterval(handler: () =&gt; void, interval: number, owner?: any)
-setTimeout(handler: () =&gt; void, milliseconds: number, owner?: any)</code></pre>
+setTimeout(handler: () =&gt; void, milliseconds: number, owner?: any)
+</code></pre>
 <h3>SystemLabel の廃止</h3>
 <p><code>g.SystemLabel</code> および <code>g.Renderer#drawSystemText()</code> が廃止になりました。 <code>g.DynamicFont</code> を利用してください。
 <code>DynamicFont</code> の利用は<a href="/tutorial/v3/text.html">こちらのページ</a>を参照してください。</p>
@@ -417,7 +439,8 @@ setTimeout(handler: () =&gt; void, milliseconds: number, owner?: any)</code></pr
   );
   renderer.end();
   return surface;
-}</code></pre>
+}
+</code></pre>
 <h3>各種 enum の廃止</h3>
 <ul>
 <li><p><code>g.TickGenerationMode</code> が廃止になりました。利用している場合、代わりに <code>g.TickGenerationModeString</code> (<code>&quot;by-clock&quot; | &quot;manual&quot;</code>) を利用してください。</p>
@@ -435,29 +458,43 @@ setTimeout(handler: () =&gt; void, milliseconds: number, owner?: any)</code></pr
   ...,
   tickGenerationMode: g.TickGenerationMode.Manual,
   local: g.LocalTickMode.NonLocal
-});</code></pre>
+});
+</code></pre>
 <h4>Akashic Engine v3 のコード</h4>
 <pre><code class="language-js">const scene = new g.Scene({
   ...,
   tickGenerationMode: &quot;manual&quot;,
   local: &quot;non-local&quot;
-});</code></pre>
+});
+</code></pre>
 </li>
 <li><p><code>g.SceneState</code> が廃止になりました。 - <code>g.Scene#state</code> の型, <code>g.Scene#onStateChange</code> の通知する型が <code>g.SceneStateString</code> (<code>&quot;destroyed&quot; | &quot;standby&quot; | &quot;active&quot; | &quot;deactive&quot; | &quot;before-destroyed&quot;</code>) になります。</p>
 <h4>前バージョン(v2.x.x 以前) のコード</h4>
 <pre><code class="language-js">scene.stateChanged.add((state) =&gt; {
   if (state === g.SceneState.Destroyed) { ... }
-});</code></pre>
+});
+</code></pre>
 <h4>Akashic Engine v3 のコード</h4>
 <pre><code class="language-js">scene.onStateChange.add((state) =&gt; {
   if (state === &quot;destroyed&quot;) { ... }
-});</code></pre>
+});
+</code></pre>
 </li>
 </ul>
-<h2><a name="deprecation" class="anchor"></a> 非推奨機能の変更</h2>
-<p>新たに次の機能が非推奨になります。v3 では旧バージョンとの互換性が維持されますが、移行を推奨します。</p>
-<h3><a name="trigger-name" class="anchor"></a>Trigger 名の移行</h3>
-<p><code>Game#join</code> や <code>Scene#loaded</code> など、統一感のなかったトリガーの変数名を整理しました。前バージョン(v2.x.x 以前)のトリガーの変数名は非推奨となります。</p>
+
+			<h2>
+				<a name="deprecation" class="anchor" href="#deprecation">
+					<span class="header-link">#</span>
+				</a>
+				 非推奨機能の変更
+			</h2><p>新たに次の機能が非推奨になります。v3 では旧バージョンとの互換性が維持されますが、移行を推奨します。</p>
+
+			<h3>
+				<a name="trigger-name" class="anchor" href="#trigger-name">
+					<span class="header-link">#</span>
+				</a>
+				Trigger 名の移行
+			</h3><p><code>Game#join</code> や <code>Scene#loaded</code> など、統一感のなかったトリガーの変数名を整理しました。前バージョン(v2.x.x 以前)のトリガーの変数名は非推奨となります。</p>
 <p>下記の表ではトリガー名が変更となった一部のクラスを記述しています。</p>
 <table>
     <thead>
@@ -531,8 +568,13 @@ setTimeout(handler: () =&gt; void, milliseconds: number, owner?: any)</code></pr
     </tr>
 </table>
 
-<h3><a name="deprecated-enum" class="anchor"></a>enum の移行</h3>
-<ul>
+
+			<h3>
+				<a name="deprecated-enum" class="anchor" href="#deprecated-enum">
+					<span class="header-link">#</span>
+				</a>
+				enum の移行
+			</h3><ul>
 <li><p><code>g.CompositeOperation</code> が非推奨になりました。代わりに (<code>&quot;source-over&quot; | &quot;source-atop&quot; | &quot;lighter&quot; | &quot;copy&quot; | &quot;experimental-source-in&quot; | &quot;experimental-source-out&quot; | &quot;experimental-destination-atop&quot; | &quot;experimental-destination-in&quot; | &quot;destination-out&quot; | &quot;destination-over&quot; | &quot;xor&quot;</code>) を利用してください。</p>
 <h4>前バージョン(v2.x.x 以前) のコード</h4>
 <pre><code class="language-js">const green = new g.FilledRect({
@@ -542,7 +584,8 @@ setTimeout(handler: () =&gt; void, milliseconds: number, owner?: any)</code></pr
   height: 100,
   cssColor: &quot;green&quot;,
   compositeOperation: g.CompositeOperation.SourceOver
-});</code></pre>
+});
+</code></pre>
 <h4>Akashic Engine v3 のコード</h4>
 <pre><code class="language-js">const green = new g.FilledRect({
   scene: scene,
@@ -551,7 +594,8 @@ setTimeout(handler: () =&gt; void, milliseconds: number, owner?: any)</code></pr
   height: 100,
   cssColor: &quot;green&quot;,
   compositeOperation: &quot;source-over&quot;
-});</code></pre>
+});
+</code></pre>
 </li>
 <li><p><code>g.TextAlign</code> が非推奨になりました。代わりに (<code>&quot;left&quot; | &quot;center&quot; | &quot;right&quot;</code>) を利用してください。</p>
 </li>
@@ -567,7 +611,8 @@ setTimeout(handler: () =&gt; void, milliseconds: number, owner?: any)</code></pr
 const label = new g.Label({
   ...
   textAlign: g.TextAlign.Center
-});</code></pre>
+});
+</code></pre>
 <h4>Akashic Engine v3 のコード</h4>
 <pre><code class="language-js">const font = new g.DynamicFont({
   ...
@@ -577,7 +622,8 @@ const label = new g.Label({
 const label = new g.Label({
   ...
   textAlign: &quot;center&quot;
-});</code></pre>
+});
+</code></pre>
 </li>
 <li><p>上記の変更に伴い互換性維持のため、TypeScript では一部の型が変化します。</p>
 <ul>
@@ -591,9 +637,19 @@ const label = new g.Label({
 <p><code>g.RandomGenerator#get()</code> が非推奨になりました。代わりに <code>g.RandomGenerator#generate()</code> を利用してください。</p>
 <h3>NinePatchSurfaceEffector の移行</h3>
 <p><code>g.NinePatchSurfaceEffector</code> が非推奨になりました。代わりに <a href="#drawninepatch">g.SurfaceUtil#drawNinePatch()</a> を利用してください。</p>
-<h2><a name="features" class="anchor"></a> 追加機能など</h2>
-<h3><a name="assetpaths" class="anchor"></a> 読み込むアセットをファイルパスで複数まとめて指定できるように</h3>
-<p>g.Scene のコンストラクタ引数に <code>assetPaths?: string[]</code> が追加されます。</p>
+
+			<h2>
+				<a name="features" class="anchor" href="#features">
+					<span class="header-link">#</span>
+				</a>
+				 追加機能など
+			</h2>
+			<h3>
+				<a name="assetpaths" class="anchor" href="#assetpaths">
+					<span class="header-link">#</span>
+				</a>
+				 読み込むアセットをファイルパスで複数まとめて指定できるように
+			</h3><p>g.Scene のコンストラクタ引数に <code>assetPaths?: string[]</code> が追加されます。</p>
 <p>アセット ID の配列を渡す従来の <code>assetIds?: string[]</code> とは異なり、ファイルパスの配列を渡すことで読み込むアセットを指定できるようになります。
 ここでのファイルパスは game.json のあるディレクトリをルート (<code>/</code>) とする スラッシュ区切りの絶対パスとなります。以降これをファイルパス形式と呼びます。</p>
 <p>また、アセットパス形式では glob のサブセット文法(<code>**</code>, <code>*</code>, <code>?</code>) をサポートしています。
@@ -601,7 +657,8 @@ const label = new g.Label({
 <pre><code class="language-ts">const scene = new g.Scene({
   game: g.game,
   assetPaths: [&quot;/image/character01.png&quot;, &quot;/assets/**/*&quot;]
-});</code></pre>
+});
+</code></pre>
 <p>上記サンプルコードの <code>assetPaths</code> のグロブ指定(<code>&quot;/assets/**/*&quot;</code>)では、assets ディレクトリに下記のようなファイルが存在する場合、全てのファイルが対象となります。</p>
 <ul>
 <li>assets/scenarios/scenario1.txt</li>
@@ -629,7 +686,8 @@ const player = new g.Sprite({
 // オーディオアセットの取得
 // (game.json での記述同様、オーディオアセットに限り、拡張子抜きで指定する必要があります)
 const bgm = scene.asset.getAudio(&quot;/audio/bgm01&quot;);
-bgm.play();</code></pre>
+bgm.play();
+</code></pre>
 <p><code>getAllImages()</code> 等のグロブによる複数検索では、該当するアセットの配列を返します。
 アセットの指定には <code>assetPaths</code> と同様に glob のサブセット文法(<code>**</code>, <code>*</code>, <code>?</code>) を利用できます。</p>
 <pre><code class="language-js">// 複数の画像アセットの取得
@@ -648,7 +706,8 @@ for (let i = 0; i &lt; thumbnails.length; i++) {
 const audios = scene.asset.getAllAudios(&quot;/audio/bgm*&quot;);
 for (let i = 0; i &lt; audios.length; i++) {
     audios[i].stop();
-}</code></pre>
+}
+</code></pre>
 <p>アセット ID による取得 (<code>getImageById()</code> など) は、<code>g.Scene#assets</code> と同様の機能です。
 ただし TypeScript では <code>as g.ImageAsset</code> 等のダウンキャストが不要になります。</p>
 <pre><code class="language-ts">// g.Scene#assets でのアセットの取得
@@ -656,10 +715,16 @@ const imageWidth = (scene.assets[&quot;foo&quot;] as g.ImageAsset).width;
 
 // getImageById()での取得
 const imageWidth = scene.asset.getImageById(&quot;foo&quot;).width;
-// (返り値の型が ImageAsset になっているので、キャストなしで `width` にアクセスできます)</code></pre>
+// (返り値の型が ImageAsset になっているので、キャストなしで `width` にアクセスできます)
+</code></pre>
 <p><code>g.Scene#assets</code> の完全な機能一覧は <a href="/akashic-engine/v3/classes/Scene.html#asset">API リファレンス</a> を参照してください。</p>
-<h3><a name="assets-dir" class="anchor"></a> assets/ ディレクトリに全ての種類のアセットを置けるように</h3>
-<p>従来の <code>image/</code>, <code>audio/</code> などのディレクトリに加えて、 <code>assets/</code> ディレクトリが利用できるようになりました。
+
+			<h3>
+				<a name="assets-dir" class="anchor" href="#assets-dir">
+					<span class="header-link">#</span>
+				</a>
+				 assets/ ディレクトリに全ての種類のアセットを置けるように
+			</h3><p>従来の <code>image/</code>, <code>audio/</code> などのディレクトリに加えて、 <code>assets/</code> ディレクトリが利用できるようになりました。
 このディレクトリ内においたアセットは、 <code>akashic scan asset</code> でスキャンされ、 game.json に登録されます。</p>
 <p>ただし <code>assets/</code> は、他のディレクトリと次の点で異なります。</p>
 <ul>
@@ -699,36 +764,43 @@ const imageWidth = scene.asset.getImageById(&quot;foo&quot;).width;
 <pre><code class="language-ts">const parentEntity = new g.E({ scene: scene, x: 100, y: 100 });
 const nestedEntity = new g.E({ scene: scene, parent: parentEntity });
 // nestedEntity のローカル座標系での座標 (10, 20) はグローバル座標系では (110, 120)となります。
-const globalPoint = nestedEntity.localToGlobal({ x: 10, y: 20 });</code></pre>
+const globalPoint = nestedEntity.localToGlobal({ x: 10, y: 20 });
+</code></pre>
 <ul>
 <li><code>g.E#globalToLocal()</code> はグローバル座標をローカル座標に変換します。</li>
 </ul>
 <pre><code class="language-ts">const parentEntity = new g.E({ scene: scene, x: 100, y: 100 });
 const nestedEntity = new g.E({ scene: scene, parent: parentEntity });
 // nestedEntity のグローバル系での座標 (110, 120) はローカル座標系では (10, 20)となります。
-const localPoint = nestedEntity.globalToLocal({ x: 110, y: 120 });</code></pre>
+const localPoint = nestedEntity.globalToLocal({ x: 110, y: 120 });
+</code></pre>
 <h3>デフォルトローディングシーンで背景が透過で画面右下にプログレスバーが表示できるように</h3>
 <p>defaultLoadingScene に <code>&quot;compact&quot;</code> が追加されます。</p>
 <p>game.json の <a href="/guide/game-json.html#defaultLoadingScene">defaultLoadingScene</a> に <code>&quot;compact&quot;</code> を指定した時、ローディング画面が以下のように表示されます。</p>
 <ul>
 <li>背景が透過になります。 (下記画像では灰色部分が背景で透過されて表示されています。)</li>
-<li>プログレスバーが画面中央ではなく右下の方に小さく表示されます。<img src="/img/guide/v3-migration-guide/defaultloadingscene-compact.png" width="300px">
-
-</li>
+<li>プログレスバーが画面中央ではなく右下の方に小さく表示されます。<img src="/img/guide/v3-migration-guide/defaultloadingscene-compact.png" width="300px"></li>
 </ul>
 <h3>g.PlayerInfoEvent の追加</h3>
 <p>このイベントを <code>g.game.raiseEvent()</code> すると、以降 <code>g.PointDownEvent</code> 等の <code>player.name</code> プロパティに反映されるようになります。このイベントは、将来マルチプレイでのプレイヤー名を取得・通知するために先行して追加されるものです。</p>
 <h3>シーンスタックから取り除くシーンの数を指定できるように</h3>
 <p><code>g.Game#popScene()</code> の第 2 引数に <code>step?: number</code> が追加されます。</p>
 <p><code>step</code> に指定した数だけ pop が行われるようになります。step のデフォルト値は 1 です。</p>
-<pre><code class="language-ts">g.game.popScene(false, 3);</code></pre>
-<h3><a name="drawninepatch" class="anchor"></a>ナインパッチを描画するメソッドの追加</h3>
-<p>SurfaceUtil に NinePatch を描画するメソッド <code>g.SurfaceUtil#drawNinePatch()</code> が追加されます。
+<pre><code class="language-ts">g.game.popScene(false, 3);
+</code></pre>
+
+			<h3>
+				<a name="drawninepatch" class="anchor" href="#drawninepatch">
+					<span class="header-link">#</span>
+				</a>
+				ナインパッチを描画するメソッドの追加
+			</h3><p>SurfaceUtil に NinePatch を描画するメソッド <code>g.SurfaceUtil#drawNinePatch()</code> が追加されます。
 これは対象の <code>Surface</code> にナインパッチ処理された <code>Surface</code> を描画する機能です。</p>
 <pre><code class="language-ts">const destSurface = game.resourceFactory.createSurface(100, 100);
 const srcSurface = game.resourceFactory.createSurface(100, 100);
 const borderWidth = { top: 1, bottom: 2, left: 3, right: 4 };
-SurfaceUtil.drawNinePatch(destSurface, srcSurface, borderWidth);</code></pre>
+SurfaceUtil.drawNinePatch(destSurface, srcSurface, borderWidth);
+</code></pre>
 <h3>操作プラグインを登録、開始、停止を行うメソッドの追加</h3>
 <p><code>g.OperationPluginManager</code> に以下のメソッドが追加されます。</p>
 <ul>

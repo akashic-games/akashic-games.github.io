@@ -18,6 +18,7 @@
 	font-size: 15px;
 	line-height: 1.6;
 	padding: 48px 16px;
+	margin-top: 30px;
 }
 @media screen and (max-width:calc(959px + 260px)) {
 	.akashic--document {
@@ -77,6 +78,33 @@
 	color: #699;
 	font-size: 16px;
 	margin: 10px 0;
+}
+
+.akashic-document h1 a.anchor,
+.akashic-document h2 a.anchor,
+.akashic-document h3 a.anchor,
+.akashic-document h4 a.anchor,
+.akashic-document h5 a.anchor,
+.akashic-document h6 a.anchor {
+	text-decoration: none;
+}
+.header-link {
+	float: left;
+	padding-right: 4px;
+	margin-left: -20px;
+	visibility: hidden;
+	color: silver;
+}
+.header-link:hover {
+	color: #999;
+}
+.akashic--document h1:hover .header-link,
+.akashic--document h2:hover .header-link,
+.akashic--document h3:hover .header-link,
+.akashic--document h4:hover .header-link,
+.akashic--document h5:hover .header-link,
+.akashic--document h6:hover .header-link {
+	visibility: visible;
 }
 
 @media screen and (max-width:calc(959px + 260px)) {
@@ -361,7 +389,7 @@ input.accordion-state:checked + * {
 
 /* ページ内リンクの遷移先の位置調整 */
 .akashic--document a.anchor {
-	display: block;
+	outline: transparent;
 	padding-top: 70px;
 	margin-top: -70px;
 }

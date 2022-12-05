@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>トゥイーンアニメーションする</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -619,7 +619,8 @@
 var timeline = new tl.Timeline(scene);
 
 // e を現在位置から座標 (300, 0) へ 2000 ミリ秒かけて動かすアニメーションを実行
-timeline.create(e).moveTo(300, 0, 2000);</code></pre>
+timeline.create(e).moveTo(300, 0, 2000);
+</code></pre>
 <p>「毎フレーム描画位置を変える」といった簡単なアニメーションの場合は <a href="./move-image.html"><code>onUpdate</code> トリガーを利用して</a> 自力で動かすこともできます。
 akashic-timeline を利用すると、拡大と移動の同時実行や、イージングなど複雑なアニメーションを簡潔に記述することができます。</p>
 <p>画像を切り替えるパラパラアニメ (フレームアニメーション) を行うには <a href="./frame-animation.html"><code>g.FrameSprite</code> を利用してください。</a></p>
@@ -629,14 +630,16 @@ akashic-timeline を利用すると、拡大と移動の同時実行や、イー
 <h2>詳細</h2>
 <p><code>akashic-timeline</code> は Akashic Engine 向けのトゥイーンアニメーションライブラリです。</p>
 <p><code>akashic-timeline</code> のインストールは game.json が置かれているディレクトリで以下のコマンドを実行してください。</p>
-<pre><code class="language-sh">akashic install @akashic-extension/akashic-timeline</code></pre>
+<pre><code class="language-sh">akashic install @akashic-extension/akashic-timeline
+</code></pre>
 <p><code>akashic-timeline</code> を利用したいシーンで以下のように require を行い、<code>scene.onLoad</code> 内で <code>Timeline</code> を生成します。</p>
 <pre><code class="language-javascript">var tl = require(&quot;@akashic-extension/akashic-timeline&quot;);
 
 scene.onLoad.add(function() {
   var timeline = new tl.Timeline(scene);
   var tween = timeline.create(rect);
-});</code></pre>
+});
+</code></pre>
 <p><code>timeline.create()</code> を呼び出すことで <code>rect</code> をアニメーション対象とした <code>Tween</code> を生成することが出来ます。<code>Tween</code> とはアニメーションの実行単位であるアクションを操作するオブジェクトです。</p>
 <p><code>timeline.create()</code> では <code>modified</code> オプションが省略された場合、<code>Tween</code> の対象オブジェクトの <code>modified()</code>が与えられます。
 これまでの例では、 <code>modified</code> オプションで <code>rect.modified</code> を指定していました。 この <code>modified</code> オプションは、毎フレーム、アクションを実行した度に呼び出される関数を指定するものです。通常は Akashic のエンティティの <code>modified()</code> 関数を指定することになりますが、 <code>Tile</code> や <code>Label</code> のような内部描画キャッシュを持つエンティティの場合は、必要に応じて <code>invalidate()</code> 関数を指定してください。</p>
@@ -645,24 +648,30 @@ scene.onLoad.add(function() {
 <pre><code class="language-javascript">timeline
   .create(rect)
   .moveX(100, 1000)
-  .moveY(50, 2000);</code></pre>
+  .moveY(50, 2000);
+</code></pre>
 <p>X 座標と Y 座標を同時に変化させたい場合は <code>moveTo()</code> アクションを利用します。
 下記のコードでは、2 秒掛けて X 座標 300、Y 座標 400 の位置に移動するアニメーションを行います。</p>
-<pre><code class="language-javascript">timeline.create(rect).moveTo(300, 400, 2000);</code></pre>
+<pre><code class="language-javascript">timeline.create(rect).moveTo(300, 400, 2000);
+</code></pre>
 <p>上記の例では絶対位置への移動でしたが、現在の位置からの相対位置に移動させるには <code>moveBy()</code> を利用することで相対位置への移動を行うことが出来ます。</p>
 <h3>Easing</h3>
 <p>Easing とはアニメーションの加速や減速方法を定義した関数です。 akashic-timeline では各アクションに様々な Easing を指定することが出来ます。
 Easing を指定しない場合は、エンティティは直線的な動作で移動します。この時、内部的には <code>Easing.linear</code> が指定されています。</p>
-<pre><code class="language-javascript">timeline.create(rect).moveTo(300, 400, 2000);</code></pre>
+<pre><code class="language-javascript">timeline.create(rect).moveTo(300, 400, 2000);
+</code></pre>
 <p><code>moveTo()</code> などの最後の引数に他の <code>Easing</code> を指定することで複雑なアニメーションをさせることが出来ます。<code>Easing</code> の各関数の動作は<a href="/demo/?title=timeline-easing-sample">イージング一覧で確認出来ます。</a>詳細は<a href="/akashic-timeline/api/modules/Easing.html">API リファレンスを参照してください。</a></p>
-<pre><code class="language-javascript">timeline.create(rect).moveTo(300, 400, 2000, tl.Easing.easeInCubic);</code></pre>
+<pre><code class="language-javascript">timeline.create(rect).moveTo(300, 400, 2000, tl.Easing.easeInCubic);
+</code></pre>
 <h3>回転</h3>
 <p><code>rotateTo()</code> や <code>rotateBy()</code> を使うことで回転アニメーションを実現することが出来ます。</p>
 <p>下記のコードでは、四角形を 90 度回転させています。</p>
-<pre><code class="language-javascript">timeline.create(rect).rotateTo(90, 1000);</code></pre>
+<pre><code class="language-javascript">timeline.create(rect).rotateTo(90, 1000);
+</code></pre>
 <h3>ループ</h3>
 <p>ループは <code>timeline.create()</code> の <code>loop</code> オプションで指定することが出来ます。</p>
-<pre><code class="language-javascript">timeline.create(rect, { loop: true }).rotateTo(90, 1000);</code></pre>
+<pre><code class="language-javascript">timeline.create(rect, { loop: true }).rotateTo(90, 1000);
+</code></pre>
 <h3>並列実行</h3>
 <p>アクションを並列実行するには <code>con()</code> を利用します。 <code>con()</code> を呼び出した直前のアクションと直後のアクションを並列に実行することができます。</p>
 <p>下記の例では、<code>moveTo()</code> で移動しながら <code>rotateTo()</code> で回転しています。</p>
@@ -670,32 +679,37 @@ Easing を指定しない場合は、エンティティは直線的な動作で�
   .create(rect)
   .moveTo(200, 200, 1000)
   .con()
-  .rotateTo(180, 2000);</code></pre>
+  .rotateTo(180, 2000);
+</code></pre>
 <h3>その他のプロパティ制御</h3>
 <p><code>moveTo()</code> や <code>rotateTo()</code> を使ってのアニメーションは内部的にアニメーション対象の x, y, angle 等のプロパティを変化させています。他のプロパティを制御したい場合は <code>to()</code> を使用することができます。</p>
 <p>下記のコードでは、 <code>FilledRect</code> の <code>width</code> と <code>height</code> を変化させています。</p>
 <pre><code class="language-javascript">timeline
   .create(rect, { loop: true })
   .to({ width: 500, height: 200 }, 1000)
-  .to({ width: 0, height: 0 }, 1000);</code></pre>
+  .to({ width: 0, height: 0 }, 1000);
+</code></pre>
 <p>開始位置からの相対値を指定したい場合は <code>by()</code> を使用することができます。</p>
 <p><code>to()</code> や <code>by()</code> を使用して数値型のプロパティを変化させることはできますが、 <code>FilledRect</code> の <code>cssColor</code> プロパティなど、数値型以外のプロパティを変化させることは出来ません。数値型以外のプロパティを変化させるには <code>every()</code> を使用することでプロパティを変化させることができます。下記のコードでは、<code>every()</code> に指定した関数の中で第二引数に変化量（0〜1）が渡されてくるので、 その値を元に <code>cssColor</code> を変化させています。</p>
 <pre><code class="language-javascript">timeline.create(rect).every(function(elapsed, progress) {
   var c = Math.floor(255 * progress);
   rect.cssColor = `rgb(${c},0,${c} )`;
-}, 5000);</code></pre>
+}, 5000);
+</code></pre>
 <h3>アクションの完了と取り消し</h3>
 <p>すべてのアクションを完了させたい場合は <code>complete()</code> を利用します。
 下記のコードでは、<code>FilledRect</code> をクリックすると 2 秒掛けて透過度が 0 になるというアニメーションを即座に完了させることができます。</p>
 <pre><code class="language-javascript">var tween = timeline.create(rect).to({ opacity: 0 }, 2000);
 rect.pointDown.add(function() {
   tween.complete();
-});</code></pre>
+});
+</code></pre>
 <p>また、アニメーションをその時点で取り消したい場合は <code>cancel()</code> を利用します。</p>
 <pre><code class="language-javascript">var tween = timeline.create(rect).to({ opacity: 0 }, 2000);
 rect.pointDown.add(function() {
   tween.cancel();
-});</code></pre>
+});
+</code></pre>
 <p>特定の <code>Timeline</code> に紐付いたすべての <code>Tween</code> を完了させたい場合は <code>timeline.completeAll()</code> を、取り消したい場合は <code>timeline.cancelAll()</code> を利用することができます。</p>
 <h3>Tween の破棄タイミング</h3>
 <p><code>timeline.create()</code> で作成した <code>Tween</code> は <code>timeline.remove()</code> で破棄することができます。</p>

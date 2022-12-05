@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>文字列を描画する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -623,7 +623,8 @@
   x: 50,
   y: 50
 });
-scene.append(label);</code></pre>
+scene.append(label);
+</code></pre>
 <h2>利用例</h2>
 <p>次のコンテンツは、「こんにちは」と書かれた <code>Label</code> を表示します。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvdGV4dC9kcmF3L2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
@@ -635,7 +636,8 @@ scene.append(label);</code></pre>
   game: g.game,
   fontFamily: &quot;sans-serif&quot;,
   size: 48
-});</code></pre>
+});
+</code></pre>
 <p><code>Label</code> エンティティのパラメータオブジェクトに生成されたフォントを指定することで、そのフォントを利用して文字を描画するエンティティを作成できます。</p>
 <pre><code class="language-javascript">var label = new g.Label({
   scene: scene,
@@ -645,7 +647,8 @@ scene.append(label);</code></pre>
   x: 50,
   y: 50
 });
-scene.append(label);</code></pre>
+scene.append(label);
+</code></pre>
 <p>一度生成したフォントは複数のラべルで繰り返し使用できます。</p>
 <h2>関連情報</h2>
 <ul>

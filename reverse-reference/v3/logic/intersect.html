@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>エンティティ同士の当たり判定を調べる</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -627,7 +627,8 @@ g.Collision.intersectEntities(rect1, rect2); // rect1 と rect2 が衝突して�
 g.Collision.intersectAreas(rect1, rect2);
 
 // 親が同じで中心座標同士の距離だけで判定してよい場合
-g.Collision.withinAreas(rect1, rect2, 2); // 中心座標同士の距離が 2 以下なら真を返す</code></pre>
+g.Collision.withinAreas(rect1, rect2, 2); // 中心座標同士の距離が 2 以下なら真を返す
+</code></pre>
 <h2>利用例</h2>
 <p>次のコンテンツは、青の矩形をドラッグ/スワイプし黒の矩形と衝突すると青の矩形の色が赤に変わります。</p>
 <!-- intersectEntities() が akashic-engine@3.0.4 からなので、AE@3.0.4 が含まれた engine-files 生成後に playgroud も更新 -->
@@ -673,7 +674,8 @@ function createRect(scene, width, height, x, y, color, isTouchble) {
     cssColor: color,
     touchable: isTouchble
   });
-}</code></pre>
+}
+</code></pre>
 <p>親が同じで中心座標同士の距離だけで判定してよい場合は、より軽量な <code>g.Collision.withinAreas()</code> を利用できます。2 つの矩形の中心座標間距離による衝突判定を行いその結果を返します。 第三引数は衝突判定の閾値(中心座標間の距離)となり省略時は 1 となります。</p>
 <pre><code class="language-javascript">var distance = rect2.width / 2 + rect1.width / 2; // 衝突判定の閾値
 rect1.onUpdate.add(function() {
@@ -684,7 +686,8 @@ rect1.onUpdate.add(function() {
   } else {
     // 衝突しなかった場合
   }
-});</code></pre>
+});
+</code></pre>
 <p>注意する点として、対象のエンティティの座標や大きさなどを変更した場合は、これらの関数を呼び出す前にそのエンティティの <code>modified()</code> を呼び出しておく必要があります。</p>
 <h2>関連情報</h2>
 <ul>

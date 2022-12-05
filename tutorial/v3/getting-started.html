@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic を試してみる</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -315,16 +315,26 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>akashic を試してみる</h1>
-<h2><a name="play-game"></a> まずは動かしてみよう</h2>
-<p>Akashic Engine はウェブブラウザとテキストエディタがあれば簡単にゲームを開発することができます。
+
+			<h2>
+				<a name="play-game" class="anchor" href="#play-game">
+					<span class="header-link">#</span>
+				</a>
+				 まずは動かしてみよう
+			</h2><p>Akashic Engine はウェブブラウザとテキストエディタがあれば簡単にゲームを開発することができます。
 まずは Akashic Engine でどのようなゲームが作成できるのかを見てみましょう。</p>
 <p><a href="https://github.com/akashic-games/akashic-engine-standalone/releases">こちらのページ</a> から最新バージョンの bundle.zip をダウンロードしてください。
 zip ファイルを展開し、その中の index.html をウェブブラウザで開くと Akashic Engine のサンプルゲームが実行されます。</p>
 <p>samples ディレクトリには Akashic Engine の拡張ライブラリを用いたサンプルゲームがあります。
 <a href="https://github.com/akashic-games/akashic-timeline">akashic-timeline</a> を使えばトゥイーンアニメーションを実現できたり、
 <a href="https://github.com/akashic-games/akashic-box2d">akashic-box2d</a> を使えば <a href="https://dic.nicovideo.jp/a/%E3%83%8B%E3%82%B3%E3%83%8B%E3%82%B3%E3%82%BF%E3%83%AF%E3%83%BC">ニコニコタワー</a> のような物理演算をゲームに適用することができます。</p>
-<h2><a name="make-game"></a> 作ってみよう</h2>
-<p>ダウンロードしたファイルの中にある <code>akashic-engine-standalone-x.y.z.js</code> (x, y, z は Akashic Engine のバージョンにより異なります) を利用することで、
+
+			<h2>
+				<a name="make-game" class="anchor" href="#make-game">
+					<span class="header-link">#</span>
+				</a>
+				 作ってみよう
+			</h2><p>ダウンロードしたファイルの中にある <code>akashic-engine-standalone-x.y.z.js</code> (x, y, z は Akashic Engine のバージョンにより異なります) を利用することで、
 任意の HTML ファイルから Akashic Engine を実行することができます。</p>
 <p>以下は非常に簡単なゲームのサンプルです。</p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
@@ -373,13 +383,19 @@ zip ファイルを展開し、その中の index.html をウェブブラウザ�
       });
     &lt;/script&gt;
   &lt;/body&gt;
-&lt;/html&gt;</code></pre>
+&lt;/html&gt;
+</code></pre>
 <p>上記の内容の HTML ファイルと、先ほど展開したファイルの中にある <code>akashic-engine-standalone-x.y.z.js</code> と <code>images</code> ディレクトリを同ディレクトリに保存して、ウェブブラウザで見てみましょう。
 キャラクタが一定の間隔でアニメーションしている画面が表示されるかと思います。</p>
 <p>たとえば <code>interval: 500</code> の数字を <code>100</code> に変更してみるとどうでしょう。アニメーション間隔が短くなりました。
 または <code>frames: [20, 21, 22, 23]</code> としてみるとどうでしょうか。キャラクタが眠ってしまいました。</p>
-<h2><a name="for-more-details"></a> より本格的なゲーム開発のために</h2>
-<p>以上で簡単なゲームを作成することができました。
+
+			<h2>
+				<a name="for-more-details" class="anchor" href="#for-more-details">
+					<span class="header-link">#</span>
+				</a>
+				 より本格的なゲーム開発のために
+			</h2><p>以上で簡単なゲームを作成することができました。
 このサンプルは非常に単純なもので、ゲームと呼ぶには程遠いかもしれません。
 しかし、小規模なシングルプレイのゲームであれば上記の HTML にコードを加えていくだけで作成することもできるでしょう。</p>
 <p>Akashic Engine では複数人が参加できるマルチプレイゲームを作成したり、作成したゲームをニコニコ生放送上で実行することができます。

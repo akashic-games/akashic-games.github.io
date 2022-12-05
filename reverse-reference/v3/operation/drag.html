@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ドラッグ・スワイプで動かす</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -622,7 +622,8 @@
 
 rect.onPointMove.add(function(e) {
   ... // エンティティがドラッグク・スワイプされた時の処理
-});</code></pre>
+});
+</code></pre>
 <p>エンティティは <code>touchable</code> プロパティを <code>true</code> にすることにより、タップやクリックなどのユーザ操作を検出できるようになります。</p>
 <p>エンティティをクリック・タップするには <a href="./click.html"><code>g.E#onPointDown</code> を利用してください。</a></p>
 <h2>利用例</h2>
@@ -662,7 +663,8 @@ rect.onPointMove.add(function(e) {
   rect.x += ev.prevDelta.x;
   rect.y += ev.prevDelta.y;
   rect.modified();
-});</code></pre>
+});
+</code></pre>
 <p>この変数には下記のプロパティがあります。</p>
 <div class="table--scroll">
 <table>

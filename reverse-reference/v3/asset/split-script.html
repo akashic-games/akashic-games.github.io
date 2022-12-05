@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>スクリプトを分割する (複数のスクリプトを使う)</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -615,7 +615,8 @@
 				<h1>スクリプトを分割する (複数のスクリプトを使う)</h1>
 <p>スクリプトを分割するには、<code>require()</code> を利用します。</p>
 <h2>凡例</h2>
-<pre><code class="language-javascript">var redRectScene = require(&quot;./redRectScene&quot;);</code></pre>
+<pre><code class="language-javascript">var redRectScene = require(&quot;./redRectScene&quot;);
+</code></pre>
 <h2>利用例</h2>
 <p>次のコンテンツは、赤い矩形を描画するだけのシーン(redRectScene.js)を main.js から利用して表示しています。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvYXNzZXQvc3BsaXQtc2NyaXB0L2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
@@ -635,13 +636,15 @@
     ...
   });
   return scene;
-};</code></pre>
+};
+</code></pre>
 <p>上記の .js ファイルを 同ディレクトリの <code>main.js</code> から利用する場合は、<code>require()</code> 関数でそのファイルを読み込むことができるようになります。 <code>require()</code> の引数は、読み込む .js ファイルの相対パスです。TypeScript テンプレートの場合は、 <code>script/</code> ではなく <code>src/</code> ディレクトリに .ts ファイルを作成することになります。</p>
 <pre><code class="language-javascript">var redRectScene = require(&quot;./redRectScene&quot;);
 
 function main() {
   g.game.pushScene(redRectScene.create());
-}</code></pre>
+}
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/tutorial/v3/require.html">チュートリアル</a></li>

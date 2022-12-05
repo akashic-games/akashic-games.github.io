@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>文字列を表示する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -317,15 +317,21 @@
 				<h1>文字列を表示する</h1>
 <p>このページのサンプルコードを<a class="asset--material--download" href="/zip/tutorial/v3/sample-text.zip">ダウンロード</a></p>
 
-<h2><a name="font"></a> フォント</h2>
-<p>Akashic Engine で文字列を表示するには、フォントとラベルが必要です。 <strong>フォント</strong> は文字の形を表すオブジェクトです。 <strong>ラベル</strong> はフォントを利用して文字列を描画するエンティティです。</p>
+
+			<h2>
+				<a name="font" class="anchor" href="#font">
+					<span class="header-link">#</span>
+				</a>
+				 フォント
+			</h2><p>Akashic Engine で文字列を表示するには、フォントとラベルが必要です。 <strong>フォント</strong> は文字の形を表すオブジェクトです。 <strong>ラベル</strong> はフォントを利用して文字列を描画するエンティティです。</p>
 <p>フォントには、システムにインストールされているフォントから生成するダイナミックフォントと、画像から生成するビットマップフォントの二種類があります。ビットマップフォントについては後述します。</p>
 <p>ダイナミックフォントは以下のコードで生成できます。</p>
 <pre><code class="language-javascript">const font = new g.DynamicFont({
   game: g.game,
   fontFamily: &quot;sans-serif&quot;,
   size: 15
-});</code></pre>
+});
+</code></pre>
 <p>引数の <code>fontFamily</code> プロパティは、フォントの種類で以下のいずれかの値を指定します。</p>
 <ul>
 <li><code>&quot;sans-serif&quot;</code>: サンセリフ体・ゴシック体のフォント。</li>
@@ -333,15 +339,21 @@
 <li><code>&quot;monospace&quot;</code>: 等幅フォント。</li>
 </ul>
 <p>引数の <code>size</code> プロパティは文字の大きさ、 <code>game</code> プロパティには <code>g.game</code> を渡します。</p>
-<h2><a name="label"></a> ラベル</h2>
-<p>上のフォントを使って、実際に文字列を描画するエンティティ・ラベルは以下のコードで生成します。</p>
+
+			<h2>
+				<a name="label" class="anchor" href="#label">
+					<span class="header-link">#</span>
+				</a>
+				 ラベル
+			</h2><p>上のフォントを使って、実際に文字列を描画するエンティティ・ラベルは以下のコードで生成します。</p>
 <pre><code class="language-javascript">const label = new g.Label({
   scene: scene,
   font: font,
   text: &quot;Hello World!&quot;,
   fontSize: 15,
   textColor: &quot;blue&quot;
-});</code></pre>
+});
+</code></pre>
 <p>ラベル特有のプロパティとして次のものがあります。</p>
 <div class="table--scroll">
 <table>
@@ -400,14 +412,16 @@
   g.game.pushScene(scene);
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtdGV4dC0xL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
 
 <p>ダイナミックフォントはシステムにインストールされているフォントを利用するため、実行環境により描画が異なる場合があります。すべての環境で同じ出力にしたい場合や、パフォーマンスが要求される場合は、ダイナミックフォントの代わりにビットマップフォントを利用してください。</p>
 <p>ラベルは高速化のために描画内容をキャッシュしています。そのために文字列を変更した場合は、<code>invalidate()</code>
 メソッドで変更を通知する必要があります。以下はラベル <code>label</code> の文字列を書き換える例です。</p>
 <pre><code class="language-javascript">label.text = label.text + &quot;*&quot;;
-label.invalidate();</code></pre>
+label.invalidate();
+</code></pre>
 <p>ラベルでは以下のプロパティを変更した場合に <code>invalidate()</code>
 メソッドを呼び出す必要があります。</p>
 <ul>
@@ -447,7 +461,8 @@ label.invalidate();</code></pre>
   g.game.pushScene(scene);
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtdGV4dC0yL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
 
 <div class="navi-center">

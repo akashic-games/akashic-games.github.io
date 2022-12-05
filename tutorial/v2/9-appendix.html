@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>より大規模なゲームを作るために</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -259,8 +259,13 @@
 				<h1>より大規模なゲームを作るために</h1>
 <p>このページのサンプルコードを<a class="asset--material--download" href="/zip/tutorial/v2/sample-appendix.zip">ダウンロード</a></p>
 
-<h2><a name="シーンの切り替え"></a> シーンの切り替え</h2>
-<p>Akashic Engine では、タイトル場面・プレイ場面・スコア場面のように、ゲームの場面ごとにそれぞれ対応するシーンを作成しそれらを切り替えて表示できます。シーンの切り替えには <code>Game</code> オブジェクトに用意されたメソッドを利用します。</p>
+
+			<h2>
+				<a name="シーンの切り替え" class="anchor" href="#シーンの切り替え">
+					<span class="header-link">#</span>
+				</a>
+				 シーンの切り替え
+			</h2><p>Akashic Engine では、タイトル場面・プレイ場面・スコア場面のように、ゲームの場面ごとにそれぞれ対応するシーンを作成しそれらを切り替えて表示できます。シーンの切り替えには <code>Game</code> オブジェクトに用意されたメソッドを利用します。</p>
 <ul>
 <li><code>g.game.replaceScene()</code></li>
 <li><code>g.game.pushScene()</code></li>
@@ -305,9 +310,15 @@ function createRect(scene, color) {
   });
 }
 
-module.exports = main;</code></pre>
-<h2><a name="ファイル分割"></a> ファイル分割</h2>
-<p>Akashic Engine のスクリプトを複数のファイルに分けて記述した場合、
+module.exports = main;
+</code></pre>
+
+			<h2>
+				<a name="ファイル分割" class="anchor" href="#ファイル分割">
+					<span class="header-link">#</span>
+				</a>
+				 ファイル分割
+			</h2><p>Akashic Engine のスクリプトを複数のファイルに分けて記述した場合、
 <code>require()</code> を使って他のファイルの関数を読み込んで利用します。</p>
 <p><code>MainScene.js</code> に以下のコードが記述されているとします。</p>
 <pre><code class="language-javascript">module.exports.create = function() {
@@ -322,7 +333,8 @@ module.exports = main;</code></pre>
     scene.append(rect);
   });
   return scene;
-};</code></pre>
+};
+</code></pre>
 <p><code>mainScene.js</code> はシーンの作成処理を独立させたファイルです。コード中で <code>module.exports</code> に <code>create</code> 関数を代入しています。このコードを <code>akashic scan</code> でアセットとして追加すると関数を他のファイルから利用できます。</p>
 <p>例えば <code>main.js</code> から利用する場合は、次のようなコードになります。</p>
 <pre><code class="language-javascript">var MainScene = require(&quot;./MainScene&quot;);
@@ -331,9 +343,15 @@ function main() {
   g.game.pushScene(MainScene.create());
 }
 
-module.exports = main;</code></pre>
-<h2><a name="より高度な情報"></a> より高度な情報</h2>
-<p>ここまでの説明で Akashic Engine を利用してゲームを作るのに必要な情報を一通り説明しました。より詳細な情報については以下もご覧ください。</p>
+module.exports = main;
+</code></pre>
+
+			<h2>
+				<a name="より高度な情報" class="anchor" href="#より高度な情報">
+					<span class="header-link">#</span>
+				</a>
+				 より高度な情報
+			</h2><p>ここまでの説明で Akashic Engine を利用してゲームを作るのに必要な情報を一通り説明しました。より詳細な情報については以下もご覧ください。</p>
 <ul>
 <li><strong><a href="/akashic-engine/v2/modules/_lib_main_d_.g.html">API リファレンス</a></strong><ul>
 <li>Akashic Engine で利用可能なすべてのメソッドとプロパティを列挙しています。</li>

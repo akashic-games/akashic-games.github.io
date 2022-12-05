@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>拡張ライブラリを削除する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -615,7 +615,8 @@
 				<h1>拡張ライブラリを削除する</h1>
 <p>導入した拡張ライブラリを削除するには <code>akashic</code> コマンドの <code>akashic uninstall</code> を利用します。</p>
 <h2>凡例</h2>
-<pre><code class="language-sh">akashic uninstall @akashic-extension/akashic-timeline</code></pre>
+<pre><code class="language-sh">akashic uninstall @akashic-extension/akashic-timeline
+</code></pre>
 <h2>詳細</h2>
 <p><code>akashic uninstall</code> コマンドは <code>npm uninstall</code> を実行して拡張ライブラリを削除したのち、<code>game.json</code> から関連する情報を削除します。</p>
 <p>誤って <code>npm install</code> コマンドで拡張ライブラリをインストールした場合は、 <code>npm uninstall</code> コマンドで拡張ライブラリを一度アンインストールし、その後 <code>akashic install</code> コマンドで再インストールしてください。</p>

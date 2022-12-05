@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>投稿と申請</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/asset.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/asset.css?06ad657f">
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -138,9 +138,15 @@ Akashic ゲームをこの ゲームアツマールに投稿・公開した後�
 <li>投稿用 zip ファイルを生成</li>
 <li>ゲームアツマールに投稿し、ニコ生ゲームとして登録申請</li>
 </ol>
-<h3><a name="generate-zip"></a> 投稿用 zip ファイルを生成</h3>
-<p>game.json のあるディレクトリで、次のコマンドを実行して zip ファイルを生成します。</p>
-<pre><code class="language-sh">akashic export html --output &lt;zipFileName&gt; --atsumaru</code></pre>
+
+			<h3>
+				<a name="generate-zip" class="anchor" href="#generate-zip">
+					<span class="header-link">#</span>
+				</a>
+				 投稿用 zip ファイルを生成
+			</h3><p>game.json のあるディレクトリで、次のコマンドを実行して zip ファイルを生成します。</p>
+<pre><code class="language-sh">akashic export html --output &lt;zipFileName&gt; --atsumaru
+</code></pre>
 <p><code>&lt;zipFileName&gt;</code> には、 <code>.zip</code> で終わるパスを指定してください (<code>./game.zip</code> など)。
 <code>--atsumaru</code> オプションをつけることで、ゲームアツマールとニコニコ生放送に対応した形式のファイルを生成します。</p>
 <p><code>export html</code> コマンドによって、以下のファイル・ディレクトリを圧縮した zip ファイル <code>&lt;zipFileName&gt;</code> が生成されます。</p>
@@ -161,8 +167,13 @@ Akashic ゲームをこの ゲームアツマールに投稿・公開した後�
 </ul>
 </li>
 </ul>
-<h4><a name="note"></a> 生成時の注意点</h4>
-<p>現在のところ、ニコ生ゲームには次のような制約があります。</p>
+
+			<h4>
+				<a name="note" class="anchor" href="#note">
+					<span class="header-link">#</span>
+				</a>
+				 生成時の注意点
+			</h4><p>現在のところ、ニコ生ゲームには次のような制約があります。</p>
 <ul>
 <li>zip ファイルの <strong>展開後の合計サイズが 10 MB 以下</strong></li>
 <li>zip ファイルに含まれる <strong>game.json が 100KB 以下</strong></li>
@@ -175,8 +186,13 @@ Akashic ゲームをこの ゲームアツマールに投稿・公開した後�
 ニコ生ゲームとして申請する際に「不正な game.json」とされてしまう場合、このサイズを超えている可能性があります。</p>
 <p><strong>全てのテキストファイル (.js, .json, .txt) の文字コードが UTF-8 であることを確認してください</strong> 。
 <code>akashic export</code> コマンドは、効率化のためできるだけテキストファイルを一つにまとめます。このとき Shift JIS など、UTF-8 でない文字コードが使われていると、game.zip の中身が文字化けしてしまうことがあります。</p>
-<h3><a name="submit-to-atsumaru"></a> ゲームアツマールに投稿し、ニコ生ゲームとして登録申請</h3>
-<p><a href="https://game.nicovideo.jp/atsumaru/">ゲームアツマール</a> への投稿は、Web サイト上で行います。大まかな手順は以下の通りです。</p>
+
+			<h3>
+				<a name="submit-to-atsumaru" class="anchor" href="#submit-to-atsumaru">
+					<span class="header-link">#</span>
+				</a>
+				 ゲームアツマールに投稿し、ニコ生ゲームとして登録申請
+			</h3><p><a href="https://game.nicovideo.jp/atsumaru/">ゲームアツマール</a> への投稿は、Web サイト上で行います。大まかな手順は以下の通りです。</p>
 <p>ゲームアツマールの <a href="https://game.nicovideo.jp/atsumaru/game/edit/new">投稿ページ</a> を開きます。(ニコニコアカウントでのログインが求められます。)
 zip ファイルを「ゲームファイル」の欄で選択もしくはドラッグ＆ドロップします。</p>
 <p><img src="/img/guide/export-atsumaru/upload_game.png" alt="ゲームアップロード"></p>
@@ -195,23 +211,54 @@ zip ファイルを「ゲームファイル」の欄で選択もしくはドラ�
 <p><img src="/img/guide/export-atsumaru/export_dialog.png" alt="登録申請ダイアログ"></p>
 <p>投稿対象のゲームに「ニコ生ゲームに登録申請済み」と表示されたら完了です。</p>
 <p><img src="/img/guide/export-atsumaru/export_complete.png" alt="登録申請完了"></p>
-<h2><a name="updating-content"></a> コンテンツの更新</h2>
-<p>ゲームアツマールでは、一度アップロードしたゲームの内容を更新することができます。ニコ生ゲームとしては、更新後に改めて登録申請が必要になることに注意してください。</p>
+
+			<h2>
+				<a name="updating-content" class="anchor" href="#updating-content">
+					<span class="header-link">#</span>
+				</a>
+				 コンテンツの更新
+			</h2><p>ゲームアツマールでは、一度アップロードしたゲームの内容を更新することができます。ニコ生ゲームとしては、更新後に改めて登録申請が必要になることに注意してください。</p>
 <p><img src="/img/guide/export-atsumaru/update_ui.png" alt="更新UI"></p>
 <p>更新は、登録申請と同じ画面で「アップデート」ボタンを押して zip ファイルをアップロードして更新した後、改めて「ニコ生ゲームに登録申請」してください。</p>
-<h2><a name="trouble-shooting"></a> トラブルシューティング</h2>
-<p>ニコ生ゲームへの投稿中によくあるエラーをまとめます。Akashic Engine 全般の <a href="../common-pitfalls.html">よくある落とし穴</a> も参照してください。</p>
-<h3><a name="invalid-gamejson"></a> 「game.json の記述に誤りがあります。再度エクスポートを実行してください。」という表示でニコ生ゲームの登録申請に失敗する</h3>
-<p>ゲームアツマール上では問題がないなどの場合、 「zip ファイルに含められた game.json のサイズが大きすぎる (100KB 以上)」ことがあります。
+
+			<h2>
+				<a name="trouble-shooting" class="anchor" href="#trouble-shooting">
+					<span class="header-link">#</span>
+				</a>
+				 トラブルシューティング
+			</h2><p>ニコ生ゲームへの投稿中によくあるエラーをまとめます。Akashic Engine 全般の <a href="../common-pitfalls.html">よくある落とし穴</a> も参照してください。</p>
+
+			<h3>
+				<a name="invalid-gamejson" class="anchor" href="#invalid-gamejson">
+					<span class="header-link">#</span>
+				</a>
+				 「game.json の記述に誤りがあります。再度エクスポートを実行してください。」という表示でニコ生ゲームの登録申請に失敗する
+			</h3><p>ゲームアツマール上では問題がないなどの場合、 「zip ファイルに含められた game.json のサイズが大きすぎる (100KB 以上)」ことがあります。
 game.json のサイズは現在ニコ生ゲーム特有の制限であるためです。</p>
 <p>zip ファイルを展開して、サイズを確認してください。
 この問題に当たっている場合は、アセット数を減らすなどして game.json のサイズを削減する必要があります。</p>
-<h3><a name="error-unknown-option-atsumaru"></a> unknown option &#96;--atsumaru&#39; と表示される</h3>
-<p><code>akashic export html</code> 実行時、次のようなエラーメッセージが表示される場合、 <code>akashic-cli</code> のバージョンが古い可能性があります。</p>
-<pre><code>  error: unknown option `--atsumaru&#39;</code></pre><p>次のコマンドで <code>akashic-cli</code> を再インストールしてください。</p>
-<pre><code>npm install -g @akashic/akashic-cli</code></pre><h3><a name="error-cannot-find-module-from"></a> Error: Cannot find module ... from ... と表示される</h3>
-<p><code>akashic export html</code> 実行時、次のようなエラーメッセージが表示される場合、ソースコードを変更する必要があります。</p>
-<pre><code>ERROR: Error: Cannot find module &#39;foo&#39; from ...</code></pre><p>この現象は、ゲームスクリプト内で <code>require()</code> を利用し、その引数にアセット ID を与えている場合に発生します。
+
+			<h3>
+				<a name="error-unknown-option-atsumaru" class="anchor" href="#error-unknown-option-atsumaru">
+					<span class="header-link">#</span>
+				</a>
+				 unknown option &#96;--atsumaru&#39; と表示される
+			</h3><p><code>akashic export html</code> 実行時、次のようなエラーメッセージが表示される場合、 <code>akashic-cli</code> のバージョンが古い可能性があります。</p>
+<pre><code>  error: unknown option `--atsumaru&#39;
+</code></pre>
+<p>次のコマンドで <code>akashic-cli</code> を再インストールしてください。</p>
+<pre><code>npm install -g @akashic/akashic-cli
+</code></pre>
+
+			<h3>
+				<a name="error-cannot-find-module-from" class="anchor" href="#error-cannot-find-module-from">
+					<span class="header-link">#</span>
+				</a>
+				 Error: Cannot find module ... from ... と表示される
+			</h3><p><code>akashic export html</code> 実行時、次のようなエラーメッセージが表示される場合、ソースコードを変更する必要があります。</p>
+<pre><code>ERROR: Error: Cannot find module &#39;foo&#39; from ...
+</code></pre>
+<p>この現象は、ゲームスクリプト内で <code>require()</code> を利用し、その引数にアセット ID を与えている場合に発生します。
 (<code>require(&quot;foo&quot;)</code> でアセット ID <code>&quot;foo&quot;</code> のスクリプトアセットを読み込むなど)</p>
 <p>アセット ID ではなく、相対パスで <code>require()</code> するように変更してください。(<code>require(&quot;./foo&quot;)</code> など)</p>
 <p><code>require()</code> がアセット ID を受け付けているのは、Akashic Engine の古い仕様によるものです。アセット ID と同名の npm モジュールがあると衝突してしまうという問題があるため、この挙動は将来的に廃止される可能性があります。ニコ生ゲームであるか否かに関わらず、 <code>require()</code> にアセット ID を与えることは避けてください。</p>

@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>描画順を変える</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -619,7 +619,8 @@
    ...      // 必要なプロパティ
 });
 
-scene.insertBefore(entity, targetEntity); // targetEntity の直前に entity を挿入し、entity は先に(奥側に)描画される</code></pre>
+scene.insertBefore(entity, targetEntity); // targetEntity の直前に entity を挿入し、entity は先に(奥側に)描画される
+</code></pre>
 <p><code>insertBefore()</code> は子エンティティの中での挿入位置を指定して追加できます。</p>
 <h2>利用例</h2>
 <p>次のコンテンツは、既に追加されている緑と赤の矩形に青の矩形を赤の直前の子要素として追加しています。</p>
@@ -659,7 +660,8 @@ function createRect(scene, x, y, color) {
     y: y,
     cssColor: color
   });
-}</code></pre>
+}
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/tutorial/v3/display-order.html#display-order">チュートリアル</a></li>

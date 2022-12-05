@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>画面全体をクリック・タップできるようにする</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -617,7 +617,8 @@
 <h2>凡例</h2>
 <pre><code class="language-javascript">scene.onPointDownCapture.add(function(ev) {
   ... // scene がクリック・タップされた時の処理
-});</code></pre>
+});
+</code></pre>
 <p>エンティティをクリック・タップするには <a href="./click.html"><code>g.E#onPointDown</code> を利用してください。</a></p>
 <p>エンティティをドラッグ・スワイプするには <a href="./drag.html"><code>g.E#onPointMove</code> を利用してください。</a></p>
 <h2>利用例</h2>
@@ -642,7 +643,8 @@ scene.onLoad.add(function() {
     });
     scene.append(rect);
   });
-});</code></pre>
+});
+</code></pre>
 <p>押下された座標に <code>touchable</code> なエンティティがある場合は、そのエンティティの <code>onPointDown</code> と、シーンの <code>onPointUpCapture</code> が両方通知されることに気をつけてください。
 この場合、<code>onPointDownCapture</code> トリガーに渡した関数の引数 <code>ev</code> の<code>target</code> プロパティにそのエンティティが与えられます。</p>
 <p><code>target</code> プロパティを参照することで、「クリックした座標に <code>touchable</code> なエンティティがない時」だけの処理を記述することができます。</p>
@@ -650,7 +652,8 @@ scene.onLoad.add(function() {
   if (ev.target) return; // クリックした箇所に touchable なエンティティがある場合は return
 
   // ... touchable なエンティティがない時の処理
-});</code></pre>
+});
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/tutorial/v3/click.html">チュートリアル</a></li>

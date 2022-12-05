@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>反転する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -618,11 +618,13 @@
 <pre><code class="language-javascript">var sprite = new g.Sprite({
   ...,         // その他のプロパティ
   scaleX: -1   // 左右反転
-});</code></pre>
+});
+</code></pre>
 <pre><code class="language-javascript">var sprite = new g.Sprite({
   ...,         // その他のプロパティ
   scaleY: -1  // 上下反転
-});</code></pre>
+});
+</code></pre>
 <p>反転も、 <a href="./rotate.html"><code>angle</code> による回転</a> と同じく、デフォルトではエンティティの左上端を基準に行われます。
 この基準位置を変えるには、 <a href="./rotate-anchor.html"><code>anchorX</code>, <code>anchorY</code> を利用してください</a> 。</p>
 <h2>利用例</h2>
@@ -641,7 +643,8 @@
   scaleY: -1
 });
 
-scene.append(sprite);</code></pre>
+scene.append(sprite);
+</code></pre>
 <p>上記コードの場合、デフォルトの基準点が左上端なのでエンティティの位置が反転前と違う位置になってしまいます。
 位置を変えたくない場合は下記のようにエンティティの基準点をエンティティ中央に設定する必要があります。</p>
 <pre><code class="language-javascript">var sprite = new g.Sprite({
@@ -649,11 +652,13 @@ scene.append(sprite);</code></pre>
   // 以下の指定で基準点がエンティティ中央になる
   anchorX: 0.5,
   anchorY: 0.5
-});</code></pre>
+});
+</code></pre>
 <p>また、本来 <code>scaleX</code>, <code>scaleY</code> プロパティは拡大・縮小を行うためのものなので、以下のように左右反転させ拡大させるということもできます。</p>
 <pre><code class="language-javascript">sprite.scaleX = -2; // 左右反転して横方向に2倍拡大
 sprite.scaleY = 2; // 縦方向に2倍拡大
-sprite.modified(); // modified() で表示に反映</code></pre>
+sprite.modified(); // modified() で表示に反映
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/tutorial/v3/scale-anchor.html#scale-and-rot">チュートリアル</a></li>

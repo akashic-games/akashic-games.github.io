@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ranking モードのゲーム作成</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/asset.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/asset.css?06ad657f">
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -153,8 +153,13 @@
 </ul>
 <p>特に「一定時間で終了される」ため、例えば「ゲームオーバーになるまでプレイし続け、生き残った時間を競う」ようなコンテンツを作ることはできないことに注意してください。
 (そういったコンテンツはみんなで遊ぶ <code>&quot;multi_admission&quot;</code> モードで作成できます)</p>
-<h2><a name="score"></a> スコア</h2>
-<p><strong>スコア</strong> は、ゲームプレイに応じて定まる 0 以上の整数です。</p>
+
+			<h2>
+				<a name="score" class="anchor" href="#score">
+					<span class="header-link">#</span>
+				</a>
+				 スコア
+			</h2><p><strong>スコア</strong> は、ゲームプレイに応じて定まる 0 以上の整数です。</p>
 <p>ランキング対応ゲームでは、スコアの値を <code>g.game.vars.gameState.score</code> に代入する必要があります。
 ゲームプレイ中にスコアが更新される度に、この <code>score</code> に値を代入してください。</p>
 <p>以下のコード例は、画面をクリックした回数がそのままスコアになるゲームの例です。</p>
@@ -168,7 +173,8 @@ scene.loaded.add(function (){
     scene.pointDownCapture.add(function () {
         g.game.vars.gameState.score++;
     });
-});</code></pre>
+});
+</code></pre>
 <p>スコアの値に上限は今のところありませんが、 <strong>10 万未満 (5 桁以内) にすることを推奨します</strong> 。あまり大きな数字を指定すると、ランキング結果の画面でのスコア表示がおかしくなる可能性があります。</p>
 <blockquote>
 <p>なお <code>g.game.vars</code> は、「ゲーム開発者が自由に使える領域」として Akashic Engine が提供する変数です。
@@ -177,8 +183,13 @@ scene.loaded.add(function (){
 </blockquote>
 <p>ここまでの内容で、ランキングモード対応のゲームを作成することができます。
 以下はより発展的な内容です。</p>
-<h2><a name="session-parameter"></a> セッションパラメータとランキング対応ゲームテンプレート</h2>
-<p>ニコニコ生放送は、起動したゲームコンテンツに対していくつかの補助情報を提供します。
+
+			<h2>
+				<a name="session-parameter" class="anchor" href="#session-parameter">
+					<span class="header-link">#</span>
+				</a>
+				 セッションパラメータとランキング対応ゲームテンプレート
+			</h2><p>ニコニコ生放送は、起動したゲームコンテンツに対していくつかの補助情報を提供します。
 ランキングモードの場合、これには次のような内容が含まれます。</p>
 <ul>
 <li>制限時間</li>
@@ -195,12 +206,18 @@ scene.loaded.add(function (){
 <p><code>akashic init</code> コマンドでのコンテンツ生成時に <code>-t</code> オプションで以下のように指定することで、
 ランキング対応ゲームテンプレートを使ってコンテンツ開発をスタートできます。</p>
 <pre><code class="language-sh">$ akashic init -t javascript-shin-ichiba-ranking    # サンプルコンテンツを生成する場合
-$ akashic init -t typescript-shin-ichiba-ranking    # TypeScript版のサンプルコンテンツを生成する場合</code></pre>
+$ akashic init -t typescript-shin-ichiba-ranking    # TypeScript版のサンプルコンテンツを生成する場合
+</code></pre>
 <p>以下の文書は、これらのテンプレートを利用している前提で記述されています。</p>
 <p>なおこれらのテンプレートは、最小限ランキングモードに対応するゲーム内容が main.js に記述されています。
 これは適宜削除・編集してご利用ください。</p>
-<h2><a name="time-limit"></a> 制限時間の参照</h2>
-<p>上述のとおり、ランキングモードはタイムアタックであり、ゲームは一定時間で自動的・強制的に終了されます。</p>
+
+			<h2>
+				<a name="time-limit" class="anchor" href="#time-limit">
+					<span class="header-link">#</span>
+				</a>
+				 制限時間の参照
+			</h2><p>上述のとおり、ランキングモードはタイムアタックであり、ゲームは一定時間で自動的・強制的に終了されます。</p>
 <p>ただしゲームコンテンツは、与えられた制限時間の値を参照して、任意の演出を行うことができます。
 例えば終了の 10 秒前にゲームを切り上げ、「結果発表」として自分のスコアを画面に出す、といった演出がそれにあたります。
 (これは必須の処理ではありません。単に時間いっぱいゲームプレイを行い、終了時点でのスコアを競うことももちろんできます。)</p>
@@ -240,13 +257,19 @@ $ akashic init -t typescript-shin-ichiba-ranking    # TypeScript版のサンプ�
 
         });
     });
-}</code></pre>
+}
+</code></pre>
 <p><strong>制限時間の値は、あくまでも目安であることに注意してください</strong> 。
 ゲーム起動後、厳密にこの時間で終了されることを保証するものではありません。
 これはゲームリソースのダウンロード時間のばらつきや、スコア送信時の通信遅れを救済するためのサーバ側の多少のマージンなど、いくつかの要因でずれが生じるためです。</p>
 <p>たとえば制限時間から逆算して「クリア画面」を作るような場合、念のため、<strong>制限時間の 10 秒ほど前にはゲーム上の演出が完了するように作る</strong> ことを推奨します。</p>
-<h2><a name="declare-time-limit"> 制限時間の表明</h2>
-<p>制限時間 <code>totalTimeLimit</code> の値は、ゲーム開発者の希望する値を game.json で表明することができます。
+
+			<h2>
+				<a name="declare-time-limit" class="anchor" href="#declare-time-limit">
+					<span class="header-link">#</span>
+				</a>
+				<a name="declare-time-limit"> 制限時間の表明
+			</h2><p>制限時間 <code>totalTimeLimit</code> の値は、ゲーム開発者の希望する値を game.json で表明することができます。
 game.json で <code>environment.nicolive.preferredSessionParameters.totalTimeLimit</code> を指定することで、
 ニコ生ゲームはその値を参照して制限時間を決定します。</p>
 <p>たとえば、デフォルトの 80 秒前後ではなく 30 秒で終わるゲームが作成したい場合は、 game.json に次のように記述します。</p>
@@ -259,13 +282,19 @@ game.json で <code>environment.nicolive.preferredSessionParameters.totalTimeLim
       }
     }
   }
-}</code></pre>
+}
+</code></pre>
 <p>この <code>totalTimeLimit</code> の値は 20 以上 200 以下でなければなりません。</p>
 <p>この申告によって、ゲーム実行時に渡される実際の <code>totalTimeLimit</code> の値が保証されるわけではないことに注意してください。
 スクリプト上ではあくまでも、送られてきたセッションパラメータの値に従ってゲームを進行すべきです。</p>
 <p><code>preferredSessionParameters</code> でサポートされているフィールドは、現在 <code>totalTimeLimit</code> のみです。</p>
-<h2><a name="shared-random"></a> 共通乱数生成器</h2>
-<p>前述のとおりランキング対応ゲームは、配信者・各視聴者の手元で個別に(シングルプレイの)ゲームが実行されます。</p>
+
+			<h2>
+				<a name="shared-random" class="anchor" href="#shared-random">
+					<span class="header-link">#</span>
+				</a>
+				 共通乱数生成器
+			</h2><p>前述のとおりランキング対応ゲームは、配信者・各視聴者の手元で個別に(シングルプレイの)ゲームが実行されます。</p>
 <p>マルチプレイと異なり、乱数生成器 (<code>g.game.random</code>) の生成結果は各プレイヤーで異なります。
 そのため、各プレイヤーで異なる敵が出現するなどの動作が自動的に実現されます。
 しかしコンテンツによっては、乱数を統一したいことも考えられます。
@@ -290,7 +319,8 @@ game.json で <code>environment.nicolive.preferredSessionParameters.totalTimeLim
             scene.append(filledRects[i]);
         }
     });
-}</code></pre>
+}
+</code></pre>
 <p>上記は複数の矩形を配置するコード例です。
 <code>param.random.get()</code>により、全視聴者の矩形の配置は同一になるので、同じ条件下での競争が可能となります。</p>
 <blockquote>
@@ -298,10 +328,17 @@ game.json で <code>environment.nicolive.preferredSessionParameters.totalTimeLim
 共通乱数生成器は、ランキング対応ゲームテンプレートがこのシードから暗黙に作成・提供する乱数生成器です。
 したがってランキング対応ゲームテンプレートを使う場合、このシードを参照する必要はありません。</p>
 </blockquote>
-<h2><a name="debug"></a> 動作確認</h2>
-<p>akashic-sandbox (<code>v0.13.40</code> 以降)を用いることで、スコアが正しく設定されているかなどを確認することができます。</p>
+
+			<h2>
+				<a name="debug" class="anchor" href="#debug">
+					<span class="header-link">#</span>
+				</a>
+				 動作確認
+			</h2><p>akashic-sandbox (<code>v0.13.40</code> 以降)を用いることで、スコアが正しく設定されているかなどを確認することができます。</p>
 <p>ランキング対応ゲームのディレクトリ内で akashic-sandbox を起動します。</p>
-<pre><code>akashic-sandbox .</code></pre><blockquote>
+<pre><code>akashic-sandbox .
+</code></pre>
+<blockquote>
 <p>以下のスクリーンショットでは、ランキング対応ゲームのサンプル <a href="https://github.com/akashic-contents/block-shooter">block-shooter</a> を起動しています。
 このコンテンツは、 <a href="https://github.com/akashic-contents/block-shooter/archive/master.zip">こちら</a> から zip ファイルをダウンロードすることができます。</p>
 </blockquote>
@@ -329,7 +366,9 @@ Niconico タブをクリックすると、下記のような画面(v0.13.54 時�
 </ul>
 <blockquote>
 <p>なおインストールされている akashic-sandbox のバージョンは次のコマンドで確認できます。</p>
-<pre><code>akashic-sandbox -V</code></pre><p>バージョンが 0.13.40 未満の場合は、<a href="/tutorial/v3/introduction.html#Akashic%20Engine%20%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">Akashic Engine のインストール</a>を参照してインストールしなおしてください。</p>
+<pre><code>akashic-sandbox -V
+</code></pre>
+<p>バージョンが 0.13.40 未満の場合は、<a href="/tutorial/v3/introduction.html#Akashic%20Engine%20%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">Akashic Engine のインストール</a>を参照してインストールしなおしてください。</p>
 </blockquote>
 <div class="navi-center">
 <a href="./shin-ichiba-intro.html">前 (ニコ生ゲーム)</a>

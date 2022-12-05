@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>簡単なゲームを作ってローカル処理に触れよう</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -457,7 +457,8 @@ function main(param) {
   g.game.pushScene(scene);
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <h2>ローカルとグローバルのちょっと詳しい話</h2>
 <h3>ローカルとグローバルの境界線</h3>
 <p>今回の早押しゲームでは、グローバルな情報のみを取り扱いました。
@@ -477,7 +478,8 @@ B のブラウザでは A の得点は 5 点だが、A のブラウザでは 500
 <p>ソースコードは割愛しました。以下のリポジトリからダウンロードできるので確認してみてください。
 また、以下のリポジトリでのソースコードは、JavaScript を拡張した TypeScript を使って書かれています。
 基本的には細部が異なるだけで JavaScript 同様に読めると思いますが、もし気になる場合には JavaScript に変換した結果を読むと助けになるかもしれません。</p>
-<pre><code class="language-sh">npm run build</code></pre>
+<pre><code class="language-sh">npm run build
+</code></pre>
 <p>上記コマンドで TypeScript が JavaScript に変換され、結果は script/main.js として出力されます。</p>
 <p>本講座では基本的に記事上は JavaScript を扱っていく予定ですが、今後本格的なゲームを作っていくにあたりいまのうちに TypeScript に慣れていくとバグに悩まされることが少なくなるかもしれません。</p>
 <p>完成版のソースコード一式はこちらです。

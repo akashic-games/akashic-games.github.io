@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>Akashic Engine 向け拡張ライブラリを作成する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -650,7 +650,8 @@ class HelloE extends g.E {
   }
 }
 
-module.exports.HelloE = HelloE;</code></pre>
+module.exports.HelloE = HelloE;
+</code></pre>
 <h3>ファイル構成</h3>
 <p>上記を npm モジュールとして公開する場合、以下のような package.json を作成します。(<code>npm init</code> コマンドでも作成できます。)</p>
 <p><code>name</code> や <code>license</code> などの各フィールドの内容は適宜変更してください。</p>
@@ -664,7 +665,8 @@ module.exports.HelloE = HelloE;</code></pre>
   &quot;files&quot;: [
     &quot;lib&quot; // lib ディレクトリをパッケージに含ませることに注意
   ]
-}</code></pre>
+}
+</code></pre>
 <p><code>main</code> には <code>HelloE</code> を exports した js ファイルを指定します。
 例えば <code>lib</code> ディレクトリに格納した場合は <code>lib/index.js</code> とします。
 <code>main</code> に指定したスクリプトファイルは忘れずに <code>files</code> へ記述しておく必要があります。</p>
@@ -673,29 +675,36 @@ module.exports.HelloE = HelloE;</code></pre>
 README
 LICENSE
 lib/index.js
-lib/index.d.ts (TypeScript で開発された場合)</code></pre><h3>ローカルでの動作確認</h3>
+lib/index.d.ts (TypeScript で開発された場合)
+</code></pre>
+<h3>ローカルでの動作確認</h3>
 <p><code>npm pack</code> コマンドを利用すると npm パッケージされる <code>.tgz</code> ファイルが生成できます。
 このファイルを <code>akashic install</code> コマンドでインストールすることでローカルで動作確認ができます。</p>
 <pre><code class="language-sh">$ npm pack # sample-library-1.0.0.tgz が出力される
 $ cd PATH/TO/CONTENT # コンテンツへ移動
-$ akashic install PATH/TO/LIBRARY/sample-library-1.0.0-tgz # 拡張ライブラリをローカルでインストール</code></pre>
+$ akashic install PATH/TO/LIBRARY/sample-library-1.0.0-tgz # 拡張ライブラリをローカルでインストール
+</code></pre>
 <p><code>akashic install</code> 後、コンテンツ側で以下のように <code>require()</code> が利用できるかを確認します。</p>
 <pre><code class="language-javascript">var HelloE = require(&quot;sample-library&quot;).HelloE;
 
 var e = new HelloE({
   scene: g.game.scene()
 });
-e.hello(); // hello!</code></pre>
+e.hello(); // hello!
+</code></pre>
 <h3>拡張ライブラリの公開</h3>
 <p>ローカルでの動作確認ができれば npm パッケージとして公開できます。
 詳細については割愛しますが、 <code>npm adduser</code> で任意のパッケージホスティングサービスへ認証後 <code>npm publish</code> を実行します。</p>
 <pre><code class="language-sh">$ npm adduser # npmjs などにログイン
-$ npm publish # パッケージを公開</code></pre>
+$ npm publish # パッケージを公開
+</code></pre>
 <p>パッケージが公開されたかどうかについては <code>npm view</code> コマンドで確認できます。</p>
-<pre><code class="language-sh">$ npm view sample-library</code></pre>
+<pre><code class="language-sh">$ npm view sample-library
+</code></pre>
 <h3>公開された拡張ライブラリの利用</h3>
 <p>公開された拡張ライブラリは、ローカルでの動作確認と同様に <code>akashic install</code> コマンドで利用できます。</p>
-<pre><code class="language-sh">$ akashic install sample-library</code></pre>
+<pre><code class="language-sh">$ akashic install sample-library
+</code></pre>
 <h2>実装例 2: 画像アセットを含んだ拡張ライブラリ</h2>
 <p>package.json と同一ディレクトリに akashic-lib.json という名前のファイルを設置しておくことで、<code>akashic install</code> コマンド時に画像アセットや音声アセットを自動的にスキャンすることができます。
 akashic-lib.json の仕様については <a href="/guide/akashic-lib.html">こちら</a> を参照してください。</p>
@@ -714,7 +723,8 @@ module.exports.createSprite = function(scene) {
     width: src.width,
     height: src.height
   });
-};</code></pre>
+};
+</code></pre>
 <p>拡張ライブラリの利用側は、 <code>g.Scene</code> の生成時に <code>assetPaths</code> で読み込むアセットのパスを指定します。</p>
 <pre><code class="language-javascript">// main.js
 var createSprite = require(&quot;sample-library&quot;).createSprite;
@@ -732,7 +742,8 @@ module.exports = function() {
     // ...
   });
   // ...
-};</code></pre>
+};
+</code></pre>
 <p>不要なハードコーディングを避けるためにも、拡張ライブラリ側で必要なアセットを利用側へ提供することを推奨します。
 以下は <code>getAssetPaths()</code> という関数でアセットパスの配列を export する例です。</p>
 <pre><code class="language-javascript">// my-dialog-lib
@@ -752,7 +763,8 @@ module.exports.getConfirmDialogAssetPaths = function() {
     require.resolve(&quot;../image/confirm_frame.png&quot;),
     require.resolve(&quot;../image/confirm_button.png&quot;)
   ];
-};</code></pre>
+};
+</code></pre>
 <p>利用側は <code>my-dialog-lib</code> が提供する関数を呼び出すだけでアセットパスを解決できます。</p>
 <pre><code class="language-javascript">var dlg = require(&quot;my-dialog-lib&quot;);
 
@@ -774,7 +786,8 @@ module.exports = function() {
       ...dlg.getConfirmDialogAssetPaths() // 部分的に必要なアセット
     ]
   });
-};</code></pre>
+};
+</code></pre>
 <h3>akashic-lib.json のスキャン</h3>
 <p>カレントディレクトリに akashic-lib.json が存在する状態で <code>akashic scan asset</code> を実行すると、 akashic-lib.json の <code>assetList</code> フィールドにアセットのスキャン結果が追記されます。
 スキャンを初めて実行する場合は <code>{}</code> のような空の JSON を含ませた akashic-lib.json をあらかじめ作成しておいてください。</p>

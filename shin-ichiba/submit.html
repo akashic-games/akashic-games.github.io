@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ニコ生ゲームを投稿しよう</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -313,14 +313,25 @@
 <li>ゲームアツマールに投稿</li>
 <li>ニコ生ゲームとして登録申請</li>
 </ol>
-<h2><a name="generate-zip"></a> 投稿用 zip ファイルを生成</h2>
-<p>game.json のあるディレクトリで、次のコマンドを実行します。</p>
-<pre><code class="language-sh">akashic export html --output ./game.zip --atsumaru</code></pre>
+
+			<h2>
+				<a name="generate-zip" class="anchor" href="#generate-zip">
+					<span class="header-link">#</span>
+				</a>
+				 投稿用 zip ファイルを生成
+			</h2><p>game.json のあるディレクトリで、次のコマンドを実行します。</p>
+<pre><code class="language-sh">akashic export html --output ./game.zip --atsumaru
+</code></pre>
 <p>すると game.zip という名前の zip ファイルが生成されます。
 (ディレクトリ内に game.zip というファイルが既にある場合は、 game.zip の代わりに .zip で終わる適当なファイル名を指定してください)</p>
 <p><code>--atsumaru</code> オプションをつけることで、ゲームアツマールとニコニコ生放送に対応した形式のファイルを生成します。</p>
-<h3><a name="note"></a> 生成時の注意点</h3>
-<p>現在のところ、ニコ生ゲームには次のような制約があります。</p>
+
+			<h3>
+				<a name="note" class="anchor" href="#note">
+					<span class="header-link">#</span>
+				</a>
+				 生成時の注意点
+			</h3><p>現在のところ、ニコ生ゲームには次のような制約があります。</p>
 <ul>
 <li>zip ファイルの <strong>展開後の合計サイズが 10 MB 以下</strong></li>
 <li>zip ファイルに含まれる <strong>game.json が 100KB 以下</strong></li>
@@ -333,8 +344,13 @@
 ニコ生ゲームとして申請する際に「不正な game.json」とされてしまう場合、このサイズを超えている可能性があります。</p>
 <p><strong>全てのテキストファイル (.js, .json, .txt) の文字コードが UTF-8 であることを確認してください</strong> 。
 <code>akashic export</code> コマンドは、効率化のためできるだけテキストファイルを一つにまとめます。このとき Shift JIS など、UTF-8 でない文字コードが使われていると、game.zip の中身が文字化けしてしまうことがあります。</p>
-<h2><a name="submit-to-atsumaru"></a> ゲームアツマールに投稿</h2>
-<p><a href="https://game.nicovideo.jp/atsumaru/">ゲームアツマール</a> への投稿は、Web サイト上で行います。大まかな手順は以下の通りです。</p>
+
+			<h2>
+				<a name="submit-to-atsumaru" class="anchor" href="#submit-to-atsumaru">
+					<span class="header-link">#</span>
+				</a>
+				 ゲームアツマールに投稿
+			</h2><p><a href="https://game.nicovideo.jp/atsumaru/">ゲームアツマール</a> への投稿は、Web サイト上で行います。大まかな手順は以下の通りです。</p>
 <p>ゲームアツマールの <a href="https://game.nicovideo.jp/atsumaru/game/edit/new">投稿ページ</a> を開きます。(ニコニコアカウントでのログインが求められます。)
 zip ファイルを「ゲームファイル」の欄で選択もしくはドラッグ＆ドロップします。</p>
 <p><img src="/img/guide/export-atsumaru/upload_game.png" alt="ゲームアップロード"></p>
@@ -347,15 +363,25 @@ zip ファイルを「ゲームファイル」の欄で選択もしくはドラ�
 <li>「ゲーム表示サイズ」は ゲームアツマール上での表示にのみ影響します。ゲームの解像度 (<code>game.json</code> の <code>&quot;width&quot;</code>, <code>&quot;height&quot;</code>) と同じ値を指定することを推奨します。</li>
 <li>「非公開」「限定公開」状態ではニコ生ゲームとして登録申請できないので、「公開」を選択してください。</li>
 </ul>
-<h2>ニコ生ゲームとして登録申請</h2>
-<p>内容保存後、マイページにリダイレクトされます。マイページで投稿対象のゲーム中の 「その他 ＞ ニコ生ゲームに登録申請」を選択します。</p>
+
+			<h2>
+				<a name="register-as-namagame" class="anchor" href="#register-as-namagame">
+					<span class="header-link">#</span>
+				</a>
+				 ニコ生ゲームとして登録申請
+			</h2><p>内容保存後、マイページにリダイレクトされます。マイページで投稿対象のゲーム中の 「その他 ＞ ニコ生ゲームに登録申請」を選択します。</p>
 <p><img src="/img/guide/export-atsumaru/export_ui.png" alt="ゲーム登録申請UI"></p>
 <p>「ニコ生ゲームへ投稿申請」というダイアログが表示されるので、注意を確認の上「申請」ボタンを押します。</p>
 <p><img src="/img/guide/export-atsumaru/export_dialog.png" alt="登録申請ダイアログ"></p>
 <p>投稿対象のゲームに「ニコ生ゲームに登録申請済み」と表示されたら完了です。</p>
 <p><img src="/img/guide/export-atsumaru/export_complete.png" alt="登録申請完了"></p>
-<h2><a name="updating-content"></a> ゲームの更新</h2>
-<p>一度アップロードしたゲームは更新することができます。更新後、ニコ生ゲームとして改めて登録申請が必要になることに注意してください。</p>
+
+			<h2>
+				<a name="updating-content" class="anchor" href="#updating-content">
+					<span class="header-link">#</span>
+				</a>
+				 ゲームの更新
+			</h2><p>一度アップロードしたゲームは更新することができます。更新後、ニコ生ゲームとして改めて登録申請が必要になることに注意してください。</p>
 <p><img src="/img/guide/export-atsumaru/update_ui.png" alt="更新UI"></p>
 <p>登録申請と同じ画面で「アップデート」ボタンを押して zip ファイルをアップロード後、改めて「ニコ生ゲームに登録申請」してください。</p>
 <div class="navi-center">

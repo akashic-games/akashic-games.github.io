@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>更新情報 (〜2021/12/24)</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -165,8 +165,13 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>更新情報 (〜2021/12/24)</h1>
-<h2><a name="aimgui"></a> GUI ライブラリ AimGui を公開</h2>
-<p>Akashic Engine 用のシンプルな GUI ライブラリ AimGui を公開しました。</p>
+
+			<h2>
+				<a name="aimgui" class="anchor" href="#aimgui">
+					<span class="header-link">#</span>
+				</a>
+				 GUI ライブラリ AimGui を公開
+			</h2><p>Akashic Engine 用のシンプルな GUI ライブラリ AimGui を公開しました。</p>
 <p>ラベル、ボタン、ラジオボタン、チェックボックス、スライダー、テキストボックスなどに加え、
 リサイズ可能なウィンドウ、モーダルウィンドウなどを手軽に作成することができます。
 たとえば次のような UI を、</p>
@@ -206,15 +211,21 @@ guiE.run = gui =&gt; {
           .changeVolume(gameSetting.volume);
       }
     });
-};</code></pre>
+};
+</code></pre>
 <p>詳細な利用方法は以下を参照してください:</p>
 <ul>
 <li><a href="https://akashic-games.github.io/demo/?title=aimgui">サンプルデモ</a></li>
 <li><a href="https://github.com/akashic-games/aimgui/tree/main/sample">サンプルデモのサンプルコード</a></li>
 <li><a href="https://akashic-games.github.io/aimgui/api/">API リファレンス</a></li>
 </ul>
-<h2><a name="svg"></a> SVG ファイルをアセットとして利用できるように (実験的機能追加)</h2>
-<p>Akashic Engine v3.2.0 以降では、新たに SVG ファイルを画像アセットとして利用できます。
+
+			<h2>
+				<a name="svg" class="anchor" href="#svg">
+					<span class="header-link">#</span>
+				</a>
+				 SVG ファイルをアセットとして利用できるように (実験的機能追加)
+			</h2><p>Akashic Engine v3.2.0 以降では、新たに SVG ファイルを画像アセットとして利用できます。
 SVG ファイルを利用することで、PNG ファイルではぼやけてしまう画像の拡大描画を行うことができます。
 また今まで Akashic Engine で表現することが難しかった円や曲線などを手軽に描画することが可能になります。</p>
 <p>以下は、 <strong>画面をドラッグするとそのサイズの円を置く</strong> コンテンツです。</p>
@@ -227,7 +238,8 @@ SVG ファイルを利用することで、PNG ファイルではぼやけてし
   &quot;width&quot;: 100,
   &quot;height&quot;: 100,
   &quot;path&quot;: &quot;image/circle.svg&quot;
-}</code></pre>
+}
+</code></pre>
 <p>SVG ファイルを使うベクタ画像アセットは、そのままでは <code>g.Sprite</code> などに利用できません。
 <code>createSurface()</code> でサーフェス (<code>g.Surface</code>) に変換 (ラスタライズ) する必要があります。</p>
 <pre><code class="language-javascript">var asset = scene.asset.getVectorImage(&quot;image/circle.svg&quot;);
@@ -240,14 +252,20 @@ if (!surface) {
 var sprite = new g.Surface({
   scene: scene,
   src: surface // g.Sprite のソース画像として利用
-});</code></pre>
+});
+</code></pre>
 <p>ゲーム開発者自身が生成した <code>g.Surface</code> はエンジンによるリソース開放処理が行われません。
 描画用メモリの枯渇を防ぐためにも、適切なタイミングで <code>g.Surface</code> を開放してください。
 また、現時点では上の例のように <code>createSurface()</code> が <code>null</code> を返す状況を考慮する必要があります
 (ブラウザ環境以外での実行時に失敗することがあるため。&quot;ranking&quot; 形式以外のニコ生ゲームにも当てはまります) 。
 詳細は逆引きリファレンスの <a href="https://akashic-games.github.io/reverse-reference/v3/asset/svg-asset.html">SVG ファイルを画像アセットとして利用する</a> を参照してください。</p>
-<h2><a name="snapshot"></a> マルチプレイへの途中参加時などの &quot;早送り&quot; 処理を短縮できるように</h2>
-<p>Akashic Engine は、ゲームプレイ中に行われた全操作を原則全プレイヤーに共有します。
+
+			<h2>
+				<a name="snapshot" class="anchor" href="#snapshot">
+					<span class="header-link">#</span>
+				</a>
+				 マルチプレイへの途中参加時などの &quot;早送り&quot; 処理を短縮できるように
+			</h2><p>Akashic Engine は、ゲームプレイ中に行われた全操作を原則全プレイヤーに共有します。
 この動作によって、細かな通信を意識することなく手軽にマルチプレイゲームを作成することが可能です (参考: <a href="https://akashic-games.github.io/tutorial/v3/multiplay/introduction.html#architecture-intro">Akashic におけるマルチプレイ</a>)。</p>
 <p>ただしこの動作には「長時間起動されるゲームに弱い」という弱点があります。
 プレイ中のゲームに途中から参加する場合、まず「それまでに行われた全操作」を早送りで実行して、ゲームの最新状態に追いつかなくてはならないためです。
@@ -261,7 +279,8 @@ var sprite = new g.Surface({
     highscore: g.game.vars.highscore // 例: そのプレイ中に繰り返し遊んだ中で最も高かったスコア情報
   };
   return snapshot;
-});</code></pre>
+});
+</code></pre>
 <p>保存されたスナップショットは、必要に応じて自動的に取得され、ゲーム起動時に与えられます。
 ゲーム開発者はスナップショットが与えられた時に、保存時のゲーム状態を再現してください。</p>
 <pre><code class="language-javascript">function main(param) {
@@ -270,16 +289,23 @@ var sprite = new g.Surface({
   } else {
     // スナップショットが与えられていないので従来どおりの起動。起動時のシーンなどを作る。
   }
-}</code></pre>
+}
+</code></pre>
 <p>併せて akashic-cli@2.14.14 以降では、スナップショットの動作を確認するための機能が追加されています。
 詳細はチュートリアルの <a href="https://akashic-games.github.io/tutorial/v3/multiplay/snapshot.html">早送り時間を短縮する</a> を参照してください。</p>
 <p><img src="/img/tutorial/cli-serve-playback-tool.png" alt="serve の Playback ツール"></p>
-<h2><a name="init-github"></a> akashic init で Git リポジトリからテンプレートを取得できるように</h2>
-<p><code>akashic init</code> コマンドでは、<code>-t</code> オプションで利用するテンプレートを指定できます。
+
+			<h2>
+				<a name="init-github" class="anchor" href="#init-github">
+					<span class="header-link">#</span>
+				</a>
+				 akashic init で Git リポジトリからテンプレートを取得できるように
+			</h2><p><code>akashic init</code> コマンドでは、<code>-t</code> オプションで利用するテンプレートを指定できます。
 テンプレートの一覧は <code>akashic init -l</code> で確認することができます。</p>
 <p>akashic-cli@2.11.5 以降では、これに加えて任意の Github のリポジトリの内容をテンプレートとして利用できます (<code>git</code> コマンドがインストールされている必要があります)。
 以下は <a href="https://github.com/akashic-contents/niconicSnake">https://github.com/akashic-contents/niconicSnake</a> の内容を取得する利用例です。</p>
-<pre><code class="language-sh">akashic init -t github:akashic-contents/niconicSnake</code></pre>
+<pre><code class="language-sh">akashic init -t github:akashic-contents/niconicSnake
+</code></pre>
 <p><code>-t</code> オプションに <code>github:&lt;owner&gt;/&lt;repository&gt;</code> と指定することによって、 <code>http://github.com/&lt;owner&gt;/&lt;repository&gt;</code> のリポジトリをそのまま取得します。
 自作のテンプレートを Github で公開している場合などに利用できます。
 また、 <code>ghe:&lt;owner&gt;/&lt;repository&gt;</code> で GitHub Enterprise のリポジトリの内容を取得することも可能です (<code>@akashic/akashic-cli@2.12.0</code> 以降)。</p>
@@ -290,22 +316,48 @@ var sprite = new g.Surface({
 <li><a href="https://github.com/akashic-games/akashic-cli/pull/869">https://github.com/akashic-games/akashic-cli/pull/869</a></li>
 <li><a href="https://github.com/akashic-games/akashic-cli/pull/881">https://github.com/akashic-games/akashic-cli/pull/881</a></li>
 </ul>
-<h2><a name="bugfixes"></a> 主な不具合修正</h2>
-<h3><a name="nicolive-missed"></a> game.json の environment.nicolive の一部の指定が無視されていた問題を修正</h3>
-<p>ニコ生ゲームの設定を記述するプロパティ <code>environment.nicolive</code> のうち、 <code>preferredSessionParameters</code> の値が無視されていました。
+
+			<h2>
+				<a name="bugfixes" class="anchor" href="#bugfixes">
+					<span class="header-link">#</span>
+				</a>
+				 主な不具合修正
+			</h2>
+			<h3>
+				<a name="nicolive-missed" class="anchor" href="#nicolive-missed">
+					<span class="header-link">#</span>
+				</a>
+				 game.json の environment.nicolive の一部の指定が無視されていた問題を修正
+			</h3><p>ニコ生ゲームの設定を記述するプロパティ <code>environment.nicolive</code> のうち、 <code>preferredSessionParameters</code> の値が無視されていました。
 この値は現在のところ、ランキングモードの制限時間を指定する以下のプロパティでのみ利用されています。</p>
-<pre><code class="language-javascript">environment.nicolive.preferredSessionParameters.totalTimeLimit;</code></pre>
+<pre><code class="language-javascript">environment.nicolive.preferredSessionParameters.totalTimeLimit;
+</code></pre>
 <p>この設定が無視され、常にデフォルトの制限時間で起動されていました。
 この不具合は、2021/11/30 に修正済みです。</p>
-<h3><a name="cli-install-failure"></a> npm@7.13.0 以前の npm で、 akashic-cli のインストールに失敗する不具合の修正</h3>
-<p>v7.13.0 以前の npm において、 v2.12.0 以前の akashic-cli のインストールに失敗する問題があります。</p>
+
+			<h3>
+				<a name="cli-install-failure" class="anchor" href="#cli-install-failure">
+					<span class="header-link">#</span>
+				</a>
+				 npm@7.13.0 以前の npm で、 akashic-cli のインストールに失敗する不具合の修正
+			</h3><p>v7.13.0 以前の npm において、 v2.12.0 以前の akashic-cli のインストールに失敗する問題があります。</p>
 <p>この不具合は、 akashic-cli@2.12.1 で修正済みです。</p>
-<h3><a name="export-wrong-warn"></a> akashic export html で誤った警告が表示される不具合の修正</h3>
-<p>akashic-cli@2.13.1 以前のバージョンで <code>akashic export html --atsumaru</code> を実行した時、「Akashic Engine v3 is in beta」などの警告が誤って表示されます。
+
+			<h3>
+				<a name="export-wrong-warn" class="anchor" href="#export-wrong-warn">
+					<span class="header-link">#</span>
+				</a>
+				 akashic export html で誤った警告が表示される不具合の修正
+			</h3><p>akashic-cli@2.13.1 以前のバージョンで <code>akashic export html --atsumaru</code> を実行した時、「Akashic Engine v3 is in beta」などの警告が誤って表示されます。
 これは内部の仕様変更に起因するもので、出力される zip ファイルに問題はありません。</p>
 <p>この不具合は、 akashic-cli@2.14.0 で修正済みです。</p>
-<h3><a name="wrong-is-atsumaru"></a> akashic init の生成するテンプレートの isAtsumaru 変数の値が誤っている不具合の修正</h3>
-<p>akashic-cli@2.12.0 以前の <code>akashic init</code> で、以下のテンプレートに含まれるコードが誤っていました。</p>
+
+			<h3>
+				<a name="wrong-is-atsumaru" class="anchor" href="#wrong-is-atsumaru">
+					<span class="header-link">#</span>
+				</a>
+				 akashic init の生成するテンプレートの isAtsumaru 変数の値が誤っている不具合の修正
+			</h3><p>akashic-cli@2.12.0 以前の <code>akashic init</code> で、以下のテンプレートに含まれるコードが誤っていました。</p>
 <ul>
 <li><code>typescript-shin-ichiba-ranking</code></li>
 <li><code>javascript-shin-ichiba-ranking</code></li>
@@ -313,8 +365,13 @@ var sprite = new g.Surface({
 <p>このテンプレートの main.js 中の変数 <code>param.isAtsumaru</code> は、ゲーム実行時の環境がゲームアツマールかどうかを表すものです。
 ゲームアツマールのマルチプレイで起動された時、この値が誤って偽になっていました。</p>
 <p>この不具合は、 akashic-cli@2.12.1 で修正済みです。</p>
-<h3><a name="wrong-silence"></a> シーンをまたいで BGM を再生した場合 BGM が止まってしまうことがある不具合の修正</h3>
-<p>以下のような手順で Akashic コンテンツを実行させると、 (4) の後に BGM の再生が止まってしまう問題がありました。</p>
+
+			<h3>
+				<a name="wrong-silence" class="anchor" href="#wrong-silence">
+					<span class="header-link">#</span>
+				</a>
+				 シーンをまたいで BGM を再生した場合 BGM が止まってしまうことがある不具合の修正
+			</h3><p>以下のような手順で Akashic コンテンツを実行させると、 (4) の後に BGM の再生が止まってしまう問題がありました。</p>
 <ol>
 <li>music のオーディオアセット(BGM)である A をロードするシーンに遷移する</li>
 <li>A を 再生する</li>
@@ -324,8 +381,13 @@ var sprite = new g.Surface({
 <p>Akashic Engine において music のアセットは、シーンが変わっても他の music が再生されるまで再生され続けます。
 そのため上の手順では (2) 以降ずっと再生され続けるべきですが、 (4) の後に再生が止まっていました。</p>
 <p>この不具合は、 akashic-engine@3.2.1 で修正済みです。</p>
-<h3><a name="other-fixes"></a> その他不具合の修正</h3>
-<ul>
+
+			<h3>
+				<a name="other-fixes" class="anchor" href="#other-fixes">
+					<span class="header-link">#</span>
+				</a>
+				 その他不具合の修正
+			</h3><ul>
 <li>リプレイ再生時、無駄なティック取得を行う場合がある問題を修正</li>
 <li>akashic-cli-serve で「Save playlog」ボタン(旧「今までのプレイ情報を保存」ボタン)を押した時ゲーム進行が止まる不具合の修正</li>
 <li>akashic-cli-serve で --debug-playlog を指定するとゲームが動かない問題を修正</li>

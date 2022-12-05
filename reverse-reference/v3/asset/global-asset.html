@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>グローバルアセットを使う</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -621,8 +621,10 @@
   &quot;height&quot;: 53,
   &quot;path&quot;: &quot;image/player.png&quot;,
   &quot;global&quot;: true
-}</code></pre>
-<pre><code class="language-javascript">const player = scene.asset.getImage(&quot;image/player.png&quot;); // シーンの生成時に `assetPaths` プロパティに含めなくても利用できる</code></pre>
+}
+</code></pre>
+<pre><code class="language-javascript">const player = scene.asset.getImage(&quot;image/player.png&quot;); // シーンの生成時に `assetPaths` プロパティに含めなくても利用できる
+</code></pre>
 <h2>詳細</h2>
 <p>game.json に登録されたアセットに <code>&quot;global&quot;: true</code> プロパティが指定されている場合、そのアセットはグローバルアセットとして扱われます。
 グローバルアセットはどのシーンでも取得できるアセットです。通常のアセットと異なり、シーンの生成時に <code>assetPaths</code> プロパティにアセットファイルパスやアセット ID を指定する必要はありません。</p>

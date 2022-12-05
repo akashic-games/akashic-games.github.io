@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>プレイヤーごとに異なる描画を行う</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -322,15 +322,23 @@
 <p>そのような状況に対応するため、Akashic Engine はローカルエンティティ・ローカルイベントという概念を持っています。</p>
 <p><strong>ローカルエンティティ</strong> とは、「そのエンティティを参照するイベントがすべてローカルになる」エンティティ (<code>g.E</code>) です。
 <strong>ローカルイベント</strong> は、通常のイベントと同様ですが「それを生成したプレイヤーにだけ通知される」という特徴を持つイベントです。</p>
-<p><a name="local-event"></a></p>
-<h2>ローカルイベント</h2>
-<p>Akashic のイベント <code>g.Event</code> は、原則的に全てプレイヤー間で共有されます。前述のとおり Akashic のマルチプレイは、各プレイヤーが発生させたイベントを全プレイヤー間で共有することで実現されているためです。</p>
+
+			<h2>
+				<a name="local-event" class="anchor" href="#local-event">
+					<span class="header-link">#</span>
+				</a>
+				 ローカルイベント
+			</h2><p>Akashic のイベント <code>g.Event</code> は、原則的に全てプレイヤー間で共有されます。前述のとおり Akashic のマルチプレイは、各プレイヤーが発生させたイベントを全プレイヤー間で共有することで実現されているためです。</p>
 <p>この原則の例外がローカルイベントです。あるイベントがローカルであるとき、そのイベントは、それを生成したプレイヤー以外には共有されません。ローカルイベントは「生成したプレイヤー自身にしか通知されない」ため、プレイヤーごとに異なる処理を実現するのに利用することができます。</p>
 <p>イベントがローカルであるか否かは、真理値 <code>g.Event#local</code> によって表されます。この値はイベントの生成時に決定され、変化しません。ゲーム開発者はこの値を変更してはいけません。</p>
 <p>その性質から、ローカルイベントに起因する処理においては、ゲームのグローバルな実行状態を破壊してはいけません。特に非ローカルなエンティティの生成や操作を行ってはいけない点に注意が必要です。これについては後述します。</p>
-<p><a name="local-entity"></a></p>
-<h2>ローカルエンティティ</h2>
-<p>一部のケースを除き、ゲーム開発者が自分でイベントを生成することはありません。ローカルイベントは多くの場合、ローカルエンティティによって生成されます。</p>
+
+			<h2>
+				<a name="local-entity" class="anchor" href="#local-entity">
+					<span class="header-link">#</span>
+				</a>
+				 ローカルエンティティ
+			</h2><p>一部のケースを除き、ゲーム開発者が自分でイベントを生成することはありません。ローカルイベントは多くの場合、ローカルエンティティによって生成されます。</p>
 <p>ローカルエンティティとは、「そのエンティティを参照するイベントがすべてローカルになる」エンティティ <code>g.E</code> です。</p>
 <p>例えばポイント押下イベント <code>g.PointDownEvent</code> には、押下した位置のエンティティを参照する <code>target</code> プロパティが存在します。この <code>target</code> のエンティティがローカルである時、 <code>g.PointDownEvent</code> はローカルになります。そのイベントはそれを生成した(画面を押下した)プレイヤー自身にしか通知されません。</p>
 <p>ローカルエンティティは、エンティティのコンストラクタ引数の <code>local</code> プロパティに <code>true</code> を与えることで生成できます。以下は、シーン <code>scene</code> に属するローカルな <code>g.Sprite</code> を生成するコードの例です。</p>
@@ -338,7 +346,8 @@
   scene: scene,
   src: scene.asset.getImageById(&quot;chara1&quot;), // (アセットID &quot;chara1&quot; のイメージアセットがある想定)
   local: true // ローカルであることを指定
-});</code></pre>
+});
+</code></pre>
 <p>その性質から、ローカルエンティティは、必ずしも全てのエンジンインスタンス上に同じように存在し表示されている必要がありません。すなわちプレイヤー別の UI を実現することができます。</p>
 <p>クリックした位置に四角形を表示するだけのコンテンツに、プレイヤー別の色選択 UI を表示するコードは次のようなものになります。</p>
 <pre><code class="language-javascript">const scene = new g.Scene({ game: g.game });
@@ -421,12 +430,17 @@ scene.onLoad.add(() =&gt; {
     // イベントを送信したプレイヤーの色情報を更新する
     userColors[msg.player.id] = msg.data.color;
   });
-});</code></pre>
+});
+</code></pre>
 <p>このコードでは、画面左上に緑と青のボタン(ただの矩形ですが)が表示され、画面のその他の位置をタッチすると矩形が表示されるものです。</p>
 <p>緑と青のボタンはローカルエンティティで作られていて、プレイヤー別に異なる状態になり、またボタンに対する操作は操作したプレイヤー自身にしか通知されません。そのプレイヤーが非選択状態のボタンは半透明で表示されます。</p>
-<p><a name="raise-event"></a></p>
-<h2>raiseEvent()</h2>
-<p>上のコード例の中で説明していないのが <code>g.game.raiseEvent()</code> です。</p>
+
+			<h2>
+				<a name="raise-event" class="anchor" href="#raise-event">
+					<span class="header-link">#</span>
+				</a>
+				 raiseEvent()
+			</h2><p>上のコード例の中で説明していないのが <code>g.game.raiseEvent()</code> です。</p>
 <p>上述のとおり、ローカルエンティティの操作はすべて操作した本人にしか通知されません (イベントが全体に共有されません)。ローカルイベントに応じてゲームの実行状態を変更しても、それは本人にしか反映されません。上のコード例で言えば、仮に <code>blueButton.onPointUp</code> で直接 <code>userColors</code> を変更しても、それはあくまでボタンを押した本人の手元でしか反映されないことになります。この場合、その後画面をクリックした時、本人の手元では青の矩形が表示されるようになりますが、他のプレイヤーの手元では (<code>userColors</code> が変更されていないので) 同じ位置に赤の矩形が表示されてしまいます。</p>
 <p>これを解決するには、ローカル処理の中から「ゲーム開発者が明示的に全体にイベントを共有する」処理が必要です。それが <code>g.game.raiseEvent()</code> です。</p>
 <p><code>raiseEvent()</code> で <code>g.MessageEvent</code> を生成してそれを全体に共有し、 <code>userColors</code> の変更は <code>g.MessageEvent</code> のハンドラ <code>g.Scene#message</code> の中で行うことで、すべてのプレイヤーの手元で <code>userColors</code> の変更を行うことができます。</p>
@@ -445,9 +459,13 @@ scene.onLoad.add(() =&gt; {
 akashic-cli v2.10.17 以降の akashic serve では、動作確認のためこの挙動を再現します。</p>
 <p>Tips: <code>undefined</code> または <code>null</code> を判定したい場合は厳格等価演算子 (<code>=== undefined</code>) の代わりに等価演算子 (<code>== null</code>) を利用することができます。</p>
 </blockquote>
-<p><a name="local-operation"></a></p>
-<h2>ローカル処理とその制限</h2>
-<p>ローカルイベントに起因して実行される処理を、<strong>ローカル処理</strong> と呼ぶことにします。</p>
+
+			<h2>
+				<a name="local-operation" class="anchor" href="#local-operation">
+					<span class="header-link">#</span>
+				</a>
+				 ローカル処理とその制限
+			</h2><p>ローカルイベントに起因して実行される処理を、<strong>ローカル処理</strong> と呼ぶことにします。</p>
 <p>これは、主に <code>g.E#onPointDown</code> などにローカルイベントが通知された時の処理を指します。ローカル処理中に呼び出された <code>g.Scene#setTimeout()</code> が引き起こす処理もローカル処理に含みます。</p>
 <p>ローカル処理には、そこでのみ許される処理や、逆に禁止される処理が存在します。</p>
 <ul>

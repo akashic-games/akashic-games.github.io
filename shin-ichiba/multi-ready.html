@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>マルチプレイ開発予備知識</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -305,12 +305,22 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>マルチプレイ開発予備知識</h1>
-<h2>Akashic Engine マルチプレイ入門</h2>
-<p>前述のとおり、ニコ生ゲームのマルチプレイゲームは、ほぼ単なる Akashic ゲームです。そのためまず「Akashic Engine 入門」のマルチプレイゲームの章まで理解している必要があります。</p>
+
+			<h2>
+				<a name="intro-multi" class="anchor" href="#intro-multi">
+					<span class="header-link">#</span>
+				</a>
+				 Akashic Engine マルチプレイ入門
+			</h2><p>前述のとおり、ニコ生ゲームのマルチプレイゲームは、ほぼ単なる Akashic ゲームです。そのためまず「Akashic Engine 入門」のマルチプレイゲームの章まで理解している必要があります。</p>
 <p><strong><a href="https://akashic-games.github.io/tutorial/v3/" target="_blank">https://akashic-games.github.io/tutorial/v3/</a></strong> (別ページで開きます)</p>
 <p><a href="./column-about-multi.html">次ページ</a> から、これを補足する内容のコラム形式の文書になるので、そちらも併せてご覧ください。</p>
-<h2><a name="declare-multi"></a> マルチプレイ対応の表明</h2>
-<p>一点だけ「単に Akashic ゲームを作成する」以外に必要な作業があり、それは「このゲームはマルチプレイゲームである」と表明することです。</p>
+
+			<h2>
+				<a name="declare-multi" class="anchor" href="#declare-multi">
+					<span class="header-link">#</span>
+				</a>
+				 マルチプレイ対応の表明
+			</h2><p>一点だけ「単に Akashic ゲームを作成する」以外に必要な作業があり、それは「このゲームはマルチプレイゲームである」と表明することです。</p>
 <p>これは game.json の <code>environment.nicolive.supportedModes</code> の値に <code>[&quot;multi_admission&quot;]</code> を設定することで行われます。</p>
 <pre><code>{
   // ... その他の記述 ...
@@ -322,7 +332,9 @@
       ]
     }
   }
-}</code></pre><blockquote>
+}
+</code></pre>
+<blockquote>
 <p><code>&quot;multi_admission&quot;</code> の代わりに <code>&quot;multi&quot;</code> を指定することもできます。
 <code>&quot;multi&quot;</code> の場合、起動時にプレイヤー募集が行われません。
 詳細は別項 <a href="../guide/shin-ichiba/shin-ichiba-spec.html#admission">プレイヤーの募集</a> を参照してください。</p>
@@ -332,14 +344,25 @@
 現在 <code>environment.niconico</code> は非推奨になっています。
 詳細は別項 <a href="../guide/shin-ichiba/shin-ichiba-spec.html#supported-modes">ニコ生ゲーム関連の仕様</a> を参照してください。</p>
 </blockquote>
-<h2><a name="player-info"></a> ユーザ名の取得</h2>
-<p>マルチプレイのニコ生ゲームでは、ニコニコのユーザ名を利用することができます。
+
+			<h2>
+				<a name="player-info" class="anchor" href="#player-info">
+					<span class="header-link">#</span>
+				</a>
+				 ユーザ名の取得
+			</h2><p>マルチプレイのニコ生ゲームでは、ニコニコのユーザ名を利用することができます。
 これについては別項 <a href="./player-info.html">ユーザ名を使う</a> を参照してください。</p>
 <p>ただし必要となる機能の関係上、 Akashic Engine v3 以降で作成されている必要があります。</p>
-<h2><a name="debug"></a> 動作確認</h2>
-<p>マルチプレイのニコ生ゲームの動作確認は、Akashic ゲームとして単に <code>akashic serve</code> コマンドで行うことができます。
+
+			<h2>
+				<a name="debug" class="anchor" href="#debug">
+					<span class="header-link">#</span>
+				</a>
+				 動作確認
+			</h2><p>マルチプレイのニコ生ゲームの動作確認は、Akashic ゲームとして単に <code>akashic serve</code> コマンドで行うことができます。
 ただしニコ生ゲームの場合は <code>--target-service</code> オプションが利用できます。</p>
-<pre><code class="language-shell">$ akashic serve --target-service nicolive</code></pre>
+<pre><code class="language-shell">$ akashic serve --target-service nicolive
+</code></pre>
 <p><code>--target-service</code> (短縮形 <code>-s</code>) オプションは、 serve コマンドに特定のサービス上の動作をできるだけ再現させるものです。
 現在指定可能な値は <code>nicolive</code> と <code>none</code> (デフォルト値) の二つです。</p>
 <p><code>nicolive</code> が指定された場合、 serve コマンドは次のように振る舞います。</p>
@@ -357,8 +380,13 @@
 </ul>
 <p><a href="/tutorial/v3/multiplay/join.html">Join と Leave の節</a> でも記載のとおり、ニコニコ生放送では「放送者がただ一人 Join する」動作になっています。
 <code>--target-service</code> を指定すると、「Join Me」ボタンを逐一押さずに放送者を含めた動作を確認することができます。</p>
-<h2><a name="submit"></a> 投稿</h2>
-<p>作成したゲームの投稿手順はランキングゲームと同様です。<a href="./submit.html">ニコ生ゲームを投稿しよう</a> を参照して、投稿してみてください。</p>
+
+			<h2>
+				<a name="submit" class="anchor" href="#submit">
+					<span class="header-link">#</span>
+				</a>
+				 投稿
+			</h2><p>作成したゲームの投稿手順はランキングゲームと同様です。<a href="./submit.html">ニコ生ゲームを投稿しよう</a> を参照して、投稿してみてください。</p>
 <blockquote>
 <p><strong>補足: アツマール対応の表明</strong> <a name="atsumaru"></a></p>
 <p>Akashic のマルチプレイゲームは、ゲームアツマールでも公開できます。
@@ -380,7 +408,8 @@
       &quot;supportedModes&quot;: [&quot;multi&quot;]
     }
   }
-}</code></pre>
+}
+</code></pre>
 <p>後述しますがニコ生ゲームは、まずゲームアツマールに投稿して、その後に「ニコ生ゲームとして申請」することで公開されます。
 そのため上のように指定しておけば、ニコ生ゲームの公開時にそのままアツマールでも公開されます。</p>
 <p>逆にアツマールに対応 <strong>しない</strong> 場合、そのままだとアツマール上では動かないだけのゲームになるので、以下のいずれかを行うことを推奨します。</p>

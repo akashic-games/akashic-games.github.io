@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>読み込んだアセットを取得する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -617,7 +617,8 @@
 <h2>凡例</h2>
 <pre><code class="language-javascript">const player = scene.asset.getImage(&quot;/assets/player/image.png&quot;); // ファイルパス形式で取得
 const bgm = scene.asset.getAudioById(&quot;bgm&quot;); // アセット ID からの取得
-const thumbnails = scene.asset.getAllImages(&quot;/assets/**/*.png&quot;); // ファイルパスのパターンから複数取得</code></pre>
+const thumbnails = scene.asset.getAllImages(&quot;/assets/**/*.png&quot;); // ファイルパスのパターンから複数取得
+</code></pre>
 <h2>利用例</h2>
 <p>次のコンテンツは、表示した画像をクリックすると効果音が再生されます。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvYXNzZXQvZ2V0LWFzc2V0L2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
@@ -650,7 +651,8 @@ const playerImage = scene.asset.getImage(&quot;/assets/player/image.png&quot;);
 
 // オーディオアセットの取得
 // (game.json での記述同様、オーディオアセットに限り、拡張子抜きで指定する必要があります)
-const bgm = scene.asset.getAudio(&quot;/audio/bgm01&quot;);</code></pre>
+const bgm = scene.asset.getAudio(&quot;/audio/bgm01&quot;);
+</code></pre>
 <p><code>getAllImages()</code> などの glob による複数検索では、該当するアセットの配列を返します。 アセットの指定には <code>assetPaths</code> と同様に glob のサブセット文法(<code>**</code>, <code>*</code>, <code>?</code>) を利用できます。</p>
 <pre><code class="language-javascript">// 複数の画像アセットの取得
 const thumbnails = scene.asset.getAllImages(&quot;/assets/**/*.png&quot;);
@@ -668,11 +670,13 @@ for (let i = 0; i &lt; thumbnails.length; i++) {
 const audios = scene.asset.getAllAudios(&quot;/audio/bgm*&quot;);
 for (let i = 0; i &lt; audios.length; i++) {
     audios[i].stop();
-}</code></pre>
+}
+</code></pre>
 <p>テキストアセットは、ほとんどの場合アセットそのものではなく、その内容のテキストデータを利用するでしょう。
 <code>getTextContent()</code> を利用すると、アセットから直接テキストデータを取得できます。
 またテキストアセットが .json ファイルの場合は、 <code>getJSONContent()</code> で内容を直接 JSON として取得できます。</p>
-<pre><code class="language-javascript">const stages = scene.asset.getJSONContent(&quot;/assets/stages.json&quot;);</code></pre>
+<pre><code class="language-javascript">const stages = scene.asset.getJSONContent(&quot;/assets/stages.json&quot;);
+</code></pre>
 <p><code>getImageById()</code> や <code>getAudioById()</code> など、<code>〜ById</code> のつく関数は、アセット ID からアセットを取得します。
 アセット ID とは <code>game.json</code> の <code>assets</code> プロパティに定義されている各オブジェクトのキーを指します。
 詳しくは<a href="/guide/game-json.html">game.json の仕様を参照してください。</a></p>
@@ -681,14 +685,17 @@ const imageWidth = (scene.assets[&quot;foo&quot;] as g.ImageAsset).width;
 
 // getImageById()での取得
 const imageWidth = scene.asset.getImageById(&quot;foo&quot;).width;
-// (返り値の型が ImageAsset になっているので、キャストなしで `width` にアクセスできます)</code></pre>
+// (返り値の型が ImageAsset になっているので、キャストなしで `width` にアクセスできます)
+</code></pre>
 <h3>グローバルアセットの取得</h3>
 <p>グローバルアセットも同様の方法で取得することができます。どのシーンでも取得できることを除いて、取得方法に特別な違いはまりません。</p>
 <h3>Scene#assets からの取得</h3>
 <p><code>g.Scene#assets</code> でもアセット ID からアセットを取得することができます。Akashic Engine v2 以前ではアセットを参照する唯一の方法でした。</p>
-<pre><code class="language-javascript">const foo = scene.assets[&quot;foo&quot;];</code></pre>
+<pre><code class="language-javascript">const foo = scene.assets[&quot;foo&quot;];
+</code></pre>
 <p><code>g.Scene#assets</code> による取得では、TypeScript の場合は <code>as g.ImageAsset</code> などのダウンキャストが必要になります。</p>
-<pre><code class="language-typescript">const bgm = scene.assets[&quot;bgm&quot;] as AudioAsset;</code></pre>
+<pre><code class="language-typescript">const bgm = scene.assets[&quot;bgm&quot;] as AudioAsset;
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/akashic-engine/v3/classes/Scene.html#asset">API リファレンス</a></li>

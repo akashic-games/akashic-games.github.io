@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>文字列を太字にする</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -627,7 +627,8 @@ var label = new g.Label({
   font: font,
   text: &quot;Hello World!&quot;
 });
-scene.append(label);</code></pre>
+scene.append(label);
+</code></pre>
 <h2>利用例</h2>
 <p>次のコンテンツは、 太字指定ありとなしの <code>Label</code> を表示しています。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvdGV4dC9ib2xkL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
@@ -637,7 +638,8 @@ scene.append(label);</code></pre>
 省略時には通常ウェイトの <code>&quot;normal&quot;</code> が指定されます。
 <code>fontWeight</code> は参照のためにのみ公開されているので、<code>g.DynamicFont</code> を生成後に値を変更することはできません。</p>
 <p>生成後の値は、 <code>fontWeight</code> プロパティで参照できます。</p>
-<pre><code class="language-javascript">font.fontWeight; // =&gt; &quot;bold&quot;</code></pre>
+<pre><code class="language-javascript">font.fontWeight; // =&gt; &quot;bold&quot;
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/tutorial/v3/text.html">チュートリアル</a></li>

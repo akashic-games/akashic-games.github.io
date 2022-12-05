@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>マルチプレイの基礎</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -297,7 +297,8 @@ scene.loaded.add(function () {
     });
 
     scene.append(button);
-});</code></pre>
+});
+</code></pre>
 <p><code>pointDown</code> のハンドラに与えられる引数 <code>ev</code> (<code>g.PointDownEvent</code>) の <code>player</code> プロパティでプレイヤーを識別し、プレイヤーごとに得点を求めています。
 <code>player.id</code> はプレイヤーごとにユニークな文字列または <code>undefined</code> です。</p>
 <p>このコンテンツは、もちろん現実的には「ボタンの表示タイミングをランダムにする」「ボタンを押した時間によって得点を変える」「ボタンを押した時の画像や効果音をつける」「一定時間後に全員のスコアを表示して勝敗を決める」といった処理を足していかないとゲームらしくはなりませんが、骨格としてはマルチプレイに対応したものになっています。</p>
@@ -355,7 +356,8 @@ scene.loaded.add(function() {
       characters[playerId].targetY = y;
     }
   });
-});</code></pre>
+});
+</code></pre>
 <p>コードは増えていますが、</p>
 <ul>
 <li>プレイヤーごとの情報を管理するテーブル (この例では <code>characters</code>) を作り、</li>
@@ -367,11 +369,14 @@ scene.loaded.add(function() {
 <p>ここまで、ゲームの動作確認には Akashic Sandbox (<code>akashic-sandbox</code>) を利用してきました。しかしこのツールはシングルプレイの動作確認を行うためのものです。マルチプレイの確認を行うことはできません。ブラウザで複数のウィンドウを開いても、それぞれ独立した別のゲームプレイになってしまいます。</p>
 <p>akashic-cli v1.5.1 以降には、マルチプレイゲームの動作確認機能 (<code>serve</code> コマンド) が追加されています。これは(独立したツールではなく) akashic-cli に組み込まれていますが、 akashic-sandbox 同様サーバとして動作するコマンドです。</p>
 <p>インストールされている akashic-cli のバージョンは次のコマンドで確認できます。</p>
-<pre><code class="language-sh">akashic -V</code></pre>
+<pre><code class="language-sh">akashic -V
+</code></pre>
 <p>1.5.1 より小さい値が表示された場合は、次のコマンドで akashic-cli の最新版をインストールしてください。</p>
-<pre><code class="language-sh">npm install -g @akashic/akashic-cli</code></pre>
+<pre><code class="language-sh">npm install -g @akashic/akashic-cli
+</code></pre>
 <p>インストール後、game.json のあるディレクトリで、次のコマンドを実行してください。</p>
-<pre><code class="language-sh">akashic serve</code></pre>
+<pre><code class="language-sh">akashic serve
+</code></pre>
 <p>実行後、 <code>http://localhost:3300/</code> にアクセスしてください。次のような画面が表示されます。</p>
 <p><img src="/img/tutorial/cli-serve.png" alt="serve"></p>
 <p>先の例の「各プレイヤーに対応するキャラクタ画像がクリックした位置に移動するコンテンツ」の場合、画面をクリックするとキャラクタ画像が表示されます。もう一度クリックするとキャラクタ画像が移動します。</p>

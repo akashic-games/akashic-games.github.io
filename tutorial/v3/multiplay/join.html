@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>Join と Leave</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -317,8 +317,13 @@
 				<h1>Join と Leave</h1>
 <p>このページのサンプルコードを<a class="asset--material--download" href="/zip/tutorial/v3/multiplay/sample-join.zip">ダウンロード</a></p>
 
-<h2><a name="join"></a> Join</h2>
-<p>各プレイヤーには「join しているか否か」という二値の状態が存在します。これは実行環境が規定する値です。「join しているプレイヤー」が何を意味するかは、実行環境によって定まります。</p>
+
+			<h2>
+				<a name="join" class="anchor" href="#join">
+					<span class="header-link">#</span>
+				</a>
+				 Join
+			</h2><p>各プレイヤーには「join しているか否か」という二値の状態が存在します。これは実行環境が規定する値です。「join しているプレイヤー」が何を意味するかは、実行環境によって定まります。</p>
 <p>あるプレイヤーが join 状態になる時、 <code>g.game.onJoin</code> が fire され <code>g.JoinEvent</code> が与えられます。同様に join 状態でなくなる時、 <code>g.game.onLeave</code> が fire され <code>g.LeaveEvent</code> が与えられます。</p>
 <blockquote>
 <p>元々はその名の通り「ゲームに参加する」動作を表現するために作られた機能ですが、
@@ -368,17 +373,24 @@ scene.onPointDownCapture.add(ev =&gt; {
     // ゲームアツマール (マルチプレイ) では、この実行環境(インスタンス)が「部屋を作ったプレイヤー」のものである時のみ実行される
     // ...
   }
-});</code></pre>
+});
+</code></pre>
 <p>なお <code>g.game.selfId</code> は、今そのゲームを実行している環境(インスタンス)のプレイヤー ID です。このコード例のように、あるイベントの生成元が自分(このインスタンス自身)かどうかを判断したい時に利用できます。</p>
 <p><code>g.game.onJoin</code> や <code>g.game.onLeave</code> の動作確認は <code>akashic serve</code> コマンドでも行うことができます。</p>
 <p><img src="/img/tutorial/cli-serve.png" alt="serve"></p>
 <p>画面上側、ツールバー上の「Join Me」ボタンを押すと、そのウィンドウ(インスタンス)のプレイヤーが join します (<code>g.game.onJoin</code> が fire されます)。
 join 済みの場合は「Leave Me」ボタンに切り替わり、 <code>g.game.onLeave</code> を fire させることができます。</p>
-<h2><a name="niconico"></a> ニコ生ゲーム・ゲームアツマール用動作確認</h2>
-<p><code>akashic serve</code> コマンドは、 <code>--target-service</code> (省略名 <code>-s</code>) オプションに <code>nicolive</code> を指定して起動すると、ニコ生ゲームの開発に便利な振る舞いになります。
+
+			<h2>
+				<a name="niconico" class="anchor" href="#niconico">
+					<span class="header-link">#</span>
+				</a>
+				 ニコ生ゲーム・ゲームアツマール用動作確認
+			</h2><p><code>akashic serve</code> コマンドは、 <code>--target-service</code> (省略名 <code>-s</code>) オプションに <code>nicolive</code> を指定して起動すると、ニコ生ゲームの開発に便利な振る舞いになります。
 この状態では「Join Me」ボタンが無効になり、最初に開いたウィンドウのプレイヤーだけが必ず join します (配信者役になります) 。
 そのため都度ボタンを押す手間が省けます。</p>
-<pre><code class="language-sh">akashic serve --target-service nicolive</code></pre>
+<pre><code class="language-sh">akashic serve --target-service nicolive
+</code></pre>
 <p>その他、ニコニコ生放送に関する内容は、 <a href="/guide/">開発者向けガイド</a> の <a href="/guide/shin-ichiba/">ニコニコ生放送で遊べるゲームの作成</a> を参照してください。</p>
 <div class="navi-center">
 <a href="./camera.html">前 (プレイヤーごとに異なる位置を表示する)</a>

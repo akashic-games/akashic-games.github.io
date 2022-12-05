@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>game.json の仕様</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/asset.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/asset.css?06ad657f">
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -130,10 +130,20 @@
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
 			<h1>game.json の仕様</h1>
-<h2><a name="これは"></a> これは</h2>
-<p>Akashic のゲームにおいてメタ情報などを取り扱う設定ファイル、game.json の仕様をまとめます。対象バージョンは akashic-engine&#64;1.11.2 以降です。</p>
-<h2><a name="game.jsonとは"></a> game.json とは</h2>
-<p>game.json は、Akashic のゲームのメタ情報などを取り扱う JSON 形式の設定ファイルです。主に以下のような情報を取り扱います。</p>
+
+			<h2>
+				<a name="これは" class="anchor" href="#これは">
+					<span class="header-link">#</span>
+				</a>
+				 これは
+			</h2><p>Akashic のゲームにおいてメタ情報などを取り扱う設定ファイル、game.json の仕様をまとめます。対象バージョンは akashic-engine&#64;1.11.2 以降です。</p>
+
+			<h2>
+				<a name="game.jsonとは" class="anchor" href="#game.jsonとは">
+					<span class="header-link">#</span>
+				</a>
+				 game.json とは
+			</h2><p>game.json は、Akashic のゲームのメタ情報などを取り扱う JSON 形式の設定ファイルです。主に以下のような情報を取り扱います。</p>
 <ul>
 <li>ゲーム画面のサイズ</li>
 <li>ゲームの FPS</li>
@@ -143,8 +153,13 @@
 <p>各種素材(アセット)のファイルパスや画像のサイズなどは、手動で記述・維持しにくいので、
 game.json を生成・管理するツールとして akashic-cli が提供されています。
 akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli 利用ガイド</a> を参照してください。</p>
-<h2><a name="形式"></a> 形式</h2>
-<p>妥当な game.json の内容は一つのオブジェクトです。それは以下の名前のプロパティと、対応する値を持ちます。</p>
+
+			<h2>
+				<a name="形式" class="anchor" href="#形式">
+					<span class="header-link">#</span>
+				</a>
+				 形式
+			</h2><p>妥当な game.json の内容は一つのオブジェクトです。それは以下の名前のプロパティと、対応する値を持ちます。</p>
 <ul>
 <li>width (必須)<ul>
 <li>数値</li>
@@ -205,7 +220,8 @@ akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli 利用ガイド<
     }
   },
   &quot;main&quot;: &quot;./script/main.js&quot;
-}</code></pre>
+}
+</code></pre>
 <p>この game.json は、画面サイズが 320x240 で FPS が 30 の、
 &quot;script/main.js&quot; というゲームスクリプト一つだけを使うゲームであること、またエントリポイントはその &quot;./script/main.js&quot; であることを定義しています。</p>
 <h3>assets (アセット定義)</h3>
@@ -285,7 +301,8 @@ akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli 利用ガイド<
     var snapshotLoader = require(&quot;snapshotLoader&quot;);
     snapshotLoader(param.snapshot);
   }
-};</code></pre>
+};
+</code></pre>
 <p>この場合、assets は少なくとも &quot;mainScene&quot; という名前のキーを持つ必要があります。アセット ID &quot;mainScene&quot; を持つアセットは、type が &quot;script&quot; で global は true、すなわちグローバルなスクリプトアセットでなければなりません。</p>
 <p>(上の例では require()にアセット ID を渡していることに気をつけてください。
 akashic-engine の提供する require()は、Node.js などのそれと異なり、game.json に存在するアセット ID を(優先的に)解決します。これは歴史的経緯によるものです。上の例では説明のために使っていますが、この動作の利用は非推奨です。)</p>
@@ -305,15 +322,25 @@ akashic-engine の提供する require()は、Node.js などのそれと異な�
 <p>例えば、 <code>canvas</code> と <code>webgl</code> という 2 つのレンダラー識別子が利用可能な環境において、
 <code>webgl</code> を優先して使いたい場合は、<code>&quot;renderers&quot;: [&quot;webgl&quot;, &quot;canvas&quot;]</code> と記述します。</p>
 <p>レンダラー識別子として<code>&quot;auto&quot;</code> を指定した場合は、Akashic エンジンが自動的にレンダラーを決定します。また、game.json に renderers を定義しなかった場合の挙動は <code>&quot;renderers&quot;: [&quot;auto&quot;]</code> を指定した場合と等価になります。</p>
-<h3><a name="defaultLoadingScene" class="anchor"></a>defaultLoadingScene</h3>
-<p><strong>defaultLoadingScene</strong> は、グローバルアセット読み込み中のローディングシーンなど、デフォルトのローディングシーンについての設定です。
+
+			<h3>
+				<a name="defaultLoadingScene" class="anchor" href="#defaultLoadingScene">
+					<span class="header-link">#</span>
+				</a>
+				defaultLoadingScene
+			</h3><p><strong>defaultLoadingScene</strong> は、グローバルアセット読み込み中のローディングシーンなど、デフォルトのローディングシーンについての設定です。
 akashic-engine&#64;1.11.2 では <code>&quot;default&quot;</code> または <code>&quot;none&quot;</code> を指定できます。
 <code>&quot;default&quot;</code> を指定または省略時はエンジンに用意されているデフォルトのローディングシーンを表示します。
 <code>&quot;none&quot;</code> を指定するとそれらのローディングシーンを非表示にできます。</p>
 <p>akashic-engine&#64;3.0.0 で <code>&quot;compact&quot;</code> が導入されました。
 <code>&quot;compact&quot;</code> を指定すると背景が透過になり、プログレスバーが画面中央ではなく右下の方に小さく表示されます。</p>
-<h3><a name="defaultSkippingScene" class="anchor"></a>defaultSkippingScene</h3>
-<p><strong>defaultSkippingScene</strong> は、早送り中の描画についての設定です。
+
+			<h3>
+				<a name="defaultSkippingScene" class="anchor" href="#defaultSkippingScene">
+					<span class="header-link">#</span>
+				</a>
+				defaultSkippingScene
+			</h3><p><strong>defaultSkippingScene</strong> は、早送り中の描画についての設定です。
 akashic-engine&#64;3.4.0 では <code>&quot;fast-forward&quot;</code>, <code>&quot;indicator&quot;</code>, <code>&quot;none&quot;</code> を指定できます。
 <code>&quot;fast-forward&quot;</code> を指定、または省略した場合は早送り中のゲーム状態をそのまま描画します。
 <code>&quot;indicator&quot;</code> を指定すると早送り中はエンジンに用意されている専用のスキッピングシーンを描画します。
@@ -358,10 +385,16 @@ akashic-engine&#64;3.4.0 では <code>&quot;fast-forward&quot;</code>, <code>&qu
 
 <pre><code class="language-json">  &quot;environment&quot;: {
     &quot;sandbox-runtime&quot;: &quot;2&quot;
-  }</code></pre>
+  }
+</code></pre>
 <p><code>&quot;sandbox-runtime&quot;</code> の値は、 <code>akashic export html</code> でエンジンをバンドルした HTML を出力する際にも参照されます。</p>
-<h2><a name="game.jsonの例"></a> game.json の例</h2>
-<p>妥当な game.json の一例を示します。</p>
+
+			<h2>
+				<a name="game.jsonの例" class="anchor" href="#game.jsonの例">
+					<span class="header-link">#</span>
+				</a>
+				 game.json の例
+			</h2><p>妥当な game.json の一例を示します。</p>
 <pre><code class="language-json">{
   &quot;width&quot;: 320,
   &quot;height&quot;: 320,
@@ -400,7 +433,8 @@ akashic-engine&#64;3.4.0 では <code>&quot;fast-forward&quot;</code>, <code>&qu
   &quot;environment&quot;: {
     &quot;sandbox-runtime&quot;: &quot;2&quot;
   }
-}</code></pre>
+}
+</code></pre>
 
 		</div>
 	</section>

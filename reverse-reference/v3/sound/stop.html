@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>効果音・BGM を停止する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -616,7 +616,8 @@
 <p>音声は <code>g.AudioAsset#stop()</code> メソッドを用いて停止することができます。</p>
 <h2>凡例</h2>
 <pre><code class="language-javascript">var player = scene.asset.getAudioById(&quot;bgm1&quot;).play(); // アセット ID &quot;bgm1&quot;の再生と同時にそれを再生しているg.AudioPlayerオブジェクトが返ってくるので取得する
-player.stop(); // アセット ID &quot;bgm1&quot; の音声アセットが停止される</code></pre>
+player.stop(); // アセット ID &quot;bgm1&quot; の音声アセットが停止される
+</code></pre>
 <p>特定の音声アセットの再生を止める場合は、 <code>g.AudioAsset#play()</code> で返ってきた g.AudioPlayer オブジェクトの <code>g.AudioPlayer#stop()</code> を実行します。 <code>g.AudioAsset#play()</code> については<a href="./play">こちら</a>を参照してください。</p>
 <h2>利用例</h2>
 <p>次のコンテンツでは、「BGM」の矩形をクリックするとが BGM が再生されて、再生中に「BGM」の矩形を再度クリックすると BGM が停止されます。</p>
@@ -625,9 +626,11 @@ player.stop(); // アセット ID &quot;bgm1&quot; の音声アセットが停�
 <h2>詳細</h2>
 <p>特定の音声アセットの再生を止めるためには、その音声アセットを再生している <code>g.AudioPlayer</code> オブジェクトを取得する必要があります。このオブジェクトは <code>g.AudioAsset#play()</code> から取得できます。</p>
 <pre><code class="language-javascript">var bgm = scene.asset.getAudioById(&quot;bgm1&quot;); // アセット ID &quot;bgm1&quot; が音声アセットとする
-var player = bgm.play();</code></pre>
+var player = bgm.play();
+</code></pre>
 <p>取得した <code>g.AudioPlayer</code> オブジェクトの <code>g.AudioPlayer#stop()</code> を以下のように実行します。</p>
-<pre><code class="language-javascript">player.stop(); // アセット ID &quot;bgm1&quot; の音声アセットが停止される</code></pre>
+<pre><code class="language-javascript">player.stop(); // アセット ID &quot;bgm1&quot; の音声アセットが停止される
+</code></pre>
 <p>音声アセットの利用に関する詳細は<a href="./play">効果音・BGM を再生する</a>の「詳細」セクションを参照してください。</p>
 <h2>関連情報</h2>
 <ul>

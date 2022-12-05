@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>スナップショットを保存する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -621,7 +621,8 @@
     // ゲームの実行状態を表すオブジェクト
   };
   return { snapshot: snapshot };
-});</code></pre>
+});
+</code></pre>
 <p>スナップショットからの復元:</p>
 <pre><code class="language-javascript">// main スクリプトでエクスポートされている関数
 // (game.json の &quot;main&quot; に指定されている、実行開始時に最初に実行されるスクリプトの関数)
@@ -633,7 +634,8 @@ function main(param) {
   } else {
     // 通常の起動処理を行う。
   }
-}</code></pre>
+}
+</code></pre>
 <h2>詳細</h2>
 <p>スナップショットを保存し、そこからの復元処理を実装することで、スキップ処理にかかる時間を短縮することができます。
 スキップとは、マルチプレイの画面を途中から開いた場合などに生じる「最新フレームに追いつくための早送り」処理です。</p>

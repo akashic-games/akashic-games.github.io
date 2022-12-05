@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>テンプレートでわかるランキングゲーム</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -306,25 +306,40 @@
 			<div class="inner responsive--width--twocol">
 				<h1>テンプレートでわかるランキングゲーム</h1>
 <p>Akashic 関連ツールに組み込みのテンプレートを使って、ランキング対応ゲームの作成をご紹介します。</p>
-<h2><a name="install"></a> 前提とインストール</h2>
-<p>本格的なニコ生ゲームの作成には、 Akashic Engine を使った JavaScript プログラミングが必要です。
+
+			<h2>
+				<a name="install" class="anchor" href="#install">
+					<span class="header-link">#</span>
+				</a>
+				 前提とインストール
+			</h2><p>本格的なニコ生ゲームの作成には、 Akashic Engine を使った JavaScript プログラミングが必要です。
 これ以降のページでは、読者が JavaScript の基礎的な知識を持っていると仮定します。</p>
 <p>改造編同様、前提として Akashic Engine 関連ツールが必要です。
 改造編の <a href="./install.html">インストール</a> のページを参考にインストールを行ってください。</p>
-<h2><a name="generate-template"></a> ランキング対応ゲームを生成する</h2>
-<p><code>akashic-cli</code> をインストールしたことで、 CUI ツールで <code>akashic</code> コマンドが利用できるようになっています。
+
+			<h2>
+				<a name="generate-template" class="anchor" href="#generate-template">
+					<span class="header-link">#</span>
+				</a>
+				 ランキング対応ゲームを生成する
+			</h2><p><code>akashic-cli</code> をインストールしたことで、 CUI ツールで <code>akashic</code> コマンドが利用できるようになっています。
 これを使って、ここで解説するランキング対応ゲームを生成します。</p>
 <blockquote>
 <p>参考: Akashic Engine 入門の <a href="https://akashic-games.github.io/tutorial/v3/introduction.html#%E7%A9%BA%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E3%81%AE%E4%BD%9C%E6%88%90">空のゲームの作成</a></p>
 </blockquote>
 <p>まずは改造編同様、CUI ツールを起動します。適当な作業場所のフォルダに <code>cd</code> コマンドで移ってください。仮に <code>c:\akashic</code> というところに移るものとします。以下のようなコマンドになります。</p>
 <pre><code class="language-sh">c:
-cd \akashic</code></pre>
+cd \akashic
+</code></pre>
 <p>ここに、今回のゲーム用のフォルダを用意したいと思います。以下のコマンドを実行してください。</p>
 <pre><code>mkdir game
-cd game</code></pre><p><code>mkdir</code> で <code>game</code> というフォルダを作り、 <code>cd</code> で作業場所フォルダを今作成した新しいフォルダにしたので、このフォルダで Akashic ゲームを生成したいと思います。</p>
+cd game
+</code></pre>
+<p><code>mkdir</code> で <code>game</code> というフォルダを作り、 <code>cd</code> で作業場所フォルダを今作成した新しいフォルダにしたので、このフォルダで Akashic ゲームを生成したいと思います。</p>
 <p>以下のコマンドを実行してください。</p>
-<pre><code>akashic init -t javascript-shin-ichiba-ranking</code></pre><p><code>akashic init</code> は、「現在の作業フォルダに Akashic ゲームのを生成する」コマンドです。<code>-t javascript-shin-ichiba-ranking</code> の部分は、「JavaScript 向け・ランキングゲーム用のテンプレートを使う」という意味の <code>akashic init</code> コマンドのオプションです。これにより、いくつかランキングゲームの作成に必要な処理が最初から組み込まれたゲームが生成されます。</p>
+<pre><code>akashic init -t javascript-shin-ichiba-ranking
+</code></pre>
+<p><code>akashic init</code> は、「現在の作業フォルダに Akashic ゲームのを生成する」コマンドです。<code>-t javascript-shin-ichiba-ranking</code> の部分は、「JavaScript 向け・ランキングゲーム用のテンプレートを使う」という意味の <code>akashic init</code> コマンドのオプションです。これにより、いくつかランキングゲームの作成に必要な処理が最初から組み込まれたゲームが生成されます。</p>
 <blockquote>
 <p>ここでは使いませんが、 <code>-t</code> オプションを変えると、内容が空のゲームや TypeScript 向けの雛形などを生成できます。
 参考: akashic-cli 利用ガイドの <a href="https://akashic-games.github.io/guide/akashic-cli.html#--type%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3">--type オプション</a></p>
@@ -356,7 +371,8 @@ cd game</code></pre><p><code>mkdir</code> で <code>game</code> というフォ�
 </tbody></table>
 <p>ニコ生ゲームなので、ゲーム画面が (ニコニコ生放送の一般的な解像度である) 16:9 になるようにしています。この解像度比率にしておけば、映像とぴったり合ったサイズのコンテンツを作成できます。 <code>width</code> や <code>height</code> に表示されている <code>(320)</code> や <code>fps</code> の <code>(30)</code> はデフォルト値を意味しているので、 <code>fps</code> はそのまま Enter を押してもらう事で 30fps になります。</p>
 <p>この状態で一度 <code>akashic-sandbox</code> を実行してみましょう。</p>
-<pre><code class="language-sh">akashic-sandbox</code></pre>
+<pre><code class="language-sh">akashic-sandbox
+</code></pre>
 <p><a href="http://localhost:3000">http://localhost:3000</a> にアクセスすると、画面中央でキャラクタが浮かんでいるだけのゲームになっています。</p>
 <p><img src="/img/shin-ichiba/make-ranking/ss-ranking-game-template.png" alt="生成したゲームの画面"></p>
 <p>このゲームは次の要素で構成されています:</p>
@@ -369,8 +385,13 @@ cd game</code></pre><p><code>mkdir</code> で <code>game</code> というフォ�
 弾を発射しても狙う敵はおらず、このキャラクタも移動するわけでもなく……このままでは<strong>画面の連打回数を競うだけのゲーム</strong> (余計なキャラクタつき) ですが、この状態でも最低限ランキング対応ゲームとしての形を満たしています。</p>
 <p>以下、このテンプレートのコードを題材に、ランキング対応ゲームの作成に必要な作業をご紹介します。</p>
 <p>現実にオリジナルのゲームを作る場合は、このコードを削って作成するのが簡単でしょう。具体的なゲーム作成方法は <a href="https://akashic-games.github.io/tutorial/v3/" target="_blank">Akashic Engine 入門</a> (別ページで開きます) の「シングルプレイのゲーム作成」パートを参照してください。以下「入門」ページを読んだ後の読者を想定します。</p>
-<h2><a name="declare-ranking"></a> ランキング対応の表明</h2>
-<p>最初に必要なのは「この Akashic ゲームはランキング対応ゲームである」と表明することです。</p>
+
+			<h2>
+				<a name="declare-ranking" class="anchor" href="#declare-ranking">
+					<span class="header-link">#</span>
+				</a>
+				 ランキング対応の表明
+			</h2><p>最初に必要なのは「この Akashic ゲームはランキング対応ゲームである」と表明することです。</p>
 <p>これは game.json の <code>environment.nicolive.supportedModes</code> の値に <code>[&quot;ranking&quot;]</code> を設定することで行われます。テンプレートコードの game.json では、既に次のように記述されています。</p>
 <pre><code class="language-json">{
   // ... その他の記述 ...
@@ -380,14 +401,20 @@ cd game</code></pre><p><code>mkdir</code> で <code>game</code> というフォ�
       &quot;supportedModes&quot;: [&quot;ranking&quot;]
     }
   }
-}</code></pre>
+}
+</code></pre>
 <blockquote>
 <p>以前は <code>environment.nicolive</code> ではなく <code>environment.niconico</code> プロパティを利用していました。
 現在 <code>environment.niconico</code> は非推奨になっています。
 詳細は別項 <a href="../guide/shin-ichiba/shin-ichiba-spec.html#supported-modes">ニコ生ゲーム関連の仕様</a> を参照してください。</p>
 </blockquote>
-<h2><a name="declare-timelimit"></a> 制限時間の申告</h2>
-<p>表明した以上はランキング対応でなければなりません。単なるシングルプレイの Akashic ゲームと、ランキング対応ゲームの違いは、大きく次の二つです。</p>
+
+			<h2>
+				<a name="declare-timelimit" class="anchor" href="#declare-timelimit">
+					<span class="header-link">#</span>
+				</a>
+				 制限時間の申告
+			</h2><p>表明した以上はランキング対応でなければなりません。単なるシングルプレイの Akashic ゲームと、ランキング対応ゲームの違いは、大きく次の二つです。</p>
 <ul>
 <li>ゲームが一定時間で自動的・強制的に終了されること</li>
 <li>スコアが自動的に集計され、ランキング形式で発表されること</li>
@@ -406,14 +433,20 @@ game.json に <code>environment.nicolive.preferredSessionParameters.totalTimeLim
       }
     }
   }
-}</code></pre>
+}
+</code></pre>
 <p><code>totalTimeLimit</code> には 20 以上 200 以下の整数を指定できます。</p>
 <p>特に指定しなかった場合は、適当なデフォルト値が使われます (現在は 80 秒程度になります)。テンプレートでは特に指定していないので、必要なら上の例を参考に記述を追加してください。</p>
 <blockquote>
 <p>後方互換性のため、 <code>environment.nicolive</code> がなく <code>environment.niconico</code> がある場合、そちらが参照されます。</p>
 </blockquote>
-<h2><a name="handle-timelimit"></a> 制限時間の処理</h2>
-<p>制限時間は、上記のように申告さえしておけば (あるいはしなくても) 他の対応は不要です。 <strong>ゲームは制限時間に応じて自動的に・強制的に終了されます</strong> 。</p>
+
+			<h2>
+				<a name="handle-timelimit" class="anchor" href="#handle-timelimit">
+					<span class="header-link">#</span>
+				</a>
+				 制限時間の処理
+			</h2><p>制限時間は、上記のように申告さえしておけば (あるいはしなくても) 他の対応は不要です。 <strong>ゲームは制限時間に応じて自動的に・強制的に終了されます</strong> 。</p>
 <p>しかし現実には、「残り時間をゲーム画面に表示したい」といったことはよくあるでしょう。
 あるいは残り時間が短くなったら結果発表演出を行いたい、ということも考えられます。</p>
 <p>テンプレートのコードでも残り時間の表示を行なっています。
@@ -421,7 +454,8 @@ game.json に <code>environment.nicolive.preferredSessionParameters.totalTimeLim
 <pre><code class="language-javascript">let time = 60; // 制限時間
 if (param.sessionParameter.totalTimeLimit) {
   time = param.sessionParameter.totalTimeLimit;
-}</code></pre>
+}
+</code></pre>
 <p>この値を使って、次のように <code>scene.update</code> で 1 フレームごとにカウントダウンしていき、ラベル <code>timeLabel</code> で画面に表示しています。</p>
 <pre><code class="language-javascript">const updateHandler = () =&gt; {
   if (time &lt;= 0) {
@@ -433,7 +467,8 @@ if (param.sessionParameter.totalTimeLimit) {
   timeLabel.text = &quot;TIME: &quot; + Math.ceil(time);
   timeLabel.invalidate();
 };
-scene.update.add(updateHandler);</code></pre>
+scene.update.add(updateHandler);
+</code></pre>
 <blockquote>
 <p>制限時間は (game.json で希望値を申告していても) 必ず <code>param.sessionParameter</code> から取得してください。</p>
 <p>というのも、第一に game.json での記述は、あくまで &quot;希望値の申告&quot; であるためです。
@@ -445,12 +480,18 @@ scene.update.add(updateHandler);</code></pre>
 これには「ゲームリソースのダウンロード時間」なども含まれます。
 そのため、制限時間のギリギリで行う演出は、回線状況によって途切れてしまう可能性があります。
 終了前に結果発表演出などを挟む場合は、念のため <strong>制限時間の 10 秒程度前までに演出を完了させることを推奨します</strong> 。</p>
-<h2><a name="handle-score"></a> スコアの処理</h2>
-<p>ランキング対応に必要なもう一つの作業は、スコアを設定することです。</p>
+
+			<h2>
+				<a name="handle-score" class="anchor" href="#handle-score">
+					<span class="header-link">#</span>
+				</a>
+				 スコアの処理
+			</h2><p>ランキング対応に必要なもう一つの作業は、スコアを設定することです。</p>
 <p>これは <code>g.game.vars.gameState.score</code> に整数を代入することで行われます。</p>
 <p><code>g.game.vars</code> は、「ゲーム開発者が自由に使っていい領域」として Akashic Engine が提供している変数で、初期値は空のオブジェクトです。ランキングゲームではここに <code>gameState</code> という変数が入っていることを期待します。</p>
 <p>そのためテンプレートの main.js では、次のようなコードで最初にスコアを 0 点にセットしています。</p>
-<pre><code class="language-javascript">g.game.vars.gameState = { score: 0 };</code></pre>
+<pre><code class="language-javascript">g.game.vars.gameState = { score: 0 };
+</code></pre>
 <p>テンプレートのゲームは、単に画面がクリックされたら 1 点加算するというものでした。
 これは次の記述で実現されています。</p>
 <pre><code class="language-javascript">scene.pointDownCapture.add(() =&gt; {
@@ -462,7 +503,8 @@ scene.update.add(updateHandler);</code></pre>
   }
 
   // ... その他、弾の発射や効果音再生処理
-});</code></pre>
+});
+</code></pre>
 <p><code>++</code> で <code>score</code> を 1 加算し、それをラベル <code>scoreLabel</code> で画面に表示しています。
 実際のゲームでは「アイテムを取得した時」「敵を倒した時」「一定時間生き残った時」などお好みの条件でスコアを追加してください。</p>
 <p>スコアは 0 以上の整数である必要があります。上限は今のところありませんが、現実的に表示が崩れてしまうので、10 万未満 (5 桁以内) を推奨します。</p>
@@ -472,8 +514,13 @@ scene.update.add(updateHandler);</code></pre>
 というのも、通信遅延などで起動が遅れた場合などでは、最悪 <code>score</code> の代入が間に合わずにゲームが終了されてしまう可能性があるためです。
 途中までプレイできていたのに 0 点扱いになってしまうと、プレイヤーからは不具合に見える動作になってしまいます。</p>
 </blockquote>
-<h2>ゲームアツマール向けの処理</h2>
-<p>シングルプレイの Akashic ゲームで、制限時間の処理とスコアの設定ができれば、ランキング対応は完了です。</p>
+
+			<h2>
+				<a name="atsumaru-specific" class="anchor" href="#atsumaru-specific">
+					<span class="header-link">#</span>
+				</a>
+				 ゲームアツマール向けの処理
+			</h2><p>シングルプレイの Akashic ゲームで、制限時間の処理とスコアの設定ができれば、ランキング対応は完了です。</p>
 <p>ただし、ランキング対応ゲームは ゲームアツマール上でも公開できます (デフォルトでされます)。
 ゲームアツマール上では単にシングルプレイのゲームとして扱われるため、ニコ生による自動終了や集計はありません。
 そのため現実的には、ゲームアツマール上固有の処理を実現したい場合が多くあります。</p>
@@ -500,10 +547,16 @@ scene.update.add(updateHandler);</code></pre>
   }
   // ... 中略 ...
 };
-scene.update.add(updateHandler);</code></pre>
+scene.update.add(updateHandler);
+</code></pre>
 <p>ゲームアツマール上でのみ使える API (＝ <code>window.RPGAtsumaru</code>) については、<a href="https://atsumaru.github.io/api-references/">ゲームアツマールの API リファレンス</a> を参照してください。</p>
-<h2><a name="random"></a> 注意点: 乱数について</h2>
-<p>前述のとおりランキング対応ゲームは、配信者・各視聴者の手元で個別に実行されるシングルプレイのゲームです。</p>
+
+			<h2>
+				<a name="random" class="anchor" href="#random">
+					<span class="header-link">#</span>
+				</a>
+				 注意点: 乱数について
+			</h2><p>前述のとおりランキング対応ゲームは、配信者・各視聴者の手元で個別に実行されるシングルプレイのゲームです。</p>
 <p>このため <strong><code>g.game.random</code> で生成される乱数が、プレイヤー間で一致しません</strong> 。
 言い換えると、 <code>g.game.random</code> と <code>g.game.localRandom</code> がどちらも各プレイヤー固有の乱数を生成してしまいます。</p>
 <blockquote>
@@ -514,11 +567,17 @@ scene.update.add(updateHandler);</code></pre>
 <pre><code class="language-typescript">function main(param) {
   const random = param.random; // 共通乱数生成器
   const r = random.generate(); // プレイヤー間で共通の乱数値を生成
-}</code></pre>
+}
+</code></pre>
 <p>ランダム性を持たせつつ、全プレイヤーが等しい条件で競うようなゲームを作成する場合は、この共通乱数生成器を利用してください。
 もちろんトランプの手札や麻雀の配牌のように、プレイヤーごとにランダムに異なる状態を作りたいゲームでは、単に <code>g.game.random</code> (か <code>g.game.localRandom</code>) を利用することになるでしょう。</p>
-<h2><a name="submit"></a> 投稿</h2>
-<p>ゲームが作成できたら、ゲームアツマールを通して投稿できます。 <a href="./submit.html">ニコ生ゲームを投稿しよう</a> を参照して、投稿してみてください。</p>
+
+			<h2>
+				<a name="submit" class="anchor" href="#submit">
+					<span class="header-link">#</span>
+				</a>
+				 投稿
+			</h2><p>ゲームが作成できたら、ゲームアツマールを通して投稿できます。 <a href="./submit.html">ニコ生ゲームを投稿しよう</a> を参照して、投稿してみてください。</p>
 <div class="navi-center">
 <a href="./ranking.html">前 (ランキング対応ゲーム)</a>
  | <a href="./index.html">目次</a>

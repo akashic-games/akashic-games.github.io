@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>エンティティを追加・削除する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -620,8 +620,10 @@
   ... // その他のプロパティ
 });
 
-scene.append(rect); // シーンに追加する</code></pre>
-<pre><code class="language-javascript">scene.remove(rect); // シーンから削除する</code></pre>
+scene.append(rect); // シーンに追加する
+</code></pre>
+<pre><code class="language-javascript">scene.remove(rect); // シーンから削除する
+</code></pre>
 <p>エンティティを削除するのではなく非表示にする場合は、<a href="./hidden.html"><code>hide()</code> を利用してください。</a></p>
 <h2>利用例</h2>
 <p>次のコンテンツは、矩形をシーンへ追加した状態で表示し 10 秒後にシーンから矩形を削除します。</p>
@@ -652,7 +654,8 @@ scene.onLoad.add(function() {
     y: 100
   });
   scene.append(sprite);
-});</code></pre>
+});
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/tutorial/v3/basic.html">チュートリアル</a></li>

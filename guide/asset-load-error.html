@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>アセットロードエラーについて</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/asset.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/asset.css?06ad657f">
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -130,13 +130,28 @@
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
 			<h1>アセットロードエラーについて</h1>
-<h2><a name="これは"></a> これは</h2>
-<p>アセットロードエラーとそのハンドリング方法について述べます。</p>
-<h2><a name="アセットロードエラーとは"></a> アセットロードエラーとは</h2>
-<p>アセットロードエラーとはアセットの読み込みに失敗したことを意味するエラーです。</p>
+
+			<h2>
+				<a name="これは" class="anchor" href="#これは">
+					<span class="header-link">#</span>
+				</a>
+				 これは
+			</h2><p>アセットロードエラーとそのハンドリング方法について述べます。</p>
+
+			<h2>
+				<a name="アセットロードエラーとは" class="anchor" href="#アセットロードエラーとは">
+					<span class="header-link">#</span>
+				</a>
+				 アセットロードエラーとは
+			</h2><p>アセットロードエラーとはアセットの読み込みに失敗したことを意味するエラーです。</p>
 <p><code>game.json</code> で指定したアセットがサーバ上に存在しない場合や、ネットワークやサーバ異常によりダウンロード出来ない場合に発生します。</p>
-<h2><a name="エラーのハンドリング"></a> エラーのハンドリング</h2>
-<p>ゲームコンテンツからアセットロードエラーをハンドリングするコードの例を以下に示します。</p>
+
+			<h2>
+				<a name="エラーのハンドリング" class="anchor" href="#エラーのハンドリング">
+					<span class="header-link">#</span>
+				</a>
+				 エラーのハンドリング
+			</h2><p>ゲームコンテンツからアセットロードエラーをハンドリングするコードの例を以下に示します。</p>
 <pre><code class="language-javascript">var scene = new g.Scene({
   game: game,
   assetIds: [&quot;apple&quot;],
@@ -151,7 +166,8 @@ scene.assetLoadFailed.add(function(failure) {
   );
   // リトライ不可能の場合、この後ゲームが終了される
   if (!failure.error.retriable) game.logger.error(&quot;bye.&quot;, failure);
-});</code></pre>
+});
+</code></pre>
 <p>アセットロードエラーが発生した場合、 <code>Scene#assetLoadFailed</code> に登録したハンドラが呼び出されます。</p>
 <p>上記の例では、アセット ID <code>&quot;apple&quot;</code> の読み込みに失敗した場合に、ハンドラが呼び出されます。</p>
 <p>ハンドラが呼び出された時、ハンドラの第一引数 <code>failure</code> は <code>AssetLoadFailureInfo</code> となります。</p>
@@ -163,17 +179,28 @@ scene.assetLoadFailed.add(function(failure) {
 <p>再試行できない要因（HTTP 404 Not Found など）で失敗、又は再試行回数の上限を超えた場合、Akashic は自動的にゲーム続行が不可能だと判断し、ハンドラの呼び出し後にゲームを終了します。</p>
 <p>Akashic がアセット読み込みの再試行を行うかどうかは <code>failure.error.retriable</code> を参照することで判断することが可能です。</p>
 <p>この値が <code>false</code> の場合、Akashic はハンドラ呼出し後にゲームを終了します。</p>
-<h2><a name="再試行のキャンセル"></a> 再試行のキャンセル</h2>
-<p>ゲームコンテンツは、 アセットロードエラーのハンドラ内で <code>failure.cancelRetry</code> に <code>true</code> にセットすることで、Akashic が行うアセット読み込みの再試行をキャンセルすることが可能です。</p>
+
+			<h2>
+				<a name="再試行のキャンセル" class="anchor" href="#再試行のキャンセル">
+					<span class="header-link">#</span>
+				</a>
+				 再試行のキャンセル
+			</h2><p>ゲームコンテンツは、 アセットロードエラーのハンドラ内で <code>failure.cancelRetry</code> に <code>true</code> にセットすることで、Akashic が行うアセット読み込みの再試行をキャンセルすることが可能です。</p>
 <p>以下に例を示します。</p>
 <pre><code class="language-javascript">scene.assetLoadFailed.add(function(failure) {
   // 再試行をキャンセルし、ゲーム続行を断念する
   failure.cancelRetry = true;
   game.logger.error(&quot;bye.&quot;, failure);
-});</code></pre>
+});
+</code></pre>
 <p>ハンドラ内で <code>failure.cancelRetry</code> に <code>true</code> がセットされると、 Akashic はハンドラ呼出し後にゲームを終了します。</p>
-<h2><a name="その他"></a> その他</h2>
-<p>アセットロードエラー発生時の処理は、実行環境によって異なるものになる可能性がありますのでご注意下さい。</p>
+
+			<h2>
+				<a name="その他" class="anchor" href="#その他">
+					<span class="header-link">#</span>
+				</a>
+				 その他
+			</h2><p>アセットロードエラー発生時の処理は、実行環境によって異なるものになる可能性がありますのでご注意下さい。</p>
 
 		</div>
 	</section>

@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>コンテンツ作成の基本</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -317,8 +317,13 @@
 				<h1>コンテンツ作成の基本</h1>
 <p>このページのサンプルコードを<a class="asset--material--download" href="/zip/tutorial/v3/sample-basic.zip">ダウンロード</a></p>
 
-<h2><a name="entity"></a> エンティティ</h2>
-<p>画像や文字列などシーン上で描画されるオブジェクトを Akashic Engine ではエンティティと呼びます。
+
+			<h2>
+				<a name="entity" class="anchor" href="#entity">
+					<span class="header-link">#</span>
+				</a>
+				 エンティティ
+			</h2><p>画像や文字列などシーン上で描画されるオブジェクトを Akashic Engine ではエンティティと呼びます。
 Akashic Engine には次のエンティティが標準で用意されています。</p>
 <div class="table--scroll">
 <table>
@@ -368,7 +373,8 @@ Akashic Engine には次のエンティティが標準で用意されていま�
   width: 50,
   height: 50
 });
-scene.append(rect);</code></pre>
+scene.append(rect);
+</code></pre>
 <p>Akashic Engine の機能はグローバル変数 <code>g</code> を通して利用できます。
 <code>FilledRect</code> コンストラクタは、コード上では <code>g.FilledRect</code> となります。</p>
 <p>エンティティのコンストラクタはオブジェクトを引数にとります。このように引数として渡すオブジェクトを Akashic Engine ではパラメータオブジェクトとよびます。パラメータオブジェクトのプロパティや指定できる値は関数ごとに異なっています。例えば <code>new g.FilledRect()</code> に渡すパラメータオブジェクトには次のプロパティを指定できます。</p>
@@ -494,13 +500,15 @@ scene.onLoad.add(handleSceneLoad);
 
 function handleSceneLoad() {
   // シーンが読み込まれたときに行う処理
-}</code></pre>
+}
+</code></pre>
 <p>無名関数を利用すると、次のような書き方もできます。</p>
 <pre><code class="language-javascript">const scene = new g.Scene({ game: g.game });
 
 scene.onLoad.add(() =&gt; {
   // シーンが読み込まれたときに行う処理
-});</code></pre>
+});
+</code></pre>
 <p>以下は、これまで説明した内容を利用して、座標 (50, 50) に幅 100、高さ 100 の赤色の矩形を表示するプログラムです。座標は初期状態ではシーンの左上が原点で、右に行くほど X の値が大きくなり、下に行くほど Y の値が大きくなります。</p>
 <pre><code class="language-javascript">function main() {
   const scene = new g.Scene({ game: g.game });
@@ -522,14 +530,16 @@ function createRect(scene) {
   });
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <p>プログラムを <code>akashic-sandbox</code> で実行すると以下のように表示されます。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtMi1iYXNpYy0xL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
 
 <p>実行中にゲーム自身の情報を参照する際は <code>g.game</code> オブジェクトを利用します。
 <code>g.game</code> オブジェクトはこれまでもシーンを作成する際の引数に登場していました。
 Akashic Engine のいくつかのオブジェクトは明示的に <code>g.game</code> オブジェクトを渡す必要があります。</p>
-<pre><code class="language-javascript">const scene = new g.Scene({ game: g.game });</code></pre>
+<pre><code class="language-javascript">const scene = new g.Scene({ game: g.game });
+</code></pre>
 <p><code>g.game</code> オブジェクトの <code>width</code> プロパティと <code>height</code> プロパティには、
 <code>game.json</code> に指定したゲームの幅と高さが格納されています。この値を利用すると、例えば以下のようにゲーム全体を青色で塗りつぶすように矩形を配置できます。</p>
 <pre><code class="language-javascript">const backgroundRect = new g.FilledRect({
@@ -537,7 +547,8 @@ Akashic Engine のいくつかのオブジェクトは明示的に <code>g.game<
   width: g.game.width,
   height: g.game.height,
   cssColor: &quot;blue&quot;
-});</code></pre>
+});
+</code></pre>
 <p>複数の矩形を配置するには、<code>new g.FilledRect()</code> と <code>scene.append()</code> をそれぞれ複数回呼び出します。以下はループを使って矩形を格子状に並べるプログラムです。</p>
 <pre><code class="language-javascript">const rectHeight = 40,
   rectWidth = 60,
@@ -568,14 +579,21 @@ function createRect(scene, x, y) {
   });
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtMi1iYXNpYy0yL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
 
-<h2><a name="image"></a> 画像を扱う</h2>
-<p>Akashic Engine では PNG 形式と JPEG 形式の画像を扱えます。ここでは以下の PNG 画像 (<code>player.png</code>) をシーンに追加します。</p>
+
+			<h2>
+				<a name="image" class="anchor" href="#image">
+					<span class="header-link">#</span>
+				</a>
+				 画像を扱う
+			</h2><p>Akashic Engine では PNG 形式と JPEG 形式の画像を扱えます。ここでは以下の PNG 画像 (<code>player.png</code>) をシーンに追加します。</p>
 <p><img src="/img/tutorial/player.png" alt="player"></p>
 <p>Akashic Engine のゲームには推奨されるディレクトリ構造があります。このディレクトリ構造に従うことで、面倒な作業を自動化できます。例えば画像は、アセットとして <code>game.json</code> に登録する必要があります。追加したい画像が <code>image</code> ディレクトリに置かれている場合、次のコマンドで <code>game.json</code> にアセットの情報が追加されます。</p>
-<pre><code class="language-sh">akashic scan asset</code></pre>
+<pre><code class="language-sh">akashic scan asset
+</code></pre>
 <p><code>akashic scan asset</code> がアセットを探すディレクトリは以下の 5 つで、それぞれ配置するアセットの種類が決まっています。</p>
 <div class="table--scroll">
 <table>
@@ -618,14 +636,16 @@ module.exports = main;</code></pre>
 <p><code>player.png</code> を <code>image</code> ディレクトリに置いて
 <code>akashic scan asset</code> を実行すると、画面に以下のように表示されます。</p>
 <pre><code class="language-sh">INFO: Added (or updated) the declaration for player (image/player.png)
-INFO: Done!</code></pre>
+INFO: Done!
+</code></pre>
 <p><code>game.json</code> を開くと以下の項目が <code>assets</code> プロパティに追加されていることが確認できます。</p>
 <pre><code class="language-json">&quot;player&quot;: {
   &quot;type&quot;: &quot;image&quot;,
   &quot;width&quot;: 63,
   &quot;height&quot;: 53,
   &quot;path&quot;: &quot;image/player.png&quot;
-}</code></pre>
+}
+</code></pre>
 <p>以下はシーンに画像を表示するプログラムです。</p>
 <pre><code class="language-javascript">function main() {
   const scene = new g.Scene({
@@ -643,7 +663,8 @@ INFO: Done!</code></pre>
   g.game.pushScene(scene);
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtMi1iYXNpYy0zL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
 
 <p>画像やオーディオなどのアセットは、シーンの生成時に、<code>assetIds</code> プロパティで利用するアセットの ID を指定します。
@@ -651,16 +672,20 @@ module.exports = main;</code></pre>
 <p>アセットの ID は <code>game.json</code> に登録されている名前です。
 これはアセットを <code>akashic scan</code> で登録した場合は、ファイル名から拡張子をのぞいた文字列になっています。
 例えば <code>player.png</code> の場合、アセット ID は <code>player</code> になります。</p>
-<pre><code class="language-javascript">const scene = new g.Scene({ game: g.game, assetIds: [&quot;player&quot;] });</code></pre>
+<pre><code class="language-javascript">const scene = new g.Scene({ game: g.game, assetIds: [&quot;player&quot;] });
+</code></pre>
 <p>画像を表示するには <code>Sprite</code> エンティティを使います。
 <code>Sprite</code> エンティティのパラメータオブジェクトには <code>src</code> プロパティがあります。ここに画像アセットオブジェクトを指定すると、対応する画像を表示するエンティティが作成されます。</p>
 <p>シーンに読み込んだアセットオブジェクトは、 <code>scene.asset</code> から取り出すことができます。アセット ID が <code>player</code> であれば次のコードで参照できます。</p>
-<pre><code class="language-javascript">scene.asset.getImageById(&quot;player&quot;);</code></pre>
+<pre><code class="language-javascript">scene.asset.getImageById(&quot;player&quot;);
+</code></pre>
 <p>アセット ID ではなく、アセットのファイルパスを <code>Scene</code> に渡すことでも、アセットを読み込むことができます。</p>
-<pre><code class="language-javascript">const scene = new g.Scene({ game: g.game, assetPaths: [&quot;/image/player.png&quot;] });</code></pre>
+<pre><code class="language-javascript">const scene = new g.Scene({ game: g.game, assetPaths: [&quot;/image/player.png&quot;] });
+</code></pre>
 <p>アセットパスを用いてアセットを参照する場合、 game.json のあるディレクトリからの絶対パス表記を用いる必要があることに注意してください。
 アセットは次のコードで参照できます。</p>
-<pre><code class="language-javascript">scene.asset.getImage(&quot;/image/player.png&quot;);</code></pre>
+<pre><code class="language-javascript">scene.asset.getImage(&quot;/image/player.png&quot;);
+</code></pre>
 <div class="navi-center">
 <a href="./introduction.html">前 (akashic の導入)</a>
  | <a href="./">目次</a>

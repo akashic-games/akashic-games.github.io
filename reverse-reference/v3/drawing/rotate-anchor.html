@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>回転・拡大の基準点を変える</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -619,10 +619,12 @@
   ...,         // その他のプロパティ
   anchorX: 1.0, // 1.0 でエンティティの右端
   anchorY: 1.0 // 1.0 でエンティティの下端
-});</code></pre>
+});
+</code></pre>
 <pre><code class="language-javascript">sprite.anchorX = 0.0; // 0.0 でエンティティの左端
 sprite.anchorY = 0.0; // 0.0 でエンティティの上端
-sprite.modified(); // modified() で表示に反映</code></pre>
+sprite.modified(); // modified() で表示に反映
+</code></pre>
 <p><a href="./scale.html">拡大</a>・<a href="./rotate.html">回転</a>は、デフォルトではエンティティの左上端を基準に行われます。</p>
 <h2>利用例</h2>
 <p>次のコンテンツは、画像の右下端を基準に配置されます。</p>
@@ -642,13 +644,16 @@ sprite.modified(); // modified() で表示に反映</code></pre>
   anchorY: 0.5
 });
 
-scene.append(sprite);</code></pre>
+scene.append(sprite);
+</code></pre>
 <p>生成後のエンティティのアンカーポイントは、 <code>anchorX</code>, <code>anchorY</code> プロパティで参照できます。</p>
 <pre><code class="language-javascript">sprite.anchorX; // ==&gt; 0.5
-sprite.anchorY; // ==&gt; 0.5</code></pre>
+sprite.anchorY; // ==&gt; 0.5
+</code></pre>
 <p><code>anchorX</code>, <code>anchorY</code> プロパティに代入することで、アンカーポイントを変更できます。表示への反映には <code>modified()</code> メソッドを呼び出す必要があります。</p>
 <pre><code class="language-javascript">sprite.anchorY = 0.0; // 上端 を基準位置にする
-sprite.modified(); // modified() で表示に反映</code></pre>
+sprite.modified(); // modified() で表示に反映
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/tutorial/v3/scale-anchor.html#anchor">チュートリアル</a></li>

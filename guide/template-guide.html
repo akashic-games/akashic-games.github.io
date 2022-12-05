@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic init テンプレート利用ガイド</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/asset.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/asset.css?06ad657f">
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -138,7 +138,8 @@ Unix/Linux の場合は <code>$HOME/.akashic-templates</code> です。</p>
 <p><code>akashic init</code> はテンプレートディレクトリから、テンプレート名と同じ名前のディレクトリを探し、見つかった場合はその中身をディレクトリ構造を保ったままカレントディレクトリにコピーします。</p>
 <p>コピー完了後 <code>width</code>, <code>height</code>, <code>fps</code> の値をユーザに問い合わせ、カレントディレクトリにある <code>game.json</code> の該当する値を更新します。</p>
 <p>例えば、</p>
-<pre><code class="language-sh">akashic init -t mytemplate</code></pre>
+<pre><code class="language-sh">akashic init -t mytemplate
+</code></pre>
 <p>と入力した場合、<code>akashic init</code> は <code>.akashic-templates/mytemplate</code> 以下のファイルやディレクトリをコピーします。</p>
 <h3>ゲームのルートディレクトリ以外の場所に <code>game.json</code> を配置する場合</h3>
 <p>ゲームのルートディレクトリ以外の場所に <code>game.json</code> を配置する場合、テンプレートディレクトリ内にあるテンプレート名と同じ名前のディレクトリ直下に、
@@ -146,16 +147,20 @@ Unix/Linux の場合は <code>$HOME/.akashic-templates</code> です。</p>
 <p>例えば、以下の内容を <code>template.json</code> に書き込んだ場合、ゲームのルートディレクトリ以下の <code>game</code> ディレクトリ内に配置されている <code>game.json</code> を利用します。</p>
 <pre><code class="language-json">{
   &quot;gameJson&quot;: &quot;game/game.json&quot;
-}</code></pre>
+}
+</code></pre>
 <h3>カスタムテンプレートを akashic init のデフォルトにする</h3>
 <p><code>$HOME/.akashicrc</code> に項目を追加すると <code>-t</code> オプションを使用しない場合のテンプレートを指定できます。例えばテンプレート名が <code>mytemplate</code> の場合は以下のようになります。</p>
 <pre><code>[init]
-defaultTemplateType=&quot;mytemplate&quot;</code></pre><h2>チームでテンプレートを共有する</h2>
+defaultTemplateType=&quot;mytemplate&quot;
+</code></pre>
+<h2>チームでテンプレートを共有する</h2>
 <p>Web サーバを用意して、テンプレートを zip で固めたものを配置してテンプレート配信サーバを用意することで、チームでテンプレートを共有できます。テンプレート配信サーバが登録されていると、<code>akashic init</code> は指定した名前のテンプレートがテンプレートディレクトリに存在しない場合に、サーバからテンプレートをダウンロードします。</p>
 <h3>zip ファイルの作り方</h3>
 <p>ゲームのコンテンツを <code>テンプレート名.zip</code> という名前で zip 圧縮します。トップレベルディレクトリは含まないように圧縮してください。</p>
 <p>例えば zip コマンドを利用する場合、ゲームのディレクトリで以下のコマンドを利用して作成できます。</p>
-<pre><code class="language-sh">zip -R mytemplate.zip *</code></pre>
+<pre><code class="language-sh">zip -R mytemplate.zip *
+</code></pre>
 <h3>テンプレートリストの作り方</h3>
 <p>Web サーバには <code>template-list.json</code> という名前のファイルが必要です。このファイルには以下のようにテンプレート名と zip ファイルのパスの対応を記述します。</p>
 <pre><code class="language-json">{
@@ -164,20 +169,25 @@ defaultTemplateType=&quot;mytemplate&quot;</code></pre><h2>チームでテンプ
     &quot;typescript&quot;: &quot;typescript.zip&quot;,
     &quot;mytemplate&quot;: &quot;mytemplate.zip&quot;
   }
-}</code></pre>
+}
+</code></pre>
 <h3>テンプレートサーバアドレスの設定</h3>
 <p>テンプレートサーバを利用するユーザの <code>$HOME/.akashicrc</code> に以下のような項目を追加してサーバアドレスを指定します。</p>
 <pre><code>[init]
-repository=&quot;http://example.com/templates/&quot;</code></pre><p>このように設定した場合、以下のアドレスでファイルを取得できる必要があります。</p>
+repository=&quot;http://example.com/templates/&quot;
+</code></pre>
+<p>このように設定した場合、以下のアドレスでファイルを取得できる必要があります。</p>
 <ul>
 <li><code>http://example.com/templates/template-list.json</code> でテンプレートリスト。</li>
 <li><code>http://example.com/templates/mytemplate.zip</code> でテンプレートの zip ファイル。</li>
 </ul>
 <h3>動作確認</h3>
 <p>テンプレートディレクトリに <code>mytemplate</code> が存在するばあいはディレクトリを削除して、以下のコマンドを入力します。</p>
-<pre><code class="language-sh">akashic init -t mytemplate</code></pre>
+<pre><code class="language-sh">akashic init -t mytemplate
+</code></pre>
 <p>サーバに接続された場合、コンソール画面に次のようなログが出力されます。</p>
-<pre><code class="language-sh">INFO: access to http://example.com/templates/template-list.json</code></pre>
+<pre><code class="language-sh">INFO: access to http://example.com/templates/template-list.json
+</code></pre>
 <p>ダウンロードされたテンプレートはローカルテンプレートディレクトリに保存され、次回以降はローカルのテンプレートを利用するようになります。</p>
 <p>テンプレートを再ダウンロードしたい場合(サーバのテンプレートが更新された場合など)は、テンプレートディレクトリ以下の該当するディレクトリを削除して、適当なディレクトリで <code>akashic init</code> を実行する必要があります。</p>
 

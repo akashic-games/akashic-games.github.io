@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ストレージについて</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/asset.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/asset.css?06ad657f">
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -131,18 +131,33 @@
 		<div class="inner responsive--width">
 			<h1>ストレージについて</h1>
 <p><strong>古い文書です。この文書を参照しないでください。特に、ニコ生ゲームでは、ストレージ関連機能は利用できません。</strong></p>
-<h2><a name="これは"></a> これは</h2>
-<p>ストレージの仕様とゲームコンテンツからストレージを操作するストレージインターフェースの利用方法をまとめます。</p>
+
+			<h2>
+				<a name="これは" class="anchor" href="#これは">
+					<span class="header-link">#</span>
+				</a>
+				 これは
+			</h2><p>ストレージの仕様とゲームコンテンツからストレージを操作するストレージインターフェースの利用方法をまとめます。</p>
 <p>対象バージョンは <code>akashic-engine@1.0.0</code> 以降ですが、サンプルコードでは 2.0.0 以降特有のメソッドなどを利用している箇所があります。</p>
-<h2><a name="ストレージ"></a> ストレージ</h2>
-<p><em>NOTE: この項目はストレージの仕様が現時点で未確定な部分があるため、仕様の概要のみを説明しています。</em></p>
+
+			<h2>
+				<a name="ストレージ" class="anchor" href="#ストレージ">
+					<span class="header-link">#</span>
+				</a>
+				 ストレージ
+			</h2><p><em>NOTE: この項目はストレージの仕様が現時点で未確定な部分があるため、仕様の概要のみを説明しています。</em></p>
 <p><strong>ストレージ</strong> は、ゲームコンテンツから利用できる、永続的なデータを保存するための機能です。</p>
 <p>ストレージを操作するには <strong>ストレージキー</strong> が必要です。</p>
 <p>ストレージ内の値は、ストレージキーにより一意に決定する出来ます。</p>
 <p>ストレージキーは <strong>リージョン</strong>, <strong>リージョンキー</strong>, <strong>ユーザ ID</strong>, <strong>ゲーム ID</strong> の組み合わせで構成されます。</p>
 <p>以下、それぞれについて説明します。</p>
-<h3><a name="リージョン"></a> リージョン</h3>
-<p>ストレージには書き込む値の種類に応じて領域が用意されています。</p>
+
+			<h3>
+				<a name="リージョン" class="anchor" href="#リージョン">
+					<span class="header-link">#</span>
+				</a>
+				 リージョン
+			</h3><p>ストレージには書き込む値の種類に応じて領域が用意されています。</p>
 <p>この領域を リージョンと呼称します。</p>
 <p>リージョンは <strong>Values</strong>、<strong>Counts</strong>、<strong>Scores</strong> の 3 種類となっており、それぞれ</p>
 <ul>
@@ -151,20 +166,40 @@
 <li>Values - 自由な値（文字列）</li>
 </ul>
 <p>を保存することを想定しています。</p>
-<h3><a name="リージョンキー"></a> リージョンキー</h3>
-<p>リージョンキーは、リージョン内の値を決定するために用いられる文字列です。</p>
+
+			<h3>
+				<a name="リージョンキー" class="anchor" href="#リージョンキー">
+					<span class="header-link">#</span>
+				</a>
+				 リージョンキー
+			</h3><p>リージョンキーは、リージョン内の値を決定するために用いられる文字列です。</p>
 <p>レイヤーキーのフォーマットは <code>[a-z][a-z0-9]{0, 31}</code> となります。</p>
 <p>例: a001</p>
 <p>また、リージョンキーは <code>.</code> を区切り文字とした階層構造で表記することができ、最大階層は 4 階層となります。</p>
 <p>例: a001.b001.c001.d001</p>
-<h3><a name="ゲームID"></a> ゲーム ID</h3>
-<p>ゲーム ID は数値となっており、Akashic のゲームコンテンツを識別する ID を指定することになります。</p>
+
+			<h3>
+				<a name="ゲームID" class="anchor" href="#ゲームID">
+					<span class="header-link">#</span>
+				</a>
+				 ゲーム ID
+			</h3><p>ゲーム ID は数値となっており、Akashic のゲームコンテンツを識別する ID を指定することになります。</p>
 <p>この値は未指定とすることが可能ですが、その場合、後述のユーザ ID の指定が必須となります。</p>
-<h3><a name="ユーザID"></a> ユーザ ID</h3>
-<p>ユーザ ID は数値となっており、Akashic の <code>g.Player#id</code> を指定することになります。</p>
+
+			<h3>
+				<a name="ユーザID" class="anchor" href="#ユーザID">
+					<span class="header-link">#</span>
+				</a>
+				 ユーザ ID
+			</h3><p>ユーザ ID は数値となっており、Akashic の <code>g.Player#id</code> を指定することになります。</p>
 <p>この値は未指定とすることが可能ですが、その場合、ゲーム ID の指定が必須となります。</p>
-<h4><a name="ゲームIDとユーザIDの組み合わせ"></a> ゲーム ID とユーザ ID の組み合わせ</h4>
-<p>ゲーム ID とユーザ ID はそれぞれ指定・未指定が可能であり、ゲームコンテンツは値の用途に応じて適切な組み合わせを指定する必要があります。</p>
+
+			<h4>
+				<a name="ゲームIDとユーザIDの組み合わせ" class="anchor" href="#ゲームIDとユーザIDの組み合わせ">
+					<span class="header-link">#</span>
+				</a>
+				 ゲーム ID とユーザ ID の組み合わせ
+			</h4><p>ゲーム ID とユーザ ID はそれぞれ指定・未指定が可能であり、ゲームコンテンツは値の用途に応じて適切な組み合わせを指定する必要があります。</p>
 <div class="table--scroll">
 <table>
 <thead>
@@ -194,15 +229,25 @@
 </table>
 </div>
 
-<h2><a name="ストレージインターフェース"></a> ストレージインターフェース</h2>
-<p>ゲームコンテンツは、ストレージインターフェースを通してストレージを操作することができます。</p>
+
+			<h2>
+				<a name="ストレージインターフェース" class="anchor" href="#ストレージインターフェース">
+					<span class="header-link">#</span>
+				</a>
+				 ストレージインターフェース
+			</h2><p>ゲームコンテンツは、ストレージインターフェースを通してストレージを操作することができます。</p>
 <p>ストレージインターフェースは <code>g.Storage*</code> に当てはまるインターフェース、クラス、列挙型を指します。</p>
 <p>ここからは、コード例を示しながらストレージインターフェースの利用方法を説明します。</p>
 <p>ストレージインターフェースの詳細な仕様は API リファレンスを参照してください。</p>
 <!-- TODO: APIリファレンスへのハイパーリンク -->
 
-<h3><a name="値の書き込み"></a> 値の書き込み</h3>
-<p>値の書き込みは <code>g.Storage#write()</code> を利用します。ゲームに紐づく <code>g.Storage</code> のインスタンスは <code>g.Game#storage</code> となります。</p>
+
+			<h3>
+				<a name="値の書き込み" class="anchor" href="#値の書き込み">
+					<span class="header-link">#</span>
+				</a>
+				 値の書き込み
+			</h3><p>値の書き込みは <code>g.Storage#write()</code> を利用します。ゲームに紐づく <code>g.Storage</code> のインスタンスは <code>g.Game#storage</code> となります。</p>
 <p>例えば、Values リージョンに値を書き込むには以下のような記述を行います。</p>
 <pre><code class="language-javascript">// g.StorageKeyを作成
 var key = {
@@ -217,7 +262,8 @@ var value = {
   tag: &quot;foo&quot;
 };
 // 書き込みを行う
-game.storage.write(key, value);</code></pre>
+game.storage.write(key, value);
+</code></pre>
 <p>この例において、<code>player</code> はゲームに参加しているプレイヤーを指す <code>g.Player</code> のインスタンスとなります。</p>
 <p>値の書き込みにはストレージキーを表す <code>g.StorageKey</code> と値を表す <code>g.StorageValue</code> が必要です。</p>
 <p>この例では、 <code>key</code> が <code>g.StorageKey</code>、 <code>value</code> が <code>g.StorageValue</code> となります。</p>
@@ -249,7 +295,8 @@ scene.pointDownCapture.add(function(o) {
   };
   game.storage.write(key, value, option);
   clickCounts[o.player.id] = clickCount;
-});</code></pre>
+});
+</code></pre>
 <p>この例では、シーンのクリック数をゲームのスコアとしてストレージに保存しています。
 <code>o.player</code> により、クリックしたプレイヤーを取得しています。</p>
 <p>値を書き込む場合、同じゲームが同時に実行されているケースを想定する必要があります。</p>
@@ -273,12 +320,19 @@ scene.pointDownCapture.add(function(o) {
     operation: g.StorageCountsOperation.Incr
   };
   game.storage.write(key, value, option);
-});</code></pre>
+});
+</code></pre>
 <p><code>value.data</code> に数値を指定すると、指定した数値を現在の値に加算する処理となります。</p>
 <pre><code class="language-javascript">// 現在の値に10加算する
-game.storage.write(key, { data: 10 }, option);</code></pre>
-<h3><a name="値の読み込み"></a> 値の読み込み</h3>
-<p>値の読み込みはシーンの開始時に行われ、シーン開始後に読み込みを行うことはできません。</p>
+game.storage.write(key, { data: 10 }, option);
+</code></pre>
+
+			<h3>
+				<a name="値の読み込み" class="anchor" href="#値の読み込み">
+					<span class="header-link">#</span>
+				</a>
+				 値の読み込み
+			</h3><p>値の読み込みはシーンの開始時に行われ、シーン開始後に読み込みを行うことはできません。</p>
 <p>以下のように読み込み行うストレージキーを <code>g.StorageReadKey</code> として生成し、その一覧を <code>g.Scene</code> のコンストラクタに指定します。</p>
 <pre><code class="language-javascript">// ストレージから読み込むキーのリスト
 var keys = [
@@ -289,11 +343,13 @@ var keys = [
 var scene = new g.Scene({game: game, storageKeys: keys});
 scene.loaded.add(function() {
 ...
-});</code></pre>
+});
+</code></pre>
 <p>この例では、シーン開始前に、<code>g.Game#join</code> を通して参加者を表す <code>g.Player</code> が <code>game.vars.player</code> にセットされていることを想定しています。</p>
 <p>読み込んだ値は、シーン開始後に利用することができます。</p>
 <p>例えば、 <code>keys[0]</code> に対応する値を取得するには <code>scene.loaded.add</code> に登録したハンドラ内で</p>
-<pre><code class="language-javascript">scene.storageValues.getOne(keys[0]);</code></pre>
+<pre><code class="language-javascript">scene.storageValues.getOne(keys[0]);
+</code></pre>
 <p>とします。</p>
 <p>値の一括取得を行う際は、 <code>g.StorageReadKey#regionKey</code> にアスタリスク <code>*</code> を含んだ文字列を指定します。</p>
 <p>例えば、 <code>a001.b00*</code> を指定すると <code>a001.b001</code> 、<code>a001.b002</code> のリージョンキーにマッチする値を取得できます。</p>
@@ -313,7 +369,8 @@ scene.loaded.add(function() {
   // =&gt; [{data: 2, storageKey: {region: g.StorageRegion.Counts, regionKey: &quot;play&quot;, userId: &quot;user1&quot;, gameId: &quot;2&quot;}},
   //     {data: 5, storageKey: {region: g.StorageRegion.Counts, regionKey: &quot;play&quot;, userId: &quot;user1&quot;, gameId: &quot;2&quot;}},
   //     {data: 8, storageKey: {region: g.StorageRegion.Counts, regionKey: &quot;play&quot;, userId: &quot;user1&quot;, gameId: &quot;2&quot;}}]
-});</code></pre>
+});
+</code></pre>
 <p><strong>リージョンキーとユーザ ID の一括取得を同時に指定することは出来ない</strong>ので注意が必要です。</p>
 <p>取得した値を表す <code>g.StorageValue</code> のメンバである <code>storageKey</code> は値に対応するストレージキーを表します。</p>
 <p>一括取得した値に対応するストレージキーを知りたい場合は、このメンバを利用します。</p>

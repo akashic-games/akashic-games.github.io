@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>表示順を制御する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -259,8 +259,13 @@
 				<h1>表示順を制御する</h1>
 <p>このページのサンプルコードを<a class="asset--material--download" href="/zip/tutorial/v2/sample-display-order.zip">ダウンロード</a></p>
 
-<h2><a name="nested-entity"></a> エンティティの入れ子</h2>
-<p>シーンにエンティティを <code>append()</code> できるのと同様、エンティティにもまた別のエンティティを <code>append()</code> することができます。
+
+			<h2>
+				<a name="nested-entity" class="anchor" href="#nested-entity">
+					<span class="header-link">#</span>
+				</a>
+				 エンティティの入れ子
+			</h2><p>シーンにエンティティを <code>append()</code> できるのと同様、エンティティにもまた別のエンティティを <code>append()</code> することができます。
 すなわちエンティティは入れ子構造にできます。</p>
 <p>エンティティ <code>p</code> と <code>c</code> があり、 <code>p.append(c)</code> された時、<code>c</code> を「 <code>p</code> の子エンティティ」と呼びます。 <code>p</code> を「 <code>c</code> の親エンティティ」と呼びます。</p>
 <p>エンティティを入れ子構造にすることには、二つの意義があります。</p>
@@ -279,7 +284,8 @@ var child = new g.FilledRect({
   height: 30,
   cssColor: &quot;red&quot;
 });
-group.append(child); // group の子エンティティに child を追加</code></pre>
+group.append(child); // group の子エンティティに child を追加
+</code></pre>
 <p>以下のプログラムでは、<code>angle</code> を設定した <code>E</code> オブジェクトに 3 つの矩形を追加しています。矩形の座標系は <code>E</code> を基準にして変わるので、3 つの矩形は斜めに配置されます。</p>
 <pre><code class="language-javascript">function main() {
   var scene = new g.Scene({ game: g.game });
@@ -307,7 +313,8 @@ function createRect(scene, x, y, color) {
   });
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <p><img src="/img/tutorial/sample05.png" alt="sample05"></p>
 <blockquote>
 <p>Tips: <code>new</code> する時に親が決まっているなら、次のように <code>parent</code> プロパティで親を指定してしまうこともできます。</p>
@@ -318,25 +325,39 @@ var child = new g.FilledRect({
   height: 30,
   cssColor: &quot;red&quot;,
   parent: group // parent プロパティで生成時に親を指定
-});</code></pre>
+});
+</code></pre>
 </blockquote>
-<h2><a name="display-order"></a> 描画順</h2>
-<p>エンティティを入れ子にする二つ目の意義は、描画順の制御です。</p>
+
+			<h2>
+				<a name="display-order" class="anchor" href="#display-order">
+					<span class="header-link">#</span>
+				</a>
+				 描画順
+			</h2><p>エンティティを入れ子にする二つ目の意義は、描画順の制御です。</p>
 <ul>
 <li>エンティティは、自分のどの子エンティティよりも先に (奥側に) 描画されます。</li>
 <li>同じ親を持つエンティティは、親に <code>append()</code> で追加された順に描画されます。</li>
 </ul>
 <p>言い換えると、エンティティのツリーは行きがけ順 (pre-order) で描画されます。
 これを利用することでエンティティの前後関係を制御できます。</p>
-<h2><a name="modify-children"></a> 子エンティティの変更</h2>
-<p>上では子エンティティの描画順を「 <code>append()</code> で追加された順」としましたが、子エンティティの順序 (＝描画順) は、追加後でも自由に制御することもできます。</p>
+
+			<h2>
+				<a name="modify-children" class="anchor" href="#modify-children">
+					<span class="header-link">#</span>
+				</a>
+				 子エンティティの変更
+			</h2><p>上では子エンティティの描画順を「 <code>append()</code> で追加された順」としましたが、子エンティティの順序 (＝描画順) は、追加後でも自由に制御することもできます。</p>
 <p>まず <code>append()</code> されたエンティティは、 <code>remove()</code> メソッドで親エンティティから切り離すことができます。</p>
-<pre><code class="language-javascript">group.remove(child); // group の子エンティティから child を削除</code></pre>
+<pre><code class="language-javascript">group.remove(child); // group の子エンティティから child を削除
+</code></pre>
 <p>エンティティの <code>remove()</code> を引数なしで呼び出すと、自分を親から切り離します。つまり上のコードは次のように書くこともできます。</p>
-<pre><code class="language-javascript">child.remove(); // child の親の子エンティティから child を削除</code></pre>
+<pre><code class="language-javascript">child.remove(); // child の親の子エンティティから child を削除
+</code></pre>
 <p>切り離されたエンティティは、また別のエンティティにの子になることができます。 <code>append()</code> された時親エンティティが既にある場合は、切り離してから新たな親の子エンティティになります。</p>
 <p>また <code>append()</code> の代わりに <code>insertBefore()</code> を利用することもできます。 <code>append()</code> は常に「最後の子要素として」追加する関数ですが、 <code>insertBefore()</code> は子エンティティの中での順番を指定できます。次のように記述した場合、</p>
-<pre><code class="language-javascript">parent.insertBefore(child, target);</code></pre>
+<pre><code class="language-javascript">parent.insertBefore(child, target);
+</code></pre>
 <p><code>parent</code> の子エンティティ <code>target</code> の直前の子要素として <code>child</code> を追加します。</p>
 <p>前述のとおり、子エンティティ間の順序を制御することで、描画順を制御できることに注意してください。
 たとえばゲーム内に &quot;地面&quot; と &quot;キャラクタ&quot; と &quot;宝箱&quot; があり、「宝箱の <code>Sprite</code> はいつ生成してもキャラクタの &quot;奥&quot; に表示したい」というような場合に、 <code>insertBefore()</code> を使うことができます。</p>
@@ -368,7 +389,8 @@ const playerSprite = new g.Sprite({
   x: 100,
   y: 100,
   parent: characterLayer // 親を characterLayer に
-});</code></pre>
+});
+</code></pre>
 <p>このように生成しておけば、 &quot;アイテム&quot; は常に <code>itemLayer</code> の子にするだけで適切な順序で描画されます。
 <code>insertBefore()</code> での細かい順序制御は、 &quot;アイテム&quot; 間の表示順を制御する必要がなければ、必要ありません。</p>
 </blockquote>

@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>効果音・BGM の音量を変える</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -616,7 +616,8 @@
 <p><code>g.AudioPlayer#changeVolume()</code> メソッドを用いて特定の音声アセットの音量を変えることができます。</p>
 <h2>凡例</h2>
 <pre><code class="language-javascript">var player = scene.asset.getAudioById(&quot;bgm1&quot;).play(); // アセット ID &quot;bgm1&quot;の再生と同時にそれを再生しているg.AudioPlayerオブジェクトが返ってくるので取得する
-player.changeVolume(0.5); // アセット ID &quot;bgm1&quot;の再生音量がフルボリュームの1/2の大きさに変わる</code></pre>
+player.changeVolume(0.5); // アセット ID &quot;bgm1&quot;の再生音量がフルボリュームの1/2の大きさに変わる
+</code></pre>
 <p>特定の音声アセットの音量を変える場合は、 <code>g.AudioAsset#play()</code> で返ってきた g.AudioPlayer オブジェクトの <code>g.AudioPlayer#changeVolume()</code> を実行します。 <code>g.AudioAsset#play()</code> については<a href="./play">こちら</a>を参照してください。</p>
 <h2>利用例</h2>
 <p>次のコンテンツでは、右のバーを上下に動かすことによって BGM の音量を変えることができます(効果音の音量を変えることはできません)。</p>
@@ -625,10 +626,12 @@ player.changeVolume(0.5); // アセット ID &quot;bgm1&quot;の再生音量が�
 <h2>詳細</h2>
 <p>特定の音声アセットの音量を変えるためには、その音声アセットを再生している <code>g.AudioPlayer</code> オブジェクトを取得する必要があります。このオブジェクトは <code>g.AudioAsset#play()</code> から取得できます。</p>
 <pre><code class="language-javascript">var bgm = scene.asset.getAudioById(&quot;bgm1&quot;); // アセット ID &quot;bgm1&quot; が音声アセットとする
-var player = bgm.play();</code></pre>
+var player = bgm.play();
+</code></pre>
 <p>取得した <code>g.AudioPlayer</code> オブジェクトの <code>g.AudioPlayer#changeVolume()</code> を実行します。
 このメソッドに渡せる引数は 0 以上 1 以下の数値のみです。1 に近づくほど音量が大きくなり、0 で無音になります。この範囲から外れる数値を渡した場合の動作は不定です。</p>
-<pre><code class="language-javascript">player.changeVolume(0.5); // アセット ID &quot;bgm1&quot; の再生音量がフルボリュームの 1/2 の大きさに変わる</code></pre>
+<pre><code class="language-javascript">player.changeVolume(0.5); // アセット ID &quot;bgm1&quot; の再生音量がフルボリュームの 1/2 の大きさに変わる
+</code></pre>
 <p><code>g.AudioPlayer</code> オブジェクトは <code>play()</code> の呼び出しの度に新たに作られます。同じ音量で再生したい場合は、 <code>play()</code> の度に音量を設定し直す必要がある点に注意してください。</p>
 <h2>関連情報</h2>
 <ul>

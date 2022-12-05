@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>前のシーンに戻る</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -621,7 +621,8 @@ g.game.pushScene(sceneA); //sceneA へ遷移する
 var sceneB = new g.Scene({ game: g.game });
 g.game.pushScene(sceneB); //sceneB へ遷移する
 
-g.game.popScene(); // sceneA へ戻る</code></pre>
+g.game.popScene(); // sceneA へ戻る
+</code></pre>
 <p>シーンを切り替える場合は、<a href="./scene.html"><code>g.game.pushScene()</code>, <code>g.game.replaceScene()</code> を利用してください。</a></p>
 <h2>利用例</h2>
 <p>次のコンテンツは、矩形をクリックすると <code>pushScene()</code> を行い、シーン全体をクリックすると <code>popScene()</code> を実行し前のシーンへ戻ります。</p>
@@ -631,7 +632,8 @@ g.game.popScene(); // sceneA へ戻る</code></pre>
 <p><code>pushScene()</code> で遷移した場合、<code>popScene()</code> で元のシーンに戻ることができます。
 <code>popScene()</code> の第 1 引数が真の場合、シーンを破棄しません。この場合はゲーム開発者が明示的に破棄する必要があります。省略された場合は偽となり破棄されます。
 第 2 引数は取り除くシーンの数を指定できます。指定した数だけ pop が行われます。省略された場合は 1 となります。</p>
-<pre><code class="language-javascript">g.game.popScene(false, 3); // シーンスタックから 3 つ取り除く</code></pre>
+<pre><code class="language-javascript">g.game.popScene(false, 3); // シーンスタックから 3 つ取り除く
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/akashic-engine/v3/classes/Game.html#popScene">API リファレンス</a></li>

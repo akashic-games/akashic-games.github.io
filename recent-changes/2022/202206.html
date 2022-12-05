@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>更新情報 (〜2022/06/30)</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -165,8 +165,13 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>更新情報 (〜2022/06/30)</h1>
-<h2><a name="skipping-scene"></a> 早送り中の描画内容を制御できるように</h2>
-<p>Akashic Engine v3.4.1 以降で、早送り (スキップ) 中の描画内容をゲーム開発者が制御できるようになりました。</p>
+
+			<h2>
+				<a name="skipping-scene" class="anchor" href="#skipping-scene">
+					<span class="header-link">#</span>
+				</a>
+				 早送り中の描画内容を制御できるように
+			</h2><p>Akashic Engine v3.4.1 以降で、早送り (スキップ) 中の描画内容をゲーム開発者が制御できるようになりました。</p>
 <table>
 <thead>
 <tr>
@@ -193,7 +198,8 @@
 <pre><code class="language-json">{
   ...,
   &quot;defaultSkippingScene&quot;: &quot;indicator&quot;
-}</code></pre>
+}
+</code></pre>
 <p>指定可能な値は次のいずれかです。</p>
 <table>
 <thead>
@@ -230,8 +236,13 @@
 <p>スキッピングシーンは、より簡単に早送りの待ち時間の印象を変えることができます。
 元のゲーム画面に描画内容が多い場合、環境によっては <code>&quot;indicator&quot;</code> や <code>&quot;none&quot;</code> を利用すると (描画時間が減る分) 早送り時間が短縮される可能性もあるでしょう。</p>
 </blockquote>
-<h2><a name="add-timeline-easing"></a> akashic-timeline の Easing を追加</h2>
-<p>イージング関数として <code>easeInOutBack</code> と <code>easeOutBounce</code> を追加しました。</p>
+
+			<h2>
+				<a name="add-timeline-easing" class="anchor" href="#add-timeline-easing">
+					<span class="header-link">#</span>
+				</a>
+				 akashic-timeline の Easing を追加
+			</h2><p>イージング関数として <code>easeInOutBack</code> と <code>easeOutBounce</code> を追加しました。</p>
 <div style="display: flex; justify-items: center;">
 <img alt="easeInOutのイメージ" src="/img/recent-changes/202206/ease-inout-back.gif" />
 <img alt="easeOutBounceのイメージ" src="/img/recent-changes/202206/ease-out-bounce.gif" />
@@ -242,12 +253,22 @@
 <li><strong><code>easeOutBounce</code></strong>: 移動終了地点でバウンドするイージング</li>
 </ul>
 <p>これを含め、利用可能なすべてのイージング関数は <a href="/demo/?title=timeline-easing-sample">サンプルデモのイージング一覧</a> から参照できます。</p>
-<h2><a name="serve-fit-to-screen"></a> akashic serve に &quot;Fit to screen&quot; オプションを追加</h2>
-<p>akashic-cli@2.15.67 以降の <code>akashic serve</code> で、ゲーム画面をウィンドウに合わせて拡縮する機能 &quot;Fit to screen&quot; を利用できます。</p>
+
+			<h2>
+				<a name="serve-fit-to-screen" class="anchor" href="#serve-fit-to-screen">
+					<span class="header-link">#</span>
+				</a>
+				 akashic serve に &quot;Fit to screen&quot; オプションを追加
+			</h2><p>akashic-cli@2.15.67 以降の <code>akashic serve</code> で、ゲーム画面をウィンドウに合わせて拡縮する機能 &quot;Fit to screen&quot; を利用できます。</p>
 <p><img src="/img/recent-changes/202206/serve-fit-to-screen.gif" alt="Fit to screen の利用イメージ"></p>
 <p>画面右上のアイコンをクリックして、チェックボックスから切り替えてください。</p>
-<h2><a name="slice-image"></a> 画像ファイルの特定の一部を画像アセットとして利用できるように</h2>
-<p>Akashic Engine v3.3.0 で、画像ファイルの一部だけを画像アセットとして利用できるようになりました。</p>
+
+			<h2>
+				<a name="slice-image" class="anchor" href="#slice-image">
+					<span class="header-link">#</span>
+				</a>
+				 画像ファイルの特定の一部を画像アセットとして利用できるように
+			</h2><p>Akashic Engine v3.3.0 で、画像ファイルの一部だけを画像アセットとして利用できるようになりました。</p>
 <p>通常、ファイル数の多さはロード時間に影響を与えます。
 そこで多くの Web アプリケーションは、JavaScript (.js) ファイルを一つにまとめるなどファイル数削減の工夫をしています。
 Akashic Engine でも、たとえば <code>akashic export html --atsumaru</code> コマンドでゲームを出力する際には、自動的に .js ファイルを一つにまとめる変換を行っています。</p>
@@ -269,12 +290,18 @@ Akashic Engine でも、たとえば <code>akashic export html --atsumaru</code>
       }
     }
   }
-}</code></pre>
+}
+</code></pre>
 <p>ただしゲーム開発者がこの設定を手書きするのは大変です。
 そこで <code>akashic export</code> コマンドに、小さな画像を自動的に選んでひとまとめにする機能 <code>--pack-image</code> を試験的に追加しています (後述)。
 将来的には、 <code>akashic export html --atsumaru</code> などで自動的に <code>&quot;slice&quot;</code> を利用することを検討しています。</p>
-<h2><a name="export-pack-image"></a> akashic export zip に小さな画像を一つにまとめる機能を追加 (試験的機能)</h2>
-<p>akashic-cli@2.15.35 で、 <code>akashic export zip</code> コマンドに「小さな画像を自動的に選んでまとめるオプション」 <code>--pack-image</code> を追加しました。</p>
+
+			<h2>
+				<a name="export-pack-image" class="anchor" href="#export-pack-image">
+					<span class="header-link">#</span>
+				</a>
+				 akashic export zip に小さな画像を一つにまとめる機能を追加 (試験的機能)
+			</h2><p>akashic-cli@2.15.35 で、 <code>akashic export zip</code> コマンドに「小さな画像を自動的に選んでまとめるオプション」 <code>--pack-image</code> を追加しました。</p>
 <p><code>akashic export zip</code> コマンドは、 <code>akashic export html</code> コマンドが内部的に利用しているもので、
 Akashic ゲームをまとめた zip ファイルを生成する機能です。
 zip 圧縮するだけでなく、動作を変えずにゲームを変形する機能を持っています (実際には、zip 圧縮しないこともできます)。</p>
@@ -289,9 +316,15 @@ zip 圧縮するだけでなく、動作を変えずにゲームを変形する�
 <p>現在 <code>akashic export html</code> でこの機能を利用するには、以下のように一度 <code>akashic export zip</code> で画像をまとめたゲームを生成し、それを <code>akashic export html</code> に与える必要があります。</p>
 <pre><code class="language-sh">akashic export zip --pack-image -o ./temp-packed-game/
 cd ./temp-packed-game/
-akashic export html --atsumaru -o ./game.zip</code></pre>
-<h2><a name="misc-features"></a> その他の改善・拡張</h2>
-<ul>
+akashic export html --atsumaru -o ./game.zip
+</code></pre>
+
+			<h2>
+				<a name="misc-features" class="anchor" href="#misc-features">
+					<span class="header-link">#</span>
+				</a>
+				 その他の改善・拡張
+			</h2><ul>
 <li>ニコ生ゲームで、一部ゲームがタイムシフト内でも遊べるように<ul>
 <li><a href="https://blog.nicovideo.jp/niconews/168018.html">一部の放送ネタがタイムシフトでも操作可能になりました【ニコニコ生放送】</a></li>
 </ul>
@@ -313,8 +346,13 @@ akashic export html --atsumaru -o ./game.zip</code></pre>
 </ul>
 </li>
 </ul>
-<h2><a name="doc-and-samples"></a> サンプルの更新</h2>
-<p><a href="https://github.com/akashic-contents">https://github.com/akashic-contents</a> で公開している以下のサンプルゲームを更新し、Akashic Engine v3 ベースに移行しました。</p>
+
+			<h2>
+				<a name="doc-and-samples" class="anchor" href="#doc-and-samples">
+					<span class="header-link">#</span>
+				</a>
+				 サンプルの更新
+			</h2><p><a href="https://github.com/akashic-contents">https://github.com/akashic-contents</a> で公開している以下のサンプルゲームを更新し、Akashic Engine v3 ベースに移行しました。</p>
 <ul>
 <li>泥棒バスター<ul>
 <li><a href="https://github.com/akashic-contents/thiefBuster">https://github.com/akashic-contents/thiefBuster</a></li>
@@ -362,22 +400,52 @@ v3 ベースに移行したことで、現在のドキュメントを参照し�
 </ul>
 </li>
 </ul>
-<h2><a name="bugfixes"></a> 主な不具合修正</h2>
-<h3><a name="volume-zero"></a> (Akashic Engine) BGM の音量が変更できなくなる場合がある問題を修正</h3>
-<p><code>&quot;music&quot;</code> の <code>g.AudioAsset</code> を一つも再生していない段階で、 <code>g.game.audio.music.volume</code> を 1 未満にした場合、その後この値を変更しても変更が反映されない問題がありました。</p>
+
+			<h2>
+				<a name="bugfixes" class="anchor" href="#bugfixes">
+					<span class="header-link">#</span>
+				</a>
+				 主な不具合修正
+			</h2>
+			<h3>
+				<a name="volume-zero" class="anchor" href="#volume-zero">
+					<span class="header-link">#</span>
+				</a>
+				 (Akashic Engine) BGM の音量が変更できなくなる場合がある問題を修正
+			</h3><p><code>&quot;music&quot;</code> の <code>g.AudioAsset</code> を一つも再生していない段階で、 <code>g.game.audio.music.volume</code> を 1 未満にした場合、その後この値を変更しても変更が反映されない問題がありました。</p>
 <p>この不具合は、内部コンポーネント pdi-browser@2.2.1 で修正済みです。(関連 issue: <a href="https://github.com/akashic-games/akashic-engine/issues/381">akashic-engine#381</a>)</p>
-<h3><a name="fix-audio-asset"></a> (Akashic Engine) 再生中の AudioAsset を別のシーンでロードするとエラーになることがある問題を修正</h3>
-<p><code>systemId</code> が <code>&quot;music&quot;</code> の <code>g.AudioAsset</code> の再生中、そのアセットをロードしないシーンに遷移し、さらにそのアセットをロードするシーンに遷移した時、エラーが発生していました。</p>
+
+			<h3>
+				<a name="fix-audio-asset" class="anchor" href="#fix-audio-asset">
+					<span class="header-link">#</span>
+				</a>
+				 (Akashic Engine) 再生中の AudioAsset を別のシーンでロードするとエラーになることがある問題を修正
+			</h3><p><code>systemId</code> が <code>&quot;music&quot;</code> の <code>g.AudioAsset</code> の再生中、そのアセットをロードしないシーンに遷移し、さらにそのアセットをロードするシーンに遷移した時、エラーが発生していました。</p>
 <p>akashic-engine@3.2.3 で修正済みです。(関連 PR: <a href="https://github.com/akashic-games/akashic-engine/issues/329">akashic-engine#329</a>)</p>
-<h3><a name="ignored-tween"></a> (akashic-timeline) Tween#call() の処理中に Tween を生成すると無視される問題を修正</h3>
-<p>トゥイーンアニメーションの途中で、任意の処理を実行するメソッド <code>Tween#call()</code> で登録した関数内から、 <code>Timeline#create()</code> を呼び出して動的に <code>Tween</code> を生成した時、描画に反映されていませんでした。</p>
+
+			<h3>
+				<a name="ignored-tween" class="anchor" href="#ignored-tween">
+					<span class="header-link">#</span>
+				</a>
+				 (akashic-timeline) Tween#call() の処理中に Tween を生成すると無視される問題を修正
+			</h3><p>トゥイーンアニメーションの途中で、任意の処理を実行するメソッド <code>Tween#call()</code> で登録した関数内から、 <code>Timeline#create()</code> を呼び出して動的に <code>Tween</code> を生成した時、描画に反映されていませんでした。</p>
 <p>akashic-timline@3.2.0 で修正済みです。(関連 PR: <a href="https://github.com/akashic-games/akashic-timeline/pull/44">akashic-timeline#44</a>)</p>
-<h3><a name="fix-duplicated-script"></a> (akashic serve, akashic-sandbox) akashic-hover-plugin を利用するコンテンツが実行できない場合がある問題を修正</h3>
-<p>akashic-hover-plugin を利用するコンテンツで、Akashic Engine v2 系から v3 系へ移行する際、README に従って作業すると一つのスクリプトアセットが二重に登録される形になっていました。
+
+			<h3>
+				<a name="fix-duplicated-script" class="anchor" href="#fix-duplicated-script">
+					<span class="header-link">#</span>
+				</a>
+				 (akashic serve, akashic-sandbox) akashic-hover-plugin を利用するコンテンツが実行できない場合がある問題を修正
+			</h3><p>akashic-hover-plugin を利用するコンテンツで、Akashic Engine v2 系から v3 系へ移行する際、README に従って作業すると一つのスクリプトアセットが二重に登録される形になっていました。
 akashic serve, akashic-sandbox はこの状態のコンテンツを扱うことができておらず、ブラウザウィンドウを開いた時点でエラーが発生していました。</p>
 <p>akashic-cli@2.15.65 で修正済みです。(関連 PR: <a href="https://github.com/akashic-games/akashic-cli/pull/1073">akashic-cli#1073</a>)</p>
-<h3><a name="other-fixes"></a> その他不具合の修正</h3>
-<ul>
+
+			<h3>
+				<a name="other-fixes" class="anchor" href="#other-fixes">
+					<span class="header-link">#</span>
+				</a>
+				 その他不具合の修正
+			</h3><ul>
 <li>実行開始直後の効果音が不自然な形で再生されない場合がある問題を修正 <a href="https://github.com/akashic-games/game-driver/pull/134">game-driver#134</a></li>
 <li>resolve-player-info を二度呼ぶと動作しなくなることがある問題を修正</li>
 <li><code>g.Scene#requestAssets()</code> で、オーデイオアセットの読み込み時、 <code>&quot;music&quot;</code> が指定できないなどの問題を修正 <a href="https://github.com/akashic-games/akashic-engine/pull/374">akashic-engine#374</a></li>

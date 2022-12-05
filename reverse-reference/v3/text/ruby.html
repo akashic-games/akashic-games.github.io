@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>文字列にルビを振る</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -623,7 +623,8 @@ var label = new al.Label({
   fontSize: 30,
   width: g.game.width
 });
-scene.append(label);</code></pre>
+scene.append(label);
+</code></pre>
 <h2>利用例</h2>
 <p>次の例は、文字列にルビを振ります。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvdGV4dC9ydWJ5L2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
@@ -632,7 +633,8 @@ scene.append(label);</code></pre>
 <p>Akashic Engine 標準の <code>g.Label</code> エンティティはルビをサポートしていません。ルビの描画は <code>akashic-label</code> ライブラリがサポートしています。そのため、 <code>akashic-label</code> ライブラリをコンテンツに導入する必要があります。
 <code>akashic-label</code> は <code>g.Label</code> に近い方法で利用できる <code>Label</code> エンティティを提供します。このエンティティを使うことで、ルビの描画のほか、複数行の文字列描画や禁則処理などの機能を利用することができます。</p>
 <p><code>akashic-label</code> のインストールは game.json が置かれているディレクトリで以下のコマンドを実行してください。</p>
-<pre><code class="language-sh">akashic install @akashic-extension/akashic-label</code></pre>
+<pre><code class="language-sh">akashic install @akashic-extension/akashic-label
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="https://github.com/akashic-games/akashic-label">akashic-label</a></li>

@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>インストール</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -310,8 +310,13 @@
 文体などは他のページと異なることがあります。
 </p>
 
-<h2>Node.js のインストール</h2>
-<p>Akashic Engine でのゲーム作成には、Akashic 関連ツールとそれを実行するためのアプリケーションが必要です。</p>
+
+			<h2>
+				<a name="install-node" class="anchor" href="#install-node">
+					<span class="header-link">#</span>
+				</a>
+				 Node.js のインストール
+			</h2><p>Akashic Engine でのゲーム作成には、Akashic 関連ツールとそれを実行するためのアプリケーションが必要です。</p>
 <p>まず、 Node.js というアプリケーションをインストールする必要があります。
 こちらは Akashic 関連ツールの実行に必要なアプリケーションです。
 インストール済みの方は、次節まで飛ばしてください。</p>
@@ -343,8 +348,13 @@
 <p>管理者の方にインストールしていただけない環境の場合は、Google で「Node.js 管理者権限」等で検索するといくつかの方法が見つかると思います。</p>
 <p>無事にインストールができると、以下の画面が表示されると思います。 <code>Finish</code> ボタンを押した後、再起動を求められる方もいるかもしれませんが、ともかくこれで最初の関門を突破です。お疲れ様でした。</p>
 <p><img src="/img/shin-ichiba/install/nodejs-install-finished.png" alt="Node.jsのインストール完了画面"></p>
-<h2>Akashic 関連ツールのインストール</h2>
-<p>Node.js がインストールできれば、あとは <code>akashic</code> コマンドをインストールすれば環境準備は完了です。</p>
+
+			<h2>
+				<a name="install-akashic-tool" class="anchor" href="#install-akashic-tool">
+					<span class="header-link">#</span>
+				</a>
+				 Akashic 関連ツールのインストール
+			</h2><p>Node.js がインストールできれば、あとは <code>akashic</code> コマンドをインストールすれば環境準備は完了です。</p>
 <p>Windows ユーザの方は <code>コマンドプロンプト</code> や <code>Power Shell</code> 、Mac ユーザの方は <code>ターミナル</code> などのツールを使う必要があります。</p>
 <p>Akashic Engine の文書にならい、このツールを CUI ツールと呼びます。ここが最大の関門です。</p>
 <p>スタートメニューからコマンドプロンプトか Power Shell を起動してください。</p>
@@ -358,11 +368,13 @@
 <p>以下は PowerShell の場合です。</p>
 <p><img src="/img/shin-ichiba/install/power-shell.png" alt="Power Shell"></p>
 <p>ここで、おもむろに以下の文字を入力し、Enter キーを押してください。「Akashic Sandbox というツールをインストールする」というような意味で、先ほどインストールした Node.js に含まれる npm というものを使ってインストールしています。</p>
-<pre><code class="language-sh">npm install -g @akashic/akashic-sandbox</code></pre>
+<pre><code class="language-sh">npm install -g @akashic/akashic-sandbox
+</code></pre>
 <p>長々と様々なログが表示されたあと、以下のような表示が出れば完了です。</p>
 <p><img src="/img/shin-ichiba/install/akashic-sandbox-install.png" alt="Akashic Sandboxのインストール"></p>
 <p>もう一つ、以下のコマンドも実行してください。</p>
-<pre><code class="language-sh">npm install -g @akashic/akashic-cli</code></pre>
+<pre><code class="language-sh">npm install -g @akashic/akashic-cli
+</code></pre>
 <p>似たような表示が出れば、これにてインストール作業は完了です！</p>
 <div class="navi-center">
 <a href="./mod-game.html">前 (ニコ生ゲームを作ろう・改造編)</a>

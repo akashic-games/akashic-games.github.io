@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>更新情報 (〜2022/mm/dd)</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -165,8 +165,13 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>更新情報 (〜2022/mm/dd)</h1>
-<h2><a name="sandbox-config-warn"></a> sandbox.config.js で各種警告、表示設定、ウィンドウサイズを設定できるように</h2>
-<p>akashic-sandbox や akashic serve コマンドの設定ファイル <a href="/guide/sandbox-config.html">sandbox.config.js</a> で、次の内容を指定できるようになりました。</p>
+
+			<h2>
+				<a name="sandbox-config-warn" class="anchor" href="#sandbox-config-warn">
+					<span class="header-link">#</span>
+				</a>
+				 sandbox.config.js で各種警告、表示設定、ウィンドウサイズを設定できるように
+			</h2><p>akashic-sandbox や akashic serve コマンドの設定ファイル <a href="/guide/sandbox-config.html">sandbox.config.js</a> で、次の内容を指定できるようになりました。</p>
 <ul>
 <li>akashic serve の表示オプション (ウィンドウサイズ合わせてゲーム画面を拡大縮小するなど)</li>
 <li>akashic serve で子ウィンドウを開いた時のサイズ</li>
@@ -194,11 +199,22 @@
     width: 640,
     height: 360
   }
-};</code></pre>
-<h2><a name="scan-output-format"></a> akashic scan コマンドで出力される game.json のフォーマットを .editorconfig に準拠するように</h2>
-<p><code>akashic-cli@2.16.0</code> 以降において、akashic scan コマンドで出力される game.json のフォーマットを .editorconfig に準拠するように変更しました。</p>
-<h2><a name="misc-features"></a> その他の改善・拡張</h2>
-<ul>
+};
+</code></pre>
+
+			<h2>
+				<a name="scan-output-format" class="anchor" href="#scan-output-format">
+					<span class="header-link">#</span>
+				</a>
+				 akashic scan コマンドで出力される game.json のフォーマットを .editorconfig に準拠するように
+			</h2><p><code>akashic-cli@2.16.0</code> 以降において、akashic scan コマンドで出力される game.json のフォーマットを .editorconfig に準拠するように変更しました。</p>
+
+			<h2>
+				<a name="misc-features" class="anchor" href="#misc-features">
+					<span class="header-link">#</span>
+				</a>
+				 その他の改善・拡張
+			</h2><ul>
 <li>akashic-sandbox や serve で ES2015 以降の構文や機能を利用した場合の警告を廃止。</li>
 <li>akashic serve で子ウィンドウのデフォルトサイズを、ゲーム画面のサイズに応じて決定するように。</li>
 <li>sandbox.config.js に server.external プロパティを追加。<ul>
