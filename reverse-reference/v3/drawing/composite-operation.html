@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>エンティティの描画方法を変える (compositeOperation)</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -623,9 +623,11 @@ var red = new g.FilledRect({
   compositeOperation: &quot;lighter&quot; // 描画時の合成方法を指定
 });
 scene.append(green); // シーンに追加する
-scene.append(red); // シーンに追加する</code></pre>
+scene.append(red); // シーンに追加する
+</code></pre>
 <pre><code class="language-javascript">red.compositeOperation = &quot;lighter&quot;; // 既存のオブジェクトを変更
-red.modified(); // modified() で表示に反映</code></pre>
+red.modified(); // modified() で表示に反映
+</code></pre>
 <h2>利用例</h2>
 <p>次のコンテンツは、<code>g.E#compositeOperation</code> の各値を反映した内容を表示します。&quot;次へ&quot;, &quot;前へ&quot; のラベルを押下することで描画内容が変更されます。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvZHJhd2luZy9jb21wb3NpdGUtb3BlcmF0aW9uL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
@@ -687,7 +689,8 @@ function createRect(scene, width, height, x, y, color) {
   });
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/akashic-engine/v3/classes/E.html#compositeOperation">API リファレンス</a></li>

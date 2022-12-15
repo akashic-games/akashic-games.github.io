@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>複雑な条件の当たり判定を調べる</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -630,7 +630,8 @@ var box2 = {
   angle: 0
 };
 
-var isCollision = co.boxToBox(box1, box2); // box1 と box2 が衝突している場合は真を返す</code></pre>
+var isCollision = co.boxToBox(box1, box2); // box1 と box2 が衝突している場合は真を返す
+</code></pre>
 <h2>利用例</h2>
 <p>次のコンテンツは、青の矩形をドラッグ/スワイプし緑の矩形と衝突すると青の矩形の色が赤に変わります。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvbG9naWMvY29sbGlzaW9uL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
@@ -654,7 +655,8 @@ var segment = {
   endPosition: { x: 128, y: 8 }
 };
 
-var isCollision = co.segmentToBox(segment, box);</code></pre>
+var isCollision = co.segmentToBox(segment, box);
+</code></pre>
 <p>それぞれの衝突判定関数と形状の利用方法は、 <a href="/demo/?title=collision-js">collision-js のサンプル</a> を参照してください。</p>
 <h2>関連情報</h2>
 <ul>

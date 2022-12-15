@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>multi_admission モードのゲーム作成</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/asset.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/asset.css?06ad657f">
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -134,10 +134,16 @@
 <p>ランキングモードと異なり、モード <code>&quot;multi_admission&quot;</code> には特別な要件はありません。
 Akashic のマルチプレイコンテンツがそのまま動作するので、
 <a href="/tutorial/v3/multiplay/introduction.html">チュートリアルのマルチプレイゲーム作成の節</a> を参照してコンテンツを作成してください。</p>
-<h2><a name="debug"></a> 動作確認</h2>
-<p>動作確認は、Akashic Engine のコンテンツとして単に <code>akashic serve</code> コマンドで行うことができます。
+
+			<h2>
+				<a name="debug" class="anchor" href="#debug">
+					<span class="header-link">#</span>
+				</a>
+				 動作確認
+			</h2><p>動作確認は、Akashic Engine のコンテンツとして単に <code>akashic serve</code> コマンドで行うことができます。
 ただしこの時 <code>--target-service</code> オプションが利用できます。</p>
-<pre><code class="language-shell">$ akashic serve --target-service nicolive</code></pre>
+<pre><code class="language-shell">$ akashic serve --target-service nicolive
+</code></pre>
 <p><code>--target-service</code> (短縮形 <code>-s</code>) オプションは、 serve コマンドに特定のサービス上の動作をできるだけ再現させるものです。
 デフォルト値は <code>none</code> となります。詳細は <a href="/guide/akashic-cli.html#serve">akashic-cli 利用ガイドの serve</a> の文書を参照してください。</p>
 <p>値に <code>nicolive</code> が指定された場合、serve コマンドは次のように振る舞います。</p>
@@ -156,8 +162,13 @@ Akashic のマルチプレイコンテンツがそのまま動作するので、
 <p><a href="/tutorial/v3/multiplay/join.html">Join と Leave の節</a> でも記載のとおり、ニコニコ生放送では「放送者がただ一人 Join する」動作になっています。
 しかし <code>akashic serve</code> コマンド自身はそのことに関知しておらず、毎回「Join Me」ボタンを手で押す必要がありました。
 この不便を軽減するものとして <code>-s nicolive</code> オプションが利用できます。</p>
-<h2><a name="player-name"></a> プレイヤー名</h2>
-<p>Akashic Engine v3 向けに、各プレイヤーのニコニコアカウントの名前を取得する機能が提供されています。
+
+			<h2>
+				<a name="player-name" class="anchor" href="#player-name">
+					<span class="header-link">#</span>
+				</a>
+				 プレイヤー名
+			</h2><p>Akashic Engine v3 向けに、各プレイヤーのニコニコアカウントの名前を取得する機能が提供されています。
 詳細については <a href="/shin-ichiba/player-info.html">『ニコ生ゲームを作ろう』のページ</a> をご覧ください。</p>
 <div class="navi-center">
 <a href="./ranking.html">前 (ranking モードのゲーム作成)</a>

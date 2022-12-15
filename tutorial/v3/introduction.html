@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>akashic 導入</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -317,8 +317,13 @@
 				<h1>akashic 導入</h1>
 <p>前章では Akashic Engine を利用した簡単なゲームを作成しました。
 より本格的なゲームの開発や、作成したゲームを生放送でプレイする際には周辺ツールの導入が必要となります。</p>
-<h2><a name="develop-tools"></a> 開発に必要なもの</h2>
-<p>Akashic Engine のゲーム開発には基本的なプログラミングの知識が必要です。
+
+			<h2>
+				<a name="develop-tools" class="anchor" href="#develop-tools">
+					<span class="header-link">#</span>
+				</a>
+				 開発に必要なもの
+			</h2><p>Akashic Engine のゲーム開発には基本的なプログラミングの知識が必要です。
 Akashic Engine は JavaScript や TypeScript を利用してゲームのコードを書きます。このチュートリアルでは JavaScript を利用します。チュートリアルでは JavaScript の細かな機能や文法については解説していません。
 JavaScript に初めて触れる方や、知識に不安のある方は、適宜インターネット上の解説記事や入門書を参照してください。</p>
 <p>チュートリアルで説明している内容を試すには、コンピュータ (Windows, Mac, Linux など) とインターネット接続環境が必要です。
@@ -329,9 +334,19 @@ Akashic Engine を利用したゲーム開発にはプログラミング作業�
 <li>開発に必要なプログラムをインターネットからダウンロードしてインストールする。</li>
 </ul>
 <p>これらの操作は利用しているコンピュータの種類やバージョンによって異なる場合があります。インターネットで検索してもやり方が分からない場合は、詳しい人に相談してください。</p>
-<h2><a name="develop-environment"></a> 開発環境の構築</h2>
-<h3><a name="install-node"></a> Node.js のインストール</h3>
-<p>Akashic Engine のゲーム開発には Node.js が必要です。
+
+			<h2>
+				<a name="develop-environment" class="anchor" href="#develop-environment">
+					<span class="header-link">#</span>
+				</a>
+				 開発環境の構築
+			</h2>
+			<h3>
+				<a name="install-node" class="anchor" href="#install-node">
+					<span class="header-link">#</span>
+				</a>
+				 Node.js のインストール
+			</h3><p>Akashic Engine のゲーム開発には Node.js が必要です。
 Node.js は JavaScript のプログラムの実行と開発に必要なツールをまとめたソフトウェアです。
 Node.js には <code>node</code> コマンドと <code>npm</code> コマンドが付属します。
 <code>node</code> コマンドは JavaScript のプログラムを動かすコマンドです。
@@ -344,12 +359,19 @@ Node.js には最新の機能を利用できる最新版と、長期間利用可
 Akashic Engine はどちらのバージョンでも動作しますが、このチュートリアルは LTS 版を前提に説明を進めます。</p>
 <p>Node.js はコマンドプロンプト (Windows) やターミナル (Mac) などの端末エミュレータにコマンドを入力して操作します。コマンドを入力するウインドウのことを、このチュートリアルでは CUI ウインドウとよびます。インストールが正常に行われたかどうかを確認するために、
 CUI ウインドウに次のコマンドを入力してください。</p>
-<pre><code class="language-sh">node -v</code></pre>
+<pre><code class="language-sh">node -v
+</code></pre>
 <p>このコマンドは Node.js のバージョンを画面に出力します。正常にインストールされていれば次のようにバージョン番号が表示されます。</p>
-<pre><code class="language-sh">v12.16.2</code></pre>
+<pre><code class="language-sh">v12.16.2
+</code></pre>
 <p><code>v12.16.2</code> は執筆時点での LTS 版のバージョンです。新しいバージョンがリリースされるとこの数字は大きくなります。</p>
-<h3><a name="install-akashic-engine"></a> Akashic Engine のインストール</h3>
-<p>Akashic Engine のインストールには <code>npm</code> コマンドを利用します。
+
+			<h3>
+				<a name="install-akashic-engine" class="anchor" href="#install-akashic-engine">
+					<span class="header-link">#</span>
+				</a>
+				 Akashic Engine のインストール
+			</h3><p>Akashic Engine のインストールには <code>npm</code> コマンドを利用します。
 <code>npm</code> コマンドを利用すると <code>npm install -g &lt;パッケージ名&gt;</code> でツールやライブラリをインストールできます。
 Akashic Engine のゲーム開発には次の 2 つのパッケージが必要です。</p>
 <ul>
@@ -358,13 +380,20 @@ Akashic Engine のゲーム開発には次の 2 つのパッケージが必要�
 </ul>
 <p>登録ができたら次のコマンドで必要なツールをインストールします。</p>
 <pre><code class="language-sh">npm install -g @akashic/akashic-cli
-npm install -g @akashic/akashic-sandbox</code></pre>
+npm install -g @akashic/akashic-sandbox
+</code></pre>
 <p>インストールが完了すると、<code>akashic</code> コマンドと <code>akashic-sandbox</code> コマンドを利用できるようになります。以下のコマンドでそれぞれのコマンドのバージョンを表示することができます。エラーが表示されるバージョンが表示できれば、インストールが正常に行われています。</p>
 <pre><code class="language-sh">akashic -V
-akashic-sandbox -V</code></pre>
+akashic-sandbox -V
+</code></pre>
 <p>執筆時点では <code>akashic</code> のバージョンとして <code>1.14.67</code>、 <code>akashic-sandbox</code> のバージョンとして <code>0.16.20</code> が表示されます。</p>
-<h2><a name="create-empty-game"></a> 空のゲームの作成</h2>
-<p>Akashic Engine のゲームには設定ファイル (<code>game.json</code>) と、ゲームを起動するプログラムが必要です。
+
+			<h2>
+				<a name="create-empty-game" class="anchor" href="#create-empty-game">
+					<span class="header-link">#</span>
+				</a>
+				 空のゲームの作成
+			</h2><p>Akashic Engine のゲームには設定ファイル (<code>game.json</code>) と、ゲームを起動するプログラムが必要です。
 <code>game.json</code> はゲームの設定とゲームが利用するアセットを記述する JSON 形式のファイルです。アセットはプログラムのソースコードや画像、音声ファイルなどゲームの実行に必要なファイルのことです。</p>
 <p>以下は <code>game.json</code> の例です。
 (この内容の完全な詳細は <a href="https://akashic-games.github.io/guide/game-json.html">game.json の仕様</a> を参照してください。)</p>
@@ -383,7 +412,8 @@ akashic-sandbox -V</code></pre>
   &quot;environment&quot;: {
     &quot;sandbox-runtime&quot;: &quot;3&quot;
   }
-}</code></pre>
+}
+</code></pre>
 <p>ここで指定している <code>main.js</code> がゲームが最初に読み込むプログラムです。
 <code>assets.main</code> プロパティで、<code>main.js</code> がスクリプトアセットであること、
 <code>main</code> プロパティで最初に読み込むスクリプトであることを表しています。</p>
@@ -394,11 +424,14 @@ Akashic Engine のゲームには最低 1 つのシーンが必要です。次�
   g.game.pushScene(scene);
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <p>上のコードを <code>main.js</code> という名前で保存します。作成したゲームを動かすには、<code>game.json</code> と <code>main.js</code> を同じディレクトリに配置し、そのディレクトリで次のコマンドを実行します。</p>
-<pre><code class="language-sh">akashic-sandbox</code></pre>
+<pre><code class="language-sh">akashic-sandbox
+</code></pre>
 <p>実行すると画面に次のように表示されます。</p>
-<pre><code class="language-sh">please access to http://localhost:3000/game/ by web-browser</code></pre>
+<pre><code class="language-sh">please access to http://localhost:3000/game/ by web-browser
+</code></pre>
 <p>ウェブブラウザを起動して <code>http://localhost:3000/game/</code> を開くとゲームが実行されます。今のところシーンに何も配置していないので何も表示されません。</p>
 <p>以下は、<code>main.js</code> に赤い矩形を表示するコードを追加したものです。</p>
 <pre><code class="language-javascript">function main() {
@@ -415,7 +448,8 @@ module.exports = main;</code></pre>
   g.game.pushScene(scene);
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <p><code>main.js</code> をこの内容に書き換えて <code>http://localhost:3000/game/</code> を再読み込みすると赤い矩形が表示されます。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtaW50cm9kdWN0aW9uLTEvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
 
@@ -423,14 +457,22 @@ module.exports = main;</code></pre>
 <blockquote>
 <p><code>Ctrl-C</code> はキーボードの <code>Ctrl</code> キーを押しながら <code>C</code> キーを押すという意味です。</p>
 </blockquote>
-<h2><a name="use-akashic-init"></a> akashic init の利用</h2>
-<p><code>akashic init</code> を利用すると、ゲームに必要なファイルを作ることができます。空のディレクトリを作成してその中で次のコマンドを実行します。</p>
-<pre><code class="language-sh">akashic init -t javascript</code></pre>
+
+			<h2>
+				<a name="use-akashic-init" class="anchor" href="#use-akashic-init">
+					<span class="header-link">#</span>
+				</a>
+				 akashic init の利用
+			</h2><p><code>akashic init</code> を利用すると、ゲームに必要なファイルを作ることができます。空のディレクトリを作成してその中で次のコマンドを実行します。</p>
+<pre><code class="language-sh">akashic init -t javascript
+</code></pre>
 <p>コマンドを入力すると、ゲームの仕様をいくつか質問されます。最初は、</p>
-<pre><code class="language-sh">width (320)</code></pre>
+<pre><code class="language-sh">width (320)
+</code></pre>
 <p>と表示されます。ここで数字を入力して Enter キーを押すとゲームの幅 (width) を指定できます。何も入力せずに Enter を押すと幅はカッコ内に表示された大きさになります。ここではそのまま Enter を押します。</p>
 <p>続けてゲームの高さ (height) と FPS を指定できます。ここではどちらも初期値を使います。値の指定が終わると、</p>
-<pre><code class="language-sh">INFO: Done!</code></pre>
+<pre><code class="language-sh">INFO: Done!
+</code></pre>
 <p>と表示され、いくつかのファイルやフォルダが作られます。</p>
 <blockquote>
 <p><code>akashic</code> のバージョンが古い場合、Akashic Engine v2 系 (旧版) 向けのゲームが生成されてしまうので注意してください。
@@ -450,7 +492,8 @@ module.exports = main;</code></pre>
 <li><code>typescript-shin-ichiba-ranking</code></li>
 </ul>
 <p>例えば、TypeScript でゲームを作る場合は、以下のコマンドを入力します。</p>
-<pre><code class="language-sh">akashic init -t typescript</code></pre>
+<pre><code class="language-sh">akashic init -t typescript
+</code></pre>
 <blockquote>
 <p>Windows 10 の PowerShell 上で <code>akashic init</code> などを実行すると、権限エラーが発生して実行に失敗することがあります。
 これは、PowerShell の実行ポリシーがデフォルトで Restricted(スクリプトの実行が許可されていない状態)になっているためです。

@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>シーン内で動的にアセットを読み込む</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -631,7 +631,8 @@
       var textData = scene.asset.getTextById(&quot;textData&quot;);
     }
   }
-);</code></pre>
+);
+</code></pre>
 <h2>利用例</h2>
 <p>次のコンテンツは、一度だけ画面をクリックした場所に画像を動的に読み込み表示します。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvYXNzZXQvcmVxdWVzdC1hc3NldC9nYW1lLmpzb24ifQ==" width="600" height="400"></iframe>
@@ -644,7 +645,8 @@
 <pre><code class="language-javascript">scene.onAssetLoadFailure.add(function(failureInfo) {
   // エラー時の処理
   failureInfo.cancelRetry = true; // この値を真に変更することで、読み込み再試行をキャンセルしゲーム続行を断念させます
-});</code></pre>
+});
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/akashic-engine/v3/classes/Scene.html#requestAssets">API リファレンス</a></li>

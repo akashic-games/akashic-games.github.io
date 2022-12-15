@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>bmpfont-generator の仕様</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/asset.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/asset.css?06ad657f">
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -133,12 +133,18 @@
 <p><strong>bmpfont-generator</strong> は、TrueType フォント (.ttf) ファイルから指定された文字の画像を生成するツールです。
 また Akashic Engine のビットマップフォントとして使う場合に必要になる、グリフ情報のデータを JSON 形式で同時に生成できます。</p>
 <p>ビットマップフォントとその利用法については、チュートリアルの <a href="/tutorial/v3/bitmap-font.html">ビットマップフォントを使う</a> を参照してください。</p>
-<h2><a name="install"></a> インストール方法</h2>
-<p>bmpfont-generator は Node.js 環境で動作します。各プラットフォームで、適当な方法で Node.js をインストールしてください。
+
+			<h2>
+				<a name="install" class="anchor" href="#install">
+					<span class="header-link">#</span>
+				</a>
+				 インストール方法
+			</h2><p>bmpfont-generator は Node.js 環境で動作します。各プラットフォームで、適当な方法で Node.js をインストールしてください。
 この利用ガイドでは、 LTS 版の Node.js 環境を前提に説明を進めます。 執筆時点での LTS 版のバージョンは 10.16.0 です。</p>
 <h3>インストール</h3>
 <p>bmpfont-generator は以下のコマンドでインストールすることができます。</p>
-<pre><code class="language-sh">npm install -g @akashic/bmpfont-generator</code></pre>
+<pre><code class="language-sh">npm install -g @akashic/bmpfont-generator
+</code></pre>
 <p>インストール後、コマンドラインで <code>bmpfont-generator</code> コマンドが利用できるようになります。</p>
 <blockquote>
 <p>古いバージョンの bmpfont-generator では、事前に Cairo をインストールしておく必要がありました。
@@ -147,9 +153,15 @@
 それら以外の環境では引き続きインストールが必要な可能性があります。
 詳細は <a href="https://github.com/Automattic/node-canvas/blob/master/Readme.md#compiling">node-canvas の README</a> (英語) を参照してください。</p>
 </blockquote>
-<h2><a name="usage"></a> 使い方</h2>
-<p>bmpfont-generator の典型的な実行方法は次のようなものです。</p>
-<pre><code class="language-sh">bmpfont-generator --chars &#39;0123456789&#39; --height 14 --fill &#39;#ff0000&#39; sourceFont.ttf bitmap.png</code></pre>
+
+			<h2>
+				<a name="usage" class="anchor" href="#usage">
+					<span class="header-link">#</span>
+				</a>
+				 使い方
+			</h2><p>bmpfont-generator の典型的な実行方法は次のようなものです。</p>
+<pre><code class="language-sh">bmpfont-generator --chars &#39;0123456789&#39; --height 14 --fill &#39;#ff0000&#39; sourceFont.ttf bitmap.png
+</code></pre>
 <p>このコマンドを実行すると、</p>
 <ul>
 <li>フォント sourceFont.ttf の、</li>
@@ -160,7 +172,8 @@
 <p>が bitmap.png として出力されます。
 また同じディレクトリに、グリフ情報として bitmap_glyphs.json ファイルが出力されます。</p>
 <p>bmpfont-generator は以下のオプションを持ちます。</p>
-<pre><code class="language-sh">bmpfont-generator [&lt;options&gt;]</code></pre>
+<pre><code class="language-sh">bmpfont-generator [&lt;options&gt;]
+</code></pre>
 <p><code>&lt;options&gt;</code> に指定可能なオプションは次のとおりです。</p>
 <table>
 <thead>

@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>音を鳴らす</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -317,14 +317,21 @@
 				<h1>音を鳴らす</h1>
 <p>このページのサンプルコードを<a class="asset--material--download" href="/zip/tutorial/v3/sample-audio.zip">ダウンロード</a></p>
 
-<h2><a name="se-gbgm"></a> 効果音と BGM</h2>
-<p>Akashic Engine のゲームで音を鳴らす場合は、一つの効果音や音楽につき
+
+			<h2>
+				<a name="se-gbgm" class="anchor" href="#se-gbgm">
+					<span class="header-link">#</span>
+				</a>
+				 効果音と BGM
+			</h2><p>Akashic Engine のゲームで音を鳴らす場合は、一つの効果音や音楽につき
 Ogg Vorbis 形式 (.ogg) と AAC 形式 (.aac) の二種類のファイルを用意する必要があります。これは、Web ページで音を再生する際に、利用可能な形式がブラウザごとに異なっているためです。</p>
 <p>ファイルが用意できたら <code>se1.ogg</code> と <code>se1.aac</code> を <code>audio</code> ディレクトリに配置して、
 <code>akashic scan</code> コマンドでアセットとして追加します。</p>
-<pre><code class="language-sh">akashic scan asset</code></pre>
+<pre><code class="language-sh">akashic scan asset
+</code></pre>
 <p>音声アセットはアセットの <code>play()</code> メソッドを呼び出して再生します。例えば ID が <code>&quot;se1&quot;</code> の場合は、以下のコードで再生できます。</p>
-<pre><code class="language-javascript">scene.asset.getAudioById(&quot;se1&quot;).play();</code></pre>
+<pre><code class="language-javascript">scene.asset.getAudioById(&quot;se1&quot;).play();
+</code></pre>
 <p>シーンで効果音を利用するには、他のアセットと同じようにシーンオブジェクトのパラメータオブジェクトにアセットの ID を列挙します。以下は画像のタップまたはクリックで効果音を再生する例です。</p>
 <pre><code class="language-javascript">function main() {
   const scene = new g.Scene({
@@ -342,7 +349,8 @@ Ogg Vorbis 形式 (.ogg) と AAC 形式 (.aac) の二種類のファイルを用
   g.game.pushScene(scene);
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <p>Akashic Engine では音声を自動的にループ再生させることで BGM を実現します。
 BGM をループ再生させるには、<code>game.json</code> を編集して該当アセットの
 <code>systemId</code> プロパティの値を <code>music</code> に変更します。</p>
@@ -353,14 +361,16 @@ BGM をループ再生させるには、<code>game.json</code> を編集して�
   &quot;path&quot;: &quot;audio/bgm&quot;,
   &quot;systemId&quot;: &quot;sound&quot;,
   &quot;duration&quot;: 8000
-}</code></pre>
+}
+</code></pre>
 <p>この部分を編集して以下のように <code>&quot;systemId&quot;: &quot;music&quot;</code> を指定します。</p>
 <pre><code class="language-json">&quot;bgm&quot;: {
   &quot;type&quot;: &quot;audio&quot;,
   &quot;path&quot;: &quot;audio/bgm&quot;,
   &quot;systemId&quot;: &quot;music&quot;,
   &quot;duration&quot;: 8000
-}</code></pre>
+}
+</code></pre>
 <p>BGM も <code>play()</code> メソッドで再生を開始します。
 BGM は自動的にループ再生されるので、<code>play()</code> メソッドはシーンロード時に一度だけ呼び出します。</p>
 <p>以下のプログラムは上で出てきた効果音再生プログラムに BGM を追加したものです。</p>
@@ -386,7 +396,8 @@ BGM は自動的にループ再生されるので、<code>play()</code> メソ�
   g.game.pushScene(scene);
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <div class="navi-center">
 <a href="./click.html">前 (クリックできるようにする)</a>
  | <a href="./">目次</a>

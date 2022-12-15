@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ゲームにアセットを追加する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -615,7 +615,8 @@
 				<h1>ゲームにアセットを追加する</h1>
 <p>ゲームにアセットを追加するには、指定ディレクトリにファイルを追加後 <code>akashic scan asset</code> コマンドを実行します。</p>
 <h2>凡例</h2>
-<pre><code class="language-sh">akashic scan asset</code></pre>
+<pre><code class="language-sh">akashic scan asset
+</code></pre>
 <p><a href="./remove-asset">ゲームからアセットを削除する場合はこちらを参照してください。</a></p>
 <h2>利用例</h2>
 <p>次のコンテンツは、画像を表示します。</p>
@@ -663,14 +664,16 @@
 
 <p>画像ファイルの <code>player.png</code> を <code>image</code> ディレクトリに置いて <code>akashic scan asset</code> コマンドを実行すると、画面に以下のように表示されます。</p>
 <pre><code class="language-sh">INFO: Added (or updated) the declaration for player (image/player.png)
-INFO: Done!</code></pre>
+INFO: Done!
+</code></pre>
 <p><code>game.json</code> には以下の項目が <code>assets</code> プロパティに追加されます。</p>
 <pre><code class="language-json">&quot;player&quot;: {
   &quot;type&quot;: &quot;image&quot;,
   &quot;width&quot;: 63,
   &quot;height&quot;: 53,
   &quot;path&quot;: &quot;image/player.png&quot;
-}</code></pre>
+}
+</code></pre>
 <p><code>game.json</code> に登録されたアセット ID を利用し、シーン内でアセットを利用することができます。
 アセット ID は <code>game.json</code> に登録されている名前です。 これはアセットを <code>akashic scan</code> で登録した場合は、ファイル名から拡張子をのぞいた文字列になっています。</p>
 <pre><code class="language-javascript">function main() {
@@ -687,7 +690,8 @@ INFO: Done!</code></pre>
     scene.append(sprite);
   });
   g.game.pushScene(scene);
-}</code></pre>
+}
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/tutorial/v3/basic.html#image">画像を扱う</a></li>

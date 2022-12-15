@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>スキップ時間を短縮する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -315,8 +315,13 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>スキップ時間を短縮する</h1>
-<h2><a name="skip"></a> スキップ</h2>
-<p>Akashic のマルチプレイでは、ゲームの途中で画面を開くと、最初にビデオ映像を早送りするような画面が表示されます。
+
+			<h2>
+				<a name="skip" class="anchor" href="#skip">
+					<span class="header-link">#</span>
+				</a>
+				 スキップ
+			</h2><p>Akashic のマルチプレイでは、ゲームの途中で画面を開くと、最初にビデオ映像を早送りするような画面が表示されます。
 <a href="./introduction.html#architecture-intro">マルチプレイの基礎</a> でも触れたとおり、これはゲームの最新状態に追いつくために、
 それまでの操作 (イベント) を高速で消化することによるものです。
 この早送り動作を <strong>スキップ</strong> と呼びます。</p>
@@ -331,8 +336,13 @@
 また過去のプレイのリプレイの再生中に、シークバーを操作して大きく時間をジャンプするような場合にも、
 スキップが発生することがあります。</p>
 </blockquote>
-<h2><a name="snapshot"></a> スナップショット</h2>
-<p>Akashic Engine において、ゲームの実行状態をシリアライズしたオブジェクトを <strong>スナップショット</strong> と呼びます。
+
+			<h2>
+				<a name="snapshot" class="anchor" href="#snapshot">
+					<span class="header-link">#</span>
+				</a>
+				 スナップショット
+			</h2><p>Akashic Engine において、ゲームの実行状態をシリアライズしたオブジェクトを <strong>スナップショット</strong> と呼びます。
 ゲーム開発者は、ゲームのスナップショットを作成し、エンジンに保存を要求することができます。</p>
 <p>エンジンは、ゲームプレイのある時点 (最新フレームなど) に追いつく必要がある場合、
 まずその時点より前のもっとも近いスナップショットを探します。
@@ -349,22 +359,33 @@
 <li>適時スナップショットを作成・保存する処理</li>
 <li>ゲームがスナップショットつきで起動された時、スナップショットから状態を復元する処理</li>
 </ul>
-<h3><a name="save"></a> スナップショットの保存</h3>
-<p>スナップショットの保存は、 <code>g.game.requestSaveSnapshot()</code> によって要求することができます。</p>
+
+			<h3>
+				<a name="save" class="anchor" href="#save">
+					<span class="header-link">#</span>
+				</a>
+				 スナップショットの保存
+			</h3><p>スナップショットの保存は、 <code>g.game.requestSaveSnapshot()</code> によって要求することができます。</p>
 <p>詳細な仕様は後述しますが、このメソッドは主に以下の形で利用します。</p>
 <pre><code class="language-typescript">g.game.requestSaveSnapshot(() =&gt; {
   const snapshot = {
     // ゲームの実行状態を表すデータ
   };
   return { snapshot: snapshot };
-});</code></pre>
+});
+</code></pre>
 <p>すなわち <code>requestSaveSnapshot()</code> は引数として関数を取ります。
 この関数は、 <code>requestSaveSnapshot()</code> を呼び出したフレームの終了時に引数なしで呼び出されます。</p>
 <p>関数の戻り値として、 <code>snapshot</code> プロパティを持つオブジェクトを返してください。
 このプロパティの値がスナップショットとして保存されます。
 このプロパティの値は JSON として妥当な値でなければなりません。</p>
-<h3><a name="restore"></a> スナップショットからの復元</h3>
-<p>一度でもスナップショットを保存する場合、 <strong>スナップショットからの復元</strong> 処理を実装する必要があります。</p>
+
+			<h3>
+				<a name="restore" class="anchor" href="#restore">
+					<span class="header-link">#</span>
+				</a>
+				 スナップショットからの復元
+			</h3><p>一度でもスナップショットを保存する場合、 <strong>スナップショットからの復元</strong> 処理を実装する必要があります。</p>
 <p>スナップショットが利用される場合、まず現在のゲームの実行状態が破棄されます。
 その後通常のゲーム開始時と同じように、 main スクリプト (のエクスポートした関数) が呼び出されます。
 ただしこの時、第一引数の <code>snapshot</code> プロパティにスナップショットが渡されます。
@@ -401,7 +422,8 @@ function main() {
   g.game.pushScene(scene);
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <p>このゲームは、次のように変更することでスナップショットに対応させることができます。</p>
 <pre><code class="language-js">// script/main.js (mainスクリプト)
 
@@ -450,7 +472,8 @@ function main(param) {
   g.game.pushScene(scene);
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <p><code>scene.setInterval()</code> で 1 分おきにスナップショットを作成、保存するようになっています。
 このゲームの実行状態は画面中央の数字 (<code>g.game.vars.value</code> の値) だけなので、その値をスナップショットに含めています。
 また <code>main()</code> の引数 <code>param</code> を受け取り、 <code>param.snapshot</code> を参照してゲームの実行状態を復元しています。
@@ -461,8 +484,13 @@ module.exports = main;</code></pre>
 カメラの状態やプレイヤーの参加状態・スワイプ中ならその状態など、すべて何もかも保存・復元しなければなりません。
 これは技術的には可能ですが、動作確認を含めて簡単に実装できるものではありません。</p>
 <p>そこで一般には、 <strong>できるだけ内部状態を持たないタイミングを作り、そこでのみスナップショットを保存する</strong> ことを推奨します。</p>
-<h2><a name="save-timing"></a> 保存のタイミング</h2>
-<p>スナップショットの保存は、「内部状態がほとんどない」フレームで行うことを推奨します。</p>
+
+			<h2>
+				<a name="save-timing" class="anchor" href="#save-timing">
+					<span class="header-link">#</span>
+				</a>
+				 保存のタイミング
+			</h2><p>スナップショットの保存は、「内部状態がほとんどない」フレームで行うことを推奨します。</p>
 <p>「内部状態がほとんどない」とは、次の全てを満たすような状況です。</p>
 <ul>
 <li>(非ローカルの) エンティティがない</li>
@@ -479,8 +507,13 @@ module.exports = main;</code></pre>
 保存する値は空オブジェクト (<code>{}</code>) だけにすることすらできます。
 スナップショットからの復元処理は、単に「メニュー画面」を表示するだけの処理になるためです。
 もちろん「ハイスコア」「戦績」など、対戦を通して持ち越す情報がある場合は、その値をスナップショットに含めてください。</p>
-<h2><a name="pitfall-just-in-time"></a> 注意点: スナップショットを事前に生成しない</h2>
-<p><strong>スナップショットは、 <code>requestSaveSnapshot()</code> に与えた関数 (コールバック) の中で生成してください</strong> 。</p>
+
+			<h2>
+				<a name="pitfall-just-in-time" class="anchor" href="#pitfall-just-in-time">
+					<span class="header-link">#</span>
+				</a>
+				 注意点: スナップショットを事前に生成しない
+			</h2><p><strong>スナップショットは、 <code>requestSaveSnapshot()</code> に与えた関数 (コールバック) の中で生成してください</strong> 。</p>
 <p>以下はこれに反するコード例です。</p>
 <pre><code class="language-typescript">// NG: スナップショットを事前に生成している
 const snapshot = {
@@ -488,7 +521,8 @@ const snapshot = {
 };
 g.game.requestSaveSnapshot(() =&gt; {
   return { snapshot: snapshot };
-});</code></pre>
+});
+</code></pre>
 <p>次のように、 <code>requestSaveSnapshot()</code> に与えた関数の中で生成してください。</p>
 <pre><code class="language-typescript">// OK: スナップショットを保存直前に生成している
 g.game.requestSaveSnapshot(() =&gt; {
@@ -496,7 +530,8 @@ g.game.requestSaveSnapshot(() =&gt; {
     // ...
   };
   return { snapshot: snapshot };
-});</code></pre>
+});
+</code></pre>
 <p>これは Akashic Engine のゲームがフレーム単位で実行されることに起因しています。
 スナップショットから復元した場合、処理は「スナップショットを保存したフレーム」の次のフレームから始まります。
 そのためフレームの &quot;途中&quot; でスナップショットを保存することはできません。
@@ -520,7 +555,8 @@ scne.onMessage.add(ev =&gt; {
       return { snapshot: snapshot };
     });
   }
-});</code></pre>
+});
+</code></pre>
 <p>このコードは画面がクリックされるたびに <code>score</code> の値を増やしていき、
 <code>data.type</code> が <code>&quot;SNAPSHOT&quot;</code> である <code>g.MessageEvent</code> を受信するたびにスナップショットを保存します。</p>
 <p>このコードが、たまたま同一フレームで <code>g.MessaveEvent</code> と <code>g.PointDownEvent</code> を受信したとします。
@@ -536,15 +572,21 @@ scne.onMessage.add(ev =&gt; {
       return { snapshot: snapshot };
     });
   }
-});</code></pre>
+});
+</code></pre>
 <p>言い換えれば、<strong>スナップショットに保存する実行状態は、<code>requestSaveSnapshot()</code>
 を呼び出す時点のものではなく、コールバックが呼び出された時点のものでなければなりません。</strong></p>
 <p>もし <code>requestSaveSnapshot()</code> のコールバックが呼ばれた時点 (フレームの終了時) で、
 スナップショットが生成できない・生成しにくい状態 (アニメーション中のエンティティがあるなど) になっていた場合は、 <code>null</code> を返してください。
 この場合エンジンは何も保存しません。
 (もちろんコンテンツはこのような状況を作らないことができるはずです。)</p>
-<h2><a name="save-restore-wrap-up"></a> 保存と復元まとめ</h2>
-<p>以上をまとめると、スナップショットの保存と復元では次の点が重要です。</p>
+
+			<h2>
+				<a name="save-restore-wrap-up" class="anchor" href="#save-restore-wrap-up">
+					<span class="header-link">#</span>
+				</a>
+				 保存と復元まとめ
+			</h2><p>以上をまとめると、スナップショットの保存と復元では次の点が重要です。</p>
 <ul>
 <li><strong>保存</strong><ul>
 <li><code>g.game.requestSaveSnapshot()</code> で保存する</li>
@@ -559,15 +601,25 @@ scne.onMessage.add(ev =&gt; {
 </ul>
 </li>
 </ul>
-<h2><a name="snapshot-debug"></a> スナップショットの動作確認</h2>
-<p>スナップショットは、特定のフレームに「追いつく」必要がない限り利用されないので、動作確認のしにくい機能です。
+
+			<h2>
+				<a name="snapshot-debug" class="anchor" href="#snapshot-debug">
+					<span class="header-link">#</span>
+				</a>
+				 スナップショットの動作確認
+			</h2><p>スナップショットは、特定のフレームに「追いつく」必要がない限り利用されないので、動作確認のしにくい機能です。
 akashic-cli@2.13.0 以降の akashic serve では、スナップショットの動作確認のためにいくつかの機能を提供しています。</p>
 <ul>
 <li>Playback ツール</li>
 <li>クエリパラメータ</li>
 </ul>
-<h3><a name="playback-devtool"></a> Playback ツール</h3>
-<p>Playback ツールは、 serve の画面右上のハンバーガーボタン (三本線のアイコン) をクリックした時に表示される開発者ツール (devtool) の一つです。</p>
+
+			<h3>
+				<a name="playback-devtool" class="anchor" href="#playback-devtool">
+					<span class="header-link">#</span>
+				</a>
+				 Playback ツール
+			</h3><p>Playback ツールは、 serve の画面右上のハンバーガーボタン (三本線のアイコン) をクリックした時に表示される開発者ツール (devtool) の一つです。</p>
 <p><img src="/img/tutorial/cli-serve-playback-tool.png" alt="akashic-cli@2.13.0 の akashic serve の Playback ツールのスクリーンショット"></p>
 <p>主に次のような機能があります。</p>
 <ul>
@@ -588,10 +640,16 @@ serve の画面上部 (ツールバー) のシークバーと連動していま�
 たとえば他のウィンドウは止まりません。
 これはスナップショットの動作確認の上では不便なことが多いので、その場合には <code>Pause active</code> ボタンを利用してください。</p>
 <p>その他細かな機能は実験中のものです。将来のバージョンで変化することがあります。</p>
-<h3><a name="debug-query-param"></a> クエリパラメータ</h3>
-<p>保存したスナップショットのフレームが (Playback ツールなどで) わかっている場合、クエリパラメータを指定することでページを開いた直後の実行状態を制御できます。</p>
+
+			<h3>
+				<a name="debug-query-param" class="anchor" href="#debug-query-param">
+					<span class="header-link">#</span>
+				</a>
+				 クエリパラメータ
+			</h3><p>保存したスナップショットのフレームが (Playback ツールなどで) わかっている場合、クエリパラメータを指定することでページを開いた直後の実行状態を制御できます。</p>
 <p>例えばポート 3300 で akashic serve を実行中、次の URL にアクセスすると、</p>
-<pre><code class="language-http">http://localhost:3300/public/?mode=replay&amp;replayResetAge=1500&amp;replayTargetTime=180000</code></pre>
+<pre><code class="language-http">http://localhost:3300/public/?mode=replay&amp;replayResetAge=1500&amp;replayTargetTime=180000
+</code></pre>
 <p>以下の状態でウィンドウを開くことができます。</p>
 <ul>
 <li>akashic serve の現在のプレイを、リプレイモード (<code>mode=replay</code>) で開始し、</li>
@@ -642,9 +700,15 @@ serve の画面上部 (ツールバー) のシークバーと連動していま�
 もしそうでなければ、スナップショットの保存・復元処理に問題があるので、修正が必要です。
 スナップショットの扱いに問題があると、特にプレイヤー間の実行状態がずれてしまい、マルチプレイが破綻します。</p>
 </blockquote>
-<h2><a name="request-save-snapshot"></a> 補足 1: g.game.requestSaveSnapshot() の仕様</h2>
-<p>スナップショット保存を要求するメソッド <code>g.game.requestSaveSnapshot()</code> は、次のシグネチャを持ちます。</p>
-<pre><code class="language-typescript">g.game.requestSaveSnapshot(fun: () =&gt; g.SnapshotSaveRequest | null, owner?: any): void</code></pre>
+
+			<h2>
+				<a name="request-save-snapshot" class="anchor" href="#request-save-snapshot">
+					<span class="header-link">#</span>
+				</a>
+				 補足 1: g.game.requestSaveSnapshot() の仕様
+			</h2><p>スナップショット保存を要求するメソッド <code>g.game.requestSaveSnapshot()</code> は、次のシグネチャを持ちます。</p>
+<pre><code class="language-typescript">g.game.requestSaveSnapshot(fun: () =&gt; g.SnapshotSaveRequest | null, owner?: any): void
+</code></pre>
 <p>引数 <code>fun</code> は関数でなければなりません。
 <code>fun()</code> は <code>requestSaveSnapshot()</code> を呼び出したフレームの終了時に、引数なしで呼び出されます。
 引数 <code>owner</code> は任意の値で、 <code>fun()</code> の呼び出し時に <code>this</code> として与えられます。</p>
@@ -687,8 +751,13 @@ serve の画面上部 (ツールバー) のシークバーと連動していま�
 高すぎる頻度の保存や、大きすぎるスナップショットまたはその他の理由で、保存要求が無視されることがあります。
 具体的な制限はサービス依存ですが、保存頻度に関しては、現在のところ目安として「1 分以上の間隔をあけて保存する」を推奨します。
 スナップショットが一部または全部保存されていなかったとしても、スキップ時間が延びる以外の影響はありませんし、あってはいけません。</p>
-<h2><a name="nontrivial-snapshot"></a> 補足 2: &quot;合間&quot; でないタイミングでのスナップショット</h2>
-<p>前述のとおり、スナップショットはできる限り内部状態がないタイミングでの保存を推奨します。</p>
+
+			<h2>
+				<a name="nontrivial-snapshot" class="anchor" href="#nontrivial-snapshot">
+					<span class="header-link">#</span>
+				</a>
+				 補足 2: &quot;合間&quot; でないタイミングでのスナップショット
+			</h2><p>前述のとおり、スナップショットはできる限り内部状態がないタイミングでの保存を推奨します。</p>
 <blockquote>
 <p>この推奨に従う限り、このページのここから先を読む必要はありません。</p>
 </blockquote>
@@ -712,8 +781,13 @@ serve の画面上部 (ツールバー) のシークバーと連動していま�
 <li>プレイヤーの Join 状態</li>
 </ul>
 <p>Akashic Engine のいくつかのクラスは、ゲーム開発者向けにスナップショット作成・復元を補助する API を提供しています。</p>
-<h3><a name="nontrivial-snapshot-entity"></a> エンティティとローカルエンティティ</h3>
-<p>エンティティは、ID を含めて保存・復元される必要があります。</p>
+
+			<h3>
+				<a name="nontrivial-snapshot-entity" class="anchor" href="#nontrivial-snapshot-entity">
+					<span class="header-link">#</span>
+				</a>
+				 エンティティとローカルエンティティ
+			</h3><p>エンティティは、ID を含めて保存・復元される必要があります。</p>
 <blockquote>
 <p>エンティティ ID は、通常エンジンによって暗黙に設定される値で、
 ポイントダウンイベントなどの対象エンティティの識別に使われています。
@@ -736,8 +810,13 @@ serve の画面上部 (ツールバー) のシークバーと連動していま�
 ここまでスナップショットはゲームの実行状態を「完全に復元する必要がある」と書いていますが、
 この点は例外であることに気をつけてください。</p>
 <p>スナップショットはローカルエンティティの状態を保存・復元できません。これは Akashic の制限です。</p>
-<h3><a name="nontrivial-snapshot-camera"></a> カメラ</h3>
-<p>利用している場合、カメラ (<code>g.Camera</code>) も復元が必要です。</p>
+
+			<h3>
+				<a name="nontrivial-snapshot-camera" class="anchor" href="#nontrivial-snapshot-camera">
+					<span class="header-link">#</span>
+				</a>
+				 カメラ
+			</h3><p>利用している場合、カメラ (<code>g.Camera</code>) も復元が必要です。</p>
 <p>これには <code>g.Camera#serialize()</code> を利用することができます。 <code>serialize()</code> の戻り値をスナップショットに含めておき、
 適切なクラス (現在は <code>g.Camera2D</code> のみです) の static メソッド <code>deserialize()</code> に渡すことでカメラを復元することができます。</p>
 <p><code>g.Game#focusingCamera</code> の値も、保存するならば <code>id</code> で保持される必要があります。
@@ -745,30 +824,55 @@ serve の画面上部 (ツールバー) のシークバーと連動していま�
 その場合はローカルエンティティと同様、<code>g.game.focusingCamera</code> そのものの <code>id</code> を直接スナップショットに含めるべきではありません。</p>
 <p>後述の「プレイヤーの状態」のデータとして各プレイヤーのカメラ ID も保時しておき、
 復元時はプレイヤーに応じて <code>focusingCamera</code> を設定することになるでしょう。</p>
-<h3><a name="nontrivial-snapshot-scene"></a> シーン</h3>
-<p>シーン <code>g.Scene</code> の状態も、エンティティと同様に保存・復元される必要があります。
+
+			<h3>
+				<a name="nontrivial-snapshot-scene" class="anchor" href="#nontrivial-snapshot-scene">
+					<span class="header-link">#</span>
+				</a>
+				 シーン
+			</h3><p>シーン <code>g.Scene</code> の状態も、エンティティと同様に保存・復元される必要があります。
 スナップショットからの復元時には、<code>g.Scene</code> (あるいはゲーム開発者の定義した派生クラス) を
 <code>new</code> した上で、元と同じハンドラを設定することになります。</p>
 <p>単純なケースでは、シーンの初期化は全て <code>g.Scene#onLoad</code> の処理の中に記述されているでしょう。
 スナップショットからの復元時であっても、シーンは新規生成時と同じパスを通ることになります。
 したがって他にシーンに持たせているゲーム内データがなければ、通常時と同じようにシーンを生成し初期化処理を記述すればよいはずです。</p>
-<h3><a name="nontrivial-snapshot-randoms"></a> 乱数生成器</h3>
-<p>エンジンのデフォルト乱数生成器 <code>g.Game#random</code> は、エンジンによって自動的に状態が保存・復元されます。
+
+			<h3>
+				<a name="nontrivial-snapshot-randoms" class="anchor" href="#nontrivial-snapshot-randoms">
+					<span class="header-link">#</span>
+				</a>
+				 乱数生成器
+			</h3><p>エンジンのデフォルト乱数生成器 <code>g.Game#random</code> は、エンジンによって自動的に状態が保存・復元されます。
 それ以外の乱数生成器をゲーム開発者が作成している場合は、自力で保存・復元を行ってください。</p>
 <p>これを実現するため、乱数生成器 <code>g.RandomGenerator</code> は <code>serialize()</code> を提供しています。
 この関数の戻り値をスナップショットに含めておき、
 元のクラス(<code>g.XorshiftRandomGenerator</code> など)の static メソッド <code>deserialize()</code> に渡すことで乱数生成器を復元できます。</p>
-<h3><a name="nontrivial-snapshot-join-state"></a> プレイヤーの Join 状態</h3>
-<p>スナップショットからの復元時、その時点までに通知されていた <code>g.JoinEvent</code> や <code>g.LeaveEvent</code> が通知されなおすことはありません。
+
+			<h3>
+				<a name="nontrivial-snapshot-join-state" class="anchor" href="#nontrivial-snapshot-join-state">
+					<span class="header-link">#</span>
+				</a>
+				 プレイヤーの Join 状態
+			</h3><p>スナップショットからの復元時、その時点までに通知されていた <code>g.JoinEvent</code> や <code>g.LeaveEvent</code> が通知されなおすことはありません。
 スナップショットには通知された結果として至った実行状態を直接保存し、またその状態を復元してください。</p>
 <p><code>g.Game#onJoin</code>, <code>onLeave</code> を利用して Join したプレイヤーの情報を <code>g.Game#vars</code> に保持しているのであれば、
 <code>vars</code> の内容をスナップショットに含めることでプレイヤーの参加状態も保存されることになります。</p>
-<h3><a name="nontrivial-snapshot-game-vars"></a> g.Game#vars</h3>
-<p>汎用のゲーム内データ保持領域として、エンジンは <code>g.Game#vars: any</code> を提供しています。
+
+			<h3>
+				<a name="nontrivial-snapshot-game-vars" class="anchor" href="#nontrivial-snapshot-game-vars">
+					<span class="header-link">#</span>
+				</a>
+				 g.Game#vars
+			</h3><p>汎用のゲーム内データ保持領域として、エンジンは <code>g.Game#vars: any</code> を提供しています。
 エンジンはこの値の内容に関知していないため、スナップショット保存上のサポートもありません。
 必要なデータはゲーム開発者がスナップショットに保持する必要があります。</p>
-<h3><a name="nontrivial-snapshot-game-external"></a> g.Game#external</h3>
-<p>サービス依存の外部インターフェース <code>g.Game#external</code> も同様に、スナップショット保存上のサポートはありません。
+
+			<h3>
+				<a name="nontrivial-snapshot-game-external" class="anchor" href="#nontrivial-snapshot-game-external">
+					<span class="header-link">#</span>
+				</a>
+				 g.Game#external
+			</h3><p>サービス依存の外部インターフェース <code>g.Game#external</code> も同様に、スナップショット保存上のサポートはありません。
 <code>external</code> の各実装ごとに提供される方法がある場合はそれを利用してください。</p>
 <div class="navi-center">
 <a href="./release-multiplay.html">前 (マルチプレイゲームを公開する)</a>

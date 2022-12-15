@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ナインパッチを利用する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -624,7 +624,8 @@ g.SurfaceUtil.drawNinePatch(destSurface, srcSurface, borderWidth);
 var sprite = new g.Sprite({
   scene: scene,
   src: destSurface
-});</code></pre>
+});
+</code></pre>
 <p>描画元として画像アセット (ImageAsset) を利用する場合は、上のように <code>g.SurfaceUtil.asSurface()</code> で <code>Surface</code> に変換する必要があります。</p>
 <h2>利用例</h2>
 <p>次のコンテンツは、通常の画像とナインパッチで拡大した画像を表示しています。</p>

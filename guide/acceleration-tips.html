@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>高速化 TIPS</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/asset.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/asset.css?06ad657f">
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -130,8 +130,13 @@
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
 			<h1>高速化 TIPS</h1>
-<h2><a name="これは" /> これは</h2>
-<p>ゲームの動作を高速化するための検討材料について記述したドキュメントです。
+
+			<h2>
+				<a name="これは" class="anchor" href="#これは">
+					<span class="header-link">#</span>
+				</a>
+				<a name="これは" /> これは
+			</h2><p>ゲームの動作を高速化するための検討材料について記述したドキュメントです。
 Akashic Engine で開発されたコンテンツに適用できる高速化手法について記述します。</p>
 <h2>目次</h2>
 <ul>
@@ -148,16 +153,31 @@ Akashic Engine で開発されたコンテンツに適用できる高速化手�
 </li>
 </ul>
 <h2>描画の高速化</h2>
-<h3><a name="pane"></a> g.Pane の利用箇所を減らす</h3>
-<p><code>g.Pane</code> は Akashic のゲームに様々な描画効果を与えることができますが、できるだけ利用箇所を減らすほうが動作は軽くなります。<code>g.Pane</code> は内部に描画キャッシュを持ち、描画内容が更新されるたびにキャッシュを更新するためです。
+
+			<h3>
+				<a name="pane" class="anchor" href="#pane">
+					<span class="header-link">#</span>
+				</a>
+				 g.Pane の利用箇所を減らす
+			</h3><p><code>g.Pane</code> は Akashic のゲームに様々な描画効果を与えることができますが、できるだけ利用箇所を減らすほうが動作は軽くなります。<code>g.Pane</code> は内部に描画キャッシュを持ち、描画内容が更新されるたびにキャッシュを更新するためです。
 この更新は、 <code>g.Pane</code> 自身には更新が無くとも、子要素が更新された場合にも必要です。頻繁に更新されるエンティティの親や祖先に <code>g.Pane</code> がある場合、頻繁に <code>g.Pane</code> のキャッシュ再描画が必要になります。
 もし、ゲーム内で利用している <code>g.Pane</code> が <code>g.E</code> でも賄える場合、 <code>g.E</code> へ変更することで、負荷を減らすことができます。
 特に、 <code>g.Pane</code> をグループ化の用途のみに使っていて、 <code>CompositeOperation</code> <code>shaerProgram</code> の指定がなく、子孫要素が <code>g.Pane</code> のサイズをはみ出ない場合は、 <code>g.E</code> での代替を検討するべきです。</p>
-<h3><a name="update"></a> エンティティの更新頻度</h3>
-<p><code>modified()</code> や <code>invalidate()</code> の呼ばれたエンティティはいずれも更新され、再描画されます。
+
+			<h3>
+				<a name="update" class="anchor" href="#update">
+					<span class="header-link">#</span>
+				</a>
+				 エンティティの更新頻度
+			</h3><p><code>modified()</code> や <code>invalidate()</code> の呼ばれたエンティティはいずれも更新され、再描画されます。
 再描画には一定のコストがかかるため、演出上妥協できる場合は、これらのメソッドを呼ぶ回数を減らすことで、負荷を低減することができます。</p>
-<h3><a name="camera"></a> カメラ外の描画</h3>
-<p>ゲーム内の空間が広く、ゲーム画面に収まりきらないほど大きい場合、画面外の要素は描画しても画面に反映されません。
+
+			<h3>
+				<a name="camera" class="anchor" href="#camera">
+					<span class="header-link">#</span>
+				</a>
+				 カメラ外の描画
+			</h3><p>ゲーム内の空間が広く、ゲーム画面に収まりきらないほど大きい場合、画面外の要素は描画しても画面に反映されません。
 画面外要素のドローコールを省略することで、描画にかかるゲーム全体の負荷を低減できる場合があります。
 エンティティが画面に入っているかは、<code>g.Camera</code> でゲーム画面の描画位置を制御している場合、そのカメラの位置・ゲーム画面のサイズ・エンティティの位置と座標から判定することができます。</p>
 <p>画面の内外を判定する処理は単純ではありませんが、たとえば次のような条件を満たす場合は、以下のコードで描画を省略させることができます。</p>
@@ -184,8 +204,14 @@ Akashic Engine で開発されたコンテンツに適用できる高速化手�
         }
     }
 }
-</code></pre><h3><a name="dynamicfont"></a> DynamicFont の生成</h3>
-<p>Akashic のゲームで文字列を表示する方法の一つとして、ダイナミックフォントがあります。
+</code></pre>
+
+			<h3>
+				<a name="dynamicfont" class="anchor" href="#dynamicfont">
+					<span class="header-link">#</span>
+				</a>
+				 DynamicFont の生成
+			</h3><p>Akashic のゲームで文字列を表示する方法の一つとして、ダイナミックフォントがあります。
 ダイナミックフォントはグリフのラスタライズ結果をキャッシュしており、一度描画したグリフを保持することで、二度目以降の描画を効率的に行います。
 一度目の描画はグリフをラスタライズする必要があるので、二度目以降の描画よりも描画のコストが高くなります。
 つまり、初めて描画するグリフを多く含む文字列を描画する場合、瞬間的に通常よりも多くの負荷がかかります。</p>
@@ -199,9 +225,16 @@ Akashic Engine で開発されたコンテンツに適用できる高速化手�
     hint: {
       presetChars: &quot;0123456789&quot;
     }
-});</code></pre><h2>その他</h2>
-<h3><a name="profiler"></a> 高負荷な処理を探す方法</h3>
-<p>Akashic ゲームに限らず、作成したゲームの挙動が明らかに重い場合、ゲーム処理のどこかに高い負荷があることが推測されます。これを解決するには、何が高負荷な処理なのか見つける必要があります。
+});
+</code></pre>
+<h2>その他</h2>
+
+			<h3>
+				<a name="profiler" class="anchor" href="#profiler">
+					<span class="header-link">#</span>
+				</a>
+				 高負荷な処理を探す方法
+			</h3><p>Akashic ゲームに限らず、作成したゲームの挙動が明らかに重い場合、ゲーム処理のどこかに高い負荷があることが推測されます。これを解決するには、何が高負荷な処理なのか見つける必要があります。
 主要なブラウザのプロファイラ機能は、このような調査をする際に有効なツールです。（ここでは例として Google Chrome を用います）</p>
 <p>プロファイラは F12 キーで開くことができます。プロファイラの詳しい使い方は下記 URL を参考にしてください。
 <a href="https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool?hl=ja">https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool?hl=ja</a></p>

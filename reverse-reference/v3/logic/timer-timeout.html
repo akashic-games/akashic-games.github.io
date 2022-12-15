@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>一定時間後に処理を実行する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -617,7 +617,8 @@
 <h2>凡例</h2>
 <pre><code class="language-javascript">scene.setTimeout(function() {
   // 3秒後に行う処理
-}, 3000);</code></pre>
+}, 3000);
+</code></pre>
 <p>一定時間ごとに繰り返し処理をする場合は <a href="./timer-interval.html"><code>scene.setInterval()</code> を利用してください。</a></p>
 <h2>利用例</h2>
 <p>次のコンテンツは、表示されている矩形が 5 秒後に非表示になります。</p>
@@ -630,7 +631,8 @@
   // 5秒後に行う処理
 }, 5000);
 
-scene.clearTimeout(timerId); // scene.setTimeoutで登録した処理を解除</code></pre>
+scene.clearTimeout(timerId); // scene.setTimeoutで登録した処理を解除
+</code></pre>
 <p><code>scene.setTimeout()</code> ではない、グローバルの <code>setTimeout()</code> や、同じくグローバルの <code>setInterval()</code> は使用しないよう注意してください。 これは、Aksahic Engine のコンテンツは、現実の時間とは違う速度で実行されることがあるためです (例えば、Akashic Engine のゲームは、ニコニコ生放送上で実行されることがあります。その場合、タイムシフトではシークバーに連動する形で動作します)。この時、 <code>scene.setTimeout()</code> は実行速度を踏まえて経過時間を処理するのですが、 グローバルの <code>setTimeout()</code> は指定した時間そのままの時間経過を待ってしまうため、処理の実行タイミングがずれてしまうことがあり得ます。</p>
 <h2>関連情報</h2>
 <ul>

@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>拡縮とアンカーポイント</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -317,8 +317,13 @@
 				<h1>拡縮とアンカーポイント</h1>
 <p>このページのサンプルコードを<a class="asset--material--download" href="/zip/tutorial/v3/sample-scale-anchor.zip">ダウンロード</a></p>
 
-<h2><a name="scale-and-rot"></a> 拡縮と回転</h2>
-<p>エンティティを拡大・縮小して描画するには、<code>scaleX</code> と <code>scaleY</code> プロパティを利用します。
+
+			<h2>
+				<a name="scale-and-rot" class="anchor" href="#scale-and-rot">
+					<span class="header-link">#</span>
+				</a>
+				 拡縮と回転
+			</h2><p>エンティティを拡大・縮小して描画するには、<code>scaleX</code> と <code>scaleY</code> プロパティを利用します。
 また回転させるには <code>angle</code> プロパティを利用します。
 (参考: <a href="./basic.html#entity">エンティティの節</a> の表)</p>
 <p>たとえば以下のように生成した <code>Sprite</code> は、
@@ -333,7 +338,8 @@
   angle: 45
 });
 
-scene.append(sprite);</code></pre>
+scene.append(sprite);
+</code></pre>
 <p>画像アセット &quot;player&quot; が次のような画像の場合、</p>
 <p><img src="/img/tutorial/player.png" alt="player.png"></p>
 <p>これは次のような表示になります。
@@ -350,12 +356,18 @@ sprite.scaleY = 1;
 sprite.angle = 0;
 
 // 変更を反映
-sprite.modified();</code></pre>
+sprite.modified();
+</code></pre>
 <p>次のような表示になります。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtc2NhbGUtYW5jaG9yLTIvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
 
-<h2><a name="anchor"></a> アンカーポイント</h2>
-<p>上の例でわかるように、エンティティの拡大・縮小・回転・移動は、デフォルトではエンティティの左上を基準に行われます。</p>
+
+			<h2>
+				<a name="anchor" class="anchor" href="#anchor">
+					<span class="header-link">#</span>
+				</a>
+				 アンカーポイント
+			</h2><p>上の例でわかるように、エンティティの拡大・縮小・回転・移動は、デフォルトではエンティティの左上を基準に行われます。</p>
 <p>エンティティにアンカーポイントを指定することで、この基準位置を設定できます。
 アンカーポイントは <code>anchorX</code>, <code>anchorY</code> プロパティで与えることができます。
 (akashic-engine&#0064;2.5.4 以降 (akashic-sandbox&#0064;0.15.11, akashic-cli&#0064;1.7.28 以降))</p>
@@ -371,7 +383,8 @@ sprite.modified();</code></pre>
   anchorY: 1.0 // 1.0 でエンティティの下端
 });
 
-scene.append(sprite); // シーン scene があるものとします</code></pre>
+scene.append(sprite); // シーン scene があるものとします
+</code></pre>
 <p><code>anchorX</code>, <code>anchorY</code> は <code>0.0</code> がエンティティの左端・上端を、 <code>1.0</code> がエンティティの右端・下端を表します。
 この例ではどちらも <code>1.0</code> を与えているので、この <code>Sprite</code> は右下端を基準に配置され、次のような表示になります。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtc2NhbGUtYW5jaG9yLTMvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
@@ -388,7 +401,8 @@ sprite.anchorY = 1.0;
 sprite.angle = 0;
 
 // 変更を反映
-sprite.modified();</code></pre>
+sprite.modified();
+</code></pre>
 <p>これを実行すると次のような表示になります。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtc2NhbGUtYW5jaG9yLTQvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
 

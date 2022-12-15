@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>マルチプレイの基礎</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -326,9 +326,13 @@
 「ニコ生ゲームとして公開する」「ゲームアツマールに投稿する」の二つがあります。</p>
 <p>この詳細は <a href="./release-multiplay.html">マルチプレイゲームを公開する</a> で後述します。</p>
 </blockquote>
-<p><a name="helloworld"></a></p>
-<h2>マルチプレイの Hello World</h2>
-<p>マルチプレイゲームのコーディングに特別な準備は必要ありません。</p>
+
+			<h2>
+				<a name="helloworld" class="anchor" href="#helloworld">
+					<span class="header-link">#</span>
+				</a>
+				 マルチプレイの Hello World
+			</h2><p>マルチプレイゲームのコーディングに特別な準備は必要ありません。</p>
 <p>Akashic Engine の提供する各種イベントには、全て「誰がそのイベントを生成したか」の情報が付与されています。たとえば <code>g.E#pointDown</code> のハンドラに与えられる <code>g.PointDownEvent</code> には <code>player</code> プロパティがあり、「誰が画面をタッチしたのか」識別することができます。</p>
 <p>操作したプレイヤーに応じて処理を分ければ、自動的にマルチプレイゲームに対応できます。</p>
 <p>例えば、一番最初にボタンを押したプレイヤーに得点が入る「早押しボタン」のようなコンテンツは、次のようなコードで作ることができます。</p>
@@ -359,7 +363,8 @@ scene.onLoad.add(() =&gt; {
   });
 
   scene.append(button);
-});</code></pre>
+});
+</code></pre>
 <p><code>pointDown</code> のハンドラに与えられる引数 <code>ev</code> (<code>g.PointDownEvent</code>) の <code>player</code> プロパティでプレイヤーを識別し、プレイヤーごとに得点を求めています。
 <code>player.id</code> はプレイヤーごとにユニークな文字列または <code>undefined</code> です。</p>
 <p>このコンテンツは、もちろん現実的には「ボタンの表示タイミングをランダムにする」「ボタンを押した時間によって得点を変える」「ボタンを押した時の画像や効果音をつける」「一定時間後に全員のスコアを表示して勝敗を決める」といった処理を足していかないとゲームらしくはなりませんが、骨格としてはマルチプレイに対応したものになっています。</p>
@@ -417,23 +422,31 @@ scene.onLoad.add(() =&gt; {
       characters[playerId].targetY = y;
     }
   });
-});</code></pre>
+});
+</code></pre>
 <p>コードは増えていますが、</p>
 <ul>
 <li>プレイヤーごとの情報を管理するテーブル (この例では <code>characters</code>) を作り、</li>
 <li>イベントの <code>player</code> プロパティを参照して、プレイヤーごとの処理を行う</li>
 </ul>
 <p>という点では「早押しボタン」と同じ構造になっています。</p>
-<p><a name="debug"></a></p>
-<h2>動作確認</h2>
-<p>ここまで、ゲームの動作確認には Akashic Sandbox (<code>akashic-sandbox</code>) を利用してきました。しかしこのツールはシングルプレイの動作確認を行うためのものです。マルチプレイの確認を行うことはできません。ブラウザで複数のウィンドウを開いても、それぞれ独立した別のゲームプレイになってしまいます。</p>
+
+			<h2>
+				<a name="debug" class="anchor" href="#debug">
+					<span class="header-link">#</span>
+				</a>
+				 動作確認
+			</h2><p>ここまで、ゲームの動作確認には Akashic Sandbox (<code>akashic-sandbox</code>) を利用してきました。しかしこのツールはシングルプレイの動作確認を行うためのものです。マルチプレイの確認を行うことはできません。ブラウザで複数のウィンドウを開いても、それぞれ独立した別のゲームプレイになってしまいます。</p>
 <p>akashic-cli v1.5.1 以降には、マルチプレイゲームの動作確認機能 (<code>serve</code> コマンド) が追加されています。これは(独立したツールではなく) akashic-cli に組み込まれていますが、 akashic-sandbox 同様サーバとして動作するコマンドです。</p>
 <p>インストールされている akashic-cli のバージョンは次のコマンドで確認できます。</p>
-<pre><code class="language-sh">akashic -V</code></pre>
+<pre><code class="language-sh">akashic -V
+</code></pre>
 <p>1.5.1 より小さい値が表示された場合は、次のコマンドで akashic-cli の最新版をインストールしてください。</p>
-<pre><code class="language-sh">npm install -g @akashic/akashic-cli</code></pre>
+<pre><code class="language-sh">npm install -g @akashic/akashic-cli
+</code></pre>
 <p>インストール後、game.json のあるディレクトリで、次のコマンドを実行してください。</p>
-<pre><code class="language-sh">akashic serve</code></pre>
+<pre><code class="language-sh">akashic serve
+</code></pre>
 <p>実行後、 <code>http://localhost:3300/</code> にアクセスしてください。次のような画面が表示されます。</p>
 <p><img src="/img/tutorial/cli-serve.png" alt="serve"></p>
 <p>先の例の「各プレイヤーに対応するキャラクタ画像がクリックした位置に移動するコンテンツ」の場合、画面をクリックするとキャラクタ画像が表示されます。もう一度クリックするとキャラクタ画像が移動します。</p>
@@ -448,9 +461,13 @@ scene.onLoad.add(() =&gt; {
 <li>三番目のインスタンス追加ボタン: 同じ URL でブラウザウィンドウを開きます(マルチプレイのプレイヤーを増やします)。</li>
 </ul>
 <p><code>akashic serve</code> コマンドは、 <code>akashic-sandbox</code> と同様に Ctrl-C で終了することができます。</p>
-<p><a name="architecture-intro"></a></p>
-<h2>Akashic におけるマルチプレイ</h2>
-<p><code>akashic serve</code> でしばらくプレイした後に、ブラウザウィンドウを追加すると、最初にビデオ映像を早送りするような画面が表示されることに気がつきます。これは Akashic Engine のマルチプレイの実現方法に起因する動作です。</p>
+
+			<h2>
+				<a name="architecture-intro" class="anchor" href="#architecture-intro">
+					<span class="header-link">#</span>
+				</a>
+				 Akashic におけるマルチプレイ
+			</h2><p><code>akashic serve</code> でしばらくプレイした後に、ブラウザウィンドウを追加すると、最初にビデオ映像を早送りするような画面が表示されることに気がつきます。これは Akashic Engine のマルチプレイの実現方法に起因する動作です。</p>
 <p>Akashic におけるマルチプレイは、プレイヤー間でゲームの実行状態を「間接的に」共有することで実現されています。
 Akashic はプレイヤー間で実行状態を直接的に共有することはしませんが、その代わりに <strong>全てのプレイヤーが行う全ての操作を共有します</strong> 。ゲーム内で行われた全操作を全プレイヤーに通知することで、全プレイヤーの手元でまったく同じ処理を行い、結果として同じ実行状態を再現します。
 <strong>同じゲームスクリプトに、同じ経過フレーム数で同じイベントを与えれば、同じ実行状態に至るはずだ</strong> 、というのが、Akashic Engine のマルチプレイの基本的なデザインです。後から参加したプレイヤーに、早送りで最新状態に追いつく動作が発生するのはこのためです。</p>

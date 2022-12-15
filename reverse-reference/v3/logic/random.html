@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>乱数を使う</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -615,7 +615,8 @@
 				<h1>乱数を使う</h1>
 <p>乱数を使うには <code>g.game.random</code> を利用します。(<code>Math.random()</code> は原則利用しないでください。)</p>
 <h2>凡例</h2>
-<pre><code class="language-javascript">g.game.random.generate(); // 0 以上 1 未満の数値をランダムに返す</code></pre>
+<pre><code class="language-javascript">g.game.random.generate(); // 0 以上 1 未満の数値をランダムに返す
+</code></pre>
 <h2>利用例</h2>
 <p>次のコンテンツは、矩形を格子状に並べるプログラムです。ただし矩形の色は 4 種類の色の中からランダムに選んで決めています</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvdHV0b3JpYWwtYW5pbWF0aW9uLTUvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
@@ -626,7 +627,8 @@
 <code>g.game.random</code> は一つのゲームプレイ内で全員が同じ乱数シードと乱数生成アルゴリズムを使うように作られているので、この問題がありません。
 このことは特にマルチプレイの場合に重要です。詳細は <a href="/tutorial/v3/multiplay/introduction.html">マルチプレイの基礎</a> を参照してください。</p>
 <p><code>generate()</code> は実数を返しますが、整数の乱数が必要なことも多いでしょう。0 以上 x 未満の整数は、 <code>generate()</code> を使って次のように生成できます。このコードでは、 <code>generate()</code> の戻り値を x 倍することで「0 以上 x 未満の実数」にし、 そこから <code>Math.floor()</code> で小数点以下を切り捨てて「0 以上 x 未満の整数」にしています。</p>
-<pre><code class="language-javascript">Math.floor(g.game.random.generate() * x);</code></pre>
+<pre><code class="language-javascript">Math.floor(g.game.random.generate() * x);
+</code></pre>
 <p>なお、意図的にプレイヤーごとに異なる乱数を生成したい場合は、 <a href="./local-random.html"><code>g.game.localRandom</code></a> を利用してください。</p>
 <h3>例外: ランキングモードのニコ生ゲームの場合</h3>
 <p>ランキングモードのニコ生ゲームの場合、ゲームの実行方法が特殊なため、 <code>g.game.random</code> と <code>g.game.localRandom</code> どちらでも「プレイヤーごとに異なる乱数」が生成されてしまいます。

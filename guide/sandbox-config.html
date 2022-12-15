@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>sandbox.config.js の仕様</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/asset.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/asset.css?06ad657f">
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -130,14 +130,24 @@
 	<section class="akashic--document safearea--LR">
 		<div class="inner responsive--width">
 			<h1>sandbox.config.js の仕様</h1>
-<h2><a name="これは"></a> これは</h2>
-<p>Akashic の開発環境における設定ファイル、sandbox.config.js の仕様をまとめます。</p>
+
+			<h2>
+				<a name="これは" class="anchor" href="#これは">
+					<span class="header-link">#</span>
+				</a>
+				 これは
+			</h2><p>Akashic の開発環境における設定ファイル、sandbox.config.js の仕様をまとめます。</p>
 <p>Akashic で開発されたゲームの動作確認ツールとして、 Akashic Sandbox (<code>akashic-sandbox</code>) と Akashic-cli の serve コマンドがあります。
 sandbox.config.js は、これらのツールの機能を取り扱う設定ファイルです。
 sandbox.config.js を利用することで、セッションパラメータや起動引数に関わる動作確認を効率化・自動化することができます。</p>
 <p>（セッションパラメータの詳細は<a href="./ranking.html">ニコ生ゲーム作成ガイド</a>を参照してください）</p>
-<h2><a name="形式"></a> 形式</h2>
-<p>sandbox.config.js は JavaScript として実行可能なコードと、export されるモジュールとして記述されます。モジュールは以下の名前のプロパティと、対応する値を持ちます。</p>
+
+			<h2>
+				<a name="形式" class="anchor" href="#形式">
+					<span class="header-link">#</span>
+				</a>
+				 形式
+			</h2><p>sandbox.config.js は JavaScript として実行可能なコードと、export されるモジュールとして記述されます。モジュールは以下の名前のプロパティと、対応する値を持ちます。</p>
 <ul>
 <li>events<ul>
 <li>オブジェクト (詳細は後述)</li>
@@ -201,14 +211,26 @@ sandbox.config.js を利用することで、セッションパラメータや�
 </li>
 </ul>
 <p>(注意: 旧プロパティの <code>autoSendEvents</code> は非推奨となり将来削除されます。代わりに <code>autoSendEventName</code> を利用してください。)</p>
-<h2><a name="使い方"></a> 使い方</h2>
-<p>game.json と同じディレクトリに、以下のような JavaScript ファイルを置きます。ファイル名は sandbox.config.js とします。</p>
+
+			<h2>
+				<a name="使い方" class="anchor" href="#使い方">
+					<span class="header-link">#</span>
+				</a>
+				 使い方
+			</h2><p>game.json と同じディレクトリに、以下のような JavaScript ファイルを置きます。ファイル名は sandbox.config.js とします。</p>
 <pre><code>const config = {
 }
 
-module.exports = config;</code></pre><p>このファイルに以下の名前のプロパティを記述することで、各種設定を利用できます。</p>
-<h2><a name="events"></a> events</h2>
-<p>events には、Akashic ゲームで扱う playlog イベントを事前に記述することができます。特に、ニコ生ゲームを作成する場合に、セッションパラメータの動作確認を行うために利用することができます。</p>
+module.exports = config;
+</code></pre>
+<p>このファイルに以下の名前のプロパティを記述することで、各種設定を利用できます。</p>
+
+			<h2>
+				<a name="events" class="anchor" href="#events">
+					<span class="header-link">#</span>
+				</a>
+				 events
+			</h2><p>events には、Akashic ゲームで扱う playlog イベントを事前に記述することができます。特に、ニコ生ゲームを作成する場合に、セッションパラメータの動作確認を行うために利用することができます。</p>
 <p>events は、任意のプロパティ名を持ったオブジェクトです。プロパティ名はイベント名として、開発ツールの一覧に表示されます。各プロパティは、送りたい playlog イベントの配列です。</p>
 <p>（playlog の詳細な仕様は<a href="https://github.com/akashic-games/playlog">playlog</a>を参照してください）</p>
 <p>例として、ニコニコ生放送で実行されるゲームにセッションパラメータを送りたい場合、sandbox.config.js には以下のように記述します。</p>
@@ -242,12 +264,19 @@ module.exports = config;</code></pre><p>このファイルに以下の名前の�
     }
 }
 
-module.exports = config;</code></pre><p>Akashic Sandbox では、デベロッパーメニューの Events タブからゲームにイベントを送信することができます。</p>
+module.exports = config;
+</code></pre>
+<p>Akashic Sandbox では、デベロッパーメニューの Events タブからゲームにイベントを送信することができます。</p>
 <p><img src="/img/guide/sandbox-config/sandbox-devmenu.png" alt="Akashic Sandboxのデベロッパーメニュー"></p>
 <p>akashic serve コマンドも同じように、デベロッパーメニューの Events タブからゲームにイベントを送信することができます。</p>
 <p><img src="/img/guide/sandbox-config/serve-devmenu.png" alt="akashic serveコマンドのデベロッパーメニュー"></p>
-<h2><a name="autoSendEventName"></a> autoSendEventName</h2>
-<p>ゲーム起動時にイベントを自動送信することができます。イベントはあらかじめ events に記述しておく必要があります。
+
+			<h2>
+				<a name="autoSendEventName" class="anchor" href="#autoSendEventName">
+					<span class="header-link">#</span>
+				</a>
+				 autoSendEventName
+			</h2><p>ゲーム起動時にイベントを自動送信することができます。イベントはあらかじめ events に記述しておく必要があります。
 autoSendEventName にイベント名（例えば startMyGameEvent）を記述し、Akashic Sandbox でゲームを起動すれば、イベントが自動送信されます。</p>
 <pre><code>const config = {
     &quot;autoSendEventName&quot;: &quot;mySessionParameter&quot;
@@ -256,41 +285,76 @@ autoSendEventName にイベント名（例えば startMyGameEvent）を記述し
     }
 }
 
-module.exports = config;</code></pre><h2><a name="showMenu"></a> showMenu</h2>
-<p>この項目に true を指定されている場合、常にデベロッパーメニューが開いた状態で Akashic ゲームが実行されます。</p>
+module.exports = config;
+</code></pre>
+
+			<h2>
+				<a name="showMenu" class="anchor" href="#showMenu">
+					<span class="header-link">#</span>
+				</a>
+				 showMenu
+			</h2><p>この項目に true を指定されている場合、常にデベロッパーメニューが開いた状態で Akashic ゲームが実行されます。</p>
 <pre><code>const config = {
     &quot;showMenu&quot;: true
 }
 
-module.exports = config;</code></pre><h2><a name="arguments"></a> arguments</h2>
-<p>arguments には、起動引数のテンプレートを記述することができます。</p>
+module.exports = config;
+</code></pre>
+
+			<h2>
+				<a name="arguments" class="anchor" href="#arguments">
+					<span class="header-link">#</span>
+				</a>
+				 arguments
+			</h2><p>arguments には、起動引数のテンプレートを記述することができます。</p>
 <p>serve コマンドに --no-auto-start オプションを指定した場合、Akashic ゲームの実行時に渡したい起動引数を選ぶことができます。</p>
 <p>起動引数は Akashic ゲームの起動時に渡される値です。起動引数は Akashic ゲームのエントリポイントの関数（akashic init で生成した場合、main.js から export された関数）のパラメータの第一引数の args プロパティとして渡されます。</p>
 <p>起動引数の内容はゲームが実行される環境によって決定されます。
 arguments に起動引数を記述することで、serve コマンドで各サービスの動作を確認することができます。</p>
 <p>具体的な内容はゲームが実行されるサービスによって決まります。各サービスの動作を確認するために serve でも起動引数を指定して実行することができます。</p>
-<h2><a name="backgroundImage"></a> backgroundImage</h2>
-<p>backgroundImage を指定することで ゲーム画面の背景に画像を表示できます。
+
+			<h2>
+				<a name="backgroundImage" class="anchor" href="#backgroundImage">
+					<span class="header-link">#</span>
+				</a>
+				 backgroundImage
+			</h2><p>backgroundImage を指定することで ゲーム画面の背景に画像を表示できます。
 値には、画像のローカルパスか URL の指定ができます。</p>
 <p>serve の実行画面で表示オプションボタンから <code>Show background image</code> のチェックボックスのオン/オフで指定した画像の表示/非表示が切り替えられます。</p>
 <p><img src="/img/guide/sandbox-config/serve-ui-background-image.png" alt="akashic serve の表示オプションボタン"></p>
-<h2><a name="backgroundColor"></a> backgroundColor</h2>
-<p>backgroundColor を指定することで ゲーム画面の背景色を表示できます。
+
+			<h2>
+				<a name="backgroundColor" class="anchor" href="#backgroundColor">
+					<span class="header-link">#</span>
+				</a>
+				 backgroundColor
+			</h2><p>backgroundColor を指定することで ゲーム画面の背景色を表示できます。
 値には CSS の background-color に利用できる値の文字列やカラーコードが指定できます。</p>
 <pre><code class="language-javascript">const config = {
     &quot;backgroundColor&quot;: &quot;blue&quot;. // カラーコードの場合は &quot;#0000ff&quot; を指定
 }
 
-module.exports = config;</code></pre>
+module.exports = config;
+</code></pre>
 <p>serve の実行画面で表示オプションボタンから <code>Show background color</code> のチェックボックスのオン/オフで指定した背景色の表示/非表示が切り替えられます。</p>
 <p><img src="/img/guide/sandbox-config/serve-ui-background-color.png" alt="akashic serveの表示オプションボタン"></p>
-<h2><a name="externalAssets"></a> externalAssets</h2>
-<p>externalAssets には外部アセットとして許可する URL の配列を指定します。
+
+			<h2>
+				<a name="externalAssets" class="anchor" href="#externalAssets">
+					<span class="header-link">#</span>
+				</a>
+				 externalAssets
+			</h2><p>externalAssets には外部アセットとして許可する URL の配列を指定します。
 値には文字列か正規表現の配列が指定できます。
 指定した URL と一致しない外部アセットへのアクセスはエラーとなります。</p>
 <p>serve コマンドで外部アセットのを利用する場合は --allow-external オプションを指定します。</p>
-<h2><a name="client"></a> client</h2>
-<p>client の external には、外部プラグインを記述することができます。
+
+			<h2>
+				<a name="client" class="anchor" href="#client">
+					<span class="header-link">#</span>
+				</a>
+				 client
+			</h2><p>client の external には、外部プラグインを記述することができます。
 外部プラグインは、 Akashic ゲームの実行環境によって与えられる機能です。</p>
 <p>serve コマンドでは、自分でモック実装を用意することで、任意の外部プラグインが存在する状態のゲームを動作確認することができます。</p>
 <p>serve の外部プラグインのモック実装を利用するには、オブジェクトを返す関数をエクスポートするファイルを用意する必要があります。
@@ -299,7 +363,9 @@ module.exports = config;</code></pre>
   return {
     foo: function () { console.log(&quot;fooooo&quot;);}
   };
-});</code></pre><p><code>./plugin/pluginMock.js</code> がある状態で、 game.json と sandbox.config.js に以下の記述がある場合、 serve コマンドで実行した Akashic ゲームは <code>g.game.external.fooPlugin</code> を利用することができます。</p>
+});
+</code></pre>
+<p><code>./plugin/pluginMock.js</code> がある状態で、 game.json と sandbox.config.js に以下の記述がある場合、 serve コマンドで実行した Akashic ゲームは <code>g.game.external.fooPlugin</code> を利用することができます。</p>
 <p>game.json</p>
 <pre><code>{
     ...
@@ -308,7 +374,9 @@ module.exports = config;</code></pre>
             &quot;fooPlugin&quot;: &quot;0&quot; // この値は現状固定値です
         }
     }
-}</code></pre><p>sandbox.config.js</p>
+}
+</code></pre>
+<p>sandbox.config.js</p>
 <pre><code>const config = {
   client: {
     external: {
@@ -316,8 +384,15 @@ module.exports = config;</code></pre>
     }
   }
 };
-module.exports = config;</code></pre><h2><a name="server"></a> server</h2>
-<p>client の external と同様に server の external にも、外部プラグインを記述することができます。
+module.exports = config;
+</code></pre>
+
+			<h2>
+				<a name="server" class="anchor" href="#server">
+					<span class="header-link">#</span>
+				</a>
+				 server
+			</h2><p>client の external と同様に server の external にも、外部プラグインを記述することができます。
 マルチプレイの動作確認を行う akashic serve コマンドでは、ブラウザだけでなくサーバ側でもゲームが実行されます。server.external は、サーバ側で実行されるゲームの external の値を設定します。</p>
 <p>serve の外部プラグインのモック実装を利用するには、オブジェクトを返す関数をエクスポートするファイルを用意する必要があります。
 例として、<code>console.log()</code> を実行する外部プラグインのモックを作成する場合、<code>./plugin/pluginMock.js</code> を以下のように記述します。</p>
@@ -325,7 +400,9 @@ module.exports = config;</code></pre><h2><a name="server"></a> server</h2>
   return {
     foo: function () { console.log(&quot;fooooo&quot;);}
   };
-});</code></pre><p><code>./plugin/pluginMock.js</code> がある状態で、 sandbox.config.js に以下の記述がある場合、 serve コマンドで実行した Akashic ゲームは <code>g.game.external.serverPlugin</code> を利用することができます。</p>
+});
+</code></pre>
+<p><code>./plugin/pluginMock.js</code> がある状態で、 sandbox.config.js に以下の記述がある場合、 serve コマンドで実行した Akashic ゲームは <code>g.game.external.serverPlugin</code> を利用することができます。</p>
 <p>sandbox.config.js</p>
 <pre><code>const config = {
     &quot;server&quot;: {
@@ -334,8 +411,15 @@ module.exports = config;</code></pre><h2><a name="server"></a> server</h2>
         }
     }
 }
-module.exports = config;</code></pre><h2><a name="warn"></a> warn</h2>
-<p>warn は下記のプロパティを持ち、Akashic Sandbox、serve での各種警告の表示を設定できます。
+module.exports = config;
+</code></pre>
+
+			<h2>
+				<a name="warn" class="anchor" href="#warn">
+					<span class="header-link">#</span>
+				</a>
+				 warn
+			</h2><p>warn は下記のプロパティを持ち、Akashic Sandbox、serve での各種警告の表示を設定できます。
 意図的な処理で警告が出てしまう場合に、警告を抑止するために利用できます。
 各プロパティが true または指定されていない時場合に警告が表示されます。</p>
 <table>
@@ -378,8 +462,15 @@ drawOutOfCanvas, drawDestinationEmpty は 環境によって画面表示が崩�
     drawOutOfCanvas: true
   }
 };
-module.exports = config;</code></pre><h2><a name="displayOptions"></a> displayOptions</h2>
-<p>displayOptions は下記のプロパティを持ち、serve の実行画面の各種表示を設定できます。
+module.exports = config;
+</code></pre>
+
+			<h2>
+				<a name="displayOptions" class="anchor" href="#displayOptions">
+					<span class="header-link">#</span>
+				</a>
+				 displayOptions
+			</h2><p>displayOptions は下記のプロパティを持ち、serve の実行画面の各種表示を設定できます。
 serve の実行画面の表示オプションボタン内の各チェックボックスを操作した場合はそちらが優先されます。</p>
 <table>
 <thead>
@@ -424,8 +515,15 @@ serve の実行画面の表示オプションボタン内の各チェックボ�
     showsDesignGuideline: false
   }
 };
-module.exports = config;</code></pre><h2><a name="windowSize"></a> windowSize</h2>
-<p>serve の実行画面で新規インスタンス表示時のウィンドウサイズを設定できます。
+module.exports = config;
+</code></pre>
+
+			<h2>
+				<a name="windowSize" class="anchor" href="#windowSize">
+					<span class="header-link">#</span>
+				</a>
+				 windowSize
+			</h2><p>serve の実行画面で新規インスタンス表示時のウィンドウサイズを設定できます。
 値は下記となり、省略時は &quot;auto&quot; となります。</p>
 <table>
 <thead>
@@ -451,7 +549,9 @@ module.exports = config;</code></pre><h2><a name="windowSize"></a> windowSize</h
 <pre><code>const config = {
   windowSize: { width: 1280, height: 800 }
 };
-module.exports = config;</code></pre>
+module.exports = config;
+</code></pre>
+
 		</div>
 	</section>
 	<footer class="safearea--LR">

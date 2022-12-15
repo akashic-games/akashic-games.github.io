@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>半透明にする (透明度を変える)</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -618,9 +618,11 @@
 <pre><code class="language-javascript">var sprite = new g.Sprite({
   ...,      // その他のプロパティ
   opacity: 0.5 // 半透明にした状態で表示する
-});</code></pre>
+});
+</code></pre>
 <pre><code class="language-javascript">sprite.opacity = 1; // 完全に不透明にする
-sprite.modified(); // modified() で表示に反映</code></pre>
+sprite.modified(); // modified() で表示に反映
+</code></pre>
 <p><code>opacity</code> は不透明度を表し、 0.0 (完全に透明) ～ 1.0(完全に不透明) の数値で指定できます。初期値は <code>1</code> となります。
 値は、 0.0 未満の場合、もしくは 1.0 を超えた値の場合は完全に不透明で表示されます。</p>
 <p>非表示・表示を切り替えるだけの場合、 <a href="./hidden.html">hide(), show()も利用できます。</a></p>
@@ -639,12 +641,15 @@ sprite.modified(); // modified() で表示に反映</code></pre>
   opacity: 0
 });
 
-scene.append(sprite);</code></pre>
+scene.append(sprite);
+</code></pre>
 <p>生成後のエンティティの透明度は、 <code>opacity</code> プロパティで参照できます。</p>
-<pre><code class="language-javascript">sprite.opacity; // ==&gt; 0</code></pre>
+<pre><code class="language-javascript">sprite.opacity; // ==&gt; 0
+</code></pre>
 <p><code>opacity</code> プロパティに代入することで、透明度を変更できます。表示への反映には <code>modified()</code> メソッドを呼び出す必要があります。</p>
 <pre><code class="language-javascript">sprite.opacity += 0.1; // 現状からさらに 10 パーセントポイント不透明にする
-sprite.modified(); // modified() で表示に反映</code></pre>
+sprite.modified(); // modified() で表示に反映
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/akashic-engine/v3/classes/E.html#opacity">API リファレンス</a></li>

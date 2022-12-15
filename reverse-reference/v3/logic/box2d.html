@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>2D 物理演算を行う</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -654,7 +654,8 @@ box2d.createBody(rect1, dynamicDef, entityDef);
 scene.onUpdate.add(function() {
   // 物理エンジンの世界の時間をすすめる
   box2d.step(1 / g.game.fps);
-});</code></pre>
+});
+</code></pre>
 <h2>利用例</h2>
 <p>次のコンテンツは、固定された床の上に矩形を落下させます。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvbG9naWMvYm94MmQvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
@@ -665,7 +666,8 @@ scene.onUpdate.add(function() {
 <p>これらは 2D 物理演算ライブラリである <a href="https://github.com/hecht-software/box2dweb">Box2DWeb</a> が提供する機能であり、<code>akashic-box2d</code> は名前の通り Box2DWeb を Akashic で利用するためのモジュールです。
 <code>akashic-box2d</code> は Akashic と Box2DWeb の紐づけと、利用に便利な一部機能を提供しています。そのため、多くの機能は Box2DWeb のインターフェースに従って利用することになります。</p>
 <p><code>akashic-box2d</code> のインストールは game.json が置かれているディレクトリで以下のコマンドを実行してください。</p>
-<pre><code class="language-sh">akashic install @akashic-extension/akashic-box2d</code></pre>
+<pre><code class="language-sh">akashic install @akashic-extension/akashic-box2d
+</code></pre>
 <p>それぞれの形状や物理性質の利用方法は、 <a href="/demo/?title=box2d-sample">akashic-box2d のサンプル</a> を参照してください。</p>
 <h2>関連情報</h2>
 <ul>

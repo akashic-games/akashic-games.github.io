@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>デザインガイドライン</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -305,8 +305,13 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>デザインガイドライン</h1>
-<h2>本ガイドラインについて</h2>
-<ul>
+
+			<h2>
+				<a name="about" class="anchor" href="#about">
+					<span class="header-link">#</span>
+				</a>
+				 本ガイドラインについて
+			</h2><ul>
 <li>「つりっくま」等のニコ生ゲームや、「おしゃべりトピック」等の放送ネタの開発をおこなう際、<ul>
 <li>PC やスマートフォンアプリのプレイヤー上の UI とコンテンツ操作が衝突する</li>
 <li>スマートフォンアプリでのポートレト表示において画面が小さすぎて操作しづらい..等の理由で、ユーザーが満足な操作をおこなえないことがあります</li>
@@ -318,8 +323,13 @@
 </ul>
 </li>
 </ul>
-<h2>A：ボタン等の設置を避けるべきエリア</h2>
-<p>本項で説明するエリアに、クリックやタップが必要なボタン等を設置することは、PC・スマートフォンアプリのプレイヤー UI と競合し、ユーザー操作をおこなえなくなる可能性があります。ここにボタン等を設置することは避けることを推奨します。</p>
+
+			<h2>
+				<a name="dont-place-ui-area" class="anchor" href="#dont-place-ui-area">
+					<span class="header-link">#</span>
+				</a>
+				 A：ボタン等の設置を避けるべきエリア
+			</h2><p>本項で説明するエリアに、クリックやタップが必要なボタン等を設置することは、PC・スマートフォンアプリのプレイヤー UI と競合し、ユーザー操作をおこなえなくなる可能性があります。ここにボタン等を設置することは避けることを推奨します。</p>
 <table border="1" style="width: 100%">
     <tr>
         <td>A-1.避けること<span style="color:red;">強く</span>推奨</td>
@@ -385,8 +395,13 @@
     </tr>
 </table>
 
-<h2>B：スワイプ操作を避けるべき（且つ、可能であればボタンの設置も避けるべき）エリア</h2>
-<p>本項で説明するエリアでスワイプ操作をおこなわせるのは、スマートフォンアプリのプレイヤー UI と競合し、ユーザーが操作をおこなえなくなる可能性が高いです。ここでスワイプ操作をおこなわせるのは避けることを<strong><span style="color:red;">強く</span>推奨</strong>します。</p>
+
+			<h2>
+				<a name="avoid-to-swipe-area" class="anchor" href="#avoid-to-swipe-area">
+					<span class="header-link">#</span>
+				</a>
+				 B：スワイプ操作を避けるべき（且つ、可能であればボタンの設置も避けるべき）エリア
+			</h2><p>本項で説明するエリアでスワイプ操作をおこなわせるのは、スマートフォンアプリのプレイヤー UI と競合し、ユーザーが操作をおこなえなくなる可能性が高いです。ここでスワイプ操作をおこなわせるのは避けることを**<span style="color:red;">強く</span>推奨**します。</p>
 <table border="1">
     <tr>
         <td style="padding:5px;"></td>
@@ -425,8 +440,13 @@
 </ul>
 </li>
 </ul>
-<h2>A、B のまとめ</h2>
-<ul>
+
+			<h2>
+				<a name="conclusion-a-and-b" class="anchor" href="#conclusion-a-and-b">
+					<span class="header-link">#</span>
+				</a>
+				 A、B のまとめ
+			</h2><ul>
 <li>非推奨領域を表した透過 png を制作しましたので、こちらのデザインに当てはめご利用ください<ul>
 <li>基本的には、白地のエリアに、クリックやタップの必要な「ボタン」やその他「UI」の操作をおさえることを推奨します</li>
 <li>白地以外での操作をおこなう場合は、上記ガイドラインをご参照のうえ、ユーザー操作が極力快適におこなえるよう、デザイン調整をご検討ください</li>
@@ -442,8 +462,13 @@
 <li><strong>黄色...UI 設置を避けることを推奨</strong></li>
 <li><strong>オレンジ色...スワイプ操作を避けることを強く推奨</strong></li>
 </ul>
-<h2>C：UI の最小サイズ</h2>
-<p>コンテンツ上に設置されるボタン等の UI のタップ範囲が小さいと、スマートフォンアプリのポートレイト視聴時にタップしづらいなど問題が出ることがあります。下記を参考に作成してください。</p>
+
+			<h2>
+				<a name="min-ui-size" class="anchor" href="#min-ui-size">
+					<span class="header-link">#</span>
+				</a>
+				 C：UI の最小サイズ
+			</h2><p>コンテンツ上に設置されるボタン等の UI のタップ範囲が小さいと、スマートフォンアプリのポートレイト視聴時にタップしづらいなど問題が出ることがあります。下記を参考に作成してください。</p>
 <table border="1">
     <tr>
         <td style="vertical-align:top;">

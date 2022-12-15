@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>プレイヤーごとに異なる位置を表示する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -261,14 +261,20 @@
 <p><a name="camera"></a></p>
 <h2>カメラ</h2>
 <p>カメラは、インターフェース <code>g.Camera</code> で表現されます。現在の Akashic Engine が実装を提供する唯一のカメラは <code>g.Camera2D</code> です。これは 2D ゲーム用途のカメラであり、次のように生成することができます。</p>
-<pre><code>var camera = new g.Camera2D({ game: g.game });</code></pre><p>生成されたカメラは、そのままでは描画に影響を与えません。カメラを <code>g.Game#focusingCamera</code> に設定することで、ゲーム画面の描画に対してカメラの設定を適用することができます。</p>
+<pre><code>var camera = new g.Camera2D({ game: g.game });
+</code></pre>
+<p>生成されたカメラは、そのままでは描画に影響を与えません。カメラを <code>g.Game#focusingCamera</code> に設定することで、ゲーム画面の描画に対してカメラの設定を適用することができます。</p>
 <pre><code>g.game.focusingCamera = camera;
-g.game.modified = true;</code></pre><p><code>Game#focusingCamera</code> の値を変更した場合、 <code>Game#modified</code> に真を設定する必要があります。
+g.game.modified = true;
+</code></pre>
+<p><code>Game#focusingCamera</code> の値を変更した場合、 <code>Game#modified</code> に真を設定する必要があります。
 (他クラスの同名の値と異なり、 <code>Game#modified</code> は関数ではなく <code>boolean</code> であることに気をつけてください。これは歴史的経緯によるものです。)</p>
 <p>この状態で <code>camera</code> のプロパティを変更することで、ゲーム画面全体の描画内容を制御することができます。</p>
 <p><code>Camera2D</code> は <code>Object2D</code> を実装しており、<code>x</code>, <code>y</code> によって描画位置のオフセットや、<code>scaleX</code>, <code>scaleY</code> によって描画結果の拡大率を設定できます。たとえば以下のような記述により、画面全体を 30 度傾けることができます。</p>
 <pre><code>camera.angle = 30;
-camera.modified();</code></pre><p><code>Camera2D</code> のオフセットや回転角度は、エンティティとは逆方向に作用することに注意してください。すなわち、たとえば X 座標のオフセット <code>Camera2D#x</code> を 10 に設定した場合、移動するのは描画される範囲です。その中で描画されるエンティティの描画位置は元の位置から (右ではなく) 左に 10 ピクセルずれます。</p>
+camera.modified();
+</code></pre>
+<p><code>Camera2D</code> のオフセットや回転角度は、エンティティとは逆方向に作用することに注意してください。すなわち、たとえば X 座標のオフセット <code>Camera2D#x</code> を 10 に設定した場合、移動するのは描画される範囲です。その中で描画されるエンティティの描画位置は元の位置から (右ではなく) 左に 10 ピクセルずれます。</p>
 <p>エンティティなどと同様、カメラの値の変更後には <code>modified()</code> を呼び出す必要があります。なお <code>Game#focusingCamera</code> に対して <code>modified()</code> を呼び出した場合は、上述の <code>game.modified</code> への真の代入は省略できます。
 <code>Game#focusingCamera</code> の既定値は <code>undefined</code> です。</p>
 <p><a name="ignore-camera"></a></p>

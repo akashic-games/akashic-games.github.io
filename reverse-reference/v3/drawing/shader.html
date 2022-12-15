@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>シェーダを利用する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -625,9 +625,11 @@ var shader = new g.ShaderProgram({
 var sprite = new g.Sprite({
   ..., // その他のプロパティ
   shaderProgram: shader // シェーダの指定
-});</code></pre>
+});
+</code></pre>
 <pre><code class="language-javascript">sprite.shaderProgram = shader; // 既存の sprite にシェーダを指定
-sprite.modified(); // modified() で表示に反映</code></pre>
+sprite.modified(); // modified() で表示に反映
+</code></pre>
 <h2>利用例</h2>
 <p>次のコンテンツは、画像をモノクロ化して表示します。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvZHJhd2luZy9zaGFkZXIvZ2FtZS5qc29uIn0=" width="600" height="400"></iframe>
@@ -642,7 +644,8 @@ sprite.modified(); // modified() で表示に反映</code></pre>
 したがって現状の用途は、画像に対する単純なフィルタなどに限られます。</p>
 </blockquote>
 <p>シェーダを利用するには、まず <code>game.json</code> の <code>renderers</code> に <code>webgl</code> を追加します。</p>
-<pre><code class="language-json">&quot;renderers&quot;: [&quot;webgl&quot;],</code></pre>
+<pre><code class="language-json">&quot;renderers&quot;: [&quot;webgl&quot;],
+</code></pre>
 <p>シェーダは <code>g.ShaderProgram</code> で表されます。<code>g.ShaderProgram</code> は <code>g.E</code> やそれを継承したクラス (<code>g.Sprite</code> , <code>g.Pane</code> など) に適用できます。</p>
 <p>シェーダプログラムは親エンティティの値を継承します。そのため、シェーダプログラムを適用したエンティティに複数の子エンティティに追加することで、複数のエンティティに同一のシェーダプログラムを適用することができます。</p>
 <p>下記のコードでは、テキストアセット <code>monochrome.glsl</code> を読み込み <code>Pane</code> に指定しています。<code>Pane</code> の子エンティティである <code>Sprite</code> と <code>FilledRect</code> にもシェーダが適応されます。</p>
@@ -662,7 +665,8 @@ void main(void)
   vec3 outColor = vec3(sum / 3.0);
   // 最終出力色
   gl_FragColor = vec4(outColor, color.a * uAlpha);
-}</code></pre>
+}
+</code></pre>
 <pre><code class="language-javascript">function main() {
   var scene = new g.Scene({ game: g.game, assetIds: [&quot;player&quot;, &quot;monochrome&quot;] });
 
@@ -698,7 +702,8 @@ void main(void)
   g.game.pushScene(scene);
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <p>.glsl 内で利用している <code>uAlpha</code>, <code>uSampler</code>, <code>vTexCoord</code> は固定で与えられます。
 それぞれ opacity を反映した透明度、元の描画内容 (画像や <code>FilledRect</code> の単色) をテクスチャとして参照するサンプラー、そしてテクスチャ座標です。</p>
 <p>設定したシェーダを戻したい場合、 <code>undefined</code> または <code>null</code> を指定します。 <code>undefined</code> と <code>null</code> は以下のように挙動が異なることにご留意ください。</p>
@@ -707,7 +712,8 @@ module.exports = main;</code></pre>
 <li><code>null</code>: 親エンティティのシェーダプログラムを利用せず、常に初期のシェーダプログラム( <code>undefined</code> )を利用する。</li>
 </ul>
 <pre><code class="language-javascript">sprite.shaderProgram = null;
-sprite.modified();</code></pre>
+sprite.modified();
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/guide/shader.html">シェーダの利用</a></li>

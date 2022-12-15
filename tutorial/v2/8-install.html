@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>拡張ライブラリを使う</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -264,7 +264,8 @@ Akashic Engine の拡張ライブラリは npm パッケージとして実装で
 <h2>Akashic コンテンツに拡張ライブラリを追加する</h2>
 <p>拡張ライブラリは、akashic コマンドの <code>akashic install</code> を利用することでゲームに追加できます。</p>
 <p>例えば、コンテンツから akashic-timeline (パッケージ名は <code>@akashic-extension/akashic-timeline</code>) を利用したい場合、game.json の置かれているディレクトリで以下のコマンドを実行します。</p>
-<pre><code class="language-sh">akashic install @akashic-extension/akashic-timeline</code></pre>
+<pre><code class="language-sh">akashic install @akashic-extension/akashic-timeline
+</code></pre>
 <p><code>akashic install</code> コマンドは、内部的に <code>npm install --save -save-exact</code> を実行することで、拡張ライブラリを <code>node_modules</code> ディレクトリにダウンロード・インストールします。さらに、インストールされた拡張ライブラリの情報(ファイルパスなど)を game.json に書き込みます。これは、Akashic コンテンツでは、予めすべてのリソースへのパスが game.json に書き込まれている必要があるためです。これによりコンテンツ内から <code>require()</code> を使って拡張ライブラリを読み込めるようになります。</p>
 <p>例として、 <code>akashic-timeline</code> の拡張ライブラリをコンテンツに追加すると、game.json には以下のような記述が追加されます。</p>
 <pre><code class="language-json">&quot;globalScripts&quot;: [
@@ -276,12 +277,15 @@ Akashic Engine の拡張ライブラリは npm パッケージとして実装で
 ],
 &quot;moduleMainScripts&quot;: {
     &quot;@akashic-extension/akashic-timeline&quot;: &quot;node_modules/@akashic-extension/akashic-timeline/lib/index.js&quot;
-}</code></pre>
+}
+</code></pre>
 <p>コンテンツからは、以下のようにして拡張ライブラリを読み込めます。</p>
-<pre><code class="language-javascript">var tl = require(&quot;@akashic-extension/akashic-timeline&quot;);</code></pre>
+<pre><code class="language-javascript">var tl = require(&quot;@akashic-extension/akashic-timeline&quot;);
+</code></pre>
 <p>akashic-timeline の実際的な使い方は <a href="https://github.com/akashic-games/akashic-timeline/blob/master/getstarted.md">ドキュメント</a> を参照してください。</p>
 <p>拡張ライブラリが不要になった場合、 <code>akashic uninstall</code> コマンドを使うことで、拡張ライブラリをコンテンツから削除することができます。</p>
-<pre><code class="language-sh">akashic uninstall @akashic-extension/akashic-timeline</code></pre>
+<pre><code class="language-sh">akashic uninstall @akashic-extension/akashic-timeline
+</code></pre>
 <p>このコマンドは、 <code>npm uninstall</code> を実行して拡張ライブラリを削除したのち、game.json から関連する情報を削除します。</p>
 <p>誤って <code>npm install</code> コマンドで拡張ライブラリをインストールした場合は、 <code>npm uninstall</code> コマンドで拡張ライブラリを一度アンインストールし、その後 <code>akashic install</code> コマンドで再インストールしてください。</p>
 <p>（拡張ライブラリを再インストールしてもインストールしたライブラリを正常に利用できない場合、一度 <code>node_modules</code> ディレクトリを削除して、インストール済みの拡張ライブラリ全体を再インストールしてください。）</p>

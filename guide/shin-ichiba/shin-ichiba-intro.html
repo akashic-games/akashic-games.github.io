@@ -7,20 +7,20 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ニコ生ゲーム</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/asset.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/asset.css?06ad657f">
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -139,8 +139,13 @@
 <li>投稿・申請</li>
 </ul>
 <p>また <code>akashic-sandbox</code> や <code>aksahic serve</code> コマンドは、ニコ生ゲームの開発に便利な機能を提供しています。</p>
-<h2><a name="mode"></a> モード</h2>
-<p>ニコ生ゲームを作成するには、まずコンテンツが対応する <strong>モード</strong> を決める必要があります。</p>
+
+			<h2>
+				<a name="mode" class="anchor" href="#mode">
+					<span class="header-link">#</span>
+				</a>
+				 モード
+			</h2><p>ニコ生ゲームを作成するには、まずコンテンツが対応する <strong>モード</strong> を決める必要があります。</p>
 <p>モードは放送内での遊び方を決めるもので、以下の種類があります。</p>
 <ul>
 <li><strong>ランキングモード</strong> (<code>&quot;ranking&quot;</code>): 一人プレイのゲームを、放送者と各視聴者がそれぞれ遊び、スコアを競う</li>
@@ -155,7 +160,8 @@
       &quot;supportedModes&quot;: [&quot;ranking&quot;]
     }
   }
-}</code></pre>
+}
+</code></pre>
 <p><strong><code>&quot;ranking&quot;</code> モードを指定する場合は、ゲーム内でスコアを設定する必要があります</strong> (後述) 。
 それ以外のモードでは、そのような条件はありません。普通の Akashic Engine のコンテンツとしてシングルプレイ・マルチプレイのコンテンツを作るだけで投稿できます。</p>
 <blockquote>
@@ -164,8 +170,13 @@
 <blockquote>
 <p>以前は <code>environment.nicolive</code> ではなく <code>environment.niconico</code> プロパティを利用していました。現在 <code>environment.niconico</code> は非推奨になっています。詳細は <a href="./shin-ichiba-spec.html#supported-modes">ニコ生ゲーム関連の仕様</a> を参照してください。</p>
 </blockquote>
-<h2><a name="resolution-and-fps"></a> 解像度と FPS</h2>
-<p>モードを決めたら、それに応じたコンテンツを作る必要があります。
+
+			<h2>
+				<a name="resolution-and-fps" class="anchor" href="#resolution-and-fps">
+					<span class="header-link">#</span>
+				</a>
+				 解像度と FPS
+			</h2><p>モードを決めたら、それに応じたコンテンツを作る必要があります。
 選んだモードに関わらず、画面解像度と FPS には次の制約があります。</p>
 <ul>
 <li><strong>画面解像度</strong>: 1280x720 以下 (16:9 を推奨)</li>
@@ -179,14 +190,16 @@
 prompt: width:  (320) 640
 prompt: height:  (320) 360
 prom pt: fps:  (30) 30
-INFO: Done!</code></pre>
+INFO: Done!
+</code></pre>
 <p>生成済みのゲームの場合は、 <code>game.json</code> の <code>width</code>, <code>height</code>, <code>fps</code> プロパティをそれぞれ編集してください。</p>
 <pre><code class="language-json">{
   &quot;width&quot;: 640,
   &quot;height&quot;: 360,
   &quot;fps&quot;: 30,
   &quot;...&quot;: &quot;(その他の値)&quot;
-}</code></pre>
+}
+</code></pre>
 <p>この他のゲームで必要な対応や、開発ツールでの動作確認方法はモードによります。次の節で <code>&quot;ranking&quot;</code> モードのゲームについて、その次では <code>&quot;multi_admission</code>&quot; モードのゲームについて述べます。</p>
 <div class="navi-center">
  -

@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>非表示にする</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -618,8 +618,10 @@
 <pre><code class="language-javascript">var sprite = new g.Sprite({
   ...,      // その他のプロパティ
   hidden: true // 非表示にした状態で生成する
-});</code></pre>
-<pre><code class="language-javascript">sprite.hide(); // 非表示状態にする。</code></pre>
+});
+</code></pre>
+<pre><code class="language-javascript">sprite.hide(); // 非表示状態にする。
+</code></pre>
 <p>エンティティ追加時から非表示にするには、エンティティ生成時に <code>hidden</code> プロパティを <code>true</code> に設定します。表示状態のエンティティを非表示にするには、<code>hide()</code> を利用します。
 <code>hide()</code> 利用時には <code>modified()</code> を呼び出す必要はありません。</p>
 <h2>利用例</h2>
@@ -636,15 +638,19 @@
   hidden: true
 });
 
-scene.append(sprite);</code></pre>
+scene.append(sprite);
+</code></pre>
 <p>生成後のエンティティの表示状態は <code>visible()</code> で取得できます。</p>
-<pre><code class="language-javascript">sprite.visible(); // ==&gt; false</code></pre>
+<pre><code class="language-javascript">sprite.visible(); // ==&gt; false
+</code></pre>
 <p>非表示状態のエンティティを表示状態にするには <code>show()</code> を利用します。
 <code>show()</code> 利用時には <code>modified()</code> を呼び出す必要はありません。</p>
-<pre><code class="language-javascript">sprite.show();</code></pre>
+<pre><code class="language-javascript">sprite.show();
+</code></pre>
 <p>表示状態のエンティティを非表示にするには、<code>hide()</code> を利用します。
 <code>hide()</code> 利用時には <code>modified()</code> を呼び出す必要はありません。</p>
-<pre><code class="language-javascript">sprite.hide();</code></pre>
+<pre><code class="language-javascript">sprite.hide();
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/akashic-engine/v3/classes/E.html#hide">API リファレンス</a></li>

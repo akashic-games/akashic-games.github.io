@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>『スピードジグソー』を改造する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -312,18 +312,33 @@
 文体などは他のページと異なることがあります。
 </p>
 
-<h2><a name="introduction"></a> 『スピードジグソー』のご紹介</h2>
-<p>スピードジグソーは ゲームアツマールにも投稿しています。まずはゲームをプレイしてみましょう。</p>
+
+			<h2>
+				<a name="introduction" class="anchor" href="#introduction">
+					<span class="header-link">#</span>
+				</a>
+				 『スピードジグソー』のご紹介
+			</h2><p>スピードジグソーは ゲームアツマールにも投稿しています。まずはゲームをプレイしてみましょう。</p>
 <p><strong><a href="https://game.nicovideo.jp/atsumaru/games/gm10728">https://game.nicovideo.jp/atsumaru/games/gm10728</a></strong></p>
 <p><img src="/img/shin-ichiba/speed-jigsaw-mod/speed-jigsaw.gif" alt="スピードジグソーの画面"></p>
 <p>一言で言えば、制限時間つきのジグソーパズルゲームですね。</p>
 <p>このパズルの絵を差し替えるだけで、自分オリジナルの「スピードジグソー」を作ることができます。</p>
 <p>とはいえ絵を準備するだけではなく、少しだけプラスアルファでやらなくてはいけないことがあるので順番にやり方を追っていきましょう。</p>
-<h2><a name="install"></a> 環境の用意</h2>
-<p>今回の改造でもやはり動作確認のために開発用ツールが必要です。
+
+			<h2>
+				<a name="install" class="anchor" href="#install">
+					<span class="header-link">#</span>
+				</a>
+				 環境の用意
+			</h2><p>今回の改造でもやはり動作確認のために開発用ツールが必要です。
 <a href="./install.html">インストール</a> の手順を参照して、 Akashic Engine の開発用ツール <code>akashic-sandbox</code>, <code>akashic-cli</code> をインストールしてください。</p>
-<h2><a name="mod"></a> 差し替え</h2>
-<p>それでは今回改造するゲームのソースコードをダウンロードしましょう！　以下の URL からダウンロードしてください。</p>
+
+			<h2>
+				<a name="mod" class="anchor" href="#mod">
+					<span class="header-link">#</span>
+				</a>
+				 差し替え
+			</h2><p>それでは今回改造するゲームのソースコードをダウンロードしましょう！　以下の URL からダウンロードしてください。</p>
 <p><strong><a href="https://github.com/akashic-contents/speed-jigsaw/releases/download/v1.0.0/game.zip">https://github.com/akashic-contents/speed-jigsaw/releases/download/v1.0.0/game.zip</a></strong></p>
 <p>今回は画像を差し替えてジグソーパズルの種類を変更しましょう。
 スピードジグソーを解凍したフォルダの中に、ゲームに必要なリソースが一式入っています。</p>
@@ -336,10 +351,16 @@
 <p>今回はいらすとやさんの画像を使ってみましょう。
 配置してみました。</p>
 <p><img src="/img/shin-ichiba/speed-jigsaw-mod/illust-ya-puzzle-image.png" alt="いらすとやさんの画像を6枚並べたもの"></p>
-<h2><a name="run"></a> 動かしてみる</h2>
-<p>ここで <a href="./install.html">インストール</a> で利用した CUI ツールを再び使います。</p>
+
+			<h2>
+				<a name="run" class="anchor" href="#run">
+					<span class="header-link">#</span>
+				</a>
+				 動かしてみる
+			</h2><p>ここで <a href="./install.html">インストール</a> で利用した CUI ツールを再び使います。</p>
 <p>ここで泥棒バスターの記事内の『<a href="./thiefBuster-mod.html#get-source">ソースの用意</a>』を参照いただいて、ゲームをダウンロードした場所まで作業ディレクトリを移動 (cd) し、以下のコマンドを実行してください。</p>
-<pre><code class="language-sh">akashic-sandbox</code></pre>
+<pre><code class="language-sh">akashic-sandbox
+</code></pre>
 <p>実行すると、『<a href="http://localhost:3000">http://localhost:3000</a> にブラウザでアクセスしてください』、という趣旨のメッセージが表示されます。
 上記の URL にアクセスするとブラウザ上でゲームが遊べると思います。</p>
 <p>フォルダ内の画像が元々の画像のままだと、元のジグソーパズルの絵柄です。
@@ -347,8 +368,13 @@
 <p>パズルの絵が元の絵ではなく差し替えたものに変わっていれば改造できています！</p>
 <p><img src="/img/shin-ichiba/speed-jigsaw-mod/result.png" alt="差し替え後"></p>
 <p>パズルの絵以外にも、タイトル等の画像も同じように差し替えることが可能です。</p>
-<h2><a name="submit"></a> 投稿</h2>
-<p>自分だけのゲームが完成したら、実際にニコ生ゲームとして公開してみましょう！　
+
+			<h2>
+				<a name="submit" class="anchor" href="#submit">
+					<span class="header-link">#</span>
+				</a>
+				 投稿
+			</h2><p>自分だけのゲームが完成したら、実際にニコ生ゲームとして公開してみましょう！　
 <a href="./submit.html">ニコ生ゲームを投稿しよう</a> を参考にぜひ投稿してみてください。</p>
 <div class="navi-center">
 <a href="./thiefBuster-mod.html">前 (『泥棒バスター』を改造する)</a>

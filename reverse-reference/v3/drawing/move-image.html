@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>画像を動かす</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -618,7 +618,8 @@
 <pre><code class="language-javascript">scene.onUpdate.add(function() {
   rect.x += 1; // 横方向に 1 移動する
   rect.modified(); // modified() で表示に反映
-});</code></pre>
+});
+</code></pre>
 <p>シーンではなくエンティティの <code>onUpdate</code> を利用することもできます。</p>
 <p>画像を切り替えるパラパラアニメ (フレームアニメーション) を行うには <a href="./frame-animation.html"><code>g.FrameSprite</code> を利用してください。</a></p>
 <p>イージングなどを含むより複雑なアニメーションを行うには <a href="./animation.html"><code>akashic-timelin</code> を利用する</a> と、より簡潔に複雑なアニメーションを記述することができます。</p>
@@ -667,7 +668,8 @@ function createRect(scene, color, x, y) {
   });
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/tutorial/v3/animation.html#">チュートリアル</a></li>

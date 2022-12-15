@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>SVG ファイルを画像アセットとして利用する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -634,7 +634,8 @@ SVG ファイルを利用することで今まで Akashic Engine で表現する
 <p>以下は 100x100 のベージュ色の円を表す Akashic Engine として妥当な SVG ファイルの記述例です。</p>
 <pre><code class="language-xml">&lt;svg width=&quot;100&quot; height=&quot;100&quot; viewbox=&quot;0 0 100 100&quot; version=&quot;1.1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;&gt;
   &lt;circle fill=&quot;#D2B48C&quot; cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;50&quot; /&gt;
-&lt;/svg&gt;</code></pre>
+&lt;/svg&gt;
+</code></pre>
 <p><img src="/img/reverse-reference/circle.svg" alt="円"></p>
 <h2>SVG ファイルのスキャン</h2>
 <p>akashic-cli v2.11.0 以降であれば <code>akashic scan</code> 時に <code>.svg</code> ファイルを <code>&quot;vector-image&quot;</code> アセットとしてスキャンできます。
@@ -645,7 +646,8 @@ SVG ファイルを利用することで今まで Akashic Engine で表現する
   &quot;width&quot;: 100,
   &quot;height&quot;: 100,
   &quot;path&quot;: &quot;image/circle.svg&quot;
-}</code></pre>
+}
+</code></pre>
 <h2>ゲームコンテンツからの利用</h2>
 <p>ゲームコンテンツから利用する場合、SVG の画像データを <code>g.Surface</code> に変換 (ラスタライズ) します。
 ゲーム開発者自身が生成した <code>g.Surface</code> はエンジンによるリソース開放処理が行われません。
@@ -666,7 +668,8 @@ var sprite = new g.Surface({
 
 surface.destroy(); // ! 参照されなくなったタイミングで開放
 // or
-sprite.destroy(true); // ! g.Sprite の場合は destroy() に引数 true を渡すことで g.Surface を開放可能</code></pre>
+sprite.destroy(true); // ! g.Sprite の場合は destroy() に引数 true を渡すことで g.Surface を開放可能
+</code></pre>
 <h2>注意事項</h2>
 <p>SVG ファイルのサポートは現時点では実験段階です。
 特に マルチプレイモード (<a href="/tutorial/v3/multiplay/introduction.html">参考リンク</a>) でゲームを作成する場合、サーバサイドで実行されるインスタンス上では <code>createSurface()</code> の戻り値が <code>null</code> となることがあります。

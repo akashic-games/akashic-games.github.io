@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>クリック・タップできるようにする</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -622,7 +622,8 @@
 
 rect.onPointDown.add(function(e) {
   ... // エンティティがクリック・タップされた時の処理
-});</code></pre>
+});
+</code></pre>
 <p>エンティティは <code>touchable</code> プロパティを <code>true</code> にすることにより、タップやクリックなどのユーザ操作を検出できるようになります。いわゆる「クリック」はマウスを離したタイミングで判定されますが、ここでは単純にマウスを押したタイミングで処理を行います。</p>
 <p>エンティティをドラッグ・スワイプで動かすには<a href="./drag.html"><code>g.E#onPointMove</code> を利用してください。</a></p>
 <p>画面全体をクリック・タップするには<a href="./click-scene.html"><code>g.Scene#onPointDownCapture</code> を利用してください。</a></p>
@@ -682,7 +683,8 @@ scene.onLoad.add(function() {
     rect.cssColor = &quot;red&quot;;
     rect.modified();
   });
-});</code></pre>
+});
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/tutorial/v3/click.html">チュートリアル</a></li>

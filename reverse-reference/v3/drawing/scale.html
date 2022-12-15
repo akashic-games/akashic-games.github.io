@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>拡大する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -619,10 +619,12 @@
   ...,         // その他のプロパティ
   scaleX: 2,   // 横方向に 2 倍拡大する
   scaleY: 1.5  // 縦方向に 1.5 倍拡大する
-});</code></pre>
+});
+</code></pre>
 <pre><code class="language-javascript">sprite.scaleX = 3; // 縦方向に 3 倍拡大する
 sprite.scaleY = 2; // 縦方向に 2 倍拡大する
-sprite.modified(); // modified() で表示に反映</code></pre>
+sprite.modified(); // modified() で表示に反映
+</code></pre>
 <p>拡大は、 <a href="./rotate.html"><code>angle</code> による回転</a> と同じく、デフォルトではエンティティの左上端を基準に行われます。
 この基準位置を変えるには、 <a href="./rotate-anchor.html"><code>anchorX</code>, <code>anchorY</code> を利用してください</a> 。</p>
 <h2>利用例</h2>
@@ -641,12 +643,16 @@ sprite.modified(); // modified() で表示に反映</code></pre>
   scaleY: 2
 });
 
-scene.append(sprite);</code></pre>
+scene.append(sprite);
+</code></pre>
 <p>生成後のエンティティの縦・横方向の倍率は、 <code>scaleX</code>, <code>scaleY</code> プロパティで参照できます。</p>
 <pre><code>sprite.scaleX;  // ==&gt; 3
-sprite.scaleY;  // ==&gt; 2</code></pre><p><code>scaleX</code>, <code>scaleY</code> プロパティに代入することで、縦・横方向の倍率を変更できます。表示への反映には <code>modified()</code> メソッドを呼び出す必要があります。</p>
+sprite.scaleY;  // ==&gt; 2
+</code></pre>
+<p><code>scaleX</code>, <code>scaleY</code> プロパティに代入することで、縦・横方向の倍率を変更できます。表示への反映には <code>modified()</code> メソッドを呼び出す必要があります。</p>
 <pre><code class="language-javascript">sprite.scaleX += 0.5; // 現状からさらに横方向を 0.5 倍拡大させる
-sprite.modified(); // modified() で表示に反映</code></pre>
+sprite.modified(); // modified() で表示に反映
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/tutorial/v3/scale-anchor.html#scale-and-rot">チュートリアル</a></li>

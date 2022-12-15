@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>画像の一部分を表示する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -624,10 +624,12 @@
   srcY: 10, // 描画元範囲分の上端を指定します
   srcWidth: 30, // 描画元範囲の幅の値。エンティティの幅に拡大して描画されます
   srcHeight: 25 // 描画元範囲の高さの値。エンティティの高さに拡大して描画されます
-});</code></pre>
+});
+</code></pre>
 <pre><code class="language-javascript">sprite.srcX = 25;
 sprite.srcY = 5;
-sprite.invalidate(); // invalidate() で表示に反映します</code></pre>
+sprite.invalidate(); // invalidate() で表示に反映します
+</code></pre>
 <p>画像を拡大して表示するには <a href="./scale.html"><code>scaleX</code>, <code>scaleY</code>を利用してください。</a></p>
 <p>画像を回転して表示するには<a href="./rotate.html"><code>angle</code> を利用してください。</a></p>
 <h2>利用例</h2>

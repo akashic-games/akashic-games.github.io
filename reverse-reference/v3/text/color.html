@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>文字列の色を変える</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -619,9 +619,11 @@
   ...,      // その他のプロパティ
   textColor: &quot;red&quot;, // 赤色で描画する
 });
-scene.append(label);</code></pre>
+scene.append(label);
+</code></pre>
 <pre><code class="language-javascript">label.textColor = &quot;red&quot;; // 赤色に変更する
-label.invalidate(); // invalidate() で表示に反映</code></pre>
+label.invalidate(); // invalidate() で表示に反映
+</code></pre>
 <h2>利用例</h2>
 <p>次のコンテンツは、 <code>Label</code> を赤色で表示します。</p>
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvdGV4dC9jb2xvci9nYW1lLmpzb24ifQ==" width="600" height="400"></iframe>
@@ -639,12 +641,15 @@ label.invalidate(); // invalidate() で表示に反映</code></pre>
   y: 50
 });
 
-scene.append(label);</code></pre>
+scene.append(label);
+</code></pre>
 <p>生成後の <code>Label</code> の描画色は、 <code>textColor</code> プロパティで参照できます。</p>
-<pre><code class="language-javascript">label.textColor; // =&gt; &quot;red&quot;</code></pre>
+<pre><code class="language-javascript">label.textColor; // =&gt; &quot;red&quot;
+</code></pre>
 <p><code>textColor</code> プロパティに代入することで、描画色を変更できます。表示への反映には <code>invalidate()</code> メソッドを呼び出す必要があります。</p>
 <pre><code class="language-javascript">label.textColor = &quot;green&quot;; // 描画色を緑色に変更する
-label.invalidate(); // invalidate() で表示に反映</code></pre>
+label.invalidate(); // invalidate() で表示に反映
+</code></pre>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/tutorial/v3/text.html">チュートリアル</a></li>

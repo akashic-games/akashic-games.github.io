@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ユーザ名を使う</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -308,8 +308,13 @@
 <p>マルチプレイゲームでは、ゲーム中にプレイヤーの名前を表示したいことがあります。
 ニコ生ゲームでは、各プレイヤーの「ニコニコ生放送のユーザ名」を取得・利用することができます。</p>
 <p>対応バージョンは Akashic Engine v3 以降です。</p>
-<h2><a name="confirm"></a> ユーザ名の利用許諾</h2>
-<p>ニコ生ゲームでのユーザ名取得は、技術的には「関数を一つ呼び出してその完了を待つ」だけで実現できます。</p>
+
+			<h2>
+				<a name="confirm" class="anchor" href="#confirm">
+					<span class="header-link">#</span>
+				</a>
+				 ユーザ名の利用許諾
+			</h2><p>ニコ生ゲームでのユーザ名取得は、技術的には「関数を一つ呼び出してその完了を待つ」だけで実現できます。</p>
 <p>ただし自作ニコ生ゲームにおいては、ユーザの許可なくユーザ名を利用することはできません。
 コンテンツからユーザ名を取得しようとすると、ゲーム画面に許諾を求めるダイアログが表示されます。(下図参照)</p>
 <p><img src="/img/shin-ichiba/player-info-accept-dialog.png" alt="ユーザ名の利用許諾を求めるダイアログ"></p>
@@ -319,10 +324,16 @@
 <p>このような制約を設けるのは、ニコニコ生放送が歴史的に「名前を出さない」コミュニケーションを許容してきたという文化的背景があるためです (<a href="https://qa.nicovideo.jp/faq/show/936">184 コメント</a> など)。
 公式ニコ生ゲームでは、何がしかゲームプレイに参加しなければ名前が出ることはないようになっているため、このような許諾画面を表示していません。</p>
 </blockquote>
-<h2><a name="library"></a> ライブラリの導入</h2>
-<p>ユーザ名を取得するには、拡張ライブラリ <code>@akashic-extension/resolve-player-info</code> を導入して利用する必要があります。</p>
+
+			<h2>
+				<a name="library" class="anchor" href="#library">
+					<span class="header-link">#</span>
+				</a>
+				 ライブラリの導入
+			</h2><p>ユーザ名を取得するには、拡張ライブラリ <code>@akashic-extension/resolve-player-info</code> を導入して利用する必要があります。</p>
 <p>game.json のあるディレクトリで、次を実行してください。</p>
-<pre><code class="language-sh">akashic install @akashic-extension/resolve-player-info</code></pre>
+<pre><code class="language-sh">akashic install @akashic-extension/resolve-player-info
+</code></pre>
 <p>テキストエディタで game.json を開いて、次のような <code>environment.external.coeLimited</code> プロパティがなければ作成してください。値は <code>&quot;0&quot;</code> としてください。(v2.2.4 以降の <code>akashic-cli</code> では、 <code>akashic install</code> 時に自動的に作成されます。)</p>
 <pre><code class="language-json">{
   ...,
@@ -332,14 +343,22 @@
       &quot;atsumaru&quot;: &quot;0&quot;
     }
   }
-}</code></pre>
+}
+</code></pre>
 <p>スクリプトアセット内で、 <code>require()</code> で関数 <code>resolvePlayerInfo()</code> を取得します。</p>
 <pre><code class="language-javascript">const resolvePlayerInfo = require(&quot;@akashic-extension/resolve-player-info&quot;)
-  .resolvePlayerInfo;</code></pre>
+  .resolvePlayerInfo;
+</code></pre>
 <p>TypeScript の場合は <code>import</code> を利用してください。</p>
-<pre><code class="language-typescript">import { resolvePlayerInfo } from &quot;@akashic-extension/resolve-player-info&quot;;</code></pre>
-<h2><a name="obtain-name"></a> 名前の取得</h2>
-<p>得られた <code>resolvePlayerInfo()</code> のもっとも簡単な用法は、引数として <code>{ raises: true }</code> を与えて呼び出すことです。これにより名前利用の許諾ダイアログが表示され、ダイアログに応答したプレイヤーのユーザ名情報が <code>g.game.onPlayerInfo</code> で通知されます。</p>
+<pre><code class="language-typescript">import { resolvePlayerInfo } from &quot;@akashic-extension/resolve-player-info&quot;;
+</code></pre>
+
+			<h2>
+				<a name="obtain-name" class="anchor" href="#obtain-name">
+					<span class="header-link">#</span>
+				</a>
+				 名前の取得
+			</h2><p>得られた <code>resolvePlayerInfo()</code> のもっとも簡単な用法は、引数として <code>{ raises: true }</code> を与えて呼び出すことです。これにより名前利用の許諾ダイアログが表示され、ダイアログに応答したプレイヤーのユーザ名情報が <code>g.game.onPlayerInfo</code> で通知されます。</p>
 <p>また以降そのプレイヤーが生成したイベント (画面押下の <code>g.PointDownEvent</code> など) には、 <code>player.name</code> プロパティにユーザ名が含まれるようになります。</p>
 <pre><code class="language-javascript">const nameTable = {};
 g.game.onPlayerInfo.add(ev =&gt; {
@@ -358,9 +377,15 @@ scene.onPointDownCapture.add(ev =&gt; {
 
 // 以下で名前利用の許諾ダイアログを表示します。
 // ただし、この関数はローカルイベント契機でのみ呼び出してください (後述) 。
-resolvePlayerInfo({ raises: true });</code></pre>
-<h2><a name="api"></a> API</h2>
-<p><code>resolvePlayerInfo(opts, callback)</code> は、一つまたは二つの引数をとる関数です。</p>
+resolvePlayerInfo({ raises: true });
+</code></pre>
+
+			<h2>
+				<a name="api" class="anchor" href="#api">
+					<span class="header-link">#</span>
+				</a>
+				 API
+			</h2><p><code>resolvePlayerInfo(opts, callback)</code> は、一つまたは二つの引数をとる関数です。</p>
 <p>第一引数 <code>opts</code> は次のプロパティを持つオブジェクトです。</p>
 <table>
 <thead>
@@ -410,8 +435,13 @@ resolvePlayerInfo({ raises: true });</code></pre>
 <p>プレイヤーの名前は、 <code>callback</code> の第二引数 (<code>playerInfo</code>) を使って、 <code>playerInfo.name</code> でアクセスすることができます。</p>
 <p>また <code>playerInfo.userData.accepted</code> が <code>false</code> の場合、そのユーザは名前取得を拒否したユーザです。この時 <code>playerInfo.name</code> は自動生成の文字列または <code>null</code> です。</p>
 <p><code>playerInfo.userData.unnamed</code> が <code>true</code> の場合、そのユーザは名前がない特殊なユーザです (サーバサイドで実行されている特殊なインスタンスなど)。通常、 <code>unnamed</code> のユーザが実際にゲームプレイを行うことはありません。特に用途がなければ、このプレイヤーは無視してください。 <code>raises</code> オプションを <code>true</code> にして自動的に名前情報を全体通知する場合にも、 <code>unnamed</code> のプレイヤーは無視されます。</p>
-<h3><a name="raises"></a> raises オプションで通知される g.PlayerInfoEvent</h3>
-<p><code>raises</code> に <code>true</code> を指定すると、取得した名前情報は自動的に <code>g.PlayerInfoEvent</code> として全プレイヤーに通知されます。このイベントは <code>g.game.onPlayerInfo</code> トリガーで通知されます。</p>
+
+			<h3>
+				<a name="raises" class="anchor" href="#raises">
+					<span class="header-link">#</span>
+				</a>
+				 raises オプションで通知される g.PlayerInfoEvent
+			</h3><p><code>raises</code> に <code>true</code> を指定すると、取得した名前情報は自動的に <code>g.PlayerInfoEvent</code> として全プレイヤーに通知されます。このイベントは <code>g.game.onPlayerInfo</code> トリガーで通知されます。</p>
 <p><code>onPlayerInfo</code> のハンドラに渡される引数 (<code>ev</code>) は <code>g.PlayerInfoEvent</code> で、これには次のプロパティが含まれます。</p>
 <table>
 <thead>
@@ -437,8 +467,13 @@ resolvePlayerInfo({ raises: true });</code></pre>
 <td align="left">名前取得が許諾されたか。<br> <code>false</code> の場合、名前は自動生成されたものまたは <code>null</code> 。</td>
 </tr>
 </tbody></table>
-<h2><a name="code-example"></a> コード例</h2>
-<p>マルチプレイゲーム内で参加ボタンを表示し、押したプレイヤーに名前利用の許諾を求めるコードは、次のようなものになります。</p>
+
+			<h2>
+				<a name="code-example" class="anchor" href="#code-example">
+					<span class="header-link">#</span>
+				</a>
+				 コード例
+			</h2><p>マルチプレイゲーム内で参加ボタンを表示し、押したプレイヤーに名前利用の許諾を求めるコードは、次のようなものになります。</p>
 <pre><code class="language-javascript">const resolvePlayerInfo = require(&quot;@akashic-extension/resolve-player-info&quot;)
   .resolvePlayerInfo;
 
@@ -517,15 +552,31 @@ module.exports = () =&gt; {
     });
   });
   g.game.pushScene(scene);
-};</code></pre>
+};
+</code></pre>
 <p>なお「ローカルエンティティ」や <code>g.game.raiseEvent()</code> など、Akashic Engine のマルチプレイ関連の機能については、チュートリアルの <a href="https://akashic-games.github.io/tutorial/v3/multiplay/introduction.html">マルチプレイの基礎</a> や <a href="https://akashic-games.github.io/tutorial/v3/multiplay/each-player.html">プレイヤーごとに異なる描画を行う</a> を参照してください。</p>
-<h2><a name="limitation"></a> 利用上の制限</h2>
-<h3><a name="limitation-scene"></a> 呼び出し中にシーン遷移しない</h3>
-<p><code>resolvePlayerInfo()</code> の呼び出し後、 <strong>コールバックが呼び出されるまでの間に、シーン遷移を行わないでください</strong> 。</p>
+
+			<h2>
+				<a name="limitation" class="anchor" href="#limitation">
+					<span class="header-link">#</span>
+				</a>
+				 利用上の制限
+			</h2>
+			<h3>
+				<a name="limitation-scene" class="anchor" href="#limitation-scene">
+					<span class="header-link">#</span>
+				</a>
+				 呼び出し中にシーン遷移しない
+			</h3><p><code>resolvePlayerInfo()</code> の呼び出し後、 <strong>コールバックが呼び出されるまでの間に、シーン遷移を行わないでください</strong> 。</p>
 <p>これは実装に起因する制限です。
 一部のタイムアウト判定に <code>scene.setTimeout()</code> が利用されている関係上、シーンを切り替えてしまうと正しく動作しなくなるケースがあります。</p>
-<h3><a name="limitation-local"></a> ローカル処理でのみ使う</h3>
-<p><code>resolvePlayerInfo()</code> は、 <strong>ローカルイベントの処理 (ローカル処理) 内でのみ利用してください</strong> 。</p>
+
+			<h3>
+				<a name="limitation-local" class="anchor" href="#limitation-local">
+					<span class="header-link">#</span>
+				</a>
+				 ローカル処理でのみ使う
+			</h3><p><code>resolvePlayerInfo()</code> は、 <strong>ローカルイベントの処理 (ローカル処理) 内でのみ利用してください</strong> 。</p>
 <p>言い換えると、原則ローカルエンティティ (<code>local: true</code> をつけて生成したもの) の <code>onPointDown</code> や <code>onPointUp</code> のハンドラ内でのみ呼び出すようにしてください。
 「ゲーム開始時に強制的に全員のプレイヤー名を取得する」といった使い方はできません。</p>
 <p>これは、マルチプレイの参加者が「途中から」ゲーム画面を開く可能性があるためです (ニコ生ゲームの起動中に配信を見始めたなど)。
@@ -534,16 +585,36 @@ module.exports = () =&gt; {
 さらに早送り中にシーン切り替えが発生すると、前述の「呼び出し中にシーン遷移しない」に反する可能性があります。</p>
 <p>ゲーム開始時に参加者が確定しないゲーム (手番のプレイヤーを都度抽選するなど) の場合は、
 「参加者が決まるたびに (名前利用を許諾していなければ) 許諾を促すボタンを表示する」など、「いつ見始めても参加できる」形を検討してください。</p>
-<h2><a name="suppl"></a> 細かな補足</h2>
-<h3><a name="conflicted-names"></a> 名前の重複</h3>
-<p>名前利用を許諾しなかった場合に自動生成される名前 (<code>&quot;ゲスト123&quot;</code> など) は重複する可能性があることに気をつけてください。自動生成に限らず、ユーザ名は重複する可能性があります。</p>
+
+			<h2>
+				<a name="suppl" class="anchor" href="#suppl">
+					<span class="header-link">#</span>
+				</a>
+				 細かな補足
+			</h2>
+			<h3>
+				<a name="conflicted-names" class="anchor" href="#conflicted-names">
+					<span class="header-link">#</span>
+				</a>
+				 名前の重複
+			</h3><p>名前利用を許諾しなかった場合に自動生成される名前 (<code>&quot;ゲスト123&quot;</code> など) は重複する可能性があることに気をつけてください。自動生成に限らず、ユーザ名は重複する可能性があります。</p>
 <p>厳密に識別したい場合は、参加順で番号を振る、名前に色をつけて表示するなど、コンテンツ側での対応が必要です。</p>
-<h3><a name="atsumaru"></a> ゲームアツマールでの動作</h3>
-<p>このライブラリは <a href="https://game.nicovideo.jp/atsumaru/">ゲームアツマール</a> 環境 (アツマール) でも動作します。
+
+			<h3>
+				<a name="atsumaru" class="anchor" href="#atsumaru">
+					<span class="header-link">#</span>
+				</a>
+				 ゲームアツマールでの動作
+			</h3><p>このライブラリは <a href="https://game.nicovideo.jp/atsumaru/">ゲームアツマール</a> 環境 (アツマール) でも動作します。
 ただし名前取得の許諾ダイアログは表示されず、自動的に許諾された扱いになります。
 これはアツマールが名前を取得する API を最初から公開しているサービスであるためです。</p>
-<h3><a name="old-app"></a> ニコ生アプリのバージョン</h3>
-<p>iOS, Android の古いバージョンのニコ生アプリでは、この名前取得機能に対応していない場合があります。
+
+			<h3>
+				<a name="old-app" class="anchor" href="#old-app">
+					<span class="header-link">#</span>
+				</a>
+				 ニコ生アプリのバージョン
+			</h3><p>iOS, Android の古いバージョンのニコ生アプリでは、この名前取得機能に対応していない場合があります。
 その場合は、アプリの更新を促すダイアログが表示され、自動的に名前利用を許諾しなかった扱いになります (自動生成の名前が通知されます) 。</p>
 <div class="navi-center">
 <a href="./column-make-multi.html">前 (実際にマルチプレイゲームを考えて作ろう)</a>

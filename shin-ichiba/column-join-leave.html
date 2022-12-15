@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>Join と Leave とニコ生の話</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -401,7 +401,8 @@ let gameMasterId = null;
 
 g.game.join.addOnce(e =&gt; {
   gameMasterId = e.player.id;
-});</code></pre>
+});
+</code></pre>
 <p>あとはゲームのメインループ内でこの値の変化をチェックし、null じゃなくなったときに募集を開始すればいいわけです。gameStatus、つまりゲームの状態を初期化(initializing)に進めます。</p>
 <pre><code class="language-ts">// 毎フレーム呼び出される処理。ゲームステータスで分岐する
 function mainLoop() {
@@ -412,7 +413,8 @@ function mainLoop() {
     }
   }
   // -- 略 --
-}</code></pre>
+}
+</code></pre>
 <p>onGameMasterArrive()の中は大まかに以下のようになっていて、自分がゲームマスターなのかどうかによって参加締め切りボタンか参加ボタンのいずれかを出しています。
 またこの時に画面のテキストも変えています。</p>
 <pre><code class="language-ts">function onGameMasterArrive() {
@@ -427,7 +429,8 @@ function mainLoop() {
     infoLabel.text = &quot;あなたは視聴者です。ゲームに参加することができます。&quot;;
     infoLabel.invalidate();
   }
-}</code></pre>
+}
+</code></pre>
 <p>ゲームが募集状態の時、 <strong>ゲームマスター（放送者）と視聴者の役割は大きく異なります。</strong>
 ゲームマスターは参加募集を打ち切る権限を持ち、視聴者はゲームに参加するか否かの選択が行えます。次の節で、各々の操作、つまりローカルイベントによってゲーム全体へ影響を与える raiseEvent についてみてみましょう。</p>
 <h3>参加待ちと raiseEvent の話</h3>
@@ -443,7 +446,8 @@ function mainLoop() {
 
   // このボタンの処理は放送者でしか発生しないので、ゲーム全体の進行のため全体に通知する
   g.game.raiseEvent(new g.MessageEvent({ message: &quot;EntryClosed&quot; }));
-});</code></pre>
+});
+</code></pre>
 <p>処理の中で gameStatus を代入する代わりに、 <strong>raiseEvent</strong> を使っています。重要です。
 なぜなら <strong>このイベントはマスターの PC 上でしか発生しない</strong> ため、視聴者全員の PC にある gameStatus が変わらないのです。
 逆にマスター以外の PC ではシーンに closeButton がないため、ここでローカル処理として closeButton を消しています。</p>
@@ -471,7 +475,8 @@ scene.message.add(ev =&gt; {
       infoLabel.invalidate();
     }
   }
-});</code></pre>
+});
+</code></pre>
 <p>raiseEvent によって <strong>全員にイベントが送信される</strong> ため、この処理は全員の PC で実行されます。なので募集締め切りのメッセージを受けた時に gameStatus を playStarting に進めます。
 <strong>操作を共有し状態を変更するのは常に自分</strong> というのが Akashic の原則です。
 全体で共有する情報を変更する際には　「こういう操作を行ったのでみなさんあとはわかっていますね？」　というメッセージだけを送り、受信した全員が自分で状態を変更するのがマルチプレイ作成時のルールです。全体で共有する情報、つまりグローバルを書き換える時は必ずこの段取りを踏みます。</p>

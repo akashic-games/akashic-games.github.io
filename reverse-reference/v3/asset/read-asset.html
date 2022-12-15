@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>アセットを読み込む</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -618,7 +618,8 @@
 <pre><code class="language-javascript">var scene = new g.Scene({
   game: g.game,
   assetPaths: [&quot;/image/character01.png&quot;, &quot;/assets/**/*&quot;]
-});</code></pre>
+});
+</code></pre>
 <h2>詳細</h2>
 <p>シーンの生成時に、<code>assetPaths</code> プロパティで利用するアセットのファイルパスを指定することによりアセットが読み込まれます。
 ファイルパスは、 <code>game.json</code> のあるディレクトリをルート (<code>/</code>) とする スラッシュ区切りの絶対パスです。</p>
@@ -640,7 +641,8 @@
 <code>&quot;/assets/scenarios/scenario?.txt</code> を指定すると <code>scenario1.txt</code>, <code>scenario2.txt</code>, <code>scenario3.txt</code> が読み込まれます。</p>
 <h3>ID による指定</h3>
 <p>また、<code>assetIds</code> プロパティにアセットの ID を指定し読み込むこともできます。Akashic Engine v2 以前ではアセットを読み込む唯一の方法でした。</p>
-<pre><code class="language-javascript">var scene = new g.Scene({ game: g.game, assetIds: [&quot;player&quot;] });</code></pre>
+<pre><code class="language-javascript">var scene = new g.Scene({ game: g.game, assetIds: [&quot;player&quot;] });
+</code></pre>
 <p><code>assetIds</code> の利用では、ファイル名が重複するとトラブルの原因になりますので注意してください。
 たとえば <code>image/player.png</code> と <code>text/player.json</code> があると、 <code>akashic scan</code> コマンドが同じアセット ID で登録しようとしてエラーになります。</p>
 <h2>関連情報</h2>

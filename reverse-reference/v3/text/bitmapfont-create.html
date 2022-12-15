@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ビットマップフォントを作る</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -615,7 +615,9 @@
 				<h1>ビットマップフォントを作る</h1>
 <p>文字の描画に使うビットマップフォントは、Akashic Engine の周辺ツールの一つ <code>bmpfont-generator</code> で生成できます。</p>
 <h2>凡例</h2>
-<pre><code>bmpfont-generator ./Your-Font-File.ttf ./font.png -f chars.txt -H 20 -F &#39;#555555&#39;</code></pre><h2>詳細</h2>
+<pre><code>bmpfont-generator ./Your-Font-File.ttf ./font.png -f chars.txt -H 20 -F &#39;#555555&#39;
+</code></pre>
+<h2>詳細</h2>
 <p>ビットマップフォントは、あらかじめ用意した画像を使用するフォントです。コンテンツで使う文字を画像としてコンテンツに取り込むことで、任意のデザインで文字列を描画することができます。</p>
 <p>ビットマップフォントを利用するには、フォントの画像とグリフ情報を生成する必要があります。
 Akashic Engine では、ビットマップフォントを生成するツール <code>bmpfont-generator</code> を提供しています。 <code>bmpfont-generator</code> の使い方は <a href="/tutorial/v3/bitmap-font.html">ビットマップフォントを使う</a> を参照してください。</p>

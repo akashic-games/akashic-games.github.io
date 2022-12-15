@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>プレイヤーごとに異なる描画を行う</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -278,7 +278,8 @@
   scene: scene,
   src: scene.assets[&quot;chara1&quot;], // (アセットID &quot;chara1&quot; のイメージアセットがある想定)
   local: true // ローカルであることを指定
-});</code></pre>
+});
+</code></pre>
 <p>その性質から、ローカルエンティティは、必ずしも全てのエンジンインスタンス上に同じように存在し表示されている必要がありません。すなわちプレイヤー別の UI を実現することができます。</p>
 <p>クリックした位置に四角形を表示するだけのコンテンツに、プレイヤー別の色選択 UI を表示するコードは次のようなものになります。</p>
 <pre><code class="language-javascript">var scene = new g.Scene({ game: g.game });
@@ -361,7 +362,8 @@ scene.loaded.add(function() {
     // イベントを送信したプレイヤーの色情報を更新する
     userColors[msg.player.id] = msg.data.color;
   });
-});</code></pre>
+});
+</code></pre>
 <p>このコードでは、画面左上に緑と青のボタン(ただの矩形ですが)が表示され、画面のその他の位置をタッチすると矩形が表示されるものです。</p>
 <p>緑と青のボタンはローカルエンティティで作られていて、プレイヤー別に異なる状態になり、またボタンに対する操作は操作したプレイヤー自身にしか通知されません。そのプレイヤーが非選択状態のボタンは半透明で表示されます。</p>
 <p><a name="raise-event"></a></p>

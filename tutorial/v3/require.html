@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>スクリプトを分割する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/header.css?0bf2ea8a">
-<link rel="stylesheet" href="/css/footer.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/common.css?06ad657f">
+<link rel="stylesheet" href="/css/header.css?06ad657f">
+<link rel="stylesheet" href="/css/footer.css?06ad657f">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
 
-<link rel="stylesheet" href="/css/railscasts.css?0bf2ea8a">
+<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0bf2ea8a"></script>
+<script src="/lib/common.js?06ad657f"></script>
 
 
 
@@ -315,8 +315,13 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>スクリプトを分割する</h1>
-<h2><a name="require"></a> require() と module.exports</h2>
-<p>Akashic Engine のゲームロジックは .js ファイル (スクリプトアセット) に記述します。
+
+			<h2>
+				<a name="require" class="anchor" href="#require">
+					<span class="header-link">#</span>
+				</a>
+				 require() と module.exports
+			</h2><p>Akashic Engine のゲームロジックは .js ファイル (スクリプトアセット) に記述します。
 ゲームが大規模になってきた場合、処理を複数の .js ファイルに分けて書くことができます。</p>
 <p>これは次の手順で行います (<code>akashic init</code> で生成した JavaScript テンプレートの場合):</p>
 <ul>
@@ -337,7 +342,8 @@
     scene.append(rect);
   });
   return scene;
-};</code></pre>
+};
+</code></pre>
 <p>コード中で <code>module.exports</code> のプロパティに代入していることに注目してください。
 このように代入した値が、外部から利用可能になります。
 その他の部分に関しては、これまでの Akashic Engine のスクリプトと違いはありません。</p>
@@ -352,7 +358,8 @@ function main() {
   g.game.pushScene(redRectScene.create());
 }
 
-module.exports = main;</code></pre>
+module.exports = main;
+</code></pre>
 <blockquote>
 <p>なお TypeScript テンプレートの場合は、 <code>script/</code> ではなく <code>src/</code> ディレクトリに .ts ファイルを作成することになります。
 <code>npm run build</code> を実行すると自動的に game.json への登録が行われるようになっているので、アセット登録を意識する必要はありません。
