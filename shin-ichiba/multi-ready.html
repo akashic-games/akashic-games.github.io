@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>マルチプレイ開発予備知識</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?06ad657f">
-<link rel="stylesheet" href="/css/header.css?06ad657f">
-<link rel="stylesheet" href="/css/footer.css?06ad657f">
+<link rel="stylesheet" href="/css/common.css?23a53def">
+<link rel="stylesheet" href="/css/header.css?23a53def">
+<link rel="stylesheet" href="/css/footer.css?23a53def">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?06ad657f">
+<link rel="stylesheet" href="/css/akashic-document.css?23a53def">
 
-<link rel="stylesheet" href="/css/railscasts.css?06ad657f">
+<link rel="stylesheet" href="/css/railscasts.css?23a53def">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?06ad657f"></script>
+<script src="/lib/common.js?23a53def"></script>
 
 
 
@@ -387,39 +387,6 @@
 				</a>
 				 投稿
 			</h2><p>作成したゲームの投稿手順はランキングゲームと同様です。<a href="./submit.html">ニコ生ゲームを投稿しよう</a> を参照して、投稿してみてください。</p>
-<blockquote>
-<p><strong>補足: アツマール対応の表明</strong> <a name="atsumaru"></a></p>
-<p>Akashic のマルチプレイゲームは、ゲームアツマールでも公開できます。
-ただしニコ生ゲームと異なり配信者はいません。
-ユーザがまず「部屋」を作成して、その部屋を訪れたユーザとマルチプレイゲームを遊ぶ形になります。</p>
-<p>マルチプレイのニコ生ゲームは、内容によってニコニコ生放送専用であるかどうかが分かれるでしょう。
-例えば「配信者が配信上で発した言葉を使う」ゲームは、アツマールでは遊べません。
-一方で配信者も視聴者も同じ立場のゲームであれば、アツマールでも同じように遊べるはずです。</p>
-<p>game.json で <code>external.atsumaru.supportedModes</code> に <code>[&quot;multi&quot;]</code> を指定すると、アツマールでの実行もサポートすることができます。
-次の例は、ニコ生ゲーム向けの指定とアツマール向けの指定を両方行ったものです。</p>
-<pre><code class="language-json">{
-  // ... その他の記述 ...
-
-  &quot;environment&quot;: {
-    &quot;nicolive&quot;: {
-      &quot;supportedModes&quot;: [&quot;multi_admission&quot;]
-    },
-    &quot;atsumaru&quot;: {
-      &quot;supportedModes&quot;: [&quot;multi&quot;]
-    }
-  }
-}
-</code></pre>
-<p>後述しますがニコ生ゲームは、まずゲームアツマールに投稿して、その後に「ニコ生ゲームとして申請」することで公開されます。
-そのため上のように指定しておけば、ニコ生ゲームの公開時にそのままアツマールでも公開されます。</p>
-<p>逆にアツマールに対応 <strong>しない</strong> 場合、そのままだとアツマール上では動かないだけのゲームになるので、以下のいずれかを行うことを推奨します。</p>
-<ul>
-<li>アツマール上での説明文に「ニコ生のみ対応、アツマール上では遊べない」ことを明記する</li>
-<li>アツマール側を「限定公開」にする (アツマール上では一般に公開しない)</li>
-<li>アツマールで動作している時向けの挙動を実装する (e.g. CPU 戦モード)</li>
-</ul>
-<p>ゲームアツマール向けのゲームについては <a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a> も参照してください。</p>
-</blockquote>
 <div class="navi-center">
 <a href="./multi-top.html">前 (ニコ生ゲームを作ろう・マルチプレイゲーム編)</a>
  | <a href="./index.html">目次</a>

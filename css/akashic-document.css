@@ -158,6 +158,26 @@
 .akashic--document .source-info p {
 	color: inherit;
 }
+
+.akashic--document .strong-warn-info {
+	color: #202020;
+	margin: 40px 0;
+	padding: 20px;
+	border-radius: 6px;
+	border: 1px solid #b99e9e;
+	background: #ffe7e7;
+}
+.akashic--document .strong-warn-info a {
+	color: #aa1e1e;
+}
+.akashic--document .strong-warn-info p {
+	color: inherit;
+}
+.akashic--document .strong-warn-info h3 {
+	margin: 0 0 16px 0;
+	color: #C00;
+}
+
 .akashic--document li {
 	color: #466;
 	line-height: 1.5;
