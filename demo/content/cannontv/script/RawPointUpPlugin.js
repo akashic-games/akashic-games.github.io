@@ -10,7 +10,7 @@ RawPointUpPlugin.isSupported = function () {
 	return (typeof document !== "undefined") && (typeof document.addEventListener === "function");
 };
 
-var proto = RawPointUpPlugin.prototype;
+const proto = RawPointUpPlugin.prototype;
 
 proto.start = function start() {
 	this.view.addEventListener("mouseup", this._onMouseUp_bound, false);
@@ -24,18 +24,18 @@ proto.stop = function stop() {
 };
 
 proto._onMouseUp = function _onMouseUp(e) {
-	var rect = this.view.getBoundingClientRect();
-	var px = e.pageX - (window.pageXOffset + rect.left);
-	var py = e.pageY - (window.pageYOffset + rect.top);
-	var scale = this.view.getScale ? this.view.getScale() : { x: 1, y: 1 };
-	var target = this.game.scene().findPointSourceByPoint({ x: px / scale.x, y: py / scale.y }).target;
+	const rect = this.view.getBoundingClientRect();
+	const px = e.pageX - (window.pageXOffset + rect.left);
+	const py = e.pageY - (window.pageYOffset + rect.top);
+	const scale = this.view.getScale ? this.view.getScale() : { x: 1, y: 1 };
+	const target = this.game.scene().findPointSourceByPoint({ x: px / scale.x, y: py / scale.y }).target;
 	if (target && target.rawPointUp && (typeof target.rawPointUp.fire === "function"))
 		target.rawPointUp.fire();
 };
 
 proto._onTouchEnd = function _onTouchEnd(e) {
-	var touches = e.changedTouches;
-	for(var i = 0, len = touches.length; i < len; i++)
+	const touches = e.changedTouches;
+	for(let i = 0, len = touches.length; i < len; i++)
 		this._onMouseUp(touches[i]);
 };
 

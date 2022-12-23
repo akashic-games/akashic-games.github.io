@@ -1,14 +1,14 @@
-var game = g.game;
-var cmn = require("./Common");
+const game = g.game;
+const cmn = require("./Common");
 
 // 背景描画関係
-var topSpace2 = null;
+let topSpace2 = null;
 
 // オブジェクト描画関係
-var baloonSprite = [];
-var cloudObj = [];
-var cloudCount=0;
-var bgAnimPtn = [
+const baloonSprite = [];
+const cloudObj = [];
+let cloudCount=0;
+const bgAnimPtn = [
 	[    0,   0, ],
 	[ 2011, 742, ],
 
@@ -21,24 +21,24 @@ var bgAnimPtn = [
 
 
 // テロップ関係
-var nowTelopID=-1;
-var telopPane = null;
-var telopFont = null;
-var telopFrame = null;
-var rollPos;
-var rollSpeed = 0.1;
+let nowTelopID=-1;
+let telopPane = null;
+let telopFont = null;
+let telopFrame = null;
+let rollPos;
+let rollSpeed = 0.1;
 
 
 // タグ関係
-var taguObj = [];
-var taguCount=0;
+const taguObj = [];
+let taguCount=0;
 
 
 //------------------
 // ローカルデータ
 //------------------
 // Baloonスプライト生成
-var ballonPosData = [
+const ballonPosData = [
 	[  279, 689 -175, 1],	//00:超歌舞伎
 	[   95, 662 -200, 0],	//01:超音楽祭
 	[  459, 999 -100, 3],	//02:超囲碁・将棋
@@ -67,16 +67,16 @@ const missEff3_clTbl = [
 // Subスクリプト
 //------------------
 //定期処理
-var updCount = 0;
+let updCount = 0;
 function callSubGameUpdate( scene , cmtSpd ) {
 
 	if( cmtSpd === undefined ) cmtSpd = 1.0;
 
 	//背景更新処理
 	starBGProcess( );
-	
+
 	//バルーン動作
-	var i = 0;
+	let i = 0;
 	for( i = 0; i < 10; i++){
 		balloonSpriteAction( baloonSprite[i] );
 	}
@@ -95,7 +95,7 @@ function callSubGameUpdate( scene , cmtSpd ) {
 		//テロップ動作
 		if(nowTelopID != -1){
 
-			var telopLength = cmn.uiSpriteData[ nowTelopID ][2];
+			const telopLength = cmn.uiSpriteData[ nowTelopID ][2];
 			rollPos += rollSpeed;
 
 			if(rollPos >= telopLength) rollPos -= telopLength;
@@ -133,11 +133,11 @@ function callSubGameUpdate( scene , cmtSpd ) {
 function createGameBg(scene) {
 
 	//背景グループ生成
-	var root = new g.E({scene: scene, x:0, y:0 });
-	var at = require("@akashic-extension/akashic-tile");
+	const root = new g.E({scene: scene, x:0, y:0 });
+	const at = require("@akashic-extension/akashic-tile");
 
 	//上部宇宙空間
-	var topSpace = new g.FilledRect({
+	const topSpace = new g.FilledRect({
 		scene: scene,
 		cssColor: "#280858",
 		width: cmn.SCREEN_WIDTH *9,
@@ -166,7 +166,7 @@ function createGameBg(scene) {
 	root.append(topSpace2);
 
 
-	var tileBG = new at.Tile({
+	const tileBG = new at.Tile({
 		scene: scene,
 		src: scene.assets[cmn.IMG_MAP],
 		tileWidth: cmn.SCREEN_WIDTH ,
@@ -181,7 +181,7 @@ function createGameBg(scene) {
 		y: cmn.SCREEN_HEIGHT *11
 	});
 
-	var tileBG2 = new at.Tile({
+	const tileBG2 = new at.Tile({
 		scene: scene,
 		src: scene.assets[cmn.IMG_MAP],
 		tileWidth: cmn.SCREEN_WIDTH ,
@@ -196,7 +196,7 @@ function createGameBg(scene) {
 		y: cmn.SCREEN_HEIGHT *11
 	});
 
-	var tileBG3 = new at.Tile({
+	const tileBG3 = new at.Tile({
 		scene: scene,
 		src: scene.assets[cmn.IMG_MAP],
 		tileWidth: cmn.SCREEN_WIDTH ,
@@ -224,7 +224,7 @@ function createGameBg(scene) {
 	root.append(tileBG3);
 
 	//バルーン生成
-	for(var i = 0; i < ballonPosData.length; i++){
+	for(let i = 0; i < ballonPosData.length; i++){
 		baloonSprite[i] = createBalloonSprite ( scene , i);
 		baloonSprite[i].x = ballonPosData[i][0] +( cmn.SCREEN_WIDTH *8 - cmn.SCREEN_WIDTH );
 		baloonSprite[i].y = ballonPosData[i][1] + cmn.SCREEN_HEIGHT *11;
@@ -245,13 +245,12 @@ function createGameBg(scene) {
 
 //前面背景生成
 function createGameBgFront(scene) {
-	var root = new g.E({scene: scene, width: game.width, height: game.height});
-	
+	const root = new g.E({scene: scene, width: game.width, height: game.height});
 	//海
-	var sea_num = 3;
-	var i = 0;
+	let sea_num = 3;
+	let i = 0;
 	for( i = 0; i < sea_num; i++){
-		var seabg = new g.Sprite({
+		const seabg = new g.Sprite({
 			scene: scene,
 			src: scene.assets[cmn.IMG_MAP],
 			width: game.width,
@@ -266,7 +265,7 @@ function createGameBgFront(scene) {
 		root.append(seabg);
 	}
 	//陸地
-	var gbg = null;
+	let gbg = null;
 	for( i = 0; i < 1; i++){
 		gbg = new g.Sprite({
 			scene: scene,
@@ -283,7 +282,7 @@ function createGameBgFront(scene) {
 		root.append(gbg);
 	}
 	sea_num = sea_num+1;
-	var g_num = cmn.BG_WIDTH/game.width - 4;
+	const g_num = cmn.BG_WIDTH/game.width - 4;
 	for( i = 0; i < g_num; i++){
 		gbg = new g.Sprite({
 			scene: scene,
@@ -304,16 +303,16 @@ function createGameBgFront(scene) {
 
 //夜空背景定期処理
 function starBGProcess( ){
-		var tmpPos = cmn.getCameraPos();
-		var camX = tmpPos.x;
-		var camY = tmpPos.y;
+	const tmpPos = cmn.getCameraPos();
+	const camX = tmpPos.x;
+	let camY = tmpPos.y;
 
-		//下限
-		if(camY < -cmn.SCREEN_HEIGHT*10) camY = -cmn.SCREEN_HEIGHT*10	;
+	//下限
+	if(camY < -cmn.SCREEN_HEIGHT*10) camY = -cmn.SCREEN_HEIGHT*10	;
 
-		topSpace2.x = ((-camX / cmn.SCREEN_WIDTH )|0) * cmn.SCREEN_WIDTH;
-		topSpace2.y = ((-camY / cmn.SCREEN_HEIGHT)|0) * cmn.SCREEN_HEIGHT;
-		topSpace2.modified();
+	topSpace2.x = ((-camX / cmn.SCREEN_WIDTH )|0) * cmn.SCREEN_WIDTH;
+	topSpace2.y = ((-camY / cmn.SCREEN_HEIGHT)|0) * cmn.SCREEN_HEIGHT;
+	topSpace2.modified();
 }
 
 
@@ -323,19 +322,19 @@ function starBGProcess( ){
 // アドバルーン生成
 function createBalloonSprite( scene, balloonSpriteID ){
 
-	var blSrcX = balloonSpriteID * 124;
-	var blSrcY = 0;
-	var blW = 124;
-	var blH = 124;
+	const blSrcX = balloonSpriteID * 124;
+	const blSrcY = 0;
+	const blW = 124;
+	const blH = 124;
 
-	var nbSrcX = balloonSpriteID * 124;
-	var nbSrcY = 124;
+	const nbSrcX = balloonSpriteID * 124;
+	const nbSrcY = 124;
 
-	var nbW = 124;
-	var nbH = 444 - nbSrcY;
+	const nbW = 124;
+	const nbH = 444 - nbSrcY;
 
 	//バルーン部分生成
-	var blSprite = new g.Sprite({
+	const blSprite = new g.Sprite({
 		scene: scene,
 		src: scene.assets[cmn.IMG_BALLOON],
 		width: blW,
@@ -351,7 +350,7 @@ function createBalloonSprite( scene, balloonSpriteID ){
 	blSprite.count = 0;
 
 	//広告のぼり部分生成
-	var nbSprite = new g.Sprite({
+	const nbSprite = new g.Sprite({
 		scene: scene,
 		src: scene.assets[cmn.IMG_BALLOON],
 		width: nbW,
@@ -375,10 +374,10 @@ function createBalloonSprite( scene, balloonSpriteID ){
 //アドバルーン定期処理
 function balloonSpriteAction( balloonSprite ){
 
-	var rad = Math.cos( balloonSprite.children[0].tag );
+	const rad = Math.cos( balloonSprite.children[0].tag );
 	balloonSprite.children[0].tag += 0.1;
 
-	var deg = (rad * 6)-3;
+	const deg = (rad * 6)-3;
 	balloonSprite.children[0].angle = deg;
 	balloonSprite.children[0].modified();
 
@@ -396,14 +395,14 @@ function balloonSpriteAction( balloonSprite ){
 function createCloudSprite( scene , root) {
 
 	//配置位置
-	var CLOUD_TOP = 10;
+	const CLOUD_TOP = 10;
 	cloudCount=0;
 
 	//背景演出生成
 	//背景演出3種生成
-	var i = 0;
+	let i = 0;
 	for( i = 0; i < 3; i++){
-		var bgEff = new g.Sprite({
+		const bgEff = new g.Sprite({
 			scene: scene,
 			src: scene.assets[cmn.IMG_BG_ANIM],
 			width: 211,
@@ -419,7 +418,7 @@ function createCloudSprite( scene , root) {
 		//ローカルメンバ
 		cloudObj[cloudCount] = bgEff;
 		cloudObj[cloudCount].tag = cmn.MAP_BG_ANIM + i;
-		
+
 		cloudObj[cloudCount].actionFlag = false;
 		cloudObj[cloudCount].actionCount = 0;
 		cloudObj[cloudCount].scrlAddX = 0;
@@ -432,16 +431,16 @@ function createCloudSprite( scene , root) {
 		cloudCount++;
 	}
 
-	var tmpObj = null;
-	var cx,cy,cw,ch;
-	var ngFlag = false;
-	var chk = 0;
-	for(var areaY = 0; areaY < cmn.CloudAreaPattern.length; areaY++){
-		for(var areaX = 0; areaX < cmn.CloudAreaPattern[ areaY ].length; areaX++){
+	let tmpObj = null;
+	let cx,cy,cw,ch;
+	let ngFlag = false;
+	let chk = 0;
+	for (let areaY = 0; areaY < cmn.CloudAreaPattern.length; areaY++){
+		for (let areaX = 0; areaX < cmn.CloudAreaPattern[ areaY ].length; areaX++){
 			//雲生成
-			var genCount = cmn.CloudAreaPattern[ areaY ][ areaX ] % 10;
+			const genCount = cmn.CloudAreaPattern[ areaY ][ areaX ] % 10;
 			for( i = 0; i < genCount; i++){
-				var clID = cmn.getRandom(2)<1 ? cmn.OBJ_CLOUD_B:cmn.OBJ_CLOUD_S;	//03:お邪魔雲_大 04:お邪魔雲_小
+				const clID = cmn.getRandom(2)<1 ? cmn.OBJ_CLOUD_B:cmn.OBJ_CLOUD_S;	//03:お邪魔雲_大 04:お邪魔雲_小
 				tmpObj = cmn.createSprite( scene , cmn.TBL_OBJ, clID, cmn.getRandom( cmn.SCREEN_WIDTH ) + areaX* cmn.SCREEN_WIDTH , cmn.getRandom( cmn.SCREEN_HEIGHT ) + cmn.SCREEN_HEIGHT * (areaY+CLOUD_TOP));
 				cx = tmpObj.x;
 				cy = tmpObj.y;
@@ -454,14 +453,14 @@ function createCloudSprite( scene , root) {
 						ngFlag = true;break;
 					}
 				}
-				
+
 				//海面チェック
 				if( cy >= (cmn.SCREEN_HEIGHT * (cmn.CloudAreaPattern.length-1+CLOUD_TOP))+100 )ngFlag = true;
 				if( ngFlag ){i--; continue;}	//やり直し
 
 				cloudObj[cloudCount] = tmpObj;
 				cloudObj[cloudCount].tag = 100 + clID-cmn.OBJ_CLOUD_B;
-				
+
 				//ローカルメンバ
 				cloudObj[cloudCount].actionFlag = false;
 				cloudObj[cloudCount].zoomCount = cmn.getRandom(3);
@@ -476,9 +475,9 @@ function createCloudSprite( scene , root) {
 
 			//コメント弾幕生成
 			for( i = 0; i < 1; i++){
-				var genID = (cmn.CloudAreaPattern[ areaY ][ areaX ] / 10) |0;
+				let genID = (cmn.CloudAreaPattern[ areaY ][ areaX ] / 10) |0;
 				if(genID != 0){		//genID コメント弾幕生成番号
-				
+
 					genID--;	//0番からに補正
 					tmpObj = cmn.createSprite( scene , cmn.TBL_OBJ, genID+cmn.OBJ_COMENT_1, cmn.getRandom( cmn.SCREEN_WIDTH ) + areaX* cmn.SCREEN_WIDTH , cmn.getRandom( cmn.SCREEN_HEIGHT ) + cmn.SCREEN_HEIGHT * (areaY+CLOUD_TOP));
 					cx = tmpObj.x;
@@ -507,25 +506,25 @@ function createCloudSprite( scene , root) {
 
 			//孔明の罠生成
 			for( i = 0; i < 1; i++){
-				var createID = ( cmn.TrapAreaPattern[ areaY ][ areaX ] ) |0;
+				let createID = ( cmn.TrapAreaPattern[ areaY ][ areaX ] ) |0;
 				if(createID != 0){		//生成番号
 
 					createID--;			//0番からに補正
-					var spID = {0:cmn.MISS_SHIP, 1:cmn.MISS_CLOUD, 2:cmn.MISS_HOLE };	//データID→スプライトID 変換テーブル
+					const spID = {0:cmn.MISS_SHIP, 1:cmn.MISS_CLOUD, 2:cmn.MISS_HOLE };	//データID→スプライトID 変換テーブル
 
 					if(createID == 0){	//ニコ生クルーズ
 						if(cmn.getRandom(30)>20)continue;//1/3でキャンセル
-						tmpObj = cmn.createSprite( 
-							scene , 
-							cmn.TBL_MISS, 
+						tmpObj = cmn.createSprite(
+							scene ,
+							cmn.TBL_MISS,
 							spID[ createID ],
 							cmn.SCREEN_WIDTH/2 + areaX * cmn.SCREEN_WIDTH ,
 							cmn.SCREEN_HEIGHT*1.5 + cmn.SCREEN_HEIGHT * (areaY+CLOUD_TOP)
 						);
 					}else{
-						tmpObj = cmn.createSprite( 
-							scene , 
-							cmn.TBL_MISS, 
+						tmpObj = cmn.createSprite(
+							scene ,
+							cmn.TBL_MISS,
 							spID[ createID ],
 							cmn.getRandom( cmn.SCREEN_WIDTH ) + areaX * cmn.SCREEN_WIDTH ,
 							cmn.getRandom( cmn.SCREEN_HEIGHT ) + cmn.SCREEN_HEIGHT * (areaY+CLOUD_TOP)
@@ -536,7 +535,7 @@ function createCloudSprite( scene , root) {
 					cy = tmpObj.y;
 					cw = tmpObj.width;
 					ch = tmpObj.height;
-					
+
 					//雲との重なりチェック
 					ngFlag = false;
 					for( chk = 0; chk < cloudCount; chk++){
@@ -577,13 +576,13 @@ function createCloudSprite( scene , root) {
 
 //雲定期処理
 function cloudSpriteAction(clSp , cmtSpd , clID){
-	var tagType = ((clSp.tag / 1000)|0) *1000;
-	var addY = 0;
+	const tagType = ((clSp.tag / 1000)|0) *1000;
+	let addY = 0;
 
 	if(tagType == 0){	//雲
 		//通常時雲アニメーション
 		clSp.zoomCount += 0.075;
-		var zoom = Math.cos( clSp.zoomCount )/12.0;
+		const zoom = Math.cos( clSp.zoomCount )/12.0;
 		clSp.scaleX = 1.0+zoom;
 		clSp.scaleY = 1.0+zoom;
 
@@ -602,7 +601,7 @@ function cloudSpriteAction(clSp , cmtSpd , clID){
 		clSp.x += clSp.scrlAddX * cmtSpd;
 
 		//座標リセット＆新規固有IDに切り替え
-		if(clSp.x < - cmn.SCREEN_WIDTH){	
+		if(clSp.x < - cmn.SCREEN_WIDTH){
 			clSp.x = cmn.SCREEN_WIDTH *9;
 
 			cloudObj[clID] = cmn.createSprite( clSp.scene , cmn.TBL_OBJ, (clSp.tag - cmn.MAP_COMMENT) + cmn.OBJ_COMENT_1, clSp.x, clSp.y);
@@ -617,7 +616,7 @@ function cloudSpriteAction(clSp , cmtSpd , clID){
 			clSp.parent.append( cloudObj[clID] );	//新規IDで登録
 			clSp.destroy();							//旧オブジェクトは消去
 		}
-		
+
 		//アクション時アニメーション
 		if(clSp.actionFlag == true){
 			if( !clSp.invincibleFlag ) {
@@ -683,7 +682,7 @@ function cloudSpriteAction(clSp , cmtSpd , clID){
 //テロップ生成・設定
 function setTelop ( scene, root , telopID) {
 	if( telopID === undefined ) telopID = cmn.UI_TELOP_1;
-	
+
 	//同IDは未処理で戻る
 	if(telopID == nowTelopID)return;
 	nowTelopID = telopID;
@@ -701,25 +700,24 @@ function setTelop ( scene, root , telopID) {
 	}else{
 		//ペイン生成
 		telopPane = new g.Pane({
-			scene: scene, 
-			width: 122, 
+			scene: scene,
+			width: 122,
 			height: 22,
 			x: 136,
 			y: 2
 		});
 	}
-	
+
 	telopFont = new g.E({scene: scene});
-	for(var i = 0; i < 2; i++){
-		var tmpFont = cmn.createSprite( scene, cmn.TBL_UI, telopID, 0, 0);
+	for(let i = 0; i < 2; i++){
+		let tmpFont = cmn.createSprite( scene, cmn.TBL_UI, telopID, 0, 0);
 
 		tmpFont.x = tmpFont.width * i;
 		tmpFont.y = 0;
 		telopFont.append( tmpFont );
 
 		//明滅アクション用
-		var flashChk;
-			flashChk = 0;
+		let flashChk = 0;
 		if( telopID == cmn.UI_TELOP_TAG1_1 || (telopID == cmn.UI_TELOP_TAG2_1) ){
 			flashChk = 1;
 		}
@@ -766,41 +764,40 @@ function resetTelop(){
 //------------------
 //タグ生成
 function createTaguSprite( scene , root) {
-	var tgDB = false;
-	var i = 0;
+	let tgDB = false;
+	let i = 0;
 	//配置位置
-	var TAGU_TOP = 10;
+	const TAGU_TOP = 10;
 	taguCount=0;
-	for(var areaY = 0; areaY < cmn.taguAreaPattern.length; areaY++){
-		for(var areaX = 0; areaX < cmn.taguAreaPattern[ areaY ].length; areaX++){
+	for (let areaY = 0; areaY < cmn.taguAreaPattern.length; areaY++){
+		for (let areaX = 0; areaX < cmn.taguAreaPattern[ areaY ].length; areaX++){
 			//タグ生成
-			var genCount = (cmn.taguAreaPattern[ areaY ][ areaX ] % 10);
+			const genCount = (cmn.taguAreaPattern[ areaY ][ areaX ] % 10);
 
 			for( i = 0; i < genCount; i++){
-			var tgID = (cmn.taguAreaPattern[ areaY ][ areaX ] / 10) |0;
+			let tgID = (cmn.taguAreaPattern[ areaY ][ areaX ] / 10) |0;
 
-			var tmpObj;
-			var cx,cy,cw,ch;
+			let tmpObj;
+			let cx,cy,cw,ch;
 
 			if(tgDB == true) {
 				tmpObj = cmn.createSprite( scene , cmn.TBL_OBJ, tgID+cmn.OBJ_TAG_1, (areaY * 194) + areaX* cmn.SCREEN_WIDTH , cmn.SCREEN_HEIGHT * (areaY+TAGU_TOP));
 			}else{
 				if(tgID >= 7){		//特定IDのみエリア領域を変更
-					var tgID2 = tgID-7 +2;
+					const tgID2 = tgID-7 +2;
 					tgID = cmn.TAG_ID_2;
 					tmpObj = cmn.createSprite( scene , cmn.TBL_OBJ, tgID+cmn.OBJ_TAG_1, cmn.getRandom( cmn.SCREEN_WIDTH*tgID2 ) + areaX* cmn.SCREEN_WIDTH , cmn.getRandom( cmn.SCREEN_HEIGHT*tgID2 ) + cmn.SCREEN_HEIGHT * (areaY+TAGU_TOP));
 				}else
 					tmpObj = cmn.createSprite( scene , cmn.TBL_OBJ, tgID+cmn.OBJ_TAG_1, cmn.getRandom( cmn.SCREEN_WIDTH ) + areaX* cmn.SCREEN_WIDTH , cmn.getRandom( cmn.SCREEN_HEIGHT ) + cmn.SCREEN_HEIGHT * (areaY+TAGU_TOP));
 				}
-				
+
 				cx = tmpObj.x;
 				cy = tmpObj.y;
 				cw = tmpObj.width;
 				ch = tmpObj.height;
 
-				var ngFlag;
-				ngFlag = false;
-				var chk = 0;
+				let ngFlag = false;
+				let chk = 0;
 				for( chk = 0; chk < taguCount; chk++){
 					if( g.Collision.intersect( cx, cy, cw, ch, taguObj[chk].x, taguObj[chk].y, taguObj[chk].width, taguObj[chk].height )){
 						ngFlag = true;break;
@@ -818,7 +815,7 @@ function createTaguSprite( scene , root) {
 
 				taguObj[taguCount] = tmpObj;
 				taguObj[taguCount].tag = tgID + cmn.MAP_TAGU;		//tagIDは雲と共通
-				
+
 				//ローカルメンバ
 				taguObj[taguCount].actionFlag = false;
 				taguObj[taguCount].zoomCount = cmn.getRandom(3);
@@ -891,7 +888,7 @@ function createTaguSprite( scene , root) {
 //タグ定期処理
 function taguSpriteAction( tgSp ){
 	//アクション時アニメーション
-	var addY = 0;
+	let addY = 0;
 
 	if(tgSp.actionFlag == true){
 		tgSp.actionCount += 0.03;
@@ -912,9 +909,9 @@ function taguSpriteAction( tgSp ){
 //タグリセット処理
 function resetTaguSprite(){
 	//タグ表示リセット
-	var i = 0;
+	let i = 0;
 	for( i = 0; i < taguCount; i++){
-		var tgSp = taguObj[i];
+		const tgSp = taguObj[i];
 		tgSp.actionCount = 0;
 		tgSp.actionFlag = false;
 		tgSp.scaleX = 1.0;
@@ -927,8 +924,8 @@ function resetTaguSprite(){
 
 	//各種表示リセット
 	for( i = 0; i < cloudCount; i++){
-		var clSp = cloudObj[i];
-		var tagType = ((clSp.tag / 1000)|0) *1000;
+		const clSp = cloudObj[i];
+		const tagType = ((clSp.tag / 1000)|0) *1000;
 
 		//罠表示リセット
 		if( (tagType == cmn.MAP_MISS_SHIP) || (tagType == cmn.MAP_MISS_KOUMEI) ||
@@ -951,12 +948,12 @@ function resetTaguSprite(){
 //アタリ演出生成
 function createAnimationSprite( scene, animSpriteID, posx, posy, animEndCall){
 
-	var spW = cmn.clearAnimParam[ animSpriteID ][0];
-	var spH = cmn.clearAnimParam[ animSpriteID ][1];
-	var imageName = (animSpriteID < 5) ? cmn.IMG_ANIM_CLEAR_L : cmn.IMG_ANIM_CLEAR_R;
-	var animSpriteID2 = animSpriteID % 5;
+	const spW = cmn.clearAnimParam[ animSpriteID ][0];
+	const spH = cmn.clearAnimParam[ animSpriteID ][1];
+	const imageName = (animSpriteID < 5) ? cmn.IMG_ANIM_CLEAR_L : cmn.IMG_ANIM_CLEAR_R;
+	const animSpriteID2 = animSpriteID % 5;
 
-	var animSprite = new g.FrameSprite({
+	const animSprite = new g.FrameSprite({
 		scene: scene,
 		src: scene.assets[imageName],
 		width: spW,
@@ -975,23 +972,23 @@ function createAnimationSprite( scene, animSpriteID, posx, posy, animEndCall){
 
 	animSprite.interval = cmn.clearAnimTimeTbl[ animSpriteID ][0]*1000;	//再生間隔セット
 	animSprite.oldFrameNumber = 0;
-	
+
 	animSprite.hide();
 
 	//順に表示するテーブルを生成
 	animSprite.frames = [];
-	for(var i = 0; i < cmn.clearAnimParam[ animSpriteID ][2]; i++){
+	for(let i = 0; i < cmn.clearAnimParam[ animSpriteID ][2]; i++){
 		animSprite.frames[i] = i*5 + animSpriteID2;
 	}
 
 	//終了時の呼び出し関数設定
-	if( animEndCall === undefined ) 
+	if( animEndCall === undefined )
 		animSprite.endCall = function(){};
 	else
 		animSprite.endCall = animEndCall;
 
 	//アニメーション終了時処理
-	animSprite.update.handle(function () {
+	animSprite.onUpdate.add(() => {
 		if( animSprite.oldFrameNumber != animSprite.frameNumber ){	//アニメーション更新時
 			animSprite.interval = cmn.clearAnimTimeTbl[ animSpriteID ][animSprite.frameNumber]*1000;	//次の再生間隔セット
 			animSprite.start();
@@ -1003,13 +1000,13 @@ function createAnimationSprite( scene, animSpriteID, posx, posy, animEndCall){
 			animSprite.actionCount++;
 		}
 	});
-	
+
 	return animSprite;
 }
 
 function createClearAnimation( animSpriteID, posx, posy, animEndCall){
 	//終了時の呼び出し関数設定
-	if( animEndCall === undefined ) 
+	if( animEndCall === undefined )
 		return createAnimationSprite( game.scene(), animSpriteID, posx, posy);
 	else
 		return createAnimationSprite( game.scene(), animSpriteID, posx, posy, animEndCall);
@@ -1018,15 +1015,15 @@ function createClearAnimation( animSpriteID, posx, posy, animEndCall){
 function createHitStagingEffect( hitID, posx, posy, animEndCall){
 
 	//ペイン生成
-	var stagePane = new g.Pane({
-		scene: game.scene(), 
-		width: cmn.SCREEN_WIDTH+2, 
+	const stagePane = new g.Pane({
+		scene: game.scene(),
+		width: cmn.SCREEN_WIDTH+2,
 		height: cmn.SCREEN_HEIGHT+2,
 		x: 0,
 		y: 0
 	});
 
-	var stageBG = new g.FilledRect({
+	const stageBG = new g.FilledRect({
 		scene: game.scene(),
 		//cssColor: stageBGColor[ hitID ],
 		cssColor: cmn.clearAnimParam[ hitID ][3],
@@ -1037,7 +1034,7 @@ function createHitStagingEffect( hitID, posx, posy, animEndCall){
 		opacity: 0.0,
 	});
 
-	var tmpAnim = createClearAnimation( hitID, -2, -2,
+	const tmpAnim = createClearAnimation( hitID, -2, -2,
 	function () {
 		this.stop();
 		if(bgStep<=2)bgStep++; //待ち状況の時、1STEP進める
@@ -1045,8 +1042,8 @@ function createHitStagingEffect( hitID, posx, posy, animEndCall){
 	tmpAnim.scaleX = 2.0+(2/970);
 	tmpAnim.scaleY = 2.0+(2/970);
 
-	var logoSp1 = cmn.createSprite( game.scene(), cmn.TBL_CLR, cmn.CLEAR_LOGO_0, 134, -cmn.SCREEN_HEIGHT);
-	var logoSp2 = cmn.createSprite( game.scene(), cmn.TBL_CLR, cmn.CLEAR_LOGO_1+hitID, 134, 0);
+	const logoSp1 = cmn.createSprite( game.scene(), cmn.TBL_CLR, cmn.CLEAR_LOGO_0, 134, -cmn.SCREEN_HEIGHT);
+	const logoSp2 = cmn.createSprite( game.scene(), cmn.TBL_CLR, cmn.CLEAR_LOGO_1+hitID, 134, 0);
 	logoSp2.hide();
 	logoSp2.opacity = 0;
 
@@ -1056,9 +1053,9 @@ function createHitStagingEffect( hitID, posx, posy, animEndCall){
 	stagePane.append( tmpAnim );
 	cmn.stopBGM();
 
-	var bgStep = 0;
-	var tmpTimer = 0;
-	stageBG.update.add(function () {
+	let bgStep = 0;
+	let tmpTimer = 0;
+	stageBG.onUpdate.add(() => {
 
 		if(bgStep == 0){	//フェードイン
 			stageBG.opacity += 1/60;
@@ -1104,7 +1101,7 @@ function createHitStagingEffect( hitID, posx, posy, animEndCall){
 		}
 		stageBG.modified();
 	});
-	
+
 	return stagePane;
 }
 
@@ -1114,14 +1111,14 @@ function createHitStagingEffect( hitID, posx, posy, animEndCall){
 //------------------
 //ID1 ニコ生クルーズ
 function createME1_water( drawArea , posX, posY ){
-	var waves = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_SHIP_EFF_1, posX, posY+48);
+	const waves = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_SHIP_EFF_1, posX, posY+48);
 
 	waves.actionCount = 0;
 	waves.timeCount = 0;
 	waves.scale( 1.0 );
 	drawArea.append( waves );
 
-	waves.update.add(function () {
+	waves.onUpdate.add(() => {
 		waves.actionCount += 0.075;
 		waves.srcX = (waves.timeCount%1) == 0 ? 0:101;
 
@@ -1134,23 +1131,23 @@ function createME1_water( drawArea , posX, posY ){
 }
 
 function createMissEffect1( drawArea, animEndCall){
-	var efBG = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_SHIP_BG, 0, 0);
-	var ship = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_SHIP_ANIM, cmn.SCREEN_WIDTH/2, cmn.SCREEN_HEIGHT/2-16);
-	
-	var waterPlane = new g.E({
-		scene: game.scene(), 
-		width: cmn.SCREEN_WIDTH, 
+	const efBG = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_SHIP_BG, 0, 0);
+	const ship = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_SHIP_ANIM, cmn.SCREEN_WIDTH/2, cmn.SCREEN_HEIGHT/2-16);
+
+	const waterPlane = new g.E({
+		scene: game.scene(),
+		width: cmn.SCREEN_WIDTH,
 		height: cmn.SCREEN_HEIGHT,
 		x: 0,
 		y: 0
 	});
-	
-	var edgeTop = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, 0);
-	var edgeBtm = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, 220);
+
+	const edgeTop = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, 0);
+	const edgeBtm = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, 220);
 	edgeTop.width += 8.0;
 	edgeBtm.width += 8.0;
 
-	var maskBG = new g.FilledRect({
+	const maskBG = new g.FilledRect({
 		scene: game.scene(),
 		cssColor: "#000000",
 		width: cmn.SCREEN_WIDTH,
@@ -1172,9 +1169,9 @@ function createMissEffect1( drawArea, animEndCall){
 	edgeTop.hide();
 	edgeBtm.hide();
 
-	var bgStep = 0;
-	var tmpTimer = 0;
-	drawArea.update.add(function () {
+	let bgStep = 0;
+	let tmpTimer = 0;
+	drawArea.onUpdate.add(() => {
 		if(bgStep == 0){	//フェードイン
 			maskBG.opacity +=0.03;
 			if(maskBG.opacity >= 1){
@@ -1229,11 +1226,11 @@ function createMissEffect1( drawArea, animEndCall){
 
 //ID2 孔明の罠
 function createMissEffect2( posX, posY, animEndCall){
-	var komeiCloud = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_CLOUD, posX, posY);
-	
+	const komeiCloud = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_CLOUD, posX, posY);
+
 	komeiCloud.targetX = posX + 200;
 	komeiCloud.endCall = animEndCall;
-	komeiCloud.update.add(function () {
+	komeiCloud.onUpdate.add(() => {
 		komeiCloud.x += 8;
 		if( komeiCloud.targetX <= komeiCloud.x ){
 			komeiCloud.opacity -= 0.05;
@@ -1249,12 +1246,12 @@ function createMissEffect2( posX, posY, animEndCall){
 
 //ID3 土管
 function createMissEffect3( drawArea, animEndCall){
-	var efBG = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_HOLE_BG, 0, 0);
-	var pipe = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_HOLE, cmn.SCREEN_WIDTH/2-79, cmn.SCREEN_HEIGHT/2-20);
-	var tvChan = cmn.createSprite( game.scene(), cmn.TBL_UI, cmn.UI_CHARA_TV , cmn.SCREEN_WIDTH/2-44, -60);
+	const efBG = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_HOLE_BG, 0, 0);
+	const pipe = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_HOLE, cmn.SCREEN_WIDTH/2-79, cmn.SCREEN_HEIGHT/2-20);
+	const tvChan = cmn.createSprite( game.scene(), cmn.TBL_UI, cmn.UI_CHARA_TV , cmn.SCREEN_WIDTH/2-44, -60);
 	//雲
-	var cloud = [];
-	var i = 0;
+	const cloud = [];
+	let i = 0;
 	for( i = 0; i < 5; i++){
 		cloud[i] = cmn.createSprite( game.scene(), cmn.TBL_OBJ, cmn.OBJ_CLOUD_B+missEff3_clTbl[i][0] , cmn.SCREEN_WIDTH/2+missEff3_clTbl[i][1], 125+missEff3_clTbl[i][2] );
 		cloud[i].actionFlag = false;
@@ -1262,12 +1259,12 @@ function createMissEffect3( drawArea, animEndCall){
 		cloud[i].hide();
 	}
 
-	var edgeTop = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, 0);
-	var edgeBtm = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, 220);
+	const edgeTop = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, 0);
+	const edgeBtm = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, 220);
 	edgeTop.width += 8.0;
 	edgeBtm.width += 8.0;
 
-	var maskBG = new g.FilledRect({
+	const maskBG = new g.FilledRect({
 		scene: game.scene(),
 		cssColor: "#000000",
 		width: cmn.SCREEN_WIDTH,
@@ -1283,11 +1280,11 @@ function createMissEffect3( drawArea, animEndCall){
 	drawArea.append( efBG );
 	drawArea.append( tvChan );
 	drawArea.append( pipe );
-	
+
 	for( i = 0; i < 5; i++){
 		drawArea.append( cloud[i] );
 	}
-	
+
 	drawArea.append( edgeTop );
 	drawArea.append( edgeBtm );
 	drawArea.append( maskBG );
@@ -1297,17 +1294,17 @@ function createMissEffect3( drawArea, animEndCall){
 	edgeTop.hide();
 	edgeBtm.hide();
 
-	var bgStep = 0;
-	var tmpTimer = 0;
-	drawArea.update.add(function () {
+	let bgStep = 0;
+	let tmpTimer = 0;
+	drawArea.onUpdate.add(() => {
 		if(bgStep == 0){	//フェードイン
 			maskBG.opacity +=0.03;
 			if(maskBG.opacity >= 1){
 				efBG.show();
 				tvChan.show();
 				pipe.show();
-				
-				for(var i = 0; i < 5; i++){
+
+				for(let i = 0; i < 5; i++){
 					cloud[i].show();
 					cloud[i].actionFlag = true;
 				}
@@ -1344,20 +1341,20 @@ function createMissEffect3( drawArea, animEndCall){
 			if(tmpTimer==100){
 				bgStep++;
 				animEndCall();
-				
+
 				for( i = 0; i < 5; i++){
 					cloud[i].actionFlag = false;
 				}
 			}
 		}else if(bgStep == 5){	//終了
 		}
-		
+
 		//雲アニメ
 		if(0 <= bgStep && bgStep < 5){
 			for( i = 0; i < 5; i++){
 				if(cloud[i].actionFlag){
 					cloud[i].zoomCount += 0.075;
-					var zoom = Math.cos( cloud[i].zoomCount )/12.0;
+					const zoom = Math.cos( cloud[i].zoomCount )/12.0;
 					cloud[i].scaleX = 1.0+zoom;
 					cloud[i].scaleY = 1.0+zoom;
 					cloud[i].modified();
@@ -1370,21 +1367,21 @@ function createMissEffect3( drawArea, animEndCall){
 		edgeTop.modified();
 		edgeBtm.modified();
 	});
-	
+
 	return;
 }
 
 //ID4 次回予告
 function createMissEffect4( drawArea, animEndCall){
-	var edgeTop = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, -30);
-	var edgeBtm = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, 250);
-	
+	const edgeTop = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, -30);
+	const edgeBtm = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, 250);
+
 	edgeTop.width += 8.0;
 	edgeBtm.width += 8.0;
 
-	var logoSp1 = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_TEXT1, 0, 0);
-	var logoSp2 = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_TEXT2, 0, 0);
-	
+	const logoSp1 = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_TEXT1, 0, 0);
+	const logoSp2 = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_TEXT2, 0, 0);
+
 	logoSp1.hide();
 	logoSp2.hide();
 	logoSp1.baseX = 65;
@@ -1397,10 +1394,10 @@ function createMissEffect4( drawArea, animEndCall){
 	drawArea.append( logoSp1 );
 	drawArea.append( logoSp2 );
 
-	var bgStep = 0;
-	var tmpTimer = 0;
-	var effCount = 0;
-	drawArea.update.add(function () {
+	let bgStep = 0;
+	let tmpTimer = 0;
+	let effCount = 0;
+	drawArea.onUpdate.add(() => {
 		if(bgStep == 0){	//上下枠イン
 			edgeTop.y += 30 / 15;
 			edgeBtm.y -= 30 / 15;
@@ -1423,7 +1420,7 @@ function createMissEffect4( drawArea, animEndCall){
 			if(effCount>0){
 				logoSp1.x = logoSp1.baseX + cmn.getRandom( effCount ) - effCount/2;
 				logoSp1.y = logoSp1.baseY + cmn.getRandom( effCount ) - effCount/2;
-				
+
 				if((effCount%8) == 0){
 					cmn.playSE(cmn.SND_SE_1);
 				}
@@ -1463,7 +1460,7 @@ function createMissEffect4( drawArea, animEndCall){
 				animEndCall();
 		}else if(bgStep == 5){	//広告ロゴイン
 		}
-		
+
 		logoSp1.modified();
 		logoSp2.modified();
 		edgeTop.modified();
@@ -1476,15 +1473,15 @@ function createMissEffect4( drawArea, animEndCall){
 //ID5 永遠に
 function createMissEffect5( drawArea, animEndCall){
 
-	var efBG = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_STAR_BG, 0, 0);
-	var font1 = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_STAR_TEXT1, 88, 32);
-	var font2 = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_STAR_TEXT2, 478, 137);
-	var star1 = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_STAR_EFF, 734, 18);
-	var star2 = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_STAR_EFF, 868, 173);
-	var tvChan = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_STAR_TV, 713, 6);
-	var edgeTop = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, -30);
-	var edgeBtm = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, 250);
-	
+	const efBG = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_STAR_BG, 0, 0);
+	const font1 = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_STAR_TEXT1, 88, 32);
+	const font2 = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_STAR_TEXT2, 478, 137);
+	const star1 = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_STAR_EFF, 734, 18);
+	const star2 = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_STAR_EFF, 868, 173);
+	const tvChan = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_STAR_TV, 713, 6);
+	const edgeTop = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, -30);
+	const edgeBtm = cmn.createSprite( game.scene(), cmn.TBL_MISS, cmn.MISS_YOKOKU_WINDOW, 0, 250);
+
 	edgeTop.width += 8.0;
 	edgeBtm.width += 8.0;
 
@@ -1509,9 +1506,9 @@ function createMissEffect5( drawArea, animEndCall){
 	drawArea.append( edgeTop );
 	drawArea.append( edgeBtm );
 
-	var bgStep = 0;
-	var tmpTimer = 0;
-	drawArea.update.add(function () {
+	let bgStep = 0;
+	let tmpTimer = 0;
+	drawArea.onUpdate.add(() => {
 
 		if(bgStep == 0){	//上下枠イン
 			edgeTop.y += 30 / 15;
@@ -1529,7 +1526,7 @@ function createMissEffect5( drawArea, animEndCall){
 			if(tmpTimer >= 30){
 				bgStep++;
 				tmpTimer = 0;
-				font1.show(); 
+				font1.show();
 			}
 		}else if(bgStep == 2){	//font1フェードイン
 			font1.opacity += 1/60;
@@ -1538,7 +1535,7 @@ function createMissEffect5( drawArea, animEndCall){
 				bgStep++;
 				font1.opacity = 1;
 				font2.show();
-				
+
 				cmn.playSE(cmn.SND_SE_1);
 			}
 		}else if(bgStep == 3){	//font2フェードイン
@@ -1547,7 +1544,7 @@ function createMissEffect5( drawArea, animEndCall){
 				bgStep++;
 				font2.opacity = 1;
 				tvChan.show();
-				
+
 				cmn.playSE(cmn.SND_SE_1);
 			}
 		}else if(bgStep == 4){	//tvChanフェードイン
@@ -1561,7 +1558,7 @@ function createMissEffect5( drawArea, animEndCall){
 
 				star1.opacity = 1;
 				star2.opacity = 1;
-				
+
 				cmn.playSE(cmn.SND_SE_1);
 			}
 		}else if(bgStep == 5){	//star明滅
@@ -1589,9 +1586,9 @@ function createMissEffect5( drawArea, animEndCall){
 function createMissEffect( missID, posx, posy, animEndCall){
 
 	//ペイン生成
-	var drawArea = new g.E({
-		scene: game.scene(), 
-		width: cmn.SCREEN_WIDTH, 
+	const drawArea = new g.E({
+		scene: game.scene(),
+		width: cmn.SCREEN_WIDTH,
 		height: 30,
 		x: 0,
 		y: 0
@@ -1599,7 +1596,7 @@ function createMissEffect( missID, posx, posy, animEndCall){
 
 	switch( missID ){
 		case 1: createMissEffect1( drawArea, animEndCall); break;
-		case 2: return createMissEffect2( posx, posy, animEndCall); 
+		case 2: return createMissEffect2( posx, posy, animEndCall);
 		case 3: createMissEffect3( drawArea, animEndCall); break;
 		case 4: createMissEffect4( drawArea, animEndCall); break;
 		case 5: createMissEffect5( drawArea, animEndCall); break;

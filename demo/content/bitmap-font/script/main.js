@@ -6,9 +6,9 @@ function main(param) {
 			"mplus1c_regular_jis1_glyph"
 		]
 	});
-	scene.onLoad.add(function() {
+	scene.onLoad.add(() => {
 		// 背景の黒
-		var bg = new g.FilledRect({
+		const bg = new g.FilledRect({
 			scene: scene,
 			cssColor: "black",
 			x: 0,
@@ -19,8 +19,8 @@ function main(param) {
 		scene.append(bg);
 
 		// BitmapFont を生成
-		var glyph = JSON.parse(scene.asset.getTextById("mplus1c_regular_jis1_glyph").data);
-		var font = new g.BitmapFont({
+		const glyph = JSON.parse(scene.asset.getTextById("mplus1c_regular_jis1_glyph").data);
+		const font = new g.BitmapFont({
 			src: scene.asset.getImageById("mplus1c_regular_jis1"),
 			map: glyph.map,
 			defaultGlyphWidth: glyph.width,
@@ -29,7 +29,7 @@ function main(param) {
 		});
 
 		// 左アラインのラベル
-		var label1 = new g.Label({
+		const label1 = new g.Label({
 			scene: scene,
 			font: font,
 			fontSize: 20,
@@ -40,7 +40,7 @@ function main(param) {
 		scene.append(label1);
 
 		// 中央アラインのラベル
-		var label2 = new g.Label({
+		const label2 = new g.Label({
 			scene: scene,
 			font: font,
 			fontSize: 20,
@@ -54,7 +54,7 @@ function main(param) {
 		scene.append(label2);
 
 		// 右アラインのラベル
-		var label3 = new g.Label({
+		const label3 = new g.Label({
 			scene: scene,
 			font: font,
 			fontSize: 20,
@@ -68,10 +68,10 @@ function main(param) {
 		scene.append(label3);
 
 		// 各ラベルをクリックすると色とサイズが変わるように設定
-		[label1, label2, label3].forEach(function (l) {
-			var flag = false;
+		[label1, label2, label3].forEach(l => {
+			let flag = false;
 			l.touchable = true; // ポイントイベントを受け取るよう指定
-			l.onPointUp.add(function () {
+			l.onPointUp.add(() => {
 				flag = !flag;
 				if (flag) {
 					l.fontSize = 25;
