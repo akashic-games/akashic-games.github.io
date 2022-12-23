@@ -1,11 +1,11 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
+const __extends = (this && this.__extends) || (function () {
+    let extendStatics = (d, b) => {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            function (d, b) { for (const p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
         return extendStatics(d, b);
     };
-    return function (d, b) {
+    return (d, b) => {
         extendStatics(d, b);
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -13,10 +13,10 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EasingGraphE = void 0;
-var EasingGraphE = /** @class */ (function (_super) {
+const EasingGraphE = /** @class */ (function (_super) {
     __extends(EasingGraphE, _super);
     function EasingGraphE(param) {
-        var _this = _super.call(this, param) || this;
+        const _this = _super.call(this, param) || this;
         _this.margin = Math.round(_this.height / 4);
         _this._title = param.title;
         _this.font = param.font;
@@ -47,7 +47,7 @@ var EasingGraphE = /** @class */ (function (_super) {
     });
     ;
     EasingGraphE.prototype.renderSelf = function (renderer, _camera) {
-        var size = 4;
+        const size = 4;
         renderer.fillRect(0, this.height - size, this.width, size, "silver");
         renderer.fillRect(0, 0, size, this.height, "silver");
         renderer.drawImage(this.surface, 0, 0, this.surface.width, this.surface.height, 0, -this.margin);
@@ -57,13 +57,13 @@ var EasingGraphE = /** @class */ (function (_super) {
     * イージング関数のグラフを更新する。
     */
     EasingGraphE.prototype.updateEasingGraph = function () {
-        var step = 0.5;
-        var size = 4;
-        var graphWidth = this.width - size;
+        const step = 0.5;
+        const size = 4;
+        const graphWidth = this.width - size;
         this.renderer.begin();
         this.renderer.clear();
-        for (var x = 0; x < graphWidth; x += step) {
-            var pos = this.easingPosition(x / graphWidth);
+        for (let x = 0; x < graphWidth; x += step) {
+            const pos = this.easingPosition(x / graphWidth);
             this.renderer.fillRect(pos.x - size / 2, pos.y - size / 2 + this.margin, size, size, "gray");
         }
         this.renderer.end();
@@ -84,12 +84,12 @@ var EasingGraphE = /** @class */ (function (_super) {
      * @returns t に対応する位置。
      */
     EasingGraphE.prototype.easingPosition = function (t) {
-        var size = 4;
-        var ox = size / 2;
-        var oy = this.height - size / 2;
-        var graphWidth = this.width - size;
-        var graphHeight = this.height - size;
-        var x = t * graphWidth;
+        const size = 4;
+        const ox = size / 2;
+        const oy = this.height - size / 2;
+        const graphWidth = this.width - size;
+        const graphHeight = this.height - size;
+        const x = t * graphWidth;
         return {
             x: x + ox,
             y: this.easingFn(x, 0, -graphHeight, graphWidth) + oy

@@ -3,9 +3,9 @@ function main(param) {
 		game: g.game,
 		assetIds: ["explosion"]
 	});
-	scene.onLoad.add(function() {
+	scene.onLoad.add(() => {
 		// 背景を黒で塗りつぶす矩形を生成
-		var background = new g.FilledRect({
+		const background = new g.FilledRect({
 			scene: scene,
 
 			// 位置 (0, 0) から画面全部を覆うサイズで
@@ -22,9 +22,9 @@ function main(param) {
 		});
 
 		// シーン内でポイント押下イベントが生じた時
-		scene.onPointDownCapture.add(function (ev) {
+		scene.onPointDownCapture.add(ev => {
 			// 爆発アニメーションのスプライトを生成する
-			var sp = new g.FrameSprite({
+			const sp = new g.FrameSprite({
 				scene: scene,
 				src: scene.asset.getImageById("explosion"),
 
@@ -47,7 +47,7 @@ function main(param) {
 				compositeOperation: "lighter"
 			});
 
-			sp.onUpdate.add(function () {
+			sp.onUpdate.add(() => {
 				// アニメーションが終わった時点で破棄する
 				if (sp.frameNumber === sp.frames.length - 1)
 					sp.destroy();

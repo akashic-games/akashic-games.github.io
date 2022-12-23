@@ -1,12 +1,12 @@
-var game = g.game;
+const game = g.game;
 module.exports = function () {
-    var scene = new g.Scene({
+    const scene = new g.Scene({
         game: game,
         assetIds: ["switch"]
     });
 
-    scene.onLoad.add(function() {
-        var back = new g.FilledRect({
+    scene.onLoad.add(() => {
+        const back = new g.FilledRect({
             scene: scene,
             cssColor: "#282840",
             opacity: 0.5,
@@ -15,7 +15,7 @@ module.exports = function () {
         });
 
         // スイッチのフレームスプライトを生成
-        var sw = new g.FrameSprite({
+        const sw = new g.FrameSprite({
             scene: scene,
 
             // オンとオフの画像(それぞれ縦横48ピクセル)が２つ並んだ画像を使用
@@ -41,7 +41,7 @@ module.exports = function () {
         });
 
         // スイッチがタッチされた時の処理を登録
-        sw.onPointDown.add(function() {
+        sw.onPointDown.add(() => {
             // フレーム番号を 0, 1 で切り替え
             sw.frameNumber++;
             sw.frameNumber %= 2;

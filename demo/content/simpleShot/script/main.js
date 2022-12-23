@@ -1,19 +1,19 @@
-var killedEnemy = 0;
+let killedEnemy = 0;
 
 function main() {
-	let scene = new g.Scene({game: g.game});
-	scene.onLoad.add(function() {
+	const scene = new g.Scene({game: g.game});
+	scene.onLoad.add(() => {
 		makeEnemy(scene);
 	});
-	scene.onPointDownCapture.add(function(event) {
-		var point = event.point;
+	scene.onPointDownCapture.add(event => {
+		const point = event.point;
 		if (event.target) {
 			point.x += event.target.x;
 			point.y += event.target.y;
 		}
 		makeShot(scene, point);
 	});
-	scene.onUpdate.add(function () {
+	scene.onUpdate.add(() => {
 		if (killedEnemy === 36) {
 			gameOver(scene);
 			return true; // trueを返すと(`scene.update` から)この関数の登録が解除されます。
@@ -25,9 +25,9 @@ function main() {
 module.exports = main;
 
 function makeEnemy(scene) {
-	for (var i = 0; i < 8; i++) {
-		for (var j = 0; j < 4; j++) {
-			var movingEnemy = new g.FilledRect({
+	for (let i = 0; i < 8; i++) {
+		for (let j = 0; j < 4; j++) {
+			const movingEnemy = new g.FilledRect({
 				scene: scene,
 				cssColor: (j < 2 ? "#ff0000" : "#0fffff"),
 				width: 16,
@@ -35,22 +35,22 @@ function makeEnemy(scene) {
 				x: i * (16 + 4) + 64,
 				y: j * (16 + 4) + 30
 			});
-			movingEnemy.onUpdate.add(function() { // add(func, obj)の形式で呼び出すと、objがfunc呼び出しの際thisとして扱われます。
+			movingEnemy.onUpdate.add(() => {
 				if (scene.game.age % scene.game.fps === 0) {
-					var tick = Math.round(scene.game.age / scene.game.fps) % 4;
+					const tick = Math.round(scene.game.age / scene.game.fps) % 4;
 					if (tick === 0 || tick === 1) {
-						this.x += 8;
+						movingEnemy.x += 8;
 					} else {
-						this.x -= 8;
+						movingEnemy.x -= 8;
 					}
-					this.modified();
+					movingEnemy.modified();
 				}
-			}, movingEnemy);
+			});
 			scene.append(movingEnemy);
 		}
 	}
-	for (var i = 0; i < 4; i++) {
-		var stoppedEnemy = new g.FilledRect({
+	for (let i = 0; i < 4; i++) {
+		const stoppedEnemy = new g.FilledRect({
 			scene: scene,
 			cssColor: "#0000ff",
 			width: 16,
@@ -63,7 +63,7 @@ function makeEnemy(scene) {
 }
 
 function makeShot(scene, point) {
-	var shot = new g.FilledRect({
+	const shot = new g.FilledRect({
 		scene: scene,
 		cssColor: "#000000",
 		width: 2,
@@ -72,15 +72,15 @@ function makeShot(scene, point) {
 		y: point.y
 	});
 
-	shot.onUpdate.add(function () {
+	shot.onUpdate.add(() => {
 		shot.y -= 10;
 		if (shot.y < 0 || killedEnemy === 36) {
 			shot.destroy();
 			shot.modified();
 			return;
 		}
-		var collisionTarget;
-		scene.children.forEach(function(entity) {
+		let collisionTarget;
+		scene.children.forEach(entity => {
 			if (shot === entity)
 				return;
 			if (g.Collision.intersectAreas(shot, entity))
@@ -97,12 +97,12 @@ function makeShot(scene, point) {
 }
 
 function gameOver(scene) {
-	var dfont = new g.DynamicFont({
+	const dfont = new g.DynamicFont({
 		fontFamily: "serif",
 		size: 80,
 		game: scene.game
 	});
-	var label = new g.Label({
+	const label = new g.Label({
 		scene: scene,
 		text: "GAME OVER",
 		font: dfont,
@@ -110,10 +110,10 @@ function gameOver(scene) {
 	});
 	label.x = scene.game.width / 2 - label.width / 2;
 	label.y = 0;
-	label.onUpdate.add(function() {
-		if (this.y < scene.game.height / 2 - this.height / 2)
-			this.y += 2;
-		this.invalidate();
-	}, label);
+	label.onUpdate.add(() => {
+		if (label.y < scene.game.height / 2 - label.height / 2)
+			label.y += 2;
+		label.invalidate();
+	});
 	scene.append(label);
 }

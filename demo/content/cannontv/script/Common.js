@@ -1,20 +1,20 @@
-var game = g.game;
+const game = g.game;
 
 //サウンド管理
-var sound_flg = false;
+let sound_flg = false;
 
 //BGM再生管理
-var bgm_flg = false;
+let bgm_flg = false;
 
 //IE判別フラグ
-var ie_flg = false;
+let ie_flg = false;
 
 //カメラ座標
-var camera_posx = 0;
-var camera_posy = 0;
+let camera_posx = 0;
+let camera_posy = 0;
 
 //プレイヤー情報
-var ply_tagno = -1;
+let ply_tagno = -1;
 
 
 //------------------
