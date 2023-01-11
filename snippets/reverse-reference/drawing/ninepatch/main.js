@@ -15,7 +15,7 @@ function main() {
 
 		var destSurface = scene.game.resourceFactory.createSurface(220, 70);
 		var srcSurface = g.SurfaceUtil.asSurface(frameImageAsset);
-		var borderWidth = { top: 5, bottom: 15, left: 5, right: 15 };
+		var borderWidth = { top: 5, bottom: 25, left: 5, right: 25 };
 		g.SurfaceUtil.drawNinePatch(destSurface, srcSurface, borderWidth);
 
 		var ninePacthImg = new g.Sprite({
