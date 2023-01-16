@@ -1,10 +1,10 @@
-var Tile = require("@akashic-extension/akashic-tile").Tile;
-var game = g.game;
+const Tile = require("@akashic-extension/akashic-tile").Tile;
+const game = g.game;
 
 module.exports = function() {
-    var scene = new g.Scene({game: game, assetIds:["map"]});
+	const scene = new g.Scene({game: game, assetIds:["map"]});
     scene.onLoad.add(function() {
-        var tile = new Tile({
+		const tile = new Tile({
             scene: scene,
             src: scene.asset.getImageById("map"),
             tileWidth: 32,

@@ -1,6 +1,6 @@
-var createTitleScene = require("./titleScene");
+const createTitleScene = require("./titleScene");
 
-var game = g.game;
+const game = g.game;
 
 //
 // 揺らめくロゴコンストラクタ
@@ -21,7 +21,7 @@ function Logo(params) {
 Logo.prototype = Object.create(g.E.prototype);
 
 Logo.prototype.__onUpdate = function() {
-    var vScale = this.maxLineScale / (game.fps * 2);
+    const vScale = this.maxLineScale / (game.fps * 2);
 
     if (this.seg === 0) {
         this.lineScale -= vScale;
@@ -47,12 +47,12 @@ Logo.prototype.__onUpdate = function() {
 }
 
 Logo.prototype.lineLoop = function(callback) {
-    var dth = Math.PI * 1 / this.height;
-    var oth = Math.PI / game.fps * this.cntr;
-    var height = 0;
-    for (var i = 0; i < this.height; i++) {
-        var th = dth * i + oth;
-        var sy = 1 + ((Math.cos(th) + 1) / 2) *  this.lineScale;
+    const dth = Math.PI * 1 / this.height;
+    const oth = Math.PI / game.fps * this.cntr;
+    let height = 0;
+    for (let i = 0; i < this.height; i++) {
+        const th = dth * i + oth;
+        const sy = 1 + ((Math.cos(th) + 1) / 2) *  this.lineScale;
         if (callback) {
             callback(sy, height, i);
         }
@@ -63,14 +63,14 @@ Logo.prototype.lineLoop = function(callback) {
 
 Logo.prototype.renderSelf = function(renderer, camera) {
     // draw on backsurface
-    var backRenderer = this.backSurface.renderer();
+    const backRenderer = this.backSurface.renderer();
     backRenderer.begin();
     backRenderer.fillRect(0, 0, this.backSurface.width, this.backSurface.height, "White");
     backRenderer.save();
 
-    var height = this.lineLoop();
-    var dx = (game.width - this.width) / 2;
-    var dy = (game.height - height) / 2;
+    const height = this.lineLoop();
+    const dx = (game.width - this.width) / 2;
+    const dy = (game.height - height) / 2;
     this.lineLoop(function(sy, y, idx) {
         backRenderer.save();
         backRenderer.transform([1, 0, 0, sy * 2, dx, y + dy]);
@@ -100,11 +100,11 @@ Logo.prototype.destroy = function() {
 // ブートシーン生成
 //
 function createBootScene() {
-    var scene = new g.Scene({ game: game });
+    const scene = new g.Scene({ game: game });
 
     scene.onLoad.add(function() {
-        var asset = game.assets["akashic"]
-        var logo = new Logo({
+        const asset = game.assets["akashic"]
+        const logo = new Logo({
             scene: scene,
             src: asset,
             width: asset.width,

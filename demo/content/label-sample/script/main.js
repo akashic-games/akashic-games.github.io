@@ -1,5 +1,6 @@
-var scene1 = require("./scene1");
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const mainScene_1 = require("./mainScene");
 module.exports = () => {
-	g.game.pushScene(scene1());
+    g.game.pushScene(mainScene_1.mainScene());
 };

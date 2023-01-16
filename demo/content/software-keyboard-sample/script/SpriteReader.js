@@ -2,13 +2,13 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SpriteReader = void 0;
 /** パッキングされた画像からスプライトを生成する */
-var SpriteReader = /** @class */ (function () {
+class SpriteReader {
     /**
      * @param scene 描画対象のシーン
      * @param hintName 座標情報を含んだJSONファイルのテキストアセット名
      * @param imageName 統合された画像のアセット名
      */
-    function SpriteReader(scene, hintName, imageName) {
+    constructor(scene, hintName, imageName) {
         this._scene = scene;
         this._coordinates = scene.asset.getJSONContentById(hintName);
         this._image = scene.asset.getImageById(imageName);
@@ -18,8 +18,8 @@ var SpriteReader = /** @class */ (function () {
      * @param name 切り抜く画像名
      * @param option オプションのパラメータ
      */
-    SpriteReader.prototype.createSprite = function (name, option) {
-        var coordinate = this._coordinates[name];
+    createSprite(name, option) {
+        const coordinate = this._coordinates[name];
         return new g.Sprite({
             scene: this._scene,
             src: this._image,
@@ -33,7 +33,6 @@ var SpriteReader = /** @class */ (function () {
             y: option.y,
             touchable: option.touchable
         });
-    };
-    return SpriteReader;
-}());
+    }
+}
 exports.SpriteReader = SpriteReader;

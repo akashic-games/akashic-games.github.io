@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.wallParameterB = exports.wallParameterA = exports.bulletParameterB = exports.bulletParameterA = exports.physics = exports.worldProperty = exports.DAMAGE_FONT = exports.GROUP_A = exports.bulletList = exports.b2Mat22 = exports.b2Vec2 = void 0;
-var box2d = require("@akashic-extension/akashic-box2d");
+const box2d = require("@akashic-extension/akashic-box2d");
 /** 2次元ベクトル */
 exports.b2Vec2 = box2d.Box2DWeb.Common.Math.b2Vec2;
 /** 2 × 2 行列 */
@@ -11,11 +11,11 @@ exports.bulletList = [];
 /** Aグループ */
 exports.GROUP_A = -1;
 /** Bグループ */
-var GROUP_B = -2;
+const GROUP_B = -2;
 /** 壁カテゴリ */
-var CATEGORY_BULLET = 0x0001;
+const CATEGORY_BULLET = 0x0001;
 /** 壁カテゴリ */
-var CATEGORY_WALL = 0x0002;
+const CATEGORY_WALL = 0x0002;
 /** ダメージ描画に使用するフォント */
 exports.DAMAGE_FONT = new g.DynamicFont({
     game: g.game,

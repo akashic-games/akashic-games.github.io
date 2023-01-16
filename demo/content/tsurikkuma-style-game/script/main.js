@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.main = void 0;
-var akashic_timeline_1 = require("@akashic-extension/akashic-timeline");
-var constants_1 = require("./constants");
-var FishingRod_1 = require("./entity/FishingRod");
-var Sea_1 = require("./entity/Sea");
-var HUDManager_1 = require("./HUDManager");
-var Resources_1 = require("./Resources");
-var TsurikkumaStyleGame = /** @class */ (function () {
-    function TsurikkumaStyleGame(scene) {
+const akashic_timeline_1 = require("@akashic-extension/akashic-timeline");
+const constants_1 = require("./constants");
+const FishingRod_1 = require("./entity/FishingRod");
+const Sea_1 = require("./entity/Sea");
+const HUDManager_1 = require("./HUDManager");
+const Resources_1 = require("./Resources");
+class TsurikkumaStyleGame {
+    constructor(scene) {
         this.isPlaying = false;
         this.scene = scene;
         this.root = new g.E({ scene: scene });
@@ -22,14 +22,13 @@ var TsurikkumaStyleGame = /** @class */ (function () {
     /**
      * ゲームを開始する
      */
-    TsurikkumaStyleGame.prototype.start = function () {
-        var _this = this;
-        this.hudManager.startCountdown(function () { return _this._startGame(); });
-    };
+    start() {
+        this.hudManager.startCountdown(() => this._startGame());
+    }
     /**
      * ゲームを1フレーム進める
      */
-    TsurikkumaStyleGame.prototype.step = function () {
+    step() {
         if (!this.isPlaying)
             return;
         this.sea.checkFishOnHook(this.fishingRod);
@@ -39,47 +38,45 @@ var TsurikkumaStyleGame = /** @class */ (function () {
             this.isPlaying = false;
             this._finishGame();
         }
-    };
+    }
     /**
      * タップしたときの処理
      */
-    TsurikkumaStyleGame.prototype.onPointDown = function () {
-        var _this = this;
+    onPointDown() {
         if (!this.isPlaying)
             return;
-        this.fishingRod.catchUp(function () {
-            var pattern = _this.fishingRod.getFishingPattern(_this.sea.capturedFishList);
-            _this.hudManager.addScore(_this.hudManager.calcScore(_this.sea.capturedFishList));
-            _this.fishingRod.fishing(pattern);
-            _this.sea.destroyCapturedFish();
+        this.fishingRod.catchUp(() => {
+            const pattern = this.fishingRod.getFishingPattern(this.sea.capturedFishList);
+            this.hudManager.addScore(this.hudManager.calcScore(this.sea.capturedFishList));
+            this.fishingRod.fishing(pattern);
+            this.sea.destroyCapturedFish();
         });
-    };
+    }
     /**
      * ゲーム本編開始
      */
-    TsurikkumaStyleGame.prototype._startGame = function () {
+    _startGame() {
         this.isPlaying = true;
         this.sea.startFishTimer();
-    };
+    }
     /**
      * ゲーム終了時の処理
      */
-    TsurikkumaStyleGame.prototype._finishGame = function () {
+    _finishGame() {
         this.scene.onPointUpCapture.removeAll();
         this.sea.clearFishTimer();
         this.hudManager.showTimeUp();
         if ((0, Resources_1.getResources)().param.isAtsumaru) {
-            var boardId_1 = 1;
-            window.RPGAtsumaru.experimental.scoreboards.setRecord(boardId_1, g.game.vars.gameState.score).then(function () {
-                window.RPGAtsumaru.experimental.scoreboards.display(boardId_1);
+            const boardId = 1;
+            window.RPGAtsumaru.experimental.scoreboards.setRecord(boardId, g.game.vars.gameState.score).then(function () {
+                window.RPGAtsumaru.experimental.scoreboards.display(boardId);
             });
         }
-    };
-    return TsurikkumaStyleGame;
-}());
+    }
+}
 function main(param) {
-    var scene = new g.Scene({ game: g.game });
-    var timeLimit = constants_1.TIMELIMIT;
+    const scene = new g.Scene({ game: g.game });
+    let timeLimit = constants_1.TIMELIMIT;
     if (param.sessionParameter.totalTimeLimit) {
         /**
          * セッションパラメータで制限時間が指定されたらその値を使用します
@@ -93,14 +90,14 @@ function main(param) {
         timeLimit: timeLimit,
         param: param
     });
-    var tsurikkumaStyleGame = new TsurikkumaStyleGame(scene);
-    scene.onLoad.add(function () {
+    const tsurikkumaStyleGame = new TsurikkumaStyleGame(scene);
+    scene.onLoad.add(() => {
         tsurikkumaStyleGame.start();
     });
-    scene.onUpdate.add(function () {
+    scene.onUpdate.add(() => {
         tsurikkumaStyleGame.step();
     });
-    scene.onPointDownCapture.add(function () {
+    scene.onPointDownCapture.add(() => {
         tsurikkumaStyleGame.onPointDown();
     });
     g.game.pushScene(scene);
@@ -186,14 +183,14 @@ function createBear(parent) {
  * 海を作成
  */
 function createSea(parent) {
-    return new Sea_1.Sea({ parent: parent });
+    return new Sea_1.Sea({ parent });
 }
 /**
  * 釣竿を作成
  */
 function createFishingRod(parent) {
-    var fishingRod = new FishingRod_1.FishingRod({ parent: parent });
-    fishingRod.onStuck.add(function () {
+    const fishingRod = new FishingRod_1.FishingRod({ parent: parent });
+    fishingRod.onStuck.add(() => {
         createMissLabel(parent);
     });
     return fishingRod;
@@ -202,7 +199,7 @@ function createFishingRod(parent) {
  * HUDマネージャーを作成
  */
 function createHUDManager(parent) {
-    var hudManager = new HUDManager_1.HUDManager({
+    const hudManager = new HUDManager_1.HUDManager({
         scoreLabel: createScoreLabel(parent),
         timeLabel: createTimeLabel(parent),
         systemLabel: createSystemLabel(parent)
@@ -263,7 +260,7 @@ function createSystemLabel(parent) {
  * 釣りミス時のラベルを作成
  */
 function createMissLabel(parent) {
-    var missLabel = new g.Label({
+    const missLabel = new g.Label({
         scene: parent.scene,
         text: "miss!",
         textColor: "red",
@@ -276,5 +273,5 @@ function createMissLabel(parent) {
     (0, Resources_1.getResources)()
         .timeline.create(missLabel)
         .wait(constants_1.STUCK_DURATION)
-        .call(function () { return missLabel.destroy(); });
+        .call(() => missLabel.destroy());
 }

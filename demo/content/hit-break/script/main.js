@@ -1,37 +1,37 @@
 "use strict";
-var box2d = require("@akashic-extension/akashic-box2d");
+const box2d = require("@akashic-extension/akashic-box2d");
 // 2次元ベクトル
-var b2Vec2 = box2d.Box2DWeb.Common.Math.b2Vec2;
+const b2Vec2 = box2d.Box2DWeb.Common.Math.b2Vec2;
 // 斜め方向のベクトル
-var directions = [
+const directions = [
     new b2Vec2(-1, -1),
     new b2Vec2(1, -1),
     new b2Vec2(-1, 1),
     new b2Vec2(1, 1) // 右下
 ];
 /** 物理世界のプロパティ */
-var worldProperty = {
+const worldProperty = {
     gravity: [0.0, 9.8],
     scale: 50,
     sleep: true // 停止した物体を演算対象としないかどうか
 };
 /** 物理エンジンの世界 */
-var physics = new box2d.Box2D(worldProperty);
+const physics = new box2d.Box2D(worldProperty);
 /** 衝突判定を持つ箱のリスト */
-var boxList = [];
+const boxList = [];
 /** 衝突した物体のIDリスト */
-var contactIDList = [];
+const contactIDList = [];
 /** 衝突イベントのリスナ */
-var contactListener = new box2d.Box2DWeb.Dynamics.b2ContactListener();
+const contactListener = new box2d.Box2DWeb.Dynamics.b2ContactListener();
 // 衝突開始時のイベントリスナを設定
-contactListener.BeginContact = function (contact) {
+contactListener.BeginContact = (contact) => {
     // physics.createBodyDefにuserDataを指定していない場合は、
     // userDataにg.E.idが設定されるので、IDの組を保存しておく
-    var a = contact
+    const a = contact
         .GetFixtureA()
         .GetBody()
         .GetUserData();
-    var b = contact
+    const b = contact
         .GetFixtureB()
         .GetBody()
         .GetUserData();
@@ -41,11 +41,11 @@ contactListener.BeginContact = function (contact) {
 physics.world.SetContactListener(contactListener);
 ;
 function main() {
-    var scene = new g.Scene({ game: g.game });
-    scene.onLoad.add(function () {
-        scene.onPointDownCapture.add(function (event) {
+    const scene = new g.Scene({ game: g.game });
+    scene.onLoad.add(() => {
+        scene.onPointDownCapture.add((event) => {
             // タッチされた場所の画面下から箱を飛ばす
-            var box = createBox(scene, createBoxParameter(1.0, 1.0, "crimson"));
+            const box = createBox(scene, createBoxParameter(1.0, 1.0, "crimson"));
             boxList.push(box);
             // ※ 表示はbox2dのbodyの座標に同期するので、box2dの座標だけ書き換える
             box.b2Body.SetPosition(physics.vec2(event.point.x, g.game.height));
@@ -54,26 +54,26 @@ function main() {
             box.b2Body.GetPosition() // 力点
             );
         });
-        scene.onUpdate.add(function () {
+        scene.onUpdate.add(() => {
             // 衝突した箱を4分割して斜めに飛ばす
             while (0 < contactIDList.length) {
-                var contactID = contactIDList.pop();
-                for (var i = 0; i < boxList.length; ++i) {
-                    var box = boxList[i];
+                const contactID = contactIDList.pop();
+                for (let i = 0; i < boxList.length; ++i) {
+                    const box = boxList[i];
                     // 衝突した箱かどうかの判定
                     if (box.entity.id === contactID.a || box.entity.id === contactID.b) {
                         // 大きさは衝突した箱の4分の1
-                        var size = physics.vec2(box.entity.width, box.entity.height);
+                        const size = physics.vec2(box.entity.width, box.entity.height);
                         size.Multiply(0.5);
                         // 処理落ちしないように一定の大きさで分裂をやめる
                         if (size.x < 0.1) {
                             break;
                         }
-                        for (var j = 0; j < 4; ++j) {
-                            var dir = directions[j];
-                            var miniBox = createBox(scene, createBoxParameter(size.x, size.y, "royalblue"));
+                        for (let j = 0; j < 4; ++j) {
+                            const dir = directions[j];
+                            const miniBox = createBox(scene, createBoxParameter(size.x, size.y, "royalblue"));
                             // 斜めに少しずらして配置する
-                            var pos = box.b2Body.GetPosition().Copy();
+                            const pos = box.b2Body.GetPosition().Copy();
                             pos.Add(dir);
                             miniBox.b2Body.SetPosition(pos);
                             // 分裂前の箱の速度を引き継ぐ
@@ -131,7 +131,7 @@ function createBoxParameter(width, height, color) {
  */
 function createBox(scene, parameter) {
     // 表示用の矩形（1m × 1m）を生成
-    var rect = new g.FilledRect({
+    const rect = new g.FilledRect({
         scene: scene,
         width: parameter.appear.width,
         height: parameter.appear.height,
@@ -139,8 +139,8 @@ function createBox(scene, parameter) {
     });
     scene.append(rect);
     // 表示用の矩形と衝突判定を結び付けて返す
-    var box = physics.createBody(rect, parameter.physics.body, parameter.physics.fixture);
-    box.entity.onUpdate.add(function () {
+    const box = physics.createBody(rect, parameter.physics.body, parameter.physics.fixture);
+    box.entity.onUpdate.add(() => {
         // 画面外に出たら自分を削除
         if (g.game.height + 100 < box.entity.y) {
             removeBox(box);

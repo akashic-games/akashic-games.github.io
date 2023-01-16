@@ -1,21 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.calcCenter = exports.createDamage = exports.createRect = exports.removeBullet = exports.shootB = exports.shootA = void 0;
-var params = require("./parameters");
+const params = require("./parameters");
 /**
  * グループAの銃弾を発射します
  * @param {g.Scene} scene 描画を行うシーン
  * @param {b2Vec2} position 発射座標
  */
 function shootA(scene, position) {
-    var bullet = createBullet(scene, params.bulletParameterA);
+    const bullet = createBullet(scene, params.bulletParameterA);
     bullet.b2Body.SetPosition(position);
     /** 発射制度 */
-    var accuracy = 10;
+    const accuracy = 10;
     /** 発射角度（右から -10° ~ 10°） */
-    var angle = g.game.random.generate() * accuracy * 2 - accuracy;
+    const angle = g.game.random.generate() * accuracy * 2 - accuracy;
     /** 発射の瞬間の力 */
-    var impulse = new params.b2Vec2(0.1, 0);
+    const impulse = new params.b2Vec2(0.1, 0);
     impulse.MulM(params.b2Mat22.FromAngle((angle / 180) * Math.PI));
     // 発射
     bullet.b2Body.ApplyImpulse(impulse, bullet.b2Body.GetPosition());
@@ -27,14 +27,14 @@ exports.shootA = shootA;
  * @param {b2Vec2} position 発射座標
  */
 function shootB(scene, position) {
-    var bullet = createBullet(scene, params.bulletParameterB);
+    const bullet = createBullet(scene, params.bulletParameterB);
     bullet.b2Body.SetPosition(position);
     /** 発射制度 */
-    var accuracy = 3;
+    const accuracy = 3;
     /** 発射角度（右から -3° ~ 3°） */
-    var angle = g.game.random.generate() * accuracy * 2 - accuracy;
+    const angle = g.game.random.generate() * accuracy * 2 - accuracy;
     /** 発射の瞬間の力 */
-    var impulse = new params.b2Vec2(-0.2, 0);
+    const impulse = new params.b2Vec2(-0.2, 0);
     impulse.MulM(params.b2Mat22.FromAngle((angle / 180) * Math.PI));
     // 発射
     bullet.b2Body.ApplyImpulse(impulse, bullet.b2Body.GetPosition());
@@ -48,7 +48,7 @@ exports.shootB = shootB;
 function createBullet(scene, parameter) {
     // 表示用の画像を生成
     // ※ AkashicEngineでは円を描画することができないので、画像で表現する
-    var entity = new g.Sprite({
+    const entity = new g.Sprite({
         scene: scene,
         src: scene.asset.getImageById(parameter.appear.assetId),
         srcWidth: 100,
@@ -58,9 +58,9 @@ function createBullet(scene, parameter) {
     });
     scene.append(entity);
     // 表示用の円形と衝突判定を結び付けて生成
-    var bullet = params.physics.createBody(entity, parameter.physics.body, parameter.physics.fixture);
+    const bullet = params.physics.createBody(entity, parameter.physics.body, parameter.physics.fixture);
     /** ダメージの揺らぎ（-5.0 ~ 5.0） */
-    var rand = g.game.random.generate() * 10.0 - 5.0;
+    const rand = g.game.random.generate() * 10.0 - 5.0;
     // ユーザーデータにダメージを付与する
     bullet.b2Body.SetUserData({
         id: entity.id,
@@ -91,7 +91,7 @@ exports.removeBullet = removeBullet;
  */
 function createRect(scene, parameter) {
     // 表示用の矩形（1m × 1m）を生成
-    var rect = new g.FilledRect({
+    const rect = new g.FilledRect({
         scene: scene,
         width: parameter.appear.width,
         height: parameter.appear.height,
@@ -110,7 +110,7 @@ exports.createRect = createRect;
  * @param {string} color 描画色
  */
 function createDamage(scene, position, damage, color) {
-    var label = new g.Label({
+    const label = new g.Label({
         scene: scene,
         font: params.DAMAGE_FONT,
         text: damage.toFixed(1).toString(),
@@ -119,7 +119,7 @@ function createDamage(scene, position, damage, color) {
         x: position.x,
         y: position.y
     });
-    label.onUpdate.add(function () {
+    label.onUpdate.add(() => {
         // 徐々に透過、完全に透明になったら削除
         label.opacity -= 0.05;
         if (label.opacity <= 0.0) {

@@ -1,20 +1,20 @@
 "use strict";
-var box2d = require("@akashic-extension/akashic-box2d");
+const box2d = require("@akashic-extension/akashic-box2d");
 /** 2次元ベクトル */
-var b2Vec2 = box2d.Box2DWeb.Common.Math.b2Vec2;
+const b2Vec2 = box2d.Box2DWeb.Common.Math.b2Vec2;
 /** 2×2 の行列 */
-var b2Mat22 = box2d.Box2DWeb.Common.Math.b2Mat22;
+const b2Mat22 = box2d.Box2DWeb.Common.Math.b2Mat22;
 /** 物理世界のプロパティ */
-var worldProperty = {
+const worldProperty = {
     gravity: [0, 9.8],
     scale: 50,
     sleep: true // 停止した物体を物理演算対象とするかどうか
 };
 /** 物理エンジンの世界 */
-var physics = new box2d.Box2D(worldProperty);
+const physics = new box2d.Box2D(worldProperty);
 ;
 /** 鉄球のパラメータ */
-var ballParameter = {
+const ballParameter = {
     appear: {
         width: 1.0 * worldProperty.scale,
         height: 1.0 * worldProperty.scale
@@ -35,16 +35,16 @@ var ballParameter = {
     }
 };
 function main() {
-    var scene = new g.Scene({
+    const scene = new g.Scene({
         game: g.game,
         assetIds: ["circle", "circle_touch"]
     });
-    scene.onLoad.add(function () {
+    scene.onLoad.add(() => {
         // 鉄球を5個横に並べて生成する
-        var ballCount = 5;
-        for (var i = 0; i < ballCount; ++i) {
-            var ball = createCircle(scene, ballParameter);
-            var position = calcCenter(g.game);
+        const ballCount = 5;
+        for (let i = 0; i < ballCount; ++i) {
+            const ball = createCircle(scene, ballParameter);
+            const position = calcCenter(g.game);
             position.Add(new b2Vec2(i - Math.floor(ballCount / 2), 2.0));
             ball.b2Body.SetPosition(position);
             ball.b2Body.SetAngularDamping(0.8); // 回転しづらくする
@@ -52,20 +52,20 @@ function main() {
             addMouseJoint(ball);
             // 支点の位置は鉄球の 10m 上に設定
             // ※ 支点からの距離が長いほど安定します
-            var fulcrum = position.Copy();
+            const fulcrum = position.Copy();
             fulcrum.y -= 10.0;
             // ボールとの接点の位置はボールの中心から少しずらす
             // ※ 中心に設定すると、ボールが自由回転するため精度が落ちます
-            var contact = ball.b2Body.GetPosition().Copy();
+            const contact = ball.b2Body.GetPosition().Copy();
             contact.Add(new b2Vec2(0.0, -0.5));
             addDistanceJoint(ball, fulcrum, contact);
         }
-        scene.onUpdate.add(function () {
+        scene.onUpdate.add(() => {
             // 物理エンジンの世界をすすめる
             // ※ step関数の引数は秒数なので、1フレーム分の時間（1.0 / g.game.fps）を指定する
             // ※ 今回はさらに精度を増すために、処理をさらに細分化する（10分割）
-            var accuracy = 10;
-            for (var i = 0; i < accuracy; ++i) {
+            const accuracy = 10;
+            for (let i = 0; i < accuracy; ++i) {
                 physics.step(1.0 / g.game.fps / accuracy);
             }
         });
@@ -86,7 +86,7 @@ function calcCenter(obj) {
  */
 function createCircle(scene, parameter) {
     // 画像をまとめる空のエンティティを生成
-    var entity = new g.E({
+    const entity = new g.E({
         scene: scene,
         width: parameter.appear.width,
         height: parameter.appear.height
@@ -94,7 +94,7 @@ function createCircle(scene, parameter) {
     scene.append(entity);
     // 表示用の円形を生成
     // ※ AkashicEngineでは円を描画することができないので、画像で描画する
-    var circle = new g.Sprite({
+    const circle = new g.Sprite({
         scene: scene,
         src: scene.asset.getImageById("circle"),
         srcWidth: 100,
@@ -104,7 +104,7 @@ function createCircle(scene, parameter) {
     });
     entity.append(circle);
     // タッチされたとき用の円形スプライトを生成
-    var circleTouch = new g.Sprite({
+    const circleTouch = new g.Sprite({
         scene: scene,
         src: scene.asset.getImageById("circle_touch"),
         srcWidth: 100,
@@ -116,12 +116,12 @@ function createCircle(scene, parameter) {
     entity.append(circleTouch);
     // タッチの有無で画像を切り替える
     // タッチされたときにタッチ用の画像を表示
-    entity.onPointDown.add(function () {
+    entity.onPointDown.add(() => {
         circle.hide();
         circleTouch.show();
     });
     // タッチが解除されたときに通常時の画像を表示
-    entity.onPointUp.add(function () {
+    entity.onPointUp.add(() => {
         circle.show();
         circleTouch.hide();
     });
@@ -136,11 +136,11 @@ function addMouseJoint(ebody) {
     // オブジェクトを触れるようにする
     ebody.entity.touchable = true;
     // タッチされている座標（Box2D上の絶対座標）
-    var anchor;
+    let anchor;
     /** 鉄球とマウスを結びつけるジョイント */
-    var mouseJoint = null;
+    let mouseJoint = null;
     // オブジェクトがタッチされたときの処理
-    ebody.entity.onPointDown.add(function (event) {
+    ebody.entity.onPointDown.add((event) => {
         // 既にマウスジョイントが生成されている場合は削除しておく
         if (mouseJoint !== null) {
             physics.world.DestroyJoint(mouseJoint);
@@ -158,7 +158,7 @@ function addMouseJoint(ebody) {
         anchor.MulM(b2Mat22.FromAngle(ebody.b2Body.GetAngle()));
         anchor.Add(ebody.b2Body.GetPosition());
         // マウスとオブジェクトの紐づけを作成
-        var mouseJointDef = new box2d.Box2DWeb.Dynamics.Joints.b2MouseJointDef();
+        const mouseJointDef = new box2d.Box2DWeb.Dynamics.Joints.b2MouseJointDef();
         // 紐づける２つの物体
         // ※ 今回はマウスと結び付けるので、bodyAにはworld.GetGroundBodyを指定する。
         mouseJointDef.bodyA = physics.world.GetGroundBody();
@@ -177,13 +177,13 @@ function addMouseJoint(ebody) {
         mouseJoint = physics.world.CreateJoint(mouseJointDef);
     });
     // タッチ中の座標が移動したときの処理
-    ebody.entity.onPointMove.add(function (event) {
+    ebody.entity.onPointMove.add((event) => {
         // タッチ座標を更新する
         anchor.Add(physics.vec2(event.prevDelta.x, event.prevDelta.y));
         mouseJoint.SetTarget(anchor);
     });
     // オブジェクトが離されたときの処理
-    ebody.entity.onPointUp.add(function () {
+    ebody.entity.onPointUp.add(() => {
         // オブジェクトとマウスの紐づけを解除
         physics.world.DestroyJoint(mouseJoint);
         mouseJoint = null;
@@ -196,7 +196,7 @@ function addMouseJoint(ebody) {
  * @param {b2Vec2} contact オブジェクト内で固定する座標
  */
 function addDistanceJoint(ebody, fulcrum, contact) {
-    var distanceJointdef = new box2d.Box2DWeb.Dynamics.Joints.b2DistanceJointDef();
+    const distanceJointdef = new box2d.Box2DWeb.Dynamics.Joints.b2DistanceJointDef();
     distanceJointdef.Initialize(physics.world.GetGroundBody(), // オブジェクトではなく空間に固定する場合は、このように書く
     ebody.b2Body, fulcrum, contact);
     physics.world.CreateJoint(distanceJointdef);

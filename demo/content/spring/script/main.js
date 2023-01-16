@@ -1,51 +1,51 @@
 "use strict";
-var box2d = require("@akashic-extension/akashic-box2d");
-var params = require("./parameters");
+const box2d = require("@akashic-extension/akashic-box2d");
+const params = require("./parameters");
 function main() {
-    var scene = new g.Scene({ game: g.game });
-    scene.onLoad.add(function () {
+    const scene = new g.Scene({ game: g.game });
+    scene.onLoad.add(() => {
         // 左の壁を生成する
-        var leftWall = createRect(scene, params.wallParameter);
+        const leftWall = createRect(scene, params.wallParameter);
         // ※ box2dの座標は実距離（単位はメートル）で指定する
-        var leftWallPos = params.physics.vec2(0, 0);
+        const leftWallPos = params.physics.vec2(0, 0);
         // ※ 指定された座標はオブジェクトの中心座標に設定される
         leftWallPos.Add(calcCenter(leftWall.entity));
         // ※ 表示はbox2dのbodyの座標に同期するので、box2dの座標だけ書き換える
         leftWall.b2Body.SetPosition(leftWallPos);
         // 右の壁を生成する
-        var rightWall = createRect(scene, params.wallParameter);
-        var rightWallPos = params.physics.vec2(g.game.width - rightWall.entity.width, 0);
+        const rightWall = createRect(scene, params.wallParameter);
+        const rightWallPos = params.physics.vec2(g.game.width - rightWall.entity.width, 0);
         rightWallPos.Add(calcCenter(rightWall.entity));
         rightWall.b2Body.SetPosition(rightWallPos);
         // 床を生成する
-        var floor = createRect(scene, params.floorParameter);
-        var floorPos = params.physics.vec2(0, g.game.height - floor.entity.height);
+        const floor = createRect(scene, params.floorParameter);
+        const floorPos = params.physics.vec2(0, g.game.height - floor.entity.height);
         floorPos.Add(calcCenter(floor.entity));
         floor.b2Body.SetPosition(floorPos);
         // 天井を生成する
-        var ceil = createRect(scene, params.floorParameter);
-        var ceilPos = params.physics.vec2(0, 0);
+        const ceil = createRect(scene, params.floorParameter);
+        const ceilPos = params.physics.vec2(0, 0);
         ceilPos.Add(calcCenter(ceil.entity));
         ceil.b2Body.SetPosition(ceilPos);
         // バネを生成する
-        var angle = (45 / 180) * Math.PI;
-        var position = params.physics.vec2(g.game.width / 2, g.game.height - 100); // 下中央
+        const angle = (45 / 180) * Math.PI;
+        let position = params.physics.vec2(g.game.width / 2, g.game.height - 100); // 下中央
         createSpring(scene, position, 0, 50, 100);
         position = params.physics.vec2(100, g.game.height - 100); // 左下
         createSpring(scene, position, angle, 50, 100);
         position = params.physics.vec2(g.game.width - 100, g.game.height - 100); // 右下
         createSpring(scene, position, -angle, 50, 100);
         // 箱を生成する
-        var box = createRect(scene, params.boxParameter);
+        const box = createRect(scene, params.boxParameter);
         box.b2Body.SetPosition(calcCenter(g.game));
         // タッチされている座標（Box2D上の絶対座標）
-        var anchor;
+        let anchor;
         // 箱を触れるようにする
         box.entity.touchable = true;
         /** 箱とマウスの紐づけ */
-        var mouseJoint = null;
+        let mouseJoint = null;
         // 箱がタッチされたときの処理
-        box.entity.onPointDown.add(function (event) {
+        box.entity.onPointDown.add((event) => {
             // 既にマウスジョイントが生成されている場合は削除しておく
             if (mouseJoint !== null) {
                 params.physics.world.DestroyJoint(mouseJoint);
@@ -63,7 +63,7 @@ function main() {
             anchor.MulM(params.b2Mat22.FromAngle(box.b2Body.GetAngle()));
             anchor.Add(box.b2Body.GetPosition());
             // マウスと箱の紐づけを作成
-            var mouseJointDef = new box2d.Box2DWeb.Dynamics.Joints.b2MouseJointDef();
+            const mouseJointDef = new box2d.Box2DWeb.Dynamics.Joints.b2MouseJointDef();
             // 紐づける２つの物体
             // ※ 今回はマウスと結び付けるので、bodyAにはworld.GetGroundBodyを指定する。
             mouseJointDef.bodyA = params.physics.world.GetGroundBody();
@@ -85,13 +85,13 @@ function main() {
             box.entity.modified();
         });
         // タッチ中の座標が移動したときの処理
-        box.entity.onPointMove.add(function (event) {
+        box.entity.onPointMove.add((event) => {
             // タッチ座標を更新する
             anchor.Add(params.physics.vec2(event.prevDelta.x, event.prevDelta.y));
             mouseJoint.SetTarget(anchor);
         });
         // 箱が離されたときの処理
-        box.entity.onPointUp.add(function () {
+        box.entity.onPointUp.add(() => {
             // 箱とマウスの紐づけを解除
             params.physics.world.DestroyJoint(mouseJoint);
             mouseJoint = null;
@@ -99,7 +99,7 @@ function main() {
             box.entity.cssColor = "crimson";
             box.entity.modified();
         });
-        scene.onUpdate.add(function () {
+        scene.onUpdate.add(() => {
             // 物理エンジンの世界をすすめる
             // ※ step関数の引数は秒数なので、1フレーム分の時間（1.0 / g.game.fps）を指定する
             params.physics.step(1.0 / g.game.fps);
@@ -114,7 +114,7 @@ function main() {
  */
 function createRect(scene, parameter) {
     // 表示用の矩形（1m × 1m）を生成
-    var rect = new g.FilledRect({
+    const rect = new g.FilledRect({
         scene: scene,
         width: parameter.appear.width,
         height: parameter.appear.height,
@@ -141,7 +141,7 @@ function calcCenter(obj) {
  */
 function createSpring(scene, position, angle, speed, force) {
     // バネの天板を生成
-    var platform = createRect(scene, {
+    const platform = createRect(scene, {
         appear: {
             width: 2.0 * params.worldProperty.scale,
             height: 0.3 * params.worldProperty.scale,
@@ -163,10 +163,10 @@ function createSpring(scene, position, angle, speed, force) {
     platform.b2Body.SetAngle(angle);
     // 軸は上向きを基準とする
     // ※ 軸の向きに天板が移動するのでベクトルの向きに注意
-    var axis = new params.b2Vec2(0, -1);
+    const axis = new params.b2Vec2(0, -1);
     axis.MulM(params.b2Mat22.FromAngle(angle));
     // ピストン運動（軸を固定したモーター運動）のジョイント設定を生成
-    var prismaticJointDef = new box2d.Box2DWeb.Dynamics.Joints.b2PrismaticJointDef();
+    const prismaticJointDef = new box2d.Box2DWeb.Dynamics.Joints.b2PrismaticJointDef();
     prismaticJointDef.Initialize(params.physics.world.GetGroundBody(), platform.b2Body, platform.b2Body.GetPosition(), axis);
     // ピストン移動の上限と下限を設定する
     prismaticJointDef.enableLimit = true;
@@ -179,10 +179,10 @@ function createSpring(scene, position, angle, speed, force) {
     prismaticJointDef.motorSpeed = speed;
     prismaticJointDef.maxMotorForce = force;
     // ピストン運動のジョイントを生成
-    var prismaticJoint = params.physics.world.CreateJoint(prismaticJointDef);
-    platform.entity.onUpdate.add(function () {
+    const prismaticJoint = params.physics.world.CreateJoint(prismaticJointDef);
+    platform.entity.onUpdate.add(() => {
         // バネの長さに応じてバネの速度を変更する
-        var pos = platform.b2Body.GetPosition().Copy();
+        const pos = platform.b2Body.GetPosition().Copy();
         pos.Subtract(prismaticJoint.GetAnchorA());
         prismaticJoint.SetMotorSpeed(pos.Length() * speed);
     });
