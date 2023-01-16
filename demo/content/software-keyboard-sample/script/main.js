@@ -1,12 +1,11 @@
 "use strict";
-var akashic_label_1 = require("@akashic-extension/akashic-label");
-var akashic_timeline_1 = require("@akashic-extension/akashic-timeline");
-var MultiKeyboard_1 = require("./MultiKeyboard");
-var game = g.game;
+const akashic_label_1 = require("@akashic-extension/akashic-label");
+const akashic_timeline_1 = require("@akashic-extension/akashic-timeline");
+const MultiKeyboard_1 = require("./MultiKeyboard");
+const game = g.game;
 function main() {
-    var scene = new g.Scene({
-        game: game,
-        assetIds: [
+    const scene = new g.Scene({
+        game, assetIds: [
             "hint_key_alpha",
             "hint_key_kana",
             "hint_key_sym",
@@ -24,22 +23,22 @@ function main() {
             "notosansGlyph"
         ]
     });
-    var timeline = new akashic_timeline_1.Timeline(scene);
-    scene.onLoad.add(function () {
-        var font = new g.DynamicFont({
+    const timeline = new akashic_timeline_1.Timeline(scene);
+    scene.onLoad.add(() => {
+        const font = new g.DynamicFont({
             game: game,
             fontFamily: "sans-serif",
             size: 50,
             fontWeight: 1
         });
-        var glyph = scene.asset.getJSONContentById("notosansGlyph");
-        var keyboardFont = new g.BitmapFont({
+        const glyph = scene.asset.getJSONContentById("notosansGlyph");
+        const keyboardFont = new g.BitmapFont({
             src: scene.asset.getImageById("notosansFont"),
             map: glyph,
             defaultGlyphWidth: 72,
             defaultGlyphHeight: 72
         });
-        var text = new akashic_label_1.Label({
+        const text = new akashic_label_1.Label({
             scene: scene,
             text: "名前を入力してください:",
             textColor: "black",
@@ -50,7 +49,7 @@ function main() {
             textAlign: "center"
         });
         scene.append(text);
-        var name = new akashic_label_1.Label({
+        const name = new akashic_label_1.Label({
             scene: scene,
             text: "",
             textColor: "black",
@@ -62,17 +61,17 @@ function main() {
         });
         scene.append(name);
         // マルチキーボードインスタンスの生成
-        var keyboard = new MultiKeyboard_1.MultiKeyboard({
+        const keyboard = new MultiKeyboard_1.MultiKeyboard({
             scene: scene,
             font: keyboardFont,
             sceneAssets: scene.asset,
             y: g.game.height
         });
         scene.append(keyboard);
-        var state = 1 /* OFF */;
-        var openAsset = scene.asset.getImageById("open");
-        var closeAsset = scene.asset.getImageById("close");
-        var keyboardButton = new g.Pane({
+        let state = 1 /* OFF */;
+        const openAsset = scene.asset.getImageById("open");
+        const closeAsset = scene.asset.getImageById("close");
+        const keyboardButton = new g.Pane({
             scene: scene,
             width: openAsset.width,
             height: openAsset.height,
@@ -81,7 +80,7 @@ function main() {
             backgroundImage: openAsset,
             touchable: true
         });
-        keyboardButton.onPointDown.add(function () {
+        keyboardButton.onPointDown.add(() => {
             switch (state) {
                 case 1 /* OFF */:
                     keyboardButton.backgroundImage = closeAsset;

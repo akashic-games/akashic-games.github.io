@@ -1,30 +1,30 @@
 "use strict";
-var params = require("./parameters");
+const params = require("./parameters");
 /** おはじきを弾く力 */
-var power = 10;
+const power = 10;
 function main() {
-    var scene = new g.Scene({
+    const scene = new g.Scene({
         game: g.game,
         assetIds: ["circle", "circle_touch", "arrow"]
     });
-    scene.onLoad.add(function () {
+    scene.onLoad.add(() => {
         // 壁を生成
         createWall(scene);
         // おはじきを7個ランダムな位置に生成する
-        for (var i = 0; i < 7; ++i) {
+        for (let i = 0; i < 7; ++i) {
             createHajiki(scene, randomPosition());
         }
-        scene.onUpdate.add(function () {
+        scene.onUpdate.add(() => {
             // 物理エンジンの世界をすすめる
             // ※ step関数の引数は秒数なので、1フレーム分の時間（1.0 / g.game.fps）を指定する
             params.physics.step(1.0 / g.game.fps);
         });
-        var begin;
-        scene.onPointDownCapture.add(function (event) {
+        let begin;
+        scene.onPointDownCapture.add((event) => {
             begin = new params.b2Vec2(event.point.x, event.point.y);
         });
-        scene.onPointUpCapture.add(function (event) {
-            var end = new params.b2Vec2(event.startDelta.x, event.startDelta.y);
+        scene.onPointUpCapture.add((event) => {
+            const end = new params.b2Vec2(event.startDelta.x, event.startDelta.y);
             end.Add(begin);
         });
     });
@@ -42,9 +42,9 @@ function calcCenter(obj) {
  * ※ 生成される座標は画面の外枠から 1.0m 内側に限定される
  */
 function randomPosition() {
-    var scale = params.worldProperty.scale;
-    var x = g.game.random.generate() * (g.game.width - scale) + scale;
-    var y = g.game.random.generate() * (g.game.height - scale) + scale;
+    const scale = params.worldProperty.scale;
+    const x = g.game.random.generate() * (g.game.width - scale) + scale;
+    const y = g.game.random.generate() * (g.game.height - scale) + scale;
     return params.physics.vec2(x, y);
 }
 /**
@@ -54,7 +54,7 @@ function randomPosition() {
  */
 function createRect(scene, parameter) {
     // 表示用の矩形（1m × 1m）を生成
-    var rect = new g.FilledRect({
+    const rect = new g.FilledRect({
         scene: scene,
         width: parameter.appear.width,
         height: parameter.appear.height,
@@ -71,7 +71,7 @@ function createRect(scene, parameter) {
  */
 function createCircle(scene, parameter) {
     // 画像をまとめる空のエンティティを生成
-    var entity = new g.E({
+    const entity = new g.E({
         scene: scene,
         width: parameter.appear.width,
         height: parameter.appear.height
@@ -79,7 +79,7 @@ function createCircle(scene, parameter) {
     scene.append(entity);
     // 表示用の円形を生成
     // ※ AkashicEngineでは円を描画することができないので、画像で描画する
-    var circle = new g.Sprite({
+    const circle = new g.Sprite({
         scene: scene,
         src: scene.asset.getImageById("circle"),
         srcWidth: 100,
@@ -89,7 +89,7 @@ function createCircle(scene, parameter) {
     });
     entity.append(circle);
     // タッチされたとき用の円形スプライトを生成
-    var circleTouch = new g.Sprite({
+    const circleTouch = new g.Sprite({
         scene: scene,
         src: scene.asset.getImageById("circle_touch"),
         srcWidth: 100,
@@ -101,12 +101,12 @@ function createCircle(scene, parameter) {
     entity.append(circleTouch);
     // タッチの有無で画像を切り替える
     // タッチされたときにタッチ用の画像を表示
-    entity.onPointDown.add(function () {
+    entity.onPointDown.add(() => {
         circle.hide();
         circleTouch.show();
     });
     // タッチが解除されたときに通常時の画像を表示
-    entity.onPointUp.add(function () {
+    entity.onPointUp.add(() => {
         circle.show();
         circleTouch.hide();
     });
@@ -115,23 +115,23 @@ function createCircle(scene, parameter) {
 }
 function createWall(scene) {
     // 左の壁を生成する
-    var leftWall = createRect(scene, params.wallParameter);
-    var leftWallPos = params.physics.vec2(0, 0);
+    const leftWall = createRect(scene, params.wallParameter);
+    const leftWallPos = params.physics.vec2(0, 0);
     leftWallPos.Add(calcCenter(leftWall.entity));
     leftWall.b2Body.SetPosition(leftWallPos);
     // 右の壁を生成する
-    var rightWall = createRect(scene, params.wallParameter);
-    var rightWallPos = params.physics.vec2(g.game.width - rightWall.entity.width, 0);
+    const rightWall = createRect(scene, params.wallParameter);
+    const rightWallPos = params.physics.vec2(g.game.width - rightWall.entity.width, 0);
     rightWallPos.Add(calcCenter(rightWall.entity));
     rightWall.b2Body.SetPosition(rightWallPos);
     // 床を生成する
-    var floor = createRect(scene, params.floorParameter);
-    var floorPos = params.physics.vec2(0, g.game.height - floor.entity.height);
+    const floor = createRect(scene, params.floorParameter);
+    const floorPos = params.physics.vec2(0, g.game.height - floor.entity.height);
     floorPos.Add(calcCenter(floor.entity));
     floor.b2Body.SetPosition(floorPos);
     // 天井を生成する
-    var ceil = createRect(scene, params.floorParameter);
-    var ceilPos = params.physics.vec2(0, 0);
+    const ceil = createRect(scene, params.floorParameter);
+    const ceilPos = params.physics.vec2(0, 0);
     ceilPos.Add(calcCenter(ceil.entity));
     ceil.b2Body.SetPosition(ceilPos);
 }
@@ -141,7 +141,7 @@ function createWall(scene) {
  * @param {b2Vec2} position おはじきを設置する座標
  */
 function createHajiki(scene, position) {
-    var hajiki = createCircle(scene, params.hajikiParameter);
+    const hajiki = createCircle(scene, params.hajikiParameter);
     hajiki.b2Body.SetPosition(position);
     hajiki.entity.touchable = true;
     // 足りない物理情報を付与する
@@ -150,10 +150,10 @@ function createHajiki(scene, position) {
     hajiki.b2Body.SetLinearDamping(0.5);
     // 角速度の減衰率を設定
     hajiki.b2Body.SetAngularDamping(0.5);
-    var arrow = null; // 矢印画像
-    var anchor; // タッチ開始座標
+    let arrow = null; // 矢印画像
+    let anchor; // タッチ開始座標
     // おはじきを引っ張ったときの処理を追加
-    hajiki.entity.onPointDown.add(function (event) {
+    hajiki.entity.onPointDown.add((event) => {
         // 既に矢印画像が生成されている場合は削除しておく
         if (arrow !== null) {
             arrow.destroy();
@@ -189,19 +189,19 @@ function createHajiki(scene, position) {
         });
         scene.append(arrow);
     });
-    hajiki.entity.onPointMove.add(function (event) {
+    hajiki.entity.onPointMove.add((event) => {
         // pointDownEventからの移動量
-        var delta = params.physics.vec2(event.startDelta.x, event.startDelta.y);
+        const delta = params.physics.vec2(event.startDelta.x, event.startDelta.y);
         // 矢印の長さを変更
-        var mouseMovement = delta.Length() * params.worldProperty.scale;
+        const mouseMovement = delta.Length() * params.worldProperty.scale;
         arrow.scaleX = mouseMovement / arrow.width;
         arrow.scaleY = mouseMovement / arrow.height;
         arrow.angle = Math.atan2(delta.y, delta.x) * (180 / Math.PI);
         arrow.modified();
     });
-    hajiki.entity.onPointUp.add(function (event) {
+    hajiki.entity.onPointUp.add((event) => {
         // pointDownEventからの移動量
-        var delta = params.physics.vec2(event.startDelta.x, event.startDelta.y);
+        const delta = params.physics.vec2(event.startDelta.x, event.startDelta.y);
         delta.NegativeSelf();
         delta.Multiply(power);
         hajiki.b2Body.ApplyImpulse(delta, anchor);

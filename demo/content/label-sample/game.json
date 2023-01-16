@@ -11,34 +11,34 @@
 			"path": "script/main.js",
 			"global": true
 		},
-		"scene1": {
+		"mainScene": {
 			"type": "script",
-			"path": "script/scene1.js",
+			"path": "script/mainScene.js",
 			"global": true
 		},
-		"scene2": {
+		"mainScene2": {
 			"type": "script",
-			"path": "script/scene2.js",
+			"path": "script/mainScene2.js",
 			"global": true
 		},
-		"scene3": {
+		"mainScene3": {
 			"type": "script",
-			"path": "script/scene3.js",
+			"path": "script/mainScene3.js",
 			"global": true
 		},
-		"scene4": {
+		"mainScene4": {
 			"type": "script",
-			"path": "script/scene4.js",
+			"path": "script/mainScene4.js",
 			"global": true
 		},
-		"scene5": {
+		"mainScene5": {
 			"type": "script",
-			"path": "script/scene5.js",
+			"path": "script/mainScene5.js",
 			"global": true
 		},
-		"scene6": {
+		"mainScene6": {
 			"type": "script",
-			"path": "script/scene6.js",
+			"path": "script/mainScene6.js",
 			"global": true
 		},
 		"bmpfont": {

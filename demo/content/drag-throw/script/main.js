@@ -1,18 +1,18 @@
 "use strict";
-var box2d = require("@akashic-extension/akashic-box2d");
+const box2d = require("@akashic-extension/akashic-box2d");
 // 2×2 の行列
-var b2Mat22 = box2d.Box2DWeb.Common.Math.b2Mat22;
+const b2Mat22 = box2d.Box2DWeb.Common.Math.b2Mat22;
 /** 物理世界のプロパティ */
-var worldProperty = {
+const worldProperty = {
     gravity: [0.0, 9.8],
     scale: 50,
     sleep: true // 停止した物体を演算対象としないかどうか
 };
 /** 物理エンジンの世界 */
-var physics = new box2d.Box2D(worldProperty);
+const physics = new box2d.Box2D(worldProperty);
 ;
 /** 箱の生成パラメータ */
-var boxParameter = {
+const boxParameter = {
     /** 表示情報のパラメータ */
     appear: {
         width: 1.0 * worldProperty.scale,
@@ -35,7 +35,7 @@ var boxParameter = {
     }
 };
 /** 壁の生成パラメータ */
-var wallParameter = {
+const wallParameter = {
     appear: {
         width: 0.3 * worldProperty.scale,
         height: g.game.height,
@@ -54,7 +54,7 @@ var wallParameter = {
     }
 };
 /** 床・天井の生成パラメータ */
-var floorParameter = {
+const floorParameter = {
     appear: {
         width: g.game.width,
         height: 0.3 * worldProperty.scale,
@@ -73,42 +73,42 @@ var floorParameter = {
     }
 };
 function main() {
-    var scene = new g.Scene({ game: g.game });
-    scene.onLoad.add(function () {
+    const scene = new g.Scene({ game: g.game });
+    scene.onLoad.add(() => {
         // 左の壁を生成する
-        var leftWall = createRect(scene, wallParameter);
+        const leftWall = createRect(scene, wallParameter);
         // ※ box2dの座標は実距離（単位はメートル）で指定する
-        var leftWallPos = physics.vec2(0, 0);
+        const leftWallPos = physics.vec2(0, 0);
         // ※ 指定された座標はオブジェクトの中心座標に設定される
         leftWallPos.Add(calcCenter(leftWall.entity));
         // ※ 表示はbox2dのbodyの座標に同期するので、box2dの座標だけ書き換える
         leftWall.b2Body.SetPosition(leftWallPos);
         // 右の壁を生成する
-        var rightWall = createRect(scene, wallParameter);
-        var rightWallPos = physics.vec2(g.game.width - rightWall.entity.width, 0);
+        const rightWall = createRect(scene, wallParameter);
+        const rightWallPos = physics.vec2(g.game.width - rightWall.entity.width, 0);
         rightWallPos.Add(calcCenter(rightWall.entity));
         rightWall.b2Body.SetPosition(rightWallPos);
         // 床を生成する
-        var floor = createRect(scene, floorParameter);
-        var floorPos = physics.vec2(0, g.game.height - floor.entity.height);
+        const floor = createRect(scene, floorParameter);
+        const floorPos = physics.vec2(0, g.game.height - floor.entity.height);
         floorPos.Add(calcCenter(floor.entity));
         floor.b2Body.SetPosition(floorPos);
         // 天井を生成する
-        var ceil = createRect(scene, floorParameter);
-        var ceilPos = physics.vec2(0, 0);
+        const ceil = createRect(scene, floorParameter);
+        const ceilPos = physics.vec2(0, 0);
         ceilPos.Add(calcCenter(ceil.entity));
         ceil.b2Body.SetPosition(ceilPos);
         // 箱を生成する
-        var box = createRect(scene, boxParameter);
+        const box = createRect(scene, boxParameter);
         box.b2Body.SetPosition(calcCenter(g.game));
         // タッチされている座標（Box2D上の絶対座標）
-        var anchor;
+        let anchor;
         // 箱を触れるようにする
         box.entity.touchable = true;
         /** マウスと箱の紐づけ */
-        var mouseJoint = null;
+        let mouseJoint = null;
         // 箱がタッチされたときの処理
-        box.entity.onPointDown.add(function (event) {
+        box.entity.onPointDown.add((event) => {
             // 既にマウスジョイントが生成されていた場合は消しておく
             if (mouseJoint !== null) {
                 physics.world.DestroyJoint(mouseJoint);
@@ -126,7 +126,7 @@ function main() {
             anchor.MulM(b2Mat22.FromAngle(box.b2Body.GetAngle()));
             anchor.Add(box.b2Body.GetPosition());
             // マウスと箱の紐づけを作成
-            var mouseJointDef = new box2d.Box2DWeb.Dynamics.Joints.b2MouseJointDef();
+            const mouseJointDef = new box2d.Box2DWeb.Dynamics.Joints.b2MouseJointDef();
             // 紐づける２つの物体
             // ※ 今回はマウスと結び付けるので、bodyAにはworld.GetGroundBodyを指定する。
             mouseJointDef.bodyA = physics.world.GetGroundBody();
@@ -148,13 +148,13 @@ function main() {
             box.entity.modified();
         });
         // タッチ中の座標が移動したときの処理
-        box.entity.onPointMove.add(function (event) {
+        box.entity.onPointMove.add((event) => {
             // タッチ座標を更新する
             anchor.Add(physics.vec2(event.prevDelta.x, event.prevDelta.y));
             mouseJoint.SetTarget(anchor);
         });
         // 箱が離されたときの処理
-        box.entity.onPointUp.add(function () {
+        box.entity.onPointUp.add(() => {
             // 箱とマウスの紐づけを解除
             physics.world.DestroyJoint(mouseJoint);
             mouseJoint = null;
@@ -162,7 +162,7 @@ function main() {
             box.entity.cssColor = "crimson";
             box.entity.modified();
         });
-        scene.onUpdate.add(function () {
+        scene.onUpdate.add(() => {
             // 物理エンジンの世界をすすめる
             // ※ step関数の引数は秒数なので、1フレーム分の時間（1.0 / g.game.fps）を指定する
             physics.step(1.0 / g.game.fps);
@@ -177,7 +177,7 @@ function main() {
  */
 function createRect(scene, parameter) {
     // 表示用の矩形（1m × 1m）を生成
-    var rect = new g.FilledRect({
+    const rect = new g.FilledRect({
         scene: scene,
         width: parameter.appear.width,
         height: parameter.appear.height,

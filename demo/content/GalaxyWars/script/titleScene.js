@@ -1,60 +1,56 @@
-var Global = require("./Global");
-var ScreenEffector = require("./ScreenEffector");
-var createGameScene = require("./gameScene");
-var math = require("./Math");
-
-var game = g.game;
-
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.createTitleScene = void 0;
+const Global_1 = require("./Global");
+const ScreenEffector_1 = require("./ScreenEffector");
+const gameScene_1 = require("./gameScene");
+const math = require("./Math");
+// タイトルシーン表示時間
+const TIME_LIMIT = 4;
 //
 // さざなみ発生
 //
 function ripple(heights, frame) {
-    var hn = heights[(frame + 2) % 3];
-    var hc = heights[(frame + 1) % 3];
-    var hp = heights[(frame + 0) % 3];
-
-    var c = 0.25;
-    for (var y = 0; y < hn.length; y++) {
-        for (var x = 0; x < hn[y].length; x++) {
-            var yp = Math.max(0, y - 1);
-            var yn = Math.min(hn.length - 1, y + 1);
-            var xp = Math.max(0, x - 1);
-            var xn = Math.min(hn[y].length - 1, x + 1);
+    const hn = heights[(frame + 2) % 3];
+    const hc = heights[(frame + 1) % 3];
+    const hp = heights[(frame + 0) % 3];
+    const c = 0.25;
+    for (let y = 0; y < hn.length; y++) {
+        for (let x = 0; x < hn[y].length; x++) {
+            const yp = Math.max(0, y - 1);
+            const yn = Math.min(hn.length - 1, y + 1);
+            const xp = Math.max(0, x - 1);
+            const xn = Math.min(hn[y].length - 1, x + 1);
             hn[y][x] = 2 * hc[y][x] + c * (hc[y][xp] + hc[y][xn] + hc[yp][x] + hc[yn][x] - 4 * hc[y][x]) - hp[y][x];
             hn[y][x] *= 0.95;
         }
     }
-
     return hn;
 }
-
 //
 // さざなみの高さを矩形の色に反映
 //
 function updateCellColor(cells, hc) {
-    for (var i = 0; i < hc.length; i++) {
-        for (var j = 0; j < hc[i].length; j++) {
-            var intensity = Math.min(1.0, Math.max(0, (hc[i][j] + 1) / 2));
-            var cell = cells[i][j];
-            var R = (0x10 + 0x10 * intensity) | 0;
-            var G = (0x10 + 0x10 * intensity) | 0;
-            var B = 0xFF * intensity | 0;
+    for (let i = 0; i < hc.length; i++) {
+        for (let j = 0; j < hc[i].length; j++) {
+            const intensity = Math.min(1.0, Math.max(0, (hc[i][j] + 1) / 2));
+            const cell = cells[i][j];
+            const R = (0x10 + 0x10 * intensity) | 0;
+            const G = (0x10 + 0x10 * intensity) | 0;
+            const B = 0xFF * intensity | 0;
             cell.cssColor = "#" + ("000000" + ((R << 16) | (G << 8) | B).toString(16)).slice(-6);
             cell.modified();
         }
     }
 }
-
 //
 // さざなみ描画のための矩形群生成
 //
 function createCells(scene, root, cellSize) {
-    var cells = [];
-
-    for (var i = 0; i < game.height / cellSize; i++) {
-        var row = [];
-        for (var j = 0; j < game.width / cellSize; j++) {
-            var cell = new g.FilledRect({
+    const cells = [];
+    for (let i = 0; i < g.game.height / cellSize; i++) {
+        const row = [];
+        for (let j = 0; j < g.game.width / cellSize; j++) {
+            const cell = new g.FilledRect({
                 scene: scene,
                 cssColor: "#000020",
                 width: cellSize,
@@ -67,129 +63,87 @@ function createCells(scene, root, cellSize) {
         }
         cells.push(row);
     }
-
     return cells;
 }
-
 //
 // さざなみ計算用バッファ生成
 //
 function createHeightBuffer(cellSize) {
-    var heights = [];
-    for (var i = 0; i < 3; i++) {
-        var col = [];
-        for (var j = 0; j < game.height / cellSize; j++) {
-            var filledZero = [];
-            for (var k = 0; k < game.width / cellSize; k++) {
-                filledZero.push(0);
-            }
-            col.push(filledZero);
+    const heights = [];
+    const aryLen = g.game.width / cellSize;
+    for (let i = 0; i < 3; i++) {
+        const col = [];
+        for (let j = 0; j < g.game.height / cellSize; j++) {
+            const ary = Array(aryLen);
+            for (let i = 0; i < aryLen; i++)
+                ary[i] = 0;
+            col.push(ary);
         }
         heights.push(col);
     }
     return heights;
 }
-
 //
 // タイトルシーン生成
 //
 function createTitleScene() {
-    var scene = new g.Scene({ game: game, assetIds: ["version"] });
-
-    scene.onLoad.add(function() {
-
-        var root = new ScreenEffector({
+    // "version" は未使用。使用する場合は npm run build:version で version.txt 生成すること。
+    const scene = new g.Scene({ game: g.game, assetIds: ["version"] });
+    scene.onLoad.add(() => {
+        const root = new ScreenEffector_1.ScreenEffector({
             scene: scene,
-            width: game.width,
-            height: game.height,
+            width: g.game.width,
+            height: g.game.height,
             touchable: true,
             mosaicLevel: 60
         });
         scene.append(root);
-
-        var cellSize = 16;
-        var cells = createCells(scene, root, cellSize);
-        var heights = createHeightBuffer(cellSize);
-
-        var titleImageAsset = game.assets["title"];
-        var title = new g.Sprite({
+        const cellSize = 16;
+        const cells = createCells(scene, root, cellSize);
+        const heights = createHeightBuffer(cellSize);
+        const titleImageAsset = scene.asset.getImageById("title");
+        const title = new g.Sprite({
             scene: scene,
             src: titleImageAsset,
-            x: (game.width - titleImageAsset.width) / 2,
-            y: (game.height - titleImageAsset.height) / 3 * 1,
+            x: (g.game.width - titleImageAsset.width) / 2,
+            y: (g.game.height - titleImageAsset.height) / 2,
             touchable: true
         });
         root.append(title);
-
-        var startBtnImageAsset = game.assets["startButton"];
-        var startBtn = new g.Sprite({
+        const timerLabel = new g.Label({
             scene: scene,
-            src: startBtnImageAsset,
-            x: (game.width - startBtnImageAsset.width) / 2,
-            y: (game.height - startBtnImageAsset.height) / 4 * 3,
-            touchable: true
+            text: "-.--",
+            font: Global_1.Global.bmpFont,
+            fontSize: 16,
+            x: g.game.width - (16 * 4 + 4),
+            y: g.game.height - (16 + 4)
         });
-        startBtn.pointDown.add(function() {
-            if (root.mosaicLevel > 1) {
-                return;
-            }
-            startBtn.x += 4;
-            startBtn.y += 4;
-            startBtn.modified();
-        });
-        startBtn.pointUp.add(function() {
-            if (root.mosaicLevel > 1) {
-                return;
-            }
-            startBtn.x -= 4;
-            startBtn.y -= 4;
-            startBtn.touchable = false;
-            startBtn.modified();
-            root.startBlur();
-            scene.setTimeout(function() {
-                game.replaceScene(createGameScene());
-            }, 1000);
-        });
-        root.append(startBtn);
-
-        var cntr = 0;
-        var showHiScore = false;
-        scene.onUpdate.add(function() {
+        root.append(timerLabel);
+        let cntr = 0;
+        scene.onUpdate.add(() => {
             if (root.mosaicLevel > 1) {
                 root.mosaicLevel--;
-            } else {
-                if (! showHiScore) {
-                    root.append(new g.Label({
-                        scene: scene,
-                        text: "HI " + ("00000" + Global.hiScore).slice(-6),
-                        font: Global.bmpFont,
-                        fontSize: 16,
-                        x: game.width - (16 * 9 + 4), y: 4
-                    }));
-                    var versionText = "ver " + scene.assets["version"].data.replace(/[\r\n]/g,"");
-                    root.append(new g.Label({
-                        scene: scene,
-                        text: versionText,
-                        font: Global.bmpFont,
-                        fontSize: 16,
-                        x: game.width - (16 * versionText.length + 4), y: game.height - (16 + 4)
-                    }));
-                    showHiScore = true;
-                }
-                if (math.random() < 0.025) {
-                    var x = cells[0].length * math.random() | 0;
-                    var y = cells.length * math.random() | 0;
+            }
+            else {
+                if (math.random() < 0.05) {
+                    const x = cells[0].length * math.random() | 0;
+                    const y = cells.length * math.random() | 0;
                     heights[(cntr + 1) % 3][y][x] = 2.0;
                 }
             }
-
             updateCellColor(cells, ripple(heights, cntr));
-
+            const remainInSec = Math.max(0, TIME_LIMIT - cntr / g.game.fps);
+            timerLabel.text = remainInSec === 0 ? "0.00" : (((remainInSec * 100) | 0) / 100) + "";
+            timerLabel.invalidate();
+            if (cntr === g.game.fps * TIME_LIMIT) {
+                root.startBlur();
+                scene.setTimeout(() => {
+                    g.game.replaceScene((0, gameScene_1.createGameScene)());
+                }, 1000);
+            }
             cntr++;
         });
     });
-
     return scene;
 }
-
-module.exports = createTitleScene;
+exports.createTitleScene = createTitleScene;

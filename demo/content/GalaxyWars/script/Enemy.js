@@ -1,60 +1,51 @@
-var Global = require("./Global");
-var math = require("./Math");
-var EntityType = require("./EntityType");
-var ItemType = require("./ItemType");
-var Item = require("./Item");
-
-var game = g.game;
-
-//
-// Enemyコンストラクタ
-//
-function Enemy(pos, hp, point, itemTypes, spr) {
-    this.type = EntityType.ENEMY;
-    this.cntr = 0;
-    this.pos = {
-        x: pos.x,
-        y: pos.y
-    };
-    this.obstacles = [
-        EntityType.PLAYER
-    ];
-    this.hp = hp;
-    this.point = point;
-    this.itemTypes = itemTypes;
-    this.spr = spr;
-    Global.gameCore.gameLayer.append(this.spr);
-}
-
-Enemy.prototype.onUpdate = function() {
-    return true;
-}
-
-Enemy.prototype.onDied = function() {
-    if (! this.itemTypes || this.itemTypes.length === 0) {
-        return;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Enemy = void 0;
+const Global_1 = require("./Global");
+const math = require("./Math");
+const EntityType_1 = require("./EntityType");
+const Item_1 = require("./Item");
+class Enemy {
+    constructor(params) {
+        this.type = EntityType_1.EntityType.ENEMY;
+        this.cntr = 0;
+        this.pos = {
+            x: params.pos.x,
+            y: params.pos.y
+        };
+        this.obstacles = [
+            EntityType_1.EntityType.PLAYER
+        ];
+        this.hp = params.hp;
+        this.point = params.point;
+        this.itemTypes = params.itemType;
+        this.spr = params.spr;
+        Global_1.Global.gameCore.gameLayer.append(this.spr);
     }
-    var itemType = this.itemTypes[Math.floor(math.random() * this.itemTypes.length)];
-    var item = new Item(this.pos, itemType);
-    Global.gameCore.entities.push(item);
-}
-
-Enemy.prototype.update = function() {
-    if (this.hp <= 0) {
-        this.onDied();
-        return false;
+    onUpdate() {
+        return true;
     }
-    var result = this.onUpdate(this);
-    this.cntr++;
-    return result;
+    onDied() {
+        if (!this.itemTypes || this.itemTypes.length === 0) {
+            return;
+        }
+        const itemType = this.itemTypes[Math.floor(math.random() * this.itemTypes.length)];
+        const item = new Item_1.Item(this.pos, itemType);
+        Global_1.Global.gameCore.entities.push(item);
+    }
+    update() {
+        if (this.hp <= 0) {
+            this.onDied();
+            return false;
+        }
+        const result = this.onUpdate();
+        this.cntr++;
+        return result;
+    }
+    onCollision(e) {
+        e.hp--;
+    }
+    destroy() {
+        this.spr.destroy();
+    }
 }
-
-Enemy.prototype.onCollision = function(e) {
-    e.hp--;
-}
-
-Enemy.prototype.destroy = function() {
-    this.spr.destroy();
-}
-
-module.exports = Enemy;
+exports.Enemy = Enemy;

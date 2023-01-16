@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.floorParameter = exports.wallParameter = exports.hajikiParameter = exports.physics = exports.worldProperty = exports.b2Mat22 = exports.b2Vec2 = void 0;
-var box2d = require("@akashic-extension/akashic-box2d");
+const box2d = require("@akashic-extension/akashic-box2d");
 /** 2次元ベクトル */
 exports.b2Vec2 = box2d.Box2DWeb.Common.Math.b2Vec2;
 /** 2×2 の行列 */
