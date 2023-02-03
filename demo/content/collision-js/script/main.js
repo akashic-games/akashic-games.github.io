@@ -1,23 +1,9 @@
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-        return extendStatics(d, b);
-    };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var co = require("@akashic-extension/collision-js");
-var collision_js_1 = require("@akashic-extension/collision-js");
-function drawLine(renderer, from, to, cssColor, thickMode) {
-    if (thickMode === void 0) { thickMode = "inside"; }
-    var dir = new collision_js_1.Vec2(to).sub(from);
-    var width = dir.length();
-    var height = 4;
+const co = require("@akashic-extension/collision-js");
+const collision_js_1 = require("@akashic-extension/collision-js");
+function drawLine(renderer, from, to, cssColor, thickMode = "inside") {
+    const dir = new collision_js_1.Vec2(to).sub(from);
+    const width = dir.length();
+    const height = 4;
     dir.normalize();
     renderer.save();
     renderer.transform([
@@ -25,40 +11,39 @@ function drawLine(renderer, from, to, cssColor, thickMode) {
         -dir.y, dir.x,
         from.x, from.y
     ]);
-    var offsetY = thickMode === "center" ?
+    const offsetY = thickMode === "center" ?
         -height / 2 :
         thickMode === "outside" ? -height : 0;
     renderer.fillRect(0, offsetY, width, height, cssColor);
     renderer.restore();
 }
-function createAABBE(scene, aabb, cssColor, touchable) {
-    if (touchable === void 0) { touchable = false; }
+function createAABBE(scene, aabb, cssColor, touchable = false) {
     return new g.FilledRect({
-        scene: scene,
+        scene,
         x: aabb.min.x,
         y: aabb.min.y,
         width: aabb.max.x - aabb.min.x,
         height: aabb.max.y - aabb.min.y,
-        cssColor: cssColor,
-        touchable: touchable
+        cssColor,
+        touchable
     });
 }
 // eslint-disable-next-line @typescript-eslint/naming-convention
 function aabbToAABBDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var halfExtend = { x: g.game.width / 8, y: g.game.height / 8 };
-    var position = new collision_js_1.Vec2(g.game.width / 2, g.game.height / 2);
-    var aabb1 = {
+    const root = new g.E({ scene });
+    const halfExtend = { x: g.game.width / 8, y: g.game.height / 8 };
+    const position = new collision_js_1.Vec2(g.game.width / 2, g.game.height / 2);
+    const aabb1 = {
         min: position.clone().sub(halfExtend),
         max: position.clone().add(halfExtend)
     };
-    var aabb2 = {
+    const aabb2 = {
         min: { x: 0, y: 0 },
         max: { x: 128, y: 96 }
     };
-    var aabbe1 = createAABBE(scene, aabb1, "green");
-    var aabbe2 = createAABBE(scene, aabb2, "blue", true);
-    aabbe2.onPointMove.add(function (ev) {
+    const aabbe1 = createAABBE(scene, aabb1, "green");
+    const aabbe2 = createAABBE(scene, aabb2, "blue", true);
+    aabbe2.onPointMove.add(ev => {
         collision_js_1.Vec2.add(aabb2.min, ev.prevDelta);
         collision_js_1.Vec2.add(aabb2.max, ev.prevDelta);
         collision_js_1.Vec2.add(aabbe2, ev.prevDelta);
@@ -69,10 +54,9 @@ function aabbToAABBDemo(scene) {
     root.append(aabbe2);
     return root;
 }
-function createCircleE(scene, c, surface, touchable) {
-    if (touchable === void 0) { touchable = false; }
+function createCircleE(scene, c, surface, touchable = false) {
     return new g.Sprite({
-        scene: scene,
+        scene,
         x: c.position.x,
         y: c.position.y,
         anchorX: 0.5,
@@ -80,14 +64,13 @@ function createCircleE(scene, c, surface, touchable) {
         scaleX: c.radius * 2 / surface.width,
         scaleY: c.radius * 2 / surface.height,
         src: surface,
-        touchable: touchable
+        touchable
     });
 }
-function createSegmentE(scene, s, cssColor, touchable) {
-    if (touchable === void 0) { touchable = false; }
-    var dir = new collision_js_1.Vec2(s.endPosition).sub(s.position);
+function createSegmentE(scene, s, cssColor, touchable = false) {
+    const dir = new collision_js_1.Vec2(s.endPosition).sub(s.position);
     return new LineSegmentE({
-        scene: scene,
+        scene,
         x: s.position.x,
         y: s.position.y,
         width: dir.length(),
@@ -95,14 +78,13 @@ function createSegmentE(scene, s, cssColor, touchable) {
         anchorX: 0,
         anchorY: 0.5,
         angle: Math.atan2(dir.y, dir.x) / Math.PI * 180,
-        cssColor: cssColor,
-        touchable: touchable
+        cssColor,
+        touchable
     });
 }
-function createBoxE(scene, b, cssColor, touchable) {
-    if (touchable === void 0) { touchable = false; }
+function createBoxE(scene, b, cssColor, touchable = false) {
     return new g.FilledRect({
-        scene: scene,
+        scene,
         x: b.position.x,
         y: b.position.y,
         anchorX: 0.5,
@@ -110,14 +92,13 @@ function createBoxE(scene, b, cssColor, touchable) {
         width: b.halfExtend.x * 2,
         height: b.halfExtend.y * 2,
         angle: b.angle / Math.PI * 180,
-        cssColor: cssColor,
-        touchable: touchable
+        cssColor,
+        touchable
     });
 }
-function createLineE(scene, l, cssColor, touchable) {
-    if (touchable === void 0) { touchable = false; }
+function createLineE(scene, l, cssColor, touchable = false) {
     return new LineSegmentE({
-        scene: scene,
+        scene,
         x: l.position.x,
         y: l.position.y,
         width: g.game.width * 2,
@@ -125,51 +106,43 @@ function createLineE(scene, l, cssColor, touchable) {
         anchorX: 0.5,
         anchorY: 0.5,
         angle: Math.atan2(l.direction.y, l.direction.x) / Math.PI * 180,
-        cssColor: cssColor,
-        touchable: touchable
+        cssColor,
+        touchable
     });
 }
-var LineSegmentE = /** @class */ (function (_super) {
-    __extends(LineSegmentE, _super);
-    function LineSegmentE(param) {
-        var _this = _super.call(this, param) || this;
-        _this.cssColor = param.cssColor;
-        return _this;
+class LineSegmentE extends g.E {
+    constructor(param) {
+        super(param);
+        this.cssColor = param.cssColor;
     }
-    LineSegmentE.prototype.renderSelf = function (renderer, _camera) {
+    renderSelf(renderer, _camera) {
         renderer.fillRect(0, this.height * this.anchorY, this.width, 1, this.cssColor);
         return true;
-    };
-    return LineSegmentE;
-}(g.E));
-var ContactE = /** @class */ (function (_super) {
-    __extends(ContactE, _super);
-    function ContactE(param) {
-        var _this = _super.call(this, param) || this;
-        _this.contact = param.contact;
-        return _this;
     }
-    ContactE.prototype.renderSelf = function (renderer, _camera) {
-        var c = this.contact;
+}
+class ContactE extends g.E {
+    constructor(param) {
+        super(param);
+        this.contact = param.contact;
+    }
+    renderSelf(renderer, _camera) {
+        const c = this.contact;
         renderer.save();
         renderer.translate(c.point.x, c.point.y);
         renderer.fillRect(-4, -4, 8, 8, "black");
         renderer.restore();
         drawLine(renderer, c.point, new collision_js_1.Vec2(c.normal).scale(-c.separation).add(c.point), "blue", "center");
         return true;
-    };
-    return ContactE;
-}(g.E));
-var CrossCursorE = /** @class */ (function (_super) {
-    __extends(CrossCursorE, _super);
-    function CrossCursorE(param) {
-        var _this = _super.call(this, param) || this;
-        _this.cssColor = param.cssColor;
-        return _this;
     }
-    CrossCursorE.prototype.renderSelf = function (renderer, _camera) {
-        var halfw = this.width / 2;
-        var halfh = this.height / 2;
+}
+class CrossCursorE extends g.E {
+    constructor(param) {
+        super(param);
+        this.cssColor = param.cssColor;
+    }
+    renderSelf(renderer, _camera) {
+        const halfw = this.width / 2;
+        const halfh = this.height / 2;
         renderer.save();
         renderer.translate(halfw, halfh);
         renderer.fillRect(-halfw, 0, halfw, 1, this.cssColor);
@@ -178,94 +151,84 @@ var CrossCursorE = /** @class */ (function (_super) {
         renderer.fillRect(0, 1, 1, halfh, this.cssColor);
         renderer.restore();
         return true;
-    };
-    return CrossCursorE;
-}(g.E));
-var GridE = /** @class */ (function (_super) {
-    __extends(GridE, _super);
-    function GridE(param) {
-        var _this = _super.call(this, param) || this;
-        _this.size = param.size;
-        _this.cssColor = param.cssColor;
-        return _this;
     }
-    GridE.prototype.renderSelf = function (renderer, _camera) {
-        for (var x = 0; x < this.width; x += this.size) {
+}
+class GridE extends g.E {
+    constructor(param) {
+        super(param);
+        this.size = param.size;
+        this.cssColor = param.cssColor;
+    }
+    renderSelf(renderer, _camera) {
+        for (let x = 0; x < this.width; x += this.size) {
             renderer.fillRect(x, 0, 1, this.height, this.cssColor);
         }
-        for (var y = 0; y < this.height; y += this.size) {
+        for (let y = 0; y < this.height; y += this.size) {
             renderer.fillRect(0, y, this.width, 1, this.cssColor);
         }
         return true;
-    };
-    return GridE;
-}(g.E));
-var PolygonE = /** @class */ (function (_super) {
-    __extends(PolygonE, _super);
-    function PolygonE(param) {
-        var _this = this;
-        var polygon = PolygonE.calcParam(param, param.polygon);
-        _this = _super.call(this, param) || this;
-        _this.polygon = polygon;
-        _this.cssColor = param.cssColor;
-        return _this;
     }
-    PolygonE.prototype.renderSelf = function (renderer, _camera) {
-        var vertices = this.polygon.vertices;
-        for (var i = 0; i < vertices.length; i++) {
-            var v1 = vertices[i];
-            var v2 = vertices[(i + 1) % vertices.length];
+}
+class PolygonE extends g.E {
+    constructor(param) {
+        const polygon = PolygonE.calcParam(param, param.polygon);
+        super(param);
+        this.polygon = polygon;
+        this.cssColor = param.cssColor;
+    }
+    renderSelf(renderer, _camera) {
+        const vertices = this.polygon.vertices;
+        for (let i = 0; i < vertices.length; i++) {
+            const v1 = vertices[i];
+            const v2 = vertices[(i + 1) % vertices.length];
             drawLine(renderer, v1, v2, this.cssColor, "inside");
         }
         return true;
-    };
-    PolygonE.calcParam = function (param, srcPolygon) {
-        var aabb = {
+    }
+    static calcParam(param, srcPolygon) {
+        const aabb = {
             min: { x: 0, y: 0 },
             max: { x: 0, y: 0 }
         };
-        var srcVertices = srcPolygon.vertices;
-        for (var i = 0; i < srcVertices.length; i++) {
+        const srcVertices = srcPolygon.vertices;
+        for (let i = 0; i < srcVertices.length; i++) {
             co.enlargeAABB(aabb, srcVertices[i]);
         }
         param.x = aabb.min.x;
         param.y = aabb.min.y;
         param.width = aabb.max.x - aabb.min.x;
         param.height = aabb.max.y - aabb.min.y;
-        var position = {
+        const position = {
             x: srcPolygon.position.x - param.x,
             y: srcPolygon.position.y - param.y,
         };
-        var vertices = srcVertices.map(function (v) {
-            return ({
-                x: v.x - param.x,
-                y: v.y - param.y
-            });
-        });
-        var polygon = {
-            position: position,
-            vertices: vertices
+        const vertices = srcVertices.map(v => ({
+            x: v.x - param.x,
+            y: v.y - param.y
+        }));
+        const polygon = {
+            position,
+            vertices
         };
         return polygon;
-    };
-    return PolygonE;
-}(g.E));
+    }
+}
 function circleToCircleDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var red = scene.asset.getImageById("red").asSurface();
-    var green = scene.asset.getImageById("green").asSurface();
-    var blue = scene.asset.getImageById("blue").asSurface();
-    var c1 = {
+    const root = new g.E({ scene });
+    const red = scene.asset.getImageById("red").asSurface();
+    const green = scene.asset.getImageById("green").asSurface();
+    const blue = scene.asset.getImageById("blue").asSurface();
+    const c1 = {
         position: { x: g.game.width / 2, y: g.game.height / 2 },
         radius: 128
     };
-    var c2 = {
+    const c2 = {
         position: { x: 32, y: 32 },
         radius: 32
     };
-    var ce1 = createCircleE(scene, c1, green);
-    var ce2 = createCircleE(scene, c2, blue, true);
-    ce2.onPointMove.add(function (ev) {
+    const ce1 = createCircleE(scene, c1, green);
+    const ce2 = createCircleE(scene, c2, blue, true);
+    ce2.onPointMove.add(ev => {
         collision_js_1.Vec2.add(c2.position, ev.prevDelta);
         collision_js_1.Vec2.add(ce2, ev.prevDelta);
         ce2.src = co.circleToCircle(c1, c2) ? red : blue;
@@ -276,25 +239,25 @@ function circleToCircleDemo(scene) {
     return root;
 }
 function circleToCircleContactDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var red = scene.asset.getImageById("red").asSurface();
-    var green = scene.asset.getImageById("green").asSurface();
-    var blue = scene.asset.getImageById("blue").asSurface();
-    var c1 = {
+    const root = new g.E({ scene });
+    const red = scene.asset.getImageById("red").asSurface();
+    const green = scene.asset.getImageById("green").asSurface();
+    const blue = scene.asset.getImageById("blue").asSurface();
+    const c1 = {
         position: { x: g.game.width / 2, y: g.game.height / 2 },
         radius: 128
     };
-    var c2 = {
+    const c2 = {
         position: { x: 32, y: 32 },
         radius: 32
     };
-    var ce1 = createCircleE(scene, c1, green);
-    var ce2 = createCircleE(scene, c2, blue, true);
-    var contactE = null;
-    ce2.onPointMove.add(function (ev) {
+    const ce1 = createCircleE(scene, c1, green);
+    const ce2 = createCircleE(scene, c2, blue, true);
+    let contactE = null;
+    ce2.onPointMove.add(ev => {
         collision_js_1.Vec2.add(c2.position, ev.prevDelta);
         collision_js_1.Vec2.add(ce2, ev.prevDelta);
-        var contact = co.circleToCircleContact(c1, c2);
+        const contact = co.circleToCircleContact(c1, c2);
         ce2.src = contact ? red : blue;
         ce2.invalidate();
         if (contact) {
@@ -303,7 +266,7 @@ function circleToCircleContactDemo(scene) {
                 contactE.modified();
             }
             else {
-                contactE = new ContactE({ scene: scene, contact: contact });
+                contactE = new ContactE({ scene, contact });
                 root.append(contactE);
             }
         }
@@ -319,18 +282,18 @@ function circleToCircleContactDemo(scene) {
     return root;
 }
 function segmentToSegmentDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var s1 = {
+    const root = new g.E({ scene });
+    const s1 = {
         position: { x: g.game.width / 4, y: g.game.height / 2 },
         endPosition: { x: g.game.width / 4 * 3, y: g.game.height / 2 }
     };
-    var s2 = {
+    const s2 = {
         position: { x: 8, y: 200 - 8 },
         endPosition: { x: 200 - 8, y: 8 }
     };
-    var s1e = createSegmentE(scene, s1, "green");
-    var s2e = createSegmentE(scene, s2, "blue", true);
-    s2e.onPointMove.add(function (ev) {
+    const s1e = createSegmentE(scene, s1, "green");
+    const s2e = createSegmentE(scene, s2, "blue", true);
+    s2e.onPointMove.add(ev => {
         collision_js_1.Vec2.add(s2.position, ev.prevDelta);
         collision_js_1.Vec2.add(s2.endPosition, ev.prevDelta);
         collision_js_1.Vec2.add(s2e, ev.prevDelta);
@@ -342,21 +305,21 @@ function segmentToSegmentDemo(scene) {
     return root;
 }
 function boxToBoxDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var b1HalfExtend = { x: 128, y: 96 };
-    var b1 = {
+    const root = new g.E({ scene });
+    const b1HalfExtend = { x: 128, y: 96 };
+    const b1 = {
         position: { x: g.game.width / 2, y: g.game.height / 2 },
         halfExtend: b1HalfExtend,
         angle: Math.PI / 4
     };
-    var b2 = {
+    const b2 = {
         position: { x: 100, y: 100 },
         halfExtend: { x: 64, y: 48 },
         angle: -Math.PI / 6
     };
-    var b1e = createBoxE(scene, b1, "green");
-    var b2e = createBoxE(scene, b2, "blue", true);
-    b2e.onPointMove.add(function (ev) {
+    const b1e = createBoxE(scene, b1, "green");
+    const b2e = createBoxE(scene, b2, "blue", true);
+    b2e.onPointMove.add(ev => {
         collision_js_1.Vec2.add(b2.position, ev.prevDelta);
         collision_js_1.Vec2.add(b2e, ev.prevDelta);
         b2e.cssColor = co.boxToBox(b1, b2) ? "red" : "blue";
@@ -367,16 +330,16 @@ function boxToBoxDemo(scene) {
     return root;
 }
 function circleToVecDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var red = scene.asset.getImageById("red").asSurface();
-    var blue = scene.asset.getImageById("blue").asSurface();
-    var v = { x: g.game.width / 2, y: g.game.height / 2 };
-    var c = {
+    const root = new g.E({ scene });
+    const red = scene.asset.getImageById("red").asSurface();
+    const blue = scene.asset.getImageById("blue").asSurface();
+    const v = { x: g.game.width / 2, y: g.game.height / 2 };
+    const c = {
         position: { x: 64, y: 64 },
         radius: 64
     };
-    var ve = new CrossCursorE({
-        scene: scene,
+    const ve = new CrossCursorE({
+        scene,
         x: v.x,
         y: v.y,
         width: 32,
@@ -385,8 +348,8 @@ function circleToVecDemo(scene) {
         anchorY: 0.5,
         cssColor: "green"
     });
-    var ce = createCircleE(scene, c, blue, true);
-    ce.onPointMove.add(function (ev) {
+    const ce = createCircleE(scene, c, blue, true);
+    ce.onPointMove.add(ev => {
         collision_js_1.Vec2.add(ce, ev.prevDelta);
         collision_js_1.Vec2.add(c.position, ev.prevDelta);
         ce.src = co.circleToVec(c, v) ? red : blue;
@@ -397,20 +360,20 @@ function circleToVecDemo(scene) {
     return root;
 }
 function circleToLineDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var red = scene.asset.getImageById("red").asSurface();
-    var blue = scene.asset.getImageById("blue").asSurface();
-    var l = {
+    const root = new g.E({ scene });
+    const red = scene.asset.getImageById("red").asSurface();
+    const blue = scene.asset.getImageById("blue").asSurface();
+    const l = {
         position: { x: g.game.width / 2, y: g.game.height / 2 },
         direction: { x: 1, y: -1 }
     };
-    var c = {
+    const c = {
         position: { x: 64, y: 64 },
         radius: 64
     };
-    var le = createLineE(scene, l, "green");
-    var ce = createCircleE(scene, c, blue, true);
-    ce.onPointMove.add(function (ev) {
+    const le = createLineE(scene, l, "green");
+    const ce = createCircleE(scene, c, blue, true);
+    ce.onPointMove.add(ev => {
         collision_js_1.Vec2.add(ce, ev.prevDelta);
         collision_js_1.Vec2.add(c.position, ev.prevDelta);
         ce.src = co.circleToLine(c, l) ? red : blue;
@@ -421,22 +384,22 @@ function circleToLineDemo(scene) {
     return root;
 }
 function circleToSegmentDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var red = scene.asset.getImageById("red").asSurface();
-    var blue = scene.asset.getImageById("blue").asSurface();
-    var c = {
+    const root = new g.E({ scene });
+    const red = scene.asset.getImageById("red").asSurface();
+    const blue = scene.asset.getImageById("blue").asSurface();
+    const c = {
         position: { x: 64, y: 64 },
         radius: 64
     };
-    var center = new collision_js_1.Vec2(g.game.width / 2, g.game.height / 2);
-    var dir = new collision_js_1.Vec2(1, -1).normalize().scale(128);
-    var s = {
+    const center = new collision_js_1.Vec2(g.game.width / 2, g.game.height / 2);
+    const dir = new collision_js_1.Vec2(1, -1).normalize().scale(128);
+    const s = {
         position: center.clone().sub(dir),
         endPosition: center.clone().add(dir)
     };
-    var se = createSegmentE(scene, s, "green");
-    var ce = createCircleE(scene, c, blue, true);
-    ce.onPointMove.add(function (ev) {
+    const se = createSegmentE(scene, s, "green");
+    const ce = createCircleE(scene, c, blue, true);
+    ce.onPointMove.add(ev => {
         collision_js_1.Vec2.add(c.position, ev.prevDelta);
         collision_js_1.Vec2.add(ce, ev.prevDelta);
         ce.src = co.circleToSegment(c, s) ? red : blue;
@@ -447,22 +410,22 @@ function circleToSegmentDemo(scene) {
     return root;
 }
 function circleToAABBDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var red = scene.asset.getImageById("red").asSurface();
-    var blue = scene.asset.getImageById("blue").asSurface();
-    var halfExtend = { x: 64, y: 48 };
-    var center = new collision_js_1.Vec2(g.game.width / 2, g.game.height / 2);
-    var aabb = {
+    const root = new g.E({ scene });
+    const red = scene.asset.getImageById("red").asSurface();
+    const blue = scene.asset.getImageById("blue").asSurface();
+    const halfExtend = { x: 64, y: 48 };
+    const center = new collision_js_1.Vec2(g.game.width / 2, g.game.height / 2);
+    const aabb = {
         min: center.clone().sub(halfExtend),
         max: center.clone().add(halfExtend)
     };
-    var c = {
+    const c = {
         position: { x: 64, y: 64 },
         radius: 64
     };
-    var aabbe = createAABBE(scene, aabb, "green");
-    var ce = createCircleE(scene, c, blue, true);
-    ce.onPointMove.add(function (ev) {
+    const aabbe = createAABBE(scene, aabb, "green");
+    const ce = createCircleE(scene, c, blue, true);
+    ce.onPointMove.add(ev => {
         collision_js_1.Vec2.add(c.position, ev.prevDelta);
         collision_js_1.Vec2.add(ce, ev.prevDelta);
         ce.src = co.circleToAABB(c, aabb) ? red : blue;
@@ -473,21 +436,21 @@ function circleToAABBDemo(scene) {
     return root;
 }
 function circleToBoxDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var red = scene.asset.getImageById("red").asSurface();
-    var blue = scene.asset.getImageById("blue").asSurface();
-    var c = {
+    const root = new g.E({ scene });
+    const red = scene.asset.getImageById("red").asSurface();
+    const blue = scene.asset.getImageById("blue").asSurface();
+    const c = {
         position: { x: 64, y: 64 },
         radius: 64
     };
-    var b = {
+    const b = {
         position: { x: g.game.width / 2, y: g.game.height / 2 },
         halfExtend: { x: 128, y: 96 },
         angle: Math.PI / 4
     };
-    var be = createBoxE(scene, b, "green");
-    var ce = createCircleE(scene, c, blue, true);
-    ce.onPointMove.add(function (ev) {
+    const be = createBoxE(scene, b, "green");
+    const ce = createCircleE(scene, c, blue, true);
+    ce.onPointMove.add(ev => {
         collision_js_1.Vec2.add(c.position, ev.prevDelta);
         collision_js_1.Vec2.add(ce, ev.prevDelta);
         ce.src = co.circleToBox(c, b) ? red : blue;
@@ -498,16 +461,16 @@ function circleToBoxDemo(scene) {
     return root;
 }
 function aabbToVecDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var halfExtend = { x: 64, y: 48 };
-    var center = new collision_js_1.Vec2(halfExtend);
-    var aabb = {
+    const root = new g.E({ scene });
+    const halfExtend = { x: 64, y: 48 };
+    const center = new collision_js_1.Vec2(halfExtend);
+    const aabb = {
         min: center.clone().sub(halfExtend),
         max: center.clone().add(halfExtend)
     };
-    var v = { x: g.game.width / 2, y: g.game.height / 2 };
-    var ve = new CrossCursorE({
-        scene: scene,
+    const v = { x: g.game.width / 2, y: g.game.height / 2 };
+    const ve = new CrossCursorE({
+        scene,
         x: v.x,
         y: v.y,
         width: 32,
@@ -516,8 +479,8 @@ function aabbToVecDemo(scene) {
         anchorY: 0.5,
         cssColor: "green"
     });
-    var aabbe = createAABBE(scene, aabb, "blue", true);
-    aabbe.onPointMove.add(function (ev) {
+    const aabbe = createAABBE(scene, aabb, "blue", true);
+    aabbe.onPointMove.add(ev => {
         collision_js_1.Vec2.add(aabb.min, ev.prevDelta);
         collision_js_1.Vec2.add(aabb.max, ev.prevDelta);
         collision_js_1.Vec2.add(aabbe, ev.prevDelta);
@@ -529,20 +492,20 @@ function aabbToVecDemo(scene) {
     return root;
 }
 function aabbToLineDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var halfExtend = { x: 64, y: 48 };
-    var center = new collision_js_1.Vec2(halfExtend);
-    var aabb = {
+    const root = new g.E({ scene });
+    const halfExtend = { x: 64, y: 48 };
+    const center = new collision_js_1.Vec2(halfExtend);
+    const aabb = {
         min: center.clone().sub(halfExtend),
         max: center.clone().add(halfExtend)
     };
-    var l = {
+    const l = {
         position: { x: g.game.width / 2, y: g.game.height / 2 },
         direction: { x: 2, y: -1 }
     };
-    var le = createLineE(scene, l, "green");
-    var aabbe = createAABBE(scene, aabb, "blue", true);
-    aabbe.onPointMove.add(function (ev) {
+    const le = createLineE(scene, l, "green");
+    const aabbe = createAABBE(scene, aabb, "blue", true);
+    aabbe.onPointMove.add(ev => {
         collision_js_1.Vec2.add(aabb.min, ev.prevDelta);
         collision_js_1.Vec2.add(aabb.max, ev.prevDelta);
         collision_js_1.Vec2.add(aabbe, ev.prevDelta);
@@ -554,22 +517,22 @@ function aabbToLineDemo(scene) {
     return root;
 }
 function aabbToSegmentDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var center = new collision_js_1.Vec2(g.game.width / 2, g.game.height / 2);
-    var dir = new collision_js_1.Vec2(1, -1).normalize().scale(128);
-    var s = {
+    const root = new g.E({ scene });
+    let center = new collision_js_1.Vec2(g.game.width / 2, g.game.height / 2);
+    const dir = new collision_js_1.Vec2(1, -1).normalize().scale(128);
+    const s = {
         position: center.clone().sub(dir),
         endPosition: center.clone().add(dir)
     };
-    var halfExtend = { x: 64, y: 48 };
+    const halfExtend = { x: 64, y: 48 };
     center = new collision_js_1.Vec2(halfExtend);
-    var aabb = {
+    const aabb = {
         min: center.clone().sub(halfExtend),
         max: center.clone().add(halfExtend)
     };
-    var se = createSegmentE(scene, s, "green");
-    var aabbe = createAABBE(scene, aabb, "blue", true);
-    aabbe.onPointMove.add(function (ev) {
+    const se = createSegmentE(scene, s, "green");
+    const aabbe = createAABBE(scene, aabb, "blue", true);
+    aabbe.onPointMove.add(ev => {
         collision_js_1.Vec2.add(aabb.min, ev.prevDelta);
         collision_js_1.Vec2.add(aabb.max, ev.prevDelta);
         collision_js_1.Vec2.add(aabbe, ev.prevDelta);
@@ -581,21 +544,21 @@ function aabbToSegmentDemo(scene) {
     return root;
 }
 function aabbToBoxDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var b = {
+    const root = new g.E({ scene });
+    const b = {
         position: { x: g.game.width / 2, y: g.game.height / 2 },
         halfExtend: { x: 128, y: 96 },
         angle: Math.PI / 4
     };
-    var halfExtend = { x: 64, y: 48 };
-    var center = new collision_js_1.Vec2(halfExtend);
-    var aabb = {
+    const halfExtend = { x: 64, y: 48 };
+    const center = new collision_js_1.Vec2(halfExtend);
+    const aabb = {
         min: center.clone().sub(halfExtend),
         max: center.clone().add(halfExtend)
     };
-    var be = createBoxE(scene, b, "green");
-    var aabbe = createAABBE(scene, aabb, "blue", true);
-    aabbe.onPointMove.add(function (ev) {
+    const be = createBoxE(scene, b, "green");
+    const aabbe = createAABBE(scene, aabb, "blue", true);
+    aabbe.onPointMove.add(ev => {
         collision_js_1.Vec2.add(aabb.min, ev.prevDelta);
         collision_js_1.Vec2.add(aabb.max, ev.prevDelta);
         collision_js_1.Vec2.add(aabbe, ev.prevDelta);
@@ -607,16 +570,16 @@ function aabbToBoxDemo(scene) {
     return root;
 }
 function vecToBoxDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var b = {
+    const root = new g.E({ scene });
+    const b = {
         position: { x: g.game.width / 2, y: g.game.height / 2 },
         halfExtend: { x: 128, y: 96 },
         angle: Math.PI / 4
     };
-    var v = { x: 32, y: 32 };
-    var be = createBoxE(scene, b, "green");
-    var ve = new CrossCursorE({
-        scene: scene,
+    const v = { x: 32, y: 32 };
+    const be = createBoxE(scene, b, "green");
+    const ve = new CrossCursorE({
+        scene,
         x: v.x,
         y: v.y,
         width: 32,
@@ -626,7 +589,7 @@ function vecToBoxDemo(scene) {
         cssColor: "blue",
         touchable: true
     });
-    ve.onPointMove.add(function (ev) {
+    ve.onPointMove.add(ev => {
         collision_js_1.Vec2.add(ve, ev.prevDelta);
         collision_js_1.Vec2.add(v, ev.prevDelta);
         ve.cssColor = co.vecToBox(v, b) ? "red" : "blue";
@@ -637,18 +600,18 @@ function vecToBoxDemo(scene) {
     return root;
 }
 function lineToSegmentDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var s = {
+    const root = new g.E({ scene });
+    const s = {
         position: { x: 192, y: 192 },
         endPosition: { x: g.game.width - 192, y: g.game.height - 192 }
     };
-    var l = {
+    const l = {
         position: { x: 0, y: 128 },
         direction: { x: 1, y: -1 }
     };
-    var se = createSegmentE(scene, s, "green");
-    var le = createLineE(scene, l, "blue", true);
-    le.onPointMove.add(function (ev) {
+    const se = createSegmentE(scene, s, "green");
+    const le = createLineE(scene, l, "blue", true);
+    le.onPointMove.add(ev => {
         collision_js_1.Vec2.add(l.position, ev.prevDelta);
         collision_js_1.Vec2.add(le, ev.prevDelta);
         le.cssColor = co.lineToSegment(l, s) ? "red" : "blue";
@@ -659,19 +622,19 @@ function lineToSegmentDemo(scene) {
     return root;
 }
 function lineToBoxDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var b = {
+    const root = new g.E({ scene });
+    const b = {
         position: { x: g.game.width / 2, y: g.game.height / 2 },
         halfExtend: { x: 128, y: 96 },
         angle: Math.PI / 3
     };
-    var l = {
+    const l = {
         position: { x: 0, y: 128 },
         direction: { x: 1, y: -1 }
     };
-    var be = createBoxE(scene, b, "green");
-    var le = createLineE(scene, l, "blue", true);
-    le.onPointMove.add(function (ev) {
+    const be = createBoxE(scene, b, "green");
+    const le = createLineE(scene, l, "blue", true);
+    le.onPointMove.add(ev => {
         collision_js_1.Vec2.add(l.position, ev.prevDelta);
         collision_js_1.Vec2.add(le, ev.prevDelta);
         le.cssColor = co.lineToBox(l, b) ? "red" : "blue";
@@ -682,19 +645,19 @@ function lineToBoxDemo(scene) {
     return root;
 }
 function segmentToBoxDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var b = {
+    const root = new g.E({ scene });
+    const b = {
         position: { x: g.game.width / 2, y: g.game.height / 2 },
         halfExtend: { x: 128, y: 96 },
         angle: Math.PI / 3
     };
-    var s = {
+    const s = {
         position: { x: 8, y: 128 },
         endPosition: { x: 128, y: 8 }
     };
-    var be = createBoxE(scene, b, "green");
-    var se = createSegmentE(scene, s, "blue", true);
-    se.onPointMove.add(function (ev) {
+    const be = createBoxE(scene, b, "green");
+    const se = createSegmentE(scene, s, "blue", true);
+    se.onPointMove.add(ev => {
         collision_js_1.Vec2.add(s.position, ev.prevDelta);
         collision_js_1.Vec2.add(s.endPosition, ev.prevDelta);
         collision_js_1.Vec2.add(se, ev.prevDelta);
@@ -705,36 +668,35 @@ function segmentToBoxDemo(scene) {
     root.append(se);
     return root;
 }
-function createRegularPolygon(cx, cy, r, n, wise) {
-    if (wise === void 0) { wise = "cw"; }
-    var position = { x: cx, y: cy };
-    var vertices = [];
-    var da = Math.PI * 2 / n * (wise === "cw" ? 1 : -1);
-    for (var i = 0; i < n; i++) {
-        var th = -Math.PI / 2 + da * i;
-        var x = r * Math.cos(th) + cx;
-        var y = r * Math.sin(th) + cy;
-        vertices.push({ x: x, y: y });
+function createRegularPolygon(cx, cy, r, n, wise = "cw") {
+    const position = { x: cx, y: cy };
+    const vertices = [];
+    const da = Math.PI * 2 / n * (wise === "cw" ? 1 : -1);
+    for (let i = 0; i < n; i++) {
+        const th = -Math.PI / 2 + da * i;
+        const x = r * Math.cos(th) + cx;
+        const y = r * Math.sin(th) + cy;
+        vertices.push({ x, y });
     }
     return {
-        position: position,
-        vertices: vertices
+        position,
+        vertices
     };
 }
 function polygonToSegmentDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var s = {
+    const root = new g.E({ scene });
+    const s = {
         position: { x: 8, y: 128 },
         endPosition: { x: 128, y: 8 }
     };
-    var se = createSegmentE(scene, s, "blue", true);
-    var p = createRegularPolygon(250, 250, 180, 5);
-    var pe = new PolygonE({
-        scene: scene,
+    const se = createSegmentE(scene, s, "blue", true);
+    const p = createRegularPolygon(250, 250, 180, 5);
+    const pe = new PolygonE({
+        scene,
         polygon: p,
         cssColor: "green"
     });
-    se.onPointMove.add(function (ev) {
+    se.onPointMove.add(ev => {
         collision_js_1.Vec2.add(s.position, ev.prevDelta);
         collision_js_1.Vec2.add(s.endPosition, ev.prevDelta);
         collision_js_1.Vec2.add(se, ev.prevDelta);
@@ -746,21 +708,21 @@ function polygonToSegmentDemo(scene) {
     return root;
 }
 function polygonToCircleDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var red = scene.asset.getImageById("red").asSurface();
-    var blue = scene.asset.getImageById("blue").asSurface();
-    var c = {
+    const root = new g.E({ scene });
+    const red = scene.asset.getImageById("red").asSurface();
+    const blue = scene.asset.getImageById("blue").asSurface();
+    const c = {
         position: { x: 64, y: 64 },
         radius: 64
     };
-    var ce = createCircleE(scene, c, blue, true);
-    var p = createRegularPolygon(250, 250, 180, 5);
-    var pe = new PolygonE({
-        scene: scene,
+    const ce = createCircleE(scene, c, blue, true);
+    const p = createRegularPolygon(250, 250, 180, 5);
+    const pe = new PolygonE({
+        scene,
         polygon: p,
         cssColor: "green"
     });
-    ce.onPointMove.add(function (ev) {
+    ce.onPointMove.add(ev => {
         collision_js_1.Vec2.add(c.position, ev.prevDelta);
         collision_js_1.Vec2.add(ce, ev.prevDelta);
         ce.src = co.polygonToCircle(p, c) ? red : blue;
@@ -771,10 +733,10 @@ function polygonToCircleDemo(scene) {
     return root;
 }
 function polygonToVecDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var v = { x: 32, y: 32 };
-    var ve = new CrossCursorE({
-        scene: scene,
+    const root = new g.E({ scene });
+    const v = { x: 32, y: 32 };
+    const ve = new CrossCursorE({
+        scene,
         x: v.x,
         y: v.y,
         width: 32,
@@ -784,13 +746,13 @@ function polygonToVecDemo(scene) {
         cssColor: "blue",
         touchable: true
     });
-    var p = createRegularPolygon(250, 250, 180, 5);
-    var pe = new PolygonE({
-        scene: scene,
+    const p = createRegularPolygon(250, 250, 180, 5);
+    const pe = new PolygonE({
+        scene,
         polygon: p,
         cssColor: "green"
     });
-    ve.onPointMove.add(function (ev) {
+    ve.onPointMove.add(ev => {
         collision_js_1.Vec2.add(ve, ev.prevDelta);
         collision_js_1.Vec2.add(v, ev.prevDelta);
         ve.cssColor = co.polygonToVec(p, v) ? "red" : "blue";
@@ -801,20 +763,20 @@ function polygonToVecDemo(scene) {
     return root;
 }
 function polygonToBoxDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var b = {
+    const root = new g.E({ scene });
+    const b = {
         position: { x: 100, y: 100 },
         halfExtend: { x: 64, y: 48 },
         angle: -Math.PI / 6
     };
-    var be = createBoxE(scene, b, "blue", true);
-    var p = createRegularPolygon(250, 250, 180, 5);
-    var pe = new PolygonE({
-        scene: scene,
+    const be = createBoxE(scene, b, "blue", true);
+    const p = createRegularPolygon(250, 250, 180, 5);
+    const pe = new PolygonE({
+        scene,
         polygon: p,
         cssColor: "green"
     });
-    be.onPointMove.add(function (ev) {
+    be.onPointMove.add(ev => {
         collision_js_1.Vec2.add(b.position, ev.prevDelta);
         collision_js_1.Vec2.add(be, ev.prevDelta);
         be.cssColor = co.polygonToBox(p, b) ? "red" : "blue";
@@ -825,21 +787,21 @@ function polygonToBoxDemo(scene) {
     return root;
 }
 function polygonToAABBDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var halfExtend = { x: 64, y: 48 };
-    var center = new collision_js_1.Vec2(halfExtend);
-    var aabb = {
+    const root = new g.E({ scene });
+    const halfExtend = { x: 64, y: 48 };
+    const center = new collision_js_1.Vec2(halfExtend);
+    const aabb = {
         min: center.clone().sub(halfExtend),
         max: center.clone().add(halfExtend)
     };
-    var aabbe = createAABBE(scene, aabb, "blue", true);
-    var p = createRegularPolygon(250, 250, 180, 5);
-    var pe = new PolygonE({
-        scene: scene,
+    const aabbe = createAABBE(scene, aabb, "blue", true);
+    const p = createRegularPolygon(250, 250, 180, 5);
+    const pe = new PolygonE({
+        scene,
         polygon: p,
         cssColor: "green"
     });
-    aabbe.onPointMove.add(function (ev) {
+    aabbe.onPointMove.add(ev => {
         collision_js_1.Vec2.add(aabb.min, ev.prevDelta);
         collision_js_1.Vec2.add(aabb.max, ev.prevDelta);
         collision_js_1.Vec2.add(aabbe, ev.prevDelta);
@@ -851,19 +813,19 @@ function polygonToAABBDemo(scene) {
     return root;
 }
 function polygonToLineDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var l = {
+    const root = new g.E({ scene });
+    const l = {
         position: { x: 0, y: 128 },
         direction: { x: 1, y: -1 }
     };
-    var le = createLineE(scene, l, "blue", true);
-    var p = createRegularPolygon(250, 250, 180, 5);
-    var pe = new PolygonE({
-        scene: scene,
+    const le = createLineE(scene, l, "blue", true);
+    const p = createRegularPolygon(250, 250, 180, 5);
+    const pe = new PolygonE({
+        scene,
         polygon: p,
         cssColor: "green"
     });
-    le.onPointMove.add(function (ev) {
+    le.onPointMove.add(ev => {
         collision_js_1.Vec2.add(l.position, ev.prevDelta);
         collision_js_1.Vec2.add(le, ev.prevDelta);
         le.cssColor = co.polygonToLine(p, l) ? "red" : "blue";
@@ -874,23 +836,23 @@ function polygonToLineDemo(scene) {
     return root;
 }
 function polygonToPolygonDemo(scene) {
-    var root = new g.E({ scene: scene });
-    var p1 = createRegularPolygon(250, 250, 180, 5);
-    var p2 = createRegularPolygon(50, 50, 50, 3, "ccw");
-    var p1e = new PolygonE({
-        scene: scene,
+    const root = new g.E({ scene });
+    const p1 = createRegularPolygon(250, 250, 180, 5);
+    const p2 = createRegularPolygon(50, 50, 50, 3, "ccw");
+    const p1e = new PolygonE({
+        scene,
         polygon: p1,
         cssColor: "green"
     });
-    var p2e = new PolygonE({
-        scene: scene,
+    const p2e = new PolygonE({
+        scene,
         polygon: p2,
         cssColor: "blue",
         touchable: true
     });
-    p2e.onPointMove.add(function (ev) {
+    p2e.onPointMove.add(ev => {
         collision_js_1.Vec2.add(p2.position, ev.prevDelta);
-        p2.vertices.forEach(function (v) { return collision_js_1.Vec2.add(v, ev.prevDelta); });
+        p2.vertices.forEach(v => collision_js_1.Vec2.add(v, ev.prevDelta));
         collision_js_1.Vec2.add(p2e, ev.prevDelta);
         p2e.cssColor = co.polygonToPolygon(p1, p2) ? "red" : "blue";
         p2e.modified();
@@ -900,7 +862,7 @@ function polygonToPolygonDemo(scene) {
     return root;
 }
 function main(_param) {
-    var demos = [
+    const demos = [
         { ctor: aabbToAABBDemo, name: "AABB to AABB" },
         { ctor: circleToCircleDemo, name: "Circle to Circle" },
         { ctor: circleToCircleContactDemo, name: "Circle to Circle Contact" },
@@ -927,98 +889,98 @@ function main(_param) {
         { ctor: polygonToLineDemo, name: "Polygon to Line" },
         { ctor: polygonToPolygonDemo, name: "Polygon to Polygon" }
     ];
-    var scene = new g.Scene({
+    const scene = new g.Scene({
         game: g.game,
         assetIds: ["red", "green", "blue"]
     });
-    var currentDemoE;
-    scene.onLoad.add(function () {
-        var btnInactiveColor = "#4689FF";
-        var btnActiveAcolor = "#BAD3FF";
-        var labelInactiveColor = "white";
-        var labelActiveColor = "black";
-        var btnWidth = 192;
-        var btnGroupX = g.game.width - btnWidth;
-        var cutinDuration = 12;
-        var font = new g.DynamicFont({
+    let currentDemoE;
+    scene.onLoad.add(() => {
+        const btnInactiveColor = "#4689FF";
+        const btnActiveAcolor = "#BAD3FF";
+        const labelInactiveColor = "white";
+        const labelActiveColor = "black";
+        const btnWidth = 192;
+        const btnGroupX = g.game.width - btnWidth;
+        const cutinDuration = 12;
+        const font = new g.DynamicFont({
             game: g.game,
             fontFamily: "monospace",
             size: 14,
         });
-        var demoRoot = new g.E({ scene: scene });
-        var btnGroup = new g.E({
-            scene: scene,
+        const demoRoot = new g.E({ scene });
+        const btnGroup = new g.E({
+            scene,
             x: g.game.width
         });
-        var burgerBtn = new g.FilledRect({
-            scene: scene,
+        const burgerBtn = new g.FilledRect({
+            scene,
             x: g.game.width - 80,
             width: 20,
             height: 20,
             cssColor: "#4689FF",
             touchable: true
         });
-        var burgerLabel = new g.Label({
-            scene: scene,
+        const burgerLabel = new g.Label({
+            scene,
             x: 2,
             text: "三",
-            font: font,
+            font,
             fontSize: font.size,
             textColor: "white"
         });
         burgerBtn.append(burgerLabel);
-        burgerBtn.onPointDown.add(function (_ev) {
+        burgerBtn.onPointDown.add(_ev => {
             burgerBtn.touchable = false;
-            buttons.forEach(function (btn) { return btn.touchable = false; });
-            var cntr = 0;
-            scene.onUpdate.add(function () {
+            buttons.forEach(btn => btn.touchable = false);
+            let cntr = 0;
+            scene.onUpdate.add(() => {
                 cntr++;
-                var s = cntr / cutinDuration;
-                var t = Math.sin(Math.PI / 2 * s);
+                const s = cntr / cutinDuration;
+                const t = Math.sin(Math.PI / 2 * s);
                 btnGroup.x = g.game.width * (1 - t) + btnGroupX * t;
                 btnGroup.modified();
                 if (cntr === cutinDuration) {
-                    buttons.forEach(function (btn) { return btn.touchable = true; });
+                    buttons.forEach(btn => btn.touchable = true);
                     return true;
                 }
             });
         });
-        var titleLabel = new g.Label({
-            scene: scene,
+        const titleLabel = new g.Label({
+            scene,
             text: "",
-            font: font,
+            font,
             fontSize: font.size,
             textColor: "black"
         });
-        var changeDemo = function (idx) {
+        const changeDemo = (idx) => {
             titleLabel.text = demos[idx].name;
             titleLabel.invalidate();
             titleLabel.x = burgerBtn.x - titleLabel.width - 8;
             titleLabel.modified();
             return demos[idx].ctor(scene);
         };
-        var btnY = 0;
-        var buttons = [];
-        demos.forEach(function (demo, idx) {
-            var btn = new g.FilledRect({
-                scene: scene,
+        let btnY = 0;
+        const buttons = [];
+        demos.forEach((demo, idx) => {
+            const btn = new g.FilledRect({
+                scene,
                 y: btnY,
                 width: btnWidth,
                 height: 16,
                 cssColor: idx === 0 ? btnActiveAcolor : btnInactiveColor,
                 touchable: true
             });
-            var label = new g.Label({
-                scene: scene,
+            const label = new g.Label({
+                scene,
                 text: demo.name,
-                font: font,
+                font,
                 fontSize: font.size,
                 textColor: idx === 0 ? labelActiveColor : labelInactiveColor
             });
             btn.append(label);
             label.x = (btn.width - label.width) / 2;
             label.modified();
-            btn.onPointDown.add(function (_ev) {
+            btn.onPointDown.add(_ev => {
                 if (currentDemoE) {
                     currentDemoE.destroy();
                 }
@@ -1028,26 +990,26 @@ function main(_param) {
                 btn.modified();
                 label.textColor = labelActiveColor;
                 label.invalidate();
-                buttons.forEach(function (aBtn) {
+                buttons.forEach(aBtn => {
                     if (aBtn !== btn) {
                         aBtn.cssColor = btnInactiveColor;
                         aBtn.modified();
-                        var label_1 = aBtn.children[0];
-                        label_1.textColor = labelInactiveColor;
-                        label_1.invalidate();
+                        const label = aBtn.children[0];
+                        label.textColor = labelInactiveColor;
+                        label.invalidate();
                     }
                     aBtn.touchable = false;
                 });
-                var cntr = 0;
-                scene.onUpdate.add(function () {
+                let cntr = 0;
+                scene.onUpdate.add(() => {
                     cntr++;
-                    var s = cntr / cutinDuration;
-                    var t = Math.sin(Math.PI / 2 * s);
+                    const s = cntr / cutinDuration;
+                    const t = Math.sin(Math.PI / 2 * s);
                     btnGroup.x = btnGroupX * (1 - t) + g.game.width * t;
                     btnGroup.modified();
                     if (cntr === cutinDuration) {
                         burgerBtn.touchable = true;
-                        buttons.forEach(function (btn) { return btn.touchable = true; });
+                        buttons.forEach(btn => btn.touchable = true);
                         return true;
                     }
                 });
@@ -1059,7 +1021,7 @@ function main(_param) {
         currentDemoE = changeDemo(0);
         demoRoot.append(currentDemoE);
         scene.append(new GridE({
-            scene: scene,
+            scene,
             width: g.game.width,
             height: g.game.height,
             size: 100,

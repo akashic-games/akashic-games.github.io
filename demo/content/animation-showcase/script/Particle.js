@@ -1,12 +1,12 @@
 "use strict";
-var Particle = /** @class */ (function () {
-    function Particle(scene) {
+class Particle {
+    constructor(scene) {
         this.scene = scene;
         this.e = new g.FilledRect({ scene: scene, cssColor: "#FF0000", width: 8, height: 8 });
         this.scene.append(this.e);
         this.reset();
     }
-    Particle.prototype.reset = function () {
+    reset() {
         this.x = this.scene.game.width * g.game.random.generate();
         this.y = -8;
         this.vx = ((g.game.random.generate() - 0.5) * 2) * 5;
@@ -17,18 +17,18 @@ var Particle = /** @class */ (function () {
         this.e.y = this.y;
         this.e.cssColor = "#FF0000";
         this.e.angle = 0;
-    };
-    Particle.prototype.collide = function () {
+    }
+    collide() {
         this.vy *= -0.75;
         this.avz = (g.game.random.generate() * 2 - 1) * 20;
         this.collidable = false;
         this.e.cssColor = "#7C5684";
-    };
-    Particle.prototype.update = function () {
+    }
+    update() {
         if (!Particle.running && this.y === -8) {
             return;
         }
-        var acc = 0.4;
+        const acc = 0.4;
         this.vy += acc;
         this.x += this.vx;
         this.y += this.vy;
@@ -41,8 +41,7 @@ var Particle = /** @class */ (function () {
             this.e.angle += this.avz;
             this.e.modified();
         }
-    };
-    Particle.running = false;
-    return Particle;
-}());
+    }
+}
+Particle.running = false;
 module.exports = Particle;
