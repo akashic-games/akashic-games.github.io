@@ -1,20 +1,21 @@
 "use strict";
-var b2 = require("@akashic-extension/akashic-box2d");
-var game = g.game;
-module.exports = function () {
-    var scene = new g.Scene({
+// game.json の globalScripts フィールドにファイル名を列挙しておく必要がある点に注意
+const b2 = require("@akashic-extension/akashic-box2d");
+const game = g.game;
+module.exports = () => {
+    const scene = new g.Scene({
         game: game,
         assetIds: ["soccer", "pentagon"]
     });
-    scene.onLoad.add(function () {
+    scene.onLoad.add(() => {
         // 物理エンジン世界の生成
-        var box2d = new b2.Box2D({
+        const box2d = new b2.Box2D({
             gravity: [0, 9.8],
             scale: 50,
             sleep: true
         });
         // 地面エンティティの生成
-        var floor = new g.FilledRect({
+        const floor = new g.FilledRect({
             scene: scene,
             cssColor: "black",
             x: 0,
@@ -24,20 +25,20 @@ module.exports = function () {
         });
         scene.append(floor);
         // 地面エンティティの性質を定義
-        var floorDef = box2d.createFixtureDef({
+        const floorDef = box2d.createFixtureDef({
             density: 1.0,
             friction: 0.5,
             restitution: 0.3,
             shape: box2d.createRectShape(floor.width, floor.height) // 地面エンティティを四角に設定
         });
         // 地面エンティティを静的物体化
-        var staticDef = box2d.createBodyDef({
+        const staticDef = box2d.createBodyDef({
             type: b2.BodyType.Static
         });
         // Box2Dに地面エンティティを追加
-        var floorBody = box2d.createBody(floor, staticDef, floorDef);
+        const floorBody = box2d.createBody(floor, staticDef, floorDef);
         // rect1エンティティの生成
-        var rect1 = new g.FilledRect({
+        const rect1 = new g.FilledRect({
             scene: scene,
             cssColor: "pink",
             x: 100,
@@ -47,7 +48,7 @@ module.exports = function () {
         });
         scene.append(rect1);
         // rect2エンティティの生成
-        var rect2 = new g.FilledRect({
+        const rect2 = new g.FilledRect({
             scene: scene,
             cssColor: "red",
             x: 120,
@@ -57,7 +58,7 @@ module.exports = function () {
         });
         scene.append(rect2);
         // サッカーボールエンティティの作成
-        var soccer = new g.Sprite({
+        const soccer = new g.Sprite({
             scene: scene,
             src: scene.asset.getImageById("soccer"),
             x: 105,
@@ -70,7 +71,7 @@ module.exports = function () {
         });
         scene.append(soccer);
         // 五角形エンティティの作成
-        var pentagon = new g.Sprite({
+        const pentagon = new g.Sprite({
             scene: scene,
             src: scene.asset.getImageById("pentagon"),
             x: 150,
@@ -82,13 +83,13 @@ module.exports = function () {
         });
         scene.append(pentagon);
         // エンティティの性質を定義
-        var entityDef = box2d.createFixtureDef({
+        const entityDef = box2d.createFixtureDef({
             density: 1.0,
             friction: 0.5,
             restitution: 0.3 // 反発係数
         });
         // 動的物体化
-        var dynamicDef = box2d.createBodyDef({
+        const dynamicDef = box2d.createBodyDef({
             type: b2.BodyType.Dynamic
         });
         // rect1エンティティを四角に設定
@@ -102,9 +103,9 @@ module.exports = function () {
         // サッカーボールエンティティを円に設定
         entityDef.shape = box2d.createCircleShape(soccer.width);
         // サッカーボールエンティティをBox2Dに追加
-        var soccerBody = box2d.createBody(soccer, dynamicDef, entityDef);
+        const soccerBody = box2d.createBody(soccer, dynamicDef, entityDef);
         // 五角形エンティティを設定
-        var vertices = [
+        const vertices = [
             box2d.vec2(20 - pentagon.width / 2, 0 - pentagon.height / 2),
             box2d.vec2(pentagon.width - pentagon.width / 2, 14 - pentagon.height / 2),
             box2d.vec2(32 - pentagon.width / 2, pentagon.height - pentagon.height / 2),
@@ -115,9 +116,9 @@ module.exports = function () {
         // 五角形エンティティをBox2Dに追加
         box2d.createBody(pentagon, dynamicDef, entityDef);
         // 接触イベントのリスナーを生成
-        var contactListener = new b2.Box2DWeb.Dynamics.b2ContactListener();
+        const contactListener = new b2.Box2DWeb.Dynamics.b2ContactListener();
         // 接触開始時のイベントリスナー
-        contactListener.BeginContact = function (contact) {
+        contactListener.BeginContact = contact => {
             // サッカーボールと地面がぶつかったら地面の色を青にする
             if (box2d.isContact(floorBody, soccerBody, contact)) {
                 floor.cssColor = "blue";
@@ -125,7 +126,7 @@ module.exports = function () {
             }
         };
         // 接触が離れた時のイベントリスナー
-        contactListener.EndContact = function (contact) {
+        contactListener.EndContact = contact => {
             // サッカーボールと地面が離れたら地面の色を黒にする
             if (box2d.isContact(floorBody, soccerBody, contact)) {
                 floor.cssColor = "black";
@@ -134,9 +135,9 @@ module.exports = function () {
         };
         // イベントリスナーを設定
         box2d.world.SetContactListener(contactListener);
-        soccer.onPointDown.add(function (e) {
-            var pos = getEntityPosition(soccer);
-            var delta = {
+        soccer.onPointDown.add(e => {
+            const pos = getEntityPosition(soccer);
+            const delta = {
                 x: e.point.x - soccer.width / 2,
                 y: e.point.y - soccer.height / 2
             };
@@ -144,7 +145,7 @@ module.exports = function () {
             // ApplyImpulse()はBox2Dの機能です。
             soccerBody.b2Body.ApplyImpulse(box2d.vec2(delta.x * -5, delta.y * -5), box2d.vec2(pos.x, pos.y));
         });
-        scene.onUpdate.add(function () {
+        scene.onUpdate.add(() => {
             // 物理エンジンの世界をすすめる
             box2d.step(1 / game.fps);
         });

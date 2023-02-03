@@ -1,5 +1,5 @@
-var demo = require("./demo");
+const demo = require("./demo");
 
 module.exports = function() {
-	g.game.pushScene(new demo.createScene());
+	g.game.pushScene(demo.createScene());
 };
