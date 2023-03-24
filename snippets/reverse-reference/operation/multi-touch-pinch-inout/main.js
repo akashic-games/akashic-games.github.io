@@ -21,22 +21,22 @@ function main(param) {
                 pointCache[ev.pointerId] = ev.point;
             const keys = Object.keys(pointCache);
             if (keys.length === 2) {
-                const ev1 = pointCache[keys[0]];
-                const ev2 = pointCache[keys[1]];
-                // pointDonw 時の 2点の距離を保持
-                baseDistance = caclDistance(ev1, ev2);
+                const point1 = pointCache[keys[0]];
+                const point2 = pointCache[keys[1]];
+                // pointDown 時の 2点の距離を保持
+                baseDistance = calcDistance(point1, point2);
             }
         });
         scene.onPointMoveCapture.add((ev) => {
             const keys = Object.keys(pointCache);
             const index = keys.findIndex((key) => key === ev.pointerId.toString());
-            if (pointCache[index])
-                pointCache[index] = ev.startDelta; // startDelta は PointDownEvent 時からの移動量
+            if (pointCache[keys[index]])
+                pointCache[keys[index]] = ev.startDelta; // startDelta は PointDownEvent 時からの移動量
             if (keys.length === 2) {
-                const ev1 = pointCache[keys[0]];
-                const ev2 = pointCache[keys[1]];
+                const point1 = pointCache[keys[0]];
+                const point2 = pointCache[keys[1]];
                 // 2点間の距離
-                const moveDistance = caclDistance(ev1, ev2);
+                const moveDistance = calcDistance(point1, point2);
                 const distance = baseDistance + moveDistance;
                 // rect の scale を算出
                 const scale = Math.floor((distance / baseDistance) * 10) / 10;
@@ -53,11 +53,11 @@ function main(param) {
     g.game.pushScene(scene);
 }
 // ２点の距離を小数点第1位で切り捨て算出
-function caclDistance(ev1, ev2) {
-    const x1 = ev1.x;
-    const y1 = ev1.y;
-    const x2 = ev2.x;
-    const y2 = ev2.y;
+function calcDistance(point1, point2) {
+    const x1 = point1.x;
+    const y1 = point1.y;
+    const x2 = point2.x;
+    const y2 = point2.y;
 
     const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     return Math.floor(distance * 10) / 10;
