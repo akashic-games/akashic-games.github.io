@@ -630,7 +630,8 @@ var label = new al.Label({
   text: &#39;{&quot;rt&quot;:&quot;コーヒー&quot;,&quot;rb&quot;:&quot;珈琲&quot;}を飲む。&#39;,
   font: font,
   fontSize: 30,
-  width: g.game.width
+  width: g.game.width,
+  rubyEnabled: true
 });
 scene.append(label);
 </code></pre>
@@ -639,8 +640,11 @@ scene.append(label);
 <iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvdGV4dC9ydWJ5L2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
 
 <h2>詳細</h2>
+<blockquote>
+<p><a href="mailto:&#97;&#x6b;&#x61;&#115;&#104;&#105;&#99;&#45;&#x6c;&#x61;&#x62;&#x65;&#108;&#x40;&#51;&#46;&#49;&#46;&#x30;">&#97;&#x6b;&#x61;&#115;&#104;&#105;&#99;&#45;&#x6c;&#x61;&#x62;&#x65;&#108;&#x40;&#51;&#46;&#49;&#46;&#x30;</a> より前のバージョンでは、 rubyEnabled はデフォルトで有効でした。意図しない文字列がルビとして解釈されてしまう問題を避けるため、バージョン 3.1.0 以降ではゲーム開発者が明示的に rubyEnabled: true を指定する必要があります。</p>
+</blockquote>
 <p>Akashic Engine 標準の <code>g.Label</code> エンティティはルビをサポートしていません。ルビの描画は <code>akashic-label</code> ライブラリがサポートしています。そのため、 <code>akashic-label</code> ライブラリをコンテンツに導入する必要があります。
-<code>akashic-label</code> は <code>g.Label</code> に近い方法で利用できる <code>Label</code> エンティティを提供します。このエンティティを使うことで、ルビの描画のほか、複数行の文字列描画や禁則処理などの機能を利用することができます。</p>
+<code>akashic-label</code> は <code>g.Label</code> に近い方法で利用できる <code>Label</code> エンティティを提供します。このエンティティを使うことで、ルビの描画のほか、複数行の文字列描画や禁則処理などの機能を利用することができます。ルビを利用する際は、 <code>rubyEnabled: true</code> を指定する必要があります。</p>
 <p><code>akashic-label</code> のインストールは game.json が置かれているディレクトリで以下のコマンドを実行してください。</p>
 <pre><code class="language-sh">akashic install @akashic-extension/akashic-label
 </code></pre>

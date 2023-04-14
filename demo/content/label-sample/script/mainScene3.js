@@ -68,28 +68,28 @@ function mainScene3() {
             `{"rb": "Ａｌｉｇｎ．", "rt": "ルビ", "rubyAlign":${akashic_label_1.RubyAlign.Center}}` +
             `{"rb": "Ａｒｏｕｎｄ．", "rt": "ルビ", "rubyAlign":${akashic_label_1.RubyAlign.SpaceAround}}` +
             `{"rb": "Ａｒｏｕｎｄ．", "rt": "ルビ", "rubyAlign":${akashic_label_1.RubyAlign.SpaceAround}}`;
-        const label11 = new akashic_label_1.Label({ scene: scene, text: text11, font: mplusfont, fontSize: 15, width: game.width, rubyOptions: { rubyFontSize: 10 } });
+        const label11 = new akashic_label_1.Label({ scene: scene, text: text11, font: mplusfont, fontSize: 15, width: game.width, rubyEnabled: true, rubyOptions: { rubyFontSize: 10 } });
         label11.y = y1;
         scene.append(label11);
         const text12 = `{"rt": "Ａｌｉｇｎ．", "rb": "ルビ", "rubyAlign":${akashic_label_1.RubyAlign.Center}}` +
             `{"rt": "Ａｌｉｇｎ．", "rb": "ルビ", "rubyAlign":${akashic_label_1.RubyAlign.Center}}` +
             `{"rt": "Ａｒｏｕｎｄ．", "rb": "ルビ", "rubyAlign":${akashic_label_1.RubyAlign.SpaceAround}}` +
             `{"rt": "Ａｒｏｕｎｄ．", "rb": "ルビ", "rubyAlign":${akashic_label_1.RubyAlign.SpaceAround}}`;
-        const label12 = new akashic_label_1.Label({ scene: scene, text: text12, font: mplusfont, fontSize: 15, width: game.width, rubyOptions: { rubyFontSize: 10 } });
+        const label12 = new akashic_label_1.Label({ scene: scene, text: text12, font: mplusfont, fontSize: 15, width: game.width, rubyEnabled: true, rubyOptions: { rubyFontSize: 10 } });
         label12.y = y1 + 40;
         scene.append(label12);
         const text13 = `{"rb": "Ａｌｉｇｎ．", "rt": "ルビ", "rubyAlign":${akashic_label_1.RubyAlign.Center}}` +
             `{"rb": "Ａｒｏｕｎｄ．", "rt": "ルビ", "rubyAlign":${akashic_label_1.RubyAlign.SpaceAround}}` +
             `{"rb": "Ａｌｉｇｎ．", "rt": "ルビ", "rubyAlign":${akashic_label_1.RubyAlign.Center}}` +
             `{"rb": "Ａｒｏｕｎｄ．", "rt": "ルビ", "rubyAlign":${akashic_label_1.RubyAlign.SpaceAround}}`;
-        const label13 = new akashic_label_1.Label({ scene: scene, text: text13, font: mplusfont, fontSize: 15, width: game.width, rubyOptions: { rubyFontSize: 10 } });
+        const label13 = new akashic_label_1.Label({ scene: scene, text: text13, font: mplusfont, fontSize: 15, width: game.width, rubyEnabled: true, rubyOptions: { rubyFontSize: 10 } });
         label13.y = y1 + 70;
         scene.append(label13);
         const text14 = `{"rt": "Ａｌｉｇｎ．", "rb": "ルビ", "rubyAlign":${akashic_label_1.RubyAlign.Center}}` +
             `{"rt": "Ａｒｏｕｎｄ．", "rb": "ルビ", "rubyAlign":${akashic_label_1.RubyAlign.SpaceAround}}` +
             `{"rt": "Ａｌｉｇｎ．", "rb": "ルビ", "rubyAlign":${akashic_label_1.RubyAlign.Center}}` +
             `{"rt": "Ａｒｏｕｎｄ．", "rb": "ルビ", "rubyAlign":${akashic_label_1.RubyAlign.SpaceAround}}`;
-        const label14 = new akashic_label_1.Label({ scene: scene, text: text14, font: mplusfont, fontSize: 15, width: game.width, rubyOptions: { rubyFontSize: 10 } });
+        const label14 = new akashic_label_1.Label({ scene: scene, text: text14, font: mplusfont, fontSize: 15, width: game.width, rubyEnabled: true, rubyOptions: { rubyFontSize: 10 } });
         label14.y = y1 + 100;
         scene.append(label14);
         const nlabel = new akashic_label_1.Label({

@@ -56,6 +56,7 @@ function mainScene5() {
             font: mplusfont,
             fontSize: 20,
             width: game.width,
+            rubyEnabled: true,
             fixLineGap: false,
             rubyOptions: { rubyFont: bmpfont }
         });
@@ -78,6 +79,7 @@ function mainScene5() {
             fontSize: 20,
             lineGap: 0,
             width: 240,
+            rubyEnabled: true,
             fixLineGap: true,
             rubyOptions: { rubyGap: 0 }
         });
