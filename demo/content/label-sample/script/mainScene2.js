@@ -54,7 +54,8 @@ function mainScene2() {
             text: `use {"rt":"ruby","rb":"ruby"}.`,
             font: bmpfont,
             fontSize: 20,
-            width: 180
+            width: 180,
+            rubyEnabled: true
         });
         label01.y = y0;
         scene.append(label01);
@@ -77,7 +78,8 @@ function mainScene2() {
             font: mplusfont,
             fontSize: 20,
             width: 100,
-            rubyOptions: { rubyGap: -5 }
+            rubyEnabled: true,
+            rubyOptions: { rubyGap: -5 },
         });
         label03.x = 0;
         label03.y = y0 + 90;
@@ -98,6 +100,7 @@ function mainScene2() {
             font: mplusfont,
             fontSize: 20,
             width: game.width,
+            rubyEnabled: true,
             rubyOptions: { rubyFontSize: 15, rubyGap: -5 }
         });
         label04.x = 100;
@@ -118,6 +121,7 @@ function mainScene2() {
             font: mplusfont,
             fontSize: 20,
             width: game.width,
+            rubyEnabled: true,
             rubyOptions: { rubyFont: bmpfont }
         });
         label05.x = 200;
@@ -142,7 +146,8 @@ function mainScene2() {
             text: `{"rt":"ルビアライン","rb":"ＲｕｂｙＡｌｉｇｎ＝ＳｐａｃｅＡｒｏｕｎｄ"}`,
             font: mplusfont,
             fontSize: 20,
-            width: game.width
+            width: game.width,
+            rubyEnabled: true
         });
         label11.y = y1;
         scene.append(label11);
@@ -153,6 +158,7 @@ function mainScene2() {
             font: mplusfont,
             fontSize: 20,
             width: game.width,
+            rubyEnabled: true,
             rubyOptions: { rubyAlign: akashic_label_1.RubyAlign.Center }
         });
         label12.y = y1 + 50;

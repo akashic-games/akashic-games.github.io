@@ -112,6 +112,7 @@ function mainScene6() {
             fontSize: 15,
             textAlign: "left",
             width: game.width / 4,
+            rubyEnabled: true,
             lineBreak: true,
             widthAutoAdjust: true,
             lineBreakRule: sampleRule
