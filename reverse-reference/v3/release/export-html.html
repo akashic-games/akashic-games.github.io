@@ -51,7 +51,6 @@
 				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
-				<li><a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
@@ -577,30 +576,6 @@
 				
 			</li>
 		
-			<li>
-				
-					<a href="../release/export-atsumaru.html">ゲームアツマール向けに出力する</a>
-				
-			</li>
-		
-			<li>
-				
-					<a href="../release/atsumaru-bgcolor.html">ゲームアツマールでの背景色を指定する</a>
-				
-			</li>
-		
-			<li>
-				
-					<a href="../release/atsumaru-scoreboard.html">ゲームアツマールでスコアボードを表示する</a>
-				
-			</li>
-		
-			<li>
-				
-					<a href="../release/atsumaru.html">ゲームアツマールでのみ処理を行う</a>
-				
-			</li>
-		
 	</ul>
 
 	
@@ -627,13 +602,12 @@
 <pre><code class="language-sh">akashic export html --magnify --output ../mygame
 </code></pre>
 <p>このコマンドは単独で実行できる HTML ファイルを出力するものです。
-ニコ生ゲームとして投稿する場合は <a href="./export-nicolive.html"><code>--atsumaru</code> オプションを利用してください。</a></p>
+ニコ生ゲームとして投稿する場合は <a href="./export-nicolive.html"><code>--nicolive</code> オプションを利用してください。</a></p>
 <h2>詳細</h2>
 <p><code>akashic export</code> コマンドは <code>game.json</code> ファイルのあるディレクトリで実行してください。
 <code>index.html</code> と必要なアセットを含むディレクトリが生成されます。
 このディレクトリを適当な web サーバにアップロードし、ブラウザで index.html を閲覧するとゲームが動作します。
 <code>index.html</code> を iframe 要素で読み込むこともできます。</p>
-<p>エクスポートされたディレクトリを zip 圧縮すれば、ゲームアツマールに投稿することもできます。投稿の手順は <a href="/guide/atsumaru.html">ゲームアツマール投稿ガイド</a> を参考にしてください。</p>
 <p><code>--output</code> オプションで保存するディレクトリを指定できます。
 ゲームのディレクトリ内を指定することはできません。
 凡例のようにゲームのディレクトリの外を指定してください。</p>

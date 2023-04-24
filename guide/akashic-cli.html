@@ -53,7 +53,6 @@
 				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
-				<li><a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
@@ -324,7 +323,6 @@ fps: (30)
 このゲームでは、<code>script/main.js</code> の <code>main</code> 関数の引数 <code>param</code> に以下の値が新たに付与されています。</p>
 <ul>
 <li><code>param.sessionParameter</code>: <a href="/guide/shin-ichiba/shin-ichiba-spec#session-parameter">セッションパラメータ</a></li>
-<li><code>param.isAtsumaru</code>:ゲームが動作している環境が ゲームアツマール上かどうかを表す boolean 値</li>
 </ul>
 <p>ランキングモードに対応したニコ生ゲームの作り方については、<a href="/guide/shin-ichiba/ranking">こちら</a>を参照してください。</p>
 
@@ -643,17 +641,9 @@ Akashic Engine v3 以降で利用できる <a href="/tutorial/v3/assetPaths.html
 <p>オプション <code>--target-service</code> には下記の値を指定できます。</p>
 <ul>
 <li><code>nicolive</code>: ニコニコ生放送</li>
-<li><code>atsumaru:single</code>: ゲームアツマール シングル</li>
-<li><code>atsumaru:multi</code>: ゲームアツマール マルチ</li>
-<li><code>atsumaru</code>: 非推奨です。 <code>atsumaru:single</code> を利用してください。</li>
 <li><code>none</code>: なし (デフォルト値)</li>
 </ul>
-<p><code>atsumaru:single</code> が指定された場合、<code>window.RPGAtsumaru</code> が使用できるようになります。
-<code>RPGAtsumaru</code> はゲームアツマールでの実行時 (マルチプレイ除く) にのみ使える API です。詳細は<a href="https://atsumaru.github.io/api-references/">ゲームアツマール API リファレンス</a>を参照してください。</p>
-<p>akashic serve では、Akashic ゲームから利用頻度の高い一部機能(<code>RPGAtsumaru.scoreboards</code> や <code>RPGAtsumaru.volume</code> など)のモックを提供しています。
-モックはダミー実装で、完全な動作確認用ではなくゲームアツマール向けのコードを扱うパスの簡易的な確認用となります。ほとんどが呼び出すとコンソールログが出力されるだけとなります。
-モックの動作は詳細な文書化はされていないため、こちらの<a href="https://github.com/akashic-games/akashic-cli/blob/master/packages/akashic-cli-serve/src/client/atsumaru/RPGAtsumaruApi.ts">ソースコード</a>を参照する必要があります。</p>
-<p><code>nicolive</code>, <code>atsumaru:multi</code> が指定された場合、特定の条件で <code>JoinEvent</code> が自動的に送られるなど、ニコニコ生放送に近い次のような挙動で動作します。</p>
+<p><code>nicolive</code> が指定された場合、特定の条件で <code>JoinEvent</code> が自動的に送られるなど、ニコニコ生放送に近い次のような挙動で動作します。</p>
 <ul>
 <li>放送者役をいちいち Join させなくてもいいように<ul>
 <li>起動後、最初に開かれたブラウザウィンドウのプレイヤーを必ず Join させる</li>
@@ -786,7 +776,7 @@ game.json は更新されません。package-lock.json がない場合、利用�
 </tr>
 </tbody></table>
 <p>ニコ生ゲームに投稿する場合には <code>--nicolieve</code> オプションを利用してください。
-詳細はニコニコ生放送で遊べるゲームの作成の <a href="/guide/shin-ichiba/export-atsumaru">投稿と申請</a> を参照してください。</p>
+詳細はニコニコ生放送で遊べるゲームの作成の <a href="/guide/shin-ichiba/export-atsumaru">投稿</a> を参照してください。</p>
 
 			<h2>
 				<a name="export-html" class="anchor" href="#export-html">
@@ -846,13 +836,8 @@ game.json は更新されません。package-lock.json がない場合、利用�
 <td align="center">指定なし</td>
 </tr>
 <tr>
-<td align="center"><code>--atsumaru</code></td>
-<td align="center">ゲームアツマールとニコニコ生放送に対応した形式のファイルを生成する</td>
-<td align="center">指定なし</td>
-</tr>
-<tr>
 <td align="center"><code>--no-omit-unbundled-js</code></td>
-<td align="center"><code>--atsumaru</code> オプションが指定されている場合でも不要なスクリプトファイルを除外しない</td>
+<td align="center">不要なスクリプトファイルを除外しない</td>
 <td align="center">指定なし</td>
 </tr>
 </tbody></table>
@@ -965,7 +950,6 @@ other: 1.44KB (0%)
 ここで行っていることは、以下の通りです。</p>
 <ul>
 <li>セッションパラメータの取得</li>
-<li>ゲームが動作している環境が ゲームアツマール上かどうかの判定</li>
 <li>main.js に自動的に遷移</li>
 </ul>
 

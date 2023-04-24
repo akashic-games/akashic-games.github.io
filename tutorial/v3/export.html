@@ -51,7 +51,6 @@
 				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
-				<li><a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
@@ -350,20 +349,16 @@
 				</a>
 				 出力されるファイル
 			</h3><p>エクスポートされるのは index.html と必要なアセットを含むディレクトリです。このディレクトリを適当な web サーバにアップロードし、ブラウザで index.html を閲覧するとゲームが動作します。index.html は iframe 要素で読み込むこともできます。</p>
-<p>このディレクトリを zip 圧縮すれば、ゲームアツマールに投稿することもできます。投稿の手順は <a href="../../guide/atsumaru.html">ゲームアツマール投稿ガイド</a> を参考にしてください。</p>
 
 			<h2>
 				<a name="export-for-nicolive" class="anchor" href="#export-for-nicolive">
 					<span class="header-link">#</span>
 				</a>
-				 ゲームアツマールやニコニコ生放送で遊べるゲームとしてエクスポート
-			</h2><p>Akashic Engine で作成したゲームは、
-<a href="https://game.nicovideo.jp/atsumaru/">ゲームアツマール</a> に投稿することができます。</p>
-<p>また <a href="https://live.nicovideo.jp/">ニコニコ生放送</a> の配信上で遊ぶことができます。
-この場合は専用のオプション <code>--atsumaru</code> をつけて <code>akashic export html</code> を利用します。</p>
+				 ニコニコ生放送で遊べるゲームとしてエクスポート
+			</h2><p>Akashic Engine で作成したゲームは、<a href="https://live.nicovideo.jp/">ニコニコ生放送</a> の配信上で遊ぶことができます。
+この場合は専用のオプション <code>--nicolive</code> をつけて <code>akashic export zip</code> を利用します。</p>
 <p>詳細は以下を参照してください。</p>
 <ul>
-<li><a href="../../guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a></li>
 <li><a href="../../guide/shin-ichiba/">ニコニコ生放送で遊べるゲームの作成</a></li>
 </ul>
 <div class="navi-center">

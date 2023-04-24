@@ -53,7 +53,6 @@
 				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
-				<li><a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
@@ -250,14 +249,6 @@ console.log(array[1].value);  // ==&gt; &quot;foo&quot;, &quot;bar&quot; or &quo
 </ul>
 <p>この現象の原因は、ブラウザの Web 広告対策のために音声再生が制限されることがあるためです。
 しかし現状では、そのブラウザの制限を完全になくしてゲーム開始時に自動的に音声を再生させる方法は見いだせていません。ですので、ゲームデザインとして最初に一度以上クリックさせるような作りにするという形で対応してください。</p>
-
-			<h2>
-				<a name="background-color-in-atsumaru" class="anchor" href="#background-color-in-atsumaru">
-					<span class="header-link">#</span>
-				</a>
-				 ゲームアツマール環境で背景が真っ黒になる
-			</h2><p><code>akashic export html</code> コマンドのオプション <code>--inject</code> を使うことで回避できます。</p>
-<p>詳細は逆引きリファレンス <a href="/reverse-reference/v3/release/atsumaru-bgcolor.html">ゲームアツマールでの背景色を指定する</a> を参照してください。</p>
 
 			<h2>
 				<a name="ranking-random" class="anchor" href="#ranking-random">

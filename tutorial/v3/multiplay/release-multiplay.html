@@ -51,7 +51,6 @@
 				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
-				<li><a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
@@ -324,12 +323,7 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>マルチプレイゲームを公開する</h1>
-<p>Akashic Engine で作成されたマルチプレイゲームは、次の方法で公開することができます。</p>
-<ul>
-<li><a href="https://site.live.nicovideo.jp/ichiba.html">ニコ生ゲーム</a> として公開する</li>
-<li><a href="https://game.nicovideo.jp/atsumaru/">ゲームアツマール</a> で公開する</li>
-</ul>
-<p>一つのゲームで両方に対応することも可能です。</p>
+<p>Akashic Engine で作成されたマルチプレイゲームは、<a href="https://site.live.nicovideo.jp/ichiba.html">ニコ生ゲーム</a> として公開することができます。</p>
 <blockquote>
 <p>マルチプレイゲームは、プレイヤー間の通信を伴うため、実行に独自のサーバソフトウェアが必要になります。
 そのためシングルプレイゲームで利用できる以下の方法は使えません。</p>
@@ -350,31 +344,10 @@
 <ol>
 <li>Akashic Engine のマルチプレイゲームを作成する</li>
 <li>game.json の <code>environment.nicolive.supportedModes</code> に <code>&quot;multi_admission&quot;</code> を指定する</li>
-<li><code>akashic export html --atsumaru</code> コマンドで投稿用 zip ファイルを作成する</li>
-<li>ゲームアツマールに投稿し、ニコ生ゲームとして申請を行う</li>
+<li><code>akashic export zip --nicolive</code> コマンドで投稿用 zip ファイルを作成する(<code>--nicolive</code> オプションは <code>akashic-cli@2.16.22</code> 以降で利用できます。)</li>
+<li>ニコ生ゲームに投稿を行う</li>
 </ol>
 <p>詳細は <a href="/guide/shin-ichiba/">ニコニコ生放送で遊べるゲームの作成</a> を参照してください。</p>
-
-			<h2>
-				<a name="atsumaru" class="anchor" href="#atsumaru">
-					<span class="header-link">#</span>
-				</a>
-				 ゲームアツマールで公開する
-			</h2><div class="strong-warn-info">
-  ゲームアツマールは2023年6月28日にサービスを終了します。これに伴い、2023年4月19日以降新規のゲーム投稿は行えなくなります。詳細は <a href="https://blog.nicovideo.jp/niconews/183352.html">こちら</a> をご覧ください。
-  (なおニコニコ生放送で遊べる<u>「ニコ生ゲーム」は引き続きご利用いただけます</u>。<a href="/shin-ichiba/submit.html">投稿方法</a>のみ変更になります)
-</div>
-
-<p>ゲームアツマールは、Akashic Engine で開発されたマルチプレイゲームを公開できます (予定) 。
-ゲームを遊ぶ「部屋」を作成し、その部屋の Web ページを訪れたユーザが参加する形で、マルチプレイゲームを遊べます。</p>
-<p>ゲームアツマールで公開するための大まかな手順は次のとおりです。</p>
-<ol>
-<li>Akashic Engine のマルチプレイゲームを作成する</li>
-<li>game.json の <code>environment.atsumaru.supportedModes</code> に <code>&quot;multi&quot;</code> を指定する</li>
-<li><code>akashic export html --atsumaru</code> コマンドで投稿用 zip ファイルを作成する</li>
-<li>ゲームアツマールに投稿する</li>
-</ol>
-<p>詳細は <a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a> を参照してください。</p>
 <div class="navi-center">
 <a href="./join.html">前 (Join と Leave)</a>
  | <a href="../">目次</a>

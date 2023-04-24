@@ -51,7 +51,6 @@
 				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
-				<li><a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
@@ -577,30 +576,6 @@
 				
 			</li>
 		
-			<li>
-				
-					<a href="../release/export-atsumaru.html">ゲームアツマール向けに出力する</a>
-				
-			</li>
-		
-			<li>
-				
-					<a href="../release/atsumaru-bgcolor.html">ゲームアツマールでの背景色を指定する</a>
-				
-			</li>
-		
-			<li>
-				
-					<a href="../release/atsumaru-scoreboard.html">ゲームアツマールでスコアボードを表示する</a>
-				
-			</li>
-		
-			<li>
-				
-					<a href="../release/atsumaru.html">ゲームアツマールでのみ処理を行う</a>
-				
-			</li>
-		
 	</ul>
 
 	
@@ -622,27 +597,16 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>ニコ生ゲームとして出力する</h1>
-<div class="strong-warn-info">
-  <h3>ニコ生ゲームの投稿方法が変わります</h3>
-  <p>
-    <a href="https://blog.nicovideo.jp/niconews/183352.html">ゲームアツマールのサービス終了</a> に伴い、<strong>2023年4月19日以降ニコ生ゲームの投稿方法が変わります</strong>。
-    ゲームアツマールを介さず、ニコニコ生放送のページで直接ニコ生ゲームとして投稿する形になります。
-    このページの内容は、新しい投稿方法の詳細が定まり次第更新されます。
-  </p>
-  <p>
-    新しい投稿方法については、Twitter アカウント <a href="https://twitter.com/akashic_talk" target="_blank">@akashic_talk</a> でもお知らせします。
-  </p>
-</div>
-
-<p>ニコ生ゲームとして出力するには、<code>akashic export html</code> の <code>--atsumaru</code> オプションを利用します。</p>
+<p>ニコ生ゲームとして出力するには、<code>akashic export zip</code> の <code>--nicolive</code> オプションを利用します。
+(<code>--nicolive</code> オプションは <code>akashic-cli@2.16.22</code> 以降で利用できます。)</p>
 <h2>凡例</h2>
-<pre><code class="language-sh">akashic export html --output ./game.zip --atsumaru
+<pre><code class="language-sh">akashic export zip --output ./game.zip --nicolive
 </code></pre>
 <h2>詳細</h2>
 <p><code>akashic export</code> コマンドは <code>game.json</code> ファイルのあるディレクトリで実行してください。<code>--output</code> オプションの指定は、 .zip で終わるパスを指定してください (./game.zip など)。
-<code>--atsumaru</code> オプションをつけることで、ゲームアツマールとニコニコ生放送に対応した形式のファイルを生成します。</p>
+<code>--nicolive</code> オプションをつけることで、ニコニコ生放送に対応した形式のファイルを生成します。</p>
 <p>ニコ生ゲームの作成については、 <a href="/shin-ichiba">ニコ生ゲームを作ろう</a> を参照してください。</p>
-<p>現在のところ、ニコ生ゲームは zip ファイルの展開後のサイズが 10MB 以下である必要があります。これを超える場合、アツマールには投稿できますが、ニコ生ゲームとして登録申請する際に失敗するので注意してください。</p>
+<p>現在のところ、ニコ生ゲームは zip ファイルの展開後のサイズが 10MB 以下である必要があります。これを超える場合、ニコ生ゲームとして登録する際に失敗するので注意してください。</p>
 <p>また、事前に全てのテキストファイル (.js, .json, .txt) の文字コードが UTF-8 であることを確認してください。 <code>akashic export</code> コマンドは、効率化のためできるだけテキストファイルを一つにまとめます。このとき Shift JIS など、UTF-8 でない文字コードが使われていると、game.zip の中身が文字化けしてしまうことがあります。</p>
 <h2>関連情報</h2>
 <ul>
@@ -651,7 +615,7 @@
 <div class="navi-center">
 <a href="./export-html">前 (HTML5 ゲームとして出力する)</a>
  | <a href="../">目次</a>
- | <a href="./export-atsumaru.html">次 (ゲームアツマール向けに出力する)</a>
+ | <a href="../misc/snapshot.html">前 (スナップショットを保存する)</a>
 </div>
 
 			</div>
