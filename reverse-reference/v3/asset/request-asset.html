@@ -51,7 +51,6 @@
 				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
-				<li><a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
@@ -577,30 +576,6 @@
 				
 			</li>
 		
-			<li>
-				
-					<a href="../release/export-atsumaru.html">ゲームアツマール向けに出力する</a>
-				
-			</li>
-		
-			<li>
-				
-					<a href="../release/atsumaru-bgcolor.html">ゲームアツマールでの背景色を指定する</a>
-				
-			</li>
-		
-			<li>
-				
-					<a href="../release/atsumaru-scoreboard.html">ゲームアツマールでスコアボードを表示する</a>
-				
-			</li>
-		
-			<li>
-				
-					<a href="../release/atsumaru.html">ゲームアツマールでのみ処理を行う</a>
-				
-			</li>
-		
 	</ul>
 
 	
@@ -623,7 +598,7 @@
 			<div class="inner responsive--width--twocol">
 				<h1>シーン内で動的にアセットを読み込む</h1>
 <blockquote>
-<p>セキュリティ上の制約から、ユーザ投稿ニコ生ゲームやゲームアツマールではこの機能は利用できません。</p>
+<p>セキュリティ上の制約から、ユーザ投稿ニコ生ゲームではこの機能は利用できません。</p>
 </blockquote>
 <p>シーン内で動的にアセットを読み込むには、<code>g.Scene#requestAssets()</code> を利用します。</p>
 <h2>凡例</h2>
@@ -649,7 +624,7 @@
 <h2>詳細</h2>
 <p>シーン内で動的にアセットを読み込むには <code>g.Scene#requestAssets()</code> を利用します。読み込むアセットは <code>game.json</code> に登録されている必要はありません。
 <code>g.Scene#requestAssets()</code> はシーンの読み込み完了前には呼び出すことが出来ない点に注意してください。また、サーバ上にあるアセットを読み込む場合は、オリジン間リソース共有(CORS) でエラーとなる場合があるので注意してください。
-<strong><em>ユーザ投稿ニコ生ゲームやゲームアツマールではセキュリティ上の理由により利用することができません。</em></strong></p>
+<strong><em>ユーザ投稿ニコ生ゲームではセキュリティ上の理由により利用することができません。</em></strong></p>
 <p>アセット読み込み失敗を検知するには、<code>g.Scene#onAssetLoadFailure</code> ハンドラに渡るイベントを利用します。このシーンのアセットが一つ読み込みに失敗する度に fire されます。ハンドラは引数の <code>AssetLoadFailureInfo#cancelRetry</code> を真にすることでゲーム続行を断念することができます。</p>
 <pre><code class="language-javascript">scene.onAssetLoadFailure.add(function(failureInfo) {
   // エラー時の処理

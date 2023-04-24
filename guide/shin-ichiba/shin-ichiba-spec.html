@@ -53,7 +53,6 @@
 				<li><a href="/guide/game-json.html">game.jsonの仕様</a></li>
 				<li><a href="/guide/sandbox-config.html">sandbox.config.jsの仕様</a></li>
 				<li><a href="/guide/akashic-lib.html">akashic-lib.jsonの仕様</a></li>
-				<li><a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a></li>
 				<li><a href="/guide/shin-ichiba/index.html">ニコニコ生放送で遊べるゲームの作成</a></li>
 				<li><a href="/guide/asset-load-error.html">アセットロードエラーについて</a></li>
 				<li><a href="/guide/shader.html">シェーダの利用</a></li>
@@ -152,13 +151,7 @@
 <p><code>&quot;multi_admission&quot;</code> と <code>&quot;multi&quot;</code> は排他的です。両方を指定した場合、 <code>&quot;multi&quot;</code> は無視されます。</p>
 <p><code>&quot;ranking&quot;</code> または <code>&quot;multi_admission&quot;</code> の場合、ゲーム起動時に <a href="#admission">プレイヤーの募集</a> が行われます。</p>
 <blockquote>
-<p>ゲームアツマール向けの設定 <code>environment.atsumaru.supportedModes</code> と混同しないよう注意してください。
-コンテンツがゲームアツマールでも動作する場合、両方指定することができます。
-詳細は <a href="/guide/atsumaru.html">ゲームアツマールで遊べるゲームの作成</a> を参照してください。</p>
-</blockquote>
-<blockquote>
-<p>以前は <code>environment.nicolive</code> ではなく <code>environment.niconico</code> プロパティを利用していました。
-(同じニコニコのサービスである) ゲームアツマール向けの <code>environment.atsumaru</code> の追加に伴い、 <code>niconico</code> は非推奨になっています。
+<p><code>environment.niconico</code> プロパティは非推奨となりました。
 互換性のため、当面の間 <code>environment.niconico</code> も引き続きサポートされます。
 <code>environment.niconico</code> と <code>environment.nicolive</code> が両方指定されている場合、 <code>niconico</code> 側の指定は無視されます。</p>
 </blockquote>
@@ -283,7 +276,7 @@ scene.loaded.add(function () {
 <p>セッションパラメータが与えられない場合には、そもそもこのイベントが来ないか、あるいは来たイベントに <code>parameters</code> がありません。</p>
 <p>Akashic Engine では通常、イベントはシーンのロードタイミング(<code>g.Scene#loaded</code>)より後に受信されるため、 <code>loaded</code> の処理中にはこの値を参照できないことに注意してください。これは仕様による制限です。</p>
 <p>厳密にセッションパラメータの受信を待って <code>loaded</code> の初期化処理を行いたい場合は、 <code>loaded</code> ではなく <code>message</code> トリガーの fire を待って処理を行う必要があります。
-(ただしそうするとセッションパラメータが送られない環境(ゲームアツマールのシングルプレイゲームなど)では動作しないコンテンツになってしまうので、「 <code>g.Scene#update</code> の fire を数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
+(ただしそうするとセッションパラメータが送られない環境では動作しないコンテンツになってしまうので、「 <code>g.Scene#update</code> の fire を数回待ってもこなければデフォルト値で開始する」などの対応も検討してください。)</p>
 
 			<h3>
 				<a name="service" class="anchor" href="#service">
@@ -291,21 +284,7 @@ scene.loaded.add(function () {
 				</a>
 				 サービス (service)
 			</h3><p>セッションパラメータ <code>sessionParameters</code> がある時、 <code>sessionParameters.service</code> は実行環境を表す値です。</p>
-<p>値は次のいずれかです:</p>
-<ul>
-<li><code>&quot;nicolive&quot;</code>: ニコニコ生放送</li>
-<li><code>&quot;atsumaru&quot;</code>: ゲームアツマール (のマルチプレイ)</li>
-</ul>
-<blockquote>
-<p>セッションパラメータはニコニコ生放送の仕様ですが、この値から分かるようにゲームアツマールでも与えられます。</p>
-<p>ただし技術的背景の違いから、 <strong>ゲームアツマールでもシングルプレイの場合には与えられない</strong> ことに注意してください。
-これにはランキングモードのニコ生ゲームがアツマールで起動された場合も該当します。
-以下の <code>totalTimeLimit</code> (ランキングモードの制限時間情報) なども含めて、シングルプレイのアツマール環境では与えられません。</p>
-<p>実質的に、現在のこの値は <strong>アツマールとニコ生で別の処理を行いたいマルチプレイゲーム</strong> のための値です。</p>
-<p>たとえばゲームアツマールには、「配信者」にあたるプレイヤーが存在しないので、
-「配信者が口頭で視聴者に向けて発言すること」を活用したニコ生ゲームはそのままでは遊べません。
-このような場合に、この値で処理を分岐することで「アツマールでは配信者なしで遊べるルールで動作させる」などの対応が可能です。</p>
-</blockquote>
+<p>この値は将来の拡張のために用意されています。ニコ生ゲームの場合、値は常に <code>&quot;nicolive&quot;</code> です。</p>
 
 			<h3>
 				<a name="mode" class="anchor" href="#mode">
@@ -410,7 +389,7 @@ scene.loaded.add(function () {
 <p>たとえばゲームの内容的に人数制限があり、参加者と観戦者を分けるようなゲームでは、ゲーム内で改めて参加者を募る必要があります。(配信内での &quot;参加者&quot; の募集)</p>
 </blockquote>
 <div class="navi-center">
-<a href="./export-atsumaru.html">前 (投稿と申請)</a>
+<a href="./export-atsumaru.html">前 (投稿)</a>
  | <a href="./">目次</a>
  | -
 </div>
