@@ -30,16 +30,19 @@ function main(param) {
         scene.onPointMoveCapture.add((ev) => {
             const keys = Object.keys(pointCache);
             const index = keys.findIndex((key) => key === ev.pointerId.toString());
-            if (pointCache[keys[index]])
-                pointCache[keys[index]] = ev.startDelta; // startDelta は PointDownEvent 時からの移動量
+            if (pointCache[keys[index]]) {
+                // PointDownEvent 時からの移動量を加算して位置を求める
+                const pointX = ev.point.x + ev.startDelta.x;
+                const pointY = ev.point.y + ev.startDelta.y;
+                pointCache[index] = {x: pointX, y: pointY};
+            }
             if (keys.length === 2) {
                 const point1 = pointCache[keys[0]];
                 const point2 = pointCache[keys[1]];
-                // 2点間の距離
-                const moveDistance = calcDistance(point1, point2);
-                const distance = baseDistance + moveDistance;
+                // 現在の距離
+                const currentDistance = calcDistance(point1, point2);
                 // rect の scale を算出
-                const scale = Math.floor((distance / baseDistance) * 10) / 10;
+                const scale = Math.floor((currentDistance / baseDistance) * 10) / 10;
                 rect.scale(scale);
                 rect.modified();
             }
