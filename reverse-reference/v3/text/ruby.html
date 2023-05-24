@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>文字列にルビを振る</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?64540116">
-<link rel="stylesheet" href="/css/header.css?64540116">
-<link rel="stylesheet" href="/css/footer.css?64540116">
+<link rel="stylesheet" href="/css/common.css?f1d74c2b">
+<link rel="stylesheet" href="/css/header.css?f1d74c2b">
+<link rel="stylesheet" href="/css/footer.css?f1d74c2b">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?64540116">
+<link rel="stylesheet" href="/css/akashic-document.css?f1d74c2b">
 
-<link rel="stylesheet" href="/css/railscasts.css?64540116">
+<link rel="stylesheet" href="/css/railscasts.css?f1d74c2b">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?64540116"></script>
+<script src="/lib/common.js?f1d74c2b"></script>
 
 
 
@@ -82,7 +82,7 @@
 		<li class="head--menu--item">
 			<p class="head--menu--item--tab"></p>
 			<ul class="head--menu--item--list" id="demo-pc">
-				<li><a href="/demo/?title=helloworld">サンプルデモ</a></li>
+				<li><a href="/demo">サンプルデモ</a></li>
 				<li><a href="/asset/material.html">サンプルデモの素材</a></li>
 			</ul>
 			<!-- 以下 sp 用のメニュ -->
@@ -616,7 +616,7 @@ scene.append(label);
 
 <h2>詳細</h2>
 <blockquote>
-<p><a href="mailto:&#97;&#107;&#97;&#115;&#104;&#x69;&#x63;&#x2d;&#x6c;&#x61;&#x62;&#101;&#108;&#x40;&#51;&#46;&#49;&#x2e;&#x30;">&#97;&#107;&#97;&#115;&#104;&#x69;&#x63;&#x2d;&#x6c;&#x61;&#x62;&#101;&#108;&#x40;&#51;&#46;&#49;&#x2e;&#x30;</a> より前のバージョンでは、 rubyEnabled はデフォルトで有効でした。意図しない文字列がルビとして解釈されてしまう問題を避けるため、バージョン 3.1.0 以降ではゲーム開発者が明示的に rubyEnabled: true を指定する必要があります。</p>
+<p>akashic-label&#64;3.1.0 より前のバージョンでは、 rubyEnabled はデフォルトで有効でした。意図しない文字列がルビとして解釈されてしまう問題を避けるため、バージョン 3.1.0 以降ではゲーム開発者が明示的に rubyEnabled: true を指定する必要があります。</p>
 </blockquote>
 <p>Akashic Engine 標準の <code>g.Label</code> エンティティはルビをサポートしていません。ルビの描画は <code>akashic-label</code> ライブラリがサポートしています。そのため、 <code>akashic-label</code> ライブラリをコンテンツに導入する必要があります。
 <code>akashic-label</code> は <code>g.Label</code> に近い方法で利用できる <code>Label</code> エンティティを提供します。このエンティティを使うことで、ルビの描画のほか、複数行の文字列描画や禁則処理などの機能を利用することができます。ルビを利用する際は、 <code>rubyEnabled: true</code> を指定する必要があります。</p>
