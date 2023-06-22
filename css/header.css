@@ -5,6 +5,9 @@ header, .head--spacer {
 	width: 100vw;
 	height: 40px;
 }
+header, .one-column .head--spacer {
+	position: fixed;
+}
 header {
 	z-index: 1;
 	position: fixed;
