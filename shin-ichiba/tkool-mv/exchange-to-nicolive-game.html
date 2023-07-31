@@ -333,7 +333,7 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>ニコ生ゲームへの変換手順</h1>
-<p><a href="/zip/shin-ichiba/tkool-mv/tkoolmv-namagame-kit-0.0.1.zip">RPG ツクール MV ニコ生ゲーム化キット</a>を用いて、『RPG ツクール MV』で作成されたゲームをニコ生ゲームに変換することができます。</p>
+<p><a href="/zip/shin-ichiba/tkool-mv/tkoolmv-namagame-kit-0.0.2.zip">RPG ツクール MV ニコ生ゲーム化キット</a>を用いて、『RPG ツクール MV』で作成されたゲームをニコ生ゲームに変換することができます。</p>
 
 			<h2>
 				<a name="procedure" class="anchor" href="#procedure">
@@ -341,7 +341,7 @@
 				</a>
 				 ニコ生ゲーム化の手順
 			</h2><h3>RPG ツクール MV ニコ生ゲーム化キットのダウンロード</h3>
-<p><a href="/zip/shin-ichiba/tkool-mv/tkoolmv-namagame-kit-0.0.1.zip">RPG ツクール MV ニコ生ゲーム化キット</a> をダウンロードして展開します。</p>
+<p><a href="/zip/shin-ichiba/tkool-mv/tkoolmv-namagame-kit-0.0.2.zip">RPG ツクール MV ニコ生ゲーム化キット</a> をダウンロードして展開します。</p>
 <p>キットには game, plugins フォルダと README.html が含まれています。</p>
 <p><img src="/img/shin-ichiba/tkool-mv/tkool-namagame-kit.png" alt="RPG ツクール MV ニコ生ゲーム化キット"></p>
 <h3>RPG ツクール MV でゲームを作成</h3>
@@ -423,6 +423,23 @@ RPG ツクール MV から変換したゲームでは、画像や音声ファイ
 <p>ただしニコ生ゲームは「生放送の配信映像と並行してダウンロードされる」性質上、軽ければ軽い方がよいものです。
 <strong>上限に関わらずできるだけ軽量化</strong> していただくことは、プレイ体験のために引き続き重要です。</p>
 </blockquote>
+<h3>ツクール MV ゲームのプラグインの内容を <code>game</code> フォルダの <code>text/Plugins.json</code> に反映</h3>
+<p>ツクール MV ゲームのプラグインの内容は <code>js/plugins.js</code>に以下のように記載されています。</p>
+<pre><code class="language-javascript">var $plugins =
+[
+{&quot;name&quot;:&quot;Community_Basic&quot;, ... },
+{&quot;name&quot;:&quot;MadeWithMv&quot;, ... },
+{&quot;name&quot;:&quot;AkashicRankingMode&quot;, ...}
+];
+</code></pre>
+<p>この中から <code>&quot;name&quot;:&quot;Community_Basic&quot;</code> のオブジェクトと <code>&quot;name&quot;:&quot;AkashicRankingMode&quot;</code> のオブジェクトの内容をコピーして、<code>game</code> フォルダの <code>text/Plugins.json</code> の内容を削除後、以下のように貼り付けします。</p>
+<pre><code class="language-json">[
+  {&quot;name&quot;:&quot;Community_Basic&quot;, ... },
+  {&quot;name&quot;:&quot;AkashicRankingMode&quot;, ...}
+]
+</code></pre>
+<p>この作業により、RPG ツクールで設定した Community_Basic プラグインと AkashicRankingMode プラグインの内容がニコ生ゲームにも反映されるようになります。
+ただし、Community_Basic プラグインについては <code>screenWidth</code> と <code>screenHeight</code> 以外のパラメータはニコ生ゲームで使われません。</p>
 <h3>game フォルダ内の game.json の補完</h3>
 <p>Web ページ <a href="/shin-ichiba/tkool-mv/gamejson-helper">game.json 生成ツール</a> で game.json を生成してダウンロードします。</p>
 <ol>
