@@ -380,6 +380,45 @@ scene.onPointDownCapture.add(ev =&gt; {
 <p><img src="/img/tutorial/cli-serve.png" alt="serve"></p>
 <p>画面上側、ツールバー上の「Join Me」ボタンを押すと、そのウィンドウ(インスタンス)のプレイヤーが join します (<code>g.game.onJoin</code> が fire されます)。
 join 済みの場合は「Leave Me」ボタンに切り替わり、 <code>g.game.onLeave</code> を fire させることができます。</p>
+<blockquote>
+<p>ここでは <code>g.game.onJoin</code> の説明のため扱っていませんが、Akashic Engine v3 では <code>g.game.joinedPlayerIds</code> を利用することもできます。
+<code>g.game.joinedPlayerIds</code> は、その <strong>ゲームプレイ中に join した (leave していない) すべてのプレイヤー ID を保持する配列</strong> です。</p>
+<p>そのため <code>lastJoindPlayerId</code> を自力で求めずとも、次のように書くことができます。</p>
+<pre><code class="language-javascript">if (g.game.joinedPlayerIds.includes(ev.palyer.id)) {
+  // ニコニコ生放送上で動かす場合、イベントを生成した(＝画面を押下した)のが「配信者」である時のみ実行される
+  // ...
+}
+</code></pre>
+</blockquote>
+
+			<h2>
+				<a name="selfid-and-local" class="anchor" href="#selfid-and-local">
+					<span class="header-link">#</span>
+				</a>
+				 g.game.selfId とローカル処理
+			</h2><p><code>g.game.selfId</code> は「プレイヤーごとに異なる値」です。そのため <strong>これを参照する条件分岐内の処理は <a href="./each-player.html#local-operation">ローカル処理</a> になる</strong> ことに注意してください。</p>
+<p>先ほどのコードのこの部分がこれに該当します。</p>
+<pre><code class="language-javascript">if (g.game.selfId === lastJoinedPlayerId) {
+  // ニコニコ生放送上で動かす場合、この実行環境(インスタンス)が「配信者」のものである時のみ実行される
+  // ...
+}
+</code></pre>
+<p>この if 文のブロックは、明らかにプレイヤーによって実行されるかどうかが異なります。
+そのためローカルイベントに対する処理と同じく、「プレイヤー間で間接的に共有されている実行状態」を破壊してはいけません。
+たとえば <code>g.Game#random</code> を利用したり、非ローカルなエンティティを生成・操作すると、他プレイヤーと実行状態がずれてしまい、マルチプレイが破綻します。</p>
+<p>詳細は <a href="./each-player.html#local-operation">ローカル処理とその制限</a> を参照してください。</p>
+<blockquote>
+<p>なお、同じ先ほどのコードでも、こちらはローカル処理になりません (通常のシーンの場合)。</p>
+<pre><code class="language-javascript">if (ev.player.id === lastJoinedPlayerId) {
+  // ニコニコ生放送上で動かす場合、イベントを生成した(＝画面を押下した)のが「配信者」である時のみ実行される
+  // ...
+}
+</code></pre>
+<p>イベント <code>ev</code> は (ローディングシーンなどでない通常のシーンの場合) 全プレイヤーが共通して受け取る値です。
+また <code>lastJoinedPlayerId</code> も <code>g.game.onJoin</code> という「全プレイヤーが共通して受け取る通知」から求められているので、プレイヤーに依存しません。
+そのためこの条件分岐の中は、全プレイヤーが同じイベントを受け取った時には同じように実行されるはずです。</p>
+<p>このように、ある条件分岐のブロックがローカル処理の制限を受けるかどうかは、参照する値がプレイヤー依存かどうかによって決まります。</p>
+</blockquote>
 
 			<h2>
 				<a name="niconico" class="anchor" href="#niconico">
