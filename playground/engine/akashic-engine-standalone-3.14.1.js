@@ -19445,15 +19445,15 @@
 		        }
 		        return asset;
 		    };
-		    ResourceFactory.prototype.createScriptAsset = function (id, path) {
-		        var asset = new ScriptAsset_1.ScriptAsset(id, (0, url_join_1.default)(this.assetBaseDir, path));
+		    ResourceFactory.prototype.createScriptAsset = function (id, path, exports) {
+		        var asset = new ScriptAsset_1.ScriptAsset(id, (0, url_join_1.default)(this.assetBaseDir, path), exports);
 		        if (this.assetLoaderFuncs && this.assetLoaderFuncs.loadScriptAsset) {
 		            asset._overrideLoadFunc(this.assetLoaderFuncs.loadScriptAsset);
 		        }
 		        return asset;
 		    };
-		    ResourceFactory.prototype.createBinaryAsset = function (id, assetPath) {
-		        return new BinaryAsset_1.BinaryAsset(id, assetPath);
+		    ResourceFactory.prototype.createBinaryAsset = function (id, path) {
+		        return new BinaryAsset_1.BinaryAsset(id, (0, url_join_1.default)(this.assetBaseDir, path));
 		    };
 		    ResourceFactory.prototype.createPrimarySurface = function (width, height) {
 		        return this.surfaceFactory.createPrimarySurface(width, height);
