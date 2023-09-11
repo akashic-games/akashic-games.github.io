@@ -3,6 +3,8 @@
 	"height": 624,
 	"fps": 60,
 	"main": "./script/_bootstrap.js",
+	"title": "【ツクールMV製】競え！成り上がりダンジョン",
+	"description": "RPGツクールMVで制作されたニコ生ランキングゲームです。\n\n制限時間内に、宝箱に入っているお金を集めましょう。ただし、モンスターに触れるとお金を取られます。",
 	"assets": {
 		"tkool_core_index": {
 			"type": "script",

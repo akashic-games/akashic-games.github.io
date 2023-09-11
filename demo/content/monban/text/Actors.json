@@ -1,0 +1,7 @@
+[
+null,
+{"id":1,"battlerName":"Actor1_1","characterIndex":0,"characterName":"Actor1","classId":5,"equips":[5,1,2,3,0],"faceIndex":0,"faceName":"Actor1","traits":[{"code":62,"dataId":0,"value":1},{"code":22,"dataId":7,"value":0.3},{"code":22,"dataId":8,"value":0.2}],"initialLevel":1,"maxLevel":20,"name":"ハロルド（赤）","nickname":"","note":"","profile":""},
+{"id":2,"battlerName":"Actor1_8","characterIndex":7,"characterName":"Actor1","classId":6,"equips":[6,1,2,3,0],"faceIndex":7,"faceName":"Actor1","traits":[{"code":62,"dataId":0,"value":1},{"code":22,"dataId":7,"value":0.3},{"code":22,"dataId":8,"value":0.2}],"initialLevel":1,"maxLevel":20,"name":"テレーゼ（緑）","nickname":"","note":"","profile":""},
+{"id":3,"battlerName":"Actor3_8","characterIndex":7,"characterName":"Actor3","classId":7,"equips":[7,0,2,3,4],"faceIndex":7,"faceName":"Actor3","traits":[{"code":62,"dataId":0,"value":1},{"code":22,"dataId":7,"value":0.3},{"code":22,"dataId":8,"value":0.2}],"initialLevel":1,"maxLevel":20,"name":"マーシャ（青）","nickname":"","note":"","profile":""},
+{"id":4,"battlerName":"Actor2_7","characterIndex":6,"characterName":"Actor2","classId":4,"equips":[4,0,2,3,4],"faceIndex":6,"faceName":"Actor2","traits":[],"initialLevel":1,"maxLevel":99,"name":"ルキウス","nickname":"","note":"","profile":""}
+]
