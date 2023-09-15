@@ -614,7 +614,11 @@
 
 <h2>詳細</h2>
 <p>Akashic Engine で音声を扱うには、音声ファイルをアセットとして <code>game.json</code> に登録する必要があります。
-音声ファイルは Ogg Vorbis 形式 (.ogg) と AAC 形式 (.aac) の二種類のファイルを用意する必要があります。これは、Web ページで音を再生する際に、利用可能な形式がブラウザごとに異なっているためです。</p>
+音声ファイルは次のいずれかの組み合わせで用意する必要があります。これは、Web ページで音を再生する際に、利用可能な形式がブラウザごとに異なっているためです。</p>
+<ul>
+<li>Ogg Vorbis 形式 (.ogg) と M4A 形式 (.m4a)</li>
+<li>Ogg Vorbis 形式 (.ogg) と AAC 形式 (.aac)</li>
+</ul>
 <p>音声ファイルを audio/ ディレクトリ (または <a href="/tutorial/v3/assetPaths#assets-dir">assets/ ディレクトリ</a>) に配置して <code>akashic scan asset</code> を実行するとアセットとして <code>game.json</code> に登録されます。
 音声アセットは全て効果音 (<code>&quot;sound&quot;</code>) として登録されます。BGM (ループ再生する) としたい場合は game.json の対応するアセットを探して <code>systemId: &quot;sound&quot;</code> になっている箇所を <code>systemId: &quot;music&quot;</code> に変更してください。例えば以下のアセット ID <code>&quot;bgm1&quot;</code> を BGM としたい場合以下のように編集します。</p>
 <pre><code class="language-diff">&quot;bgm1&quot;: {
@@ -636,7 +640,7 @@ scene.onLoad.add(() =&gt; {
   });
 });
 </code></pre>
-<p>Ogg Vorbis 形式 と AAC 形式の複数の音声ファイルを用意するために、<a href="https://github.com/akashic-games/complete-audio">complete-audio</a>を利用することができます。これは .wav, .mp4, .mp3, .ogg, .aac のどれか一つのファイルを与えると、Akashic Engine で必要な形式のファイルを一揃え生成するツールです。</p>
+<p>Ogg Vorbis 形式 と M4A 形式の複数の音声ファイルを用意するために、<a href="https://github.com/akashic-games/complete-audio">complete-audio</a>を利用することができます。これは .wav, .mp4, .mp3, .ogg, .aac, .m4a のどれか一つのファイルを与えると、Akashic Engine で必要な形式のファイルを一揃え生成するツールです。</p>
 <h2>関連情報</h2>
 <ul>
 <li><a href="/tutorial/v3/audio.html#se-gbgm">チュートリアル</a></li>

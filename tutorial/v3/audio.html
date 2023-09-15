@@ -333,9 +333,13 @@
 					<span class="header-link">#</span>
 				</a>
 				 効果音と BGM
-			</h2><p>Akashic Engine のゲームで音を鳴らす場合は、一つの効果音や音楽につき
-Ogg Vorbis 形式 (.ogg) と AAC 形式 (.aac) の二種類のファイルを用意する必要があります。これは、Web ページで音を再生する際に、利用可能な形式がブラウザごとに異なっているためです。</p>
-<p>ファイルが用意できたら <code>se1.ogg</code> と <code>se1.aac</code> を <code>audio</code> ディレクトリに配置して、
+			</h2><p>Akashic Engine のゲームで音を鳴らす場合は、一つの効果音や音楽につき次のいずれかの組み合わせのファイルを用意する必要があります。
+これは、Web ページで音を再生する際に、利用可能な形式がブラウザごとに異なっているためです。</p>
+<ul>
+<li>Ogg Vorbis 形式 (.ogg) と M4A 形式 (.m4a)</li>
+<li>Ogg Vorbis 形式 (.ogg) と AAC 形式 (.aac)</li>
+</ul>
+<p>ファイルが用意できたら <code>se1.ogg</code> と <code>se1.m4a</code> を <code>audio</code> ディレクトリに配置して、
 <code>akashic scan</code> コマンドでアセットとして追加します。</p>
 <pre><code class="language-sh">akashic scan asset
 </code></pre>
