@@ -343,7 +343,7 @@ Akashic Engine は、アセットを複数まとめて管理しやすくする�
 <ul>
 <li>アセットの種別が、ファイルの拡張子から自動的に決定される<ul>
 <li>image: 拡張子が png, jpg, jpeg のファイル</li>
-<li>audio: 拡張子が ogg, aac のファイル</li>
+<li>audio: 拡張子が ogg, m4a, aac のファイル</li>
 <li>script: 拡張子が js のファイル</li>
 <li>text: 上記以外の拡張子のファイル</li>
 </ul>
@@ -356,14 +356,14 @@ Akashic Engine は、アセットを複数まとめて管理しやすくする�
 <li>stage1/<ul>
 <li>map.json</li>
 <li>background.png</li>
-<li>bgm.aac</li>
+<li>bgm.m4a</li>
 <li>bgm.ogg</li>
 </ul>
 </li>
 <li>stage2/<ul>
 <li>map.json</li>
 <li>background.png</li>
-<li>bgm.aac</li>
+<li>bgm.m4a</li>
 <li>bgm.ogg</li>
 </ul>
 </li>
@@ -372,7 +372,7 @@ Akashic Engine は、アセットを複数まとめて管理しやすくする�
 </ul>
 <p><code>assets/</code> 以外のディレクトリでは、アセット ID はファイル名の basename (拡張子を抜いた部分) になります。
 しかしこれには「basename が重複するアセットを一切作れない」という制限がつきます。
-たとえば上の例に似た <code>audio/stage1/bgm.aac</code> と <code>audio/stage2/bgm.aac</code> を置くと、アセット ID が <code>bgm</code> で重複してエラーになります。</p>
+たとえば上の例に似た <code>audio/stage1/bgm.m4a</code> と <code>audio/stage2/bgm.m4a</code> を置くと、アセット ID が <code>bgm</code> で重複してエラーになります。</p>
 <p><code>assets/</code> ディレクトリは、この問題を回避するため、そもそもアセット ID を保証しません。
 これにより basename の重複したアセットを許容します。ただしアセット ID でのアクセスはできなくなります (不定のため)。
 Akashic Engine v3 以降では、後述のとおりアセットのファイルパスを使ってアセットを取得できるため、そちらを利用することになります。</p>
