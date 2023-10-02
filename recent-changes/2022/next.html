@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>更新情報 (〜2022/mm/dd)</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?6509d8fa">
-<link rel="stylesheet" href="/css/header.css?6509d8fa">
-<link rel="stylesheet" href="/css/footer.css?6509d8fa">
+<link rel="stylesheet" href="/css/common.css?0369b419">
+<link rel="stylesheet" href="/css/header.css?0369b419">
+<link rel="stylesheet" href="/css/footer.css?0369b419">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?6509d8fa">
+<link rel="stylesheet" href="/css/akashic-document.css?0369b419">
 
-<link rel="stylesheet" href="/css/railscasts.css?6509d8fa">
+<link rel="stylesheet" href="/css/railscasts.css?0369b419">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?6509d8fa"></script>
+<script src="/lib/common.js?0369b419"></script>
 
 
 
@@ -212,6 +212,15 @@
 				</a>
 				 akashic scan コマンドで出力される game.json のフォーマットを .editorconfig に準拠するように
 			</h2><p><code>akashic-cli@2.16.0</code> 以降において、akashic scan コマンドで出力される game.json のフォーマットを .editorconfig に準拠するように変更しました。</p>
+
+			<h2>
+				<a name="max-points" class="anchor" href="#max-points">
+					<span class="header-link">#</span>
+				</a>
+				 Akashic Engine で最大同時タップ数を制限できるように
+			</h2><p><code>akashic-engine@3.9.3</code> 以降において、game.json に <code>maxPoints</code> というプロパティを追加しました。
+<code>maxPoints</code> で最大同時タップ数を指定することができるようになりました。</p>
+<p>詳細は<a href="/guide/game-json.html#maxPoints">game.json の仕様の maxPoints</a>を参照してください。</p>
 
 			<h2>
 				<a name="misc-features" class="anchor" href="#misc-features">

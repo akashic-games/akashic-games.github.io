@@ -1,17 +1,17 @@
 function main(param) {
   var scene = new g.Scene({
       game: g.game,
-      // このシーンで利用するアセットのIDを列挙し、シーンに通知します
-      assetIds: ["player", "shot", "se"]
+      // このシーンで利用するアセットを指定し、シーンに通知します
+      assetPaths: ["/assets/**/*"]
   });
   scene.onLoad.add(function () {
       // ここからゲーム内容を記述します
       // プレイヤーを生成します
       var player = new g.Sprite({
           scene: scene,
-          src: scene.asset.getImageById("player"),
-          width: scene.asset.getImageById("player").width,
-          height: scene.asset.getImageById("player").height
+          src: scene.asset.getImage("/assets/player.png"),
+          width: scene.asset.getImage("/assets/player.png").width,
+          height: scene.asset.getImage("/assets/player.png").height
       });
       // プレイヤーの初期座標を、画面の中心に設定します
       player.x = (g.game.width - player.width) / 2;
@@ -25,13 +25,13 @@ function main(param) {
       });
       // 画面をタッチしたとき、SEを鳴らします
       scene.onPointDownCapture.add(function () {
-          scene.assets["se"].play();
+          scene.asset.getAudio("/assets/se").play();
           // プレイヤーが発射する弾を生成します
           var shot = new g.Sprite({
               scene: scene,
-              src: scene.asset.getImageById("shot"),
-              width: scene.asset.getImageById("shot").width,
-              height: scene.asset.getImageById("shot").height
+              src: scene.asset.getImage("/assets/shot.png"),
+              width: scene.asset.getImage("/assets/shot.png").width,
+              height: scene.asset.getImage("/assets/shot.png").height
           });
           // 弾の初期座標を、プレイヤーの少し右に設定します
           shot.x = player.x + player.width;

@@ -1,30 +1,90 @@
-/*v3.0.0-beta.2
-
+/*
+v3.1.0
 */
 
 declare module '@akashic-extension/akashic-label' {
-    export import Label = require("@akashic-extension/akashic-label/Label");
-    export import LabelParameterObject = require("@akashic-extension/akashic-label/LabelParameterObject");
-    export import FragmentDrawInfo = require("@akashic-extension/akashic-label/FragmentDrawInfo");
-    export import RubyParser = require("@akashic-extension/akashic-label/RubyParser");
-    export import Fragment = RubyParser.Fragment;
-    export import RubyFragment = RubyParser.RubyFragment;
-    export import RubyAlign = RubyParser.RubyAlign;
-    export import RubyOptions = RubyParser.RubyOptions;
-    import DRP = require("@akashic-extension/akashic-label/DefaultRubyParser");
-    export import defaultRubyParser = DRP.parse;
+    export { parse as defaultRubyParser } from "@akashic-extension/akashic-label/DefaultRubyParser";
+    export * as FragmentDrawInfo from "@akashic-extension/akashic-label/FragmentDrawInfo";
+    export { Label } from "@akashic-extension/akashic-label/Label";
+    export { LabelParameterObject } from "@akashic-extension/akashic-label/LabelParameterObject";
+    export * as RubyParser from "@akashic-extension/akashic-label/RubyParser";
+    export { Fragment, RubyFragment, RubyAlign, RubyOptions } from "@akashic-extension/akashic-label/RubyParser";
+}
+
+declare module '@akashic-extension/akashic-label/DefaultRubyParser' {
+    import type * as rp from "@akashic-extension/akashic-label/RubyParser";
+    /**
+      * 文字列からルビをパースする。
+      * このパーサは、akashic-labelのデフォルトルビ記法のためのパーサである。
+      *
+      * このパーサを使う場合、ラベルに与える文字列にJSONのオブジェクトを表す文字列を含むことができる。
+      * 文字列中のオブジェクトはルビを表す要素として扱われる。
+      * オブジェクトのメンバーには、ルビを表す `rt` と、本文を表す `rb` を含む必要がある。
+      * これらのメンバー以外に、RubyOptions型が持つメンバーを含むことができる。
+      *
+      * 入力の例として、
+      * 'これは{"rb":"本文","rt":"ルビ", "rubyFontSize": 2}です。'
+      * という文字列が与えられた場合、このパーサは
+      * ["これは", {rb:"本文", rt: "ルビ", rubyFontSize: 2}, "です。"]
+      * という配列を返す。
+      * また、 `{` や `}` は `\\` でエスケープする必要がある。
+      * 例として、括弧は `\\{` 、 バックスラッシュは `\\` を用いて表現する。
+      * 注意すべき点として、オブジェクトのプロパティ名はダブルクォートでくくられている必要がある。
+      */
+    export function parse(text: string): rp.Fragment[];
+}
+
+declare module '@akashic-extension/akashic-label/FragmentDrawInfo' {
+    import type * as rp from "@akashic-extension/akashic-label/RubyParser";
+    /**
+        * 行に含まれる描画要素のうち、1つを表すインターフェース定義。
+        */
+    export type FragmentDrawInfo = StringDrawInfo | RubyFragmentDrawInfo;
+    /**
+        * 行に含まれる文字列要素。
+        */
+    export class StringDrawInfo {
+            text: string;
+            width: number;
+            glyphs: g.Glyph[];
+            constructor(text: string, width: number, glyphs: g.Glyph[]);
+    }
+    /**
+        * 行に含まれるルビ要素。
+        */
+    export class RubyFragmentDrawInfo {
+            text: string;
+            fragment: rp.RubyFragment;
+            width: number;
+            rbWidth: number;
+            rtWidth: number;
+            glyphs: g.Glyph[];
+            rubyGlyphs: g.Glyph[];
+            constructor(fragment: rp.RubyFragment, width: number, rbWidth: number, rtWidth: number, glyphs: g.Glyph[], rubyGlyphs: g.Glyph[]);
+    }
+    /**
+        * `Label`の行単位の描画情報を表すインターフェース定義。
+        */
+    export interface LineInfo {
+            sourceText: string;
+            width: number;
+            height: number;
+            minMinusOffsetY: number;
+            surface: g.Surface;
+            fragmentDrawInfoArray: FragmentDrawInfo[];
+    }
 }
 
 declare module '@akashic-extension/akashic-label/Label' {
-    import LabelParameterObject = require("@akashic-extension/akashic-label/LabelParameterObject");
-    import rp = require("@akashic-extension/akashic-label/RubyParser");
+    import type { LabelParameterObject } from "@akashic-extension/akashic-label/LabelParameterObject";
+    import * as rp from "@akashic-extension/akashic-label/RubyParser";
     /**
         * 複数行のテキストを描画するエンティティ。
         * 文字列内の"\r\n"、"\n"、"\r"を区切りとして改行を行う。
         * また、自動改行が有効な場合はエンティティの幅に合わせて改行を行う。
         * 本クラスの利用にはg.Fontが必要となる。
         */
-    class Label extends g.CacheableE {
+    export class Label extends g.CacheableE {
             /**
                 * 描画する文字列。
                 * この値を変更した場合、 `this.invalidate()` を呼び出す必要がある。
@@ -44,6 +104,7 @@ declare module '@akashic-extension/akashic-label/Label' {
             /**
                 * フォントサイズ。
                 * 0 以上の数値でなければならない。
+                * 初期値は `this.font.size` である。
                 * この値を変更した場合、 `this.invalidate()` を呼び出す必要がある。
                 */
             fontSize: number;
@@ -154,15 +215,14 @@ declare module '@akashic-extension/akashic-label/Label' {
             get lineCount(): number;
             _offsetX(width: number): number;
     }
-    export = Label;
 }
 
 declare module '@akashic-extension/akashic-label/LabelParameterObject' {
-    import rt = require("@akashic-extension/akashic-label/RubyParser");
+    import type * as rt from "@akashic-extension/akashic-label/RubyParser";
     /**
         * `Label` のコンストラクタに渡すことができるパラメータ。
         */
-    interface LabelParameterObject extends g.CacheableEParameterObject {
+    export interface LabelParameterObject extends g.CacheableEParameterObject {
             /**
                 * 描画する文字列。
                 */
@@ -172,18 +232,19 @@ declare module '@akashic-extension/akashic-label/LabelParameterObject' {
                 */
             font: g.Font;
             /**
+                * 横幅。
+                * `lineBreak` が真の場合、描画する文字列はこの幅に収まるよう改行される。
+                */
+            width: number;
+            /**
                 * フォントサイズ。
                 * 0 以上の数値でなければならない。
                 * これは `LabelParameterObject#font` に与えられたフォントを
                 * `fontSize` フォントサイズ相当で描画するよう指示する値である。
                 * 歴史的経緯によりフォントサイズと説明されているが、実際には拡大縮小率を求めるために用いられている。
+                * 初期値は `LabelParameterObject#font.size` である。
                 */
-            fontSize: number;
-            /**
-                * 横幅。
-                * `lineBreak` が真の場合、描画する文字列はこの幅に収まるよう改行される。
-                */
-            width: number;
+            fontSize?: number;
             /**
                 * 自動改行を行うかどうか。
                 */
@@ -244,48 +305,6 @@ declare module '@akashic-extension/akashic-label/LabelParameterObject' {
                 */
             lineBreakRule?: rt.LineBreakRule;
     }
-    export = LabelParameterObject;
-}
-
-declare module '@akashic-extension/akashic-label/FragmentDrawInfo' {
-    import rp = require("@akashic-extension/akashic-label/RubyParser");
-    /**
-        * 行に含まれる描画要素のうち、1つを表すインターフェース定義。
-        */
-    export type FragmentDrawInfo = StringDrawInfo | RubyFragmentDrawInfo;
-    /**
-        * 行に含まれる文字列要素。
-        */
-    export class StringDrawInfo {
-            text: string;
-            width: number;
-            glyphs: g.Glyph[];
-            constructor(text: string, width: number, glyphs: g.Glyph[]);
-    }
-    /**
-        * 行に含まれるルビ要素。
-        */
-    export class RubyFragmentDrawInfo {
-            text: string;
-            fragment: rp.RubyFragment;
-            width: number;
-            rbWidth: number;
-            rtWidth: number;
-            glyphs: g.Glyph[];
-            rubyGlyphs: g.Glyph[];
-            constructor(fragment: rp.RubyFragment, width: number, rbWidth: number, rtWidth: number, glyphs: g.Glyph[], rubyGlyphs: g.Glyph[]);
-    }
-    /**
-        * `Label`の行単位の描画情報を表すインターフェース定義。
-        */
-    export interface LineInfo {
-            sourceText: string;
-            width: number;
-            height: number;
-            minMinusOffsetY: number;
-            surface: g.Surface;
-            fragmentDrawInfoArray: FragmentDrawInfo[];
-    }
 }
 
 declare module '@akashic-extension/akashic-label/RubyParser' {
@@ -345,28 +364,5 @@ declare module '@akashic-extension/akashic-label/RubyParser' {
         */
     export type LineBreakRule = (fragments: Fragment[], index: number) => number;
     export function flatmap<T, U>(arr: T[], func: (e: T) => (U | U[])): U[];
-}
-
-declare module '@akashic-extension/akashic-label/DefaultRubyParser' {
-    import rp = require("@akashic-extension/akashic-label/RubyParser");
-    /**
-      * 文字列からルビをパースする。
-      * このパーサは、akashic-labelのデフォルトルビ記法のためのパーサである。
-      *
-      * このパーサを使う場合、ラベルに与える文字列にJSONのオブジェクトを表す文字列を含むことができる。
-      * 文字列中のオブジェクトはルビを表す要素として扱われる。
-      * オブジェクトのメンバーには、ルビを表す `rt` と、本文を表す `rb` を含む必要がある。
-      * これらのメンバー以外に、RubyOptions型が持つメンバーを含むことができる。
-      *
-      * 入力の例として、
-      * 'これは{"rb":"本文","rt":"ルビ", "rubyFontSize": 2}です。'
-      * という文字列が与えられた場合、このパーサは
-      * ["これは", {rb:"本文", rt: "ルビ", rubyFontSize: 2}, "です。"]
-      * という配列を返す。
-      * また、 `{` や `}` は `\\` でエスケープする必要がある。
-      * 例として、括弧は `\\{` 、 バックスラッシュは `\\` を用いて表現する。
-      * 注意すべき点として、オブジェクトのプロパティ名はダブルクォートでくくられている必要がある。
-      */
-    export function parse(text: string): rp.Fragment[];
 }
 
