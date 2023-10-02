@@ -1,22 +1,22 @@
-/*v3.0.0-beta.2
-
+/*
+v3.2.1
 */
 
 declare module '@akashic-extension/akashic-timeline' {
-    export import Timeline = require("@akashic-extension/akashic-timeline/Timeline");
-    export import Tween = require("@akashic-extension/akashic-timeline/Tween");
-    export import TweenOption = require("@akashic-extension/akashic-timeline/TweenOption");
-    export import Easing = require("@akashic-extension/akashic-timeline/Easing");
-    export import TweenStateSerialization = require("@akashic-extension/akashic-timeline/TweenStateSerialization");
+    export { Timeline } from "@akashic-extension/akashic-timeline/Timeline";
+    export { Tween } from "@akashic-extension/akashic-timeline/Tween";
+    export { TweenOption } from "@akashic-extension/akashic-timeline/TweenOption";
+    export { Easing } from "@akashic-extension/akashic-timeline/Easing";
+    export { TweenStateSerialization } from "@akashic-extension/akashic-timeline/TweenStateSerialization";
 }
 
 declare module '@akashic-extension/akashic-timeline/Timeline' {
-    import Tween = require("@akashic-extension/akashic-timeline/Tween");
-    import TweenOption = require("@akashic-extension/akashic-timeline/TweenOption");
+    import { Tween } from "@akashic-extension/akashic-timeline/Tween";
+    import { TweenOption } from "@akashic-extension/akashic-timeline/TweenOption";
     /**
         * タイムライン機能を提供するクラス。
         */
-    class Timeline {
+    export class Timeline {
             /**
                 * タイムラインが一時停止状態かどうかを表すフラグ。
                 * タイムラインを一時停止する場合は`true`をセットする。
@@ -24,6 +24,7 @@ declare module '@akashic-extension/akashic-timeline/Timeline' {
             paused: boolean;
             _scene: g.Scene;
             _tweens: Tween[];
+            _tweensCreateQue: Tween[];
             _fps: number;
             /**
                 * Timelineを生成する。
@@ -64,18 +65,17 @@ declare module '@akashic-extension/akashic-timeline/Timeline' {
             destroyed(): boolean;
             _handler(): void;
     }
-    export = Timeline;
 }
 
 declare module '@akashic-extension/akashic-timeline/Tween' {
-    import TweenOption = require("@akashic-extension/akashic-timeline/TweenOption");
-    import EasingType = require("@akashic-extension/akashic-timeline/EasingType");
-    import TweenStateSerialization = require("@akashic-extension/akashic-timeline/TweenStateSerialization");
+    import { EasingType } from "@akashic-extension/akashic-timeline/EasingType";
+    import { TweenOption } from "@akashic-extension/akashic-timeline/TweenOption";
+    import { TweenStateSerialization } from "@akashic-extension/akashic-timeline/TweenStateSerialization";
     /**
         * オブジェクトの状態を変化させるアクションを定義するクラス。
         * 本クラスのインスタンス生成には`Timeline#create()`を利用する。
         */
-    class Tween {
+    export class Tween {
             /**
                 * アクションの実行が一時停止状態かどうかを表すフラグ。
                 * 一時停止する場合は`true`をセットする。
@@ -84,6 +84,12 @@ declare module '@akashic-extension/akashic-timeline/Tween' {
             _target: any;
             _stepIndex: number;
             _loop: boolean;
+            /**
+                * Tween の削除可否を表すフラグ。
+                * isFinished() はアクションが 0 個の場合に真を返さないが、後方互換性のためにこの挙動は変更せず、
+                * _stale を用いて削除判定を行う。
+                */
+            _stale: boolean;
             _modifiedHandler: () => void;
             _destroyedHandler: () => boolean;
             /**
@@ -232,6 +238,11 @@ declare module '@akashic-extension/akashic-timeline/Tween' {
                 */
             isFinished(): boolean;
             /**
+                * アニメーションが削除可能かどうかを返す。
+                * 通常、ゲーム開発者がこのメソッドを呼び出す必要はない。
+                */
+            shouldRemove(): boolean;
+            /**
                 * アニメーションを実行する。
                 * @param delta 前フレームからの経過時間
                 */
@@ -246,14 +257,13 @@ declare module '@akashic-extension/akashic-timeline/Tween' {
                 */
             deserializeState(serializedState: TweenStateSerialization): void;
     }
-    export = Tween;
 }
 
 declare module '@akashic-extension/akashic-timeline/TweenOption' {
     /**
         * Tweenに指定するオプション。
         */
-    interface TweenOption {
+    export interface TweenOption {
             /**
                 * ループ実行するかどうかを指定する。
                 * `false`を指定した場合、全アクションが終了後、`Tween`は`Timeline`から削除される。
@@ -273,7 +283,6 @@ declare module '@akashic-extension/akashic-timeline/TweenOption' {
                 */
             destroyed?: () => boolean;
     }
-    export = TweenOption;
 }
 
 declare module '@akashic-extension/akashic-timeline/Easing' {
@@ -281,7 +290,7 @@ declare module '@akashic-extension/akashic-timeline/Easing' {
         * Easing関数群。
         * 参考: http://gizma.com/easing/
         */
-    module Easing {
+    export module Easing {
             /**
                 * 入力値をlinearした結果の現在位置を返す。
                 * @param t 経過時間
@@ -454,13 +463,28 @@ declare module '@akashic-extension/akashic-timeline/Easing' {
                 * @param d 所要時間
                 */
             function easeInOutCirc(t: number, b: number, c: number, d: number): number;
+            /**
+                * 入力値を easeInOutBack した結果の現在位置を返す。
+                * @param t 経過時間
+                * @param b 開始位置
+                * @param c 終了位置
+                * @param d 所要時間
+                */
+            function easeInOutBack(t: number, b: number, c: number, d: number): number;
+            /**
+                * 入力値を easeOutBounce した結果の現在位置を返す。
+                * @param t 経過時間
+                * @param b 開始位置
+                * @param c 終了位置
+                * @param d 所要時間
+                */
+            function easeOutBounce(t: number, b: number, c: number, d: number): number;
     }
-    export = Easing;
 }
 
 declare module '@akashic-extension/akashic-timeline/TweenStateSerialization' {
-    import ActionType = require("@akashic-extension/akashic-timeline/ActionType");
-    interface TweenStateSerialization {
+    import { ActionType } from "@akashic-extension/akashic-timeline/ActionType";
+    export interface TweenStateSerialization {
         _stepIndex: number;
         _initialProp: any;
         _steps: {
@@ -475,16 +499,14 @@ declare module '@akashic-extension/akashic-timeline/TweenStateSerialization' {
             finished: boolean;
         }[][];
     }
-    export = TweenStateSerialization;
 }
 
 declare module '@akashic-extension/akashic-timeline/EasingType' {
-    type EasingType = (t: number, b: number, c: number, d: number) => number;
-    export = EasingType;
+    export type EasingType = (t: number, b: number, c: number, d: number) => number;
 }
 
 declare module '@akashic-extension/akashic-timeline/ActionType' {
-    enum ActionType {
+    export enum ActionType {
         Wait = 0,
         Call = 1,
         TweenTo = 2,
@@ -493,6 +515,5 @@ declare module '@akashic-extension/akashic-timeline/ActionType' {
         Cue = 5,
         Every = 6
     }
-    export = ActionType;
 }
 

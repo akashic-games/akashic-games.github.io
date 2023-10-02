@@ -1,5 +1,5 @@
-/*v3.0.0-beta.0
-
+/*
+v3.1.0
 */
 // Dependencies for this module:
 //   ../typings/box2dweb.d.ts
@@ -8,13 +8,13 @@ declare module '@akashic-extension/akashic-box2d' {
     import * as Box2DWeb from "box2dweb";
     export * from "@akashic-extension/akashic-box2d/Box2D";
     export * from "@akashic-extension/akashic-box2d/ContactManager";
-    export * from "@akashic-extension/akashic-box2d/parateters";
+    export * from "@akashic-extension/akashic-box2d/parameters";
     export { Box2DWeb };
 }
 
 declare module '@akashic-extension/akashic-box2d/Box2D' {
     import * as box2dweb from "box2dweb";
-    import { EBody, Box2DFixtureDef, Box2DBodyDef } from "@akashic-extension/akashic-box2d/parateters";
+    import { EBody, Box2DFixtureDef, Box2DBodyDef } from "@akashic-extension/akashic-box2d/parameters";
     /**
         * `Box2D` のインスタンス生成時に指定するパラメータ。
         */
@@ -205,7 +205,7 @@ declare module '@akashic-extension/akashic-box2d/ContactManager' {
     }
 }
 
-declare module '@akashic-extension/akashic-box2d/parateters' {
+declare module '@akashic-extension/akashic-box2d/parameters' {
     import * as box2dweb from "box2dweb";
     /**
         * ボディの定義。
@@ -348,7 +348,7 @@ declare module '@akashic-extension/akashic-box2d/' {
     import * as Box2DWeb from "box2dweb";
     export * from "@akashic-extension/akashic-box2d/Box2D";
     export * from "@akashic-extension/akashic-box2d/ContactManager";
-    export * from "@akashic-extension/akashic-box2d/parateters";
+    export * from "@akashic-extension/akashic-box2d/parameters";
     export { Box2DWeb };
 }
 
