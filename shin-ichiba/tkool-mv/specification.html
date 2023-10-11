@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>仕様・詳細情報</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0369b419">
-<link rel="stylesheet" href="/css/header.css?0369b419">
-<link rel="stylesheet" href="/css/footer.css?0369b419">
+<link rel="stylesheet" href="/css/common.css?03f27623">
+<link rel="stylesheet" href="/css/header.css?03f27623">
+<link rel="stylesheet" href="/css/footer.css?03f27623">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0369b419">
+<link rel="stylesheet" href="/css/akashic-document.css?03f27623">
 
-<link rel="stylesheet" href="/css/railscasts.css?0369b419">
+<link rel="stylesheet" href="/css/railscasts.css?03f27623">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0369b419"></script>
+<script src="/lib/common.js?03f27623"></script>
 
 
 
@@ -94,6 +94,7 @@
 				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
 				<li><a href="/demo/?title=demo-tile">タイル</a></li>
 				<li><a href="/demo/?title=svg-sample">SVGサンプル</a></li>
+				<li><a href="/demo/?title=point-event-button">タッチイベントのボタン確認</a></li>
 				<li><a href="/demo/?title=label-sample">ラベル</a></li>
 				<li><a href="/demo/?title=box2d-sample">2D 物理演算</a></li>
 				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
@@ -351,7 +352,6 @@
 <li>ニコ生ゲームのサイズ上限のため (<a href="/shin-ichiba/tkool-mv/exchange-to-nicolive-game.html#size-limit-note">詳細</a>)</li>
 </ul>
 </li>
-<li>画像の色相・文字色の変更</li>
 <li>音声のシーク再生</li>
 <li>音声のピッチ・位相の変更</li>
 <li>セーブ・ロード機能</li>
@@ -360,10 +360,6 @@
 <li>Window.png によるウィンドウデザインの一部カスタマイズ</li>
 <li>キーボード入力</li>
 <li>フォントの変更 (ブラウザ依存となります)</li>
-<li>フォントサイズの自動調整<ul>
-<li>例えばタイトルが長すぎる場合、タイトル画面でタイトルが見切れてしまいます</li>
-</ul>
-</li>
 </ul>
 <blockquote>
 <p>未対応機能は今後対応を進めていきます。Akashic Engine の機能やニコニコ生放送という実行環境の制約から、一部の機能のサポートは予定されていません。</p>
@@ -394,10 +390,12 @@
 <ul>
 <li>タイトル画面のメニューを非表示</li>
 <li>タイトル画面から一定時間でニューゲームを開始</li>
-<li>タイマーを始動する時、時間を強制的にニコ生ゲームの実行時間に設定</li>
+<li>タイマーを始動する時、時間を強制的にニコ生ゲームの実行時間に設定 (無効化可能)</li>
 <li>タイマー表示中のメニューを禁止 (無効化可能)</li>
 <li>メニューを禁止しない場合、メニュー画面の「ゲーム終了」を非表示</li>
 <li>特定の番号の変数に格納された数字を、ゲーム終了時に「得点」として集計</li>
+<li>「得点」をゲーム MAP 画面上に表示</li>
+<li>全体音量の設定 (ニコ生環境での実行時のみ)</li>
 </ul>
 <p>このプラグインは、 <strong>タイトル画面のメニューを非表示</strong> にします。
 また一定時間で自動的にニューゲームを開始します。
@@ -405,10 +403,16 @@
 <p>このプラグインは、 <strong>タイマーの時間を強制的にニコ生ゲームの実行時間に上書き</strong> します。
 これにより、ニューゲームの開始直後にタイマーを始動させることで、ゲーム画面に残り時間を表示できます。
 RPG ツクール MV の通常のタイマー機能では固定の時間しか選べないため、ニコ生ゲームの残り時間 (必ずしも一定でない) を表示できるよう、強制的に時間を上書きしています。
+ただし後述のパラメータ <code>forceNamagameTimer</code> を <code>&quot;0&quot;</code> にすることで無効化できます。
 これは暫定的な仕様です。将来的には、プラグインコマンドで「ニコ生ゲームの時間でタイマーを始動する」機能を提供する予定です。</p>
 <p>またこのプラグインはデフォルトで <strong>タイマー表示中のメニュー表示を禁止</strong> します。
 これは後述のパラメータ <code>prohibitMenu</code> を <code>&quot;0&quot;</code> にすることで無効化できます。
 RPG ツクール MV のタイマーは、メニューを開いている間止まってしまうため、ニコ生ゲームのカウントダウンに使うと相性が悪いためです。</p>
+<p>以下の画像のようにデフォルトで<strong>現在の「得点」をゲーム MAP 上に表示</strong>します。
+これは後述のパラメータ <code>showScore</code> を <code>&quot;0&quot;</code> にすることで無効化できます。
+表示ウィンドウのサイズや位置については、<code>scoreWidth</code>, <code>scoreHeight</code>, <code>svoreX</code>, <code>scoreY</code> で設定します。
+「得点」の単位はデフォルトだと「pt」になっていますが、<code>scoreUnit</code> で変更可能です。</p>
+<p><img src="/img/shin-ichiba/tkool-mv/namagame-template.png" alt="ニコ生ゲーム用テンプレート"></p>
 <h3>パラメータ</h3>
 <ul>
 <li><code>scoreVariableNumber</code>: スコアとして使用する変数番号。RPG ツクール MV 側では個々で指定した変数をスコアとして利用する必要がある</li>
@@ -416,6 +420,15 @@ RPG ツクール MV のタイマーは、メニューを開いている間止ま
 <li><code>titleTime</code>: タイトル画面を表示する時間</li>
 <li><code>graceTime</code>: ゲーム終了後待機時間</li>
 <li><code>prohibitMenu</code>： タイマー表示中にメニューを禁止するかどうか。1:禁止、0:許可</li>
+<li><code>showScore</code>： 現在のスコアを表示するかどうか。1:表示する、0:表示しない</li>
+<li><code>scoreWidth</code>： スコア表示ウィンドウの横幅</li>
+<li><code>scoreHeight</code>： スコア表示ウィンドウの縦幅</li>
+<li><code>scoreX</code>： スコア表示ウィンドウ左上端の x 座標</li>
+<li><code>scoreY</code>： スコア表示ウィンドウ左上端の y 座標</li>
+<li><code>scoreUnit</code>： スコアの単位</li>
+<li><code>musicVolume</code>： BGM・BGS の全体音量。最小値:0、最大値:100</li>
+<li><code>soundVolume</code>： SE・ME の全体音量。最小値:0、最大値:100</li>
+<li><code>forceNamagameTimer</code>： タイマーの制限時間書き換えを行うかどうか。1:はい、0:いいえ</li>
 </ul>
 <h2>ニコ生ゲームに変換後の game のディレクトリ構造</h2>
 <p>ニコ生ゲームに変換後の <code>game</code> のディレクトリ構造は以下のようになります。</p>

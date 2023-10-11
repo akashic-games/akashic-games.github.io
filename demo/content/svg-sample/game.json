@@ -3,6 +3,7 @@
 	"height": 450,
 	"fps": 60,
 	"main": "./script/main.js",
+	"title": "SVGサンプル",
 	"description": "SVGを利用したサンプルコンテンツです。画面内をドラッグするとSVGで表現された円が出現します。",
 	"assets": {
 		"main": {
