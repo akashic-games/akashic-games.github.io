@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ニコ生ゲームへの変換手順</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?0369b419">
-<link rel="stylesheet" href="/css/header.css?0369b419">
-<link rel="stylesheet" href="/css/footer.css?0369b419">
+<link rel="stylesheet" href="/css/common.css?03f27623">
+<link rel="stylesheet" href="/css/header.css?03f27623">
+<link rel="stylesheet" href="/css/footer.css?03f27623">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?0369b419">
+<link rel="stylesheet" href="/css/akashic-document.css?03f27623">
 
-<link rel="stylesheet" href="/css/railscasts.css?0369b419">
+<link rel="stylesheet" href="/css/railscasts.css?03f27623">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?0369b419"></script>
+<script src="/lib/common.js?03f27623"></script>
 
 
 
@@ -94,6 +94,7 @@
 				<li><a href="/demo/?title=demo-touchevent">タッチイベント</a></li>
 				<li><a href="/demo/?title=demo-tile">タイル</a></li>
 				<li><a href="/demo/?title=svg-sample">SVGサンプル</a></li>
+				<li><a href="/demo/?title=point-event-button">タッチイベントのボタン確認</a></li>
 				<li><a href="/demo/?title=label-sample">ラベル</a></li>
 				<li><a href="/demo/?title=box2d-sample">2D 物理演算</a></li>
 				<li><a href="/demo/?title=animation-showcase">アニメーション制御</a></li>
@@ -356,6 +357,17 @@
 <p>ニコ生ゲームでは利用できない・サポートしていない機能もあります。<a href="/shin-ichiba/tkool-mv/specification#limitations">制限事項・未対応機能</a> を確認してください。</p>
 </blockquote>
 <p><img src="/img/shin-ichiba/tkool-mv/tkoolmv.png" alt="RPG ツクール MV"></p>
+<blockquote>
+<p>ゲーム作り方は通常の PRG ツクール MV と同じです。「新規プロジェクトを作成」してイベントなどを追加してください。
+なお新規プロジェクトの代わりにニコ生ゲーム用の<a href="https://github.com/akashic-contents/zip/releases/download/namagame-template/NamagameTemplate.zip">空のプロジェクトデータ</a>も利用できます。</p>
+<p>このデータは、以下のような特徴を持ちます。</p>
+<ul>
+<li>ニコ生ランキングゲームプラグインを最初から抱えている</li>
+<li>素材は最小限の画像のみ</li>
+<li>プロジェクトの内容はゲーム MAP 上でキャラクターを動かすのみ</li>
+</ul>
+<p><a href="/shin-ichiba/tkool-mv/specification#limitations">ニコ生ゲームには容量制限があります</a>が、デフォルトの RPG ツクール MV プロジェクトだと利用しない画像・音声素材が大量にできてしまうため、容量を自前で削減する必要がありました。このデータではその削減の手間を減らすために最初から不要な素材を削っていて、必要な素材をゲーム開発者が適宜追加する利用法を想定しています。</p>
+</blockquote>
 <h3>ニコ生ランキングゲームプラグインを追加</h3>
 <p>作成したツクール MV ゲームに、キットに含まれる <strong>ニコ生ランキングゲームプラグイン</strong> (<code>AkashicRankingMode</code>) を追加します。</p>
 <ol>
