@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>仕様・詳細情報</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?03f27623">
-<link rel="stylesheet" href="/css/header.css?03f27623">
-<link rel="stylesheet" href="/css/footer.css?03f27623">
+<link rel="stylesheet" href="/css/common.css?03f27623e">
+<link rel="stylesheet" href="/css/header.css?03f27623e">
+<link rel="stylesheet" href="/css/footer.css?03f27623e">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?03f27623">
+<link rel="stylesheet" href="/css/akashic-document.css?03f27623e">
 
-<link rel="stylesheet" href="/css/railscasts.css?03f27623">
+<link rel="stylesheet" href="/css/railscasts.css?03f27623e">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?03f27623"></script>
+<script src="/lib/common.js?03f27623e"></script>
 
 
 
@@ -366,7 +366,11 @@
 </blockquote>
 <p>また次の機能は非サポートです。</p>
 <ul>
-<li>ニコ生ランキングプラグイン以外のプラグイン</li>
+<li>以下のプラグイン以外のプラグイン<ul>
+<li>ニコ生ランキングプラグイン</li>
+<li><a href="https://triacontane.blogspot.com/2015/11/blog-post_23.html">ピクチャのボタン化プラグイン</a></li>
+</ul>
+</li>
 <li>一部イベントなどの「スクリプト」による指定</li>
 </ul>
 <p>これらは RPG ツクール MV 標準のプログラムに強く依存した機能であるためです。
@@ -429,6 +433,34 @@ RPG ツクール MV のタイマーは、メニューを開いている間止ま
 <li><code>musicVolume</code>： BGM・BGS の全体音量。最小値:0、最大値:100</li>
 <li><code>soundVolume</code>： SE・ME の全体音量。最小値:0、最大値:100</li>
 <li><code>forceNamagameTimer</code>： タイマーの制限時間書き換えを行うかどうか。1:はい、0:いいえ</li>
+</ul>
+
+			<h2>
+				<a name="picture-call-common" class="anchor" href="#picture-call-common">
+					<span class="header-link">#</span>
+				</a>
+				 ピクチャのボタン化プラグイン
+			</h2><p>RPG ツクール MV ニコ生ゲーム化キットは<a href="https://triacontane.blogspot.com/2015/11/blog-post_23.html">ピクチャのボタン化プラグイン</a> <strong>Version 1.14.5</strong> (2023 年 11 月 8 日時点の最新版)に対応しています。ただし、他のバージョンで動作する保証はありません。</p>
+<p>また、Akashic Engine 単体ではマウスホバーの検出ができないため、プラグインコマンド[<code>P_CALL_CE</code>]でマウスホバーに関する以下のトリガーには対応していません。</p>
+<ul>
+<li>4: マウスをピクチャに重ねる</li>
+<li>5: マウスをピクチャから放す</li>
+<li>11: マウスをピクチャ内で移動する</li>
+</ul>
+<h3>導入方法</h3>
+<h4>新規導入の場合</h4>
+<ul>
+<li>RPG ツクール MV で作成しているゲームディレクトリの <code>js</code> 下に、ピクチャのボタン化プラグインファイル <code>PictureCallCommon.js</code> をコピーする<ul>
+<li>RPG ツクール MV のゲームディレクトリは、Windows の場合デフォルトだと <code>C:\Users\〇〇\Documents\Games</code>(〇〇はユーザー名)下に配置されている</li>
+<li><code>PictureCallCommon.js</code> は <code>tkoolmv-namagame-kit/plugins</code> に配置されている</li>
+</ul>
+</li>
+<li>RPG ツクール MV の [ツール] - [プラグイン管理] で プラグイン画面を開き、<code>PictureCallCommon</code> プラグインの状態を ON にすることで有効にする</li>
+</ul>
+<h4>既に導入済みの場合</h4>
+<ul>
+<li>RPG ツクール MV で作成しているゲームディレクトリの <code>js</code> 下に、<code>PictureCallCommon.js</code> を <strong>Version 1.14.5</strong> のソースコードで置き換える</li>
+<li>RPG ツクール MV 上とニコ生環境で問題なく動作することを確認する</li>
 </ul>
 <h2>ニコ生ゲームに変換後の game のディレクトリ構造</h2>
 <p>ニコ生ゲームに変換後の <code>game</code> のディレクトリ構造は以下のようになります。</p>

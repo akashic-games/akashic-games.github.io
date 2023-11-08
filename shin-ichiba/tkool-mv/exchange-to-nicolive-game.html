@@ -7,18 +7,18 @@
 <meta name="theme-color" content="#0F1F26">
 <title>ニコ生ゲームへの変換手順</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
-<link rel="stylesheet" href="/css/common.css?03f27623">
-<link rel="stylesheet" href="/css/header.css?03f27623">
-<link rel="stylesheet" href="/css/footer.css?03f27623">
+<link rel="stylesheet" href="/css/common.css?03f27623e">
+<link rel="stylesheet" href="/css/header.css?03f27623e">
+<link rel="stylesheet" href="/css/footer.css?03f27623e">
 
 
-<link rel="stylesheet" href="/css/akashic-document.css?03f27623">
+<link rel="stylesheet" href="/css/akashic-document.css?03f27623e">
 
-<link rel="stylesheet" href="/css/railscasts.css?03f27623">
+<link rel="stylesheet" href="/css/railscasts.css?03f27623e">
 
 
 <script src="/lib/jquery-3.2.1.min.js"></script>
-<script src="/lib/common.js?03f27623"></script>
+<script src="/lib/common.js?03f27623e"></script>
 
 
 
@@ -336,7 +336,7 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>ニコ生ゲームへの変換手順</h1>
-<p><a href="/zip/shin-ichiba/tkool-mv/tkoolmv-namagame-kit-0.1.12.zip">RPG ツクール MV ニコ生ゲーム化キット</a>を用いて、『RPG ツクール MV』で作成されたゲームをニコ生ゲームに変換することができます。</p>
+<p><a href="/zip/shin-ichiba/tkool-mv/tkoolmv-namagame-kit-0.1.13.zip">RPG ツクール MV ニコ生ゲーム化キット</a>を用いて、『RPG ツクール MV』で作成されたゲームをニコ生ゲームに変換することができます。</p>
 
 			<h2>
 				<a name="procedure" class="anchor" href="#procedure">
@@ -344,7 +344,7 @@
 				</a>
 				 ニコ生ゲーム化の手順
 			</h2><h3>RPG ツクール MV ニコ生ゲーム化キットのダウンロード</h3>
-<p><a href="/zip/shin-ichiba/tkool-mv/tkoolmv-namagame-kit-0.1.12.zip">RPG ツクール MV ニコ生ゲーム化キット</a> をダウンロードして展開します。</p>
+<p><a href="/zip/shin-ichiba/tkool-mv/tkoolmv-namagame-kit-0.1.13.zip">RPG ツクール MV ニコ生ゲーム化キット</a> をダウンロードして展開します。</p>
 <p>キットには game, plugins フォルダと README.html が含まれています。</p>
 <p><img src="/img/shin-ichiba/tkool-mv/tkool-namagame-kit.png" alt="RPG ツクール MV ニコ生ゲーム化キット"></p>
 <h3>RPG ツクール MV でゲームを作成</h3>
@@ -438,16 +438,23 @@ RPG ツクール MV から変換したゲームでは、画像や音声ファイ
 [
 {&quot;name&quot;:&quot;Community_Basic&quot;, ... },
 {&quot;name&quot;:&quot;MadeWithMv&quot;, ... },
-{&quot;name&quot;:&quot;AkashicRankingMode&quot;, ...}
+{&quot;name&quot;:&quot;AkashicRankingMode&quot;, ...},
+...
 ];
 </code></pre>
-<p>この中から <code>&quot;name&quot;:&quot;Community_Basic&quot;</code> のオブジェクトと <code>&quot;name&quot;:&quot;AkashicRankingMode&quot;</code> のオブジェクトの内容をコピーして、<code>game</code> フォルダの <code>text/Plugins.json</code> の内容を削除後、以下のように貼り付けします。</p>
+<p>RPG ツクール MV ニコ生ゲームキットは現在以下のプラグインに対応しています。</p>
+<ul>
+<li>&quot;AkashicRankingMode&quot;</li>
+<li>&quot;Community_Basic&quot;</li>
+<li><a href="https://triacontane.blogspot.com/2015/11/blog-post_23.html">&quot;PictureCallCommon&quot;</a></li>
+</ul>
+<p>該当する利用プラグインのオブジェクトを全てコピーして、<code>game</code> フォルダの <code>text/Plugins.json</code> の内容を削除後、以下のように貼り付けします。</p>
 <pre><code class="language-json">[
   {&quot;name&quot;:&quot;Community_Basic&quot;, ... },
   {&quot;name&quot;:&quot;AkashicRankingMode&quot;, ...}
 ]
 </code></pre>
-<p>この作業により、RPG ツクールで設定した Community_Basic プラグインと AkashicRankingMode プラグインの内容がニコ生ゲームにも反映されるようになります。
+<p>この作業により、RPG ツクールで設定したプラグインの内容がニコ生ゲームにも反映されるようになります。
 ただし、Community_Basic プラグインについては <code>screenWidth</code> と <code>screenHeight</code> 以外のパラメータはニコ生ゲームで使われません。</p>
 <h3>game フォルダ内の game.json の補完</h3>
 <p>Web ページ <a href="/shin-ichiba/tkool-mv/gamejson-helper">game.json 生成ツール</a> で game.json を生成してダウンロードします。</p>
