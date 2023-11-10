@@ -5,7 +5,7 @@
 <meta name="viewport"    content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
 <meta name="description" content="Akashic EngineはJavaScriptで動作する、無償利用が可能なマルチプラットフォーム対応ゲーム開発エンジンです">
 <meta name="theme-color" content="#0F1F26">
-<title>回転・拡大の基準点を変える</title>
+<title>シーンに紐づけて情報を保持する</title>
 <link rel="icon"       href="/favicon.ico" type="image/vnd.microsoft.icon">
 <link rel="stylesheet" href="/css/common.css?03f27623e">
 <link rel="stylesheet" href="/css/header.css?03f27623e">
@@ -140,7 +140,7 @@
 	
 	
 	<label class="accordion-label" for="accordion_state_0">描画</label>
-	<input type="checkbox" class="accordion-state" id="accordion_state_0" ></input>
+	<input type="checkbox" class="accordion-state" id="accordion_state_0" checked></input>
 	<ul>
 		
 			<li>
@@ -175,7 +175,7 @@
 		
 			<li>
 				
-					<b>回転・拡大の基準点を変える</b>
+					<a href="../drawing/rotate-anchor.html">回転・拡大の基準点を変える</a>
 				
 			</li>
 		
@@ -382,7 +382,7 @@
 	
 	
 	<label class="accordion-label" for="accordion_state_4">ゲームロジック</label>
-	<input type="checkbox" class="accordion-state" id="accordion_state_4" checked></input>
+	<input type="checkbox" class="accordion-state" id="accordion_state_4" ></input>
 	<ul>
 		
 			<li>
@@ -453,7 +453,7 @@
 		
 			<li>
 				
-					<a href="../logic/scene-vars.html">シーンに紐づけて情報を保持したい</a>
+					<b>シーンに紐づけて情報を保持したい</b>
 				
 			</li>
 		
@@ -611,57 +611,24 @@
 		</div>
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
-				<h1>回転・拡大の基準点を変える</h1>
-<p>エンティティは <code>anchorX</code>, <code>anchorY</code> プロパティで拡大・回転の基準位置を変更することができます。</p>
+				<h1>シーンに紐づけて情報を保持する</h1>
+<p>シーンに紐づけて情報を保持するには、 <code>g.Scene#vars</code> を利用します。</p>
 <h2>凡例</h2>
-<pre><code class="language-javascript">var sprite = new g.Sprite({
-  ...,         // その他のプロパティ
-  anchorX: 1.0, // 1.0 でエンティティの右端
-  anchorY: 1.0 // 1.0 でエンティティの下端
-});
+<pre><code class="language-javascript">const scene = new g.Scene({...});
+// value に値を保持
+scene.vars.value = 100;
 </code></pre>
-<pre><code class="language-javascript">sprite.anchorX = 0.0; // 0.0 でエンティティの左端
-sprite.anchorY = 0.0; // 0.0 でエンティティの上端
-sprite.modified(); // modified() で表示に反映
-</code></pre>
-<p><a href="./scale.html">拡大</a>・<a href="./rotate.html">回転</a>は、デフォルトではエンティティの左上端を基準に行われます。</p>
-<h2>利用例</h2>
-<p>次のコンテンツは、画像の右下端を基準に配置されます。</p>
-<iframe src="/playground/#/snippets/eyJ0eXBlIjoiZ2FtZUpzb25VcmkiLCJ1cmkiOiIvc25pcHBldHMvcmV2ZXJzZS1yZWZlcmVuY2UvZHJhd2luZy9yb3RhdGUtYW5jaG9yL2dhbWUuanNvbiJ9" width="600" height="400"></iframe>
-
+<p>ゲーム全体で情報を保持する場合は、<a href="./game-vars.html"><code>g.game.vars</code></a>を利用してください。</p>
 <h2>詳細</h2>
-<p>エンティティにアンカーポイントを指定することで、エンティティの回転・拡大の基準位置を設定できます。アンカーポイントは <code>anchorX</code>, <code>anchorY</code> プロパティで与えることができます。</p>
-<p><code>anchorX</code>, <code>anchorY</code> は <code>0.0</code> がエンティティの左端・上端を、 <code>1.0</code> がエンティティの右端・下端を表し、 初期値は <code>0.0</code> となります。</p>
-<p>下記のコードでは、生成した <code>Sprite</code> は 中心を基準に 45 度回転した状態で描画されます。</p>
-<pre><code class="language-javascript">var sprite = new g.Sprite({
-  scene: scene, // シーン scene があるものとします
-  src: scene.asset.getImageById(&quot;player&quot;), // アセットID &quot;player&quot; が画像アセットだとします
-  x: 100,
-  y: 100,
-  angle: 45,
-  anchorX: 0.5,
-  anchorY: 0.5
-});
-
-scene.append(sprite);
-</code></pre>
-<p>生成後のエンティティのアンカーポイントは、 <code>anchorX</code>, <code>anchorY</code> プロパティで参照できます。</p>
-<pre><code class="language-javascript">sprite.anchorX; // ==&gt; 0.5
-sprite.anchorY; // ==&gt; 0.5
-</code></pre>
-<p><code>anchorX</code>, <code>anchorY</code> プロパティに代入することで、アンカーポイントを変更できます。表示への反映には <code>modified()</code> メソッドを呼び出す必要があります。</p>
-<pre><code class="language-javascript">sprite.anchorY = 0.0; // 上端 を基準位置にする
-sprite.modified(); // modified() で表示に反映
-</code></pre>
+<p><code>g.Scene#vars</code> はゲームエンジンのロジックからは参照されず、ゲーム開発者は任意の目的で使用できます。初期値は空のオブジェクトです。<code>g.Scene#vars</code> に保持した情報は <code>g.Scene#destroy()</code> 時に破棄されます。</p>
 <h2>関連情報</h2>
 <ul>
-<li><a href="/tutorial/v3/scale-anchor.html#anchor">チュートリアル</a></li>
-<li><a href="/akashic-engine/v3/classes/E.html#anchorX">API リファレンス</a></li>
+<li><a href="/akashic-engine/v3/classes/Scene.html#vars">API リファレンス</a></li>
 </ul>
 <div class="navi-center">
-<a href="./scale.html">前 (拡大する)</a>
+<a href="./game-vars.html">前 (ゲームに紐づけて情報を保持する)</a>
  | <a href="../">目次</a>
- | <a href="./inversion.html">次 (反転する)</a>
+ | <a href="../setting/game-size.html">次 (画面サイズを変える)</a>
 </div>
 
 			</div>
