@@ -369,6 +369,7 @@
 <li>以下のプラグイン以外のプラグイン<ul>
 <li>ニコ生ランキングプラグイン</li>
 <li><a href="https://triacontane.blogspot.com/2015/11/blog-post_23.html">ピクチャのボタン化プラグイン</a></li>
+<li><a href="https://triacontane.blogspot.com/2015/12/rpgmv-rpgmv-dtext-1-rpgmv-dtext-dtext.html">動的文字列ピクチャ生成プラグイン</a></li>
 </ul>
 </li>
 <li>一部イベントなどの「スクリプト」による指定</li>
@@ -460,6 +461,29 @@ RPG ツクール MV のタイマーは、メニューを開いている間止ま
 <h4>既に導入済みの場合</h4>
 <ul>
 <li>RPG ツクール MV で作成しているゲームディレクトリの <code>js</code> 下に、<code>PictureCallCommon.js</code> を <strong>Version 1.14.5</strong> のソースコードで置き換える</li>
+<li>RPG ツクール MV 上とニコ生環境で問題なく動作することを確認する</li>
+</ul>
+
+			<h2>
+				<a name="DTextPicture" class="anchor" href="#DTextPicture">
+					<span class="header-link">#</span>
+				</a>
+				 動的文字列ピクチャ生成プラグイン
+			</h2><p>RPG ツクール MV ニコ生ゲーム化キットは<a href="https://triacontane.blogspot.com/2015/12/rpgmv-rpgmv-dtext-1-rpgmv-dtext-dtext.html">動的文字列ピクチャ生成プラグイン</a> <strong>Version 1.20.5</strong> (2023 年 11 月 20 日時点の最新版)に対応しています。ただし、他のバージョンで動作する保証はありません。</p>
+<p>また、制限事項として font の bold 指定はサポートしていません。</p>
+<h3>導入方法</h3>
+<h4>新規導入の場合</h4>
+<ul>
+<li>RPG ツクール MV で作成しているゲームディレクトリの <code>js</code> 下に、ピクチャのボタン化プラグインファイル <code>DTextPicture.js</code> をコピーする<ul>
+<li>RPG ツクール MV のゲームディレクトリは、Windows の場合デフォルトだと <code>C:\Users\〇〇\Documents\Games</code>(〇〇はユーザー名)下に配置されている</li>
+<li><code>DTextPicture.js</code> は <code>tkoolmv-namagame-kit/plugins</code> に配置されている</li>
+</ul>
+</li>
+<li>RPG ツクール MV の [ツール] - [プラグイン管理] で プラグイン画面を開き、<code>DTextPicture</code> プラグインの状態を ON にすることで有効にする</li>
+</ul>
+<h4>既に導入済みの場合</h4>
+<ul>
+<li>RPG ツクール MV で作成しているゲームディレクトリの <code>js</code> 下に、<code>DTextPicture.js</code> を <strong>Version 1.20.5</strong> のソースコードで置き換える</li>
 <li>RPG ツクール MV 上とニコ生環境で問題なく動作することを確認する</li>
 </ul>
 <h2>ニコ生ゲームに変換後の game のディレクトリ構造</h2>
