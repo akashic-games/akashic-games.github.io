@@ -240,7 +240,7 @@ akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli 利用ガイド<
 <p><strong>アセット定義</strong> は、オブジェクトであり、少なくとも以下の値を持つことができます:</p>
 <ul>
 <li>type (必須)<ul>
-<li>次の文字列のいずれか: &quot;image&quot;, &quot;audio&quot;, &quot;text&quot;, &quot;script&quot;</li>
+<li>次の文字列のいずれか: &quot;image&quot;, &quot;audio&quot;, &quot;text&quot;, &quot;script&quot;, &quot;vector-image&quot;, &quot;binary&quot;</li>
 <li>アセットの種類</li>
 </ul>
 </li>
@@ -271,14 +271,55 @@ akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli 利用ガイド<
 <li>画像の高さ(ピクセル)</li>
 </ul>
 </li>
+<li>プロパティ: slice<ul>
+<li>オプジェクト</li>
+<li>切り出す領域。&quot;{x: 数値、 y: 数値, width: 数値, height: 数値}&quot; 指定された場合、画像ファイルのこの領域だけを画像アセットとして使う<ul>
+<li>数値配列で　[x, y, width, height] でも指定できる</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>制約: path の拡張子は &quot;.png&quot;、&quot;.jpg&quot; または &quot;.jpeg&quot; でなければならない</li>
 </ul>
 </li>
 <li>&quot;audio&quot;<ul>
-<li>プロパティ: systemId<ul>
+<li>プロパティ: systemId (必須)<ul>
 <li>文字列</li>
 <li>このアセットの system (本文書では詳細割愛)</li>
 <li>省略された場合、 <code>g.Game#defaultAudioSystemId</code> の値 (<code>defaultAudioSystemId</code> の初期値は &quot;sound&quot;)</li>
+</ul>
+</li>
+<li>プロパティ: duration (必須)<ul>
+<li>数値</li>
+<li>再生時間。単位はミリ秒</li>
+</ul>
+</li>
+<li>プロパティ: loop<ul>
+<li>真理値</li>
+<li>ループ再生を行うか。省略された場合、systemId が &quot;music&quot; の場合は真、&quot;sound&quot; の場合は偽となるため、ゲーム開発者はこの値を変更する必要はない</li>
+</ul>
+</li>
+<li>プロパティ: hint<ul>
+<li>オブジェクト</li>
+<li>プロパティ: streaming<ul>
+<li>真理値</li>
+<li>ストリーミング再生が適しているアセットであるか否か</li>
+</ul>
+</li>
+<li>プロパティ: extensions<ul>
+<li>配列</li>
+<li>ファイルの拡張子の配列<ul>
+<li>省略された場合は [&quot;.ogg&quot;, &quot;.aac&quot;] となる</li>
+<li>&quot;.aac&quot; の代わりに &quot;.m4a&quot; を利用する場合はここで指定する必要がある</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>プロパティ: offset<ul>
+<li>数値</li>
+<li>再生開始位置。単位はミリ秒</li>
 </ul>
 </li>
 <li>制約: path はファイルのパス文字列から拡張子を取り除いたものでなければならない</li>
@@ -286,7 +327,30 @@ akashic-cli の詳細は <a href="akashic-cli.html">akashic-cli 利用ガイド<
 </ul>
 </li>
 <li>&quot;script&quot;<ul>
+<li>プロパティ: preload<ul>
+<li>真理値</li>
+<li>他のアセットよりも優先して読み込むかどうか。真であるアセットは、エントリポイントよりも先行して読み込まれる</li>
+</ul>
+</li>
+<li>プロパティ: exports<ul>
+<li>配列</li>
+<li>このアセットが公開する変数名の配列。指定された場合、 module.exports の一部を上書きする</li>
+</ul>
+</li>
 <li>制約: path の拡張子は &quot;.js&quot; でなければならない</li>
+</ul>
+</li>
+<li>&quot;vector-image”<ul>
+<li>プロパティ: width (必須)<ul>
+<li>数値</li>
+<li>画像の幅(ピクセル)</li>
+</ul>
+</li>
+<li>プロパティ: height (必須)<ul>
+<li>数値</li>
+<li>画像の高さ(ピクセル)</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -384,12 +448,18 @@ akashic-engine&#64;3.4.0 では <code>&quot;fast-forward&quot;</code>, <code>&qu
 <td>オブジェクト</td>
 <td>非推奨。ニコ生ゲームとして登録する場合の情報としては、 `"nicolive"` を利用してください。この値は後方互換性のために残されていますが、非推奨です。 `"nicolive"` と両方指定されている場合、無視されます。</td>
 </tr>
+<tr>
+<td><code>"external"</code></td>
+<td>オブジェクト</td>
+<td>プラグイン等の外部 API を利用する場合に記述します。詳細は<a href="/guide/sandbox-config.html#client">sandbox.config.js の仕様</a>を参照してください。
+</td>
+</tr>
 </tbody>
 </table>
 </div>
 
 <pre><code class="language-json">  &quot;environment&quot;: {
-    &quot;sandbox-runtime&quot;: &quot;2&quot;
+    &quot;sandbox-runtime&quot;: &quot;3&quot;
   }
 </code></pre>
 <p><code>&quot;sandbox-runtime&quot;</code> の値は、 <code>akashic export html</code> でエンジンをバンドルした HTML を出力する際にも参照されます。</p>
@@ -434,7 +504,12 @@ akashic-engine&#64;3.4.0 では <code>&quot;fast-forward&quot;</code>, <code>&qu
     },
     &quot;bgm&quot;: {
       &quot;type&quot;: &quot;audio&quot;,
-      &quot;path&quot;: &quot;audio/bgm&quot;
+      &quot;path&quot;: &quot;audio/bgm&quot;,
+      &quot;systemId&quot;: &quot;sound&quot;,
+      &quot;duration&quot;: 1500,
+      &quot;hint&quot;: {
+        &quot;extensions&quot;: [&quot;.aac&quot;, &quot;.ogg&quot;]
+      }
     }
   },
   &quot;globalScripts&quot;: [
@@ -445,7 +520,7 @@ akashic-engine&#64;3.4.0 では <code>&quot;fast-forward&quot;</code>, <code>&qu
     &quot;node_modules/@akashic-extension/akashic-timeline/package.json&quot;
   ],
   &quot;environment&quot;: {
-    &quot;sandbox-runtime&quot;: &quot;2&quot;
+    &quot;sandbox-runtime&quot;: &quot;3&quot;
   }
 }
 </code></pre>
