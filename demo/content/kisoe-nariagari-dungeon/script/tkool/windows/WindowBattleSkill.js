@@ -19,8 +19,8 @@ exports.Window_BattleSkill = void 0;
 var WindowSkillList_1 = require("./WindowSkillList");
 var Window_BattleSkill = /** @class */ (function (_super) {
     __extends(Window_BattleSkill, _super);
-    function Window_BattleSkill(scene, x, y, width, height) {
-        return _super.call(this, scene, x, y, width, height) || this;
+    function Window_BattleSkill(x, y, width, height) {
+        return _super.call(this, x, y, width, height) || this;
     }
     Window_BattleSkill.prototype.initialize = function (x, y, width, height) {
         _super.prototype.initialize.call(this, x, y, width, height);

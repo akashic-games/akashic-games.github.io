@@ -14,15 +14,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Spriteset_Base = void 0;
 var core_1 = require("../core");
@@ -30,12 +21,12 @@ var DataManager_1 = require("../managers/DataManager");
 var sprites_1 = require("../sprites");
 var Spriteset_Base = /** @class */ (function (_super) {
     __extends(Spriteset_Base, _super);
-    function Spriteset_Base(scene) {
+    function Spriteset_Base() {
         var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
         }
-        return _super.apply(this, __spreadArray([scene], args, false)) || this;
+        return _super.apply(this, args) || this;
     }
     Spriteset_Base.prototype.initialize = function () {
         _super.prototype.initialize.call(this);
@@ -62,9 +53,9 @@ var Spriteset_Base = /** @class */ (function (_super) {
         this.updatePosition();
     };
     Spriteset_Base.prototype.createBaseSprite = function () {
-        this._baseSprite = new core_1.Sprite(this.scene);
+        this._baseSprite = new core_1.Sprite();
         this._baseSprite.setFrame(0, 0, this.width, this.height);
-        this._blackScreen = new core_1.ScreenSprite(this.scene);
+        this._blackScreen = new core_1.ScreenSprite();
         this._blackScreen.opacity = 255;
         this.addChild(this._baseSprite);
         this._baseSprite.addChild(this._blackScreen);
@@ -86,7 +77,7 @@ var Spriteset_Base = /** @class */ (function (_super) {
         // this._baseSprite.filterArea = new Rectangle(-margin, -margin, width, height);
     };
     Spriteset_Base.prototype.createCanvasToneChanger = function () {
-        this._toneSprite = new core_1.ToneSprite(this.scene);
+        this._toneSprite = new core_1.ToneSprite();
         this.addChild(this._toneSprite);
     };
     Spriteset_Base.prototype.createPictures = function () {
@@ -94,20 +85,20 @@ var Spriteset_Base = /** @class */ (function (_super) {
         var height = core_1.Graphics.boxHeight;
         var x = (core_1.Graphics.width - width) / 2;
         var y = (core_1.Graphics.height - height) / 2;
-        this._pictureContainer = new core_1.Sprite(this.scene);
+        this._pictureContainer = new core_1.Sprite();
         this._pictureContainer.setFrame(x, y, width, height);
         for (var i = 1; i <= DataManager_1.$gameScreen.maxPictures(); i++) {
-            this._pictureContainer.addChild(new sprites_1.Sprite_Picture(this.scene, i));
+            this._pictureContainer.addChild(new sprites_1.Sprite_Picture(i));
         }
         this.addChild(this._pictureContainer);
     };
     Spriteset_Base.prototype.createTimer = function () {
-        this._timerSprite = new sprites_1.Sprite_Timer(this.scene);
+        this._timerSprite = new sprites_1.Sprite_Timer();
         this.addChild(this._timerSprite);
     };
     Spriteset_Base.prototype.createScreenSprites = function () {
-        this._flashSprite = new core_1.ScreenSprite(this.scene);
-        this._fadeSprite = new core_1.ScreenSprite(this.scene);
+        this._flashSprite = new core_1.ScreenSprite();
+        this._fadeSprite = new core_1.ScreenSprite();
         this.addChild(this._flashSprite);
         this.addChild(this._fadeSprite);
     };

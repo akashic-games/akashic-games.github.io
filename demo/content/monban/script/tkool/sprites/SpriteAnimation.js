@@ -14,27 +14,18 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Animation = void 0;
 var core_1 = require("../core");
 var managers_1 = require("../managers");
 var Sprite_Animation = /** @class */ (function (_super) {
     __extends(Sprite_Animation, _super);
-    function Sprite_Animation(scene) {
+    function Sprite_Animation() {
         var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
         }
-        return _super.apply(this, __spreadArray([scene], args, false)) || this;
+        return _super.apply(this, args) || this;
         // if (Object.getPrototypeOf(this) === Sprite_Animation.prototype) {
         // 	this.initialize();
         // }
@@ -175,7 +166,7 @@ var Sprite_Animation = /** @class */ (function (_super) {
     Sprite_Animation.prototype.createCellSprites = function () {
         this._cellSprites = [];
         for (var i = 0; i < 16; i++) {
-            var sprite = new core_1.Sprite(this.scene);
+            var sprite = new core_1.Sprite();
             sprite.anchor.x = 0.5;
             sprite.anchor.y = 0.5;
             this._cellSprites.push(sprite);
@@ -183,7 +174,7 @@ var Sprite_Animation = /** @class */ (function (_super) {
         }
     };
     Sprite_Animation.prototype.createScreenFlashSprite = function () {
-        this._screenFlashSprite = new core_1.ScreenSprite(this.scene);
+        this._screenFlashSprite = new core_1.ScreenSprite();
         this.addChild(this._screenFlashSprite);
     };
     Sprite_Animation.prototype.updateMain = function () {

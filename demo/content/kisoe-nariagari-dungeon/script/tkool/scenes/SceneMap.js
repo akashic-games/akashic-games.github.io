@@ -220,7 +220,7 @@ var Scene_Map = /** @class */ (function (_super) {
         this.createAllWindows();
     };
     Scene_Map.prototype.createSpriteset = function () {
-        this._spriteset = new sprites_1.Spriteset_Map(this.scene); // ファイルの要求がある
+        this._spriteset = new sprites_1.Spriteset_Map(); // ファイルの要求がある
         this.addChild(this._spriteset);
     };
     Scene_Map.prototype.createAllWindows = function () {
@@ -228,19 +228,19 @@ var Scene_Map = /** @class */ (function (_super) {
         this.createScrollTextWindow();
     };
     Scene_Map.prototype.createMapNameWindow = function () {
-        this._mapNameWindow = new windows_1.Window_MapName(this.scene);
+        this._mapNameWindow = new windows_1.Window_MapName();
         this.addChild(this._mapNameWindow);
     };
     Scene_Map.prototype.createMessageWindow = function () {
         var _this = this;
-        this._messageWindow = new windows_1.Window_Message(this.scene);
+        this._messageWindow = new windows_1.Window_Message();
         this.addWindow(this._messageWindow);
         this._messageWindow.subWindows().forEach(function (window) {
             _this.addWindow(window);
         });
     };
     Scene_Map.prototype.createScrollTextWindow = function () {
-        this._scrollTextWindow = new windows_1.Window_ScrollText(this.scene);
+        this._scrollTextWindow = new windows_1.Window_ScrollText();
         this.addWindow(this._scrollTextWindow);
     };
     Scene_Map.prototype.updateTransferPlayer = function () {

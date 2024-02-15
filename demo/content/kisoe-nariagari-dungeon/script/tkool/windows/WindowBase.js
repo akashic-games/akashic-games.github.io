@@ -14,15 +14,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_Base = void 0;
 var core_1 = require("../core");
@@ -33,12 +24,12 @@ var textColorMap = {};
 var pendingColor;
 var Window_Base = /** @class */ (function (_super) {
     __extends(Window_Base, _super);
-    function Window_Base(scene) {
+    function Window_Base() {
         var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
         }
-        return _super.apply(this, __spreadArray([scene], args, false)) || this;
+        return _super.apply(this, args) || this;
         // if (Object.getPrototypeOf(this) === Window_Base.prototype) {
         // 	this.initialize(this.x, this.y, this.width, this.height);
         // }
@@ -598,7 +589,7 @@ var Window_Base = /** @class */ (function (_super) {
     };
     Window_Base.prototype.showBackgroundDimmer = function () {
         if (!this._dimmerSprite) {
-            this._dimmerSprite = new core_1.Sprite(this.scene, new core_1.Bitmap(0, 0));
+            this._dimmerSprite = new core_1.Sprite(new core_1.Bitmap(0, 0));
             // this._dimmerSprite.bitmap = new Bitmap(0, 0);
             this.addChildToBack(this._dimmerSprite);
         }

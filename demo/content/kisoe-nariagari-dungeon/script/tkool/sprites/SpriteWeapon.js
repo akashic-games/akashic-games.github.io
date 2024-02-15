@@ -20,8 +20,8 @@ var managers_1 = require("../managers");
 var SpriteBase_1 = require("./SpriteBase");
 var Sprite_Weapon = /** @class */ (function (_super) {
     __extends(Sprite_Weapon, _super);
-    function Sprite_Weapon(scene) {
-        return _super.call(this, scene) || this;
+    function Sprite_Weapon() {
+        return _super.call(this) || this;
     }
     Sprite_Weapon.prototype.initialize = function () {
         _super.prototype.initialize.call(this);

@@ -20,8 +20,8 @@ var DataManager_1 = require("../managers/DataManager");
 var WindowBattleStatus_1 = require("./WindowBattleStatus");
 var Window_BattleActor = /** @class */ (function (_super) {
     __extends(Window_BattleActor, _super);
-    function Window_BattleActor(scene, x, y) {
-        return _super.call(this, scene, x, y) || this;
+    function Window_BattleActor(x, y) {
+        return _super.call(this, x, y) || this;
     }
     Window_BattleActor.prototype.initialize = function (x, y) {
         _super.prototype.initialize.call(this);

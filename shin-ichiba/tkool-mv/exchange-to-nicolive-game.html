@@ -336,7 +336,7 @@
 		<div class="twocol-main">
 			<div class="inner responsive--width--twocol">
 				<h1>ニコ生ゲームへの変換手順</h1>
-<p><a href="/zip/shin-ichiba/tkool-mv/tkoolmv-namagame-kit-1.1.3.zip">RPG ツクール MV ニコ生ゲーム化キット</a>を用いて、『RPG ツクール MV』で作成されたゲームをニコ生ゲームに変換することができます。</p>
+<p><a href="/zip/shin-ichiba/tkool-mv/tkoolmv-namagame-kit-1.2.0.zip">RPG ツクール MV ニコ生ゲーム化キット</a>を用いて、『RPG ツクール MV』で作成されたゲームをニコ生ゲームに変換することができます。</p>
 
 			<h2>
 				<a name="procedure" class="anchor" href="#procedure">
@@ -344,8 +344,8 @@
 				</a>
 				 ニコ生ゲーム化の手順
 			</h2><h3>RPG ツクール MV ニコ生ゲーム化キットのダウンロード</h3>
-<p><a href="/zip/shin-ichiba/tkool-mv/tkoolmv-namagame-kit-1.1.3.zip">RPG ツクール MV ニコ生ゲーム化キット</a> をダウンロードして展開します。</p>
-<p>キットには game, plugins フォルダと README.html が含まれています。</p>
+<p><a href="/zip/shin-ichiba/tkool-mv/tkoolmv-namagame-kit-1.2.0.zip">RPG ツクール MV ニコ生ゲーム化キット</a> をダウンロードして展開します。</p>
+<p>キットには game フォルダ, plugins フォルダ, README.html, tkoolmv-namagame-converter.Setup.x.y.z.exe(RPG ツクール MV ニコ生ゲームコンバーター) が含まれています。</p>
 <p><img src="/img/shin-ichiba/tkool-mv/tkool-namagame-kit.png" alt="RPG ツクール MV ニコ生ゲーム化キット"></p>
 <h3>RPG ツクール MV でゲームを作成</h3>
 <p><a href="https://rpgmakerofficial.com/product/mv/">RPG ツクール MV</a> を用いてゲーム (以降、ツクール MV ゲームと呼びます) を作成します。</p>
@@ -399,80 +399,26 @@
 <li>出力先を選んで「OK」ボタンを押す</li>
 </ol>
 <p><img src="/img/shin-ichiba/tkool-mv/deploy-tkoolgame.png" alt="ツクールMVゲームデプロイ"></p>
-<h3>game フォルダにツクール MV ゲームの画像・音声・テキストファイルを全てコピー</h3>
-<p>上記で展開したキット中のフォルダに、上記で生成したフォルダの画像・音声ファイルをコピーします。</p>
-<ul>
-<li>コピー元: 配布用ファイルの <strong>img</strong>, <strong>audio</strong> フォルダ</li>
-<li>コピー先: キットの game フォルダの中の <strong>assets</strong> フォルダ</li>
-</ul>
-<p><img src="/img/shin-ichiba/tkool-mv/exchange-to-namagame1.png" alt="ニコ生ランキングゲーム変換1"></p>
-<p>同様にテキストファイルもコピーします。</p>
-<ul>
-<li>コピー元: 配布用ファイルの <strong>data フォルダ内の全ファイル</strong></li>
-<li>コピー先: キットの game フォルダの中の <strong>text</strong> フォルダ</li>
-</ul>
-<p><img src="/img/shin-ichiba/tkool-mv/exchange-to-namagame2.png" alt="ニコ生ランキングゲーム変換2"></p>
-<h3>形式変換と軽量化</h3>
-<p>ニコ生ゲームには、zip 圧縮前ゲームの合計サイズが 30 MB 以下でなければならないという制限があります。
-ファイルコピー直後はサイズの条件を満たしていない可能性が非常に高いため、必要に応じて次のような対応を行なってください。</p>
-<ul>
-<li>画像ファイルの圧縮率を上げる</li>
-<li>画像ファイルを減色する</li>
-<li>音声のサンプリングレートなどを下げる</li>
-</ul>
+<h3>RPG ツクール MV ニコ生ゲームコンバーターで変換</h3>
+<p>キット内の tkoolmv-namagame-converter.exe というファイル(以降コンバーターと呼びます)を利用して、上記で作成したツクール MV ゲームをニコ生ゲームに変換します。</p>
 <blockquote>
-<p>CUI ツールのため導入にハードルがありますが、PNG ファイルの軽量化には <a href="https://pngquant.org/">pngquant</a> が強力です。
-また Node.js と FFmpeg の導入が必要ですが、音声ファイルの形式変換には <a href="https://github.com/akashic-games/complete-audio">complete-audio</a> が利用できます。</p>
+<p>コンバーターは Windows 環境向けに試験的に公開しているものです。Windows 以外の環境もしくはコンバーターでの変換がうまくいかない場合は<a href="/shin-ichiba/tkool-mv/exchange-to-nicolive-game-manually">旧来の変換手順</a>をお試しください。</p>
 </blockquote>
+<p>まず、コンバーターを起動します。以下のようなダイアログでネットワークへのアクセスの許可を求められた場合は「許可」を選択してください。動作確認のためにローカルにゲームをホストする処理をコンバーターが行うため許可する必要があります。
+<img src="/img/shin-ichiba/tkool-mv/namagame-converter-dialog.png" alt="RPG ツクール MV ニコ生ゲーム化コンバーターダイアログ">
+起動後、上記で生成した配布用ファイルをコンバーターにドラッグ＆ドロップすると、ニコ生ゲームに変換する処理が行われるので完了するのを待ちます。
+<img src="/img/shin-ichiba/tkool-mv/namagame-converter1.png" alt="RPG ツクール MV ニコ生ゲーム化コンバーター1"></p>
+<p>完了すると以下の画像のようにコンバーター上でゲームの動作確認ができるようになります。
+<img src="/img/shin-ichiba/tkool-mv/namagame-converter2.png" alt="RPG ツクール MV ニコ生ゲーム化コンバーター2"></p>
+<p>「ダウンロード」ボタンで zip 形式の変換済みニコ生ゲームファイルをダウンロードします。</p>
 <blockquote>
-<p><a name="size-limit-note"></a><strong>サイズ制限について</strong></p>
-<p>ニコ生ゲームの合計サイズは、従来 10MB が上限でした。
-RPG ツクール MV ニコ生ゲームキットの公開に合わせ、 この制限は現在 <strong>実験的に 30 MB に引き上げられています</strong> 。
-RPG ツクール MV から変換したゲームでは、画像や音声ファイルなどを限界まで削減・軽量化しないと 10MB に納まらないこと多かったためです。</p>
-<p>ただしニコ生ゲームは「生放送の配信映像と並行してダウンロードされる」性質上、軽ければ軽い方がよいものです。
-<strong>上限に関わらずできるだけ軽量化</strong> していただくことは、プレイ体験のために引き続き重要です。</p>
+<p>ニコ生ゲームには<strong>合計サイズが 30MB まで</strong>という制限があります(<a href="/shin-ichiba/tkool-mv/specification#size-limit-note">詳細はこちら</a>)
+コンバーターではこの制限を満たすため、内部で画像・音声ファイルの軽量化処理を行っています。
+しかし、ファイル数が非常に多いなどの場合、30MB を超える可能性があります。
+コンバーターを利用しても上限を上回る場合は、ファイルを減らす、音声ファイルのビットレートを下げるなど、軽量化処理を自力で行う必要があります。</p>
 </blockquote>
-<h3>ツクール MV ゲームのプラグインの内容を <code>game</code> フォルダの <code>text/Plugins.json</code> に反映</h3>
-<p>ツクール MV ゲームのプラグインの内容は <code>js/plugins.js</code>に以下のように記載されています。</p>
-<pre><code class="language-javascript">var $plugins =
-[
-{&quot;name&quot;:&quot;Community_Basic&quot;, ... },
-{&quot;name&quot;:&quot;MadeWithMv&quot;, ... },
-{&quot;name&quot;:&quot;AkashicRankingMode&quot;, ...},
-...
-];
-</code></pre>
-<p>RPG ツクール MV ニコ生ゲームキットは現在以下のプラグインに対応しています。</p>
-<ul>
-<li>&quot;AkashicRankingMode&quot;</li>
-<li>&quot;Community_Basic&quot;</li>
-<li><a href="https://triacontane.blogspot.com/2015/11/blog-post_23.html">&quot;PictureCallCommon&quot;</a></li>
-<li><a href="https://triacontane.blogspot.com/2015/12/rpgmv-rpgmv-dtext-1-rpgmv-dtext-dtext.html">&quot;DTextPicture&quot;</a></li>
-</ul>
-<p>該当する利用プラグインのオブジェクトを全てコピーして、<code>game</code> フォルダの <code>text/Plugins.json</code> の内容を削除後、以下のように貼り付けします。</p>
-<pre><code class="language-json">[
-  {&quot;name&quot;:&quot;Community_Basic&quot;, ... },
-  {&quot;name&quot;:&quot;AkashicRankingMode&quot;, ...}
-]
-</code></pre>
-<p>この作業により、RPG ツクールで設定したプラグインの内容がニコ生ゲームにも反映されるようになります。
-ただし、Community_Basic プラグインについては <code>screenWidth</code> と <code>screenHeight</code> 以外のパラメータはニコ生ゲームで使われません。</p>
-<h3>game フォルダ内の game.json の補完</h3>
-<p>Web ページ <a href="/shin-ichiba/tkool-mv/gamejson-helper">game.json 生成ツール</a> で game.json を生成してダウンロードします。</p>
-<ol>
-<li>画像・音声ファイルなどをコピーした <strong>game</strong> フォルダを、Web ページの点線の矩形部分にドラッグ＆ドロップ</li>
-<li>画面右側に生成された game.json の内容が表示されるので「ダウンロード」ボタンを押す</li>
-<li>ダウンロードされた game.json を、キットの <strong>game</strong> フォルダにコピー (元のファイルを上書き)</li>
-</ol>
-<p><img src="/img/shin-ichiba/tkool-mv/exchange-to-namagame3.png" alt="game.jsonを生成する手順"></p>
-<blockquote>
-<p>ニコ生ゲーム (Akashic Engine 製 ゲーム) では、ゲームで使う画像や音声ファイルを game.json に記載する必要があります。
-ここまでの手順で追加した画像や音声ファイルの手で記載すると手間が大きいため、これを自動的に行って game.json を生成するのが上の Web ページです。</p>
-</blockquote>
-<p>game.json には 100KB 以下でなければならないというニコ生ゲーム側の制限が存在します。
-100KB を超えてしまう場合は、空白や改行の削除やファイル数の削減などを行なってください。</p>
-<h3>game の zip 圧縮とアップロード</h3>
-<p>game フォルダを再び zip 圧縮して <a href="https://namagame.coe.nicovideo.jp/games/new">ニコ生ゲーム投稿ページ</a>からアップロードしてください。</p>
+<h3>アップロード</h3>
+<p>コンバーターからダウンロードした zip ファイルを <a href="https://namagame.coe.nicovideo.jp/games/new">ニコ生ゲーム投稿ページ</a>からアップロードしてください。</p>
 <p>アップロード方法の詳細については <a href="/shin-ichiba/submit.html">ニコ生ゲームを投稿しよう</a>、投稿後の利用については <a href="/shin-ichiba/play.html">ニコ生ゲームで遊ぼう</a> も参照してください。</p>
 <p><img src="/img/shin-ichiba/tkool-mv/upload-namagame.png" alt="ニコ生ゲームアップロード"></p>
 
@@ -496,7 +442,7 @@ RPG ツクール MV から変換したゲームでは、画像や音声ファイ
 <p>ファイルサイズの制限や、プラグインが非サポートである点 (後述) など、いくつかの制限を除けば技術的には可能です。</p>
 <p>ただし現在のところ「ランキングゲーム」が主な用途のため、視聴者間で競うための「得点」が必要な点や、セーブ機能がない点など、
 一般的な RPG ツクール MV のゲームとは前提条件が異なります。</p>
-<p>ミニゲーム形式のものであれば、簡単な移植でニコ生ゲームとして遊べるかもしれません。</p>
+<p>ミニゲーム形式のものであれば、簡単な移植でニコ生ゲームとして遊べる可能性があります。</p>
 <h3>RPG ツクール MV の既存のプラグインは利用できるか？</h3>
 <p>本キットは、RPG ツクール MV 向けに作られたプラグインをサポートしません。
 ものによっては動作するかもしれませんが、原則非サポートとさせていただきます。</p>
@@ -505,8 +451,7 @@ RPG ツクール MV から変換したゲームでは、画像や音声ファイ
 <h3>ランキングゲーム以外の形式のニコ生ゲームを作成することは可能か？</h3>
 <p>現在はランキングゲームしかサポートしていないため、その他の形式については動作保証はできません。</p>
 <h3>ゲームの解像度を変えることは可能か？</h3>
-<p>可能です。キット中の game.json を開き、その中の <code>&quot;width&quot;</code>, <code>&quot;height&quot;</code> プロパティを変更してください。
-将来的には <code>Community_Basic</code> プラグインでの解像度指定を自動的に取り込めるようにすることを検討中です。</p>
+<p>可能です。ツクール MV ゲームと同様に<code>Community_Basic</code> プラグインで<code>screenWidth</code>と<code>screenHeight</code>を指定することでゲームの解像度を変更することができます。</p>
 <div class="navi-center">
 <a href="./index.html">前 (RPG ツクール MV ニコ生ゲーム化キット)</a>
  | <a href="../index.html">目次</a>

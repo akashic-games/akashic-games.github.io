@@ -20,8 +20,8 @@ var managers_1 = require("../managers");
 var SpriteBase_1 = require("./SpriteBase");
 var Sprite_StateOverlay = /** @class */ (function (_super) {
     __extends(Sprite_StateOverlay, _super);
-    function Sprite_StateOverlay(scene) {
-        return _super.call(this, scene) || this;
+    function Sprite_StateOverlay() {
+        return _super.call(this) || this;
     }
     Sprite_StateOverlay.prototype.initialize = function () {
         _super.prototype.initialize.call(this);

@@ -20,8 +20,8 @@ var core_1 = require("../core");
 var PIXI_1 = require("../PIXI");
 var ScreenSprite = /** @class */ (function (_super) {
     __extends(ScreenSprite, _super);
-    function ScreenSprite(scene, blackOrWhite) {
-        return _super.call(this, scene, blackOrWhite) || this;
+    function ScreenSprite(blackOrWhite) {
+        return _super.call(this, blackOrWhite) || this;
     }
     ScreenSprite.prototype.initialize = function (blackOrWhite) {
         // PIXI.Container.call(this);

@@ -23,8 +23,8 @@ var SpriteBattler_1 = require("./SpriteBattler");
 var SpriteStateIcon_1 = require("./SpriteStateIcon");
 var Sprite_Enemy = /** @class */ (function (_super) {
     __extends(Sprite_Enemy, _super);
-    function Sprite_Enemy(scene, enemy) {
-        return _super.call(this, scene, enemy) || this;
+    function Sprite_Enemy(enemy) {
+        return _super.call(this, enemy) || this;
     }
     Sprite_Enemy.prototype.initialize = function (battler) {
         _super.prototype.initialize.call(this, battler);
@@ -41,7 +41,7 @@ var Sprite_Enemy = /** @class */ (function (_super) {
         this.createStateIconSprite();
     };
     Sprite_Enemy.prototype.createStateIconSprite = function () {
-        this._stateIconSprite = new SpriteStateIcon_1.Sprite_StateIcon(this.scene);
+        this._stateIconSprite = new SpriteStateIcon_1.Sprite_StateIcon();
         // これが黒い縦線の正体みたい
         this.addChild(this._stateIconSprite);
     };

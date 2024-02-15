@@ -14,15 +14,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Battler = void 0;
 var DataManager_1 = require("../managers/DataManager");
@@ -30,12 +21,12 @@ var SpriteBase_1 = require("./SpriteBase");
 var SpriteDamage_1 = require("./SpriteDamage");
 var Sprite_Battler = /** @class */ (function (_super) {
     __extends(Sprite_Battler, _super);
-    function Sprite_Battler(scene) {
+    function Sprite_Battler() {
         var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
         }
-        return _super.apply(this, __spreadArray([scene], args, false)) || this;
+        return _super.apply(this, args) || this;
     }
     Sprite_Battler.prototype.initialize = function () {
         var args = [];
@@ -162,7 +153,7 @@ var Sprite_Battler = /** @class */ (function (_super) {
     Sprite_Battler.prototype.setupDamagePopup = function () {
         if (this._battler.isDamagePopupRequested()) {
             if (this._battler.isSpriteVisible()) {
-                var sprite = new SpriteDamage_1.Sprite_Damage(this.scene);
+                var sprite = new SpriteDamage_1.Sprite_Damage();
                 sprite.x = this.x + this.damageOffsetX();
                 sprite.y = this.y + this.damageOffsetY();
                 sprite.setup(this._battler);

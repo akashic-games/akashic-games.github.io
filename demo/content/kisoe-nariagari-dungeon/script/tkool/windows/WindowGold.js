@@ -21,8 +21,8 @@ var DataManager_1 = require("../managers/DataManager");
 var WindowBase_1 = require("./WindowBase");
 var Window_Gold = /** @class */ (function (_super) {
     __extends(Window_Gold, _super);
-    function Window_Gold(scene, x, y) {
-        return _super.call(this, scene, x, y) || this;
+    function Window_Gold(x, y) {
+        return _super.call(this, x, y) || this;
         // if (Object.getPrototypeOf(this) === Window_Gold.prototype) {
         // 	this.initialize(param.x, param.y);
         // }

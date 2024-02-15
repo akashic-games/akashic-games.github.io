@@ -33,12 +33,12 @@ var Utils_1 = require("./Utils");
 // }
 var Sprite = /** @class */ (function (_super) {
     __extends(Sprite, _super);
-    function Sprite(scene) {
+    function Sprite() {
         var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
         }
-        return _super.apply(this, __spreadArray([scene], args, false)) || this;
+        return _super.apply(this, args) || this;
         // Spriteの初期化前はgetter/setterが処理をスキップするためのフラグ。
         // 親コンストラクタがgetter/setterにアクセスするため。
         // this._constructed = true;
@@ -142,11 +142,11 @@ var Sprite = /** @class */ (function (_super) {
     });
     Object.defineProperty(Sprite.prototype, "surface", {
         get: function () {
-            if (this.bitmap && this.bitmap.isReady()) {
-                return this.bitmap.surface;
-            }
-            else if (this._surface) {
+            if (this._surface) {
                 return this._surface;
+            }
+            else if (this.bitmap && this.bitmap.isReady()) {
+                return this.bitmap.surface;
             }
             else {
                 return null;
@@ -177,14 +177,17 @@ var Sprite = /** @class */ (function (_super) {
         return JSON.parse(JSON.stringify(this._blendColor));
     };
     Sprite.prototype.setBlendColor = function (color) {
-        // if (!(color instanceof Array)) {
-        // 	throw new Error('Argument must be an array');
-        // }
+        if (!(color instanceof Array)) {
+            throw new Error("Argument must be an array");
+        }
         // if (!this._blendColor.equals(color)) {
         // 	this._blendColor = color.clone();
         // 	this._refresh();
         // }
-        this._blendColor = JSON.parse(JSON.stringify(color));
+        if (!Utils_1.Utils.isArrayEqual(this._blendColor, color)) {
+            this._blendColor = __spreadArray([], color, true);
+            this._refresh();
+        }
     };
     Sprite.prototype.getColorTone = function () {
         return JSON.parse(JSON.stringify(this._colorTone));
@@ -234,16 +237,18 @@ var Sprite = /** @class */ (function (_super) {
         this._surface = null;
         if (realW > 0 && realH > 0) {
             if (this._needsTint()) {
-                // this._createTinter(realW, realH);
-                // this._executeTint(realX, realY, realW, realH);
+                this._createTinter(realW, realH);
+                this._executeTint(realX, realY, realW, realH);
+                // 描画時に参照する surface を切り替える対応が `get surface()` で行われるため、`this.texture.baseTexture` の差し替えに対応する処理は不要
                 // this._tintTexture.update();
                 // this.texture.baseTexture = this._tintTexture;
-                // this.texture.frame = new Rectangle(0, 0, realW, realH);
+                this.texture.frame = new Rectangle_1.Rectangle(0, 0, realW, realH);
             }
             else {
-                if (this._bitmap) {
-                    this.texture.baseTexture = this._bitmap.baseTexture;
-                }
+                // 描画時に参照する surface を切り替える対応が `get surface()` で行われるため、`this.texture.baseTexture` の差し替えに対応する処理は不要
+                // if (this._bitmap) {
+                // 	this.texture.baseTexture = this._bitmap.baseTexture;
+                // }
                 this.texture.frame = this._realFrame;
             }
         }
@@ -267,11 +272,10 @@ var Sprite = /** @class */ (function (_super) {
         return this._bitmap && x + w > 0 && y + h > 0 && x < this._bitmap.width && y < this._bitmap.height;
     };
     Sprite.prototype._needsTint = function () {
-        // const tone = this._colorTone;
-        // return !!(tone[0] || tone[1] || tone[2] || tone[3] || this._blendColor[3] > 0);
-        return false;
+        var tone = this._colorTone;
+        return !!(tone[0] || tone[1] || tone[2] || tone[3] || this._blendColor[3] > 0);
     };
-    Sprite.prototype._createTinter = function (_w, _h) {
+    Sprite.prototype._createTinter = function (w, h) {
         // if (!this._canvas) {
         // 	this._canvas = document.createElement('canvas');
         // 	this._context = this._canvas.getContext('2d');
@@ -284,21 +288,37 @@ var Sprite = /** @class */ (function (_super) {
         // this._tintTexture.width = w;
         // this._tintTexture.height = h;
         // this._tintTexture.scaleMode = this._bitmap.baseTexture.scaleMode;
+        if (this._surface) {
+            if (this._surface.width !== w || this._surface.height !== h) {
+                this._surface.destroy();
+                this._surface = g.game.resourceFactory.createSurface(w, h);
+            }
+        }
+        else {
+            this._surface = g.game.resourceFactory.createSurface(w, h);
+        }
     };
     /**
      * @method _executeTint
-     * @param {Number} _x
-     * @param {Number} _y
-     * @param {Number} _w
-     * @param {Number} _h
+     * @param {Number} x
+     * @param {Number} y
+     * @param {Number} w
+     * @param {Number} h
      * @private
      */
-    Sprite.prototype._executeTint = function (_x, _y, _w, _h) {
+    Sprite.prototype._executeTint = function (x, y, w, h) {
         // const context = this._context;
         // const tone = this._colorTone;
         // const color = this._blendColor;
         // context.globalCompositeOperation = "copy";
         // context.drawImage(this._bitmap.canvas, x, y, w, h, 0, 0, w, h);
+        var renderer = this._surface.renderer();
+        renderer.begin();
+        renderer.save();
+        var tone = this._colorTone;
+        var color = this._blendColor;
+        renderer.setCompositeOperation("copy");
+        renderer.drawImage(this._bitmap.surface, x, y, w, h, 0, 0);
         // if (Graphics.canUseSaturationBlend()) {
         // 	const gray = Math.max(0, tone[3]);
         // 	context.globalCompositeOperation = "saturation";
@@ -311,6 +331,12 @@ var Sprite = /** @class */ (function (_super) {
         // context.globalCompositeOperation = "lighter";
         // context.fillStyle = Utils.rgbToCssColor(r1, g1, b1);
         // context.fillRect(0, 0, w, h);
+        var r1 = Math.max(0, tone[0]);
+        var g1 = Math.max(0, tone[1]);
+        var b1 = Math.max(0, tone[2]);
+        renderer.setCompositeOperation("lighter");
+        var cssColor = Utils_1.Utils.rgbToCssColor(r1, g1, b1);
+        renderer.fillRect(0, 0, w, h, cssColor);
         // if (Graphics.canUseDifferenceBlend()) {
         // 	context.globalCompositeOperation = "difference";
         // 	context.fillStyle = "white";
@@ -336,6 +362,19 @@ var Sprite = /** @class */ (function (_super) {
         // context.globalCompositeOperation = "destination-in";
         // context.globalAlpha = 1;
         // context.drawImage(this._bitmap.canvas, x, y, w, h, 0, 0, w, h);
+        var r3 = Math.max(0, color[0]);
+        var g3 = Math.max(0, color[1]);
+        var b3 = Math.max(0, color[2]);
+        var a3 = Math.max(0, color[3]);
+        renderer.setCompositeOperation("source-atop");
+        cssColor = Utils_1.Utils.rgbToCssColor(r3, g3, b3);
+        renderer.setOpacity(a3 / 255);
+        renderer.fillRect(0, 0, w, h, cssColor);
+        renderer.setCompositeOperation("experimental-destination-in");
+        renderer.setOpacity(1);
+        renderer.drawImage(this.bitmap.surface, x, y, w, h, 0, 0);
+        renderer.restore();
+        renderer.end();
     };
     // _renderCanvas(renderer: any) {
     // 	if (this.bitmap) {

@@ -45,7 +45,7 @@ var Scene_GameEnd = /** @class */ (function (_super) {
         this.setBackgroundOpacity(128);
     };
     Scene_GameEnd.prototype.createCommandWindow = function () {
-        this._commandWindow = new WindowGameEnd_1.Window_GameEnd(this.scene);
+        this._commandWindow = new WindowGameEnd_1.Window_GameEnd();
         this._commandWindow.setHandler("toTitle", this.commandToTitle.bind(this));
         this._commandWindow.setHandler("cancel", this.popScene.bind(this));
         this.addWindow(this._commandWindow);

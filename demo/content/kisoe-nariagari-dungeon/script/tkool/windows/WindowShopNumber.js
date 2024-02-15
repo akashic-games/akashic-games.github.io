@@ -60,7 +60,7 @@ var Window_ShopNumber = /** @class */ (function (_super) {
         var buttonHeight = 48;
         this._buttons = [];
         for (var i = 0; i < 5; i++) {
-            var button = new sprites_1.Sprite_Button(this.scene);
+            var button = new sprites_1.Sprite_Button();
             var x = buttonWidth * i;
             var w = buttonWidth * (i === 4 ? 2 : 1);
             button.bitmap = bitmap;

@@ -20,8 +20,8 @@ var DataManager_1 = require("../managers/DataManager");
 var WindowBase_1 = require("./WindowBase");
 var Window_MapName = /** @class */ (function (_super) {
     __extends(Window_MapName, _super);
-    function Window_MapName(scene) {
-        return _super.call(this, scene) || this;
+    function Window_MapName() {
+        return _super.call(this) || this;
         // if (Object.getPrototypeOf(this) === Window_MapName.prototype) {
         // 	this.initialize();
         // }

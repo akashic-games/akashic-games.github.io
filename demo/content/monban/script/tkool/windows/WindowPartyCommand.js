@@ -21,8 +21,8 @@ var managers_1 = require("../managers");
 var WindowCommand_1 = require("./WindowCommand");
 var Window_PartyCommand = /** @class */ (function (_super) {
     __extends(Window_PartyCommand, _super);
-    function Window_PartyCommand(scene) {
-        return _super.call(this, scene) || this;
+    function Window_PartyCommand() {
+        return _super.call(this) || this;
     }
     Window_PartyCommand.prototype.initialize = function () {
         var y = core_1.Graphics.boxHeight - this.windowHeight();

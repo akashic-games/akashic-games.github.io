@@ -16,9 +16,18 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Character = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Graphics_1 = require("../core/Graphics");
+var JsonEx_1 = require("../core/JsonEx");
+var Tilemap_1 = require("../core/Tilemap");
+var TouchInput_1 = require("../core/TouchInput");
+var Utils_1 = require("../core/Utils");
+var AudioManager_1 = require("../managers/AudioManager");
+var BattleManager_1 = require("../managers/BattleManager");
 var DataManager_1 = require("../managers/DataManager");
+var ImageManager_1 = require("../managers/ImageManager");
+var SceneManager_1 = require("../managers/SceneManager");
+var SoundManager_1 = require("../managers/SoundManager");
+var TextManager_1 = require("../managers/TextManager");
 var GameCharacterBase_1 = require("./GameCharacterBase");
 // これらの変数(GameObject)はツクールのスクリプトで利用される可能性があるため、exportせずクラスの外で変数定義
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -50,6 +59,21 @@ var $dataStates;
 var $dataSystem;
 var $dataMapInfos;
 var $dataMap;
+// これらの変数はツクールのスクリプトでグローバルなクラス名として利用される想定なので、変数の命名規則からは例外的に外すものとする
+/* eslint-disable  @typescript-eslint/naming-convention */
+var Graphics;
+var JsonEx;
+var Tilemap;
+var TouchInput;
+var Utils;
+var AudioManager;
+var BattleManager;
+var DataManager;
+var ImageManager;
+var SceneManager;
+var SoundManager;
+var TextManager;
+/* eslint-enable @typescript-eslint/naming-convention */
 /* eslint-enable @typescript-eslint/no-unused-vars */
 // 未定義の全GameObjectに値を代入。ただし定義済みの場合は何もしない
 var setGameObjects = function () {
@@ -84,6 +108,18 @@ var setGameObjects = function () {
     $dataSystem = DataManager_1.$dataSystem;
     $dataMapInfos = DataManager_1.$dataMapInfos;
     $dataMap = DataManager_1.$dataMap;
+    Graphics = Graphics_1.Graphics;
+    JsonEx = JsonEx_1.JsonEx;
+    Tilemap = Tilemap_1.Tilemap;
+    TouchInput = TouchInput_1.TouchInput;
+    Utils = Utils_1.Utils;
+    AudioManager = AudioManager_1.AudioManager;
+    BattleManager = BattleManager_1.BattleManager;
+    DataManager = DataManager_1.DataManager;
+    ImageManager = ImageManager_1.ImageManager;
+    SceneManager = SceneManager_1.SceneManager;
+    SoundManager = SoundManager_1.SoundManager;
+    TextManager = TextManager_1.TextManager;
 };
 function randomInt(max) {
     return Math.floor(max * g.game.vars.random.generate());
@@ -295,7 +331,7 @@ var Game_Character = /** @class */ (function (_super) {
                 this.setBlendMode(params[0]);
                 break;
             case gc.ROUTE_PLAY_SE:
-                managers_1.AudioManager.playSe(params[0]);
+                AudioManager_1.AudioManager.playSe(params[0]);
                 break;
             case gc.ROUTE_SCRIPT:
                 setGameObjects();
@@ -507,7 +543,7 @@ var Game_Character = /** @class */ (function (_super) {
                 var x2 = DataManager_1.$gameMap.roundXWithDirection(x1, direction);
                 var y2 = DataManager_1.$gameMap.roundYWithDirection(y1, direction);
                 var pos2 = y2 * mapWidth + x2;
-                if (core_1.Utils.contains(closedList, pos2)) {
+                if (Utils_1.Utils.contains(closedList, pos2)) {
                     continue;
                 }
                 if (!this.canPass(x1, y1, direction)) {

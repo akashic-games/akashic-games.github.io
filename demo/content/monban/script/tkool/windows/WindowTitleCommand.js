@@ -21,8 +21,8 @@ var managers_1 = require("../managers");
 var WindowCommand_1 = require("./WindowCommand");
 var Window_TitleCommand = /** @class */ (function (_super) {
     __extends(Window_TitleCommand, _super);
-    function Window_TitleCommand(scene) {
-        return _super.call(this, scene) || this;
+    function Window_TitleCommand() {
+        return _super.call(this) || this;
         // if (Object.getPrototypeOf(this) === Window_TitleCommand.prototype) {
         // 	this.initialize(this.x, this.y);
         // }

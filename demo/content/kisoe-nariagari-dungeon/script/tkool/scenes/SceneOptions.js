@@ -39,7 +39,7 @@ var Scene_Options = /** @class */ (function (_super) {
         // ConfigManager.save(); // オプション設定を保存する手段がまだ無いのでコメントアウト
     };
     Scene_Options.prototype.createOptionsWindow = function () {
-        this._optionsWindow = new WindowOptions_1.Window_Options(this.scene);
+        this._optionsWindow = new WindowOptions_1.Window_Options();
         this._optionsWindow.setHandler("cancel", this.popScene.bind(this));
         this.addWindow(this._optionsWindow);
     };

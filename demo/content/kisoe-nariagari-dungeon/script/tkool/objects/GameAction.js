@@ -1,8 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Action = void 0;
-var core_1 = require("../core");
+var Graphics_1 = require("../core/Graphics");
+var JsonEx_1 = require("../core/JsonEx");
+var Tilemap_1 = require("../core/Tilemap");
+var TouchInput_1 = require("../core/TouchInput");
+var Utils_1 = require("../core/Utils");
+var AudioManager_1 = require("../managers/AudioManager");
+var BattleManager_1 = require("../managers/BattleManager");
 var DataManager_1 = require("../managers/DataManager");
+var ImageManager_1 = require("../managers/ImageManager");
+var SceneManager_1 = require("../managers/SceneManager");
+var SoundManager_1 = require("../managers/SoundManager");
+var TextManager_1 = require("../managers/TextManager");
 var GameItem_1 = require("./GameItem");
 // これらの変数(GameObject)はツクールのスクリプトで利用される可能性があるため、exportせずクラスの外で変数定義
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -34,6 +44,21 @@ var $dataStates;
 var $dataSystem;
 var $dataMapInfos;
 var $dataMap;
+// これらの変数はツクールのスクリプトでグローバルなクラス名として利用される想定なので、変数の命名規則からは例外的に外すものとする
+/* eslint-disable  @typescript-eslint/naming-convention */
+var Graphics;
+var JsonEx;
+var Tilemap;
+var TouchInput;
+var Utils;
+var AudioManager;
+var BattleManager;
+var DataManager;
+var ImageManager;
+var SceneManager;
+var SoundManager;
+var TextManager;
+/* eslint-enable @typescript-eslint/naming-convention */
 /* eslint-enable @typescript-eslint/no-unused-vars */
 // 未定義の全GameObjectに値を代入。ただし定義済みの場合は何もしない
 var setGameObjects = function () {
@@ -68,6 +93,18 @@ var setGameObjects = function () {
     $dataSystem = DataManager_1.$dataSystem;
     $dataMapInfos = DataManager_1.$dataMapInfos;
     $dataMap = DataManager_1.$dataMap;
+    Graphics = Graphics_1.Graphics;
+    JsonEx = JsonEx_1.JsonEx;
+    Tilemap = Tilemap_1.Tilemap;
+    TouchInput = TouchInput_1.TouchInput;
+    Utils = Utils_1.Utils;
+    AudioManager = AudioManager_1.AudioManager;
+    BattleManager = BattleManager_1.BattleManager;
+    DataManager = DataManager_1.DataManager;
+    ImageManager = ImageManager_1.ImageManager;
+    SceneManager = SceneManager_1.SceneManager;
+    SoundManager = SoundManager_1.SoundManager;
+    TextManager = TextManager_1.TextManager;
 };
 var Game_Action = /** @class */ (function () {
     function Game_Action(subject, forcing) {
@@ -152,7 +189,7 @@ var Game_Action = /** @class */ (function () {
     };
     Game_Action.prototype.checkItemScope = function (list) {
         // return list.contains(this.item().scope);
-        return core_1.Utils.contains(list, this.item().scope);
+        return Utils_1.Utils.contains(list, this.item().scope);
     };
     Game_Action.prototype.isForOpponent = function () {
         return this.checkItemScope([1, 2, 3, 4, 5, 6]);
@@ -183,7 +220,7 @@ var Game_Action = /** @class */ (function () {
     };
     Game_Action.prototype.checkDamageType = function (list) {
         // return list.contains(this.item().damage.type);
-        return core_1.Utils.contains(list, this.item().damage.type);
+        return Utils_1.Utils.contains(list, this.item().damage.type);
     };
     Game_Action.prototype.isHpEffect = function () {
         return this.checkDamageType([1, 3, 5]);
@@ -223,7 +260,7 @@ var Game_Action = /** @class */ (function () {
     };
     Game_Action.prototype.isMagicSkill = function () {
         if (this.isSkill()) {
-            return core_1.Utils.contains(DataManager_1.$dataSystem.magicSkills, this.item().stypeId);
+            return Utils_1.Utils.contains(DataManager_1.$dataSystem.magicSkills, this.item().stypeId);
         }
         else {
             return false;
@@ -260,7 +297,7 @@ var Game_Action = /** @class */ (function () {
     };
     Game_Action.prototype.speed = function () {
         var agi = this.subject().agi;
-        var speed = agi + core_1.Utils.randomInt(Math.floor(5 + agi / 4));
+        var speed = agi + Utils_1.Utils.randomInt(Math.floor(5 + agi / 4));
         if (this.item()) {
             speed += this.item().speed;
         }
@@ -300,7 +337,7 @@ var Game_Action = /** @class */ (function () {
             case 1:
                 return this.opponentsUnit().randomTarget();
             case 2:
-                if (core_1.Utils.randomInt(2) === 0) {
+                if (Utils_1.Utils.randomInt(2) === 0) {
                     return this.opponentsUnit().randomTarget();
                 }
                 return this.friendsUnit().randomTarget();
@@ -569,7 +606,7 @@ var Game_Action = /** @class */ (function () {
     };
     Game_Action.prototype.applyVariance = function (damage, variance) {
         var amp = Math.floor(Math.max((Math.abs(damage) * variance) / 100, 0));
-        var v = core_1.Utils.randomInt(amp + 1) + core_1.Utils.randomInt(amp + 1) - amp;
+        var v = Utils_1.Utils.randomInt(amp + 1) + Utils_1.Utils.randomInt(amp + 1) - amp;
         return damage >= 0 ? damage + v : damage - v;
     };
     Game_Action.prototype.applyGuard = function (damage, target) {

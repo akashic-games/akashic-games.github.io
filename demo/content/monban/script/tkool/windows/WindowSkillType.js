@@ -20,8 +20,8 @@ var DataManager_1 = require("../managers/DataManager");
 var WindowCommand_1 = require("./WindowCommand");
 var Window_SkillType = /** @class */ (function (_super) {
     __extends(Window_SkillType, _super);
-    function Window_SkillType(scene, x, y) {
-        return _super.call(this, scene, x, y) || this;
+    function Window_SkillType(x, y) {
+        return _super.call(this, x, y) || this;
     }
     Window_SkillType.prototype.initialize = function (x, y) {
         _super.prototype.initialize.call(this, x, y);

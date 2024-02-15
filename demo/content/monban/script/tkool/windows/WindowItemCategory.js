@@ -14,15 +14,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_ItemCategory = void 0;
 var core_1 = require("../core");
@@ -30,12 +21,12 @@ var managers_1 = require("../managers");
 var WindowHorzCommand_1 = require("./WindowHorzCommand");
 var Window_ItemCategory = /** @class */ (function (_super) {
     __extends(Window_ItemCategory, _super);
-    function Window_ItemCategory(scene) {
+    function Window_ItemCategory() {
         var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
         }
-        return _super.apply(this, __spreadArray([scene], args, false)) || this;
+        return _super.apply(this, args) || this;
     }
     Window_ItemCategory.prototype.initialize = function () {
         _super.prototype.initialize.call(this, 0, 0);

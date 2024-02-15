@@ -20,8 +20,8 @@ var managers_1 = require("../managers");
 var WindowHorzCommand_1 = require("./WindowHorzCommand");
 var Window_EquipCommand = /** @class */ (function (_super) {
     __extends(Window_EquipCommand, _super);
-    function Window_EquipCommand(scene, x, y, width) {
-        return _super.call(this, scene, x, y, width) || this;
+    function Window_EquipCommand(x, y, width) {
+        return _super.call(this, x, y, width) || this;
     }
     Window_EquipCommand.prototype.initialize = function (x, y, width) {
         this._windowWidth = width;

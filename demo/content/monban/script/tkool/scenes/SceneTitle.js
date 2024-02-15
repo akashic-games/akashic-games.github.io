@@ -64,13 +64,13 @@ var Scene_Title = /** @class */ (function (_super) {
         managers_1.SceneManager.snapForBackground();
     };
     Scene_Title.prototype.createBackground = function () {
-        this._backSprite1 = new core_1.Sprite(this.scene, managers_1.ImageManager.loadTitle1(DataManager_1.$dataSystem.title1Name));
-        this._backSprite2 = new core_1.Sprite(this.scene, managers_1.ImageManager.loadTitle2(DataManager_1.$dataSystem.title2Name));
+        this._backSprite1 = new core_1.Sprite(managers_1.ImageManager.loadTitle1(DataManager_1.$dataSystem.title1Name));
+        this._backSprite2 = new core_1.Sprite(managers_1.ImageManager.loadTitle2(DataManager_1.$dataSystem.title2Name));
         this.addChild(this._backSprite1);
         this.addChild(this._backSprite2);
     };
     Scene_Title.prototype.createForeground = function () {
-        this._gameTitleSprite = new core_1.Sprite(this.scene, new core_1.Bitmap(core_1.Graphics.width, core_1.Graphics.height));
+        this._gameTitleSprite = new core_1.Sprite(new core_1.Bitmap(core_1.Graphics.width, core_1.Graphics.height));
         this.addChild(this._gameTitleSprite);
         if (DataManager_1.$dataSystem.optDrawTitle) {
             this.drawGameTitle();
@@ -95,7 +95,7 @@ var Scene_Title = /** @class */ (function (_super) {
         sprite.modified();
     };
     Scene_Title.prototype.createCommandWindow = function () {
-        this._commandWindow = new windows_1.Window_TitleCommand(this.scene);
+        this._commandWindow = new windows_1.Window_TitleCommand();
         this._commandWindow.setHandler("newGame", this.commandNewGame.bind(this));
         this._commandWindow.setHandler("continue", this.commandContinue.bind(this));
         this._commandWindow.setHandler("options", this.commandOptions.bind(this));

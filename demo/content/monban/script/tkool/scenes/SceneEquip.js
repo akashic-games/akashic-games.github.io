@@ -45,14 +45,14 @@ var Scene_Equip = /** @class */ (function (_super) {
         this.refreshActor();
     };
     Scene_Equip.prototype.createStatusWindow = function () {
-        this._statusWindow = new WindowEquipStatus_1.Window_EquipStatus(this.scene, 0, this._helpWindow.height);
+        this._statusWindow = new WindowEquipStatus_1.Window_EquipStatus(0, this._helpWindow.height);
         this.addWindow(this._statusWindow);
     };
     Scene_Equip.prototype.createCommandWindow = function () {
         var wx = this._statusWindow.width;
         var wy = this._helpWindow.height;
         var ww = core_1.Graphics.boxWidth - this._statusWindow.width;
-        this._commandWindow = new WindowEquipCommand_1.Window_EquipCommand(this.scene, wx, wy, ww);
+        this._commandWindow = new WindowEquipCommand_1.Window_EquipCommand(wx, wy, ww);
         this._commandWindow.setHelpWindow(this._helpWindow);
         this._commandWindow.setHandler("equip", this.commandEquip.bind(this));
         this._commandWindow.setHandler("optimize", this.commandOptimize.bind(this));
@@ -67,7 +67,7 @@ var Scene_Equip = /** @class */ (function (_super) {
         var wy = this._commandWindow.y + this._commandWindow.height;
         var ww = core_1.Graphics.boxWidth - this._statusWindow.width;
         var wh = this._statusWindow.height - this._commandWindow.height;
-        this._slotWindow = new WindowEquipSlot_1.Window_EquipSlot(this.scene, wx, wy, ww, wh);
+        this._slotWindow = new WindowEquipSlot_1.Window_EquipSlot(wx, wy, ww, wh);
         this._slotWindow.setHelpWindow(this._helpWindow);
         this._slotWindow.setStatusWindow(this._statusWindow);
         this._slotWindow.setHandler("ok", this.onSlotOk.bind(this));
@@ -79,7 +79,7 @@ var Scene_Equip = /** @class */ (function (_super) {
         var wy = this._statusWindow.y + this._statusWindow.height;
         var ww = core_1.Graphics.boxWidth;
         var wh = core_1.Graphics.boxHeight - wy;
-        this._itemWindow = new WindowEquipItem_1.Window_EquipItem(this.scene, wx, wy, ww, wh);
+        this._itemWindow = new WindowEquipItem_1.Window_EquipItem(wx, wy, ww, wh);
         this._itemWindow.setHelpWindow(this._helpWindow);
         this._itemWindow.setStatusWindow(this._statusWindow);
         this._itemWindow.setHandler("ok", this.onItemOk.bind(this));

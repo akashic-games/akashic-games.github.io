@@ -20,8 +20,8 @@ var managers_1 = require("../managers");
 var WindowBase_1 = require("./WindowBase");
 var Window_EquipStatus = /** @class */ (function (_super) {
     __extends(Window_EquipStatus, _super);
-    function Window_EquipStatus(scene, x, y) {
-        return _super.call(this, scene, x, y) || this;
+    function Window_EquipStatus(x, y) {
+        return _super.call(this, x, y) || this;
     }
     Window_EquipStatus.prototype.initialize = function (x, y) {
         var width = this.windowWidth();

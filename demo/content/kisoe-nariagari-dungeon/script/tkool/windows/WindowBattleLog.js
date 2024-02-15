@@ -22,8 +22,8 @@ var DataManager_1 = require("../managers/DataManager");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_BattleLog = /** @class */ (function (_super) {
     __extends(Window_BattleLog, _super);
-    function Window_BattleLog(scene) {
-        return _super.call(this, scene) || this;
+    function Window_BattleLog() {
+        return _super.call(this) || this;
     }
     Window_BattleLog.prototype.initialize = function () {
         var width = this.windowWidth();
@@ -58,7 +58,7 @@ var Window_BattleLog = /** @class */ (function (_super) {
         this._backBitmap = new core_1.Bitmap(this.width, this.height);
     };
     Window_BattleLog.prototype.createBackSprite = function () {
-        this._backSprite = new core_1.Sprite(this.scene);
+        this._backSprite = new core_1.Sprite();
         this._backSprite.bitmap = this._backBitmap;
         this._backSprite.y = this.y;
         this.addChildToBack(this._backSprite);

@@ -125,20 +125,23 @@ var TouchInput = /** @class */ (function () {
             if (e.button === 2) {
                 _this._onRightButtonDown(e);
             }
+            else if (e.button === 1) {
+                _this._onMiddleButtonDown(e);
+            }
             else {
                 _this._onTouchStart(e);
             }
         });
         scene.onPointMoveCapture.add(function (e) {
-            // 右は押された時点でキャンセル処理したいので、ここでは何もしない
-            if (e.button === 2) {
+            // 右クリックと真ん中クリックは左クリックとは別処理にしたいので、ここでは何もしない
+            if (e.button === 2 || e.button === 1) {
                 return;
             }
             _this._onTouchMove(e);
         });
         scene.onPointUpCapture.add(function (e) {
-            // 右は押された時点でキャンセル処理したいので、ここでは何もしない
-            if (e.button === 2) {
+            // 右クリックと真ん中クリックは左クリックとは別処理にしたいので、ここでは何もしない
+            if (e.button === 2 || e.button === 1) {
                 return;
             }
             _this._onTouchEnd(e);
@@ -156,8 +159,8 @@ var TouchInput = /** @class */ (function () {
         }
     };
     TouchInput._onLeftButtonDown = function (event) {
-        var x = Graphics_1.Graphics.pageToCanvasX(event.pageX);
-        var y = Graphics_1.Graphics.pageToCanvasY(event.pageY);
+        var x = Graphics_1.Graphics.pageToCanvasX(event.point.x);
+        var y = Graphics_1.Graphics.pageToCanvasY(event.point.y);
         this._mousePressed = true;
         this._pressedTime = 0;
         this._onTrigger(x, y);
@@ -166,21 +169,21 @@ var TouchInput = /** @class */ (function () {
         //
     };
     TouchInput._onRightButtonDown = function (event) {
-        var x = Graphics_1.Graphics.pageToCanvasX(event.pageX);
-        var y = Graphics_1.Graphics.pageToCanvasY(event.pageY);
+        var x = Graphics_1.Graphics.pageToCanvasX(event.point.x);
+        var y = Graphics_1.Graphics.pageToCanvasY(event.point.y);
         this._onCancel(x, y);
     };
     TouchInput._onMouseMove = function (event) {
         if (this._mousePressed) {
-            var x = Graphics_1.Graphics.pageToCanvasX(event.pageX);
-            var y = Graphics_1.Graphics.pageToCanvasY(event.pageY);
+            var x = Graphics_1.Graphics.pageToCanvasX(event.point.x + event.startDelta.x);
+            var y = Graphics_1.Graphics.pageToCanvasY(event.point.y + event.startDelta.y);
             this._onMove(x, y);
         }
     };
     TouchInput._onMouseUp = function (event) {
         if (event.button === 0) {
-            var x = Graphics_1.Graphics.pageToCanvasX(event.pageX);
-            var y = Graphics_1.Graphics.pageToCanvasY(event.pageY);
+            var x = Graphics_1.Graphics.pageToCanvasX(event.point.x + event.startDelta.x);
+            var y = Graphics_1.Graphics.pageToCanvasY(event.point.y + event.startDelta.y);
             this._mousePressed = false;
             this._onRelease(x, y);
         }
@@ -205,13 +208,13 @@ var TouchInput = /** @class */ (function () {
         }
     };
     TouchInput._onTouchMove = function (event) {
-        var point = event.point;
+        var point = { x: event.point.x + event.startDelta.x, y: event.point.y + event.startDelta.y };
         this._currentTouchedPointers[event.pointerId] = point;
         this._onMove(point.x, point.y);
     };
     TouchInput._onTouchEnd = function (event) {
         this._screenPressed = false;
-        this._onRelease(event.point.x, event.point.y);
+        this._onRelease(event.point.x + event.startDelta.x, event.point.y + event.startDelta.y);
         delete this._currentTouchedPointers[event.pointerId];
     };
     TouchInput._onTouchCancel = function (_event) {
@@ -219,8 +222,8 @@ var TouchInput = /** @class */ (function () {
     };
     TouchInput._onPointerDown = function (event) {
         if (event.pointerType === "touch" && !event.isPrimary) {
-            var x = Graphics_1.Graphics.pageToCanvasX(event.pageX);
-            var y = Graphics_1.Graphics.pageToCanvasY(event.pageY);
+            var x = Graphics_1.Graphics.pageToCanvasX(event.point.x);
+            var y = Graphics_1.Graphics.pageToCanvasY(event.point.y);
             // For Microsoft Edge
             this._onCancel(x, y);
             event.preventDefault();

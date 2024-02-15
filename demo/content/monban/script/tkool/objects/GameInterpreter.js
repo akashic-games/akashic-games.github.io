@@ -10,9 +10,18 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Interpreter = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Graphics_1 = require("../core/Graphics");
+var JsonEx_1 = require("../core/JsonEx");
+var Tilemap_1 = require("../core/Tilemap");
+var TouchInput_1 = require("../core/TouchInput");
+var Utils_1 = require("../core/Utils");
+var AudioManager_1 = require("../managers/AudioManager");
+var BattleManager_1 = require("../managers/BattleManager");
 var DataManager_1 = require("../managers/DataManager");
+var ImageManager_1 = require("../managers/ImageManager");
+var SceneManager_1 = require("../managers/SceneManager");
+var SoundManager_1 = require("../managers/SoundManager");
+var TextManager_1 = require("../managers/TextManager");
 var scenes_1 = require("../scenes");
 var SceneMenu_1 = require("../scenes/SceneMenu");
 var SceneShop_1 = require("../scenes/SceneShop");
@@ -48,6 +57,21 @@ var $dataStates;
 var $dataSystem;
 var $dataMapInfos;
 var $dataMap;
+// これらの変数はツクールのスクリプトでグローバルなクラス名として利用される想定なので、変数の命名規則からは例外的に外すものとする
+/* eslint-disable  @typescript-eslint/naming-convention */
+var Graphics;
+var JsonEx;
+var Tilemap;
+var TouchInput;
+var Utils;
+var AudioManager;
+var BattleManager;
+var DataManager;
+var ImageManager;
+var SceneManager;
+var SoundManager;
+var TextManager;
+/* eslint-enable @typescript-eslint/naming-convention */
 /* eslint-enable @typescript-eslint/no-unused-vars */
 // 未定義の全GameObjectに値を代入。ただし定義済みの場合は何もしない
 var setGameObjects = function () {
@@ -82,6 +106,18 @@ var setGameObjects = function () {
     $dataSystem = DataManager_1.$dataSystem;
     $dataMapInfos = DataManager_1.$dataMapInfos;
     $dataMap = DataManager_1.$dataMap;
+    Graphics = Graphics_1.Graphics;
+    JsonEx = JsonEx_1.JsonEx;
+    Tilemap = Tilemap_1.Tilemap;
+    TouchInput = TouchInput_1.TouchInput;
+    Utils = Utils_1.Utils;
+    AudioManager = AudioManager_1.AudioManager;
+    BattleManager = BattleManager_1.BattleManager;
+    DataManager = DataManager_1.DataManager;
+    ImageManager = ImageManager_1.ImageManager;
+    SceneManager = SceneManager_1.SceneManager;
+    SoundManager = SoundManager_1.SoundManager;
+    TextManager = TextManager_1.TextManager;
 };
 var Game_Interpreter = /** @class */ (function () {
     function Game_Interpreter(depth) {
@@ -95,7 +131,7 @@ var Game_Interpreter = /** @class */ (function () {
             switch (command.code) {
                 // Show Text
                 case 101:
-                    managers_1.ImageManager.requestFace(params[0]);
+                    ImageManager_1.ImageManager.requestFace(params[0]);
                     break;
                 // Common Event
                 case 117:
@@ -104,7 +140,7 @@ var Game_Interpreter = /** @class */ (function () {
                         if (!commonList) {
                             commonList = [];
                         }
-                        if (!core_1.Utils.contains(commonList, params[0])) {
+                        if (!Utils_1.Utils.contains(commonList, params[0])) {
                             commonList.push(params[0]);
                             Game_Interpreter.requestImages(commonEvent.list, commonList);
                         }
@@ -115,7 +151,7 @@ var Game_Interpreter = /** @class */ (function () {
                     var actor = DataManager_1.$gameActors.actor(params[0]);
                     if (actor && params[1] === 0) {
                         var name_1 = actor.characterName();
-                        managers_1.ImageManager.requestCharacter(name_1);
+                        ImageManager_1.ImageManager.requestCharacter(name_1);
                     }
                     break;
                 // Set Movement Route
@@ -124,7 +160,7 @@ var Game_Interpreter = /** @class */ (function () {
                         params[1].list.forEach(function (command) {
                             var params = command.parameters;
                             if (command.code === GameCharacter_1.Game_Character.ROUTE_CHANGE_IMAGE) {
-                                managers_1.ImageManager.requestCharacter(params[0]);
+                                ImageManager_1.ImageManager.requestCharacter(params[0]);
                             }
                         });
                     }
@@ -138,8 +174,8 @@ var Game_Interpreter = /** @class */ (function () {
                         var name2 = animation.animation2Name;
                         var hue1 = animation.animation1Hue;
                         var hue2 = animation.animation2Hue;
-                        managers_1.ImageManager.requestAnimation(name1, hue1);
-                        managers_1.ImageManager.requestAnimation(name2, hue2);
+                        ImageManager_1.ImageManager.requestAnimation(name1, hue1);
+                        ImageManager_1.ImageManager.requestAnimation(name2, hue2);
                     }
                     break;
                 // Change Player Followers
@@ -147,45 +183,45 @@ var Game_Interpreter = /** @class */ (function () {
                     if (params[0] === 0) {
                         DataManager_1.$gamePlayer.followers().forEach(function (follower) {
                             var name = follower.characterName();
-                            managers_1.ImageManager.requestCharacter(name);
+                            ImageManager_1.ImageManager.requestCharacter(name);
                         });
                     }
                     break;
                 // Show Picture
                 case 231:
-                    managers_1.ImageManager.requestPicture(params[1]);
+                    ImageManager_1.ImageManager.requestPicture(params[1]);
                     break;
                 // Change Tileset
                 case 282:
                     var tileset = DataManager_1.$dataTilesets[params[0]];
                     tileset.tilesetNames.forEach(function (tilesetName) {
-                        managers_1.ImageManager.requestTileset(tilesetName);
+                        ImageManager_1.ImageManager.requestTileset(tilesetName);
                     });
                     break;
                 // Change Battle Back
                 case 283:
                     if (DataManager_1.$gameParty.inBattle()) {
-                        managers_1.ImageManager.requestBattleback1(params[0]);
-                        managers_1.ImageManager.requestBattleback2(params[1]);
+                        ImageManager_1.ImageManager.requestBattleback1(params[0]);
+                        ImageManager_1.ImageManager.requestBattleback2(params[1]);
                     }
                     break;
                 // Change Parallax
                 case 284:
                     if (!DataManager_1.$gameParty.inBattle()) {
-                        managers_1.ImageManager.requestParallax(params[0]);
+                        ImageManager_1.ImageManager.requestParallax(params[0]);
                     }
                     break;
                 // Change Actor Images
                 case 322:
-                    managers_1.ImageManager.requestCharacter(params[1]);
-                    managers_1.ImageManager.requestFace(params[3]);
-                    managers_1.ImageManager.requestSvActor(params[5]);
+                    ImageManager_1.ImageManager.requestCharacter(params[1]);
+                    ImageManager_1.ImageManager.requestFace(params[3]);
+                    ImageManager_1.ImageManager.requestSvActor(params[5]);
                     break;
                 // Change Vehicle Image
                 case 323:
                     var vehicle = DataManager_1.$gameMap.vehicle(params[0]);
                     if (vehicle) {
-                        managers_1.ImageManager.requestCharacter(params[1]);
+                        ImageManager_1.ImageManager.requestCharacter(params[1]);
                     }
                     break;
                 // Enemy Transform
@@ -194,10 +230,10 @@ var Game_Interpreter = /** @class */ (function () {
                     var name = enemy.battlerName;
                     var hue = enemy.battlerHue;
                     if (DataManager_1.$gameSystem.isSideView()) {
-                        managers_1.ImageManager.requestSvEnemy(name, hue);
+                        ImageManager_1.ImageManager.requestSvEnemy(name, hue);
                     }
                     else {
-                        managers_1.ImageManager.requestEnemy(name, hue);
+                        ImageManager_1.ImageManager.requestEnemy(name, hue);
                     }
                     break;
             }
@@ -260,7 +296,7 @@ var Game_Interpreter = /** @class */ (function () {
             if (this.updateChild() || this.updateWait()) {
                 break;
             }
-            if (managers_1.SceneManager.isSceneChanging()) {
+            if (SceneManager_1.SceneManager.isSceneChanging()) {
                 break;
             }
             if (!this.executeCommand()) {
@@ -318,13 +354,13 @@ var Game_Interpreter = /** @class */ (function () {
                 waiting = DataManager_1.$gamePlayer.areFollowersGathering();
                 break;
             case "action":
-                waiting = managers_1.BattleManager.isActionForced();
+                waiting = BattleManager_1.BattleManager.isActionForced();
                 break;
             case "video":
-                waiting = core_1.Graphics.isVideoPlaying();
+                waiting = Graphics_1.Graphics.isVideoPlaying();
                 break;
             case "image":
-                waiting = !managers_1.ImageManager.isReady();
+                waiting = !ImageManager_1.ImageManager.isReady();
                 break;
         }
         if (!waiting) {
@@ -360,8 +396,8 @@ var Game_Interpreter = /** @class */ (function () {
         return true;
     };
     Game_Interpreter.prototype.checkFreeze = function () {
-        if (this._frameCount !== core_1.Graphics.frameCount) {
-            this._frameCount = core_1.Graphics.frameCount;
+        if (this._frameCount !== Graphics_1.Graphics.frameCount) {
+            this._frameCount = Graphics_1.Graphics.frameCount;
             this._freezeChecker = 0;
         }
         if (this._freezeChecker++ >= 100000) {
@@ -647,7 +683,7 @@ var Game_Interpreter = /** @class */ (function () {
                     var n = this._params[3];
                     switch (this._params[2]) {
                         case 0: // In the Party
-                            result = core_1.Utils.contains(DataManager_1.$gameParty.members(), actor);
+                            result = Utils_1.Utils.contains(DataManager_1.$gameParty.members(), actor);
                             break;
                         case 1: // Name
                             result = actor.name() === n;
@@ -834,7 +870,7 @@ var Game_Interpreter = /** @class */ (function () {
             case 2: // Random
                 value = this._params[5] - this._params[4] + 1;
                 for (var i = this._params[0]; i <= this._params[1]; i++) {
-                    this.operateVariable(i, this._params[2], this._params[4] + core_1.Utils.randomInt(value));
+                    this.operateVariable(i, this._params[2], this._params[4] + Utils_1.Utils.randomInt(value));
                 }
                 return true;
             // break; // Unreachable code detected.
@@ -1370,12 +1406,12 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Play BGM
     Game_Interpreter.prototype.command241 = function () {
-        managers_1.AudioManager.playBgm(this._params[0]);
+        AudioManager_1.AudioManager.playBgm(this._params[0]);
         return true;
     };
     // Fadeout BGM
     Game_Interpreter.prototype.command242 = function () {
-        managers_1.AudioManager.fadeOutBgm(this._params[0]);
+        AudioManager_1.AudioManager.fadeOutBgm(this._params[0]);
         return true;
     };
     // Save BGM
@@ -1390,27 +1426,27 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Play BGS
     Game_Interpreter.prototype.command245 = function () {
-        managers_1.AudioManager.playBgs(this._params[0]);
+        AudioManager_1.AudioManager.playBgs(this._params[0]);
         return true;
     };
     // Fadeout BGS
     Game_Interpreter.prototype.command246 = function () {
-        managers_1.AudioManager.fadeOutBgs(this._params[0]);
+        AudioManager_1.AudioManager.fadeOutBgs(this._params[0]);
         return true;
     };
     // Play ME
     Game_Interpreter.prototype.command249 = function () {
-        managers_1.AudioManager.playMe(this._params[0]);
+        AudioManager_1.AudioManager.playMe(this._params[0]);
         return true;
     };
     // Play SE
     Game_Interpreter.prototype.command250 = function () {
-        managers_1.AudioManager.playSe(this._params[0]);
+        AudioManager_1.AudioManager.playSe(this._params[0]);
         return true;
     };
     // Stop SE
     Game_Interpreter.prototype.command251 = function () {
-        managers_1.AudioManager.stopSe();
+        AudioManager_1.AudioManager.stopSe();
         return true;
     };
     // Play Movie
@@ -1419,7 +1455,7 @@ var Game_Interpreter = /** @class */ (function () {
             var name = this._params[0];
             if (name.length > 0) {
                 var ext = this.videoFileExt();
-                core_1.Graphics.playVideo("movies/" + name + ext);
+                Graphics_1.Graphics.playVideo("movies/" + name + ext);
                 this.setWaitMode("video");
             }
             this._index++;
@@ -1427,7 +1463,7 @@ var Game_Interpreter = /** @class */ (function () {
         return false;
     };
     Game_Interpreter.prototype.videoFileExt = function () {
-        if (core_1.Graphics.canPlayVideoType("video/webm") && !core_1.Utils.isMobileDevice()) {
+        if (Graphics_1.Graphics.canPlayVideoType("video/webm") && !Utils_1.Utils.isMobileDevice()) {
             return ".webm";
         }
         else {
@@ -1449,16 +1485,16 @@ var Game_Interpreter = /** @class */ (function () {
         var _this = this;
         var tileset = DataManager_1.$dataTilesets[this._params[0]];
         if (!this._imageReservationId) {
-            this._imageReservationId = core_1.Utils.generateRuntimeId();
+            this._imageReservationId = Utils_1.Utils.generateRuntimeId();
         }
         var allReady = tileset.tilesetNames
             .map(function (tilesetName) {
-            return managers_1.ImageManager.reserveTileset(tilesetName, 0, _this._imageReservationId);
+            return ImageManager_1.ImageManager.reserveTileset(tilesetName, 0, _this._imageReservationId);
         })
             .every(function (bitmap) { return bitmap.isReady(); });
         if (allReady) {
             DataManager_1.$gameMap.changeTileset(this._params[0]);
-            managers_1.ImageManager.releaseReservation(this._imageReservationId);
+            ImageManager_1.ImageManager.releaseReservation(this._imageReservationId);
             this._imageReservationId = null;
             return true;
         }
@@ -1529,12 +1565,12 @@ var Game_Interpreter = /** @class */ (function () {
                 troopId = DataManager_1.$gamePlayer.makeEncounterTroopId();
             }
             if (DataManager_1.$dataTroops[troopId]) {
-                managers_1.BattleManager.setup(troopId, this._params[2], this._params[3]);
-                managers_1.BattleManager.setEventCallback(function (n) {
+                BattleManager_1.BattleManager.setup(troopId, this._params[2], this._params[3]);
+                BattleManager_1.BattleManager.setEventCallback(function (n) {
                     _this._branch[_this._indent] = n;
                 });
                 DataManager_1.$gamePlayer.makeEncounterCount();
-                managers_1.SceneManager.push(scenes_1.Scene_Battle);
+                SceneManager_1.SceneManager.push(scenes_1.Scene_Battle);
             }
         }
         return true;
@@ -1568,8 +1604,8 @@ var Game_Interpreter = /** @class */ (function () {
                 this._index++;
                 goods.push(this.currentCommand().parameters);
             }
-            managers_1.SceneManager.push(SceneShop_1.Scene_Shop);
-            managers_1.SceneManager.prepareNextScene(goods, this._params[4]);
+            SceneManager_1.SceneManager.push(SceneShop_1.Scene_Shop);
+            SceneManager_1.SceneManager.prepareNextScene(goods, this._params[4]);
         }
         return true;
     };
@@ -1578,8 +1614,8 @@ var Game_Interpreter = /** @class */ (function () {
         // 名前入力も今の所サポートしていないのでコメントアウト
         // if (!$gameParty.inBattle()) {
         // 	if ($dataActors[this._params[0]]) {
-        // 		SceneManager.push(Scene_Name);
-        // 		SceneManager.prepareNextScene(this._params[0], this._params[1]);
+        // 		SceneManager_.push(Scene_Name);
+        // 		SceneManager_.prepareNextScene(this._params[0], this._params[1]);
         // 	}
         // }
         return true;
@@ -1825,7 +1861,7 @@ var Game_Interpreter = /** @class */ (function () {
         this.iterateBattler(this._params[0], this._params[1], function (battler) {
             if (!battler.isDeathStateAffected()) {
                 battler.forceAction(_this._params[2], _this._params[3]);
-                managers_1.BattleManager.forceAction(battler);
+                BattleManager_1.BattleManager.forceAction(battler);
                 _this.setWaitMode("action");
             }
         });
@@ -1833,13 +1869,13 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Abort Battle
     Game_Interpreter.prototype.command340 = function () {
-        managers_1.BattleManager.abort();
+        BattleManager_1.BattleManager.abort();
         return true;
     };
     // Open Menu Screen
     Game_Interpreter.prototype.command351 = function () {
         if (!DataManager_1.$gameParty.inBattle()) {
-            managers_1.SceneManager.push(SceneMenu_1.Scene_Menu);
+            SceneManager_1.SceneManager.push(SceneMenu_1.Scene_Menu);
             windows_1.Window_MenuCommand.initCommandPosition();
         }
         return true;
@@ -1848,18 +1884,18 @@ var Game_Interpreter = /** @class */ (function () {
     Game_Interpreter.prototype.command352 = function () {
         // セーブ機能は今の所サポートしていないのでコメントアウト
         // if (!$gameParty.inBattle()) {
-        // 	SceneManager.push(Scene_Save);
+        // 	SceneManager_.push(Scene_Save);
         // }
         return true;
     };
     // Game Over
     Game_Interpreter.prototype.command353 = function () {
-        managers_1.SceneManager.goto(scenes_1.Scene_Gameover);
+        SceneManager_1.SceneManager.goto(scenes_1.Scene_Gameover);
         return true;
     };
     // Return to Title Screen
     Game_Interpreter.prototype.command354 = function () {
-        managers_1.SceneManager.goto(scenes_1.Scene_Title);
+        SceneManager_1.SceneManager.goto(scenes_1.Scene_Title);
         return true;
     };
     // Script

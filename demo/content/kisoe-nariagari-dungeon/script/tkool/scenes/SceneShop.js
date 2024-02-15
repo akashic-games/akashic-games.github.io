@@ -58,12 +58,12 @@ var Scene_Shop = /** @class */ (function (_super) {
         this.createSellWindow();
     };
     Scene_Shop.prototype.createGoldWindow = function () {
-        this._goldWindow = new WindowGold_1.Window_Gold(this.scene, 0, this._helpWindow.height);
+        this._goldWindow = new WindowGold_1.Window_Gold(0, this._helpWindow.height);
         this._goldWindow.x = Graphics_1.Graphics.boxWidth - this._goldWindow.width;
         this.addWindow(this._goldWindow);
     };
     Scene_Shop.prototype.createCommandWindow = function () {
-        this._commandWindow = new WindowShopCommand_1.Window_ShopCommand(this.scene, this._goldWindow.x, this._purchaseOnly);
+        this._commandWindow = new WindowShopCommand_1.Window_ShopCommand(this._goldWindow.x, this._purchaseOnly);
         this._commandWindow.y = this._helpWindow.height;
         this._commandWindow.setHandler("buy", this.commandBuy.bind(this));
         this._commandWindow.setHandler("sell", this.commandSell.bind(this));
@@ -73,13 +73,13 @@ var Scene_Shop = /** @class */ (function (_super) {
     Scene_Shop.prototype.createDummyWindow = function () {
         var wy = this._commandWindow.y + this._commandWindow.height;
         var wh = Graphics_1.Graphics.boxHeight - wy;
-        this._dummyWindow = new windows_1.Window_Base(this.scene, 0, wy, Graphics_1.Graphics.boxWidth, wh);
+        this._dummyWindow = new windows_1.Window_Base(0, wy, Graphics_1.Graphics.boxWidth, wh);
         this.addWindow(this._dummyWindow);
     };
     Scene_Shop.prototype.createNumberWindow = function () {
         var wy = this._dummyWindow.y;
         var wh = this._dummyWindow.height;
-        this._numberWindow = new WindowShopNumber_1.Window_ShopNumber(this.scene, 0, wy, wh);
+        this._numberWindow = new WindowShopNumber_1.Window_ShopNumber(0, wy, wh);
         this._numberWindow.hide();
         this._numberWindow.setHandler("ok", this.onNumberOk.bind(this));
         this._numberWindow.setHandler("cancel", this.onNumberCancel.bind(this));
@@ -90,14 +90,14 @@ var Scene_Shop = /** @class */ (function (_super) {
         var wy = this._dummyWindow.y;
         var ww = Graphics_1.Graphics.boxWidth - wx;
         var wh = this._dummyWindow.height;
-        this._statusWindow = new WindowShopStatus_1.Window_ShopStatus(this.scene, wx, wy, ww, wh);
+        this._statusWindow = new WindowShopStatus_1.Window_ShopStatus(wx, wy, ww, wh);
         this._statusWindow.hide();
         this.addWindow(this._statusWindow);
     };
     Scene_Shop.prototype.createBuyWindow = function () {
         var wy = this._dummyWindow.y;
         var wh = this._dummyWindow.height;
-        this._buyWindow = new WindowShopBuy_1.Window_ShopBuy(this.scene, 0, wy, wh, this._goods);
+        this._buyWindow = new WindowShopBuy_1.Window_ShopBuy(0, wy, wh, this._goods);
         this._buyWindow.setHelpWindow(this._helpWindow);
         this._buyWindow.setStatusWindow(this._statusWindow);
         this._buyWindow.hide();
@@ -106,7 +106,7 @@ var Scene_Shop = /** @class */ (function (_super) {
         this.addWindow(this._buyWindow);
     };
     Scene_Shop.prototype.createCategoryWindow = function () {
-        this._categoryWindow = new WindowItemCategory_1.Window_ItemCategory(this.scene);
+        this._categoryWindow = new WindowItemCategory_1.Window_ItemCategory();
         this._categoryWindow.setHelpWindow(this._helpWindow);
         this._categoryWindow.y = this._dummyWindow.y;
         this._categoryWindow.hide();
@@ -118,7 +118,7 @@ var Scene_Shop = /** @class */ (function (_super) {
     Scene_Shop.prototype.createSellWindow = function () {
         var wy = this._categoryWindow.y + this._categoryWindow.height;
         var wh = Graphics_1.Graphics.boxHeight - wy;
-        this._sellWindow = new WindowShopSell_1.Window_ShopSell(this.scene, 0, wy, Graphics_1.Graphics.boxWidth, wh);
+        this._sellWindow = new WindowShopSell_1.Window_ShopSell(0, wy, Graphics_1.Graphics.boxWidth, wh);
         this._sellWindow.setHelpWindow(this._helpWindow);
         this._sellWindow.hide();
         this._sellWindow.setHandler("ok", this.onSellOk.bind(this));

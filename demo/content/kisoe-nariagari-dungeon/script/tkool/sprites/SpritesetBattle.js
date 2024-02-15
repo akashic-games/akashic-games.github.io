@@ -14,15 +14,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Spriteset_Battle = void 0;
 var core_1 = require("../core");
@@ -31,12 +22,12 @@ var DataManager_1 = require("../managers/DataManager");
 var sprites_1 = require("../sprites");
 var Spriteset_Battle = /** @class */ (function (_super) {
     __extends(Spriteset_Battle, _super);
-    function Spriteset_Battle(scene) {
+    function Spriteset_Battle() {
         var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
         }
-        return _super.apply(this, __spreadArray([scene], args, false)) || this;
+        return _super.apply(this, args) || this;
     }
     Spriteset_Battle.prototype.initialize = function () {
         _super.prototype.initialize.call(this);
@@ -51,7 +42,7 @@ var Spriteset_Battle = /** @class */ (function (_super) {
         this.createActors();
     };
     Spriteset_Battle.prototype.createBackground = function () {
-        this._backgroundSprite = new core_1.Sprite(this.scene);
+        this._backgroundSprite = new core_1.Sprite();
         this._backgroundSprite.bitmap = managers_1.SceneManager.backgroundBitmap();
         this._baseSprite.addChild(this._backgroundSprite);
     };
@@ -65,7 +56,7 @@ var Spriteset_Battle = /** @class */ (function (_super) {
         var height = core_1.Graphics.boxHeight;
         var x = (core_1.Graphics.width - width) / 2;
         var y = (core_1.Graphics.height - height) / 2;
-        this._battleField = new core_1.Sprite(this.scene);
+        this._battleField = new core_1.Sprite();
         this._battleField.setFrame(x, y, width, height);
         this._battleField.x = x;
         this._battleField.y = y;
@@ -77,8 +68,8 @@ var Spriteset_Battle = /** @class */ (function (_super) {
         var y = -this._battleField.y - margin;
         var width = core_1.Graphics.width + margin * 2;
         var height = core_1.Graphics.height + margin * 2;
-        this._back1Sprite = new core_1.TilingSprite(this.scene);
-        this._back2Sprite = new core_1.TilingSprite(this.scene);
+        this._back1Sprite = new core_1.TilingSprite();
+        this._back2Sprite = new core_1.TilingSprite();
         this._back1Sprite.bitmap = this.battleback1Bitmap();
         this._back2Sprite.bitmap = this.battleback2Bitmap();
         this._back1Sprite.move(x, y, width, height);
@@ -244,7 +235,7 @@ var Spriteset_Battle = /** @class */ (function (_super) {
         var enemies = DataManager_1.$gameTroop.members();
         var sprites = [];
         for (var i = 0; i < enemies.length; i++) {
-            sprites[i] = new sprites_1.Sprite_Enemy(this.scene, enemies[i]);
+            sprites[i] = new sprites_1.Sprite_Enemy(enemies[i]);
         }
         sprites.sort(this.compareEnemySprite.bind(this));
         for (var j = 0; j < sprites.length; j++) {
@@ -263,7 +254,7 @@ var Spriteset_Battle = /** @class */ (function (_super) {
     Spriteset_Battle.prototype.createActors = function () {
         this._actorSprites = [];
         for (var i = 0; i < DataManager_1.$gameParty.maxBattleMembers(); i++) {
-            this._actorSprites[i] = new sprites_1.Sprite_Actor(this.scene);
+            this._actorSprites[i] = new sprites_1.Sprite_Actor();
             this._battleField.addChild(this._actorSprites[i]);
         }
     };
