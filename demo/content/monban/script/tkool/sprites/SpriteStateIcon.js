@@ -20,8 +20,8 @@ var core_1 = require("../core");
 var managers_1 = require("../managers");
 var Sprite_StateIcon = /** @class */ (function (_super) {
     __extends(Sprite_StateIcon, _super);
-    function Sprite_StateIcon(scene) {
-        return _super.call(this, scene) || this;
+    function Sprite_StateIcon() {
+        return _super.call(this) || this;
     }
     Sprite_StateIcon.prototype.initialize = function () {
         _super.prototype.initialize.call(this);

@@ -32,7 +32,7 @@ var Scene_Status = /** @class */ (function (_super) {
     };
     Scene_Status.prototype.create = function () {
         _super.prototype.create.call(this);
-        this._statusWindow = new WindowStatus_1.Window_Status(this.scene);
+        this._statusWindow = new WindowStatus_1.Window_Status();
         this._statusWindow.setHandler("cancel", this.popScene.bind(this));
         this._statusWindow.setHandler("pagedown", this.nextActor.bind(this));
         this._statusWindow.setHandler("pageup", this.previousActor.bind(this));

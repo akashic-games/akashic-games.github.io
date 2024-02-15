@@ -28,8 +28,8 @@ var PIXI_1 = require("../PIXI");
  */
 var WindowLayer = /** @class */ (function (_super) {
     __extends(WindowLayer, _super);
-    function WindowLayer(scene) {
-        var _this = _super.call(this, scene) || this;
+    function WindowLayer() {
+        var _this = _super.call(this) || this;
         _this._tempCanvas = null;
         return _this;
         // this.initialize();

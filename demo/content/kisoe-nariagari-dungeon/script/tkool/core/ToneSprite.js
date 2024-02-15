@@ -23,8 +23,8 @@ var Utils_1 = require("./Utils");
 // }
 var ToneSprite = /** @class */ (function (_super) {
     __extends(ToneSprite, _super);
-    function ToneSprite(scene) {
-        return _super.call(this, scene) || this;
+    function ToneSprite() {
+        return _super.call(this) || this;
         // this.initialize();
     }
     ToneSprite.prototype.initialize = function () {

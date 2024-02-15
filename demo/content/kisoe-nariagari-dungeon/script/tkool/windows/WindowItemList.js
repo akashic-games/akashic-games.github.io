@@ -14,15 +14,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_ItemList = void 0;
 var managers_1 = require("../managers");
@@ -30,12 +21,12 @@ var DataManager_1 = require("../managers/DataManager");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_ItemList = /** @class */ (function (_super) {
     __extends(Window_ItemList, _super);
-    function Window_ItemList(scene) {
+    function Window_ItemList() {
         var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
         }
-        return _super.apply(this, __spreadArray([scene], args, false)) || this;
+        return _super.apply(this, args) || this;
     }
     Window_ItemList.prototype.initialize = function (x, y, width, height) {
         _super.prototype.initialize.call(this, x, y, width, height);

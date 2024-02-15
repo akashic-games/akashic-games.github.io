@@ -14,27 +14,18 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Base = void 0;
 var core_1 = require("../core");
 var SpriteAnimation_1 = require("./SpriteAnimation");
 var Sprite_Base = /** @class */ (function (_super) {
     __extends(Sprite_Base, _super);
-    function Sprite_Base(scene) {
+    function Sprite_Base() {
         var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
         }
-        return _super.apply(this, __spreadArray([scene], args, false)) || this;
+        return _super.apply(this, args) || this;
     }
     Sprite_Base.prototype.initialize = function () {
         var _args = [];
@@ -79,7 +70,7 @@ var Sprite_Base = /** @class */ (function (_super) {
         }
     };
     Sprite_Base.prototype.startAnimation = function (animation, mirror, delay) {
-        var sprite = new SpriteAnimation_1.Sprite_Animation(this.scene);
+        var sprite = new SpriteAnimation_1.Sprite_Animation();
         sprite.setup(this._effectTarget, animation, mirror, delay);
         this.parent.addChild(sprite);
         this._animationSprites.push(sprite);

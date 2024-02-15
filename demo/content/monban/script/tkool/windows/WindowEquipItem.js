@@ -20,8 +20,8 @@ var JsonEx_1 = require("../core/JsonEx");
 var WindowItemList_1 = require("./WindowItemList");
 var Window_EquipItem = /** @class */ (function (_super) {
     __extends(Window_EquipItem, _super);
-    function Window_EquipItem(scene, x, y, width, height) {
-        return _super.call(this, scene, x, y, width, height) || this;
+    function Window_EquipItem(x, y, width, height) {
+        return _super.call(this, x, y, width, height) || this;
     }
     Window_EquipItem.prototype.initialize = function (x, y, width, height) {
         _super.prototype.initialize.call(this, x, y, width, height);

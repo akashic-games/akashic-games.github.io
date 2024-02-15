@@ -98,8 +98,11 @@ var AudioManager = /** @class */ (function () {
         else {
             this.playBgm(bgm, bgm.pos);
             if (this._bgmBuffer) {
+                // this._bgmBuffer.fadeIn(this._replayFadeTime);
                 // フェードインの長さの単位がRPGツクールMVでは秒になっているのでミリ秒に変換する
-                g.AudioUtil.fadeIn(g.game, this._bgmBuffer.playContext, this._replayFadeTime * 1000);
+                // 元コードでfadeInBgm()関数呼び出しを行っていないので、同様に呼び出しを行わずにフェードイン処理を行う
+                var playContext = this._bgmBuffer.playContext;
+                g.AudioUtil.fadeIn(g.game, playContext, this._replayFadeTime * 1000, playContext._volume);
             }
         }
     };
@@ -132,10 +135,11 @@ var AudioManager = /** @class */ (function () {
             this._currentBgm = null;
         }
     };
-    AudioManager.fadeInBgm = function (duration) {
+    AudioManager.fadeInBgm = function (duration, to) {
+        if (to === void 0) { to = 1; }
         if (this._bgmBuffer && this._currentBgm) {
             // フェードインの長さの単位がRPGツクールMVでは秒になっているのでミリ秒に変換する
-            g.AudioUtil.fadeIn(g.game, this._bgmBuffer.playContext, duration * 1000);
+            g.AudioUtil.fadeIn(g.game, this._bgmBuffer.playContext, duration * 1000, to);
         }
     };
     AudioManager.playBgs = function (bgs, pos) {
@@ -172,8 +176,11 @@ var AudioManager = /** @class */ (function () {
         else {
             this.playBgs(bgs, bgs.pos);
             if (this._bgsBuffer) {
+                // this._bgsBuffer.fadeIn(this._replayFadeTime);
                 // フェードインの長さの単位がRPGツクールMVでは秒になっているのでミリ秒に変換する
-                g.AudioUtil.fadeIn(g.game, this._bgsBuffer.playContext, this._replayFadeTime * 1000);
+                // 元コードでfadeInBgs()関数呼び出しを行っていないので、同様に呼び出しを行わずにフェードイン処理を行う
+                var playContext = this._bgsBuffer.playContext;
+                g.AudioUtil.fadeIn(g.game, playContext, this._replayFadeTime * 1000, playContext._volume);
             }
         }
     };
@@ -206,10 +213,11 @@ var AudioManager = /** @class */ (function () {
             this._currentBgs = null;
         }
     };
-    AudioManager.fadeInBgs = function (duration) {
+    AudioManager.fadeInBgs = function (duration, to) {
+        if (to === void 0) { to = 1; }
         if (this._bgsBuffer && this._currentBgs) {
             // フェードインの長さの単位がRPGツクールMVでは秒になっているのでミリ秒に変換する
-            g.AudioUtil.fadeIn(g.game, this._bgsBuffer.playContext, duration * 1000);
+            g.AudioUtil.fadeIn(g.game, this._bgsBuffer.playContext, duration * 1000, to);
         }
     };
     AudioManager.playMe = function (me) {
@@ -253,8 +261,8 @@ var AudioManager = /** @class */ (function () {
             if (this._bgmBuffer && this._currentBgm && ((_a = this._soundStatusMap[this._bgmBuffer.name]) === null || _a === void 0 ? void 0 : _a.isPlaying) === false) {
                 // akashic-engineでシーク再生はサポートしていないため、コメントアウト
                 // this._bgmBuffer.asset.offset = this._currentBgm.pos || 0;
-                this._bgmBuffer.playContext.play();
-                this.fadeInBgm(this._replayFadeTime);
+                this.updateBgmParameters(this._currentBgm);
+                this.fadeInBgm(this._replayFadeTime, this._bgmBuffer.playContext._volume);
             }
         }
     };

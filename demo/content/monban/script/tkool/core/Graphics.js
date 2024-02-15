@@ -63,24 +63,24 @@ var Graphics = /** @class */ (function () {
             this._fpsMeter.tick();
         }
     };
-    Graphics.render = function (stage) {
-        if (this._skipCount === 0) {
-            var startTime = Date.now();
-            if (stage) {
-                this._renderer.render(stage);
-                if (this._renderer.gl && this._renderer.gl.flush) {
-                    this._renderer.gl.flush();
-                }
-            }
-            var endTime = Date.now();
-            var elapsed = endTime - startTime;
-            this._skipCount = Math.min(Math.floor(elapsed / 15), this._maxSkip);
-            this._rendered = true;
-        }
-        else {
-            this._skipCount--;
-            this._rendered = false;
-        }
+    Graphics.render = function (_stage) {
+        // キットではこのメソッドで描画処理を行わないが、不必要に並列処理のイベントをフリーズさせないためにフリーズ判定用変数の更新のみ行う
+        // if (this._skipCount === 0) {
+        // 	const startTime = Date.now();
+        // 	if (stage) {
+        // 		this._renderer.render(stage);
+        // 		if (this._renderer.gl && this._renderer.gl.flush) {
+        // 			this._renderer.gl.flush();
+        // 		}
+        // 	}
+        // 	const endTime = Date.now();
+        // 	const elapsed = endTime - startTime;
+        // 	this._skipCount = Math.min(Math.floor(elapsed / 15), this._maxSkip);
+        // 	this._rendered = true;
+        // } else {
+        // 	this._skipCount--;
+        // 	this._rendered = false;
+        // }
         this.frameCount++;
     };
     Graphics.isWebGL = function () {

@@ -24,8 +24,8 @@ var SpriteStateOverlay_1 = require("./SpriteStateOverlay");
 var SpriteWeapon_1 = require("./SpriteWeapon");
 var Sprite_Actor = /** @class */ (function (_super) {
     __extends(Sprite_Actor, _super);
-    function Sprite_Actor(scene, actor) {
-        return _super.call(this, scene, actor) || this;
+    function Sprite_Actor(actor) {
+        return _super.call(this, actor) || this;
     }
     Sprite_Actor.prototype.initialize = function (actor) {
         _super.prototype.initialize.call(this, actor);
@@ -43,14 +43,14 @@ var Sprite_Actor = /** @class */ (function (_super) {
         this.createStateSprite();
     };
     Sprite_Actor.prototype.createMainSprite = function () {
-        this._mainSprite = new SpriteBase_1.Sprite_Base(this.scene);
+        this._mainSprite = new SpriteBase_1.Sprite_Base();
         this._mainSprite.anchor.x = 0.5;
         this._mainSprite.anchor.y = 1;
         this.addChild(this._mainSprite);
         this._effectTarget = this._mainSprite;
     };
     Sprite_Actor.prototype.createShadowSprite = function () {
-        this._shadowSprite = new core_1.Sprite(this.scene);
+        this._shadowSprite = new core_1.Sprite();
         this._shadowSprite.bitmap = managers_1.ImageManager.loadSystem("Shadow2");
         this._shadowSprite.anchor.x = 0.5;
         this._shadowSprite.anchor.y = 0.5;
@@ -58,11 +58,11 @@ var Sprite_Actor = /** @class */ (function (_super) {
         this.addChild(this._shadowSprite);
     };
     Sprite_Actor.prototype.createWeaponSprite = function () {
-        this._weaponSprite = new SpriteWeapon_1.Sprite_Weapon(this.scene);
+        this._weaponSprite = new SpriteWeapon_1.Sprite_Weapon();
         this.addChild(this._weaponSprite);
     };
     Sprite_Actor.prototype.createStateSprite = function () {
-        this._stateSprite = new SpriteStateOverlay_1.Sprite_StateOverlay(this.scene);
+        this._stateSprite = new SpriteStateOverlay_1.Sprite_StateOverlay();
         this.addChild(this._stateSprite);
     };
     Sprite_Actor.prototype.setBattler = function (battler) {

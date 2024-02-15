@@ -4,28 +4,28 @@ exports.Bitmap = exports.MAX_PAINT_OPACITY = void 0;
 var Graphics_1 = require("./Graphics");
 var Utils_1 = require("./Utils");
 var fontMap = [];
-function registerFont(fontSize, fontColor) {
-    if (fontColor === void 0) { fontColor = "#ffffff"; }
+function registerFont(fontSize, fontColor, strokeColor) {
     var font = new g.DynamicFont({
         game: g.game,
         fontFamily: "sans-serif",
         size: fontSize,
         fontColor: fontColor,
         strokeWidth: 4,
-        strokeColor: "rgba(0, 0, 0, 0.5)"
+        strokeColor: strokeColor
     });
     fontMap.push(font);
     return font;
 }
 // NOTE: フォントサイズが指定値以上、かつ最も小さい Font を返します。
-function getFont(fontSize, fontColor) {
+function getFont(fontSize, fontColor, strokeColor) {
     if (fontColor === void 0) { fontColor = "#ffffff"; }
-    var font = fontMap.find(function (e) { return e.size >= fontSize && e.fontColor === fontColor; });
-    return font !== null && font !== void 0 ? font : registerFont(fontSize, fontColor);
+    if (strokeColor === void 0) { strokeColor = "rgba(0, 0, 0, 0.5)"; }
+    var font = fontMap.find(function (e) { return e.size >= fontSize && e.fontColor === fontColor && e.strokeColor === strokeColor; });
+    return font !== null && font !== void 0 ? font : registerFont(fontSize, fontColor, strokeColor);
 }
-registerFont(24);
-registerFont(32);
-registerFont(72);
+registerFont(24, "#ffffff", "rgba(0, 0, 0, 0.5)");
+registerFont(32, "#ffffff", "rgba(0, 0, 0, 0.5)");
+registerFont(72, "#ffffff", "rgba(0, 0, 0, 0.5)");
 // let sharedFont: g.Font;
 exports.MAX_PAINT_OPACITY = 255;
 var Bitmap = /** @class */ (function () {
@@ -938,7 +938,7 @@ var Bitmap = /** @class */ (function () {
         }
         var offset = this._textAlign === "right" ? -width : this._textAlign === "center" ? -width / 2 : 0;
         var textX = tx + offset;
-        var font = getFont(this.fontSize, this.textColor);
+        var font = getFont(this.fontSize, this.textColor, this.outlineColor);
         var renderer = this._surface.renderer();
         var glyphScaleX = fontWidth / font.size;
         var glyphScaleY = this.fontSize / font.size;

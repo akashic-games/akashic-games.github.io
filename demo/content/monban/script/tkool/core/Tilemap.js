@@ -14,27 +14,18 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Tilemap = void 0;
 var core_1 = require("../core");
 var PIXI_1 = require("../PIXI");
 var Tilemap = /** @class */ (function (_super) {
     __extends(Tilemap, _super);
-    function Tilemap(scene) {
+    function Tilemap() {
         var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
         }
-        return _super.apply(this, __spreadArray([scene], args, false)) || this;
+        return _super.apply(this, args) || this;
         // if (Object.getPrototypeOf(this) === Tilemap.prototype) {
         // 	this.initialize();
         // }
@@ -282,15 +273,15 @@ var Tilemap = /** @class */ (function (_super) {
          * 8 : Animation
          * 9 : Destination
          */
-        this._lowerLayer = new core_1.Sprite(this.scene);
+        this._lowerLayer = new core_1.Sprite();
         this._lowerLayer.move(-margin, -margin, width, height);
         this._lowerLayer.z = 0;
-        this._upperLayer = new core_1.Sprite(this.scene);
+        this._upperLayer = new core_1.Sprite();
         this._upperLayer.move(-margin, -margin, width, height);
         this._upperLayer.z = 4;
         for (var i = 0; i < 4; i++) {
-            this._lowerLayer.addChild(new core_1.Sprite(this.scene, this._lowerBitmap));
-            this._upperLayer.addChild(new core_1.Sprite(this.scene, this._upperBitmap));
+            this._lowerLayer.addChild(new core_1.Sprite(this._lowerBitmap));
+            this._upperLayer.addChild(new core_1.Sprite(this._upperBitmap));
         }
         this.addChild(this._lowerLayer);
         this.addChild(this._upperLayer);

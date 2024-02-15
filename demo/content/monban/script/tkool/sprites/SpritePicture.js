@@ -21,8 +21,8 @@ var managers_1 = require("../managers");
 var DataManager_1 = require("../managers/DataManager");
 var Sprite_Picture = /** @class */ (function (_super) {
     __extends(Sprite_Picture, _super);
-    function Sprite_Picture(scene, pictureId) {
-        return _super.call(this, scene, pictureId) || this;
+    function Sprite_Picture(pictureId) {
+        return _super.call(this, pictureId) || this;
         // if (Object.getPrototypeOf(this) === Sprite_Picture.prototype) {
         // 	this.initialize(param.pictureId);
         // }

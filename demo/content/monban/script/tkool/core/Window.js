@@ -14,15 +14,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window = void 0;
 var PIXI = require("../PIXI");
@@ -32,12 +23,12 @@ var Sprite_1 = require("./Sprite");
 var Utils_1 = require("./Utils");
 var Window = /** @class */ (function (_super) {
     __extends(Window, _super);
-    function Window(scene) {
+    function Window() {
         var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
         }
-        return _super.apply(this, __spreadArray([scene], args, false)) || this;
+        return _super.apply(this, args) || this;
         // if (Object.getPrototypeOf(this) === Window.prototype) {
         // 	this.initialize();
         // }
@@ -248,14 +239,14 @@ var Window = /** @class */ (function (_super) {
      * @private
      */
     Window.prototype._createAllParts = function () {
-        this._windowSpriteContainer = new PIXI.Container(this.scene);
-        this._windowBackSprite = new Sprite_1.Sprite(this.scene);
-        this._windowCursorSprite = new Sprite_1.Sprite(this.scene);
-        this._windowFrameSprite = new Sprite_1.Sprite(this.scene);
-        this._windowContentsSprite = new Sprite_1.Sprite(this.scene);
-        this._downArrowSprite = new Sprite_1.Sprite(this.scene);
-        this._upArrowSprite = new Sprite_1.Sprite(this.scene);
-        this._windowPauseSignSprite = new Sprite_1.Sprite(this.scene);
+        this._windowSpriteContainer = new PIXI.Container();
+        this._windowBackSprite = new Sprite_1.Sprite();
+        this._windowCursorSprite = new Sprite_1.Sprite();
+        this._windowFrameSprite = new Sprite_1.Sprite();
+        this._windowContentsSprite = new Sprite_1.Sprite();
+        this._downArrowSprite = new Sprite_1.Sprite();
+        this._upArrowSprite = new Sprite_1.Sprite();
+        this._windowPauseSignSprite = new Sprite_1.Sprite();
         this._windowBackSprite.bitmap = new Bitmap_1.Bitmap(1, 1);
         this._windowBackSprite.alpha = 192 / 255;
         this.addChild(this._windowSpriteContainer);

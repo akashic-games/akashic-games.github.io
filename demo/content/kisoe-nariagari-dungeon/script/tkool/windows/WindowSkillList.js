@@ -20,8 +20,8 @@ var DataManager_1 = require("../managers/DataManager");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_SkillList = /** @class */ (function (_super) {
     __extends(Window_SkillList, _super);
-    function Window_SkillList(scene, x, y, width, height) {
-        return _super.call(this, scene, x, y, width, height) || this;
+    function Window_SkillList(x, y, width, height) {
+        return _super.call(this, x, y, width, height) || this;
     }
     Window_SkillList.prototype.initialize = function (x, y, width, height) {
         _super.prototype.initialize.call(this, x, y, width, height);

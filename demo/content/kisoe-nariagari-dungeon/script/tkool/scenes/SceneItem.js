@@ -42,7 +42,7 @@ var Scene_Item = /** @class */ (function (_super) {
         this.createActorWindow();
     };
     Scene_Item.prototype.createCategoryWindow = function () {
-        this._categoryWindow = new WindowItemCategory_1.Window_ItemCategory(this.scene);
+        this._categoryWindow = new WindowItemCategory_1.Window_ItemCategory();
         this._categoryWindow.setHelpWindow(this._helpWindow);
         this._categoryWindow.y = this._helpWindow.height;
         this._categoryWindow.setHandler("ok", this.onCategoryOk.bind(this));
@@ -52,7 +52,7 @@ var Scene_Item = /** @class */ (function (_super) {
     Scene_Item.prototype.createItemWindow = function () {
         var wy = this._categoryWindow.y + this._categoryWindow.height;
         var wh = core_1.Graphics.boxHeight - wy;
-        this._itemWindow = new WindowItemList_1.Window_ItemList(this.scene, 0, wy, core_1.Graphics.boxWidth, wh);
+        this._itemWindow = new WindowItemList_1.Window_ItemList(0, wy, core_1.Graphics.boxWidth, wh);
         this._itemWindow.setHelpWindow(this._helpWindow);
         this._itemWindow.setHandler("ok", this.onItemOk.bind(this));
         this._itemWindow.setHandler("cancel", this.onItemCancel.bind(this));

@@ -111,7 +111,15 @@ var Utils = /** @class */ (function () {
     Utils.isMobileDevice = function () {
         return false;
     };
+    Utils.isArrayEqual = function (array1, array2) {
+        if (array1.length !== array2.length)
+            return false;
+        return array1.every(function (val, index) { return val === array2[index]; });
+    };
     Utils._id = 1;
+    // ホバープラグインの登録番号。他のakashicプラグインとの番号被りを発生しないようにするため、100という大きめの数値を付与している
+    // TODO: game.jsonで定義できるようにすべき
+    Utils._akashicHoverPluginId = 100;
     return Utils;
 }());
 exports.Utils = Utils;

@@ -23,8 +23,8 @@ var sprites_1 = require("../sprites");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_NumberInput = /** @class */ (function (_super) {
     __extends(Window_NumberInput, _super);
-    function Window_NumberInput(scene, messageWindow) {
-        return _super.call(this, scene, messageWindow) || this;
+    function Window_NumberInput(messageWindow) {
+        return _super.call(this, messageWindow) || this;
         // if (Object.getPrototypeOf(this) === Window_NumberInput.prototype) {
         // 	this.initialize(param.messageWindow);
         // }
@@ -92,7 +92,7 @@ var Window_NumberInput = /** @class */ (function (_super) {
         var buttonHeight = 48;
         this._buttons = [];
         for (var i = 0; i < 3; i++) {
-            var button = new sprites_1.Sprite_Button(this.scene);
+            var button = new sprites_1.Sprite_Button();
             var x = buttonWidth * [1, 2, 4][i];
             var w = buttonWidth * (i === 2 ? 2 : 1);
             button.bitmap = bitmap;

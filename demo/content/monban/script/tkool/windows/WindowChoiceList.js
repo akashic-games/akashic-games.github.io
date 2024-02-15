@@ -21,8 +21,8 @@ var DataManager_1 = require("../managers/DataManager");
 var WindowCommand_1 = require("./WindowCommand");
 var Window_ChoiceList = /** @class */ (function (_super) {
     __extends(Window_ChoiceList, _super);
-    function Window_ChoiceList(scene, messageWindow) {
-        return _super.call(this, scene, messageWindow) || this;
+    function Window_ChoiceList(messageWindow) {
+        return _super.call(this, messageWindow) || this;
     }
     Window_ChoiceList.prototype.initialize = function () {
         var args = [];

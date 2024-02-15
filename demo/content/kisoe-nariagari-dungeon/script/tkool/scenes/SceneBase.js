@@ -76,7 +76,7 @@ var Scene_Base = /** @class */ (function (_super) {
         var height = core_1.Graphics.boxHeight;
         var x = (core_1.Graphics.width - width) / 2;
         var y = (core_1.Graphics.height - height) / 2;
-        this._windowLayer = new core_1.WindowLayer(this.scene);
+        this._windowLayer = new core_1.WindowLayer();
         this._windowLayer.move(x, y, width, height);
         this.addChild(this._windowLayer);
     };
@@ -98,7 +98,7 @@ var Scene_Base = /** @class */ (function (_super) {
     };
     Scene_Base.prototype.createFadeSprite = function (white) {
         if (!this._fadeSprite) {
-            this._fadeSprite = new core_1.ScreenSprite(this.scene, white ? "white" : "black");
+            this._fadeSprite = new core_1.ScreenSprite(white ? "white" : "black");
             this.addChild(this._fadeSprite);
         }
         if (white) {

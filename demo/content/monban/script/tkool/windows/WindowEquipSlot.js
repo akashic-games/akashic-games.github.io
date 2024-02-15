@@ -20,8 +20,8 @@ var DataManager_1 = require("../managers/DataManager");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_EquipSlot = /** @class */ (function (_super) {
     __extends(Window_EquipSlot, _super);
-    function Window_EquipSlot(scene, x, y, width, height) {
-        return _super.call(this, scene, x, y, width, height) || this;
+    function Window_EquipSlot(x, y, width, height) {
+        return _super.call(this, x, y, width, height) || this;
     }
     Window_EquipSlot.prototype.initialize = function (x, y, width, height) {
         _super.prototype.initialize.call(this, x, y, width, height);

@@ -22,8 +22,8 @@ var DataManager_1 = require("../managers/DataManager");
 var WindowItemList_1 = require("./WindowItemList");
 var Window_EventItem = /** @class */ (function (_super) {
     __extends(Window_EventItem, _super);
-    function Window_EventItem(scene, messageWindow) {
-        return _super.call(this, scene, messageWindow) || this;
+    function Window_EventItem(messageWindow) {
+        return _super.call(this, messageWindow) || this;
         // if (Object.getPrototypeOf(this) === Window_EventItem.prototype) {
         // 	this.initialize(param.messageWindow);
         // }

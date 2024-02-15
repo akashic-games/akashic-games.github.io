@@ -62,7 +62,7 @@ var Scene_Gameover = /** @class */ (function (_super) {
         managers_1.AudioManager.playMe(DataManager_1.$dataSystem.gameoverMe);
     };
     Scene_Gameover.prototype.createBackground = function () {
-        this._backSprite = new core_1.Sprite(this.scene);
+        this._backSprite = new core_1.Sprite();
         this._backSprite.bitmap = managers_1.ImageManager.loadSystem("GameOver");
         this.addChild(this._backSprite);
     };

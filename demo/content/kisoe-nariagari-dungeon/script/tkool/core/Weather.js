@@ -22,8 +22,8 @@ var PIXI_1 = require("../PIXI");
 // }
 var Weather = /** @class */ (function (_super) {
     __extends(Weather, _super);
-    function Weather(scene) {
-        return _super.call(this, scene) || this;
+    function Weather() {
+        return _super.call(this) || this;
         // this.initialize();
     }
     Weather.prototype.initialize = function () {
@@ -60,7 +60,7 @@ var Weather = /** @class */ (function (_super) {
      * @private
      */
     Weather.prototype._createDimmer = function () {
-        this._dimmerSprite = new core_1.ScreenSprite(this.scene);
+        this._dimmerSprite = new core_1.ScreenSprite();
         this._dimmerSprite.setColor(80, 80, 80);
         this.addChild(this._dimmerSprite);
     };
@@ -100,7 +100,7 @@ var Weather = /** @class */ (function (_super) {
         // const sprite = new Sprite(this.viewport);
         // NOTE: viewport はどこからも設定されない。MVのソースでもそのはず。よくわからない。
         // TODO: MVで天候を設定したフィールドを実行してデバッガで値を確認する。
-        var sprite = new core_1.Sprite(this.scene, this.viewport);
+        var sprite = new core_1.Sprite(this.viewport);
         sprite.opacity = 0;
         this._sprites.push(sprite);
         this.addChild(sprite);

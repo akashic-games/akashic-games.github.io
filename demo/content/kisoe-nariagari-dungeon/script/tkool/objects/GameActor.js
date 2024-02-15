@@ -400,8 +400,8 @@ var Game_Actor = /** @class */ (function (_super) {
         return objects;
     };
     Game_Actor.prototype.attackElements = function () {
-        var set = GameBattler_1.Game_Battler.prototype.attackElements.call(this);
-        if (this.hasNoWeapons() && !set.contains(this.bareHandsElementId())) {
+        var set = _super.prototype.attackElements.call(this);
+        if (this.hasNoWeapons() && !core_1.Utils.contains(set, this.bareHandsElementId())) {
             set.push(this.bareHandsElementId());
         }
         return set;

@@ -18,7 +18,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Container = exports.PixiEntity = void 0;
 var core_1 = require("../core");
 var ObservablePoint_1 = require("./ObservablePoint");
-var Point_1 = require("./Point");
 var PixiEntity = /** @class */ (function (_super) {
     __extends(PixiEntity, _super);
     function PixiEntity(param) {
@@ -43,14 +42,14 @@ exports.PixiEntity = PixiEntity;
  * PIXI.Container 相当品
  */
 var Container = /** @class */ (function () {
-    function Container(scene) {
+    function Container() {
         var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
         }
         var _this = this;
         this.pixiEntity = new PixiEntity({
-            scene: scene,
+            scene: g.game.scene(),
             container: this
         });
         this.parent = null;
@@ -59,6 +58,11 @@ var Container = /** @class */ (function () {
         this.visible = true;
         this._zIndex = 0;
         this.z = 0;
+        this._pivot = new ObservablePoint_1.ObservablePoint(function (subject) {
+            _this.pixiEntity.x = -1 * subject.x;
+            _this.pixiEntity.y = -1 * subject.y;
+            _this.modified();
+        }, 0, 0);
         this._scale = new ObservablePoint_1.ObservablePoint(function (subject) {
             _this.pixiEntity.scaleX = subject.x;
             _this.pixiEntity.scaleY = subject.y;
@@ -108,12 +112,11 @@ var Container = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(Container.prototype, "pivot", {
-        // TODO: impl
         get: function () {
-            return new Point_1.Point(0, 0);
+            return this._pivot;
         },
         set: function (value) {
-            // TODO: impl
+            this._pivot.set(value.x, value.y);
         },
         enumerable: false,
         configurable: true

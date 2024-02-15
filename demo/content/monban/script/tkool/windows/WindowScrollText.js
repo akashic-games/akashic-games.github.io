@@ -21,8 +21,8 @@ var DataManager_1 = require("../managers/DataManager");
 var WindowBase_1 = require("./WindowBase");
 var Window_ScrollText = /** @class */ (function (_super) {
     __extends(Window_ScrollText, _super);
-    function Window_ScrollText(scene) {
-        return _super.call(this, scene) || this;
+    function Window_ScrollText() {
+        return _super.call(this) || this;
         // if (Object.getPrototypeOf(this) === Window_ScrollText.prototype) {
         // 	this.initialize();
         // }

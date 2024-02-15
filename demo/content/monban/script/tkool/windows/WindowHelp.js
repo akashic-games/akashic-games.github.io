@@ -20,8 +20,8 @@ var core_1 = require("../core");
 var WindowBase_1 = require("./WindowBase");
 var Window_Help = /** @class */ (function (_super) {
     __extends(Window_Help, _super);
-    function Window_Help(scene, numLines) {
-        return _super.call(this, scene, numLines) || this;
+    function Window_Help(numLines) {
+        return _super.call(this, numLines) || this;
     }
     Window_Help.prototype.initialize = function (numLines) {
         var width = core_1.Graphics.boxWidth;

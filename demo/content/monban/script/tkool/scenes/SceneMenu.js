@@ -51,7 +51,7 @@ var Scene_Menu = /** @class */ (function (_super) {
         this._statusWindow.refresh();
     };
     Scene_Menu.prototype.createCommandWindow = function () {
-        this._commandWindow = new windows_1.Window_MenuCommand(this.scene, 0, 0);
+        this._commandWindow = new windows_1.Window_MenuCommand(0, 0);
         this._commandWindow.setHandler("item", this.commandItem.bind(this));
         this._commandWindow.setHandler("skill", this.commandPersonal.bind(this));
         this._commandWindow.setHandler("equip", this.commandPersonal.bind(this));
@@ -65,12 +65,12 @@ var Scene_Menu = /** @class */ (function (_super) {
         this.addWindow(this._commandWindow);
     };
     Scene_Menu.prototype.createGoldWindow = function () {
-        this._goldWindow = new WindowGold_1.Window_Gold(this.scene, 0, 0);
+        this._goldWindow = new WindowGold_1.Window_Gold(0, 0);
         this._goldWindow.y = core_1.Graphics.boxHeight - this._goldWindow.height;
         this.addWindow(this._goldWindow);
     };
     Scene_Menu.prototype.createStatusWindow = function () {
-        this._statusWindow = new WindowMenuStatus_1.Window_MenuStatus(this.scene, this._commandWindow.width, 0);
+        this._statusWindow = new WindowMenuStatus_1.Window_MenuStatus(this._commandWindow.width, 0);
         this._statusWindow.reserveFaceImages();
         this.addWindow(this._statusWindow);
     };

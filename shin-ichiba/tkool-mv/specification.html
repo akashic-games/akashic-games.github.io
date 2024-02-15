@@ -349,7 +349,7 @@
 </ul>
 </li>
 <li>30MB 以上の容量<ul>
-<li>ニコ生ゲームのサイズ上限のため (<a href="/shin-ichiba/tkool-mv/exchange-to-nicolive-game.html#size-limit-note">詳細</a>)</li>
+<li>ニコ生ゲームのサイズ上限のため (下記に後述)</li>
 </ul>
 </li>
 <li>音声のシーク再生</li>
@@ -360,6 +360,7 @@
 <li>Window.png によるウィンドウデザインの一部カスタマイズ</li>
 <li>キーボード入力</li>
 <li>フォントの変更 (ブラウザ依存となります)</li>
+<li>画面の色調変更</li>
 </ul>
 <blockquote>
 <p>未対応機能は今後対応を進めていきます。Akashic Engine の機能やニコニコ生放送という実行環境の制約から、一部の機能のサポートは予定されていません。</p>
@@ -376,6 +377,17 @@
 </ul>
 <p>これらは RPG ツクール MV 標準のプログラムに強く依存した機能であるためです。
 ある程度の互換性を目指してはおり (<code>$gameVariables</code> の提供など)、内容によっては動作する可能性もありますが、保証できかねます。</p>
+
+			<h3>
+				<a name="size-limit-note" class="anchor" href="#size-limit-note">
+					<span class="header-link">#</span>
+				</a>
+				ニコ生ゲームのサイズ上限
+			</h3><p>ニコ生ゲームの合計サイズは、従来 10MB が上限でした。
+RPG ツクール MV ニコ生ゲームキットの公開に合わせ、 この制限は現在 <strong>実験的に 30 MB に引き上げられています</strong> 。
+RPG ツクール MV から変換したゲームでは、画像や音声ファイルなどを限界まで削減・軽量化しないと 10MB に納まらないこと多かったためです。</p>
+<p>ただしニコ生ゲームは「生放送の配信映像と並行してダウンロードされる」性質上、軽ければ軽い方がよいものです。
+<strong>上限に関わらずできるだけ軽量化</strong> していただくことは、プレイ体験のために引き続き重要です。</p>
 
 			<h2>
 				<a name="ranking-game-plugin" class="anchor" href="#ranking-game-plugin">

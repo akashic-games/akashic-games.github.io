@@ -14,15 +14,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Spriteset_Map = void 0;
 var core_1 = require("../core");
@@ -33,12 +24,12 @@ var SpriteDestination_1 = require("./SpriteDestination");
 var SpritesetBase_1 = require("./SpritesetBase");
 var Spriteset_Map = /** @class */ (function (_super) {
     __extends(Spriteset_Map, _super);
-    function Spriteset_Map(scene) {
+    function Spriteset_Map() {
         var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
         }
-        return _super.apply(this, __spreadArray([scene], args, false)) || this;
+        return _super.apply(this, args) || this;
     }
     Spriteset_Map.prototype.initialize = function () {
         _super.prototype.initialize.call(this);
@@ -69,7 +60,7 @@ var Spriteset_Map = /** @class */ (function (_super) {
         }
     };
     Spriteset_Map.prototype.createParallax = function () {
-        this._parallax = new core_1.TilingSprite(this.scene);
+        this._parallax = new core_1.TilingSprite();
         this._parallax.move(0, 0, core_1.Graphics.width, core_1.Graphics.height);
         this._baseSprite.addChild(this._parallax);
     };
@@ -79,7 +70,7 @@ var Spriteset_Map = /** @class */ (function (_super) {
         // } else {
         // 	this._tilemap = new Tilemap();
         // }
-        this._tilemap = new core_1.Tilemap(this.scene);
+        this._tilemap = new core_1.Tilemap();
         this._tilemap.tileWidth = DataManager_1.$gameMap.tileWidth();
         this._tilemap.tileHeight = DataManager_1.$gameMap.tileHeight();
         this._tilemap.setData(DataManager_1.$gameMap.width(), DataManager_1.$gameMap.height(), DataManager_1.$gameMap.data());
@@ -107,21 +98,21 @@ var Spriteset_Map = /** @class */ (function (_super) {
         var _this = this;
         this._characterSprites = [];
         DataManager_1.$gameMap.events().forEach(function (event) {
-            _this._characterSprites.push(new SpriteCharacter_1.Sprite_Character(_this.scene, event));
+            _this._characterSprites.push(new SpriteCharacter_1.Sprite_Character(event));
         });
         DataManager_1.$gameMap.vehicles().forEach(function (vehicle) {
-            _this._characterSprites.push(new SpriteCharacter_1.Sprite_Character(_this.scene, vehicle));
+            _this._characterSprites.push(new SpriteCharacter_1.Sprite_Character(vehicle));
         });
         DataManager_1.$gamePlayer.followers().reverseEach(function (follower) {
-            _this._characterSprites.push(new SpriteCharacter_1.Sprite_Character(_this.scene, follower));
+            _this._characterSprites.push(new SpriteCharacter_1.Sprite_Character(follower));
         });
-        this._characterSprites.push(new SpriteCharacter_1.Sprite_Character(this.scene, DataManager_1.$gamePlayer));
+        this._characterSprites.push(new SpriteCharacter_1.Sprite_Character(DataManager_1.$gamePlayer));
         for (var i = 0; i < this._characterSprites.length; i++) {
             this._tilemap.addChild(this._characterSprites[i]);
         }
     };
     Spriteset_Map.prototype.createShadow = function () {
-        this._shadowSprite = new core_1.Sprite(this.scene);
+        this._shadowSprite = new core_1.Sprite();
         this._shadowSprite.bitmap = managers_1.ImageManager.loadSystem("Shadow1");
         this._shadowSprite.anchor.x = 0.5;
         this._shadowSprite.anchor.y = 1;
@@ -129,12 +120,12 @@ var Spriteset_Map = /** @class */ (function (_super) {
         this._tilemap.addChild(this._shadowSprite);
     };
     Spriteset_Map.prototype.createDestination = function () {
-        this._destinationSprite = new SpriteDestination_1.Sprite_Destination(this.scene);
+        this._destinationSprite = new SpriteDestination_1.Sprite_Destination();
         this._destinationSprite.z = 9;
         this._tilemap.addChild(this._destinationSprite);
     };
     Spriteset_Map.prototype.createWeather = function () {
-        this._weather = new core_1.Weather(this.scene);
+        this._weather = new core_1.Weather();
         this.addChild(this._weather);
     };
     Spriteset_Map.prototype.updateTileset = function () {
@@ -148,7 +139,7 @@ var Spriteset_Map = /** @class */ (function (_super) {
     Spriteset_Map.prototype._canvasReAddParallax = function () {
         var index = this._baseSprite.children.indexOf(this._parallax);
         this._baseSprite.removeChild(this._parallax);
-        this._parallax = new core_1.TilingSprite(this.scene);
+        this._parallax = new core_1.TilingSprite();
         this._parallax.move(0, 0, core_1.Graphics.width, core_1.Graphics.height);
         this._parallax.bitmap = managers_1.ImageManager.loadParallax(this._parallaxName);
         this._baseSprite.addChildAt(this._parallax, index);

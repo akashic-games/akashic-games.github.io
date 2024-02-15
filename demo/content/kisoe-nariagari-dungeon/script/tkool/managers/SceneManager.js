@@ -320,7 +320,7 @@ var SceneManager = /** @class */ (function () {
             this.changeScene();
             this.updateScene();
         }
-        // this.renderScene();
+        this.renderScene();
         // this.requestUpdate();
     };
     SceneManager.updateManagers = function () {

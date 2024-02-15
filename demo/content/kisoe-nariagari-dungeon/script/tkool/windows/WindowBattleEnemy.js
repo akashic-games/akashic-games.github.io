@@ -21,8 +21,8 @@ var DataManager_1 = require("../managers/DataManager");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_BattleEnemy = /** @class */ (function (_super) {
     __extends(Window_BattleEnemy, _super);
-    function Window_BattleEnemy(scene, x, y) {
-        return _super.call(this, scene, x, y) || this;
+    function Window_BattleEnemy(x, y) {
+        return _super.call(this, x, y) || this;
     }
     Window_BattleEnemy.prototype.initialize = function (x, y) {
         this._enemies = [];

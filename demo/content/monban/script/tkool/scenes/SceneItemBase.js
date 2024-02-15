@@ -39,7 +39,7 @@ var Scene_ItemBase = /** @class */ (function (_super) {
         _super.prototype.create.call(this);
     };
     Scene_ItemBase.prototype.createActorWindow = function () {
-        this._actorWindow = new WindowMenuActor_1.Window_MenuActor(this.scene);
+        this._actorWindow = new WindowMenuActor_1.Window_MenuActor();
         this._actorWindow.setHandler("ok", this.onActorOk.bind(this));
         this._actorWindow.setHandler("cancel", this.onActorCancel.bind(this));
         this.addWindow(this._actorWindow);

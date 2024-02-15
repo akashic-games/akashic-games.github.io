@@ -26,8 +26,8 @@ var PIXI_1 = require("../PIXI");
 // http://pixijs.download/release/docs/extras_TilingSprite.js.html
 var TilingSprite = /** @class */ (function (_super) {
     __extends(TilingSprite, _super);
-    function TilingSprite(scene, bitmap) {
-        return _super.call(this, scene, bitmap) || this;
+    function TilingSprite(bitmap) {
+        return _super.call(this, bitmap) || this;
     }
     TilingSprite.prototype.initialize = function (bitmap) {
         // const texture = new Texture(new BaseTexture());

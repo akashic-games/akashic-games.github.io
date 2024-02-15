@@ -14,15 +14,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Character = void 0;
 var core_1 = require("../core");
@@ -32,12 +23,12 @@ var SpriteBalloon_1 = require("./SpriteBalloon");
 var SpriteBase_1 = require("./SpriteBase");
 var Sprite_Character = /** @class */ (function (_super) {
     __extends(Sprite_Character, _super);
-    function Sprite_Character(scene) {
+    function Sprite_Character() {
         var args = [];
-        for (var _i = 1; _i < arguments.length; _i++) {
-            args[_i - 1] = arguments[_i];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
         }
-        return _super.apply(this, __spreadArray([scene], args, false)) || this;
+        return _super.apply(this, args) || this;
         // if (Object.getPrototypeOf(this) === Sprite_Character.prototype) {
         // 	this.initialize(param.character);
         // }
@@ -208,13 +199,13 @@ var Sprite_Character = /** @class */ (function (_super) {
     };
     Sprite_Character.prototype.createHalfBodySprites = function () {
         if (!this._upperBody) {
-            this._upperBody = new core_1.Sprite(this.scene);
+            this._upperBody = new core_1.Sprite();
             this._upperBody.anchor.x = 0.5;
             this._upperBody.anchor.y = 1;
             this.addChild(this._upperBody);
         }
         if (!this._lowerBody) {
-            this._lowerBody = new core_1.Sprite(this.scene);
+            this._lowerBody = new core_1.Sprite();
             this._lowerBody.anchor.x = 0.5;
             this._lowerBody.anchor.y = 1;
             this._lowerBody.opacity = 128;
@@ -255,7 +246,7 @@ var Sprite_Character = /** @class */ (function (_super) {
     };
     Sprite_Character.prototype.startBalloon = function () {
         if (!this._balloonSprite) {
-            this._balloonSprite = new SpriteBalloon_1.Sprite_Balloon(this.scene);
+            this._balloonSprite = new SpriteBalloon_1.Sprite_Balloon();
         }
         this._balloonSprite.setup(this._character.balloonId());
         this.parent.addChild(this._balloonSprite);

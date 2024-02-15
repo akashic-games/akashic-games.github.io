@@ -79,7 +79,13 @@ var windows_1 = require("../windows");
  * @desc Overall volume of SE and ME. min: 0, max: 100.
  * @default 100
  *
- * @help This plugin does not provide plugin commands.
+ * @param forceNamagameTimer
+ * @desc Whether to rewrite timer time limit. 1:yes 0:no.
+ * @default 1
+ *
+ * Plugin Command
+ *
+ *  NAMAGAME_START_TIMER : Using the timer in the nicolive games environment.
  *
  * This plugin is essential when creating ranking-type nicolive games.
  */
@@ -139,7 +145,15 @@ var windows_1 = require("../windows");
  * @desc SE・MEの全体音量。最小値:0、最大値:100
  * @default 100
  *
- * @help このプラグインには、プラグインコマンドはありません。
+ * @param forceNamagameTimer
+ * @desc タイマーの制限時間書き換えを行うかどうか。1:はい、0:いいえ
+ * @default 1
+ *
+ * プラグインコマンド詳細
+ *  イベントコマンド「プラグインコマンド」から実行。
+ *  （引数の間は半角スペースで区切る）
+ *
+ *  NAMAGAME_START_TIMER : ニコ生ゲーム環境のタイマーを利用する。
  *
  * ランキング形式のニコ生ゲームを作る時にこのプラグインが必須です。
  */
@@ -161,6 +175,7 @@ var windows_1 = require("../windows");
     var MIN_VOLUME = 0;
     var musicVolume = clamp(Number(parameters.musicVolume || MAX_VOLUME), MIN_VOLUME, MAX_VOLUME);
     var soundVolume = clamp(Number(parameters.soundVolume || MAX_VOLUME), MIN_VOLUME, MAX_VOLUME);
+    var forceNamagameTimer = Number(parameters.forceNamagameTimer || 1) !== 0;
     function clamp(value, min, max) {
         return Math.max(min, Math.min(max, value));
     }
@@ -218,22 +233,26 @@ var windows_1 = require("../windows");
             g.game.vars.gameState.score = value;
         }
     };
-    // タイマーの制限時間の書き換え
-    objects_1.Game_Timer.prototype.start = function (_count) {
-        var _a;
+    // ニコ生ゲーム用のタイマーのフレーム数を算出
+    function calcTimerFrames() {
         var fps;
         if (typeof g === "undefined") {
             // RPGツクールでのfpsのデフォルト値は60
             fps = 60;
         }
         else {
-            // Akashic Engine でのfpsのデフォルト値は30
-            fps = (_a = g.game.fps) !== null && _a !== void 0 ? _a : 30;
+            fps = g.game.fps;
         }
         var timeLimit = totalTimeLimit - titleTime - graceTime;
-        this._frames = timeLimit * fps;
-        this._working = true;
-    };
+        return timeLimit * fps;
+    }
+    // タイマーの制限時間の書き換え
+    if (forceNamagameTimer) {
+        objects_1.Game_Timer.prototype.start = function (_count) {
+            this._frames = calcTimerFrames();
+            this._working = true;
+        };
+    }
     // メニュー画面から「ゲーム終了」の項目を削除する
     windows_1.Window_MenuCommand.prototype.addGameEndCommand = function () {
         // 「ゲーム終了」の項目をメニューにはいらないようにするため、このメソッドでは何も行わない
@@ -258,8 +277,7 @@ var windows_1 = require("../windows");
     var _sceneMapCreateDisplayObjects = scenes_1.Scene_Map.prototype.createDisplayObjects;
     scenes_1.Scene_Map.prototype.createDisplayObjects = function () {
         var original = _sceneMapCreateDisplayObjects.call(this);
-        this.gameScoreWindow =
-            this.scene != null ? new Window_GameScore(this.scene, scoreX, scoreY) : new Window_GameScore(scoreX, scoreY); // g.Sceneが存在しないツクール環境のために用意した。この条件に入るのはツクール環境のみ
+        this.gameScoreWindow = new Window_GameScore(scoreX, scoreY);
         if (showScore) {
             this.gameScoreWindow.open();
             this.addWindow(this.gameScoreWindow);
@@ -277,4 +295,18 @@ var windows_1 = require("../windows");
     managers_1.AudioManager.bgsVolume = musicVolume;
     managers_1.AudioManager.meVolume = soundVolume;
     managers_1.AudioManager.seVolume = soundVolume;
+    // プラグインコマンドを追加定義。
+    var _gameInterpreterPluginCommand = objects_1.Game_Interpreter.prototype.pluginCommand;
+    objects_1.Game_Interpreter.prototype.pluginCommand = function (command, _args) {
+        _gameInterpreterPluginCommand.apply(this, arguments);
+        switch (command) {
+            // ニコ生ゲーム環境のタイマーを利用する
+            case "NAMAGAME_START_TIMER":
+                var frames = calcTimerFrames();
+                DataManager_1.$gameTimer.start(frames);
+                break;
+            default:
+                break;
+        }
+    };
 })();

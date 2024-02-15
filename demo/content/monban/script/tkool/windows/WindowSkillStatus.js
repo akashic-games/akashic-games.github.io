@@ -19,8 +19,8 @@ exports.Window_SkillStatus = void 0;
 var WindowBase_1 = require("./WindowBase");
 var Window_SkillStatus = /** @class */ (function (_super) {
     __extends(Window_SkillStatus, _super);
-    function Window_SkillStatus(scene, x, y, width, height) {
-        return _super.call(this, scene, x, y, width, height) || this;
+    function Window_SkillStatus(x, y, width, height) {
+        return _super.call(this, x, y, width, height) || this;
     }
     Window_SkillStatus.prototype.initialize = function (x, y, width, height) {
         _super.prototype.initialize.call(this, x, y, width, height);

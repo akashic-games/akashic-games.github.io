@@ -20,8 +20,8 @@ var core_1 = require("../core");
 var DataManager_1 = require("../managers/DataManager");
 var Sprite_Timer = /** @class */ (function (_super) {
     __extends(Sprite_Timer, _super);
-    function Sprite_Timer(scene) {
-        return _super.call(this, scene) || this;
+    function Sprite_Timer() {
+        return _super.call(this) || this;
         // if (Object.getPrototypeOf(this) === Sprite_Timer.prototype) {
         // 	this.initialize(param.bitmap);
         // }

@@ -2649,6 +2649,16 @@
 		"assets/img/tilesets/World_C.txt": {
 			"type": "text",
 			"path": "assets/img/tilesets/World_C.txt"
+		},
+		"DTextPicture": {
+			"type": "script",
+			"path": "script/tkool/plugins/DTextPicture.js",
+			"global": true
+		},
+		"PictureCallCommon": {
+			"type": "script",
+			"path": "script/tkool/plugins/PictureCallCommon.js",
+			"global": true
 		}
 	},
 	"environment": {
@@ -2669,5 +2679,12 @@
 			"flavor": "-canvas"
 		}
 	},
-	"globalScripts": []
+	"globalScripts": [
+		"node_modules/@akashic-extension/akashic-hover-plugin/lib/Converter.js",
+		"node_modules/@akashic-extension/akashic-hover-plugin/lib/HoverPlugin.js",
+		"node_modules/@akashic-extension/akashic-hover-plugin/lib/index.js"
+	],
+	"moduleMainScripts": {
+		"@akashic-extension/akashic-hover-plugin": "node_modules/@akashic-extension/akashic-hover-plugin/lib/index.js"
+	}
 }

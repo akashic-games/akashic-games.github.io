@@ -22,8 +22,8 @@ var DataManager_1 = require("../managers/DataManager");
 var WindowCommand_1 = require("./WindowCommand");
 var Window_ActorCommand = /** @class */ (function (_super) {
     __extends(Window_ActorCommand, _super);
-    function Window_ActorCommand(scene) {
-        return _super.call(this, scene) || this;
+    function Window_ActorCommand() {
+        return _super.call(this) || this;
     }
     Window_ActorCommand.prototype.initialize = function () {
         var y = core_1.Graphics.boxHeight - this.windowHeight();

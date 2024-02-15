@@ -46,7 +46,7 @@ var Scene_MenuBase = /** @class */ (function (_super) {
         this._actor = DataManager_1.$gameParty.menuActor();
     };
     Scene_MenuBase.prototype.createBackground = function () {
-        this._backgroundSprite = new Sprite_1.Sprite(this.scene);
+        this._backgroundSprite = new Sprite_1.Sprite();
         this._backgroundSprite.bitmap = managers_1.SceneManager.backgroundBitmap();
         this.addChild(this._backgroundSprite);
     };
@@ -54,7 +54,7 @@ var Scene_MenuBase = /** @class */ (function (_super) {
         this._backgroundSprite.opacity = opacity;
     };
     Scene_MenuBase.prototype.createHelpWindow = function () {
-        this._helpWindow = new windows_1.Window_Help(this.scene);
+        this._helpWindow = new windows_1.Window_Help();
         this.addWindow(this._helpWindow);
     };
     Scene_MenuBase.prototype.nextActor = function () {

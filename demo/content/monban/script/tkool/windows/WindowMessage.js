@@ -26,8 +26,8 @@ var WindowGold_1 = require("./WindowGold");
 var WindowNumberInput_1 = require("./WindowNumberInput");
 var Window_Message = /** @class */ (function (_super) {
     __extends(Window_Message, _super);
-    function Window_Message(scene) {
-        return _super.call(this, scene) || this;
+    function Window_Message() {
+        return _super.call(this) || this;
         // if (Object.getPrototypeOf(this) === Window_Message.prototype) {
         // 	this.initialize();
         // }
@@ -55,12 +55,12 @@ var Window_Message = /** @class */ (function (_super) {
         return [this._goldWindow, this._choiceWindow, this._numberWindow, this._itemWindow];
     };
     Window_Message.prototype.createSubWindows = function () {
-        this._goldWindow = new WindowGold_1.Window_Gold(this.scene, 0, 0);
+        this._goldWindow = new WindowGold_1.Window_Gold(0, 0);
         this._goldWindow.x = core_1.Graphics.boxWidth - this._goldWindow.width;
         this._goldWindow.openness = 0;
-        this._choiceWindow = new WindowChoiceList_1.Window_ChoiceList(this.scene, this);
-        this._numberWindow = new WindowNumberInput_1.Window_NumberInput(this.scene, this);
-        this._itemWindow = new WindowEventItem_1.Window_EventItem(this.scene, this);
+        this._choiceWindow = new WindowChoiceList_1.Window_ChoiceList(this);
+        this._numberWindow = new WindowNumberInput_1.Window_NumberInput(this);
+        this._itemWindow = new WindowEventItem_1.Window_EventItem(this);
     };
     Window_Message.prototype.windowWidth = function () {
         return core_1.Graphics.boxWidth;

@@ -147,7 +147,7 @@ var Scene_Battle = /** @class */ (function (_super) {
         this._logWindow.setSpriteset(this._spriteset);
     };
     Scene_Battle.prototype.createSpriteset = function () {
-        this._spriteset = new sprites_1.Spriteset_Battle(this.scene);
+        this._spriteset = new sprites_1.Spriteset_Battle();
         this.addChild(this._spriteset);
     };
     Scene_Battle.prototype.createAllWindows = function () {
@@ -164,22 +164,22 @@ var Scene_Battle = /** @class */ (function (_super) {
         this.createScrollTextWindow();
     };
     Scene_Battle.prototype.createLogWindow = function () {
-        this._logWindow = new windows_1.Window_BattleLog(this.scene);
+        this._logWindow = new windows_1.Window_BattleLog();
         this.addWindow(this._logWindow);
     };
     Scene_Battle.prototype.createStatusWindow = function () {
-        this._statusWindow = new windows_1.Window_BattleStatus(this.scene);
+        this._statusWindow = new windows_1.Window_BattleStatus();
         this.addWindow(this._statusWindow);
     };
     Scene_Battle.prototype.createPartyCommandWindow = function () {
-        this._partyCommandWindow = new windows_1.Window_PartyCommand(this.scene);
+        this._partyCommandWindow = new windows_1.Window_PartyCommand();
         this._partyCommandWindow.setHandler("fight", this.commandFight.bind(this));
         this._partyCommandWindow.setHandler("escape", this.commandEscape.bind(this));
         this._partyCommandWindow.deselect();
         this.addWindow(this._partyCommandWindow);
     };
     Scene_Battle.prototype.createActorCommandWindow = function () {
-        this._actorCommandWindow = new windows_1.Window_ActorCommand(this.scene);
+        this._actorCommandWindow = new windows_1.Window_ActorCommand();
         this._actorCommandWindow.setHandler("attack", this.commandAttack.bind(this));
         this._actorCommandWindow.setHandler("skill", this.commandSkill.bind(this));
         this._actorCommandWindow.setHandler("guard", this.commandGuard.bind(this));
@@ -188,14 +188,14 @@ var Scene_Battle = /** @class */ (function (_super) {
         this.addWindow(this._actorCommandWindow);
     };
     Scene_Battle.prototype.createHelpWindow = function () {
-        this._helpWindow = new windows_1.Window_Help(this.scene);
+        this._helpWindow = new windows_1.Window_Help();
         this._helpWindow.visible = false;
         this.addWindow(this._helpWindow);
     };
     Scene_Battle.prototype.createSkillWindow = function () {
         var wy = this._helpWindow.y + this._helpWindow.height;
         var wh = this._statusWindow.y - wy;
-        this._skillWindow = new windows_1.Window_BattleSkill(this.scene, 0, wy, core_1.Graphics.boxWidth, wh);
+        this._skillWindow = new windows_1.Window_BattleSkill(0, wy, core_1.Graphics.boxWidth, wh);
         this._skillWindow.setHelpWindow(this._helpWindow);
         this._skillWindow.setHandler("ok", this.onSkillOk.bind(this));
         this._skillWindow.setHandler("cancel", this.onSkillCancel.bind(this));
@@ -204,20 +204,20 @@ var Scene_Battle = /** @class */ (function (_super) {
     Scene_Battle.prototype.createItemWindow = function () {
         var wy = this._helpWindow.y + this._helpWindow.height;
         var wh = this._statusWindow.y - wy;
-        this._itemWindow = new windows_1.Window_BattleItem(this.scene, 0, wy, core_1.Graphics.boxWidth, wh);
+        this._itemWindow = new windows_1.Window_BattleItem(0, wy, core_1.Graphics.boxWidth, wh);
         this._itemWindow.setHelpWindow(this._helpWindow);
         this._itemWindow.setHandler("ok", this.onItemOk.bind(this));
         this._itemWindow.setHandler("cancel", this.onItemCancel.bind(this));
         this.addWindow(this._itemWindow);
     };
     Scene_Battle.prototype.createActorWindow = function () {
-        this._actorWindow = new windows_1.Window_BattleActor(this.scene, 0, this._statusWindow.y);
+        this._actorWindow = new windows_1.Window_BattleActor(0, this._statusWindow.y);
         this._actorWindow.setHandler("ok", this.onActorOk.bind(this));
         this._actorWindow.setHandler("cancel", this.onActorCancel.bind(this));
         this.addWindow(this._actorWindow);
     };
     Scene_Battle.prototype.createEnemyWindow = function () {
-        this._enemyWindow = new windows_1.Window_BattleEnemy(this.scene, 0, this._statusWindow.y);
+        this._enemyWindow = new windows_1.Window_BattleEnemy(0, this._statusWindow.y);
         this._enemyWindow.x = core_1.Graphics.boxWidth - this._enemyWindow.width;
         this._enemyWindow.setHandler("ok", this.onEnemyOk.bind(this));
         this._enemyWindow.setHandler("cancel", this.onEnemyCancel.bind(this));
@@ -225,14 +225,14 @@ var Scene_Battle = /** @class */ (function (_super) {
     };
     Scene_Battle.prototype.createMessageWindow = function () {
         var _this = this;
-        this._messageWindow = new windows_1.Window_Message(this.scene);
+        this._messageWindow = new windows_1.Window_Message();
         this.addWindow(this._messageWindow);
         this._messageWindow.subWindows().forEach(function (window) {
             _this.addWindow(window);
         });
     };
     Scene_Battle.prototype.createScrollTextWindow = function () {
-        this._scrollTextWindow = new windows_1.Window_ScrollText(this.scene);
+        this._scrollTextWindow = new windows_1.Window_ScrollText();
         this.addWindow(this._scrollTextWindow);
     };
     Scene_Battle.prototype.refreshStatus = function () {
