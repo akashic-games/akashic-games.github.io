@@ -278,7 +278,7 @@ var SceneManager = /** @class */ (function () {
         console.log("onKeyDown: " + JSON.stringify(event));
     };
     SceneManager.catchException = function (e) {
-        console.log("ScneManager#catchException(): " + JSON.stringify(e));
+        console.error("ScneManager#catchException(): " + e);
         if (e instanceof Error) {
             // Graphics.printError(e.name, e.message);
             console.error(e.stack);
