@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ImageManager = void 0;
 var core_1 = require("../core/");
 var ImageCache_1 = require("../core/ImageCache");
+var RequestQueue_1 = require("../core/RequestQueue");
 var ImageManager = /** @class */ (function () {
     function ImageManager() {
     }
@@ -222,34 +223,32 @@ var ImageManager = /** @class */ (function () {
         }
     };
     ImageManager.requestNormalBitmap = function (path, hue) {
-        // loadXXX() に対して、requestXXX()はbitmapインスタンスを生成しつつも
-        // ダウンロードの開始は遅延されるもののよう。
-        // ここではかんたんのために、laodNormalBitmap()を利用する
-        // const key = this._generateCacheKey(path, hue);
-        // let bitmap = this._imageCache.get(key);
-        // if (!bitmap) {
-        // 	bitmap = Bitmap.request(path);
-        // 	bitmap.addLoadListener(() => {
-        // 		bitmap.rotateHue(hue);
-        // 	});
-        // 	this._imageCache.add(key, bitmap);
-        // 	this._requestQueue.enqueue(key, bitmap);
-        // } else {
-        // 	this._requestQueue.raisePriority(key);
-        // }
-        // return bitmap;
-        return this.loadNormalBitmap(path, hue);
+        var key = this._generateCacheKey(path, hue);
+        var bitmap = this._imageCache.get(key);
+        if (!bitmap) {
+            bitmap = core_1.Bitmap.request(path);
+            bitmap.addLoadListener(function () {
+                bitmap.rotateHue(hue);
+            });
+            this._imageCache.add(key, bitmap);
+            this._requestQueue.enqueue(key, bitmap);
+        }
+        else {
+            this._requestQueue.raisePriority(key);
+        }
+        return bitmap;
     };
     ImageManager.update = function () {
-        // this._requestQueue.update();
+        this._requestQueue.update();
     };
     ImageManager.clearRequest = function () {
-        // this._requestQueue.clear();
+        this._requestQueue.clear();
     };
     ImageManager._generateCacheKey = function (path, hue) {
         return path + ":" + hue;
     };
     ImageManager._imageCache = new ImageCache_1.ImageCache();
+    ImageManager._requestQueue = new RequestQueue_1.RequestQueue();
     return ImageManager;
 }());
 exports.ImageManager = ImageManager;

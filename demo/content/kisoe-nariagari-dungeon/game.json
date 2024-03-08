@@ -1935,6 +1935,11 @@
 			"type": "script",
 			"path": "script/tkool/plugins/PictureCallCommon.js",
 			"global": true
+		},
+		"RequestQueue": {
+			"type": "script",
+			"path": "script/tkool/core/RequestQueue.js",
+			"global": true
 		}
 	},
 	"environment": {
