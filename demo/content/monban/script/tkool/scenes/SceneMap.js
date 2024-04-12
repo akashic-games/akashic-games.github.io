@@ -54,8 +54,6 @@ var Scene_Map = /** @class */ (function (_super) {
             // this.onMapLoaded();
             // this._mapLoaded = true;
         }
-        var b = this._mapLoaded && _super.prototype.isReady.call(this);
-        console.log("SceneMap#isReady(): " + b);
         return this._mapLoaded && _super.prototype.isReady.call(this);
     };
     Scene_Map.prototype.onMapLoaded = function () {

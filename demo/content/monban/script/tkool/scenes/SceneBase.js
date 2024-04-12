@@ -36,25 +36,21 @@ var Scene_Base = /** @class */ (function (_super) {
         this._imageReservationId = core_1.Utils.generateRuntimeId();
     };
     Scene_Base.prototype.attachReservation = function () {
-        console.log("Scene_Base.prototype.attachReservation");
         managers_1.ImageManager.setDefaultReservationId(this._imageReservationId);
     };
     Scene_Base.prototype.detachReservation = function () {
-        console.log("Scene_Base.prototype.detachReservation");
         managers_1.ImageManager.releaseReservation(this._imageReservationId);
     };
     Scene_Base.prototype.create = function () {
-        console.log("Scene_Base.prototype.create");
+        //
     };
     Scene_Base.prototype.isActive = function () {
         return this._active;
     };
     Scene_Base.prototype.isReady = function () {
-        console.log("Scene_Base.prototype.isReady");
         return managers_1.ImageManager.isReady();
     };
     Scene_Base.prototype.start = function () {
-        console.log("Scene_Base.prototype.start");
         this._active = true;
     };
     Scene_Base.prototype.update = function () {
@@ -62,14 +58,13 @@ var Scene_Base = /** @class */ (function (_super) {
         this.updateChildren();
     };
     Scene_Base.prototype.stop = function () {
-        console.log("Scene_Base.prototype.stop");
         this._active = false;
     };
     Scene_Base.prototype.isBusy = function () {
         return this._fadeDuration > 0;
     };
     Scene_Base.prototype.terminate = function () {
-        console.log("Scene_Base.prototype.terminate");
+        //
     };
     Scene_Base.prototype.createWindowLayer = function () {
         var width = core_1.Graphics.boxWidth;
@@ -81,7 +76,6 @@ var Scene_Base = /** @class */ (function (_super) {
         this.addChild(this._windowLayer);
     };
     Scene_Base.prototype.addWindow = function (window) {
-        console.log("Scene_Base.prototype.addWindow");
         this._windowLayer.addChild(window);
     };
     Scene_Base.prototype.startFadeIn = function (duration, white) {
@@ -147,7 +141,6 @@ var Scene_Base = /** @class */ (function (_super) {
         });
     };
     Scene_Base.prototype.popScene = function () {
-        console.log("Scene_Base.prototype.popScene");
         managers_1.SceneManager.pop();
     };
     Scene_Base.prototype.checkGameover = function () {

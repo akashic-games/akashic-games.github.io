@@ -7,7 +7,6 @@ var SoundManager = /** @class */ (function () {
     function SoundManager() {
     }
     SoundManager.preloadImportantSounds = function () {
-        console.log("SoundManager.preloadImportantSounds");
         this.loadSystemSound(0);
         this.loadSystemSound(1);
         this.loadSystemSound(2);

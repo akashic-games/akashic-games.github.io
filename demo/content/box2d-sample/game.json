@@ -3,6 +3,8 @@
 	"height": 320,
 	"fps": 30,
 	"main": "./script/main.js",
+	"title": "box2d-sample",
+	"description": "拡張ライブラリ[akashic-box2d](https://github.com/akashic-games/akashic-box2d)は2D 物理演算ライブラリである Box2DWeb を Akashic で利用するためのモジュールです。",
 	"assets": {
 		"pentagon": {
 			"type": "image",

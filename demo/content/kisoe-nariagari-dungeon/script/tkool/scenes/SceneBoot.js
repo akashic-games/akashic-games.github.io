@@ -31,7 +31,6 @@ var Scene_Boot = /** @class */ (function (_super) {
         return _this;
     }
     Scene_Boot.loadSystemImages = function () {
-        console.log("Scene_Boot.loadSystemImages");
         managers_1.ImageManager.reserveSystem("IconSet");
         managers_1.ImageManager.reserveSystem("Balloon");
         managers_1.ImageManager.reserveSystem("Shadow1");
@@ -44,12 +43,10 @@ var Scene_Boot = /** @class */ (function (_super) {
         managers_1.ImageManager.reserveSystem("ButtonSet");
     };
     Scene_Boot.prototype.initialize = function () {
-        console.log("Scene_Boot.prototype.initialize");
         this._startDate = Date.now();
         _super.prototype.initialize.call(this);
     };
     Scene_Boot.prototype.create = function () {
-        console.log("Scene_Boot.prototype.create");
         SceneBase_1.Scene_Base.prototype.create.call(this);
         managers_1.DataManager.loadDatabase();
         // ConfigManager.load();
@@ -59,11 +56,9 @@ var Scene_Boot = /** @class */ (function (_super) {
         Scene_Boot.loadSystemImages();
     };
     Scene_Boot.prototype.loadSystemWindowImage = function () {
-        console.log("Scene_Boot.prototype.loadSystemWindowImage");
         managers_1.ImageManager.reserveSystem("Window");
     };
     Scene_Boot.prototype.isReady = function () {
-        console.log("Scene_Boot.prototype.isReady");
         if (SceneBase_1.Scene_Base.prototype.isReady.call(this)) {
             return managers_1.DataManager.isDatabaseLoaded() && this.isGameFontLoaded();
         }
@@ -72,7 +67,6 @@ var Scene_Boot = /** @class */ (function (_super) {
         }
     };
     Scene_Boot.prototype.isGameFontLoaded = function () {
-        console.log("Scene_Boot.prototype.isGameFontLoaded");
         if (core_1.Graphics.isFontLoaded("GameFont")) {
             return true;
         }
@@ -84,7 +78,6 @@ var Scene_Boot = /** @class */ (function (_super) {
         }
     };
     Scene_Boot.prototype.start = function () {
-        console.log("Scene_Boot.prototype.start");
         SceneBase_1.Scene_Base.prototype.start.call(this);
         managers_1.SoundManager.preloadImportantSounds();
         if (managers_1.DataManager.isBattleTest() && false) {
@@ -100,12 +93,10 @@ var Scene_Boot = /** @class */ (function (_super) {
             managers_1.DataManager.setupNewGame();
             managers_1.SceneManager.goto(SceneTitle_1.Scene_Title);
             // Window_TitleCommand.initCommandPosition();
-            console.log("Window_TitleCommand.initCommandPosition not implemented");
         }
         this.updateDocumentTitle();
     };
     Scene_Boot.prototype.updateDocumentTitle = function () {
-        console.log("Scene_Boot.prototype.updateDocumentTitle");
         // document.title = $dataSystem.gameTitle;
     };
     Scene_Boot.prototype.checkPlayerLocation = function () {

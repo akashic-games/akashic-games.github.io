@@ -132,7 +132,7 @@ var Graphics = /** @class */ (function () {
             // }
             // this._errorPrinter.appendChild(button);
             this._loadingCount = -Infinity;
-            console.log("failed to load: " + url);
+            console.error("failed to load: " + url);
         }
     };
     Graphics.eraseLoadingError = function () {
@@ -148,7 +148,7 @@ var Graphics = /** @class */ (function () {
         // }
         this._applyCanvasFilter();
         this._clearUpperCanvas();
-        console.log("error: " + name + ", " + message);
+        console.error("error: " + name + ", " + message);
     };
     Graphics.showFps = function () {
         if (this._fpsMeter) {
@@ -171,7 +171,7 @@ var Graphics = /** @class */ (function () {
         // style.sheet.insertRule(rule, 0);
         this._createFontLoader(name);
     };
-    Graphics.isFontLoaded = function (name) {
+    Graphics.isFontLoaded = function (_name) {
         // if (Graphics._cssFontLoading) {
         // 	if(Graphics._fontLoaded){
         // 		return Graphics._fontLoaded.check('10px "'+name+'"');
@@ -190,14 +190,13 @@ var Graphics = /** @class */ (function () {
         // 	width2 = context.measureText(text).width;
         // 	return width1 !== width2;
         // }
-        console.log("Graphics#isFontLoaded(" + name + ") returns true");
         return true;
     };
     Graphics.playVideo = function (src) {
         // this._videoLoader = ResourceHandler.createLoader(null, this._playVideo.bind(this, src), this._onVideoError.bind(this));
         this._playVideo(src);
     };
-    Graphics._playVideo = function (src) {
+    Graphics._playVideo = function (_src) {
         // this._video.src = src;
         // this._video.onloadeddata = this._onVideoLoad.bind(this);
         // this._video.onerror = this._videoLoader;
@@ -205,7 +204,6 @@ var Graphics = /** @class */ (function () {
         // this._video.load();
         // this._videoLoading = true;
         this._videoLoading = false;
-        console.log("Graphics#_playVide() is not implemented, src = " + src);
     };
     Graphics.isVideoPlaying = function () {
         return this._videoLoading || this._isVideoVisible();
@@ -378,7 +376,6 @@ var Graphics = /** @class */ (function () {
         // 		elements[i].style.zIndex = 0;
         // 	}
         // }
-        console.log("Graphics#_modifyExistingElements not implemented");
     };
     /**
      * @static
@@ -390,7 +387,6 @@ var Graphics = /** @class */ (function () {
         // this._errorPrinter.id = 'ErrorPrinter';
         // this._updateErrorPrinter();
         // document.body.appendChild(this._errorPrinter);
-        console.log("Graphics#_createErrorPrinter not implemented");
     };
     /**
      * @static
@@ -405,7 +401,6 @@ var Graphics = /** @class */ (function () {
         // this._errorPrinter.style.fontSize = '20px';
         // this._errorPrinter.style.zIndex = 99;
         // this._centerElement(this._errorPrinter);
-        console.log("Graphics#_updateErrorPrinter not implemented");
     };
     Graphics._createCanvas = function () {
         // this._canvas = document.createElement('canvas');
@@ -418,7 +413,6 @@ var Graphics = /** @class */ (function () {
         // this._canvas.height = this._height;
         // this._canvas.style.zIndex = 1;
         // this._centerElement(this._canvas);
-        console.log("Graphics#_updateCanvas not implemented");
     };
     Graphics._createVideo = function () {
         // this._video = document.createElement('video');
@@ -429,7 +423,6 @@ var Graphics = /** @class */ (function () {
         // this._updateVideo();
         // makeVideoPlayableInline(this._video);
         // document.body.appendChild(this._video);
-        console.log("Graphics#_createVideo not implemented");
     };
     /**
      * @static
@@ -475,7 +468,6 @@ var Graphics = /** @class */ (function () {
         // 	context.drawImage(this._loadingImage, dx, dy);
         // 	context.restore();
         // }
-        console.log("Graphics#_paintUpperCanvas not implemented");
     };
     Graphics._createRenderer = function () {
         // PIXI.dontSayHello = true;

@@ -17,6 +17,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Player = void 0;
 var core_1 = require("../core");
+var managers_1 = require("../managers");
 var DataManager_1 = require("../managers/DataManager");
 var GameCharacter_1 = require("./GameCharacter");
 var GameFollowers_1 = require("./GameFollowers");
@@ -199,21 +200,20 @@ var Game_Player = /** @class */ (function (_super) {
         return 0;
     };
     Game_Player.prototype.meetsEncounterConditions = function (encounter) {
-        return encounter.regionSet.length === 0 || encounter.regionSet.contains(this.regionId());
+        return encounter.regionSet.length === 0 || core_1.Utils.contains(encounter.regionSet, this.regionId());
     };
     Game_Player.prototype.executeEncounter = function () {
-        // TODO: BattleManagerを移植するまではとりあえずfalseを返す
         if (!DataManager_1.$gameMap.isEventRunning() && this._encounterCount <= 0) {
             this.makeEncounterCount();
-            // const troopId = this.makeEncounterTroopId();
-            // if ($dataTroops[troopId]) {
-            // 	BattleManager.setup(troopId, true, false);
-            // 	BattleManager.onEncounter();
-            // 	return true;
-            // } else {
-            // 	return false;
-            // }
-            return false;
+            var troopId = this.makeEncounterTroopId();
+            if (DataManager_1.$dataTroops[troopId]) {
+                managers_1.BattleManager.setup(troopId, true, false);
+                managers_1.BattleManager.onEncounter();
+                return true;
+            }
+            else {
+                return false;
+            }
         }
         else {
             return false;

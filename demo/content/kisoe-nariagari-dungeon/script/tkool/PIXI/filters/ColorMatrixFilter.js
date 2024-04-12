@@ -25,16 +25,16 @@ var ColorMatrixFilter = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     ColorMatrixFilter.prototype.hue = function (_value, _b) {
-        console.log("❗ColorMatrixFilter#hue called");
+        //
     };
     ColorMatrixFilter.prototype.saturate = function (_value, _b) {
-        console.log("❗ColorMatrixFilter#saturate called");
+        //
     };
     ColorMatrixFilter.prototype.reset = function () {
         //
     };
     ColorMatrixFilter.prototype._loadMatrix = function (_matrix, _b) {
-        console.log("❗ColorMatrixFilter#_loadMatrix called");
+        //
     };
     return ColorMatrixFilter;
 }(Filter_1.Filter));
