@@ -90,10 +90,12 @@ var Sprite_Enemy = /** @class */ (function (_super) {
         this.x += this._shake;
     };
     Sprite_Enemy.prototype.updateStateSprite = function () {
-        this._stateIconSprite.y = -Math.round((this.bitmap.height + 40) * 0.9);
-        if (this._stateIconSprite.y < 20 - this.y) {
-            this._stateIconSprite.y = 20 - this.y;
-        }
+        // this._stateIconSprite.y = -Math.round((this.bitmap.height + 40) * 0.9);
+        // if (this._stateIconSprite.y < 20 - this.y) {
+        // 	this._stateIconSprite.y = 20 - this.y;
+        // }
+        this._stateIconSprite.x = this.width / 2 - SpriteStateIcon_1.Sprite_StateIcon._iconWidth / 2;
+        this._stateIconSprite.y = (-1 * SpriteStateIcon_1.Sprite_StateIcon._iconHeight) / 2;
     };
     Sprite_Enemy.prototype.initVisibility = function () {
         this._appeared = this._enemy.isAlive();

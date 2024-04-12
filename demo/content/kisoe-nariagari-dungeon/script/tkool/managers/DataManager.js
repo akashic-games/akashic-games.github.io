@@ -70,7 +70,6 @@ var DataManager = /** @class */ (function () {
         // xhr.send();
         // TODO: なんとかして放り込む
         // window[name] = JSON.parse(xhr.responseText);
-        console.log("DataManager loaded: " + name);
         this._requestedDataNames.push({ name: name, src: src });
     };
     DataManager.isDatabaseLoaded = function () {

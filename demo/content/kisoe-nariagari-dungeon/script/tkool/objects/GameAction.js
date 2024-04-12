@@ -579,7 +579,7 @@ var Game_Action = /** @class */ (function () {
             return value;
         }
         catch (e) {
-            console.log(e);
+            console.error(e);
             return 0;
         }
     };

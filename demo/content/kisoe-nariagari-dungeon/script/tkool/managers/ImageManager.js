@@ -75,7 +75,6 @@ var ImageManager = /** @class */ (function () {
         if (!bitmap) {
             bitmap = core_1.Bitmap.load(decodeURIComponent(path));
             bitmap.addLoadListener(function () {
-                console.log("Bitmap loaded: " + path, "age: " + g.game.age);
                 bitmap.rotateHue(hue);
             });
             this._imageCache.add(key, bitmap);
@@ -147,7 +146,6 @@ var ImageManager = /** @class */ (function () {
         return this.reserveBitmap("img/titles2/", filename, hue, true, reservationId);
     };
     ImageManager.reserveBitmap = function (folder, filename, hue, smooth, reservationId) {
-        console.log("reserved: " + folder + "/" + filename);
         if (filename) {
             var path = folder + encodeURIComponent(filename) + ".png";
             var bitmap = this.reserveNormalBitmap(path, hue || 0, reservationId || this._defaultReservationId);

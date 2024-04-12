@@ -317,7 +317,6 @@ var AudioManager = /** @class */ (function () {
         if (this.isStaticSe(se)) {
             return;
         }
-        console.log("AudioManager.loadStaticSe: " + se.name);
         var buffer = {
             name: se.name,
             playContext: g.game.audio.create(asset)

@@ -39,7 +39,6 @@ function assignAsset(targetScene) {
         if (anAsset) {
             DM[pair.name] = JSON.parse(anAsset.data);
             DataManager_1.DataManager.onLoad(DM[pair.name]);
-            console.log(pair.src + " loaded");
         }
         return !anAsset;
     });
@@ -52,10 +51,8 @@ function createLoadingLocalScene() {
         seethrough: true
     });
     scene.onLoad.add(function () {
-        console.log("_____loadingLocalScene START_____");
         scene.onUpdate.add(function () {
             if (ImageManager_1.ImageManager.isReady()) {
-                console.log("_____loadingLocalScene END_____");
                 g.game.popScene();
             }
         });
@@ -181,13 +178,11 @@ var SceneManager = /** @class */ (function () {
         return true;
     };
     SceneManager.checkWebGL = function () {
-        console.log("checkWebGL not implemented yet");
         // if (!Graphics.hasWebGL()) {
         // 	throw new Error("Your browser does not support WebGL.");
         // }
     };
     SceneManager.checkFileAccess = function () {
-        console.log("checkFileAccess not implemented yet");
         // if (!Utils.canReadGameFiles()) {
         // 	throw new Error("Your browser does not allow to read local files.");
         // }
@@ -197,7 +192,6 @@ var SceneManager = /** @class */ (function () {
         // if (!WebAudio.initialize(noAudio) && !noAudio) {
         // 	throw new Error("Your browser does not support Web Audio API.");
         // }
-        console.log("Scenemanager#initAudio not implemented");
     };
     SceneManager.initInput = function () {
         // Input.initialize();
@@ -260,7 +254,7 @@ var SceneManager = /** @class */ (function () {
             //
         }
     };
-    SceneManager.onKeyDown = function (event) {
+    SceneManager.onKeyDown = function (_event) {
         // if (!event.ctrlKey && !event.altKey) {
         // 	switch (event.keyCode) {
         // 		case 116:   // F5
@@ -275,7 +269,6 @@ var SceneManager = /** @class */ (function () {
         // 			break;
         // 	}
         // }
-        console.log("onKeyDown: " + JSON.stringify(event));
     };
     SceneManager.catchException = function (e) {
         console.error("ScneManager#catchException(): " + e);
@@ -362,7 +355,6 @@ var SceneManager = /** @class */ (function () {
         var mvScene = this._scene;
         var akashicScene = this._scene.scene;
         akashicScene.onLoad.addOnce(function () {
-            console.log("scene loaded");
             // SceneManager に利用可能になったことを伝える
             mvScene.thisSceneLoaded = true;
             var updateSceneManager = function () {

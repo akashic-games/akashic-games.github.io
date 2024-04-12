@@ -256,7 +256,6 @@ var Sprite = /** @class */ (function (_super) {
             this.texture.frame = /* PIXI.Rectangle.emptyRectangle*/ Rectangle_1.Rectangle.emptyRectangle;
         }
         else {
-            console.log("❗ " + JSON.stringify(this.texture));
             this.texture.baseTexture.width = Math.max(this.texture.baseTexture.width, this._frame.x + this._frame.width);
             this.texture.baseTexture.height = Math.max(this.texture.baseTexture.height, this._frame.y + this._frame.height);
             this.texture.frame = this._frame;

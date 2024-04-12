@@ -42,7 +42,6 @@ var Scene_Title = /** @class */ (function (_super) {
         this.createCommandWindow();
     };
     Scene_Title.prototype.start = function () {
-        console.log("Scene_Title.prototype.start");
         managers_1.SceneManager.clearStack();
         this.centerSprite(this._backSprite1);
         this.centerSprite(this._backSprite2);
@@ -59,7 +58,6 @@ var Scene_Title = /** @class */ (function (_super) {
         return (this._commandWindow && this._commandWindow.isClosing()) || _super.prototype.isBusy.call(this);
     };
     Scene_Title.prototype.terminate = function () {
-        console.log("Scene_Title.prototype.terminate");
         _super.prototype.terminate.call(this);
         managers_1.SceneManager.snapForBackground();
     };

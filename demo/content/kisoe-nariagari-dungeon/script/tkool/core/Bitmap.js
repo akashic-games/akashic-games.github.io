@@ -280,7 +280,6 @@ var Bitmap = /** @class */ (function () {
             if (this._paintOpacity !== value) {
                 this._paintOpacity = value;
                 // this._context.globalAlpha = this._paintOpacity / MAX_PAINT_OPACITY;
-                console.log("paintOpacity value " + value + " dropped");
             }
         },
         enumerable: false,
@@ -1021,7 +1020,7 @@ var Bitmap = /** @class */ (function () {
         var aid = g.game._assetManager.resolvePatternsToAssetIds(["/assets/".concat(url)])[0];
         // ここでハンドリングしないと requestAssets メソッドの呼び出し時に例外が飛ぶ、且つ例外が飛ぶとオリジナルのコードの addEventListener("error", ...) にあたる処理と異なる動作になってしまう
         if (aid === undefined) {
-            console.log("Bitmap#_requestImage(): ".concat(url, " is not found"));
+            console.error("Bitmap#_requestImage(): ".concat(url, " is not found"));
             this._onError();
             return;
         }
@@ -1147,7 +1146,6 @@ var Bitmap = /** @class */ (function () {
         // this._image.removeEventListener("load", this._loadListener);
         // this._image.removeEventListener("error", this._errorListener);
         this._loadingState = "error";
-        console.log("Bitmap#_onError()");
     };
     Bitmap.prototype._setDirty = function () {
         // this._dirty = true;
