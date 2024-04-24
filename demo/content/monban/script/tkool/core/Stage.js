@@ -11,6 +11,11 @@ g.game.operationPluginManager.start(Utils_1.Utils._akashicHoverPluginId);
 // MV では Stage は Container から派生している(Scene と Sprite などとの間に区別がない)。
 var Stage = /** @class */ (function () {
     function Stage() {
+        if (Object.getPrototypeOf(this) === Stage.prototype) {
+            this.initialize();
+        }
+    }
+    Stage.prototype.initialize = function () {
         this.scene = new g.Scene({ game: g.game, name: this.constructor.name });
         this._root = new PIXI_1.Container();
         this.touchEntity = new g.E({
@@ -42,7 +47,7 @@ var Stage = /** @class */ (function () {
             }
         });
         this.scene.append(this.touchEntity);
-    }
+    };
     Stage.prototype.addChild = function (child) {
         this._root.addChild(child);
         this.scene.insertBefore(child.pixiEntity, this.touchEntity);

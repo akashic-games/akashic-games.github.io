@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_ActionResult = void 0;
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var Game_ActionResult = /** @class */ (function () {
     function Game_ActionResult() {
         this.initialize();
@@ -29,12 +29,12 @@ var Game_ActionResult = /** @class */ (function () {
     };
     Game_ActionResult.prototype.addedStateObjects = function () {
         return this.addedStates.map(function (id) {
-            return DataManager_1.$dataStates[id];
+            return globals_1.$dataStates[id];
         });
     };
     Game_ActionResult.prototype.removedStateObjects = function () {
         return this.removedStates.map(function (id) {
-            return DataManager_1.$dataStates[id];
+            return globals_1.$dataStates[id];
         });
     };
     Game_ActionResult.prototype.isStatusAffected = function () {

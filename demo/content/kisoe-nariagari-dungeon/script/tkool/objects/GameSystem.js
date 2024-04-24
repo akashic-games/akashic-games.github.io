@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_System = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var Graphics_1 = require("../core/Graphics");
+var Utils_1 = require("../core/Utils");
+var AudioManager_1 = require("../managers/AudioManager");
+var globals_1 = require("../managers/globals");
 var Game_System = /** @class */ (function () {
     function Game_System() {
         this.initialize();
@@ -29,22 +30,22 @@ var Game_System = /** @class */ (function () {
         this._walkingBgm = null;
     };
     Game_System.prototype.isJapanese = function () {
-        return DataManager_1.$dataSystem.locale.match(/^ja/);
+        return globals_1.$dataSystem.locale.match(/^ja/);
     };
     Game_System.prototype.isChinese = function () {
-        return DataManager_1.$dataSystem.locale.match(/^zh/);
+        return globals_1.$dataSystem.locale.match(/^zh/);
     };
     Game_System.prototype.isKorean = function () {
-        return DataManager_1.$dataSystem.locale.match(/^ko/);
+        return globals_1.$dataSystem.locale.match(/^ko/);
     };
     Game_System.prototype.isCJK = function () {
-        return DataManager_1.$dataSystem.locale.match(/^(ja|zh|ko)/);
+        return globals_1.$dataSystem.locale.match(/^(ja|zh|ko)/);
     };
     Game_System.prototype.isRussian = function () {
-        return DataManager_1.$dataSystem.locale.match(/^ru/);
+        return globals_1.$dataSystem.locale.match(/^ru/);
     };
     Game_System.prototype.isSideView = function () {
-        return DataManager_1.$dataSystem.optSideView;
+        return globals_1.$dataSystem.optSideView;
     };
     Game_System.prototype.isSaveEnabled = function () {
         return this._saveEnabled;
@@ -98,25 +99,25 @@ var Game_System = /** @class */ (function () {
         return this._versionId;
     };
     Game_System.prototype.windowTone = function () {
-        return this._windowTone || DataManager_1.$dataSystem.windowTone;
+        return this._windowTone || globals_1.$dataSystem.windowTone;
     };
     Game_System.prototype.setWindowTone = function (value) {
         this._windowTone = value;
     };
     Game_System.prototype.battleBgm = function () {
-        return this._battleBgm || DataManager_1.$dataSystem.battleBgm;
+        return this._battleBgm || globals_1.$dataSystem.battleBgm;
     };
     Game_System.prototype.setBattleBgm = function (value) {
         this._battleBgm = value;
     };
     Game_System.prototype.victoryMe = function () {
-        return this._victoryMe || DataManager_1.$dataSystem.victoryMe;
+        return this._victoryMe || globals_1.$dataSystem.victoryMe;
     };
     Game_System.prototype.setVictoryMe = function (value) {
         this._victoryMe = value;
     };
     Game_System.prototype.defeatMe = function () {
-        return this._defeatMe || DataManager_1.$dataSystem.defeatMe;
+        return this._defeatMe || globals_1.$dataSystem.defeatMe;
     };
     Game_System.prototype.setDefeatMe = function (value) {
         this._defeatMe = value;
@@ -132,44 +133,47 @@ var Game_System = /** @class */ (function () {
     };
     Game_System.prototype.onBeforeSave = function () {
         this._saveCount++;
-        this._versionId = DataManager_1.$dataSystem.versionId;
-        this._framesOnSave = core_1.Graphics.frameCount;
-        this._bgmOnSave = managers_1.AudioManager.saveBgm();
-        this._bgsOnSave = managers_1.AudioManager.saveBgs();
+        this._versionId = globals_1.$dataSystem.versionId;
+        this._framesOnSave = Graphics_1.Graphics.frameCount;
+        this._bgmOnSave = AudioManager_1.AudioManager.saveBgm();
+        this._bgsOnSave = AudioManager_1.AudioManager.saveBgs();
     };
     Game_System.prototype.onAfterLoad = function () {
-        core_1.Graphics.frameCount = this._framesOnSave;
-        managers_1.AudioManager.playBgm(this._bgmOnSave);
-        managers_1.AudioManager.playBgs(this._bgsOnSave);
+        Graphics_1.Graphics.frameCount = this._framesOnSave;
+        AudioManager_1.AudioManager.playBgm(this._bgmOnSave);
+        AudioManager_1.AudioManager.playBgs(this._bgsOnSave);
     };
     Game_System.prototype.playtime = function () {
-        return Math.floor(core_1.Graphics.frameCount / 60);
+        return Math.floor(Graphics_1.Graphics.frameCount / 60);
     };
     Game_System.prototype.playtimeText = function () {
         var hour = Math.floor(this.playtime() / 60 / 60);
         var min = Math.floor(this.playtime() / 60) % 60;
         var sec = this.playtime() % 60;
-        return core_1.Utils.padZero(hour, 2) + ":" + core_1.Utils.padZero(min, 2) + ":" + core_1.Utils.padZero(sec, 2);
+        return Utils_1.Utils.padZero(hour, 2) + ":" + Utils_1.Utils.padZero(min, 2) + ":" + Utils_1.Utils.padZero(sec, 2);
     };
     Game_System.prototype.saveBgm = function () {
-        this._savedBgm = managers_1.AudioManager.saveBgm();
+        this._savedBgm = AudioManager_1.AudioManager.saveBgm();
     };
     Game_System.prototype.replayBgm = function () {
         if (this._savedBgm) {
-            managers_1.AudioManager.replayBgm(this._savedBgm);
+            AudioManager_1.AudioManager.replayBgm(this._savedBgm);
         }
     };
     Game_System.prototype.saveWalkingBgm = function () {
-        this._walkingBgm = managers_1.AudioManager.saveBgm();
+        this._walkingBgm = AudioManager_1.AudioManager.saveBgm();
     };
     Game_System.prototype.replayWalkingBgm = function () {
         if (this._walkingBgm) {
-            managers_1.AudioManager.playBgm(this._walkingBgm);
+            AudioManager_1.AudioManager.playBgm(this._walkingBgm);
         }
     };
     Game_System.prototype.saveWalkingBgm2 = function () {
-        this._walkingBgm = DataManager_1.$dataMap.bgm;
+        this._walkingBgm = globals_1.$dataMap.bgm;
     };
     return Game_System;
 }());
 exports.Game_System = Game_System;
+(0, globals_1.set$gameSystemFactory)(function () {
+    return new Game_System();
+});

@@ -16,9 +16,11 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_ShopNumber = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var sprites_1 = require("../sprites");
+var TouchInput_1 = require("../core/TouchInput");
+var ImageManager_1 = require("../managers/ImageManager");
+var SoundManager_1 = require("../managers/SoundManager");
+var TextManager_1 = require("../managers/TextManager");
+var SpriteButton_1 = require("../sprites/SpriteButton");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_ShopNumber = /** @class */ (function (_super) {
     __extends(Window_ShopNumber, _super);
@@ -32,7 +34,7 @@ var Window_ShopNumber = /** @class */ (function (_super) {
         this._max = 1;
         this._price = 0;
         this._number = 1;
-        this._currencyUnit = managers_1.TextManager.currencyUnit;
+        this._currencyUnit = TextManager_1.TextManager.currencyUnit;
         this.createButtons();
     };
     Window_ShopNumber.prototype.windowWidth = function () {
@@ -55,12 +57,12 @@ var Window_ShopNumber = /** @class */ (function (_super) {
         this.refresh();
     };
     Window_ShopNumber.prototype.createButtons = function () {
-        var bitmap = managers_1.ImageManager.loadSystem("ButtonSet");
+        var bitmap = ImageManager_1.ImageManager.loadSystem("ButtonSet");
         var buttonWidth = 48;
         var buttonHeight = 48;
         this._buttons = [];
         for (var i = 0; i < 5; i++) {
-            var button = new sprites_1.Sprite_Button();
+            var button = new SpriteButton_1.Sprite_Button();
             var x = buttonWidth * i;
             var w = buttonWidth * (i === 4 ? 2 : 1);
             button.bitmap = bitmap;
@@ -92,7 +94,7 @@ var Window_ShopNumber = /** @class */ (function (_super) {
         }
     };
     Window_ShopNumber.prototype.updateButtonsVisiblity = function () {
-        if (core_1.TouchInput.date > /* Input.date*/ 0) {
+        if (TouchInput_1.TouchInput.date > /* Input.date*/ 0) {
             this.showButtons();
         }
         else {
@@ -188,7 +190,7 @@ var Window_ShopNumber = /** @class */ (function (_super) {
         // this._number = (this._number + amount).clamp(1, this._max);
         this._number = Math.min(this._max, Math.max(this._number + amount, 1));
         if (this._number !== lastNumber) {
-            managers_1.SoundManager.playCursor();
+            SoundManager_1.SoundManager.playCursor();
             this.refresh();
         }
     };

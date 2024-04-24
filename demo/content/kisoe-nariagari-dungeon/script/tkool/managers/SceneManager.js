@@ -16,10 +16,13 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SceneManager = exports.CustomLoadingScene = void 0;
-var core_1 = require("../core/");
+var Bitmap_1 = require("../core/Bitmap");
+var Graphics_1 = require("../core/Graphics");
+var TouchInput_1 = require("../core/TouchInput");
+var Utils_1 = require("../core/Utils");
 var AudioManager_1 = require("./AudioManager");
 var DataManager_1 = require("./DataManager");
-var DM = require("./DataManager");
+var GL = require("./globals");
 var ImageManager_1 = require("./ImageManager");
 var PluginManager_1 = require("./PluginManager");
 /**
@@ -35,13 +38,16 @@ function assignAsset(targetScene) {
         // グローバル変数ではなくハッシュテーブル的なものにすべて収まっている形にしたほうが品が良いかも。
         // window[pair.name] = JSON.parse((pushedScene.assets[Utils.flatten(pair.src)] as g.TextAsset).data);
         // DataManager.onLoad(window[pair.name]);
-        var anAsset = targetScene.assets[core_1.Utils.flatten(pair.src)];
+        var anAsset = targetScene.assets[Utils_1.Utils.flatten(pair.src)];
         if (anAsset) {
-            DM[pair.name] = JSON.parse(anAsset.data);
-            DataManager_1.DataManager.onLoad(DM[pair.name]);
+            // TODO: グローバル変数に直接代入するのではなく、setter経由で値を渡すように
+            GL[pair.name] = JSON.parse(anAsset.data);
+            DataManager_1.DataManager.onLoad(GL[pair.name]);
         }
         return !anAsset;
     });
+    // グローバル変数$data~の値更新後すぐに利用箇所への反映を行う(利用箇所の実行タイミングが不明なので)。
+    DataManager_1.DataManager._onReset.fire();
 }
 function createLoadingLocalScene() {
     var scene = new g.Scene({
@@ -152,10 +158,10 @@ var SceneManager = /** @class */ (function () {
     };
     SceneManager.initGraphics = function () {
         var type = this.preferableRendererType();
-        core_1.Graphics.initialize(this._screenWidth, this._screenHeight, type);
-        core_1.Graphics.boxWidth = this._boxWidth;
-        core_1.Graphics.boxHeight = this._boxHeight;
-        core_1.Graphics.setLoadingImage("img/system/Loading.png");
+        Graphics_1.Graphics.initialize(this._screenWidth, this._screenHeight, type);
+        Graphics_1.Graphics.boxWidth = this._boxWidth;
+        Graphics_1.Graphics.boxHeight = this._boxHeight;
+        Graphics_1.Graphics.setLoadingImage("img/system/Loading.png");
         // if (Utils.isOptionValid("showfps")) {
         // 	Graphics.showFps();
         // }
@@ -195,7 +201,7 @@ var SceneManager = /** @class */ (function () {
     };
     SceneManager.initInput = function () {
         // Input.initialize();
-        core_1.TouchInput.initialize();
+        TouchInput_1.TouchInput.initialize();
     };
     SceneManager.initNwjs = function () {
         // if (Utils.isNwjs()) {
@@ -283,14 +289,14 @@ var SceneManager = /** @class */ (function () {
         this.stop();
     };
     SceneManager.tickStart = function () {
-        core_1.Graphics.tickStart();
+        Graphics_1.Graphics.tickStart();
     };
     SceneManager.tickEnd = function () {
-        core_1.Graphics.tickEnd();
+        Graphics_1.Graphics.tickEnd();
     };
     SceneManager.updateInputData = function () {
         // Input.update();
-        core_1.TouchInput.update();
+        TouchInput_1.TouchInput.update();
     };
     SceneManager.updateMain = function () {
         if ( /* Utils.isMobileSafari()*/false) {
@@ -334,7 +340,7 @@ var SceneManager = /** @class */ (function () {
                 this._sceneStarted = false;
                 this.onSceneCreate();
                 this._changeSceneCore();
-                core_1.TouchInput._setupEventHandlers(this._scene.scene);
+                TouchInput_1.TouchInput._setupEventHandlers(this._scene.scene);
             }
             if (this._exiting) {
                 this.terminate();
@@ -347,7 +353,7 @@ var SceneManager = /** @class */ (function () {
         // Base_Scene#create() でリクエストされたデータの一覧を
         // g.Scene#_sceneAssetHolder に無理やりねじ込む
         DataManager_1.DataManager._requestedDataNames.forEach(function (pair) {
-            var src = core_1.Utils.flatten(pair.src);
+            var src = Utils_1.Utils.flatten(pair.src);
             _this._scene.scene._sceneAssetHolder._assetIds.push(src);
         });
         this._scene.scene._sceneAssetHolder.waitingAssetsCount = this._scene.scene._sceneAssetHolder._assetIds.length;
@@ -379,7 +385,7 @@ var SceneManager = /** @class */ (function () {
             }
             var assetIds_1 = [];
             DataManager_1.DataManager._requestedDataNames.forEach(function (pair) {
-                var src = core_1.Utils.flatten(pair.src);
+                var src = Utils_1.Utils.flatten(pair.src);
                 assetIds_1.push(src);
             });
             if (assetIds_1.length) {
@@ -394,20 +400,20 @@ var SceneManager = /** @class */ (function () {
     };
     SceneManager.renderScene = function () {
         if (this.isCurrentSceneStarted()) {
-            core_1.Graphics.render(this._scene);
+            Graphics_1.Graphics.render(this._scene);
         }
         else if (this._scene) {
             this.onSceneLoading();
         }
     };
     SceneManager.onSceneCreate = function () {
-        core_1.Graphics.startLoading();
+        Graphics_1.Graphics.startLoading();
     };
     SceneManager.onSceneStart = function () {
-        core_1.Graphics.endLoading();
+        Graphics_1.Graphics.endLoading();
     };
     SceneManager.onSceneLoading = function () {
-        core_1.Graphics.updateLoading();
+        Graphics_1.Graphics.updateLoading();
     };
     SceneManager.isSceneChanging = function () {
         return this._exiting || !!this._nextScene;
@@ -470,7 +476,7 @@ var SceneManager = /** @class */ (function () {
         this._nextScene.prepare.apply(this._nextScene, arguments);
     };
     SceneManager.snap = function () {
-        return core_1.Bitmap.snap(this._scene.scene);
+        return Bitmap_1.Bitmap.snap(this._scene.scene);
     };
     SceneManager.snapForBackground = function () {
         this._backgroundBitmap = this.snap();

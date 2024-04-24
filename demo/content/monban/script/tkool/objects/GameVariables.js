@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Variables = void 0;
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var Game_Variables = /** @class */ (function () {
     function Game_Variables() {
         this.initialize();
@@ -16,7 +16,7 @@ var Game_Variables = /** @class */ (function () {
         return this._data[variableId] || 0;
     };
     Game_Variables.prototype.setValue = function (variableId, value) {
-        if (variableId > 0 && variableId < DataManager_1.$dataSystem.variables.length) {
+        if (variableId > 0 && variableId < globals_1.$dataSystem.variables.length) {
             if (typeof value === "number") {
                 value = Math.floor(value);
             }
@@ -25,8 +25,11 @@ var Game_Variables = /** @class */ (function () {
         }
     };
     Game_Variables.prototype.onChange = function () {
-        DataManager_1.$gameMap.requestRefresh();
+        globals_1.$gameMap.requestRefresh();
     };
     return Game_Variables;
 }());
 exports.Game_Variables = Game_Variables;
+(0, globals_1.set$gameVariablesFactory)(function () {
+    return new Game_Variables();
+});

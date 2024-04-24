@@ -16,8 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Battler = void 0;
-var managers_1 = require("../managers");
 var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
+var SoundManager_1 = require("../managers/SoundManager");
 var GameAction_1 = require("./GameAction");
 var GameActionResult_1 = require("./GameActionResult");
 var GameBattlerBase_1 = require("./GameBattlerBase");
@@ -169,13 +170,13 @@ var Game_Battler = /** @class */ (function (_super) {
     };
     Game_Battler.prototype.isStateAddable = function (stateId) {
         return (this.isAlive() &&
-            DataManager_1.$dataStates[stateId] &&
+            globals_1.$dataStates[stateId] &&
             !this.isStateResist(stateId) &&
             !this._result.isStateRemoved(stateId) &&
             !this.isStateRestrict(stateId));
     };
     Game_Battler.prototype.isStateRestrict = function (stateId) {
-        return DataManager_1.$dataStates[stateId].removeByRestriction && this.isRestricted();
+        return globals_1.$dataStates[stateId].removeByRestriction && this.isRestricted();
     };
     Game_Battler.prototype.onRestrict = function () {
         var _this = this;
@@ -198,12 +199,12 @@ var Game_Battler = /** @class */ (function (_super) {
         }
     };
     Game_Battler.prototype.escape = function () {
-        if (DataManager_1.$gameParty.inBattle()) {
+        if (globals_1.$gameParty.inBattle()) {
             this.hide();
         }
         this.clearActions();
         this.clearStates();
-        managers_1.SoundManager.playEscape();
+        SoundManager_1.SoundManager.playEscape();
     };
     Game_Battler.prototype.addBuff = function (paramId, turns) {
         if (this.isAlive()) {
@@ -322,15 +323,15 @@ var Game_Battler = /** @class */ (function (_super) {
         this._actions.push(action);
     };
     Game_Battler.prototype.useItem = function (item) {
-        if (managers_1.DataManager.isSkill(item)) {
+        if (DataManager_1.DataManager.isSkill(item)) {
             this.paySkillCost(item);
         }
-        else if (managers_1.DataManager.isItem(item)) {
+        else if (DataManager_1.DataManager.isItem(item)) {
             this.consumeItem(item);
         }
     };
     Game_Battler.prototype.consumeItem = function (item) {
-        DataManager_1.$gameParty.consumeItem(item);
+        globals_1.$gameParty.consumeItem(item);
     };
     Game_Battler.prototype.gainHp = function (value) {
         this._result.hpDamage = -value;
@@ -366,7 +367,7 @@ var Game_Battler = /** @class */ (function (_super) {
         }
     };
     Game_Battler.prototype.maxSlipDamage = function () {
-        return DataManager_1.$dataSystem.optSlipDeath ? this.hp : Math.max(this.hp - 1, 0);
+        return globals_1.$dataSystem.optSlipDeath ? this.hp : Math.max(this.hp - 1, 0);
     };
     Game_Battler.prototype.regenerateMp = function () {
         var value = Math.floor(this.mmp * this.mrg);
@@ -467,22 +468,22 @@ var Game_Battler = /** @class */ (function (_super) {
         //
     };
     Game_Battler.prototype.performMiss = function () {
-        managers_1.SoundManager.playMiss();
+        SoundManager_1.SoundManager.playMiss();
     };
     Game_Battler.prototype.performRecovery = function () {
-        managers_1.SoundManager.playRecovery();
+        SoundManager_1.SoundManager.playRecovery();
     };
     Game_Battler.prototype.performEvasion = function () {
-        managers_1.SoundManager.playEvasion();
+        SoundManager_1.SoundManager.playEvasion();
     };
     Game_Battler.prototype.performMagicEvasion = function () {
-        managers_1.SoundManager.playMagicEvasion();
+        SoundManager_1.SoundManager.playMagicEvasion();
     };
     Game_Battler.prototype.performCounter = function () {
-        managers_1.SoundManager.playEvasion();
+        SoundManager_1.SoundManager.playEvasion();
     };
     Game_Battler.prototype.performReflection = function () {
-        managers_1.SoundManager.playReflection();
+        SoundManager_1.SoundManager.playReflection();
     };
     Game_Battler.prototype.performSubstitute = function (_target) {
         //

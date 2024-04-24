@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Container = exports.PixiEntity = void 0;
-var core_1 = require("../core");
+var Utils_1 = require("../core/Utils");
 var ObservablePoint_1 = require("./ObservablePoint");
 var PixiEntity = /** @class */ (function (_super) {
     __extends(PixiEntity, _super);
@@ -47,27 +47,6 @@ var Container = /** @class */ (function () {
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i] = arguments[_i];
         }
-        var _this = this;
-        this.pixiEntity = new PixiEntity({
-            scene: g.game.scene(),
-            container: this
-        });
-        this.parent = null;
-        this.children = [];
-        this.alpha = 1.0;
-        this.visible = true;
-        this._zIndex = 0;
-        this.z = 0;
-        this._pivot = new ObservablePoint_1.ObservablePoint(function (subject) {
-            _this.pixiEntity.x = -1 * subject.x;
-            _this.pixiEntity.y = -1 * subject.y;
-            _this.modified();
-        }, 0, 0);
-        this._scale = new ObservablePoint_1.ObservablePoint(function (subject) {
-            _this.pixiEntity.scaleX = subject.x;
-            _this.pixiEntity.scaleY = subject.y;
-            _this.modified();
-        }, 1, 1);
         this.initialize.apply(this, args);
     }
     Object.defineProperty(Container.prototype, "scene", {
@@ -160,7 +139,7 @@ var Container = /** @class */ (function () {
             return this.pixiEntity.opacity * 255;
         },
         set: function (value) {
-            value = core_1.Utils.clamp(value, 0, 255);
+            value = Utils_1.Utils.clamp(value, 0, 255);
             this.pixiEntity.opacity = value / 255;
             this.modified();
         },
@@ -226,11 +205,31 @@ var Container = /** @class */ (function () {
         configurable: true
     });
     Container.prototype.initialize = function () {
+        var _this = this;
         var _args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             _args[_i] = arguments[_i];
         }
-        // nothing to do.
+        this.pixiEntity = new PixiEntity({
+            scene: g.game.scene(),
+            container: this
+        });
+        this.parent = null;
+        this.children = [];
+        this.alpha = 1.0;
+        this.visible = true;
+        this._zIndex = 0;
+        this.z = 0;
+        this._pivot = new ObservablePoint_1.ObservablePoint(function (subject) {
+            _this.pixiEntity.x = -1 * subject.x;
+            _this.pixiEntity.y = -1 * subject.y;
+            _this.modified();
+        }, 0, 0);
+        this._scale = new ObservablePoint_1.ObservablePoint(function (subject) {
+            _this.pixiEntity.scaleX = subject.x;
+            _this.pixiEntity.scaleY = subject.y;
+            _this.modified();
+        }, 1, 1);
     };
     Container.prototype.onChildrenChange = function (_index) {
         // nothing to do.

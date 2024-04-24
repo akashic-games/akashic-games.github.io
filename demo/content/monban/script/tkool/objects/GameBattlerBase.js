@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_BattlerBase = void 0;
-var managers_1 = require("../managers");
 var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var Game_BattlerBase = /** @class */ (function () {
     function Game_BattlerBase() {
         var args = [];
@@ -271,7 +271,7 @@ var Game_BattlerBase = /** @class */ (function () {
         return 1;
     };
     Game_BattlerBase.prototype.resetStateCounts = function (stateId) {
-        var state = DataManager_1.$dataStates[stateId];
+        var state = globals_1.$dataStates[stateId];
         var variance = 1 + Math.max(state.maxTurns - state.minTurns, 0);
         this._stateTurns[stateId] = state.minTurns + Math.floor(variance * g.game.vars.random.generate());
     };
@@ -352,7 +352,7 @@ var Game_BattlerBase = /** @class */ (function () {
     };
     Game_BattlerBase.prototype.states = function () {
         return this._states.map(function (id) {
-            return DataManager_1.$dataStates[id];
+            return globals_1.$dataStates[id];
         });
     };
     Game_BattlerBase.prototype.stateIcons = function () {
@@ -658,8 +658,8 @@ var Game_BattlerBase = /** @class */ (function () {
     };
     Game_BattlerBase.prototype.sortStates = function () {
         this._states.sort(function (a, b) {
-            var p1 = DataManager_1.$dataStates[a].priority;
-            var p2 = DataManager_1.$dataStates[b].priority;
+            var p1 = globals_1.$dataStates[a].priority;
+            var p2 = globals_1.$dataStates[b].priority;
             if (p1 !== p2) {
                 return p2 - p1;
             }
@@ -731,7 +731,7 @@ var Game_BattlerBase = /** @class */ (function () {
         this._tp -= this.skillTpCost(skill);
     };
     Game_BattlerBase.prototype.isOccasionOk = function (item) {
-        if (DataManager_1.$gameParty.inBattle()) {
+        if (globals_1.$gameParty.inBattle()) {
             return item.occasion === 0 || item.occasion === 1;
         }
         else {
@@ -749,16 +749,16 @@ var Game_BattlerBase = /** @class */ (function () {
             !this.isSkillTypeSealed(skill.stypeId));
     };
     Game_BattlerBase.prototype.meetsItemConditions = function (item) {
-        return this.meetsUsableItemConditions(item) && DataManager_1.$gameParty.hasItem(item);
+        return this.meetsUsableItemConditions(item) && globals_1.$gameParty.hasItem(item);
     };
     Game_BattlerBase.prototype.canUse = function (item) {
         if (!item) {
             return false;
         }
-        else if (managers_1.DataManager.isSkill(item)) {
+        else if (DataManager_1.DataManager.isSkill(item)) {
             return this.meetsSkillConditions(item);
         }
-        else if (managers_1.DataManager.isItem(item)) {
+        else if (DataManager_1.DataManager.isItem(item)) {
             return this.meetsItemConditions(item);
         }
         else {
@@ -769,10 +769,10 @@ var Game_BattlerBase = /** @class */ (function () {
         if (!item) {
             return false;
         }
-        else if (managers_1.DataManager.isWeapon(item)) {
+        else if (DataManager_1.DataManager.isWeapon(item)) {
             return this.canEquipWeapon(item);
         }
-        else if (managers_1.DataManager.isArmor(item)) {
+        else if (DataManager_1.DataManager.isArmor(item)) {
             return this.canEquipArmor(item);
         }
         else {
@@ -792,10 +792,10 @@ var Game_BattlerBase = /** @class */ (function () {
         return 2;
     };
     Game_BattlerBase.prototype.canAttack = function () {
-        return this.canUse(DataManager_1.$dataSkills[this.attackSkillId()]);
+        return this.canUse(globals_1.$dataSkills[this.attackSkillId()]);
     };
     Game_BattlerBase.prototype.canGuard = function () {
-        return this.canUse(DataManager_1.$dataSkills[this.guardSkillId()]);
+        return this.canUse(globals_1.$dataSkills[this.guardSkillId()]);
     };
     Game_BattlerBase.TRAIT_ELEMENT_RATE = 11;
     Game_BattlerBase.TRAIT_DEBUFF_RATE = 12;

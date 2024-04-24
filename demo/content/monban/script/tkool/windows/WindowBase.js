@@ -16,9 +16,12 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_Base = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var Bitmap_1 = require("../core/Bitmap");
+var Sprite_1 = require("../core/Sprite");
+var Window_1 = require("../core/Window");
+var globals_1 = require("../managers/globals");
+var ImageManager_1 = require("../managers/ImageManager");
+var TextManager_1 = require("../managers/TextManager");
 // Window.pngから色情報を取得するために毎回ImageDataを使い捨てるのが無駄なので、これらの変数で色情報をキャッシュする
 var textColorMap = {};
 var pendingColor;
@@ -59,10 +62,10 @@ var Window_Base = /** @class */ (function (_super) {
         return 36;
     };
     Window_Base.prototype.standardFontFace = function () {
-        if (DataManager_1.$gameSystem.isChinese()) {
+        if (globals_1.$gameSystem.isChinese()) {
             return "SimHei, Heiti TC, sans-serif";
         }
-        else if (DataManager_1.$gameSystem.isKorean()) {
+        else if (globals_1.$gameSystem.isKorean()) {
             return "Dotum, AppleGothic, sans-serif";
         }
         else {
@@ -82,7 +85,7 @@ var Window_Base = /** @class */ (function (_super) {
         return 192;
     };
     Window_Base.prototype.loadWindowskin = function () {
-        this.windowskin = managers_1.ImageManager.loadSystem("Window");
+        this.windowskin = ImageManager_1.ImageManager.loadSystem("Window");
     };
     Window_Base.prototype.updatePadding = function () {
         this.padding = this.standardPadding();
@@ -100,11 +103,11 @@ var Window_Base = /** @class */ (function (_super) {
         return numLines * this.lineHeight() + this.standardPadding() * 2;
     };
     Window_Base.prototype.updateTone = function () {
-        var tone = DataManager_1.$gameSystem.windowTone();
+        var tone = globals_1.$gameSystem.windowTone();
         this.setTone(tone[0], tone[1], tone[2]);
     };
     Window_Base.prototype.createContents = function () {
-        this.contents = new core_1.Bitmap(this.contentsWidth(), this.contentsHeight());
+        this.contents = new Bitmap_1.Bitmap(this.contentsWidth(), this.contentsHeight());
         this.resetFontSettings();
     };
     Window_Base.prototype.resetFontSettings = function () {
@@ -263,10 +266,10 @@ var Window_Base = /** @class */ (function (_super) {
         text = text.replace(/\\/g, "\x1b");
         text = text.replace(/\x1b\x1b/g, "\\");
         text = text.replace(/\x1bV\[(\d+)\]/gi, function (_match, p1) {
-            return DataManager_1.$gameVariables.value(parseInt(p1, 10)) + "";
+            return globals_1.$gameVariables.value(parseInt(p1, 10)) + "";
         });
         text = text.replace(/\x1bV\[(\d+)\]/gi, function (_match, p1) {
-            return DataManager_1.$gameVariables.value(parseInt(p1, 10)) + "";
+            return globals_1.$gameVariables.value(parseInt(p1, 10)) + "";
         });
         text = text.replace(/\x1bN\[(\d+)\]/gi, function (_match, p1) {
             return _this.actorName(parseInt(p1, 10));
@@ -274,15 +277,15 @@ var Window_Base = /** @class */ (function (_super) {
         text = text.replace(/\x1bP\[(\d+)\]/gi, function (_match, p1) {
             return _this.partyMemberName(parseInt(p1, 10));
         });
-        text = text.replace(/\x1bG/gi, managers_1.TextManager.currencyUnit);
+        text = text.replace(/\x1bG/gi, TextManager_1.TextManager.currencyUnit);
         return text;
     };
     Window_Base.prototype.actorName = function (n) {
-        var actor = n >= 1 ? DataManager_1.$gameActors.actor(n) : null;
+        var actor = n >= 1 ? globals_1.$gameActors.actor(n) : null;
         return actor ? actor.name() : "";
     };
     Window_Base.prototype.partyMemberName = function (n) {
-        var actor = n >= 1 ? DataManager_1.$gameParty.members()[n - 1] : null;
+        var actor = n >= 1 ? globals_1.$gameParty.members()[n - 1] : null;
         return actor ? actor.name() : "";
     };
     Window_Base.prototype.processCharacter = function (textState) {
@@ -400,7 +403,7 @@ var Window_Base = /** @class */ (function (_super) {
     };
     Window_Base.prototype.drawIcon = function (iconIndex, x, y) {
         // TODO: もしかするとシーン構築で予めロードする必要があるかも
-        var bitmap = managers_1.ImageManager.loadSystem("IconSet");
+        var bitmap = ImageManager_1.ImageManager.loadSystem("IconSet");
         var pw = Window_Base._iconWidth;
         var ph = Window_Base._iconHeight;
         var sx = (iconIndex % 16) * pw;
@@ -410,7 +413,7 @@ var Window_Base = /** @class */ (function (_super) {
     Window_Base.prototype.drawFace = function (faceName, faceIndex, x, y, width, height) {
         width = width || Window_Base._faceWidth;
         height = height || Window_Base._faceHeight;
-        var bitmap = managers_1.ImageManager.loadFace(faceName); // このあとで `blt` してるので、読み込み済みでなければならないはず。
+        var bitmap = ImageManager_1.ImageManager.loadFace(faceName); // このあとで `blt` してるので、読み込み済みでなければならないはず。
         var pw = Window_Base._faceWidth;
         var ph = Window_Base._faceHeight;
         var sw = Math.min(width, pw);
@@ -422,8 +425,8 @@ var Window_Base = /** @class */ (function (_super) {
         this.contents.blt(bitmap, sx, sy, sw, sh, dx, dy);
     };
     Window_Base.prototype.drawCharacter = function (characterName, characterIndex, x, y) {
-        var bitmap = managers_1.ImageManager.loadCharacter(characterName);
-        var big = managers_1.ImageManager.isBigCharacter(characterName);
+        var bitmap = ImageManager_1.ImageManager.loadCharacter(characterName);
+        var big = ImageManager_1.ImageManager.isBigCharacter(characterName);
         var pw = bitmap.width / (big ? 3 : 12);
         var ph = bitmap.height / (big ? 4 : 8);
         var n = characterIndex;
@@ -477,7 +480,7 @@ var Window_Base = /** @class */ (function (_super) {
     };
     Window_Base.prototype.drawActorLevel = function (actor, x, y) {
         this.changeTextColor(this.systemColor());
-        this.drawText(managers_1.TextManager.levelA, x, y, 48);
+        this.drawText(TextManager_1.TextManager.levelA, x, y, 48);
         this.resetTextColor();
         this.drawText(actor.level + "", x + 84, y, 36, "right");
     };
@@ -513,7 +516,7 @@ var Window_Base = /** @class */ (function (_super) {
         var color2 = this.hpGaugeColor2();
         this.drawGauge(x, y, width, actor.hpRate(), color1, color2);
         this.changeTextColor(this.systemColor());
-        this.drawText(managers_1.TextManager.hpA, x, y, 44);
+        this.drawText(TextManager_1.TextManager.hpA, x, y, 44);
         this.drawCurrentAndMax(actor.hp + "", actor.mhp, x, y, width, this.hpColor(actor), this.normalColor());
     };
     Window_Base.prototype.drawActorMp = function (actor, x, y, width) {
@@ -522,7 +525,7 @@ var Window_Base = /** @class */ (function (_super) {
         var color2 = this.mpGaugeColor2();
         this.drawGauge(x, y, width, actor.mpRate(), color1, color2);
         this.changeTextColor(this.systemColor());
-        this.drawText(managers_1.TextManager.mpA, x, y, 44);
+        this.drawText(TextManager_1.TextManager.mpA, x, y, 44);
         this.drawCurrentAndMax(actor.mp, actor.mmp, x, y, width, this.mpColor(actor), this.normalColor());
     };
     Window_Base.prototype.drawActorTp = function (actor, x, y, width) {
@@ -531,7 +534,7 @@ var Window_Base = /** @class */ (function (_super) {
         var color2 = this.tpGaugeColor2();
         this.drawGauge(x, y, width, actor.tpRate(), color1, color2);
         this.changeTextColor(this.systemColor());
-        this.drawText(managers_1.TextManager.tpA, x, y, 44);
+        this.drawText(TextManager_1.TextManager.tpA, x, y, 44);
         this.changeTextColor(this.tpColor(actor));
         this.drawText(actor.tp, x + width - 64, y, 64, "right");
     };
@@ -589,7 +592,7 @@ var Window_Base = /** @class */ (function (_super) {
     };
     Window_Base.prototype.showBackgroundDimmer = function () {
         if (!this._dimmerSprite) {
-            this._dimmerSprite = new core_1.Sprite(new core_1.Bitmap(0, 0));
+            this._dimmerSprite = new Sprite_1.Sprite(new Bitmap_1.Bitmap(0, 0));
             // this._dimmerSprite.bitmap = new Bitmap(0, 0);
             this.addChildToBack(this._dimmerSprite);
         }
@@ -650,8 +653,8 @@ var Window_Base = /** @class */ (function (_super) {
         return y;
     };
     Window_Base.prototype.reserveFaceImages = function () {
-        DataManager_1.$gameParty.members().forEach(function (actor) {
-            managers_1.ImageManager.reserveFace(actor.faceName());
+        globals_1.$gameParty.members().forEach(function (actor) {
+            ImageManager_1.ImageManager.reserveFace(actor.faceName());
         });
     };
     Window_Base._iconWidth = 32;
@@ -659,5 +662,5 @@ var Window_Base = /** @class */ (function (_super) {
     Window_Base._faceWidth = 144;
     Window_Base._faceHeight = 144;
     return Window_Base;
-}(core_1.Window));
+}(Window_1.Window));
 exports.Window_Base = Window_Base;

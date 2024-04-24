@@ -16,14 +16,16 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ScreenSprite = void 0;
-var core_1 = require("../core");
 var PIXI_1 = require("../PIXI");
+var Graphics_1 = require("./Graphics");
+var Utils_1 = require("./Utils");
 var ScreenSprite = /** @class */ (function (_super) {
     __extends(ScreenSprite, _super);
     function ScreenSprite(blackOrWhite) {
         return _super.call(this, blackOrWhite) || this;
     }
     ScreenSprite.prototype.initialize = function (blackOrWhite) {
+        _super.prototype.initialize.call(this);
         // PIXI.Container.call(this);
         // this._graphics = new PIXI.Graphics();
         // this.addChild(this._graphics);
@@ -86,15 +88,15 @@ var ScreenSprite = /** @class */ (function (_super) {
             this._red = r;
             this._green = g;
             this._blue = b;
-            this._colorText = core_1.Utils.rgbToCssColor(r, g, b);
+            this._colorText = Utils_1.Utils.rgbToCssColor(r, g, b);
             // var graphics = this._graphics;
             // graphics.clear();
             // var intColor = (r << 16) | (g << 8) | b;
             // graphics.beginFill(intColor, 1);
             // //whole screen with zoom. BWAHAHAHAHA
             // graphics.drawRect(-Graphics.width * 5, -Graphics.height * 5, Graphics.width * 10, Graphics.height * 10);
-            this.width = core_1.Graphics.width;
-            this.height = core_1.Graphics.height;
+            this.width = Graphics_1.Graphics.width;
+            this.height = Graphics_1.Graphics.height;
             this.modified();
         }
     };

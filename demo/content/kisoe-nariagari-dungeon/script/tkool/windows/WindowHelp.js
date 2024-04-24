@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_Help = void 0;
-var core_1 = require("../core");
+var Graphics_1 = require("../core/Graphics");
 var WindowBase_1 = require("./WindowBase");
 var Window_Help = /** @class */ (function (_super) {
     __extends(Window_Help, _super);
@@ -24,7 +24,7 @@ var Window_Help = /** @class */ (function (_super) {
         return _super.call(this, numLines) || this;
     }
     Window_Help.prototype.initialize = function (numLines) {
-        var width = core_1.Graphics.boxWidth;
+        var width = Graphics_1.Graphics.boxWidth;
         var height = this.fittingHeight(numLines || 2);
         _super.prototype.initialize.call(this, 0, 0, width, height);
         this._text = "";

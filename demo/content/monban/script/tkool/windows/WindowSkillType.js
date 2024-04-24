@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_SkillType = void 0;
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var WindowCommand_1 = require("./WindowCommand");
 var Window_SkillType = /** @class */ (function (_super) {
     __extends(Window_SkillType, _super);
@@ -47,7 +47,7 @@ var Window_SkillType = /** @class */ (function (_super) {
                 return a - b;
             });
             skillTypes.forEach(function (stypeId) {
-                var name = DataManager_1.$dataSystem.skillTypes[stypeId];
+                var name = globals_1.$dataSystem.skillTypes[stypeId];
                 this.addCommand(name, "skill", true, stypeId);
             }, this);
         }

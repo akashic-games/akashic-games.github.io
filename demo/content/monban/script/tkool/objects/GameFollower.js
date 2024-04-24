@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Follower = void 0;
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var GameCharacter_1 = require("./GameCharacter");
 var Game_Follower = /** @class */ (function (_super) {
     __extends(Game_Follower, _super);
@@ -30,7 +30,7 @@ var Game_Follower = /** @class */ (function (_super) {
     Game_Follower.prototype.initialize = function (memberIndex) {
         _super.prototype.initialize.call(this);
         this._memberIndex = memberIndex;
-        this.setTransparent(DataManager_1.$dataSystem.optTransparent);
+        this.setTransparent(globals_1.$dataSystem.optTransparent);
         this.setThrough(true);
     };
     Game_Follower.prototype.refresh = function () {
@@ -39,20 +39,20 @@ var Game_Follower = /** @class */ (function (_super) {
         this.setImage(characterName, characterIndex);
     };
     Game_Follower.prototype.actor = function () {
-        return DataManager_1.$gameParty.battleMembers()[this._memberIndex];
+        return globals_1.$gameParty.battleMembers()[this._memberIndex];
     };
     Game_Follower.prototype.isVisible = function () {
-        return this.actor() && DataManager_1.$gamePlayer.followers().isVisible();
+        return this.actor() && globals_1.$gamePlayer.followers().isVisible();
     };
     Game_Follower.prototype.update = function () {
         GameCharacter_1.Game_Character.prototype.update.call(this);
-        this.setMoveSpeed(DataManager_1.$gamePlayer.realMoveSpeed());
-        this.setOpacity(DataManager_1.$gamePlayer.opacity());
-        this.setBlendMode(DataManager_1.$gamePlayer.blendMode());
-        this.setWalkAnime(DataManager_1.$gamePlayer.hasWalkAnime());
-        this.setStepAnime(DataManager_1.$gamePlayer.hasStepAnime());
-        this.setDirectionFix(DataManager_1.$gamePlayer.isDirectionFixed());
-        this.setTransparent(DataManager_1.$gamePlayer.isTransparent());
+        this.setMoveSpeed(globals_1.$gamePlayer.realMoveSpeed());
+        this.setOpacity(globals_1.$gamePlayer.opacity());
+        this.setBlendMode(globals_1.$gamePlayer.blendMode());
+        this.setWalkAnime(globals_1.$gamePlayer.hasWalkAnime());
+        this.setStepAnime(globals_1.$gamePlayer.hasStepAnime());
+        this.setDirectionFix(globals_1.$gamePlayer.isDirectionFixed());
+        this.setTransparent(globals_1.$gamePlayer.isTransparent());
     };
     Game_Follower.prototype.chaseCharacter = function (character) {
         var sx = this.deltaXFrom(character.x);
@@ -66,7 +66,7 @@ var Game_Follower = /** @class */ (function (_super) {
         else if (sy !== 0) {
             this.moveStraight(sy > 0 ? 8 : 2);
         }
-        this.setMoveSpeed(DataManager_1.$gamePlayer.realMoveSpeed());
+        this.setMoveSpeed(globals_1.$gamePlayer.realMoveSpeed());
     };
     return Game_Follower;
 }(GameCharacter_1.Game_Character));

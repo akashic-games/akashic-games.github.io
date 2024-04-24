@@ -16,8 +16,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_BattleEnemy = void 0;
-var core_1 = require("../core");
-var DataManager_1 = require("../managers/DataManager");
+var Graphics_1 = require("../core/Graphics");
+var globals_1 = require("../managers/globals");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_BattleEnemy = /** @class */ (function (_super) {
     __extends(Window_BattleEnemy, _super);
@@ -33,7 +33,7 @@ var Window_BattleEnemy = /** @class */ (function (_super) {
         this.hide();
     };
     Window_BattleEnemy.prototype.windowWidth = function () {
-        return core_1.Graphics.boxWidth - 192;
+        return Graphics_1.Graphics.boxWidth - 192;
     };
     Window_BattleEnemy.prototype.windowHeight = function () {
         return this.fittingHeight(this.numVisibleRows());
@@ -67,15 +67,15 @@ var Window_BattleEnemy = /** @class */ (function (_super) {
     };
     Window_BattleEnemy.prototype.hide = function () {
         _super.prototype.hide.call(this);
-        DataManager_1.$gameTroop.select(null);
+        globals_1.$gameTroop.select(null);
     };
     Window_BattleEnemy.prototype.refresh = function () {
-        this._enemies = DataManager_1.$gameTroop.aliveMembers();
+        this._enemies = globals_1.$gameTroop.aliveMembers();
         _super.prototype.refresh.call(this);
     };
     Window_BattleEnemy.prototype.select = function (index) {
         _super.prototype.select.call(this, index);
-        DataManager_1.$gameTroop.select(this.enemy());
+        globals_1.$gameTroop.select(this.enemy());
     };
     return Window_BattleEnemy;
 }(WindowSelectable_1.Window_Selectable));

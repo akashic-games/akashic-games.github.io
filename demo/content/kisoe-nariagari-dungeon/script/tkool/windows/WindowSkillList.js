@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_SkillList = void 0;
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_SkillList = /** @class */ (function (_super) {
     __extends(Window_SkillList, _super);
@@ -77,7 +77,7 @@ var Window_SkillList = /** @class */ (function (_super) {
     };
     Window_SkillList.prototype.selectLast = function () {
         var skill;
-        if (DataManager_1.$gameParty.inBattle()) {
+        if (globals_1.$gameParty.inBattle()) {
             skill = this._actor.lastBattleSkill();
         }
         else {

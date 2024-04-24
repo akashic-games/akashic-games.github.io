@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Balloon = void 0;
-var managers_1 = require("../managers");
+var ImageManager_1 = require("../managers/ImageManager");
 var SpriteBase_1 = require("./SpriteBase");
 var Sprite_Balloon = /** @class */ (function (_super) {
     __extends(Sprite_Balloon, _super);
@@ -43,7 +43,7 @@ var Sprite_Balloon = /** @class */ (function (_super) {
         this.z = 7;
     };
     Sprite_Balloon.prototype.loadBitmap = function () {
-        this.bitmap = managers_1.ImageManager.loadSystem("Balloon");
+        this.bitmap = ImageManager_1.ImageManager.loadSystem("Balloon");
         this.setFrame(0, 0, 0, 0);
     };
     Sprite_Balloon.prototype.setup = function (balloonId) {

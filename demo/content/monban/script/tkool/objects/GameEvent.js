@@ -16,8 +16,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Event = void 0;
-var core_1 = require("../core");
-var DataManager_1 = require("../managers/DataManager");
+var Utils_1 = require("../core/Utils");
+var globals_1 = require("../managers/globals");
 var GameCharacter_1 = require("./GameCharacter");
 var GameInterpreter_1 = require("./GameInterpreter");
 var Game_Event = /** @class */ (function (_super) {
@@ -52,7 +52,7 @@ var Game_Event = /** @class */ (function (_super) {
         return this._eventId;
     };
     Game_Event.prototype.event = function () {
-        return DataManager_1.$dataMap.events[this._eventId];
+        return globals_1.$dataMap.events[this._eventId];
     };
     Game_Event.prototype.page = function () {
         return this.event().pages[this._pageIndex];
@@ -64,11 +64,11 @@ var Game_Event = /** @class */ (function (_super) {
         return _super.prototype.isCollidedWithCharacters.call(this, x, y) || this.isCollidedWithPlayerCharacters(x, y);
     };
     Game_Event.prototype.isCollidedWithEvents = function (x, y) {
-        var events = DataManager_1.$gameMap.eventsXyNt(x, y);
+        var events = globals_1.$gameMap.eventsXyNt(x, y);
         return events.length > 0;
     };
     Game_Event.prototype.isCollidedWithPlayerCharacters = function (x, y) {
-        return this.isNormalPriority() && DataManager_1.$gamePlayer.isCollided(x, y);
+        return this.isNormalPriority() && globals_1.$gamePlayer.isCollided(x, y);
     };
     Game_Event.prototype.lock = function () {
         if (!this._locked) {
@@ -111,7 +111,7 @@ var Game_Event = /** @class */ (function (_super) {
         return 30 * (5 - this.moveFrequency());
     };
     Game_Event.prototype.moveTypeRandom = function () {
-        switch (core_1.Utils.randomInt(6)) {
+        switch (Utils_1.Utils.randomInt(6)) {
             case 0:
             case 1:
                 this.moveRandom();
@@ -128,7 +128,7 @@ var Game_Event = /** @class */ (function (_super) {
     };
     Game_Event.prototype.moveTypeTowardPlayer = function () {
         if (this.isNearThePlayer()) {
-            switch (core_1.Utils.randomInt(6)) {
+            switch (Utils_1.Utils.randomInt(6)) {
                 case 0:
                 case 1:
                 case 2:
@@ -148,8 +148,8 @@ var Game_Event = /** @class */ (function (_super) {
         }
     };
     Game_Event.prototype.isNearThePlayer = function () {
-        var sx = Math.abs(this.deltaXFrom(DataManager_1.$gamePlayer.x));
-        var sy = Math.abs(this.deltaYFrom(DataManager_1.$gamePlayer.y));
+        var sx = Math.abs(this.deltaXFrom(globals_1.$gamePlayer.x));
+        var sy = Math.abs(this.deltaYFrom(globals_1.$gamePlayer.y));
         return sx + sy < 20;
     };
     Game_Event.prototype.moveTypeCustom = function () {
@@ -162,7 +162,7 @@ var Game_Event = /** @class */ (function (_super) {
         this._starting = false;
     };
     Game_Event.prototype.isTriggerIn = function (triggers) {
-        return core_1.Utils.contains(triggers, this._trigger);
+        return Utils_1.Utils.contains(triggers, this._trigger);
     };
     Game_Event.prototype.start = function () {
         var list = this.list();
@@ -197,35 +197,35 @@ var Game_Event = /** @class */ (function (_super) {
     Game_Event.prototype.meetsConditions = function (page) {
         var c = page.conditions;
         if (c.switch1Valid) {
-            if (!DataManager_1.$gameSwitches.value(c.switch1Id)) {
+            if (!globals_1.$gameSwitches.value(c.switch1Id)) {
                 return false;
             }
         }
         if (c.switch2Valid) {
-            if (!DataManager_1.$gameSwitches.value(c.switch2Id)) {
+            if (!globals_1.$gameSwitches.value(c.switch2Id)) {
                 return false;
             }
         }
         if (c.variableValid) {
-            if (DataManager_1.$gameVariables.value(c.variableId) < c.variableValue) {
+            if (globals_1.$gameVariables.value(c.variableId) < c.variableValue) {
                 return false;
             }
         }
         if (c.selfSwitchValid) {
             var key = [this._mapId, this._eventId, c.selfSwitchCh];
-            if (DataManager_1.$gameSelfSwitches.value(key) !== true) {
+            if (globals_1.$gameSelfSwitches.value(key) !== true) {
                 return false;
             }
         }
         if (c.itemValid) {
-            var item = DataManager_1.$dataItems[c.itemId];
-            if (!DataManager_1.$gameParty.hasItem(item)) {
+            var item = globals_1.$dataItems[c.itemId];
+            if (!globals_1.$gameParty.hasItem(item)) {
                 return false;
             }
         }
         if (c.actorValid) {
-            var actor = DataManager_1.$gameActors.actor(c.actorId);
-            if (!core_1.Utils.contains(DataManager_1.$gameParty.members(), actor)) {
+            var actor = globals_1.$gameActors.actor(c.actorId);
+            if (!Utils_1.Utils.contains(globals_1.$gameParty.members(), actor)) {
                 return false;
             }
         }
@@ -292,8 +292,8 @@ var Game_Event = /** @class */ (function (_super) {
         this.setPattern(this._originalPattern);
     };
     Game_Event.prototype.checkEventTriggerTouch = function (x, y) {
-        if (!DataManager_1.$gameMap.isEventRunning()) {
-            if (this._trigger === 2 && DataManager_1.$gamePlayer.pos(x, y)) {
+        if (!globals_1.$gameMap.isEventRunning()) {
+            if (this._trigger === 2 && globals_1.$gamePlayer.pos(x, y)) {
                 if (!this.isJumping() && this.isNormalPriority()) {
                     this.start();
                 }

@@ -16,9 +16,10 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Enemy = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var Graphics_1 = require("../core/Graphics");
+var globals_1 = require("../managers/globals");
+var ImageManager_1 = require("../managers/ImageManager");
+var SoundManager_1 = require("../managers/SoundManager");
 var SpriteBattler_1 = require("./SpriteBattler");
 var SpriteStateIcon_1 = require("./SpriteStateIcon");
 var Sprite_Enemy = /** @class */ (function (_super) {
@@ -70,11 +71,11 @@ var Sprite_Enemy = /** @class */ (function (_super) {
         }
     };
     Sprite_Enemy.prototype.loadBitmap = function (name, hue) {
-        if (DataManager_1.$gameSystem.isSideView()) {
-            this.bitmap = managers_1.ImageManager.loadSvEnemy(name, hue);
+        if (globals_1.$gameSystem.isSideView()) {
+            this.bitmap = ImageManager_1.ImageManager.loadSvEnemy(name, hue);
         }
         else {
-            this.bitmap = managers_1.ImageManager.loadEnemy(name, hue);
+            this.bitmap = ImageManager_1.ImageManager.loadEnemy(name, hue);
         }
     };
     Sprite_Enemy.prototype.updateFrame = function () {
@@ -223,17 +224,17 @@ var Sprite_Enemy = /** @class */ (function (_super) {
         this.opacity = 256 - (32 - this._effectDuration) * 10;
     };
     Sprite_Enemy.prototype.updateCollapse = function () {
-        this.blendMode = core_1.Graphics.BLEND_ADD;
+        this.blendMode = Graphics_1.Graphics.BLEND_ADD;
         this.setBlendColor([255, 128, 128, 128]);
         this.opacity *= this._effectDuration / (this._effectDuration + 1);
     };
     Sprite_Enemy.prototype.updateBossCollapse = function () {
         this._shake = (this._effectDuration % 2) * 4 - 2;
-        this.blendMode = core_1.Graphics.BLEND_ADD;
+        this.blendMode = Graphics_1.Graphics.BLEND_ADD;
         this.opacity *= this._effectDuration / (this._effectDuration + 1);
         this.setBlendColor([255, 255, 255, 255 - this.opacity]);
         if (this._effectDuration % 20 === 19) {
-            managers_1.SoundManager.playBossCollapse2();
+            SoundManager_1.SoundManager.playBossCollapse2();
         }
     };
     Sprite_Enemy.prototype.updateInstantCollapse = function () {

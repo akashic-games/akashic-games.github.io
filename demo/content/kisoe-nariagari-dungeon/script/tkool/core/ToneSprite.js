@@ -28,6 +28,7 @@ var ToneSprite = /** @class */ (function (_super) {
         // this.initialize();
     }
     ToneSprite.prototype.initialize = function () {
+        _super.prototype.initialize.call(this);
         this.clear();
     };
     ToneSprite.prototype.clear = function () {

@@ -16,10 +16,13 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_NumberInput = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
-var sprites_1 = require("../sprites");
+var Graphics_1 = require("../core/Graphics");
+var TouchInput_1 = require("../core/TouchInput");
+var Utils_1 = require("../core/Utils");
+var globals_1 = require("../managers/globals");
+var ImageManager_1 = require("../managers/ImageManager");
+var SoundManager_1 = require("../managers/SoundManager");
+var SpriteButton_1 = require("../sprites/SpriteButton");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_NumberInput = /** @class */ (function (_super) {
     __extends(Window_NumberInput, _super);
@@ -43,9 +46,9 @@ var Window_NumberInput = /** @class */ (function (_super) {
         this.deactivate();
     };
     Window_NumberInput.prototype.start = function () {
-        this._maxDigits = DataManager_1.$gameMessage.numInputMaxDigits();
-        this._number = DataManager_1.$gameVariables.value(DataManager_1.$gameMessage.numInputVariableId());
-        this._number = core_1.Utils.clamp(this._number, 0, Math.pow(10, this._maxDigits) - 1);
+        this._maxDigits = globals_1.$gameMessage.numInputMaxDigits();
+        this._number = globals_1.$gameVariables.value(globals_1.$gameMessage.numInputVariableId());
+        this._number = Utils_1.Utils.clamp(this._number, 0, Math.pow(10, this._maxDigits) - 1);
         this.updatePlacement();
         this.placeButtons();
         this.updateButtonsVisiblity();
@@ -60,8 +63,8 @@ var Window_NumberInput = /** @class */ (function (_super) {
         var spacing = 8;
         this.width = this.windowWidth();
         this.height = this.windowHeight();
-        this.x = (core_1.Graphics.boxWidth - this.width) / 2;
-        if (messageY >= core_1.Graphics.boxHeight / 2) {
+        this.x = (Graphics_1.Graphics.boxWidth - this.width) / 2;
+        if (messageY >= Graphics_1.Graphics.boxHeight / 2) {
             this.y = messageY - this.height - spacing;
         }
         else {
@@ -87,12 +90,12 @@ var Window_NumberInput = /** @class */ (function (_super) {
         return 32;
     };
     Window_NumberInput.prototype.createButtons = function () {
-        var bitmap = managers_1.ImageManager.loadSystem("ButtonSet");
+        var bitmap = ImageManager_1.ImageManager.loadSystem("ButtonSet");
         var buttonWidth = 48;
         var buttonHeight = 48;
         this._buttons = [];
         for (var i = 0; i < 3; i++) {
-            var button = new sprites_1.Sprite_Button();
+            var button = new SpriteButton_1.Sprite_Button();
             var x = buttonWidth * [1, 2, 4][i];
             var w = buttonWidth * (i === 2 ? 2 : 1);
             button.bitmap = bitmap;
@@ -122,7 +125,7 @@ var Window_NumberInput = /** @class */ (function (_super) {
         }
     };
     Window_NumberInput.prototype.updateButtonsVisiblity = function () {
-        if (core_1.TouchInput.date > /* Input.date*/ 0) {
+        if (TouchInput_1.TouchInput.date > /* Input.date*/ 0) {
             this.showButtons();
         }
         else {
@@ -141,7 +144,7 @@ var Window_NumberInput = /** @class */ (function (_super) {
     };
     Window_NumberInput.prototype.buttonY = function () {
         var spacing = 8;
-        if (this._messageWindow.y >= core_1.Graphics.boxHeight / 2) {
+        if (this._messageWindow.y >= Graphics_1.Graphics.boxHeight / 2) {
             return 0 - this._buttons[0].height - spacing;
         }
         else {
@@ -174,7 +177,7 @@ var Window_NumberInput = /** @class */ (function (_super) {
         }
         this._number += n * place;
         this.refresh();
-        managers_1.SoundManager.playCursor();
+        SoundManager_1.SoundManager.playCursor();
     };
     Window_NumberInput.prototype.isTouchOkEnabled = function () {
         return false;
@@ -190,8 +193,8 @@ var Window_NumberInput = /** @class */ (function (_super) {
         return false;
     };
     Window_NumberInput.prototype.processOk = function () {
-        managers_1.SoundManager.playOk();
-        DataManager_1.$gameVariables.setValue(DataManager_1.$gameMessage.numInputVariableId(), this._number);
+        SoundManager_1.SoundManager.playOk();
+        globals_1.$gameVariables.setValue(globals_1.$gameMessage.numInputVariableId(), this._number);
         this._messageWindow.terminateMessage();
         this.updateInputData();
         this.deactivate();
@@ -200,7 +203,7 @@ var Window_NumberInput = /** @class */ (function (_super) {
     Window_NumberInput.prototype.drawItem = function (index) {
         var rect = this.itemRect(index);
         var align = "center";
-        var s = core_1.Utils.padZero(this._number, this._maxDigits);
+        var s = Utils_1.Utils.padZero(this._number, this._maxDigits);
         var c = s.slice(index, index + 1);
         this.resetTextColor();
         this.drawText(c, rect.x, rect.y, rect.width, align);

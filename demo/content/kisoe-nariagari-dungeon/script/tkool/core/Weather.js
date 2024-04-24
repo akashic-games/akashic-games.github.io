@@ -16,8 +16,12 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Weather = void 0;
-var core_1 = require("../core");
 var PIXI_1 = require("../PIXI");
+var Bitmap_1 = require("./Bitmap");
+var Graphics_1 = require("./Graphics");
+var ScreenSprite_1 = require("./ScreenSprite");
+var Sprite_1 = require("./Sprite");
+var Utils_1 = require("./Utils");
 // export interface WeatherParameterObject extends ContainerParameterObject {
 // }
 var Weather = /** @class */ (function (_super) {
@@ -27,11 +31,12 @@ var Weather = /** @class */ (function (_super) {
         // this.initialize();
     }
     Weather.prototype.initialize = function () {
+        _super.prototype.initialize.call(this);
         // this._width = Graphics.width;
         // this._height = Graphics.height;
         // NOTE: PIXI.Container width, height を用意していない(g.Eそのまま)。うまくいかないかも
-        this.width = core_1.Graphics.width;
-        this.height = core_1.Graphics.height;
+        this.width = Graphics_1.Graphics.width;
+        this.height = Graphics_1.Graphics.height;
         this._sprites = [];
         this._createBitmaps();
         this._createDimmer();
@@ -48,11 +53,11 @@ var Weather = /** @class */ (function (_super) {
      * @private
      */
     Weather.prototype._createBitmaps = function () {
-        this._rainBitmap = new core_1.Bitmap(1, 60);
+        this._rainBitmap = new Bitmap_1.Bitmap(1, 60);
         this._rainBitmap.fillAll("white");
-        this._stormBitmap = new core_1.Bitmap(2, 100);
+        this._stormBitmap = new Bitmap_1.Bitmap(2, 100);
         this._stormBitmap.fillAll("white");
-        this._snowBitmap = new core_1.Bitmap(9, 9);
+        this._snowBitmap = new Bitmap_1.Bitmap(9, 9);
         this._snowBitmap.drawCircle(4, 4, 4, "white");
     };
     /**
@@ -60,7 +65,7 @@ var Weather = /** @class */ (function (_super) {
      * @private
      */
     Weather.prototype._createDimmer = function () {
-        this._dimmerSprite = new core_1.ScreenSprite();
+        this._dimmerSprite = new ScreenSprite_1.ScreenSprite();
         this._dimmerSprite.setColor(80, 80, 80);
         this.addChild(this._dimmerSprite);
     };
@@ -100,7 +105,7 @@ var Weather = /** @class */ (function (_super) {
         // const sprite = new Sprite(this.viewport);
         // NOTE: viewport はどこからも設定されない。MVのソースでもそのはず。よくわからない。
         // TODO: MVで天候を設定したフィールドを実行してデバッガで値を確認する。
-        var sprite = new core_1.Sprite(this.viewport);
+        var sprite = new Sprite_1.Sprite(this.viewport);
         sprite.opacity = 0;
         this._sprites.push(sprite);
         this.addChild(sprite);
@@ -175,9 +180,9 @@ var Weather = /** @class */ (function (_super) {
      * @private
      */
     Weather.prototype._rebornSprite = function (sprite) {
-        sprite.ax = core_1.Utils.randomInt(core_1.Graphics.width + 100) - 100 + this.origin.x;
-        sprite.ay = core_1.Utils.randomInt(core_1.Graphics.height + 200) - 200 + this.origin.y;
-        sprite.opacity = 160 + core_1.Utils.randomInt(60);
+        sprite.ax = Utils_1.Utils.randomInt(Graphics_1.Graphics.width + 100) - 100 + this.origin.x;
+        sprite.ay = Utils_1.Utils.randomInt(Graphics_1.Graphics.height + 200) - 200 + this.origin.y;
+        sprite.opacity = 160 + Utils_1.Utils.randomInt(60);
     };
     return Weather;
 }(PIXI_1.Container));

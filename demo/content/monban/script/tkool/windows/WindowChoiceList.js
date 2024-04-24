@@ -16,8 +16,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_ChoiceList = void 0;
-var core_1 = require("../core");
-var DataManager_1 = require("../managers/DataManager");
+var Graphics_1 = require("../core/Graphics");
+var globals_1 = require("../managers/globals");
 var WindowCommand_1 = require("./WindowCommand");
 var Window_ChoiceList = /** @class */ (function (_super) {
     __extends(Window_ChoiceList, _super);
@@ -44,10 +44,10 @@ var Window_ChoiceList = /** @class */ (function (_super) {
         this.activate();
     };
     Window_ChoiceList.prototype.selectDefault = function () {
-        this.select(DataManager_1.$gameMessage.choiceDefaultType());
+        this.select(globals_1.$gameMessage.choiceDefaultType());
     };
     Window_ChoiceList.prototype.updatePlacement = function () {
-        var positionType = DataManager_1.$gameMessage.choicePositionType();
+        var positionType = globals_1.$gameMessage.choicePositionType();
         var messageY = this._messageWindow.y;
         this.width = this.windowWidth();
         this.height = this.windowHeight();
@@ -56,13 +56,13 @@ var Window_ChoiceList = /** @class */ (function (_super) {
                 this.x = 0;
                 break;
             case 1:
-                this.x = (core_1.Graphics.boxWidth - this.width) / 2;
+                this.x = (Graphics_1.Graphics.boxWidth - this.width) / 2;
                 break;
             case 2:
-                this.x = core_1.Graphics.boxWidth - this.width;
+                this.x = Graphics_1.Graphics.boxWidth - this.width;
                 break;
         }
-        if (messageY >= core_1.Graphics.boxHeight / 2) {
+        if (messageY >= Graphics_1.Graphics.boxHeight / 2) {
             this.y = messageY - this.height;
         }
         else {
@@ -70,18 +70,18 @@ var Window_ChoiceList = /** @class */ (function (_super) {
         }
     };
     Window_ChoiceList.prototype.updateBackground = function () {
-        this._background = DataManager_1.$gameMessage.choiceBackground();
+        this._background = globals_1.$gameMessage.choiceBackground();
         this.setBackgroundType(this._background);
     };
     Window_ChoiceList.prototype.windowWidth = function () {
         var width = this.maxChoiceWidth() + this.padding * 2;
-        return Math.min(width, core_1.Graphics.boxWidth);
+        return Math.min(width, Graphics_1.Graphics.boxWidth);
     };
     Window_ChoiceList.prototype.numVisibleRows = function () {
         var messageY = this._messageWindow.y;
         var messageHeight = this._messageWindow.height;
-        var centerY = core_1.Graphics.boxHeight / 2;
-        var choices = DataManager_1.$gameMessage.choices();
+        var centerY = Graphics_1.Graphics.boxHeight / 2;
+        var choices = globals_1.$gameMessage.choices();
         var numLines = choices.length;
         var maxLines = 8;
         if (messageY < centerY && messageY + messageHeight > centerY) {
@@ -94,7 +94,7 @@ var Window_ChoiceList = /** @class */ (function (_super) {
     };
     Window_ChoiceList.prototype.maxChoiceWidth = function () {
         var maxWidth = 96;
-        var choices = DataManager_1.$gameMessage.choices();
+        var choices = globals_1.$gameMessage.choices();
         for (var i = 0; i < choices.length; i++) {
             var choiceWidth = this.textWidthEx(choices[i]) + this.textPadding() * 2;
             if (maxWidth < choiceWidth) {
@@ -110,7 +110,7 @@ var Window_ChoiceList = /** @class */ (function (_super) {
         return this.maxItems() * this.itemHeight();
     };
     Window_ChoiceList.prototype.makeCommandList = function () {
-        var choices = DataManager_1.$gameMessage.choices();
+        var choices = globals_1.$gameMessage.choices();
         for (var i = 0; i < choices.length; i++) {
             this.addCommand(choices[i], "choice");
         }
@@ -120,7 +120,7 @@ var Window_ChoiceList = /** @class */ (function (_super) {
         this.drawTextEx(this.commandName(index), rect.x, rect.y);
     };
     Window_ChoiceList.prototype.isCancelEnabled = function () {
-        return DataManager_1.$gameMessage.choiceCancelType() !== -1;
+        return globals_1.$gameMessage.choiceCancelType() !== -1;
     };
     Window_ChoiceList.prototype.isOkTriggered = function () {
         // TODO: impl
@@ -128,12 +128,12 @@ var Window_ChoiceList = /** @class */ (function (_super) {
         return false;
     };
     Window_ChoiceList.prototype.callOkHandler = function () {
-        DataManager_1.$gameMessage.onChoice(this.index());
+        globals_1.$gameMessage.onChoice(this.index());
         this._messageWindow.terminateMessage();
         this.close();
     };
     Window_ChoiceList.prototype.callCancelHandler = function () {
-        DataManager_1.$gameMessage.onChoice(DataManager_1.$gameMessage.choiceCancelType());
+        globals_1.$gameMessage.onChoice(globals_1.$gameMessage.choiceCancelType());
         this._messageWindow.terminateMessage();
         this.close();
     };

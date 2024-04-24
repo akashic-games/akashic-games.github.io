@@ -16,8 +16,12 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Animation = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Graphics_1 = require("../core/Graphics");
+var ScreenSprite_1 = require("../core/ScreenSprite");
+var Sprite_1 = require("../core/Sprite");
+var Utils_1 = require("../core/Utils");
+var AudioManager_1 = require("../managers/AudioManager");
+var ImageManager_1 = require("../managers/ImageManager");
 var Sprite_Animation = /** @class */ (function (_super) {
     __extends(Sprite_Animation, _super);
     function Sprite_Animation() {
@@ -139,8 +143,8 @@ var Sprite_Animation = /** @class */ (function (_super) {
         var name2 = this._animation.animation2Name;
         var hue1 = this._animation.animation1Hue;
         var hue2 = this._animation.animation2Hue;
-        this._bitmap1 = managers_1.ImageManager.loadAnimation(name1, hue1);
-        this._bitmap2 = managers_1.ImageManager.loadAnimation(name2, hue2);
+        this._bitmap1 = ImageManager_1.ImageManager.loadAnimation(name1, hue1);
+        this._bitmap2 = ImageManager_1.ImageManager.loadAnimation(name2, hue2);
     };
     Sprite_Animation.prototype.isReady = function () {
         return this._bitmap1 && this._bitmap1.isReady() && this._bitmap2 && this._bitmap2.isReady();
@@ -166,7 +170,7 @@ var Sprite_Animation = /** @class */ (function (_super) {
     Sprite_Animation.prototype.createCellSprites = function () {
         this._cellSprites = [];
         for (var i = 0; i < 16; i++) {
-            var sprite = new core_1.Sprite();
+            var sprite = new Sprite_1.Sprite();
             sprite.anchor.x = 0.5;
             sprite.anchor.y = 0.5;
             this._cellSprites.push(sprite);
@@ -174,7 +178,7 @@ var Sprite_Animation = /** @class */ (function (_super) {
         }
     };
     Sprite_Animation.prototype.createScreenFlashSprite = function () {
-        this._screenFlashSprite = new core_1.ScreenSprite();
+        this._screenFlashSprite = new ScreenSprite_1.ScreenSprite();
         this.addChild(this._screenFlashSprite);
     };
     Sprite_Animation.prototype.updateMain = function () {
@@ -194,8 +198,8 @@ var Sprite_Animation = /** @class */ (function (_super) {
     Sprite_Animation.prototype.updatePosition = function () {
         if (this._animation.position === 3) {
             // tsc@v2.6.2 だと通らないみたい
-            this.x = "width" in this.parent ? this.parent.width / 2 : core_1.Graphics.width;
-            this.y = "height" in this.parent ? this.parent.height / 2 : core_1.Graphics.height;
+            this.x = "width" in this.parent ? this.parent.width / 2 : Graphics_1.Graphics.width;
+            this.y = "height" in this.parent ? this.parent.height / 2 : Graphics_1.Graphics.height;
         }
         else {
             var parent = this._target.parent;
@@ -287,12 +291,12 @@ var Sprite_Animation = /** @class */ (function (_super) {
                 break;
         }
         if (!this._duplicated && timing.se) {
-            managers_1.AudioManager.playSe(timing.se);
+            AudioManager_1.AudioManager.playSe(timing.se);
         }
     };
     Sprite_Animation.prototype.startFlash = function (color, duration) {
         // this._flashColor = color.clone();
-        this._flashColor = core_1.Utils.cloneArray(color);
+        this._flashColor = Utils_1.Utils.cloneArray(color);
         this._flashDuration = duration;
     };
     Sprite_Animation.prototype.startScreenFlash = function (color, duration) {
@@ -309,5 +313,5 @@ var Sprite_Animation = /** @class */ (function (_super) {
     Sprite_Animation._checker1 = {};
     Sprite_Animation._checker2 = {};
     return Sprite_Animation;
-}(core_1.Sprite));
+}(Sprite_1.Sprite));
 exports.Sprite_Animation = Sprite_Animation;

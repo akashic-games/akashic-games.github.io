@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Switches = void 0;
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var Game_Switches = /** @class */ (function () {
     function Game_Switches() {
         this.initialize();
@@ -16,14 +16,17 @@ var Game_Switches = /** @class */ (function () {
         return !!this._data[switchId];
     };
     Game_Switches.prototype.setValue = function (switchId, value) {
-        if (switchId > 0 && switchId < DataManager_1.$dataSystem.switches.length) {
+        if (switchId > 0 && switchId < globals_1.$dataSystem.switches.length) {
             this._data[switchId] = value;
             this.onChange();
         }
     };
     Game_Switches.prototype.onChange = function () {
-        DataManager_1.$gameMap.requestRefresh();
+        globals_1.$gameMap.requestRefresh();
     };
     return Game_Switches;
 }());
 exports.Game_Switches = Game_Switches;
+(0, globals_1.set$gameSwitchesFactory)(function () {
+    return new Game_Switches();
+});

@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_BattleItem = void 0;
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var WindowItemList_1 = require("./WindowItemList");
 var Window_BattleItem = /** @class */ (function (_super) {
     __extends(Window_BattleItem, _super);
@@ -28,7 +28,7 @@ var Window_BattleItem = /** @class */ (function (_super) {
         this.hide();
     };
     Window_BattleItem.prototype.includes = function (item) {
-        return DataManager_1.$gameParty.canUse(item);
+        return globals_1.$gameParty.canUse(item);
     };
     Window_BattleItem.prototype.show = function () {
         this.selectLast();

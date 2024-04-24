@@ -16,9 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Scene_Item = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var Graphics_1 = require("../core/Graphics");
+var globals_1 = require("../managers/globals");
+var SoundManager_1 = require("../managers/SoundManager");
 var WindowItemCategory_1 = require("../windows/WindowItemCategory");
 var WindowItemList_1 = require("../windows/WindowItemList");
 var SceneItemBase_1 = require("./SceneItemBase");
@@ -51,8 +51,8 @@ var Scene_Item = /** @class */ (function (_super) {
     };
     Scene_Item.prototype.createItemWindow = function () {
         var wy = this._categoryWindow.y + this._categoryWindow.height;
-        var wh = core_1.Graphics.boxHeight - wy;
-        this._itemWindow = new WindowItemList_1.Window_ItemList(0, wy, core_1.Graphics.boxWidth, wh);
+        var wh = Graphics_1.Graphics.boxHeight - wy;
+        this._itemWindow = new WindowItemList_1.Window_ItemList(0, wy, Graphics_1.Graphics.boxWidth, wh);
         this._itemWindow.setHelpWindow(this._helpWindow);
         this._itemWindow.setHandler("ok", this.onItemOk.bind(this));
         this._itemWindow.setHandler("cancel", this.onItemCancel.bind(this));
@@ -60,7 +60,7 @@ var Scene_Item = /** @class */ (function (_super) {
         this._categoryWindow.setItemWindow(this._itemWindow);
     };
     Scene_Item.prototype.user = function () {
-        var members = DataManager_1.$gameParty.movableMembers();
+        var members = globals_1.$gameParty.movableMembers();
         var bestActor = members[0];
         var bestPha = 0;
         for (var i = 0; i < members.length; i++) {
@@ -76,7 +76,7 @@ var Scene_Item = /** @class */ (function (_super) {
         this._itemWindow.selectLast();
     };
     Scene_Item.prototype.onItemOk = function () {
-        DataManager_1.$gameParty.setLastItem(this.item());
+        globals_1.$gameParty.setLastItem(this.item());
         this.determineItem();
     };
     Scene_Item.prototype.onItemCancel = function () {
@@ -84,7 +84,7 @@ var Scene_Item = /** @class */ (function (_super) {
         this._categoryWindow.activate();
     };
     Scene_Item.prototype.playSeForItem = function () {
-        managers_1.SoundManager.playUseItem();
+        SoundManager_1.SoundManager.playUseItem();
     };
     Scene_Item.prototype.useItem = function () {
         SceneItemBase_1.Scene_ItemBase.prototype.useItem.call(this);

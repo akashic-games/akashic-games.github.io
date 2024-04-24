@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AudioManager = void 0;
-var core_1 = require("../core");
+var Utils_1 = require("../core/Utils");
 var AudioManager = /** @class */ (function () {
     function AudioManager() {
     }
@@ -70,7 +70,7 @@ var AudioManager = /** @class */ (function () {
             this.stopBgm();
             var asset = void 0;
             try {
-                asset = g.game.scene().asset.getAudio(core_1.Utils.assetPathOfName("audio/bgm/" + bgm.name));
+                asset = g.game.scene().asset.getAudio(Utils_1.Utils.assetPathOfName("audio/bgm/" + bgm.name));
             }
             catch (_e) {
                 return;
@@ -150,7 +150,7 @@ var AudioManager = /** @class */ (function () {
             this.stopBgs();
             var asset = void 0;
             try {
-                asset = g.game.scene().asset.getAudio(core_1.Utils.assetPathOfName("audio/bgs/" + bgs.name));
+                asset = g.game.scene().asset.getAudio(Utils_1.Utils.assetPathOfName("audio/bgs/" + bgs.name));
             }
             catch (_e) {
                 return;
@@ -225,7 +225,7 @@ var AudioManager = /** @class */ (function () {
         this.stopMe();
         var asset;
         try {
-            asset = g.game.scene().asset.getAudio(core_1.Utils.assetPathOfName("audio/me/" + me.name));
+            asset = g.game.scene().asset.getAudio(Utils_1.Utils.assetPathOfName("audio/me/" + me.name));
         }
         catch (_e) {
             return;
@@ -270,7 +270,7 @@ var AudioManager = /** @class */ (function () {
         var _this = this;
         var asset;
         try {
-            asset = g.game.scene().asset.getAudio(core_1.Utils.assetPathOfName("audio/se/" + se.name));
+            asset = g.game.scene().asset.getAudio(Utils_1.Utils.assetPathOfName("audio/se/" + se.name));
         }
         catch (_e) {
             return;
@@ -309,7 +309,7 @@ var AudioManager = /** @class */ (function () {
     AudioManager.loadStaticSe = function (se) {
         var asset;
         try {
-            asset = g.game.scene().asset.getAudio(core_1.Utils.assetPathOfName("audio/se/" + se.name));
+            asset = g.game.scene().asset.getAudio(Utils_1.Utils.assetPathOfName("audio/se/" + se.name));
         }
         catch (_e) {
             return;

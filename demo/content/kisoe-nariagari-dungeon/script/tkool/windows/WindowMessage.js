@@ -16,9 +16,11 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_Message = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var Graphics_1 = require("../core/Graphics");
+var TouchInput_1 = require("../core/TouchInput");
+var Utils_1 = require("../core/Utils");
+var globals_1 = require("../managers/globals");
+var ImageManager_1 = require("../managers/ImageManager");
 var WindowBase_1 = require("./WindowBase");
 var WindowChoiceList_1 = require("./WindowChoiceList");
 var WindowEventItem_1 = require("./WindowEventItem");
@@ -35,7 +37,7 @@ var Window_Message = /** @class */ (function (_super) {
     Window_Message.prototype.initialize = function () {
         var width = this.windowWidth();
         var height = this.windowHeight();
-        var x = (core_1.Graphics.boxWidth - width) / 2;
+        var x = (Graphics_1.Graphics.boxWidth - width) / 2;
         _super.prototype.initialize.call(this, x, 0, width, height);
         this.openness = 0;
         this.initMembers();
@@ -43,7 +45,7 @@ var Window_Message = /** @class */ (function (_super) {
         this.updatePlacement();
     };
     Window_Message.prototype.initMembers = function () {
-        this._imageReservationId = core_1.Utils.generateRuntimeId();
+        this._imageReservationId = Utils_1.Utils.generateRuntimeId();
         this._background = 0;
         this._positionType = 2;
         this._waitCount = 0;
@@ -56,14 +58,14 @@ var Window_Message = /** @class */ (function (_super) {
     };
     Window_Message.prototype.createSubWindows = function () {
         this._goldWindow = new WindowGold_1.Window_Gold(0, 0);
-        this._goldWindow.x = core_1.Graphics.boxWidth - this._goldWindow.width;
+        this._goldWindow.x = Graphics_1.Graphics.boxWidth - this._goldWindow.width;
         this._goldWindow.openness = 0;
         this._choiceWindow = new WindowChoiceList_1.Window_ChoiceList(this);
         this._numberWindow = new WindowNumberInput_1.Window_NumberInput(this);
         this._itemWindow = new WindowEventItem_1.Window_EventItem(this);
     };
     Window_Message.prototype.windowWidth = function () {
-        return core_1.Graphics.boxWidth;
+        return Graphics_1.Graphics.boxWidth;
     };
     Window_Message.prototype.windowHeight = function () {
         return this.fittingHeight(this.numVisibleRows());
@@ -109,30 +111,30 @@ var Window_Message = /** @class */ (function (_super) {
         }
     };
     Window_Message.prototype.canStart = function () {
-        return DataManager_1.$gameMessage.hasText() && !DataManager_1.$gameMessage.scrollMode();
+        return globals_1.$gameMessage.hasText() && !globals_1.$gameMessage.scrollMode();
     };
     Window_Message.prototype.startMessage = function () {
         this._textState = {};
         this._textState.index = 0;
-        this._textState.text = this.convertEscapeCharacters(DataManager_1.$gameMessage.allText());
+        this._textState.text = this.convertEscapeCharacters(globals_1.$gameMessage.allText());
         this.newPage(this._textState);
         this.updatePlacement();
         this.updateBackground();
         this.open();
     };
     Window_Message.prototype.updatePlacement = function () {
-        this._positionType = DataManager_1.$gameMessage.positionType();
-        this.y = (this._positionType * (core_1.Graphics.boxHeight - this.height)) / 2;
-        this._goldWindow.y = this.y > 0 ? 0 : core_1.Graphics.boxHeight - this._goldWindow.height;
+        this._positionType = globals_1.$gameMessage.positionType();
+        this.y = (this._positionType * (Graphics_1.Graphics.boxHeight - this.height)) / 2;
+        this._goldWindow.y = this.y > 0 ? 0 : Graphics_1.Graphics.boxHeight - this._goldWindow.height;
     };
     Window_Message.prototype.updateBackground = function () {
-        this._background = DataManager_1.$gameMessage.background();
+        this._background = globals_1.$gameMessage.background();
         this.setBackgroundType(this._background);
     };
     Window_Message.prototype.terminateMessage = function () {
         this.close();
         this._goldWindow.close();
-        DataManager_1.$gameMessage.clear();
+        globals_1.$gameMessage.clear();
     };
     Window_Message.prototype.updateWait = function () {
         if (this._waitCount > 0) {
@@ -213,15 +215,15 @@ var Window_Message = /** @class */ (function (_super) {
         this._textState = null;
     };
     Window_Message.prototype.startInput = function () {
-        if (DataManager_1.$gameMessage.isChoice()) {
+        if (globals_1.$gameMessage.isChoice()) {
             this._choiceWindow.start();
             return true;
         }
-        else if (DataManager_1.$gameMessage.isNumberInput()) {
+        else if (globals_1.$gameMessage.isNumberInput()) {
             this._numberWindow.start();
             return true;
         }
-        else if (DataManager_1.$gameMessage.isItemChoice()) {
+        else if (globals_1.$gameMessage.isItemChoice()) {
             this._itemWindow.start();
             return true;
         }
@@ -232,13 +234,13 @@ var Window_Message = /** @class */ (function (_super) {
     Window_Message.prototype.isTriggered = function () {
         return (
         /* Input.isRepeated("ok") || Input.isRepeated("cancel") ||*/
-        core_1.TouchInput.isRepeated());
+        TouchInput_1.TouchInput.isRepeated());
     };
     Window_Message.prototype.doesContinue = function () {
-        return DataManager_1.$gameMessage.hasText() && !DataManager_1.$gameMessage.scrollMode() && !this.areSettingsChanged();
+        return globals_1.$gameMessage.hasText() && !globals_1.$gameMessage.scrollMode() && !this.areSettingsChanged();
     };
     Window_Message.prototype.areSettingsChanged = function () {
-        return this._background !== DataManager_1.$gameMessage.background() || this._positionType !== DataManager_1.$gameMessage.positionType();
+        return this._background !== globals_1.$gameMessage.background() || this._positionType !== globals_1.$gameMessage.positionType();
     };
     Window_Message.prototype.updateShowFast = function () {
         if (this.isTriggered()) {
@@ -256,14 +258,14 @@ var Window_Message = /** @class */ (function (_super) {
         textState.height = this.calcTextHeight(textState, false);
     };
     Window_Message.prototype.loadMessageFace = function () {
-        this._faceBitmap = managers_1.ImageManager.reserveFace(DataManager_1.$gameMessage.faceName(), 0, this._imageReservationId);
+        this._faceBitmap = ImageManager_1.ImageManager.reserveFace(globals_1.$gameMessage.faceName(), 0, this._imageReservationId);
     };
     Window_Message.prototype.drawMessageFace = function () {
-        this.drawFace(DataManager_1.$gameMessage.faceName(), DataManager_1.$gameMessage.faceIndex(), 0, 0);
-        managers_1.ImageManager.releaseReservation(this._imageReservationId);
+        this.drawFace(globals_1.$gameMessage.faceName(), globals_1.$gameMessage.faceIndex(), 0, 0);
+        ImageManager_1.ImageManager.releaseReservation(this._imageReservationId);
     };
     Window_Message.prototype.newLineX = function () {
-        return DataManager_1.$gameMessage.faceName() === "" ? 0 : 168;
+        return globals_1.$gameMessage.faceName() === "" ? 0 : 168;
     };
     Window_Message.prototype.processNewLine = function (textState) {
         this._lineShowFast = false;

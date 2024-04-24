@@ -16,9 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Enemy = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var Utils_1 = require("../core/Utils");
+var globals_1 = require("../managers/globals");
+var SoundManager_1 = require("../managers/SoundManager");
 var GameBattler_1 = require("./GameBattler");
 var Game_Enemy = /** @class */ (function (_super) {
     __extends(Game_Enemy, _super);
@@ -52,13 +52,13 @@ var Game_Enemy = /** @class */ (function (_super) {
         return true;
     };
     Game_Enemy.prototype.friendsUnit = function () {
-        return DataManager_1.$gameTroop;
+        return globals_1.$gameTroop;
     };
     Game_Enemy.prototype.opponentsUnit = function () {
-        return DataManager_1.$gameParty;
+        return globals_1.$gameParty;
     };
     Game_Enemy.prototype.index = function () {
-        return DataManager_1.$gameTroop.members().indexOf(this);
+        return globals_1.$gameTroop.members().indexOf(this);
     };
     Game_Enemy.prototype.isBattleMember = function () {
         return this.index() >= 0;
@@ -67,7 +67,7 @@ var Game_Enemy = /** @class */ (function (_super) {
         return this._enemyId;
     };
     Game_Enemy.prototype.enemy = function () {
-        return DataManager_1.$dataEnemies[this._enemyId];
+        return globals_1.$dataEnemies[this._enemyId];
     };
     Game_Enemy.prototype.traitObjects = function () {
         return GameBattler_1.Game_Battler.prototype.traitObjects.call(this).concat(this.enemy());
@@ -93,17 +93,17 @@ var Game_Enemy = /** @class */ (function (_super) {
         }, []);
     };
     Game_Enemy.prototype.dropItemRate = function () {
-        return DataManager_1.$gameParty.hasDropItemDouble() ? 2 : 1;
+        return globals_1.$gameParty.hasDropItemDouble() ? 2 : 1;
     };
     Game_Enemy.prototype.itemObject = function (kind, dataId) {
         if (kind === 1) {
-            return DataManager_1.$dataItems[dataId];
+            return globals_1.$dataItems[dataId];
         }
         else if (kind === 2) {
-            return DataManager_1.$dataWeapons[dataId];
+            return globals_1.$dataWeapons[dataId];
         }
         else if (kind === 3) {
-            return DataManager_1.$dataArmors[dataId];
+            return globals_1.$dataArmors[dataId];
         }
         else {
             return null;
@@ -151,7 +151,7 @@ var Game_Enemy = /** @class */ (function (_super) {
     };
     Game_Enemy.prototype.performDamage = function () {
         _super.prototype.performDamage.call(this);
-        managers_1.SoundManager.playEnemyDamage();
+        SoundManager_1.SoundManager.playEnemyDamage();
         this.requestEffect("blink");
     };
     Game_Enemy.prototype.performCollapse = function () {
@@ -159,11 +159,11 @@ var Game_Enemy = /** @class */ (function (_super) {
         switch (this.collapseType()) {
             case 0:
                 this.requestEffect("collapse");
-                managers_1.SoundManager.playEnemyCollapse();
+                SoundManager_1.SoundManager.playEnemyCollapse();
                 break;
             case 1:
                 this.requestEffect("bossCollapse");
-                managers_1.SoundManager.playBossCollapse1();
+                SoundManager_1.SoundManager.playBossCollapse1();
                 break;
             case 2:
                 this.requestEffect("instantCollapse");
@@ -203,7 +203,7 @@ var Game_Enemy = /** @class */ (function (_super) {
         }
     };
     Game_Enemy.prototype.meetsTurnCondition = function (param1, param2) {
-        var n = DataManager_1.$gameTroop.turnCount();
+        var n = globals_1.$gameTroop.turnCount();
         if (param2 === 0) {
             return n === param1;
         }
@@ -221,20 +221,20 @@ var Game_Enemy = /** @class */ (function (_super) {
         return this.isStateAffected(param);
     };
     Game_Enemy.prototype.meetsPartyLevelCondition = function (param) {
-        return DataManager_1.$gameParty.highestLevel() >= param;
+        return globals_1.$gameParty.highestLevel() >= param;
     };
     Game_Enemy.prototype.meetsSwitchCondition = function (param) {
-        return DataManager_1.$gameSwitches.value(param);
+        return globals_1.$gameSwitches.value(param);
     };
     Game_Enemy.prototype.isActionValid = function (action) {
-        return this.meetsCondition(action) && this.canUse(DataManager_1.$dataSkills[action.skillId]);
+        return this.meetsCondition(action) && this.canUse(globals_1.$dataSkills[action.skillId]);
     };
     Game_Enemy.prototype.selectAction = function (actionList, ratingZero) {
         var sum = actionList.reduce(function (r, a) {
             return r + a.rating - ratingZero;
         }, 0);
         if (sum > 0) {
-            var value = core_1.Utils.randomInt(sum);
+            var value = Utils_1.Utils.randomInt(sum);
             for (var i = 0; i < actionList.length; i++) {
                 var action = actionList[i];
                 value -= action.rating - ratingZero;

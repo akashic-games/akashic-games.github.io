@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_ShopCommand = void 0;
-var managers_1 = require("../managers");
+var TextManager_1 = require("../managers/TextManager");
 var WindowHorzCommand_1 = require("./WindowHorzCommand");
 var Window_ShopCommand = /** @class */ (function (_super) {
     __extends(Window_ShopCommand, _super);
@@ -41,9 +41,9 @@ var Window_ShopCommand = /** @class */ (function (_super) {
         return 3;
     };
     Window_ShopCommand.prototype.makeCommandList = function () {
-        this.addCommand(managers_1.TextManager.buy, "buy");
-        this.addCommand(managers_1.TextManager.sell, "sell", !this._purchaseOnly);
-        this.addCommand(managers_1.TextManager.cancel, "cancel");
+        this.addCommand(TextManager_1.TextManager.buy, "buy");
+        this.addCommand(TextManager_1.TextManager.sell, "sell", !this._purchaseOnly);
+        this.addCommand(TextManager_1.TextManager.cancel, "cancel");
     };
     return Window_ShopCommand;
 }(WindowHorzCommand_1.Window_HorzCommand));

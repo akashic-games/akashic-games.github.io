@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Scene_GameEnd = void 0;
-var managers_1 = require("../managers");
+var SceneManager_1 = require("../managers/SceneManager");
 var WindowGameEnd_1 = require("../windows/WindowGameEnd");
 var SceneMenuBase_1 = require("./SceneMenuBase");
 var SceneTitle_1 = require("./SceneTitle");
@@ -52,7 +52,7 @@ var Scene_GameEnd = /** @class */ (function (_super) {
     };
     Scene_GameEnd.prototype.commandToTitle = function () {
         this.fadeOutAll();
-        managers_1.SceneManager.goto(SceneTitle_1.Scene_Title);
+        SceneManager_1.SceneManager.goto(SceneTitle_1.Scene_Title);
     };
     return Scene_GameEnd;
 }(SceneMenuBase_1.Scene_MenuBase));

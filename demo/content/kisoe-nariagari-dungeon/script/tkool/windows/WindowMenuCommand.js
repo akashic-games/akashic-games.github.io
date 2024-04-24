@@ -16,8 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_MenuCommand = void 0;
-var managers_1 = require("../managers");
 var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
+var TextManager_1 = require("../managers/TextManager");
 var WindowCommand_1 = require("./WindowCommand");
 var Window_MenuCommand = /** @class */ (function (_super) {
     __extends(Window_MenuCommand, _super);
@@ -53,22 +54,22 @@ var Window_MenuCommand = /** @class */ (function (_super) {
     Window_MenuCommand.prototype.addMainCommands = function () {
         var enabled = this.areMainCommandsEnabled();
         if (this.needsCommand("item")) {
-            this.addCommand(managers_1.TextManager.item, "item", enabled);
+            this.addCommand(TextManager_1.TextManager.item, "item", enabled);
         }
         if (this.needsCommand("skill")) {
-            this.addCommand(managers_1.TextManager.skill, "skill", enabled);
+            this.addCommand(TextManager_1.TextManager.skill, "skill", enabled);
         }
         if (this.needsCommand("equip")) {
-            this.addCommand(managers_1.TextManager.equip, "equip", enabled);
+            this.addCommand(TextManager_1.TextManager.equip, "equip", enabled);
         }
         if (this.needsCommand("status")) {
-            this.addCommand(managers_1.TextManager.status, "status", enabled);
+            this.addCommand(TextManager_1.TextManager.status, "status", enabled);
         }
     };
     Window_MenuCommand.prototype.addFormationCommand = function () {
         if (this.needsCommand("formation")) {
             var enabled = this.isFormationEnabled();
-            this.addCommand(managers_1.TextManager.formation, "formation", enabled);
+            this.addCommand(TextManager_1.TextManager.formation, "formation", enabled);
         }
     };
     Window_MenuCommand.prototype.addOriginalCommands = function () {
@@ -90,10 +91,10 @@ var Window_MenuCommand = /** @class */ (function (_super) {
     // }
     Window_MenuCommand.prototype.addGameEndCommand = function () {
         var enabled = this.isGameEndEnabled();
-        this.addCommand(managers_1.TextManager.gameEnd, "gameEnd", enabled);
+        this.addCommand(TextManager_1.TextManager.gameEnd, "gameEnd", enabled);
     };
     Window_MenuCommand.prototype.needsCommand = function (name) {
-        var flags = DataManager_1.$dataSystem.menuCommands;
+        var flags = globals_1.$dataSystem.menuCommands;
         if (flags) {
             switch (name) {
                 case "item":
@@ -113,16 +114,16 @@ var Window_MenuCommand = /** @class */ (function (_super) {
         return true;
     };
     Window_MenuCommand.prototype.areMainCommandsEnabled = function () {
-        return DataManager_1.$gameParty.exists();
+        return globals_1.$gameParty.exists();
     };
     Window_MenuCommand.prototype.isFormationEnabled = function () {
-        return DataManager_1.$gameParty.size() >= 2 && DataManager_1.$gameSystem.isFormationEnabled();
+        return globals_1.$gameParty.size() >= 2 && globals_1.$gameSystem.isFormationEnabled();
     };
     Window_MenuCommand.prototype.isOptionsEnabled = function () {
         return true;
     };
     Window_MenuCommand.prototype.isSaveEnabled = function () {
-        return !managers_1.DataManager.isEventTest() && DataManager_1.$gameSystem.isSaveEnabled();
+        return !DataManager_1.DataManager.isEventTest() && globals_1.$gameSystem.isSaveEnabled();
     };
     Window_MenuCommand.prototype.isGameEndEnabled = function () {
         return true;

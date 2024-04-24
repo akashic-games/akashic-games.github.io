@@ -35,6 +35,7 @@ var WindowLayer = /** @class */ (function (_super) {
         // this.initialize();
     }
     WindowLayer.prototype.initialize = function () {
+        _super.prototype.initialize.call(this);
         // PIXI.Container.call(this);
         // this._width = 0;
         // this._height = 0;

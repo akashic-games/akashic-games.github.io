@@ -16,9 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_EventItem = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Graphics_1 = require("../core/Graphics");
 var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var WindowItemList_1 = require("./WindowItemList");
 var Window_EventItem = /** @class */ (function (_super) {
     __extends(Window_EventItem, _super);
@@ -34,7 +34,7 @@ var Window_EventItem = /** @class */ (function (_super) {
             args[_i] = arguments[_i];
         }
         this._messageWindow = args[0];
-        var width = core_1.Graphics.boxWidth;
+        var width = Graphics_1.Graphics.boxWidth;
         var height = this.windowHeight();
         _super.prototype.initialize.call(this, 0, 0, width, height);
         this.openness = 0;
@@ -56,16 +56,16 @@ var Window_EventItem = /** @class */ (function (_super) {
         this.activate();
     };
     Window_EventItem.prototype.updatePlacement = function () {
-        if (this._messageWindow.y >= core_1.Graphics.boxHeight / 2) {
+        if (this._messageWindow.y >= Graphics_1.Graphics.boxHeight / 2) {
             this.y = 0;
         }
         else {
-            this.y = core_1.Graphics.boxHeight - this.height;
+            this.y = Graphics_1.Graphics.boxHeight - this.height;
         }
     };
     Window_EventItem.prototype.includes = function (item) {
-        var itypeId = DataManager_1.$gameMessage.itemChoiceItypeId();
-        return managers_1.DataManager.isItem(item) && item.itypeId === itypeId;
+        var itypeId = globals_1.$gameMessage.itemChoiceItypeId();
+        return DataManager_1.DataManager.isItem(item) && item.itypeId === itypeId;
     };
     Window_EventItem.prototype.isEnabled = function (_item) {
         return true;
@@ -73,12 +73,12 @@ var Window_EventItem = /** @class */ (function (_super) {
     Window_EventItem.prototype.onOk = function () {
         var item = this.item();
         var itemId = item ? item.id : 0;
-        DataManager_1.$gameVariables.setValue(DataManager_1.$gameMessage.itemChoiceVariableId(), itemId);
+        globals_1.$gameVariables.setValue(globals_1.$gameMessage.itemChoiceVariableId(), itemId);
         this._messageWindow.terminateMessage();
         this.close();
     };
     Window_EventItem.prototype.onCancel = function () {
-        DataManager_1.$gameVariables.setValue(DataManager_1.$gameMessage.itemChoiceVariableId(), 0);
+        globals_1.$gameVariables.setValue(globals_1.$gameMessage.itemChoiceVariableId(), 0);
         this._messageWindow.terminateMessage();
         this.close();
     };

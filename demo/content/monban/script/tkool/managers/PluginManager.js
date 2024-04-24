@@ -31,7 +31,7 @@ var PluginManager = /** @class */ (function () {
         if (!g.game.assets[name]) {
             throw new Error("not found asset:");
         }
-        require("../plugins/".concat(name));
+        g.game._moduleManager._require("".concat(name));
     };
     PluginManager.onError = function (e) {
         this._errorUrls.push(e.target._url);

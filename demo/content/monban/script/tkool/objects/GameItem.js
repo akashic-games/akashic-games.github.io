@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Item = void 0;
-var managers_1 = require("../managers");
 var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var Game_Item = /** @class */ (function () {
     function Game_Item(item) {
         this.initialize(item);
@@ -40,32 +40,32 @@ var Game_Item = /** @class */ (function () {
     };
     Game_Item.prototype.object = function () {
         if (this.isSkill()) {
-            return DataManager_1.$dataSkills[this._itemId];
+            return globals_1.$dataSkills[this._itemId];
         }
         else if (this.isItem()) {
-            return DataManager_1.$dataItems[this._itemId];
+            return globals_1.$dataItems[this._itemId];
         }
         else if (this.isWeapon()) {
-            return DataManager_1.$dataWeapons[this._itemId];
+            return globals_1.$dataWeapons[this._itemId];
         }
         else if (this.isArmor()) {
-            return DataManager_1.$dataArmors[this._itemId];
+            return globals_1.$dataArmors[this._itemId];
         }
         else {
             return null;
         }
     };
     Game_Item.prototype.setObject = function (item) {
-        if (managers_1.DataManager.isSkill(item)) {
+        if (DataManager_1.DataManager.isSkill(item)) {
             this._dataClass = "skill";
         }
-        else if (managers_1.DataManager.isItem(item)) {
+        else if (DataManager_1.DataManager.isItem(item)) {
             this._dataClass = "item";
         }
-        else if (managers_1.DataManager.isWeapon(item)) {
+        else if (DataManager_1.DataManager.isWeapon(item)) {
             this._dataClass = "weapon";
         }
-        else if (managers_1.DataManager.isArmor(item)) {
+        else if (DataManager_1.DataManager.isArmor(item)) {
             this._dataClass = "armor";
         }
         else {

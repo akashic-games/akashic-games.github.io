@@ -16,7 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Button = void 0;
-var core_1 = require("../core");
+var Rectangle_1 = require("../core/Rectangle");
+var Sprite_1 = require("../core/Sprite");
+var TouchInput_1 = require("../core/TouchInput");
 var Sprite_Button = /** @class */ (function (_super) {
     __extends(Sprite_Button, _super);
     function Sprite_Button() {
@@ -51,10 +53,10 @@ var Sprite_Button = /** @class */ (function (_super) {
         }
     };
     Sprite_Button.prototype.setColdFrame = function (x, y, width, height) {
-        this._coldFrame = new core_1.Rectangle(x, y, width, height);
+        this._coldFrame = new Rectangle_1.Rectangle(x, y, width, height);
     };
     Sprite_Button.prototype.setHotFrame = function (x, y, width, height) {
-        this._hotFrame = new core_1.Rectangle(x, y, width, height);
+        this._hotFrame = new Rectangle_1.Rectangle(x, y, width, height);
     };
     Sprite_Button.prototype.setClickHandler = function (method) {
         this._clickHandler = method;
@@ -66,13 +68,13 @@ var Sprite_Button = /** @class */ (function (_super) {
     };
     Sprite_Button.prototype.processTouch = function () {
         if (this.isActive()) {
-            if (core_1.TouchInput.isTriggered() && this.isButtonTouched()) {
+            if (TouchInput_1.TouchInput.isTriggered() && this.isButtonTouched()) {
                 this._touching = true;
             }
             if (this._touching) {
-                if (core_1.TouchInput.isReleased() || !this.isButtonTouched()) {
+                if (TouchInput_1.TouchInput.isReleased() || !this.isButtonTouched()) {
                     this._touching = false;
-                    if (core_1.TouchInput.isReleased()) {
+                    if (TouchInput_1.TouchInput.isReleased()) {
                         this.callClickHandler();
                     }
                 }
@@ -93,8 +95,8 @@ var Sprite_Button = /** @class */ (function (_super) {
         return true;
     };
     Sprite_Button.prototype.isButtonTouched = function () {
-        var x = this.canvasToLocalX(core_1.TouchInput.x);
-        var y = this.canvasToLocalY(core_1.TouchInput.y);
+        var x = this.canvasToLocalX(TouchInput_1.TouchInput.x);
+        var y = this.canvasToLocalY(TouchInput_1.TouchInput.y);
         return x >= 0 && y >= 0 && x < this.width && y < this.height;
     };
     Sprite_Button.prototype.canvasToLocalX = function (x) {
@@ -114,5 +116,5 @@ var Sprite_Button = /** @class */ (function (_super) {
         return y;
     };
     return Sprite_Button;
-}(core_1.Sprite));
+}(Sprite_1.Sprite));
 exports.Sprite_Button = Sprite_Button;

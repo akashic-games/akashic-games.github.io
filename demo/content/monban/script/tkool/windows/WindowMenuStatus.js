@@ -16,9 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_MenuStatus = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var Graphics_1 = require("../core/Graphics");
+var globals_1 = require("../managers/globals");
+var ImageManager_1 = require("../managers/ImageManager");
 var WindowBase_1 = require("./WindowBase");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_MenuStatus = /** @class */ (function (_super) {
@@ -39,13 +39,13 @@ var Window_MenuStatus = /** @class */ (function (_super) {
         this.refresh();
     };
     Window_MenuStatus.prototype.windowWidth = function () {
-        return core_1.Graphics.boxWidth - 240;
+        return Graphics_1.Graphics.boxWidth - 240;
     };
     Window_MenuStatus.prototype.windowHeight = function () {
-        return core_1.Graphics.boxHeight;
+        return Graphics_1.Graphics.boxHeight;
     };
     Window_MenuStatus.prototype.maxItems = function () {
-        return DataManager_1.$gameParty.size();
+        return globals_1.$gameParty.size();
     };
     Window_MenuStatus.prototype.itemHeight = function () {
         var clientHeight = this.height - this.padding * 2;
@@ -55,8 +55,8 @@ var Window_MenuStatus = /** @class */ (function (_super) {
         return 4;
     };
     Window_MenuStatus.prototype.loadImages = function () {
-        DataManager_1.$gameParty.members().forEach(function (actor) {
-            managers_1.ImageManager.reserveFace(actor.faceName());
+        globals_1.$gameParty.members().forEach(function (actor) {
+            ImageManager_1.ImageManager.reserveFace(actor.faceName());
         });
     };
     Window_MenuStatus.prototype.drawItem = function (index) {
@@ -74,14 +74,14 @@ var Window_MenuStatus = /** @class */ (function (_super) {
         }
     };
     Window_MenuStatus.prototype.drawItemImage = function (index) {
-        var actor = DataManager_1.$gameParty.members()[index];
+        var actor = globals_1.$gameParty.members()[index];
         var rect = this.itemRect(index);
         this.changePaintOpacity(actor.isBattleMember());
         this.drawActorFace(actor, rect.x + 1, rect.y + 1, WindowBase_1.Window_Base._faceWidth, WindowBase_1.Window_Base._faceHeight);
         this.changePaintOpacity(true);
     };
     Window_MenuStatus.prototype.drawItemStatus = function (index) {
-        var actor = DataManager_1.$gameParty.members()[index];
+        var actor = globals_1.$gameParty.members()[index];
         var rect = this.itemRect(index);
         var x = rect.x + 162;
         var y = rect.y + rect.height / 2 - this.lineHeight() * 1.5;
@@ -90,11 +90,11 @@ var Window_MenuStatus = /** @class */ (function (_super) {
     };
     Window_MenuStatus.prototype.processOk = function () {
         WindowSelectable_1.Window_Selectable.prototype.processOk.call(this);
-        DataManager_1.$gameParty.setMenuActor(DataManager_1.$gameParty.members()[this.index()]);
+        globals_1.$gameParty.setMenuActor(globals_1.$gameParty.members()[this.index()]);
     };
     Window_MenuStatus.prototype.isCurrentItemEnabled = function () {
         if (this._formationMode) {
-            var actor = DataManager_1.$gameParty.members()[this.index()];
+            var actor = globals_1.$gameParty.members()[this.index()];
             return actor && actor.isFormationChangeOk();
         }
         else {
@@ -102,7 +102,7 @@ var Window_MenuStatus = /** @class */ (function (_super) {
         }
     };
     Window_MenuStatus.prototype.selectLast = function () {
-        this.select(DataManager_1.$gameParty.menuActor().index() || 0);
+        this.select(globals_1.$gameParty.menuActor().index() || 0);
     };
     Window_MenuStatus.prototype.formationMode = function () {
         return this._formationMode;

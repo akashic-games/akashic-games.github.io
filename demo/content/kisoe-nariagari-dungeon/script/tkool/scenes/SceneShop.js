@@ -17,9 +17,9 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Scene_Shop = void 0;
 var Graphics_1 = require("../core/Graphics");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
-var windows_1 = require("../windows");
+var globals_1 = require("../managers/globals");
+var SoundManager_1 = require("../managers/SoundManager");
+var WindowBase_1 = require("../windows/WindowBase");
 var WindowGold_1 = require("../windows/WindowGold");
 var WindowItemCategory_1 = require("../windows/WindowItemCategory");
 var WindowShopBuy_1 = require("../windows/WindowShopBuy");
@@ -73,7 +73,7 @@ var Scene_Shop = /** @class */ (function (_super) {
     Scene_Shop.prototype.createDummyWindow = function () {
         var wy = this._commandWindow.y + this._commandWindow.height;
         var wh = Graphics_1.Graphics.boxHeight - wy;
-        this._dummyWindow = new windows_1.Window_Base(0, wy, Graphics_1.Graphics.boxWidth, wh);
+        this._dummyWindow = new WindowBase_1.Window_Base(0, wy, Graphics_1.Graphics.boxWidth, wh);
         this.addWindow(this._dummyWindow);
     };
     Scene_Shop.prototype.createNumberWindow = function () {
@@ -195,7 +195,7 @@ var Scene_Shop = /** @class */ (function (_super) {
         this._helpWindow.clear();
     };
     Scene_Shop.prototype.onNumberOk = function () {
-        managers_1.SoundManager.playShop();
+        SoundManager_1.SoundManager.playShop();
         switch (this._commandWindow.currentSymbol()) {
             case "buy":
                 this.doBuy(this._numberWindow.number());
@@ -209,16 +209,16 @@ var Scene_Shop = /** @class */ (function (_super) {
         this._statusWindow.refresh();
     };
     Scene_Shop.prototype.onNumberCancel = function () {
-        managers_1.SoundManager.playCancel();
+        SoundManager_1.SoundManager.playCancel();
         this.endNumberInput();
     };
     Scene_Shop.prototype.doBuy = function (number) {
-        DataManager_1.$gameParty.loseGold(number * this.buyingPrice());
-        DataManager_1.$gameParty.gainItem(this._item, number);
+        globals_1.$gameParty.loseGold(number * this.buyingPrice());
+        globals_1.$gameParty.gainItem(this._item, number);
     };
     Scene_Shop.prototype.doSell = function (number) {
-        DataManager_1.$gameParty.gainGold(number * this.sellingPrice());
-        DataManager_1.$gameParty.loseItem(this._item, number);
+        globals_1.$gameParty.gainGold(number * this.sellingPrice());
+        globals_1.$gameParty.loseItem(this._item, number);
     };
     Scene_Shop.prototype.endNumberInput = function () {
         this._numberWindow.hide();
@@ -232,7 +232,7 @@ var Scene_Shop = /** @class */ (function (_super) {
         }
     };
     Scene_Shop.prototype.maxBuy = function () {
-        var max = DataManager_1.$gameParty.maxItems(this._item) - DataManager_1.$gameParty.numItems(this._item);
+        var max = globals_1.$gameParty.maxItems(this._item) - globals_1.$gameParty.numItems(this._item);
         var price = this.buyingPrice();
         if (price > 0) {
             return Math.min(max, Math.floor(this.money() / price));
@@ -242,7 +242,7 @@ var Scene_Shop = /** @class */ (function (_super) {
         }
     };
     Scene_Shop.prototype.maxSell = function () {
-        return DataManager_1.$gameParty.numItems(this._item);
+        return globals_1.$gameParty.numItems(this._item);
     };
     Scene_Shop.prototype.money = function () {
         return this._goldWindow.value();

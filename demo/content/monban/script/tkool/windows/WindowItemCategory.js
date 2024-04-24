@@ -16,8 +16,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_ItemCategory = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Graphics_1 = require("../core/Graphics");
+var TextManager_1 = require("../managers/TextManager");
 var WindowHorzCommand_1 = require("./WindowHorzCommand");
 var Window_ItemCategory = /** @class */ (function (_super) {
     __extends(Window_ItemCategory, _super);
@@ -32,7 +32,7 @@ var Window_ItemCategory = /** @class */ (function (_super) {
         _super.prototype.initialize.call(this, 0, 0);
     };
     Window_ItemCategory.prototype.windowWidth = function () {
-        return core_1.Graphics.boxWidth;
+        return Graphics_1.Graphics.boxWidth;
     };
     Window_ItemCategory.prototype.maxCols = function () {
         return 4;
@@ -44,10 +44,10 @@ var Window_ItemCategory = /** @class */ (function (_super) {
         }
     };
     Window_ItemCategory.prototype.makeCommandList = function () {
-        this.addCommand(managers_1.TextManager.item, "item");
-        this.addCommand(managers_1.TextManager.weapon, "weapon");
-        this.addCommand(managers_1.TextManager.armor, "armor");
-        this.addCommand(managers_1.TextManager.keyItem, "keyItem");
+        this.addCommand(TextManager_1.TextManager.item, "item");
+        this.addCommand(TextManager_1.TextManager.weapon, "weapon");
+        this.addCommand(TextManager_1.TextManager.armor, "armor");
+        this.addCommand(TextManager_1.TextManager.keyItem, "keyItem");
     };
     Window_ItemCategory.prototype.setItemWindow = function (itemWindow) {
         this._itemWindow = itemWindow;

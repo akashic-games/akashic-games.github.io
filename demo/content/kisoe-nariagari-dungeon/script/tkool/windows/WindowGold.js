@@ -16,8 +16,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_Gold = void 0;
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
+var TextManager_1 = require("../managers/TextManager");
 var WindowBase_1 = require("./WindowBase");
 var Window_Gold = /** @class */ (function (_super) {
     __extends(Window_Gold, _super);
@@ -46,10 +46,10 @@ var Window_Gold = /** @class */ (function (_super) {
         this.drawCurrencyValue(this.value(), this.currencyUnit(), x, 0, width);
     };
     Window_Gold.prototype.value = function () {
-        return DataManager_1.$gameParty.gold();
+        return globals_1.$gameParty.gold();
     };
     Window_Gold.prototype.currencyUnit = function () {
-        return managers_1.TextManager.currencyUnit;
+        return TextManager_1.TextManager.currencyUnit;
     };
     Window_Gold.prototype.open = function () {
         this.refresh();

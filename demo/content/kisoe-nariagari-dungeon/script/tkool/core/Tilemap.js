@@ -16,8 +16,11 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Tilemap = void 0;
-var core_1 = require("../core");
 var PIXI_1 = require("../PIXI");
+var Bitmap_1 = require("./Bitmap");
+var Graphics_1 = require("./Graphics");
+var Sprite_1 = require("./Sprite");
+var Utils_1 = require("./Utils");
 var Tilemap = /** @class */ (function (_super) {
     __extends(Tilemap, _super);
     function Tilemap() {
@@ -112,9 +115,10 @@ var Tilemap = /** @class */ (function (_super) {
         return this.isWaterfallTile(tileId);
     };
     Tilemap.prototype.initialize = function () {
+        _super.prototype.initialize.call(this);
         this._margin = 20;
-        this._width = core_1.Graphics.width + this._margin * 2;
-        this._height = core_1.Graphics.height + this._margin * 2;
+        this._width = Graphics_1.Graphics.width + this._margin * 2;
+        this._height = Graphics_1.Graphics.height + this._margin * 2;
         this._tileWidth = 48;
         this._tileHeight = 48;
         this._mapWidth = 0;
@@ -256,8 +260,8 @@ var Tilemap = /** @class */ (function (_super) {
         var tileRows = Math.ceil(height / this._tileHeight) + 1;
         var layerWidth = tileCols * this._tileWidth;
         var layerHeight = tileRows * this._tileHeight;
-        this._lowerBitmap = new core_1.Bitmap(layerWidth, layerHeight);
-        this._upperBitmap = new core_1.Bitmap(layerWidth, layerHeight);
+        this._lowerBitmap = new Bitmap_1.Bitmap(layerWidth, layerHeight);
+        this._upperBitmap = new Bitmap_1.Bitmap(layerWidth, layerHeight);
         this._layerWidth = layerWidth;
         this._layerHeight = layerHeight;
         /*
@@ -273,15 +277,15 @@ var Tilemap = /** @class */ (function (_super) {
          * 8 : Animation
          * 9 : Destination
          */
-        this._lowerLayer = new core_1.Sprite();
+        this._lowerLayer = new Sprite_1.Sprite();
         this._lowerLayer.move(-margin, -margin, width, height);
         this._lowerLayer.z = 0;
-        this._upperLayer = new core_1.Sprite();
+        this._upperLayer = new Sprite_1.Sprite();
         this._upperLayer.move(-margin, -margin, width, height);
         this._upperLayer.z = 4;
         for (var i = 0; i < 4; i++) {
-            this._lowerLayer.addChild(new core_1.Sprite(this._lowerBitmap));
-            this._upperLayer.addChild(new core_1.Sprite(this._upperBitmap));
+            this._lowerLayer.addChild(new Sprite_1.Sprite(this._lowerBitmap));
+            this._upperLayer.addChild(new Sprite_1.Sprite(this._upperBitmap));
         }
         this.addChild(this._lowerLayer);
         this.addChild(this._upperLayer);
@@ -290,8 +294,8 @@ var Tilemap = /** @class */ (function (_super) {
         var m = this._margin;
         var ox = Math.floor(this.origin.x);
         var oy = Math.floor(this.origin.y);
-        var x2 = core_1.Utils.mod(ox - m, this._layerWidth);
-        var y2 = core_1.Utils.mod(oy - m, this._layerHeight);
+        var x2 = Utils_1.Utils.mod(ox - m, this._layerWidth);
+        var y2 = Utils_1.Utils.mod(oy - m, this._layerHeight);
         var w1 = this._layerWidth - x2;
         var h1 = this._layerHeight - y2;
         var w2 = this._width - w1;
@@ -327,8 +331,8 @@ var Tilemap = /** @class */ (function (_super) {
         var tableEdgeVirtualId = 10000;
         var mx = startX + x;
         var my = startY + y;
-        var dx = core_1.Utils.mod(mx * this._tileWidth, this._layerWidth);
-        var dy = core_1.Utils.mod(my * this._tileHeight, this._layerHeight);
+        var dx = Utils_1.Utils.mod(mx * this._tileWidth, this._layerWidth);
+        var dy = Utils_1.Utils.mod(my * this._tileHeight, this._layerHeight);
         var lx = dx / this._tileWidth;
         var ly = dy / this._tileHeight;
         var tileId0 = this._readMapData(mx, my, 0);
@@ -376,7 +380,7 @@ var Tilemap = /** @class */ (function (_super) {
             }
         }
         var lastLowerTiles = this._readLastTiles(0, lx, ly);
-        if (!core_1.Utils.equals(lowerTiles, lastLowerTiles) || (Tilemap.isTileA1(tileId0) && this._frameUpdated)) {
+        if (!Utils_1.Utils.equals(lowerTiles, lastLowerTiles) || (Tilemap.isTileA1(tileId0) && this._frameUpdated)) {
             this._lowerBitmap.clearRect(dx, dy, this._tileWidth, this._tileHeight);
             for (var i = 0; i < lowerTiles.length; i++) {
                 var lowerTileId = lowerTiles[i];
@@ -393,7 +397,7 @@ var Tilemap = /** @class */ (function (_super) {
             this._writeLastTiles(0, lx, ly, lowerTiles);
         }
         var lastUpperTiles = this._readLastTiles(1, lx, ly);
-        if (!core_1.Utils.equals(upperTiles, lastUpperTiles)) {
+        if (!Utils_1.Utils.equals(upperTiles, lastUpperTiles)) {
             this._upperBitmap.clearRect(dx, dy, this._tileWidth, this._tileHeight);
             for (var j = 0; j < upperTiles.length; j++) {
                 this._drawTile(this._upperBitmap, upperTiles[j], dx, dy);
@@ -598,10 +602,10 @@ var Tilemap = /** @class */ (function (_super) {
             var width = this._mapWidth;
             var height = this._mapHeight;
             if (this.horizontalWrap) {
-                x = core_1.Utils.mod(x, width);
+                x = Utils_1.Utils.mod(x, width);
             }
             if (this.verticalWrap) {
-                y = core_1.Utils.mod(y, height);
+                y = Utils_1.Utils.mod(y, height);
             }
             if (x >= 0 && x < width && y >= 0 && y < height) {
                 return this._mapData[(z * height + y) * width + x] || 0;

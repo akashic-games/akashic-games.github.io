@@ -16,9 +16,11 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_ShopStatus = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var TouchInput_1 = require("../core/TouchInput");
 var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
+var SoundManager_1 = require("../managers/SoundManager");
+var TextManager_1 = require("../managers/TextManager");
 var WindowBase_1 = require("./WindowBase");
 var Window_ShopStatus = /** @class */ (function (_super) {
     __extends(Window_ShopStatus, _super);
@@ -46,15 +48,15 @@ var Window_ShopStatus = /** @class */ (function (_super) {
         this.refresh();
     };
     Window_ShopStatus.prototype.isEquipItem = function () {
-        return managers_1.DataManager.isWeapon(this._item) || managers_1.DataManager.isArmor(this._item);
+        return DataManager_1.DataManager.isWeapon(this._item) || DataManager_1.DataManager.isArmor(this._item);
     };
     Window_ShopStatus.prototype.drawPossession = function (x, y) {
         var width = this.contents.width - this.textPadding() - x;
         var possessionWidth = this.textWidth("0000");
         this.changeTextColor(this.systemColor());
-        this.drawText(managers_1.TextManager.possession, x, y, width - possessionWidth);
+        this.drawText(TextManager_1.TextManager.possession, x, y, width - possessionWidth);
         this.resetTextColor();
-        this.drawText(DataManager_1.$gameParty.numItems(this._item), x, y, width, "right");
+        this.drawText(globals_1.$gameParty.numItems(this._item), x, y, width, "right");
     };
     Window_ShopStatus.prototype.drawEquipInfo = function (x, y) {
         var members = this.statusMembers();
@@ -65,13 +67,13 @@ var Window_ShopStatus = /** @class */ (function (_super) {
     Window_ShopStatus.prototype.statusMembers = function () {
         var start = this._pageIndex * this.pageSize();
         var end = start + this.pageSize();
-        return DataManager_1.$gameParty.members().slice(start, end);
+        return globals_1.$gameParty.members().slice(start, end);
     };
     Window_ShopStatus.prototype.pageSize = function () {
         return 4;
     };
     Window_ShopStatus.prototype.maxPages = function () {
-        return Math.floor((DataManager_1.$gameParty.size() + this.pageSize() - 1) / this.pageSize());
+        return Math.floor((globals_1.$gameParty.size() + this.pageSize() - 1) / this.pageSize());
     };
     Window_ShopStatus.prototype.drawActorEquipInfo = function (x, y, actor) {
         var enabled = actor.canEquip(this._item);
@@ -93,7 +95,7 @@ var Window_ShopStatus = /** @class */ (function (_super) {
         this.drawText((change > 0 ? "+" : "") + change, x, y, width, "right");
     };
     Window_ShopStatus.prototype.paramId = function () {
-        return managers_1.DataManager.isWeapon(this._item) ? 2 : 3;
+        return DataManager_1.DataManager.isWeapon(this._item) ? 2 : 3;
     };
     Window_ShopStatus.prototype.currentEquippedItem = function (actor, etypeId) {
         var list = [];
@@ -137,14 +139,14 @@ var Window_ShopStatus = /** @class */ (function (_super) {
         return false;
     };
     Window_ShopStatus.prototype.isTouchedInsideFrame = function () {
-        var x = this.canvasToLocalX(core_1.TouchInput.x);
-        var y = this.canvasToLocalY(core_1.TouchInput.y);
+        var x = this.canvasToLocalX(TouchInput_1.TouchInput.x);
+        var y = this.canvasToLocalY(TouchInput_1.TouchInput.y);
         return x >= 0 && y >= 0 && x < this.width && y < this.height;
     };
     Window_ShopStatus.prototype.changePage = function () {
         this._pageIndex = (this._pageIndex + 1) % this.maxPages();
         this.refresh();
-        managers_1.SoundManager.playCursor();
+        SoundManager_1.SoundManager.playCursor();
     };
     return Window_ShopStatus;
 }(WindowBase_1.Window_Base));

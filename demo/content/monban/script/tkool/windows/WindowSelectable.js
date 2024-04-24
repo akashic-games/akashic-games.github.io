@@ -16,8 +16,10 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_Selectable = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Rectangle_1 = require("../core/Rectangle");
+var TouchInput_1 = require("../core/TouchInput");
+var Utils_1 = require("../core/Utils");
+var SoundManager_1 = require("../managers/SoundManager");
 var WindowBase_1 = require("./WindowBase");
 var Window_Selectable = /** @class */ (function (_super) {
     __extends(Window_Selectable, _super);
@@ -109,7 +111,7 @@ var Window_Selectable = /** @class */ (function (_super) {
         return Math.max(0, this.maxRows() - this.maxPageRows());
     };
     Window_Selectable.prototype.setTopRow = function (row) {
-        var scrollY = core_1.Utils.clamp(row, 0, this.maxTopRow()) * this.itemHeight();
+        var scrollY = Utils_1.Utils.clamp(row, 0, this.maxTopRow()) * this.itemHeight();
         if (this._scrollY !== scrollY) {
             this._scrollY = scrollY;
             this.refresh();
@@ -139,7 +141,7 @@ var Window_Selectable = /** @class */ (function (_super) {
         return this.topRow() * this.maxCols();
     };
     Window_Selectable.prototype.itemRect = function (index) {
-        var rect = new core_1.Rectangle();
+        var rect = new Rectangle_1.Rectangle();
         var maxCols = this.maxCols();
         rect.width = this.itemWidth();
         rect.height = this.itemHeight();
@@ -300,27 +302,27 @@ var Window_Selectable = /** @class */ (function (_super) {
     Window_Selectable.prototype.processWheel = function () {
         if (this.isOpenAndActive()) {
             var threshold = 20;
-            if (core_1.TouchInput.wheelY >= threshold) {
+            if (TouchInput_1.TouchInput.wheelY >= threshold) {
                 this.scrollDown();
             }
-            if (core_1.TouchInput.wheelY <= -threshold) {
+            if (TouchInput_1.TouchInput.wheelY <= -threshold) {
                 this.scrollUp();
             }
         }
     };
     Window_Selectable.prototype.processTouch = function () {
         if (this.isOpenAndActive()) {
-            if (core_1.TouchInput.isTriggered() && this.isTouchedInsideFrame()) {
+            if (TouchInput_1.TouchInput.isTriggered() && this.isTouchedInsideFrame()) {
                 this._touching = true;
                 this.onTouch(true);
             }
-            else if (core_1.TouchInput.isCancelled()) {
+            else if (TouchInput_1.TouchInput.isCancelled()) {
                 if (this.isCancelEnabled()) {
                     this.processCancel();
                 }
             }
             if (this._touching) {
-                if (core_1.TouchInput.isPressed()) {
+                if (TouchInput_1.TouchInput.isPressed()) {
                     this.onTouch(false);
                 }
                 else {
@@ -333,14 +335,14 @@ var Window_Selectable = /** @class */ (function (_super) {
         }
     };
     Window_Selectable.prototype.isTouchedInsideFrame = function () {
-        var x = this.canvasToLocalX(core_1.TouchInput.x);
-        var y = this.canvasToLocalY(core_1.TouchInput.y);
+        var x = this.canvasToLocalX(TouchInput_1.TouchInput.x);
+        var y = this.canvasToLocalY(TouchInput_1.TouchInput.y);
         return x >= 0 && y >= 0 && x < this.width && y < this.height;
     };
     Window_Selectable.prototype.onTouch = function (triggered) {
         var lastIndex = this.index();
-        var x = this.canvasToLocalX(core_1.TouchInput.x);
-        var y = this.canvasToLocalY(core_1.TouchInput.y);
+        var x = this.canvasToLocalX(TouchInput_1.TouchInput.x);
+        var y = this.canvasToLocalY(TouchInput_1.TouchInput.y);
         var hitIndex = this.hitTest(x, y);
         if (hitIndex >= 0) {
             if (hitIndex === this.index()) {
@@ -361,7 +363,7 @@ var Window_Selectable = /** @class */ (function (_super) {
             }
         }
         if (this.index() !== lastIndex) {
-            managers_1.SoundManager.playCursor();
+            SoundManager_1.SoundManager.playCursor();
         }
     };
     Window_Selectable.prototype.hitTest = function (x, y) {
@@ -419,16 +421,16 @@ var Window_Selectable = /** @class */ (function (_super) {
         }
     };
     Window_Selectable.prototype.playOkSound = function () {
-        managers_1.SoundManager.playOk();
+        SoundManager_1.SoundManager.playOk();
     };
     Window_Selectable.prototype.playBuzzerSound = function () {
-        managers_1.SoundManager.playBuzzer();
+        SoundManager_1.SoundManager.playBuzzer();
     };
     Window_Selectable.prototype.callOkHandler = function () {
         this.callHandler("ok");
     };
     Window_Selectable.prototype.processCancel = function () {
-        managers_1.SoundManager.playCancel();
+        SoundManager_1.SoundManager.playCancel();
         this.updateInputData();
         this.deactivate();
         this.callCancelHandler();
@@ -437,20 +439,20 @@ var Window_Selectable = /** @class */ (function (_super) {
         this.callHandler("cancel");
     };
     Window_Selectable.prototype.processPageup = function () {
-        managers_1.SoundManager.playCursor();
+        SoundManager_1.SoundManager.playCursor();
         this.updateInputData();
         this.deactivate();
         this.callHandler("pageup");
     };
     Window_Selectable.prototype.processPagedown = function () {
-        managers_1.SoundManager.playCursor();
+        SoundManager_1.SoundManager.playCursor();
         this.updateInputData();
         this.deactivate();
         this.callHandler("pagedown");
     };
     Window_Selectable.prototype.updateInputData = function () {
         // Input.update();
-        core_1.TouchInput.update();
+        TouchInput_1.TouchInput.update();
     };
     Window_Selectable.prototype.updateCursor = function () {
         if (this._cursorAll) {

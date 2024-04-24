@@ -24,6 +24,7 @@ var Utils_1 = require("../core/Utils");
 var AudioManager_1 = require("../managers/AudioManager");
 var BattleManager_1 = require("../managers/BattleManager");
 var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var ImageManager_1 = require("../managers/ImageManager");
 var SceneManager_1 = require("../managers/SceneManager");
 var SoundManager_1 = require("../managers/SoundManager");
@@ -75,39 +76,36 @@ var SoundManager;
 var TextManager;
 /* eslint-enable @typescript-eslint/naming-convention */
 /* eslint-enable @typescript-eslint/no-unused-vars */
-// 未定義の全GameObjectに値を代入。ただし定義済みの場合は何もしない
-var setGameObjects = function () {
-    if ($gameVariables) {
-        return;
-    }
-    $gameVariables = DataManager_1.$gameVariables;
-    $gameSystem = DataManager_1.$gameSystem;
-    $gameSwitches = DataManager_1.$gameSwitches;
-    $gameMessage = DataManager_1.$gameMessage;
-    $gamePlayer = DataManager_1.$gamePlayer;
-    $dataCommonEvents = DataManager_1.$dataCommonEvents;
-    $dataTilesets = DataManager_1.$dataTilesets;
-    $gameMap = DataManager_1.$gameMap;
-    $gameTemp = DataManager_1.$gameTemp;
-    $dataEnemies = DataManager_1.$dataEnemies;
-    $gameActors = DataManager_1.$gameActors;
-    $dataAnimations = DataManager_1.$dataAnimations;
-    $gameParty = DataManager_1.$gameParty;
-    $gameTroop = DataManager_1.$gameTroop;
-    $gameTimer = DataManager_1.$gameTimer;
-    $gameSelfSwitches = DataManager_1.$gameSelfSwitches;
-    $dataClasses = DataManager_1.$dataClasses;
-    $dataWeapons = DataManager_1.$dataWeapons;
-    $dataArmors = DataManager_1.$dataArmors;
-    $dataItems = DataManager_1.$dataItems;
-    $gameScreen = DataManager_1.$gameScreen;
-    $dataTroops = DataManager_1.$dataTroops;
-    $dataActors = DataManager_1.$dataActors;
-    $dataSkills = DataManager_1.$dataSkills;
-    $dataStates = DataManager_1.$dataStates;
-    $dataSystem = DataManager_1.$dataSystem;
-    $dataMapInfos = DataManager_1.$dataMapInfos;
-    $dataMap = DataManager_1.$dataMap;
+// 未定義の全GameObjectに値を代入
+function setGameObjects() {
+    $gameVariables = globals_1.$gameVariables;
+    $gameSystem = globals_1.$gameSystem;
+    $gameSwitches = globals_1.$gameSwitches;
+    $gameMessage = globals_1.$gameMessage;
+    $gamePlayer = globals_1.$gamePlayer;
+    $dataCommonEvents = globals_1.$dataCommonEvents;
+    $dataTilesets = globals_1.$dataTilesets;
+    $gameMap = globals_1.$gameMap;
+    $gameTemp = globals_1.$gameTemp;
+    $dataEnemies = globals_1.$dataEnemies;
+    $gameActors = globals_1.$gameActors;
+    $dataAnimations = globals_1.$dataAnimations;
+    $gameParty = globals_1.$gameParty;
+    $gameTroop = globals_1.$gameTroop;
+    $gameTimer = globals_1.$gameTimer;
+    $gameSelfSwitches = globals_1.$gameSelfSwitches;
+    $dataClasses = globals_1.$dataClasses;
+    $dataWeapons = globals_1.$dataWeapons;
+    $dataArmors = globals_1.$dataArmors;
+    $dataItems = globals_1.$dataItems;
+    $gameScreen = globals_1.$gameScreen;
+    $dataTroops = globals_1.$dataTroops;
+    $dataActors = globals_1.$dataActors;
+    $dataSkills = globals_1.$dataSkills;
+    $dataStates = globals_1.$dataStates;
+    $dataSystem = globals_1.$dataSystem;
+    $dataMapInfos = globals_1.$dataMapInfos;
+    $dataMap = globals_1.$dataMap;
     Graphics = Graphics_1.Graphics;
     JsonEx = JsonEx_1.JsonEx;
     Tilemap = Tilemap_1.Tilemap;
@@ -120,7 +118,11 @@ var setGameObjects = function () {
     SceneManager = SceneManager_1.SceneManager;
     SoundManager = SoundManager_1.SoundManager;
     TextManager = TextManager_1.TextManager;
-};
+}
+// スクリプト(eval)で利用するグローバル変数の初期化を可能にする
+if (!DataManager_1.DataManager._onReset.contains(setGameObjects)) {
+    DataManager_1.DataManager._onReset.add(setGameObjects);
+}
 function randomInt(max) {
     return Math.floor(max * g.game.vars.random.generate());
 }
@@ -280,10 +282,10 @@ var Game_Character = /** @class */ (function (_super) {
                 this.turnAwayFromPlayer();
                 break;
             case gc.ROUTE_SWITCH_ON:
-                DataManager_1.$gameSwitches.setValue(params[0], true);
+                globals_1.$gameSwitches.setValue(params[0], true);
                 break;
             case gc.ROUTE_SWITCH_OFF:
-                DataManager_1.$gameSwitches.setValue(params[0], false);
+                globals_1.$gameSwitches.setValue(params[0], false);
                 break;
             case gc.ROUTE_CHANGE_SPEED:
                 this.setMoveSpeed(params[0]);
@@ -334,17 +336,16 @@ var Game_Character = /** @class */ (function (_super) {
                 AudioManager_1.AudioManager.playSe(params[0]);
                 break;
             case gc.ROUTE_SCRIPT:
-                setGameObjects();
                 // eslint-disable-next-line no-eval
                 eval(params[0]); // TODO: evalしている!!
                 break;
         }
     };
     Game_Character.prototype.deltaXFrom = function (x) {
-        return DataManager_1.$gameMap.deltaX(this.x, x);
+        return globals_1.$gameMap.deltaX(this.x, x);
     };
     Game_Character.prototype.deltaYFrom = function (y) {
-        return DataManager_1.$gameMap.deltaY(this.y, y);
+        return globals_1.$gameMap.deltaY(this.y, y);
     };
     Game_Character.prototype.moveRandom = function () {
         var d = 2 + randomInt(4) * 2;
@@ -405,16 +406,16 @@ var Game_Character = /** @class */ (function (_super) {
         }
     };
     Game_Character.prototype.turnTowardPlayer = function () {
-        this.turnTowardCharacter(DataManager_1.$gamePlayer);
+        this.turnTowardCharacter(globals_1.$gamePlayer);
     };
     Game_Character.prototype.turnAwayFromPlayer = function () {
-        this.turnAwayFromCharacter(DataManager_1.$gamePlayer);
+        this.turnAwayFromCharacter(globals_1.$gamePlayer);
     };
     Game_Character.prototype.moveTowardPlayer = function () {
-        this.moveTowardCharacter(DataManager_1.$gamePlayer);
+        this.moveTowardCharacter(globals_1.$gamePlayer);
     };
     Game_Character.prototype.moveAwayFromPlayer = function () {
-        this.moveAwayFromCharacter(DataManager_1.$gamePlayer);
+        this.moveAwayFromCharacter(globals_1.$gamePlayer);
     };
     Game_Character.prototype.moveForward = function () {
         this.moveStraight(this.direction());
@@ -500,7 +501,7 @@ var Game_Character = /** @class */ (function (_super) {
     };
     Game_Character.prototype.findDirectionTo = function (goalX, goalY) {
         var searchLimit = this.searchLimit();
-        var mapWidth = DataManager_1.$gameMap.width();
+        var mapWidth = globals_1.$gameMap.width();
         var nodeList = [];
         var openList = [];
         var closedList = [];
@@ -513,7 +514,7 @@ var Game_Character = /** @class */ (function (_super) {
         start.x = this.x;
         start.y = this.y;
         start.g = 0;
-        start.f = DataManager_1.$gameMap.distance(start.x, start.y, goalX, goalY);
+        start.f = globals_1.$gameMap.distance(start.x, start.y, goalX, goalY);
         nodeList.push(start);
         openList.push(start.y * mapWidth + start.x);
         while (nodeList.length > 0) {
@@ -540,8 +541,8 @@ var Game_Character = /** @class */ (function (_super) {
             }
             for (var j = 0; j < 4; j++) {
                 var direction = 2 + j * 2;
-                var x2 = DataManager_1.$gameMap.roundXWithDirection(x1, direction);
-                var y2 = DataManager_1.$gameMap.roundYWithDirection(y1, direction);
+                var x2 = globals_1.$gameMap.roundXWithDirection(x1, direction);
+                var y2 = globals_1.$gameMap.roundYWithDirection(y1, direction);
                 var pos2 = y2 * mapWidth + x2;
                 if (Utils_1.Utils.contains(closedList, pos2)) {
                     continue;
@@ -565,7 +566,7 @@ var Game_Character = /** @class */ (function (_super) {
                     neighbor.x = x2;
                     neighbor.y = y2;
                     neighbor.g = g2;
-                    neighbor.f = g2 + DataManager_1.$gameMap.distance(x2, y2, goalX, goalY);
+                    neighbor.f = g2 + globals_1.$gameMap.distance(x2, y2, goalX, goalY);
                     if (!best || neighbor.f - neighbor.g < best.f - best.g) {
                         best = neighbor;
                     }
@@ -576,8 +577,8 @@ var Game_Character = /** @class */ (function (_super) {
         while (node.parent && node.parent !== start) {
             node = node.parent;
         }
-        var deltaX1 = DataManager_1.$gameMap.deltaX(node.x, start.x);
-        var deltaY1 = DataManager_1.$gameMap.deltaY(node.y, start.y);
+        var deltaX1 = globals_1.$gameMap.deltaX(node.x, start.x);
+        var deltaY1 = globals_1.$gameMap.deltaY(node.y, start.y);
         if (deltaY1 > 0) {
             return 2;
         }

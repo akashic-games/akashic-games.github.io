@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_EquipStatus = void 0;
-var managers_1 = require("../managers");
+var TextManager_1 = require("../managers/TextManager");
 var WindowBase_1 = require("./WindowBase");
 var Window_EquipStatus = /** @class */ (function (_super) {
     __extends(Window_EquipStatus, _super);
@@ -73,7 +73,7 @@ var Window_EquipStatus = /** @class */ (function (_super) {
     };
     Window_EquipStatus.prototype.drawParamName = function (x, y, paramId) {
         this.changeTextColor(this.systemColor());
-        this.drawText(managers_1.TextManager.param(paramId), x, y, 120);
+        this.drawText(TextManager_1.TextManager.param(paramId), x, y, 120);
     };
     Window_EquipStatus.prototype.drawCurrentParam = function (x, y, paramId) {
         this.resetTextColor();

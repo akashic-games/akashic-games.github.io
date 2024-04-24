@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Message = void 0;
+var globals_1 = require("../managers/globals");
 var Game_Message = /** @class */ (function () {
     function Game_Message() {
         this.initialize();
@@ -148,3 +149,6 @@ var Game_Message = /** @class */ (function () {
     return Game_Message;
 }());
 exports.Game_Message = Game_Message;
+(0, globals_1.set$gameMessageFactory)(function () {
+    return new Game_Message();
+});

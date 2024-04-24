@@ -16,8 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_Options = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Graphics_1 = require("../core/Graphics");
+var SoundManager_1 = require("../managers/SoundManager");
+var TextManager_1 = require("../managers/TextManager");
 var WindowCommand_1 = require("./WindowCommand");
 var Window_Options = /** @class */ (function (_super) {
     __extends(Window_Options, _super);
@@ -39,22 +40,22 @@ var Window_Options = /** @class */ (function (_super) {
         return this.fittingHeight(Math.min(this.numVisibleRows(), 12));
     };
     Window_Options.prototype.updatePlacement = function () {
-        this.x = (core_1.Graphics.boxWidth - this.width) / 2;
-        this.y = (core_1.Graphics.boxHeight - this.height) / 2;
+        this.x = (Graphics_1.Graphics.boxWidth - this.width) / 2;
+        this.y = (Graphics_1.Graphics.boxHeight - this.height) / 2;
     };
     Window_Options.prototype.makeCommandList = function () {
         this.addGeneralOptions();
         this.addVolumeOptions();
     };
     Window_Options.prototype.addGeneralOptions = function () {
-        this.addCommand(managers_1.TextManager.alwaysDash, "alwaysDash");
-        this.addCommand(managers_1.TextManager.commandRemember, "commandRemember");
+        this.addCommand(TextManager_1.TextManager.alwaysDash, "alwaysDash");
+        this.addCommand(TextManager_1.TextManager.commandRemember, "commandRemember");
     };
     Window_Options.prototype.addVolumeOptions = function () {
-        this.addCommand(managers_1.TextManager.bgmVolume, "bgmVolume");
-        this.addCommand(managers_1.TextManager.bgsVolume, "bgsVolume");
-        this.addCommand(managers_1.TextManager.meVolume, "meVolume");
-        this.addCommand(managers_1.TextManager.seVolume, "seVolume");
+        this.addCommand(TextManager_1.TextManager.bgmVolume, "bgmVolume");
+        this.addCommand(TextManager_1.TextManager.bgsVolume, "bgsVolume");
+        this.addCommand(TextManager_1.TextManager.meVolume, "meVolume");
+        this.addCommand(TextManager_1.TextManager.seVolume, "seVolume");
     };
     Window_Options.prototype.drawItem = function (index) {
         var rect = this.itemRectForText(index);
@@ -137,7 +138,7 @@ var Window_Options = /** @class */ (function (_super) {
         if (lastValue !== value) {
             this.setConfigValue(symbol, value);
             this.redrawItem(this.findSymbol(symbol));
-            managers_1.SoundManager.playCursor();
+            SoundManager_1.SoundManager.playCursor();
         }
     };
     Window_Options.prototype.getConfigValue = function (_symbol) {

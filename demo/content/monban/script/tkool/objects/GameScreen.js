@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Screen = void 0;
-var core_1 = require("../core");
-var DataManager_1 = require("../managers/DataManager");
-var GamePicture_1 = require("../objects/GamePicture");
+var Utils_1 = require("../core/Utils");
+var globals_1 = require("../managers/globals");
+var GamePicture_1 = require("./GamePicture");
 var Game_Screen = /** @class */ (function () {
     function Game_Screen() {
         this.initialize();
@@ -59,7 +59,7 @@ var Game_Screen = /** @class */ (function () {
         return this._pictures[realPictureId];
     };
     Game_Screen.prototype.realPictureId = function (pictureId) {
-        if (DataManager_1.$gameParty.inBattle()) {
+        if (globals_1.$gameParty.inBattle()) {
             return pictureId + this.maxPictures();
         }
         else {
@@ -118,14 +118,14 @@ var Game_Screen = /** @class */ (function () {
         this._fadeOutDuration = 0;
     };
     Game_Screen.prototype.startTint = function (tone, duration) {
-        this._toneTarget = core_1.Utils.cloneArray(tone);
+        this._toneTarget = Utils_1.Utils.cloneArray(tone);
         this._toneDuration = duration;
         if (this._toneDuration === 0) {
-            this._tone = core_1.Utils.cloneArray(this._toneTarget);
+            this._tone = Utils_1.Utils.cloneArray(this._toneTarget);
         }
     };
     Game_Screen.prototype.startFlash = function (color, duration) {
-        this._flashColor = core_1.Utils.cloneArray(color);
+        this._flashColor = Utils_1.Utils.cloneArray(color);
         this._flashDuration = duration;
     };
     Game_Screen.prototype.startShake = function (power, speed, duration) {
@@ -272,3 +272,6 @@ var Game_Screen = /** @class */ (function () {
     return Game_Screen;
 }());
 exports.Game_Screen = Game_Screen;
+(0, globals_1.set$gameScreenFactory)(function () {
+    return new Game_Screen();
+});

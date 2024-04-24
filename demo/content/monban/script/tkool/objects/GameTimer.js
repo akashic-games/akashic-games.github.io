@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Timer = void 0;
-var managers_1 = require("../managers");
+var BattleManager_1 = require("../managers/BattleManager");
+var globals_1 = require("../managers/globals");
 var Game_Timer = /** @class */ (function () {
     function Game_Timer() {
         this.initialize();
@@ -32,8 +33,11 @@ var Game_Timer = /** @class */ (function () {
         return Math.floor(this._frames / 60);
     };
     Game_Timer.prototype.onExpire = function () {
-        managers_1.BattleManager.abort();
+        BattleManager_1.BattleManager.abort();
     };
     return Game_Timer;
 }());
 exports.Game_Timer = Game_Timer;
+(0, globals_1.set$gameTimerFactory)(function () {
+    return new Game_Timer();
+});
