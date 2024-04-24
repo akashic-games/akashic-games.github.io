@@ -16,8 +16,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Scene_Equip = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Graphics_1 = require("../core/Graphics");
+var SoundManager_1 = require("../managers/SoundManager");
 var WindowEquipCommand_1 = require("../windows/WindowEquipCommand");
 var WindowEquipItem_1 = require("../windows/WindowEquipItem");
 var WindowEquipSlot_1 = require("../windows/WindowEquipSlot");
@@ -51,7 +51,7 @@ var Scene_Equip = /** @class */ (function (_super) {
     Scene_Equip.prototype.createCommandWindow = function () {
         var wx = this._statusWindow.width;
         var wy = this._helpWindow.height;
-        var ww = core_1.Graphics.boxWidth - this._statusWindow.width;
+        var ww = Graphics_1.Graphics.boxWidth - this._statusWindow.width;
         this._commandWindow = new WindowEquipCommand_1.Window_EquipCommand(wx, wy, ww);
         this._commandWindow.setHelpWindow(this._helpWindow);
         this._commandWindow.setHandler("equip", this.commandEquip.bind(this));
@@ -65,7 +65,7 @@ var Scene_Equip = /** @class */ (function (_super) {
     Scene_Equip.prototype.createSlotWindow = function () {
         var wx = this._statusWindow.width;
         var wy = this._commandWindow.y + this._commandWindow.height;
-        var ww = core_1.Graphics.boxWidth - this._statusWindow.width;
+        var ww = Graphics_1.Graphics.boxWidth - this._statusWindow.width;
         var wh = this._statusWindow.height - this._commandWindow.height;
         this._slotWindow = new WindowEquipSlot_1.Window_EquipSlot(wx, wy, ww, wh);
         this._slotWindow.setHelpWindow(this._helpWindow);
@@ -77,8 +77,8 @@ var Scene_Equip = /** @class */ (function (_super) {
     Scene_Equip.prototype.createItemWindow = function () {
         var wx = 0;
         var wy = this._statusWindow.y + this._statusWindow.height;
-        var ww = core_1.Graphics.boxWidth;
-        var wh = core_1.Graphics.boxHeight - wy;
+        var ww = Graphics_1.Graphics.boxWidth;
+        var wh = Graphics_1.Graphics.boxHeight - wy;
         this._itemWindow = new WindowEquipItem_1.Window_EquipItem(wx, wy, ww, wh);
         this._itemWindow.setHelpWindow(this._helpWindow);
         this._itemWindow.setStatusWindow(this._statusWindow);
@@ -98,14 +98,14 @@ var Scene_Equip = /** @class */ (function (_super) {
         this._slotWindow.select(0);
     };
     Scene_Equip.prototype.commandOptimize = function () {
-        managers_1.SoundManager.playEquip();
+        SoundManager_1.SoundManager.playEquip();
         this.actor().optimizeEquipments();
         this._statusWindow.refresh();
         this._slotWindow.refresh();
         this._commandWindow.activate();
     };
     Scene_Equip.prototype.commandClear = function () {
-        managers_1.SoundManager.playEquip();
+        SoundManager_1.SoundManager.playEquip();
         this.actor().clearEquipments();
         this._statusWindow.refresh();
         this._slotWindow.refresh();
@@ -120,7 +120,7 @@ var Scene_Equip = /** @class */ (function (_super) {
         this._commandWindow.activate();
     };
     Scene_Equip.prototype.onItemOk = function () {
-        managers_1.SoundManager.playEquip();
+        SoundManager_1.SoundManager.playEquip();
         this.actor().changeEquip(this._slotWindow.index(), this._itemWindow.item());
         this._slotWindow.activate();
         this._slotWindow.refresh();

@@ -18,14 +18,17 @@ var Utils_1 = require("../core/Utils");
 var AudioManager_1 = require("../managers/AudioManager");
 var BattleManager_1 = require("../managers/BattleManager");
 var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var ImageManager_1 = require("../managers/ImageManager");
 var SceneManager_1 = require("../managers/SceneManager");
 var SoundManager_1 = require("../managers/SoundManager");
 var TextManager_1 = require("../managers/TextManager");
-var scenes_1 = require("../scenes");
+var SceneBattle_1 = require("../scenes/SceneBattle");
+var SceneGameOver_1 = require("../scenes/SceneGameOver");
 var SceneMenu_1 = require("../scenes/SceneMenu");
 var SceneShop_1 = require("../scenes/SceneShop");
-var windows_1 = require("../windows");
+var SceneTitle_1 = require("../scenes/SceneTitle");
+var WindowMenuCommand_1 = require("../windows/WindowMenuCommand");
 var GameCharacter_1 = require("./GameCharacter");
 // これらの変数(GameObject)はツクールのスクリプトで利用される可能性があるため、exportせずクラスの外で変数定義
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -73,39 +76,36 @@ var SoundManager;
 var TextManager;
 /* eslint-enable @typescript-eslint/naming-convention */
 /* eslint-enable @typescript-eslint/no-unused-vars */
-// 未定義の全GameObjectに値を代入。ただし定義済みの場合は何もしない
-var setGameObjects = function () {
-    if ($gameVariables) {
-        return;
-    }
-    $gameVariables = DataManager_1.$gameVariables;
-    $gameSystem = DataManager_1.$gameSystem;
-    $gameSwitches = DataManager_1.$gameSwitches;
-    $gameMessage = DataManager_1.$gameMessage;
-    $gamePlayer = DataManager_1.$gamePlayer;
-    $dataCommonEvents = DataManager_1.$dataCommonEvents;
-    $dataTilesets = DataManager_1.$dataTilesets;
-    $gameMap = DataManager_1.$gameMap;
-    $gameTemp = DataManager_1.$gameTemp;
-    $dataEnemies = DataManager_1.$dataEnemies;
-    $gameActors = DataManager_1.$gameActors;
-    $dataAnimations = DataManager_1.$dataAnimations;
-    $gameParty = DataManager_1.$gameParty;
-    $gameTroop = DataManager_1.$gameTroop;
-    $gameTimer = DataManager_1.$gameTimer;
-    $gameSelfSwitches = DataManager_1.$gameSelfSwitches;
-    $dataClasses = DataManager_1.$dataClasses;
-    $dataWeapons = DataManager_1.$dataWeapons;
-    $dataArmors = DataManager_1.$dataArmors;
-    $dataItems = DataManager_1.$dataItems;
-    $gameScreen = DataManager_1.$gameScreen;
-    $dataTroops = DataManager_1.$dataTroops;
-    $dataActors = DataManager_1.$dataActors;
-    $dataSkills = DataManager_1.$dataSkills;
-    $dataStates = DataManager_1.$dataStates;
-    $dataSystem = DataManager_1.$dataSystem;
-    $dataMapInfos = DataManager_1.$dataMapInfos;
-    $dataMap = DataManager_1.$dataMap;
+// 未定義の全GameObjectに値を代入
+function setGameObjects() {
+    $gameVariables = globals_1.$gameVariables;
+    $gameSystem = globals_1.$gameSystem;
+    $gameSwitches = globals_1.$gameSwitches;
+    $gameMessage = globals_1.$gameMessage;
+    $gamePlayer = globals_1.$gamePlayer;
+    $dataCommonEvents = globals_1.$dataCommonEvents;
+    $dataTilesets = globals_1.$dataTilesets;
+    $gameMap = globals_1.$gameMap;
+    $gameTemp = globals_1.$gameTemp;
+    $dataEnemies = globals_1.$dataEnemies;
+    $gameActors = globals_1.$gameActors;
+    $dataAnimations = globals_1.$dataAnimations;
+    $gameParty = globals_1.$gameParty;
+    $gameTroop = globals_1.$gameTroop;
+    $gameTimer = globals_1.$gameTimer;
+    $gameSelfSwitches = globals_1.$gameSelfSwitches;
+    $dataClasses = globals_1.$dataClasses;
+    $dataWeapons = globals_1.$dataWeapons;
+    $dataArmors = globals_1.$dataArmors;
+    $dataItems = globals_1.$dataItems;
+    $gameScreen = globals_1.$gameScreen;
+    $dataTroops = globals_1.$dataTroops;
+    $dataActors = globals_1.$dataActors;
+    $dataSkills = globals_1.$dataSkills;
+    $dataStates = globals_1.$dataStates;
+    $dataSystem = globals_1.$dataSystem;
+    $dataMapInfos = globals_1.$dataMapInfos;
+    $dataMap = globals_1.$dataMap;
     Graphics = Graphics_1.Graphics;
     JsonEx = JsonEx_1.JsonEx;
     Tilemap = Tilemap_1.Tilemap;
@@ -118,7 +118,11 @@ var setGameObjects = function () {
     SceneManager = SceneManager_1.SceneManager;
     SoundManager = SoundManager_1.SoundManager;
     TextManager = TextManager_1.TextManager;
-};
+}
+// スクリプト(eval)で利用するグローバル変数の初期化を可能にする
+if (!DataManager_1.DataManager._onReset.contains(setGameObjects)) {
+    DataManager_1.DataManager._onReset.add(setGameObjects);
+}
 var Game_Interpreter = /** @class */ (function () {
     function Game_Interpreter(depth) {
         this.initialize(depth);
@@ -135,7 +139,7 @@ var Game_Interpreter = /** @class */ (function () {
                     break;
                 // Common Event
                 case 117:
-                    var commonEvent = DataManager_1.$dataCommonEvents[params[0]];
+                    var commonEvent = globals_1.$dataCommonEvents[params[0]];
                     if (commonEvent) {
                         if (!commonList) {
                             commonList = [];
@@ -148,7 +152,7 @@ var Game_Interpreter = /** @class */ (function () {
                     break;
                 // Change Party Member
                 case 129:
-                    var actor = DataManager_1.$gameActors.actor(params[0]);
+                    var actor = globals_1.$gameActors.actor(params[0]);
                     if (actor && params[1] === 0) {
                         var name_1 = actor.characterName();
                         ImageManager_1.ImageManager.requestCharacter(name_1);
@@ -169,7 +173,7 @@ var Game_Interpreter = /** @class */ (function () {
                 case 212:
                 case 337:
                     if (params[1]) {
-                        var animation = DataManager_1.$dataAnimations[params[1]];
+                        var animation = globals_1.$dataAnimations[params[1]];
                         var name1 = animation.animation1Name;
                         var name2 = animation.animation2Name;
                         var hue1 = animation.animation1Hue;
@@ -181,7 +185,7 @@ var Game_Interpreter = /** @class */ (function () {
                 // Change Player Followers
                 case 216:
                     if (params[0] === 0) {
-                        DataManager_1.$gamePlayer.followers().forEach(function (follower) {
+                        globals_1.$gamePlayer.followers().forEach(function (follower) {
                             var name = follower.characterName();
                             ImageManager_1.ImageManager.requestCharacter(name);
                         });
@@ -193,21 +197,21 @@ var Game_Interpreter = /** @class */ (function () {
                     break;
                 // Change Tileset
                 case 282:
-                    var tileset = DataManager_1.$dataTilesets[params[0]];
+                    var tileset = globals_1.$dataTilesets[params[0]];
                     tileset.tilesetNames.forEach(function (tilesetName) {
                         ImageManager_1.ImageManager.requestTileset(tilesetName);
                     });
                     break;
                 // Change Battle Back
                 case 283:
-                    if (DataManager_1.$gameParty.inBattle()) {
+                    if (globals_1.$gameParty.inBattle()) {
                         ImageManager_1.ImageManager.requestBattleback1(params[0]);
                         ImageManager_1.ImageManager.requestBattleback2(params[1]);
                     }
                     break;
                 // Change Parallax
                 case 284:
-                    if (!DataManager_1.$gameParty.inBattle()) {
+                    if (!globals_1.$gameParty.inBattle()) {
                         ImageManager_1.ImageManager.requestParallax(params[0]);
                     }
                     break;
@@ -219,17 +223,17 @@ var Game_Interpreter = /** @class */ (function () {
                     break;
                 // Change Vehicle Image
                 case 323:
-                    var vehicle = DataManager_1.$gameMap.vehicle(params[0]);
+                    var vehicle = globals_1.$gameMap.vehicle(params[0]);
                     if (vehicle) {
                         ImageManager_1.ImageManager.requestCharacter(params[1]);
                     }
                     break;
                 // Enemy Transform
                 case 336:
-                    var enemy = DataManager_1.$dataEnemies[params[1]];
+                    var enemy = globals_1.$dataEnemies[params[1]];
                     var name = enemy.battlerName;
                     var hue = enemy.battlerHue;
-                    if (DataManager_1.$gameSystem.isSideView()) {
+                    if (globals_1.$gameSystem.isSideView()) {
                         ImageManager_1.ImageManager.requestSvEnemy(name, hue);
                     }
                     else {
@@ -267,7 +271,7 @@ var Game_Interpreter = /** @class */ (function () {
     };
     Game_Interpreter.prototype.setup = function (list, eventId) {
         this.clear();
-        this._mapId = DataManager_1.$gameMap.mapId();
+        this._mapId = globals_1.$gameMap.mapId();
         this._eventId = eventId || 0;
         this._list = list;
         Game_Interpreter.requestImages(list);
@@ -276,12 +280,12 @@ var Game_Interpreter = /** @class */ (function () {
         return this._eventId;
     };
     Game_Interpreter.prototype.isOnCurrentMap = function () {
-        return this._mapId === DataManager_1.$gameMap.mapId();
+        return this._mapId === globals_1.$gameMap.mapId();
     };
     Game_Interpreter.prototype.setupReservedCommonEvent = function () {
-        if (DataManager_1.$gameTemp.isCommonEventReserved()) {
-            this.setup(DataManager_1.$gameTemp.reservedCommonEvent().list);
-            DataManager_1.$gameTemp.clearCommonEvent();
+        if (globals_1.$gameTemp.isCommonEventReserved()) {
+            this.setup(globals_1.$gameTemp.reservedCommonEvent().list);
+            globals_1.$gameTemp.clearCommonEvent();
             return true;
         }
         else {
@@ -333,13 +337,13 @@ var Game_Interpreter = /** @class */ (function () {
         var waiting = false;
         switch (this._waitMode) {
             case "message":
-                waiting = DataManager_1.$gameMessage.isBusy();
+                waiting = globals_1.$gameMessage.isBusy();
                 break;
             case "transfer":
-                waiting = DataManager_1.$gamePlayer.isTransferring();
+                waiting = globals_1.$gamePlayer.isTransferring();
                 break;
             case "scroll":
-                waiting = DataManager_1.$gameMap.isScrolling();
+                waiting = globals_1.$gameMap.isScrolling();
                 break;
             case "route":
                 waiting = this._character.isMoveRouteForcing();
@@ -351,7 +355,7 @@ var Game_Interpreter = /** @class */ (function () {
                 waiting = this._character.isBalloonPlaying();
                 break;
             case "gather":
-                waiting = DataManager_1.$gamePlayer.areFollowersGathering();
+                waiting = globals_1.$gamePlayer.areFollowersGathering();
                 break;
             case "action":
                 waiting = BattleManager_1.BattleManager.isActionForced();
@@ -430,10 +434,10 @@ var Game_Interpreter = /** @class */ (function () {
     };
     Game_Interpreter.prototype.iterateActorId = function (param, callback) {
         if (param === 0) {
-            DataManager_1.$gameParty.members().forEach(callback);
+            globals_1.$gameParty.members().forEach(callback);
         }
         else {
-            var actor = DataManager_1.$gameActors.actor(param);
+            var actor = globals_1.$gameActors.actor(param);
             if (actor) {
                 callback(actor);
             }
@@ -444,15 +448,15 @@ var Game_Interpreter = /** @class */ (function () {
             this.iterateActorId(param2, callback);
         }
         else {
-            this.iterateActorId(DataManager_1.$gameVariables.value(param2), callback);
+            this.iterateActorId(globals_1.$gameVariables.value(param2), callback);
         }
     };
     Game_Interpreter.prototype.iterateActorIndex = function (param, callback) {
         if (param < 0) {
-            DataManager_1.$gameParty.members().forEach(callback);
+            globals_1.$gameParty.members().forEach(callback);
         }
         else {
-            var actor = DataManager_1.$gameParty.members()[param];
+            var actor = globals_1.$gameParty.members()[param];
             if (actor) {
                 callback(actor);
             }
@@ -460,17 +464,17 @@ var Game_Interpreter = /** @class */ (function () {
     };
     Game_Interpreter.prototype.iterateEnemyIndex = function (param, callback) {
         if (param < 0) {
-            DataManager_1.$gameTroop.members().forEach(callback);
+            globals_1.$gameTroop.members().forEach(callback);
         }
         else {
-            var enemy = DataManager_1.$gameTroop.members()[param];
+            var enemy = globals_1.$gameTroop.members()[param];
             if (enemy) {
                 callback(enemy);
             }
         }
     };
     Game_Interpreter.prototype.iterateBattler = function (param1, param2, callback) {
-        if (DataManager_1.$gameParty.inBattle()) {
+        if (globals_1.$gameParty.inBattle()) {
             if (param1 === 0) {
                 this.iterateEnemyIndex(param2, callback);
             }
@@ -480,21 +484,21 @@ var Game_Interpreter = /** @class */ (function () {
         }
     };
     Game_Interpreter.prototype.character = function (param) {
-        if (DataManager_1.$gameParty.inBattle()) {
+        if (globals_1.$gameParty.inBattle()) {
             return null;
         }
         else if (param < 0) {
-            return DataManager_1.$gamePlayer;
+            return globals_1.$gamePlayer;
         }
         else if (this.isOnCurrentMap()) {
-            return DataManager_1.$gameMap.event(param > 0 ? param : this._eventId);
+            return globals_1.$gameMap.event(param > 0 ? param : this._eventId);
         }
         else {
             return null;
         }
     };
     Game_Interpreter.prototype.operateValue = function (operation, operandType, operand) {
-        var value = operandType === 0 ? operand : DataManager_1.$gameVariables.value(operand);
+        var value = operandType === 0 ? operand : globals_1.$gameVariables.value(operand);
         return operation === 0 ? value : -value;
     };
     Game_Interpreter.prototype.changeHp = function (target, value, allowDeath) {
@@ -510,14 +514,14 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Show Text
     Game_Interpreter.prototype.command101 = function () {
-        if (!DataManager_1.$gameMessage.isBusy()) {
-            DataManager_1.$gameMessage.setFaceImage(this._params[0], this._params[1]);
-            DataManager_1.$gameMessage.setBackground(this._params[2]);
-            DataManager_1.$gameMessage.setPositionType(this._params[3]);
+        if (!globals_1.$gameMessage.isBusy()) {
+            globals_1.$gameMessage.setFaceImage(this._params[0], this._params[1]);
+            globals_1.$gameMessage.setBackground(this._params[2]);
+            globals_1.$gameMessage.setPositionType(this._params[3]);
             while (this.nextEventCode() === 401) {
                 // Text data
                 this._index++;
-                DataManager_1.$gameMessage.add(this.currentCommand().parameters[0]);
+                globals_1.$gameMessage.add(this.currentCommand().parameters[0]);
             }
             switch (this.nextEventCode()) {
                 case 102: // Show Choices
@@ -540,7 +544,7 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Show Choices
     Game_Interpreter.prototype.command102 = function () {
-        if (!DataManager_1.$gameMessage.isBusy()) {
+        if (!globals_1.$gameMessage.isBusy()) {
             this.setupChoices(this._params);
             this._index++;
             this.setWaitMode("message");
@@ -557,10 +561,10 @@ var Game_Interpreter = /** @class */ (function () {
         if (cancelType >= choices.length) {
             cancelType = -2;
         }
-        DataManager_1.$gameMessage.setChoices(choices, defaultType, cancelType);
-        DataManager_1.$gameMessage.setChoiceBackground(background);
-        DataManager_1.$gameMessage.setChoicePositionType(positionType);
-        DataManager_1.$gameMessage.setChoiceCallback(function (n) {
+        globals_1.$gameMessage.setChoices(choices, defaultType, cancelType);
+        globals_1.$gameMessage.setChoiceBackground(background);
+        globals_1.$gameMessage.setChoicePositionType(positionType);
+        globals_1.$gameMessage.setChoiceCallback(function (n) {
             _this._branch[_this._indent] = n;
         });
     };
@@ -580,7 +584,7 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Input Number
     Game_Interpreter.prototype.command103 = function () {
-        if (!DataManager_1.$gameMessage.isBusy()) {
+        if (!globals_1.$gameMessage.isBusy()) {
             this.setupNumInput(this._params);
             this._index++;
             this.setWaitMode("message");
@@ -588,11 +592,11 @@ var Game_Interpreter = /** @class */ (function () {
         return false;
     };
     Game_Interpreter.prototype.setupNumInput = function (params) {
-        DataManager_1.$gameMessage.setNumberInput(params[0], params[1]);
+        globals_1.$gameMessage.setNumberInput(params[0], params[1]);
     };
     // Select Item
     Game_Interpreter.prototype.command104 = function () {
-        if (!DataManager_1.$gameMessage.isBusy()) {
+        if (!globals_1.$gameMessage.isBusy()) {
             this.setupItemChoice(this._params);
             this._index++;
             this.setWaitMode("message");
@@ -600,15 +604,15 @@ var Game_Interpreter = /** @class */ (function () {
         return false;
     };
     Game_Interpreter.prototype.setupItemChoice = function (params) {
-        DataManager_1.$gameMessage.setItemChoice(params[0], params[1] || 2);
+        globals_1.$gameMessage.setItemChoice(params[0], params[1] || 2);
     };
     // Show Scrolling Text
     Game_Interpreter.prototype.command105 = function () {
-        if (!DataManager_1.$gameMessage.isBusy()) {
-            DataManager_1.$gameMessage.setScroll(this._params[0], this._params[1]);
+        if (!globals_1.$gameMessage.isBusy()) {
+            globals_1.$gameMessage.setScroll(this._params[0], this._params[1]);
             while (this.nextEventCode() === 405) {
                 this._index++;
-                DataManager_1.$gameMessage.add(this.currentCommand().parameters[0]);
+                globals_1.$gameMessage.add(this.currentCommand().parameters[0]);
             }
             this._index++;
             this.setWaitMode("message");
@@ -629,16 +633,16 @@ var Game_Interpreter = /** @class */ (function () {
         var result = false;
         switch (this._params[0]) {
             case 0: // Switch
-                result = DataManager_1.$gameSwitches.value(this._params[1]) === (this._params[2] === 0);
+                result = globals_1.$gameSwitches.value(this._params[1]) === (this._params[2] === 0);
                 break;
             case 1: // Variable
-                var value1 = DataManager_1.$gameVariables.value(this._params[1]);
+                var value1 = globals_1.$gameVariables.value(this._params[1]);
                 var value2 = void 0;
                 if (this._params[2] === 0) {
                     value2 = this._params[3];
                 }
                 else {
-                    value2 = DataManager_1.$gameVariables.value(this._params[3]);
+                    value2 = globals_1.$gameVariables.value(this._params[3]);
                 }
                 switch (this._params[4]) {
                     case 0: // Equal to
@@ -664,41 +668,41 @@ var Game_Interpreter = /** @class */ (function () {
             case 2: // Self Switch
                 if (this._eventId > 0) {
                     var key = [this._mapId, this._eventId, this._params[1]];
-                    result = DataManager_1.$gameSelfSwitches.value(key) === (this._params[2] === 0);
+                    result = globals_1.$gameSelfSwitches.value(key) === (this._params[2] === 0);
                 }
                 break;
             case 3: // Timer
-                if (DataManager_1.$gameTimer.isWorking()) {
+                if (globals_1.$gameTimer.isWorking()) {
                     if (this._params[2] === 0) {
-                        result = DataManager_1.$gameTimer.seconds() >= this._params[1];
+                        result = globals_1.$gameTimer.seconds() >= this._params[1];
                     }
                     else {
-                        result = DataManager_1.$gameTimer.seconds() <= this._params[1];
+                        result = globals_1.$gameTimer.seconds() <= this._params[1];
                     }
                 }
                 break;
             case 4: // Actor
-                var actor = DataManager_1.$gameActors.actor(this._params[1]);
+                var actor = globals_1.$gameActors.actor(this._params[1]);
                 if (actor) {
                     var n = this._params[3];
                     switch (this._params[2]) {
                         case 0: // In the Party
-                            result = Utils_1.Utils.contains(DataManager_1.$gameParty.members(), actor);
+                            result = Utils_1.Utils.contains(globals_1.$gameParty.members(), actor);
                             break;
                         case 1: // Name
                             result = actor.name() === n;
                             break;
                         case 2: // Class
-                            result = actor.isClass(DataManager_1.$dataClasses[n]);
+                            result = actor.isClass(globals_1.$dataClasses[n]);
                             break;
                         case 3: // Skill
                             result = actor.hasSkill(n);
                             break;
                         case 4: // Weapon
-                            result = actor.hasWeapon(DataManager_1.$dataWeapons[n]);
+                            result = actor.hasWeapon(globals_1.$dataWeapons[n]);
                             break;
                         case 5: // Armor
-                            result = actor.hasArmor(DataManager_1.$dataArmors[n]);
+                            result = actor.hasArmor(globals_1.$dataArmors[n]);
                             break;
                         case 6: // State
                             result = actor.isStateAffected(n);
@@ -707,7 +711,7 @@ var Game_Interpreter = /** @class */ (function () {
                 }
                 break;
             case 5: // Enemy
-                var enemy = DataManager_1.$gameTroop.members()[this._params[1]];
+                var enemy = globals_1.$gameTroop.members()[this._params[1]];
                 if (enemy) {
                     switch (this._params[2]) {
                         case 0: // Appeared
@@ -728,36 +732,35 @@ var Game_Interpreter = /** @class */ (function () {
             case 7: // Gold
                 switch (this._params[2]) {
                     case 0: // Greater than or equal to
-                        result = DataManager_1.$gameParty.gold() >= this._params[1];
+                        result = globals_1.$gameParty.gold() >= this._params[1];
                         break;
                     case 1: // Less than or equal to
-                        result = DataManager_1.$gameParty.gold() <= this._params[1];
+                        result = globals_1.$gameParty.gold() <= this._params[1];
                         break;
                     case 2: // Less than
-                        result = DataManager_1.$gameParty.gold() < this._params[1];
+                        result = globals_1.$gameParty.gold() < this._params[1];
                         break;
                 }
                 break;
             case 8: // Item
-                result = DataManager_1.$gameParty.hasItem(DataManager_1.$dataItems[this._params[1]]);
+                result = globals_1.$gameParty.hasItem(globals_1.$dataItems[this._params[1]]);
                 break;
             case 9: // Weapon
-                result = DataManager_1.$gameParty.hasItem(DataManager_1.$dataWeapons[this._params[1]], this._params[2]);
+                result = globals_1.$gameParty.hasItem(globals_1.$dataWeapons[this._params[1]], this._params[2]);
                 break;
             case 10: // Armor
-                result = DataManager_1.$gameParty.hasItem(DataManager_1.$dataArmors[this._params[1]], this._params[2]);
+                result = globals_1.$gameParty.hasItem(globals_1.$dataArmors[this._params[1]], this._params[2]);
                 break;
             case 11: // Button
                 // result = Input.isPressed(this._params[1]);
                 result = false; // TODO: impl
                 break;
             case 12: // Script
-                setGameObjects();
                 // eslint-disable-next-line no-eval
                 result = !!eval(this._params[1]);
                 break;
             case 13: // Vehicle
-                result = DataManager_1.$gamePlayer.vehicle() === DataManager_1.$gameMap.vehicle(this._params[1]);
+                result = globals_1.$gamePlayer.vehicle() === globals_1.$gameMap.vehicle(this._params[1]);
                 break;
         }
         this._branch[this._indent] = result;
@@ -808,7 +811,7 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Common Event
     Game_Interpreter.prototype.command117 = function () {
-        var commonEvent = DataManager_1.$dataCommonEvents[this._params[0]];
+        var commonEvent = globals_1.$dataCommonEvents[this._params[0]];
         if (commonEvent) {
             var eventId = this.isOnCurrentMap() ? this._eventId : 0;
             this.setupChild(commonEvent.list, eventId);
@@ -852,7 +855,7 @@ var Game_Interpreter = /** @class */ (function () {
     // Control Switches
     Game_Interpreter.prototype.command121 = function () {
         for (var i = this._params[0]; i <= this._params[1]; i++) {
-            DataManager_1.$gameSwitches.setValue(i, this._params[2] === 0);
+            globals_1.$gameSwitches.setValue(i, this._params[2] === 0);
         }
         return true;
     };
@@ -865,7 +868,7 @@ var Game_Interpreter = /** @class */ (function () {
                 value = this._params[4];
                 break;
             case 1: // Variable
-                value = DataManager_1.$gameVariables.value(this._params[4]);
+                value = globals_1.$gameVariables.value(this._params[4]);
                 break;
             case 2: // Random
                 value = this._params[5] - this._params[4] + 1;
@@ -878,7 +881,6 @@ var Game_Interpreter = /** @class */ (function () {
                 value = this.gameDataOperand(this._params[4], this._params[5], this._params[6]);
                 break;
             case 4: // Script
-                setGameObjects();
                 // eslint-disable-next-line no-eval
                 value = eval(this._params[4]);
                 break;
@@ -891,13 +893,13 @@ var Game_Interpreter = /** @class */ (function () {
     Game_Interpreter.prototype.gameDataOperand = function (type, param1, param2) {
         switch (type) {
             case 0: // Item
-                return DataManager_1.$gameParty.numItems(DataManager_1.$dataItems[param1]);
+                return globals_1.$gameParty.numItems(globals_1.$dataItems[param1]);
             case 1: // Weapon
-                return DataManager_1.$gameParty.numItems(DataManager_1.$dataWeapons[param1]);
+                return globals_1.$gameParty.numItems(globals_1.$dataWeapons[param1]);
             case 2: // Armor
-                return DataManager_1.$gameParty.numItems(DataManager_1.$dataArmors[param1]);
+                return globals_1.$gameParty.numItems(globals_1.$dataArmors[param1]);
             case 3: // Actor
-                var actor = DataManager_1.$gameActors.actor(param1);
+                var actor = globals_1.$gameActors.actor(param1);
                 if (actor) {
                     switch (param2) {
                         case 0: // Level
@@ -916,7 +918,7 @@ var Game_Interpreter = /** @class */ (function () {
                 }
                 break;
             case 4: // Enemy
-                var enemy = DataManager_1.$gameTroop.members()[param1];
+                var enemy = globals_1.$gameTroop.members()[param1];
                 if (enemy) {
                     switch (param2) {
                         case 0: // HP
@@ -948,30 +950,30 @@ var Game_Interpreter = /** @class */ (function () {
                 }
                 break;
             case 6: // Party
-                actor = DataManager_1.$gameParty.members()[param1];
+                actor = globals_1.$gameParty.members()[param1];
                 return actor ? actor.actorId() : 0;
             case 7: // Other
                 switch (param1) {
                     case 0: // Map ID
-                        return DataManager_1.$gameMap.mapId();
+                        return globals_1.$gameMap.mapId();
                     case 1: // Party Members
-                        return DataManager_1.$gameParty.size();
+                        return globals_1.$gameParty.size();
                     case 2: // Gold
-                        return DataManager_1.$gameParty.gold();
+                        return globals_1.$gameParty.gold();
                     case 3: // Steps
-                        return DataManager_1.$gameParty.steps();
+                        return globals_1.$gameParty.steps();
                     case 4: // Play Time
-                        return DataManager_1.$gameSystem.playtime();
+                        return globals_1.$gameSystem.playtime();
                     case 5: // Timer
-                        return DataManager_1.$gameTimer.seconds();
+                        return globals_1.$gameTimer.seconds();
                     case 6: // Save Count
-                        return DataManager_1.$gameSystem.saveCount();
+                        return globals_1.$gameSystem.saveCount();
                     case 7: // Battle Count
-                        return DataManager_1.$gameSystem.battleCount();
+                        return globals_1.$gameSystem.battleCount();
                     case 8: // Win Count
-                        return DataManager_1.$gameSystem.winCount();
+                        return globals_1.$gameSystem.winCount();
                     case 9: // Escape Count
-                        return DataManager_1.$gameSystem.escapeCount();
+                        return globals_1.$gameSystem.escapeCount();
                 }
                 break;
         }
@@ -979,37 +981,37 @@ var Game_Interpreter = /** @class */ (function () {
     };
     Game_Interpreter.prototype.operateVariable = function (variableId, operationType, value) {
         try {
-            var oldValue = DataManager_1.$gameVariables.value(variableId);
+            var oldValue = globals_1.$gameVariables.value(variableId);
             switch (operationType) {
                 case 0: // Set
-                    DataManager_1.$gameVariables.setValue(variableId, (oldValue = value));
+                    globals_1.$gameVariables.setValue(variableId, (oldValue = value));
                     break;
                 case 1: // Add
-                    DataManager_1.$gameVariables.setValue(variableId, oldValue + value);
+                    globals_1.$gameVariables.setValue(variableId, oldValue + value);
                     break;
                 case 2: // Sub
-                    DataManager_1.$gameVariables.setValue(variableId, oldValue - value);
+                    globals_1.$gameVariables.setValue(variableId, oldValue - value);
                     break;
                 case 3: // Mul
-                    DataManager_1.$gameVariables.setValue(variableId, oldValue * value);
+                    globals_1.$gameVariables.setValue(variableId, oldValue * value);
                     break;
                 case 4: // Div
-                    DataManager_1.$gameVariables.setValue(variableId, oldValue / value);
+                    globals_1.$gameVariables.setValue(variableId, oldValue / value);
                     break;
                 case 5: // Mod
-                    DataManager_1.$gameVariables.setValue(variableId, oldValue % value);
+                    globals_1.$gameVariables.setValue(variableId, oldValue % value);
                     break;
             }
         }
         catch (e) {
-            DataManager_1.$gameVariables.setValue(variableId, 0);
+            globals_1.$gameVariables.setValue(variableId, 0);
         }
     };
     // Control Self Switch
     Game_Interpreter.prototype.command123 = function () {
         if (this._eventId > 0) {
             var key = [this._mapId, this._eventId, this._params[0]];
-            DataManager_1.$gameSelfSwitches.setValue(key, this._params[1] === 0);
+            globals_1.$gameSelfSwitches.setValue(key, this._params[1] === 0);
         }
         return true;
     };
@@ -1017,121 +1019,121 @@ var Game_Interpreter = /** @class */ (function () {
     Game_Interpreter.prototype.command124 = function () {
         if (this._params[0] === 0) {
             // Start
-            DataManager_1.$gameTimer.start(this._params[1] * 60);
+            globals_1.$gameTimer.start(this._params[1] * 60);
         }
         else {
             // Stop
-            DataManager_1.$gameTimer.stop();
+            globals_1.$gameTimer.stop();
         }
         return true;
     };
     // Change Gold
     Game_Interpreter.prototype.command125 = function () {
         var value = this.operateValue(this._params[0], this._params[1], this._params[2]);
-        DataManager_1.$gameParty.gainGold(value);
+        globals_1.$gameParty.gainGold(value);
         return true;
     };
     // Change Items
     Game_Interpreter.prototype.command126 = function () {
         var value = this.operateValue(this._params[1], this._params[2], this._params[3]);
-        DataManager_1.$gameParty.gainItem(DataManager_1.$dataItems[this._params[0]], value);
+        globals_1.$gameParty.gainItem(globals_1.$dataItems[this._params[0]], value);
         return true;
     };
     // Change Weapons
     Game_Interpreter.prototype.command127 = function () {
         var value = this.operateValue(this._params[1], this._params[2], this._params[3]);
-        DataManager_1.$gameParty.gainItem(DataManager_1.$dataWeapons[this._params[0]], value, this._params[4]);
+        globals_1.$gameParty.gainItem(globals_1.$dataWeapons[this._params[0]], value, this._params[4]);
         return true;
     };
     // Change Armors
     Game_Interpreter.prototype.command128 = function () {
         var value = this.operateValue(this._params[1], this._params[2], this._params[3]);
-        DataManager_1.$gameParty.gainItem(DataManager_1.$dataArmors[this._params[0]], value, this._params[4]);
+        globals_1.$gameParty.gainItem(globals_1.$dataArmors[this._params[0]], value, this._params[4]);
         return true;
     };
     // Change Party Member
     Game_Interpreter.prototype.command129 = function () {
-        var actor = DataManager_1.$gameActors.actor(this._params[0]);
+        var actor = globals_1.$gameActors.actor(this._params[0]);
         if (actor) {
             if (this._params[1] === 0) {
                 // Add
                 if (this._params[2]) {
                     // Initialize
-                    DataManager_1.$gameActors.actor(this._params[0]).setup(this._params[0]);
+                    globals_1.$gameActors.actor(this._params[0]).setup(this._params[0]);
                 }
-                DataManager_1.$gameParty.addActor(this._params[0]);
+                globals_1.$gameParty.addActor(this._params[0]);
             }
             else {
                 // Remove
-                DataManager_1.$gameParty.removeActor(this._params[0]);
+                globals_1.$gameParty.removeActor(this._params[0]);
             }
         }
         return true;
     };
     // Change Battle BGM
     Game_Interpreter.prototype.command132 = function () {
-        DataManager_1.$gameSystem.setBattleBgm(this._params[0]);
+        globals_1.$gameSystem.setBattleBgm(this._params[0]);
         return true;
     };
     // Change Victory ME
     Game_Interpreter.prototype.command133 = function () {
-        DataManager_1.$gameSystem.setVictoryMe(this._params[0]);
+        globals_1.$gameSystem.setVictoryMe(this._params[0]);
         return true;
     };
     // Change Save Access
     Game_Interpreter.prototype.command134 = function () {
         if (this._params[0] === 0) {
-            DataManager_1.$gameSystem.disableSave();
+            globals_1.$gameSystem.disableSave();
         }
         else {
-            DataManager_1.$gameSystem.enableSave();
+            globals_1.$gameSystem.enableSave();
         }
         return true;
     };
     // Change Menu Access
     Game_Interpreter.prototype.command135 = function () {
         if (this._params[0] === 0) {
-            DataManager_1.$gameSystem.disableMenu();
+            globals_1.$gameSystem.disableMenu();
         }
         else {
-            DataManager_1.$gameSystem.enableMenu();
+            globals_1.$gameSystem.enableMenu();
         }
         return true;
     };
     // Change Encounter Disable
     Game_Interpreter.prototype.command136 = function () {
         if (this._params[0] === 0) {
-            DataManager_1.$gameSystem.disableEncounter();
+            globals_1.$gameSystem.disableEncounter();
         }
         else {
-            DataManager_1.$gameSystem.enableEncounter();
+            globals_1.$gameSystem.enableEncounter();
         }
-        DataManager_1.$gamePlayer.makeEncounterCount();
+        globals_1.$gamePlayer.makeEncounterCount();
         return true;
     };
     // Change Formation Access
     Game_Interpreter.prototype.command137 = function () {
         if (this._params[0] === 0) {
-            DataManager_1.$gameSystem.disableFormation();
+            globals_1.$gameSystem.disableFormation();
         }
         else {
-            DataManager_1.$gameSystem.enableFormation();
+            globals_1.$gameSystem.enableFormation();
         }
         return true;
     };
     // Change Window Color
     Game_Interpreter.prototype.command138 = function () {
-        DataManager_1.$gameSystem.setWindowTone(this._params[0]);
+        globals_1.$gameSystem.setWindowTone(this._params[0]);
         return true;
     };
     // Change Defeat ME
     Game_Interpreter.prototype.command139 = function () {
-        DataManager_1.$gameSystem.setDefeatMe(this._params[0]);
+        globals_1.$gameSystem.setDefeatMe(this._params[0]);
         return true;
     };
     // Change Vehicle BGM
     Game_Interpreter.prototype.command140 = function () {
-        var vehicle = DataManager_1.$gameMap.vehicle(this._params[0]);
+        var vehicle = globals_1.$gameMap.vehicle(this._params[0]);
         if (vehicle) {
             vehicle.setBgm(this._params[1]);
         }
@@ -1139,7 +1141,7 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Transfer Player
     Game_Interpreter.prototype.command201 = function () {
-        if (!DataManager_1.$gameParty.inBattle() && !DataManager_1.$gameMessage.isBusy()) {
+        if (!globals_1.$gameParty.inBattle() && !globals_1.$gameMessage.isBusy()) {
             var mapId = void 0;
             var x = void 0;
             var y = void 0;
@@ -1151,11 +1153,11 @@ var Game_Interpreter = /** @class */ (function () {
             }
             else {
                 // Designation with variables
-                mapId = DataManager_1.$gameVariables.value(this._params[1]);
-                x = DataManager_1.$gameVariables.value(this._params[2]);
-                y = DataManager_1.$gameVariables.value(this._params[3]);
+                mapId = globals_1.$gameVariables.value(this._params[1]);
+                x = globals_1.$gameVariables.value(this._params[2]);
+                y = globals_1.$gameVariables.value(this._params[3]);
             }
-            DataManager_1.$gamePlayer.reserveTransfer(mapId, x, y, this._params[4], this._params[5]);
+            globals_1.$gamePlayer.reserveTransfer(mapId, x, y, this._params[4], this._params[5]);
             this.setWaitMode("transfer");
             this._index++;
         }
@@ -1174,11 +1176,11 @@ var Game_Interpreter = /** @class */ (function () {
         }
         else {
             // Designation with variables
-            mapId = DataManager_1.$gameVariables.value(this._params[2]);
-            x = DataManager_1.$gameVariables.value(this._params[3]);
-            y = DataManager_1.$gameVariables.value(this._params[4]);
+            mapId = globals_1.$gameVariables.value(this._params[2]);
+            x = globals_1.$gameVariables.value(this._params[3]);
+            y = globals_1.$gameVariables.value(this._params[4]);
         }
-        var vehicle = DataManager_1.$gameMap.vehicle(this._params[0]);
+        var vehicle = globals_1.$gameMap.vehicle(this._params[0]);
         if (vehicle) {
             vehicle.setLocation(mapId, x, y);
         }
@@ -1194,8 +1196,8 @@ var Game_Interpreter = /** @class */ (function () {
             }
             else if (this._params[1] === 1) {
                 // Designation with variables
-                var x = DataManager_1.$gameVariables.value(this._params[2]);
-                var y = DataManager_1.$gameVariables.value(this._params[3]);
+                var x = globals_1.$gameVariables.value(this._params[2]);
+                var y = globals_1.$gameVariables.value(this._params[3]);
                 character.locate(x, y);
             }
             else {
@@ -1213,18 +1215,18 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Scroll Map
     Game_Interpreter.prototype.command204 = function () {
-        if (!DataManager_1.$gameParty.inBattle()) {
-            if (DataManager_1.$gameMap.isScrolling()) {
+        if (!globals_1.$gameParty.inBattle()) {
+            if (globals_1.$gameMap.isScrolling()) {
                 this.setWaitMode("scroll");
                 return false;
             }
-            DataManager_1.$gameMap.startScroll(this._params[0], this._params[1], this._params[2]);
+            globals_1.$gameMap.startScroll(this._params[0], this._params[1], this._params[2]);
         }
         return true;
     };
     // Set Movement Route
     Game_Interpreter.prototype.command205 = function () {
-        DataManager_1.$gameMap.refreshIfNeeded();
+        globals_1.$gameMap.refreshIfNeeded();
         this._character = this.character(this._params[0]);
         if (this._character) {
             this._character.forceMoveRoute(this._params[1]);
@@ -1236,12 +1238,12 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Getting On and Off Vehicles
     Game_Interpreter.prototype.command206 = function () {
-        DataManager_1.$gamePlayer.getOnOffVehicle();
+        globals_1.$gamePlayer.getOnOffVehicle();
         return true;
     };
     // Change Transparency
     Game_Interpreter.prototype.command211 = function () {
-        DataManager_1.$gamePlayer.setTransparent(this._params[0] === 0);
+        globals_1.$gamePlayer.setTransparent(this._params[0] === 0);
         return true;
     };
     // Show Animation
@@ -1269,33 +1271,33 @@ var Game_Interpreter = /** @class */ (function () {
     // Erase Event
     Game_Interpreter.prototype.command214 = function () {
         if (this.isOnCurrentMap() && this._eventId > 0) {
-            DataManager_1.$gameMap.eraseEvent(this._eventId);
+            globals_1.$gameMap.eraseEvent(this._eventId);
         }
         return true;
     };
     // Change Player Followers
     Game_Interpreter.prototype.command216 = function () {
         if (this._params[0] === 0) {
-            DataManager_1.$gamePlayer.showFollowers();
+            globals_1.$gamePlayer.showFollowers();
         }
         else {
-            DataManager_1.$gamePlayer.hideFollowers();
+            globals_1.$gamePlayer.hideFollowers();
         }
-        DataManager_1.$gamePlayer.refresh();
+        globals_1.$gamePlayer.refresh();
         return true;
     };
     // Gather Followers
     Game_Interpreter.prototype.command217 = function () {
-        if (!DataManager_1.$gameParty.inBattle()) {
-            DataManager_1.$gamePlayer.gatherFollowers();
+        if (!globals_1.$gameParty.inBattle()) {
+            globals_1.$gamePlayer.gatherFollowers();
             this.setWaitMode("gather");
         }
         return true;
     };
     // Fadeout Screen
     Game_Interpreter.prototype.command221 = function () {
-        if (!DataManager_1.$gameMessage.isBusy()) {
-            DataManager_1.$gameScreen.startFadeOut(this.fadeSpeed());
+        if (!globals_1.$gameMessage.isBusy()) {
+            globals_1.$gameScreen.startFadeOut(this.fadeSpeed());
             this.wait(this.fadeSpeed());
             this._index++;
         }
@@ -1303,8 +1305,8 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Fadein Screen
     Game_Interpreter.prototype.command222 = function () {
-        if (!DataManager_1.$gameMessage.isBusy()) {
-            DataManager_1.$gameScreen.startFadeIn(this.fadeSpeed());
+        if (!globals_1.$gameMessage.isBusy()) {
+            globals_1.$gameScreen.startFadeIn(this.fadeSpeed());
             this.wait(this.fadeSpeed());
             this._index++;
         }
@@ -1312,7 +1314,7 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Tint Screen
     Game_Interpreter.prototype.command223 = function () {
-        DataManager_1.$gameScreen.startTint(this._params[0], this._params[1]);
+        globals_1.$gameScreen.startTint(this._params[0], this._params[1]);
         if (this._params[2]) {
             this.wait(this._params[1]);
         }
@@ -1320,7 +1322,7 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Flash Screen
     Game_Interpreter.prototype.command224 = function () {
-        DataManager_1.$gameScreen.startFlash(this._params[0], this._params[1]);
+        globals_1.$gameScreen.startFlash(this._params[0], this._params[1]);
         if (this._params[2]) {
             this.wait(this._params[1]);
         }
@@ -1328,7 +1330,7 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Shake Screen
     Game_Interpreter.prototype.command225 = function () {
-        DataManager_1.$gameScreen.startShake(this._params[0], this._params[1], this._params[2]);
+        globals_1.$gameScreen.startShake(this._params[0], this._params[1], this._params[2]);
         if (this._params[3]) {
             this.wait(this._params[2]);
         }
@@ -1350,10 +1352,10 @@ var Game_Interpreter = /** @class */ (function () {
         }
         else {
             // Designation with variables
-            x = DataManager_1.$gameVariables.value(this._params[4]);
-            y = DataManager_1.$gameVariables.value(this._params[5]);
+            x = globals_1.$gameVariables.value(this._params[4]);
+            y = globals_1.$gameVariables.value(this._params[5]);
         }
-        DataManager_1.$gameScreen.showPicture(this._params[0], this._params[1], this._params[2], x, y, this._params[6], this._params[7], this._params[8], this._params[9]);
+        globals_1.$gameScreen.showPicture(this._params[0], this._params[1], this._params[2], x, y, this._params[6], this._params[7], this._params[8], this._params[9]);
         return true;
     };
     // Move Picture
@@ -1367,10 +1369,10 @@ var Game_Interpreter = /** @class */ (function () {
         }
         else {
             // Designation with variables
-            x = DataManager_1.$gameVariables.value(this._params[4]);
-            y = DataManager_1.$gameVariables.value(this._params[5]);
+            x = globals_1.$gameVariables.value(this._params[4]);
+            y = globals_1.$gameVariables.value(this._params[5]);
         }
-        DataManager_1.$gameScreen.movePicture(this._params[0], this._params[2], x, y, this._params[6], this._params[7], this._params[8], this._params[9], this._params[10]);
+        globals_1.$gameScreen.movePicture(this._params[0], this._params[2], x, y, this._params[6], this._params[7], this._params[8], this._params[9], this._params[10]);
         if (this._params[11]) {
             this.wait(this._params[10]);
         }
@@ -1378,12 +1380,12 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Rotate Picture
     Game_Interpreter.prototype.command233 = function () {
-        DataManager_1.$gameScreen.rotatePicture(this._params[0], this._params[1]);
+        globals_1.$gameScreen.rotatePicture(this._params[0], this._params[1]);
         return true;
     };
     // Tint Picture
     Game_Interpreter.prototype.command234 = function () {
-        DataManager_1.$gameScreen.tintPicture(this._params[0], this._params[1], this._params[2]);
+        globals_1.$gameScreen.tintPicture(this._params[0], this._params[1], this._params[2]);
         if (this._params[3]) {
             this.wait(this._params[2]);
         }
@@ -1391,13 +1393,13 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Erase Picture
     Game_Interpreter.prototype.command235 = function () {
-        DataManager_1.$gameScreen.erasePicture(this._params[0]);
+        globals_1.$gameScreen.erasePicture(this._params[0]);
         return true;
     };
     // Set Weather Effect
     Game_Interpreter.prototype.command236 = function () {
-        if (!DataManager_1.$gameParty.inBattle()) {
-            DataManager_1.$gameScreen.changeWeather(this._params[0], this._params[1], this._params[2]);
+        if (!globals_1.$gameParty.inBattle()) {
+            globals_1.$gameScreen.changeWeather(this._params[0], this._params[1], this._params[2]);
             if (this._params[3]) {
                 this.wait(this._params[2]);
             }
@@ -1416,12 +1418,12 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Save BGM
     Game_Interpreter.prototype.command243 = function () {
-        DataManager_1.$gameSystem.saveBgm();
+        globals_1.$gameSystem.saveBgm();
         return true;
     };
     // Resume BGM
     Game_Interpreter.prototype.command244 = function () {
-        DataManager_1.$gameSystem.replayBgm();
+        globals_1.$gameSystem.replayBgm();
         return true;
     };
     // Play BGS
@@ -1451,7 +1453,7 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Play Movie
     Game_Interpreter.prototype.command261 = function () {
-        if (!DataManager_1.$gameMessage.isBusy()) {
+        if (!globals_1.$gameMessage.isBusy()) {
             var name = this._params[0];
             if (name.length > 0) {
                 var ext = this.videoFileExt();
@@ -1473,17 +1475,17 @@ var Game_Interpreter = /** @class */ (function () {
     // Change Map Name Display
     Game_Interpreter.prototype.command281 = function () {
         if (this._params[0] === 0) {
-            DataManager_1.$gameMap.enableNameDisplay();
+            globals_1.$gameMap.enableNameDisplay();
         }
         else {
-            DataManager_1.$gameMap.disableNameDisplay();
+            globals_1.$gameMap.disableNameDisplay();
         }
         return true;
     };
     // Change Tileset
     Game_Interpreter.prototype.command282 = function () {
         var _this = this;
-        var tileset = DataManager_1.$dataTilesets[this._params[0]];
+        var tileset = globals_1.$dataTilesets[this._params[0]];
         if (!this._imageReservationId) {
             this._imageReservationId = Utils_1.Utils.generateRuntimeId();
         }
@@ -1493,7 +1495,7 @@ var Game_Interpreter = /** @class */ (function () {
         })
             .every(function (bitmap) { return bitmap.isReady(); });
         if (allReady) {
-            DataManager_1.$gameMap.changeTileset(this._params[0]);
+            globals_1.$gameMap.changeTileset(this._params[0]);
             ImageManager_1.ImageManager.releaseReservation(this._imageReservationId);
             this._imageReservationId = null;
             return true;
@@ -1504,12 +1506,12 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Change Battle Back
     Game_Interpreter.prototype.command283 = function () {
-        DataManager_1.$gameMap.changeBattleback(this._params[0], this._params[1]);
+        globals_1.$gameMap.changeBattleback(this._params[0], this._params[1]);
         return true;
     };
     // Change Parallax
     Game_Interpreter.prototype.command284 = function () {
-        DataManager_1.$gameMap.changeParallax(this._params[0], this._params[1], this._params[2], this._params[3], this._params[4]);
+        globals_1.$gameMap.changeParallax(this._params[0], this._params[1], this._params[2], this._params[3], this._params[4]);
         return true;
     };
     // Get Location Info
@@ -1524,33 +1526,33 @@ var Game_Interpreter = /** @class */ (function () {
         }
         else {
             // Designation with variables
-            x = DataManager_1.$gameVariables.value(this._params[3]);
-            y = DataManager_1.$gameVariables.value(this._params[4]);
+            x = globals_1.$gameVariables.value(this._params[3]);
+            y = globals_1.$gameVariables.value(this._params[4]);
         }
         switch (this._params[1]) {
             case 0: // Terrain Tag
-                value = DataManager_1.$gameMap.terrainTag(x, y);
+                value = globals_1.$gameMap.terrainTag(x, y);
                 break;
             case 1: // Event ID
-                value = DataManager_1.$gameMap.eventIdXy(x, y);
+                value = globals_1.$gameMap.eventIdXy(x, y);
                 break;
             case 2: // Tile ID (Layer 1)
             case 3: // Tile ID (Layer 2)
             case 4: // Tile ID (Layer 3)
             case 5: // Tile ID (Layer 4)
-                value = DataManager_1.$gameMap.tileId(x, y, this._params[1] - 2);
+                value = globals_1.$gameMap.tileId(x, y, this._params[1] - 2);
                 break;
             default: // Region ID
-                value = DataManager_1.$gameMap.regionId(x, y);
+                value = globals_1.$gameMap.regionId(x, y);
                 break;
         }
-        DataManager_1.$gameVariables.setValue(this._params[0], value);
+        globals_1.$gameVariables.setValue(this._params[0], value);
         return true;
     };
     // Battle Processing
     Game_Interpreter.prototype.command301 = function () {
         var _this = this;
-        if (!DataManager_1.$gameParty.inBattle()) {
+        if (!globals_1.$gameParty.inBattle()) {
             var troopId = void 0;
             if (this._params[0] === 0) {
                 // Direct designation
@@ -1558,19 +1560,19 @@ var Game_Interpreter = /** @class */ (function () {
             }
             else if (this._params[0] === 1) {
                 // Designation with a variable
-                troopId = DataManager_1.$gameVariables.value(this._params[1]);
+                troopId = globals_1.$gameVariables.value(this._params[1]);
             }
             else {
                 // Same as Random Encounter
-                troopId = DataManager_1.$gamePlayer.makeEncounterTroopId();
+                troopId = globals_1.$gamePlayer.makeEncounterTroopId();
             }
-            if (DataManager_1.$dataTroops[troopId]) {
+            if (globals_1.$dataTroops[troopId]) {
                 BattleManager_1.BattleManager.setup(troopId, this._params[2], this._params[3]);
                 BattleManager_1.BattleManager.setEventCallback(function (n) {
                     _this._branch[_this._indent] = n;
                 });
-                DataManager_1.$gamePlayer.makeEncounterCount();
-                SceneManager_1.SceneManager.push(scenes_1.Scene_Battle);
+                globals_1.$gamePlayer.makeEncounterCount();
+                SceneManager_1.SceneManager.push(SceneBattle_1.Scene_Battle);
             }
         }
         return true;
@@ -1598,7 +1600,7 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Shop Processing
     Game_Interpreter.prototype.command302 = function () {
-        if (!DataManager_1.$gameParty.inBattle()) {
+        if (!globals_1.$gameParty.inBattle()) {
             var goods = [this._params];
             while (this.nextEventCode() === 605) {
                 this._index++;
@@ -1712,7 +1714,7 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Change Equipment
     Game_Interpreter.prototype.command319 = function () {
-        var actor = DataManager_1.$gameActors.actor(this._params[0]);
+        var actor = globals_1.$gameActors.actor(this._params[0]);
         if (actor) {
             actor.changeEquipById(this._params[1], this._params[2]);
         }
@@ -1720,7 +1722,7 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Change Name
     Game_Interpreter.prototype.command320 = function () {
-        var actor = DataManager_1.$gameActors.actor(this._params[0]);
+        var actor = globals_1.$gameActors.actor(this._params[0]);
         if (actor) {
             actor.setName(this._params[1]);
         }
@@ -1728,26 +1730,26 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Change Class
     Game_Interpreter.prototype.command321 = function () {
-        var actor = DataManager_1.$gameActors.actor(this._params[0]);
-        if (actor && DataManager_1.$dataClasses[this._params[1]]) {
+        var actor = globals_1.$gameActors.actor(this._params[0]);
+        if (actor && globals_1.$dataClasses[this._params[1]]) {
             actor.changeClass(this._params[1], this._params[2]);
         }
         return true;
     };
     // Change Actor Images
     Game_Interpreter.prototype.command322 = function () {
-        var actor = DataManager_1.$gameActors.actor(this._params[0]);
+        var actor = globals_1.$gameActors.actor(this._params[0]);
         if (actor) {
             actor.setCharacterImage(this._params[1], this._params[2]);
             actor.setFaceImage(this._params[3], this._params[4]);
             actor.setBattlerImage(this._params[5]);
         }
-        DataManager_1.$gamePlayer.refresh();
+        globals_1.$gamePlayer.refresh();
         return true;
     };
     // Change Vehicle Image
     Game_Interpreter.prototype.command323 = function () {
-        var vehicle = DataManager_1.$gameMap.vehicle(this._params[0]);
+        var vehicle = globals_1.$gameMap.vehicle(this._params[0]);
         if (vehicle) {
             vehicle.setImage(this._params[1], this._params[2]);
         }
@@ -1755,7 +1757,7 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Change Nickname
     Game_Interpreter.prototype.command324 = function () {
-        var actor = DataManager_1.$gameActors.actor(this._params[0]);
+        var actor = globals_1.$gameActors.actor(this._params[0]);
         if (actor) {
             actor.setNickname(this._params[1]);
         }
@@ -1763,7 +1765,7 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Change Profile
     Game_Interpreter.prototype.command325 = function () {
-        var actor = DataManager_1.$gameActors.actor(this._params[0]);
+        var actor = globals_1.$gameActors.actor(this._params[0]);
         if (actor) {
             actor.setProfile(this._params[1]);
         }
@@ -1823,7 +1825,7 @@ var Game_Interpreter = /** @class */ (function () {
     Game_Interpreter.prototype.command335 = function () {
         this.iterateEnemyIndex(this._params[0], function (enemy) {
             enemy.appear();
-            DataManager_1.$gameTroop.makeUniqueNames();
+            globals_1.$gameTroop.makeUniqueNames();
         });
         return true;
     };
@@ -1832,7 +1834,7 @@ var Game_Interpreter = /** @class */ (function () {
         var _this = this;
         this.iterateEnemyIndex(this._params[0], function (enemy) {
             enemy.transform(_this._params[1]);
-            DataManager_1.$gameTroop.makeUniqueNames();
+            globals_1.$gameTroop.makeUniqueNames();
         });
         return true;
     };
@@ -1874,9 +1876,9 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Open Menu Screen
     Game_Interpreter.prototype.command351 = function () {
-        if (!DataManager_1.$gameParty.inBattle()) {
+        if (!globals_1.$gameParty.inBattle()) {
             SceneManager_1.SceneManager.push(SceneMenu_1.Scene_Menu);
-            windows_1.Window_MenuCommand.initCommandPosition();
+            WindowMenuCommand_1.Window_MenuCommand.initCommandPosition();
         }
         return true;
     };
@@ -1890,12 +1892,12 @@ var Game_Interpreter = /** @class */ (function () {
     };
     // Game Over
     Game_Interpreter.prototype.command353 = function () {
-        SceneManager_1.SceneManager.goto(scenes_1.Scene_Gameover);
+        SceneManager_1.SceneManager.goto(SceneGameOver_1.Scene_Gameover);
         return true;
     };
     // Return to Title Screen
     Game_Interpreter.prototype.command354 = function () {
-        SceneManager_1.SceneManager.goto(scenes_1.Scene_Title);
+        SceneManager_1.SceneManager.goto(SceneTitle_1.Scene_Title);
         return true;
     };
     // Script
@@ -1905,7 +1907,6 @@ var Game_Interpreter = /** @class */ (function () {
             this._index++;
             script += this.currentCommand().parameters[0] + "\n";
         }
-        setGameObjects();
         // eslint-disable-next-line no-eval
         eval(script);
         return true;

@@ -16,8 +16,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_BattleStatus = void 0;
-var core_1 = require("../core");
-var DataManager_1 = require("../managers/DataManager");
+var Graphics_1 = require("../core/Graphics");
+var globals_1 = require("../managers/globals");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_BattleStatus = /** @class */ (function (_super) {
     __extends(Window_BattleStatus, _super);
@@ -35,14 +35,14 @@ var Window_BattleStatus = /** @class */ (function (_super) {
         }
         var width = this.windowWidth();
         var height = this.windowHeight();
-        var x = core_1.Graphics.boxWidth - width;
-        var y = core_1.Graphics.boxHeight - height;
+        var x = Graphics_1.Graphics.boxWidth - width;
+        var y = Graphics_1.Graphics.boxHeight - height;
         _super.prototype.initialize.call(this, x, y, width, height);
         this.refresh();
         this.openness = 0;
     };
     Window_BattleStatus.prototype.windowWidth = function () {
-        return core_1.Graphics.boxWidth - 192;
+        return Graphics_1.Graphics.boxWidth - 192;
     };
     Window_BattleStatus.prototype.windowHeight = function () {
         return this.fittingHeight(this.numVisibleRows());
@@ -51,14 +51,14 @@ var Window_BattleStatus = /** @class */ (function (_super) {
         return 4;
     };
     Window_BattleStatus.prototype.maxItems = function () {
-        return DataManager_1.$gameParty.battleMembers().length;
+        return globals_1.$gameParty.battleMembers().length;
     };
     Window_BattleStatus.prototype.refresh = function () {
         this.contents.clear();
         this.drawAllItems();
     };
     Window_BattleStatus.prototype.drawItem = function (index) {
-        var actor = DataManager_1.$gameParty.battleMembers()[index];
+        var actor = globals_1.$gameParty.battleMembers()[index];
         this.drawBasicArea(this.basicAreaRect(index), actor);
         this.drawGaugeArea(this.gaugeAreaRect(index), actor);
     };
@@ -81,7 +81,7 @@ var Window_BattleStatus = /** @class */ (function (_super) {
         this.drawActorIcons(actor, rect.x + 156, rect.y, rect.width - 156);
     };
     Window_BattleStatus.prototype.drawGaugeArea = function (rect, actor) {
-        if (DataManager_1.$dataSystem.optDisplayTp) {
+        if (globals_1.$dataSystem.optDisplayTp) {
             this.drawGaugeAreaWithTp(rect, actor);
         }
         else {

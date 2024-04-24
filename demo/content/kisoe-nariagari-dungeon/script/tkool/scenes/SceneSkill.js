@@ -16,8 +16,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Scene_Skill = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Graphics_1 = require("../core/Graphics");
+var SoundManager_1 = require("../managers/SoundManager");
 var WindowSkillList_1 = require("../windows/WindowSkillList");
 var WindowSkillStatus_1 = require("../windows/WindowSkillStatus");
 var WindowSkillType_1 = require("../windows/WindowSkillType");
@@ -59,7 +59,7 @@ var Scene_Skill = /** @class */ (function (_super) {
     Scene_Skill.prototype.createStatusWindow = function () {
         var wx = this._skillTypeWindow.width;
         var wy = this._helpWindow.height;
-        var ww = core_1.Graphics.boxWidth - wx;
+        var ww = Graphics_1.Graphics.boxWidth - wx;
         var wh = this._skillTypeWindow.height;
         this._statusWindow = new WindowSkillStatus_1.Window_SkillStatus(wx, wy, ww, wh);
         this._statusWindow.reserveFaceImages();
@@ -68,8 +68,8 @@ var Scene_Skill = /** @class */ (function (_super) {
     Scene_Skill.prototype.createItemWindow = function () {
         var wx = 0;
         var wy = this._statusWindow.y + this._statusWindow.height;
-        var ww = core_1.Graphics.boxWidth;
-        var wh = core_1.Graphics.boxHeight - wy;
+        var ww = Graphics_1.Graphics.boxWidth;
+        var wh = Graphics_1.Graphics.boxHeight - wy;
         this._itemWindow = new WindowSkillList_1.Window_SkillList(wx, wy, ww, wh);
         this._itemWindow.setHelpWindow(this._helpWindow);
         this._itemWindow.setHandler("ok", this.onItemOk.bind(this));
@@ -99,7 +99,7 @@ var Scene_Skill = /** @class */ (function (_super) {
         this._skillTypeWindow.activate();
     };
     Scene_Skill.prototype.playSeForItem = function () {
-        managers_1.SoundManager.playUseSkill();
+        SoundManager_1.SoundManager.playUseSkill();
     };
     Scene_Skill.prototype.useItem = function () {
         _super.prototype.useItem.call(this);

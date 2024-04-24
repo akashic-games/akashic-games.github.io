@@ -16,8 +16,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_ItemList = void 0;
-var managers_1 = require("../managers");
 var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_ItemList = /** @class */ (function (_super) {
     __extends(Window_ItemList, _super);
@@ -59,13 +59,13 @@ var Window_ItemList = /** @class */ (function (_super) {
     Window_ItemList.prototype.includes = function (item) {
         switch (this._category) {
             case "item":
-                return managers_1.DataManager.isItem(item) && item.itypeId === 1;
+                return DataManager_1.DataManager.isItem(item) && item.itypeId === 1;
             case "weapon":
-                return managers_1.DataManager.isWeapon(item);
+                return DataManager_1.DataManager.isWeapon(item);
             case "armor":
-                return managers_1.DataManager.isArmor(item);
+                return DataManager_1.DataManager.isArmor(item);
             case "keyItem":
-                return managers_1.DataManager.isItem(item) && item.itypeId === 2;
+                return DataManager_1.DataManager.isItem(item) && item.itypeId === 2;
             default:
                 return false;
         }
@@ -74,11 +74,11 @@ var Window_ItemList = /** @class */ (function (_super) {
         return true;
     };
     Window_ItemList.prototype.isEnabled = function (item) {
-        return DataManager_1.$gameParty.canUse(item);
+        return globals_1.$gameParty.canUse(item);
     };
     Window_ItemList.prototype.makeItemList = function () {
         var _this = this;
-        this._data = DataManager_1.$gameParty.allItems().filter(function (item) {
+        this._data = globals_1.$gameParty.allItems().filter(function (item) {
             return _this.includes(item);
         });
         if (this.includes(null)) {
@@ -86,7 +86,7 @@ var Window_ItemList = /** @class */ (function (_super) {
         }
     };
     Window_ItemList.prototype.selectLast = function () {
-        var index = this._data.indexOf(DataManager_1.$gameParty.lastItem());
+        var index = this._data.indexOf(globals_1.$gameParty.lastItem());
         this.select(index >= 0 ? index : 0);
     };
     Window_ItemList.prototype.drawItem = function (index) {
@@ -107,7 +107,7 @@ var Window_ItemList = /** @class */ (function (_super) {
     Window_ItemList.prototype.drawItemNumber = function (item, x, y, width) {
         if (this.needsNumber()) {
             this.drawText(":", x, y, width - this.textWidth("00"), "right");
-            this.drawText(DataManager_1.$gameParty.numItems(item), x, y, width, "right");
+            this.drawText(globals_1.$gameParty.numItems(item), x, y, width, "right");
         }
     };
     Window_ItemList.prototype.updateHelp = function () {

@@ -1,17 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Followers = void 0;
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var GameFollower_1 = require("./GameFollower");
 var Game_Followers = /** @class */ (function () {
     function Game_Followers() {
         this.initialize();
     }
     Game_Followers.prototype.initialize = function () {
-        this._visible = DataManager_1.$dataSystem.optFollowers;
+        this._visible = globals_1.$dataSystem.optFollowers;
         this._gathering = false;
         this._data = [];
-        for (var i = 1; i < DataManager_1.$gameParty.maxBattleMembers(); i++) {
+        for (var i = 1; i < globals_1.$gameParty.maxBattleMembers(); i++) {
             this._data.push(new GameFollower_1.Game_Follower(i));
         }
     };
@@ -55,16 +55,16 @@ var Game_Followers = /** @class */ (function () {
     };
     Game_Followers.prototype.updateMove = function () {
         for (var i = this._data.length - 1; i >= 0; i--) {
-            var precedingCharacter = i > 0 ? this._data[i - 1] : DataManager_1.$gamePlayer;
+            var precedingCharacter = i > 0 ? this._data[i - 1] : globals_1.$gamePlayer;
             this._data[i].chaseCharacter(precedingCharacter);
         }
     };
     Game_Followers.prototype.jumpAll = function () {
-        if (DataManager_1.$gamePlayer.isJumping()) {
+        if (globals_1.$gamePlayer.isJumping()) {
             for (var i = 0; i < this._data.length; i++) {
                 var follower = this._data[i];
-                var sx = DataManager_1.$gamePlayer.deltaXFrom(follower.x);
-                var sy = DataManager_1.$gamePlayer.deltaYFrom(follower.y);
+                var sx = globals_1.$gamePlayer.deltaXFrom(follower.x);
+                var sy = globals_1.$gamePlayer.deltaYFrom(follower.y);
                 follower.jump(sx, sy);
             }
         }
@@ -93,7 +93,7 @@ var Game_Followers = /** @class */ (function () {
     };
     Game_Followers.prototype.areGathered = function () {
         return this.visibleFollowers().every(function (follower) {
-            return !follower.isMoving() && follower.pos(DataManager_1.$gamePlayer.x, DataManager_1.$gamePlayer.y);
+            return !follower.isMoving() && follower.pos(globals_1.$gamePlayer.x, globals_1.$gamePlayer.y);
         }, this);
     };
     Game_Followers.prototype.isSomeoneCollided = function (x, y) {

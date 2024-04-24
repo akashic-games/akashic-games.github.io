@@ -16,8 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_Status = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Graphics_1 = require("../core/Graphics");
+var Utils_1 = require("../core/Utils");
+var TextManager_1 = require("../managers/TextManager");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_Status = /** @class */ (function (_super) {
     __extends(Window_Status, _super);
@@ -29,8 +30,8 @@ var Window_Status = /** @class */ (function (_super) {
         return _super.apply(this, args) || this;
     }
     Window_Status.prototype.initialize = function () {
-        var width = core_1.Graphics.boxWidth;
-        var height = core_1.Graphics.boxHeight;
+        var width = Graphics_1.Graphics.boxWidth;
+        var height = Graphics_1.Graphics.boxHeight;
         _super.prototype.initialize.call(this, 0, 0, width, height);
         this._actor = null;
         this.refresh();
@@ -94,15 +95,15 @@ var Window_Status = /** @class */ (function (_super) {
             var paramId = i + 2;
             var y2 = y + lineHeight * i;
             this.changeTextColor(this.systemColor());
-            this.drawText(managers_1.TextManager.param(paramId), x, y2, 160);
+            this.drawText(TextManager_1.TextManager.param(paramId), x, y2, 160);
             this.resetTextColor();
             this.drawText(this._actor.param(paramId), x + 160, y2, 60, "right");
         }
     };
     Window_Status.prototype.drawExpInfo = function (x, y) {
         var lineHeight = this.lineHeight();
-        var expTotal = core_1.Utils.format(managers_1.TextManager.expTotal, managers_1.TextManager.exp);
-        var expNext = core_1.Utils.format(managers_1.TextManager.expNext, managers_1.TextManager.level);
+        var expTotal = Utils_1.Utils.format(TextManager_1.TextManager.expTotal, TextManager_1.TextManager.exp);
+        var expNext = Utils_1.Utils.format(TextManager_1.TextManager.expNext, TextManager_1.TextManager.level);
         var value1 = this._actor.currentExp();
         var value2 = this._actor.nextRequiredExp();
         if (this._actor.isMaxLevel()) {

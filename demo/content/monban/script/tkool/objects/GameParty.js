@@ -16,9 +16,10 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Party = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Utils_1 = require("../core/Utils");
 var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
+var TextManager_1 = require("../managers/TextManager");
 var GameItem_1 = require("./GameItem");
 var GameUnit_1 = require("./GameUnit");
 var Game_Party = /** @class */ (function (_super) {
@@ -59,7 +60,7 @@ var Game_Party = /** @class */ (function (_super) {
     };
     Game_Party.prototype.allMembers = function () {
         return this._actors.map(function (id) {
-            return DataManager_1.$gameActors.actor(id);
+            return globals_1.$gameActors.actor(id);
         });
     };
     Game_Party.prototype.battleMembers = function () {
@@ -86,7 +87,7 @@ var Game_Party = /** @class */ (function (_super) {
         var list = [];
         for (var id in this._items) {
             if (this._items.hasOwnProperty(id)) {
-                list.push(DataManager_1.$dataItems[id]);
+                list.push(globals_1.$dataItems[id]);
             }
         }
         return list;
@@ -95,7 +96,7 @@ var Game_Party = /** @class */ (function (_super) {
         var list = [];
         for (var id in this._weapons) {
             if (this._weapons.hasOwnProperty(id)) {
-                list.push(DataManager_1.$dataWeapons[id]);
+                list.push(globals_1.$dataWeapons[id]);
             }
         }
         return list;
@@ -104,7 +105,7 @@ var Game_Party = /** @class */ (function (_super) {
         var list = [];
         for (var id in this._armors) {
             if (this._armors.hasOwnProperty(id)) {
-                list.push(DataManager_1.$dataArmors[id]);
+                list.push(globals_1.$dataArmors[id]);
             }
         }
         return list;
@@ -119,13 +120,13 @@ var Game_Party = /** @class */ (function (_super) {
         if (!item) {
             return null;
         }
-        else if (managers_1.DataManager.isItem(item)) {
+        else if (DataManager_1.DataManager.isItem(item)) {
             return this._items;
         }
-        else if (managers_1.DataManager.isWeapon(item)) {
+        else if (DataManager_1.DataManager.isWeapon(item)) {
             return this._weapons;
         }
-        else if (managers_1.DataManager.isArmor(item)) {
+        else if (DataManager_1.DataManager.isArmor(item)) {
             return this._armors;
         }
         else {
@@ -135,8 +136,8 @@ var Game_Party = /** @class */ (function (_super) {
     Game_Party.prototype.setupStartingMembers = function () {
         var _this = this;
         this._actors = [];
-        DataManager_1.$dataSystem.partyMembers.forEach(function (actorId) {
-            if (DataManager_1.$gameActors.actor(actorId)) {
+        globals_1.$dataSystem.partyMembers.forEach(function (actorId) {
+            if (globals_1.$gameActors.actor(actorId)) {
                 _this._actors.push(actorId);
             }
         });
@@ -150,7 +151,7 @@ var Game_Party = /** @class */ (function (_super) {
             return this.leader().name();
         }
         else {
-            return core_1.Utils.format(managers_1.TextManager.partyName, this.leader().name());
+            return Utils_1.Utils.format(TextManager_1.TextManager.partyName, this.leader().name());
         }
     };
     Game_Party.prototype.setupBattleTest = function () {
@@ -159,8 +160,8 @@ var Game_Party = /** @class */ (function (_super) {
     };
     Game_Party.prototype.setupBattleTestMembers = function () {
         var _this = this;
-        DataManager_1.$dataSystem.testBattlers.forEach(function (battler) {
-            var actor = DataManager_1.$gameActors.actor(battler.actorId);
+        globals_1.$dataSystem.testBattlers.forEach(function (battler) {
+            var actor = globals_1.$gameActors.actor(battler.actorId);
             if (actor) {
                 actor.changeLevel(battler.level, false);
                 actor.initEquips(battler.equips);
@@ -171,7 +172,7 @@ var Game_Party = /** @class */ (function (_super) {
     };
     Game_Party.prototype.setupBattleTestItems = function () {
         var _this = this;
-        DataManager_1.$dataItems.forEach(function (item) {
+        globals_1.$dataItems.forEach(function (item) {
             if (item && item.name.length > 0) {
                 _this.gainItem(item, _this.maxItems(item));
             }
@@ -185,22 +186,22 @@ var Game_Party = /** @class */ (function (_super) {
     Game_Party.prototype.addActor = function (actorId) {
         if ( /* !this._actors.contains(actorId)*/this._actors.indexOf(actorId) < 0) {
             this._actors.push(actorId);
-            DataManager_1.$gamePlayer.refresh();
-            DataManager_1.$gameMap.requestRefresh();
+            globals_1.$gamePlayer.refresh();
+            globals_1.$gameMap.requestRefresh();
         }
     };
     Game_Party.prototype.removeActor = function (actorId) {
         if ( /* this._actors.contains(actorId)*/this._actors.indexOf(actorId) >= 0) {
             this._actors.splice(this._actors.indexOf(actorId), 1);
-            DataManager_1.$gamePlayer.refresh();
-            DataManager_1.$gameMap.requestRefresh();
+            globals_1.$gamePlayer.refresh();
+            globals_1.$gameMap.requestRefresh();
         }
     };
     Game_Party.prototype.gold = function () {
         return this._gold;
     };
     Game_Party.prototype.gainGold = function (amount) {
-        this._gold = core_1.Utils.clamp(0, Math.min(this._gold + amount), this.maxGold());
+        this._gold = Utils_1.Utils.clamp(0, Math.min(this._gold + amount), this.maxGold());
     };
     Game_Party.prototype.loseGold = function (amount) {
         this.gainGold(-amount);
@@ -240,7 +241,7 @@ var Game_Party = /** @class */ (function (_super) {
     };
     Game_Party.prototype.isAnyMemberEquipped = function (item) {
         return this.members().some(function (actor) {
-            return core_1.Utils.contains(actor.equips(), item);
+            return Utils_1.Utils.contains(actor.equips(), item);
         });
     };
     Game_Party.prototype.gainItem = function (item, amount, includeEquip) {
@@ -248,14 +249,14 @@ var Game_Party = /** @class */ (function (_super) {
         if (container) {
             var lastNumber = this.numItems(item);
             var newNumber = lastNumber + amount;
-            container[item.id] = core_1.Utils.clamp(newNumber, 0, this.maxItems(item));
+            container[item.id] = Utils_1.Utils.clamp(newNumber, 0, this.maxItems(item));
             if (container[item.id] === 0) {
                 delete container[item.id];
             }
             if (includeEquip && newNumber < 0) {
                 this.discardMembersEquip(item, -newNumber);
             }
-            DataManager_1.$gameMap.requestRefresh();
+            globals_1.$gameMap.requestRefresh();
         }
     };
     Game_Party.prototype.discardMembersEquip = function (item, amount) {
@@ -271,7 +272,7 @@ var Game_Party = /** @class */ (function (_super) {
         this.gainItem(item, -amount, includeEquip);
     };
     Game_Party.prototype.consumeItem = function (item) {
-        if (managers_1.DataManager.isItem(item) && item.consumable) {
+        if (DataManager_1.DataManager.isItem(item) && item.consumable) {
             this.loseItem(item, 1);
         }
     };
@@ -299,7 +300,7 @@ var Game_Party = /** @class */ (function (_super) {
         });
     };
     Game_Party.prototype.menuActor = function () {
-        var actor = DataManager_1.$gameActors.actor(this._menuActorId);
+        var actor = globals_1.$gameActors.actor(this._menuActorId);
         if ( /* !this.members().contains(actor)*/this.members().indexOf(actor) < 0) {
             actor = this.members()[0];
         }
@@ -329,7 +330,7 @@ var Game_Party = /** @class */ (function (_super) {
         }
     };
     Game_Party.prototype.targetActor = function () {
-        var actor = DataManager_1.$gameActors.actor(this._targetActorId);
+        var actor = globals_1.$gameActors.actor(this._targetActorId);
         if ( /* !this.members().contains(actor)*/this.members().indexOf(actor) < 0) {
             actor = this.members()[0];
         }
@@ -348,7 +349,7 @@ var Game_Party = /** @class */ (function (_super) {
         var temp = this._actors[index1];
         this._actors[index1] = this._actors[index2];
         this._actors[index2] = temp;
-        DataManager_1.$gamePlayer.refresh();
+        globals_1.$gamePlayer.refresh();
     };
     Game_Party.prototype.charactersForSavefile = function () {
         return this.battleMembers().map(function (actor) {
@@ -426,3 +427,6 @@ var Game_Party = /** @class */ (function (_super) {
     return Game_Party;
 }(GameUnit_1.Game_Unit));
 exports.Game_Party = Game_Party;
+(0, globals_1.set$gamePartyFactory)(function () {
+    return new Game_Party();
+});

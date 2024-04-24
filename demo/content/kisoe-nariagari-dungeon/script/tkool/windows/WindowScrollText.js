@@ -16,8 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_ScrollText = void 0;
-var core_1 = require("../core");
-var DataManager_1 = require("../managers/DataManager");
+var Graphics_1 = require("../core/Graphics");
+var TouchInput_1 = require("../core/TouchInput");
+var globals_1 = require("../managers/globals");
 var WindowBase_1 = require("./WindowBase");
 var Window_ScrollText = /** @class */ (function (_super) {
     __extends(Window_ScrollText, _super);
@@ -28,8 +29,8 @@ var Window_ScrollText = /** @class */ (function (_super) {
         // }
     }
     Window_ScrollText.prototype.initialize = function () {
-        var width = core_1.Graphics.boxWidth;
-        var height = core_1.Graphics.boxHeight;
+        var width = Graphics_1.Graphics.boxWidth;
+        var height = Graphics_1.Graphics.boxHeight;
         _super.prototype.initialize.call(this, 0, 0, width, height);
         this.opacity = 0;
         this.hide();
@@ -38,17 +39,17 @@ var Window_ScrollText = /** @class */ (function (_super) {
     };
     Window_ScrollText.prototype.update = function () {
         _super.prototype.update.call(this);
-        if (DataManager_1.$gameMessage.scrollMode()) {
+        if (globals_1.$gameMessage.scrollMode()) {
             if (this._text) {
                 this.updateMessage();
             }
-            if (!this._text && DataManager_1.$gameMessage.hasText()) {
+            if (!this._text && globals_1.$gameMessage.hasText()) {
                 this.startMessage();
             }
         }
     };
     Window_ScrollText.prototype.startMessage = function () {
-        this._text = DataManager_1.$gameMessage.allText();
+        this._text = globals_1.$gameMessage.allText();
         this.refresh();
         this.show();
     };
@@ -74,20 +75,20 @@ var Window_ScrollText = /** @class */ (function (_super) {
         }
     };
     Window_ScrollText.prototype.scrollSpeed = function () {
-        var speed = DataManager_1.$gameMessage.scrollSpeed() / 2;
+        var speed = globals_1.$gameMessage.scrollSpeed() / 2;
         if (this.isFastForward()) {
             speed *= this.fastForwardRate();
         }
         return speed;
     };
     Window_ScrollText.prototype.isFastForward = function () {
-        if (DataManager_1.$gameMessage.scrollNoFast()) {
+        if (globals_1.$gameMessage.scrollNoFast()) {
             return false;
         }
         else {
             return (
             /* Input.isPressed("ok") || Input.isPressed("shift") ||*/
-            core_1.TouchInput.isPressed());
+            TouchInput_1.TouchInput.isPressed());
         }
     };
     Window_ScrollText.prototype.fastForwardRate = function () {
@@ -95,7 +96,7 @@ var Window_ScrollText = /** @class */ (function (_super) {
     };
     Window_ScrollText.prototype.terminateMessage = function () {
         this._text = null;
-        DataManager_1.$gameMessage.clear();
+        globals_1.$gameMessage.clear();
         this.hide();
     };
     return Window_ScrollText;

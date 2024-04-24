@@ -16,8 +16,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Scene_Base = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Graphics_1 = require("../core/Graphics");
+var ScreenSprite_1 = require("../core/ScreenSprite");
+var Stage_1 = require("../core/Stage");
+var Utils_1 = require("../core/Utils");
+var WindowLayer_1 = require("../core/WindowLayer");
+var AudioManager_1 = require("../managers/AudioManager");
+var ImageManager_1 = require("../managers/ImageManager");
+var SceneManager_1 = require("../managers/SceneManager");
 var Scene_Base = /** @class */ (function (_super) {
     __extends(Scene_Base, _super);
     function Scene_Base() {
@@ -29,17 +35,18 @@ var Scene_Base = /** @class */ (function (_super) {
         return _this;
     }
     Scene_Base.prototype.initialize = function () {
+        _super.prototype.initialize.call(this);
         this._active = false;
         this._fadeSign = 0;
         this._fadeDuration = 0;
         this._fadeSprite = null;
-        this._imageReservationId = core_1.Utils.generateRuntimeId();
+        this._imageReservationId = Utils_1.Utils.generateRuntimeId();
     };
     Scene_Base.prototype.attachReservation = function () {
-        managers_1.ImageManager.setDefaultReservationId(this._imageReservationId);
+        ImageManager_1.ImageManager.setDefaultReservationId(this._imageReservationId);
     };
     Scene_Base.prototype.detachReservation = function () {
-        managers_1.ImageManager.releaseReservation(this._imageReservationId);
+        ImageManager_1.ImageManager.releaseReservation(this._imageReservationId);
     };
     Scene_Base.prototype.create = function () {
         //
@@ -48,7 +55,7 @@ var Scene_Base = /** @class */ (function (_super) {
         return this._active;
     };
     Scene_Base.prototype.isReady = function () {
-        return managers_1.ImageManager.isReady();
+        return ImageManager_1.ImageManager.isReady();
     };
     Scene_Base.prototype.start = function () {
         this._active = true;
@@ -67,11 +74,11 @@ var Scene_Base = /** @class */ (function (_super) {
         //
     };
     Scene_Base.prototype.createWindowLayer = function () {
-        var width = core_1.Graphics.boxWidth;
-        var height = core_1.Graphics.boxHeight;
-        var x = (core_1.Graphics.width - width) / 2;
-        var y = (core_1.Graphics.height - height) / 2;
-        this._windowLayer = new core_1.WindowLayer();
+        var width = Graphics_1.Graphics.boxWidth;
+        var height = Graphics_1.Graphics.boxHeight;
+        var x = (Graphics_1.Graphics.width - width) / 2;
+        var y = (Graphics_1.Graphics.height - height) / 2;
+        this._windowLayer = new WindowLayer_1.WindowLayer();
         this._windowLayer.move(x, y, width, height);
         this.addChild(this._windowLayer);
     };
@@ -92,7 +99,7 @@ var Scene_Base = /** @class */ (function (_super) {
     };
     Scene_Base.prototype.createFadeSprite = function (white) {
         if (!this._fadeSprite) {
-            this._fadeSprite = new core_1.ScreenSprite(white ? "white" : "black");
+            this._fadeSprite = new ScreenSprite_1.ScreenSprite(white ? "white" : "black");
             this.addChild(this._fadeSprite);
         }
         if (white) {
@@ -141,7 +148,7 @@ var Scene_Base = /** @class */ (function (_super) {
         });
     };
     Scene_Base.prototype.popScene = function () {
-        managers_1.SceneManager.pop();
+        SceneManager_1.SceneManager.pop();
     };
     Scene_Base.prototype.checkGameover = function () {
         // if ($gameParty.isAllDead()) {
@@ -150,9 +157,9 @@ var Scene_Base = /** @class */ (function (_super) {
     };
     Scene_Base.prototype.fadeOutAll = function () {
         var time = this.slowFadeSpeed() / 60;
-        managers_1.AudioManager.fadeOutBgm(time);
-        managers_1.AudioManager.fadeOutBgs(time);
-        managers_1.AudioManager.fadeOutMe(time);
+        AudioManager_1.AudioManager.fadeOutBgm(time);
+        AudioManager_1.AudioManager.fadeOutBgs(time);
+        AudioManager_1.AudioManager.fadeOutMe(time);
         this.startFadeOut(this.slowFadeSpeed());
     };
     Scene_Base.prototype.fadeSpeed = function () {
@@ -165,5 +172,5 @@ var Scene_Base = /** @class */ (function (_super) {
         return 0;
     };
     return Scene_Base;
-}(core_1.Stage));
+}(Stage_1.Stage));
 exports.Scene_Base = Scene_Base;

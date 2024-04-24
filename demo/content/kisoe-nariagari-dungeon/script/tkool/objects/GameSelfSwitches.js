@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_SelfSwitches = void 0;
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var Game_SelfSwitches = /** @class */ (function () {
     function Game_SelfSwitches() {
         this.initialize();
@@ -25,8 +25,11 @@ var Game_SelfSwitches = /** @class */ (function () {
         this.onChange();
     };
     Game_SelfSwitches.prototype.onChange = function () {
-        DataManager_1.$gameMap.requestRefresh();
+        globals_1.$gameMap.requestRefresh();
     };
     return Game_SelfSwitches;
 }());
 exports.Game_SelfSwitches = Game_SelfSwitches;
+(0, globals_1.set$gameSelfSwitchesFactory)(function () {
+    return new Game_SelfSwitches();
+});

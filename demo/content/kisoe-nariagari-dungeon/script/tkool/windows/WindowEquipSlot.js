@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_EquipSlot = void 0;
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_EquipSlot = /** @class */ (function (_super) {
     __extends(Window_EquipSlot, _super);
@@ -58,7 +58,7 @@ var Window_EquipSlot = /** @class */ (function (_super) {
     };
     Window_EquipSlot.prototype.slotName = function (index) {
         var slots = this._actor.equipSlots();
-        return this._actor ? DataManager_1.$dataSystem.equipTypes[slots[index]] : "";
+        return this._actor ? globals_1.$dataSystem.equipTypes[slots[index]] : "";
     };
     Window_EquipSlot.prototype.isEnabled = function (index) {
         return this._actor ? this._actor.isEquipChangeOk(index) : false;

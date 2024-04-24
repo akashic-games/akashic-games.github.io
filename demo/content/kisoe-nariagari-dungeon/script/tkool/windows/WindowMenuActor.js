@@ -17,7 +17,8 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_MenuActor = void 0;
 var DataManager_1 = require("../managers/DataManager");
-var objects_1 = require("../objects");
+var globals_1 = require("../managers/globals");
+var GameAction_1 = require("../objects/GameAction");
 var WindowMenuStatus_1 = require("./WindowMenuStatus");
 var Window_MenuActor = /** @class */ (function (_super) {
     __extends(Window_MenuActor, _super);
@@ -34,16 +35,16 @@ var Window_MenuActor = /** @class */ (function (_super) {
     };
     Window_MenuActor.prototype.processOk = function () {
         if (!this.cursorAll()) {
-            DataManager_1.$gameParty.setTargetActor(DataManager_1.$gameParty.members()[this.index()]);
+            globals_1.$gameParty.setTargetActor(globals_1.$gameParty.members()[this.index()]);
         }
         this.callOkHandler();
     };
     Window_MenuActor.prototype.selectLast = function () {
-        this.select(DataManager_1.$gameParty.targetActor().index() || 0);
+        this.select(globals_1.$gameParty.targetActor().index() || 0);
     };
     Window_MenuActor.prototype.selectForItem = function (item) {
-        var actor = DataManager_1.$gameParty.menuActor();
-        var action = new objects_1.Game_Action(actor);
+        var actor = globals_1.$gameParty.menuActor();
+        var action = new GameAction_1.Game_Action(actor);
         action.setItemObject(item);
         this.setCursorFixed(false);
         this.setCursorAll(false);

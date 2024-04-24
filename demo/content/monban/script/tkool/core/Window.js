@@ -38,6 +38,7 @@ var Window = /** @class */ (function (_super) {
         for (var _i = 0; _i < arguments.length; _i++) {
             _args[_i] = arguments[_i];
         }
+        _super.prototype.initialize.call(this, _args);
         this._isWindow = true;
         this._windowskin = null;
         this._width = 0;

@@ -16,9 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_ActorCommand = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var Graphics_1 = require("../core/Graphics");
+var globals_1 = require("../managers/globals");
+var TextManager_1 = require("../managers/TextManager");
 var WindowCommand_1 = require("./WindowCommand");
 var Window_ActorCommand = /** @class */ (function (_super) {
     __extends(Window_ActorCommand, _super);
@@ -26,7 +26,7 @@ var Window_ActorCommand = /** @class */ (function (_super) {
         return _super.call(this) || this;
     }
     Window_ActorCommand.prototype.initialize = function () {
-        var y = core_1.Graphics.boxHeight - this.windowHeight();
+        var y = Graphics_1.Graphics.boxHeight - this.windowHeight();
         _super.prototype.initialize.call(this, 0, y);
         this.openness = 0;
         this.deactivate();
@@ -47,7 +47,7 @@ var Window_ActorCommand = /** @class */ (function (_super) {
         }
     };
     Window_ActorCommand.prototype.addAttackCommand = function () {
-        this.addCommand(managers_1.TextManager.attack, "attack", this._actor.canAttack());
+        this.addCommand(TextManager_1.TextManager.attack, "attack", this._actor.canAttack());
     };
     Window_ActorCommand.prototype.addSkillCommands = function () {
         var _this = this;
@@ -56,15 +56,15 @@ var Window_ActorCommand = /** @class */ (function (_super) {
             return a - b;
         });
         skillTypes.forEach(function (stypeId) {
-            var name = DataManager_1.$dataSystem.skillTypes[stypeId];
+            var name = globals_1.$dataSystem.skillTypes[stypeId];
             _this.addCommand(name, "skill", true, stypeId);
         });
     };
     Window_ActorCommand.prototype.addGuardCommand = function () {
-        this.addCommand(managers_1.TextManager.guard, "guard", this._actor.canGuard());
+        this.addCommand(TextManager_1.TextManager.guard, "guard", this._actor.canGuard());
     };
     Window_ActorCommand.prototype.addItemCommand = function () {
-        this.addCommand(managers_1.TextManager.item, "item");
+        this.addCommand(TextManager_1.TextManager.item, "item");
     };
     Window_ActorCommand.prototype.setup = function (actor) {
         this._actor = actor;

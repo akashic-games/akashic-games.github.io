@@ -16,8 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_PartyCommand = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Graphics_1 = require("../core/Graphics");
+var BattleManager_1 = require("../managers/BattleManager");
+var TextManager_1 = require("../managers/TextManager");
 var WindowCommand_1 = require("./WindowCommand");
 var Window_PartyCommand = /** @class */ (function (_super) {
     __extends(Window_PartyCommand, _super);
@@ -25,7 +26,7 @@ var Window_PartyCommand = /** @class */ (function (_super) {
         return _super.call(this) || this;
     }
     Window_PartyCommand.prototype.initialize = function () {
-        var y = core_1.Graphics.boxHeight - this.windowHeight();
+        var y = Graphics_1.Graphics.boxHeight - this.windowHeight();
         _super.prototype.initialize.call(this, 0, y);
         this.openness = 0;
         this.deactivate();
@@ -37,8 +38,8 @@ var Window_PartyCommand = /** @class */ (function (_super) {
         return 4;
     };
     Window_PartyCommand.prototype.makeCommandList = function () {
-        this.addCommand(managers_1.TextManager.fight, "fight");
-        this.addCommand(managers_1.TextManager.escape, "escape", managers_1.BattleManager.canEscape());
+        this.addCommand(TextManager_1.TextManager.fight, "fight");
+        this.addCommand(TextManager_1.TextManager.escape, "escape", BattleManager_1.BattleManager.canEscape());
     };
     Window_PartyCommand.prototype.setup = function () {
         this.clearCommandList();

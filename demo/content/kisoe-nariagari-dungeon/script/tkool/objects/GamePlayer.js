@@ -16,9 +16,11 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Player = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var Graphics_1 = require("../core/Graphics");
+var TouchInput_1 = require("../core/TouchInput");
+var Utils_1 = require("../core/Utils");
+var BattleManager_1 = require("../managers/BattleManager");
+var globals_1 = require("../managers/globals");
 var GameCharacter_1 = require("./GameCharacter");
 var GameFollowers_1 = require("./GameFollowers");
 function randomInt(max) {
@@ -35,7 +37,7 @@ var Game_Player = /** @class */ (function (_super) {
     }
     Game_Player.prototype.initialize = function () {
         _super.prototype.initialize.call(this);
-        this.setTransparent(DataManager_1.$dataSystem.optTransparent);
+        this.setTransparent(globals_1.$dataSystem.optTransparent);
     };
     Game_Player.prototype.initMembers = function () {
         _super.prototype.initMembers.call(this);
@@ -64,7 +66,7 @@ var Game_Player = /** @class */ (function (_super) {
         return this._followers;
     };
     Game_Player.prototype.refresh = function () {
-        var actor = DataManager_1.$gameParty.leader();
+        var actor = globals_1.$gameParty.leader();
         var characterName = actor ? actor.characterName() : "";
         var characterIndex = actor ? actor.characterIndex() : 0;
         this.setImage(characterName, characterIndex);
@@ -99,8 +101,8 @@ var Game_Player = /** @class */ (function (_super) {
     Game_Player.prototype.performTransfer = function () {
         if (this.isTransferring()) {
             this.setDirection(this._newDirection);
-            if (this._newMapId !== DataManager_1.$gameMap.mapId() || this._needsMapReload) {
-                DataManager_1.$gameMap.setup(this._newMapId);
+            if (this._newMapId !== globals_1.$gameMap.mapId() || this._needsMapReload) {
+                globals_1.$gameMap.setup(this._newMapId);
                 this._needsMapReload = false;
             }
             this.locate(this._newX, this._newY);
@@ -118,7 +120,7 @@ var Game_Player = /** @class */ (function (_super) {
         }
     };
     Game_Player.prototype.vehicle = function () {
-        return DataManager_1.$gameMap.vehicle(this._vehicleType);
+        return globals_1.$gameMap.vehicle(this._vehicleType);
     };
     Game_Player.prototype.isInBoat = function () {
         return this._vehicleType === "boat";
@@ -151,13 +153,13 @@ var Game_Player = /** @class */ (function (_super) {
         }
     };
     Game_Player.prototype.centerX = function () {
-        return (core_1.Graphics.width / DataManager_1.$gameMap.tileWidth() - 1) / 2.0;
+        return (Graphics_1.Graphics.width / globals_1.$gameMap.tileWidth() - 1) / 2.0;
     };
     Game_Player.prototype.centerY = function () {
-        return (core_1.Graphics.height / DataManager_1.$gameMap.tileHeight() - 1) / 2.0;
+        return (Graphics_1.Graphics.height / globals_1.$gameMap.tileHeight() - 1) / 2.0;
     };
     Game_Player.prototype.center = function (x, y) {
-        return DataManager_1.$gameMap.setDisplayPos(x - this.centerX(), y - this.centerY());
+        return globals_1.$gameMap.setDisplayPos(x - this.centerX(), y - this.centerY());
     };
     Game_Player.prototype.locate = function (x, y) {
         _super.prototype.locate.call(this, x, y);
@@ -171,18 +173,18 @@ var Game_Player = /** @class */ (function (_super) {
     Game_Player.prototype.increaseSteps = function () {
         _super.prototype.increaseSteps.call(this);
         if (this.isNormal()) {
-            DataManager_1.$gameParty.increaseSteps();
+            globals_1.$gameParty.increaseSteps();
         }
     };
     Game_Player.prototype.makeEncounterCount = function () {
-        var n = DataManager_1.$gameMap.encounterStep();
+        var n = globals_1.$gameMap.encounterStep();
         this._encounterCount = randomInt(n) + randomInt(n) + 1;
     };
     Game_Player.prototype.makeEncounterTroopId = function () {
         var _this = this;
         var encounterList = [];
         var weightSum = 0;
-        DataManager_1.$gameMap.encounterList().forEach(function (encounter) {
+        globals_1.$gameMap.encounterList().forEach(function (encounter) {
             if (_this.meetsEncounterConditions(encounter)) {
                 encounterList.push(encounter);
                 weightSum += encounter.weight;
@@ -200,15 +202,15 @@ var Game_Player = /** @class */ (function (_super) {
         return 0;
     };
     Game_Player.prototype.meetsEncounterConditions = function (encounter) {
-        return encounter.regionSet.length === 0 || core_1.Utils.contains(encounter.regionSet, this.regionId());
+        return encounter.regionSet.length === 0 || Utils_1.Utils.contains(encounter.regionSet, this.regionId());
     };
     Game_Player.prototype.executeEncounter = function () {
-        if (!DataManager_1.$gameMap.isEventRunning() && this._encounterCount <= 0) {
+        if (!globals_1.$gameMap.isEventRunning() && this._encounterCount <= 0) {
             this.makeEncounterCount();
             var troopId = this.makeEncounterTroopId();
-            if (DataManager_1.$dataTroops[troopId]) {
-                managers_1.BattleManager.setup(troopId, true, false);
-                managers_1.BattleManager.onEncounter();
+            if (globals_1.$dataTroops[troopId]) {
+                BattleManager_1.BattleManager.setup(troopId, true, false);
+                BattleManager_1.BattleManager.onEncounter();
                 return true;
             }
             else {
@@ -220,8 +222,8 @@ var Game_Player = /** @class */ (function (_super) {
         }
     };
     Game_Player.prototype.startMapEvent = function (x, y, triggers, normal) {
-        if (!DataManager_1.$gameMap.isEventRunning()) {
-            DataManager_1.$gameMap.eventsXy(x, y).forEach(function (event) {
+        if (!globals_1.$gameMap.isEventRunning()) {
+            globals_1.$gameMap.eventsXy(x, y).forEach(function (event) {
                 if (event.isTriggerIn(triggers) && event.isNormalPriority() === normal) {
                     event.start();
                 }
@@ -232,11 +234,11 @@ var Game_Player = /** @class */ (function (_super) {
         if (!this.isMoving() && this.canMove()) {
             var direction = this.getInputDirection();
             if (direction > 0) {
-                DataManager_1.$gameTemp.clearDestination();
+                globals_1.$gameTemp.clearDestination();
             }
-            else if (DataManager_1.$gameTemp.isDestinationValid()) {
-                var x = DataManager_1.$gameTemp.destinationX();
-                var y = DataManager_1.$gameTemp.destinationY();
+            else if (globals_1.$gameTemp.isDestinationValid()) {
+                var x = globals_1.$gameTemp.destinationX();
+                var y = globals_1.$gameTemp.destinationY();
                 direction = this.findDirectionTo(x, y);
             }
             if (direction > 0) {
@@ -245,7 +247,7 @@ var Game_Player = /** @class */ (function (_super) {
         }
     };
     Game_Player.prototype.canMove = function () {
-        if (DataManager_1.$gameMap.isEventRunning() || DataManager_1.$gameMessage.isBusy()) {
+        if (globals_1.$gameMap.isEventRunning() || globals_1.$gameMessage.isBusy()) {
             return false;
         }
         if (this.isMoveRouteForcing() || this.areFollowersGathering()) {
@@ -286,8 +288,8 @@ var Game_Player = /** @class */ (function (_super) {
         if (this.isMoving()) {
             return;
         }
-        if (this.canMove() && !this.isInVehicle() && !DataManager_1.$gameMap.isDashDisabled()) {
-            this._dashing = this.isDashButtonPressed() || DataManager_1.$gameTemp.isDestinationValid();
+        if (this.canMove() && !this.isInVehicle() && !globals_1.$gameMap.isDashDisabled()) {
+            this._dashing = this.isDashButtonPressed() || globals_1.$gameTemp.isDestinationValid();
         }
         else {
             this._dashing = false;
@@ -308,16 +310,16 @@ var Game_Player = /** @class */ (function (_super) {
         var x2 = this.scrolledX();
         var y2 = this.scrolledY();
         if (y2 > y1 && y2 > this.centerY()) {
-            DataManager_1.$gameMap.scrollDown(y2 - y1);
+            globals_1.$gameMap.scrollDown(y2 - y1);
         }
         if (x2 < x1 && x2 < this.centerX()) {
-            DataManager_1.$gameMap.scrollLeft(x1 - x2);
+            globals_1.$gameMap.scrollLeft(x1 - x2);
         }
         if (x2 > x1 && x2 > this.centerX()) {
-            DataManager_1.$gameMap.scrollRight(x2 - x1);
+            globals_1.$gameMap.scrollRight(x2 - x1);
         }
         if (y2 < y1 && y2 < this.centerY()) {
-            DataManager_1.$gameMap.scrollUp(y1 - y2);
+            globals_1.$gameMap.scrollUp(y1 - y2);
         }
     };
     Game_Player.prototype.updateVehicle = function () {
@@ -353,11 +355,11 @@ var Game_Player = /** @class */ (function (_super) {
         }
     };
     Game_Player.prototype.updateNonmoving = function (wasMoving) {
-        if (!DataManager_1.$gameMap.isEventRunning()) {
+        if (!globals_1.$gameMap.isEventRunning()) {
             if (wasMoving) {
-                DataManager_1.$gameParty.onPlayerWalk();
+                globals_1.$gameParty.onPlayerWalk();
                 this.checkEventTriggerHere([1, 2]);
-                if (DataManager_1.$gameMap.setupStartingEvent()) {
+                if (globals_1.$gameMap.setupStartingEvent()) {
                     return;
                 }
             }
@@ -368,7 +370,7 @@ var Game_Player = /** @class */ (function (_super) {
                 this.updateEncounterCount();
             }
             else {
-                DataManager_1.$gameTemp.clearDestination();
+                globals_1.$gameTemp.clearDestination();
             }
         }
     };
@@ -400,16 +402,16 @@ var Game_Player = /** @class */ (function (_super) {
         return false;
     };
     Game_Player.prototype.triggerTouchAction = function () {
-        if (DataManager_1.$gameTemp.isDestinationValid()) {
+        if (globals_1.$gameTemp.isDestinationValid()) {
             var direction = this.direction();
             var x1 = this.x;
             var y1 = this.y;
-            var x2 = DataManager_1.$gameMap.roundXWithDirection(x1, direction);
-            var y2 = DataManager_1.$gameMap.roundYWithDirection(y1, direction);
-            var x3 = DataManager_1.$gameMap.roundXWithDirection(x2, direction);
-            var y3 = DataManager_1.$gameMap.roundYWithDirection(y2, direction);
-            var destX = DataManager_1.$gameTemp.destinationX();
-            var destY = DataManager_1.$gameTemp.destinationY();
+            var x2 = globals_1.$gameMap.roundXWithDirection(x1, direction);
+            var y2 = globals_1.$gameMap.roundYWithDirection(y1, direction);
+            var x3 = globals_1.$gameMap.roundXWithDirection(x2, direction);
+            var y3 = globals_1.$gameMap.roundYWithDirection(y2, direction);
+            var destX = globals_1.$gameTemp.destinationX();
+            var destY = globals_1.$gameTemp.destinationY();
             if (destX === x1 && destY === y1) {
                 return this.triggerTouchActionD1(x1, y1);
             }
@@ -423,33 +425,33 @@ var Game_Player = /** @class */ (function (_super) {
         return false;
     };
     Game_Player.prototype.triggerTouchActionD1 = function (x1, y1) {
-        if (DataManager_1.$gameMap.airship().pos(x1, y1)) {
-            if (core_1.TouchInput.isTriggered() && this.getOnOffVehicle()) {
+        if (globals_1.$gameMap.airship().pos(x1, y1)) {
+            if (TouchInput_1.TouchInput.isTriggered() && this.getOnOffVehicle()) {
                 return true;
             }
         }
         this.checkEventTriggerHere([0]);
-        return DataManager_1.$gameMap.setupStartingEvent();
+        return globals_1.$gameMap.setupStartingEvent();
     };
     Game_Player.prototype.triggerTouchActionD2 = function (x2, y2) {
-        if (DataManager_1.$gameMap.boat().pos(x2, y2) || DataManager_1.$gameMap.ship().pos(x2, y2)) {
-            if (core_1.TouchInput.isTriggered() && this.getOnVehicle()) {
+        if (globals_1.$gameMap.boat().pos(x2, y2) || globals_1.$gameMap.ship().pos(x2, y2)) {
+            if (TouchInput_1.TouchInput.isTriggered() && this.getOnVehicle()) {
                 return true;
             }
         }
         if (this.isInBoat() || this.isInShip()) {
-            if (core_1.TouchInput.isTriggered() && this.getOffVehicle()) {
+            if (TouchInput_1.TouchInput.isTriggered() && this.getOffVehicle()) {
                 return true;
             }
         }
         this.checkEventTriggerThere([0, 1, 2]);
-        return DataManager_1.$gameMap.setupStartingEvent();
+        return globals_1.$gameMap.setupStartingEvent();
     };
     Game_Player.prototype.triggerTouchActionD3 = function (x2, y2) {
-        if (DataManager_1.$gameMap.isCounter(x2, y2)) {
+        if (globals_1.$gameMap.isCounter(x2, y2)) {
             this.checkEventTriggerThere([0, 1, 2]);
         }
-        return DataManager_1.$gameMap.setupStartingEvent();
+        return globals_1.$gameMap.setupStartingEvent();
     };
     Game_Player.prototype.updateEncounterCount = function () {
         if (this.canEncounter()) {
@@ -457,15 +459,15 @@ var Game_Player = /** @class */ (function (_super) {
         }
     };
     Game_Player.prototype.canEncounter = function () {
-        return (!DataManager_1.$gameParty.hasEncounterNone() &&
-            DataManager_1.$gameSystem.isEncounterEnabled() &&
+        return (!globals_1.$gameParty.hasEncounterNone() &&
+            globals_1.$gameSystem.isEncounterEnabled() &&
             !this.isInAirship() &&
             !this.isMoveRouteForcing() &&
             !this.isDebugThrough());
     };
     Game_Player.prototype.encounterProgressValue = function () {
-        var value = DataManager_1.$gameMap.isBush(this.x, this.y) ? 2 : 1;
-        if (DataManager_1.$gameParty.hasEncounterHalf()) {
+        var value = globals_1.$gameMap.isBush(this.x, this.y) ? 2 : 1;
+        if (globals_1.$gameParty.hasEncounterHalf()) {
             value *= 0.5;
         }
         if (this.isInShip()) {
@@ -483,12 +485,12 @@ var Game_Player = /** @class */ (function (_super) {
             var direction = this.direction();
             var x1 = this.x;
             var y1 = this.y;
-            var x2 = DataManager_1.$gameMap.roundXWithDirection(x1, direction);
-            var y2 = DataManager_1.$gameMap.roundYWithDirection(y1, direction);
+            var x2 = globals_1.$gameMap.roundXWithDirection(x1, direction);
+            var y2 = globals_1.$gameMap.roundYWithDirection(y1, direction);
             this.startMapEvent(x2, y2, triggers, true);
-            if (!DataManager_1.$gameMap.isAnyEventStarting() && DataManager_1.$gameMap.isCounter(x2, y2)) {
-                var x3 = DataManager_1.$gameMap.roundXWithDirection(x2, direction);
-                var y3 = DataManager_1.$gameMap.roundYWithDirection(y2, direction);
+            if (!globals_1.$gameMap.isAnyEventStarting() && globals_1.$gameMap.isCounter(x2, y2)) {
+                var x3 = globals_1.$gameMap.roundXWithDirection(x2, direction);
+                var y3 = globals_1.$gameMap.roundYWithDirection(y2, direction);
                 this.startMapEvent(x3, y3, triggers, true);
             }
         }
@@ -514,15 +516,15 @@ var Game_Player = /** @class */ (function (_super) {
         var direction = this.direction();
         var x1 = this.x;
         var y1 = this.y;
-        var x2 = DataManager_1.$gameMap.roundXWithDirection(x1, direction);
-        var y2 = DataManager_1.$gameMap.roundYWithDirection(y1, direction);
-        if (DataManager_1.$gameMap.airship().pos(x1, y1)) {
+        var x2 = globals_1.$gameMap.roundXWithDirection(x1, direction);
+        var y2 = globals_1.$gameMap.roundYWithDirection(y1, direction);
+        if (globals_1.$gameMap.airship().pos(x1, y1)) {
             this._vehicleType = "airship";
         }
-        else if (DataManager_1.$gameMap.ship().pos(x2, y2)) {
+        else if (globals_1.$gameMap.ship().pos(x2, y2)) {
             this._vehicleType = "ship";
         }
-        else if (DataManager_1.$gameMap.boat().pos(x2, y2)) {
+        else if (globals_1.$gameMap.boat().pos(x2, y2)) {
             this._vehicleType = "boat";
         }
         if (this.isInVehicle()) {
@@ -559,7 +561,7 @@ var Game_Player = /** @class */ (function (_super) {
         this.setThrough(false);
     };
     Game_Player.prototype.isOnDamageFloor = function () {
-        return DataManager_1.$gameMap.isDamageFloor(this.x, this.y) && !this.isInAirship();
+        return globals_1.$gameMap.isDamageFloor(this.x, this.y) && !this.isInAirship();
     };
     Game_Player.prototype.moveStraight = function (d) {
         if (this.canPass(this.x, this.y, d)) {
@@ -595,3 +597,6 @@ var Game_Player = /** @class */ (function (_super) {
     return Game_Player;
 }(GameCharacter_1.Game_Character));
 exports.Game_Player = Game_Player;
+(0, globals_1.set$gamePlayerFactory)(function () {
+    return new Game_Player();
+});

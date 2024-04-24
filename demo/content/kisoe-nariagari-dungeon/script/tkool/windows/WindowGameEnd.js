@@ -16,8 +16,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_GameEnd = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Graphics_1 = require("../core/Graphics");
+var TextManager_1 = require("../managers/TextManager");
 var WindowCommand_1 = require("./WindowCommand");
 var Window_GameEnd = /** @class */ (function (_super) {
     __extends(Window_GameEnd, _super);
@@ -38,12 +38,12 @@ var Window_GameEnd = /** @class */ (function (_super) {
         return 240;
     };
     Window_GameEnd.prototype.updatePlacement = function () {
-        this.x = (core_1.Graphics.boxWidth - this.width) / 2;
-        this.y = (core_1.Graphics.boxHeight - this.height) / 2;
+        this.x = (Graphics_1.Graphics.boxWidth - this.width) / 2;
+        this.y = (Graphics_1.Graphics.boxHeight - this.height) / 2;
     };
     Window_GameEnd.prototype.makeCommandList = function () {
-        this.addCommand(managers_1.TextManager.toTitle, "toTitle");
-        this.addCommand(managers_1.TextManager.cancel, "cancel");
+        this.addCommand(TextManager_1.TextManager.toTitle, "toTitle");
+        this.addCommand(TextManager_1.TextManager.cancel, "cancel");
     };
     return Window_GameEnd;
 }(WindowCommand_1.Window_Command));

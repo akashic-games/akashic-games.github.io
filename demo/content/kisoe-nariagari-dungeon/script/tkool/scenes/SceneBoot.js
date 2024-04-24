@@ -16,9 +16,12 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Scene_Boot = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Graphics_1 = require("../core/Graphics");
 var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
+var ImageManager_1 = require("../managers/ImageManager");
+var SceneManager_1 = require("../managers/SceneManager");
+var SoundManager_1 = require("../managers/SoundManager");
 var SceneBase_1 = require("./SceneBase");
 var SceneTitle_1 = require("./SceneTitle");
 var Scene_Boot = /** @class */ (function (_super) {
@@ -31,16 +34,16 @@ var Scene_Boot = /** @class */ (function (_super) {
         return _this;
     }
     Scene_Boot.loadSystemImages = function () {
-        managers_1.ImageManager.reserveSystem("IconSet");
-        managers_1.ImageManager.reserveSystem("Balloon");
-        managers_1.ImageManager.reserveSystem("Shadow1");
-        managers_1.ImageManager.reserveSystem("Shadow2");
-        managers_1.ImageManager.reserveSystem("Damage");
-        managers_1.ImageManager.reserveSystem("States");
-        managers_1.ImageManager.reserveSystem("Weapons1");
-        managers_1.ImageManager.reserveSystem("Weapons2");
-        managers_1.ImageManager.reserveSystem("Weapons3");
-        managers_1.ImageManager.reserveSystem("ButtonSet");
+        ImageManager_1.ImageManager.reserveSystem("IconSet");
+        ImageManager_1.ImageManager.reserveSystem("Balloon");
+        ImageManager_1.ImageManager.reserveSystem("Shadow1");
+        ImageManager_1.ImageManager.reserveSystem("Shadow2");
+        ImageManager_1.ImageManager.reserveSystem("Damage");
+        ImageManager_1.ImageManager.reserveSystem("States");
+        ImageManager_1.ImageManager.reserveSystem("Weapons1");
+        ImageManager_1.ImageManager.reserveSystem("Weapons2");
+        ImageManager_1.ImageManager.reserveSystem("Weapons3");
+        ImageManager_1.ImageManager.reserveSystem("ButtonSet");
     };
     Scene_Boot.prototype.initialize = function () {
         this._startDate = Date.now();
@@ -48,7 +51,7 @@ var Scene_Boot = /** @class */ (function (_super) {
     };
     Scene_Boot.prototype.create = function () {
         SceneBase_1.Scene_Base.prototype.create.call(this);
-        managers_1.DataManager.loadDatabase();
+        DataManager_1.DataManager.loadDatabase();
         // ConfigManager.load();
         this.loadSystemWindowImage();
         // DataManagerからここへ移動。
@@ -56,21 +59,21 @@ var Scene_Boot = /** @class */ (function (_super) {
         Scene_Boot.loadSystemImages();
     };
     Scene_Boot.prototype.loadSystemWindowImage = function () {
-        managers_1.ImageManager.reserveSystem("Window");
+        ImageManager_1.ImageManager.reserveSystem("Window");
     };
     Scene_Boot.prototype.isReady = function () {
         if (SceneBase_1.Scene_Base.prototype.isReady.call(this)) {
-            return managers_1.DataManager.isDatabaseLoaded() && this.isGameFontLoaded();
+            return DataManager_1.DataManager.isDatabaseLoaded() && this.isGameFontLoaded();
         }
         else {
             return false;
         }
     };
     Scene_Boot.prototype.isGameFontLoaded = function () {
-        if (core_1.Graphics.isFontLoaded("GameFont")) {
+        if (Graphics_1.Graphics.isFontLoaded("GameFont")) {
             return true;
         }
-        else if (!core_1.Graphics.canUseCssFontLoading()) {
+        else if (!Graphics_1.Graphics.canUseCssFontLoading()) {
             var elapsed = Date.now() - this._startDate;
             if (elapsed >= 60000) {
                 throw new Error("Failed to load GameFont");
@@ -79,19 +82,19 @@ var Scene_Boot = /** @class */ (function (_super) {
     };
     Scene_Boot.prototype.start = function () {
         SceneBase_1.Scene_Base.prototype.start.call(this);
-        managers_1.SoundManager.preloadImportantSounds();
-        if (managers_1.DataManager.isBattleTest() && false) {
+        SoundManager_1.SoundManager.preloadImportantSounds();
+        if (DataManager_1.DataManager.isBattleTest() && false) {
             // DataManager.setupBattleTest();
             // SceneManager.goto(Scene_Battle);
         }
-        else if (managers_1.DataManager.isEventTest() && false) {
+        else if (DataManager_1.DataManager.isEventTest() && false) {
             // DataManager.setupEventTest();
             // SceneManager.goto(Scene_Map);
         }
         else {
             this.checkPlayerLocation();
-            managers_1.DataManager.setupNewGame();
-            managers_1.SceneManager.goto(SceneTitle_1.Scene_Title);
+            DataManager_1.DataManager.setupNewGame();
+            SceneManager_1.SceneManager.goto(SceneTitle_1.Scene_Title);
             // Window_TitleCommand.initCommandPosition();
         }
         this.updateDocumentTitle();
@@ -100,7 +103,7 @@ var Scene_Boot = /** @class */ (function (_super) {
         // document.title = $dataSystem.gameTitle;
     };
     Scene_Boot.prototype.checkPlayerLocation = function () {
-        if (DataManager_1.$dataSystem.startMapId === 0) {
+        if (globals_1.$dataSystem.startMapId === 0) {
             throw new Error('Player"s starting position is not set');
         }
     };

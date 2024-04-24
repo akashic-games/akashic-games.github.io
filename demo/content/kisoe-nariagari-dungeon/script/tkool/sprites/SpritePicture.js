@@ -16,9 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Picture = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var Sprite_1 = require("../core/Sprite");
+var globals_1 = require("../managers/globals");
+var ImageManager_1 = require("../managers/ImageManager");
 var Sprite_Picture = /** @class */ (function (_super) {
     __extends(Sprite_Picture, _super);
     function Sprite_Picture(pictureId) {
@@ -35,7 +35,7 @@ var Sprite_Picture = /** @class */ (function (_super) {
         this.update();
     };
     Sprite_Picture.prototype.picture = function () {
-        return DataManager_1.$gameScreen.picture(this._pictureId);
+        return globals_1.$gameScreen.picture(this._pictureId);
     };
     Sprite_Picture.prototype.update = function () {
         _super.prototype.update.call(this);
@@ -102,8 +102,8 @@ var Sprite_Picture = /** @class */ (function (_super) {
         this.rotation = (picture.angle() * Math.PI) / 180;
     };
     Sprite_Picture.prototype.loadBitmap = function () {
-        this.bitmap = managers_1.ImageManager.loadPicture(this._pictureName);
+        this.bitmap = ImageManager_1.ImageManager.loadPicture(this._pictureName);
     };
     return Sprite_Picture;
-}(core_1.Sprite));
+}(Sprite_1.Sprite));
 exports.Sprite_Picture = Sprite_Picture;

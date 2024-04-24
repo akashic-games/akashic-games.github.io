@@ -16,8 +16,10 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Destination = void 0;
-var core_1 = require("../core");
-var DataManager_1 = require("../managers/DataManager");
+var Bitmap_1 = require("../core/Bitmap");
+var Graphics_1 = require("../core/Graphics");
+var Sprite_1 = require("../core/Sprite");
+var globals_1 = require("../managers/globals");
 var Sprite_Destination = /** @class */ (function (_super) {
     __extends(Sprite_Destination, _super);
     function Sprite_Destination() {
@@ -34,7 +36,7 @@ var Sprite_Destination = /** @class */ (function (_super) {
     };
     Sprite_Destination.prototype.update = function () {
         _super.prototype.update.call(this);
-        if (DataManager_1.$gameTemp.isDestinationValid()) {
+        if (globals_1.$gameTemp.isDestinationValid()) {
             this.updatePosition();
             this.updateAnimation();
             this.visible = true;
@@ -45,21 +47,21 @@ var Sprite_Destination = /** @class */ (function (_super) {
         }
     };
     Sprite_Destination.prototype.createBitmap = function () {
-        var tileWidth = DataManager_1.$gameMap.tileWidth();
-        var tileHeight = DataManager_1.$gameMap.tileHeight();
-        this.bitmap = new core_1.Bitmap(tileWidth, tileHeight);
+        var tileWidth = globals_1.$gameMap.tileWidth();
+        var tileHeight = globals_1.$gameMap.tileHeight();
+        this.bitmap = new Bitmap_1.Bitmap(tileWidth, tileHeight);
         this.bitmap.fillAll("white");
         this.anchor.x = 0.5;
         this.anchor.y = 0.5;
-        this.blendMode = core_1.Graphics.BLEND_ADD;
+        this.blendMode = Graphics_1.Graphics.BLEND_ADD;
     };
     Sprite_Destination.prototype.updatePosition = function () {
-        var tileWidth = DataManager_1.$gameMap.tileWidth();
-        var tileHeight = DataManager_1.$gameMap.tileHeight();
-        var x = DataManager_1.$gameTemp.destinationX();
-        var y = DataManager_1.$gameTemp.destinationY();
-        this.x = (DataManager_1.$gameMap.adjustX(x) + 0.5) * tileWidth;
-        this.y = (DataManager_1.$gameMap.adjustY(y) + 0.5) * tileHeight;
+        var tileWidth = globals_1.$gameMap.tileWidth();
+        var tileHeight = globals_1.$gameMap.tileHeight();
+        var x = globals_1.$gameTemp.destinationX();
+        var y = globals_1.$gameTemp.destinationY();
+        this.x = (globals_1.$gameMap.adjustX(x) + 0.5) * tileWidth;
+        this.y = (globals_1.$gameMap.adjustY(y) + 0.5) * tileHeight;
     };
     Sprite_Destination.prototype.updateAnimation = function () {
         this._frameCount++;
@@ -69,5 +71,5 @@ var Sprite_Destination = /** @class */ (function (_super) {
         this.scale.y = this.scale.x;
     };
     return Sprite_Destination;
-}(core_1.Sprite));
+}(Sprite_1.Sprite));
 exports.Sprite_Destination = Sprite_Destination;

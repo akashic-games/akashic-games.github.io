@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ImageManager = void 0;
-var core_1 = require("../core/");
+var Bitmap_1 = require("../core/Bitmap");
 var ImageCache_1 = require("../core/ImageCache");
 var RequestQueue_1 = require("../core/RequestQueue");
 var ImageManager = /** @class */ (function () {
@@ -63,7 +63,7 @@ var ImageManager = /** @class */ (function () {
     ImageManager.loadEmptyBitmap = function () {
         var empty = this._imageCache.get("empty");
         if (!empty) {
-            empty = new core_1.Bitmap(1, 1);
+            empty = new Bitmap_1.Bitmap(1, 1);
             this._imageCache.add("empty", empty);
             this._imageCache.reserve("empty", empty, this._systemReservationId);
         }
@@ -73,7 +73,7 @@ var ImageManager = /** @class */ (function () {
         var key = this._generateCacheKey(path, hue);
         var bitmap = this._imageCache.get(key);
         if (!bitmap) {
-            bitmap = core_1.Bitmap.load(decodeURIComponent(path));
+            bitmap = Bitmap_1.Bitmap.load(decodeURIComponent(path));
             bitmap.addLoadListener(function () {
                 bitmap.rotateHue(hue);
             });
@@ -224,7 +224,7 @@ var ImageManager = /** @class */ (function () {
         var key = this._generateCacheKey(path, hue);
         var bitmap = this._imageCache.get(key);
         if (!bitmap) {
-            bitmap = core_1.Bitmap.request(path);
+            bitmap = Bitmap_1.Bitmap.request(path);
             bitmap.addLoadListener(function () {
                 bitmap.rotateHue(hue);
             });

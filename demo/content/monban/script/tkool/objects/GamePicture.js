@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Picture = void 0;
-var core_1 = require("../core");
+var Utils_1 = require("../core/Utils");
 var Game_Picture = /** @class */ (function () {
     function Game_Picture() {
         this.initialize();
@@ -99,10 +99,10 @@ var Game_Picture = /** @class */ (function () {
         if (!this._tone) {
             this._tone = [0, 0, 0, 0];
         }
-        this._toneTarget = core_1.Utils.cloneArray(tone);
+        this._toneTarget = Utils_1.Utils.cloneArray(tone);
         this._toneDuration = duration;
         if (this._toneDuration === 0) {
-            this._tone = core_1.Utils.cloneArray(this._toneTarget);
+            this._tone = Utils_1.Utils.cloneArray(this._toneTarget);
         }
     };
     Game_Picture.prototype.erase = function () {

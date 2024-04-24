@@ -16,10 +16,11 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Scene_ItemBase = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
-var objects_1 = require("../objects");
+var Graphics_1 = require("../core/Graphics");
+var globals_1 = require("../managers/globals");
+var SceneManager_1 = require("../managers/SceneManager");
+var SoundManager_1 = require("../managers/SoundManager");
+var GameAction_1 = require("../objects/GameAction");
 var WindowMenuActor_1 = require("../windows/WindowMenuActor");
 var SceneMap_1 = require("./SceneMap");
 var SceneMenuBase_1 = require("./SceneMenuBase");
@@ -54,7 +55,7 @@ var Scene_ItemBase = /** @class */ (function (_super) {
         return this._itemWindow.index() % 2 === 0;
     };
     Scene_ItemBase.prototype.showSubWindow = function (window) {
-        window.x = this.isCursorLeft() ? core_1.Graphics.boxWidth - window.width : 0;
+        window.x = this.isCursorLeft() ? Graphics_1.Graphics.boxWidth - window.width : 0;
         window.show();
         window.activate();
     };
@@ -68,14 +69,14 @@ var Scene_ItemBase = /** @class */ (function (_super) {
             this.useItem();
         }
         else {
-            managers_1.SoundManager.playBuzzer();
+            SoundManager_1.SoundManager.playBuzzer();
         }
     };
     Scene_ItemBase.prototype.onActorCancel = function () {
         this.hideSubWindow(this._actorWindow);
     };
     Scene_ItemBase.prototype.determineItem = function () {
-        var action = new objects_1.Game_Action(this.user());
+        var action = new GameAction_1.Game_Action(this.user());
         var item = this.item();
         action.setItemObject(item);
         if (action.isForFriend()) {
@@ -100,16 +101,16 @@ var Scene_ItemBase = /** @class */ (function (_super) {
         this._itemWindow.activate();
     };
     Scene_ItemBase.prototype.itemTargetActors = function () {
-        var action = new objects_1.Game_Action(this.user());
+        var action = new GameAction_1.Game_Action(this.user());
         action.setItemObject(this.item());
         if (!action.isForFriend()) {
             return [];
         }
         else if (action.isForAll()) {
-            return DataManager_1.$gameParty.members();
+            return globals_1.$gameParty.members();
         }
         else {
-            return [DataManager_1.$gameParty.members()[this._actorWindow.index()]];
+            return [globals_1.$gameParty.members()[this._actorWindow.index()]];
         }
     };
     Scene_ItemBase.prototype.canUse = function () {
@@ -117,14 +118,14 @@ var Scene_ItemBase = /** @class */ (function (_super) {
         return ((_a = this.user()) === null || _a === void 0 ? void 0 : _a.canUse(this.item())) && this.isItemEffectsValid();
     };
     Scene_ItemBase.prototype.isItemEffectsValid = function () {
-        var action = new objects_1.Game_Action(this.user());
+        var action = new GameAction_1.Game_Action(this.user());
         action.setItemObject(this.item());
         return this.itemTargetActors().some(function (target) {
             return action.testApply(target);
         });
     };
     Scene_ItemBase.prototype.applyItem = function () {
-        var action = new objects_1.Game_Action(this.user());
+        var action = new GameAction_1.Game_Action(this.user());
         action.setItemObject(this.item());
         this.itemTargetActors().forEach(function (target) {
             for (var i = 0; i < action.numRepeats(); i++) {
@@ -134,8 +135,8 @@ var Scene_ItemBase = /** @class */ (function (_super) {
         action.applyGlobal();
     };
     Scene_ItemBase.prototype.checkCommonEvent = function () {
-        if (DataManager_1.$gameTemp.isCommonEventReserved()) {
-            managers_1.SceneManager.goto(SceneMap_1.Scene_Map);
+        if (globals_1.$gameTemp.isCommonEventReserved()) {
+            SceneManager_1.SceneManager.goto(SceneMap_1.Scene_Map);
         }
     };
     Scene_ItemBase.prototype.playSeForItem = function () {

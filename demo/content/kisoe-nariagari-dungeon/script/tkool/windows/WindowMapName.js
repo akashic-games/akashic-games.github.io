@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_MapName = void 0;
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var WindowBase_1 = require("./WindowBase");
 var Window_MapName = /** @class */ (function (_super) {
     __extends(Window_MapName, _super);
@@ -43,7 +43,7 @@ var Window_MapName = /** @class */ (function (_super) {
     };
     Window_MapName.prototype.update = function () {
         _super.prototype.update.call(this);
-        if (this._showCount > 0 && DataManager_1.$gameMap.isNameDisplayEnabled()) {
+        if (this._showCount > 0 && globals_1.$gameMap.isNameDisplayEnabled()) {
             this.updateFadeIn();
             this._showCount--;
         }
@@ -66,10 +66,10 @@ var Window_MapName = /** @class */ (function (_super) {
     };
     Window_MapName.prototype.refresh = function () {
         this.contents.clear();
-        if (DataManager_1.$gameMap.displayName()) {
+        if (globals_1.$gameMap.displayName()) {
             var width = this.contentsWidth();
             this.drawBackground(0, 0, width, this.lineHeight());
-            this.drawText(DataManager_1.$gameMap.displayName(), 0, 0, width, "center");
+            this.drawText(globals_1.$gameMap.displayName(), 0, 0, width, "center");
         }
     };
     Window_MapName.prototype.drawBackground = function (x, y, width, height) {

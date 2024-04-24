@@ -16,11 +16,11 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Scene_Menu = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
-var windows_1 = require("../windows");
+var Graphics_1 = require("../core/Graphics");
+var globals_1 = require("../managers/globals");
+var SceneManager_1 = require("../managers/SceneManager");
 var WindowGold_1 = require("../windows/WindowGold");
+var WindowMenuCommand_1 = require("../windows/WindowMenuCommand");
 var WindowMenuStatus_1 = require("../windows/WindowMenuStatus");
 var SceneEquip_1 = require("./SceneEquip");
 var SceneGameEnd_1 = require("./SceneGameEnd");
@@ -51,7 +51,7 @@ var Scene_Menu = /** @class */ (function (_super) {
         this._statusWindow.refresh();
     };
     Scene_Menu.prototype.createCommandWindow = function () {
-        this._commandWindow = new windows_1.Window_MenuCommand(0, 0);
+        this._commandWindow = new WindowMenuCommand_1.Window_MenuCommand(0, 0);
         this._commandWindow.setHandler("item", this.commandItem.bind(this));
         this._commandWindow.setHandler("skill", this.commandPersonal.bind(this));
         this._commandWindow.setHandler("equip", this.commandPersonal.bind(this));
@@ -66,7 +66,7 @@ var Scene_Menu = /** @class */ (function (_super) {
     };
     Scene_Menu.prototype.createGoldWindow = function () {
         this._goldWindow = new WindowGold_1.Window_Gold(0, 0);
-        this._goldWindow.y = core_1.Graphics.boxHeight - this._goldWindow.height;
+        this._goldWindow.y = Graphics_1.Graphics.boxHeight - this._goldWindow.height;
         this.addWindow(this._goldWindow);
     };
     Scene_Menu.prototype.createStatusWindow = function () {
@@ -75,7 +75,7 @@ var Scene_Menu = /** @class */ (function (_super) {
         this.addWindow(this._statusWindow);
     };
     Scene_Menu.prototype.commandItem = function () {
-        managers_1.SceneManager.push(SceneItem_1.Scene_Item);
+        SceneManager_1.SceneManager.push(SceneItem_1.Scene_Item);
     };
     Scene_Menu.prototype.commandPersonal = function () {
         this._statusWindow.setFormationMode(false);
@@ -100,18 +100,18 @@ var Scene_Menu = /** @class */ (function (_super) {
     // 	SceneManager.push(Scene_Save);
     // }
     Scene_Menu.prototype.commandGameEnd = function () {
-        managers_1.SceneManager.push(SceneGameEnd_1.Scene_GameEnd);
+        SceneManager_1.SceneManager.push(SceneGameEnd_1.Scene_GameEnd);
     };
     Scene_Menu.prototype.onPersonalOk = function () {
         switch (this._commandWindow.currentSymbol()) {
             case "skill":
-                managers_1.SceneManager.push(SceneSkill_1.Scene_Skill);
+                SceneManager_1.SceneManager.push(SceneSkill_1.Scene_Skill);
                 break;
             case "equip":
-                managers_1.SceneManager.push(SceneEquip_1.Scene_Equip);
+                SceneManager_1.SceneManager.push(SceneEquip_1.Scene_Equip);
                 break;
             case "status":
-                managers_1.SceneManager.push(SceneStatus_1.Scene_Status);
+                SceneManager_1.SceneManager.push(SceneStatus_1.Scene_Status);
                 break;
         }
     };
@@ -124,7 +124,7 @@ var Scene_Menu = /** @class */ (function (_super) {
         // const actor = $gameParty.members()[index];
         var pendingIndex = this._statusWindow.pendingIndex();
         if (pendingIndex >= 0) {
-            DataManager_1.$gameParty.swapOrder(index, pendingIndex);
+            globals_1.$gameParty.swapOrder(index, pendingIndex);
             this._statusWindow.setPendingIndex(-1);
             this._statusWindow.redrawItem(index);
         }

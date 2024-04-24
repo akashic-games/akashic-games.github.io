@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Weapon = void 0;
-var managers_1 = require("../managers");
+var ImageManager_1 = require("../managers/ImageManager");
 var SpriteBase_1 = require("./SpriteBase");
 var Sprite_Weapon = /** @class */ (function (_super) {
     __extends(Sprite_Weapon, _super);
@@ -63,10 +63,10 @@ var Sprite_Weapon = /** @class */ (function (_super) {
     Sprite_Weapon.prototype.loadBitmap = function () {
         var pageId = Math.floor((this._weaponImageId - 1) / 12) + 1;
         if (pageId >= 1) {
-            this.bitmap = managers_1.ImageManager.loadSystem("Weapons" + pageId);
+            this.bitmap = ImageManager_1.ImageManager.loadSystem("Weapons" + pageId);
         }
         else {
-            this.bitmap = managers_1.ImageManager.loadSystem("");
+            this.bitmap = ImageManager_1.ImageManager.loadSystem("");
         }
     };
     Sprite_Weapon.prototype.updateFrame = function () {

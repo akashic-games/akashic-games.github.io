@@ -16,8 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Actor = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Sprite_1 = require("../core/Sprite");
+var BattleManager_1 = require("../managers/BattleManager");
+var ImageManager_1 = require("../managers/ImageManager");
 var SpriteBase_1 = require("./SpriteBase");
 var SpriteBattler_1 = require("./SpriteBattler");
 var SpriteStateOverlay_1 = require("./SpriteStateOverlay");
@@ -50,8 +51,8 @@ var Sprite_Actor = /** @class */ (function (_super) {
         this._effectTarget = this._mainSprite;
     };
     Sprite_Actor.prototype.createShadowSprite = function () {
-        this._shadowSprite = new core_1.Sprite();
-        this._shadowSprite.bitmap = managers_1.ImageManager.loadSystem("Shadow2");
+        this._shadowSprite = new Sprite_1.Sprite();
+        this._shadowSprite.bitmap = ImageManager_1.ImageManager.loadSystem("Shadow2");
         this._shadowSprite.anchor.x = 0.5;
         this._shadowSprite.anchor.y = 0.5;
         this._shadowSprite.y = -2;
@@ -123,7 +124,7 @@ var Sprite_Actor = /** @class */ (function (_super) {
         if (this._actor.isInputting() || this._actor.isActing()) {
             this.stepForward();
         }
-        else if (this._actor.canMove() && managers_1.BattleManager.isEscaped()) {
+        else if (this._actor.canMove() && BattleManager_1.BattleManager.isEscaped()) {
             this.retreat();
         }
         else if (!this.inHomePosition()) {
@@ -135,7 +136,7 @@ var Sprite_Actor = /** @class */ (function (_super) {
         var name = this._actor.battlerName();
         if (this._battlerName !== name) {
             this._battlerName = name;
-            this._mainSprite.bitmap = managers_1.ImageManager.loadSvActor(name);
+            this._mainSprite.bitmap = ImageManager_1.ImageManager.loadSvActor(name);
         }
     };
     Sprite_Actor.prototype.updateFrame = function () {
@@ -187,7 +188,7 @@ var Sprite_Actor = /** @class */ (function (_super) {
         var actor = this._actor;
         var motionGuard = Sprite_Actor.MOTIONS.guard;
         if (actor) {
-            if (this._motion === motionGuard && !managers_1.BattleManager.isInputting()) {
+            if (this._motion === motionGuard && !BattleManager_1.BattleManager.isInputting()) {
                 return;
             }
             var stateMotion = actor.stateMotionIndex();
@@ -241,7 +242,7 @@ var Sprite_Actor = /** @class */ (function (_super) {
     };
     Sprite_Actor.prototype.onMoveEnd = function () {
         SpriteBattler_1.Sprite_Battler.prototype.onMoveEnd.call(this);
-        if (!managers_1.BattleManager.isBattleEnd()) {
+        if (!BattleManager_1.BattleManager.isBattleEnd()) {
             this.refreshMotion();
         }
     };

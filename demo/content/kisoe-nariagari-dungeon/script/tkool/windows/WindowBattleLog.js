@@ -16,9 +16,15 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_BattleLog = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Bitmap_1 = require("../core/Bitmap");
+var Graphics_1 = require("../core/Graphics");
+var Sprite_1 = require("../core/Sprite");
+var TouchInput_1 = require("../core/TouchInput");
+var Utils_1 = require("../core/Utils");
 var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
+var SoundManager_1 = require("../managers/SoundManager");
+var TextManager_1 = require("../managers/TextManager");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_BattleLog = /** @class */ (function (_super) {
     __extends(Window_BattleLog, _super);
@@ -46,7 +52,7 @@ var Window_BattleLog = /** @class */ (function (_super) {
         this._spriteset = spriteset;
     };
     Window_BattleLog.prototype.windowWidth = function () {
-        return core_1.Graphics.boxWidth;
+        return Graphics_1.Graphics.boxWidth;
     };
     Window_BattleLog.prototype.windowHeight = function () {
         return this.fittingHeight(this.maxLines());
@@ -55,10 +61,10 @@ var Window_BattleLog = /** @class */ (function (_super) {
         return 10;
     };
     Window_BattleLog.prototype.createBackBitmap = function () {
-        this._backBitmap = new core_1.Bitmap(this.width, this.height);
+        this._backBitmap = new Bitmap_1.Bitmap(this.width, this.height);
     };
     Window_BattleLog.prototype.createBackSprite = function () {
-        this._backSprite = new core_1.Sprite();
+        this._backSprite = new Sprite_1.Sprite();
         this._backSprite.bitmap = this._backBitmap;
         this._backSprite.y = this.y;
         this.addChildToBack(this._backSprite);
@@ -122,7 +128,7 @@ var Window_BattleLog = /** @class */ (function (_super) {
     Window_BattleLog.prototype.isFastForward = function () {
         return (
         /* Input.isLongPressed("ok") || Input.isPressed("shift") ||*/
-        core_1.TouchInput.isLongPressed());
+        TouchInput_1.TouchInput.isLongPressed());
     };
     // push(methodName: string) {
     // 	const methodArgs = Array.prototype.slice.call(arguments, 1);
@@ -233,10 +239,10 @@ var Window_BattleLog = /** @class */ (function (_super) {
         this.showNormalAnimation(targets, subject.attackAnimationId2(), true);
     };
     Window_BattleLog.prototype.showEnemyAttackAnimation = function (_subject, _targets) {
-        managers_1.SoundManager.playEnemyAttack();
+        SoundManager_1.SoundManager.playEnemyAttack();
     };
     Window_BattleLog.prototype.showNormalAnimation = function (targets, animationId, mirror) {
-        var animation = DataManager_1.$dataAnimations[animationId];
+        var animation = globals_1.$dataAnimations[animationId];
         if (animation) {
             var delay_1 = this.animationBaseDelay();
             var nextDelay_1 = this.animationNextDelay();
@@ -294,7 +300,7 @@ var Window_BattleLog = /** @class */ (function (_super) {
         this.push("performActionStart", subject, action);
         this.push("waitForMovement");
         this.push("performAction", subject, action);
-        this.push("showAnimation", subject, core_1.Utils.cloneArray(targets), item.animationId);
+        this.push("showAnimation", subject, Utils_1.Utils.cloneArray(targets), item.animationId);
         this.displayAction(subject, item);
     };
     Window_BattleLog.prototype.endAction = function (subject) {
@@ -315,16 +321,16 @@ var Window_BattleLog = /** @class */ (function (_super) {
     };
     Window_BattleLog.prototype.displayAction = function (subject, item) {
         var numMethods = this._methods.length;
-        if (managers_1.DataManager.isSkill(item)) {
+        if (DataManager_1.DataManager.isSkill(item)) {
             if (item.message1) {
-                this.push("addText", subject.name() + core_1.Utils.format(item.message1, item.name));
+                this.push("addText", subject.name() + Utils_1.Utils.format(item.message1, item.name));
             }
             if (item.message2) {
-                this.push("addText", core_1.Utils.format(item.message2, item.name));
+                this.push("addText", Utils_1.Utils.format(item.message2, item.name));
             }
         }
         else {
-            this.push("addText", core_1.Utils.format(managers_1.TextManager.useItem, subject.name(), item.name));
+            this.push("addText", Utils_1.Utils.format(TextManager_1.TextManager.useItem, subject.name(), item.name));
         }
         if (this._methods.length === numMethods) {
             this.push("wait");
@@ -332,16 +338,16 @@ var Window_BattleLog = /** @class */ (function (_super) {
     };
     Window_BattleLog.prototype.displayCounter = function (target) {
         this.push("performCounter", target);
-        this.push("addText", core_1.Utils.format(managers_1.TextManager.counterAttack, target.name()));
+        this.push("addText", Utils_1.Utils.format(TextManager_1.TextManager.counterAttack, target.name()));
     };
     Window_BattleLog.prototype.displayReflection = function (target) {
         this.push("performReflection", target);
-        this.push("addText", core_1.Utils.format(managers_1.TextManager.magicReflection, target.name()));
+        this.push("addText", Utils_1.Utils.format(TextManager_1.TextManager.magicReflection, target.name()));
     };
     Window_BattleLog.prototype.displaySubstitute = function (substitute, target) {
         var substName = substitute.name();
         this.push("performSubstitute", substitute, target);
-        this.push("addText", core_1.Utils.format(managers_1.TextManager.substitute, substName, target.name()));
+        this.push("addText", Utils_1.Utils.format(TextManager_1.TextManager.substitute, substName, target.name()));
     };
     Window_BattleLog.prototype.displayActionResults = function (subject, target) {
         if (target.result().used) {
@@ -358,16 +364,16 @@ var Window_BattleLog = /** @class */ (function (_super) {
     };
     Window_BattleLog.prototype.displayFailure = function (target) {
         if (target.result().isHit() && !target.result().success) {
-            this.push("addText", core_1.Utils.format(managers_1.TextManager.actionFailure, target.name()));
+            this.push("addText", Utils_1.Utils.format(TextManager_1.TextManager.actionFailure, target.name()));
         }
     };
     Window_BattleLog.prototype.displayCritical = function (target) {
         if (target.result().critical) {
             if (target.isActor()) {
-                this.push("addText", managers_1.TextManager.criticalToActor);
+                this.push("addText", TextManager_1.TextManager.criticalToActor);
             }
             else {
-                this.push("addText", managers_1.TextManager.criticalToEnemy);
+                this.push("addText", TextManager_1.TextManager.criticalToEnemy);
             }
         }
     };
@@ -387,25 +393,25 @@ var Window_BattleLog = /** @class */ (function (_super) {
     Window_BattleLog.prototype.displayMiss = function (target) {
         var fmt;
         if (target.result().physical) {
-            fmt = target.isActor() ? managers_1.TextManager.actorNoHit : managers_1.TextManager.enemyNoHit;
+            fmt = target.isActor() ? TextManager_1.TextManager.actorNoHit : TextManager_1.TextManager.enemyNoHit;
             this.push("performMiss", target);
         }
         else {
-            fmt = managers_1.TextManager.actionFailure;
+            fmt = TextManager_1.TextManager.actionFailure;
         }
-        this.push("addText", core_1.Utils.format(fmt, target.name()));
+        this.push("addText", Utils_1.Utils.format(fmt, target.name()));
     };
     Window_BattleLog.prototype.displayEvasion = function (target) {
         var fmt;
         if (target.result().physical) {
-            fmt = managers_1.TextManager.evasion;
+            fmt = TextManager_1.TextManager.evasion;
             this.push("performEvasion", target);
         }
         else {
-            fmt = managers_1.TextManager.magicEvasion;
+            fmt = TextManager_1.TextManager.magicEvasion;
             this.push("performMagicEvasion", target);
         }
-        this.push("addText", core_1.Utils.format(fmt, target.name()));
+        this.push("addText", Utils_1.Utils.format(fmt, target.name()));
     };
     Window_BattleLog.prototype.displayHpDamage = function (target) {
         if (target.result().hpAffected) {
@@ -487,16 +493,16 @@ var Window_BattleLog = /** @class */ (function (_super) {
     };
     Window_BattleLog.prototype.displayChangedBuffs = function (target) {
         var result = target.result();
-        this.displayBuffs(target, result.addedBuffs, managers_1.TextManager.buffAdd);
-        this.displayBuffs(target, result.addedDebuffs, managers_1.TextManager.debuffAdd);
-        this.displayBuffs(target, result.removedBuffs, managers_1.TextManager.buffRemove);
+        this.displayBuffs(target, result.addedBuffs, TextManager_1.TextManager.buffAdd);
+        this.displayBuffs(target, result.addedDebuffs, TextManager_1.TextManager.debuffAdd);
+        this.displayBuffs(target, result.removedBuffs, TextManager_1.TextManager.buffRemove);
     };
     Window_BattleLog.prototype.displayBuffs = function (target, buffs, fmt) {
         var _this = this;
         buffs.forEach(function (paramId) {
             _this.push("popBaseLine");
             _this.push("pushBaseLine");
-            _this.push("addText", core_1.Utils.format(fmt, target.name(), managers_1.TextManager.param(paramId)));
+            _this.push("addText", Utils_1.Utils.format(fmt, target.name(), TextManager_1.TextManager.param(paramId)));
         });
     };
     Window_BattleLog.prototype.makeHpDamageText = function (target) {
@@ -505,20 +511,20 @@ var Window_BattleLog = /** @class */ (function (_super) {
         var isActor = target.isActor();
         var fmt;
         if (damage > 0 && result.drain) {
-            fmt = isActor ? managers_1.TextManager.actorDrain : managers_1.TextManager.enemyDrain;
-            return core_1.Utils.format(fmt, target.name(), managers_1.TextManager.hp, damage);
+            fmt = isActor ? TextManager_1.TextManager.actorDrain : TextManager_1.TextManager.enemyDrain;
+            return Utils_1.Utils.format(fmt, target.name(), TextManager_1.TextManager.hp, damage);
         }
         else if (damage > 0) {
-            fmt = isActor ? managers_1.TextManager.actorDamage : managers_1.TextManager.enemyDamage;
-            return core_1.Utils.format(fmt, target.name(), damage);
+            fmt = isActor ? TextManager_1.TextManager.actorDamage : TextManager_1.TextManager.enemyDamage;
+            return Utils_1.Utils.format(fmt, target.name(), damage);
         }
         else if (damage < 0) {
-            fmt = isActor ? managers_1.TextManager.actorRecovery : managers_1.TextManager.enemyRecovery;
-            return core_1.Utils.format(fmt, target.name(), managers_1.TextManager.hp, -damage);
+            fmt = isActor ? TextManager_1.TextManager.actorRecovery : TextManager_1.TextManager.enemyRecovery;
+            return Utils_1.Utils.format(fmt, target.name(), TextManager_1.TextManager.hp, -damage);
         }
         else {
-            fmt = isActor ? managers_1.TextManager.actorNoDamage : managers_1.TextManager.enemyNoDamage;
-            return core_1.Utils.format(fmt, target.name());
+            fmt = isActor ? TextManager_1.TextManager.actorNoDamage : TextManager_1.TextManager.enemyNoDamage;
+            return Utils_1.Utils.format(fmt, target.name());
         }
     };
     Window_BattleLog.prototype.makeMpDamageText = function (target) {
@@ -527,16 +533,16 @@ var Window_BattleLog = /** @class */ (function (_super) {
         var isActor = target.isActor();
         var fmt;
         if (damage > 0 && result.drain) {
-            fmt = isActor ? managers_1.TextManager.actorDrain : managers_1.TextManager.enemyDrain;
-            return core_1.Utils.format(fmt, target.name(), managers_1.TextManager.mp, damage);
+            fmt = isActor ? TextManager_1.TextManager.actorDrain : TextManager_1.TextManager.enemyDrain;
+            return Utils_1.Utils.format(fmt, target.name(), TextManager_1.TextManager.mp, damage);
         }
         else if (damage > 0) {
-            fmt = isActor ? managers_1.TextManager.actorLoss : managers_1.TextManager.enemyLoss;
-            return core_1.Utils.format(fmt, target.name(), managers_1.TextManager.mp, damage);
+            fmt = isActor ? TextManager_1.TextManager.actorLoss : TextManager_1.TextManager.enemyLoss;
+            return Utils_1.Utils.format(fmt, target.name(), TextManager_1.TextManager.mp, damage);
         }
         else if (damage < 0) {
-            fmt = isActor ? managers_1.TextManager.actorRecovery : managers_1.TextManager.enemyRecovery;
-            return core_1.Utils.format(fmt, target.name(), managers_1.TextManager.mp, -damage);
+            fmt = isActor ? TextManager_1.TextManager.actorRecovery : TextManager_1.TextManager.enemyRecovery;
+            return Utils_1.Utils.format(fmt, target.name(), TextManager_1.TextManager.mp, -damage);
         }
         else {
             return "";
@@ -548,12 +554,12 @@ var Window_BattleLog = /** @class */ (function (_super) {
         var isActor = target.isActor();
         var fmt;
         if (damage > 0) {
-            fmt = isActor ? managers_1.TextManager.actorLoss : managers_1.TextManager.enemyLoss;
-            return core_1.Utils.format(fmt, target.name(), managers_1.TextManager.tp, damage);
+            fmt = isActor ? TextManager_1.TextManager.actorLoss : TextManager_1.TextManager.enemyLoss;
+            return Utils_1.Utils.format(fmt, target.name(), TextManager_1.TextManager.tp, damage);
         }
         else if (damage < 0) {
-            fmt = isActor ? managers_1.TextManager.actorGain : managers_1.TextManager.enemyGain;
-            return core_1.Utils.format(fmt, target.name(), managers_1.TextManager.tp, -damage);
+            fmt = isActor ? TextManager_1.TextManager.actorGain : TextManager_1.TextManager.enemyGain;
+            return Utils_1.Utils.format(fmt, target.name(), TextManager_1.TextManager.tp, -damage);
         }
         else {
             return "";

@@ -73,13 +73,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // [Twitter]: https://twitter.com/triacontane/
 // [GitHub] : https://github.com/triacontane/
 // =============================================================================
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
-var objects_1 = require("../objects");
-var scenes_1 = require("../scenes");
-var sprites_1 = require("../sprites");
-var windows_1 = require("../windows");
+var index_1 = require("../../tkool/index");
 /* :ja
  * @plugindesc ピクチャのボタン化プラグイン
  * @author トリアコンタン
@@ -336,7 +330,7 @@ var windows_1 = require("../windows");
             paramNames = [paramNames];
         for (var _i = 0, paramNames_1 = paramNames; _i < paramNames_1.length; _i++) {
             var p = paramNames_1[_i];
-            var name = managers_1.PluginManager.parameters(pluginName)[p];
+            var name = index_1.PluginManager.parameters(pluginName)[p];
             if (name)
                 return name;
         }
@@ -371,8 +365,8 @@ var windows_1 = require("../windows");
         if (text == null)
             text = "";
         // _windowLayerプロパティは存在するがprotectedなので、anyにキャストする
-        var window = managers_1.SceneManager._scene._windowLayer.children[0];
-        return window && window instanceof windows_1.Window_Base ? window.convertEscapeCharacters(text) : text;
+        var window = index_1.SceneManager._scene._windowLayer.children[0];
+        return window && window instanceof index_1.Window_Base ? window.convertEscapeCharacters(text) : text;
     }
     function iterate(that, handler) {
         Object.keys(that).forEach(function (key, index) {
@@ -395,108 +389,108 @@ var windows_1 = require("../windows");
     // Game_Interpreter
     //  プラグインコマンド[P_CALL_CE]などを追加定義します。
     // =============================================================================
-    var _gameInterpreterPluginCommand = objects_1.Game_Interpreter.prototype.pluginCommand;
-    objects_1.Game_Interpreter.prototype.pluginCommand = function (command, args) {
+    var _gameInterpreterPluginCommand = index_1.Game_Interpreter.prototype.pluginCommand;
+    index_1.Game_Interpreter.prototype.pluginCommand = function (command, args) {
         _gameInterpreterPluginCommand.apply(this, arguments);
         var pictureId, touchParam, trigger, variableNum, transparent;
         switch (getCommandName(command)) {
             case "P_CALL_CE":
             case "ピクチャのボタン化":
-                pictureId = getArgNumber(args[0], 1, DataManager_1.$gameScreen.maxPictures());
-                touchParam = getArgNumber(args[1], 1, DataManager_1.$dataCommonEvents.length - 1);
+                pictureId = getArgNumber(args[0], 1, index_1.$gameScreen.maxPictures());
+                touchParam = getArgNumber(args[1], 1, index_1.$dataCommonEvents.length - 1);
                 trigger = getArgNumber(args[2], 1);
                 transparent = args.length > 3 ? getArgBoolean(args[3]) : null;
-                DataManager_1.$gameScreen.setPictureCallCommon(pictureId, touchParam, trigger, transparent);
+                index_1.$gameScreen.setPictureCallCommon(pictureId, touchParam, trigger, transparent);
                 break;
             case "P_CALL_SWITCH":
             case "ピクチャのスイッチ化":
-                pictureId = getArgNumber(args[0], 1, DataManager_1.$gameScreen.maxPictures());
+                pictureId = getArgNumber(args[0], 1, index_1.$gameScreen.maxPictures());
                 touchParam = getArgNumber(args[1], 1);
                 trigger = getArgNumber(args[2], 1);
                 transparent = args.length > 3 ? getArgBoolean(args[3]) : null;
-                DataManager_1.$gameScreen.setPictureCallCommon(pictureId, touchParam * -1, trigger, transparent);
+                index_1.$gameScreen.setPictureCallCommon(pictureId, touchParam * -1, trigger, transparent);
                 break;
             case "P_CALL_KEY_BIND":
             case "ピクチャのキーバインド":
-                pictureId = getArgNumber(args[0], 1, DataManager_1.$gameScreen.maxPictures());
+                pictureId = getArgNumber(args[0], 1, index_1.$gameScreen.maxPictures());
                 touchParam = convertEscapeCharacters(args[1]);
                 trigger = getArgNumber(args[2], 1);
                 transparent = args.length > 3 ? getArgBoolean(args[3]) : null;
-                DataManager_1.$gameScreen.setPictureCallCommon(pictureId, touchParam, trigger, transparent);
+                index_1.$gameScreen.setPictureCallCommon(pictureId, touchParam, trigger, transparent);
                 break;
             case "P_CALL_CE_REMOVE":
             case "ピクチャのボタン化解除":
-                pictureId = getArgNumber(args[0], 1, DataManager_1.$gameScreen.maxPictures());
-                DataManager_1.$gameScreen.setPictureRemoveCommon(pictureId);
+                pictureId = getArgNumber(args[0], 1, index_1.$gameScreen.maxPictures());
+                index_1.$gameScreen.setPictureRemoveCommon(pictureId);
                 break;
             case "P_STROKE":
             case "ピクチャのなでなで設定":
-                pictureId = getArgNumber(args[0], 1, DataManager_1.$gameScreen.maxPictures());
-                variableNum = getArgNumber(args[1], 1, DataManager_1.$dataSystem.variables.length - 1);
+                pictureId = getArgNumber(args[0], 1, index_1.$gameScreen.maxPictures());
+                variableNum = getArgNumber(args[1], 1, index_1.$dataSystem.variables.length - 1);
                 transparent = args.length > 2 ? getArgBoolean(args[2]) : null;
-                DataManager_1.$gameScreen.setPictureStroke(pictureId, variableNum, transparent);
+                index_1.$gameScreen.setPictureStroke(pictureId, variableNum, transparent);
                 break;
             case "P_STROKE_REMOVE":
             case "ピクチャのなでなで解除":
-                pictureId = getArgNumber(args[0], 1, DataManager_1.$gameScreen.maxPictures());
-                DataManager_1.$gameScreen.removePictureStroke(pictureId);
+                pictureId = getArgNumber(args[0], 1, index_1.$gameScreen.maxPictures());
+                index_1.$gameScreen.removePictureStroke(pictureId);
                 break;
             case "P_POINTER":
             case "ピクチャのポインタ化":
-                pictureId = getArgNumber(args[0], 1, DataManager_1.$gameScreen.maxPictures());
-                DataManager_1.$gameScreen.setPicturePointer(pictureId);
+                pictureId = getArgNumber(args[0], 1, index_1.$gameScreen.maxPictures());
+                index_1.$gameScreen.setPicturePointer(pictureId);
                 break;
             case "P_POINTER_REMOVE":
             case "ピクチャのポインタ化解除":
-                pictureId = getArgNumber(args[0], 1, DataManager_1.$gameScreen.maxPictures());
-                DataManager_1.$gameScreen.removePicturePointer(pictureId);
+                pictureId = getArgNumber(args[0], 1, index_1.$gameScreen.maxPictures());
+                index_1.$gameScreen.removePicturePointer(pictureId);
                 break;
         }
     };
-    var gameInterpreterTerminate = objects_1.Game_Interpreter.prototype.terminate;
-    objects_1.Game_Interpreter.prototype.terminate = function () {
+    var gameInterpreterTerminate = index_1.Game_Interpreter.prototype.terminate;
+    index_1.Game_Interpreter.prototype.terminate = function () {
         gameInterpreterTerminate.apply(this, arguments);
         this._setupFromPicture = false;
     };
-    objects_1.Game_Interpreter.prototype.setupFromPicture = function (eventList, commonId) {
+    index_1.Game_Interpreter.prototype.setupFromPicture = function (eventList, commonId) {
         this.setup(eventList, null);
         if (this.setEventInfo) {
             this.setEventInfo({ eventType: "common_event", commonEventId: commonId });
         }
         this._setupFromPicture = true;
     };
-    objects_1.Game_Interpreter.prototype.isSetupFromPicture = function () {
+    index_1.Game_Interpreter.prototype.isSetupFromPicture = function () {
         return this._setupFromPicture;
     };
     // =============================================================================
     // Game_Temp
     //  呼び出し予定のコモンイベントIDのフィールドを追加定義します。
     // =============================================================================
-    var gameTempInitialize = objects_1.Game_Temp.prototype.initialize;
-    objects_1.Game_Temp.prototype.initialize = function () {
+    var gameTempInitialize = index_1.Game_Temp.prototype.initialize;
+    index_1.Game_Temp.prototype.initialize = function () {
         gameTempInitialize.call(this);
         this.clearPictureCallInfo();
     };
-    objects_1.Game_Temp.prototype.clearPictureCallInfo = function () {
+    index_1.Game_Temp.prototype.clearPictureCallInfo = function () {
         this._pictureCommonId = 0;
         this._touchPictureId = 0;
     };
-    objects_1.Game_Temp.prototype.setPictureCallInfo = function (pictureCommonId) {
+    index_1.Game_Temp.prototype.setPictureCallInfo = function (pictureCommonId) {
         this._pictureCommonId = pictureCommonId;
     };
-    objects_1.Game_Temp.prototype.pictureCommonId = function () {
-        if (!DataManager_1.$gameScreen.picture(this._touchPictureId)) {
+    index_1.Game_Temp.prototype.pictureCommonId = function () {
+        if (!index_1.$gameScreen.picture(this._touchPictureId)) {
             this.clearPictureCallInfo();
         }
         return this._pictureCommonId;
     };
-    objects_1.Game_Temp.prototype.onTouchPicture = function (param, pictureId) {
+    index_1.Game_Temp.prototype.onTouchPicture = function (param, pictureId) {
         this._touchPictureParam = param;
         if (this.isTouchPictureSetSwitch()) {
-            DataManager_1.$gameSwitches.setValue(param * -1, true);
+            index_1.$gameSwitches.setValue(param * -1, true);
         }
         if (this.isTouchPictureCallCommon()) {
-            if (!paramAsParallelCommon && DataManager_1.$gameMap.isEventRunning() && !DataManager_1.$gameParty.inBattle()) {
+            if (!paramAsParallelCommon && index_1.$gameMap.isEventRunning() && !index_1.$gameParty.inBattle()) {
                 this._touchPictureParam = null;
                 return;
             }
@@ -506,80 +500,80 @@ var windows_1 = require("../windows");
         // 	Input.bindKeyState(param);
         // }
         if (paramGameVariablePictNum > 0) {
-            DataManager_1.$gameVariables.setValue(paramGameVariablePictNum, pictureId);
+            index_1.$gameVariables.setValue(paramGameVariablePictNum, pictureId);
         }
         this._touchPictureId = pictureId;
     };
-    objects_1.Game_Temp.prototype.isTouchPictureButtonTrigger = function () {
+    index_1.Game_Temp.prototype.isTouchPictureButtonTrigger = function () {
         return isNaN(this._touchPictureParam);
     };
-    objects_1.Game_Temp.prototype.isTouchPictureSetSwitch = function () {
+    index_1.Game_Temp.prototype.isTouchPictureSetSwitch = function () {
         return !isNaN(this._touchPictureParam) && this._touchPictureParam < 0;
     };
-    objects_1.Game_Temp.prototype.isTouchPictureCallCommon = function () {
+    index_1.Game_Temp.prototype.isTouchPictureCallCommon = function () {
         return !isNaN(this._touchPictureParam) && this._touchPictureParam > 0;
     };
     // =============================================================================
     // Game_System
     //  ロード時にピクチャ関連メンバを初期化します。
     // =============================================================================
-    var gameSystemOnAfterLoad = objects_1.Game_System.prototype.onAfterLoad;
-    objects_1.Game_System.prototype.onAfterLoad = function () {
+    var gameSystemOnAfterLoad = index_1.Game_System.prototype.onAfterLoad;
+    index_1.Game_System.prototype.onAfterLoad = function () {
         gameSystemOnAfterLoad.apply(this, arguments);
-        DataManager_1.$gameScreen.initPictureArray();
+        index_1.$gameScreen.initPictureArray();
     };
     // =============================================================================
     // Game_Map
     //  ピクチャがタッチされたときのコモンイベント呼び出し処理を追加定義します。
     // =============================================================================
-    var gameMapSetupStartingEvent = objects_1.Game_Map.prototype.setupStartingEvent;
-    objects_1.Game_Map.prototype.setupStartingEvent = function () {
+    var gameMapSetupStartingEvent = index_1.Game_Map.prototype.setupStartingEvent;
+    index_1.Game_Map.prototype.setupStartingEvent = function () {
         var result = gameMapSetupStartingEvent.call(this);
         return result || this.setupPictureCommonEvent();
     };
-    var gameMapUpdateInterpreter = objects_1.Game_Map.prototype.updateInterpreter;
-    objects_1.Game_Map.prototype.updateInterpreter = function () {
+    var gameMapUpdateInterpreter = index_1.Game_Map.prototype.updateInterpreter;
+    index_1.Game_Map.prototype.updateInterpreter = function () {
         gameMapUpdateInterpreter.apply(this, arguments);
         this.setupPictureParallelCommonEvent();
     };
-    objects_1.Game_Map.prototype.setupPictureParallelCommonEvent = function () {
+    index_1.Game_Map.prototype.setupPictureParallelCommonEvent = function () {
         if (!paramAsParallelCommon) {
             return;
         }
-        var commonId = DataManager_1.$gameTemp.pictureCommonId();
-        var event = DataManager_1.$dataCommonEvents[commonId];
+        var commonId = index_1.$gameTemp.pictureCommonId();
+        var event = index_1.$dataCommonEvents[commonId];
         if (event) {
             if (!this._pictureCommonEvents) {
                 this._pictureCommonEvents = [];
             }
-            var interpreter = new objects_1.Game_Interpreter();
+            var interpreter = new index_1.Game_Interpreter();
             interpreter.setupFromPicture(event.list, commonId);
             this._pictureCommonEvents.push(interpreter);
-            DataManager_1.$gameTemp.clearPictureCallInfo();
+            index_1.$gameTemp.clearPictureCallInfo();
         }
     };
-    objects_1.Game_Map.prototype.setupPictureCommonEvent = function () {
+    index_1.Game_Map.prototype.setupPictureCommonEvent = function () {
         if (paramAsParallelCommon) {
             return false;
         }
-        var commonId = DataManager_1.$gameTemp.pictureCommonId();
-        var event = DataManager_1.$dataCommonEvents[commonId];
+        var commonId = index_1.$gameTemp.pictureCommonId();
+        var event = index_1.$dataCommonEvents[commonId];
         var result = false;
         if (!this.isEventRunning() && event) {
             this._interpreter.setupFromPicture(event.list, commonId);
             result = true;
         }
-        DataManager_1.$gameTemp.clearPictureCallInfo();
+        index_1.$gameTemp.clearPictureCallInfo();
         return result;
     };
-    var gameMapUpdateEvents = objects_1.Game_Map.prototype.updateEvents;
-    objects_1.Game_Map.prototype.updateEvents = function () {
+    var gameMapUpdateEvents = index_1.Game_Map.prototype.updateEvents;
+    index_1.Game_Map.prototype.updateEvents = function () {
         gameMapUpdateEvents.apply(this, arguments);
         if (this._pictureCommonEvents && this._pictureCommonEvents.length > 0) {
             this.updatePictureCommonEvents();
         }
     };
-    objects_1.Game_Map.prototype.updatePictureCommonEvents = function () {
+    index_1.Game_Map.prototype.updatePictureCommonEvents = function () {
         this._pictureCommonEvents.forEach(function (event) {
             event.update();
         });
@@ -591,106 +585,106 @@ var windows_1 = require("../windows");
     // Game_Troop
     //  ピクチャがタッチされたときのコモンイベント呼び出し処理を追加定義します。
     // =============================================================================
-    objects_1.Game_Troop.prototype.setupPictureCommonEvent = objects_1.Game_Map.prototype.setupPictureCommonEvent;
-    objects_1.Game_Troop.prototype.setupPictureParallelCommonEvent = objects_1.Game_Map.prototype.setupPictureParallelCommonEvent;
-    objects_1.Game_Troop.prototype.updatePictureCommonEvents = objects_1.Game_Map.prototype.updatePictureCommonEvents;
-    objects_1.Game_Troop.prototype.updateAllPictureCommonEvent = function () {
+    index_1.Game_Troop.prototype.setupPictureCommonEvent = index_1.Game_Map.prototype.setupPictureCommonEvent;
+    index_1.Game_Troop.prototype.setupPictureParallelCommonEvent = index_1.Game_Map.prototype.setupPictureParallelCommonEvent;
+    index_1.Game_Troop.prototype.updatePictureCommonEvents = index_1.Game_Map.prototype.updatePictureCommonEvents;
+    index_1.Game_Troop.prototype.updateAllPictureCommonEvent = function () {
         this.setupPictureCommonEvent();
         this.setupPictureParallelCommonEvent();
         if (this._pictureCommonEvents && this._pictureCommonEvents.length > 0) {
             this.updatePictureCommonEvents();
         }
     };
-    objects_1.Game_Troop.prototype.isExistPictureCommon = function () {
+    index_1.Game_Troop.prototype.isExistPictureCommon = function () {
         return this._interpreter.isSetupFromPicture();
     };
     // =============================================================================
     // Game_Screen
     //  ピクチャに対応するコモンイベント呼び出し用のID配列を追加定義します。
     // =============================================================================
-    var gameScreenInitialize = objects_1.Game_Screen.prototype.initialize;
-    objects_1.Game_Screen.prototype.initialize = function () {
+    var gameScreenInitialize = index_1.Game_Screen.prototype.initialize;
+    index_1.Game_Screen.prototype.initialize = function () {
         gameScreenInitialize.apply(this, arguments);
         this.initPictureArray();
     };
-    objects_1.Game_Screen.prototype.initPictureArray = function () {
+    index_1.Game_Screen.prototype.initPictureArray = function () {
         this._pictureCidArray = this._pictureCidArray || [];
         this._pictureSidArray = this._pictureSidArray || [];
         this._picturePidArray = this._picturePidArray || [];
         this._pictureTransparentArray = this._pictureTransparentArray || [];
     };
-    var gameScreenUpdate = objects_1.Game_Screen.prototype.update;
-    objects_1.Game_Screen.prototype.update = function () {
+    var gameScreenUpdate = index_1.Game_Screen.prototype.update;
+    index_1.Game_Screen.prototype.update = function () {
         gameScreenUpdate.apply(this, arguments);
         this.updatePointer();
     };
-    objects_1.Game_Screen.prototype.updatePointer = function () {
+    index_1.Game_Screen.prototype.updatePointer = function () {
         if (paramGameVariableTouchX)
-            DataManager_1.$gameVariables._data[paramGameVariableTouchX] = core_1.TouchInput.x;
+            index_1.$gameVariables._data[paramGameVariableTouchX] = index_1.TouchInput.x;
         if (paramGameVariableTouchY)
-            DataManager_1.$gameVariables._data[paramGameVariableTouchY] = core_1.TouchInput.y;
+            index_1.$gameVariables._data[paramGameVariableTouchY] = index_1.TouchInput.y;
     };
-    objects_1.Game_Screen.prototype.setPictureCallCommon = function (pictureId, touchParameter, trigger, transparent) {
+    index_1.Game_Screen.prototype.setPictureCallCommon = function (pictureId, touchParameter, trigger, transparent) {
         var realPictureId = this.realPictureId(pictureId);
         if (this._pictureCidArray[realPictureId] == null)
             this._pictureCidArray[realPictureId] = [];
         this._pictureCidArray[realPictureId][trigger] = touchParameter;
         this._pictureTransparentArray[realPictureId] = transparent;
     };
-    objects_1.Game_Screen.prototype.setPictureRemoveCommon = function (pictureId) {
+    index_1.Game_Screen.prototype.setPictureRemoveCommon = function (pictureId) {
         this._pictureCidArray[this.realPictureId(pictureId)] = null;
     };
-    objects_1.Game_Screen.prototype.setPictureStroke = function (pictureId, variableNum, transparent) {
+    index_1.Game_Screen.prototype.setPictureStroke = function (pictureId, variableNum, transparent) {
         var realPictureId = this.realPictureId(pictureId);
         this._pictureSidArray[realPictureId] = variableNum;
         this._pictureTransparentArray[realPictureId] = transparent;
     };
-    objects_1.Game_Screen.prototype.removePictureStroke = function (pictureId) {
+    index_1.Game_Screen.prototype.removePictureStroke = function (pictureId) {
         this._pictureSidArray[this.realPictureId(pictureId)] = null;
     };
-    objects_1.Game_Screen.prototype.setPicturePointer = function (pictureId) {
+    index_1.Game_Screen.prototype.setPicturePointer = function (pictureId) {
         this._picturePidArray[this.realPictureId(pictureId)] = true;
     };
-    objects_1.Game_Screen.prototype.removePicturePointer = function (pictureId) {
+    index_1.Game_Screen.prototype.removePicturePointer = function (pictureId) {
         this._picturePidArray[this.realPictureId(pictureId)] = null;
     };
-    objects_1.Game_Screen.prototype.getPictureCid = function (pictureId) {
+    index_1.Game_Screen.prototype.getPictureCid = function (pictureId) {
         return this._pictureCidArray[this.realPictureId(pictureId)];
     };
-    objects_1.Game_Screen.prototype.getPictureSid = function (pictureId) {
+    index_1.Game_Screen.prototype.getPictureSid = function (pictureId) {
         return this._pictureSidArray[this.realPictureId(pictureId)];
     };
-    objects_1.Game_Screen.prototype.getPicturePid = function (pictureId) {
+    index_1.Game_Screen.prototype.getPicturePid = function (pictureId) {
         return this._picturePidArray[this.realPictureId(pictureId)];
     };
-    objects_1.Game_Screen.prototype.getPictureTransparent = function (pictureId) {
+    index_1.Game_Screen.prototype.getPictureTransparent = function (pictureId) {
         return this._pictureTransparentArray[this.realPictureId(pictureId)];
     };
-    objects_1.Game_Screen.prototype.disConvertPositionX = function (x) {
+    index_1.Game_Screen.prototype.disConvertPositionX = function (x) {
         var unshiftX = x - this.zoomX() * (1 - this.zoomScale());
         return Math.round(unshiftX / this.zoomScale());
     };
-    objects_1.Game_Screen.prototype.disConvertPositionY = function (y) {
+    index_1.Game_Screen.prototype.disConvertPositionY = function (y) {
         var unshiftY = y - this.zoomY() * (1 - this.zoomScale());
         return Math.round(unshiftY / this.zoomScale());
     };
-    objects_1.Game_Screen.prototype.isPointerInnerPicture = function (pictureId) {
-        var picture = managers_1.SceneManager.getPictureSprite(pictureId);
+    index_1.Game_Screen.prototype.isPointerInnerPicture = function (pictureId) {
+        var picture = index_1.SceneManager.getPictureSprite(pictureId);
         return picture ? picture.isIncludePointer() : false;
     };
     // =============================================================================
     // SceneManager
     //  ピクチャスプライトを取得します。
     // =============================================================================
-    managers_1.SceneManager.getPictureSprite = function (pictureId) {
+    index_1.SceneManager.getPictureSprite = function (pictureId) {
         return this._scene.getPictureSprite(pictureId);
     };
     // =============================================================================
     // BattleManager
     //  ピクチャコモンを常に実行できるようにします。
     // =============================================================================
-    managers_1.BattleManager.updatePictureCommon = function () {
-        if (DataManager_1.$gameTroop.isExistPictureCommon() && paramAlwaysCommonInBattle) {
+    index_1.BattleManager.updatePictureCommon = function () {
+        if (index_1.$gameTroop.isExistPictureCommon() && paramAlwaysCommonInBattle) {
             this.updateEventMain();
             return true;
         }
@@ -700,17 +694,17 @@ var windows_1 = require("../windows");
     // Scene_Base
     //  ピクチャに対する繰り返し処理を追加定義します。
     // =============================================================================
-    scenes_1.Scene_Base.prototype.updateTouchPictures = function () {
-        if (paramInvalidSwitchId && DataManager_1.$gameSwitches.value(paramInvalidSwitchId)) {
+    index_1.Scene_Base.prototype.updateTouchPictures = function () {
+        if (paramInvalidSwitchId && index_1.$gameSwitches.value(paramInvalidSwitchId)) {
             return;
         }
         this._spriteset.iteratePictures(function (picture) {
             if (typeof picture.callTouch === "function")
                 picture.callTouch();
-            return DataManager_1.$gameTemp.pictureCommonId() === 0;
+            return index_1.$gameTemp.pictureCommonId() === 0;
         });
     };
-    scenes_1.Scene_Base.prototype.getPictureSprite = function (pictureId) {
+    index_1.Scene_Base.prototype.getPictureSprite = function (pictureId) {
         var result = null;
         this._spriteset.iteratePictures(function (picture) {
             if (picture.isIdEquals(pictureId)) {
@@ -725,50 +719,50 @@ var windows_1 = require("../windows");
     // Scene_Map
     //  ピクチャのタッチ状態からのコモンイベント呼び出し予約を追加定義します。
     // =============================================================================
-    var sceneMapUpdate = scenes_1.Scene_Map.prototype.update;
-    scenes_1.Scene_Map.prototype.update = function () {
+    var sceneMapUpdate = index_1.Scene_Map.prototype.update;
+    index_1.Scene_Map.prototype.update = function () {
         this.updateTouchPictures();
         sceneMapUpdate.apply(this, arguments);
     };
-    var sceneMapProcessMapTouch = scenes_1.Scene_Map.prototype.processMapTouch;
-    scenes_1.Scene_Map.prototype.processMapTouch = function () {
+    var sceneMapProcessMapTouch = index_1.Scene_Map.prototype.processMapTouch;
+    index_1.Scene_Map.prototype.processMapTouch = function () {
         sceneMapProcessMapTouch.apply(this, arguments);
-        if (DataManager_1.$gameTemp.isDestinationValid() && DataManager_1.$gameTemp.pictureCommonId() > 0) {
-            DataManager_1.$gameTemp.clearDestination();
+        if (index_1.$gameTemp.isDestinationValid() && index_1.$gameTemp.pictureCommonId() > 0) {
+            index_1.$gameTemp.clearDestination();
         }
     };
-    var sceneMapTerminate = scenes_1.Scene_Map.prototype.terminate;
-    scenes_1.Scene_Map.prototype.terminate = function () {
+    var sceneMapTerminate = index_1.Scene_Map.prototype.terminate;
+    index_1.Scene_Map.prototype.terminate = function () {
         sceneMapTerminate.apply(this, arguments);
-        DataManager_1.$gameTemp.clearPictureCallInfo();
+        index_1.$gameTemp.clearPictureCallInfo();
     };
     // =============================================================================
     // Scene_Battle
     //  ピクチャのタッチ状態からのコモンイベント呼び出し予約を追加定義します。
     // =============================================================================
-    var sceneBattleUpdate = scenes_1.Scene_Battle.prototype.update;
-    scenes_1.Scene_Battle.prototype.update = function () {
+    var sceneBattleUpdate = index_1.Scene_Battle.prototype.update;
+    index_1.Scene_Battle.prototype.update = function () {
         this.updateTouchPictures();
-        DataManager_1.$gameTroop.updateAllPictureCommonEvent();
+        index_1.$gameTroop.updateAllPictureCommonEvent();
         sceneBattleUpdate.apply(this, arguments);
     };
-    var sceneBattleUpdateBattleProcess = scenes_1.Scene_Battle.prototype.updateBattleProcess;
-    scenes_1.Scene_Battle.prototype.updateBattleProcess = function () {
-        var result = managers_1.BattleManager.updatePictureCommon();
+    var sceneBattleUpdateBattleProcess = index_1.Scene_Battle.prototype.updateBattleProcess;
+    index_1.Scene_Battle.prototype.updateBattleProcess = function () {
+        var result = index_1.BattleManager.updatePictureCommon();
         if (result)
             return;
         sceneBattleUpdateBattleProcess.apply(this, arguments);
     };
-    var sceneBattleTerminate = scenes_1.Scene_Battle.prototype.terminate;
-    scenes_1.Scene_Battle.prototype.terminate = function () {
+    var sceneBattleTerminate = index_1.Scene_Battle.prototype.terminate;
+    index_1.Scene_Battle.prototype.terminate = function () {
         sceneBattleTerminate.apply(this, arguments);
-        DataManager_1.$gameTemp.clearPictureCallInfo();
+        index_1.$gameTemp.clearPictureCallInfo();
     };
     // =============================================================================
     // Spriteset_Base
     //  ピクチャに対するイテレータを追加定義します。
     // =============================================================================
-    sprites_1.Spriteset_Base.prototype.iteratePictures = function (callBackFund) {
+    index_1.Spriteset_Base.prototype.iteratePictures = function (callBackFund) {
         var containerChildren = this._pictureContainer.children;
         if (!Array.isArray(containerChildren)) {
             iterate(this._pictureContainer, function (property) {
@@ -782,7 +776,7 @@ var windows_1 = require("../windows");
             this._iteratePicturesSub(containerChildren, callBackFund);
         }
     };
-    sprites_1.Spriteset_Base.prototype._iteratePicturesSub = function (containerChildren, callBackFund) {
+    index_1.Spriteset_Base.prototype._iteratePicturesSub = function (containerChildren, callBackFund) {
         for (var i = containerChildren.length - 1; i >= 0; i--) {
             if (!callBackFund(containerChildren[i])) {
                 break;
@@ -793,8 +787,8 @@ var windows_1 = require("../windows");
     // Sprite_Picture
     //  ピクチャのタッチ状態からのコモンイベント呼び出し予約を追加定義します。
     // =============================================================================
-    var spritePictureInitialize = sprites_1.Sprite_Picture.prototype.initialize;
-    sprites_1.Sprite_Picture.prototype.initialize = function (pictureId) {
+    var spritePictureInitialize = index_1.Sprite_Picture.prototype.initialize;
+    index_1.Sprite_Picture.prototype.initialize = function (pictureId) {
         spritePictureInitialize.call(this, pictureId);
         this._triggerHandler = [];
         this._triggerHandler[1] = this.isTriggered;
@@ -813,18 +807,18 @@ var windows_1 = require("../windows");
         this._outMouse = false;
         this._wasOnMouse = false;
     };
-    var spriteUpdate = sprites_1.Sprite_Picture.prototype.update;
-    sprites_1.Sprite_Picture.prototype.update = function () {
+    var spriteUpdate = index_1.Sprite_Picture.prototype.update;
+    index_1.Sprite_Picture.prototype.update = function () {
         spriteUpdate.apply(this, arguments);
         this.updateTouch();
     };
-    sprites_1.Sprite_Picture.prototype.updateTouch = function () {
+    index_1.Sprite_Picture.prototype.updateTouch = function () {
         this.updateMouseMove();
         this.updateStroke();
         this.updatePointer();
     };
-    sprites_1.Sprite_Picture.prototype.updateMouseMove = function () {
-        var commandIds = DataManager_1.$gameScreen.getPictureCid(this._pictureId);
+    index_1.Sprite_Picture.prototype.updateMouseMove = function () {
+        var commandIds = index_1.$gameScreen.getPictureCid(this._pictureId);
         if (!commandIds) {
             this._outMouse = false;
             this._wasOnMouse = false;
@@ -841,29 +835,29 @@ var windows_1 = require("../windows");
             this._wasOnMouse = false;
         }
     };
-    sprites_1.Sprite_Picture.prototype.isIncludePointer = function () {
+    index_1.Sprite_Picture.prototype.isIncludePointer = function () {
         return this.isTouchable() && this.isTouchPosInRect() && !this.isTransparent();
     };
-    sprites_1.Sprite_Picture.prototype.updateStroke = function () {
-        var strokeNum = DataManager_1.$gameScreen.getPictureSid(this._pictureId);
-        if (strokeNum > 0 && core_1.TouchInput.isPressed() && this.isIncludePointer()) {
-            var value = DataManager_1.$gameVariables.value(strokeNum);
-            DataManager_1.$gameVariables.setValue(strokeNum, value + core_1.TouchInput.pressedDistance);
+    index_1.Sprite_Picture.prototype.updateStroke = function () {
+        var strokeNum = index_1.$gameScreen.getPictureSid(this._pictureId);
+        if (strokeNum > 0 && index_1.TouchInput.isPressed() && this.isIncludePointer()) {
+            var value = index_1.$gameVariables.value(strokeNum);
+            index_1.$gameVariables.setValue(strokeNum, value + index_1.TouchInput.pressedDistance);
         }
     };
-    sprites_1.Sprite_Picture.prototype.updatePointer = function () {
-        var strokeNum = DataManager_1.$gameScreen.getPicturePid(this._pictureId);
+    index_1.Sprite_Picture.prototype.updatePointer = function () {
+        var strokeNum = index_1.$gameScreen.getPicturePid(this._pictureId);
         if (strokeNum > 0) {
-            this.opacity = core_1.TouchInput.isPressed() ? 255 : 0;
-            this.x = core_1.TouchInput.x;
-            this.y = core_1.TouchInput.y;
+            this.opacity = index_1.TouchInput.isPressed() ? 255 : 0;
+            this.x = index_1.TouchInput.x;
+            this.y = index_1.TouchInput.y;
             this.anchor.x = 0.5;
             this.anchor.y = 0.5;
         }
     };
-    sprites_1.Sprite_Picture.prototype.callTouch = function () {
-        var commandIds = DataManager_1.$gameScreen.getPictureCid(this._pictureId);
-        if (!commandIds || managers_1.SceneManager.isNextScene(scenes_1.Scene_Battle)) {
+    index_1.Sprite_Picture.prototype.callTouch = function () {
+        var commandIds = index_1.$gameScreen.getPictureCid(this._pictureId);
+        if (!commandIds || index_1.SceneManager.isNextScene(index_1.Scene_Battle)) {
             return;
         }
         for (var i = 0, n = this._triggerHandler.length; i < n; i++) {
@@ -873,34 +867,34 @@ var windows_1 = require("../windows");
             }
         }
     };
-    sprites_1.Sprite_Picture.prototype.fireTouchEvent = function (commandIds, i) {
+    index_1.Sprite_Picture.prototype.fireTouchEvent = function (commandIds, i) {
         if (this.isTouchSuppress()) {
-            core_1.TouchInput.suppressEvents();
+            index_1.TouchInput.suppressEvents();
         }
         if (this.triggerIsLongPressed(i))
-            core_1.TouchInput._pressedTime = -60;
+            index_1.TouchInput._pressedTime = -60;
         if (this.triggerIsOnFocus(i))
             this._onMouse = false;
         if (this.triggerIsOutFocus(i))
             this._outMouse = false;
-        DataManager_1.$gameTemp.onTouchPicture(commandIds[i], this._pictureId);
+        index_1.$gameTemp.onTouchPicture(commandIds[i], this._pictureId);
     };
-    sprites_1.Sprite_Picture.prototype.isTouchSuppress = function () {
-        return paramSuppressTouchSwitch > 0 ? DataManager_1.$gameSwitches.value(paramSuppressTouchSwitch) : paramSuppressTouch;
+    index_1.Sprite_Picture.prototype.isTouchSuppress = function () {
+        return paramSuppressTouchSwitch > 0 ? index_1.$gameSwitches.value(paramSuppressTouchSwitch) : paramSuppressTouch;
     };
-    sprites_1.Sprite_Picture.prototype.triggerIsLongPressed = function (triggerId) {
+    index_1.Sprite_Picture.prototype.triggerIsLongPressed = function (triggerId) {
         return triggerId === 3;
     };
-    sprites_1.Sprite_Picture.prototype.triggerIsOnFocus = function (triggerId) {
+    index_1.Sprite_Picture.prototype.triggerIsOnFocus = function (triggerId) {
         return triggerId === 4;
     };
-    sprites_1.Sprite_Picture.prototype.triggerIsOutFocus = function (triggerId) {
+    index_1.Sprite_Picture.prototype.triggerIsOutFocus = function (triggerId) {
         return triggerId === 5;
     };
-    sprites_1.Sprite_Picture.prototype.triggerIsFocus = function (triggerId) {
+    index_1.Sprite_Picture.prototype.triggerIsFocus = function (triggerId) {
         return this.triggerIsOnFocus(triggerId) || this.triggerIsOutFocus(triggerId);
     };
-    sprites_1.Sprite_Picture.prototype.isTransparent = function () {
+    index_1.Sprite_Picture.prototype.isTransparent = function () {
         if (this.isTouchPosInFrameWindow())
             return false;
         if (!this.isValidTransparent())
@@ -915,35 +909,35 @@ var windows_1 = require("../windows");
         var by = Math.floor(dx * sin + dy * cos) / this.scale.y + this.anchor.y * this.height;
         return this.bitmap.getAlphaPixel(bx, by) === 0;
     };
-    sprites_1.Sprite_Picture.prototype.isValidTransparent = function () {
-        var transparent = DataManager_1.$gameScreen.getPictureTransparent(this._pictureId);
+    index_1.Sprite_Picture.prototype.isValidTransparent = function () {
+        var transparent = index_1.$gameScreen.getPictureTransparent(this._pictureId);
         return transparent !== null ? transparent : paramTransparentConsideration;
     };
-    sprites_1.Sprite_Picture.prototype.screenWidth = function () {
+    index_1.Sprite_Picture.prototype.screenWidth = function () {
         return (this.width || 0) * this.scale.x;
     };
-    sprites_1.Sprite_Picture.prototype.screenHeight = function () {
+    index_1.Sprite_Picture.prototype.screenHeight = function () {
         return (this.height || 0) * this.scale.y;
     };
-    sprites_1.Sprite_Picture.prototype.screenX = function () {
+    index_1.Sprite_Picture.prototype.screenX = function () {
         return (this.x || 0) - this.anchor.x * this.screenWidth();
     };
-    sprites_1.Sprite_Picture.prototype.screenY = function () {
+    index_1.Sprite_Picture.prototype.screenY = function () {
         return (this.y || 0) - this.anchor.y * this.screenHeight();
     };
-    sprites_1.Sprite_Picture.prototype.minX = function () {
+    index_1.Sprite_Picture.prototype.minX = function () {
         return Math.min(this.screenX(), this.screenX() + this.screenWidth());
     };
-    sprites_1.Sprite_Picture.prototype.minY = function () {
+    index_1.Sprite_Picture.prototype.minY = function () {
         return Math.min(this.screenY(), this.screenY() + this.screenHeight());
     };
-    sprites_1.Sprite_Picture.prototype.maxX = function () {
+    index_1.Sprite_Picture.prototype.maxX = function () {
         return Math.max(this.screenX(), this.screenX() + this.screenWidth());
     };
-    sprites_1.Sprite_Picture.prototype.maxY = function () {
+    index_1.Sprite_Picture.prototype.maxY = function () {
         return Math.max(this.screenY(), this.screenY() + this.screenHeight());
     };
-    sprites_1.Sprite_Picture.prototype.isTouchPosInRect = function () {
+    index_1.Sprite_Picture.prototype.isTouchPosInRect = function () {
         if (this.isTouchPosInFrameWindow())
             return true;
         var dx = this.getTouchScreenX() - this.x;
@@ -954,7 +948,7 @@ var windows_1 = require("../windows");
         var ry = this.y + Math.floor(dx * sin + dy * cos);
         return rx >= this.minX() && rx <= this.maxX() && ry >= this.minY() && ry <= this.maxY();
     };
-    sprites_1.Sprite_Picture.prototype.isTouchPosInFrameWindow = function () {
+    index_1.Sprite_Picture.prototype.isTouchPosInFrameWindow = function () {
         if (!this._frameWindow)
             return false;
         var frame = this._frameWindow;
@@ -962,55 +956,55 @@ var windows_1 = require("../windows");
         var y = this.getTouchScreenY();
         return frame.x <= x && frame.x + frame.width >= x && frame.y <= y && frame.y + frame.height >= y;
     };
-    sprites_1.Sprite_Picture.prototype.isTouchable = function () {
+    index_1.Sprite_Picture.prototype.isTouchable = function () {
         return this.bitmap && this.visible && this.scale.x !== 0 && this.scale.y !== 0;
     };
-    sprites_1.Sprite_Picture.prototype.isTriggered = function () {
-        return this.isTouchEvent(core_1.TouchInput.isTriggered);
+    index_1.Sprite_Picture.prototype.isTriggered = function () {
+        return this.isTouchEvent(index_1.TouchInput.isTriggered);
     };
-    sprites_1.Sprite_Picture.prototype.isCancelled = function () {
-        return this.isTouchEvent(core_1.TouchInput.isCancelled);
+    index_1.Sprite_Picture.prototype.isCancelled = function () {
+        return this.isTouchEvent(index_1.TouchInput.isCancelled);
     };
-    sprites_1.Sprite_Picture.prototype.isLongPressed = function () {
-        return this.isTouchEvent(core_1.TouchInput.isLongPressed);
+    index_1.Sprite_Picture.prototype.isLongPressed = function () {
+        return this.isTouchEvent(index_1.TouchInput.isLongPressed);
     };
-    sprites_1.Sprite_Picture.prototype.isPressed = function () {
-        return this.isTouchEvent(core_1.TouchInput.isPressed);
+    index_1.Sprite_Picture.prototype.isPressed = function () {
+        return this.isTouchEvent(index_1.TouchInput.isPressed);
     };
-    sprites_1.Sprite_Picture.prototype.isReleased = function () {
-        return this.isTouchEvent(core_1.TouchInput.isReleased);
+    index_1.Sprite_Picture.prototype.isReleased = function () {
+        return this.isTouchEvent(index_1.TouchInput.isReleased);
     };
-    sprites_1.Sprite_Picture.prototype.isRepeated = function () {
-        return this.isTouchEvent(core_1.TouchInput.isRepeated);
+    index_1.Sprite_Picture.prototype.isRepeated = function () {
+        return this.isTouchEvent(index_1.TouchInput.isRepeated);
     };
-    sprites_1.Sprite_Picture.prototype.isOnFocus = function () {
+    index_1.Sprite_Picture.prototype.isOnFocus = function () {
         return this._onMouse;
     };
-    sprites_1.Sprite_Picture.prototype.isOutFocus = function () {
+    index_1.Sprite_Picture.prototype.isOutFocus = function () {
         return this._outMouse;
     };
-    sprites_1.Sprite_Picture.prototype.isMoved = function () {
-        return this.isTouchEvent(core_1.TouchInput.isMoved);
+    index_1.Sprite_Picture.prototype.isMoved = function () {
+        return this.isTouchEvent(index_1.TouchInput.isMoved);
     };
-    sprites_1.Sprite_Picture.prototype.isMovedAndPressed = function () {
-        return this.isTouchEvent(core_1.TouchInput.isMoved) && core_1.TouchInput.isPressed();
+    index_1.Sprite_Picture.prototype.isMovedAndPressed = function () {
+        return this.isTouchEvent(index_1.TouchInput.isMoved) && index_1.TouchInput.isPressed();
     };
-    sprites_1.Sprite_Picture.prototype.isWheelTriggered = function () {
-        return this.isTouchEvent(core_1.TouchInput.isWheelTriggered);
+    index_1.Sprite_Picture.prototype.isWheelTriggered = function () {
+        return this.isTouchEvent(index_1.TouchInput.isWheelTriggered);
     };
-    sprites_1.Sprite_Picture.prototype.isDoubleTriggered = function () {
-        return this.isTouchEvent(core_1.TouchInput.isDoubleTriggered);
+    index_1.Sprite_Picture.prototype.isDoubleTriggered = function () {
+        return this.isTouchEvent(index_1.TouchInput.isDoubleTriggered);
     };
-    sprites_1.Sprite_Picture.prototype.isTouchEvent = function (triggerFunc) {
-        return this.isTouchable() && triggerFunc.call(core_1.TouchInput) && this.isTouchPosInRect();
+    index_1.Sprite_Picture.prototype.isTouchEvent = function (triggerFunc) {
+        return this.isTouchable() && triggerFunc.call(index_1.TouchInput) && this.isTouchPosInRect();
     };
-    sprites_1.Sprite_Picture.prototype.getTouchScreenX = function () {
-        return DataManager_1.$gameScreen.disConvertPositionX(core_1.TouchInput.x);
+    index_1.Sprite_Picture.prototype.getTouchScreenX = function () {
+        return index_1.$gameScreen.disConvertPositionX(index_1.TouchInput.x);
     };
-    sprites_1.Sprite_Picture.prototype.getTouchScreenY = function () {
-        return DataManager_1.$gameScreen.disConvertPositionY(core_1.TouchInput.y);
+    index_1.Sprite_Picture.prototype.getTouchScreenY = function () {
+        return index_1.$gameScreen.disConvertPositionY(index_1.TouchInput.y);
     };
-    sprites_1.Sprite_Picture.prototype.isIdEquals = function (pictureId) {
+    index_1.Sprite_Picture.prototype.isIdEquals = function (pictureId) {
         return this._pictureId === pictureId;
     };
     // =============================================================================
@@ -1042,65 +1036,65 @@ var windows_1 = require("../windows");
     // TouchInput
     //  ホイールクリック、ダブルクリック等を実装
     // =============================================================================
-    core_1.TouchInput.keyDoubleClickInterval = 300;
-    core_1.TouchInput._pressedDistance = 0;
-    core_1.TouchInput._prevX = -1;
-    core_1.TouchInput._prevY = -1;
-    Object.defineProperty(core_1.TouchInput, "pressedDistance", {
+    index_1.TouchInput.keyDoubleClickInterval = 300;
+    index_1.TouchInput._pressedDistance = 0;
+    index_1.TouchInput._prevX = -1;
+    index_1.TouchInput._prevY = -1;
+    Object.defineProperty(index_1.TouchInput, "pressedDistance", {
         get: function () {
             return this._pressedDistance;
         },
         configurable: true
     });
-    core_1.TouchInput.suppressEvents = function () {
+    index_1.TouchInput.suppressEvents = function () {
         this._triggered = false;
         this._cancelled = false;
         this._released = false;
         this._wheelTriggered = false;
         this._doubleTriggered = false;
     };
-    core_1.TouchInput._onMouseMove = function (event) {
-        var x = core_1.Graphics.pageToCanvasX(event.point.x + event.startDelta.x);
-        var y = core_1.Graphics.pageToCanvasY(event.point.y + event.startDelta.y);
+    index_1.TouchInput._onMouseMove = function (event) {
+        var x = index_1.Graphics.pageToCanvasX(event.point.x + event.startDelta.x);
+        var y = index_1.Graphics.pageToCanvasY(event.point.y + event.startDelta.y);
         this._onMove(x, y);
     };
-    var touchInputClear = core_1.TouchInput.clear;
-    core_1.TouchInput.clear = function () {
+    var touchInputClear = index_1.TouchInput.clear;
+    index_1.TouchInput.clear = function () {
         touchInputClear.apply(this, arguments);
         this._events.wheelTriggered = false;
         this._events.doubleTriggered = false;
     };
-    var touchInputUpdate = core_1.TouchInput.update;
-    core_1.TouchInput.update = function () {
+    var touchInputUpdate = index_1.TouchInput.update;
+    index_1.TouchInput.update = function () {
         touchInputUpdate.apply(this, arguments);
         this._wheelTriggered = this._events.wheelTriggered;
         this._doubleTriggered = this._events.doubleTriggered;
         this._events.wheelTriggered = false;
         this._events.doubleTriggered = false;
     };
-    core_1.TouchInput.isWheelTriggered = function () {
+    index_1.TouchInput.isWheelTriggered = function () {
         return this._wheelTriggered;
     };
-    core_1.TouchInput.isDoubleTriggered = function () {
+    index_1.TouchInput.isDoubleTriggered = function () {
         return this._doubleTriggered;
     };
     // _onMiddleButtonDownメソッドは存在するがprivateなので、anyにキャストする
-    var touchInputOnMiddleButtonDown = core_1.TouchInput._onMiddleButtonDown;
-    core_1.TouchInput._onMiddleButtonDown = function (event) {
+    var touchInputOnMiddleButtonDown = index_1.TouchInput._onMiddleButtonDown;
+    index_1.TouchInput._onMiddleButtonDown = function (event) {
         touchInputOnMiddleButtonDown.apply(this, arguments);
-        var x = core_1.Graphics.pageToCanvasX(event.point.x);
-        var y = core_1.Graphics.pageToCanvasY(event.point.y);
-        if (core_1.Graphics.isInsideCanvas(x, y)) {
+        var x = index_1.Graphics.pageToCanvasX(event.point.x);
+        var y = index_1.Graphics.pageToCanvasY(event.point.y);
+        if (index_1.Graphics.isInsideCanvas(x, y)) {
             this._onWheelTrigger(x, y);
         }
     };
-    core_1.TouchInput._onWheelTrigger = function (x, y) {
+    index_1.TouchInput._onWheelTrigger = function (x, y) {
         this._events.wheelTriggered = true;
         this._x = x;
         this._y = y;
     };
-    var touchInputOnTrigger = core_1.TouchInput._onTrigger;
-    core_1.TouchInput._onTrigger = function (x, y) {
+    var touchInputOnTrigger = index_1.TouchInput._onTrigger;
+    index_1.TouchInput._onTrigger = function (x, y) {
         if (this._date && Date.now() - this._date < this.keyDoubleClickInterval)
             this._events.doubleTriggered = true;
         this._pressedDistance = 0;
@@ -1108,16 +1102,16 @@ var windows_1 = require("../windows");
         this._prevY = y;
         touchInputOnTrigger.apply(this, arguments);
     };
-    var touchInputOnMove = core_1.TouchInput._onMove;
-    core_1.TouchInput._onMove = function (x, y) {
+    var touchInputOnMove = index_1.TouchInput._onMove;
+    index_1.TouchInput._onMove = function (x, y) {
         if (this.isPressed())
             this._pressedDistance = Math.abs(this._prevX - x) + Math.abs(this._prevY - y);
         this._prevX = x;
         this._prevY = y;
         touchInputOnMove.apply(this, arguments);
     };
-    var touchInputOnRelease = core_1.TouchInput._onRelease;
-    core_1.TouchInput._onRelease = function (x, y) {
+    var touchInputOnRelease = index_1.TouchInput._onRelease;
+    index_1.TouchInput._onRelease = function (x, y) {
         this._pressedDistance = 0;
         this._prevX = x;
         this._prevY = y;

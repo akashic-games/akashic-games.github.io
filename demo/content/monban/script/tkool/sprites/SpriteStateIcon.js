@@ -16,8 +16,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_StateIcon = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Sprite_1 = require("../core/Sprite");
+var ImageManager_1 = require("../managers/ImageManager");
 var Sprite_StateIcon = /** @class */ (function (_super) {
     __extends(Sprite_StateIcon, _super);
     function Sprite_StateIcon() {
@@ -37,7 +37,7 @@ var Sprite_StateIcon = /** @class */ (function (_super) {
         this.anchor.y = 0.5;
     };
     Sprite_StateIcon.prototype.loadBitmap = function () {
-        this.bitmap = managers_1.ImageManager.loadSystem("IconSet");
+        this.bitmap = ImageManager_1.ImageManager.loadSystem("IconSet");
         this.setFrame(0, 0, 0, 0);
     };
     Sprite_StateIcon.prototype.setup = function (battler) {
@@ -82,5 +82,5 @@ var Sprite_StateIcon = /** @class */ (function (_super) {
     Sprite_StateIcon._iconWidth = 32;
     Sprite_StateIcon._iconHeight = 32;
     return Sprite_StateIcon;
-}(core_1.Sprite));
+}(Sprite_1.Sprite));
 exports.Sprite_StateIcon = Sprite_StateIcon;

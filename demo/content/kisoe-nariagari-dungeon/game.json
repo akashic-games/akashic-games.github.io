@@ -1940,6 +1940,46 @@
 			"type": "script",
 			"path": "script/tkool/core/RequestQueue.js",
 			"global": true
+		},
+		"createStandardBuiltinObjectExtensions": {
+			"type": "script",
+			"path": "script/createStandardBuiltinObjectExtensions.js",
+			"global": true
+		},
+		"Input": {
+			"type": "script",
+			"path": "script/tkool/core/Input.js",
+			"global": true
+		},
+		"ConfigManager": {
+			"type": "script",
+			"path": "script/tkool/managers/ConfigManager.js",
+			"global": true
+		},
+		"globals": {
+			"type": "script",
+			"path": "script/tkool/managers/globals.js",
+			"global": true
+		},
+		"SceneFile": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneFile.js",
+			"global": true
+		},
+		"SceneLoad": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneLoad.js",
+			"global": true
+		},
+		"SceneSave": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneSave.js",
+			"global": true
+		},
+		"WindowSavefileList": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowSavefileList.js",
+			"global": true
 		}
 	},
 	"environment": {

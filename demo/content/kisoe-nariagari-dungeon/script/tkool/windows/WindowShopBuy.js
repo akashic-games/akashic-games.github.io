@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_ShopBuy = void 0;
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var WindowSelectable_1 = require("./WindowSelectable");
 var Window_ShopBuy = /** @class */ (function (_super) {
     __extends(Window_ShopBuy, _super);
@@ -51,7 +51,7 @@ var Window_ShopBuy = /** @class */ (function (_super) {
         return this._price[this._data.indexOf(item)] || 0;
     };
     Window_ShopBuy.prototype.isEnabled = function (item) {
-        return item && this.price(item) <= this._money && !DataManager_1.$gameParty.hasMaxItems(item);
+        return item && this.price(item) <= this._money && !globals_1.$gameParty.hasMaxItems(item);
     };
     Window_ShopBuy.prototype.refresh = function () {
         this.makeItemList();
@@ -65,13 +65,13 @@ var Window_ShopBuy = /** @class */ (function (_super) {
             var item = null;
             switch (goods[0]) {
                 case 0:
-                    item = DataManager_1.$dataItems[goods[1]];
+                    item = globals_1.$dataItems[goods[1]];
                     break;
                 case 1:
-                    item = DataManager_1.$dataWeapons[goods[1]];
+                    item = globals_1.$dataWeapons[goods[1]];
                     break;
                 case 2:
-                    item = DataManager_1.$dataArmors[goods[1]];
+                    item = globals_1.$dataArmors[goods[1]];
                     break;
             }
             if (item) {

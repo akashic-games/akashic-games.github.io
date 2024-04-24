@@ -1,25 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TextManager = void 0;
-var DataManager_1 = require("./DataManager");
+var globals_1 = require("./globals");
 var TextManager = /** @class */ (function () {
     function TextManager() {
     }
     TextManager.basic = function (basicId) {
-        return DataManager_1.$dataSystem.terms.basic[basicId] || "";
+        return globals_1.$dataSystem.terms.basic[basicId] || "";
     };
     TextManager.param = function (paramId) {
-        return DataManager_1.$dataSystem.terms.params[paramId] || "";
+        return globals_1.$dataSystem.terms.params[paramId] || "";
     };
     TextManager.command = function (commandId) {
-        return DataManager_1.$dataSystem.terms.commands[commandId] || "";
+        return globals_1.$dataSystem.terms.commands[commandId] || "";
     };
     TextManager.message = function (messageId) {
-        return DataManager_1.$dataSystem.terms.messages[messageId] || "";
+        return globals_1.$dataSystem.terms.messages[messageId] || "";
     };
     Object.defineProperty(TextManager, "currencyUnit", {
         get: function () {
-            return DataManager_1.$dataSystem.currencyUnit;
+            return globals_1.$dataSystem.currencyUnit;
         },
         enumerable: false,
         configurable: true

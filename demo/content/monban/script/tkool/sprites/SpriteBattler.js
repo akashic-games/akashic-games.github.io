@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Battler = void 0;
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var SpriteBase_1 = require("./SpriteBase");
 var SpriteDamage_1 = require("./SpriteDamage");
 var Sprite_Battler = /** @class */ (function (_super) {
@@ -140,7 +140,7 @@ var Sprite_Battler = /** @class */ (function (_super) {
     Sprite_Battler.prototype.setupAnimation = function () {
         while (this._battler.isAnimationRequested()) {
             var data = this._battler.shiftAnimation();
-            var animation = DataManager_1.$dataAnimations[data.animationId];
+            var animation = globals_1.$dataAnimations[data.animationId];
             var mirror = data.mirror;
             var delay = animation.position === 3 ? 0 : data.delay;
             this.startAnimation(animation, mirror, delay);

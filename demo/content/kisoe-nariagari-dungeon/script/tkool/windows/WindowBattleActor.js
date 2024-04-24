@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_BattleActor = void 0;
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var WindowBattleStatus_1 = require("./WindowBattleStatus");
 var Window_BattleActor = /** @class */ (function (_super) {
     __extends(Window_BattleActor, _super);
@@ -36,14 +36,14 @@ var Window_BattleActor = /** @class */ (function (_super) {
     };
     Window_BattleActor.prototype.hide = function () {
         _super.prototype.hide.call(this);
-        DataManager_1.$gameParty.select(null);
+        globals_1.$gameParty.select(null);
     };
     Window_BattleActor.prototype.select = function (index) {
         _super.prototype.select.call(this, index);
-        DataManager_1.$gameParty.select(this.actor());
+        globals_1.$gameParty.select(this.actor());
     };
     Window_BattleActor.prototype.actor = function () {
-        return DataManager_1.$gameParty.members()[this.index()];
+        return globals_1.$gameParty.members()[this.index()];
     };
     return Window_BattleActor;
 }(WindowBattleStatus_1.Window_BattleStatus));

@@ -1,14 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Temp = void 0;
-var core_1 = require("../core");
-var DataManager_1 = require("../managers/DataManager");
+var Utils_1 = require("../core/Utils");
+var globals_1 = require("../managers/globals");
 var Game_Temp = /** @class */ (function () {
     function Game_Temp() {
         this.initialize();
     }
     Game_Temp.prototype.initialize = function () {
-        this._isPlaytest = core_1.Utils.isOptionValid("test");
+        this._isPlaytest = Utils_1.Utils.isOptionValid("test");
         this._commonEventId = 0;
         this._destinationX = null;
         this._destinationY = null;
@@ -26,7 +26,7 @@ var Game_Temp = /** @class */ (function () {
         return this._commonEventId > 0;
     };
     Game_Temp.prototype.reservedCommonEvent = function () {
-        return DataManager_1.$dataCommonEvents[this._commonEventId];
+        return globals_1.$dataCommonEvents[this._commonEventId];
     };
     Game_Temp.prototype.setDestination = function (x, y) {
         this._destinationX = x;
@@ -48,3 +48,6 @@ var Game_Temp = /** @class */ (function () {
     return Game_Temp;
 }());
 exports.Game_Temp = Game_Temp;
+(0, globals_1.set$gameTempFactory)(function () {
+    return new Game_Temp();
+});

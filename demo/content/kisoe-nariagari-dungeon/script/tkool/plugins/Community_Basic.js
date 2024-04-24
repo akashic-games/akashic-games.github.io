@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var managers_1 = require("../managers");
+var index_1 = require("../index");
 /* :
  * @plugindesc Plugin used to set basic parameters.
  * @author RM CoreScript team
@@ -30,7 +30,7 @@ var managers_1 = require("../managers");
  * @default 624
  */
 (function () {
-    var parameters = managers_1.PluginManager.parameters("Community_Basic");
+    var parameters = index_1.PluginManager.parameters("Community_Basic");
     // var cacheLimit = toNumber(parameters['cacheLimit'], 10);
     var screenWidth = Number(parameters.screenWidth || 816);
     var screenHeight = Number(parameters.screenHeight || 624);
@@ -51,10 +51,10 @@ var managers_1 = require("../managers");
     // 	windowHeight = screenHeight;
     // }
     // ImageCache.limit = cacheLimit * 1000 * 1000;
-    managers_1.SceneManager._screenWidth = screenWidth;
-    managers_1.SceneManager._screenHeight = screenHeight;
-    managers_1.SceneManager._boxWidth = screenWidth;
-    managers_1.SceneManager._boxHeight = screenHeight;
+    index_1.SceneManager._screenWidth = screenWidth;
+    index_1.SceneManager._screenHeight = screenHeight;
+    index_1.SceneManager._boxWidth = screenWidth;
+    index_1.SceneManager._boxHeight = screenHeight;
     // SceneManager.preferableRendererType = function() {
     // 	if (Utils.isOptionValid('canvas')) {
     // 		return 'canvas';

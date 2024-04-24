@@ -16,8 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_TitleCommand = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Graphics_1 = require("../core/Graphics");
+var DataManager_1 = require("../managers/DataManager");
+var TextManager_1 = require("../managers/TextManager");
 var WindowCommand_1 = require("./WindowCommand");
 var Window_TitleCommand = /** @class */ (function (_super) {
     __extends(Window_TitleCommand, _super);
@@ -40,16 +41,16 @@ var Window_TitleCommand = /** @class */ (function (_super) {
         return 240;
     };
     Window_TitleCommand.prototype.updatePlacement = function () {
-        this.x = (core_1.Graphics.boxWidth - this.width) / 2;
-        this.y = core_1.Graphics.boxHeight - this.height - 96;
+        this.x = (Graphics_1.Graphics.boxWidth - this.width) / 2;
+        this.y = Graphics_1.Graphics.boxHeight - this.height - 96;
     };
     Window_TitleCommand.prototype.makeCommandList = function () {
-        this.addCommand(managers_1.TextManager.newGame, "newGame");
-        this.addCommand(managers_1.TextManager.continue_, "continue", this.isContinueEnabled());
-        this.addCommand(managers_1.TextManager.options, "options", false); // TODO: オプション機能未実装のため選択不可とするが、実装したら false を外す
+        this.addCommand(TextManager_1.TextManager.newGame, "newGame");
+        this.addCommand(TextManager_1.TextManager.continue_, "continue", this.isContinueEnabled());
+        this.addCommand(TextManager_1.TextManager.options, "options", false); // TODO: オプション機能未実装のため選択不可とするが、実装したら false を外す
     };
     Window_TitleCommand.prototype.isContinueEnabled = function () {
-        return managers_1.DataManager.isAnySavefileExists();
+        return DataManager_1.DataManager.isAnySavefileExists();
     };
     Window_TitleCommand.prototype.processOk = function () {
         Window_TitleCommand._lastCommandSymbol = this.currentSymbol();

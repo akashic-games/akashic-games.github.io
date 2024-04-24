@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_StateOverlay = void 0;
-var managers_1 = require("../managers");
+var ImageManager_1 = require("../managers/ImageManager");
 var SpriteBase_1 = require("./SpriteBase");
 var Sprite_StateOverlay = /** @class */ (function (_super) {
     __extends(Sprite_StateOverlay, _super);
@@ -37,7 +37,7 @@ var Sprite_StateOverlay = /** @class */ (function (_super) {
         this.anchor.y = 1;
     };
     Sprite_StateOverlay.prototype.loadBitmap = function () {
-        this.bitmap = managers_1.ImageManager.loadSystem("States");
+        this.bitmap = ImageManager_1.ImageManager.loadSystem("States");
         this.setFrame(0, 0, 0, 0);
     };
     Sprite_StateOverlay.prototype.setup = function (battler) {

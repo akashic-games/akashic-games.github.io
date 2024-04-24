@@ -16,8 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TilingSprite = void 0;
-var core_1 = require("../core");
 var PIXI_1 = require("../PIXI");
+var Sprite_1 = require("./Sprite");
+var Utils_1 = require("./Utils");
 // TilingSprite は本来以下のように派生したクラス。
 //   PIXI.Sprite <- PIXI.extras.TilingSprite <- PIXI.extras.PictureTilingSprite <- TilingSprite
 // https://pixijs.download/v4.8.1/docs/PIXI.extras.TilingSprite.html
@@ -36,7 +37,7 @@ var TilingSprite = /** @class */ (function (_super) {
         this._width = 0;
         this._height = 0;
         this._frame = new PIXI_1.Rectangle();
-        this.spriteId = core_1.Sprite._counter++;
+        this.spriteId = Sprite_1.Sprite._counter++;
         this.tilePosition = new PIXI_1.Point();
         this.origin = new PIXI_1.Point();
         this.bitmap = bitmap;
@@ -116,7 +117,7 @@ var TilingSprite = /** @class */ (function (_super) {
             return this.alpha * 255;
         },
         set: function (value) {
-            this.alpha = core_1.Utils.clamp(value, 0, 255) / 255;
+            this.alpha = Utils_1.Utils.clamp(value, 0, 255) / 255;
         },
         enumerable: false,
         configurable: true
@@ -167,5 +168,5 @@ var TilingSprite = /** @class */ (function (_super) {
         this.tilingTexture = null;
     };
     return TilingSprite;
-}(core_1.Sprite));
+}(Sprite_1.Sprite));
 exports.TilingSprite = TilingSprite;

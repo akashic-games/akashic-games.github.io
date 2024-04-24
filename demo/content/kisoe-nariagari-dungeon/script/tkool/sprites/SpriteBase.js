@@ -16,7 +16,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Base = void 0;
-var core_1 = require("../core");
+var Sprite_1 = require("../core/Sprite");
+var Utils_1 = require("../core/Utils");
 var SpriteAnimation_1 = require("./SpriteAnimation");
 var Sprite_Base = /** @class */ (function (_super) {
     __extends(Sprite_Base, _super);
@@ -56,7 +57,7 @@ var Sprite_Base = /** @class */ (function (_super) {
     Sprite_Base.prototype.updateAnimationSprites = function () {
         if (this._animationSprites.length > 0) {
             // const sprites = this._animationSprites.clone();
-            var sprites = core_1.Utils.cloneArray(this._animationSprites);
+            var sprites = Utils_1.Utils.cloneArray(this._animationSprites);
             this._animationSprites = [];
             for (var i = 0; i < sprites.length; i++) {
                 var sprite = sprites[i];
@@ -79,5 +80,5 @@ var Sprite_Base = /** @class */ (function (_super) {
         return this._animationSprites.length > 0;
     };
     return Sprite_Base;
-}(core_1.Sprite));
+}(Sprite_1.Sprite));
 exports.Sprite_Base = Sprite_Base;

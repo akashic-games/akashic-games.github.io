@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_CharacterBase = void 0;
 var Graphics_1 = require("../core/Graphics");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
+var ImageManager_1 = require("../managers/ImageManager");
 var Game_CharacterBase = /** @class */ (function () {
     function Game_CharacterBase() {
         if (Object.getPrototypeOf(this) === Game_CharacterBase.prototype) {
@@ -140,9 +140,9 @@ var Game_CharacterBase = /** @class */ (function () {
         return 10 - d;
     };
     Game_CharacterBase.prototype.canPass = function (x, y, d) {
-        var x2 = DataManager_1.$gameMap.roundXWithDirection(x, d);
-        var y2 = DataManager_1.$gameMap.roundYWithDirection(y, d);
-        if (!DataManager_1.$gameMap.isValid(x2, y2)) {
+        var x2 = globals_1.$gameMap.roundXWithDirection(x, d);
+        var y2 = globals_1.$gameMap.roundYWithDirection(y, d);
+        if (!globals_1.$gameMap.isValid(x2, y2)) {
             return false;
         }
         if (this.isThrough() || this.isDebugThrough()) {
@@ -157,8 +157,8 @@ var Game_CharacterBase = /** @class */ (function () {
         return true;
     };
     Game_CharacterBase.prototype.canPassDiagonally = function (x, y, horz, vert) {
-        var x2 = DataManager_1.$gameMap.roundXWithDirection(x, horz);
-        var y2 = DataManager_1.$gameMap.roundYWithDirection(y, vert);
+        var x2 = globals_1.$gameMap.roundXWithDirection(x, horz);
+        var y2 = globals_1.$gameMap.roundYWithDirection(y, vert);
         if (this.canPass(x, y, vert) && this.canPass(x, y2, horz)) {
             return true;
         }
@@ -168,22 +168,22 @@ var Game_CharacterBase = /** @class */ (function () {
         return false;
     };
     Game_CharacterBase.prototype.isMapPassable = function (x, y, d) {
-        var x2 = DataManager_1.$gameMap.roundXWithDirection(x, d);
-        var y2 = DataManager_1.$gameMap.roundYWithDirection(y, d);
+        var x2 = globals_1.$gameMap.roundXWithDirection(x, d);
+        var y2 = globals_1.$gameMap.roundYWithDirection(y, d);
         var d2 = this.reverseDir(d);
-        return DataManager_1.$gameMap.isPassable(x, y, d) && DataManager_1.$gameMap.isPassable(x2, y2, d2);
+        return globals_1.$gameMap.isPassable(x, y, d) && globals_1.$gameMap.isPassable(x2, y2, d2);
     };
     Game_CharacterBase.prototype.isCollidedWithCharacters = function (x, y) {
         return this.isCollidedWithEvents(x, y) || this.isCollidedWithVehicles(x, y);
     };
     Game_CharacterBase.prototype.isCollidedWithEvents = function (x, y) {
-        var events = DataManager_1.$gameMap.eventsXyNt(x, y);
+        var events = globals_1.$gameMap.eventsXyNt(x, y);
         return events.some(function (event) {
             return event.isNormalPriority();
         });
     };
     Game_CharacterBase.prototype.isCollidedWithVehicles = function (x, y) {
-        return DataManager_1.$gameMap.boat().posNt(x, y) || DataManager_1.$gameMap.ship().posNt(x, y);
+        return globals_1.$gameMap.boat().posNt(x, y) || globals_1.$gameMap.ship().posNt(x, y);
     };
     Game_CharacterBase.prototype.setPosition = function (x, y) {
         this._x = Math.round(x);
@@ -222,17 +222,17 @@ var Game_CharacterBase = /** @class */ (function () {
         return this.isObjectCharacter() ? 0 : 6;
     };
     Game_CharacterBase.prototype.scrolledX = function () {
-        return DataManager_1.$gameMap.adjustX(this._realX);
+        return globals_1.$gameMap.adjustX(this._realX);
     };
     Game_CharacterBase.prototype.scrolledY = function () {
-        return DataManager_1.$gameMap.adjustY(this._realY);
+        return globals_1.$gameMap.adjustY(this._realY);
     };
     Game_CharacterBase.prototype.screenX = function () {
-        var tw = DataManager_1.$gameMap.tileWidth();
+        var tw = globals_1.$gameMap.tileWidth();
         return Math.round(this.scrolledX() * tw + tw / 2);
     };
     Game_CharacterBase.prototype.screenY = function () {
-        var th = DataManager_1.$gameMap.tileHeight();
+        var th = globals_1.$gameMap.tileHeight();
         return Math.round(this.scrolledY() * th + th - this.shiftY() - this.jumpHeight());
     };
     Game_CharacterBase.prototype.screenZ = function () {
@@ -241,8 +241,8 @@ var Game_CharacterBase = /** @class */ (function () {
     Game_CharacterBase.prototype.isNearTheScreen = function () {
         var gw = Graphics_1.Graphics.width;
         var gh = Graphics_1.Graphics.height;
-        var tw = DataManager_1.$gameMap.tileWidth();
-        var th = DataManager_1.$gameMap.tileHeight();
+        var tw = globals_1.$gameMap.tileWidth();
+        var th = globals_1.$gameMap.tileHeight();
         var px = this.scrolledX() * tw + tw / 2 - gw / 2;
         var py = this.scrolledY() * th + th / 2 - gh / 2;
         return px >= -gw && px <= gw && py >= -gh && py <= gh;
@@ -269,8 +269,8 @@ var Game_CharacterBase = /** @class */ (function () {
         this._realY = (this._realY * this._jumpCount + this._y) / (this._jumpCount + 1.0);
         this.refreshBushDepth();
         if (this._jumpCount === 0) {
-            this._realX = this._x = DataManager_1.$gameMap.roundX(this._x);
-            this._realY = this._y = DataManager_1.$gameMap.roundY(this._y);
+            this._realX = this._x = globals_1.$gameMap.roundX(this._x);
+            this._realY = this._y = globals_1.$gameMap.roundY(this._y);
         }
     };
     Game_CharacterBase.prototype.updateMove = function () {
@@ -342,16 +342,16 @@ var Game_CharacterBase = /** @class */ (function () {
         }
     };
     Game_CharacterBase.prototype.isOnLadder = function () {
-        return DataManager_1.$gameMap.isLadder(this._x, this._y);
+        return globals_1.$gameMap.isLadder(this._x, this._y);
     };
     Game_CharacterBase.prototype.isOnBush = function () {
-        return DataManager_1.$gameMap.isBush(this._x, this._y);
+        return globals_1.$gameMap.isBush(this._x, this._y);
     };
     Game_CharacterBase.prototype.terrainTag = function () {
-        return DataManager_1.$gameMap.terrainTag(this._x, this._y);
+        return globals_1.$gameMap.terrainTag(this._x, this._y);
     };
     Game_CharacterBase.prototype.regionId = function () {
-        return DataManager_1.$gameMap.regionId(this._x, this._y);
+        return globals_1.$gameMap.regionId(this._x, this._y);
     };
     Game_CharacterBase.prototype.increaseSteps = function () {
         if (this.isOnLadder()) {
@@ -373,7 +373,7 @@ var Game_CharacterBase = /** @class */ (function () {
         this._tileId = 0;
         this._characterName = characterName;
         this._characterIndex = characterIndex;
-        this._isObjectCharacter = managers_1.ImageManager.isObjectCharacter(characterName);
+        this._isObjectCharacter = ImageManager_1.ImageManager.isObjectCharacter(characterName);
     };
     Game_CharacterBase.prototype.setTileImage = function (tileId) {
         this._tileId = tileId;
@@ -382,8 +382,8 @@ var Game_CharacterBase = /** @class */ (function () {
         this._isObjectCharacter = true;
     };
     Game_CharacterBase.prototype.checkEventTriggerTouchFront = function (d) {
-        var x2 = DataManager_1.$gameMap.roundXWithDirection(this._x, d);
-        var y2 = DataManager_1.$gameMap.roundYWithDirection(this._y, d);
+        var x2 = globals_1.$gameMap.roundXWithDirection(this._x, d);
+        var y2 = globals_1.$gameMap.roundYWithDirection(this._y, d);
         this.checkEventTriggerTouch(x2, y2);
     };
     Game_CharacterBase.prototype.checkEventTriggerTouch = function (_x, _y) {
@@ -400,10 +400,10 @@ var Game_CharacterBase = /** @class */ (function () {
         this.setMovementSuccess(this.canPass(this._x, this._y, d));
         if (this.isMovementSucceeded()) {
             this.setDirection(d);
-            this._x = DataManager_1.$gameMap.roundXWithDirection(this._x, d);
-            this._y = DataManager_1.$gameMap.roundYWithDirection(this._y, d);
-            this._realX = DataManager_1.$gameMap.xWithDirection(this._x, this.reverseDir(d));
-            this._realY = DataManager_1.$gameMap.yWithDirection(this._y, this.reverseDir(d));
+            this._x = globals_1.$gameMap.roundXWithDirection(this._x, d);
+            this._y = globals_1.$gameMap.roundYWithDirection(this._y, d);
+            this._realX = globals_1.$gameMap.xWithDirection(this._x, this.reverseDir(d));
+            this._realY = globals_1.$gameMap.yWithDirection(this._y, this.reverseDir(d));
             this.increaseSteps();
         }
         else {
@@ -414,10 +414,10 @@ var Game_CharacterBase = /** @class */ (function () {
     Game_CharacterBase.prototype.moveDiagonally = function (horz, vert) {
         this.setMovementSuccess(this.canPassDiagonally(this._x, this._y, horz, vert));
         if (this.isMovementSucceeded()) {
-            this._x = DataManager_1.$gameMap.roundXWithDirection(this._x, horz);
-            this._y = DataManager_1.$gameMap.roundYWithDirection(this._y, vert);
-            this._realX = DataManager_1.$gameMap.xWithDirection(this._x, this.reverseDir(horz));
-            this._realY = DataManager_1.$gameMap.yWithDirection(this._y, this.reverseDir(vert));
+            this._x = globals_1.$gameMap.roundXWithDirection(this._x, horz);
+            this._y = globals_1.$gameMap.roundYWithDirection(this._y, vert);
+            this._realX = globals_1.$gameMap.xWithDirection(this._x, this.reverseDir(horz));
+            this._realY = globals_1.$gameMap.yWithDirection(this._y, this.reverseDir(vert));
             this.increaseSteps();
         }
         if (this._direction === this.reverseDir(horz)) {

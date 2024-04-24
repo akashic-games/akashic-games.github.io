@@ -16,8 +16,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Vehicle = void 0;
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var AudioManager_1 = require("../managers/AudioManager");
+var globals_1 = require("../managers/globals");
 var GameCharacter_1 = require("./GameCharacter");
 var Game_Vehicle = /** @class */ (function (_super) {
     __extends(Game_Vehicle, _super);
@@ -68,13 +68,13 @@ var Game_Vehicle = /** @class */ (function (_super) {
     };
     Game_Vehicle.prototype.vehicle = function () {
         if (this.isBoat()) {
-            return DataManager_1.$dataSystem.boat;
+            return globals_1.$dataSystem.boat;
         }
         else if (this.isShip()) {
-            return DataManager_1.$dataSystem.ship;
+            return globals_1.$dataSystem.ship;
         }
         else if (this.isAirship()) {
-            return DataManager_1.$dataSystem.airship;
+            return globals_1.$dataSystem.airship;
         }
         else {
             return null;
@@ -88,10 +88,10 @@ var Game_Vehicle = /** @class */ (function (_super) {
     };
     Game_Vehicle.prototype.refresh = function () {
         if (this._driving) {
-            this._mapId = DataManager_1.$gameMap.mapId();
+            this._mapId = globals_1.$gameMap.mapId();
             this.syncWithPlayer();
         }
-        else if (this._mapId === DataManager_1.$gameMap.mapId()) {
+        else if (this._mapId === globals_1.$gameMap.mapId()) {
             this.locate(this.x, this.y);
         }
         if (this.isAirship()) {
@@ -102,7 +102,7 @@ var Game_Vehicle = /** @class */ (function (_super) {
         }
         this.setWalkAnime(this._driving);
         this.setStepAnime(this._driving);
-        this.setTransparent(this._mapId !== DataManager_1.$gameMap.mapId());
+        this.setTransparent(this._mapId !== globals_1.$gameMap.mapId());
     };
     Game_Vehicle.prototype.setLocation = function (mapId, x, y) {
         this._mapId = mapId;
@@ -110,7 +110,7 @@ var Game_Vehicle = /** @class */ (function (_super) {
         this.refresh();
     };
     Game_Vehicle.prototype.pos = function (x, y) {
-        if (this._mapId === DataManager_1.$gameMap.mapId()) {
+        if (this._mapId === globals_1.$gameMap.mapId()) {
             return GameCharacter_1.Game_Character.prototype.pos.call(this, x, y);
         }
         else {
@@ -118,13 +118,13 @@ var Game_Vehicle = /** @class */ (function (_super) {
         }
     };
     Game_Vehicle.prototype.isMapPassable = function (x, y, d) {
-        var x2 = DataManager_1.$gameMap.roundXWithDirection(x, d);
-        var y2 = DataManager_1.$gameMap.roundYWithDirection(y, d);
+        var x2 = globals_1.$gameMap.roundXWithDirection(x, d);
+        var y2 = globals_1.$gameMap.roundYWithDirection(y, d);
         if (this.isBoat()) {
-            return DataManager_1.$gameMap.isBoatPassable(x2, y2);
+            return globals_1.$gameMap.isBoatPassable(x2, y2);
         }
         else if (this.isShip()) {
-            return DataManager_1.$gameMap.isShipPassable(x2, y2);
+            return globals_1.$gameMap.isShipPassable(x2, y2);
         }
         else if (this.isAirship()) {
             return true;
@@ -137,7 +137,7 @@ var Game_Vehicle = /** @class */ (function (_super) {
         this._driving = true;
         this.setWalkAnime(true);
         this.setStepAnime(true);
-        DataManager_1.$gameSystem.saveWalkingBgm();
+        globals_1.$gameSystem.saveWalkingBgm();
         this.playBgm();
     };
     Game_Vehicle.prototype.getOff = function () {
@@ -145,16 +145,16 @@ var Game_Vehicle = /** @class */ (function (_super) {
         this.setWalkAnime(false);
         this.setStepAnime(false);
         this.resetDirection();
-        DataManager_1.$gameSystem.replayWalkingBgm();
+        globals_1.$gameSystem.replayWalkingBgm();
     };
     Game_Vehicle.prototype.setBgm = function (bgm) {
         this._bgm = bgm;
     };
     Game_Vehicle.prototype.playBgm = function () {
-        managers_1.AudioManager.playBgm(this._bgm || this.vehicle().bgm);
+        AudioManager_1.AudioManager.playBgm(this._bgm || this.vehicle().bgm);
     };
     Game_Vehicle.prototype.syncWithPlayer = function () {
-        this.copyPosition(DataManager_1.$gamePlayer);
+        this.copyPosition(globals_1.$gamePlayer);
         this.refreshBushDepth();
     };
     Game_Vehicle.prototype.screenY = function () {
@@ -206,24 +206,24 @@ var Game_Vehicle = /** @class */ (function (_super) {
         return this._altitude >= this.maxAltitude();
     };
     Game_Vehicle.prototype.isTakeoffOk = function () {
-        return DataManager_1.$gamePlayer.areFollowersGathered();
+        return globals_1.$gamePlayer.areFollowersGathered();
     };
     Game_Vehicle.prototype.isLandOk = function (x, y, d) {
         if (this.isAirship()) {
-            if (!DataManager_1.$gameMap.isAirshipLandOk(x, y)) {
+            if (!globals_1.$gameMap.isAirshipLandOk(x, y)) {
                 return false;
             }
-            if (DataManager_1.$gameMap.eventsXy(x, y).length > 0) {
+            if (globals_1.$gameMap.eventsXy(x, y).length > 0) {
                 return false;
             }
         }
         else {
-            var x2 = DataManager_1.$gameMap.roundXWithDirection(x, d);
-            var y2 = DataManager_1.$gameMap.roundYWithDirection(y, d);
-            if (!DataManager_1.$gameMap.isValid(x2, y2)) {
+            var x2 = globals_1.$gameMap.roundXWithDirection(x, d);
+            var y2 = globals_1.$gameMap.roundYWithDirection(y, d);
+            if (!globals_1.$gameMap.isValid(x2, y2)) {
                 return false;
             }
-            if (!DataManager_1.$gameMap.isPassable(x2, y2, this.reverseDir(d))) {
+            if (!globals_1.$gameMap.isPassable(x2, y2, this.reverseDir(d))) {
                 return false;
             }
             if (this.isCollidedWithCharacters(x2, y2)) {

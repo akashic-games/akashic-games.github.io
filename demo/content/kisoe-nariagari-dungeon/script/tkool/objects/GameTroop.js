@@ -16,9 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Troop = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var Utils_1 = require("../core/Utils");
+var BattleManager_1 = require("../managers/BattleManager");
+var globals_1 = require("../managers/globals");
 var GameEnemy_1 = require("./GameEnemy");
 var GameInterpreter_1 = require("./GameInterpreter");
 var GameUnit_1 = require("./GameUnit");
@@ -57,7 +57,7 @@ var Game_Troop = /** @class */ (function (_super) {
         this._namesCount = {};
     };
     Game_Troop.prototype.troop = function () {
-        return DataManager_1.$dataTroops[this._troopId];
+        return globals_1.$dataTroops[this._troopId];
     };
     Game_Troop.prototype.setup = function (troopId) {
         var _this = this;
@@ -65,7 +65,7 @@ var Game_Troop = /** @class */ (function (_super) {
         this._troopId = troopId;
         this._enemies = [];
         this.troop().members.forEach(function (member) {
-            if (DataManager_1.$dataEnemies[member.enemyId]) {
+            if (globals_1.$dataEnemies[member.enemyId]) {
                 var enemyId = member.enemyId;
                 var x = member.x;
                 var y = member.y;
@@ -97,13 +97,13 @@ var Game_Troop = /** @class */ (function (_super) {
         });
     };
     Game_Troop.prototype.letterTable = function () {
-        return DataManager_1.$gameSystem.isCJK() ? Game_Troop.LETTER_TABLE_FULL : Game_Troop.LETTER_TABLE_HALF;
+        return globals_1.$gameSystem.isCJK() ? Game_Troop.LETTER_TABLE_FULL : Game_Troop.LETTER_TABLE_HALF;
     };
     Game_Troop.prototype.enemyNames = function () {
         var names = [];
         this.members().forEach(function (enemy) {
             var name = enemy.originalName();
-            if (enemy.isAlive() && !core_1.Utils.contains(names, name)) {
+            if (enemy.isAlive() && !Utils_1.Utils.contains(names, name)) {
                 names.push(name);
             }
         });
@@ -115,7 +115,7 @@ var Game_Troop = /** @class */ (function (_super) {
             return false; // Conditions not set
         }
         if (c.turnEnding) {
-            if (!managers_1.BattleManager.isTurnEnd()) {
+            if (!BattleManager_1.BattleManager.isTurnEnd()) {
                 return false;
             }
         }
@@ -131,19 +131,19 @@ var Game_Troop = /** @class */ (function (_super) {
             }
         }
         if (c.enemyValid) {
-            var enemy = DataManager_1.$gameTroop.members()[c.enemyIndex];
+            var enemy = globals_1.$gameTroop.members()[c.enemyIndex];
             if (!enemy || enemy.hpRate() * 100 > c.enemyHp) {
                 return false;
             }
         }
         if (c.actorValid) {
-            var actor = DataManager_1.$gameActors.actor(c.actorId);
+            var actor = globals_1.$gameActors.actor(c.actorId);
             if (!actor || actor.hpRate() * 100 > c.actorHp) {
                 return false;
             }
         }
         if (c.switchValid) {
-            if (!DataManager_1.$gameSwitches.value(c.switchId)) {
+            if (!globals_1.$gameSwitches.value(c.switchId)) {
                 return false;
             }
         }
@@ -193,7 +193,7 @@ var Game_Troop = /** @class */ (function (_super) {
         }, 0) * this.goldRate());
     };
     Game_Troop.prototype.goldRate = function () {
-        return DataManager_1.$gameParty.hasGoldDouble() ? 2 : 1;
+        return globals_1.$gameParty.hasGoldDouble() ? 2 : 1;
     };
     Game_Troop.prototype.makeDropItems = function () {
         return this.deadMembers().reduce(function (r, enemy) {
@@ -259,3 +259,6 @@ var Game_Troop = /** @class */ (function (_super) {
     return Game_Troop;
 }(GameUnit_1.Game_Unit));
 exports.Game_Troop = Game_Troop;
+(0, globals_1.set$gameTroopFactory)(function () {
+    return new Game_Troop();
+});

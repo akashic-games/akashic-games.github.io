@@ -16,9 +16,12 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Scene_Gameover = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var Sprite_1 = require("../core/Sprite");
+var TouchInput_1 = require("../core/TouchInput");
+var AudioManager_1 = require("../managers/AudioManager");
+var globals_1 = require("../managers/globals");
+var ImageManager_1 = require("../managers/ImageManager");
+var SceneManager_1 = require("../managers/SceneManager");
 var SceneBase_1 = require("./SceneBase");
 var SceneTitle_1 = require("./SceneTitle");
 var Scene_Gameover = /** @class */ (function (_super) {
@@ -54,23 +57,23 @@ var Scene_Gameover = /** @class */ (function (_super) {
     };
     Scene_Gameover.prototype.terminate = function () {
         SceneBase_1.Scene_Base.prototype.terminate.call(this);
-        managers_1.AudioManager.stopAll();
+        AudioManager_1.AudioManager.stopAll();
     };
     Scene_Gameover.prototype.playGameoverMusic = function () {
-        managers_1.AudioManager.stopBgm();
-        managers_1.AudioManager.stopBgs();
-        managers_1.AudioManager.playMe(DataManager_1.$dataSystem.gameoverMe);
+        AudioManager_1.AudioManager.stopBgm();
+        AudioManager_1.AudioManager.stopBgs();
+        AudioManager_1.AudioManager.playMe(globals_1.$dataSystem.gameoverMe);
     };
     Scene_Gameover.prototype.createBackground = function () {
-        this._backSprite = new core_1.Sprite();
-        this._backSprite.bitmap = managers_1.ImageManager.loadSystem("GameOver");
+        this._backSprite = new Sprite_1.Sprite();
+        this._backSprite.bitmap = ImageManager_1.ImageManager.loadSystem("GameOver");
         this.addChild(this._backSprite);
     };
     Scene_Gameover.prototype.isTriggered = function () {
-        return /* Input.isTriggered("ok") ||*/ core_1.TouchInput.isTriggered();
+        return /* Input.isTriggered("ok") ||*/ TouchInput_1.TouchInput.isTriggered();
     };
     Scene_Gameover.prototype.gotoTitle = function () {
-        managers_1.SceneManager.goto(SceneTitle_1.Scene_Title);
+        SceneManager_1.SceneManager.goto(SceneTitle_1.Scene_Title);
     };
     return Scene_Gameover;
 }(SceneBase_1.Scene_Base));

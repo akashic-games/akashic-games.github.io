@@ -16,9 +16,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Character = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var Sprite_1 = require("../core/Sprite");
+var globals_1 = require("../managers/globals");
+var ImageManager_1 = require("../managers/ImageManager");
 var SpriteBalloon_1 = require("./SpriteBalloon");
 var SpriteBase_1 = require("./SpriteBase");
 var Sprite_Character = /** @class */ (function (_super) {
@@ -71,13 +71,13 @@ var Sprite_Character = /** @class */ (function (_super) {
         return this._character.tileId() > 0;
     };
     Sprite_Character.prototype.tilesetBitmap = function (tileId) {
-        var tileset = DataManager_1.$gameMap.tileset();
+        var tileset = globals_1.$gameMap.tileset();
         var setNumber = 5 + Math.floor(tileId / 256);
-        return managers_1.ImageManager.loadTileset(tileset.tilesetNames[setNumber]);
+        return ImageManager_1.ImageManager.loadTileset(tileset.tilesetNames[setNumber]);
     };
     Sprite_Character.prototype.updateBitmap = function () {
         if (this.isImageChanged()) {
-            this._tilesetId = DataManager_1.$gameMap.tilesetId();
+            this._tilesetId = globals_1.$gameMap.tilesetId();
             this._tileId = this._character.tileId();
             this._characterName = this._character.characterName();
             this._characterIndex = this._character.characterIndex();
@@ -90,7 +90,7 @@ var Sprite_Character = /** @class */ (function (_super) {
         }
     };
     Sprite_Character.prototype.isImageChanged = function () {
-        return (this._tilesetId !== DataManager_1.$gameMap.tilesetId() ||
+        return (this._tilesetId !== globals_1.$gameMap.tilesetId() ||
             this._tileId !== this._character.tileId() ||
             this._characterName !== this._character.characterName() ||
             this._characterIndex !== this._character.characterIndex());
@@ -99,8 +99,8 @@ var Sprite_Character = /** @class */ (function (_super) {
         this.bitmap = this.tilesetBitmap(this._tileId);
     };
     Sprite_Character.prototype.setCharacterBitmap = function () {
-        this.bitmap = managers_1.ImageManager.loadCharacter(this._characterName);
-        this._isBigCharacter = managers_1.ImageManager.isBigCharacter(this._characterName);
+        this.bitmap = ImageManager_1.ImageManager.loadCharacter(this._characterName);
+        this._isBigCharacter = ImageManager_1.ImageManager.isBigCharacter(this._characterName);
     };
     Sprite_Character.prototype.updateFrame = function () {
         if (this._tileId > 0) {
@@ -159,7 +159,7 @@ var Sprite_Character = /** @class */ (function (_super) {
     };
     Sprite_Character.prototype.patternWidth = function () {
         if (this._tileId > 0) {
-            return DataManager_1.$gameMap.tileWidth();
+            return globals_1.$gameMap.tileWidth();
         }
         else if (this._isBigCharacter) {
             return this.bitmap.width / 3;
@@ -170,7 +170,7 @@ var Sprite_Character = /** @class */ (function (_super) {
     };
     Sprite_Character.prototype.patternHeight = function () {
         if (this._tileId > 0) {
-            return DataManager_1.$gameMap.tileHeight();
+            return globals_1.$gameMap.tileHeight();
         }
         else if (this._isBigCharacter) {
             return this.bitmap.height / 4;
@@ -199,13 +199,13 @@ var Sprite_Character = /** @class */ (function (_super) {
     };
     Sprite_Character.prototype.createHalfBodySprites = function () {
         if (!this._upperBody) {
-            this._upperBody = new core_1.Sprite();
+            this._upperBody = new Sprite_1.Sprite();
             this._upperBody.anchor.x = 0.5;
             this._upperBody.anchor.y = 1;
             this.addChild(this._upperBody);
         }
         if (!this._lowerBody) {
-            this._lowerBody = new core_1.Sprite();
+            this._lowerBody = new Sprite_1.Sprite();
             this._lowerBody.anchor.x = 0.5;
             this._lowerBody.anchor.y = 1;
             this._lowerBody.opacity = 128;
@@ -233,7 +233,7 @@ var Sprite_Character = /** @class */ (function (_super) {
     };
     Sprite_Character.prototype.setupAnimation = function () {
         if (this._character.animationId() > 0) {
-            var animation = DataManager_1.$dataAnimations[this._character.animationId()];
+            var animation = globals_1.$dataAnimations[this._character.animationId()];
             this.startAnimation(animation, false, 0);
             this._character.startAnimation();
         }

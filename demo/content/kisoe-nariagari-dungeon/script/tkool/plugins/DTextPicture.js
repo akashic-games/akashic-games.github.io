@@ -90,19 +90,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // [Twitter]: https://twitter.com/triacontane/
 // [GitHub] : https://github.com/triacontane/
 // =============================================================================
-var Bitmap_1 = require("../core/Bitmap");
-var Graphics_1 = require("../core/Graphics");
-var Sprite_1 = require("../core/Sprite");
-var DataManager_1 = require("../managers/DataManager");
-var ImageManager_1 = require("../managers/ImageManager");
-var PluginManager_1 = require("../managers/PluginManager");
-var SceneManager_1 = require("../managers/SceneManager");
-var GameInterpreter_1 = require("../objects/GameInterpreter");
-var GamePicture_1 = require("../objects/GamePicture");
-var GameScreen_1 = require("../objects/GameScreen");
-var GameVariables_1 = require("../objects/GameVariables");
-var SpritePicture_1 = require("../sprites/SpritePicture");
-var WindowBase_1 = require("../windows/WindowBase");
+var index_1 = require("../../tkool/index");
 /* :
  * @plugindesc 動的文字列ピクチャ生成プラグイン
  * @author トリアコンタン
@@ -292,7 +280,7 @@ var WindowBase_1 = require("../windows/WindowBase");
     var convertEscapeCharacters = function (text) {
         if (text === undefined || text === null)
             text = "";
-        var window = SceneManager_1.SceneManager.getHiddenWindow();
+        var window = index_1.SceneManager.getHiddenWindow();
         return window ? window.convertEscapeCharacters(text) : text;
     };
     var getUsingVariables = function (text) {
@@ -302,18 +290,18 @@ var WindowBase_1 = require("../windows/WindowBase");
         text = text.replace(/\x1bV\[(\d+),\s*(\d+)]/gi, function () {
             var number = parseInt(arguments[1], 10);
             usingVariables.push(number);
-            return DataManager_1.$gameVariables.value(number);
+            return index_1.$gameVariables.value(number);
         }.bind(this));
         text = text.replace(/\x1bV\[(\d+)]/gi, function () {
             var number = parseInt(arguments[1], 10);
             usingVariables.push(number);
-            return DataManager_1.$gameVariables.value(number);
+            return index_1.$gameVariables.value(number);
         }.bind(this));
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         text = text.replace(/\x1bV\[(\d+)]/gi, function () {
             var number = parseInt(arguments[1], 10);
             usingVariables.push(number);
-            return DataManager_1.$gameVariables.value(number);
+            return index_1.$gameVariables.value(number);
         }.bind(this));
         return usingVariables;
     };
@@ -337,8 +325,8 @@ var WindowBase_1 = require("../windows/WindowBase");
                 return value;
             }
         };
-        var parameter = JSON.parse(JSON.stringify(PluginManager_1.PluginManager.parameters(pluginName), paramReplacer));
-        PluginManager_1.PluginManager.setParameters(pluginName, parameter);
+        var parameter = JSON.parse(JSON.stringify(index_1.PluginManager.parameters(pluginName), paramReplacer));
+        index_1.PluginManager.setParameters(pluginName, parameter);
         return parameter;
     };
     var textDecParam = createPluginParameter("TextDecoration");
@@ -347,16 +335,16 @@ var WindowBase_1 = require("../windows/WindowBase");
     // Game_Interpreter
     //  プラグインコマンド[D_TEXT]を追加定義します。
     // =============================================================================
-    if (PluginManager_1.PluginManager.parameters("NRP_EvalPluginCommand")) {
-        var gameInterpreterCommand356_1 = GameInterpreter_1.Game_Interpreter.prototype.command356;
-        GameInterpreter_1.Game_Interpreter.prototype.command356 = function () {
+    if (index_1.PluginManager.parameters("NRP_EvalPluginCommand")) {
+        var gameInterpreterCommand356_1 = index_1.Game_Interpreter.prototype.command356;
+        index_1.Game_Interpreter.prototype.command356 = function () {
             this._argClone = this._params[0].split(" ");
             this._argClone.shift();
             return gameInterpreterCommand356_1.apply(this, arguments);
         };
     }
-    var gameInterpreterPluginCommand = GameInterpreter_1.Game_Interpreter.prototype.pluginCommand;
-    GameInterpreter_1.Game_Interpreter.prototype.pluginCommand = function (command, args) {
+    var gameInterpreterPluginCommand = index_1.Game_Interpreter.prototype.pluginCommand;
+    index_1.Game_Interpreter.prototype.pluginCommand = function (command, args) {
         gameInterpreterPluginCommand.apply(this, arguments);
         if (this._argClone) {
             args = this._argClone;
@@ -366,14 +354,14 @@ var WindowBase_1 = require("../windows/WindowBase");
     };
     // Resolve conflict for YEP_PluginCmdSwVar.js
     // var _Game_Interpreter_processPluginCommandSwitchVariables = Game_Interpreter.prototype.processPluginCommandSwitchVariables;
-    GameInterpreter_1.Game_Interpreter.prototype.processPluginCommandSwitchVariables = function () {
+    index_1.Game_Interpreter.prototype.processPluginCommandSwitchVariables = function () {
         if (this._params[0].toUpperCase().indexOf("D_TEXT") >= 0) {
             return;
         }
         // NOTE:Game_Interpreter#processPluginCommandSwitchVariables() は存在しない
         // _Game_Interpreter_processPluginCommandSwitchVariables.apply(this, arguments);
     };
-    GameInterpreter_1.Game_Interpreter.textAlignMapper = {
+    index_1.Game_Interpreter.textAlignMapper = {
         LEFT: 0,
         CENTER: 1,
         RIGHT: 2,
@@ -381,40 +369,40 @@ var WindowBase_1 = require("../windows/WindowBase");
         中央: 1,
         右: 2
     };
-    GameInterpreter_1.Game_Interpreter.prototype.pluginCommandDTextPicture = function (command, args) {
+    index_1.Game_Interpreter.prototype.pluginCommandDTextPicture = function (command, args) {
         switch (getCommandName(command)) {
             case "D_TEXT":
                 if (isNaN(convertEscapeCharacters(args[args.length - 1])) || args.length === 1) {
-                    args.push(DataManager_1.$gameScreen.dTextSize || 28);
+                    args.push(index_1.$gameScreen.dTextSize || 28);
                 }
                 var fontSize = getArgNumber(args.pop());
-                DataManager_1.$gameScreen.setDTextPicture(connectArgs(args), fontSize);
+                index_1.$gameScreen.setDTextPicture(connectArgs(args), fontSize);
                 break;
             case "D_TEXT_SETTING":
                 switch (getCommandName(args[0])) {
                     case "ALIGN":
-                        DataManager_1.$gameScreen.dTextAlign = isNaN(args[1])
-                            ? GameInterpreter_1.Game_Interpreter.prototype.textAlignMapper[getArgString(args[1], true)]
+                        index_1.$gameScreen.dTextAlign = isNaN(args[1])
+                            ? index_1.Game_Interpreter.prototype.textAlignMapper[getArgString(args[1], true)]
                             : getArgNumber(args[1], 0, 2);
                         break;
                     case "BG_COLOR":
-                        DataManager_1.$gameScreen.dTextBackColor = getArgString(connectArgs(args, 1));
+                        index_1.$gameScreen.dTextBackColor = getArgString(connectArgs(args, 1));
                         break;
                     case "BG_GRADATION_LEFT":
-                        DataManager_1.$gameScreen.dTextGradationLeft = getArgNumber(args[1], 0);
+                        index_1.$gameScreen.dTextGradationLeft = getArgNumber(args[1], 0);
                         break;
                     case "BG_GRADATION_RIGHT":
-                        DataManager_1.$gameScreen.dTextGradationRight = getArgNumber(args[1], 0);
+                        index_1.$gameScreen.dTextGradationRight = getArgNumber(args[1], 0);
                         break;
                     case "FONT":
                         args.shift();
-                        DataManager_1.$gameScreen.setDtextFont(getArgString(connectArgs(args)));
+                        index_1.$gameScreen.setDtextFont(getArgString(connectArgs(args)));
                         break;
                     case "REAL_TIME":
-                        DataManager_1.$gameScreen.dTextRealTime = getArgBoolean(args[1]);
+                        index_1.$gameScreen.dTextRealTime = getArgBoolean(args[1]);
                         break;
                     case "WINDOW":
-                        DataManager_1.$gameScreen.dWindowFrame = getArgBoolean(args[1]);
+                        index_1.$gameScreen.dWindowFrame = getArgBoolean(args[1]);
                         break;
                 }
                 break;
@@ -428,10 +416,10 @@ var WindowBase_1 = require("../windows/WindowBase");
                         height: getArgNumber(args[5] || "", 0)
                     };
                 }
-                DataManager_1.$gameScreen.setDTextWindowCursor(getArgNumber(args[0], 0), windowRect);
+                index_1.$gameScreen.setDTextWindowCursor(getArgNumber(args[0], 0), windowRect);
                 break;
             case "D_TEXT_WINDOW_CURSOR_ACTIVE":
-                DataManager_1.$gameScreen.setDTextWindowCursorActive(getArgNumber(args[0], 0), getArgBoolean(args[1]));
+                index_1.$gameScreen.setDTextWindowCursorActive(getArgNumber(args[0], 0), getArgBoolean(args[1]));
                 break;
         }
     };
@@ -439,8 +427,8 @@ var WindowBase_1 = require("../windows/WindowBase");
     // Game_Variables
     //  値を変更した変数の履歴を取得します。
     // =============================================================================
-    var gameVariablesSetValue = GameVariables_1.Game_Variables.prototype.setValue;
-    GameVariables_1.Game_Variables.prototype.setValue = function (variableId, value) {
+    var gameVariablesSetValue = index_1.Game_Variables.prototype.setValue;
+    index_1.Game_Variables.prototype.setValue = function (variableId, value) {
         variableId = typeof variableId === "string" ? parseInt(variableId, 10) : variableId;
         if (this.value(variableId) !== value) {
             this._changedVariables = this.getChangedVariables();
@@ -450,22 +438,22 @@ var WindowBase_1 = require("../windows/WindowBase");
         }
         gameVariablesSetValue.apply(this, arguments);
     };
-    GameVariables_1.Game_Variables.prototype.getChangedVariables = function () {
+    index_1.Game_Variables.prototype.getChangedVariables = function () {
         return this._changedVariables || [];
     };
-    GameVariables_1.Game_Variables.prototype.clearChangedVariables = function () {
+    index_1.Game_Variables.prototype.clearChangedVariables = function () {
         this._changedVariables = [];
     };
     // =============================================================================
     // Game_Screen
     //  動的ピクチャ用のプロパティを追加定義します。
     // =============================================================================
-    var gameScreenClear = GameScreen_1.Game_Screen.prototype.clear;
-    GameScreen_1.Game_Screen.prototype.clear = function () {
+    var gameScreenClear = index_1.Game_Screen.prototype.clear;
+    index_1.Game_Screen.prototype.clear = function () {
         gameScreenClear.call(this);
         this.clearDTextPicture();
     };
-    GameScreen_1.Game_Screen.prototype.clearDTextPicture = function () {
+    index_1.Game_Screen.prototype.clearDTextPicture = function () {
         this.dTextValue = null;
         this.dTextOriginal = null;
         this.dTextRealTime = null;
@@ -478,7 +466,7 @@ var WindowBase_1 = require("../windows/WindowBase");
         this.dTextGradationRight = 0;
         this.dTextGradationLeft = 0;
     };
-    GameScreen_1.Game_Screen.prototype.setDTextPicture = function (value, size) {
+    index_1.Game_Screen.prototype.setDTextPicture = function (value, size) {
         if (typeof TranslationManager !== "undefined") {
             TranslationManager.translateIfNeed(value, function (translatedText) {
                 value = translatedText;
@@ -489,20 +477,20 @@ var WindowBase_1 = require("../windows/WindowBase");
         this.dTextOriginal = (this.dTextOriginal || "") + value + "\n";
         this.dTextSize = size;
     };
-    GameScreen_1.Game_Screen.prototype.setDTextWindowCursor = function (pictureId, rect) {
+    index_1.Game_Screen.prototype.setDTextWindowCursor = function (pictureId, rect) {
         var picture = this.picture(pictureId);
         if (picture) {
             picture.setWindowCursor(rect);
             picture.setWindowCursorActive(true);
         }
     };
-    GameScreen_1.Game_Screen.prototype.setDTextWindowCursorActive = function (pictureId, value) {
+    index_1.Game_Screen.prototype.setDTextWindowCursorActive = function (pictureId, value) {
         var picture = this.picture(pictureId);
         if (picture) {
             picture.setWindowCursorActive(value);
         }
     };
-    GameScreen_1.Game_Screen.prototype.getDTextPictureInfo = function () {
+    index_1.Game_Screen.prototype.getDTextPictureInfo = function () {
         var prefix = getArgString(param.prefixText) || "";
         return {
             value: prefix + this.dTextValue,
@@ -518,121 +506,121 @@ var WindowBase_1 = require("../windows/WindowBase");
             gradationRight: this.dTextGradationRight
         };
     };
-    GameScreen_1.Game_Screen.prototype.isSettingDText = function () {
+    index_1.Game_Screen.prototype.isSettingDText = function () {
         return !!this.dTextValue;
     };
-    GameScreen_1.Game_Screen.prototype.setDtextFont = function (name) {
+    index_1.Game_Screen.prototype.setDtextFont = function (name) {
         this.dTextFont = name;
     };
-    var gameScreenUpdatePictures = GameScreen_1.Game_Screen.prototype.updatePictures;
-    GameScreen_1.Game_Screen.prototype.updatePictures = function () {
+    var gameScreenUpdatePictures = index_1.Game_Screen.prototype.updatePictures;
+    index_1.Game_Screen.prototype.updatePictures = function () {
         gameScreenUpdatePictures.apply(this, arguments);
-        DataManager_1.$gameVariables.clearChangedVariables();
+        index_1.$gameVariables.clearChangedVariables();
     };
     // =============================================================================
     // Game_Picture
     //  動的ピクチャ用のプロパティを追加定義し、表示処理を動的ピクチャ対応に変更します。
     // =============================================================================
-    var gamePictureInitBasic = GamePicture_1.Game_Picture.prototype.initBasic;
-    GamePicture_1.Game_Picture.prototype.initBasic = function () {
+    var gamePictureInitBasic = index_1.Game_Picture.prototype.initBasic;
+    index_1.Game_Picture.prototype.initBasic = function () {
         gamePictureInitBasic.call(this);
         this.dTextValue = null;
         this.dTextInfo = null;
     };
-    var gamePictureShow = GamePicture_1.Game_Picture.prototype.show;
-    GamePicture_1.Game_Picture.prototype.show = function (name, _origin, _x, _y, _scaleX, _scaleY, _opacity, _blendMode) {
-        if (DataManager_1.$gameScreen.isSettingDText() && !name) {
+    var gamePictureShow = index_1.Game_Picture.prototype.show;
+    index_1.Game_Picture.prototype.show = function (name, _origin, _x, _y, _scaleX, _scaleY, _opacity, _blendMode) {
+        if (index_1.$gameScreen.isSettingDText() && !name) {
             arguments[0] = Date.now().toString();
-            this.dTextInfo = DataManager_1.$gameScreen.getDTextPictureInfo();
-            DataManager_1.$gameScreen.clearDTextPicture();
+            this.dTextInfo = index_1.$gameScreen.getDTextPictureInfo();
+            index_1.$gameScreen.clearDTextPicture();
         }
         else {
             this.dTextInfo = null;
         }
         gamePictureShow.apply(this, arguments);
     };
-    var gamePictureUpdate = GamePicture_1.Game_Picture.prototype.update;
-    GamePicture_1.Game_Picture.prototype.update = function () {
+    var gamePictureUpdate = index_1.Game_Picture.prototype.update;
+    index_1.Game_Picture.prototype.update = function () {
         gamePictureUpdate.apply(this, arguments);
         if (this.dTextInfo && this.dTextInfo.realTime) {
             this.updateDTextVariable();
         }
     };
-    GamePicture_1.Game_Picture.prototype.updateDTextVariable = function () {
-        DataManager_1.$gameVariables.getChangedVariables().forEach(function (variableId) {
+    index_1.Game_Picture.prototype.updateDTextVariable = function () {
+        index_1.$gameVariables.getChangedVariables().forEach(function (variableId) {
             if (this.dTextInfo.usingVariables.includes(variableId)) {
                 this._name = Date.now().toString();
                 this.dTextInfo.value = getArgString(this.dTextInfo.originalValue, false);
             }
         }, this);
     };
-    GamePicture_1.Game_Picture.prototype.setWindowCursor = function (rect) {
+    index_1.Game_Picture.prototype.setWindowCursor = function (rect) {
         this._windowCursor = rect;
     };
-    GamePicture_1.Game_Picture.prototype.getWindowCursor = function () {
+    index_1.Game_Picture.prototype.getWindowCursor = function () {
         return this._windowCursor;
     };
-    GamePicture_1.Game_Picture.prototype.setWindowCursorActive = function (value) {
+    index_1.Game_Picture.prototype.setWindowCursorActive = function (value) {
         this._windowCursorActive = value;
     };
-    GamePicture_1.Game_Picture.prototype.getWindowCursorActive = function () {
+    index_1.Game_Picture.prototype.getWindowCursorActive = function () {
         return this._windowCursorActive;
     };
     // =============================================================================
     // SceneManager
     //  文字描画用の隠しウィンドウを取得します。
     // =============================================================================
-    SceneManager_1.SceneManager.getHiddenWindow = function () {
+    index_1.SceneManager.getHiddenWindow = function () {
         if (!this._hiddenWindow) {
             this._hiddenWindow = new Window_Hidden(1, 1, 1, 1);
         }
         return this._hiddenWindow;
     };
-    SceneManager_1.SceneManager.getSpriteset = function () {
+    index_1.SceneManager.getSpriteset = function () {
         return this._scene._spriteset;
     };
     // =============================================================================
     // Window_Base
     //  文字列変換処理に追加制御文字を設定します。
     // =============================================================================
-    var windowBaseconvertEscapeCharacters = WindowBase_1.Window_Base.prototype.convertEscapeCharacters;
-    WindowBase_1.Window_Base.prototype.convertEscapeCharacters = function (text) {
+    var windowBaseconvertEscapeCharacters = index_1.Window_Base.prototype.convertEscapeCharacters;
+    index_1.Window_Base.prototype.convertEscapeCharacters = function (text) {
         text = windowBaseconvertEscapeCharacters.call(this, text);
         text = text.replace(/\x1bV\[(\d+),\s*(\d+)]/gi, function () {
-            return this.getVariablePadCharacter(DataManager_1.$gameVariables.value(parseInt(arguments[1], 10)), arguments[2]);
+            return this.getVariablePadCharacter(index_1.$gameVariables.value(parseInt(arguments[1], 10)), arguments[2]);
         }.bind(this));
         text = text.replace(/\x1bITEM\[(\d+)]/gi, function () {
-            var item = DataManager_1.$dataItems[getArgNumber(arguments[1], 1, DataManager_1.$dataItems.length)];
+            var item = index_1.$dataItems[getArgNumber(arguments[1], 1, index_1.$dataItems.length)];
             return this.getItemInfoText(item);
         }.bind(this));
         text = text.replace(/\x1bWEAPON\[(\d+)]/gi, function () {
-            var item = DataManager_1.$dataWeapons[getArgNumber(arguments[1], 1, DataManager_1.$dataWeapons.length)];
+            var item = index_1.$dataWeapons[getArgNumber(arguments[1], 1, index_1.$dataWeapons.length)];
             return this.getItemInfoText(item);
         }.bind(this));
         text = text.replace(/\x1bARMOR\[(\d+)]/gi, function () {
-            var item = DataManager_1.$dataArmors[getArgNumber(arguments[1], 1, DataManager_1.$dataArmors.length)];
+            var item = index_1.$dataArmors[getArgNumber(arguments[1], 1, index_1.$dataArmors.length)];
             return this.getItemInfoText(item);
         }.bind(this));
         text = text.replace(/\x1bSKILL\[(\d+)]/gi, function () {
-            var item = DataManager_1.$dataSkills[getArgNumber(arguments[1], 1, DataManager_1.$dataSkills.length)];
+            var item = index_1.$dataSkills[getArgNumber(arguments[1], 1, index_1.$dataSkills.length)];
             return this.getItemInfoText(item);
         }.bind(this));
         text = text.replace(/\x1bSTATE\[(\d+)]/gi, function () {
-            var item = DataManager_1.$dataStates[getArgNumber(arguments[1], 1, DataManager_1.$dataStates.length)];
+            var item = index_1.$dataStates[getArgNumber(arguments[1], 1, index_1.$dataStates.length)];
             return this.getItemInfoText(item);
         }.bind(this));
         return text;
     };
-    WindowBase_1.Window_Base.prototype.getItemInfoText = function (item) {
+    index_1.Window_Base.prototype.getItemInfoText = function (item) {
         if (!item) {
             return "";
         }
         return (this.isValidDTextIconSwitch() ? "\x1bi[" + item.iconIndex + "]" : "") + item.name;
     };
-    WindowBase_1.Window_Base.prototype.isValidDTextIconSwitch = function () {
-        return !param.itemIconSwitchId || DataManager_1.$gameSwitches.value(param.itemIconSwitchId);
+    index_1.Window_Base.prototype.isValidDTextIconSwitch = function () {
+        return !param.itemIconSwitchId || index_1.$gameSwitches.value(param.itemIconSwitchId);
     };
-    WindowBase_1.Window_Base.prototype.getVariablePadCharacter = function (value, digit) {
+    index_1.Window_Base.prototype.getVariablePadCharacter = function (value, digit) {
         var numText = String(Math.abs(value));
         var pad = String(param.padCharacter) || "0";
         while (numText.length < digit) {
@@ -644,14 +632,14 @@ var WindowBase_1 = require("../windows/WindowBase");
     // Sprite_Picture
     //  画像の動的生成を追加定義します。
     // =============================================================================
-    var spritePictureUpdate = SpritePicture_1.Sprite_Picture.prototype.update;
-    SpritePicture_1.Sprite_Picture.prototype.update = function () {
+    var spritePictureUpdate = index_1.Sprite_Picture.prototype.update;
+    index_1.Sprite_Picture.prototype.update = function () {
         spritePictureUpdate.apply(this, arguments);
         if (this._frameWindow) {
             this.updateFrameWindow();
         }
     };
-    SpritePicture_1.Sprite_Picture.prototype.updateFrameWindow = function () {
+    index_1.Sprite_Picture.prototype.updateFrameWindow = function () {
         var padding = this._frameWindow.standardPadding();
         this._frameWindow.x = this.x - this.anchor.x * this.width * this.scale.x - padding;
         this._frameWindow.y = this.y - this.anchor.y * this.height * this.scale.y - padding;
@@ -663,12 +651,12 @@ var WindowBase_1 = require("../windows/WindowBase");
         if (!this._addFrameWindow) {
             this.addFrameWindow();
         }
-        if (Graphics_1.Graphics.frameCount % 2 === 0) {
+        if (index_1.Graphics.frameCount % 2 === 0) {
             this.adjustScaleFrameWindow();
         }
         this.updateFrameWindowCursor();
     };
-    SpritePicture_1.Sprite_Picture.prototype.updateFrameWindowCursor = function () {
+    index_1.Sprite_Picture.prototype.updateFrameWindowCursor = function () {
         var picture = this.picture();
         if (!picture) {
             return;
@@ -684,7 +672,7 @@ var WindowBase_1 = require("../windows/WindowBase");
             this._frameWindow.setCursorRect(0, 0, 0, 0);
         }
     };
-    SpritePicture_1.Sprite_Picture.prototype.adjustScaleFrameWindow = function () {
+    index_1.Sprite_Picture.prototype.adjustScaleFrameWindow = function () {
         var padding = this._frameWindow.standardPadding();
         var newFrameWidth = Math.floor(this.width * this.scale.x + padding * 2);
         var newFrameHeight = Math.floor(this.height * this.scale.x + padding * 2);
@@ -692,7 +680,7 @@ var WindowBase_1 = require("../windows/WindowBase");
             this._frameWindow.move(this._frameWindow.x, this._frameWindow.y, newFrameWidth, newFrameHeight);
         }
     };
-    SpritePicture_1.Sprite_Picture.prototype.addFrameWindow = function () {
+    index_1.Sprite_Picture.prototype.addFrameWindow = function () {
         var _this = this;
         var parent = this.parent;
         if (parent) {
@@ -701,7 +689,7 @@ var WindowBase_1 = require("../windows/WindowBase");
             this._addFrameWindow = true;
         }
     };
-    SpritePicture_1.Sprite_Picture.prototype.removeFrameWindow = function () {
+    index_1.Sprite_Picture.prototype.removeFrameWindow = function () {
         var parent = this.parent;
         if (parent) {
             parent.removeChild(this._frameWindow);
@@ -709,8 +697,8 @@ var WindowBase_1 = require("../windows/WindowBase");
             this._addFrameWindow = false;
         }
     };
-    var spritePictureLoadBitmap = SpritePicture_1.Sprite_Picture.prototype.loadBitmap;
-    SpritePicture_1.Sprite_Picture.prototype.loadBitmap = function () {
+    var spritePictureLoadBitmap = index_1.Sprite_Picture.prototype.loadBitmap;
+    index_1.Sprite_Picture.prototype.loadBitmap = function () {
         this.dTextInfo = this.picture().dTextInfo;
         if (this.dTextInfo) {
             this.makeDynamicBitmap();
@@ -719,14 +707,14 @@ var WindowBase_1 = require("../windows/WindowBase");
             spritePictureLoadBitmap.apply(this, arguments);
         }
     };
-    SpritePicture_1.Sprite_Picture.prototype.makeDynamicBitmap = function () {
+    index_1.Sprite_Picture.prototype.makeDynamicBitmap = function () {
         this.textWidths = [];
-        this.hiddenWindow = SceneManager_1.SceneManager.getHiddenWindow();
+        this.hiddenWindow = index_1.SceneManager.getHiddenWindow();
         this.hiddenWindow.resetFontSettings(this.dTextInfo);
         var bitmapVirtual = new Bitmap_Virtual();
         this._processText(bitmapVirtual);
         this.hiddenWindow.resetFontSettings(this.dTextInfo);
-        this.bitmap = new Bitmap_1.Bitmap(bitmapVirtual.width, bitmapVirtual.height);
+        this.bitmap = new index_1.Bitmap(bitmapVirtual.width, bitmapVirtual.height);
         this.applyTextDecoration();
         this.bitmap.fontFace = this.hiddenWindow.contents.fontFace;
         if (this.dTextInfo.color) {
@@ -756,20 +744,20 @@ var WindowBase_1 = require("../windows/WindowBase");
         }
         this.hiddenWindow = null;
     };
-    SpritePicture_1.Sprite_Picture.prototype.applyTextDecoration = function () {
+    index_1.Sprite_Picture.prototype.applyTextDecoration = function () {
         if (textDecParam.Mode >= 0) {
             this.bitmap.outlineColor = "rgba(".concat(textDecParam.Red, ",").concat(textDecParam.Green, ", ").concat(textDecParam.Blue, ",").concat(textDecParam.Alpha / 255, ")");
             this.bitmap.decorationMode = textDecParam.Mode;
         }
     };
-    SpritePicture_1.Sprite_Picture.prototype.makeFrameWindow = function (width, height) {
+    index_1.Sprite_Picture.prototype.makeFrameWindow = function (width, height) {
         var padding = this.hiddenWindow.standardPadding();
         this._frameWindow = new Window_BackFrame(0, 0, width + padding * 2, height + padding * 2);
         if (param.frameWindowSkin) {
-            this._frameWindow.windowskin = ImageManager_1.ImageManager.loadSystem(param.frameWindowSkin);
+            this._frameWindow.windowskin = index_1.ImageManager.loadSystem(param.frameWindowSkin);
         }
     };
-    SpritePicture_1.Sprite_Picture.prototype._processText = function (bitmap) {
+    index_1.Sprite_Picture.prototype._processText = function (bitmap) {
         var textState = { index: 0, x: 0, y: 0, text: this.dTextInfo.value, left: 0, line: -1, height: 0 };
         this._processNewLine(textState, bitmap);
         textState.height = this.hiddenWindow.calcTextHeight(textState, false);
@@ -778,7 +766,7 @@ var WindowBase_1 = require("../windows/WindowBase");
             this._processCharacter(textState, bitmap);
         }
     };
-    SpritePicture_1.Sprite_Picture.prototype._processCharacter = function (textState, bitmap) {
+    index_1.Sprite_Picture.prototype._processCharacter = function (textState, bitmap) {
         if (textState.text[textState.index] === "\x1b") {
             var code = this.hiddenWindow.obtainEscapeCode(textState);
             switch (code) {
@@ -835,22 +823,22 @@ var WindowBase_1 = require("../windows/WindowBase");
             textState.x += w;
         }
     };
-    SpritePicture_1.Sprite_Picture.prototype._processNewLine = function (textState, bitmap) {
+    index_1.Sprite_Picture.prototype._processNewLine = function (textState, bitmap) {
         if (bitmap instanceof Bitmap_Virtual)
             this.textWidths[textState.line] = textState.x;
         this.hiddenWindow.processNewLine(textState);
         textState.line++;
-        if (bitmap instanceof Bitmap_1.Bitmap)
+        if (bitmap instanceof index_1.Bitmap)
             textState.x = ((bitmap.width - this.textWidths[textState.line]) / 2) * this.dTextInfo.align;
     };
-    SpritePicture_1.Sprite_Picture.prototype._processDrawIcon = function (iconIndex, textState, bitmap) {
-        var iconBitmap = ImageManager_1.ImageManager.loadSystem("IconSet");
-        var pw = WindowBase_1.Window_Base._iconWidth;
-        var ph = WindowBase_1.Window_Base._iconHeight;
+    index_1.Sprite_Picture.prototype._processDrawIcon = function (iconIndex, textState, bitmap) {
+        var iconBitmap = index_1.ImageManager.loadSystem("IconSet");
+        var pw = index_1.Window_Base._iconWidth;
+        var ph = index_1.Window_Base._iconHeight;
         var sx = (iconIndex % 16) * pw;
         var sy = Math.floor(iconIndex / 16) * ph;
         bitmap.blt(iconBitmap, sx, sy, pw, ph, textState.x + 2, textState.y + (textState.height - ph) / 2);
-        textState.x += WindowBase_1.Window_Base._iconWidth + 4;
+        textState.x += index_1.Window_Base._iconWidth + 4;
     };
     // =============================================================================
     // Bitmap_Virtual
@@ -865,7 +853,7 @@ var WindowBase_1 = require("../windows/WindowBase");
             this.initialize();
         }
         Bitmap_Virtual.prototype.initialize = function () {
-            this.window = SceneManager_1.SceneManager.getHiddenWindow();
+            this.window = index_1.SceneManager.getHiddenWindow();
         };
         Bitmap_Virtual.prototype.drawText = function (text, x, y) {
             var baseWidth = this.window.textWidth(text);
@@ -901,7 +889,7 @@ var WindowBase_1 = require("../windows/WindowBase");
             return param.frameWindowPadding;
         };
         return Window_BackFrame;
-    }(WindowBase_1.Window_Base));
+    }(index_1.Window_Base));
     // =============================================================================
     // Window_Hidden
     //  文字描画用の隠しウィンドウ
@@ -917,7 +905,7 @@ var WindowBase_1 = require("../windows/WindowBase");
         Window_Hidden.prototype._createAllParts = function () {
             this._windowBackSprite = {};
             this._windowSpriteContainer = {};
-            this._windowContentsSprite = new Sprite_1.Sprite();
+            this._windowContentsSprite = new index_1.Sprite();
             this.addChild(this._windowContentsSprite);
         };
         /* eslint-disable @typescript-eslint/no-empty-function */
@@ -938,7 +926,7 @@ var WindowBase_1 = require("../windows/WindowBase");
                 this.contents.fontSize = dTextInfo.size || this.standardFontSize();
             }
             else {
-                WindowBase_1.Window_Base.prototype.resetFontSettings.apply(this, arguments);
+                index_1.Window_Base.prototype.resetFontSettings.apply(this, arguments);
             }
         };
         Window_Hidden.prototype.obtainEscapeParamString = function (textState) {
@@ -954,18 +942,18 @@ var WindowBase_1 = require("../windows/WindowBase");
         Window_Hidden.prototype.calcTextHeight = function (textState, all) {
             var result = _super.prototype.calcTextHeight.call(this, textState, all);
             if (param.lineSpacingVariableId) {
-                result += DataManager_1.$gameVariables.value(param.lineSpacingVariableId);
+                result += index_1.$gameVariables.value(param.lineSpacingVariableId);
             }
             return result;
         };
         return Window_Hidden;
-    }(WindowBase_1.Window_Base));
+    }(index_1.Window_Base));
     // =============================================================================
     // Bitmap
     //  太字対応
     // =============================================================================
-    var bitmapMakeFontNameText = Bitmap_1.Bitmap.prototype._makeFontNameText;
-    Bitmap_1.Bitmap.prototype._makeFontNameText = function () {
+    var bitmapMakeFontNameText = index_1.Bitmap.prototype._makeFontNameText;
+    index_1.Bitmap.prototype._makeFontNameText = function () {
         // TODO: bold 指定は現状未サポートとする
         return (this.fontBoldFotDtext ? "bold " : "") + bitmapMakeFontNameText.apply(this, arguments);
     };

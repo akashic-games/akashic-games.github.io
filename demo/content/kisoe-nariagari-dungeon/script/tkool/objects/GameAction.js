@@ -9,6 +9,7 @@ var Utils_1 = require("../core/Utils");
 var AudioManager_1 = require("../managers/AudioManager");
 var BattleManager_1 = require("../managers/BattleManager");
 var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var ImageManager_1 = require("../managers/ImageManager");
 var SceneManager_1 = require("../managers/SceneManager");
 var SoundManager_1 = require("../managers/SoundManager");
@@ -60,39 +61,36 @@ var SoundManager;
 var TextManager;
 /* eslint-enable @typescript-eslint/naming-convention */
 /* eslint-enable @typescript-eslint/no-unused-vars */
-// 未定義の全GameObjectに値を代入。ただし定義済みの場合は何もしない
-var setGameObjects = function () {
-    if ($gameVariables) {
-        return;
-    }
-    $gameVariables = DataManager_1.$gameVariables;
-    $gameSystem = DataManager_1.$gameSystem;
-    $gameSwitches = DataManager_1.$gameSwitches;
-    $gameMessage = DataManager_1.$gameMessage;
-    $gamePlayer = DataManager_1.$gamePlayer;
-    $dataCommonEvents = DataManager_1.$dataCommonEvents;
-    $dataTilesets = DataManager_1.$dataTilesets;
-    $gameMap = DataManager_1.$gameMap;
-    $gameTemp = DataManager_1.$gameTemp;
-    $dataEnemies = DataManager_1.$dataEnemies;
-    $gameActors = DataManager_1.$gameActors;
-    $dataAnimations = DataManager_1.$dataAnimations;
-    $gameParty = DataManager_1.$gameParty;
-    $gameTroop = DataManager_1.$gameTroop;
-    $gameTimer = DataManager_1.$gameTimer;
-    $gameSelfSwitches = DataManager_1.$gameSelfSwitches;
-    $dataClasses = DataManager_1.$dataClasses;
-    $dataWeapons = DataManager_1.$dataWeapons;
-    $dataArmors = DataManager_1.$dataArmors;
-    $dataItems = DataManager_1.$dataItems;
-    $gameScreen = DataManager_1.$gameScreen;
-    $dataTroops = DataManager_1.$dataTroops;
-    $dataActors = DataManager_1.$dataActors;
-    $dataSkills = DataManager_1.$dataSkills;
-    $dataStates = DataManager_1.$dataStates;
-    $dataSystem = DataManager_1.$dataSystem;
-    $dataMapInfos = DataManager_1.$dataMapInfos;
-    $dataMap = DataManager_1.$dataMap;
+// 未定義の全GameObjectに値を代入
+function setGameObjects() {
+    $gameVariables = globals_1.$gameVariables;
+    $gameSystem = globals_1.$gameSystem;
+    $gameSwitches = globals_1.$gameSwitches;
+    $gameMessage = globals_1.$gameMessage;
+    $gamePlayer = globals_1.$gamePlayer;
+    $dataCommonEvents = globals_1.$dataCommonEvents;
+    $dataTilesets = globals_1.$dataTilesets;
+    $gameMap = globals_1.$gameMap;
+    $gameTemp = globals_1.$gameTemp;
+    $dataEnemies = globals_1.$dataEnemies;
+    $gameActors = globals_1.$gameActors;
+    $dataAnimations = globals_1.$dataAnimations;
+    $gameParty = globals_1.$gameParty;
+    $gameTroop = globals_1.$gameTroop;
+    $gameTimer = globals_1.$gameTimer;
+    $gameSelfSwitches = globals_1.$gameSelfSwitches;
+    $dataClasses = globals_1.$dataClasses;
+    $dataWeapons = globals_1.$dataWeapons;
+    $dataArmors = globals_1.$dataArmors;
+    $dataItems = globals_1.$dataItems;
+    $gameScreen = globals_1.$gameScreen;
+    $dataTroops = globals_1.$dataTroops;
+    $dataActors = globals_1.$dataActors;
+    $dataSkills = globals_1.$dataSkills;
+    $dataStates = globals_1.$dataStates;
+    $dataSystem = globals_1.$dataSystem;
+    $dataMapInfos = globals_1.$dataMapInfos;
+    $dataMap = globals_1.$dataMap;
     Graphics = Graphics_1.Graphics;
     JsonEx = JsonEx_1.JsonEx;
     Tilemap = Tilemap_1.Tilemap;
@@ -105,7 +103,11 @@ var setGameObjects = function () {
     SceneManager = SceneManager_1.SceneManager;
     SoundManager = SoundManager_1.SoundManager;
     TextManager = TextManager_1.TextManager;
-};
+}
+// スクリプト(eval)で利用するグローバル変数の初期化を可能にする
+if (!DataManager_1.DataManager._onReset.contains(setGameObjects)) {
+    DataManager_1.DataManager._onReset.add(setGameObjects);
+}
 var Game_Action = /** @class */ (function () {
     function Game_Action(subject, forcing) {
         this.initialize(subject, forcing);
@@ -133,10 +135,10 @@ var Game_Action = /** @class */ (function () {
     };
     Game_Action.prototype.subject = function () {
         if (this._subjectActorId > 0) {
-            return DataManager_1.$gameActors.actor(this._subjectActorId);
+            return globals_1.$gameActors.actor(this._subjectActorId);
         }
         else {
-            return DataManager_1.$gameTroop.members()[this._subjectEnemyIndex];
+            return globals_1.$gameTroop.members()[this._subjectEnemyIndex];
         }
     };
     Game_Action.prototype.friendsUnit = function () {
@@ -160,10 +162,10 @@ var Game_Action = /** @class */ (function () {
         this.setSkill(this.subject().guardSkillId());
     };
     Game_Action.prototype.setSkill = function (skillId) {
-        this._item.setObject(DataManager_1.$dataSkills[skillId]);
+        this._item.setObject(globals_1.$dataSkills[skillId]);
     };
     Game_Action.prototype.setItem = function (itemId) {
-        this._item.setObject(DataManager_1.$dataItems[itemId]);
+        this._item.setObject(globals_1.$dataItems[itemId]);
     };
     Game_Action.prototype.setItemObject = function (object) {
         this._item.setObject(object);
@@ -253,14 +255,14 @@ var Game_Action = /** @class */ (function () {
         return this.item().hitType === Game_Action.HITTYPE_MAGICAL;
     };
     Game_Action.prototype.isAttack = function () {
-        return this.item() === DataManager_1.$dataSkills[this.subject().attackSkillId()];
+        return this.item() === globals_1.$dataSkills[this.subject().attackSkillId()];
     };
     Game_Action.prototype.isGuard = function () {
-        return this.item() === DataManager_1.$dataSkills[this.subject().guardSkillId()];
+        return this.item() === globals_1.$dataSkills[this.subject().guardSkillId()];
     };
     Game_Action.prototype.isMagicSkill = function () {
         if (this.isSkill()) {
-            return Utils_1.Utils.contains(DataManager_1.$dataSystem.magicSkills, this.item().stypeId);
+            return Utils_1.Utils.contains(globals_1.$dataSystem.magicSkills, this.item().stypeId);
         }
         else {
             return false;
@@ -443,7 +445,7 @@ var Game_Action = /** @class */ (function () {
     };
     Game_Action.prototype.testApply = function (target) {
         return (this.isForDeadFriend() === target.isDead() &&
-            (DataManager_1.$gameParty.inBattle() ||
+            (globals_1.$gameParty.inBattle() ||
                 this.isForOpponent() ||
                 (this.isHpRecover() && target.hp < target.mhp) ||
                 (this.isMpRecover() && target.mp < target.mmp) ||
@@ -567,11 +569,10 @@ var Game_Action = /** @class */ (function () {
             /* eslint-disable @typescript-eslint/no-unused-vars */
             var a = this.subject();
             var b = target;
-            var v = DataManager_1.$gameVariables._data;
+            var v = globals_1.$gameVariables._data;
             /* eslint-enable @typescript-eslint/no-unused-vars */
             // const sign = ([3, 4].contains(item.damage.type) ? -1 : 1);
             var sign = [3, 4].indexOf(item.damage.type) >= 0 ? -1 : 1;
-            setGameObjects();
             // eslint-disable-next-line no-eval
             var value = Math.max(eval(item.damage.formula), 0) * sign;
             if (isNaN(value))
@@ -831,7 +832,7 @@ var Game_Action = /** @class */ (function () {
     Game_Action.prototype.applyGlobal = function () {
         this.item().effects.forEach(function (effect) {
             if (effect.code === Game_Action.EFFECT_COMMON_EVENT) {
-                DataManager_1.$gameTemp.reserveCommonEvent(effect.dataId);
+                globals_1.$gameTemp.reserveCommonEvent(effect.dataId);
             }
         });
     };

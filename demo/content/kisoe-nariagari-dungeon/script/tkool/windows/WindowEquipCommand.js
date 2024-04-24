@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Window_EquipCommand = void 0;
-var managers_1 = require("../managers");
+var TextManager_1 = require("../managers/TextManager");
 var WindowHorzCommand_1 = require("./WindowHorzCommand");
 var Window_EquipCommand = /** @class */ (function (_super) {
     __extends(Window_EquipCommand, _super);
@@ -34,9 +34,9 @@ var Window_EquipCommand = /** @class */ (function (_super) {
         return 3;
     };
     Window_EquipCommand.prototype.makeCommandList = function () {
-        this.addCommand(managers_1.TextManager.equip2, "equip");
-        this.addCommand(managers_1.TextManager.optimize, "optimize");
-        this.addCommand(managers_1.TextManager.clear, "clear");
+        this.addCommand(TextManager_1.TextManager.equip2, "equip");
+        this.addCommand(TextManager_1.TextManager.optimize, "optimize");
+        this.addCommand(TextManager_1.TextManager.clear, "clear");
     };
     return Window_EquipCommand;
 }(WindowHorzCommand_1.Window_HorzCommand));

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_CommonEvent = void 0;
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var GameInterpreter_1 = require("./GameInterpreter");
 var Game_CommonEvent = /** @class */ (function () {
     function Game_CommonEvent(commonEventId) {
@@ -12,7 +12,7 @@ var Game_CommonEvent = /** @class */ (function () {
         this.refresh();
     };
     Game_CommonEvent.prototype.event = function () {
-        return DataManager_1.$dataCommonEvents[this._commonEventId];
+        return globals_1.$dataCommonEvents[this._commonEventId];
     };
     Game_CommonEvent.prototype.list = function () {
         return this.event().list;
@@ -29,7 +29,7 @@ var Game_CommonEvent = /** @class */ (function () {
     };
     Game_CommonEvent.prototype.isActive = function () {
         var event = this.event();
-        return event.trigger === 2 && DataManager_1.$gameSwitches.value(event.switchId);
+        return event.trigger === 2 && globals_1.$gameSwitches.value(event.switchId);
     };
     Game_CommonEvent.prototype.update = function () {
         if (this._interpreter) {

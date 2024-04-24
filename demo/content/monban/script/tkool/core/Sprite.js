@@ -68,6 +68,7 @@ var Sprite = /** @class */ (function (_super) {
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i] = arguments[_i];
         }
+        _super.prototype.initialize.call(this, args);
         var bitmap = args[0];
         // var texture = new PIXI.Texture(new PIXI.BaseTexture());
         // PIXI.Sprite.call(this, texture);

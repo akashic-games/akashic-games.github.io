@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SoundManager = void 0;
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
+var AudioManager_1 = require("./AudioManager");
+var globals_1 = require("./globals");
 var SoundManager = /** @class */ (function () {
     function SoundManager() {
     }
@@ -13,13 +13,13 @@ var SoundManager = /** @class */ (function () {
         this.loadSystemSound(3);
     };
     SoundManager.loadSystemSound = function (n) {
-        if (DataManager_1.$dataSystem) {
-            managers_1.AudioManager.loadStaticSe(DataManager_1.$dataSystem.sounds[n]);
+        if (globals_1.$dataSystem) {
+            AudioManager_1.AudioManager.loadStaticSe(globals_1.$dataSystem.sounds[n]);
         }
     };
     SoundManager.playSystemSound = function (n) {
-        if (DataManager_1.$dataSystem) {
-            managers_1.AudioManager.playStaticSe(DataManager_1.$dataSystem.sounds[n]);
+        if (globals_1.$dataSystem) {
+            AudioManager_1.AudioManager.playStaticSe(globals_1.$dataSystem.sounds[n]);
         }
     };
     SoundManager.playCursor = function () {

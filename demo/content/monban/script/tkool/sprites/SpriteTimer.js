@@ -16,8 +16,11 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Sprite_Timer = void 0;
-var core_1 = require("../core");
-var DataManager_1 = require("../managers/DataManager");
+var Bitmap_1 = require("../core/Bitmap");
+var Graphics_1 = require("../core/Graphics");
+var Sprite_1 = require("../core/Sprite");
+var Utils_1 = require("../core/Utils");
+var globals_1 = require("../managers/globals");
 var Sprite_Timer = /** @class */ (function (_super) {
     __extends(Sprite_Timer, _super);
     function Sprite_Timer() {
@@ -33,7 +36,7 @@ var Sprite_Timer = /** @class */ (function (_super) {
         this.update();
     };
     Sprite_Timer.prototype.createBitmap = function () {
-        this.bitmap = new core_1.Bitmap(96, 48);
+        this.bitmap = new Bitmap_1.Bitmap(96, 48);
         this.bitmap.fontSize = 32;
     };
     Sprite_Timer.prototype.update = function () {
@@ -43,8 +46,8 @@ var Sprite_Timer = /** @class */ (function (_super) {
         this.updateVisibility();
     };
     Sprite_Timer.prototype.updateBitmap = function () {
-        if (this._seconds !== DataManager_1.$gameTimer.seconds()) {
-            this._seconds = DataManager_1.$gameTimer.seconds();
+        if (this._seconds !== globals_1.$gameTimer.seconds()) {
+            this._seconds = globals_1.$gameTimer.seconds();
             this.redraw();
         }
     };
@@ -58,15 +61,15 @@ var Sprite_Timer = /** @class */ (function (_super) {
     Sprite_Timer.prototype.timerText = function () {
         var min = Math.floor(this._seconds / 60) % 60;
         var sec = this._seconds % 60;
-        return core_1.Utils.padZero(min, 2) + ":" + core_1.Utils.padZero(sec, 2);
+        return Utils_1.Utils.padZero(min, 2) + ":" + Utils_1.Utils.padZero(sec, 2);
     };
     Sprite_Timer.prototype.updatePosition = function () {
-        this.x = core_1.Graphics.width - this.bitmap.width;
+        this.x = Graphics_1.Graphics.width - this.bitmap.width;
         this.y = 0;
     };
     Sprite_Timer.prototype.updateVisibility = function () {
-        this.visible = DataManager_1.$gameTimer.isWorking();
+        this.visible = globals_1.$gameTimer.isWorking();
     };
     return Sprite_Timer;
-}(core_1.Sprite));
+}(Sprite_1.Sprite));
 exports.Sprite_Timer = Sprite_Timer;

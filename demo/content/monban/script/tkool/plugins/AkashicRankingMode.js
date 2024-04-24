@@ -15,11 +15,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
-var objects_1 = require("../objects");
-var scenes_1 = require("../scenes");
-var windows_1 = require("../windows");
+var index_1 = require("../index");
 // =============================================================================
 // AkashicRankingMode.js
 // =============================================================================
@@ -159,7 +155,7 @@ var windows_1 = require("../windows");
  */
 (function () {
     // パラメータ取得
-    var parameters = managers_1.PluginManager.parameters("AkashicRankingMode");
+    var parameters = index_1.PluginManager.parameters("AkashicRankingMode");
     var scoreVariableNumber = Number(parameters.scoreVariableNumber || 1);
     var totalTimeLimit = typeof g !== "undefined" && g.game.vars.totalTimeLimit ? g.game.vars.totalTimeLimit : Number(parameters.totalTimeLimit || 75);
     var titleTime = Number(parameters.titleTime || 5);
@@ -194,14 +190,14 @@ var windows_1 = require("../windows");
             var x = this.textPadding();
             var width = this.contents.width - this.textPadding() * 2;
             this.contents.clear();
-            this.drawCurrencyValue(DataManager_1.$gameVariables.value(scoreVariableNumber), scoreUnit, x, 0, width);
+            this.drawCurrencyValue(index_1.$gameVariables.value(scoreVariableNumber), scoreUnit, x, 0, width);
         };
         Window_GameScore.prototype.open = function () {
             this.refresh();
             _super.prototype.open.call(this);
         };
         return Window_GameScore;
-    }(windows_1.Window_Base));
+    }(index_1.Window_Base));
     // スコア初期化
     if (typeof g !== "undefined") {
         g.game.vars.gameState = {
@@ -210,8 +206,8 @@ var windows_1 = require("../windows");
     }
     // タイトル画面を自動的に飛ばす処理
     var _timerId = null;
-    var _sceneTitleStart = scenes_1.Scene_Title.prototype.start;
-    scenes_1.Scene_Title.prototype.start = function () {
+    var _sceneTitleStart = index_1.Scene_Title.prototype.start;
+    index_1.Scene_Title.prototype.start = function () {
         var _this = this;
         _sceneTitleStart.call(this);
         var scene = typeof g === "undefined" ? window : g.game.scene();
@@ -222,12 +218,12 @@ var windows_1 = require("../windows");
         }, titleTime * 1000);
     };
     // タイトルメニューを非表示にするための対応
-    scenes_1.Scene_Title.prototype.isBusy = function () {
+    index_1.Scene_Title.prototype.isBusy = function () {
         return _timerId != null;
     };
     // スコアを反映させる処理
-    var _gameVariablesSetValue = objects_1.Game_Variables.prototype.setValue;
-    objects_1.Game_Variables.prototype.setValue = function (variableId, value) {
+    var _gameVariablesSetValue = index_1.Game_Variables.prototype.setValue;
+    index_1.Game_Variables.prototype.setValue = function (variableId, value) {
         _gameVariablesSetValue.call(this, variableId, value);
         if (variableId === scoreVariableNumber && typeof g !== "undefined") {
             g.game.vars.gameState.score = value;
@@ -248,34 +244,34 @@ var windows_1 = require("../windows");
     }
     // タイマーの制限時間の書き換え
     if (forceNamagameTimer) {
-        objects_1.Game_Timer.prototype.start = function (_count) {
+        index_1.Game_Timer.prototype.start = function (_count) {
             this._frames = calcTimerFrames();
             this._working = true;
         };
     }
     // メニュー画面から「ゲーム終了」の項目を削除する
-    windows_1.Window_MenuCommand.prototype.addGameEndCommand = function () {
+    index_1.Window_MenuCommand.prototype.addGameEndCommand = function () {
         // 「ゲーム終了」の項目をメニューにはいらないようにするため、このメソッドでは何も行わない
     };
     // prohibitMenuがONの場合、タイマー利用時はメニュー画面を利用禁止にする
     if (prohibitMenu) {
-        var _sceneMapCallMenu_1 = scenes_1.Scene_Map.prototype.callMenu;
-        scenes_1.Scene_Map.prototype.callMenu = function () {
-            if (DataManager_1.$gameTimer && DataManager_1.$gameTimer.isWorking()) {
+        var _sceneMapCallMenu_1 = index_1.Scene_Map.prototype.callMenu;
+        index_1.Scene_Map.prototype.callMenu = function () {
+            if (index_1.$gameTimer && index_1.$gameTimer.isWorking()) {
                 return;
             }
             _sceneMapCallMenu_1.call(this);
         };
-        var _gameInterpretercommand351_1 = objects_1.Game_Interpreter.prototype.command351;
-        objects_1.Game_Interpreter.prototype.command351 = function () {
-            if (DataManager_1.$gameTimer && DataManager_1.$gameTimer.isWorking()) {
+        var _gameInterpretercommand351_1 = index_1.Game_Interpreter.prototype.command351;
+        index_1.Game_Interpreter.prototype.command351 = function () {
+            if (index_1.$gameTimer && index_1.$gameTimer.isWorking()) {
                 return true;
             }
             return _gameInterpretercommand351_1.call(this);
         };
     }
-    var _sceneMapCreateDisplayObjects = scenes_1.Scene_Map.prototype.createDisplayObjects;
-    scenes_1.Scene_Map.prototype.createDisplayObjects = function () {
+    var _sceneMapCreateDisplayObjects = index_1.Scene_Map.prototype.createDisplayObjects;
+    index_1.Scene_Map.prototype.createDisplayObjects = function () {
         var original = _sceneMapCreateDisplayObjects.call(this);
         this.gameScoreWindow = new Window_GameScore(scoreX, scoreY);
         if (showScore) {
@@ -284,26 +280,26 @@ var windows_1 = require("../windows");
         }
         return original;
     };
-    var _sceneMapUpdate = scenes_1.Scene_Map.prototype.update;
-    scenes_1.Scene_Map.prototype.update = function () {
+    var _sceneMapUpdate = index_1.Scene_Map.prototype.update;
+    index_1.Scene_Map.prototype.update = function () {
         var original = _sceneMapUpdate.call(this);
         this.gameScoreWindow.refresh();
         return original;
     };
     // 全体の音量調整
-    managers_1.AudioManager.bgmVolume = musicVolume;
-    managers_1.AudioManager.bgsVolume = musicVolume;
-    managers_1.AudioManager.meVolume = soundVolume;
-    managers_1.AudioManager.seVolume = soundVolume;
+    index_1.AudioManager.bgmVolume = musicVolume;
+    index_1.AudioManager.bgsVolume = musicVolume;
+    index_1.AudioManager.meVolume = soundVolume;
+    index_1.AudioManager.seVolume = soundVolume;
     // プラグインコマンドを追加定義。
-    var _gameInterpreterPluginCommand = objects_1.Game_Interpreter.prototype.pluginCommand;
-    objects_1.Game_Interpreter.prototype.pluginCommand = function (command, _args) {
+    var _gameInterpreterPluginCommand = index_1.Game_Interpreter.prototype.pluginCommand;
+    index_1.Game_Interpreter.prototype.pluginCommand = function (command, _args) {
         _gameInterpreterPluginCommand.apply(this, arguments);
         switch (command) {
             // ニコ生ゲーム環境のタイマーを利用する
             case "NAMAGAME_START_TIMER":
                 var frames = calcTimerFrames();
-                DataManager_1.$gameTimer.start(frames);
+                index_1.$gameTimer.start(frames);
                 break;
             default:
                 break;

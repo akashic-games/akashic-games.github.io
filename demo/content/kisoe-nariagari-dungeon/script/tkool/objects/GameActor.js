@@ -16,9 +16,11 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Game_Actor = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
+var Utils_1 = require("../core/Utils");
 var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
+var SoundManager_1 = require("../managers/SoundManager");
+var TextManager_1 = require("../managers/TextManager");
 var GameAction_1 = require("./GameAction");
 var GameBattler_1 = require("./GameBattler");
 var GameItem_1 = require("./GameItem");
@@ -63,7 +65,7 @@ var Game_Actor = /** @class */ (function (_super) {
         this._lastCommandSymbol = "";
     };
     Game_Actor.prototype.setup = function (actorId) {
-        var actor = DataManager_1.$dataActors[actorId];
+        var actor = globals_1.$dataActors[actorId];
         this._actorId = actorId;
         this._name = actor.name;
         this._nickname = actor.nickname;
@@ -81,7 +83,7 @@ var Game_Actor = /** @class */ (function (_super) {
         return this._actorId;
     };
     Game_Actor.prototype.actor = function () {
-        return DataManager_1.$dataActors[this._actorId];
+        return globals_1.$dataActors[this._actorId];
     };
     Game_Actor.prototype.name = function () {
         return this._name;
@@ -126,7 +128,7 @@ var Game_Actor = /** @class */ (function (_super) {
     };
     Game_Actor.prototype.resetStateCounts = function (stateId) {
         GameBattler_1.Game_Battler.prototype.resetStateCounts.call(this, stateId);
-        this._stateSteps[stateId] = DataManager_1.$dataStates[stateId].stepsToRemove;
+        this._stateSteps[stateId] = globals_1.$dataStates[stateId].stepsToRemove;
     };
     Game_Actor.prototype.initImages = function () {
         var actor = this.actor();
@@ -194,7 +196,7 @@ var Game_Actor = /** @class */ (function (_super) {
     };
     Game_Actor.prototype.equipSlots = function () {
         var slots = [];
-        for (var i = 1; i < DataManager_1.$dataSystem.equipTypes.length; i++) {
+        for (var i = 1; i < globals_1.$dataSystem.equipTypes.length; i++) {
             slots.push(i);
         }
         if (slots.length >= 2 && this.isDualWield()) {
@@ -209,12 +211,12 @@ var Game_Actor = /** @class */ (function (_super) {
     };
     Game_Actor.prototype.weapons = function () {
         return this.equips().filter(function (item) {
-            return item && managers_1.DataManager.isWeapon(item);
+            return item && DataManager_1.DataManager.isWeapon(item);
         });
     };
     Game_Actor.prototype.armors = function () {
         return this.equips().filter(function (item) {
-            return item && managers_1.DataManager.isArmor(item);
+            return item && DataManager_1.DataManager.isArmor(item);
         });
     };
     Game_Actor.prototype.hasWeapon = function (weapon) {
@@ -240,22 +242,22 @@ var Game_Actor = /** @class */ (function (_super) {
         this.refresh();
     };
     Game_Actor.prototype.tradeItemWithParty = function (newItem, oldItem) {
-        if (newItem && !DataManager_1.$gameParty.hasItem(newItem)) {
+        if (newItem && !globals_1.$gameParty.hasItem(newItem)) {
             return false;
         }
         else {
-            DataManager_1.$gameParty.gainItem(oldItem, 1);
-            DataManager_1.$gameParty.loseItem(newItem, 1);
+            globals_1.$gameParty.gainItem(oldItem, 1);
+            globals_1.$gameParty.loseItem(newItem, 1);
             return true;
         }
     };
     Game_Actor.prototype.changeEquipById = function (etypeId, itemId) {
         var slotId = etypeId - 1;
         if (this.equipSlots()[slotId] === 1) {
-            this.changeEquip(slotId, DataManager_1.$dataWeapons[itemId]);
+            this.changeEquip(slotId, globals_1.$dataWeapons[itemId]);
         }
         else {
-            this.changeEquip(slotId, DataManager_1.$dataArmors[itemId]);
+            this.changeEquip(slotId, globals_1.$dataArmors[itemId]);
         }
     };
     Game_Actor.prototype.isEquipped = function (item) {
@@ -308,7 +310,7 @@ var Game_Actor = /** @class */ (function (_super) {
     Game_Actor.prototype.bestEquipItem = function (slotId) {
         var _this = this;
         var etypeId = this.equipSlots()[slotId];
-        var items = DataManager_1.$gameParty.equipItems().filter(function (item) {
+        var items = globals_1.$gameParty.equipItems().filter(function (item) {
             return item.etypeId === etypeId && _this.canEquip(item);
         });
         var bestItem = null;
@@ -352,22 +354,22 @@ var Game_Actor = /** @class */ (function (_super) {
         return true;
     };
     Game_Actor.prototype.friendsUnit = function () {
-        return DataManager_1.$gameParty;
+        return globals_1.$gameParty;
     };
     Game_Actor.prototype.opponentsUnit = function () {
-        return DataManager_1.$gameTroop;
+        return globals_1.$gameTroop;
     };
     Game_Actor.prototype.index = function () {
-        return DataManager_1.$gameParty.members().indexOf(this);
+        return globals_1.$gameParty.members().indexOf(this);
     };
     Game_Actor.prototype.isBattleMember = function () {
-        return core_1.Utils.contains(DataManager_1.$gameParty.battleMembers(), this);
+        return Utils_1.Utils.contains(globals_1.$gameParty.battleMembers(), this);
     };
     Game_Actor.prototype.isFormationChangeOk = function () {
         return true;
     };
     Game_Actor.prototype.currentClass = function () {
-        return DataManager_1.$dataClasses[this._classId];
+        return globals_1.$dataClasses[this._classId];
     };
     Game_Actor.prototype.isClass = function (gameClass) {
         return gameClass && this._classId === gameClass.id;
@@ -375,8 +377,8 @@ var Game_Actor = /** @class */ (function (_super) {
     Game_Actor.prototype.skills = function () {
         var list = [];
         this._skills.concat(this.addedSkills()).forEach(function (id) {
-            if ( /* !list.contains($dataSkills[id])*/list.indexOf(DataManager_1.$dataSkills[id]) < 0) {
-                list.push(DataManager_1.$dataSkills[id]);
+            if ( /* !list.contains($dataSkills[id])*/list.indexOf(globals_1.$dataSkills[id]) < 0) {
+                list.push(globals_1.$dataSkills[id]);
             }
         });
         return list;
@@ -401,7 +403,7 @@ var Game_Actor = /** @class */ (function (_super) {
     };
     Game_Actor.prototype.attackElements = function () {
         var set = _super.prototype.attackElements.call(this);
-        if (this.hasNoWeapons() && !core_1.Utils.contains(set, this.bareHandsElementId())) {
+        if (this.hasNoWeapons() && !Utils_1.Utils.contains(set, this.bareHandsElementId())) {
             set.push(this.bareHandsElementId());
         }
         return set;
@@ -486,11 +488,11 @@ var Game_Actor = /** @class */ (function (_super) {
         return newSkills;
     };
     Game_Actor.prototype.displayLevelUp = function (newSkills) {
-        var text = core_1.Utils.format(managers_1.TextManager.levelUp, this._name, managers_1.TextManager.level, this._level);
-        DataManager_1.$gameMessage.newPage();
-        DataManager_1.$gameMessage.add(text);
+        var text = Utils_1.Utils.format(TextManager_1.TextManager.levelUp, this._name, TextManager_1.TextManager.level, this._level);
+        globals_1.$gameMessage.newPage();
+        globals_1.$gameMessage.add(text);
         newSkills.forEach(function (skill) {
-            DataManager_1.$gameMessage.add(core_1.Utils.format(managers_1.TextManager.obtainSkill, skill.name));
+            globals_1.$gameMessage.add(Utils_1.Utils.format(TextManager_1.TextManager.obtainSkill, skill.name));
         });
     };
     Game_Actor.prototype.gainExp = function (exp) {
@@ -501,13 +503,13 @@ var Game_Actor = /** @class */ (function (_super) {
         return this.exr * (this.isBattleMember() ? 1 : this.benchMembersExpRate());
     };
     Game_Actor.prototype.benchMembersExpRate = function () {
-        return DataManager_1.$dataSystem.optExtraExp ? 1 : 0;
+        return globals_1.$dataSystem.optExtraExp ? 1 : 0;
     };
     Game_Actor.prototype.shouldDisplayLevelUp = function () {
         return true;
     };
     Game_Actor.prototype.changeLevel = function (level, show) {
-        level = core_1.Utils.clamp(level, 1, this.maxLevel());
+        level = Utils_1.Utils.clamp(level, 1, this.maxLevel());
         level = Math.max(1, Math.min(level, this.maxLevel()));
         this.changeExp(this.expForLevel(level), show);
     };
@@ -531,7 +533,7 @@ var Game_Actor = /** @class */ (function (_super) {
     };
     Game_Actor.prototype.hasSkill = function (skillId) {
         // return this.skills().contains($dataSkills[skillId]);
-        return this.skills().indexOf(DataManager_1.$dataSkills[skillId]) >= 0;
+        return this.skills().indexOf(globals_1.$dataSkills[skillId]) >= 0;
     };
     Game_Actor.prototype.changeClass = function (classId, keepExp) {
         if (keepExp) {
@@ -553,7 +555,7 @@ var Game_Actor = /** @class */ (function (_super) {
         this._battlerName = battlerName;
     };
     Game_Actor.prototype.isSpriteVisible = function () {
-        return DataManager_1.$gameSystem.isSideView();
+        return globals_1.$gameSystem.isSideView();
     };
     Game_Actor.prototype.startAnimation = function (animationId, mirror, delay) {
         mirror = !mirror;
@@ -587,7 +589,7 @@ var Game_Actor = /** @class */ (function (_super) {
     Game_Actor.prototype.performAttack = function () {
         var weapons = this.weapons();
         var wtypeId = weapons[0] ? weapons[0].wtypeId : 0;
-        var attackMotion = DataManager_1.$dataSystem.attackMotions[wtypeId];
+        var attackMotion = globals_1.$dataSystem.attackMotions[wtypeId];
         if (attackMotion) {
             if (attackMotion.type === 0) {
                 this.requestMotion("thrust");
@@ -607,9 +609,9 @@ var Game_Actor = /** @class */ (function (_super) {
             this.requestMotion("damage");
         }
         else {
-            DataManager_1.$gameScreen.startShake(5, 5, 10);
+            globals_1.$gameScreen.startShake(5, 5, 10);
         }
-        managers_1.SoundManager.playActorDamage();
+        SoundManager_1.SoundManager.playActorDamage();
     };
     Game_Actor.prototype.performEvasion = function () {
         GameBattler_1.Game_Battler.prototype.performEvasion.call(this);
@@ -625,8 +627,8 @@ var Game_Actor = /** @class */ (function (_super) {
     };
     Game_Actor.prototype.performCollapse = function () {
         GameBattler_1.Game_Battler.prototype.performCollapse.call(this);
-        if (DataManager_1.$gameParty.inBattle()) {
-            managers_1.SoundManager.playActorCollapse();
+        if (globals_1.$gameParty.inBattle()) {
+            SoundManager_1.SoundManager.playActorCollapse();
         }
     };
     Game_Actor.prototype.performVictory = function () {
@@ -691,7 +693,7 @@ var Game_Actor = /** @class */ (function (_super) {
         var _this = this;
         this.clearResult();
         this.checkFloorEffect();
-        if (DataManager_1.$gamePlayer.isNormal()) {
+        if (globals_1.$gamePlayer.isNormal()) {
             this.turnEndOnMap();
             this.states().forEach(function (state) {
                 _this.updateStateSteps(state);
@@ -715,7 +717,7 @@ var Game_Actor = /** @class */ (function (_super) {
             .addedStateObjects()
             .forEach(function (state) {
             if (state.message1) {
-                DataManager_1.$gameMessage.add(_this._name + state.message1);
+                globals_1.$gameMessage.add(_this._name + state.message1);
             }
         });
     };
@@ -725,7 +727,7 @@ var Game_Actor = /** @class */ (function (_super) {
             .removedStateObjects()
             .forEach(function (state) {
             if (state.message4) {
-                DataManager_1.$gameMessage.add(_this._name + state.message4);
+                globals_1.$gameMessage.add(_this._name + state.message4);
             }
         });
     };
@@ -733,7 +735,7 @@ var Game_Actor = /** @class */ (function (_super) {
         return 20;
     };
     Game_Actor.prototype.turnEndOnMap = function () {
-        if (DataManager_1.$gameParty.steps() % this.stepsForTurn() === 0) {
+        if (globals_1.$gameParty.steps() % this.stepsForTurn() === 0) {
             this.onTurnEnd();
             if (this.result().hpDamage > 0) {
                 this.performMapDamage();
@@ -741,7 +743,7 @@ var Game_Actor = /** @class */ (function (_super) {
         }
     };
     Game_Actor.prototype.checkFloorEffect = function () {
-        if (DataManager_1.$gamePlayer.isOnDamageFloor()) {
+        if (globals_1.$gamePlayer.isOnDamageFloor()) {
             this.executeFloorDamage();
         }
     };
@@ -757,11 +759,11 @@ var Game_Actor = /** @class */ (function (_super) {
         return 10;
     };
     Game_Actor.prototype.maxFloorDamage = function () {
-        return DataManager_1.$dataSystem.optFloorDeath ? this.hp : Math.max(this.hp - 1, 0);
+        return globals_1.$dataSystem.optFloorDeath ? this.hp : Math.max(this.hp - 1, 0);
     };
     Game_Actor.prototype.performMapDamage = function () {
-        if (!DataManager_1.$gameParty.inBattle()) {
-            DataManager_1.$gameScreen.startFlashForDamage();
+        if (!globals_1.$gameParty.inBattle()) {
+            globals_1.$gameScreen.startFlashForDamage();
         }
     };
     Game_Actor.prototype.clearActions = function () {

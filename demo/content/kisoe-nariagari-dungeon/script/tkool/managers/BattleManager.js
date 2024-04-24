@@ -1,11 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BattleManager = void 0;
-var core_1 = require("../core");
-var managers_1 = require("../managers");
-var DataManager_1 = require("../managers/DataManager");
-var objects_1 = require("../objects");
-var scenes_1 = require("../scenes");
+var Utils_1 = require("../core/Utils");
+var GameAction_1 = require("../objects/GameAction");
+var SceneGameOver_1 = require("../scenes/SceneGameOver");
+var AudioManager_1 = require("./AudioManager");
+var globals_1 = require("./globals");
+var SceneManager_1 = require("./SceneManager");
+var SoundManager_1 = require("./SoundManager");
+var TextManager_1 = require("./TextManager");
 var BattleManager = /** @class */ (function () {
     function BattleManager() {
     }
@@ -13,8 +16,8 @@ var BattleManager = /** @class */ (function () {
         this.initMembers();
         this._canEscape = canEscape;
         this._canLose = canLose;
-        DataManager_1.$gameTroop.setup(troopId);
-        DataManager_1.$gameScreen.onBattleStart();
+        globals_1.$gameTroop.setup(troopId);
+        globals_1.$gameScreen.onBattleStart();
         this.makeEscapeRatio();
     };
     BattleManager.initMembers = function () {
@@ -64,38 +67,38 @@ var BattleManager = /** @class */ (function () {
         this._surprise = g.game.vars.random.generate() < this.rateSurprise() && !this._preemptive;
     };
     BattleManager.ratePreemptive = function () {
-        return DataManager_1.$gameParty.ratePreemptive(DataManager_1.$gameTroop.agility());
+        return globals_1.$gameParty.ratePreemptive(globals_1.$gameTroop.agility());
     };
     BattleManager.rateSurprise = function () {
-        return DataManager_1.$gameParty.rateSurprise(DataManager_1.$gameTroop.agility());
+        return globals_1.$gameParty.rateSurprise(globals_1.$gameTroop.agility());
     };
     BattleManager.saveBgmAndBgs = function () {
-        this._mapBgm = managers_1.AudioManager.saveBgm();
-        this._mapBgs = managers_1.AudioManager.saveBgs();
+        this._mapBgm = AudioManager_1.AudioManager.saveBgm();
+        this._mapBgs = AudioManager_1.AudioManager.saveBgs();
     };
     BattleManager.playBattleBgm = function () {
-        managers_1.AudioManager.playBgm(DataManager_1.$gameSystem.battleBgm());
-        managers_1.AudioManager.stopBgs();
+        AudioManager_1.AudioManager.playBgm(globals_1.$gameSystem.battleBgm());
+        AudioManager_1.AudioManager.stopBgs();
     };
     BattleManager.playVictoryMe = function () {
-        managers_1.AudioManager.playMe(DataManager_1.$gameSystem.victoryMe());
+        AudioManager_1.AudioManager.playMe(globals_1.$gameSystem.victoryMe());
     };
     BattleManager.playDefeatMe = function () {
-        managers_1.AudioManager.playMe(DataManager_1.$gameSystem.defeatMe());
+        AudioManager_1.AudioManager.playMe(globals_1.$gameSystem.defeatMe());
     };
     BattleManager.replayBgmAndBgs = function () {
         if (this._mapBgm) {
-            managers_1.AudioManager.replayBgm(this._mapBgm);
+            AudioManager_1.AudioManager.replayBgm(this._mapBgm);
         }
         else {
-            managers_1.AudioManager.stopBgm();
+            AudioManager_1.AudioManager.stopBgm();
         }
         if (this._mapBgs) {
-            managers_1.AudioManager.replayBgs(this._mapBgs);
+            AudioManager_1.AudioManager.replayBgs(this._mapBgs);
         }
     };
     BattleManager.makeEscapeRatio = function () {
-        this._escapeRatio = (0.5 * DataManager_1.$gameParty.agility()) / DataManager_1.$gameTroop.agility();
+        this._escapeRatio = (0.5 * globals_1.$gameParty.agility()) / globals_1.$gameTroop.agility();
     };
     BattleManager.update = function () {
         if (!this.isBusy() && !this.updateEvent()) {
@@ -134,19 +137,19 @@ var BattleManager = /** @class */ (function () {
         return this.checkAbort();
     };
     BattleManager.updateEventMain = function () {
-        DataManager_1.$gameTroop.updateInterpreter();
-        DataManager_1.$gameParty.requestMotionRefresh();
-        if (DataManager_1.$gameTroop.isEventRunning() || this.checkBattleEnd()) {
+        globals_1.$gameTroop.updateInterpreter();
+        globals_1.$gameParty.requestMotionRefresh();
+        if (globals_1.$gameTroop.isEventRunning() || this.checkBattleEnd()) {
             return true;
         }
-        DataManager_1.$gameTroop.setupBattleEvent();
-        if (DataManager_1.$gameTroop.isEventRunning() || managers_1.SceneManager.isSceneChanging()) {
+        globals_1.$gameTroop.setupBattleEvent();
+        if (globals_1.$gameTroop.isEventRunning() || SceneManager_1.SceneManager.isSceneChanging()) {
             return true;
         }
         return false;
     };
     BattleManager.isBusy = function () {
-        return DataManager_1.$gameMessage.isBusy() || this._spriteset.isBusy() || this._logWindow.isBusy();
+        return globals_1.$gameMessage.isBusy() || this._spriteset.isBusy() || this._logWindow.isBusy();
     };
     BattleManager.isInputting = function () {
         return this._phase === "input";
@@ -173,7 +176,7 @@ var BattleManager = /** @class */ (function () {
         return this._escaped;
     };
     BattleManager.actor = function () {
-        return this._actorIndex >= 0 ? DataManager_1.$gameParty.members()[this._actorIndex] : null;
+        return this._actorIndex >= 0 ? globals_1.$gameParty.members()[this._actorIndex] : null;
     };
     BattleManager.clearActor = function () {
         this.changeActor(-1, "");
@@ -191,28 +194,28 @@ var BattleManager = /** @class */ (function () {
     };
     BattleManager.startBattle = function () {
         this._phase = "start";
-        DataManager_1.$gameSystem.onBattleStart();
-        DataManager_1.$gameParty.onBattleStart();
-        DataManager_1.$gameTroop.onBattleStart();
+        globals_1.$gameSystem.onBattleStart();
+        globals_1.$gameParty.onBattleStart();
+        globals_1.$gameTroop.onBattleStart();
         this.displayStartMessages();
     };
     BattleManager.displayStartMessages = function () {
-        DataManager_1.$gameTroop.enemyNames().forEach(function (name) {
-            DataManager_1.$gameMessage.add(core_1.Utils.format(managers_1.TextManager.emerge, name));
+        globals_1.$gameTroop.enemyNames().forEach(function (name) {
+            globals_1.$gameMessage.add(Utils_1.Utils.format(TextManager_1.TextManager.emerge, name));
         });
         if (this._preemptive) {
-            DataManager_1.$gameMessage.add(core_1.Utils.format(managers_1.TextManager.preemptive, DataManager_1.$gameParty.name()));
+            globals_1.$gameMessage.add(Utils_1.Utils.format(TextManager_1.TextManager.preemptive, globals_1.$gameParty.name()));
         }
         else if (this._surprise) {
-            DataManager_1.$gameMessage.add(core_1.Utils.format(managers_1.TextManager.surprise, DataManager_1.$gameParty.name()));
+            globals_1.$gameMessage.add(Utils_1.Utils.format(TextManager_1.TextManager.surprise, globals_1.$gameParty.name()));
         }
     };
     BattleManager.startInput = function () {
         this._phase = "input";
-        DataManager_1.$gameParty.makeActions();
-        DataManager_1.$gameTroop.makeActions();
+        globals_1.$gameParty.makeActions();
+        globals_1.$gameTroop.makeActions();
         this.clearActor();
-        if (this._surprise || !DataManager_1.$gameParty.canInput()) {
+        if (this._surprise || !globals_1.$gameParty.canInput()) {
             this.startTurn();
         }
     };
@@ -223,7 +226,7 @@ var BattleManager = /** @class */ (function () {
         do {
             if (!this.actor() || !this.actor().selectNextCommand()) {
                 this.changeActor(this._actorIndex + 1, "waiting");
-                if (this._actorIndex >= DataManager_1.$gameParty.size()) {
+                if (this._actorIndex >= globals_1.$gameParty.size()) {
                     this.startTurn();
                     break;
                 }
@@ -246,13 +249,13 @@ var BattleManager = /** @class */ (function () {
     BattleManager.startTurn = function () {
         this._phase = "turn";
         this.clearActor();
-        DataManager_1.$gameTroop.increaseTurn();
+        globals_1.$gameTroop.increaseTurn();
         this.makeActionOrders();
-        DataManager_1.$gameParty.requestMotionRefresh();
+        globals_1.$gameParty.requestMotionRefresh();
         this._logWindow.startTurn();
     };
     BattleManager.updateTurn = function () {
-        DataManager_1.$gameParty.requestMotionRefresh();
+        globals_1.$gameParty.requestMotionRefresh();
         if (!this._subject) {
             this._subject = this.getNextSubject();
         }
@@ -316,15 +319,15 @@ var BattleManager = /** @class */ (function () {
     };
     BattleManager.allBattleMembers = function () {
         // Actor配列 と Enemy配列 を結合するので、共通の親クラスの配列に型を変換する
-        return DataManager_1.$gameParty.members().concat(DataManager_1.$gameTroop.members());
+        return globals_1.$gameParty.members().concat(globals_1.$gameTroop.members());
     };
     BattleManager.makeActionOrders = function () {
         var battlers = [];
         if (!this._surprise) {
-            battlers = battlers.concat(DataManager_1.$gameParty.members());
+            battlers = battlers.concat(globals_1.$gameParty.members());
         }
         if (!this._preemptive) {
-            battlers = battlers.concat(DataManager_1.$gameTroop.members());
+            battlers = battlers.concat(globals_1.$gameTroop.members());
         }
         battlers.forEach(function (battler) {
             battler.makeSpeed();
@@ -380,7 +383,7 @@ var BattleManager = /** @class */ (function () {
         this._logWindow.displayActionResults(subject, realTarget);
     };
     BattleManager.invokeCounterAttack = function (subject, target) {
-        var action = new objects_1.Game_Action(target);
+        var action = new GameAction_1.Game_Action(target);
         action.setAttack();
         action.apply(subject);
         this._logWindow.displayCounter(target);
@@ -432,11 +435,11 @@ var BattleManager = /** @class */ (function () {
             if (this.checkAbort()) {
                 return true;
             }
-            else if (DataManager_1.$gameParty.isAllDead()) {
+            else if (globals_1.$gameParty.isAllDead()) {
                 this.processDefeat();
                 return true;
             }
-            else if (DataManager_1.$gameTroop.isAllDead()) {
+            else if (globals_1.$gameTroop.isAllDead()) {
                 this.processVictory();
                 return true;
             }
@@ -444,16 +447,16 @@ var BattleManager = /** @class */ (function () {
         return false;
     };
     BattleManager.checkAbort = function () {
-        if (DataManager_1.$gameParty.isEmpty() || this.isAborting()) {
-            managers_1.SoundManager.playEscape();
+        if (globals_1.$gameParty.isEmpty() || this.isAborting()) {
+            SoundManager_1.SoundManager.playEscape();
             this._escaped = true;
             this.processAbort();
         }
         return false;
     };
     BattleManager.processVictory = function () {
-        DataManager_1.$gameParty.removeBattleStates();
-        DataManager_1.$gameParty.performVictory();
+        globals_1.$gameParty.removeBattleStates();
+        globals_1.$gameParty.performVictory();
         this.playVictoryMe();
         this.replayBgmAndBgs();
         this.makeRewards();
@@ -463,8 +466,8 @@ var BattleManager = /** @class */ (function () {
         this.endBattle(0);
     };
     BattleManager.processEscape = function () {
-        DataManager_1.$gameParty.performEscape();
-        managers_1.SoundManager.playEscape();
+        globals_1.$gameParty.performEscape();
+        SoundManager_1.SoundManager.playEscape();
         var success = this._preemptive ? true : g.game.vars.random.generate() < this._escapeRatio;
         if (success) {
             this.displayEscapeSuccessMessage();
@@ -474,13 +477,13 @@ var BattleManager = /** @class */ (function () {
         else {
             this.displayEscapeFailureMessage();
             this._escapeRatio += 0.1;
-            DataManager_1.$gameParty.clearActions();
+            globals_1.$gameParty.clearActions();
             this.startTurn();
         }
         return success;
     };
     BattleManager.processAbort = function () {
-        DataManager_1.$gameParty.removeBattleStates();
+        globals_1.$gameParty.removeBattleStates();
         this.replayBgmAndBgs();
         this.endBattle(1);
     };
@@ -491,7 +494,7 @@ var BattleManager = /** @class */ (function () {
             this.replayBgmAndBgs();
         }
         else {
-            managers_1.AudioManager.stopBgm();
+            AudioManager_1.AudioManager.stopBgm();
         }
         this.endBattle(2);
     };
@@ -501,49 +504,49 @@ var BattleManager = /** @class */ (function () {
             this._eventCallback(result);
         }
         if (result === 0) {
-            DataManager_1.$gameSystem.onBattleWin();
+            globals_1.$gameSystem.onBattleWin();
         }
         else if (this._escaped) {
-            DataManager_1.$gameSystem.onBattleEscape();
+            globals_1.$gameSystem.onBattleEscape();
         }
     };
     BattleManager.updateBattleEnd = function () {
         if (this.isBattleTest()) {
-            managers_1.AudioManager.stopBgm();
-            managers_1.SceneManager.exit();
+            AudioManager_1.AudioManager.stopBgm();
+            SceneManager_1.SceneManager.exit();
         }
-        else if (!this._escaped && DataManager_1.$gameParty.isAllDead()) {
+        else if (!this._escaped && globals_1.$gameParty.isAllDead()) {
             if (this._canLose) {
-                DataManager_1.$gameParty.reviveBattleMembers();
-                managers_1.SceneManager.pop();
+                globals_1.$gameParty.reviveBattleMembers();
+                SceneManager_1.SceneManager.pop();
             }
             else {
-                managers_1.SceneManager.goto(scenes_1.Scene_Gameover);
+                SceneManager_1.SceneManager.goto(SceneGameOver_1.Scene_Gameover);
             }
         }
         else {
-            managers_1.SceneManager.pop();
+            SceneManager_1.SceneManager.pop();
         }
         this._phase = null;
     };
     BattleManager.makeRewards = function () {
         this._rewards = {};
-        this._rewards.gold = DataManager_1.$gameTroop.goldTotal();
-        this._rewards.exp = DataManager_1.$gameTroop.expTotal();
-        this._rewards.items = DataManager_1.$gameTroop.makeDropItems();
+        this._rewards.gold = globals_1.$gameTroop.goldTotal();
+        this._rewards.exp = globals_1.$gameTroop.expTotal();
+        this._rewards.items = globals_1.$gameTroop.makeDropItems();
     };
     BattleManager.displayVictoryMessage = function () {
-        DataManager_1.$gameMessage.add(core_1.Utils.format(managers_1.TextManager.victory, DataManager_1.$gameParty.name()));
+        globals_1.$gameMessage.add(Utils_1.Utils.format(TextManager_1.TextManager.victory, globals_1.$gameParty.name()));
     };
     BattleManager.displayDefeatMessage = function () {
-        DataManager_1.$gameMessage.add(core_1.Utils.format(managers_1.TextManager.defeat, DataManager_1.$gameParty.name()));
+        globals_1.$gameMessage.add(Utils_1.Utils.format(TextManager_1.TextManager.defeat, globals_1.$gameParty.name()));
     };
     BattleManager.displayEscapeSuccessMessage = function () {
-        DataManager_1.$gameMessage.add(core_1.Utils.format(managers_1.TextManager.escapeStart, DataManager_1.$gameParty.name()));
+        globals_1.$gameMessage.add(Utils_1.Utils.format(TextManager_1.TextManager.escapeStart, globals_1.$gameParty.name()));
     };
     BattleManager.displayEscapeFailureMessage = function () {
-        DataManager_1.$gameMessage.add(core_1.Utils.format(managers_1.TextManager.escapeStart, DataManager_1.$gameParty.name()));
-        DataManager_1.$gameMessage.add("\\." + managers_1.TextManager.escapeFailure);
+        globals_1.$gameMessage.add(Utils_1.Utils.format(TextManager_1.TextManager.escapeStart, globals_1.$gameParty.name()));
+        globals_1.$gameMessage.add("\\." + TextManager_1.TextManager.escapeFailure);
     };
     BattleManager.displayRewards = function () {
         this.displayExp();
@@ -553,22 +556,22 @@ var BattleManager = /** @class */ (function () {
     BattleManager.displayExp = function () {
         var exp = this._rewards.exp;
         if (exp > 0) {
-            var text = core_1.Utils.format(managers_1.TextManager.obtainExp, exp, managers_1.TextManager.exp);
-            DataManager_1.$gameMessage.add("\\." + text);
+            var text = Utils_1.Utils.format(TextManager_1.TextManager.obtainExp, exp, TextManager_1.TextManager.exp);
+            globals_1.$gameMessage.add("\\." + text);
         }
     };
     BattleManager.displayGold = function () {
         var gold = this._rewards.gold;
         if (gold > 0) {
-            DataManager_1.$gameMessage.add("\\." + core_1.Utils.format(managers_1.TextManager.obtainGold, gold));
+            globals_1.$gameMessage.add("\\." + Utils_1.Utils.format(TextManager_1.TextManager.obtainGold, gold));
         }
     };
     BattleManager.displayDropItems = function () {
         var items = this._rewards.items;
         if (items.length > 0) {
-            DataManager_1.$gameMessage.newPage();
+            globals_1.$gameMessage.newPage();
             items.forEach(function (item) {
-                DataManager_1.$gameMessage.add(core_1.Utils.format(managers_1.TextManager.obtainItem, item.name));
+                globals_1.$gameMessage.add(Utils_1.Utils.format(TextManager_1.TextManager.obtainItem, item.name));
             });
         }
     };
@@ -579,17 +582,17 @@ var BattleManager = /** @class */ (function () {
     };
     BattleManager.gainExp = function () {
         var exp = this._rewards.exp;
-        DataManager_1.$gameParty.allMembers().forEach(function (actor) {
+        globals_1.$gameParty.allMembers().forEach(function (actor) {
             actor.gainExp(exp);
         });
     };
     BattleManager.gainGold = function () {
-        DataManager_1.$gameParty.gainGold(this._rewards.gold);
+        globals_1.$gameParty.gainGold(this._rewards.gold);
     };
     BattleManager.gainDropItems = function () {
         var items = this._rewards.items;
         items.forEach(function (item) {
-            DataManager_1.$gameParty.gainItem(item, 1);
+            globals_1.$gameParty.gainItem(item, 1);
         });
     };
     return BattleManager;
