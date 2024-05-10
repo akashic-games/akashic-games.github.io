@@ -2,7 +2,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Bitmap_1 = require("../core/Bitmap");
 var Graphics_1 = require("../core/Graphics");
 var BattleManager_1 = require("../managers/BattleManager");
-var DataManager_1 = require("../managers/DataManager");
+var globals_1 = require("../managers/globals");
 var PluginManager_1 = require("../managers/PluginManager");
 var SpriteTimer_1 = require("../sprites/SpriteTimer");
 //=============================================================================
@@ -54,8 +54,8 @@ var SpriteTimer_1 = require("../sprites/SpriteTimer");
 
     // ゲームの高速化のために報酬メッセージのスキップ
     BattleManager_1.BattleManager.processVictory = function () {
-        DataManager_1.$gameParty.removeBattleStates();
-        DataManager_1.$gameParty.performVictory();
+        globals_1.$gameParty.removeBattleStates();
+        globals_1.$gameParty.performVictory();
         this.playVictoryMe();
         this.replayBgmAndBgs();
         this.makeRewards();
