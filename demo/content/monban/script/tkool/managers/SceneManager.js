@@ -277,7 +277,7 @@ var SceneManager = /** @class */ (function () {
         // }
     };
     SceneManager.catchException = function (e) {
-        console.error("ScneManager#catchException(): " + e);
+        console.error("ScneManager#catchException(): ", e);
         if (e instanceof Error) {
             // Graphics.printError(e.name, e.message);
             console.error(e.stack);
