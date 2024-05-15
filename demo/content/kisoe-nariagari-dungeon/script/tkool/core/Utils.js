@@ -88,7 +88,7 @@ var Utils = /** @class */ (function () {
             return false;
         }
         for (var i = 0; i < self.length; i++) {
-            if (self[i] instanceof Array && array[i] instanceof Array) {
+            if (Array.isArray(self[i]) && Array.isArray(array[i])) {
                 if (!this.equals(self[i], array[i])) {
                     return false;
                 }

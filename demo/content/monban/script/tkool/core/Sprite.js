@@ -178,7 +178,7 @@ var Sprite = /** @class */ (function (_super) {
         return JSON.parse(JSON.stringify(this._blendColor));
     };
     Sprite.prototype.setBlendColor = function (color) {
-        if (!(color instanceof Array)) {
+        if (!Array.isArray(color)) {
             throw new Error("Argument must be an array");
         }
         // if (!this._blendColor.equals(color)) {
