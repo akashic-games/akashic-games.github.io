@@ -1,0 +1,30 @@
+{"frames": {
+
+"icon_clock_export.png":
+{
+	"frame": {"x":1,"y":1,"w":36,"h":36},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":36,"h":36},
+	"sourceSize": {"w":36,"h":36},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"icon_pt.png":
+{
+	"frame": {"x":39,"y":1,"w":30,"h":30},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":30,"h":30},
+	"sourceSize": {"w":30,"h":30},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "stg_ui.png",
+	"format": "RGBA8888",
+	"size": {"w":70,"h":38},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c05877dea55873b107191b844db69324:69e579362d307d102157b72c6c59cb07:02316d3e09390d9385757fc0aa67d780$"
+}
+}

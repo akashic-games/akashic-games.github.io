@@ -1,0 +1,22 @@
+{
+  "width": 320,
+  "height": 320,
+  "fps": 60,
+  "main": "./main.js",
+  "assets": {
+    "main": {
+      "type": "script",
+      "path": "main.js",
+      "global": true
+    },
+    "player": {
+      "type": "image",
+      "width": 63,
+      "height": 53,
+      "path": "image/player.png"
+    }
+  },
+  "environment": {
+    "sandbox-runtime": "3"
+  }
+}

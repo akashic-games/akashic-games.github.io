@@ -1,0 +1,43 @@
+{
+  "width": 800,
+  "height": 450,
+  "fps": 60,
+  "main": "./script/main.js",
+  "assets": {
+    "main": {
+      "type": "script",
+      "path": "script/main.js",
+      "global": true
+    },
+    "assets/se": {
+      "type": "audio",
+      "path": "assets/se",
+      "systemId": "sound",
+      "duration": 250,
+      "hint": {
+        "streaming": false,
+        "extensions": [
+          ".m4a",
+          ".ogg",
+          ".aac"
+        ]
+      }
+    },
+    "assets/player.png": {
+      "type": "image",
+      "path": "assets/player.png",
+      "width": 32,
+      "height": 32
+    },
+    "assets/shot.png": {
+      "type": "image",
+      "path": "assets/shot.png",
+      "width": 16,
+      "height": 16
+    }
+  },
+  "moduleMainScripts": {},
+  "environment": {
+    "sandbox-runtime": "3"
+  }
+}

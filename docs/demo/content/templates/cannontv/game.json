@@ -1,0 +1,160 @@
+{
+	"width": 970,
+	"height": 250,
+	"fps": 60,
+	"title": "いくぜ！ 超会議",
+	"description": "ニコニコ超会議2018に合わせてniconicoトップページに掲載されていたミニゲームです。[合同会社イクシール](http://www.ixill.net/)様制作。",
+	"main": "./script/main.js",
+	"operationPlugins": [
+		{
+			"code": 1,
+			"script": "./script/RawPointUpPlugin.js"
+		}
+	],
+	"assets": {
+		"main": {
+			"type": "script",
+			"path": "script/main.js",
+			"global": true
+		},
+		"sub": {
+			"type": "script",
+			"path": "script/sub.js",
+			"global": true
+		},
+		"Common": {
+			"type": "script",
+			"path": "script/Common.js",
+			"global": true
+		},
+		"RawPointUpPlugin": {
+			"type": "script",
+			"path": "script/RawPointUpPlugin.js",
+			"global": true
+		},
+		"bg_stage_all": {
+			"type": "image",
+			"width": 3880,
+			"height": 3000,
+			"path": "image/bg_stage_all.png"
+		},
+		"ui_sheet": {
+			"type": "image",
+			"width": 2048,
+			"height": 2048,
+			"path": "image/ui_sheet.png"
+		},
+		"balloon": {
+			"type": "image",
+			"width": 1240,
+			"height": 444,
+			"path": "image/balloon.png"
+		},
+		"bg_stage_star": {
+			"type": "image",
+			"width": 970,
+			"height": 500,
+			"path": "image/bg_stage_star.png"
+		},
+		"clear_anime_l": {
+			"type": "image",
+			"width": 2435,
+			"height": 3810,
+			"path": "image/clear_anime_l.png"
+		},
+		"clear_anime_r": {
+			"type": "image",
+			"width": 2435,
+			"height": 3810,
+			"path": "image/clear_anime_r.png"
+		},
+		"miss": {
+			"type": "image",
+			"width": 970,
+			"height": 800,
+			"path": "image/miss.png"
+		},
+		"bg_anime": {
+			"type": "image",
+			"width": 512,
+			"height": 632,
+			"path": "image/bg_anime.png"
+		},
+		"clear_anime_logo": {
+			"type": "image",
+			"width": 700,
+			"height": 2750,
+			"path": "image/clear_anime_logo.png"
+		},
+		"bgm_01": {
+			"type": "audio",
+			"path": "audio/bgm_01",
+			"systemId": "music",
+			"duration": 36227
+		},
+		"jin_01": {
+			"type": "audio",
+			"path": "audio/jin_01",
+			"systemId": "sound",
+			"duration": 6400
+		},
+		"jin_02": {
+			"type": "audio",
+			"path": "audio/jin_02",
+			"systemId": "sound",
+			"duration": 2942
+		},
+		"se_01": {
+			"type": "audio",
+			"path": "audio/se_01",
+			"systemId": "sound",
+			"duration": 863
+		},
+		"se_02": {
+			"type": "audio",
+			"path": "audio/se_02",
+			"systemId": "sound",
+			"duration": 183
+		},
+		"se_03": {
+			"type": "audio",
+			"path": "audio/se_03",
+			"systemId": "sound",
+			"duration": 2221
+		},
+		"se_04": {
+			"type": "audio",
+			"path": "audio/se_04",
+			"systemId": "sound",
+			"duration": 340
+		},
+		"se_05": {
+			"type": "audio",
+			"path": "audio/se_05",
+			"systemId": "sound",
+			"duration": 1280
+		},
+		"se_06": {
+			"type": "audio",
+			"path": "audio/se_06",
+			"systemId": "sound",
+			"duration": 1516
+		},
+		"se_07": {
+			"type": "audio",
+			"path": "audio/se_07",
+			"systemId": "sound",
+			"duration": 751
+		}
+	},
+	"environment": {
+		"sandbox-runtime": "3"
+	},
+	"globalScripts": [
+		"node_modules/@akashic-extension/akashic-tile/lib/Tile.js",
+		"node_modules/@akashic-extension/akashic-tile/lib/index.js"
+	],
+	"moduleMainScripts": {
+		"@akashic-extension/akashic-tile": "node_modules/@akashic-extension/akashic-tile/lib/index.js"
+	}
+}

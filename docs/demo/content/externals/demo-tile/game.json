@@ -1,0 +1,31 @@
+{
+	"width": 512,
+	"height": 384,
+	"fps": 30,
+	"title": "タイル",
+	"description": "拡張ライブラリ[akashic-tile](https://github.com/akashic-games/akashic-tile)でタイルチップを並べて描画することができます。画面をクリック(タップ)するとスクロールを開始／停止します。\n\nこのサンプルで使用している素材は[素材ページ](https://akashic-games.github.io/asset/material.html#TILE)で公開・配布しています。",
+	"main": "./script/main.js",
+	"assets": {
+		"main": {
+			"type": "script",
+			"path": "script/main.js",
+			"global": true
+		},
+		"map": {
+			"type": "image",
+			"width": 512,
+			"height": 512,
+			"path": "image/map.png"
+		}
+	},
+	"environment": {
+		"sandbox-runtime": "3"
+	},
+	"globalScripts": [
+		"node_modules/@akashic-extension/akashic-tile/lib/Tile.js",
+		"node_modules/@akashic-extension/akashic-tile/lib/index.js"
+	],
+	"moduleMainScripts": {
+		"@akashic-extension/akashic-tile": "node_modules/@akashic-extension/akashic-tile/lib/index.js"
+	}
+}

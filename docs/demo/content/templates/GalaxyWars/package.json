@@ -1,0 +1,15 @@
+{
+  "name": "GalaxyWars",
+  "version": "1.0.0-d",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:version && npm run build:asset",
+    "build:asset": "akashic scan asset",
+    "build:version": "node -e 'console.log(require(\"./package.json\").version)' > ./text/version.txt"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

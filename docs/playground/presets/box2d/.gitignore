@@ -1,0 +1,5 @@
+!node_modules/
+!lib/
+node_modules/@akashic/
+node_modules/**/*.d.ts
+node_modules/**/package.json

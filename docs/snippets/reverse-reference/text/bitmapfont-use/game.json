@@ -1,0 +1,26 @@
+{
+  "width": 320,
+  "height": 320,
+  "fps": 60,
+  "main": "./main.js",
+  "assets": {
+    "main": {
+      "type": "script",
+      "path": "main.js",
+      "global": true
+    },
+    "mplus": {
+      "type": "image",
+      "width": 2048,
+      "height": 702,
+      "path": "image/mplus.png"
+    },
+    "mplus-glyph": {
+      "type": "text",
+      "path": "text/mplus-glyph.json"
+    }
+  },
+  "environment": {
+    "sandbox-runtime": "3"
+  }
+}

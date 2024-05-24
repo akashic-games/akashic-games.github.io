@@ -1,0 +1,39 @@
+{
+  "width": 800,
+  "height": 450,
+  "fps": 60,
+  "main": "./script/main.js",
+  "assets": {
+    "pink_ball": {
+      "type": "image",
+      "path": "image/pink_ball.png",
+      "width": 50,
+      "height": 50
+    },
+    "arrow_right": {
+      "type": "image",
+      "path": "image/arrow_right.png",
+      "width": 100,
+      "height": 35
+    },
+    "main": {
+      "type": "script",
+      "path": "script/main.js",
+      "global": true
+    }
+  },
+  "moduleMainScripts": {
+    "@akashic-extension/akashic-box2d": "node_modules/@akashic-extension/akashic-box2d/lib/index.js",
+    "box2dweb": "node_modules/box2dweb/box2d.js"
+  },
+  "globalScripts": [
+    "node_modules/@akashic-extension/akashic-box2d/lib/Box2D.js",
+    "node_modules/@akashic-extension/akashic-box2d/lib/index.js",
+    "node_modules/box2dweb/box2d.js",
+    "node_modules/@akashic-extension/akashic-box2d/lib/ContactManager.js",
+    "node_modules/@akashic-extension/akashic-box2d/lib/parateters.js"
+  ],
+  "environment": {
+    "sandbox-runtime": "3"
+  }
+}

@@ -1,0 +1,245 @@
+{
+	"width": 640,
+	"height": 360,
+	"fps": 30,
+	"main": "./script/main.js",
+	"assets": {
+		"glyph28": {
+			"type": "text",
+			"path": "text/glyph28.json"
+		},
+		"glyph72": {
+			"type": "text",
+			"path": "text/glyph72.json"
+		},
+		"jin_000": {
+			"type": "audio",
+			"path": "audio/jin_000",
+			"systemId": "sound",
+			"duration": 2984
+		},
+		"jin_002": {
+			"type": "audio",
+			"path": "audio/jin_002",
+			"systemId": "sound",
+			"duration": 1998
+		},
+		"se_001a": {
+			"type": "audio",
+			"path": "audio/se_001a",
+			"systemId": "sound",
+			"duration": 1237
+		},
+		"se_001c": {
+			"type": "audio",
+			"path": "audio/se_001c",
+			"systemId": "sound",
+			"duration": 770
+		},
+		"se_002c": {
+			"type": "audio",
+			"path": "audio/se_002c",
+			"systemId": "sound",
+			"duration": 1005
+		},
+		"se_003": {
+			"type": "audio",
+			"path": "audio/se_003",
+			"systemId": "sound",
+			"duration": 2171
+		},
+		"se_004": {
+			"type": "audio",
+			"path": "audio/se_004",
+			"systemId": "sound",
+			"duration": 1104
+		},
+		"se_005A_mono": {
+			"type": "audio",
+			"path": "audio/se_005A_mono",
+			"systemId": "sound",
+			"duration": 2030
+		},
+		"se_006B_mono": {
+			"type": "audio",
+			"path": "audio/se_006B_mono",
+			"systemId": "sound",
+			"duration": 1029
+		},
+		"ui_common": {
+			"type": "image",
+			"width": 1024,
+			"height": 1024,
+			"path": "image/ui_common.png"
+		},
+		"AStage": {
+			"type": "script",
+			"path": "script/AStage.js",
+			"global": true
+		},
+		"AudioPresenter": {
+			"type": "script",
+			"path": "script/AudioPresenter.js",
+			"global": true
+		},
+		"FieldScene": {
+			"type": "script",
+			"path": "script/FieldScene.js",
+			"global": true
+		},
+		"FieldScore": {
+			"type": "script",
+			"path": "script/FieldScore.js",
+			"global": true
+		},
+		"GameField": {
+			"type": "script",
+			"path": "script/GameField.js",
+			"global": true
+		},
+		"GameTimer": {
+			"type": "script",
+			"path": "script/GameTimer.js",
+			"global": true
+		},
+		"Global": {
+			"type": "script",
+			"path": "script/Global.js",
+			"global": true
+		},
+		"ManualScene": {
+			"type": "script",
+			"path": "script/ManualScene.js",
+			"global": true
+		},
+		"NumberValue": {
+			"type": "script",
+			"path": "script/NumberValue.js",
+			"global": true
+		},
+		"OuterParamReceiver": {
+			"type": "script",
+			"path": "script/OuterParamReceiver.js",
+			"global": true
+		},
+		"ReadyGo": {
+			"type": "script",
+			"path": "script/ReadyGo.js",
+			"global": true
+		},
+		"ResultScene": {
+			"type": "script",
+			"path": "script/ResultScene.js",
+			"global": true
+		},
+		"SpriteFactory": {
+			"type": "script",
+			"path": "script/SpriteFactory.js",
+			"global": true
+		},
+		"TimeOver": {
+			"type": "script",
+			"path": "script/TimeOver.js",
+			"global": true
+		},
+		"TitleScene": {
+			"type": "script",
+			"path": "script/TitleScene.js",
+			"global": true
+		},
+		"Util": {
+			"type": "script",
+			"path": "script/Util.js",
+			"global": true
+		},
+		"main": {
+			"type": "script",
+			"path": "script/main.js",
+			"global": true
+		},
+		"GameFont": {
+			"type": "script",
+			"path": "script/GameFont.js",
+			"global": true
+		},
+		"Queue": {
+			"type": "script",
+			"path": "script/Queue.js",
+			"global": true
+		},
+		"ui": {
+			"type": "image",
+			"width": 1024,
+			"height": 1024,
+			"path": "image/ui.png"
+		},
+		"se_100c": {
+			"type": "audio",
+			"path": "audio/se_100c",
+			"systemId": "sound",
+			"duration": 924
+		},
+		"Picture": {
+			"type": "script",
+			"path": "script/Picture.js",
+			"global": true
+		},
+		"ui_2": {
+			"type": "image",
+			"width": 1024,
+			"height": 1024,
+			"path": "image/ui_2.png"
+		},
+		"PieceSelectField": {
+			"type": "script",
+			"path": "script/PieceSelectField.js",
+			"global": true
+		},
+		"ComboView": {
+			"type": "script",
+			"path": "script/ComboView.js",
+			"global": true
+		},
+		"RemainPieceView": {
+			"type": "script",
+			"path": "script/RemainPieceView.js",
+			"global": true
+		},
+		"glyph32_yellow": {
+			"type": "text",
+			"path": "text/glyph32_yellow.json"
+		},
+		"bgm_130": {
+			"type": "audio",
+			"path": "audio/bgm_130",
+			"systemId": "music",
+			"duration": 11498
+		}
+	},
+	"environment": {
+		"niconico": {
+			"supportedModes": [
+				"ranking"
+			]
+		},
+		"sandbox-runtime": "3"
+	},
+	"globalScripts": [
+		"node_modules/@akashic-extension/akashic-timeline/lib/ActionType.js",
+		"node_modules/@akashic-extension/akashic-timeline/lib/Easing.js",
+		"node_modules/@akashic-extension/akashic-timeline/lib/Timeline.js",
+		"node_modules/@akashic-extension/akashic-timeline/lib/Tween.js",
+		"node_modules/@akashic-extension/akashic-timeline/lib/index.js"
+	],
+	"moduleMainScripts": {
+		"@akashic-extension/akashic-timeline": "node_modules/@akashic-extension/akashic-timeline/lib/index.js"
+	},
+	"exportZipInfo": {
+		"version": "1.8.3",
+		"option": {
+			"strip": true,
+			"babel": true,
+			"targetService": "none"
+		}
+	}
+}
