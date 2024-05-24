@@ -1,0 +1,1949 @@
+{
+	"width": 816,
+	"height": 624,
+	"fps": 60,
+	"main": "./script/_bootstrap.js",
+	"title": "【ツクールMV製】競え！成り上がりダンジョン",
+	"description": "RPGツクールMVで制作されたニコ生ランキングゲームです。\n\n制限時間内に、宝箱に入っているお金を集めましょう。ただし、モンスターに触れるとお金を取られます。",
+	"assets": {
+		"tkool_core_index": {
+			"type": "script",
+			"path": "script/tkool/core/index.js",
+			"global": true
+		},
+		"tkool_managers_index": {
+			"type": "script",
+			"path": "script/tkool/managers/index.js",
+			"global": true
+		},
+		"tkool_scenes_index": {
+			"type": "script",
+			"path": "script/tkool/scenes/index.js",
+			"global": true
+		},
+		"tkool_sprites_index": {
+			"type": "script",
+			"path": "script/tkool/sprites/index.js",
+			"global": true
+		},
+		"tkool_objects_index": {
+			"type": "script",
+			"path": "script/tkool/objects/index.js",
+			"global": true
+		},
+		"tkool_PIXI_index": {
+			"type": "script",
+			"path": "script/tkool/PIXI/index.js",
+			"global": true
+		},
+		"tkool_PIXI_filters_index": {
+			"type": "script",
+			"path": "script/tkool/PIXI/filters/index.js",
+			"global": true
+		},
+		"tkool_windows_index": {
+			"type": "script",
+			"path": "script/tkool/windows/index.js",
+			"global": true
+		},
+		"main": {
+			"type": "script",
+			"path": "script/main.js",
+			"global": true
+		},
+		"Graphics": {
+			"type": "script",
+			"path": "script/tkool/core/Graphics.js",
+			"global": true
+		},
+		"Sprite": {
+			"type": "script",
+			"path": "script/tkool/core/Sprite.js",
+			"global": true
+		},
+		"TouchInput": {
+			"type": "script",
+			"path": "script/tkool/core/TouchInput.js",
+			"global": true
+		},
+		"Utils": {
+			"type": "script",
+			"path": "script/tkool/core/Utils.js",
+			"global": true
+		},
+		"WindowLayer": {
+			"type": "script",
+			"path": "script/tkool/core/WindowLayer.js",
+			"global": true
+		},
+		"index": {
+			"type": "script",
+			"path": "script/tkool/index.js",
+			"global": true
+		},
+		"AudioManager": {
+			"type": "script",
+			"path": "script/tkool/managers/AudioManager.js",
+			"global": true
+		},
+		"DataManager": {
+			"type": "script",
+			"path": "script/tkool/managers/DataManager.js",
+			"global": true
+		},
+		"ImageManager": {
+			"type": "script",
+			"path": "script/tkool/managers/ImageManager.js",
+			"global": true
+		},
+		"SceneManager": {
+			"type": "script",
+			"path": "script/tkool/managers/SceneManager.js",
+			"global": true
+		},
+		"StorageManager": {
+			"type": "script",
+			"path": "script/tkool/managers/StorageManager.js",
+			"global": true
+		},
+		"SceneBase": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneBase.js",
+			"global": true
+		},
+		"SceneBoot": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneBoot.js",
+			"global": true
+		},
+		"SceneTitle": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneTitle.js",
+			"global": true
+		},
+		"Bitmap": {
+			"type": "script",
+			"path": "script/tkool/core/Bitmap.js",
+			"global": true
+		},
+		"core_Rectangle": {
+			"type": "script",
+			"path": "script/tkool/core/Rectangle.js",
+			"global": true
+		},
+		"TextManager": {
+			"type": "script",
+			"path": "script/tkool/managers/TextManager.js",
+			"global": true
+		},
+		"GameAction": {
+			"type": "script",
+			"path": "script/tkool/objects/GameAction.js",
+			"global": true
+		},
+		"GameActionResult": {
+			"type": "script",
+			"path": "script/tkool/objects/GameActionResult.js",
+			"global": true
+		},
+		"GameBattler": {
+			"type": "script",
+			"path": "script/tkool/objects/GameBattler.js",
+			"global": true
+		},
+		"GameBattlerBase": {
+			"type": "script",
+			"path": "script/tkool/objects/GameBattlerBase.js",
+			"global": true
+		},
+		"GameCharacter": {
+			"type": "script",
+			"path": "script/tkool/objects/GameCharacter.js",
+			"global": true
+		},
+		"GameCharacterBase": {
+			"type": "script",
+			"path": "script/tkool/objects/GameCharacterBase.js",
+			"global": true
+		},
+		"GameFollower": {
+			"type": "script",
+			"path": "script/tkool/objects/GameFollower.js",
+			"global": true
+		},
+		"GameFollowers": {
+			"type": "script",
+			"path": "script/tkool/objects/GameFollowers.js",
+			"global": true
+		},
+		"GameItem": {
+			"type": "script",
+			"path": "script/tkool/objects/GameItem.js",
+			"global": true
+		},
+		"GameParty": {
+			"type": "script",
+			"path": "script/tkool/objects/GameParty.js",
+			"global": true
+		},
+		"GamePlayer": {
+			"type": "script",
+			"path": "script/tkool/objects/GamePlayer.js",
+			"global": true
+		},
+		"GameUnit": {
+			"type": "script",
+			"path": "script/tkool/objects/GameUnit.js",
+			"global": true
+		},
+		"GameActor": {
+			"type": "script",
+			"path": "script/tkool/objects/GameActor.js",
+			"global": true
+		},
+		"GameActors": {
+			"type": "script",
+			"path": "script/tkool/objects/GameActors.js",
+			"global": true
+		},
+		"Container": {
+			"type": "script",
+			"path": "script/tkool/PIXI/Container.js",
+			"global": true
+		},
+		"Rectangle": {
+			"type": "script",
+			"path": "script/tkool/PIXI/Rectangle.js",
+			"global": true
+		},
+		"Window": {
+			"type": "script",
+			"path": "script/tkool/core/Window.js",
+			"global": true
+		},
+		"WindowBase": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowBase.js",
+			"global": true
+		},
+		"WindowCommand": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowCommand.js",
+			"global": true
+		},
+		"WindowSelectable": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowSelectable.js",
+			"global": true
+		},
+		"WindowTitleCommand": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowTitleCommand.js",
+			"global": true
+		},
+		"GameSystem": {
+			"type": "script",
+			"path": "script/tkool/objects/GameSystem.js",
+			"global": true
+		},
+		"Texture": {
+			"type": "script",
+			"path": "script/tkool/PIXI/Texture.js",
+			"global": true
+		},
+		"ScreenSprite": {
+			"type": "script",
+			"path": "script/tkool/core/ScreenSprite.js",
+			"global": true
+		},
+		"Point": {
+			"type": "script",
+			"path": "script/tkool/PIXI/Point.js",
+			"global": true
+		},
+		"Stage": {
+			"type": "script",
+			"path": "script/tkool/core/Stage.js",
+			"global": true
+		},
+		"Tilemap": {
+			"type": "script",
+			"path": "script/tkool/core/Tilemap.js",
+			"global": true
+		},
+		"TilingSprite": {
+			"type": "script",
+			"path": "script/tkool/core/TilingSprite.js",
+			"global": true
+		},
+		"ToneSprite": {
+			"type": "script",
+			"path": "script/tkool/core/ToneSprite.js",
+			"global": true
+		},
+		"Weather": {
+			"type": "script",
+			"path": "script/tkool/core/Weather.js",
+			"global": true
+		},
+		"SceneMap": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneMap.js",
+			"global": true
+		},
+		"SpriteAnimation": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpriteAnimation.js",
+			"global": true
+		},
+		"SpriteBalloon": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpriteBalloon.js",
+			"global": true
+		},
+		"SpriteBase": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpriteBase.js",
+			"global": true
+		},
+		"SpriteButton": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpriteButton.js",
+			"global": true
+		},
+		"SpriteCharacter": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpriteCharacter.js",
+			"global": true
+		},
+		"SpriteDestination": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpriteDestination.js",
+			"global": true
+		},
+		"SpritePicture": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpritePicture.js",
+			"global": true
+		},
+		"SpriteTimer": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpriteTimer.js",
+			"global": true
+		},
+		"SpritesetBase": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpritesetBase.js",
+			"global": true
+		},
+		"SpritesetMap": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpritesetMap.js",
+			"global": true
+		},
+		"WindowChoiceList": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowChoiceList.js",
+			"global": true
+		},
+		"WindowEventItem": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowEventItem.js",
+			"global": true
+		},
+		"WindowGold": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowGold.js",
+			"global": true
+		},
+		"WindowItemList": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowItemList.js",
+			"global": true
+		},
+		"WindowMapName": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowMapName.js",
+			"global": true
+		},
+		"WindowMenuCommand": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowMenuCommand.js",
+			"global": true
+		},
+		"WindowMessage": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowMessage.js",
+			"global": true
+		},
+		"WindowNumberInput": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowNumberInput.js",
+			"global": true
+		},
+		"WindowScrollText": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowScrollText.js",
+			"global": true
+		},
+		"BattleManager": {
+			"type": "script",
+			"path": "script/tkool/managers/BattleManager.js",
+			"global": true
+		},
+		"GameCommonEvent": {
+			"type": "script",
+			"path": "script/tkool/objects/GameCommonEvent.js",
+			"global": true
+		},
+		"GameEnemy": {
+			"type": "script",
+			"path": "script/tkool/objects/GameEnemy.js",
+			"global": true
+		},
+		"GameEvent": {
+			"type": "script",
+			"path": "script/tkool/objects/GameEvent.js",
+			"global": true
+		},
+		"GameInterpreter": {
+			"type": "script",
+			"path": "script/tkool/objects/GameInterpreter.js",
+			"global": true
+		},
+		"GameMap": {
+			"type": "script",
+			"path": "script/tkool/objects/GameMap.js",
+			"global": true
+		},
+		"GameMessage": {
+			"type": "script",
+			"path": "script/tkool/objects/GameMessage.js",
+			"global": true
+		},
+		"GameTimer": {
+			"type": "script",
+			"path": "script/tkool/objects/GameTimer.js",
+			"global": true
+		},
+		"GameTroop": {
+			"type": "script",
+			"path": "script/tkool/objects/GameTroop.js",
+			"global": true
+		},
+		"GameVehicle": {
+			"type": "script",
+			"path": "script/tkool/objects/GameVehicle.js",
+			"global": true
+		},
+		"SceneBattle": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneBattle.js",
+			"global": true
+		},
+		"ObservablePoint": {
+			"type": "script",
+			"path": "script/tkool/PIXI/ObservablePoint.js",
+			"global": true
+		},
+		"GamePicture": {
+			"type": "script",
+			"path": "script/tkool/objects/GamePicture.js",
+			"global": true
+		},
+		"GameScreen": {
+			"type": "script",
+			"path": "script/tkool/objects/GameScreen.js",
+			"global": true
+		},
+		"GameTemp": {
+			"type": "script",
+			"path": "script/tkool/objects/GameTemp.js",
+			"global": true
+		},
+		"ColorMatrixFilter": {
+			"type": "script",
+			"path": "script/tkool/PIXI/filters/ColorMatrixFilter.js",
+			"global": true
+		},
+		"Filter": {
+			"type": "script",
+			"path": "script/tkool/PIXI/filters/Filter.js",
+			"global": true
+		},
+		"ToneFilter": {
+			"type": "script",
+			"path": "script/tkool/core/ToneFilter.js",
+			"global": true
+		},
+		"SpriteActor": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpriteActor.js",
+			"global": true
+		},
+		"SpriteBattler": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpriteBattler.js",
+			"global": true
+		},
+		"SpriteDamage": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpriteDamage.js",
+			"global": true
+		},
+		"SpriteEnemy": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpriteEnemy.js",
+			"global": true
+		},
+		"SpriteStateIcon": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpriteStateIcon.js",
+			"global": true
+		},
+		"SpriteStateOverlay": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpriteStateOverlay.js",
+			"global": true
+		},
+		"SpriteWeapon": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpriteWeapon.js",
+			"global": true
+		},
+		"SpritesetBattle": {
+			"type": "script",
+			"path": "script/tkool/sprites/SpritesetBattle.js",
+			"global": true
+		},
+		"WindowActorCommand": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowActorCommand.js",
+			"global": true
+		},
+		"WindowBattleActor": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowBattleActor.js",
+			"global": true
+		},
+		"WindowBattleEnemy": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowBattleEnemy.js",
+			"global": true
+		},
+		"WindowBattleItem": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowBattleItem.js",
+			"global": true
+		},
+		"WindowBattleLog": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowBattleLog.js",
+			"global": true
+		},
+		"WindowBattleSkill": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowBattleSkill.js",
+			"global": true
+		},
+		"WindowBattleStatus": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowBattleStatus.js",
+			"global": true
+		},
+		"WindowHelp": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowHelp.js",
+			"global": true
+		},
+		"WindowPartyCommand": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowPartyCommand.js",
+			"global": true
+		},
+		"WindowSkillList": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowSkillList.js",
+			"global": true
+		},
+		"SoundManager": {
+			"type": "script",
+			"path": "script/tkool/managers/SoundManager.js",
+			"global": true
+		},
+		"GameVariables": {
+			"type": "script",
+			"path": "script/tkool/objects/GameVariables.js",
+			"global": true
+		},
+		"GameSelfSwitches": {
+			"type": "script",
+			"path": "script/tkool/objects/GameSelfSwitches.js",
+			"global": true
+		},
+		"GameSwitches": {
+			"type": "script",
+			"path": "script/tkool/objects/GameSwitches.js",
+			"global": true
+		},
+		"parameterObject": {
+			"type": "script",
+			"path": "script/parameterObject.js",
+			"global": true
+		},
+		"_bootstrap": {
+			"type": "script",
+			"path": "script/_bootstrap.js",
+			"global": true
+		},
+		"PluginManager": {
+			"type": "script",
+			"path": "script/tkool/managers/PluginManager.js",
+			"global": true
+		},
+		"AkashicRankingMode": {
+			"type": "script",
+			"path": "script/tkool/plugins/AkashicRankingMode.js",
+			"global": true
+		},
+		"Plugins": {
+			"type": "text",
+			"path": "text/Plugins.json",
+			"global": true
+		},
+		"SceneEquip": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneEquip.js",
+			"global": true
+		},
+		"SceneGameEnd": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneGameEnd.js",
+			"global": true
+		},
+		"SceneItem": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneItem.js",
+			"global": true
+		},
+		"SceneItemBase": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneItemBase.js",
+			"global": true
+		},
+		"SceneMenu": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneMenu.js",
+			"global": true
+		},
+		"SceneMenuBase": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneMenuBase.js",
+			"global": true
+		},
+		"SceneOptions": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneOptions.js",
+			"global": true
+		},
+		"SceneSkill": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneSkill.js",
+			"global": true
+		},
+		"SceneStatus": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneStatus.js",
+			"global": true
+		},
+		"WindowEquipCommand": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowEquipCommand.js",
+			"global": true
+		},
+		"WindowEquipItem": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowEquipItem.js",
+			"global": true
+		},
+		"WindowEquipSlot": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowEquipSlot.js",
+			"global": true
+		},
+		"WindowEquipStatus": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowEquipStatus.js",
+			"global": true
+		},
+		"WindowGameEnd": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowGameEnd.js",
+			"global": true
+		},
+		"WindowHorzCommand": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowHorzCommand.js",
+			"global": true
+		},
+		"WindowItemCategory": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowItemCategory.js",
+			"global": true
+		},
+		"WindowMenuActor": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowMenuActor.js",
+			"global": true
+		},
+		"WindowMenuStatus": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowMenuStatus.js",
+			"global": true
+		},
+		"WindowOptions": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowOptions.js",
+			"global": true
+		},
+		"WindowSkillStatus": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowSkillStatus.js",
+			"global": true
+		},
+		"WindowSkillType": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowSkillType.js",
+			"global": true
+		},
+		"WindowStatus": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowStatus.js",
+			"global": true
+		},
+		"SceneShop": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneShop.js",
+			"global": true
+		},
+		"WindowShopBuy": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowShopBuy.js",
+			"global": true
+		},
+		"WindowShopCommand": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowShopCommand.js",
+			"global": true
+		},
+		"WindowShopNumber": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowShopNumber.js",
+			"global": true
+		},
+		"WindowShopSell": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowShopSell.js",
+			"global": true
+		},
+		"WindowShopStatus": {
+			"type": "script",
+			"path": "script/tkool/windows/WindowShopStatus.js",
+			"global": true
+		},
+		"Community_Basic": {
+			"type": "script",
+			"path": "script/tkool/plugins/Community_Basic.js",
+			"global": true
+		},
+		"CacheEntry": {
+			"type": "script",
+			"path": "script/tkool/core/CacheEntry.js",
+			"global": true
+		},
+		"ImageCache": {
+			"type": "script",
+			"path": "script/tkool/core/ImageCache.js",
+			"global": true
+		},
+		"SceneGameOver": {
+			"type": "script",
+			"path": "script/tkool/scenes/SceneGameOver.js",
+			"global": true
+		},
+		"JsonEx": {
+			"type": "script",
+			"path": "script/tkool/core/JsonEx.js",
+			"global": true
+		},
+		"assets/audio/bgm/Dungeon2": {
+			"type": "audio",
+			"path": "assets/audio/bgm/Dungeon2",
+			"duration": 68451,
+			"systemId": "music",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/bgm/Theme6": {
+			"type": "audio",
+			"path": "assets/audio/bgm/Theme6",
+			"duration": 75209,
+			"systemId": "music",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/bgs/Darkness": {
+			"type": "audio",
+			"path": "assets/audio/bgs/Darkness",
+			"duration": 9511,
+			"systemId": "music",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Attack3": {
+			"type": "audio",
+			"path": "assets/audio/se/Attack3",
+			"duration": 499,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Battle1": {
+			"type": "audio",
+			"path": "assets/audio/se/Battle1",
+			"duration": 1951,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Blow3": {
+			"type": "audio",
+			"path": "assets/audio/se/Blow3",
+			"duration": 270,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Buzzer1": {
+			"type": "audio",
+			"path": "assets/audio/se/Buzzer1",
+			"duration": 331,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Cancel2": {
+			"type": "audio",
+			"path": "assets/audio/se/Cancel2",
+			"duration": 456,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Chest1": {
+			"type": "audio",
+			"path": "assets/audio/se/Chest1",
+			"duration": 3010,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Coin": {
+			"type": "audio",
+			"path": "assets/audio/se/Coin",
+			"duration": 256,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Collapse1": {
+			"type": "audio",
+			"path": "assets/audio/se/Collapse1",
+			"duration": 3001,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Collapse2": {
+			"type": "audio",
+			"path": "assets/audio/se/Collapse2",
+			"duration": 2601,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Collapse3": {
+			"type": "audio",
+			"path": "assets/audio/se/Collapse3",
+			"duration": 2001,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Collapse4": {
+			"type": "audio",
+			"path": "assets/audio/se/Collapse4",
+			"duration": 4401,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Cursor2": {
+			"type": "audio",
+			"path": "assets/audio/se/Cursor2",
+			"duration": 2000,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Damage2": {
+			"type": "audio",
+			"path": "assets/audio/se/Damage2",
+			"duration": 645,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Damage4": {
+			"type": "audio",
+			"path": "assets/audio/se/Damage4",
+			"duration": 597,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Damage5": {
+			"type": "audio",
+			"path": "assets/audio/se/Damage5",
+			"duration": 449,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Decision1": {
+			"type": "audio",
+			"path": "assets/audio/se/Decision1",
+			"duration": 2251,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Equip1": {
+			"type": "audio",
+			"path": "assets/audio/se/Equip1",
+			"duration": 351,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Evasion1": {
+			"type": "audio",
+			"path": "assets/audio/se/Evasion1",
+			"duration": 424,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Evasion2": {
+			"type": "audio",
+			"path": "assets/audio/se/Evasion2",
+			"duration": 525,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Fire3": {
+			"type": "audio",
+			"path": "assets/audio/se/Fire3",
+			"duration": 1138,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Heal3": {
+			"type": "audio",
+			"path": "assets/audio/se/Heal3",
+			"duration": 1077,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Ice1": {
+			"type": "audio",
+			"path": "assets/audio/se/Ice1",
+			"duration": 558,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Ice5": {
+			"type": "audio",
+			"path": "assets/audio/se/Ice5",
+			"duration": 819,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Item3": {
+			"type": "audio",
+			"path": "assets/audio/se/Item3",
+			"duration": 1109,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Load": {
+			"type": "audio",
+			"path": "assets/audio/se/Load",
+			"duration": 2251,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Magic1": {
+			"type": "audio",
+			"path": "assets/audio/se/Magic1",
+			"duration": 1000,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Miss": {
+			"type": "audio",
+			"path": "assets/audio/se/Miss",
+			"duration": 382,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Move1": {
+			"type": "audio",
+			"path": "assets/audio/se/Move1",
+			"duration": 801,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Paralyze1": {
+			"type": "audio",
+			"path": "assets/audio/se/Paralyze1",
+			"duration": 349,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Recovery": {
+			"type": "audio",
+			"path": "assets/audio/se/Recovery",
+			"duration": 865,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Reflection": {
+			"type": "audio",
+			"path": "assets/audio/se/Reflection",
+			"duration": 742,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Run": {
+			"type": "audio",
+			"path": "assets/audio/se/Run",
+			"duration": 477,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Saint2": {
+			"type": "audio",
+			"path": "assets/audio/se/Saint2",
+			"duration": 1841,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Save": {
+			"type": "audio",
+			"path": "assets/audio/se/Save",
+			"duration": 2401,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Shop1": {
+			"type": "audio",
+			"path": "assets/audio/se/Shop1",
+			"duration": 2601,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Skill1": {
+			"type": "audio",
+			"path": "assets/audio/se/Skill1",
+			"duration": 900,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Slash1": {
+			"type": "audio",
+			"path": "assets/audio/se/Slash1",
+			"duration": 575,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Starlight": {
+			"type": "audio",
+			"path": "assets/audio/se/Starlight",
+			"duration": 3066,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Sword5": {
+			"type": "audio",
+			"path": "assets/audio/se/Sword5",
+			"duration": 1039,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Thunder1": {
+			"type": "audio",
+			"path": "assets/audio/se/Thunder1",
+			"duration": 1086,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Thunder5": {
+			"type": "audio",
+			"path": "assets/audio/se/Thunder5",
+			"duration": 796,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Thunder6": {
+			"type": "audio",
+			"path": "assets/audio/se/Thunder6",
+			"duration": 1237,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/audio/se/Thunder9": {
+			"type": "audio",
+			"path": "assets/audio/se/Thunder9",
+			"duration": 1916,
+			"systemId": "sound",
+			"global": true,
+			"hint": {
+				"extensions": [
+					".aac",
+					".ogg"
+				]
+			}
+		},
+		"assets/img/animations/Cure1.png": {
+			"type": "image",
+			"path": "assets/img/animations/Cure1.png",
+			"width": 960,
+			"height": 1152,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/animations/Fire1.png": {
+			"type": "image",
+			"path": "assets/img/animations/Fire1.png",
+			"width": 960,
+			"height": 1152,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/animations/Hit1.png": {
+			"type": "image",
+			"path": "assets/img/animations/Hit1.png",
+			"width": 768,
+			"height": 192,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/animations/Recovery1.png": {
+			"type": "image",
+			"path": "assets/img/animations/Recovery1.png",
+			"width": 960,
+			"height": 1152,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/animations/Revival1.png": {
+			"type": "image",
+			"path": "assets/img/animations/Revival1.png",
+			"width": 960,
+			"height": 960,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/animations/Slash.png": {
+			"type": "image",
+			"path": "assets/img/animations/Slash.png",
+			"width": 960,
+			"height": 192,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/animations/Stick.png": {
+			"type": "image",
+			"path": "assets/img/animations/Stick.png",
+			"width": 960,
+			"height": 384,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/animations/Thunder1.png": {
+			"type": "image",
+			"path": "assets/img/animations/Thunder1.png",
+			"width": 960,
+			"height": 576,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/characters/!Chest.png": {
+			"type": "image",
+			"path": "assets/img/characters/!Chest.png",
+			"width": 576,
+			"height": 384,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/characters/!Door2.png": {
+			"type": "image",
+			"path": "assets/img/characters/!Door2.png",
+			"width": 576,
+			"height": 384,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/characters/!Switch1.png": {
+			"type": "image",
+			"path": "assets/img/characters/!Switch1.png",
+			"width": 576,
+			"height": 384,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/characters/Actor1.png": {
+			"type": "image",
+			"path": "assets/img/characters/Actor1.png",
+			"width": 576,
+			"height": 384,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/characters/Actor2.png": {
+			"type": "image",
+			"path": "assets/img/characters/Actor2.png",
+			"width": 576,
+			"height": 384,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/characters/Actor3.png": {
+			"type": "image",
+			"path": "assets/img/characters/Actor3.png",
+			"width": 576,
+			"height": 384,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/characters/Monster.png": {
+			"type": "image",
+			"path": "assets/img/characters/Monster.png",
+			"width": 576,
+			"height": 384,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/characters/Vehicle.png": {
+			"type": "image",
+			"path": "assets/img/characters/Vehicle.png",
+			"width": 576,
+			"height": 384,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/faces/Actor1.png": {
+			"type": "image",
+			"path": "assets/img/faces/Actor1.png",
+			"width": 576,
+			"height": 288,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/faces/Monster.png": {
+			"type": "image",
+			"path": "assets/img/faces/Monster.png",
+			"width": 576,
+			"height": 288,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/sv_actors/Actor1_1.png": {
+			"type": "image",
+			"path": "assets/img/sv_actors/Actor1_1.png",
+			"width": 576,
+			"height": 384,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/system/Balloon.png": {
+			"type": "image",
+			"path": "assets/img/system/Balloon.png",
+			"width": 384,
+			"height": 720,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/system/ButtonSet.png": {
+			"type": "image",
+			"path": "assets/img/system/ButtonSet.png",
+			"width": 288,
+			"height": 96,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/system/Damage.png": {
+			"type": "image",
+			"path": "assets/img/system/Damage.png",
+			"width": 240,
+			"height": 160,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/system/GameOver.png": {
+			"type": "image",
+			"path": "assets/img/system/GameOver.png",
+			"width": 816,
+			"height": 624,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/system/IconSet.png": {
+			"type": "image",
+			"path": "assets/img/system/IconSet.png",
+			"width": 512,
+			"height": 640,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/system/Loading.png": {
+			"type": "image",
+			"path": "assets/img/system/Loading.png",
+			"width": 400,
+			"height": 100,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/system/MadeWithMv.png": {
+			"type": "image",
+			"path": "assets/img/system/MadeWithMv.png",
+			"width": 816,
+			"height": 624,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/system/Shadow1.png": {
+			"type": "image",
+			"path": "assets/img/system/Shadow1.png",
+			"width": 48,
+			"height": 48,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/system/Shadow2.png": {
+			"type": "image",
+			"path": "assets/img/system/Shadow2.png",
+			"width": 82,
+			"height": 38,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/system/States.png": {
+			"type": "image",
+			"path": "assets/img/system/States.png",
+			"width": 768,
+			"height": 960,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/system/Weapons1.png": {
+			"type": "image",
+			"path": "assets/img/system/Weapons1.png",
+			"width": 576,
+			"height": 384,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/system/Weapons2.png": {
+			"type": "image",
+			"path": "assets/img/system/Weapons2.png",
+			"width": 576,
+			"height": 384,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/system/Weapons3.png": {
+			"type": "image",
+			"path": "assets/img/system/Weapons3.png",
+			"width": 288,
+			"height": 384,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/system/Window.png": {
+			"type": "image",
+			"path": "assets/img/system/Window.png",
+			"width": 192,
+			"height": 192,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Dungeon_A1.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Dungeon_A1.png",
+			"width": 768,
+			"height": 576,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Dungeon_A2.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Dungeon_A2.png",
+			"width": 768,
+			"height": 576,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Dungeon_A4.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Dungeon_A4.png",
+			"width": 768,
+			"height": 720,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Dungeon_A5.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Dungeon_A5.png",
+			"width": 384,
+			"height": 768,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Dungeon_B.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Dungeon_B.png",
+			"width": 768,
+			"height": 768,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Dungeon_C.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Dungeon_C.png",
+			"width": 768,
+			"height": 768,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Inside_A1.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Inside_A1.png",
+			"width": 768,
+			"height": 576,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Inside_A2.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Inside_A2.png",
+			"width": 768,
+			"height": 576,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Inside_A4.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Inside_A4.png",
+			"width": 768,
+			"height": 720,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Inside_A5.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Inside_A5.png",
+			"width": 384,
+			"height": 768,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Inside_B.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Inside_B.png",
+			"width": 768,
+			"height": 768,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Inside_C.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Inside_C.png",
+			"width": 768,
+			"height": 768,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Outside_A1.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Outside_A1.png",
+			"width": 768,
+			"height": 576,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Outside_A2.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Outside_A2.png",
+			"width": 768,
+			"height": 576,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Outside_A3.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Outside_A3.png",
+			"width": 768,
+			"height": 384,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Outside_A4.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Outside_A4.png",
+			"width": 768,
+			"height": 720,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Outside_A5.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Outside_A5.png",
+			"width": 384,
+			"height": 768,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Outside_B.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Outside_B.png",
+			"width": 768,
+			"height": 768,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/tilesets/Outside_C.png": {
+			"type": "image",
+			"path": "assets/img/tilesets/Outside_C.png",
+			"width": 768,
+			"height": 768,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"assets/img/titles1/Castle.png": {
+			"type": "image",
+			"path": "assets/img/titles1/Castle.png",
+			"width": 816,
+			"height": 624,
+			"hint": {
+				"untainted": true
+			}
+		},
+		"Actors": {
+			"type": "text",
+			"path": "text/Actors.json",
+			"global": true
+		},
+		"Animations": {
+			"type": "text",
+			"path": "text/Animations.json",
+			"global": true
+		},
+		"Armors": {
+			"type": "text",
+			"path": "text/Armors.json",
+			"global": true
+		},
+		"Classes": {
+			"type": "text",
+			"path": "text/Classes.json",
+			"global": true
+		},
+		"CommonEvents": {
+			"type": "text",
+			"path": "text/CommonEvents.json",
+			"global": true
+		},
+		"Enemies": {
+			"type": "text",
+			"path": "text/Enemies.json",
+			"global": true
+		},
+		"Items": {
+			"type": "text",
+			"path": "text/Items.json",
+			"global": true
+		},
+		"Map001": {
+			"type": "text",
+			"path": "text/Map001.json",
+			"global": true
+		},
+		"MapInfos": {
+			"type": "text",
+			"path": "text/MapInfos.json",
+			"global": true
+		},
+		"Skills": {
+			"type": "text",
+			"path": "text/Skills.json",
+			"global": true
+		},
+		"States": {
+			"type": "text",
+			"path": "text/States.json",
+			"global": true
+		},
+		"System": {
+			"type": "text",
+			"path": "text/System.json",
+			"global": true
+		},
+		"Tilesets": {
+			"type": "text",
+			"path": "text/Tilesets.json",
+			"global": true
+		},
+		"Troops": {
+			"type": "text",
+			"path": "text/Troops.json",
+			"global": true
+		},
+		"Weapons": {
+			"type": "text",
+			"path": "text/Weapons.json",
+			"global": true
+		}
+	},
+	"environment": {
+		"sandbox-runtime": "3",
+		"nicolive": {
+			"supportedModes": [
+				"ranking"
+			],
+			"preferredSessionParameters": {
+				"totalTimeLimit": 75
+			}
+		},
+		"external": {
+			"send": "0"
+		},
+		"akashic-runtime": {
+			"version": "~3.7.3-0",
+			"flavor": "-canvas"
+		}
+	},
+	"globalScripts": []
+}

@@ -1,0 +1,22 @@
+{
+  "width": 320,
+  "height": 320,
+  "fps": 60,
+  "main": "./main.js",
+  "assets": {
+    "main": {
+      "type": "script",
+      "path": "main.js",
+      "global": true
+    },
+    "button-frame": {
+      "type": "image",
+      "path": "image/button-frame.png",
+      "width": 160,
+      "height": 40
+    }
+  },
+  "environment": {
+    "sandbox-runtime": "3"
+  }
+}

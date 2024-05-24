@@ -1,0 +1,44 @@
+{
+  "width": 800,
+  "height": 450,
+  "fps": 60,
+  "main": "./script/main.js",
+  "assets": {
+    "main": {
+      "type": "script",
+      "path": "script/main.js",
+      "global": true
+    },
+    "plus": {
+      "type": "image",
+      "path": "image/plus.png",
+      "width": 114,
+      "height": 114
+    },
+    "minus": {
+      "type": "image",
+      "path": "image/minus.png",
+      "width": 114,
+      "height": 38
+    },
+    "frame": {
+      "type": "image",
+      "path": "image/frame.png",
+      "width": 1051,
+      "height": 300
+    }
+  },
+	"globalScripts": [
+		"node_modules/@akashic-extension/akashic-label/lib/DefaultRubyParser.js",
+		"node_modules/@akashic-extension/akashic-label/lib/FragmentDrawInfo.js",
+		"node_modules/@akashic-extension/akashic-label/lib/Label.js",
+		"node_modules/@akashic-extension/akashic-label/lib/RubyParser.js",
+		"node_modules/@akashic-extension/akashic-label/lib/index.js"
+	],
+	"moduleMainScripts": {
+		"@akashic-extension/akashic-label": "node_modules/@akashic-extension/akashic-label/lib/index.js"
+	},
+  "environment": {
+    "sandbox-runtime": "3"
+  }
+}

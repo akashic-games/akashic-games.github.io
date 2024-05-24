@@ -1,0 +1,39 @@
+{"frames": {
+
+"stg_bg.png":
+{
+	"frame": {"x":1,"y":1,"w":200,"h":374},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":200,"h":374},
+	"sourceSize": {"w":200,"h":374},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"stg_building.png":
+{
+	"frame": {"x":203,"y":1,"w":486,"h":360},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":486,"h":360},
+	"sourceSize": {"w":486,"h":360},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"stg_building_side.png":
+{
+	"frame": {"x":691,"y":1,"w":110,"h":426},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":110,"h":426},
+	"sourceSize": {"w":110,"h":426},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "stg_building.png",
+	"format": "RGBA8888",
+	"size": {"w":802,"h":428},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:5729d9d263be7fcd4344a06a37cbf079:fd3b7705352f78b1165793dd63734b6f:d020828b9d3f589e7445e4b479c0a9cc$"
+}
+}

@@ -1,0 +1,51 @@
+{
+	"width": 1280,
+	"height": 720,
+	"fps": 30,
+	"main": "./script/_bootstrap.js",
+	"assets": {
+		"_bootstrap": {
+			"type": "script",
+			"path": "script/_bootstrap.js",
+			"global": true
+		},
+		"main": {
+			"type": "script",
+			"path": "script/main.js",
+			"global": true
+		},
+		"assets/images/breakout_paddle.png": {
+			"type": "image",
+			"path": "assets/images/breakout_paddle.png",
+			"width": 160,
+			"height": 16
+		},
+		"assets/images/breakout_ball.png": {
+			"type": "image",
+			"path": "assets/images/breakout_ball.png",
+			"width": 26,
+			"height": 26
+		},
+		"assets/images/breakout_block_a.png": {
+			"type": "image",
+			"path": "assets/images/breakout_block_a.png",
+			"width": 128,
+			"height": 48
+		},
+		"assets/images/breakout_block_b.png": {
+			"type": "image",
+			"path": "assets/images/breakout_block_b.png",
+			"width": 128,
+			"height": 48
+		}
+	},
+	"moduleMainScripts": {},
+	"environment": {
+		"sandbox-runtime": "3",
+		"niconico": {
+			"supportedModes": [
+				"ranking"
+			]
+		}
+	}
+}

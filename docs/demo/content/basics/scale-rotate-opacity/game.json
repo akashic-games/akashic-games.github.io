@@ -1,0 +1,24 @@
+{
+	"width": 320,
+	"height": 240,
+	"fps": 30,
+	"title": "拡縮・回転・透明度",
+	"description": "g.Eのscale,rotate,opacityプロパティで拡縮・回転・透明度が制御できます。",
+	"main": "./script/main.js",
+	"assets": {
+		"main": {
+			"type": "script",
+			"path": "script/main.js",
+			"global": true
+		},
+		"player": {
+			"type": "image",
+			"width": 63,
+			"height": 53,
+			"path": "image/player.png"
+		}
+	},
+	"environment": {
+		"sandbox-runtime": "3"
+	}
+}
