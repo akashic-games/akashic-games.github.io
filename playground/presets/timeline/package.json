@@ -1,7 +1,0 @@
-{
-  "private": true,
-  "description": "",
-  "dependencies": {
-    "@akashic-extension/akashic-timeline": "3.0.0-beta.2"
-  }
-}
