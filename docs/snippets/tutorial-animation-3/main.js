@@ -1,12 +1,12 @@
 function main() {
 	const scene = new g.Scene({
 		game: g.game,
-		assetIds: ["explosion"]
+		assetPaths: ["/image/explosion.png"]
 	});
 	scene.onLoad.add(() => {
 		const frameSprite = new g.FrameSprite({
 			scene: scene,
-			src: scene.asset.getImageById("explosion"),
+			src: scene.asset.getImage("/image/explosion.png"),
 			// エンティティのサイズ
 			width: 100,
 			height: 100,
