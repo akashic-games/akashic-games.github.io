@@ -1,13 +1,13 @@
 function main() {
   const scene = new g.Scene({
     game: g.game,
-    assetIds: ["player"] // シーン内で利用するアセットID
+    assetPaths: ["/image/player.png"] // シーン内で利用するアセットのパス
   });
 
   scene.loaded.add(() => {
     const sprite = new g.Sprite({
       scene: scene,
-      src: scene.assets["player"]
+      src: scene.asset.getImage("/image/player.png")
     });
     scene.append(sprite);
   });
