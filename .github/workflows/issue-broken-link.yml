@@ -1,7 +1,6 @@
 name: Issue Broken Link
 
-on:
-  page_build
+on: [push]
 
 jobs:
   build:
