@@ -1,0 +1,40 @@
+name: Issue Broken Link
+
+on:
+  page_build
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: link check
+        run: |
+          npm install broken-link-checker
+          npx broken-link-checker https://akashic-games.github.io/ -roe --requests 1 --exclude localhost:3000 | grep BROKEN > ./link_check_result.txt
+        continue-on-error: true
+      - name: save result
+        id: result
+        run: |
+          BROKEN_RESULT="$(cat ./link_check_result.txt)"
+          echo "broken_result<<EOF" >> $GITHUB_OUTPUT
+          echo "$BROKEN_RESULT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      - name: count result
+        id: count
+        run: |
+          echo "count=$(cat ./link_check_result.txt | wc -l)" >> $GITHUB_OUTPUT
+      - name: create issue
+        if: steps.count.outputs.count > 0
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RESULT: ${{ steps.result.outputs.broken_result }}
+        with:
+          filename: .github/issue-broken-link-template.md
+          update_existing: true
