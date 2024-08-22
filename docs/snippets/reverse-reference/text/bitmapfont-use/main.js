@@ -1,13 +1,13 @@
 function main() {
 	var scene = new g.Scene({
 		game: g.game,
-		assetIds: ["mplus", "mplus-glyph"]
+		assetPaths: ["/image/mplus.png", "/text/mplus-glyph.json"]
 	});
 
 	scene.onLoad.add(function() {
-		var mPlusGlyphInfo = JSON.parse(scene.assets["mplus-glyph"].data)
+		var mPlusGlyphInfo = scene.asset.getJSONContent("/text/mplus-glyph.json");
 		var mplusfont = new g.BitmapFont({
-			src: scene.assets["mplus"],
+			src: scene.asset.getImage("/image/mplus.png"),
 			glyphInfo: mPlusGlyphInfo
 		});
 

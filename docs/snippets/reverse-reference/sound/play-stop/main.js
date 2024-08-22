@@ -5,19 +5,19 @@ var font = new g.DynamicFont({
 });
 
 function main() {
-	var scene = new g.Scene({ game: g.game, assetIds: ["sound1", "bgm1"] });
+	var scene = new g.Scene({ game: g.game, assetPaths: ["/audio/sound1", "/audio/bgm1"] });
 	scene.onLoad.add(function() {
 		var isPlayingBgm = false;
 		var soundRect = createButtonRect(scene, 40, 110, "green", "SE", () => {
-			scene.asset.getAudioById("sound1").play();
+			scene.asset.getAudio("/audio/sound1").play();
 		});
 		scene.append(soundRect);
 		var bgmRect = createButtonRect(scene, 180, 110, "blue", "BGM", () => {
 			isPlayingBgm = !isPlayingBgm;
 			if (isPlayingBgm) {
-				scene.asset.getAudioById("bgm1").play();
+				scene.asset.getAudio("/audio/bgm1").play();
 			} else {
-				scene.asset.getAudioById("bgm1").stop();
+				scene.asset.getAudio("/audio/bgm1").stop();
 			}
 		});
 		scene.append(bgmRect);

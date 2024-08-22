@@ -1,11 +1,11 @@
 function main() {
 	var scene = new g.Scene({
 		game: g.game,
-		assetIds: ["player"] // シーン内で利用するアセットID
+		assetPaths: ["/image/player.png"] // シーン内で利用するアセットのパス
 	});
 
 	scene.onLoad.add(function() {
-		var playerAsset = scene.asset.getImageById("player");
+		var playerAsset = scene.asset.getImage("/image/player.png");
 		var partialPlayer = new g.Sprite({
 			scene: scene,
 			width: playerAsset.width / 2,

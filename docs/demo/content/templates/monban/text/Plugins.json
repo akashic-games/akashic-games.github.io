@@ -1,5 +1,0 @@
-[
-	{"name":"Community_Basic","status":true,"description":"基本的なパラメーターを設定するプラグインです。","parameters":{"cacheLimit":"20","screenWidth":"816","screenHeight":"624","changeWindowWidthTo":"","changeWindowHeightTo":"","renderingMode":"auto","alwaysDash":"off"}},
-	{"name":"AkashicRankingMode","status":true,"description":"ランキング形式のニコ生ゲームを作るためのプラグイン","parameters":{"scoreVariableNumber":"1","totalTimeLimit":"120","titleTime":"0","graceTime":"30","prohibitMenu":"1","showScore":"0","scoreWidth":"200","scoreHeight":"70","scoreX":"0","scoreY":"0","scoreUnit":"pt","musicVolume":"40","soundVolume":"60"}},
-	{"name":"Monban","status":true,"description":"「門番」独自の演出を行うためのプラグイン","parameters":{"scale":"2.5"}}
-]

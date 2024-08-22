@@ -1,12 +1,12 @@
 function main() {
 	var scene = new g.Scene({
 		game: g.game,
-		assetIds: ["player", "sound1"] // シーン内で利用するアセットID
+		assetPaths: ["/image/player.png", "/audio/sound1"] // シーン内で利用するアセットのパス
 	});
 
 	scene.onLoad.add(function() {
-		var playerImageAsset = scene.asset.getImageById("player");
-		var sound1 = scene.asset.getAudioById("sound1");
+		var playerImageAsset = scene.asset.getImage("/image/player.png");
+		var sound1 = scene.asset.getAudio("/audio/sound1");
 
 		var player = new g.Sprite({
 			scene: scene,
