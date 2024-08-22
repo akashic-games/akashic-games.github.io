@@ -1,13 +1,13 @@
 function main() {
 	var scene = new g.Scene({
 		game: g.game,
-		assetIds: ["player"]
+		assetPaths: ["/image/player.png"]
 	});
 
 	scene.onLoad.add(function () {
 		var sprite = new g.Sprite({
 			scene: scene,
-			src: scene.asset.getImageById("player"),
+			src: scene.asset.getImage("/image/player.png"),
 			hidden: true
 		});
 		scene.append(sprite);

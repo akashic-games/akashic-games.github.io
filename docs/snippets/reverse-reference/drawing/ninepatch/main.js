@@ -1,11 +1,11 @@
 function main() {
 	var scene = new g.Scene({
 		game: g.game,
-		assetIds: ["frame"] // シーン内で利用するアセットID
+		assetPaths: ["/image/frame.png"] // シーン内で利用するアセットのパス
 	});
 
 	scene.onLoad.add(function () {
-		var frameImageAsset = scene.asset.getImageById("frame");
+		var frameImageAsset = scene.asset.getImage("/image/frame.png");
 
 		var img = new g.Sprite({
 			scene: scene,
