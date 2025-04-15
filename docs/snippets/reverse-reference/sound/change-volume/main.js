@@ -1,4 +1,4 @@
-var font = new g.DynamicFont({
+const font = new g.DynamicFont({
 	game: g.game,
 	fontFamily: "sans-serif",
 	size: 48
@@ -7,26 +7,29 @@ var font = new g.DynamicFont({
 function main() {
 	var scene = new g.Scene({ game: g.game, assetPaths: ["/audio/sound1", "/audio/bgm1"] });
 	scene.onLoad.add(function() {
-		var bgmPlayer = null;
-		var currentVolume = 1;
-		var soundRect = createButtonRect(scene, 30, 130, "green", "SE", () => {
-			scene.asset.getAudio("/audio/sound1").play();
+		let currentVolume = 1;
+		const sound1Asset = scene.asset.getAudio("/audio/sound1");
+		const soundRect = createButtonRect(scene, 30, 130, "green", "SE", () => {
+			g.game.audio.play(sound1Asset);
 		});
 		scene.append(soundRect);
-		var bgmRect = createButtonRect(scene, 120, 130, "blue", "BGM", () => {
-			if (!bgmPlayer) {
-				bgmPlayer = scene.asset.getAudio("/audio/bgm1").play();
-				bgmPlayer.changeVolume(currentVolume);
+		let bgm;
+		const bgm1Asset = scene.asset.getAudio("/audio/bgm1");
+		const bgmRect = createButtonRect(scene, 120, 130, "blue", "BGM", () => {
+			if (!bgm) {
+				bgm = g.game.audio.create(bgm1Asset);
+				bgm.play();
+				bgm.changeVolume(currentVolume);
 			} else {
-				bgmPlayer.stop();
-				bgmPlayer = null;
+				bgm.stop();
+				bgm = null;
 			}
 		});
 		scene.append(bgmRect);
-		var VolumeBarEntity = createVolumeBarEntity(scene, 240, 60, currentVolume, (volume) => {
+		const VolumeBarEntity = createVolumeBarEntity(scene, 240, 60, currentVolume, (volume) => {
 			currentVolume = volume;
-			if (bgmPlayer) {
-				bgmPlayer.changeVolume(currentVolume);
+			if (bgm) {
+				bgm.changeVolume(currentVolume);
 			}
 		});
 		scene.append(VolumeBarEntity);
@@ -35,7 +38,7 @@ function main() {
 }
   
 function createButtonRect(scene, x, y, color, text, clickHandler) {
-	var rect = new g.FilledRect({
+	const rect = new g.FilledRect({
 		scene: scene,
 		x: x,
 		y: y,
@@ -44,7 +47,7 @@ function createButtonRect(scene, x, y, color, text, clickHandler) {
 		cssColor: color,
 		touchable: true
 	});
-	var label = new g.Label({
+	const label = new g.Label({
 		scene: scene,
 		text: text,
 		font: font,
@@ -68,14 +71,14 @@ function createButtonRect(scene, x, y, color, text, clickHandler) {
 }
 
 function createVolumeBarEntity(scene, x, y, volume, chageVolumeFunc) {
-	var entity = new g.E({
+	const entity = new g.E({
 		scene: scene,
 		width: 50,
 		height: 200,
 		x: x,
 		y: y
 	});
-	var bar = new g.FilledRect({
+	const bar = new g.FilledRect({
 		scene: scene,
 		width: 30,
 		height: 160,
@@ -85,7 +88,7 @@ function createVolumeBarEntity(scene, x, y, volume, chageVolumeFunc) {
 		touchable: true
 	});
 	entity.append(bar);
-	var cursor = new g.FilledRect({
+	const cursor = new g.FilledRect({
 		scene: scene,
 		width: 50,
 		height: 20,

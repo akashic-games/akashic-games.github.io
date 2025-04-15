@@ -1,23 +1,27 @@
-var font = new g.DynamicFont({
+const font = new g.DynamicFont({
 	game: g.game,
 	fontFamily: "sans-serif",
 	size: 48
 });
 
 function main() {
-	var scene = new g.Scene({ game: g.game, assetPaths: ["/audio/sound1", "/audio/bgm1"] });
+	const scene = new g.Scene({ game: g.game, assetPaths: ["/audio/sound1", "/audio/bgm1"] });
 	scene.onLoad.add(function() {
-		var isPlayingBgm = false;
-		var soundRect = createButtonRect(scene, 40, 110, "green", "SE", () => {
-			scene.asset.getAudio("/audio/sound1").play();
+		let isPlayingBgm = false;
+		const sound1Asset = scene.asset.getAudio("/audio/sound1");
+		const soundRect = createButtonRect(scene, 40, 110, "green", "SE", () => {
+			g.game.audio.play(sound1Asset);
 		});
 		scene.append(soundRect);
-		var bgmRect = createButtonRect(scene, 180, 110, "blue", "BGM", () => {
+
+		const bgm1Asset = scene.asset.getAudio("/audio/bgm1");
+		const bgm = g.game.audio.create(bgm1Asset);
+		const bgmRect = createButtonRect(scene, 180, 110, "blue", "BGM", () => {
 			isPlayingBgm = !isPlayingBgm;
 			if (isPlayingBgm) {
-				scene.asset.getAudio("/audio/bgm1").play();
+				bgm.play();
 			} else {
-				scene.asset.getAudio("/audio/bgm1").stop();
+				bgm.stop();
 			}
 		});
 		scene.append(bgmRect);
@@ -26,7 +30,7 @@ function main() {
 }
   
 function createButtonRect(scene, x, y, color, text, clickHandler) {
-	var rect = new g.FilledRect({
+	const rect = new g.FilledRect({
 		scene: scene,
 		x: x,
 		y: y,
@@ -35,7 +39,7 @@ function createButtonRect(scene, x, y, color, text, clickHandler) {
 		cssColor: color,
 		touchable: true
 	});
-	var label = new g.Label({
+	const label = new g.Label({
 		scene: scene,
 		text: text,
 		font: font,
