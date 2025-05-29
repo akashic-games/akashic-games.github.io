@@ -120,7 +120,7 @@ var Thief = /** @class */function () {
    */
   Thief.prototype.minusLife = function () {
     this.life -= 1;
-    this.createDamegeEffect();
+    this.createDamageEffect();
     if (this.life <= 0) {
       // 泥棒の寿命が尽きる時
       // 泥棒やられアニメに変更
@@ -335,7 +335,7 @@ var Thief = /** @class */function () {
   /**
    * 血しぶき生成
    */
-  Thief.prototype.createDamegeEffect = function () {
+  Thief.prototype.createDamageEffect = function () {
     var actor = new asaEx_1.asaEx.Actor(this.scene, asaInfo_1.AsaInfo.effect.pj, asaInfo_1.AsaInfo.effect.anim.main);
     var pos = this.getPosition(); // 足元
     actor.moveTo(pos.x, pos.y - this.spr.height / 2); // 中心に補正
