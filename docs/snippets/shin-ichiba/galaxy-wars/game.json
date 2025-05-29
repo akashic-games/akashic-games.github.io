@@ -1,0 +1,315 @@
+{
+  "width": 512,
+  "height": 384,
+  "fps": 30,
+  "title": "Galaxy Wars",
+  "description": "画面をドラッグ(スワイプ)すると自機が移動します。自機の弾は自動で発射され、敵を倒すと様々なアイテムを落とします。左上のゲージがゼロになるとゲームオーバーです。\n\nこのサンプルで使用している素材は[素材ページ](https://akashic-games.github.io/asset/material.html#GALAXYWARS)で公開・配布しています。",
+  "main": "./script/main.js",
+  "assets": {
+    "main": {
+      "type": "script",
+      "path": "script/main.js",
+      "global": true
+    },
+    "font16": {
+      "type": "image",
+      "width": 256,
+      "height": 96,
+      "path": "image/font16.png",
+      "global": true
+    },
+    "glyph_area": {
+      "type": "text",
+      "path": "text/glyph_area.json",
+      "global": true
+    },
+    "alphaEnemy": {
+      "type": "image",
+      "width": 32,
+      "height": 32,
+      "path": "image/alphaEnemy.png",
+      "global": true
+    },
+    "ball": {
+      "type": "image",
+      "width": 16,
+      "height": 16,
+      "path": "image/ball.png",
+      "global": true
+    },
+    "betaEnemy": {
+      "type": "image",
+      "width": 32,
+      "height": 32,
+      "path": "image/betaEnemy.png",
+      "global": true
+    },
+    "item01": {
+      "type": "image",
+      "width": 24,
+      "height": 24,
+      "path": "image/item01.png",
+      "global": true
+    },
+    "item02": {
+      "type": "image",
+      "width": 24,
+      "height": 24,
+      "path": "image/item02.png",
+      "global": true
+    },
+    "item03": {
+      "type": "image",
+      "width": 24,
+      "height": 24,
+      "path": "image/item03.png",
+      "global": true
+    },
+    "item04": {
+      "type": "image",
+      "width": 24,
+      "height": 24,
+      "path": "image/item04.png",
+      "global": true
+    },
+    "item05": {
+      "type": "image",
+      "width": 24,
+      "height": 24,
+      "path": "image/item05.png",
+      "global": true
+    },
+    "item06": {
+      "type": "image",
+      "width": 24,
+      "height": 24,
+      "path": "image/item06.png",
+      "global": true
+    },
+    "missle": {
+      "type": "image",
+      "width": 8,
+      "height": 32,
+      "path": "image/missle.png",
+      "global": true
+    },
+    "particle": {
+      "type": "image",
+      "width": 16,
+      "height": 16,
+      "path": "image/particle.png",
+      "global": true
+    },
+    "player": {
+      "type": "image",
+      "width": 32,
+      "height": 32,
+      "path": "image/player.png",
+      "global": true
+    },
+    "returnButton": {
+      "type": "image",
+      "width": 128,
+      "height": 48,
+      "path": "image/returnButton.png",
+      "global": true
+    },
+    "shield": {
+      "type": "image",
+      "width": 16,
+      "height": 16,
+      "path": "image/shield.png",
+      "global": true
+    },
+    "star01": {
+      "type": "image",
+      "width": 2,
+      "height": 8,
+      "path": "image/star01.png",
+      "global": true
+    },
+    "star02": {
+      "type": "image",
+      "width": 2,
+      "height": 4,
+      "path": "image/star02.png",
+      "global": true
+    },
+    "startButton": {
+      "type": "image",
+      "width": 128,
+      "height": 48,
+      "path": "image/startButton.png",
+      "global": true
+    },
+    "title": {
+      "type": "image",
+      "width": 416,
+      "height": 80,
+      "path": "image/title.png",
+      "global": true
+    },
+    "gameover": {
+      "type": "image",
+      "width": 384,
+      "height": 80,
+      "path": "image/gameover.png",
+      "global": true
+    },
+    "gammaEnemy": {
+      "type": "image",
+      "width": 64,
+      "height": 64,
+      "path": "image/gammaEnemy.png",
+      "global": true
+    },
+    "enemyMissile": {
+      "type": "image",
+      "width": 12,
+      "height": 32,
+      "path": "image/enemyMissile.png",
+      "global": true
+    },
+    "sparkle": {
+      "type": "image",
+      "width": 26,
+      "height": 26,
+      "path": "image/sparkle.png",
+      "global": true
+    },
+    "ScreenEffector": {
+      "type": "script",
+      "path": "script/ScreenEffector.js",
+      "global": true
+    },
+    "titleScene": {
+      "type": "script",
+      "path": "script/titleScene.js",
+      "global": true
+    },
+    "Math": {
+      "type": "script",
+      "path": "script/Math.js",
+      "global": true
+    },
+    "EntityType": {
+      "type": "script",
+      "path": "script/EntityType.js",
+      "global": true
+    },
+    "Player": {
+      "type": "script",
+      "path": "script/Player.js",
+      "global": true
+    },
+    "gameScene": {
+      "type": "script",
+      "path": "script/gameScene.js",
+      "global": true
+    },
+    "Global": {
+      "type": "script",
+      "path": "script/Global.js",
+      "global": true
+    },
+    "ItemType": {
+      "type": "script",
+      "path": "script/ItemType.js",
+      "global": true
+    },
+    "Shield": {
+      "type": "script",
+      "path": "script/Shield.js",
+      "global": true
+    },
+    "Bullet": {
+      "type": "script",
+      "path": "script/Bullet.js",
+      "global": true
+    },
+    "Particle": {
+      "type": "script",
+      "path": "script/Particle.js",
+      "global": true
+    },
+    "emmitDamageEffect": {
+      "type": "script",
+      "path": "script/emmitDamageEffect.js",
+      "global": true
+    },
+    "Enemy": {
+      "type": "script",
+      "path": "script/Enemy.js",
+      "global": true
+    },
+    "Item": {
+      "type": "script",
+      "path": "script/Item.js",
+      "global": true
+    },
+    "ItemGaugeTray": {
+      "type": "script",
+      "path": "script/ItemGaugeTray.js",
+      "global": true
+    },
+    "AlphaEnemy": {
+      "type": "script",
+      "path": "script/AlphaEnemy.js",
+      "global": true
+    },
+    "BetaEnemy": {
+      "type": "script",
+      "path": "script/BetaEnemy.js",
+      "global": true
+    },
+    "GammaEnemy": {
+      "type": "script",
+      "path": "script/GammaEnemy.js",
+      "global": true
+    },
+    "EnemyManager": {
+      "type": "script",
+      "path": "script/EnemyManager.js",
+      "global": true
+    },
+    "Background": {
+      "type": "script",
+      "path": "script/Background.js",
+      "global": true
+    },
+    "GameCore": {
+      "type": "script",
+      "path": "script/GameCore.js",
+      "global": true
+    },
+    "GameOverLogo": {
+      "type": "script",
+      "path": "script/GameOverLogo.js",
+      "global": true
+    },
+    "PlayerStatus": {
+      "type": "script",
+      "path": "script/PlayerStatus.js",
+      "global": true
+    },
+    "akashic": {
+      "type": "image",
+      "width": 179,
+      "height": 128,
+      "path": "image/akashic.png",
+      "global": true
+    },
+    "bootScene": {
+      "type": "script",
+      "path": "script/bootScene.js",
+      "global": true
+    },
+    "version": {
+      "type": "text",
+      "path": "text/version.txt"
+    }
+  },
+  "environment": {
+    "sandbox-runtime": "3"
+  }
+}
