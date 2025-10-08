@@ -3,14 +3,20 @@ name: Issue Broken Link
 on:
   page_build
 
+permissions:
+    issues: write
+    contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          persist-credentials: false
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 20
       - name: link check
@@ -31,7 +37,7 @@ jobs:
           echo "count=$(cat ./link_check_result.txt | wc -l)" >> $GITHUB_OUTPUT
       - name: create issue
         if: steps.count.outputs.count > 0
-        uses: JasonEtco/create-an-issue@v2
+        uses: JasonEtco/create-an-issue@1b14a70e4d8dc185e5cc76d3bec9eab20257b2c5 # v2.9.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RESULT: ${{ steps.result.outputs.broken_result }}
