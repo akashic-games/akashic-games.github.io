@@ -21,7 +21,8 @@ jobs:
           node-version: 20
       - name: link check
         run: |
-          npx -y broken-link-checker@0.7.8 https://akashic-games.github.io/ -roe --requests 1 --exclude localhost:3000 | grep BROKEN > ./link_check_result.txt
+          npm ci
+          npx broken-link-checker https://akashic-games.github.io/ -roe --requests 1 --exclude localhost:3000 | grep BROKEN > ./link_check_result.txt
         continue-on-error: true
       - name: save result
         id: result
