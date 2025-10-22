@@ -1,0 +1,18 @@
+{
+  "name": "akashic-games.github.io",
+  "private": true,
+  "version": "1.0.0",
+  "description": "[Akashic Engine 公式ページ](http://akashic-games.github.io/)用のリポジトリ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "akashic-games/akashic-games.github.io.git"
+  },
+  "author": "DWANGO Co., Ltd.",
+  "license": "MIT",
+  "devDependencies": {
+    "broken-link-checker": "^0.7.8"
+  }
+}
