@@ -13,7 +13,7 @@ function main(param) {
         rect.x = g.game.width / 2;
         rect.y = g.game.height / 2;
         scene.append(rect);
-        
+
         const pointCache = {};
         let baseDistance = 0;
         scene.onPointDownCapture.add((ev) => {
@@ -28,14 +28,13 @@ function main(param) {
             }
         });
         scene.onPointMoveCapture.add((ev) => {
-            const keys = Object.keys(pointCache);
-            const index = keys.findIndex((key) => key === ev.pointerId.toString());
-            if (pointCache[keys[index]]) {
+            if (pointCache[ev.pointerId]) {
                 // PointDownEvent 時からの移動量を加算して位置を求める
                 const pointX = ev.point.x + ev.startDelta.x;
                 const pointY = ev.point.y + ev.startDelta.y;
-                pointCache[index] = {x: pointX, y: pointY};
+                pointCache[ev.pointerId] = {x: pointX, y: pointY};
             }
+            const keys = Object.keys(pointCache);
             if (keys.length === 2) {
                 const point1 = pointCache[keys[0]];
                 const point2 = pointCache[keys[1]];
