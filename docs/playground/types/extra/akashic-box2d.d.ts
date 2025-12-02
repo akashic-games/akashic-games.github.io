@@ -1,8 +1,8 @@
 /*
-v3.1.0
+v3.1.2
 */
 // Dependencies for this module:
-//   ../typings/box2dweb.d.ts
+//   ../../../../box2dweb
 
 declare module '@akashic-extension/akashic-box2d' {
     import * as Box2DWeb from "box2dweb";
@@ -14,7 +14,7 @@ declare module '@akashic-extension/akashic-box2d' {
 
 declare module '@akashic-extension/akashic-box2d/Box2D' {
     import * as box2dweb from "box2dweb";
-    import { EBody, Box2DFixtureDef, Box2DBodyDef } from "@akashic-extension/akashic-box2d/parameters";
+    import type { EBody, Box2DFixtureDef, Box2DBodyDef } from "@akashic-extension/akashic-box2d/parameters";
     /**
         * `Box2D` のインスタンス生成時に指定するパラメータ。
         */
@@ -65,6 +65,7 @@ declare module '@akashic-extension/akashic-box2d/Box2D' {
             createBody(entity: g.E, bodyDef: box2dweb.Dynamics.b2BodyDef, fixtureDef: box2dweb.Dynamics.b2FixtureDef | box2dweb.Dynamics.b2FixtureDef[]): EBody | null;
             /**
                 * このクラスに追加された `EBody` を削除する。
+                * step() 中は削除できない。 (例えば接触判定のコールバック内など)
                 * @param ebody 削除する `EBody`
                 */
             removeBody(ebody: EBody): void;
@@ -95,7 +96,10 @@ declare module '@akashic-extension/akashic-box2d/Box2D' {
                 */
             step(dt: number, velocityIteration?: number, positionIteration?: number): void;
             /**
-                * ボディ同士の接触を、Box2DWebのユーザデータを参照して検出する。
+                * 指定した二つのボディの接触であるかどうかを判定する。
+                * ただし、この判定はボディそのものではなく「ボディ生成時に与えた `userData`」が一致するかで行われる。
+                * 詳細は下記の「複数ボディ同士の接触イベント検出」を参照のこと。
+                * https://github.com/akashic-games/akashic-box2d/blob/master/getstarted.md
                 * @param body1 対象のボディ
                 * @param body2 対象のボディ
                 * @param contact 対象のb2Contacts
@@ -147,7 +151,7 @@ declare module '@akashic-extension/akashic-box2d/Box2D' {
 }
 
 declare module '@akashic-extension/akashic-box2d/ContactManager' {
-    import { Box2D, EBody } from "@akashic-extension/akashic-box2d/";
+    import type { Box2D, EBody } from "@akashic-extension/akashic-box2d/";
     /**
         * `ContactManager` のインスタンス生成時に指定するパラメータ。
         */
@@ -289,7 +293,7 @@ declare module '@akashic-extension/akashic-box2d/parameters' {
             /**
                 * ボディのユーザデータを指定する。
                 */
-            userData?: string;
+            userData?: any;
             /**
                 * フィルタリングデータ。
                 */
