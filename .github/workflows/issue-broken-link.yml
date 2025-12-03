@@ -37,10 +37,21 @@ jobs:
           echo "count=$(cat ./link_check_result.txt | wc -l)" >> $GITHUB_OUTPUT
       - name: create issue
         if: steps.count.outputs.count > 0
-        uses: JasonEtco/create-an-issue@1b14a70e4d8dc185e5cc76d3bec9eab20257b2c5 # v2.9.2
+        run: |
+          sed "s/{{ RESULT }}/${RESULT}/g" .github/issue-broken-link-template.md > body_rendered.md
+          EXISTING_ISSUE_URL=$(gh issue list --search "${ISSUE_TITLE} in:title is:open" --json url --jq '.[0].url')
+
+          if [ -n "${EXISTING_ISSUE_URL}" ]; then
+            gh issue edit "${EXISTING_ISSUE_URL}" --body-file body_rendered.md
+          else
+            gh issue create \
+              --title "${ISSUE_TITLE}" \
+              --body-file body_rendered.md \
+              --label "${ISSUE_LABELS}" \
+              --assignee "${{ github.actor }}"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RESULT: ${{ steps.result.outputs.broken_result }}
-        with:
-          filename: .github/issue-broken-link-template.md
-          update_existing: true
+          ISSUE_TITLE: "broken link found."
+          ISSUE_LABELS: "invalid"
