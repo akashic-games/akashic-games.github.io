@@ -51,7 +51,7 @@ jobs:
               --assignee "${{ github.actor }}"
           fi
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RESULT: ${{ steps.result.outputs.broken_result }}
           ISSUE_TITLE: "broken link found."
           ISSUE_LABELS: "invalid"
