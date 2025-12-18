@@ -1,9 +1,0 @@
-{
-    "contentDirPath": "..",
-    "scenario": {
-        "type": "playlog",
-        "path": "playlog.json"
-    },
-    "executionMode": "replay",
-    "expectedDirPath": "expected"
-}
