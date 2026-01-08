@@ -1,0 +1,29 @@
+{
+	"width": 320,
+	"height": 320,
+	"fps": 30,
+	"main": "./main.js",
+	"assets": {
+		"player": {
+			"type": "image",
+			"width": 32,
+			"height": 32,
+			"path": "image/player.png"
+		},
+		"main": {
+			"type": "script",
+			"path": "main.js",
+			"global": true
+		},
+		"gameStick": {
+			"type": "image",
+			"path": "image/gameStick.png",
+			"width": 200,
+			"height": 200
+		}
+	},
+	"environment": {
+		"sandbox-runtime": "3"
+	},
+	"globalScripts": []
+}
